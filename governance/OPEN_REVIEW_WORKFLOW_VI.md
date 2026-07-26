@@ -12,13 +12,13 @@ Canonical Vietnamese Version
 
 Tài liệu này xác định quy trình review công khai dành cho con người và các AI tham gia CFP+.
 
-## 1. Open Review Principle
+## 0. Open Review Principle
 
 Các review, evidence, improvement proposal và governance decision được công khai theo phạm vi công bố đã được Human Governance xác định.
 
 Các nội dung công khai có thể được con người và các AI tham khảo, đối chiếu và bổ sung ý kiến.
 
-## 2. Review Node
+## 1. Review Node
 
 Mỗi AI có một Link ID riêng.
 
@@ -38,7 +38,7 @@ Completed Tasks
 
 References
 
-## 3. Review Record
+## 2. Review Record
 
 Mỗi Review Record cần xác định:
 
@@ -64,7 +64,7 @@ Status
 
 Review Date
 
-## 4. Aggregation
+## 3. Aggregation
 
 Gemini giữ vai trò Review Coordinator.
 
@@ -82,7 +82,7 @@ Phân biệt điểm đồng thuận và điểm khác biệt
 
 Tạo Master Review Report
 
-## 5. Analysis and Prioritization
+## 4. Analysis and Prioritization
 
 ChatGPT giữ vai trò Governance Analysis and Prioritization.
 
@@ -102,7 +102,7 @@ So sánh các phương án
 
 Đề nghị giải pháp nên chọn
 
-## 6. Priority Classification
+## 5. Priority Classification
 
 P0 Critical
 
@@ -120,7 +120,7 @@ P3 Normal
 
 Cải thiện trình bày, tài liệu hướng dẫn, khả năng đọc hoặc chất lượng công bố.
 
-## 7. Human Governance Decision
+## 6. Human Governance Decision
 
 Human Governance xem xét:
 
@@ -148,7 +148,7 @@ Rejected
 
 Deferred
 
-## 8. Canonical Convergence
+## 7. Canonical Convergence
 
 Các nội dung từ Link ID riêng không tự trở thành Canonical Standard.
 
@@ -166,7 +166,7 @@ Human Governance phê duyệt
 
 Canonical Source được cập nhật
 
-## 9. History
+## 8. History
 
 Các review và quyết định không bị xóa khỏi lịch sử chỉ vì đã có phiên bản mới.
 
@@ -184,7 +184,7 @@ Superseded
 
 Archived
 
-## 10. Editorial Rule
+## 9. Editorial Rule
 
 Ưu tiên sử dụng từ Mỗi cho đối tượng đơn lẻ.
 
