@@ -45,6 +45,12 @@ Tài liệu được cập nhật và công bố theo trạng thái đã phê du
 
 ## Tài liệu nền tảng
 
+[Website Master Map](website/WEBSITE_MASTER_MAP_VI.md)
+
+[Public ID Registry 00 đến 99](website/PUBLIC_ID_REGISTRY_00_99_VI.md)
+
+[Locked Documents Registry](governance/LOCKED_DOCUMENTS_REGISTRY_VI.md)
+
 [AI Link ID Profile Template](standards/AI_LINK_ID_PROFILE_TEMPLATE_VI.md)
 
 [Open Review Workflow](governance/OPEN_REVIEW_WORKFLOW_VI.md)
