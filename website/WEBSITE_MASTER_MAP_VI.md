@@ -16,15 +16,18 @@ Thứ tự triển khai bắt buộc:
 4. Sau đó mới nhập tài liệu nội dung.
 5. Nội dung được review, chỉnh sửa và phê duyệt riêng.
 
-## 2. Năm nhóm Website
+## 2. Sáu nhóm Website
 
 | Nhóm | Vai trò khung |
 |---|---|
 | V | Governance và điều phối |
+| D | CMP, cộng tác đa AI và hạ tầng kết nối số |
 | 000 | Foundation |
 | 135 | Chương 1, Chương 3, Chương 5 |
 | 246 | Chương 2, Chương 4, Chương 6 |
 | 789 | Chương 7, Chương 8, Chương 9 |
+
+D là Universal Namespace độc lập trong khung Website. D không thay thế Chương 6 và không làm thay đổi phạm vi ID 00 đến 99. Các nội dung CMP được định vị trong D và dẫn Canonical Link đến tài liệu liên quan tại nhóm 000 hoặc Chương 6 theo nguyên tắc Reference First.
 
 ## 3. Mười chương
 
@@ -49,6 +52,8 @@ Thứ tự triển khai bắt buộc:
 4. ID là định danh ổn định; tên nội dung có thể được review và hoàn thiện sau.
 5. Mỗi ID chỉ có một Canonical Link.
 6. Tài liệu nội dung phải tham chiếu đến ID đã được xác lập trước.
+7. V và D là Universal Namespace, không dùng như ID nội dung của các chương 0 đến 9.
+8. Không sao chép nội dung Canonical giữa D, 000 và Chương 6; chỉ dẫn Canonical Link.
 
 ## 5. Chương 3 và các thực thể độc lập
 
@@ -82,4 +87,4 @@ Nội dung chi tiết, mô tả, tiêu chuẩn, quy trình và hồ sơ sẽ đ�
 
 ## 7. Change Rule
 
-Mọi thay đổi đối với năm nhóm, phạm vi 00 đến 99, công thức ID hoặc vị trí chương phải có Governance Decision của Human Governance.
+Mọi thay đổi đối với sáu nhóm, phạm vi 00 đến 99, công thức ID hoặc vị trí chương phải có Governance Decision của Human Governance.
