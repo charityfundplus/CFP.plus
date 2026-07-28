@@ -27,8 +27,11 @@
 3. Khi đủ 10 mục, mở nhóm con ở cấp sâu hơn.
 4. Không tạo mục thứ 11 ngang hàng.
 5. Danh sách này chỉ dùng để cấp và tra cứu ID.
+6. Bảng ánh xạ đã được Human Governance phê duyệt có hiệu lực cao hơn danh sách cũ.
 
 ## 666660 • Hoa Kỳ 🇺🇸
+
+**Canonical Mapping:** [`registry/666660_US_AI_CANONICAL_MAPPING_VI.md`](666660_US_AI_CANONICAL_MAPPING_VI.md)
 
 ### 6666600 • OpenAI
 
@@ -40,7 +43,7 @@
 - 66666005 • Deep Research
 - 66666006 • OpenAI API
 
-### 6666601 • Google
+### 6666601 • Google DeepMind
 
 - 66666010 • Gemini
 - 66666011 • NotebookLM
@@ -48,41 +51,42 @@
 - 66666013 • Imagen
 - 66666014 • Gemini Code Assist
 
-### 6666602 • Microsoft
+### 6666602 • Anthropic
 
-- 66666020 • Microsoft Copilot
-- 66666021 • Microsoft 365 Copilot
-- 66666022 • GitHub Copilot
-- 66666023 • Copilot Studio
+- 66666020 • Claude
 
-### 6666603 • Anthropic
+### 6666603 • xAI
 
-- 66666030 • Claude
+- 66666030 • Grok
 
-### 6666604 • xAI
+### 6666604 • Meta AI
 
-- 66666040 • Grok
+- 66666040 • Meta AI
+- 66666041 • Llama
 
-### 6666605 • Meta
+### 6666605 • Microsoft AI
 
-- 66666050 • Meta AI
-- 66666051 • Llama
+- 66666050 • Microsoft Copilot
+- 66666051 • Microsoft 365 Copilot
+- 66666052 • GitHub Copilot
+- 66666053 • Copilot Studio
 
-### 6666606 • Perplexity
+### 6666606 • Amazon AI
 
-- 66666060 • Perplexity AI
+- 66666060 • Amazon Bedrock
+- 66666061 • Amazon Q
 
-### 6666607 • Midjourney
+### 6666607 • Perplexity AI
 
-- 66666070 • Midjourney
+- 66666070 • Perplexity
 
-### 6666608 • Runway
+### 6666608 • NVIDIA AI
 
-- 66666080 • Runway AI
+- 66666080 • NVIDIA AI
 
-### 6666609 • Nhóm Hoa Kỳ mở rộng
+### 6666609 • IBM AI
 
-- Mở nhóm con khi cần bổ sung thêm nhà phát triển.
+- 66666090 • IBM watsonx
 
 ## 666661 • Châu Á 🌏
 
@@ -193,19 +197,26 @@
 
 ## 666668 • Việt Nam 🇻🇳
 
-- 6666680 • Viettel AI
-- 6666681 • VinAI
-- 6666682 • FPT AI
-- 6666683 • Zalo AI
-- 6666684 • Cốc Cốc AI
-- 6666685 • VNPT AI
-- 6666686 • Phenikaa AI
-- 6666687 • VAIS
-- 6666688 • AIV Group AI
-- 6666689 • VietLinker AI
+**Public Hub:** [`hub/666668`](../hub/666668/README.md)
+
+- [6666680 • Viettel AI](../hub/666668/6666680.md)
+- [6666681 • VinAI](../hub/666668/6666681.md)
+- [6666682 • FPT AI](../hub/666668/6666682.md)
+- [6666683 • Zalo AI](../hub/666668/6666683.md)
+- [6666684 • Cốc Cốc AI](../hub/666668/6666684.md)
+- [6666685 • VNPT AI](../hub/666668/6666685.md)
+- [6666686 • Phenikaa AI](../hub/666668/6666686.md)
+- [6666687 • VAIS](../hub/666668/6666687.md)
+- [6666688 • AIV Group AI](../hub/666668/6666688.md)
+- [6666689 • VietLinker AI](../hub/666668/6666689.md)
 
 ## 666669 • Dự phòng
 
 - Chỉ sử dụng khi Human Governance phê duyệt.
+
+## Change Record
+
+- 2026-07-28: Đồng bộ Hub Hoa Kỳ với Canonical Mapping `666660`; loại bỏ mapping cũ bị xung đột.
+- 2026-07-28: Bổ sung liên kết công khai đến Hub AI Việt Nam `666668` và 10 hồ sơ trực tiếp.
 
 **Only Plus+ For Life**
