@@ -43,6 +43,10 @@ Human Governance quyết định phương án.
 
 Tài liệu được cập nhật và công bố theo trạng thái đã phê duyệt.
 
+## Điểm truy cập AI
+
+[AI_INDEX • Chỉ mục AI và Canonical Link công khai](AI_INDEX.md)
+
 ## Tài liệu nền tảng
 
 [66666 • CFP+ Global AI ID Registry](registry/66666_AI_ID_ALLOCATION_VI.md)
