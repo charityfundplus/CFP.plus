@@ -47,6 +47,8 @@ Tài liệu được cập nhật và công bố theo trạng thái đã phê du
 
 [66666 • CFP+ Global AI ID Registry](registry/66666_AI_ID_ALLOCATION_VI.md)
 
+[666668 • Hub AI Việt Nam](hub/666668/README.md)
+
 [Website Master Map](website/WEBSITE_MASTER_MAP_VI.md)
 
 [Public ID Registry 00 đến 99](website/PUBLIC_ID_REGISTRY_00_99_VI.md)
