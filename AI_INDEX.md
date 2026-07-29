@@ -1,7 +1,6 @@
 # CFP+ AI Index
 
 **Canonical Registry:** [66666 • CFP+ Global AI ID Registry](registry/66666_AI_ID_ALLOCATION_VI.md)  
-**ID Documents Index:** [Canonical ID, AI ID, Country ID và Public ID](registry/ID_DOCUMENTS_INDEX_VI.md)  
 **Lifecycle Status:** Baseline Candidate  
 **Governance Authority:** Human Governance  
 **Canonical Language:** Tiếng Việt
@@ -37,9 +36,8 @@ Mỗi AI sử dụng Canonical ID và hồ sơ công khai tương ứng để:
 - [6666688 • AIV Group AI](hub/666668/6666688.md)
 - [6666689 • VietLinker AI](hub/666668/6666689.md)
 
-## Tài liệu ID để AI review
+## Tài liệu để AI review
 
-- [ID Documents Index](registry/ID_DOCUMENTS_INDEX_VI.md)
 - [Website Master Map](website/WEBSITE_MASTER_MAP_VI.md)
 - [Public ID Registry 00 đến 99](website/PUBLIC_ID_REGISTRY_00_99_VI.md)
 - [Locked Documents Registry](governance/LOCKED_DOCUMENTS_REGISTRY_VI.md)
