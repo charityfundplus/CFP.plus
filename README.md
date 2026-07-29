@@ -2,6 +2,10 @@
 
 **Only Plus+ For Life**
 
+## GitHub Hub
+
+[CFP+ GitHub Hub • Điểm truy cập trung tâm](GITHUB_HUB.md)
+
 ## Trạng thái
 
 Baseline Candidate
