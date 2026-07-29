@@ -51,10 +51,6 @@ Tài liệu được cập nhật và công bố theo trạng thái đã phê du
 
 [AI_INDEX • Chỉ mục AI và Canonical Link công khai](AI_INDEX.md)
 
-## Điểm truy cập tài liệu ID
-
-[ID Documents Index • Canonical ID, AI ID, Country ID và Public ID](registry/ID_DOCUMENTS_INDEX_VI.md)
-
 ## Tài liệu nền tảng
 
 [66666 • CFP+ Global AI ID Registry](registry/66666_AI_ID_ALLOCATION_VI.md)
