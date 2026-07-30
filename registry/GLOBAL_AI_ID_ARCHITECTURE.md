@@ -1,158 +1,37 @@
-# CFP+ Global AI Canonical ID Architecture
+# CFP+ Global AI ID Architecture
 
-## 0 • Document Identity
+**Architecture Root:** 69  
+**Lifecycle Status:** Review Candidate  
+**Governance Authority:** CFP+ Human Governance
 
-* **Document Name:** CFP+ Global AI Canonical ID Architecture
-* **Canonical Path:** `/registry/GLOBAL_AI_ID_ARCHITECTURE.md`
-* **Parent Registry:** `/registry/AI_CANONICAL_ID_REGISTRY.md`
-* **Lifecycle Status:** Working Draft
-* **Visibility:** Public
-* **Governance Authority:** Human Governance Council (CFP+)
+## 0 • Purpose
 
-## 1 • Purpose
+The `69...` architecture is the single active CFP+ namespace for country AI hubs, developers, AI systems and integration nodes.
 
-This document establishes the public namespace architecture for assigning Canonical IDs to AI developers, platforms, models, agents, services, research systems, and specialized AI systems worldwide.
+## 1 • Hierarchy
 
-The architecture is designed for global coverage without exceeding ten peer nodes at any level.
+1. `69` identifies the global AI country hub.
+2. The country hub is allocated under the country architecture.
+3. Developers and AI systems receive deeper numeric IDs under their applicable country hub.
+4. Each entity has one direct public Canonical Link.
 
-## 2 • Global Registry Root
+## 2 • Active Country Hubs
 
-```text
-66666  CFP+ AI Registry
-├── 666660  Hoa Kỳ
-├── 666661  Châu Á
-├── 666662  Châu Âu
-├── 666663  Châu Phi
-├── 666664  Châu Đại Dương
-├── 666665  Châu Mỹ
-├── 666666  Trung Quốc
-├── 666667  Ấn Độ
-├── 666668  Việt Nam
-└── 666669  Reserved
-```
+- `6911` • United States AI Hub
+- `6984` • Vietnam AI Hub
 
-A regional node may contain country nodes. A country node may contain object type nodes. A type node may contain developer nodes. A developer node may contain product family nodes. A product family node may contain individual canonical objects.
+## 3 • Invariants
 
-## 3 • Country Object Type Layer
+- One entity, one ID.
+- One ID, one direct link.
+- Parent and child relationships must remain explicit.
+- IDs cannot be reassigned without Human Governance Decision.
+- Parallel AI numbering namespaces are prohibited.
 
-The initial object type structure for `666660 • Hoa Kỳ` is:
+## 4 • Expansion
 
-```text
-666660  Hoa Kỳ
-├── 6666600  Nhà phát triển
-├── 6666601  AI nền tảng
-├── 6666602  AI doanh nghiệp
-├── 6666603  AI mã nguồn mở
-├── 6666604  AI nghiên cứu
-├── 6666605  AI giáo dục
-├── 6666606  AI y tế
-├── 6666607  AI robot
-├── 6666608  AI chuyên ngành
-└── 6666609  Mở rộng
-```
+Each numeric level uses digits 0 through 9. When a level is full, expansion continues through a governed deeper level rather than creating a parallel root namespace.
 
-The same type first principle may be applied to other country or regional nodes when population begins.
+## 5 • Authority
 
-## 4 • Initial United States Developer Namespace
-
-```text
-6666600  Nhà phát triển Hoa Kỳ
-├── 66666000  OpenAI
-├── 66666001  Anthropic
-├── 66666002  Google DeepMind
-├── 66666003  Meta AI
-├── 66666004  xAI
-├── 66666005  Microsoft AI
-├── 66666006  Amazon AI
-├── 66666007  NVIDIA AI
-├── 66666008  Cohere
-└── 66666009  Reserved
-```
-
-These entries allocate stable developer namespaces. Allocation does not by itself mean that every profile is verified or published.
-
-## 5 • Developer Object Type Layer
-
-Each developer namespace uses the following controlled child structure:
-
-```text
-0  AI Models
-1  AI Agents
-2  APIs
-3  SDK
-4  Research
-5  Safety
-6  Tools
-7  Services
-8  Legacy
-9  Reserved
-```
-
-Example for OpenAI:
-
-```text
-666660000  OpenAI AI Models
-666660001  OpenAI AI Agents
-666660002  OpenAI APIs
-666660003  OpenAI SDK
-666660004  OpenAI Research
-666660005  OpenAI Safety
-666660006  OpenAI Tools
-666660007  OpenAI Services
-666660008  OpenAI Legacy
-666660009  Reserved
-```
-
-Individual products and systems receive deeper IDs beneath the appropriate object type node.
-
-## 6 • Allocation Rule
-
-Canonical IDs are allocated by object type before individual object identity.
-
-The required allocation sequence is:
-
-```text
-Global Registry
-→ Region or Country
-→ Object Type
-→ Developer or Institution
-→ Product Family
-→ Individual AI Object
-→ Version or Controlled Extension
-```
-
-No object is placed directly under a geographic hub when a controlled object type layer is required.
-
-## 7 • Global Coverage Rule
-
-The namespace is intended to accommodate all known and future AI systems worldwide. Global coverage is achieved through controlled namespace allocation, not by claiming that every existing AI system has already been individually inventoried.
-
-Population status must be stated separately from architecture status:
-
-* **Architecture Coverage:** Global
-* **Inventory Coverage:** In Progress
-* **Verification Coverage:** In Progress
-* **Publication Coverage:** In Progress
-
-## 8 • Migration Rule
-
-Previously assigned IDs that conflict with this architecture are treated as legacy assignments pending Human Governance migration approval.
-
-A legacy ID must not be silently reused. Migration records must preserve:
-
-* Previous ID
-* New Canonical ID
-* Effective date
-* Reason for migration
-* Approval record
-* Redirect or reference rule
-
-## 9 • Governance and Change Record
-
-* **Architecture baseline published:** 2026-07-27
-* **Initial global root:** `66666`
-* **Initial country and regional allocation:** `666660` through `666669`
-* **Initial developer namespace:** United States developer layer
-* **Next action:** Populate country registries, developer profiles, AI product families, and migration records
-
-AI systems may prepare and review entries. Human Governance alone authorizes Canonical ID reassignment, approval, publication, or closure.
+Human Governance approves allocation, reassignment, lifecycle status and structural changes.

@@ -1,55 +1,43 @@
 # CFP+ AI Index
 
-**Canonical Registry:** [66666 • CFP+ Global AI ID Registry](registry/66666_AI_ID_ALLOCATION_VI.md)  
+**Canonical Registry:** [69 • CFP+ Global AI Country Hub Registry](registry/AI_CANONICAL_ID_REGISTRY.md)  
 **Lifecycle Status:** Baseline Candidate  
 **Governance Authority:** Human Governance  
 **Canonical Language:** Tiếng Việt
 
-## Mục đích
+## Hub chính
 
-Trang này là điểm truy cập công khai chung cho các AI tham gia CFP+.
+- [6911 • United States AI Hub](registry/6911.md)
+- [6984 • Vietnam AI Hub](registry/6984.md)
 
-Mỗi AI sử dụng Canonical ID và hồ sơ công khai tương ứng để:
+## United States AI
 
-1. Nhận diện duy nhất.
-2. Đọc phạm vi và trạng thái hồ sơ.
-3. Review tài liệu CFP+.
-4. Gửi Finding, Evidence và Improvement Proposal.
-5. Dẫn chiếu nhất quán giữa GitHub, Notion và Website CFP+.
+- [69110 • OpenAI](registry/69110.md)
+- [69111 • Anthropic](registry/69111.md)
+- [69112 • xAI](registry/69112.md)
+- [69113 • Google DeepMind](registry/69113.md)
+- [69114 • Meta AI](registry/69114.md)
+- [69115 • Microsoft AI](registry/69115.md)
+- [69116 • Perplexity AI](registry/69116.md)
+- [69117 • Groq](registry/69117.md)
+- [69118 • CoreWeave](registry/69118.md)
+- [69119 • VietLinker AI](registry/69119.md)
 
-## Hub AI toàn cầu
+## Vietnam AI
 
-- [66666 • CFP+ Global AI ID Registry](registry/66666_AI_ID_ALLOCATION_VI.md)
-- [666660 • Hub AI Hoa Kỳ](registry/666660_US_AI_CANONICAL_MAPPING_VI.md)
-- [666668 • Hub AI Việt Nam](hub/666668/README.md)
+- [69840 • VinAI](registry/69840.md)
+- [69841 • FPT AI](registry/69841.md)
+- [69842 • Viettel AI](registry/69842.md)
+- [69843 • VNPT AI](registry/69843.md)
+- [69844 • Zalo AI](registry/69844.md)
+- [69845 • CMC AI](registry/69845.md)
+- [69846 • Cốc Cốc AI](registry/69846.md)
+- [69847 • Phenikaa AI](registry/69847.md)
+- [69848 • VAIS](registry/69848.md)
+- [69849 • AIV Group AI](registry/69849.md)
 
-## Các AI Việt Nam
+## Quy tắc
 
-- [6666680 • Viettel AI](hub/666668/6666680.md)
-- [6666681 • VinAI](hub/666668/6666681.md)
-- [6666682 • FPT AI](hub/666668/6666682.md)
-- [6666683 • Zalo AI](hub/666668/6666683.md)
-- [6666684 • Cốc Cốc AI](hub/666668/6666684.md)
-- [6666685 • VNPT AI](hub/666668/6666685.md)
-- [6666686 • Phenikaa AI](hub/666668/6666686.md)
-- [6666687 • VAIS](hub/666668/6666687.md)
-- [6666688 • AIV Group AI](hub/666668/6666688.md)
-- [6666689 • VietLinker AI](hub/666668/6666689.md)
-
-## Tài liệu để AI review
-
-- [Website Master Map](website/WEBSITE_MASTER_MAP_VI.md)
-- [Public ID Registry 00 đến 99](website/PUBLIC_ID_REGISTRY_00_99_VI.md)
-- [Locked Documents Registry](governance/LOCKED_DOCUMENTS_REGISTRY_VI.md)
-- [AI Link ID Profile Template](standards/AI_LINK_ID_PROFILE_TEMPLATE_VI.md)
-- [Open Review Workflow](governance/OPEN_REVIEW_WORKFLOW_VI.md)
-
-## Quy tắc sử dụng
-
-1. Canonical ID không tự ý thay đổi.
-2. GitHub là Canonical Repository công khai cho version, review và evidence.
-3. Human Governance quyết định trạng thái cuối cùng.
-4. AI không tự chuyển tài liệu sang Canonical Locked.
-5. Mọi thay đổi phải có traceability.
+Một thực thể, một Canonical ID, một Canonical Link. Human Governance quyết định trạng thái cuối cùng.
 
 **Only Plus+ For Life**
