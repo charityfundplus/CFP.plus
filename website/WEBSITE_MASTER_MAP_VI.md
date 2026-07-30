@@ -1,20 +1,21 @@
 # CFP+ Website Master Map
 
-**Trạng thái:** Baseline Candidate
-
+**Trạng thái:** Review Candidate  
+**Authority:** Human Governance  
 **Ngôn ngữ chuẩn:** Tiếng Việt
 
 ## 1. Mục đích
 
-Tài liệu này xác lập khung Website CFP+ trước khi nhập nội dung chi tiết.
+Tài liệu này là khung định vị bắt buộc cho Website, Canonical ID, Canonical Link và toàn bộ tài liệu CFP+.
 
 Thứ tự triển khai bắt buộc:
 
-1. Khóa khung Website.
-2. Định danh và định vị ID.
-3. Kiểm tra không thiếu và không trùng ID.
-4. Sau đó mới nhập tài liệu nội dung.
-5. Nội dung được review, chỉnh sửa và phê duyệt riêng.
+1. Khóa Website Master Map.
+2. Xác lập vị trí của từng ID trong bản đồ Website.
+3. Kiểm tra không thiếu, không trùng và không xung đột ID.
+4. Xác lập một Canonical Link duy nhất.
+5. Hoàn thành review và Human Governance Decision.
+6. Chỉ sau đó mới công bố tài liệu chính thức lên nhánh `main` của GitHub.
 
 ## 2. Sáu nhóm Website
 
@@ -27,7 +28,7 @@ Thứ tự triển khai bắt buộc:
 | 246 | Chương 2, Chương 4, Chương 6 |
 | 789 | Chương 7, Chương 8, Chương 9 |
 
-D là Universal Namespace độc lập trong khung Website. D không thay thế Chương 6 và không làm thay đổi phạm vi ID 00 đến 99. Các nội dung CMP được định vị trong D và dẫn Canonical Link đến tài liệu liên quan tại nhóm 000 hoặc Chương 6 theo nguyên tắc Reference First.
+D là Universal Namespace độc lập. D không thay thế Chương 6 và không làm thay đổi phạm vi ID 00 đến 99. Nội dung CMP chỉ có một bản Canonical; các vị trí khác chỉ dẫn Canonical Link theo nguyên tắc Reference First.
 
 ## 3. Mười chương
 
@@ -44,24 +45,68 @@ D là Universal Namespace độc lập trong khung Website. D không thay thế 
 | 8 | 80 đến 89 | 789 |
 | 9 | 90 đến 99 | 789 |
 
-## 4. Quy tắc định vị
+## 4. Quy tắc định vị ID
 
 1. Chữ số đầu tiên của ID nội dung xác định chương.
 2. Mỗi chương có tối đa 10 nội dung chính, dùng chữ số 0 đến 9.
 3. Mở rộng bằng tầng sâu hơn, không tăng quá 10 mục ngang hàng.
-4. ID là định danh ổn định; tên nội dung có thể được review và hoàn thiện sau.
+4. ID là định danh ổn định; tên nội dung có thể được hoàn thiện nhưng không tự ý đổi ID.
 5. Mỗi ID chỉ có một Canonical Link.
-6. Tài liệu nội dung phải tham chiếu đến ID đã được xác lập trước.
+6. Mỗi tài liệu phải khai báo Parent ID và vị trí Website trước khi công bố.
 7. V và D là Universal Namespace, không dùng như ID nội dung của các chương 0 đến 9.
-8. Không sao chép nội dung Canonical giữa D, 000 và Chương 6; chỉ dẫn Canonical Link.
+8. Không sao chép nội dung Canonical giữa các nhóm hoặc chương; chỉ dẫn Canonical Link.
 
-## 5. Chương 3 và các thực thể độc lập
+## 5. Quan hệ giữa Website, ID và tài liệu
 
-Bộ Tam, CFPU và CFPT có Canonical ID độc lập, chỉ được trình bày đầy đủ tại Chương 3.
+Mỗi tài liệu chính thức phải có tối thiểu:
 
-Các chương khác không tạo bản sao mà chỉ dẫn Canonical Link về Chương 3.
+| Trường | Yêu cầu |
+|---|---|
+| Canonical ID | Duy nhất và đúng vị trí Website |
+| Parent ID | Xác định cấp cha trong Website Master Map |
+| Website Group | V, D, 000, 135, 246 hoặc 789 |
+| Chapter | 0 đến 9 hoặc Universal Namespace phù hợp |
+| Canonical Link | Một đường dẫn GitHub duy nhất |
+| Lifecycle Status | Governance Approved hoặc Canonical Locked khi nằm trên `main` |
+| Canonical Language | Tiếng Việt |
+| Governance Authority | Human Governance |
 
-Ba Quỹ là các thực thể vận hành theo chương và theo cơ quan, doanh nghiệp, tổ chức, cộng đồng hoặc chi hội.
+AI Profile, Country Profile, Standard, Registry và các tài liệu khác đều phải tuân thủ cùng khung định vị này.
+
+## 6. GitHub Publication Rule
+
+1. Nhánh `main` chỉ giữ bản chính thức đã được Human Governance phê duyệt.
+2. Draft, Review Candidate, Finding, Evidence và bản đề xuất chỉ tồn tại trong branch, Issue hoặc Pull Request.
+3. Không tạo nhiều file có cùng nội dung hoặc cùng mục đích.
+4. Khi một tài liệu mới thay thế tài liệu cũ, tài liệu cũ phải được đánh dấu Superseded hoặc loại khỏi đường Canonical.
+5. README và các Index chỉ dẫn đến Canonical Link; không sao chép nội dung tài liệu.
+6. Một ID, một tài liệu chính thức, một Canonical Link.
+
+## 7. Canonical Repository Structure
+
+```text
+/
+├── README.md
+├── website/
+│   ├── WEBSITE_MASTER_MAP_VI.md
+│   └── PUBLIC_ID_REGISTRY_00_99_VI.md
+├── foundation/
+├── standards/
+├── registry/
+├── profiles/
+│   ├── AI/
+│   ├── COUNTRY/
+│   ├── ORGANIZATION/
+│   └── ENTERPRISE/
+├── governance/
+└── evidence/
+```
+
+Thư mục chỉ là lớp lưu trữ kỹ thuật. Canonical ID và Website Master Map mới là lớp định vị chính thức.
+
+## 8. Chương 3 và các thực thể độc lập
+
+Bộ Tam, CFPU và CFPT có Canonical ID độc lập, chỉ được trình bày đầy đủ tại Chương 3. Các chương khác không tạo bản sao mà chỉ dẫn Canonical Link về Chương 3.
 
 Công thức ID bốn chữ số:
 
@@ -71,20 +116,8 @@ Công thức ID bốn chữ số:
 | X332 | Quỹ 2 thuộc Chương X |
 | X333 | Quỹ 3 thuộc Chương X |
 
-Ví dụ Chương 1:
+## 9. Change Rule
 
-| ID | Nội dung |
-|---|---|
-| 1331 | Quỹ 1 |
-| 1332 | Quỹ 2 |
-| 1333 | Quỹ 3 |
+Mọi thay đổi đối với sáu nhóm, phạm vi 00 đến 99, công thức ID, vị trí chương, Canonical Link hoặc cấu trúc công bố GitHub phải có Governance Decision của Human Governance.
 
-## 6. Ranh giới tài liệu
-
-Website Master Map chỉ xác lập kiến trúc và định vị.
-
-Nội dung chi tiết, mô tả, tiêu chuẩn, quy trình và hồ sơ sẽ được nhập vào GitHub sau, theo từng tài liệu, để review và chỉnh sửa.
-
-## 7. Change Rule
-
-Mọi thay đổi đối với sáu nhóm, phạm vi 00 đến 99, công thức ID hoặc vị trí chương phải có Governance Decision của Human Governance.
+**Only Plus+ For Life**
