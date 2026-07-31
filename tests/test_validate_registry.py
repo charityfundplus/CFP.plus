@@ -124,6 +124,47 @@ class ValidateRegistryTests(unittest.TestCase):
             codes = {finding.code for finding in report.findings}
             self.assertNotIn("missing_linked_record", codes)
 
+    def test_validate_canonical_links_allows_ancestor_back_reference(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            registry_dir = Path(tmpdir) / "registry"
+            registry_dir.mkdir()
+            parent_path = registry_dir / "1234.md"
+            child_path = registry_dir / "12340.md"
+
+            parent_path.write_text(
+                "# 1234 • Example Parent\n\n"
+                "**Canonical ID:** 1234  \n"
+                "**Entity Name:** Example Parent  \n"
+                "**Parent Hub:** 12 • Example Hub  \n"
+                "**Lifecycle Status:** Review Candidate  \n"
+                "**Visibility:** Public\n\n"
+                "## 1. Canonical Link\n\n"
+                "https://github.com/charityfundplus/CFP.plus/blob/main/registry/1234.md\n",
+                encoding="utf-8",
+            )
+            child_path.write_text(
+                "# 12340 • Example Child\n\n"
+                "**Canonical ID:** 12340  \n"
+                "**Entity Name:** Example Child  \n"
+                "**Parent ID:** 1234  \n"
+                "**Lifecycle Status:** Review Candidate  \n"
+                "**Visibility:** Public\n\n"
+                "## 1. Canonical Link\n\n"
+                "https://github.com/charityfundplus/CFP.plus/blob/main/registry/12340.md\n\n"
+                "- [1234 • Example Parent](https://github.com/charityfundplus/CFP.plus/blob/main/registry/1234.md)\n",
+                encoding="utf-8",
+            )
+
+            report = validate_registry.ValidationReport(registry_path=str(registry_dir))
+            records = validate_registry.load_registry_files(str(registry_dir), report=report)
+
+            validate_registry.validate_structure(records, report)
+            validate_registry.validate_metadata(records, report)
+            validate_registry.validate_canonical_links(records, report)
+
+            codes = {finding.code for finding in report.findings}
+            self.assertNotIn("linked_record_outside_namespace", codes)
+
 
 if __name__ == "__main__":
     unittest.main()

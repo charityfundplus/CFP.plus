@@ -356,7 +356,7 @@ def validate_canonical_links(records: list[RegistryRecord], report: ValidationRe
                     f"Linked registry record {child_id} is not present in the repository.",
                     record.relative_path,
                 )
-            elif not child_id.startswith(record.canonical_id):
+            elif not child_id.startswith(record.canonical_id) and not record.canonical_id.startswith(child_id):
                 report.add(
                     "warning",
                     "linked_record_outside_namespace",
