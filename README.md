@@ -37,3 +37,18 @@ Repository công khai dành cho tài liệu, review độc lập, evidence, gove
 [Locked Documents Registry](governance/LOCKED_DOCUMENTS_REGISTRY_VI.md)
 
 [Open Review Workflow](governance/OPEN_REVIEW_WORKFLOW_VI.md)
+
+## OpenAI Registry Review Workflow
+
+Repository now includes a GitHub Actions workflow at `.github/workflows/openai-registry-review.yml` and a validator at `scripts/validate_registry.py` to review `registry/` records, generate JSON/Markdown reports, and optionally comment on pull requests.
+
+### Required secret
+
+Configure `OPENAI_API_KEY` in **Settings → Secrets and variables → Actions → New repository secret** before enabling OpenAI-assisted review.
+
+### Governance guardrails
+
+- Review and reporting only; no automatic Canonical ID rewrites.
+- No automatic merge or pull request mutation.
+- Human Governance must approve any follow-up change.
+
