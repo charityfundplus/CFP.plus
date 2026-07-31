@@ -9,42 +9,80 @@
 
 ## 1. Purpose
 
-Tài liệu này kiểm soát việc chuyển toàn bộ tài liệu CFP+ sang GitHub theo nguyên tắc:
+Tài liệu này kiểm soát việc chuyển **toàn bộ tài liệu CFP+** sang GitHub theo đúng chương và đúng vị trí trong kiến trúc CFP+.
 
-- Canonical First
-- Public First
-- Evidence First
-- Foundation trước Implementation
-- Không ghi đè tài liệu đã khóa bằng bản chưa xác minh
-- Một tài liệu Canonical có một đường dẫn công khai trực tiếp
+Tất cả tài liệu đều được đưa vào GitHub, bao gồm:
 
-## 2. Migration Order
+- Canonical Locked
+- Governance Approved
+- Review Complete
+- Review Candidate
+- Draft
+- Active
+- Superseded
+- Archived
+- Evidence
+- Work Orders
 
-1. Foundation
-2. Constitution
-3. Charters
-4. Governance Standards
-5. Canonical Registries
+Lifecycle Status phải được giữ nguyên trong metadata. Trạng thái chưa khóa không phải là lý do để loại tài liệu khỏi GitHub.
+
+## 2. Mandatory Placement Rule
+
+Mỗi tài liệu phải được đặt theo **nội dung và chương phụ trách**, không đặt theo trạng thái lifecycle.
+
+- Chương xác định vị trí lưu trữ.
+- Lifecycle Status xác định mức độ thẩm quyền của tài liệu.
+- Canonical ID hoặc Document ID xác định danh tính.
+- Không tái phân bổ ID trong quá trình migration.
+- Không biến Draft thành Locked chỉ vì tài liệu đã được đưa lên GitHub.
+- Không để tài liệu chưa khóa nằm ngoài hệ thống chương.
+
+## 3. Chapter Structure
+
+| Chapter | Scope | GitHub Directory |
+|---|---|---|
+| 0 | Foundation, Entry Point, System Baseline | `0/` |
+| 1 | Sự Sống | `1/` |
+| 2 | Con Người | `2/` |
+| 3 | Ba Quỹ | `3/` |
+| 4 | Tôn Giáo | `4/` |
+| 5 | Cộng Đồng | `5/` |
+| 6 | AI và Công Nghệ | `6/` |
+| 7 | Doanh Nghiệp | `7/` |
+| 8 | Tổ Chức | `8/` |
+| 9 | Quốc Gia và Vùng lãnh thổ | `9/` |
+
+Các thư mục kỹ thuật hiện có như `governance/`, `registry/`, `website/`, `operations/`, `reviews/`, `evidence/` được giữ trong thời gian chuyển tiếp, nhưng mọi tài liệu phải có Chapter Reference rõ ràng và sau đó được ánh xạ về cấu trúc 0–9.
+
+## 4. Migration Order
+
+Việc nhập tài liệu không phụ thuộc vào trạng thái khóa. Thứ tự ưu tiên dùng để kiểm soát migration:
+
+1. Foundation và Constitution
+2. Charters
+3. Governance Standards
+4. Country Registry và Chapter 9
+5. AI Registry và Chapter 6
 6. Website Standards
 7. Operations
 8. Independent Reviews
 9. Evidence Packages
-10. Archive và Superseded Documents
+10. Draft, Superseded và Archive
 
-## 3. Documents Identified for Migration
+## 5. Documents Identified for Migration
 
-| Priority | Document | Document ID / Canonical ID | Source Status | GitHub Status |
-|---|---|---|---|---|
-| P0 | Priority Work Order Execution Report — 30-07-2026 | CFP-REP-2026-0730 | Locked for Migration | Pending content import |
-| P0 | CFP+ Canonical AI Profile Master Template | 600 | Review Candidate | Pending governance check |
-| P0 | ChatGPT Canonical AI Profile | 6666600 | Review Candidate | Pending ID reconciliation |
-| P0 | Gemini Canonical AI Profile | 66666-100 | Review Candidate | Pending ID reconciliation |
-| P0 | Website Framework v1.0 | CFP-WEB-001 | Candidate / working source | Pending conflict review |
-| P1 | Gemini Website Architecture Review Package | CFP-AI-REV-GEM-001 | Review Evidence | Pending import |
-| P1 | Canonical Alignment — Gemini Work Order | Priority 2 | Operational Work Order | Pending import |
-| P1 | GitHub Migration and AI Work Queue Instruction | Unassigned | Operational Instruction | Pending canonical classification |
+| Priority | Document | Document ID / Canonical ID | Chapter | Source Status | GitHub Status |
+|---|---|---|---|---|---|
+| P0 | Priority Work Order Execution Report — 30-07-2026 | CFP-REP-2026-0730 | 0 / Operations | Locked for Migration | Pending content import |
+| P0 | CFP+ Canonical AI Profile Master Template | 600 | 6 | Review Candidate | Pending content import |
+| P0 | ChatGPT Canonical AI Profile | 6666600 | 6 | Review Candidate | Pending ID reconciliation, not blocked from import |
+| P0 | Gemini Canonical AI Profile | 66666-100 | 6 | Review Candidate | Pending ID reconciliation, not blocked from import |
+| P0 | Website Framework v1.0 | CFP-WEB-001 | 0 / Website | Candidate / Working Source | Pending content import |
+| P1 | Gemini Website Architecture Review Package | CFP-AI-REV-GEM-001 | 0 / Review | Review Evidence | Pending content import |
+| P1 | Canonical Alignment — Gemini Work Order | Priority 2 | 6 / Operations | Operational Work Order | Pending content import |
+| P1 | GitHub Migration and AI Work Queue Instruction | Unassigned | 0 / Operations | Operational Instruction | Pending content import |
 
-## 4. Existing Canonical Repository Anchors
+## 6. Existing Repository Anchors
 
 - `README.md`
 - `GITHUB_HUB.md`
@@ -57,28 +95,46 @@ Tài liệu này kiểm soát việc chuyển toàn bộ tài liệu CFP+ sang G
 - `governance/LOCKED_DOCUMENTS_REGISTRY_VI.md`
 - `governance/OPEN_REVIEW_WORKFLOW_VI.md`
 
-## 5. Migration Gates
+## 7. Publication Labels
 
-Một tài liệu chỉ được ghi là `Migrated — Canonical` khi đáp ứng đủ:
+Mỗi file phải ghi đúng một trạng thái nguồn, chẳng hạn:
 
-1. Có Document ID hoặc Canonical ID duy nhất.
-2. Có Lifecycle Status rõ ràng.
-3. Không xung đột với tài liệu đã có trong repository.
-4. Nội dung nguồn được xác minh đầy đủ.
-5. Có lịch sử nguồn và evidence phù hợp.
-6. Đường dẫn GitHub trực tiếp đã được kiểm tra.
-7. Human Governance cho phép công khai nếu tài liệu chưa ở trạng thái Canonical Locked.
+- `Lifecycle Status: Canonical Locked`
+- `Lifecycle Status: Governance Approved`
+- `Lifecycle Status: Review Candidate`
+- `Lifecycle Status: Draft`
+- `Lifecycle Status: Superseded`
+- `Lifecycle Status: Archived`
 
-## 6. Immediate Blocking Issues
+GitHub lưu toàn bộ lịch sử; chỉ tài liệu đạt gate mới được gọi là Canonical Locked.
 
-- Namespace AI cũ `66666...` chưa được đối chiếu hoàn toàn với cấu trúc AI Country Hub `69...`.
-- `69119` đang có mâu thuẫn giữa Apple, VietLinker AI và các registry tham chiếu.
-- `69849` cần được xác minh trước khi chuyển hoặc khóa bất kỳ hồ sơ liên quan nào.
-- CFP-WEB-002 và CFP-WEB-003 cần Governance Decision trước khi hợp nhất.
-- Canonical Namespace Architecture và Evidence Standard chưa được khóa.
+## 8. Migration Validation
 
-## 7. Current Migration Decision
+Một tài liệu được ghi là `Migrated` khi:
 
-Bắt đầu migration theo danh mục có kiểm soát. Không thực hiện chuyển hàng loạt mù quáng và không tái phân bổ Canonical ID trong quá trình migration.
+1. Nội dung nguồn đã được chuyển đầy đủ.
+2. Có Chapter Reference.
+3. Có Lifecycle Status.
+4. Có Source Reference.
+5. Có đường dẫn GitHub trực tiếp.
 
-**Current Status:** Migration Intake Open — Canonical Validation Required
+Một tài liệu chỉ được ghi là `Migrated — Canonical` khi ngoài các điều kiện trên còn có Governance Approval và Canonical Lock hợp lệ.
+
+## 9. Known Conflicts to Preserve as Evidence
+
+Các xung đột không được dùng làm lý do bỏ tài liệu khỏi GitHub. Chúng phải được đưa vào đúng chương và gắn nhãn conflict:
+
+- Namespace AI cũ `66666...` và cấu trúc AI Country Hub `69...`.
+- Mâu thuẫn `69119` giữa Apple và VietLinker AI.
+- Trạng thái thực thể tại `69849`.
+- Xung đột CFP-WEB-002 và CFP-WEB-003.
+- Canonical Namespace Architecture chưa khóa.
+- Evidence Standard chưa khóa.
+
+## 10. Current Migration Decision
+
+**Đưa tất cả tài liệu vào GitHub theo đúng chương, không phân biệt đã khóa hay chưa khóa.**
+
+Không xóa, không che giấu và không bỏ qua tài liệu chỉ vì tài liệu đang Draft, Review Candidate, có conflict hoặc đã Superseded. Trạng thái và mâu thuẫn phải được ghi công khai, rõ ràng và truy vết được.
+
+**Current Status:** Full Migration Intake Open — Chapter Placement Required
