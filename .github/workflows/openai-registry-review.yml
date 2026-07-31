@@ -68,6 +68,21 @@ jobs:
             echo "(none; full registry scan will be used)"
           fi
 
+      - name: Check OpenAI secret availability
+        id: openai-secret
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -n "${OPENAI_API_KEY:-}" ]]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+            echo "OPENAI_API_KEY is configured."
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "OPENAI_API_KEY is not configured; OpenAI review will be skipped."
+          fi
+
       - name: Run registry validator
         id: validator
         env:
@@ -112,6 +127,12 @@ jobs:
         if: always()
         shell: bash
         run: |
+          if [[ "${{ steps.openai-secret.outputs.configured }}" == "true" ]]; then
+            echo "- OPENAI_API_KEY: configured" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "- OPENAI_API_KEY: missing (OpenAI review skipped until the secret is added)" >> "$GITHUB_STEP_SUMMARY"
+          fi
+          echo "" >> "$GITHUB_STEP_SUMMARY"
           if [[ -f validation_report.md ]]; then
             cat validation_report.md >> "$GITHUB_STEP_SUMMARY"
           fi
