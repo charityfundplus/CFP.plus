@@ -19,9 +19,17 @@ Module nền tảng kết nối các nguyên tắc, kiến trúc và phương th
 - Kiến trúc định danh
 - Review và Change Framework
 
+## Tài liệu đã có
+
+- [CFP+ GitHub Hub](../GITHUB_HUB.md)
+- [Website Master Map](../website/WEBSITE_MASTER_MAP_VI.md)
+- [Public ID Registry 00 đến 99](../website/PUBLIC_ID_REGISTRY_00_99_VI.md)
+- [Locked Documents Registry](../governance/LOCKED_DOCUMENTS_REGISTRY_VI.md)
+- [Open Review Workflow](../governance/OPEN_REVIEW_WORKFLOW_VI.md)
+
 ## Cấu trúc phát triển
 
-Module này sẽ tiếp tục được xây dựng qua các mục `00` đến `09` sau vòng tổng hợp và review.
+Module này sẽ tiếp tục được xây dựng qua các mục `00` đến `09`. Những tài liệu hiện hữu được tham chiếu trước, không sao chép lại.
 
 ## Tinh thần cộng tác
 
