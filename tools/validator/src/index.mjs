@@ -5,6 +5,10 @@ import { fileURLToPath } from "node:url";
 import { parseMarkdownMetadata } from "./metadata.mjs";
 import { validateRegistryFile } from "./rules.mjs";
 import { buildMarkdownReport } from "./report.mjs";
+import {
+  CANONICAL_BLOCKED_RULES_001_016,
+  normalizeAndValidateConfig
+} from "./configIntegrity.mjs";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const validatorDir = path.resolve(scriptDir, "..");
@@ -36,45 +40,44 @@ function configFinding(message, evidence = undefined) {
   };
 }
 
+function fallbackConfig() {
+  return {
+    repository: { owner: "charityfundplus", name: "CFP.plus", defaultBranch: "main" },
+    paths: { registryDir: "registry", reportsDir: "reports" },
+    rootExceptions: [],
+    blockedSpecifications: [{ ...CANONICAL_BLOCKED_RULES_001_016 }]
+  };
+}
+
 async function loadConfig(findings) {
+  let rawText;
   try {
-    return JSON.parse(await fs.readFile(configPath, "utf8"));
+    rawText = await fs.readFile(configPath, "utf8");
   } catch (error) {
-    findings.push(configFinding("Configuration file is missing or invalid JSON.", { error: String(error) }));
-    return {
-      repository: { owner: "charityfundplus", name: "CFP.plus", defaultBranch: "main" },
-      paths: { registryDir: "registry", reportsDir: "reports" },
-      rootExceptions: [],
-      blockedSpecifications: [{
-        specId: "VALIDATION_RULES_001_016",
-        status: "SOURCE_REQUIRED",
-        note: "CANONICAL SPECIFICATION NOT YET LOCATED IN MAIN",
-        proposedPath: "governance/validation/VALIDATION_SCRIPT_SPECIFICATION_v1.2.md"
-      }]
-    };
+    findings.push(configFinding("Configuration file is missing.", { error: String(error) }));
+    return fallbackConfig();
   }
+
+  let parsed;
+  try {
+    parsed = JSON.parse(rawText);
+  } catch (error) {
+    findings.push(configFinding("Configuration file contains invalid JSON.", { error: String(error) }));
+    return fallbackConfig();
+  }
+
+  return normalizeAndValidateConfig(
+    parsed,
+    rawText,
+    (message, evidence) => findings.push(configFinding(message, evidence))
+  );
 }
 
 async function main() {
   const findings = [];
   const config = await loadConfig(findings);
 
-  if (!config.repository?.owner || !config.repository?.name || !config.repository?.defaultBranch) {
-    findings.push(configFinding("Repository configuration is incomplete."));
-  }
-  if (!config.paths?.registryDir || !config.paths?.reportsDir) {
-    findings.push(configFinding("Path configuration is incomplete."));
-  }
-  if (!Array.isArray(config.rootExceptions)) {
-    findings.push(configFinding("rootExceptions must be an array."));
-    config.rootExceptions = [];
-  }
-  if (!Array.isArray(config.blockedSpecifications)) {
-    findings.push(configFinding("blockedSpecifications must be an array."));
-    config.blockedSpecifications = [];
-  }
-
-  const registryDir = path.join(repoRoot, config.paths.registryDir ?? "registry");
+  const registryDir = path.join(repoRoot, config.paths?.registryDir || "registry");
   const files = await exists(registryDir) ? await walkMarkdown(registryDir) : [];
   if (!await exists(registryDir)) findings.push(configFinding("Missing required directory: registry/"));
 
@@ -105,11 +108,13 @@ async function main() {
     },
     result: counts.error > 0 ? "FAIL" : "PASS",
     counts,
-    blockedSpecifications: config.blockedSpecifications,
+    blockedSpecifications: config.blockedSpecifications?.length
+      ? config.blockedSpecifications
+      : [{ ...CANONICAL_BLOCKED_RULES_001_016 }],
     findings
   };
 
-  const reportsDir = path.join(repoRoot, config.paths.reportsDir ?? "reports");
+  const reportsDir = path.join(repoRoot, config.paths?.reportsDir || "reports");
   await fs.mkdir(reportsDir, { recursive: true });
   await fs.writeFile(path.join(reportsDir, "validation-report.json"), `${JSON.stringify(report, null, 2)}\n`);
   await fs.writeFile(path.join(reportsDir, "validation-report.md"), buildMarkdownReport(report));
