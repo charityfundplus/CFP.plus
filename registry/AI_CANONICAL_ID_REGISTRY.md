@@ -25,7 +25,7 @@
 | 69116 | Perplexity AI |
 | 69117 | Groq |
 | 69118 | CoreWeave |
-| 69119 | VietLinker AI |
+| 69119 | Apple |
 
 ## 2 • Vietnam AI Hub
 
@@ -40,7 +40,7 @@
 | 69846 | Cốc Cốc AI |
 | 69847 | Phenikaa AI |
 | 69848 | VAIS |
-| 69849 | AIV Group AI |
+| 69849 | VietLinker AI |
 
 ## 3 • Canonical Rules
 
