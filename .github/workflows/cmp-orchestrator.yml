@@ -1,0 +1,65 @@
+name: CMP Orchestrator P0
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_items:
+        description: Maximum work items to process
+        required: false
+        default: "3"
+      dry_run:
+        description: Test without writing Notion
+        required: false
+        type: boolean
+        default: false
+  schedule:
+    - cron: "17 * * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cmp-orchestrator-p0
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      NOTION_WORK_QUEUE_ID: ${{ secrets.NOTION_WORK_QUEUE_ID }}
+      OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5' }}
+      CMP_MAX_ITEMS: ${{ inputs.max_items || '3' }}
+      CMP_DRY_RUN: ${{ inputs.dry_run || 'false' }}
+      CMP_TITLE_PROPERTY: ${{ vars.CMP_TITLE_PROPERTY || 'Name' }}
+      CMP_STATUS_PROPERTY: ${{ vars.CMP_STATUS_PROPERTY || 'Status' }}
+      CMP_PROMPT_PROPERTY: ${{ vars.CMP_PROMPT_PROPERTY || 'Prompt' }}
+      CMP_RESULT_PROPERTY: ${{ vars.CMP_RESULT_PROPERTY || 'Result' }}
+      CMP_EVIDENCE_PROPERTY: ${{ vars.CMP_EVIDENCE_PROPERTY || 'Evidence' }}
+      CMP_ASSIGNED_STATUS: ${{ vars.CMP_ASSIGNED_STATUS || 'Assigned' }}
+      CMP_IN_PROGRESS_STATUS: ${{ vars.CMP_IN_PROGRESS_STATUS || 'In Progress' }}
+      CMP_DONE_STATUS: ${{ vars.CMP_DONE_STATUS || 'Waiting for Review' }}
+      CMP_ERROR_STATUS: ${{ vars.CMP_ERROR_STATUS || 'Blocked' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Preflight
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$NOTION_TOKEN" || { echo "Missing NOTION_TOKEN"; exit 1; }
+          test -n "$OPENAI_API_KEY" || { echo "Missing OPENAI_API_KEY"; exit 1; }
+          test -n "$NOTION_WORK_QUEUE_ID" || { echo "Missing NOTION_WORK_QUEUE_ID"; exit 1; }
+          python -m py_compile scripts/cmp_orchestrator.py
+
+      - name: Process CMP Work Queue
+        run: python scripts/cmp_orchestrator.py
