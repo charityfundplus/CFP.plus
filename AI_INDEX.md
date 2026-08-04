@@ -21,7 +21,7 @@
 - [69116 • Perplexity AI](registry/69116.md)
 - [69117 • Groq](registry/69117.md)
 - [69118 • CoreWeave](registry/69118.md)
-- [69119 • VietLinker AI](registry/69119.md)
+- [69119 • Apple](registry/69119.md)
 
 ## Vietnam AI
 
@@ -34,7 +34,7 @@
 - [69846 • Cốc Cốc AI](registry/69846.md)
 - [69847 • Phenikaa AI](registry/69847.md)
 - [69848 • VAIS](registry/69848.md)
-- [69849 • AIV Group AI](registry/69849.md)
+- [69849 • VietLinker AI](registry/69849.md)
 
 ## Quy tắc
 
