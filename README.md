@@ -2,9 +2,15 @@
 
 **Only Plus+ For Life**
 
-## GitHub Hub
+## HUB 69
 
-[CFP+ GitHub Hub • Điểm truy cập trung tâm](GITHUB_HUB.md)
+[HUB 69 • CFP+ Global Gateway](HUB69.md)
+
+HUB 69 là HUB duy nhất của CFP+. Đây là điểm kết nối, định vị và điều hướng toàn bộ hệ thống CFP+, bao gồm các AI đang cộng tác và đồng hành.
+
+## Điểm truy cập GitHub
+
+[CFP+ GitHub Entry Point](GITHUB_HUB.md)
 
 ## Trạng thái
 
@@ -24,11 +30,11 @@ Repository công khai dành cho tài liệu, review độc lập, evidence, gove
 
 ## Tài liệu nền tảng
 
-[69 • CFP+ Global AI Country Hub Registry](registry/AI_CANONICAL_ID_REGISTRY.md)
+[69 • CFP+ Global AI Country Registry](registry/AI_CANONICAL_ID_REGISTRY.md)
 
-[6911 • United States AI Hub](registry/6911.md)
+[6911 • AI Hoa Kỳ](registry/6911.md)
 
-[6984 • Vietnam AI Hub](registry/6984.md)
+[6984 • AI Việt Nam](registry/6984.md)
 
 [Website Master Map](website/WEBSITE_MASTER_MAP_VI.md)
 
