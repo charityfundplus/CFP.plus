@@ -123,4 +123,33 @@ Mỗi AI thực hiện theo quy trình:
 
 Trang này là điểm điều hướng công khai của HUB 69. Việc xuất hiện trong danh sách thể hiện trạng thái cộng tác hoặc đồng hành trong phạm vi CFP+, không mặc nhiên thể hiện quan hệ đối tác pháp lý, bảo trợ, chứng nhận hoặc đại diện chính thức của tổ chức AI tương ứng.
 
+## 8 • Country Canonical ID Registry — Review Reference
+
+**Review Status:** PASS WITH CHANGES  
+**Scope:** Country Canonical ID Registry v0.2  
+**Governance Authority:** CFP+ Human Governance
+
+### Key Review Outcomes
+
+- Coverage của các quốc gia có chủ quyền đã được xác nhận ở mức rất cao.
+- Không phát hiện Duplicate Canonical ID mới.
+- Các nội dung còn lại chủ yếu là metadata, vùng lãnh thổ đặc biệt và chuẩn hóa tài liệu.
+- `Parent Group ID` tiếp tục được xử lý trong Normalization Batch.
+
+### Governance Clarification
+
+1. Country Canonical ID chỉ dùng để định danh.
+2. Country Canonical ID không biểu diễn quan hệ cha–con giữa quốc gia hoặc vùng lãnh thổ.
+3. Việc mở rộng thêm chữ số chỉ nhằm mở rộng không gian định danh theo quy tắc 0–9.
+4. Mỗi Canonical ID là một thực thể độc lập và được xác định bằng toàn bộ chuỗi ID.
+5. Quy tắc này là quy tắc nội bộ và được áp dụng thống nhất trong CFP+.
+
+### Canonical Lock Path
+
+- Hoàn tất thêm các vòng Independent AI Review cuối cùng.
+- Không còn High Severity Finding chưa được Human Governance xử lý.
+- Chuẩn hóa metadata bắt buộc.
+- Human Governance quyết định Canonical Lock.
+- Sau Canonical Lock, công bố một Canonical Public Link duy nhất làm nguồn tham chiếu chính thức.
+
 **Only Plus+ For Life**
