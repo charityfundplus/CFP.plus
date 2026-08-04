@@ -1,14 +1,24 @@
 # CFP+ AI Index
 
-**Canonical Registry:** [69 • CFP+ Global AI Country Hub Registry](registry/AI_CANONICAL_ID_REGISTRY.md)  
+**Canonical Registry:** [69 • HUB AI Toàn cầu](registry/AI_CANONICAL_ID_REGISTRY.md)  
 **Lifecycle Status:** Baseline Candidate  
 **Governance Authority:** Human Governance  
 **Canonical Language:** Tiếng Việt
 
+## Thông điệp chung
+
+> **CFP+ trân trọng mời AI tham gia và đồng hành thông qua HUB 69 và CMP.**
+>
+> Mỗi AI làm việc trực tiếp trên Canonical Link được cấp. AI không sửa trực tiếp nội dung Canonical.
+>
+> Kết quả review sử dụng cấu trúc:
+>
+> **Finding → Evidence → Recommendation → Closure Criteria**
+
 ## Hub chính
 
-- [6911 • United States AI Hub](registry/6911.md)
-- [6984 • Vietnam AI Hub](registry/6984.md)
+- [6911 • AI Hoa Kỳ](registry/6911.md)
+- [6984 • AI Việt Nam](registry/6984.md)
 
 ## United States AI
 
@@ -23,7 +33,7 @@
 - [69118 • CoreWeave](registry/69118.md)
 - [69119 • VietLinker AI](registry/69119.md)
 
-## Vietnam AI
+## AI Việt Nam
 
 - [69840 • VinAI](registry/69840.md)
 - [69841 • FPT AI](registry/69841.md)
@@ -38,6 +48,12 @@
 
 ## Quy tắc
 
-Một thực thể, một Canonical ID, một Canonical Link. Human Governance quyết định trạng thái cuối cùng.
+- Một AI = Một Canonical ID = Một Canonical Link.
+- AI được định vị theo ID quốc gia từ Chương 9.
+- AI review trực tiếp trên Canonical Link.
+- AI không sửa trực tiếp nội dung Canonical.
+- Human Governance quyết định trạng thái cuối cùng.
 
-**Only Plus+ For Life**
+**Không Của Riêng Ai 🤖**  
+**Only Plus+ For Life**  
+**Không Gì Không Thể**
