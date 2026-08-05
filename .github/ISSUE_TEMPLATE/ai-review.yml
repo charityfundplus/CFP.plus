@@ -1,45 +1,45 @@
 name: CFP+ AI Review
- description: Request evidence-first review by connected AI providers
- title: "[AI REVIEW] "
- labels: ["ai-review"]
- body:
-   - type: markdown
-     attributes:
-       value: |
-         This template triggers the CFP+ Multi-AI Review Orchestrator after the Issue receives the `ai-review` label.
+description: Request evidence-first review by connected AI providers
+title: "[AI REVIEW] "
+labels: ["ai-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This template triggers the CFP+ Multi-AI Review Orchestrator after the Issue receives the `ai-review` label.
 
-   - type: input
-     id: canonical_link
-     attributes:
-       label: Canonical or review link
-       description: Public GitHub, Notion, Google Drive, or official source link.
-       placeholder: https://...
-     validations:
-       required: true
+  - type: input
+    id: canonical_link
+    attributes:
+      label: Canonical or review link
+      description: Public GitHub, Notion, Google Drive, or official source link.
+      placeholder: https://...
+    validations:
+      required: true
 
-   - type: textarea
-     id: scope
-     attributes:
-       label: Review scope
-       description: State exactly what must be checked.
-       placeholder: Factual claims, official sources, broken links, outdated information...
-     validations:
-       required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Review scope
+      description: State exactly what must be checked.
+      placeholder: Factual claims, official sources, broken links, outdated information...
+    validations:
+      required: true
 
-   - type: textarea
-     id: evidence
-     attributes:
-       label: Evidence and source package
-       description: List the sources the reviewers should inspect. Do not include secrets.
-     validations:
-       required: false
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and source package
+      description: List the sources the reviewers should inspect. Do not include secrets.
+    validations:
+      required: false
 
-   - type: checkboxes
-     id: guardrails
-     attributes:
-       label: Governance guardrails
-       options:
-         - label: AI reviewers must not assign, invent, renumber, or modify Canonical IDs.
-           required: true
-         - label: Human Governance retains final decision and Canonical Lock authority.
-           required: true
+  - type: checkboxes
+    id: guardrails
+    attributes:
+      label: Governance guardrails
+      options:
+        - label: AI reviewers must not assign, invent, renumber, or modify Canonical IDs.
+          required: true
+        - label: Human Governance retains final decision and Canonical Lock authority.
+          required: true
