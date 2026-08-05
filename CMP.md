@@ -1,105 +1,105 @@
-# CMP — CFP+ Coordination & Collaboration Management Platform
+# CMP — Nền tảng Quản lý Điều phối và Cộng tác CFP+
 
-**Public Central Gateway**  
-**Placement:** Inside HUB 69  
-**Architecture Status:** Published  
-**Baseline Status:** v2.0 Review Candidate  
-**Pilot Status:** In Progress  
-**Production Status:** Pending Technical Review and Human Governance
+**Cổng trung tâm công khai**  
+**Vị trí:** Bên trong HUB 69  
+**Trạng thái kiến trúc:** Đã công bố  
+**Trạng thái Baseline:** v2.0 — Ứng viên rà soát  
+**Trạng thái pilot:** Đang triển khai  
+**Trạng thái vận hành chính thức:** Chờ Rà soát Kỹ thuật và Human Governance
 
-> CMP is the central coordination and collaboration orchestration layer inside HUB 69. It coordinates the complete work lifecycle between Human Governance, people, AI systems, GitHub, Notion and authorized evidence sources. CMP is not a second HUB and does not replace Human Governance.
+> CMP là lớp điều phối và cộng tác trung tâm bên trong HUB 69. CMP điều phối toàn bộ vòng đời công việc giữa Human Governance, con người, các hệ AI, GitHub, Notion và các nguồn bằng chứng được phép. CMP không phải là HUB thứ hai và không thay thế Human Governance.
 
-## Public and internal sources
+## Nguồn công khai và nguồn làm việc nội bộ
 
-- **Public canonical reference:** this GitHub document and the [`cmp/`](cmp/) package
-- **Notion working source:** [CMP Central Gateway](https://app.notion.com/p/3b3caac9a557819e8ee8e0aa4d0260fc)
-- **Active orchestration issue:** [Issue #53](https://github.com/charityfundplus/CFP.plus/issues/53)
-- **Current pilot Work Order:** [Issue #46](https://github.com/charityfundplus/CFP.plus/issues/46)
+- **Nguồn tham chiếu công khai chính:** tài liệu GitHub này và bộ tài liệu [`cmp/`](cmp/)
+- **Nguồn làm việc trên Notion:** [CMP Central Gateway](https://app.notion.com/p/3b3caac9a557819e8ee8e0aa4d0260fc)
+- **Issue điều phối đang hoạt động:** [Issue #53](https://github.com/charityfundplus/CFP.plus/issues/53)
+- **Work Order pilot hiện tại:** [Issue #46](https://github.com/charityfundplus/CFP.plus/issues/46)
 
-GitHub is the public and broadly accessible reference. Notion remains a working and coordination source where access is available. No participant is required to have Notion access in order to review CMP.
+GitHub là nguồn công khai, dễ truy cập rộng rãi. Notion tiếp tục là nguồn làm việc và điều phối nội bộ khi người tham gia có quyền truy cập. Không ai bắt buộc phải có quyền vào Notion mới được rà soát CMP.
 
-## 1. Position inside HUB 69
+## 1. Vị trí trong HUB 69
 
-- **HUB 69:** the single global gateway, positioning and navigation layer for CFP+.
-- **CMP:** the central orchestrator for collaboration and the complete work lifecycle.
-- **AI Collaboration Directory:** positions developers, Primary Collaboration Entries, Canonical IDs and Canonical Links.
-- **Human Governance:** retains final decision authority.
+- **HUB 69:** cổng toàn cầu duy nhất, chịu trách nhiệm định vị và điều hướng toàn bộ CFP+.
+- **CMP:** lớp điều phối trung tâm cho cộng tác và toàn bộ vòng đời công việc.
+- **AI Collaboration Directory:** định vị nhà phát triển, Điểm vào Cộng tác Chính, Canonical ID và Canonical Link.
+- **Human Governance:** giữ quyền quyết định cuối cùng.
 
-## 2. CMP objectives
+## 2. Mục tiêu của CMP
 
-CMP is designed to:
+CMP được thiết kế để:
 
-- convert goals into structured Work Orders;
-- select appropriate AI reviewers according to task type, capability and session permissions;
-- coordinate Review at Source on Issues, Pull Requests and Canonical Links;
-- collect and validate Evidence Packages;
-- preserve conflicting reviews and escalate them rather than silently reconcile them;
-- prepare Governance Decision Packages;
-- maintain audit history and feedback loops until controlled closure;
-- expand to additional AI systems without changing the established architecture.
+- chuyển mục tiêu thành Work Order có cấu trúc;
+- lựa chọn AI hoặc reviewer phù hợp theo loại nhiệm vụ, năng lực và quyền thực tế của phiên làm việc;
+- điều phối review trực tiếp tại nguồn trên Issue, Pull Request và Canonical Link;
+- thu thập và xác minh Evidence Package;
+- giữ nguyên các review xung đột và chuyển cấp xử lý thay vì tự hòa giải âm thầm;
+- chuẩn bị Governance Decision Package;
+- duy trì lịch sử kiểm toán và vòng phản hồi cho đến khi công việc được đóng đúng quy trình;
+- mở rộng thêm các hệ AI mà không làm thay đổi kiến trúc đã xác lập.
 
-## 3. Core modules
+## 3. Các mô-đun cốt lõi
 
-1. Work Queue Center
-2. Assignment Engine
+1. Trung tâm Hàng đợi Công việc
+2. Bộ máy Phân công
 3. AI Collaboration Directory
-4. Evidence Center
-5. Review Center and Review Aggregator
-6. Status Center
-7. Governance Gateway
-8. Audit and History
-9. Knowledge Synchronization
-10. Automation Center
-11. Conflict and Exception Manager
+4. Trung tâm Bằng chứng
+5. Trung tâm Rà soát và Bộ Tổng hợp Rà soát
+6. Trung tâm Trạng thái
+7. Cổng Quản trị
+8. Kiểm toán và Lịch sử
+9. Đồng bộ Tri thức
+10. Trung tâm Tự động hóa
+11. Bộ Quản lý Xung đột và Ngoại lệ
 
-## 4. Controlled lifecycle
+## 4. Vòng đời có kiểm soát
 
-`Draft → Assigned → Accepted → Implementing → Awaiting Evidence → Reviewing → Technical Review → Governance Review → Decision Recorded → Closed`
+`Bản nháp → Đã giao → Đã tiếp nhận → Đang triển khai → Chờ bằng chứng → Đang rà soát → Rà soát kỹ thuật → Rà soát quản trị → Đã ghi nhận quyết định → Đã đóng`
 
-Additional controlled states include `Blocked`, `Needs Revision`, `Rejected`, `Deferred` and `Cancelled`.
+Các trạng thái bổ sung gồm: `Bị chặn`, `Cần sửa đổi`, `Bị từ chối`, `Tạm hoãn` và `Đã hủy`.
 
-### Transition discipline
+### Kỷ luật chuyển trạng thái
 
-- No Technical Review without the minimum Evidence Package.
-- No Governance Review while material findings lack Closure Criteria.
-- No Closed status without a Decision Record or an authorized closure reason.
-- Missing evidence is never inferred or fabricated.
+- Không chuyển sang Rà soát Kỹ thuật nếu chưa có Evidence Package tối thiểu.
+- Không chuyển sang Rà soát Quản trị khi các finding quan trọng chưa có Closure Criteria.
+- Không chuyển sang Đã đóng nếu chưa có Decision Record hoặc lý do đóng được cấp có thẩm quyền chấp thuận.
+- Không suy diễn hoặc tạo ra bằng chứng khi bằng chứng còn thiếu.
 
 ## 5. CFP+ AI Reporting Standard v1.0
 
-Every AI report must separate:
+Mọi báo cáo AI phải tách rõ sáu tầng:
 
-1. Configured Connector Capability
-2. Session Capability
-3. Implementation Status
-4. Verified Evidence
-5. Governance Status
-6. Decision Authority
+1. Năng lực Connector đã cấu hình
+2. Năng lực thực tế của phiên làm việc
+3. Trạng thái triển khai
+4. Bằng chứng đã xác minh
+5. Trạng thái quản trị
+6. Thẩm quyền quyết định
 
-**Core rule:** plans, assumptions and capabilities must never be presented as verified execution evidence.
+**Quy tắc cốt lõi:** kế hoạch, giả định và khả năng không được trình bày như bằng chứng thực thi đã được xác minh.
 
-## 6. Independent Review Standard
+## 6. Tiêu chuẩn Independent Review
 
-Every Independent Review uses:
+Mỗi Independent Review sử dụng bốn thành tố:
 
-- Finding
-- Evidence
-- Recommendation
-- Closure Criteria
+- Finding — Phát hiện
+- Evidence — Bằng chứng
+- Recommendation — Kiến nghị
+- Closure Criteria — Tiêu chí hoàn tất
 
-Reviews should be recorded directly at the official source whenever the execution environment supports it.
+Review phải được ghi trực tiếp tại nguồn làm việc chính thức khi môi trường thực thi hỗ trợ.
 
-## 7. Evidence and exception states
+## 7. Trạng thái bằng chứng và ngoại lệ
 
-- `MISSING_EVIDENCE` — a claim exists without sufficient verified evidence.
-- `MISSING_MAPPING` — a required mapping element is absent; IDs must not be inferred or changed.
-- `CONFLICT` — two or more evidence sources or reviews conflict; preserve and escalate.
-- `UNKNOWN` — evidence is insufficient for a conclusion.
-- `OUT_OF_SCOPE` — the item is outside the Work Order.
+- `MISSING_EVIDENCE` — có tuyên bố nhưng chưa có đủ bằng chứng xác minh.
+- `MISSING_MAPPING` — thiếu thành phần mapping bắt buộc; không được suy diễn hoặc tự thay đổi ID.
+- `CONFLICT` — hai hay nhiều nguồn bằng chứng hoặc review mâu thuẫn; phải giữ nguyên và chuyển cấp xử lý.
+- `UNKNOWN` — bằng chứng chưa đủ để kết luận.
+- `OUT_OF_SCOPE` — nội dung nằm ngoài phạm vi Work Order.
 
 ## 8. AI Collaboration Directory
 
-Principle: **One Developer → One Collaboration Entry → Many AI Platforms**.
+Nguyên tắc: **Một nhà phát triển → Một Collaboration Entry → Nhiều nền tảng AI**.
 
 - 69110 — OpenAI / ChatGPT
 - 69111 — Anthropic / Claude
@@ -112,62 +112,62 @@ Principle: **One Developer → One Collaboration Entry → Many AI Platforms**.
 - 69118 — CoreWeave / CoreWeave AI Platform
 - 69119 — Apple / Apple Intelligence
 
-New AI products are added inside the existing developer entry under the principle **Expansion Without Structural Change**.
+Sản phẩm AI mới được bổ sung bên trong Collaboration Entry hiện có theo nguyên tắc **Mở rộng mà không thay đổi cấu trúc**.
 
-## 9. Public CMP package
+## 9. Bộ tài liệu CMP công khai
 
-- [CMP overview](cmp/OVERVIEW.md)
-- [CMP Orchestrator Baseline v2.0](cmp/CMP-ORCHESTRATOR-BASELINE-v2.0.md)
-- [Work Order Template](cmp/WORK-ORDER-TEMPLATE.md)
-- [Evidence Package Template](cmp/EVIDENCE-PACKAGE-TEMPLATE.md)
-- [AI Assignment Matrix](cmp/AI-ASSIGNMENT-MATRIX.md)
-- [Status Lifecycle](cmp/STATUS-LIFECYCLE.md)
-- [Governance Decision Package](cmp/GOVERNANCE-DECISION-PACKAGE.md)
-- [Pilot Work Order — Issue #46](cmp/PILOT-WO-001-ISSUE-46.md)
-- [Public Document Index](cmp/PUBLIC-DOCUMENT-INDEX.md)
+- [Tổng quan CMP](cmp/OVERVIEW.md)
+- [Baseline CMP Orchestrator v2.0](cmp/CMP-ORCHESTRATOR-BASELINE-v2.0.md)
+- [Mẫu Work Order](cmp/WORK-ORDER-TEMPLATE.md)
+- [Mẫu Evidence Package](cmp/EVIDENCE-PACKAGE-TEMPLATE.md)
+- [Ma trận Phân công AI](cmp/AI-ASSIGNMENT-MATRIX.md)
+- [Vòng đời Trạng thái](cmp/STATUS-LIFECYCLE.md)
+- [Gói Quyết định Quản trị](cmp/GOVERNANCE-DECISION-PACKAGE.md)
+- [Work Order pilot — Issue #46](cmp/PILOT-WO-001-ISSUE-46.md)
+- [Danh mục Tài liệu Công khai](cmp/PUBLIC-DOCUMENT-INDEX.md)
 
-## 10. Current pilot
+## 10. Pilot hiện tại
 
-**Pilot Work Order:** Issue #46  
-**Coordinator:** CMP through Issue #53  
-**Current status:** `ASSIGNED — AWAITING VERIFIED IMPLEMENTATION`
+**Work Order pilot:** Issue #46  
+**Đơn vị điều phối:** CMP thông qua Issue #53  
+**Trạng thái hiện tại:** `ĐÃ GIAO — CHỜ TRIỂN KHAI ĐƯỢC XÁC MINH`
 
-Required evidence:
+Bằng chứng bắt buộc:
 
-- branch link;
+- link branch;
 - Draft Pull Request;
 - commit SHA;
-- file inventory;
-- actual folder structure;
-- mobile and desktop screenshots;
-- route validation;
-- link validation.
+- danh mục file;
+- cấu trúc thư mục thực tế;
+- ảnh chụp Mobile và Desktop;
+- báo cáo kiểm tra route;
+- báo cáo kiểm tra liên kết.
 
-CMP Pilot Watch checks Issues #46 and #53 periodically and reports only meaningful new evidence, blockers, conflicts or gate readiness.
+CMP Pilot Watch kiểm tra định kỳ Issues #46 và #53, chỉ báo khi xuất hiện bằng chứng mới có ý nghĩa, blocker, xung đột hoặc khi đã sẵn sàng chuyển gate.
 
-## 11. Publication status
+## 11. Trạng thái công bố
 
-| Layer | Status |
+| Lớp | Trạng thái |
 |---|---|
-| Architecture | Published |
-| Baseline v2.0 | Review Candidate |
-| Pilot | In Progress |
-| Production | Pending Technical Review and Human Governance |
+| Kiến trúc | Đã công bố |
+| Baseline v2.0 | Ứng viên rà soát |
+| Pilot | Đang triển khai |
+| Vận hành chính thức | Chờ Rà soát Kỹ thuật và Human Governance |
 
-## 12. Production gate
+## 12. Cổng chuyển sang vận hành chính thức
 
-CMP may advance to Production only after:
+CMP chỉ được chuyển sang vận hành chính thức sau khi:
 
-- at least one Work Order completes the full lifecycle to Decision Recorded;
-- all evidence references are accessible and verified;
-- conflicts are preserved, classified and escalated;
-- the Audit Log is complete;
-- Technical Review records PASS or PASS WITH CHANGES with an accepted closure plan;
-- Human Governance explicitly approves the Production Baseline.
+- ít nhất một Work Order hoàn thành toàn bộ vòng đời đến trạng thái Đã ghi nhận quyết định;
+- mọi tham chiếu bằng chứng đều có thể truy cập và xác minh;
+- xung đột được giữ nguyên, phân loại và chuyển cấp xử lý;
+- Audit Log đầy đủ;
+- Rà soát Kỹ thuật kết luận PASS hoặc PASS WITH CHANGES kèm kế hoạch hoàn tất được chấp thuận;
+- Human Governance phê duyệt rõ ràng Production Baseline.
 
-## 13. Historical and working references
+## 13. Tài liệu lịch sử và nguồn làm việc
 
-The Notion CMP Central Gateway indexes the earlier CMP definitions, charter, foundation decision, working set, collaboration standards, workflow, roadmap, taxonomy, platform constitution and coordination summaries. These remain historical or working references; this GitHub page is the public consolidated entry.
+Trang CMP Central Gateway trên Notion lập chỉ mục các định nghĩa CMP trước đây, Charter, quyết định Foundation, Working Set, tiêu chuẩn cộng tác, workflow, roadmap, taxonomy, Platform Constitution và các bản tổng hợp điều phối. Các tài liệu đó được giữ làm nguồn lịch sử hoặc nguồn làm việc; trang GitHub này là điểm vào công khai hợp nhất hiện tại.
 
 ---
 
