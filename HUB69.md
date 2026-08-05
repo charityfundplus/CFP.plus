@@ -38,18 +38,18 @@ Mỗi AI thực hiện theo quy trình:
 
 ### P0 Multi-AI Review Assignments
 
-| AI ID | AI | Work Order | Review Scope | Canonical Work Link |
-|---|---|---|---|---|
-| 691130 | Gemini | GEM-WO-001 | Implementation, country mapping and completeness | [Open](registry/691130.md) |
-| 691100 | ChatGPT | GPT-WO-001 | Governance and lineage | [Open](registry/691100.md) |
-| 691110 | Claude | CLA-WO-001 | Collision and extensibility | [Open](registry/691110.md) |
-| 691120 | Grok | GROK-WO-001 | Validation and duplicate detection | [Open](registry/691120.md) |
-| 691131 | NotebookLM | NBLM-WO-001 | Reference consolidation | [Open](registry/691131.md) |
-| 691140 | Meta AI | META-WO-001 | Independent global coverage | [Open](registry/691140.md) |
-| 691150 | Microsoft Copilot | MSCP-WO-001 | Repository and link integrity | [Open](registry/691150.md) |
-| 691160 | Perplexity AI | PER-WO-001 | Evidence and country attribution | [Open](registry/691160.md) |
-| 691170 | Groq | GRQ-WO-001 | Infrastructure classification | [Open](registry/691170.md) |
-| 698461 | VietLinker AI | VLAI-WO-001 | Vietnam and Southeast Asia coverage | [Open](registry/698461.md) |
+| AI ID | AI | Work Order | Review Scope | Canonical Profile | Review at Place |
+|---|---|---|---|---|---|
+| 691130 | Gemini | GEM-WO-001 | Implementation, country mapping and completeness | [Profile](registry/691130.md) | [Issue #35](https://github.com/charityfundplus/CFP.plus/issues/35) |
+| 691100 | ChatGPT | GPT-WO-001 | Governance and lineage | [Profile](registry/691100.md) | [Issue #33](https://github.com/charityfundplus/CFP.plus/issues/33) |
+| 691110 | Claude | CLA-WO-001 | Collision and extensibility | [Profile](registry/691110.md) | [Issue #34](https://github.com/charityfundplus/CFP.plus/issues/34) |
+| 691120 | Grok | GROK-WO-001 | Validation and duplicate detection | [Profile](registry/691120.md) | [Issue #37](https://github.com/charityfundplus/CFP.plus/issues/37) |
+| 691131 | NotebookLM | NBLM-WO-001 | Reference consolidation | [Profile](registry/691131.md) | [Issue #36](https://github.com/charityfundplus/CFP.plus/issues/36) |
+| 691140 | Meta AI | META-WO-001 | Independent global coverage | [Profile](registry/691140.md) | [Issue #39](https://github.com/charityfundplus/CFP.plus/issues/39) |
+| 691150 | Microsoft Copilot | MSCP-WO-001 | Repository and link integrity | [Profile](registry/691150.md) | [Issue #38](https://github.com/charityfundplus/CFP.plus/issues/38) |
+| 691160 | Perplexity AI | PER-WO-001 | Evidence and country attribution | [Profile](registry/691160.md) | [Issue #40](https://github.com/charityfundplus/CFP.plus/issues/40) |
+| 691170 | Groq | GRQ-WO-001 | Infrastructure classification | [Profile](registry/691170.md) | [Issue #41](https://github.com/charityfundplus/CFP.plus/issues/41) |
+| 698461 | VietLinker AI | VLAI-WO-001 | Vietnam and Southeast Asia coverage | [Profile](registry/698461.md) | [Issue #42](https://github.com/charityfundplus/CFP.plus/issues/42) |
 
 Registry đầy đủ bao gồm:
 
