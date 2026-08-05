@@ -94,6 +94,7 @@ Mọi AI phải sử dụng duy nhất HUB 69 và Full Country & AI Canonical Re
 ### Meta
 
 - [69114 • Meta AI](registry/69114.md)
+- [691140 • Meta AI](registry/691140.md)
 
 ### Microsoft
 
@@ -103,10 +104,12 @@ Mọi AI phải sử dụng duy nhất HUB 69 và Full Country & AI Canonical Re
 ### Perplexity
 
 - [69116 • Perplexity AI](registry/69116.md)
+- [691160 • Perplexity AI](registry/691160.md)
 
 ### Groq
 
 - [69117 • Groq](registry/69117.md)
+- [691170 • Groq](registry/691170.md)
 
 ### CoreWeave
 
