@@ -1,43 +1,63 @@
 # CFP+ AI Index
 
-**Canonical Registry:** [69 • CFP+ Global AI Country Hub Registry](registry/AI_CANONICAL_ID_REGISTRY.md)  
-**Lifecycle Status:** Baseline Candidate  
-**Governance Authority:** Human Governance  
+**Canonical Gateway:** [69 • HUB 69](HUB69.md)  
+**Registry:** [CFP+ AI Canonical ID Registry](registry/AI_CANONICAL_ID_REGISTRY.md)  
+**Lifecycle Status:** Review Candidate  
+**Interpretation Baseline:** LOCKED  
+**Governance Authority:** CFP+ Human Governance  
 **Canonical Language:** Tiếng Việt
 
-## Hub chính
+> HUB 69 là HUB duy nhất. Quốc gia, nhà phát triển, nhóm AI và AI dùng tên chức năng, không dùng từ HUB.
 
-- [6911 • United States AI Hub](registry/6911.md)
-- [6984 • Vietnam AI Hub](registry/6984.md)
+## 0 • Canonical Structure
 
-## United States AI
+HUB 69 → AI Country ID → Developer → AI Family → AI → Canonical Link
 
-- [69110 • OpenAI](registry/69110.md)
-- [69111 • Anthropic](registry/69111.md)
-- [69112 • xAI](registry/69112.md)
-- [69113 • Google DeepMind](registry/69113.md)
-- [69114 • Meta AI](registry/69114.md)
-- [69115 • Microsoft AI](registry/69115.md)
-- [69116 • Perplexity AI](registry/69116.md)
-- [69117 • Groq](registry/69117.md)
-- [69118 • CoreWeave](registry/69118.md)
-- [69119 • VietLinker AI](registry/69119.md)
+## 1 • United States
 
-## Vietnam AI
+**Country Canonical ID:** 911  
+**AI Country ID:** 6911
 
-- [69840 • VinAI](registry/69840.md)
-- [69841 • FPT AI](registry/69841.md)
-- [69842 • Viettel AI](registry/69842.md)
-- [69843 • VNPT AI](registry/69843.md)
-- [69844 • Zalo AI](registry/69844.md)
-- [69845 • CMC AI](registry/69845.md)
-- [69846 • Cốc Cốc AI](registry/69846.md)
-- [69847 • Phenikaa AI](registry/69847.md)
-- [69848 • VAIS](registry/69848.md)
-- [69849 • AIV Group AI](registry/69849.md)
+| Developer ID | Developer | AI ID | AI | Canonical Link |
+|---|---|---|---|---|
+| 69110 | [OpenAI](registry/69110.md) | 691100 | ChatGPT | [Open](registry/691100.md) |
+| 69111 | [Anthropic](registry/69111.md) | 691110 | Claude | [Open](registry/691110.md) |
+| 69112 | [xAI](registry/69112.md) | 691120 | Grok | [Open](registry/691120.md) |
+| 69113 | [Google DeepMind](registry/69113.md) | 691130 | Gemini | [Open](registry/691130.md) |
+| 69113 | [Google DeepMind](registry/69113.md) | 691131 | NotebookLM | [Open](registry/691131.md) |
+| 69114 | [Meta AI](registry/69114.md) | 691140 | Meta AI | [Open](registry/691140.md) |
+| 69115 | [Microsoft AI](registry/69115.md) | 691150 | Microsoft Copilot | [Open](registry/691150.md) |
+| 69116 | [Perplexity AI](registry/69116.md) | 691160 | Perplexity AI | [Open](registry/691160.md) |
+| 69117 | [Groq](registry/69117.md) | 691170 | Groq | [Open](registry/691170.md) |
+| 69118 | [CoreWeave](registry/69118.md) | — | — | — |
+| 69119 | [Apple](registry/69119.md) | — | — | — |
 
-## Quy tắc
+## 2 • Việt Nam
 
-Một thực thể, một Canonical ID, một Canonical Link. Human Governance quyết định trạng thái cuối cùng.
+**Country Canonical ID:** 984  
+**AI Country ID:** 6984  
+**AI Country Profile:** [6984 • AI Việt Nam](registry/6984.md)
+
+| Category ID | Category | AI ID | AI | Canonical Link |
+|---|---|---|---|---|
+| 69840 | Foundation | — | — | — |
+| 69841 | Enterprise | — | — | — |
+| 69842 | Speech & Language | — | — | — |
+| 69843 | Search | — | — | — |
+| 69844 | Research & Robotics | — | — | — |
+| 69845 | Consumer | — | — | — |
+| 69846 | Community | 698461 | VietLinker AI | [Open](registry/698461.md) |
+| 69847 | Healthcare | — | — | — |
+| 69848 | Education | — | — | — |
+| 69849 | Emerging | — | — | — |
+
+## 3 • Assignment and Review Rule
+
+- Mỗi AI nhận Work Order, tài liệu, Canonical Links và Review Candidate tại hồ sơ riêng.
+- Kết quả, evidence, outputs và review history được ghi tại cùng Canonical Link.
+- Không tạo ID hoặc link tạm thời.
+- Không tự thay đổi Country Canonical ID, AI Country ID hoặc Parent ID.
+- Mọi xung đột phải được lập Finding.
+- Human Governance quyết định trạng thái cuối cùng.
 
 **Only Plus+ For Life**
