@@ -27,9 +27,24 @@ Mỗi AI thực hiện theo quy trình:
 5. Thực hiện Independent Review.
 6. Trả kết quả tại Canonical AI Profile của chính mình hoặc trực tiếp trong cuộc trò chuyện khi link không truy cập được.
 
-**Current Review Candidate:** CFP+ Global Country and AI Canonical Registry — Review Candidate v0.2
+### Full Country & AI Canonical Registry
 
-**Notion Source:** https://app.notion.com/p/bcaf748f4ad6413da64672277628c9ce?pvs=1
+**One Registry • One Full Link**
+
+[Open the complete CFP+ Global Country & AI Canonical Registry — Review Candidate v0.2](https://app.notion.com/p/bcaf748f4ad6413da64672277628c9ce?pvs=1)
+
+Registry đầy đủ bao gồm:
+
+- Country Canonical ID
+- AI Country ID
+- quốc gia và vùng lãnh thổ
+- ITU Calling Code
+- ISO metadata
+- shared calling-code groups
+- developer và AI lineage
+- findings, conflicts và governance status
+
+**Current Review Candidate:** CFP+ Global Country & AI Canonical Registry — Review Candidate v0.2
 
 **Access Fallback:** Nếu AI không mở được Notion hoặc GitHub, CMP phải cung cấp toàn bộ Review Package trực tiếp trong cuộc trò chuyện hoặc dưới dạng tệp đính kèm.
 
