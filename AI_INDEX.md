@@ -2,6 +2,7 @@
 
 **Canonical Gateway:** [69 • HUB 69](HUB69.md)  
 **Registry:** [CFP+ AI Canonical ID Registry](registry/AI_CANONICAL_ID_REGISTRY.md)  
+**Global Baseline Candidate:** [40 countries • 124 developers • 124 AI records](registry/GLOBAL_AI_ID_BASELINE_CANDIDATE.md)  
 **Lifecycle Status:** Review Candidate  
 **Interpretation Baseline:** LOCKED  
 **Governance Authority:** CFP+ Human Governance  
