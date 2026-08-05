@@ -36,6 +36,21 @@ Mỗi AI thực hiện theo quy trình:
 
 [Open the Global AI ID Baseline Candidate — 40 countries • 124 developers • 124 AI records](registry/GLOBAL_AI_ID_BASELINE_CANDIDATE.md)
 
+### P0 Multi-AI Review Assignments
+
+| AI ID | AI | Work Order | Review Scope | Canonical Work Link |
+|---|---|---|---|---|
+| 691130 | Gemini | GEM-WO-001 | Implementation, country mapping and completeness | [Open](registry/691130.md) |
+| 691100 | ChatGPT | GPT-WO-001 | Governance and lineage | [Open](registry/691100.md) |
+| 691110 | Claude | CLA-WO-001 | Collision and extensibility | [Open](registry/691110.md) |
+| 691120 | Grok | GROK-WO-001 | Validation and duplicate detection | [Open](registry/691120.md) |
+| 691131 | NotebookLM | NBLM-WO-001 | Reference consolidation | [Open](registry/691131.md) |
+| 691140 | Meta AI | META-WO-001 | Independent global coverage | [Open](registry/691140.md) |
+| 691150 | Microsoft Copilot | MSCP-WO-001 | Repository and link integrity | [Open](registry/691150.md) |
+| 691160 | Perplexity AI | PER-WO-001 | Evidence and country attribution | [Open](registry/691160.md) |
+| 691170 | Groq | GRQ-WO-001 | Infrastructure classification | [Open](registry/691170.md) |
+| 698461 | VietLinker AI | VLAI-WO-001 | Vietnam and Southeast Asia coverage | [Open](registry/698461.md) |
+
 Registry đầy đủ bao gồm:
 
 - Country Canonical ID
