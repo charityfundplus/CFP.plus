@@ -34,6 +34,8 @@ Mỗi AI thực hiện theo quy trình:
 
 [Open the complete CFP+ Global Country & AI Canonical Registry — Review Candidate v0.2](https://app.notion.com/p/bcaf748f4ad6413da64672277628c9ce?pvs=1)
 
+[Open the Global AI ID Baseline Candidate — 40 countries • 124 developers • 124 AI records](registry/GLOBAL_AI_ID_BASELINE_CANDIDATE.md)
+
 Registry đầy đủ bao gồm:
 
 - Country Canonical ID
