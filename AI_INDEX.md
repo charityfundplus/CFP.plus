@@ -37,20 +37,30 @@ HUB 69 → AI Country ID → Developer → AI Family → AI → Canonical Link
 
 **Country Canonical ID:** 984  
 **AI Country ID:** 6984  
-**AI Country Profile:** [6984 • AI Việt Nam](registry/6984.md)
+**AI Country Profile:** [6984 • AI Việt Nam](registry/6984.md)  
+**Allocation Status:** Review Candidate — Human Governance approved direction, pending profile migration and final validation
 
-| Category ID | Category | AI ID | AI | Canonical Link |
+| Developer ID | Developer | AI ID | AI | Canonical Link |
 |---|---|---|---|---|
-| 69840 | Foundation | — | — | — |
-| 69841 | Enterprise | — | — | — |
-| 69842 | Speech & Language | — | — | — |
-| 69843 | Search | — | — | — |
-| 69844 | Research & Robotics | — | — | — |
-| 69845 | Consumer | — | — | — |
-| 69846 | Community | 698461 | VietLinker AI | [Open](registry/698461.md) |
-| 69847 | Healthcare | — | — | — |
-| 69848 | Education | — | — | — |
-| 69849 | Emerging | — | — | — |
+| 69840 | Reserved | — | Strategic reserve | — |
+| 69841 | AIHay | 698411 | AIHay Drive | Profile pending |
+| 69842 | CMC AI | — | — | Profile pending |
+| 69843 | FPT AI | — | — | Profile pending |
+| 69844 | Phenikaa AI | — | — | Profile pending |
+| 69845 | Viettel AI | — | — | Profile pending |
+| 69846 | VinAI | — | — | Profile pending |
+| 69847 | VNPT AI | — | — | Profile pending |
+| 69848 | Zalo AI | — | — | Profile pending |
+| 69849 | Reserved | — | Future expansion | — |
+
+### Vietnam allocation rule
+
+- Developer IDs 69841–69848 are allocated by Canonical Display Name in A–Z order.
+- Numeric order does not represent rank, scale, priority or endorsement.
+- 69840 and 69849 remain reserved for future governance needs.
+- Each developer's AI systems extend from the developer ID by one additional digit.
+- The former category allocation under 69840–69849 is superseded by this Review Candidate allocation.
+- Legacy record 698461 • VietLinker AI requires a separate migration decision because 69846 is now assigned to VinAI; it must not be silently re-parented or reused.
 
 ## 3 • Assignment and Review Rule
 
