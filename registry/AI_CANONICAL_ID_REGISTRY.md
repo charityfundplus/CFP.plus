@@ -41,20 +41,37 @@
 
 ## 2 • Việt Nam
 
+**Allocation Status:** Review Candidate — migration and profile creation in progress
+
 | ID | Entity | Type | Parent ID | Canonical Link |
 |---|---|---|---|---|
 | 6984 | AI Việt Nam | AI Country | 69 | [Open](6984.md) |
-| 69840 | Foundation | Category | 6984 | Pending profile |
-| 69841 | Enterprise | Category | 6984 | Pending profile |
-| 69842 | Speech & Language | Category | 6984 | Pending profile |
-| 69843 | Search | Category | 6984 | Pending profile |
-| 69844 | Research & Robotics | Category | 6984 | Pending profile |
-| 69845 | Consumer | Category | 6984 | Pending profile |
-| 69846 | Community | Category | 6984 | Pending profile |
-| 698461 | VietLinker AI | AI | 69846 | [Open](698461.md) |
-| 69847 | Healthcare | Category | 6984 | Pending profile |
-| 69848 | Education | Category | 6984 | Pending profile |
-| 69849 | Emerging | Category | 6984 | Pending profile |
+| 69840 | Strategic Reserve | Reserved | 6984 | — |
+| 69841 | AIHay | Developer | 6984 | Profile pending |
+| 698411 | AIHay Drive | AI | 69841 | Profile pending |
+| 69842 | CMC AI | Developer | 6984 | Profile pending |
+| 69843 | FPT AI | Developer | 6984 | Profile pending |
+| 69844 | Phenikaa AI | Developer | 6984 | Profile pending |
+| 69845 | Viettel AI | Developer | 6984 | Profile pending |
+| 69846 | VinAI | Developer | 6984 | Profile pending |
+| 69847 | VNPT AI | Developer | 6984 | Profile pending |
+| 69848 | Zalo AI | Developer | 6984 | Profile pending |
+| 69849 | Future Expansion | Reserved | 6984 | — |
+
+### Vietnam Developer Allocation Rule
+
+- 69841–69848 are allocated by Canonical Display Name in A–Z order.
+- Numeric order does not indicate rank, scale, priority, endorsement or governance authority.
+- 69840 and 69849 are reserved and cannot be allocated without a Human Governance decision.
+- An AI system extends its Developer ID by one digit.
+- The previous category model for 69840–69849 is superseded by this Review Candidate allocation.
+
+### Open migration finding
+
+- Legacy ID 698461 was previously assigned to VietLinker AI under the former 69846 Community category.
+- Under the revised allocation, 69846 is the Developer ID for VinAI.
+- Therefore 698461 cannot remain an active VietLinker AI child without violating Parent ID semantics.
+- 698461 is marked **Migration Required / Do Not Reuse** until Human Governance assigns VietLinker a valid Developer parent and replacement AI ID.
 
 ## 3 • Canonical Rules
 
@@ -70,5 +87,6 @@
 - 2026-07-30: hợp nhất namespace đang hoạt động vào kiến trúc 69.
 - 2026-08-05: sửa xung đột 69119; 69119 = Apple và VietLinker AI = 698461.
 - 2026-08-05: bổ sung Canonical AI Profiles và liên kết trực tiếp cho danh sách AI cộng tác.
+- 2026-08-06: thay mô hình Category 69840–69849 bằng Developer Allocation A–Z cho Việt Nam; giữ 69840 và 69849 làm dự trữ; ghi nhận 698461 cần migration vì xung đột Parent ID.
 
 **Only Plus+ For Life**
