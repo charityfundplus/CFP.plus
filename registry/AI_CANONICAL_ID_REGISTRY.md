@@ -10,10 +10,11 @@
 
 - 69 = HUB 69, Canonical Gateway duy nhất.
 - 911 = United States Country Canonical ID.
-- 6911 = United States AI Country ID.
+- 6911 = United States Chapter 6 AI branch.
 - 984 = Vietnam Country Canonical ID.
-- 6984 = Vietnam AI Country ID.
-- Cấu trúc: HUB 69 → AI Country ID → Developer → AI Family → AI → Canonical Link.
+- 6984 = Vietnam Chapter 6 AI branch.
+- Cấu trúc: Country → Chapter 6 AI branch → Developer → AI → Canonical Link.
+- HUB 69 là cổng duy nhất; `6911` và `6984` không phải HUB mới.
 
 ## 1 • United States Developers and AI
 
@@ -39,54 +40,48 @@
 | 69118 | CoreWeave | Developer | 6911 | [Open](69118.md) |
 | 69119 | Apple | Developer | 6911 | [Open](69119.md) |
 
-## 2 • Việt Nam
+## 2 • Việt Nam — confirmed locked records
 
-**Allocation Status:** Review Candidate — migration and profile creation in progress
+**Country Canonical ID:** 984  
+**Chapter 6 AI branch:** 6984  
+**Allocation Status:** active records below are sourced from the locked Notion SoT; unverified legacy allocations are not authoritative.
 
-| ID | Entity | Type | Parent ID | Canonical Link |
-|---|---|---|---|---|
-| 6984 | AI Việt Nam | AI Country | 69 | [Open](6984.md) |
-| 69840 | Strategic Reserve | Reserved | 6984 | — |
-| 69841 | AIHay | Developer | 6984 | Profile pending |
-| 698411 | AIHay Drive | AI | 69841 | Profile pending |
-| 69842 | CMC AI | Developer | 6984 | Profile pending |
-| 69843 | FPT AI | Developer | 6984 | Profile pending |
-| 69844 | Phenikaa AI | Developer | 6984 | Profile pending |
-| 69845 | Viettel AI | Developer | 6984 | Profile pending |
-| 69846 | VinAI | Developer | 6984 | Profile pending |
-| 69847 | VNPT AI | Developer | 6984 | Profile pending |
-| 69848 | Zalo AI | Developer | 6984 | Profile pending |
-| 69849 | Future Expansion | Reserved | 6984 | — |
+| ID | Entity | Type | Parent / Scope | Canonical Link / Path | Status |
+|---|---|---|---|---|---|
+| 6984 | AI Việt Nam | Chapter 6 AI branch | 984 | [Open](6984.md) | Active |
+| 69840 | Strategic Reserve | Reserved | 6984 | — | Reserved |
+| 698411 | FPT AI | Developer | Vietnam / 6984 | `/hub/69/698411` | Canonical ID & Link Locked |
+| 698412 | Viettel AI | Developer | Vietnam / 6984 | `/hub/69/698412` | Canonical ID Locked |
+| 698413 | VNPT AI | Developer | Vietnam / 6984 | `/hub/69/698413` | Canonical ID Locked |
+| 698414 | CMC AI | Developer | Vietnam / 6984 | `/hub/69/698414` | Canonical ID Locked |
+| 69846 | Community | Parent namespace | 6984 | — | Active parent for 698461 |
+| 698461 | VietLinker AI | AI | 69846 | `/hub/69/698461` | Canonical ID Corrected — Locked |
+| 69849 | Future Expansion | Reserved | 6984 | — | Reserved |
 
-### Vietnam Developer Allocation Rule
+### Vietnam correction notice
 
-- 69841–69848 are allocated by Canonical Display Name in A–Z order.
-- Numeric order does not indicate rank, scale, priority, endorsement or governance authority.
-- 69840 and 69849 are reserved and cannot be allocated without a Human Governance decision.
-- An AI system extends its Developer ID by one digit.
-- The previous category model for 69840–69849 is superseded by this Review Candidate allocation.
-
-### Open migration finding
-
-- Legacy ID 698461 was previously assigned to VietLinker AI under the former 69846 Community category.
-- Under the revised allocation, 69846 is the Developer ID for VinAI.
-- Therefore 698461 cannot remain an active VietLinker AI child without violating Parent ID semantics.
-- 698461 is marked **Migration Required / Do Not Reuse** until Human Governance assigns VietLinker a valid Developer parent and replacement AI ID.
+- `698461` is the current locked Canonical ID for VietLinker AI.
+- `698461` must **not** be marked Migration Required and must not be reassigned.
+- `69119` belongs to Apple and must not be used for VietLinker.
+- The earlier A–Z table that assigned `69841–69848` directly to AIHay/CMC/FPT/Phenikaa/Viettel/VinAI/VNPT/Zalo is superseded for this registry because it conflicts with locked SoT records such as `698411 = FPT AI`, `698412 = Viettel AI`, `698413 = VNPT AI`, `698414 = CMC AI`, and `698461 = VietLinker AI`.
+- Any additional Vietnam developer or AI allocation must be added only after matching the current Notion SoT and Human Governance decision; do not infer missing IDs from numeric gaps.
 
 ## 3 • Canonical Rules
 
 - One Entity • One Canonical ID • One Canonical Link.
-- AI Country ID = tiền tố 6 + toàn bộ Country Canonical ID.
+- Chapter 6 AI branch = prefix `6` + full Country Canonical ID.
 - Mỗi AI phải nằm dưới đúng quốc gia và Parent ID.
 - ID đã được Human Governance chốt không được tái sử dụng.
 - Không sử dụng ID tạm thời.
 - Canonical Locked yêu cầu Independent AI Review, Evidence và Human Governance Final Decision.
+- Khi GitHub và Notion mâu thuẫn, phải lập Finding và đối chiếu Notion SoT trước khi sửa Public Canonical.
 
 ## 4 • Change Record
 
 - 2026-07-30: hợp nhất namespace đang hoạt động vào kiến trúc 69.
-- 2026-08-05: sửa xung đột 69119; 69119 = Apple và VietLinker AI = 698461.
+- 2026-08-05: sửa xung đột 69119; `69119 = Apple` và `VietLinker AI = 698461`.
 - 2026-08-05: bổ sung Canonical AI Profiles và liên kết trực tiếp cho danh sách AI cộng tác.
-- 2026-08-06: thay mô hình Category 69840–69849 bằng Developer Allocation A–Z cho Việt Nam; giữ 69840 và 69849 làm dự trữ; ghi nhận 698461 cần migration vì xung đột Parent ID.
+- 2026-08-06: các trang SoT khóa `698411 = FPT AI`, `698412 = Viettel AI`, `698413 = VNPT AI`, `698414 = CMC AI`; hồ sơ VietLinker xác nhận Parent `69846 = Community` và `698461` locked.
+- 2026-08-08: loại bỏ allocation A–Z mâu thuẫn khỏi Registry công khai và đồng bộ lại các record đã có bằng chứng SoT.
 
 **Only Plus+ For Life**
