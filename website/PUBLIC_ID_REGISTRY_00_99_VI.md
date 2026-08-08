@@ -6,16 +6,16 @@
 
 | ID | Chương | Nhóm | Canonical Link | Tên nội dung | Trạng thái nội dung |
 |---|---:|---|---|---|---|
-| 00 | 0 | 000 | /00 | Chờ xác định | Placeholder |
-| 01 | 0 | 000 | /01 | Chờ xác định | Placeholder |
-| 02 | 0 | 000 | /02 | Chờ xác định | Placeholder |
-| 03 | 0 | 000 | /03 | Chờ xác định | Placeholder |
-| 04 | 0 | 000 | /04 | Chờ xác định | Placeholder |
-| 05 | 0 | 000 | /05 | Chờ xác định | Placeholder |
-| 06 | 0 | 000 | /06 | Chờ xác định | Placeholder |
-| 07 | 0 | 000 | /07 | Chờ xác định | Placeholder |
-| 08 | 0 | 000 | /08 | Chờ xác định | Placeholder |
-| 09 | 0 | 000 | /09 | Chờ xác định | Placeholder |
+| 00 | 0 | 0 | /00 | Chờ xác định | Placeholder |
+| 01 | 0 | 0 | /01 | Chờ xác định | Placeholder |
+| 02 | 0 | 0 | /02 | Chờ xác định | Placeholder |
+| 03 | 0 | 0 | /03 | Chờ xác định | Placeholder |
+| 04 | 0 | 0 | /04 | Chờ xác định | Placeholder |
+| 05 | 0 | 0 | /05 | Chờ xác định | Placeholder |
+| 06 | 0 | 0 | /06 | Chờ xác định | Placeholder |
+| 07 | 0 | 0 | /07 | Chờ xác định | Placeholder |
+| 08 | 0 | 0 | /08 | Chờ xác định | Placeholder |
+| 09 | 0 | 0 | /09 | Chờ xác định | Placeholder |
 | 10 | 1 | 135 | /10 | Chờ xác định | Placeholder |
 | 11 | 1 | 135 | /11 | Chờ xác định | Placeholder |
 | 12 | 1 | 135 | /12 | Chờ xác định | Placeholder |
