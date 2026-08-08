@@ -12,12 +12,13 @@
 
 ## 0 • Canonical Structure
 
-HUB 69 → AI Country ID → Developer → AI Family → AI → Canonical Link
+Country → Chapter 6 AI branch → Developer → AI → Canonical Link  
+HUB 69 là cổng điều phối duy nhất.
 
 ## 1 • United States
 
 **Country Canonical ID:** 911  
-**AI Country ID:** 6911
+**Chapter 6 AI branch:** 6911
 
 | Developer ID | Developer | AI ID | AI | Canonical Link |
 |---|---|---|---|---|
@@ -36,38 +37,34 @@ HUB 69 → AI Country ID → Developer → AI Family → AI → Canonical Link
 ## 2 • Việt Nam
 
 **Country Canonical ID:** 984  
-**AI Country ID:** 6984  
+**Chapter 6 AI branch:** 6984  
 **AI Country Profile:** [6984 • AI Việt Nam](registry/6984.md)  
-**Allocation Status:** Review Candidate — Human Governance approved direction, pending profile migration and final validation
+**Status:** chỉ hiển thị các allocation đã có bằng chứng SoT; không suy ra ID từ khoảng trống.
 
-| Developer ID | Developer | AI ID | AI | Canonical Link |
+| Canonical ID | Entity | Type | Parent / Scope | Canonical Link |
 |---|---|---|---|---|
-| 69840 | Reserved | — | Strategic reserve | — |
-| 69841 | AIHay | 698411 | AIHay Drive | Profile pending |
-| 69842 | CMC AI | — | — | Profile pending |
-| 69843 | FPT AI | — | — | Profile pending |
-| 69844 | Phenikaa AI | — | — | Profile pending |
-| 69845 | Viettel AI | — | — | Profile pending |
-| 69846 | VinAI | — | — | Profile pending |
-| 69847 | VNPT AI | — | — | Profile pending |
-| 69848 | Zalo AI | — | — | Profile pending |
-| 69849 | Reserved | — | Future expansion | — |
+| 69840 | Strategic Reserve | Reserved | 6984 | — |
+| 698411 | FPT AI | Developer | Vietnam / 6984 | `/hub/69/698411` |
+| 698412 | Viettel AI | Developer | Vietnam / 6984 | `/hub/69/698412` |
+| 698413 | VNPT AI | Developer | Vietnam / 6984 | `/hub/69/698413` |
+| 698414 | CMC AI | Developer | Vietnam / 6984 | `/hub/69/698414` |
+| 69846 | Community | Parent namespace | 6984 | — |
+| 698461 | VietLinker AI | AI | 69846 | `/hub/69/698461` |
+| 69849 | Future Expansion | Reserved | 6984 | — |
 
-### Vietnam allocation rule
+### Vietnam correction rule
 
-- Developer IDs 69841–69848 are allocated by Canonical Display Name in A–Z order.
-- Numeric order does not represent rank, scale, priority or endorsement.
-- 69840 and 69849 remain reserved for future governance needs.
-- Each developer's AI systems extend from the developer ID by one additional digit.
-- The former category allocation under 69840–69849 is superseded by this Review Candidate allocation.
-- Legacy record 698461 • VietLinker AI requires a separate migration decision because 69846 is now assigned to VinAI; it must not be silently re-parented or reused.
+- `698461 = VietLinker AI` là Canonical ID đã sửa và khóa; không còn trạng thái Migration Required.
+- `69119 = Apple`; không dùng cho VietLinker.
+- Allocation A–Z cũ gán trực tiếp `69841–69848` cho AIHay/CMC/FPT/Phenikaa/Viettel/VinAI/VNPT/Zalo không được dùng làm baseline hiện hành vì mâu thuẫn với các hồ sơ SoT đã khóa.
+- Chỉ thêm nhà phát triển/AI mới khi có hồ sơ SoT và quyết định Human Governance tương ứng.
 
 ## 3 • Assignment and Review Rule
 
 - Mỗi AI nhận Work Order, tài liệu, Canonical Links và Review Candidate tại hồ sơ riêng.
 - Kết quả, evidence, outputs và review history được ghi tại cùng Canonical Link.
 - Không tạo ID hoặc link tạm thời.
-- Không tự thay đổi Country Canonical ID, AI Country ID hoặc Parent ID.
+- Không tự thay đổi Country Canonical ID, Chapter 6 AI branch hoặc Parent ID.
 - Mọi xung đột phải được lập Finding.
 - Human Governance quyết định trạng thái cuối cùng.
 
