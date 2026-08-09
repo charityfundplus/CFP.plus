@@ -9,7 +9,7 @@
 
 ## 1 • Quyết định khóa toàn cầu
 
-CFP+ khóa nguyên tắc định danh cho **tất cả quốc gia và vùng lãnh thổ đã có Country Canonical ID trong Country Canonical Registry**.
+CFP+ khóa nguyên tắc định danh cho **toàn bộ quốc gia và vùng lãnh thổ trong Country Canonical Registry**.
 
 Mỗi quốc gia có **hai lớp định danh liên kết nhưng không đồng nghĩa**:
 
@@ -19,6 +19,8 @@ Mỗi quốc gia có **hai lớp định danh liên kết nhưng không đồng 
 **Mỗi quốc gia phải có AI Country ID ngay cả khi hiện tại chưa có AI, chưa có nhà phát triển AI, hoặc trong tương lai không có AI.**
 
 Sự tồn tại của AI Country ID là yêu cầu của kiến trúc CFP+, không phụ thuộc vào việc quốc gia đó có hoạt động AI thực tế hay không.
+
+Country ID và AI Country ID đã được cấp/đã được Human Governance khóa không được đổi chỉ vì tình trạng AI của quốc gia thay đổi.
 
 ## 2 • Công thức chuẩn
 
@@ -105,8 +107,12 @@ Developer và AI có thể được bổ sung về sau mà **không thay đổi 
 
 - vị trí `0` được dành cố định cho nhánh mở rộng Developer / Developer tương lai theo chuẩn quốc gia;
 - các Developer còn lại được sắp xếp theo chữ cái A–Z theo quyết định Human Governance hiện hành;
-- AI bên trong mỗi Developer Link cũng được sắp xếp A–Z;
+- **khi mở một Developer Canonical Link phải thấy toàn bộ AI đã xác minh của chính Developer đó, sắp xếp A–Z**;
+- không dùng một AI đại diện để thay cho danh sách AI đầy đủ;
+- AI chưa có ID nhưng lineage đã xác minh được ghi `Pending Allocation`, không tự phát minh ID;
 - mọi quốc gia sử dụng cùng một CFP+ Universal Template.
+
+**Mẫu bắt buộc:** [CFP+ Universal Developer Canonical Profile Template](DEVELOPER_CANONICAL_PROFILE_TEMPLATE.md)
 
 ## 7 • Governance Lock
 
@@ -134,7 +140,7 @@ Khi bổ sung một quốc gia vào AI Directory, CMP và các AI chỉ được
 2. Tạo/đọc AI Country ID bằng `6 + Country Canonical ID` hoặc dùng allocation ngoại lệ đã khóa.
 3. Giữ nhánh này dù chưa có Developer/AI.
 4. Bổ sung Developer A–Z khi có evidence.
-5. Bổ sung toàn bộ AI của Developer theo A–Z.
+5. Bổ sung **toàn bộ AI của Developer theo A–Z trong chính Developer Link**.
 6. Không thay đổi hai ID cấp quốc gia.
 
 **One Country • One Country Canonical ID • One Chapter 6 AI ID • One Page • One Link**
