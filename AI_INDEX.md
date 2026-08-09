@@ -18,21 +18,29 @@ HUB 69 là cổng điều phối duy nhất.
 ## 1 • United States
 
 **Country Canonical ID:** 911  
-**Chapter 6 AI branch:** 6911
+**Chapter 6 AI branch:** 6911  
+**Developer allocation authority:** current Canonical Locked developer profiles on `main`  
+**AI child status:** migration review required; legacy child mappings are not inherited automatically.
 
-| Developer ID | Developer | AI ID | AI | Canonical Link |
-|---|---|---|---|---|
-| 69110 | [OpenAI](registry/69110.md) | 691100 | ChatGPT | [Open](registry/691100.md) |
-| 69111 | [Anthropic](registry/69111.md) | 691110 | Claude | [Open](registry/691110.md) |
-| 69112 | [xAI](registry/69112.md) | 691120 | Grok | [Open](registry/691120.md) |
-| 69113 | [Google DeepMind](registry/69113.md) | 691130 | Gemini | [Open](registry/691130.md) |
-| 69113 | [Google DeepMind](registry/69113.md) | 691131 | NotebookLM | [Open](registry/691131.md) |
-| 69114 | [Meta AI](registry/69114.md) | 691140 | Meta AI | [Open](registry/691140.md) |
-| 69115 | [Microsoft AI](registry/69115.md) | 691150 | Microsoft Copilot | [Open](registry/691150.md) |
-| 69116 | [Perplexity AI](registry/69116.md) | 691160 | Perplexity AI | [Open](registry/691160.md) |
-| 69117 | [Groq](registry/69117.md) | 691170 | Groq | [Open](registry/691170.md) |
-| 69118 | [CoreWeave](registry/69118.md) | — | — | — |
-| 69119 | [Apple](registry/69119.md) | — | — | — |
+| Developer ID | Developer | Current AI child status | Canonical Link |
+|---|---|---|---|
+| 69110 | [Developer & Platform Directory](registry/69110.md) | Directory / expansion slot | [Open](registry/69110.md) |
+| 69111 | [Amazon](registry/69111.md) | Pending verified child allocation/reconciliation | [Open](registry/69111.md) |
+| 69112 | [Anthropic](registry/69112.md) | Pending verified child allocation/reconciliation | [Open](registry/69112.md) |
+| 69113 | [Apple](registry/69113.md) | Pending verified child allocation/reconciliation | [Open](registry/69113.md) |
+| 69114 | [Google DeepMind](registry/69114.md) | Pending verified child allocation/reconciliation | [Open](registry/69114.md) |
+| 69115 | [Meta](registry/69115.md) | Pending verified child allocation/reconciliation | [Open](registry/69115.md) |
+| 69116 | [Microsoft](registry/69116.md) | Pending verified child allocation/reconciliation | [Open](registry/69116.md) |
+| 69117 | [NVIDIA](registry/69117.md) | Pending verified child allocation/reconciliation | [Open](registry/69117.md) |
+| 69118 | [OpenAI](registry/69118.md) | Pending verified child allocation/reconciliation | [Open](registry/69118.md) |
+| 69119 | [xAI](registry/69119.md) | Pending verified child allocation/reconciliation | [Open](registry/69119.md) |
+
+### US migration safety rule
+
+- Không sử dụng bảng Developer/AI cũ trong Issue #58 hoặc lịch sử `AI_INDEX.md` để ghi đè allocation hiện hành.
+- Không tự kế thừa legacy AI child ID sang Developer mới sau migration.
+- Legacy child profiles phải được phân loại `KEEP / REMAP_REQUIRED / UNMAPPED / EVIDENCE_REQUIRED` trong #61 trước khi promote.
+- Mọi thay đổi Canonical ID/Canonical Link đã khóa vẫn thuộc Human Governance.
 
 ## 2 • Việt Nam
 
@@ -55,7 +63,7 @@ HUB 69 là cổng điều phối duy nhất.
 ### Vietnam correction rule
 
 - `698461 = VietLinker AI` là Canonical ID đã sửa và khóa; không còn trạng thái Migration Required.
-- `69119 = Apple`; không dùng cho VietLinker.
+- Không dùng US legacy allocation để suy luận hoặc tái sử dụng ID cho Việt Nam.
 - Allocation A–Z cũ gán trực tiếp `69841–69848` cho AIHay/CMC/FPT/Phenikaa/Viettel/VinAI/VNPT/Zalo không được dùng làm baseline hiện hành vì mâu thuẫn với các hồ sơ SoT đã khóa.
 - Chỉ thêm nhà phát triển/AI mới khi có hồ sơ SoT và quyết định Human Governance tương ứng.
 
