@@ -55,15 +55,16 @@
 | 698413 | VNPT AI | Developer | Vietnam / 6984 | `/hub/69/698413` | Canonical ID Locked |
 | 698414 | CMC AI | Developer | Vietnam / 6984 | `/hub/69/698414` | Canonical ID Locked |
 | 69846 | Community | Parent namespace | 6984 | — | Active parent for 698461 |
-| 698461 | VietLinker AI | AI | 69846 | `/hub/69/698461` | Canonical ID Corrected — Locked |
+| 698461 | VietLinker | Developer | 69846 | `/hub/69/698461` | Canonical ID Corrected — Locked |
 | 69849 | Future Expansion | Reserved | 6984 | — | Reserved |
 
 ### Vietnam correction notice
 
-- `698461` is the current locked Canonical ID for VietLinker AI.
+- `698461` is the current locked Developer Canonical ID for VietLinker.
 - `698461` must **not** be marked Migration Required and must not be reassigned.
+- VietLinker's AI child remains `AI 🤖 (Đang xác minh)` / `ID PENDING` / `PENDING EVIDENCE` until official evidence and Human Governance approval.
 - `69119` belongs to Apple and must not be used for VietLinker.
-- The earlier A–Z table that assigned `69841–69848` directly to AIHay/CMC/FPT/Phenikaa/Viettel/VinAI/VNPT/Zalo is superseded for this registry because it conflicts with locked SoT records such as `698411 = FPT AI`, `698412 = Viettel AI`, `698413 = VNPT AI`, `698414 = CMC AI`, and `698461 = VietLinker AI`.
+- The earlier A–Z table that assigned `69841–69848` directly to AIHay/CMC/FPT/Phenikaa/Viettel/VinAI/VNPT/Zalo is superseded for this registry because it conflicts with locked SoT records such as `698411 = FPT AI`, `698412 = Viettel AI`, `698413 = VNPT AI`, `698414 = CMC AI`, and `698461 = VietLinker` (Developer).
 - Any additional Vietnam developer or AI allocation must be added only after matching the current Notion SoT and Human Governance decision; do not infer missing IDs from numeric gaps.
 
 ## 3 • Canonical Rules
@@ -79,9 +80,10 @@
 ## 4 • Change Record
 
 - 2026-07-30: hợp nhất namespace đang hoạt động vào kiến trúc 69.
-- 2026-08-05: sửa xung đột 69119; `69119 = Apple` và `VietLinker AI = 698461`.
+- 2026-08-05: sửa xung đột 69119; `69119 = Apple` và `VietLinker = 698461`.
 - 2026-08-05: bổ sung Canonical AI Profiles và liên kết trực tiếp cho danh sách AI cộng tác.
 - 2026-08-06: các trang SoT khóa `698411 = FPT AI`, `698412 = Viettel AI`, `698413 = VNPT AI`, `698414 = CMC AI`; hồ sơ VietLinker xác nhận Parent `69846 = Community` và `698461` locked.
 - 2026-08-08: loại bỏ allocation A–Z mâu thuẫn khỏi Registry công khai và đồng bộ lại các record đã có bằng chứng SoT.
+- 2026-08-10: chuẩn hóa tại chỗ `698461` thành Developer Canonical ID của VietLinker; giữ nguyên ID/Link và để AI con ở `PENDING EVIDENCE`.
 
 **Only Plus+ For Life**
