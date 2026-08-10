@@ -100,7 +100,8 @@ Việt Nam sử dụng không gian `6984` cho toàn bộ Chương 6. Các tầng
 - `69840` — không gian nền tảng/danh mục và dự trữ mở rộng cho nhà phát triển theo quyết định Governance.
 - `698400`–`698409` — tầng mở rộng 0–9 dành cho nhu cầu tương lai; **Reserved**, không tự động gán thực thể khi chưa có quyết định.
 - Các ID đã được xác nhận trước đây không được tái sử dụng cho thực thể khác.
-- `698461` • VietLinker AI — giữ ánh xạ hiện hành đã xác nhận.
+- `698461` • VietLinker — Developer Canonical ID thuộc `69846` Community; giữ nguyên ID và Link.
+- AI con của VietLinker — `AI 🤖 (Đang xác minh)` / `ID PENDING` / `PENDING EVIDENCE`.
 - `69849` — Emerging/reserved namespace; không dùng lại làm ID của VietLinker.
 
 Danh sách nhà phát triển Việt Nam và AI trực thuộc sẽ được mở rộng theo **một mẫu Canonical Profile chung**, ưu tiên nhà phát triển lớn và thứ tự ổn định; AI mới được bổ sung dưới đúng nhà phát triển thay vì tạo hệ thống ID mới.
