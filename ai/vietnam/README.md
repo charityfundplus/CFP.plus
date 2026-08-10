@@ -118,8 +118,11 @@
 
 ### 698461 — VietLinker
 
-- **Developer / AI Entry dùng chung:** [VietLinker AI](../../registry/698461.md)
-- Nhà phát triển hiện gắn với một AI đã ghi nhận; chưa cần tách thêm link con cho đến khi có sản phẩm AI thứ hai được xác minh.
+- **Developer Entry:** [VietLinker](../../registry/698461.md)
+- **Entity Type:** `AI Developer`
+- **Parent namespace:** `69846` — Community
+- **AI con:** `AI 🤖 (Đang xác minh)` — `ID PENDING` / `PENDING EVIDENCE`
+- Không dùng `698461` làm AI Canonical ID và không suy đoán AI child ID.
 
 ## Quy trình cấp link con chính thức
 
