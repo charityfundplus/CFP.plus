@@ -49,12 +49,13 @@ HUB 69 là cổng điều phối duy nhất.
 | 698413 | VNPT AI | Developer | Vietnam / 6984 | `/hub/69/698413` |
 | 698414 | CMC AI | Developer | Vietnam / 6984 | `/hub/69/698414` |
 | 69846 | Community | Parent namespace | 6984 | — |
-| 698461 | VietLinker AI | AI | 69846 | `/hub/69/698461` |
+| 698461 | VietLinker | Developer | 69846 | `/hub/69/698461` |
 | 69849 | Future Expansion | Reserved | 6984 | — |
 
 ### Vietnam correction rule
 
-- `698461 = VietLinker AI` là Canonical ID đã sửa và khóa; không còn trạng thái Migration Required.
+- `698461 = VietLinker` là Developer Canonical ID đã sửa và khóa; không còn trạng thái Migration Required.
+- AI con của VietLinker hiện là `AI 🤖 (Đang xác minh)` / `ID PENDING` / `PENDING EVIDENCE`; không suy đoán tên hoặc ID.
 - `69119 = Apple`; không dùng cho VietLinker.
 - Allocation A–Z cũ gán trực tiếp `69841–69848` cho AIHay/CMC/FPT/Phenikaa/Viettel/VinAI/VNPT/Zalo không được dùng làm baseline hiện hành vì mâu thuẫn với các hồ sơ SoT đã khóa.
 - Chỉ thêm nhà phát triển/AI mới khi có hồ sơ SoT và quyết định Human Governance tương ứng.

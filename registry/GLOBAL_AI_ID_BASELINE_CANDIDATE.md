@@ -75,7 +75,7 @@ Danh sách ban đầu tương đối rộng để định vị các nhà phát t
 | 698413 | VNPT | 6984130 | VNPT AI | Pending |
 | 698414 | CMC | 6984140 | CMC AI | Pending |
 | 698451 | Zalo | 6984510 | Kiki | Pending |
-| 69846 | Community | 698461 | VietLinker AI | [Open](698461.md) |
+| 698461 | VietLinker | — | AI 🤖 (Đang xác minh) | [Open](698461.md) |
 
 ## 6 • Global Expansion Baseline
 
