@@ -1,0 +1,12 @@
+{
+  "name": "cfp-safe-validator",
+  "version": "0.0.0-phase0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate:phase0": "node src/index.mjs --phase=phase0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
