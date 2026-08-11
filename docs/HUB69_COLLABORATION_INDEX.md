@@ -1,8 +1,24 @@
 # HUB 69 • Review & Collaboration Index
 
 **Status:** REVIEW CANDIDATE • COLLABORATION READY  
-**Source of Truth:** Notion  
+**Model:** Một Nội Dung Gốc • Ba Bản Gốc Đồng Bộ  
 **Purpose:** Public/collaboration reference for Con Người and AI 🤖. This file does **not** create, change, reuse, or lock any Canonical ID/Link and does not constitute Governance Approval.
+
+## Đồng bộ ba nền tảng
+
+Mỗi tài liệu được công bố phải có **toàn văn cùng một phiên bản gốc** tại Notion, GitHub và Google Drive. Không nền tảng nào chỉ giữ bản tóm tắt thay cho nội dung gốc.
+
+- **Notion:** bản gốc làm việc và điều phối SoT.
+- **GitHub:** bản gốc công khai/AI-readable.
+- **Google Drive:** bản gốc cộng tác.
+
+### Quy tắc chỉnh sửa
+
+Nếu một nội dung hợp lệ được chỉnh sửa tại **bất kỳ một trong ba nơi**, CMP phải coi đó là một **Sync Event**: xác định tài liệu, version/thời điểm sửa, đối chiếu nội dung và cập nhật cùng thay đổi sang **hai nền tảng còn lại**. Chỉ khi ba bản khớp nhau mới được đánh dấu **SYNCED / CURRENT**.
+
+Nếu có hai chỉnh sửa đồng thời, khác nhau hoặc xung đột, CMP **không tự ghi đè**. Phải giữ nguyên cả hai bằng chứng, đánh dấu **SYNC CONFLICT / REVIEW REQUIRED**, chuyển reviewer và Human Governance khi cần.
+
+Metadata kỹ thuật như Source Link, Version, Sync Timestamp, Commit SHA hoặc Revision ID có thể khác nhau nhưng **nội dung gốc phải thống nhất**.
 
 ## Primary links
 
@@ -44,7 +60,7 @@
 2. Nội dung chưa đủ bằng chứng ghi `PENDING EVIDENCE`.
 3. Không tự đổi, tái sử dụng hoặc khóa Canonical ID/Link.
 4. Không tự Governance Approve.
-5. GitHub và Google Drive phải dẫn ngược về Notion SoT.
+5. Mọi chỉnh sửa hợp lệ ở Notion/GitHub/Drive phải đồng bộ sang hai nơi còn lại.
 6. Khi có xung đột, giữ nguyên bằng chứng và chuyển CMP xử lý.
 
 ## Workspace
