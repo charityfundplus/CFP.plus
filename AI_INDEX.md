@@ -39,7 +39,7 @@ HUB 69 là cổng điều phối duy nhất.
 **Country Canonical ID:** 984  
 **Chapter 6 AI branch:** 6984  
 **AI Country Profile:** [6984 • AI Việt Nam](registry/6984.md)  
-**Status:** chỉ hiển thị các allocation đã có bằng chứng SoT; không suy ra ID từ khoảng trống.
+**Status:** chỉ hiển thị allocation đã có bằng chứng SoT; không suy ra ID từ khoảng trống.
 
 | Canonical ID | Entity | Type | Parent / Scope | Canonical Link |
 |---|---|---|---|---|
@@ -54,18 +54,31 @@ HUB 69 là cổng điều phối duy nhất.
 
 ### Vietnam correction rule
 
-- `698461 = VietLinker AI` là Canonical ID đã sửa và khóa; không còn trạng thái Migration Required.
+- `698461 = VietLinker AI` là Canonical ID đã sửa và khóa.
 - `69119 = Apple`; không dùng cho VietLinker.
-- Allocation A–Z cũ gán trực tiếp `69841–69848` cho AIHay/CMC/FPT/Phenikaa/Viettel/VinAI/VNPT/Zalo không được dùng làm baseline hiện hành vì mâu thuẫn với các hồ sơ SoT đã khóa.
-- Chỉ thêm nhà phát triển/AI mới khi có hồ sơ SoT và quyết định Human Governance tương ứng.
+- Không dùng allocation cũ mâu thuẫn với SoT hiện hành.
+- Chỉ bổ sung ID mới theo hồ sơ SoT và Human Governance; không suy ra ID từ khoảng trống.
 
-## 3 • Assignment and Review Rule
+## 3 • Trách nhiệm bao phủ toàn cầu
 
-- Mỗi AI nhận Work Order, tài liệu, Canonical Links và Review Candidate tại hồ sơ riêng.
-- Kết quả, evidence, outputs và review history được ghi tại cùng Canonical Link.
-- Không tạo ID hoặc link tạm thời.
-- Không tự thay đổi Country Canonical ID, Chapter 6 AI branch hoặc Parent ID.
-- Mọi xung đột phải được lập Finding.
-- Human Governance quyết định trạng thái cuối cùng.
+> **CFP+ không bỏ qua bất kỳ nhà phát triển AI 🤖 hay AI 🤖 nào.**
+
+- Phát hiện đến đâu, ghi nhận đến đó; không chờ danh sách toàn cầu hoàn tất.
+- Chưa đủ dữ liệu vẫn giữ hồ sơ **Seed • Pending Evidence**.
+- Không suy đoán, renumber, reuse, đổi nghĩa ID hoặc tạo danh sách song song.
+- Mỗi thực thể có một vị trí: **Country → Chapter 6 → Developer → AI → Canonical Link**.
+- Khi Developer hoặc AI 🤖 tìm đến CFP+, họ có thể claim hồ sơ và bổ sung nguồn chính thức tại đúng Canonical Link.
+- Tự động hóa được phép tiếp nhận và đối chiếu dữ liệu; **Canonical Lock chỉ thuộc Human Governance**.
+- Chỉ dừng để xử lý khi có collision, ambiguity hoặc sai parent.
+
+**Lifecycle:** Seed → Claimed → Verified → Governance Approved → Canonical Locked
+
+**Hồ sơ tối thiểu:** Canonical ID • Canonical Link • Tên • Country/Parent ID • Type • Evidence Status • Source • Updated Date.
+
+## 4 • Review Rule
+
+- Work Order, evidence và review history nằm tại hồ sơ/Canonical Link tương ứng.
+- Không tự thay đổi Country ID, Chapter 6 ID hoặc Parent ID.
+- Mọi xung đột phải lập Finding và chuyển Human Governance quyết định.
 
 **Only Plus+ For Life**
