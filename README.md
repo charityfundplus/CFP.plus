@@ -1,45 +1,33 @@
 # CFP+
 
-**Only Plus+ For Life**
+**Only Plus+ For Life**  
+**Canonical Language:** Tiếng Việt
 
-## HUB 69
+CFP+ public GitHub is the concise, version-controlled layer for current canonical references, public implementation, validation and review.
 
-[HUB 69 • CFP+ Global Gateway](HUB69.md)
+## Start here
 
-HUB 69 là HUB duy nhất của CFP+. Đây là điểm kết nối, định vị và điều hướng toàn bộ hệ thống CFP+, bao gồm các AI đang cộng tác và đồng hành.
+- [HUB 69 — CFP+ Global Gateway](HUB69.md)
+- [CMP — Coordination Layer](CMP.md)
+- [AI Index — Country → Developer → AI](AI_INDEX.md)
+- [AI Canonical ID Registry](registry/AI_CANONICAL_ID_REGISTRY.md)
+- [Global Country & AI Country ID — Canonical Locked](registry/GLOBAL_COUNTRY_AI_ID_LOCKED.md)
 
-## Điểm truy cập GitHub
+## Public implementation
 
-[CFP+ GitHub Entry Point](GITHUB_HUB.md)
+- [Website Master Map — Tiếng Việt](website/WEBSITE_MASTER_MAP_VI.md)
+- [Public ID Registry 00–99](website/PUBLIC_ID_REGISTRY_00_99_VI.md)
+- [Open Review Workflow](governance/OPEN_REVIEW_WORKFLOW_VI.md)
+- [Locked Documents Registry](governance/LOCKED_DOCUMENTS_REGISTRY_VI.md)
 
-## Trạng thái
+## Repository rule
 
-Baseline Candidate
+Keep the main public path **current, clear and compact**.
 
-## Ngôn ngữ chuẩn
+- Current/canonical material stays in the primary public structure.
+- Review work stays in branches, Draft PRs and `reports/`.
+- Stale/conflicting material that cannot be safely corrected is preserved as legacy evidence and moved out of the active view for later migration review.
+- Legacy evidence must never override current Human Governance authority.
+- Do not change locked Canonical ID/Canonical Link without Human Governance approval.
 
-Tiếng Việt là Canonical Language của CFP+.
-
-## Mục đích của repository
-
-Repository công khai dành cho tài liệu, review độc lập, evidence, governance decision và lịch sử thay đổi.
-
-## Điểm truy cập AI
-
-[AI_INDEX • Chỉ mục AI và Canonical Link công khai](AI_INDEX.md)
-
-## Tài liệu nền tảng
-
-[69 • CFP+ Global AI Country Registry](registry/AI_CANONICAL_ID_REGISTRY.md)
-
-[6911 • AI Hoa Kỳ](registry/6911.md)
-
-[6984 • AI Việt Nam](registry/6984.md)
-
-[Website Master Map](website/WEBSITE_MASTER_MAP_VI.md)
-
-[Public ID Registry 00 đến 99](website/PUBLIC_ID_REGISTRY_00_99_VI.md)
-
-[Locked Documents Registry](governance/LOCKED_DOCUMENTS_REGISTRY_VI.md)
-
-[Open Review Workflow](governance/OPEN_REVIEW_WORKFLOW_VI.md)
+See: [GitHub Public Structure & Legacy Handling](docs/GITHUB_PUBLIC_STRUCTURE.md)

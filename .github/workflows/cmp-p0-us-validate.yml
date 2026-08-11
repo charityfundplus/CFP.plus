@@ -1,0 +1,23 @@
+name: CMP P0 US Validate
+
+on:
+  pull_request:
+    paths:
+      - 'AI_INDEX.md'
+      - 'README.md'
+      - 'registry/**'
+      - 'cmp/validators/**'
+      - '.github/workflows/cmp-p0-us-validate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-us-p0:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Validate US P0 registry/index lineage
+        run: python3 cmp/validators/validate_us_p0.py

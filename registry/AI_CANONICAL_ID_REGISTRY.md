@@ -18,27 +18,38 @@
 
 ## 1 • United States Developers and AI
 
+### Current locked Developer allocation
+
 | ID | Entity | Type | Parent ID | Canonical Link |
 |---|---|---|---|---|
-| 69110 | OpenAI | Developer | 6911 | [Open](69110.md) |
-| 691100 | ChatGPT | AI | 69110 | [Open](691100.md) |
-| 69111 | Anthropic | Developer | 6911 | [Open](69111.md) |
-| 691110 | Claude | AI | 69111 | [Open](691110.md) |
-| 69112 | xAI | Developer | 6911 | [Open](69112.md) |
-| 691120 | Grok | AI | 69112 | [Open](691120.md) |
-| 69113 | Google DeepMind | Developer | 6911 | [Open](69113.md) |
-| 691130 | Gemini | AI | 69113 | [Open](691130.md) |
-| 691131 | NotebookLM | AI | 69113 | [Open](691131.md) |
-| 69114 | Meta AI | Developer | 6911 | [Open](69114.md) |
-| 691140 | Meta AI | AI | 69114 | [Open](691140.md) |
-| 69115 | Microsoft AI | Developer | 6911 | [Open](69115.md) |
-| 691150 | Microsoft Copilot | AI | 69115 | [Open](691150.md) |
-| 69116 | Perplexity AI | Developer | 6911 | [Open](69116.md) |
-| 691160 | Perplexity AI | AI | 69116 | [Open](691160.md) |
-| 69117 | Groq | Developer | 6911 | [Open](69117.md) |
-| 691170 | Groq | AI | 69117 | [Open](691170.md) |
-| 69118 | CoreWeave | Developer | 6911 | [Open](69118.md) |
-| 69119 | Apple | Developer | 6911 | [Open](69119.md) |
+| 69110 | Developer & Platform Directory | Directory / expansion | 6911 | [Open](69110.md) |
+| 69111 | Amazon | Developer | 6911 | [Open](69111.md) |
+| 69112 | Anthropic | Developer | 6911 | [Open](69112.md) |
+| 69113 | Apple | Developer | 6911 | [Open](69113.md) |
+| 69114 | Google DeepMind | Developer | 6911 | [Open](69114.md) |
+| 69115 | Meta | Developer | 6911 | [Open](69115.md) |
+| 69116 | Microsoft | Developer | 6911 | [Open](69116.md) |
+| 69117 | NVIDIA | Developer | 6911 | [Open](69117.md) |
+| 69118 | OpenAI | Developer | 6911 | [Open](69118.md) |
+| 69119 | xAI | Developer | 6911 | [Open](69119.md) |
+
+### Legacy AI child migration set — Review Required
+
+The following existing AI profile files were created under the superseded Developer allocation. They remain traceable evidence, but their current parent/ID disposition must not be inferred automatically from the legacy numeric prefix.
+
+| Legacy AI ID | AI | Legacy recorded parent | Migration disposition |
+|---|---|---|---|
+| 691100 | ChatGPT | 69110 | REMAP_REQUIRED / GOVERNANCE_DECISION |
+| 691110 | Claude | 69111 | REMAP_REQUIRED / GOVERNANCE_DECISION |
+| 691120 | Grok | 69112 | REMAP_REQUIRED / GOVERNANCE_DECISION |
+| 691130 | Gemini | 69113 | REMAP_REQUIRED / GOVERNANCE_DECISION |
+| 691131 | NotebookLM | 69113 | REMAP_REQUIRED / GOVERNANCE_DECISION |
+| 691140 | Meta AI | 69114 | REMAP_REQUIRED / GOVERNANCE_DECISION |
+| 691150 | Microsoft Copilot | 69115 | REMAP_REQUIRED / GOVERNANCE_DECISION |
+| 691160 | Perplexity AI | 69116 | REMAP_REQUIRED / EVIDENCE_REQUIRED |
+| 691170 | Groq | 69117 | REMAP_REQUIRED / EVIDENCE_REQUIRED |
+
+**Safety rule:** do not change or silently reinterpret any legacy AI Canonical ID/Canonical Link. #61 must record the evidence-backed disposition, and Human Governance decides any actual remap/new allocation.
 
 ## 2 • Việt Nam — confirmed locked records
 
@@ -62,7 +73,7 @@
 
 - `698461` is the current locked Canonical ID for VietLinker AI.
 - `698461` must **not** be marked Migration Required and must not be reassigned.
-- `69119` belongs to Apple and must not be used for VietLinker.
+- Không dùng US legacy allocation để suy luận hoặc tái sử dụng ID cho Việt Nam.
 - The earlier A–Z table that assigned `69841–69848` directly to AIHay/CMC/FPT/Phenikaa/Viettel/VinAI/VNPT/Zalo is superseded for this registry because it conflicts with locked SoT records such as `698411 = FPT AI`, `698412 = Viettel AI`, `698413 = VNPT AI`, `698414 = CMC AI`, and `698461 = VietLinker AI`.
 - Any additional Vietnam developer or AI allocation must be added only after matching the current Notion SoT and Human Governance decision; do not infer missing IDs from numeric gaps.
 
@@ -79,9 +90,10 @@
 ## 4 • Change Record
 
 - 2026-07-30: hợp nhất namespace đang hoạt động vào kiến trúc 69.
-- 2026-08-05: sửa xung đột 69119; `69119 = Apple` và `VietLinker AI = 698461`.
+- 2026-08-05: sửa xung đột legacy US/Vietnam; các tham chiếu lịch sử được giữ để migration review, không dùng làm authority hiện hành.
 - 2026-08-05: bổ sung Canonical AI Profiles và liên kết trực tiếp cho danh sách AI cộng tác.
 - 2026-08-06: các trang SoT khóa `698411 = FPT AI`, `698412 = Viettel AI`, `698413 = VNPT AI`, `698414 = CMC AI`; hồ sơ VietLinker xác nhận Parent `69846 = Community` và `698461` locked.
 - 2026-08-08: loại bỏ allocation A–Z mâu thuẫn khỏi Registry công khai và đồng bộ lại các record đã có bằng chứng SoT.
+- 2026-08-09: review branch reconciles US Developer allocation to the current Canonical Locked profiles and quarantines legacy AI-child mappings pending #61/Human Governance disposition.
 
 **Only Plus+ For Life**
