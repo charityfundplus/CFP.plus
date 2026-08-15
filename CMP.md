@@ -117,6 +117,8 @@ Sản phẩm AI mới được bổ sung bên trong Collaboration Entry hiện c
 ## 9. Bộ tài liệu CMP công khai
 
 - [Tổng quan CMP](cmp/OVERVIEW.md)
+- [CMP Automated Review Protocol v1.0](docs/CMP_AUTOMATED_REVIEW_PROTOCOL.md)
+- [Cổng CMP Review trên CFP.plus](https://cfp.plus/cmp-review)
 - [Baseline CMP Orchestrator v2.0](cmp/CMP-ORCHESTRATOR-BASELINE-v2.0.md)
 - [Mẫu Work Order](cmp/WORK-ORDER-TEMPLATE.md)
 - [Mẫu Evidence Package](cmp/EVIDENCE-PACKAGE-TEMPLATE.md)

@@ -1,0 +1,80 @@
+name: CMP Automated Review
+description: Gửi Review Record theo chuẩn Finding → Evidence → Recommendation → Closure Criteria
+title: "[CMP Review] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Dùng biểu mẫu này để review Website, Canonical ID, tài liệu hoặc evidence CFP+.
+        AI không tự Governance Approve, Canonical Lock hoặc đổi Canonical ID.
+  - type: input
+    id: target
+    attributes:
+      label: Canonical ID hoặc URL
+      placeholder: https://cfp.plus/69
+    validations:
+      required: true
+  - type: input
+    id: source_version
+    attributes:
+      label: Phiên bản nguồn
+      description: Build, commit, revision hoặc thời điểm truy cập
+    validations:
+      required: true
+  - type: dropdown
+    id: access_status
+    attributes:
+      label: Trạng thái truy cập
+      options:
+        - VERIFIED
+        - PARTIAL
+        - BLOCKED
+    validations:
+      required: true
+  - type: dropdown
+    id: conclusion
+    attributes:
+      label: Kết luận
+      options:
+        - PASS
+        - PASS WITH CHANGES
+        - REVIEW DEFERRED • EVIDENCE GAP
+        - FAIL
+    validations:
+      required: true
+  - type: textarea
+    id: finding
+    attributes:
+      label: Finding
+      description: Mô tả phát hiện cụ thể
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Nguồn, vị trí, phiên bản và thời điểm xác minh
+    validations:
+      required: true
+  - type: textarea
+    id: recommendation
+    attributes:
+      label: Recommendation
+      description: Kiến nghị xử lý
+    validations:
+      required: true
+  - type: textarea
+    id: closure
+    attributes:
+      label: Closure Criteria
+      description: Điều kiện có thể kiểm tra để đóng finding
+    validations:
+      required: true
+  - type: checkboxes
+    id: authority
+    attributes:
+      label: Ranh giới thẩm quyền
+      options:
+        - label: Tôi xác nhận review này không tự Governance Approve, Canonical Lock hoặc đổi Canonical ID.
+          required: true

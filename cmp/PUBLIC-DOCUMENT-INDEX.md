@@ -12,6 +12,8 @@ Danh mục này cung cấp quyền truy cập công khai tới kiến trúc CMP,
 ## Các tài liệu vận hành hiện có trên GitHub
 
 - [Tổng quan CMP](OVERVIEW.md)
+- [CMP Automated Review Protocol v1.0](../docs/CMP_AUTOMATED_REVIEW_PROTOCOL.md)
+- [Cổng CMP Review trên CFP.plus](https://cfp.plus/cmp-review)
 - [Baseline CMP Orchestrator v2.0](CMP-ORCHESTRATOR-BASELINE-v2.0.md)
 - [Mẫu Work Order](WORK-ORDER-TEMPLATE.md)
 - [Mẫu Evidence Package](EVIDENCE-PACKAGE-TEMPLATE.md)
