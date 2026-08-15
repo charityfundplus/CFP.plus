@@ -55,11 +55,11 @@
 ## 5 • Chế độ phục hồi hiện tại
 
 1. Đóng băng mọi thay đổi Canonical ID và Canonical Link.
-2. Giữ Website ở trạng thái Public Preview.
+2. Website CFP.plus đã phát hành chính thức; các nội dung Working Draft vẫn giữ đúng trạng thái và không được suy diễn thành Canonical Lock.
 3. Kết quả Notion AI lập danh sách AI theo từng nhà phát triển được tiếp nhận là **Working Draft • Pending Review**.
 4. Không dùng tài liệu Global AI Developer & System Integration Registry làm chuẩn Canonical khi chưa đồng bộ.
 5. Đối chiếu riêng nhánh Hoa Kỳ 6911 và Việt Nam 6984 trước khi sửa Website.
-6. Bổ sung `robots.txt`, `sitemap.xml` và manifest dữ liệu cho Website.
+6. Duy trì `robots.txt`, `sitemap.xml`, `llms.txt`, AI manifest và CMP Automated Review Protocol cho Website.
 7. Không để gián đoạn ChatGPT Work ngăn Notion, GitHub, Drive hoặc Website tiếp tục đọc chuẩn đã công bố.
 
 ## 6 • Điểm vào
@@ -68,6 +68,8 @@
 2. [Google Drive • CFP SYNC 001](https://docs.google.com/document/d/1WKyzYq6qnz1r8gGZeHvfCfYeBUfzPjfMyyMf7zPV3Zk/edit)
 3. [GitHub • CFP.plus](https://github.com/charityfundplus/CFP.plus)
 4. [Website • CFP+](https://cfp.plus)
+5. [CMP Automated Review](https://cfp.plus/cmp-review)
+6. [AI Manifest](https://cfp.plus/ai/manifest.json)
 
 ## 7 • Review Rule
 
