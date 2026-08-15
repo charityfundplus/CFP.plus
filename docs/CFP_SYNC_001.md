@@ -70,6 +70,8 @@
 4. [Website • CFP+](https://cfp.plus)
 5. [CMP Automated Review](https://cfp.plus/cmp-review)
 6. [AI Manifest](https://cfp.plus/ai/manifest.json)
+7. [Notion • CMP Automated Review Protocol](https://app.notion.com/p/3bdcaac9a557811382a7d3539e09779c)
+8. [Google Docs • CMP Automated Review Protocol](https://docs.google.com/document/d/15uSZwzz3-PaLbSUgIlQIckmCvhyDOKmX4blKx65JrNU)
 
 ## 7 • Review Rule
 
