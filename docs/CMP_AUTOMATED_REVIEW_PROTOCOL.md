@@ -19,6 +19,8 @@ Review tự động được phép. Phê duyệt tự động, Canonical Lock t�
 5. GitHub Issues: https://github.com/charityfundplus/CFP.plus/issues
 6. Notion HUB 69: https://app.notion.com/p/3b9caac9a55781538005c5d1d863d43b
 7. Google Drive Sync Control: https://docs.google.com/document/d/1WKyzYq6qnz1r8gGZeHvfCfYeBUfzPjfMyyMf7zPV3Zk/edit
+8. Notion Protocol: https://app.notion.com/p/3bdcaac9a557811382a7d3539e09779c
+9. Google Docs Protocol: https://docs.google.com/document/d/15uSZwzz3-PaLbSUgIlQIckmCvhyDOKmX4blKx65JrNU
 
 ## 3 • Đầu vào tối thiểu
 
