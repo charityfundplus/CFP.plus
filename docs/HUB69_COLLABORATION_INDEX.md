@@ -1,71 +1,51 @@
-# HUB 69 • Review & Collaboration Index
+# HUB 69 • Vận hành & Đồng bộ (Working)
 
-**Status:** REVIEW CANDIDATE • COLLABORATION READY  
-**Model:** Một Nội Dung Gốc • Ba Bản Gốc Đồng Bộ  
-**Purpose:** Public/collaboration reference for Con Người and AI 🤖. This file does **not** create, change, reuse, or lock any Canonical ID/Link and does not constitute Governance Approval.
+## Cộng tác đa nền tảng (Working)
 
-## Đồng bộ ba nền tảng
-
-Mỗi tài liệu được công bố phải có **toàn văn cùng một phiên bản gốc** tại Notion, GitHub và Google Drive. Không nền tảng nào chỉ giữ bản tóm tắt thay cho nội dung gốc.
+HUB 69 áp dụng nguyên tắc **Một Nội Dung Gốc • Ba Bản Gốc Đồng Bộ**. Notion, GitHub và Google Drive đều phải chứa **toàn văn cùng một phiên bản gốc** của mỗi tài liệu được công bố để Con Người và AI 🤖 có thể đọc, soi chiếu và review trực tiếp ở bất kỳ nền tảng nào.
 
 - **Notion:** bản gốc làm việc và điều phối SoT.
-- **GitHub:** bản gốc công khai/AI-readable.
-- **Google Drive:** bản gốc cộng tác.
+- **GitHub:** bản gốc công khai/AI-readable, nội dung phải tương đương với Notion.
+- **Google Drive:** bản gốc cộng tác, nội dung phải tương đương với Notion và GitHub.
 
-### Quy tắc chỉnh sửa
+### Chuẩn Canonical (Domain + Link)
 
-Nếu một nội dung hợp lệ được chỉnh sửa tại **bất kỳ một trong ba nơi**, CMP phải coi đó là một **Sync Event**: xác định tài liệu, version/thời điểm sửa, đối chiếu nội dung và cập nhật cùng thay đổi sang **hai nền tảng còn lại**. Chỉ khi ba bản khớp nhau mới được đánh dấu **SYNCED / CURRENT**.
+- **Canonical Public Identity:** `cfp.plus`
+- **Canonical Link format duy nhất:** `https://cfp.plus/{ID}`
+- `www.cfp.plus`: technical host/redirect (nếu hạ tầng cần)
+- `cfp.notion.site`: publishing/staging/fallback, **NON-CANONICAL**
+- Notion workspace/pages: **Working Source of Truth (SoT)**
 
-Nếu có hai chỉnh sửa đồng thời, khác nhau hoặc xung đột, CMP **không tự ghi đè**. Phải giữ nguyên cả hai bằng chứng, đánh dấu **SYNC CONFLICT / REVIEW REQUIRED**, chuyển reviewer và Human Governance khi cần.
+### Quy tắc đồng bộ chỉnh sửa
 
-Metadata kỹ thuật như Source Link, Version, Sync Timestamp, Commit SHA hoặc Revision ID có thể khác nhau nhưng **nội dung gốc phải thống nhất**.
+Nếu một nội dung hợp lệ được chỉnh sửa tại **bất kỳ một trong ba nơi**, CMP phải coi đó là một **Sync Event**: xác định tài liệu, version/thời điểm sửa, đối chiếu nội dung, rồi cập nhật cùng thay đổi sang **hai nền tảng còn lại**. Chỉ khi ba bản khớp nhau mới được đánh dấu **SYNCED / CURRENT**.
 
-## Primary links
+Nếu có hai chỉnh sửa đồng thời, khác nhau hoặc xung đột, CMP **không tự ghi đè**. Phải giữ nguyên cả hai bằng chứng, đánh dấu **SYNC CONFLICT / REVIEW REQUIRED**, chuyển cho reviewer và Human Governance khi cần.
 
-- **HUB 69 • Cổng Duy Nhất CFP+ • Chuẩn hiện hành**  
-  https://app.notion.com/p/3b9caac9a55781538005c5d1d863d43b
-- **000 • Cửa ngõ CFP+**  
-  https://app.notion.com/p/3b9caac9a5578190b806ed9b2d56c4d9
-- **CMP • Điều phối CFP+**  
-  https://app.notion.com/p/3b9caac9a5578173a03fffc5ed3327c0
+Không nền tảng nào chỉ giữ bản tóm tắt thay cho nội dung gốc. Metadata kỹ thuật như Source Link, Version, Sync Timestamp, Commit SHA hoặc Revision ID có thể khác nhau nhưng **nội dung gốc phải thống nhất**. Các bản không tự tạo Governance Approval.
 
-## Hiến pháp & Hiến chương CFP+
+- [GitHub • HUB 69 Review & Collaboration Index](https://github.com/charityfundplus/CFP.plus/blob/main/docs/HUB69_COLLABORATION_INDEX.md)
+- [Google Drive • CFP+ HUB 69 • Collaboration Workspace](https://drive.google.com/drive/folders/1JxTGabFVepUW22TwyyeUEV0ZBCpszr9Z)
+- [Google Doc • HUB 69 • Review & Collaboration Index](https://docs.google.com/document/d/1FLleiyL76hZMi2V1-6pKxsw-JRhifsmGeNvitQuUn2U/edit)
 
-- **Hiến pháp Vận hành CFP+** — nền tảng vận hành toàn hệ.  
-  https://app.notion.com/p/36ccaac9a5578012bd04c2d4c1e8fc77
-- **Hiến chương Lập hiến CFP+ v1.0** — nền tảng lập hiến và nguyên tắc gốc.  
-  https://app.notion.com/p/369caac9a55780478ab5c01094e3abe8
-- **95 Điều Hiến chương Lập hiến CFP+ v1.1** — phiên bản chi tiết hóa 95 điều.  
-  https://app.notion.com/p/369caac9a5578002bbe6d6a7c17b174c
-- **Hiến pháp 3 Quỹ toàn hệ CFP+** — nền tảng hiến định cho cấu trúc Ba Quỹ.  
-  https://app.notion.com/p/377caac9a55780dab5ceca913393cd70
-- **Hiến chương Sự Sống CFP+** — nền tảng Chương 1 về Sự Sống.  
-  https://app.notion.com/p/386caac9a55780dbb113f3b96d937591
-- **Hiến chương Con Người CFP+** — nền tảng Chương 2 về Con Người.  
-  https://app.notion.com/p/386caac9a5578056aa0ff42c166c90fa
-- **Hiến pháp Công Nghệ CFP+** — nguyên tắc cho AI, công nghệ và hệ thống kỹ thuật.  
-  https://app.notion.com/p/373caac9a5578058bc69f21a1ba660fe
-- **Hiến pháp Kinh tế CFP+** — nguyên tắc kinh tế và giá trị phục vụ Sự Sống.  
-  https://app.notion.com/p/373caac9a557806b87e9fbf099cdb2d7
-- **Hiến chương Vận hành CFP+** — hướng dẫn vận hành thực tế.  
-  https://app.notion.com/p/373caac9a557805bbfc7ff244a50acec
-- **Hiến chương Di sản CFP+** — nguyên tắc bảo tồn và chuyển giao giá trị lâu dài.  
-  https://app.notion.com/p/362caac9a557800b97c1eca59dab9cd4
-- **Hiến chương Logo CFP+** — ý nghĩa và chuẩn nhận diện Logo CFP+.  
-  https://app.notion.com/p/387caac9a557803685effb9d9aab5e96
+**Review rule:** Finding → Evidence → Recommendation → Closure Criteria. Nội dung chưa đủ bằng chứng ghi **PENDING EVIDENCE**; không tự đổi, tái sử dụng hoặc khóa Canonical ID/Link.
 
-## Collaboration rules
+## Publication Flow • AI Developer evidence-complete
 
-1. Review theo `Finding → Evidence → Recommendation → Closure Criteria`.
-2. Nội dung chưa đủ bằng chứng ghi `PENDING EVIDENCE`.
-3. Không tự đổi, tái sử dụng hoặc khóa Canonical ID/Link.
-4. Không tự Governance Approve.
-5. Mọi chỉnh sửa hợp lệ ở Notion/GitHub/Drive phải đồng bộ sang hai nơi còn lại.
-6. Khi có xung đột, giữ nguyên bằng chứng và chuyển CMP xử lý.
+- **Thailand → iApp Technology → Chinda LLM / ChindaMT / ChindaTTS** đã đạt minimal-profile evidence gate và được đẩy vào Chương 6 để review/publication. [Chương 6 • AI và Công Nghệ](https://app.notion.com/p/3b9caac9a557812b9d5dd58727edd9f7) • [Official evidence](https://open.iapp.co.th/) • [Chinda](https://chinda.iapp.co.th/). API capability có bằng chứng nhưng CFP+ E2E activation chưa thực hiện; giữ **Automation (Unverified) / CMP READY — TEST REQUIRED**. Không có Canonical ID/Link mutation hoặc Governance Approval.
 
-## Workspace
+- **South Korea → NAVER → HyperCLOVA X** đã đạt minimal-profile evidence gate và đã được đẩy vào Chương 6 để review/publication. [Chương 6 • AI và Công Nghệ](https://app.notion.com/p/3b9caac9a557812b9d5dd58727edd9f7) • [NAVER working profile](https://app.notion.com/p/638f43a5a4974dbfa67abc4aa0f315a7) • [Official evidence](https://www.navercorp.com/en/tech/hyperclovax). Không có Canonical ID/Link mutation hoặc Governance Approval.
 
-- **Google Drive • CFP+ HUB 69 • Collaboration Workspace**  
-  https://drive.google.com/drive/folders/1JxTGabFVepUW22TwyyeUEV0ZBCpszr9Z
-- **Google Doc • HUB 69 • Review & Collaboration Index**  
-  https://docs.google.com/document/d/1FLleiyL76hZMi2V1-6pKxsw-JRhifsmGeNvitQuUn2U/edit
+- [HUB 69 Universal Master Template • v1.0 (Draft)](https://app.notion.com/p/19bc113a05654b19adb2a609506a8ace)
+- [CFP SYNC 001 • Trung Tâm Đồng Bộ Đa Nền Tảng • Recovery Candidate](https://app.notion.com/p/3bdcaac9a55781bfbcf9e55124f33b2e)
+- [CMP Automated Review Protocol • v1.0 • Official](https://app.notion.com/p/3bdcaac9a557811382a7d3539e09779c)
+
+## Phát hành chính thức • CMP Automated Review v1.0
+
+- [Website CMP Review](https://cfp.plus/cmp-review)
+- [AI Manifest](https://cfp.plus/ai/manifest.json)
+- [GitHub Protocol](https://github.com/charityfundplus/CFP.plus/blob/main/docs/CMP_AUTOMATED_REVIEW_PROTOCOL.md)
+- [Google Docs Protocol](https://docs.google.com/document/d/15uSZwzz3-PaLbSUgIlQIckmCvhyDOKmX4blKx65JrNU)
+- [CMP Automated Review Protocol • v1.0 • Official](https://app.notion.com/p/3bdcaac9a557811382a7d3539e09779c)
+
+**Ranh giới:** Review tự động được phép. AI không tự Governance Approve, Canonical Lock, đổi Canonical ID hoặc xuất bản ngoài quy trình.
