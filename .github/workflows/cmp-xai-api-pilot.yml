@@ -1,6 +1,11 @@
 name: CMP xAI API Transport Pilot
 
 on:
+  push:
+    branches:
+      - review/cmp-xai-api-pilot
+    paths:
+      - ".github/workflows/cmp-xai-api-pilot.yml"
   workflow_dispatch:
     inputs:
       work_order_id:
@@ -25,9 +30,9 @@ jobs:
     timeout-minutes: 5
     env:
       XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
-      WORK_ORDER_ID: ${{ inputs.work_order_id }}
-      MODE: ${{ inputs.mode }}
-      XAI_MODEL: ${{ inputs.model }}
+      WORK_ORDER_ID: ${{ inputs.work_order_id || 'CMP-WO-XAI-API-PILOT-001' }}
+      MODE: ${{ inputs.mode || 'READ ONLY • RESPONSE ONLY' }}
+      XAI_MODEL: ${{ inputs.model || 'grok-4.5' }}
     steps:
       - name: Fail closed if xAI secret is missing
         shell: bash
