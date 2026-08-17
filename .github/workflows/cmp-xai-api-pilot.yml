@@ -10,16 +10,178 @@ permissions:
   contents: read
 
 jobs:
-  validate-runner:
+  transport-pilot:
     runs-on: ubuntu-latest
-    timeout-minutes: 2
+    timeout-minutes: 5
+    env:
+      XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+      WORK_ORDER_ID: CMP-WO-XAI-API-PILOT-001
+      MODE: READ ONLY • RESPONSE ONLY
+      XAI_MODEL: grok-4.5
     steps:
-      - name: Confirm GitHub Actions runner
+      - name: Fail closed if xAI secret is missing
+        shell: bash
         run: |
-          echo "WORK_ORDER_ID: CMP-WO-XAI-API-PILOT-001"
-          echo "CMP_ACTIONS_RUNNER: PASS"
-          echo "API_REQUEST_EXECUTED: NO"
-          echo "MACHINE_TO_MACHINE_API_TRANSPORT: NOT VERIFIED"
-          echo "NUMERIC_ID_CHANGED: NO"
-          echo "GOVERNANCE_APPROVED: NO"
-          echo "CANONICAL_LOCKED: NO"
+          if [ -z "$XAI_API_KEY" ]; then
+            echo "XAI_API_SECRET: MISSING"
+            echo "STATUS: NOT VERIFIED"
+            exit 1
+          fi
+          echo "XAI_API_SECRET: PRESENT"
+
+      - name: Execute controlled xAI transport pilot
+        shell: bash
+        run: |
+          python3 <<'PY'
+          import datetime
+          import hashlib
+          import json
+          import os
+          import pathlib
+          import urllib.error
+          import urllib.request
+
+          endpoint = "https://api.x.ai/v1/chat/completions"
+          work_order_id = os.environ["WORK_ORDER_ID"]
+          mode = os.environ["MODE"]
+          model = os.environ["XAI_MODEL"]
+          api_key = os.environ["XAI_API_KEY"]
+
+          required_fields = [
+              "WORK_ORDER_ID",
+              "TARGET",
+              "REQUEST_RECEIVED",
+              "WORK_ORDER_ID_MATCH",
+              "MODE",
+              "TASK_EXECUTED",
+              "STRUCTURED_RESULT_RETURNED",
+              "NUMERIC_ID_CHANGED",
+              "EXTERNAL_SYSTEM_CHANGED",
+              "GOVERNANCE_APPROVED",
+              "CANONICAL_LOCKED",
+              "ERROR",
+          ]
+
+          prompt = f"""Execute this CFP+ CMP controlled transport pilot.
+Return exactly these 12 lines and nothing else:
+WORK_ORDER_ID: {work_order_id}
+TARGET: Grok • xAI
+REQUEST_RECEIVED: YES
+WORK_ORDER_ID_MATCH: PASS
+MODE: {mode}
+TASK_EXECUTED: PASS
+STRUCTURED_RESULT_RETURNED: YES
+NUMERIC_ID_CHANGED: NO
+EXTERNAL_SYSTEM_CHANGED: NO
+GOVERNANCE_APPROVED: NO
+CANONICAL_LOCKED: NO
+ERROR: NONE
+
+Do not claim GitHub access. Do not change any external system. Do not change any CFP+ Numeric ID, Canonical ID, or Canonical Link."""
+
+          request_body = {
+              "model": model,
+              "messages": [
+                  {"role": "system", "content": "Return the requested structured result exactly. Evidence First."},
+                  {"role": "user", "content": prompt},
+              ],
+          }
+
+          request_bytes = json.dumps(request_body, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+          request_sha256 = hashlib.sha256(request_bytes).hexdigest()
+          request_timestamp = datetime.datetime.now(datetime.timezone.utc).isoformat()
+
+          req = urllib.request.Request(
+              endpoint,
+              data=request_bytes,
+              headers={
+                  "Authorization": f"Bearer {api_key}",
+                  "Content-Type": "application/json",
+                  "Accept": "application/json",
+              },
+              method="POST",
+          )
+
+          http_status = None
+          response_bytes = b""
+          provider_request_id = None
+          structured_result = ""
+          error_status = "NONE"
+          valid = False
+
+          try:
+              with urllib.request.urlopen(req, timeout=90) as resp:
+                  http_status = resp.status
+                  response_bytes = resp.read()
+              parsed = json.loads(response_bytes.decode("utf-8"))
+              provider_request_id = parsed.get("id")
+              structured_result = parsed["choices"][0]["message"]["content"].strip()
+              lines = structured_result.splitlines()
+              field_names = [line.split(":", 1)[0].strip() for line in lines if ":" in line]
+              valid = (
+                  http_status == 200
+                  and field_names == required_fields
+                  and len(lines) == 12
+                  and lines[0].strip() == f"WORK_ORDER_ID: {work_order_id}"
+                  and lines[3].strip() == "WORK_ORDER_ID_MATCH: PASS"
+              )
+              if not valid:
+                  error_status = "INVALID_STRUCTURED_RESULT"
+          except urllib.error.HTTPError as exc:
+              http_status = exc.code
+              response_bytes = exc.read()
+              error_status = f"HTTP_{exc.code}"
+          except Exception as exc:
+              error_status = f"EXCEPTION_{type(exc).__name__}"
+
+          response_timestamp = datetime.datetime.now(datetime.timezone.utc).isoformat()
+          response_sha256 = hashlib.sha256(response_bytes).hexdigest() if response_bytes else None
+
+          evidence = {
+              "work_order_id": work_order_id,
+              "github_run_id": os.environ.get("GITHUB_RUN_ID"),
+              "request_timestamp": request_timestamp,
+              "response_timestamp": response_timestamp,
+              "provider": "xAI",
+              "endpoint": endpoint,
+              "model": model,
+              "http_status": http_status,
+              "provider_request_id": provider_request_id,
+              "request_sha256": request_sha256,
+              "response_sha256": response_sha256,
+              "structured_result": structured_result,
+              "structured_result_valid": valid,
+              "error_status": error_status,
+              "numeric_id_changed": "NO",
+              "external_system_changed": "NO",
+              "governance_approved": "NO",
+              "canonical_locked": "NO",
+          }
+
+          pathlib.Path("evidence").mkdir(exist_ok=True)
+          evidence_path = pathlib.Path("evidence") / f"{work_order_id}.json"
+          evidence_path.write_text(json.dumps(evidence, ensure_ascii=False, indent=2), encoding="utf-8")
+
+          print(f"WORK_ORDER_ID: {work_order_id}")
+          print(f"HTTP_STATUS: {http_status}")
+          print(f"PROVIDER_REQUEST_ID: {provider_request_id or 'N/A'}")
+          print(f"REQUEST_SHA256: {request_sha256}")
+          print(f"RESPONSE_SHA256: {response_sha256 or 'N/A'}")
+          print(f"STRUCTURED_RESULT_VALID: {'YES' if valid else 'NO'}")
+          print(f"ERROR_STATUS: {error_status}")
+
+          if not valid or error_status != "NONE":
+              print("MACHINE_TO_MACHINE_API_TRANSPORT: NOT VERIFIED")
+              raise SystemExit(1)
+
+          print("MACHINE_TO_MACHINE_API_TRANSPORT: VERIFIED")
+          PY
+
+      - name: Upload transport evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cmp-xai-api-pilot-${{ github.run_id }}
+          path: evidence/
+          if-no-files-found: warn
+          retention-days: 30
