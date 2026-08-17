@@ -45,7 +45,7 @@ jobs:
           echo "XAI_API_SECRET: PRESENT"
 
       - name: Execute xAI API transport pilot and write evidence
-        shell: python
+        shell: python {0}
         run: |
           import datetime
           import hashlib
