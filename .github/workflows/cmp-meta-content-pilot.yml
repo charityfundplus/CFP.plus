@@ -1,0 +1,118 @@
+name: CMP Meta Content Pilot
+
+on:
+  workflow_dispatch:
+    inputs:
+      execution_id:
+        description: Execution ID
+        required: true
+        default: WO-META-WEB-CONTENT-001
+      chapter:
+        description: CFP+ chapter to write
+        required: true
+        default: '0'
+      model:
+        description: Meta Model API model identifier
+        required: true
+  repository_dispatch:
+    types: [cmp_meta_work_order]
+
+permissions:
+  contents: read
+
+jobs:
+  meta-content:
+    runs-on: ubuntu-latest
+    env:
+      EXECUTION_ID: ${{ inputs.execution_id || github.event.client_payload.execution_id || format('WO-META-{0}', github.run_id) }}
+      CHAPTER: ${{ inputs.chapter || github.event.client_payload.chapter || '0' }}
+      META_MODEL: ${{ inputs.model || github.event.client_payload.model || vars.META_MODEL }}
+      META_BASE_URL: ${{ vars.META_BASE_URL }}
+    steps:
+      - name: Validate configuration
+        env:
+          META_API_KEY: ${{ secrets.META_API_KEY }}
+        run: |
+          test -n "${META_API_KEY}"
+          test -n "${META_BASE_URL}"
+          test -n "${META_MODEL}"
+
+      - name: Build CMP work order prompt
+        run: |
+          cat > prompt.txt <<'EOF'
+          Bạn là AI Content Writer cho CFP+ theo Work Order WO-META-WEB-CONTENT-001.
+
+          Viết nội dung Website CFP+ tiếng Việt cho Chương được giao theo cơ chế từng Chương hoàn thành rồi trả CMP review.
+
+          Mỗi ID phải có: Canonical ID; Tên bài; Câu hỏi chính; Câu hỏi phụ; Nội dung Website; Thông điệp Vì Sự Sống; Evidence/nguồn cần kiểm chứng; Parent mapping; Review status.
+
+          Guardrails: Không tự đổi ID; không renumber; không tự tạo Canonical ID mới; không Governance Approve; không Canonical Lock; thiếu bằng chứng ghi EVIDENCE REQUIRED; trạng thái mặc định DRAFT / REVIEW CANDIDATE.
+          EOF
+          printf '\nChương được giao: %s\nExecution ID: %s\n' "$CHAPTER" "$EXECUTION_ID" >> prompt.txt
+
+      - name: Call Meta Model API
+        env:
+          META_API_KEY: ${{ secrets.META_API_KEY }}
+        run: |
+          python - <<'PY'
+          import json, os
+          prompt=open('prompt.txt', encoding='utf-8').read()
+          payload={
+            'model': os.environ['META_MODEL'],
+            'messages': [
+              {'role':'system','content':'Follow the CFP+ CMP work order exactly.'},
+              {'role':'user','content':prompt}
+            ]
+          }
+          open('meta-request.json','w',encoding='utf-8').write(json.dumps(payload,ensure_ascii=False))
+          PY
+          curl --fail-with-body --silent --show-error \
+            -H "Authorization: Bearer ${META_API_KEY}" \
+            -H 'Content-Type: application/json' \
+            -X POST \
+            "${META_BASE_URL%/}/chat/completions" \
+            --data @meta-request.json \
+            > meta-response.json
+
+      - name: Extract returned article package
+        run: |
+          python - <<'PY'
+          import json
+          d=json.load(open('meta-response.json',encoding='utf-8'))
+          choices=d.get('choices') or []
+          if not choices:
+              raise SystemExit('No choices returned by Meta Model API')
+          content=((choices[0].get('message') or {}).get('content'))
+          if not content:
+              raise SystemExit('No assistant content returned by Meta Model API')
+          open('meta-output.md','w',encoding='utf-8').write(content)
+          PY
+
+      - name: Build redacted evidence receipt
+        run: |
+          python - <<'PY'
+          import json, os, hashlib, datetime
+          output=open('meta-output.md','rb').read()
+          evidence={
+            'execution_id':os.environ['EXECUTION_ID'],
+            'chapter':os.environ['CHAPTER'],
+            'provider':'Meta Model API',
+            'model':os.environ['META_MODEL'],
+            'api_call':'PASS',
+            'response_extract':'PASS',
+            'output_sha256':hashlib.sha256(output).hexdigest(),
+            'timestamp':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            'governance_approved':False,
+            'canonical_locked':False,
+            'status':'REVIEW CANDIDATE • EVIDENCE REQUIRED'
+          }
+          open('cmp-meta-evidence.json','w',encoding='utf-8').write(json.dumps(evidence,indent=2,ensure_ascii=False))
+          PY
+
+      - name: Upload CMP evidence artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cmp-meta-content-evidence
+          path: |
+            meta-output.md
+            cmp-meta-evidence.json
