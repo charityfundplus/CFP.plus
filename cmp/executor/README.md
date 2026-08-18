@@ -10,54 +10,58 @@ Target Notion page: `3bfcaac9a557819e82b0e3ae2b07943e`
 Allowed anchor: `Integration Test Log`
 Challenge token: `2026-08-18-1218`
 
-## Runtime contract
+## Runtime
 
-The executor must perform, in order:
+The first executable runtime is a GitHub Actions workflow:
 
-`READ → AI CALL → WRITE → READ BACK → VERIFY → EVIDENCE → RETURN`
+`.github/workflows/cmp-gemini-notion-pilot.yml`
 
-Every stage uses one Execution ID.
+It performs:
 
-## Environment
+`READ → GEMINI API CALL → WRITE → READ BACK → VERIFY → EVIDENCE`
 
-Runtime secrets must be supplied by the deployment environment and must never be committed to this repository.
+Every stage uses one Execution ID supplied at workflow dispatch.
 
-Required runtime credentials:
+## Required GitHub Actions secrets
 
-- Notion integration credential with access to the locked pilot page.
-- Gemini API credential.
+Configure these once in the repository's Actions secrets:
+
+- `GEMINI_API_KEY`
+- `NOTION_TOKEN`
+
+Never place either credential in source files, issues, pull requests, logs, or Notion evidence records.
 
 ## Fail closed rules
 
-- Reject a target other than the locked pilot page during P0.
-- Reject a write outside the allowed anchor.
+- Target is locked to the WO-CH7 pilot page during P0.
+- Write is restricted to the `Integration Test Log` anchor.
 - Append only. No delete or full page replacement.
 - Stop if the challenge token cannot be read.
-- Do not claim PASS unless the exact write is found during read back.
-- Never store credentials in logs or evidence.
+- Do not claim PASS unless the exact execution receipt is found during read back.
+- Never store credentials in evidence artifacts.
 
 ## Evidence receipt
 
-A successful run must return:
+A successful run returns an uploaded artifact containing a redacted receipt with:
 
 - execution_id
 - target_page_id
-- anchor_block_id
 - appended_block_ids
 - read status
+- Gemini call status
 - write status
 - read_back status
 - exact-match result
-- timestamps
-- evidence hash if generated
+- timestamp
+- evidence hash
 
 ## Closure rule
 
-Until a real runtime produces physical Notion write and read-back evidence, status remains:
+Until a real workflow run produces physical Notion write and read-back evidence, status remains:
 
 `HUMAN MEDIATED • EVIDENCE REQUIRED`
 
-Only after a real end-to-end run may the pilot be considered for:
+After the real end-to-end run passes, the pilot may be considered for:
 
 `GEMINI ↔ CMP ↔ NOTION • READ/WRITE VERIFIED`
 
