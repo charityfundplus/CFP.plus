@@ -7,6 +7,8 @@ on:
         description: Execution ID
         required: true
         default: WO-CH7-MODE-B-PILOT
+  repository_dispatch:
+    types: [cmp_work_order]
 
 permissions:
   contents: read
@@ -18,6 +20,7 @@ jobs:
       TARGET_PAGE_ID: 3bfcaac9a557819e82b0e3ae2b07943e
       CHALLENGE_TOKEN: 2026-08-18-1218
       TEST_STRING: '[CFP+ TEST 2026-08-18] Direct Write Verified'
+      EXECUTION_ID: ${{ inputs.execution_id || github.event.client_payload.execution_id || format('WO-CH7-GH-{0}', github.run_id) }}
     steps:
       - name: Validate required secrets
         run: |
@@ -65,7 +68,6 @@ jobs:
       - name: Append execution receipt to Notion
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-          EXECUTION_ID: ${{ inputs.execution_id }}
         run: |
           ANCHOR_ID=$(cat anchor.txt)
           python - <<'PY' > notion-write.json
@@ -94,7 +96,6 @@ jobs:
       - name: Read back and verify
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-          EXECUTION_ID: ${{ inputs.execution_id }}
         run: |
           ANCHOR_ID=$(cat anchor.txt)
           curl --fail-with-body --silent --show-error \
@@ -107,8 +108,6 @@ jobs:
           grep -q "${TARGET_PAGE_ID}" notion-after.json
 
       - name: Build redacted evidence receipt
-        env:
-          EXECUTION_ID: ${{ inputs.execution_id }}
         run: |
           python - <<'PY'
           import json, os, hashlib, datetime
