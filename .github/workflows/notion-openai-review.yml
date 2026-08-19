@@ -1,0 +1,67 @@
+name: Notion OpenAI Review
+
+on:
+  workflow_dispatch:
+    inputs:
+      notion_page_id:
+        description: "Notion page ID to review"
+        required: true
+        default: "bcaf748f4ad6413da64672277628c9ce"
+        type: string
+      dry_run:
+        description: "Generate report without writing back to Notion"
+        required: true
+        default: true
+        type: boolean
+      model:
+        description: "OpenAI model"
+        required: true
+        default: "gpt-5-mini"
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: notion-openai-review-${{ inputs.notion_page_id }}
+  cancel-in-progress: false
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+      OPENAI_MODEL: ${{ inputs.model }}
+      NOTION_VERSION: "2026-03-11"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate secret availability
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${OPENAI_API_KEY:-}" || { echo "Missing OPENAI_API_KEY secret"; exit 1; }
+          test -n "${NOTION_TOKEN:-}" || { echo "Missing NOTION_TOKEN secret"; exit 1; }
+
+      - name: Run independent review
+        shell: bash
+        run: |
+          set -euo pipefail
+          ARGS=(--page-id "${{ inputs.notion_page_id }}")
+          if [[ "${{ inputs.dry_run }}" == "true" ]]; then
+            ARGS+=(--dry-run)
+          fi
+          python3 scripts/notion_openai_review.py "${ARGS[@]}" | tee notion-openai-review.md
+
+      - name: Upload review evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: notion-openai-review-${{ github.run_id }}
+          path: notion-openai-review.md
+          if-no-files-found: warn
+          retention-days: 30
