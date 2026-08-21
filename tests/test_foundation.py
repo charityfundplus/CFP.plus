@@ -41,9 +41,10 @@ def test_created_at_is_timezone_aware_utc():
     assert created_at.utcoffset().total_seconds() == 0
 
 
-def test_gemini_adapter_has_no_simulated_success_path():
+def test_gemini_adapter_fails_closed_without_api_key(monkeypatch):
+    monkeypatch.delenv("GEMINI_API_KEY", raising=False)
     adapter = GeminiProviderAdapter(model_name="gemini-mvt", config={})
     normalized = adapter.normalize_request({"prompt": "ping"})
 
-    with pytest.raises(NotImplementedError, match="TECHNICAL INTEGRATION VERIFIED: NO"):
+    with pytest.raises(RuntimeError, match="TECHNICAL INTEGRATION VERIFIED: NO"):
         adapter.execute(normalized)
