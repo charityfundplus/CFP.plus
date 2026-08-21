@@ -1,0 +1,35 @@
+name: P0 Backend Foundation Tests
+
+on:
+  pull_request:
+    paths:
+      - "app/**"
+      - "tests/**"
+      - "pyproject.toml"
+      - ".github/workflows/p0-backend-tests.yml"
+  push:
+    branches:
+      - "p0/cmp-backend-foundation"
+    paths:
+      - "app/**"
+      - "tests/**"
+      - "pyproject.toml"
+      - ".github/workflows/p0-backend-tests.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+      - name: Install P0 dependencies
+        run: python -m pip install -e '.[test]'
+      - name: Run unit tests
+        run: python -m pytest -q
