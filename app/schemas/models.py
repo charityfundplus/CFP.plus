@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 from enum import Enum
 from typing import Any, Dict, List, Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class WorkOrderStatus(str, Enum):
@@ -33,6 +33,8 @@ class ExecutionEvent(BaseModel):
 
 
 class WorkOrderCreateRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
     work_order_id: str
     provider: str
     model: str
