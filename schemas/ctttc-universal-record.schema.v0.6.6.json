@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cfp.plus/schemas/ctttc-universal-record.v0.6.6.json",
+  "title": "CTTTCUniversalRecordV066",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["ingestion_id","day_key","temporal_position","temporal_class","event_status","title","summary","country","domain","scale","source_origin","evidence","evidence_status","discovered_at","integrated_at"],
+  "properties": {
+    "ingestion_id": {"type":"string"},
+    "canonical_record_id": {"type":["string","null"]},
+    "day_key": {"type":"string","pattern":"^(01-(0[1-9]|[12][0-9]|3[01])|02-(0[1-9]|[12][0-9])|03-(0[1-9]|[12][0-9]|3[01])|04-(0[1-9]|[12][0-9]|30)|05-(0[1-9]|[12][0-9]|3[01])|06-(0[1-9]|[12][0-9]|30)|07-(0[1-9]|[12][0-9]|3[01])|08-(0[1-9]|[12][0-9]|3[01])|09-(0[1-9]|[12][0-9]|30)|10-(0[1-9]|[12][0-9]|3[01])|11-(0[1-9]|[12][0-9]|30)|12-(0[1-9]|[12][0-9]|3[01]))$"},
+    "temporal_position": {
+      "type":"object","additionalProperties":false,
+      "required":["numeric_value","era","precision","calendar_type","is_leap_slot_mapping"],
+      "properties": {
+        "numeric_value":{"type":["integer","null"]},
+        "era":{"type":"string","enum":["CE","BCE","UNKNOWN"]},
+        "precision":{"type":"string","enum":["EXACT","APPROXIMATE","DECADE","CENTURY","RANGE","UNKNOWN"]},
+        "calendar_type":{"type":"string","enum":["Gregorian","Julian","Approximate","Unknown"]},
+        "is_leap_slot_mapping":{"type":"boolean"},
+        "actual_calendar_date":{"type":["string","null"],"pattern":"^\\d{4}-\\d{2}-\\d{2}$"},
+        "range_start":{"type":["string","null"]},
+        "range_end":{"type":["string","null"]},
+        "original_expression":{"type":["string","null"]}
+      }
+    },
+    "temporal_class":{"type":"string","enum":["PAST","PRESENT","FUTURE"]},
+    "event_status":{"type":"string","enum":["ARCHIVED","OBSERVING","ACTIVE","ARMED_COUNTDOWN","RUNNING","REACHED_TARGET","VERIFY_ACTUAL_OUTCOME","OCCURRED","CHANGED","DELAYED","CANCELLED","NOT_VERIFIED","PENDING"]},
+    "title":{"type":"string"},"summary":{"type":"string"},"country":{"type":"string"},"location":{"type":["string","null"]},"domain":{"type":"string"},"scale":{"type":"string"},"source_origin":{"type":"string"},
+    "exact_fingerprint":{"type":["string","null"],"pattern":"^[a-fA-F0-9]{64}$"},
+    "evidence":{"type":"array","items":{"$ref":"#/$defs/evidence"}},
+    "evidence_status":{"type":"string","enum":["Verified","Pending Evidence","Conflicting"]},
+    "discovered_at":{"type":"string","format":"date"},"integrated_at":{"type":"string","format":"date"},"historical_date":{"type":["string","null"]},
+    "geographic_scope":{"type":"object","additionalProperties":false,"properties":{"region":{"type":["string","null"]},"is_global":{"type":"boolean"},"coordinates":{"type":["array","null"],"prefixItems":[{"type":"number","minimum":-90,"maximum":90},{"type":"number","minimum":-180,"maximum":180}],"items":false,"minItems":2,"maxItems":2}}},
+    "future_metadata":{"type":"object","additionalProperties":false,"required":["original_target_datetime","current_target_datetime","countdown_enabled","countdown_status","future_confidence"],"properties":{
+      "original_target_datetime":{"type":"string","format":"date-time"},"current_target_datetime":{"type":"string","format":"date-time"},"countdown_enabled":{"type":"boolean"},"countdown_status":{"type":"string","enum":["RUNNING","REACHED_TARGET","PAUSED","STOPPED"]},"future_confidence":{"type":"string","enum":["CONFIRMED_FUTURE_EVENT","SCHEDULED","EXPECTED","FORECAST","PENDING_EVIDENCE"]},"future_source":{"type":["string","null"]},"reached_target_at":{"type":["string","null"],"format":"date-time"},"actual_outcome_status":{"type":["string","null"],"enum":[null,"OCCURRED","CHANGED","DELAYED","CANCELLED","NOT_VERIFIED"]},"actual_outcome_evidence":{"type":"array","items":{"$ref":"#/$defs/evidence"}},"schedule_history":{"type":"array","items":{"type":"object","additionalProperties":false,"required":["changed_at","previous_target","new_target","reason"],"properties":{"changed_at":{"type":"string","format":"date-time"},"previous_target":{"type":"string","format":"date-time"},"new_target":{"type":"string","format":"date-time"},"reason":{"type":"string"}}}}
+    }}
+  },
+  "$defs":{"evidence":{"type":"object","additionalProperties":false,"required":["evidence_id","source_url","content_hash","evidence_type","description","verified_at","verification_actor"],"properties":{"evidence_id":{"type":"string"},"source_url":{"type":"string","format":"uri"},"content_hash":{"type":"string","pattern":"^[a-fA-F0-9]{64}$"},"evidence_type":{"type":"string","enum":["Official Document","Media Report","Blockchain Hash","Direct Observation","Expert Analysis","Other"]},"description":{"type":"string"},"verified_at":{"type":"string","format":"date"},"verification_actor":{"type":"string"}}}},
+  "allOf":[
+    {"if":{"required":["temporal_class"],"properties":{"temporal_class":{"const":"FUTURE"}}},"then":{"required":["future_metadata"]}},
+    {"if":{"required":["evidence_status"],"properties":{"evidence_status":{"const":"Verified"}}},"then":{"properties":{"evidence":{"minItems":1}}}}
+  ],
+  "unevaluatedProperties": false
+}
