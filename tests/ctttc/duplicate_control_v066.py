@@ -1,4 +1,3 @@
-import re
 import unicodedata
 
 
@@ -6,8 +5,8 @@ def _normalize_text(value: str) -> str:
     text = unicodedata.normalize("NFKD", value or "")
     text = "".join(ch for ch in text if not unicodedata.combining(ch))
     text = text.casefold()
-    text = re.sub(r"[^a-z0-9]+", " ", text)
-    return " ".join(text.split())
+    normalized = "".join(ch if ch.isalnum() else " " for ch in text)
+    return " ".join(normalized.split())
 
 
 def _same_similarity_scope(left: dict, right: dict) -> bool:
