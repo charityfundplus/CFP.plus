@@ -1,17 +1,21 @@
 def is_gregorian_leap(year: int) -> bool:
     return year % 400 == 0 or (year % 4 == 0 and year % 100 != 0)
 
+
 def is_julian_leap(year: int) -> bool:
     return year % 4 == 0
+
 
 def _days_in_month(year: int, calendar_type: str):
     leap = is_julian_leap(year) if calendar_type == "Julian" else is_gregorian_leap(year)
     return [31, 29 if leap else 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
+
 def validate_calendar_date(year: int, month: int, day: int, calendar_type: str) -> bool:
     if month < 1 or month > 12 or day < 1:
         return False
     return day <= _days_in_month(year, calendar_type)[month - 1]
+
 
 def validate_calendar_and_cross_fields(record: dict):
     day_key = record.get("day_key")
@@ -49,13 +53,23 @@ def validate_calendar_and_cross_fields(record: dict):
             return False, f"Invalid {cal} calendar date."
 
     status = record.get("event_status")
+    temporal_class = record.get("temporal_class")
     meta = record.get("future_metadata")
-    outcome_states = {"OCCURRED","CHANGED","DELAYED","CANCELLED","NOT_VERIFIED"}
+    outcome_states = {"OCCURRED", "CHANGED", "DELAYED", "CANCELLED", "NOT_VERIFIED"}
+    final_outcome_states = {"OCCURRED", "CANCELLED", "NOT_VERIFIED"}
+
     if status in outcome_states:
         if not meta or meta.get("actual_outcome_status") != status:
             return False, "Outcome status must exist and match event_status."
         if status != "NOT_VERIFIED" and not meta.get("actual_outcome_evidence"):
             return False, "Final outcome requires actual_outcome_evidence."
+
+    # Final outcomes describe an event whose disposition is already known.
+    # They may not remain classified as FUTURE. CHANGED and DELAYED are
+    # intentionally excluded because their revised target may still be future.
+    if status in final_outcome_states and temporal_class == "FUTURE":
+        return False, "Final outcome state cannot remain temporal_class=FUTURE."
+
     if status == "RUNNING":
         if not meta or meta.get("countdown_enabled") is not True:
             return False, "RUNNING requires countdown_enabled=true."
