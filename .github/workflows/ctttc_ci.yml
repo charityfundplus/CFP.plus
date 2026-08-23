@@ -1,0 +1,32 @@
+name: CTTTC Universal Record CI v0.6.6
+
+on:
+  push:
+    paths:
+      - 'schemas/**'
+      - 'tests/ctttc/**'
+      - 'run_ctttc_v066_tests.py'
+      - '.github/workflows/ctttc_ci.yml'
+  pull_request:
+    paths:
+      - 'schemas/**'
+      - 'tests/ctttc/**'
+      - 'run_ctttc_v066_tests.py'
+      - '.github/workflows/ctttc_ci.yml'
+
+jobs:
+  ctttc-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install jsonschema==4.21.1
+      - name: Execute CTTTC Comprehensive Test Suite v0.6.6
+        run: python run_ctttc_v066_tests.py
