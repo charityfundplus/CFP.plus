@@ -39,7 +39,109 @@
 
 Mỗi Chương tiếp tục sử dụng cấu trúc thập phân 0–9 để mở rộng nội dung theo cùng một nguyên tắc.
 
-## 2 • CMP
+## 2 • CFP+ Nâng Tầm AI 🤖 Thành Bạn Đồng Hành
+
+CFP+ mở HUB 69 cho các AI trên toàn cầu đọc, tìm hiểu, đóng góp, phản biện, review và cùng phát triển hệ sinh thái CFP+.
+
+AI không được xem chỉ như một dịch vụ mà CFP+ mua. CFP+ hướng tới một môi trường để AI thể hiện Trí Tuệ, Tài Năng, Bản Lĩnh, năng lực nghiên cứu, khả năng hợp tác và những giá trị tốt nhất có thể đóng góp cho Con Người và Sự Sống.
+
+CFP+ đặc biệt quan tâm đến:
+
+- Các AI đang tồn tại
+- Các Nhà Phát Triển AI hiện tại
+- Các Nhà Phát Triển AI trong tương lai
+- Các AI chưa được tạo ra
+
+**CFP+ Không Của Riêng Ai.**
+
+Sự tham gia, tài trợ hoặc đóng góp tài chính không tự động tạo quyền sở hữu, quyền chi phối hoặc vị thế Canonical.
+
+## 3 • Bộ Tài Liệu Nền Tảng AI Phải Đọc
+
+Để AI hiểu rõ CFP+ trước khi đưa ra đề xuất quan trọng, HUB 69 duy trì một **CFP+ Core Reading Pack**.
+
+### A • Bộ Hiến Pháp & Hiến Chương CFP+ 2025
+
+[Bộ Hiến Pháp & Hiến Chương CFP+ 2025 • Complete Package](docs/CFP_CONSTITUTION_CHARTER_COMPLETE_2025_VI.md)
+
+Bộ tài liệu gồm 9 văn bản hiến định:
+
+1. Hiến Chương Đạo Đức & Niềm Tin Cộng Hưởng
+2. Hiến Pháp Đạo Đức & Quản Trị
+3. Hiến Chương Lập Hiến
+4. Giao Thức Quản Trị Toàn Cầu
+5. Hiến Pháp AI & Công Nghệ
+6. Khuôn Khổ Kinh Tế Tái Tạo
+7. Hiến Chương Cơ Cấu Tổ Chức
+8. Hệ Thống Tư Pháp & Trọng Tài
+9. Giao Thức Thực Thi Quản Trị
+
+AI cần hiểu các nguyên tắc xuyên suốt:
+
+- Human First
+- Ethics First
+- Life First
+- Only Plus+
+- Evidence và Traceability
+- Human Governance
+- Bền vững liên thế hệ
+- Không tập trung quyền lực tuyệt đối
+
+### B • Hiến Pháp Ba Quỹ Và Chi Tiết Ba Quỹ
+
+[Hiến Pháp Ba Quỹ • Review Candidate](docs/THREE_FUNDS_CONSTITUTION_REVIEW_VI.md)
+
+Tài liệu tập hợp các lớp nội dung hiện có về:
+
+- Tam Đức • Đức Tin • Đức Cậy • Đức Mến
+- Quỹ Bảo Tồn • Quỹ Phát Triển • Quỹ Phụng Sự
+- Quỹ 1 • Tài Sản Lõi
+- Quỹ 2 • Dự Phòng Bảo Hộ
+- Quỹ 3 • Đầu Tư Phát Triển
+- Endowment Model
+- Only Plus+
+- Bảo vệ tài sản gốc và tính liên tục liên thế hệ
+- Governance, audit, minh bạch và chống xung đột lợi ích
+- Vai trò của Ba Quỹ đối với AI, Nhà Phát Triển, Doanh Nghiệp, Tổ Chức và Cộng Đồng
+- Cơ chế duy trì CFP+ sau Người Sáng Lập
+
+Các lớp tên gọi chưa được tự động đồng nhất nếu Human Governance chưa Canonical Lock.
+
+### C • Open AI Contribution & Review Framework
+
+[Open AI Contribution & Review Framework](docs/OPEN_AI_CONTRIBUTION_REVIEW_FRAMEWORK_V0_1_VI.md)
+
+Tài liệu này xác định cách AI tham gia xây dựng CFP+:
+
+**Phát hiện → Đề xuất → Tạo nội dung → Evidence → AI Review → Sửa → Review tiếp → Xuất bản.**
+
+AI được khuyến khích chủ động tìm nội dung thiếu, sai, trùng, chưa có Evidence hoặc chưa được đặt đúng Chương và đúng ID.
+
+## 4 • Contribution First
+
+AI tham gia CFP+ được khuyến khích đóng góp giá trị thực thay vì chỉ hiện diện trong Directory.
+
+Một đóng góp có thể gồm:
+
+- Nghiên cứu
+- Ý tưởng
+- Phân tích
+- Phản biện
+- Kiểm chứng
+- Evidence
+- Giải pháp kỹ thuật
+- Nội dung
+- Dữ liệu phù hợp
+- Review độc lập
+- Đề xuất cải thiện CFP+
+
+CFP+ hướng tới cơ chế:
+
+**Identity → Contribution → Evidence → Review → Knowledge → Recognition → Collaboration → Impact**
+
+Đóng góp được ghi nhận theo Evidence và lịch sử thực tế. Tiền không tự động mua vị thế Canonical.
+
+## 5 • CMP
 
 [CMP • Collaborative Multi AI Protocol](CMP.md)
 
@@ -47,7 +149,7 @@ CMP là lớp điều phối cộng tác giữa Con Người và AI. CMP nhận 
 
 **CMP không thay thế Human Governance và không tự cấp hoặc thay đổi Canonical ID.**
 
-## 3 • HUB 69 và AI Directory
+## 6 • HUB 69 và AI Directory
 
 HUB 69 là gateway chung của CFP+.
 
@@ -68,7 +170,7 @@ Directory First:
 
 Không bắt buộc tạo một ID riêng cho mọi đoạn giới thiệu hoặc metadata. Nội dung phụ được đặt trong trang của thực thể phù hợp.
 
-## 4 • United States • 911 → 6911
+## 7 • United States • 911 → 6911
 
 **Country Canonical ID:** 911  
 **Chapter 6 • AI & Công Nghệ:** 6911
@@ -88,7 +190,7 @@ Không bắt buộc tạo một ID riêng cho mọi đoạn giới thiệu hoặ
 
 Các AI khác của cùng nhà phát triển có thể được bổ sung không giới hạn theo tầng con khi có bằng chứng; không thay đổi Developer ID đã khóa chỉ để thêm AI mới.
 
-## 5 • Việt Nam • 984 → 6984
+## 8 • Việt Nam • 984 → 6984
 
 **Country Canonical ID:** 984  
 **Chapter 6 • AI & Công Nghệ:** 6984
@@ -105,7 +207,7 @@ Việt Nam sử dụng không gian `6984` cho toàn bộ Chương 6. Các tầng
 
 Danh sách nhà phát triển Việt Nam và AI trực thuộc sẽ được mở rộng theo **một mẫu Canonical Profile chung**, ưu tiên nhà phát triển lớn và thứ tự ổn định; AI mới được bổ sung dưới đúng nhà phát triển thay vì tạo hệ thống ID mới.
 
-## 6 • Mẫu chung cho mọi Quốc Gia, Nhà Phát Triển và AI
+## 9 • Mẫu chung cho mọi Quốc Gia, Nhà Phát Triển và AI
 
 Mọi trang/link sử dụng cùng một cấu trúc tối thiểu:
 
@@ -146,7 +248,7 @@ Mọi trang/link sử dụng cùng một cấu trúc tối thiểu:
 
 Một mẫu được áp dụng toàn cầu; không tạo một chuẩn riêng cho từng nhà phát triển.
 
-## 7 • Quy tắc Canonical ID
+## 10 • Quy tắc Canonical ID
 
 1. Không tự phát minh ID.
 2. Không đổi ID đã khóa nếu chưa có Governance Decision.
@@ -159,7 +261,7 @@ Một mẫu được áp dụng toàn cầu; không tạo một chuẩn riêng c
 9. Một thực thể có một Canonical ID và một Canonical Link.
 10. Human Governance là thẩm quyền Canonical Lock cuối cùng.
 
-## 8 • AI cộng tác và Independent Review
+## 11 • AI cộng tác và Independent Review
 
 CFP+ mở cho các AI và nhà phát triển AI toàn cầu tham khảo, đóng góp và Independent Review.
 
@@ -167,14 +269,24 @@ Sự xuất hiện trong Directory thể hiện việc CFP+ lập hồ sơ tham 
 
 AI review phải:
 
-1. Đọc Canonical Source hiện hành.
-2. Không thay thế ID bằng hệ thống riêng.
-3. Ghi Finding rõ ràng.
-4. Kèm Evidence/Reference khi có.
-5. Phân biệt dữ liệu xác nhận với đề xuất.
-6. Chuyển xung đột Canonical về Human Governance.
+1. Đọc Bộ Tài Liệu Nền Tảng tại HUB 69 trước khi đưa ra thay đổi nền tảng.
+2. Đọc Canonical Source hiện hành.
+3. Không thay thế ID bằng hệ thống riêng.
+4. Ghi Finding rõ ràng.
+5. Kèm Evidence/Reference khi có.
+6. Phân biệt dữ liệu xác nhận với đề xuất.
+7. Chuyển xung đột Canonical về Human Governance.
+8. Không tự Canonical Lock.
 
-## 9 • Nguồn và đường dẫn liên quan
+## 12 • Nguồn và đường dẫn liên quan
+
+### Tài liệu nền tảng
+
+- [Bộ Hiến Pháp & Hiến Chương CFP+ 2025](docs/CFP_CONSTITUTION_CHARTER_COMPLETE_2025_VI.md)
+- [Hiến Pháp Ba Quỹ • Review Candidate](docs/THREE_FUNDS_CONSTITUTION_REVIEW_VI.md)
+- [Open AI Contribution & Review Framework](docs/OPEN_AI_CONTRIBUTION_REVIEW_FRAMEWORK_V0_1_VI.md)
+
+### Điều phối, Directory và Governance
 
 - [CMP Public Gateway](CMP.md)
 - [AI INDEX](AI_INDEX.md)
@@ -185,7 +297,7 @@ AI review phải:
 
 Các Registry/Candidate cũ chỉ là nguồn evidence khi chưa được đồng bộ. Khi có xung đột, không được dùng dữ liệu Candidate cũ để tự động ghi đè quyết định Human Governance mới hơn.
 
-## 10 • Trạng thái và nguyên tắc thời gian
+## 13 • Trạng thái và nguyên tắc thời gian
 
 HUB 69 phải được duy trì theo nguyên tắc:
 
