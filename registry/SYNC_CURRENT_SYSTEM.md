@@ -2,9 +2,29 @@
 
 Status: CURRENT WORKING SYNC
 
-## Scope
+## Official CFP+ Web Architecture
 
-This file is the compact synchronization manifest for HUB 69.
+The complete CFP+ Web is officially organized as 5 groups covering all 10 chapters.
+
+- `000` → Chương 0
+- `135` → Chương 1 • 3 • 5
+- `246` → Chương 2 • 4 • 6
+- `789` → Chương 7 • 8 • 9
+- `V D` → Internal validation and decision control. This is not a public numeric route group.
+
+The 5 groups and 10 chapters are the complete official CFP+ content structure.
+
+## Web Components
+
+HUB 69 is a core part of the CFP+ Web.
+
+Developer records and AI records are part of the CFP+ Web through Chương 6 and HUB 69.
+
+CTTTC is a core part of the CFP+ Web and must remain synchronized with the same publication and evidence rules.
+
+Primary public structure:
+
+`CFP+ Web → 5 Groups → 10 Chapters → HUB 69 / Developer / AI / CTTTC / supporting permanent routes`
 
 ## Single identity rule
 
@@ -18,7 +38,7 @@ Preserve all zeros in IDs. Do not renumber, reuse, transfer, or redirect an assi
 
 `CFP+ Website ↔ Notion ↔ GitHub ↔ Google ↔ MCP ↔ CMP`
 
-Each platform must point to the same entity, same CFP+ ID, and same Permanent Link.
+Each platform must point to the same entity, same CFP+ ID, same Permanent Link.
 
 ## Source order
 
@@ -42,6 +62,12 @@ Do not overwrite unresolved conflicts.
 - `registry/CFP_GLOBAL_AI_ID_LINK_MASTER_STANDARD.md`
 - `registry/GLOBAL_DEVELOPER_AI_LINK_COVERAGE_V1.md`
 - `PUBLIC_CURRENT_SYSTEM.md`
+
+## Operating priority • 2026-08-31
+
+Accelerate Web completion today in this order:
+
+`5 Groups / 10 Chapters → HUB 69 → Developer + AI coverage → CTTTC → Cross platform sync → Public URL verification`
 
 ## Operating loop
 
