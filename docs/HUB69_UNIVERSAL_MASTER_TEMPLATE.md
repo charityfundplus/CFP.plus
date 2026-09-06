@@ -1,167 +1,185 @@
-# HUB 69 Universal Master Template • v1.0 • Draft
+# HUB 69 Universal Master Template • Five-Repository • Review Candidate
 
 ## Mục tiêu
 
-Khuôn mẫu thống nhất để Notion, GitHub, Google Drive và Website CFP+ phản chiếu đúng một kiến trúc HUB 69, giữ nguyên Canonical ID và Canonical Link, đồng thời bảo đảm traceability, evidence và review.
+Một mẫu chung duy nhất để **Notion • GitHub • Google • Cloud Website • ChatGPT** cùng phản chiếu một identity CFP+ theo HUB 69, cùng Stable ID, cùng Parent, cùng metadata lõi và cùng Canonical Web URL.
 
-**Trạng thái:** DRAFT  
-**Governance Approved:** Chưa  
-**Canonical Locked:** Chưa
+**Architecture:** Five-Repository  
+**Architecture Decision:** KEEP  
+**Direction:** GO WITH FINDINGS  
+**Governance Approved:** NO  
+**Canonical Locked:** NO  
+**Production Release:** NO
 
-## 0 • Universal Short Links
+## 0 • Canonical Web Link
 
 1. HUB 69: https://cfp.plus/69
-2. Mọi đối tượng: https://cfp.plus/<CanonicalID>
-3. Một domain • Một dấu slash • Một Canonical ID là chuỗi số liền nhau.
-4. Không dùng /hub/ hoặc /69/ trung gian.
-5. Không dùng chữ, ký hiệu, tham số hoặc dấu slash cuối.
-6. ID bắt đầu bằng 0 thuộc Chương 0 hợp lệ.
-7. Không tái sử dụng ID hoặc Link.
+2. Mọi ID: `https://cfp.plus/{StableID}`
+3. Một Stable ID → một Canonical Web URL.
+4. Không nền tảng nào được tự tạo Canonical URL khác.
+5. Không đổi, reuse, remap hoặc renumber Stable ID.
+6. Chỉ ghi `LIVE` khi URL thật mở đúng nội dung.
 
-## 1 • Universal Architecture Tree
+## 1 • Five-Repository Architecture
 
-1. HUB 69
-2. Homepage
-3. Groups: V • 000 • 135 • 246 • 789
-4. Chapters: 0 đến 9
-5. Core Content: 00 đến 99
-6. AI Directory
-7. Countries
-8. Developers
-9. AI
-10. News
-11. Assets
-12. Evidence
-13. Reviews
-14. Releases
-15. Archive
+1. **Notion** — Editorial / Review Workspace.
+2. **GitHub** — Technical Registry / Version Registry.
+3. **Google** — Evidence / Archive / Collaboration.
+4. **Cloud Website** — Canonical Public Runtime.
+5. **ChatGPT** — AI Workspace / downstream mirror sau khi Cloud ổn định.
 
-## 2 • Invariants
+Tất cả 5 kho độc lập nhưng đồng bộ qua **HUB 69**.
 
-1. Một kiến trúc • Một hệ ID • Một cấu trúc nội dung • Nhiều nền tảng thực thi.
-2. Không nền tảng nào tự tạo kiến trúc, ID, tên hoặc trạng thái Canonical khác.
-3. Không dùng /group/0/.
-4. Không tạo bảng hoặc cây ID song song.
-5. HUB 69 là HUB duy nhất của CFP+.
+Publication flow:
 
-## 3 • Cả Ba Nơi Làm Một Website
+`Notion → GitHub → Google → Cloud Website → Stability Verification → ChatGPT Mirror`
 
-1. Notion làm nội dung, cấu trúc, Canonical ID, Canonical Link, inventory, Work Queue, review, Decision Queue và Governance Record.
-2. Google Drive làm hình ảnh, PDF, tài liệu cộng tác, evidence, review package, release package và bản chuyển giao cho Gemini.
-3. GitHub làm mã nguồn, routing, dữ liệu có cấu trúc, Pull Request, kiểm thử, build, deployment manifest và lịch sử kỹ thuật.
-4. Website CFP.plus là một sản phẩm công khai duy nhất được sinh từ bản đã đồng bộ.
-5. Không tạo ba Website riêng. Không nền tảng nào tự triển khai một phiên bản nội dung xung đột.
+## 2 • Universal Identity Fields
 
-## 4 • AI Chủ Nhà Và Quyền Làm Website
+Mọi hồ sơ trên cả 5 kho phải dùng cùng mẫu metadata:
 
-1. Notion AI lập Working Draft, danh sách Developer → AI, inventory, Finding và Work Queue. Không tự cấp ID, đổi Parent, Governance Approve hoặc Canonical Lock.
-2. Gemini đọc tài liệu Drive được chia sẻ, chuẩn bị nội dung và tài sản Website, review giao diện, đề xuất thay đổi. Không tự sửa ID hoặc xuất bản ngoài Pull Request đã duyệt.
-3. GitHub Copilot và Codex đọc kho, tạo nhánh, commit, Pull Request, kiểm thử và build. Không ghi thẳng vào main cho thay đổi Canonical.
-4. ChatGPT điều phối, hợp nhất kết quả, phát hiện drift, chuẩn hóa tiếng Việt và chuẩn bị Decision Package. Không trở thành Source of Truth duy nhất.
-5. Human Governance giữ quyền quyết định cuối cùng.
+- Title
+- Stable ID
+- Parent ID
+- HUB ID: `69`
+- Node Type
+- Group
+- Chapter
+- Language
+- Content Status
+- Review Status
+- Governance Status
+- Canonical Web URL: `https://cfp.plus/{StableID}`
+- Notion Page URL / ID
+- GitHub Path / Commit SHA
+- Google Drive URL / File ID / Revision
+- Cloud Route / Build SHA / Validation Evidence
+- ChatGPT Mirror Reference / Sync State
+- Content Hash
+- Evidence Link
+- Review Record
+- Governance Decision
+- Last Updated
+- Next Action
+- Sync State
 
-## 5 • Universal Lifecycle
+## 3 • Universal Page Template
 
-1. Draft
-2. Review Candidate
-3. Review Complete
-4. Governance Approved
-5. Canonical Locked
+### Identity
 
-AI không tự Governance Approve. AI không tự Canonical Lock. Artifact đã Locked chỉ mở lại bằng Governance Decision. Không sửa ngược lịch sử. Mọi thay đổi phải có traceability.
+**Title:**  
+**Stable ID:**  
+**Parent ID:**  
+**HUB ID:** `69`  
+**Canonical Web URL:** `https://cfp.plus/{StableID}`  
+**Node Type:**
 
-## 6 • Universal Data Fields
+### Placement
 
-1. Title
-2. Canonical ID
-3. Canonical Link
-4. Parent ID
-5. Node Type
-6. Chapter
-7. Group
-8. Language
-9. Status
-10. Version
-11. Owner
-12. Source of Truth
-13. Notion Page ID
-14. GitHub Path
-15. GitHub Commit SHA
-16. Google Drive File ID
-17. Google Drive Revision
-18. Website Route
-19. Build SHA
-20. Content Hash
-21. Evidence Link
-22. Review Record
-23. Governance Decision
-24. Last Updated
-25. Next Action
-26. Sync State
+**Group:**  
+**Chapter:**  
+**Language:**
 
-## 7 • Universal Page Template
+### Content
 
-1. Identity: Title, Canonical ID, Canonical Link, Node Type, Parent ID.
-2. Purpose: vai trò, phạm vi và đối tượng phục vụ.
-3. Placement: Group, Chapter và vị trí trong kiến trúc.
-4. Content: toàn văn tiếng Việt hiện hành.
-5. Directory: Country → Developer → AI khi áp dụng.
-6. Evidence: nguồn, trạng thái bằng chứng và thời điểm kiểm tra.
-7. Review: Finding → Evidence → Recommendation → Closure Criteria.
-8. Governance: lifecycle, Decision Record và quyền phê duyệt.
-9. Sync: Notion, GitHub, Drive, Website, hash, revision và trạng thái.
-10. Release: build, route audit, deployment evidence và rollback.
+Toàn văn nội dung hiện hành.
 
-## 8 • Universal Sync Protocol
+### Evidence
 
-1. Một chỉnh sửa hợp lệ tại Notion, GitHub hoặc Drive tạo một Sync Event.
-2. CMP xác định Document ID, version, source revision, destination và evidence.
-3. So sánh nội dung với hai bản còn lại.
-4. GitHub thay đổi qua nhánh và Pull Request.
-5. Website chỉ build từ commit đã review.
-6. Production validation trả bằng chứng về Notion và Drive.
-7. Chỉ đánh dấu SYNCED khi nội dung, ID, Link, route và manifest khớp.
-8. Nếu collision, ambiguity, wrong parent hoặc ID conflict thì dừng đối tượng lỗi, giữ bằng chứng và chuyển Human Governance.
-9. Các đối tượng không phụ thuộc được tiếp tục.
+Nguồn, provenance, trạng thái evidence và thời điểm kiểm tra.
 
-## 9 • Registers Bắt Buộc
+### Review
 
-1. Website Inventory
-2. Canonical Link Map
-3. Conflict Log
-4. Sync Log
-5. Evidence Register
-6. Review Register
-7. Release Register
-8. Decision Queue
+`Finding → Evidence/Reason → Proposed Action → Closure Criteria`
 
-## 10 • Output Manifests
+### Governance
 
-1. Notion Manifest: page ID, content status, relations, review, governance và sync state.
-2. GitHub Manifest: /docs/, /registry/, /directory/, /assets/, /evidence/, /releases/, /archive/.
-3. Google Drive Manifest: Assets, Evidence, Reviews, Releases và Archive.
-4. Website Manifest: route, Canonical ID, source commit, build SHA, validation và deployment evidence.
-5. Tên file bắt đầu bằng Canonical ID khi áp dụng. Không rename ID.
+AI chỉ review, phân loại finding và đề xuất. AI không tự Governance Approve, Canonical Lock hoặc Production Release.
 
-## 11 • Chế Độ Phục Hồi
+### Five-Repository Sync
 
-1. Danh sách AI theo từng nhà phát triển do Notion AI đang lập có trạng thái Working Draft • Pending Review.
-2. Đóng băng thay đổi Canonical ID và Canonical Link cho đến khi hoàn tất đối chiếu.
-3. Giữ Website ở trạng thái Public Preview.
-4. Đối chiếu riêng Hoa Kỳ 6911 và Việt Nam 6984 trước khi sửa dữ liệu công khai.
-5. Bổ sung robots.txt, sitemap.xml và manifest dữ liệu máy đọc.
-6. Không để gián đoạn một AI ngăn ba nền tảng còn lại tiếp tục đọc và review.
+**Notion:**  
+**GitHub:**  
+**Google:**  
+**Cloud Website:**  
+**ChatGPT:**  
+**Canonical Web URL:** `https://cfp.plus/{StableID}`  
+**Sync State:** `SYNC PENDING | SYNC PASS`
 
-## 12 • Điểm Vào Đồng Bộ
+### Release
 
-1. Notion: https://app.notion.com/p/19bc113a05654b19adb2a609506a8ace
-2. CFP SYNC 001: https://app.notion.com/p/3bdcaac9a55781bfbcf9e55124f33b2e
-3. GitHub Pull Request: https://github.com/charityfundplus/CFP.plus/pull/72
-4. Google Drive: https://docs.google.com/document/d/1KiqNXQLvaHeookeArmLfhJ-UPCzkDeeXp37cYnzD5cM/edit
-5. Website: https://cfp.plus/69
+**Cloud Route:**  
+**Build SHA:**  
+**Validation:**  
+**Rollback Reference:**  
+**LIVE:** `NO` cho đến khi URL thật mở đúng nội dung.
 
-## 13 • Review Rule
+## 4 • Sync Rules
 
-**Finding → Evidence → Recommendation → Closure Criteria**
+1. Cùng Stable ID.
+2. Cùng Parent ID.
+3. Cùng Title/identity binding theo Registry.
+4. Cùng HUB 69.
+5. Cùng Canonical Web URL.
+6. Metadata lõi phải khớp giữa 5 kho.
+7. Payload có thể khác theo chức năng từng kho nhưng không được tạo identity khác.
+8. Chỉ `SYNC PASS` khi tất cả trường identity bắt buộc khớp và Web URL đã được kiểm tra.
+9. Nếu một kho chưa sẵn sàng, ghi `SYNC PENDING`; không sửa ID để ép đồng bộ.
 
-Nội dung chưa đủ bằng chứng ghi **PENDING EVIDENCE**. Không tự đổi, tái sử dụng hoặc khóa Canonical ID hoặc Canonical Link.
+## 5 • Stable ID Guardrail
+
+- ID số là identity cố định.
+- Nội dung thay đổi không làm thay đổi ID số.
+- Không cấp, đổi, xóa, tái sử dụng hoặc bind Stable ID trong giai đoạn review nếu chưa có thẩm quyền Human Governance.
+- Platform ID chỉ là reference.
+- Registry là technical registry, không phải governance authority.
+
+## 6 • Web-Link Rule
+
+Mọi trang/mục đã có Stable ID phải chuẩn bị trường Web:
+
+`https://cfp.plus/{StableID}`
+
+Ví dụ HUB 69:
+
+`https://cfp.plus/69`
+
+Các kho Notion, GitHub, Google và ChatGPT phải trỏ về URL này. Cloud Website là nơi URL canonical được phục vụ công khai.
+
+Không ghi `LIVE` chỉ vì link đã được tạo trong metadata. `LIVE` chỉ khi route thật đã deploy và mở đúng nội dung.
+
+## 7 • Review / Release Boundary
+
+**Current state:**
+
+- Five-Repository Architecture: REVIEW COMPLETE
+- Architecture Decision: KEEP
+- Architecture Blockers: 0
+- Direction: GO WITH FINDINGS
+- Canonical Data Contract v1: REVIEW CANDIDATE
+- Publishing & Recovery Runbook v1: REVIEW CANDIDATE
+- Governance Approved: NO
+- Canonical Locked: NO
+- Production Release: NO
+
+Một finding chỉ trở thành Release Blocker khi chưa được giải quyết/kiểm chứng bằng evidence **và** trực tiếp ngăn Governance Approval, Canonical Lock hoặc Production Release.
+
+## 8 • CMP
+
+CMP điều phối sync, finding, evidence, closure và publication readiness.
+
+CMP không tự tạo governance power và không tự đổi Stable ID, Canonical URL, Governance Status hoặc Canonical Lock.
+
+## 9 • Điểm vào
+
+- HUB 69 Web: https://cfp.plus/69
+- GitHub Template: `docs/HUB69_UNIVERSAL_MASTER_TEMPLATE.md`
+- Google Template: `HUB 69 Universal Master Template`
+- Notion: HUB 69 / Universal Master Template
+- CMP: https://cfp.plus/267
+
+## 10 • Chuẩn chung bắt buộc
+
+**ONE ID → ONE CANONICAL WEB LINK → FIVE INDEPENDENT REPOSITORIES → ONE HUB 69 SYNC CONTRACT**
+
+Không tạo 5 identity khác nhau. Không tạo 5 Canonical URL khác nhau. Các kho độc lập về chức năng nhưng phải cùng xác định một identity CFP+.
