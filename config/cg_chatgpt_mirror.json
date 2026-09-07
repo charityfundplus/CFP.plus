@@ -1,0 +1,70 @@
+{
+  "schema": "cfp-five-repository-mirror/v1",
+  "status": "REVIEW_CANDIDATE",
+  "host": "cg.cfp.plus",
+  "role": "ChatGPT Repository / AI Workspace / public mirror",
+  "platform": "ChatGPT Site",
+  "platform_site_base": "https://cfp-plus-viet-nam.charityfundplus.chatgpt.site",
+  "canonical_host": "cfp.plus",
+  "hub_id": "69",
+  "canonical_route_template": "https://cfp.plus/{ID}",
+  "mirror_route_template": "https://cg.cfp.plus/{ID}",
+  "stable_id_pattern": "^[0-9]+$",
+  "publication_sequence": [
+    "Notion",
+    "GitHub",
+    "Google",
+    "Cloud Website",
+    "Stability Verification",
+    "ChatGPT Site"
+  ],
+  "identity_rules": {
+    "cfp_plus_is_canonical": true,
+    "cg_is_noncanonical_mirror": true,
+    "stable_id_must_not_change": true,
+    "platform_url_must_not_replace_stable_id": true,
+    "hub_69_required": true
+  },
+  "routing_rules": {
+    "root": "https://cg.cfp.plus/",
+    "hub": "https://cg.cfp.plus/69",
+    "all_stable_ids": "https://cg.cfp.plus/{ID}",
+    "canonical_for_all_stable_ids": "https://cfp.plus/{ID}"
+  },
+  "priority_validation_routes": [
+    "000",
+    "0123456789",
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "69",
+    "267",
+    "2676",
+    "28882",
+    "362",
+    "2470",
+    "2474",
+    "2478",
+    "6984",
+    "6911",
+    "6910",
+    "69118",
+    "691181"
+  ],
+  "release_guardrails": {
+    "publish_only_after_cloud_stability_verification": true,
+    "do_not_change_dns_to_fix_content": true,
+    "do_not_create_replacement_site_when_primary_site_exists": true,
+    "site_editing_context_required_for_chatgpt_site_changes": true,
+    "live_requires_open_url_evidence": true
+  },
+  "runtime_state": "SITE_EDIT_CONTEXT_REQUIRED",
+  "notes": "This file defines the CFP-controlled Stable-ID contract for the ChatGPT mirror. It does not by itself claim that cg.cfp.plus/{ID} is live. LIVE requires verified routing and page content evidence from the ChatGPT Site editing context."
+}
