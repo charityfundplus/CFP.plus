@@ -67,8 +67,27 @@ footer { display: flex; justify-content: space-between; gap: 1rem; padding: 2rem
 footer p { margin: 0; }
 
 @media (max-width: 760px) {
-  nav { gap: .8rem; font-size: .9rem; }
-  nav a:nth-child(2) { display: none; }
+  .site-header {
+    align-items: flex-start;
+    gap: .75rem;
+    padding-block: .8rem;
+  }
+  .brand { flex: 0 0 auto; }
+  nav {
+    min-width: 0;
+    max-width: calc(100vw - 6rem);
+    gap: .9rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: .25rem;
+    font-size: .9rem;
+  }
+  nav a {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
   .hero { min-height: 65vh; padding: 4.5rem 0; }
   .section { padding: 4rem 0; }
   .chapter-grid, .principle-grid { grid-template-columns: 1fr; }
