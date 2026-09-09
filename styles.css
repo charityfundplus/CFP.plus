@@ -18,6 +18,7 @@ body {
   line-height: 1.6;
 }
 a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 .site-header {
   position: sticky;
   top: 0;
@@ -107,4 +108,10 @@ footer p { margin: 0; }
   .actions { display: grid; grid-template-columns: 1fr; }
   .button { width: 100%; min-height: 48px; text-align: center; }
   footer { flex-direction: column; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+  .chapter-card:hover, .chapter-card:focus-visible { transform: none; }
 }
