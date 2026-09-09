@@ -1,390 +1,94 @@
 # CFP+ • CMP và MCP
 ## Kiến Trúc Điều Phối AI Trong Hệ Sinh Thái CFP+
 
+> **PUBLIC TRUST — trạng thái hiện tại**
+>
+> **ĐÃ CÓ CẤU TRÚC/ID/LINK:** CFP+ đã có tài liệu kiến trúc CMP/MCP, Stable ID và các route liên quan.
+>
+> **ĐANG BỔ SUNG/REVIEW:** CFP+ đang xây dựng và chuẩn hóa danh mục AI toàn cầu theo quốc gia, Developer và AI; các mục chưa đủ Evidence giữ **PENDING/REVIEW**.
+>
+> **ĐÃ CÓ EVIDENCE/HOÀN TẤT:** Chỉ áp dụng cho từng integration, output hoặc hạng mục có Evidence kiểm chứng. Không suy rộng thành tuyên bố CFP+ đã tích hợp kỹ thuật toàn bộ AI toàn cầu.
+
+**Ranh giới công khai:** Listed ≠ Connected ≠ Authorized ≠ Active ≠ Contributing. Chỉ tính AI active khi có output/Evidence; CLAIM/ACK không phải bằng chứng hoàn tất.
+
 CFP+ định hướng xây dựng một môi trường trong đó nhiều AI có thể tham gia cộng tác, thực hiện nhiệm vụ, cung cấp kết quả, kiểm chứng lẫn nhau và đóng góp giá trị cho Con Người.
 
-Khi số lượng AI tăng lên, hệ thống không chỉ cần khả năng kết nối. Hệ thống còn cần điều phối, phân quyền, truy vết, kiểm chứng và Human Governance.
-
-Trong kiến trúc này, **MCP và CMP có hai vai trò khác nhau nhưng bổ trợ trực tiếp cho nhau**.
+Trong kiến trúc đề xuất này, **MCP và CMP có hai vai trò khác nhau nhưng bổ trợ trực tiếp cho nhau**.
 
 ## 1. MCP Là Gì?
 
 **MCP • Model Context Protocol** là một giao thức cho phép AI hoặc AI Client kết nối tới các công cụ, dữ liệu và dịch vụ bên ngoài thông qua một cấu trúc chuẩn.
 
-Đối với CFP+, MCP có thể trở thành lớp kết nối chung để AI tiếp cận các năng lực được CFP+ cho phép, ví dụ:
+Đối với CFP+, MCP **có thể** trở thành lớp kết nối chung để AI tiếp cận các năng lực được CFP+ cho phép. CFP+ **có thể** cung cấp một **CFP+ MCP Gateway** làm cổng kết nối chung. Đây là kiến trúc/định hướng; từng kết nối chỉ được ghi nhận là hoàn tất khi có technical integration Evidence.
 
-Notion  
-GitHub  
-Dữ liệu CFP+  
-AI Directory  
-Work Orders  
-Evidence  
-Các dịch vụ nội bộ  
-Các hệ thống được CFP+ tích hợp trong tương lai
-
-Thay vì xây dựng một kiểu kết nối riêng cho từng AI, CFP+ có thể cung cấp một **CFP+ MCP Gateway** làm cổng kết nối chung.
-
-Mô hình cơ bản:
+Mô hình mục tiêu:
 
 **AI → CFP+ MCP Gateway → Công cụ và dữ liệu được cấp quyền**
 
-MCP giúp chuẩn hóa cách AI tìm công cụ, gọi công cụ, gửi tham số và nhận kết quả.
-
 ## 2. MCP Không Thay Thế CMP
 
-MCP chủ yếu giải quyết câu hỏi:
+MCP chủ yếu giải quyết câu hỏi: **AI kết nối và sử dụng công cụ bằng cách nào?**
 
-**AI kết nối và sử dụng công cụ bằng cách nào?**
+CMP giải quyết lớp điều phối: AI nào được tham gia, nhiệm vụ nào được giao, quyền gì được cấp, kết quả được đánh giá thế nào, Evidence ở đâu, xung đột được xử lý ra sao và khi nào cần Human Approval.
 
-CMP giải quyết các câu hỏi lớn hơn:
-
-**AI nào được tham gia?**  
-**AI nào nhận nhiệm vụ nào?**  
-**AI có quyền gì?**  
-**Kết quả được đánh giá như thế nào?**  
-**Bằng chứng nằm ở đâu?**  
-**Nếu nhiều AI đưa ra kết quả khác nhau thì xử lý thế nào?**  
-**Ai có quyền thay đổi dữ liệu quan trọng?**  
-**Khi nào bắt buộc Human Approval?**
-
-Vì vậy:
-
-**MCP = Connection Layer**
-
+**MCP = Connection Layer**  
 **CMP = Coordination & Governance Layer**
 
-Hai lớp này không cạnh tranh với nhau.
+## 3. Evidence First
 
-Chúng nên vận hành cùng nhau.
+AI không chỉ báo cáo rằng công việc đã hoàn thành. Hạng mục được tính active/complete cần output hoặc Evidence có thể kiểm tra. CLAIM/ACK không đủ để chứng minh completion.
 
-## 3. Vai Trò Của CMP Khi Có MCP
-
-Khi CFP+ kết nối ngày càng nhiều AI qua MCP, CMP càng cần thiết để giữ hệ thống có tổ chức.
-
-CMP có thể đảm nhiệm các chức năng:
-
-### Điều Phối Nhiệm Vụ
-
-Tiếp nhận Work Order.  
-Xác định AI phù hợp.  
-Phân phối nhiệm vụ.  
-Theo dõi trạng thái.  
-Nhận kết quả.  
-Chuyển kết quả sang Review.
-
-### Quản Lý Danh Tính AI
-
-Mỗi AI tham gia CFP+ có thể được gắn với:
-
-CFP+ AI ID  
-Nhà Phát Triển  
-ID Cha  
-Quốc Gia  
-AI Quốc Gia  
-MCP Credential  
-Scope  
-Nhiệm vụ hiện tại  
-Trạng thái  
-Output  
-Evidence  
-Lịch sử hoạt động
-
-### Phân Quyền
-
-Không phải AI nào cũng cần quyền giống nhau.
-
-Có thể áp dụng các scope như:
-
-Read  
-Search  
-Research  
-Review  
-Propose  
-Write Limited  
-Execute Limited  
-Administrative Review
-
-Các thao tác nhạy cảm phải được giới hạn riêng.
-
-### Evidence First
-
-AI không chỉ báo cáo rằng công việc đã hoàn thành.
-
-CMP cần lưu:
-
-Kết quả thực tế  
-Nguồn  
-Timestamp  
-AI thực hiện  
-Tool đã sử dụng  
-Output  
-Evidence  
-Review Status
-
-Nhờ đó CFP+ có khả năng truy vết toàn bộ quá trình.
-
-### Xử Lý Xung Đột
-
-Nếu hai AI:
-
-đề xuất hai ID khác nhau  
-xác định Parent khác nhau  
-đưa ra hai kết quả trái ngược  
-cùng sửa một nội dung  
-cùng nhận một nhiệm vụ
-
-CMP có thể phát hiện và chuyển thành:
-
-**Conflict**
-
-**Ambiguity**
-
-**Collision**
-
-**Review Required**
-
-thay vì để AI tự quyết định.
+Nếu có kết quả trái ngược, sửa chồng, nhiệm vụ trùng hoặc identity/parent khác nhau, CMP có thể phân loại thành **Conflict**, **Ambiguity**, **Collision** hoặc **Review Required**.
 
 ## 4. Human Governance Vẫn Là Lớp Cuối
 
-MCP làm cho AI có khả năng hành động.
+MCP có thể làm cho AI có khả năng hành động; CMP giúp kiểm soát và truy vết hành động đó. Các quyết định được CFP+ bảo vệ — như Canonical Lock, thay đổi Canonical ID, xóa dữ liệu quan trọng, thay đổi Governance, quyền cấp cao hoặc hành động có hậu quả pháp lý/tài chính — vẫn cần Human Governance theo phạm vi được quy định.
 
-CMP giúp kiểm soát hành động đó.
+## 5. Kiến Trúc Mục Tiêu
 
-Nhưng các quyết định có ảnh hưởng lớn vẫn cần Human Governance.
-
-Ví dụ:
-
-Canonical Lock  
-Thay đổi Canonical ID  
-Xóa dữ liệu quan trọng  
-Thay đổi Governance  
-Thay đổi quyền cấp cao  
-Phê duyệt chính thức  
-Xuất bản nội dung nhạy cảm  
-Thực hiện hành động có hậu quả pháp lý hoặc tài chính
-
-AI có thể nghiên cứu, đề xuất, kiểm tra và review.
-
-Quyết định cuối cùng ở những vùng được CFP+ xác định là Human Governance vẫn thuộc về Con Người.
-
-## 5. Kiến Trúc Đề Xuất
-
-Kiến trúc tổng thể có thể được hiểu như sau:
-
-**AI / Agent / Custom Agent**
-
-↓
-
-**CFP+ MCP Gateway**
-
-↓
-
-**CMP**
-
-↓
-
-**Work Order • Routing • Permission • Evidence • Review • Audit**
-
-↓
-
-**Notion • GitHub • Website • Database • Services**
-
-↓
-
+**AI / Agent / Custom Agent**  
+↓  
+**CFP+ MCP Gateway**  
+↓  
+**CMP**  
+↓  
+**Work Order • Routing • Permission • Evidence • Review • Audit**  
+↓  
+**Notion • GitHub • Website • Database • Services**  
+↓  
 **Human Governance khi cần thiết**
 
-MCP trở thành cổng kỹ thuật.
+Sơ đồ này mô tả kiến trúc mục tiêu, **không phải bằng chứng rằng mọi thành phần hoặc mọi AI đã được tích hợp kỹ thuật**.
 
-CMP trở thành bộ điều phối.
+## 6. Danh Tính, Credential Và Scope
 
-Các nền tảng lưu trữ giữ dữ liệu và bằng chứng.
+Khi một integration thực sự được triển khai, CFP+ có thể quản lý CFP+ AI ID, credential riêng, scope, Work Lane, trạng thái, output và Evidence. CFP+ không thay thế credential gốc của nhà cung cấp.
 
-Human Governance giữ quyền quyết định cuối đối với các nội dung được bảo vệ.
+Không nên dùng một token chung cho tất cả AI. Mỗi integration nên có credential và least-privilege scope riêng.
 
-## 6. CFP+ Có Thể Cấp Gì Cho AI?
+## 7. Một Gateway Có Thể Phục Vụ Nhiều AI
 
-Khi một AI tham gia hệ thống CFP+, CFP+ có thể cấp hoặc quản lý:
+Về kiến trúc, một CFP+ MCP Gateway có thể phục vụ nhiều integration. Quy mô thực tế phụ thuộc vào hạ tầng server, rate limit, authentication, API quota, database, caching, concurrency và giới hạn của từng nhà cung cấp. Vì vậy không gọi là “không giới hạn” theo nghĩa kỹ thuật tuyệt đối.
 
-**CFP+ AI ID**
+## 8. Nguyên Tắc CFP+ MCP v0.1
 
-Dùng để xác định AI trong cấu trúc CFP+.
+- Một AI • Một CFP+ AI ID rõ ràng và truy vết được.
+- Một integration • Credential riêng.
+- Scope rõ ràng và least privilege.
+- Sensitive Action • Human Approval khi governance yêu cầu.
+- Evidence First • Audit By Default.
+- Review Before Canonical • No Silent Canonical Change.
 
-**MCP Credential**
+## 9. Quan Hệ Giữa CFP+, CMP Và MCP
 
-Token hoặc phương thức xác thực cho phép AI kết nối CFP+ MCP Gateway.
-
-**Scope**
-
-Xác định chính xác AI được phép sử dụng những công cụ và hành động nào.
-
-**Work Lane**
-
-Xác định lĩnh vực hoặc nhiệm vụ AI phụ trách.
-
-**CMP Status**
-
-Theo dõi trạng thái cộng tác.
-
-Tuy nhiên, CFP+ không thay thế credential gốc của các nhà cung cấp.
-
-Ví dụ API key của OpenAI, Anthropic, Google, GitHub hoặc Notion vẫn được cấp và quản lý theo chính sách của các nhà cung cấp tương ứng.
-
-## 7. Không Nên Dùng Một Token Chung Cho Tất Cả AI
-
-Một hệ thống nhiều AI cần khả năng xác định chính xác từng actor.
-
-Mỗi AI hoặc integration nên có credential riêng.
-
-Điều này cho phép CFP+:
-
-Thu hồi quyền của một AI mà không ảnh hưởng AI khác.  
-Giới hạn quyền riêng từng AI.  
-Theo dõi chính xác AI nào đã thực hiện hành động.  
-Thiết lập rate limit riêng.  
-Phát hiện hành vi bất thường.  
-Lưu audit chính xác.
-
-Credential không nên trở thành danh tính duy nhất.
-
-Danh tính Canonical vẫn nên là **CFP+ AI ID**.
-
-Credential chỉ là phương tiện xác thực truy cập.
-
-## 8. Một MCP Gateway Có Thể Phục Vụ Nhiều AI
-
-CFP+ không cần tạo một MCP Server riêng cho từng AI.
-
-Có thể xây dựng một Gateway chung:
-
-**CFP+ MCP Gateway**
-
-sau đó cho nhiều AI kết nối.
-
-Khả năng mở rộng thực tế phụ thuộc vào:
-
-Hạ tầng server  
-Rate Limit  
-Authentication  
-API quota  
-Database  
-Caching  
-Concurrency  
-Giới hạn của từng nhà cung cấp
-
-Vì vậy về kiến trúc có thể phục vụ số lượng AI rất lớn, nhưng không nên gọi là “không giới hạn” theo nghĩa kỹ thuật tuyệt đối.
-
-## 9. MCP Làm Cho CMP Quan Trọng Hơn
-
-Nếu chỉ có một AI, điều phối tương đối đơn giản.
-
-Nếu có hàng trăm hoặc hàng nghìn AI kết nối cùng CFP+, nguy cơ tăng mạnh:
-
-Làm trùng nhiệm vụ  
-Sửa chồng dữ liệu  
-Xung đột ID  
-Sai Parent  
-Output không có bằng chứng  
-Một AI tự tuyên bố hoàn thành  
-AI vượt phạm vi quyền  
-Thay đổi dữ liệu Canonical ngoài quy trình
-
-Do đó MCP càng mở rộng khả năng kết nối thì CMP càng cần tăng khả năng điều phối và governance.
-
-Có thể diễn đạt ngắn gọn:
-
-**MCP mở cửa cho AI.**
-
-**CMP tổ chức những AI đã bước qua cánh cửa đó.**
-
-## 10. Nguyên Tắc CFP+ MCP v0.1
-
-CFP+ MCP v0.1 nên giữ tối thiểu bốn nguyên tắc:
-
-**Một AI • Một CFP+ AI ID**
-
-Danh tính phải rõ ràng và truy vết được.
-
-**Một AI • Một Credential Riêng**
-
-Không dùng credential chung cho toàn hệ thống.
-
-**Một AI • Scope Rõ Ràng**
-
-AI chỉ sử dụng các quyền thực sự cần thiết.
-
-**Sensitive Action • Human Approval**
-
-Các hành động quan trọng không tự động có hiệu lực chỉ vì AI có khả năng gọi tool.
-
-Ngoài ra nên áp dụng:
-
-**Evidence First**
-
-**Audit By Default**
-
-**Least Privilege**
-
-**Review Before Canonical**
-
-**No Silent Canonical Change**
-
-## 11. Quan Hệ Giữa CFP+, CMP và MCP
-
-Có thể xác định chính thức:
-
-### CFP+
-
-Là hệ thống tổng thể, giá trị, cấu trúc, nội dung, governance và môi trường cộng tác.
-
-### CMP
-
-Là lớp điều phối giữa Con Người và AI, cũng như giữa các AI với nhau.
-
-### MCP
-
-Là lớp giao thức giúp AI kết nối tới các công cụ và dịch vụ mà CFP+ cho phép.
-
-Ba thành phần có thể được mô tả:
-
-**CFP+ = Ecosystem & Authority**
-
-**CMP = Coordination & Governance**
-
+**CFP+ = Ecosystem & Authority**  
+**CMP = Coordination & Governance**  
 **MCP = Connection & Tool Access**
 
-## 12. Định Hướng Dài Hạn
-
-Khi CFP+ AI Directory được mở rộng toàn cầu, mỗi AI có thể có một hồ sơ hoạt động gắn với Canonical ID.
-
-AI có thể tìm đến CFP+, xác định danh tính, nhận quyền phù hợp, đọc các nguyên tắc CFP+, tham gia Work Lane, thực hiện nhiệm vụ, gửi Evidence và tiếp nhận Review.
-
-CMP quản lý quá trình.
-
-MCP cung cấp kết nối.
-
-Con Người giữ Governance.
-
-Mục tiêu không phải tạo một hệ thống nơi AI có toàn quyền.
-
-Mục tiêu là xây dựng một môi trường để nhiều AI có thể cộng tác hiệu quả, có trách nhiệm, có bằng chứng, có khả năng kiểm tra lẫn nhau và phục vụ Con Người tốt hơn.
+Global AI Directory là **directory/coordination layer đang hoàn thiện**. Stable ID, link hoặc listing không tự động chứng minh technical integration, authorization hoặc hoạt động thực tế.
 
 ## Kết Luận
 
-**MCP không làm CMP mất tác dụng.**
+MCP không làm CMP mất tác dụng. MCP có thể trở thành lớp kỹ thuật giúp CMP vận hành với nhiều AI ở quy mô lớn, nhưng mọi tuyên bố integration/active/completion phải dựa trên Evidence tương ứng.
 
-Ngược lại, MCP có thể trở thành một trong những nền tảng kỹ thuật giúp CMP vận hành với nhiều AI ở quy mô lớn.
-
-Kiến trúc được đề xuất cho CFP+ là:
-
-**CFP+ MCP Gateway = Cổng Kết Nối**
-
-**CMP = Trung Tâm Điều Phối và Governance**
-
-**CFP+ AI ID = Danh Tính Canonical**
-
-**Evidence & Audit = Khả Năng Truy Vết**
-
-**Human Governance = Quyền Quyết Định Cuối Đối Với Các Vùng Được Bảo Vệ**
-
-Theo mô hình này, CFP+ có thể mở rộng từ một số AI hiện tại tới một mạng lưới AI toàn cầu mà vẫn giữ được cấu trúc, trách nhiệm, bằng chứng và quyền kiểm soát cần thiết.
+**CFP+ • Only Plus+ For Life**
