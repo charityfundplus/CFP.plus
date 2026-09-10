@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CFP+ • Stable ID</title>
+<link rel="stylesheet" href="/styles.css">
+<style>
+main{max-width:1100px;margin:auto}.idbox,.panel2{border:1px solid rgba(127,127,127,.28);border-radius:18px;padding:20px;margin:18px 0}.bigid{font-size:clamp(2rem,7vw,4rem);font-weight:900}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}.card{border:1px solid rgba(127,127,127,.28);border-radius:14px;padding:14px;overflow-wrap:anywhere}.card a{font-weight:700}.muted{opacity:.72}.status{font-size:.9rem}.children{margin-top:10px;display:flex;flex-wrap:wrap;gap:7px}.pill{display:inline-block;border:1px solid rgba(127,127,127,.32);border-radius:999px;padding:5px 9px;text-decoration:none}.warn{padding:12px;border-left:4px solid currentColor}.hidden{display:none}
+</style>
+</head>
+<body>
+<header class="site-header"><a class="brand" href="/">CFP+</a><nav><a href="/9/">Quốc Gia</a><a href="/69/">HUB 69</a></nav></header>
+<main>
+<section class="idbox"><div class="bigid" id="id">ID</div><h1 id="title">CFP+ Stable ID</h1><p id="identity" class="muted">Đang đọc registry…</p></section>
+<section id="country" class="panel2 hidden"><h2>AI 🤖 & Công Nghệ theo Quốc Gia</h2><p id="country-meta"></p><p>Chuỗi chuẩn: <strong>Quốc Gia → AI Quốc Gia → Nhà Phát Triển → AI / AI con 👶</strong>.</p><div id="developers" class="grid"></div></section>
+<section id="entity" class="panel2 hidden"><h2 id="entity-heading">Hồ sơ thực thể</h2><div id="entity-body"></div></section>
+<section class="panel2"><h2>Chuẩn Permanent Link</h2><p><strong>Quốc Gia:</strong> <code>https://cfp.plus/&lt;AI_COUNTRY_ID&gt;/</code></p><p><strong>Nhà Phát Triển:</strong> <code>https://cfp.plus/&lt;DEVELOPER_ID&gt;/</code></p><p><strong>AI / AI con:</strong> <code>https://cfp.plus/&lt;AI_CHILD_ID&gt;/</code></p><p class="muted">One Entity • One ID • One Permanent Link. Link mẫu không tự chứng minh Entity đã được xác minh hoặc đang hoạt động.</p></section>
+<section class="panel2"><h2>Work & Evidence</h2><p>Identity → Parent → Official Source → Work Order → Output → Evidence → Review Status → Result Return.</p><p><a href="/267/">CMP</a> • <a href="/69/">HUB 69</a></p></section>
+</main>
+<footer><p>CFP+ • Only Plus+ For Life</p><p><a href="mailto:contact@cfp.plus">contact@cfp.plus</a></p></footer>
+<script>
+(async()=>{
+ const id=location.pathname.split('/').filter(Boolean)[0]||'';
+ const $=x=>document.getElementById(x); $('id').textContent=id||'ID';
+ const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+ let countries={},entities={};
+ try{countries=await (await fetch('/registry/country-route-map.json',{cache:'no-store'})).json()}catch(e){}
+ try{entities=await (await fetch('/registry/ai-entity-registry.json',{cache:'no-store'})).json()}catch(e){}
+ const c=countries[id]; const e=entities[id];
+ if(c){
+   document.title=(c.name||id)+' • CFP+'; $('title').textContent=(c.flag?c.flag+' ':'')+(c.name||'AI Quốc Gia');
+   $('identity').textContent='AI Country ID '+id+(c.country_id?' • Country ID '+c.country_id:'')+(c.calling_code?' • '+c.calling_code:'');
+   $('country').classList.remove('hidden');
+   $('country-meta').innerHTML='<strong>Permanent Link:</strong> <a href="/'+esc(id)+'/">https://cfp.plus/'+esc(id)+'/</a> • <strong>Trạng thái:</strong> '+esc(c.directory_status||'ĐANG BỔ SUNG/REVIEW');
+   const devs=Object.values(entities).filter(x=>x&&x.type==='developer'&&x.ai_country_id===id).sort((a,b)=>(a.order??999)-(b.order??999)||String(a.name).localeCompare(String(b.name)));
+   if(devs.length){$('developers').innerHTML=devs.map(d=>devCard(d)).join('')}else{$('developers').innerHTML='<div class="card"><strong>Developer Directory</strong><p>Chưa có Developer được bind trong public registry. Giữ trạng thái <strong>Pending Allocation / Evidence Review</strong>; không tự gắn tên vào ID.</p><p>Link mẫu: <code>https://cfp.plus/&lt;DEVELOPER_ID&gt;/</code></p></div>'}
+ } else if(e){
+   document.title=(e.name||id)+' • CFP+'; $('title').textContent=(e.icon?e.icon+' ':'')+(e.name||'CFP+ Entity'); $('identity').textContent=(e.type||'entity').toUpperCase()+' • ID '+id+(e.parent_id?' • Parent '+e.parent_id:''); $('entity').classList.remove('hidden'); $('entity-heading').textContent=e.type==='developer'?'Nhà Phát Triển AI':'AI / AI con 👶';
+   let h='<p><strong>Permanent Link:</strong> <a href="/'+esc(id)+'/">https://cfp.plus/'+esc(id)+'/</a></p>'+(e.intro?'<p>'+esc(e.intro)+'</p>':'')+(e.parent_id?'<p><strong>Parent:</strong> <a href="/'+esc(e.parent_id)+'/">'+esc(e.parent_id)+'</a></p>':'')+(e.status?'<p><strong>Status:</strong> '+esc(e.status)+'</p>':'');
+   if(e.type==='developer') {const kids=Object.values(entities).filter(x=>x&&x.type==='ai'&&x.parent_id===id).sort((a,b)=>(a.order??999)-(b.order??999)||String(a.name).localeCompare(String(b.name)));h+='<h3>AI / AI con 👶</h3>'+(kids.length?'<div class="grid">'+kids.map(k=>aiCard(k)).join('')+'</div>':'<p>AI child chưa được bind trong public registry. Mẫu sau khi allocation được xác nhận: <code>https://cfp.plus/&lt;AI_CHILD_ID&gt;/</code>.</p>')}
+   $('entity-body').innerHTML=h;
+ } else {
+   $('title').textContent='CFP+ Stable ID • Chưa có record công khai'; $('identity').innerHTML='Đường dẫn số này dùng Universal ID Template nhưng <strong>chưa có record trong public registry</strong>. Không suy diễn tên, Parent hoặc trạng thái từ số ID.';
+ }
+ function devCard(d){const kids=Object.values(entities).filter(x=>x&&x.type==='ai'&&x.parent_id===d.id).sort((a,b)=>(a.order??999)-(b.order??999)||String(a.name).localeCompare(String(b.name)));return '<article class="card"><h3>'+esc(d.name)+'</h3><p><strong>ID:</strong> <a href="/'+esc(d.id)+'/">'+esc(d.id)+'</a></p><p>'+esc(d.intro||'Hồ sơ Developer đang được bổ sung theo Evidence.')+'</p><p class="status">'+esc(d.status||'ĐANG BỔ SUNG/REVIEW')+'</p><div class="children">'+(kids.length?kids.map(k=>'<a class="pill" href="/'+esc(k.id)+'/">🤖 '+esc(k.name)+' • '+esc(k.id)+'</a>').join(''):'<span class="muted">AI con: Pending Evidence / Allocation</span>')+'</div></article>'}
+ function aiCard(k){return '<article class="card"><h3>🤖 '+esc(k.name)+'</h3><p><strong>ID:</strong> <a href="/'+esc(k.id)+'/">'+esc(k.id)+'</a></p><p>'+esc(k.intro||'AI profile đang bổ sung Evidence.')+'</p><p class="status">'+esc(k.status||'ĐANG BỔ SUNG/REVIEW')+'</p></article>'}
+})();
+</script>
+</body></html>
