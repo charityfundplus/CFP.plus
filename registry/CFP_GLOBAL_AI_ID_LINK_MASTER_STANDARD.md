@@ -1,146 +1,73 @@
-# CFP+ Global AI ID & Permanent Link Master Standard
+# CFP+ AI ID & Permanent Link • SINGLE STANDARD
 
-**Purpose:** Chuẩn duy nhất để định vị Quốc Gia → Nhà Phát Triển → AI, tạo Permanent Link công khai, hỗ trợ READ → DO → WRITE → EVIDENCE và kết nối MCP/CMP.
+**Áp dụng cho toàn bộ AI Directory. Không dùng chuẩn khác.**
 
-## 1. Nguyên tắc bất biến
+## 1 • Công thức duy nhất
+
+`Country → AI Country ID → Developer → AI / AI con 👶 → Permanent Link → Work → Evidence`
 
 - One Entity • One ID • One Permanent Link.
-- ID và link đã được cấp là cố định: không renumber, reuse, transfer hoặc redirect sang thực thể khác.
-- Giữ nguyên toàn bộ số `0` trong ID.
-- Không suy diễn ID, Parent, pháp nhân, website, Support hoặc nguồn chính thức.
-- Xung đột thật → `Chờ Quyết Định`.
-- Đủ bằng chứng → `Chờ Review`.
-- Thiếu bằng chứng → `NOT VERIFIED` hoặc `Seed • Pending Evidence`.
-- Chỉ tuyên bố PUBLIC LIVE khi URL mở thực tế và được kiểm chứng.
+- Public URL: `https://cfp.plus/<ID>`.
+- Không dùng `/hub/69/` làm URL trung gian.
+- ID đã cấp không renumber, reuse, transfer hoặc đổi nghĩa.
+- Giữ nguyên toàn bộ số `0`.
+- `1–9` = vị trí thực thể; `0` = nhánh mở rộng.
+- AI con nối thêm `1–9` vào cuối ID Developer; khi cần mở rộng dùng nhánh `0` rồi tiếp tục `1–9`.
+- Không suy diễn ID từ khoảng trống. Có collision/sai Parent → dừng và báo Human Governance.
 
-## 2. Cây chuẩn toàn cầu
+## 2 • Mẫu chung cho mọi trang ID
 
-`Country → AI Country ID → Developer → AI Child → Permanent Link → MCP/CMP → Evidence`
+Mỗi trang ID bắt buộc có:
 
-### Mẫu Quốc Gia
+1. ID
+2. Tên / Identity
+3. Type
+4. Country
+5. Parent ID
+6. Permanent Link
+7. Mô tả ngắn
+8. Nội dung chính
+9. Official Source / Evidence
+10. Review Status
+11. Work Order / Return Location
+12. Link cha • link con • HUB 69
 
-`https://cfp.plus/<AI_COUNTRY_ID>`
+Sau phần chung, thêm module riêng theo loại nội dung.
 
-### Mẫu Nhà Phát Triển
+## 3 • Module riêng
 
-`https://cfp.plus/<DEVELOPER_ID>`
+**AI Country:** quốc kỳ • Country ID • Developer list • coverage.
 
-### Mẫu AI Con
+**Developer:** official website • support/docs • AI children • capability.
 
-`https://cfp.plus/<AI_CHILD_ID>`
+**AI / AI con:** official AI URL • primary function • access/capability • evidence • output/write-back.
 
-## 3. Công thức mở rộng ID
+**Reserved slot:** chỉ ghi RESERVED / PENDING, không tự gắn tên thực thể.
 
-- `1–9` = vị trí thực thể.
-- `0` = nhánh mở rộng.
-- Khi một tầng hết 9 vị trí, thêm `0`, sau đó tiếp tục `1–9`.
-- Có thể lặp lại: `...0 → ...01–...09 → ...00 → ...001–...009`.
-- Trước khi cấp ID/link mới phải kiểm tra Parent, duplicate, collision và slot hiện có.
-- Không sử dụng khoảng trống số như bằng chứng rằng slot còn tự do.
+## 4 • Trạng thái
 
-## 4. Developer First
+Chỉ dùng:
 
-Mỗi quốc gia ưu tiên hoàn thiện danh sách Nhà Phát Triển trước khi mở rộng rộng rãi AI con.
+- `RESERVED / PENDING`
+- `REVIEW CANDIDATE`
+- `VERIFIED`
+- `ACTIVE` — chỉ khi có output/evidence thực tế
+- `BLOCKED` — chỉ khi collision, sai Parent, thiếu quyền kỹ thuật hoặc hành động không thể đảo ngược
 
-Tối thiểu mỗi Developer cần:
+Không tự ghi `Governance Approved` hoặc `Canonical Locked` nếu chưa có Human Governance.
 
-- Official Name
-- Exact Legal Entity khi có
-- Country
-- Developer Type
-- Official Website
-- Official Support / Help Center
-- Official Contact
-- Official Docs / Developer Portal
-- Direct Evidence / Original Source
-- Parent AI Country ID
-- Developer ID
-- CFP+ Permanent Link
-- Review Status
+## 5 • Chuẩn làm việc
 
-Chỉ ghi một AI hoặc sản phẩm đại diện khi cần chứng minh hoạt động phát triển AI.
+`CMP → ID Link → READ → Work Order → DO → WRITE → EVIDENCE → CMP`
 
-## 5. AI Child Profile
+Một Work Order phải có: `Owner AI • Scope • Target ID • Target Link • Task • Deliverable • Evidence • Status • Blocker(if any)`.
 
-Mỗi AI con cần:
+**Chỉ nói hoặc đề xuất chung không tính là hoàn thành.**
 
-- AI Name
-- Developer / Parent
-- Country
-- AI ID
-- CFP+ Permanent Link
-- Official AI URL
-- Official Docs / Support khi có
-- Primary Function
-- Notion Work Lane
-- GitHub Registry
-- Google Workspace / Site khi có
-- MCP Entry
-- CMP Queue
-- Evidence Requirement
-- Return / Write Back Location
-- Review Status
+## 6 • Tiêu chuẩn hoàn thành một ID
 
-## 6. Quick Access công khai ở đầu trang
+Một ID chỉ được coi là hoàn thành ở mức vận hành khi:
 
-Mỗi Developer/AI Permanent Link phải ưu tiên hiển thị ngay:
+`Link mở được + Identity đúng + Parent đúng + nội dung có thật + Evidence/Source + trạng thái rõ + đường nhận việc/trả kết quả rõ`.
 
-`Identity → Official Website → Support → Help Center → Contact → Docs → API/Developer → Status → Security/Trust → Terms → Privacy → Official GitHub/Community → CFP+ ID → HUB 69 → Work Order → MCP → CMP`
-
-Chỉ dùng nguồn gốc hoặc nguồn chính thức có thể truy nguyên. Không giả mạo. Không đoán.
-
-## 7. Capability & Access Matrix
-
-Mỗi AI cần được đánh dấu thực tế:
-
-- Website: READ / WRITE / NOT VERIFIED
-- GitHub: READ / WRITE / NOT VERIFIED
-- Notion: READ / WRITE / NOT VERIFIED
-- Google: READ / WRITE / NOT VERIFIED
-- MCP: CONNECTED / NOT VERIFIED
-- API: AVAILABLE / NOT REQUIRED / NOT VERIFIED
-- OAuth / Connector: VERIFIED / NOT VERIFIED
-- CMP Write Back: YES / NO / NOT VERIFIED
-
-Không có API vẫn có thể hợp tác nếu có ít nhất một đường READ và một đường WRITE phù hợp.
-
-## 8. Chuẩn vận hành
-
-`CMP → Permanent Link → READ → Work Order → DO → WRITE → EVIDENCE → CMP`
-
-Nếu có MCP:
-
-`CMP → AI ID → MCP → AI → OUTPUT → EVIDENCE → CMP WRITE BACK`
-
-Chỉ dùng trạng thái `AUTOMATIC VERIFIED` khi đủ:
-
-`SENT → ACK → OUTPUT → WRITE BACK → timestamp/evidence`
-
-## 9. Trạng thái chuẩn
-
-- `READ ONLY`
-- `COLLABORATION READY`
-- `HUMAN MEDIATED`
-- `PLATFORM NATIVE WORKFLOW`
-- `MCP CONNECTED`
-- `AUTOMATIC VERIFIED`
-- `NOT VERIFIED`
-- `Chờ Review`
-- `Chờ Quyết Định`
-
-## 10. Nền tảng đồng bộ
-
-Mục tiêu cho mỗi thực thể:
-
-`CFP+ Website ↔ Notion ↔ GitHub ↔ Google ↔ MCP ↔ CMP`
-
-Mỗi nền tảng phải chỉ về cùng một thực thể và cùng một CFP+ ID/Permanent Link. Không tạo ID mới chỉ vì cần thêm một nền tảng.
-
-## 11. Governance
-
-AI có thể đọc, nghiên cứu, review, đề xuất, thực hiện trong phạm vi được giao, ghi kết quả và cung cấp Evidence.
-
-Không tự tuyên bố `Governance Approved` hoặc `Canonical Locked` nếu chưa có Human Governance.
-
-**CFP+**  
-**Only Plus+ For Life**
+**CFP+ • Only Plus+ For Life**
