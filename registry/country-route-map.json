@@ -1,6 +1,7 @@
 {
-  "6910":{"name":"Canada","flag":"🇨🇦","country_id":"910","calling_code":"+1","developer_found":true},
-  "6911":{"name":"Hoa Kỳ","flag":"🇺🇸","country_id":"911","calling_code":"+1","developer_found":true},
+  "_public_trust":{"scope":"Global AI Directory country routing metadata","status_labels":["ĐÃ CÓ CẤU TRÚC/ID/LINK","ĐANG BỔ SUNG/REVIEW","ĐÃ CÓ EVIDENCE/HOÀN TẤT"],"default_status":"ĐANG BỔ SUNG/REVIEW","completion_rule":"Country completion requires country-level Evidence. Developer discovery, Stable ID, route, CLAIM or ACK does not prove technical integration, active status or country completion.","active_rule":"Only count an AI as active when output/Evidence exists."},
+  "6910":{"name":"Canada","flag":"🇨🇦","country_id":"910","calling_code":"+1","developer_found":true,"directory_status":"ĐANG BỔ SUNG/REVIEW","country_completion_evidence":false},
+  "6911":{"name":"Hoa Kỳ","flag":"🇺🇸","country_id":"911","calling_code":"+1","developer_found":true,"directory_status":"ĐANG BỔ SUNG/REVIEW","country_completion_evidence":false},
   "69120":{"name":"Antigua và Barbuda","flag":"🇦🇬","country_id":"9120","calling_code":"+1 268","developer_found":false},
   "69121":{"name":"Bahamas","flag":"🇧🇸","country_id":"9121","calling_code":"+1 242","developer_found":false},
   "69122":{"name":"Barbados","flag":"🇧🇧","country_id":"9122","calling_code":"+1 246","developer_found":false},
@@ -24,7 +25,7 @@
   "6965":{"name":"Singapore","flag":"🇸🇬","country_id":"965","calling_code":"+65","developer_found":true},
   "6981":{"name":"Japan","flag":"🇯🇵","country_id":"981","calling_code":"+81","developer_found":true},
   "6982":{"name":"South Korea","flag":"🇰🇷","country_id":"982","calling_code":"+82","developer_found":true},
-  "6984":{"name":"Việt Nam","flag":"🇻🇳","country_id":"984","calling_code":"+84","developer_found":true},
+  "6984":{"name":"Việt Nam","flag":"🇻🇳","country_id":"984","calling_code":"+84","developer_found":true,"directory_status":"ĐANG BỔ SUNG/REVIEW","country_completion_evidence":false},
   "6986":{"name":"China","flag":"🇨🇳","country_id":"986","calling_code":"+86","developer_found":true},
   "69886":{"name":"Taiwan","flag":"🇹🇼","country_id":"9886","calling_code":"+886","developer_found":true},
   "6991":{"name":"India","flag":"🇮🇳","country_id":"991","calling_code":"+91","developer_found":true},
