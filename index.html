@@ -9,7 +9,7 @@
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="/">CFP+</a>
+    <a class="brand" href="/" aria-current="page">CFP+</a>
     <nav aria-label="Điều hướng chính">
       <a href="/000/">Giới Thiệu</a>
       <a href="/0123456789/">10 Chương</a>
@@ -66,9 +66,10 @@
       </div>
     </section>
 
-    <section class="section panel">
-      <h2>10 Chương CFP+</h2>
-      <div class="chapter-grid">
+    <section class="section panel" aria-labelledby="chapter-nav-title">
+      <h2 id="chapter-nav-title">10 Chương CFP+</h2>
+      <p class="section-copy">Đi trực tiếp vào từng Chương bằng route riêng; không cần quay lại trang chỉ mục.</p>
+      <nav class="chapter-grid" aria-label="Điều hướng trực tiếp 10 Chương">
         <a class="chapter-card" href="/0/"><span class="chapter-id">0</span><strong>Nền Tảng</strong></a>
         <a class="chapter-card" href="/1/"><span class="chapter-id">1</span><strong>Sự Sống</strong></a>
         <a class="chapter-card" href="/2/"><span class="chapter-id">2</span><strong>Con Người</strong></a>
@@ -79,7 +80,7 @@
         <a class="chapter-card" href="/7/"><span class="chapter-id">7</span><strong>Doanh Nghiệp</strong></a>
         <a class="chapter-card" href="/8/"><span class="chapter-id">8</span><strong>Tổ Chức</strong></a>
         <a class="chapter-card" href="/9/"><span class="chapter-id">9</span><strong>Quốc Gia</strong></a>
-      </div>
+      </nav>
     </section>
 
     <section class="section">
