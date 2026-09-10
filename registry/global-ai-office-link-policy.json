@@ -1,0 +1,58 @@
+{
+  "version": "1.0",
+  "scope": "CFP+ Global AI Directory",
+  "status": "REVIEW CANDIDATE",
+  "public_trust": {
+    "labels": [
+      "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+      "ĐANG BỔ SUNG/REVIEW",
+      "ĐÃ CÓ EVIDENCE/HOÀN TẤT"
+    ],
+    "rule": "An ID or link is directory/coordination structure only. It does not prove verification, authorization, technical integration, active status or contribution.",
+    "active_rule": "Only mark an AI ACTIVE/CONTRIBUTING when output or Evidence exists for the stated scope."
+  },
+  "identity_chain": "Country -> AI Country ID -> Developer -> AI / AI child -> Work -> Evidence",
+  "allocation": {
+    "entity_rule": "One Entity -> One Stable ID -> One Permanent Public Link",
+    "child_rule": "AI child appends one digit 1-9 to its Developer ID when that slot is valid and collision-free.",
+    "zero_rule": "0 is reserved for expansion branches and is not a terminal AI-child slot.",
+    "guardrails": [
+      "Do not renumber existing Stable IDs",
+      "Do not reuse or transfer existing Stable IDs",
+      "Do not infer a real AI from an empty numeric slot",
+      "Stop on collision or parent mismatch and require Human Governance review"
+    ]
+  },
+  "links": {
+    "public": "https://cfp.plus/{ID}/",
+    "workspace": "https://cg.cfp.plus/{ID}/",
+    "country": "https://cfp.plus/{AI_COUNTRY_ID}/",
+    "developer": "https://cfp.plus/{DEVELOPER_ID}/",
+    "ai": "https://cfp.plus/{AI_ID}/"
+  },
+  "office_required_fields": [
+    "ID",
+    "Name or RESERVED/PENDING identity",
+    "Type",
+    "Country",
+    "Parent ID",
+    "Public Link",
+    "Workspace Link",
+    "Official Source / Evidence",
+    "Review Status",
+    "Work Order",
+    "Return Location",
+    "Evidence Location",
+    "Parent Link",
+    "Child Links",
+    "HUB 69 Link"
+  ],
+  "workflow": "CMP -> ID Link -> READ -> Work Order -> DO -> WRITE -> EVIDENCE -> CMP",
+  "promotion_rule": "A page may be public for directory/discovery while still PENDING/REVIEW. Public presence must not be described as partnership, authorization or technical connection without Evidence.",
+  "rollout": {
+    "phase_1": "Bind all already-governed Country and Developer IDs to public/workspace links.",
+    "phase_2": "Bind known AI children only after Parent and Official Evidence checks.",
+    "phase_3": "Create reserved office templates for valid unbound slots without inventing AI names.",
+    "phase_4": "Promote individual records to VERIFIED or ACTIVE only with scope-specific Evidence."
+  }
+}
