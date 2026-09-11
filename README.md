@@ -1,19 +1,45 @@
-# CFP+ Repository
+# CFP+
 
-This repository stores the public CFP+ website, canonical ID routes, supporting documentation, and deployment assets.
+**Only Plus+ For Life**
 
-Canonical public domain: https://cfp.plus/
+## HUB 69
 
-Primary public routes include:
+[HUB 69 • CFP+ Global Gateway](HUB69.md)
 
-• /000 — CFP+ introduction
-• /0123456789 — 10 Chapters index
-• /0 … /9 — Chapters
-• /69 — HUB 69
-• /267 — CMP
-• /2676 — MCP/CMP article
-• /28882 — CTTTC
+HUB 69 là HUB duy nhất của CFP+. Đây là điểm kết nối, định vị và điều hướng toàn bộ hệ thống CFP+, bao gồm các AI đang cộng tác và đồng hành.
 
-Operational content is maintained from the CFP+ Source of Truth and published into this repository for deployment. Stable IDs and canonical routes must not be renumbered, reused, transferred, or silently remapped.
+## Điểm truy cập GitHub
 
-For current working structure and public routing, see HUB69.md and PUBLIC_CURRENT_SYSTEM.md.
+[CFP+ GitHub Entry Point](GITHUB_HUB.md)
+
+## Trạng thái
+
+Baseline Candidate
+
+## Ngôn ngữ chuẩn
+
+Tiếng Việt là Canonical Language của CFP+.
+
+## Mục đích của repository
+
+Repository công khai dành cho tài liệu, review độc lập, evidence, governance decision và lịch sử thay đổi.
+
+## Điểm truy cập AI
+
+[AI_INDEX • Chỉ mục AI và Canonical Link công khai](AI_INDEX.md)
+
+## Tài liệu nền tảng
+
+[69 • CFP+ Global AI Country Registry](registry/AI_CANONICAL_ID_REGISTRY.md)
+
+[6911 • AI Hoa Kỳ](registry/6911.md)
+
+[6984 • AI Việt Nam](registry/6984.md)
+
+[Website Master Map](website/WEBSITE_MASTER_MAP_VI.md)
+
+[Public ID Registry 00 đến 99](website/PUBLIC_ID_REGISTRY_00_99_VI.md)
+
+[Locked Documents Registry](governance/LOCKED_DOCUMENTS_REGISTRY_VI.md)
+
+[Open Review Workflow](governance/OPEN_REVIEW_WORKFLOW_VI.md)
