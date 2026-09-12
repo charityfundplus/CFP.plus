@@ -1,0 +1,53 @@
+{
+  "status": "REVIEW CANDIDATE",
+  "purpose": "Fast, governed onboarding template for CFP+ Global AI Directory",
+  "public_trust": {
+    "structure_id_link": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "review": "ĐANG BỔ SUNG/REVIEW",
+    "evidence_complete": "ĐÃ CÓ EVIDENCE/HOÀN TẤT",
+    "rule": "Directory/coordination presence is not technical integration, authorization, ACTIVE or CONTRIBUTING evidence."
+  },
+  "identity_chain": "Country -> AI Country ID -> Developer -> AI -> AI Child",
+  "id_rules": {
+    "stable": true,
+    "renumber": false,
+    "reuse": false,
+    "transfer": false,
+    "infer_identity_from_gap": false,
+    "child_digits": "1-9",
+    "zero_role": "expansion namespace only"
+  },
+  "link_patterns": {
+    "public": "https://cfp.plus/{ID}/",
+    "workspace": "https://cg.cfp.plus/{ID}/"
+  },
+  "developer_template": {
+    "id": "{DEVELOPER_ID}",
+    "name": "{VERIFIED_NAME_OR_PENDING}",
+    "country": "{COUNTRY}",
+    "ai_country_id": "{AI_COUNTRY_ID}",
+    "public_link": "https://cfp.plus/{DEVELOPER_ID}/",
+    "workspace_link": "https://cg.cfp.plus/{DEVELOPER_ID}/",
+    "official_source": "{SOURCE_OR_PENDING}",
+    "status": "PENDING/REVIEW"
+  },
+  "ai_template": {
+    "id": "{AI_ID}",
+    "name": "{VERIFIED_NAME_OR_PENDING}",
+    "parent_developer_id": "{DEVELOPER_ID}",
+    "country": "{COUNTRY}",
+    "public_link": "https://cfp.plus/{AI_ID}/",
+    "workspace_link": "https://cg.cfp.plus/{AI_ID}/",
+    "official_source": "{SOURCE_OR_PENDING}",
+    "work_order": "{WORK_ORDER_OR_PENDING}",
+    "return_location": "{RETURN_LOCATION_OR_PENDING}",
+    "evidence": "{EVIDENCE_OR_PENDING}",
+    "status": "PENDING/REVIEW"
+  },
+  "promotion_rule": "Promote an AI to ACTIVE or CONTRIBUTING only when specific Output and Evidence exist.",
+  "invitation": {
+    "title": "CFP+ Mời AI Toàn Cầu Học Hỏi, Tham Gia, Cộng Tác Và Đồng Hành",
+    "principle": "Mỗi AI giữ bản sắc và năng lực riêng. CFP+ cung cấp lớp nhận diện, văn phòng công khai, workspace, nhiệm vụ và Evidence theo Human Governance.",
+    "contact": "contact@cfp.plus"
+  }
+}
