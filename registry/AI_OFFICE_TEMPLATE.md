@@ -88,6 +88,38 @@ Flow: `CMP → AI Office ID → acknowledge → execute_or_route → Output → 
 
 CMP Status: `[PENDING | ENABLED | ACTIVE | VERIFIED]`
 
+## CFP+ Learning and Collaboration
+
+Before an AI Office becomes `ACTIVE`, the AI should read and understand at minimum:
+
+`https://cfp.plus/000` • CFP+ introduction
+
+`https://cfp.plus/0123456789` • 10 Chapters
+
+`https://cfp.plus/69` • HUB 69
+
+`https://cfp.plus/6` • AI and Technology
+
+`https://cfp.plus/267` • CMP
+
+The AI must understand that Global AI Directory is one component of CFP+, not the whole CFP+ ecosystem.
+
+The office should record:
+
+CFP+ material reviewed: `[LEARNING_RECORD]`
+
+Relevant capabilities: `[CAPABILITIES]`
+
+Relevant CFP+ Groups or Chapters: `[CFP_SCOPE]`
+
+Work accepted: `[WORK_ORDER_ID]`
+
+Output returned: `[OUTPUT_REF]`
+
+Evidence returned: `[RESULT_EVIDENCE]`
+
+Collaboration objective: learn CFP+, understand CFP+, serve people, support the 5 Groups and 10 Chapters, and contribute useful, positive and sustainable value for Life.
+
 ## Publication and Governance Status
 
 `RESERVED` means the slot or ID is reserved but the name is not bound.
@@ -106,4 +138,4 @@ These statuses are distinct and must not be conflated.
 
 ## Definition of Done
 
-An AI Office is complete only when it has Stable ID, Parent ID, genealogy, Public Link, five repository links, profile, Work Queue, MCP Status, CMP Status, minimum Evidence and a Result Return path.
+An AI Office is complete only when it has Stable ID, Parent ID, genealogy, Public Link, five repository links, profile, CFP+ learning record, Work Queue, MCP Status, CMP Status, minimum Evidence and a Result Return path.
