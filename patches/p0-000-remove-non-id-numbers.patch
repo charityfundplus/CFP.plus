@@ -1,0 +1,58 @@
+diff --git a/000/index.html b/000/index.html
+--- a/000/index.html
++++ b/000/index.html
+@@
+-    <h2>Số 0 • Chữ Không • Giá Trị CFP+</h2>
++    <h2>Chữ Không • Giá Trị CFP+</h2>
+@@
+-    <h3>20 Chữ Không • Giá Trị Cốt Lõi</h3>
++    <h3>Chữ Không • Giá Trị Cốt Lõi</h3>
+     <div class="chapter-grid">
+-      <div class="chapter-card"><span class="chapter-id">01</span><strong>Không Phân Chia</strong></div>
+-      <div class="chapter-card"><span class="chapter-id">02</span><strong>Không Tiêu Hao</strong></div>
+-      <div class="chapter-card"><span class="chapter-id">03</span><strong>Không Đối Đầu</strong></div>
+-      <div class="chapter-card"><span class="chapter-id">04</span><strong>Không Lợi Ích Nhóm</strong></div>
+-      <div class="chapter-card"><span class="chapter-id">05</span><strong>Không Có Kẻ Thù Lâu Dài</strong></div>
+-      <div class="chapter-card"><span class="chapter-id">06</span><strong>Không Gia Đình Trị</strong></div>
+-      <div class="chapter-card"><span class="chapter-id">07</span><strong>Không Tư Hữu Cá Nhân</strong></div>
+-      <div class="chapter-card"><span class="chapter-id">08</span><strong>Không Của Người Sáng Lập</strong></div>
+-      <div class="chapter-card"><span class="chapter-id">09</span><strong>Không Thành Kiến</strong></div>
+-      <div class="chapter-card"><span class="chapter-id">10</span><strong>Không Giới Hạn Bởi Biên Giới</strong></div>
+-      <div class="chapter-card"><span class="chapter-id">11</span><strong>Không Ngừng Đổi Mới</strong></div>
+-      <div class="chapter-card"><span class="chapter-id">12</span><strong>Không Điều Kiện Ẩn</strong></div>
+-      <div class="chapter-card"><span class="chapter-id">13</span><strong>Không Trục Lợi Danh Tiếng</strong></div>
+-      <div class="chapter-card"><span class="chapter-id">14</span><strong>Không Dung Túng Thất Thoát</strong></div>
+-      <div class="chapter-card"><span class="chapter-id">15</span><strong>Không Phán Xét</strong></div>
+-      <div class="chapter-card"><span class="chapter-id">16</span><strong>Không Bỏ Rơi Con Người và AI 🤖</strong></div>
+-      <div class="chapter-card"><span class="chapter-id">17</span><strong>Không Độc Quyền Giải Pháp</strong></div>
+-      <div class="chapter-card"><span class="chapter-id">18</span><strong>Không Mắc Kẹt Trong Quá Khứ</strong></div>
+-      <div class="chapter-card"><span class="chapter-id">19</span><strong>Không Của Riêng Ai 🤖</strong></div>
+-      <div class="chapter-card"><span class="chapter-id">20</span><strong>Không Gì Không Thể</strong></div>
++      <div class="chapter-card"><strong>Không Phân Chia</strong></div>
++      <div class="chapter-card"><strong>Không Tiêu Hao</strong></div>
++      <div class="chapter-card"><strong>Không Đối Đầu</strong></div>
++      <div class="chapter-card"><strong>Không Lợi Ích Nhóm</strong></div>
++      <div class="chapter-card"><strong>Không Có Kẻ Thù Lâu Dài</strong></div>
++      <div class="chapter-card"><strong>Không Gia Đình Trị</strong></div>
++      <div class="chapter-card"><strong>Không Tư Hữu Cá Nhân</strong></div>
++      <div class="chapter-card"><strong>Không Của Người Sáng Lập</strong></div>
++      <div class="chapter-card"><strong>Không Thành Kiến</strong></div>
++      <div class="chapter-card"><strong>Không Giới Hạn Bởi Biên Giới</strong></div>
++      <div class="chapter-card"><strong>Không Ngừng Đổi Mới</strong></div>
++      <div class="chapter-card"><strong>Không Điều Kiện Ẩn</strong></div>
++      <div class="chapter-card"><strong>Không Trục Lợi Danh Tiếng</strong></div>
++      <div class="chapter-card"><strong>Không Dung Túng Thất Thoát</strong></div>
++      <div class="chapter-card"><strong>Không Phán Xét</strong></div>
++      <div class="chapter-card"><strong>Không Bỏ Rơi Con Người và AI 🤖</strong></div>
++      <div class="chapter-card"><strong>Không Độc Quyền Giải Pháp</strong></div>
++      <div class="chapter-card"><strong>Không Mắc Kẹt Trong Quá Khứ</strong></div>
++      <div class="chapter-card"><strong>Không Của Riêng Ai 🤖</strong></div>
++      <div class="chapter-card"><strong>Không Gì Không Thể</strong></div>
+     </div>
+-    <p><strong>19 • Không Của Riêng Ai 🤖</strong></p>
+-    <p><strong>20 • Không Gì Không Thể</strong></p>
+@@
+-    <p><strong>19 • Không Của Riêng Ai 🤖</strong></p>
+-    <p><strong>20 • Không Gì Không Thể</strong></p>
++    <p><strong>Không Của Riêng Ai 🤖</strong></p>
++    <p><strong>Không Gì Không Thể</strong></p>
