@@ -1,0 +1,59 @@
+{
+  "schema_version": "2026-09-13-working",
+  "status": "WORKING TEMPLATE • NOT CANONICAL LOCKED",
+  "genealogy": ["country", "ai_country", "developer", "ai", "ai_child"],
+  "id_rules": {
+    "ai_country": "6 + Country ID according to locked mapping",
+    "developer_primary": "C1..C9",
+    "developer_expansion": ["C01..C09", "C001..C009", "continue by reviewed namespace"],
+    "ai_child": "Developer ID + 1..9",
+    "zero_rule": "0 is reserved for expansion namespaces and is not an AI child"
+  },
+  "entity": {
+    "stable_id": "",
+    "entity_name": "",
+    "entity_type": "",
+    "parent_id": "",
+    "country_id": "",
+    "ai_country_id": "",
+    "developer_id": "",
+    "official_website": "",
+    "official_evidence": [],
+    "capabilities": [],
+    "review_status": "",
+    "publication_status": "",
+    "links": {
+      "public": "https://cfp.plus/{ID}",
+      "github": "https://gh.cfp.plus/{ID}",
+      "chatgpt": "https://cg.cfp.plus/{ID}",
+      "google": "https://gg.cfp.plus/{ID}",
+      "notion": "https://nt.cfp.plus/{ID}"
+    },
+    "hub69": {
+      "public": "https://cfp.plus/69",
+      "github": "https://gh.cfp.plus/69",
+      "chatgpt": "https://cg.cfp.plus/69",
+      "google": "https://gg.cfp.plus/69",
+      "notion": "https://nt.cfp.plus/69"
+    },
+    "office": {
+      "work_queue": [],
+      "current_work_order": "",
+      "latest_output": "",
+      "result_evidence": [],
+      "result_return": ""
+    },
+    "mcp": {
+      "endpoint": "https://mcp.cfp.plus/mcp/",
+      "status": "MCP PENDING AUTH",
+      "target_scopes": ["read", "propose", "execute_approved", "write_noncanonical"],
+      "restricted_scopes": ["approve", "canonical_lock", "auto_approve", "delete_canonical"],
+      "flow": ["receive_work", "acknowledge", "execute_or_route", "return_output", "evidence", "update_CMP"]
+    },
+    "cmp": {
+      "url": "https://cfp.plus/267",
+      "status": "PENDING",
+      "work_order_fields": ["work_order_id", "target_ai_id", "input", "required_output", "evidence_requirement", "result_return", "status"]
+    }
+  }
+}
