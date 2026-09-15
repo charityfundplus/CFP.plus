@@ -1,0 +1,23 @@
+name: CMP Actions Smoke Test
+
+on:
+  push:
+    branches:
+      - review/cmp-xai-api-pilot
+    paths:
+      - ".github/workflows/cmp-actions-smoke.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Confirm runner execution
+        run: |
+          echo "CMP_ACTIONS_RUNNER: PASS"
+          echo "NUMERIC_ID_CHANGED: NO"
+          echo "GOVERNANCE_APPROVED: NO"
+          echo "CANONICAL_LOCKED: NO"
