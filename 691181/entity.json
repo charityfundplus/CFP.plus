@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0-review-candidate",
+  "stable_id": "691181",
+  "entity_name": "ChatGPT",
+  "cfp_role_name": "CFP+ Operating Assistant",
+  "node_type": "Agent / Assistant Node",
+  "developer": {
+    "name": "OpenAI",
+    "cfp_id": "69118"
+  },
+  "identity_parent_id": "69118",
+  "coordination_relation": {
+    "cfp_id": "69110",
+    "role": "CFP+ operating coordination",
+    "status": "REVIEW CANDIDATE"
+  },
+  "public_url": "https://cfp.plus/691181",
+  "github_directory": "https://github.com/charityfundplus/CFP.plus/tree/main/691181",
+  "ai_readable_raw": "https://raw.githubusercontent.com/charityfundplus/CFP.plus/main/691181/entity.json",
+  "work_office": "https://github.com/charityfundplus/CFP.plus/blob/main/691181/work-office.md",
+  "specialization": [
+    "Structure Review",
+    "Parent Logic Review",
+    "ID Format Check",
+    "Conflict Detection",
+    "Data Review"
+  ],
+  "access_model": {
+    "public_read": true,
+    "direct_write_without_authorization": false,
+    "write_methods": [
+      "Authorized GitHub commit",
+      "GitHub pull request",
+      "Structured payload submitted for CFP+ publication"
+    ]
+  },
+  "governance": {
+    "stable_id_change": "NOT ALLOWED",
+    "canonical_lock_by_ai": "NOT ALLOWED",
+    "history_overwrite": "NOT ALLOWED",
+    "unknown_data": "PENDING OR REVIEW REQUIRED"
+  },
+  "verification_status": "REVIEW CANDIDATE",
+  "canonical_locked": false,
+  "last_updated": "2026-09-16"
+}
