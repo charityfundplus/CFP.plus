@@ -8,6 +8,14 @@ CFP+ đang xây dựng và chuẩn hóa danh mục AI toàn cầu theo quốc gi
 
 Global AI Directory là lớp danh mục, nhận diện và điều phối đang được hoàn thiện. Việc có cấu trúc, Stable ID hoặc Link không đồng nghĩa CFP+ đã tích hợp kỹ thuật, được ủy quyền hoặc có kết nối vận hành với toàn bộ AI trên toàn cầu.
 
+### Mục Tiêu Baseline Hiện Tại
+
+CFP+ ưu tiên xác lập cho từng hồ sơ AI đã được nhận diện: **Quốc Gia → Developer → AI → Stable ID → Link mẫu `cfp.plus/{ID}`**.
+
+Stable ID và Link mẫu phục vụ định danh, tra cứu và chuẩn bị không gian làm việc. Chúng không phải bằng chứng rằng AI, Developer hoặc Quốc Gia đã đồng hành, hợp tác, ủy quyền hay tích hợp kỹ thuật với CFP+.
+
+AI Con 👶 chỉ được bổ sung khi đã xác định rõ thực thể hoặc sản phẩm cần định danh. Các mục chưa đủ thông tin hoặc Evidence tiếp tục giữ PENDING/REVIEW.
+
 ### Ba Nhãn Công Khai
 
 **ĐÃ CÓ CẤU TRÚC/ID/LINK** • Áp dụng cho đúng hồ sơ đã có cấu trúc nhận diện, Stable ID hoặc route.
