@@ -72,10 +72,10 @@ footer p { margin: 0; }
 
 @media (max-width: 760px) {
   main, footer { width: min(var(--max), calc(100% - 1.5rem)); }
-  .site-header { position: static; display: grid; grid-template-columns: 1fr; align-items: stretch; gap: .35rem; padding: .65rem .75rem; }
-  .brand { min-height: 44px; display: inline-flex; align-items: center; }
-  .site-header nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .35rem; width: 100%; max-width: none; overflow: visible; padding: 0; }
-  .site-header nav a { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 44px; padding: .5rem .55rem; border: 1px solid var(--line); border-radius: 12px; white-space: normal; overflow-wrap: anywhere; text-align: center; font-size: .86rem; line-height: 1.3; }
+  .site-header { position: sticky; display: flex; align-items: center; gap: .6rem; padding: .55rem .75rem; }
+  .brand { flex: 0 0 auto; min-height: 44px; display: inline-flex; align-items: center; }
+  .site-header nav { display: flex; flex: 1 1 auto; gap: .35rem; min-width: 0; overflow-x: auto; overflow-y: hidden; padding: .1rem 0 .25rem; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+  .site-header nav a { flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: .5rem .7rem; border: 1px solid var(--line); border-radius: 12px; white-space: nowrap; text-align: center; font-size: .84rem; line-height: 1.2; }
   .site-header nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .hero { padding: 2.75rem 0 2.5rem; }
   h1 { font-size: clamp(2rem, 10vw, 3rem); }
@@ -87,7 +87,8 @@ footer p { margin: 0; }
 }
 
 @media (max-width: 420px) {
-  .site-header nav { grid-template-columns: 1fr; }
+  .site-header { gap: .45rem; }
+  .site-header nav a { padding-inline: .6rem; font-size: .8rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
