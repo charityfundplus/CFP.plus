@@ -1,0 +1,35 @@
+{
+  "stable_id": "691143",
+  "name": "Google Labs",
+  "entity_type": "AI Developer",
+  "parent_id": "69114",
+  "parent_name": "Google AI Ecosystem",
+  "ai_country_id": "6911",
+  "country_id": "911",
+  "country": "United States",
+  "status": "REVIEW CANDIDATE",
+  "canonical_locked": false,
+  "canonical_public_url": "https://cfp.plus/691143",
+  "links": {
+    "github": "https://gh.cfp.plus/691143",
+    "chatgpt_workspace": "https://cg.cfp.plus/691143",
+    "google": "https://gg.cfp.plus/691143",
+    "notion": "https://nt.cfp.plus/691143"
+  },
+  "child_namespace": "6911431-6911439",
+  "evidence": [
+    {
+      "type": "official",
+      "source": "Google Labs",
+      "url": "https://labs.google/about",
+      "note": "Official Google Labs source states that Google Labs is the home for AI experiments at Google."
+    }
+  ],
+  "review_gates": ["Official Evidence", "Parent Check", "Duplicate Check"],
+  "d_management": {
+    "manages_current_state_history_evidence": true,
+    "root_version_created": false,
+    "d_id_0": null,
+    "rule": "Numeric ID operates first; D manages continuously; D-ID/0 appears only after the root ID is formally established."
+  }
+}
