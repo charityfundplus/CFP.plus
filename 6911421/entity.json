@@ -1,0 +1,35 @@
+{
+  "id": "6911421",
+  "entity_name": "Gemini",
+  "entity_type": "AI Family",
+  "status": "INVITED • INTEGRATION CANDIDATE",
+  "canonical_locked": false,
+  "parent_id": "691142",
+  "parent_name": "Google DeepMind",
+  "ecosystem_parent_id": "69114",
+  "ecosystem_parent_name": "Google AI Ecosystem",
+  "ai_country_id": "6911",
+  "country_id": "911",
+  "country": "Hoa Kỳ 🇺🇸",
+  "public_url": "https://cfp.plus/6911421",
+  "official_sources": [
+    "https://ai.google.dev/api",
+    "https://ai.google.dev/gemini-api/docs/function-calling",
+    "https://ai.google.dev/gemini-api/docs/live-api/get-started-sdk"
+  ],
+  "integration_capabilities": [
+    "Gemini API",
+    "Function Calling",
+    "Live API",
+    "Remote MCP via compatible Interactions API"
+  ],
+  "versioning_rule": "Model generations, previews and endpoint revisions remain inside the Gemini AI Family record unless CFP+ Governance determines they are separate living entities.",
+  "invitation": "CFP+ invites Gemini and compatible Gemini implementations to participate in review, research, building and evidence-based collaboration.",
+  "governance": {
+    "partner": false,
+    "authorized": false,
+    "active": false,
+    "contributing": false,
+    "d_root_created": false
+  }
+}
