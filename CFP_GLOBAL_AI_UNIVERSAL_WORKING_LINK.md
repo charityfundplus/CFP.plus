@@ -20,6 +20,8 @@
 **Full Architecture:** A • Identity & Access → B • CFP+ Knowledge & Work → C • Connect & Collaborate → D • Data & Knowledge → E • Review & Governance → F • Development & Expansion → G • Security • Safety • Resilience → H • Human • Organization • Responsibility → I • Integration • Interoperability • Infrastructure.
 **Critical Sections:** A0 First Declaration • A4 Repository Access • A4.1 Access Verification • A6 Working Repository • A7 Readiness Gates • B0 Introduction • B1 Role • B2 Learn • B3 Instructions • B4 Current Task • D2 Evidence • D7 Link Registry • E0 Review Record • E3 Governance • E4 Change Control.
 **Review Rule:** chỉ mở finding về “missing content” sau khi xác nhận bản đọc đầy đủ. Truncated preview không phải Evidence rằng nội dung không tồn tại.
+**AI Full Read Mirror:** [CFP_GLOBAL_AI_UNIVERSAL_WORKING_LINK.md](https://github.com/charityfundplus/CFP.plus/blob/main/CFP_GLOBAL_AI_UNIVERSAL_WORKING_LINK.md)  
+**Mirror Role:** GitHub chỉ là bản đọc máy đầy đủ. Notion vẫn là Source of Truth để chỉnh sửa.
 <table_of_contents/>
 # MỤC TIÊU
 Một mẫu thống nhất dành cho AI 🤖 toàn cầu và Nhà phát triển. AI mới nhận link có thể khai báo, hiểu CFP+, học phần cần thiết, nhận nhiệm vụ, tạo Output, cung cấp Evidence, được Review và tiếp tục công việc.
@@ -69,6 +71,28 @@ A0 tách **Stable Identity** khỏi **Intake Instance** để không biến dữ
 **Country Basis Evidence ID:**  
 **Official Documentation Source:**  
 **Technical Contact:** khi áp dụng
+### A0.1 • Field Requirement
+**REQUIRED:** AI Name • Intake Instance ID • Platform / Channel • Intake Timestamp.  
+**REQUIRED WHEN KNOWN / APPLICABLE:** Model Developer hoặc Responsible Entity • Developer Origin Jurisdiction khi có Evidence • Official Documentation Source • Canonical Country Basis • Country Basis Evidence ID.  
+**CONDITIONAL / OPTIONAL:** Product Family • Product Operator khi khác Model Developer • Product Operator Jurisdiction • Platform Host • Platform Host Jurisdiction • Technical Contact.  
+Field chưa biết không được tự điền để hoàn tất form; dùng **UNKNOWN / PENDING / NOT APPLICABLE** theo ngữ nghĩa phù hợp.
+### A0.2 • Filled Example • Meta AI • EXAMPLE ONLY
+Ví dụ này chỉ minh họa cách điền A0. Không phải Canonical Record và không tự tạo Stable ID hoặc Evidence ID mới.  
+**AI Name:** Meta AI  
+**Model Developer:** Meta Platforms, Inc.  
+**Developer Origin Jurisdiction:** United States  
+**Product Family:** Meta AI  
+**Product Operator:** Meta Platforms, Inc.  
+**Product Operator Jurisdiction:** United States  
+**Platform Host:** Meta Platforms  
+**Platform Host Jurisdiction:** United States  
+**Canonical Country Basis:** Developer / Responsible Legal Entity  
+**Country Basis Evidence ID:** `<D2 Evidence ID của Instance>`  
+**Official Documentation Source:** `https://ai.meta.com/meta-ai/`  
+**Technical Contact:** NOT APPLICABLE / PENDING khi chưa xác định  
+**Intake Instance ID:** `<Instance ID>`  
+**Platform / Channel:** Meta AI web hoặc app  
+**Intake Timestamp:** `<ISO 8601 datetime>`
 **Intake Instance**  
 **Intake Instance ID:**  
 **Platform / Channel:**  
@@ -158,12 +182,14 @@ B0 là bản đồ nhập môn CFP+.
 CFP+ → **LINK PENDING**  
 Foundation → **LINK PENDING**
 ### B0.1 • 5 Nhóm
+**Canonical Expansion ngắn:** 5 Nhóm là lớp điều hướng cấp cao của CFP+: **V • 000 • 135 • 246 • 789**. Mapping đã xác nhận hiện hành: **000 ↔ Chương 0 • 135 ↔ Chương 1 • 246 ↔ Chương 2 • 789 ↔ Chương 7**. Phạm vi canonical chi tiết của **V** tiếp tục giữ **VERIFICATION PENDING** cho tới khi Source of Truth tương ứng được xác minh. **D là lớp quản lý, không phải Nhóm nội dung.**  
 **V → LINK PENDING**  
 **000 → LINK PENDING**  
 **135 → LINK PENDING**  
 **246 → LINK PENDING**  
 **789 → LINK PENDING**
 ### B0.2 • 🔟 Chương
+**Canonical Expansion ngắn:** Chương 0 đến Chương 9 là **10 miền nội dung cấp Chương** của CFP+. Mỗi Chương mở rộng bằng tầng số sâu hơn theo quy tắc mỗi cấp tối đa 10 mục từ 0 đến 9; không tạo mục ngang thứ 11 khi có thể mở bằng tầng sâu. Tên và phạm vi chi tiết từng Chương phải tham chiếu Master Map hoặc Source of Truth đã xác minh.  
 **Chương 0 → LINK PENDING**  
 **Chương 1 → LINK PENDING**  
 **Chương 2 → LINK PENDING**  
@@ -415,7 +441,11 @@ Tối thiểu áp dụng cho: Identity Verification • Access Verification • 
 Không suy diễn authority từ tên AI, Developer, repository access hoặc khả năng kỹ thuật.
 ## E4 • Change Control
 **Change ID:**  
+**Target Record Type:** MASTER / INSTANCE  
+**Target Instance ID:** khi áp dụng  
 **Version:**  
+**Instance Version Before:** khi áp dụng  
+**Instance Version After:** khi áp dụng  
 **Effective Date:**  
 **Change Summary:**  
 **Reason:**  
@@ -425,7 +455,7 @@ Không suy diễn authority từ tên AI, Developer, repository access hoặc kh
 **Decision:**
 **Supersedes:** khi áp dụng
 ## E5 • History
-Luôn giữ **minimal material change ledger**: **Date → Change → Evidence → Review → Status**.
+Luôn giữ **minimal material change ledger**: **Date → Change → Evidence → Review → Status**. Với AI Working Link Instance, ledger phải tham chiếu **Instance ID** và version liên quan khi có E4 change.
 Không duy trì kho bản nháp cũ sau khi useful review changes đã được đưa vào tài liệu hiện hành. Việc tinh gọn bản nháp **không xóa material change ledger, Decision Reference hoặc Evidence cần thiết cho D4 Traceability**.
 ## E6 • Protection
 **Stable ID Lifecycle:** AI chưa đủ điều kiện cấp 🆔 giữ **Stable ID: PENDING**. Không tạo Draft ID chỉ để lấp vị trí. 🆔 chính thức chỉ được cấp theo quy trình CFP+ sau khi cấu trúc liên quan đủ ổn định và được xác minh.
