@@ -12,7 +12,7 @@
 <callout icon="🌏">
 	**REVIEW CANDIDATE • GLOBAL AI 🤖**
 	**Một AI 🤖 • Một Working Link • Một cấu trúc A → I**
-	**Document Version:** Review Candidate • Sequential Review
+	**Document Version:** Review Candidate • Ready for Governance Review
 	**Current Revision Date:** 2026-09-22
 </callout>
 ## AI READ FIRST • FULL MAP
