@@ -49,3 +49,38 @@ Không nền tảng nào chỉ giữ bản tóm tắt thay cho nội dung gốc.
 - [CMP Automated Review Protocol • v1.0 • Official](https://app.notion.com/p/3bdcaac9a557811382a7d3539e09779c)
 
 **Ranh giới:** Review tự động được phép. AI không tự Governance Approve, Canonical Lock, đổi Canonical ID hoặc xuất bản ngoài quy trình.
+
+## 2026 09 23 • AI Country Completion + Sync Control
+
+**Current status:** PARTIALLY SYNCED • OPERATIONAL • RECONCILIATION REQUIRED
+
+Áp dụng cho tất cả AI 🤖 đã có Working Link.
+
+### Nhiệm vụ
+
+1. Xác định Country và AI Country Root.
+2. Kiểm tra toàn bộ Developer đã xác minh của quốc gia.
+3. Với từng Developer, rà soát AI System, Model, Agent, Product và Service.
+4. Bổ sung phần thiếu bằng nguồn chính thức và Evidence.
+5. Không tạo Root trùng. SEARCH → MATCH → VERIFY → REUSE OR CREATE.
+6. AI chưa có Stable ID tiếp tục bằng Tên + Working Link.
+7. Stable ID chỉ chuyển sau Parent • Country • Duplicate • Slot • Collision Check.
+8. Không tự Canonical Lock.
+
+### Khóa đồng bộ
+
+**Một Root Record • một AI_LANE_ID • nhiều Access Path.**
+
+Notion = vận hành và biên tập chính.
+GitHub = canonical • issue • versioning • audit.
+Google Workspace = tài liệu và dữ liệu làm việc được cấp quyền.
+MCP = kết nối kỹ thuật theo quyền và Evidence.
+
+Chỉ ghi **SYNCED / CURRENT** khi Notion ↔ GitHub ↔ Google áp dụng đã được đối chiếu và có Evidence.
+
+Nếu chưa đủ: **PARTIALLY SYNCED • RECONCILIATION REQUIRED**.
+
+### Control links
+
+- GitHub Issue #103: https://github.com/charityfundplus/CFP.plus/issues/103
+- Google Control Doc: https://docs.google.com/document/d/1t08NemGn9qSxNXLVmV7HS24cfbELQScsUhfHPtp_0WI/edit
