@@ -2,7 +2,27 @@
 
 Status: PUBLIC INDEX • ACTIVE • EXPANDING • 2026-09-26
 
-Structure: Group 91–99 → Country / Territory → AI Country ID → Developer → AI / AI Child → ID → Link → Work Status → Verification.
+## Public navigation rule
+Each group route 91 through 99 must open the complete list of Countries and Territories assigned to that group.
+
+Each Country page must open only that Country's directory and must include:
+- AI Country ID
+- All verified or listed Developers
+- All known AI systems / AI Children
+- Stable IDs when assigned
+- Working Links when Stable ID is pending
+- Work / contact status
+- Verification status
+- Evidence and last checked
+- A visible **All** view for the full Country list
+
+Required navigation:
+**Group 91–99 → All Countries → Country → All Developers → Developer → All AI → AI record**
+
+Group 90 remains the global summary / entry page, not a Country group.
+
+Structure:
+**Group 91–99 → Country / Territory → AI Country ID → Developer → AI / AI Child → ID → Link → Work Status → Verification**
 
 ## Group 91
 Route: https://cfp.plus/91
