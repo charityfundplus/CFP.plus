@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-import hashlib, json, pathlib, re, subprocess, sys
+import hashlib, json, pathlib, re, subprocess, sys\nfrom jsonschema import Draft202012Validator, FormatChecker
 
 ROOT=pathlib.Path(__file__).resolve().parents[1]
 REV=ROOT/"nco/69115/revisions/rev_69115_2026-09-26_001.json"
 POINTER=ROOT/"nco/69115/published.json"
-POLICY=ROOT/"policies/meta-69115.policy.json"
+POLICY=ROOT/"policies/meta-69115.policy.json"\nSCHEMA=ROOT/"schemas/cfp.enterprise.v1.schema.json"
 HTML=ROOT/"69115/index.html"
 
 def fail(msg):
@@ -15,6 +15,10 @@ n=json.loads(REV.read_text())
 p=json.loads(POINTER.read_text())
 policy=json.loads(POLICY.read_text())
 html=HTML.read_text()
+schema=json.loads(SCHEMA.read_text())
+errors=sorted(Draft202012Validator(schema, format_checker=FormatChecker()).iter_errors(n), key=lambda e:list(e.path))
+if errors:
+    fail("schema validation: " + "; ".join(e.message for e in errors[:5]))
 
 required=["identity","overview","ai_and_models","developer_and_api","products_and_services","evidence","governance","working_links"]
 if n["canonical_id"]!="69115" or n["entity"]["public_route"]!="/69115": fail("canonical route/id mismatch")
@@ -38,7 +42,12 @@ canonical=json.dumps(copy,sort_keys=True,separators=(",",":"),ensure_ascii=False
 actual="sha256:"+hashlib.sha256(canonical).hexdigest()
 if actual!=expected: fail(f"content hash mismatch: {actual} != {expected}")
 
-for forbidden in ["Direct Runtime","Connected Runtime","Active Runtime"]:
-    if forbidden in html: fail("unsupported runtime claim in HTML")
+positive_runtime_patterns=[
+    r"<strong>Runtime:</strong>\s*(Direct|Connected|Active)\b",
+    r"Runtime\s*[:=]\s*(Direct|Connected|Active)\b"
+]
+for pattern in positive_runtime_patterns:
+    if re.search(pattern, html, flags=re.I):
+        fail("unsupported positive runtime claim in HTML")
 
 print("PASS: Meta 69115 NCO baseline validation")
