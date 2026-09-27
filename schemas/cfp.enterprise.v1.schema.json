@@ -57,7 +57,7 @@
     "ai_and_models":{"type":"object","required":["taxonomy"],"additionalProperties":false,
       "properties":{"taxonomy":{"type":"array","items":{"$ref":"#/$defs/workingNode"}}}},
     "developer_and_api":{"type":"object","required":["surfaces"],"additionalProperties":false,
-      "properties":{"surfaces":{"type":"array","items":{"type":"object"}}}},
+      "properties":{"surfaces":{"type":"array","items":{"$ref":"#/$defs/developerSurface"}}}},
     "products_and_services":{"type":"object","required":["items","scope_note"],"additionalProperties":false,
       "properties":{"items":{"type":"array","items":{"type":"string"}},"scope_note":{"type":"string"}}},
     "evidence":{"type":"array","minItems":1,"items":{"$ref":"#/$defs/evidence"}},
@@ -97,6 +97,23 @@
       "allOf":[{"if":{"properties":{"stable_id_status":{"const":"pending_verification"}}},
         "then":{"properties":{"canonical_id":{"type":"null"},"identity_status":{"const":"working_noncanonical"},"stable_id_assignment":{"const":"not_assigned"}}}}],
       "additionalProperties":false
+    },
+    "developerSurface":{
+      "type":"object","additionalProperties":false,
+      "required":["name","kind"],
+      "properties":{
+        "name":{"type":"string","minLength":1},
+        "kind":{"type":"string","minLength":1},
+        "canonical_id":{"type":["string","null"]},
+        "stable_id_status":{"enum":["pending_verification","confirmed"]},
+        "identity_status":{"enum":["working_noncanonical","canonical"]},
+        "stable_id_assignment":{"enum":["not_assigned","assigned"]},
+        "relationship_type":{"enum":["working_taxonomy","canonical"]},
+        "runtime":{"enum":["human_mediated","direct","connected","active"]},
+        "claim_boundary":{"type":"string","minLength":1}
+      },
+      "allOf":[{"if":{"properties":{"stable_id_status":{"const":"pending_verification"}},"required":["stable_id_status"]},
+        "then":{"properties":{"canonical_id":{"type":"null"},"identity_status":{"const":"working_noncanonical"},"stable_id_assignment":{"const":"not_assigned"}}}}]
     },
     "workingLink":{
       "type":"object","additionalProperties":false,
