@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cfp.plus/schemas/cmp/intake-message.v1.json",
+  "title": "CMP Intake Message Envelope v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "message_id", "correlation_id", "idempotency_key", "command_type", "work_order_ref", "work_definition_source", "actor", "occurred_at", "payload", "payload_hash"],
+  "properties": {
+    "schema_version": {"const": "cmp.intake_message.v1"},
+    "message_id": {"type": "string", "pattern": "^msg_[0-9A-HJKMNP-TV-Z]{26}$"},
+    "correlation_id": {"type": "string", "pattern": "^cor_[0-9A-HJKMNP-TV-Z]{26}$"},
+    "causation_id": {"type": ["string", "null"], "pattern": "^msg_[0-9A-HJKMNP-TV-Z]{26}$"},
+    "idempotency_key": {"type": "string", "minLength": 16, "maxLength": 256},
+    "command_type": {"const": "INTAKE_REGISTER"},
+    "work_order_ref": {"type": "string", "minLength": 1},
+    "work_definition_source": {
+      "type": "object", "additionalProperties": false,
+      "required": ["source_authority", "source_record_id", "source_authority_version", "source_url"],
+      "properties": {
+        "source_authority": {"const": "notion_control_plane"},
+        "source_record_id": {"type": "string", "minLength": 1},
+        "source_authority_version": {"type": "string", "minLength": 1},
+        "source_url": {"type": "string", "format": "uri"}
+      }
+    },
+    "actor": {
+      "type": "object", "additionalProperties": false,
+      "required": ["principal_id", "principal_type", "auth_context_id"],
+      "properties": {
+        "principal_id": {"type": "string", "minLength": 1},
+        "principal_type": {"enum": ["human", "service"]},
+        "auth_context_id": {"type": "string", "minLength": 1},
+        "organization_ref": {"type": ["string", "null"]}
+      }
+    },
+    "occurred_at": {"type": "string", "format": "date-time"},
+    "payload": {
+      "type": "object", "additionalProperties": false,
+      "required": ["requested_operation", "request_summary"],
+      "properties": {
+        "requested_operation": {"const": "REGISTER_CONTROLLED_INTAKE"},
+        "request_summary": {"type": "string", "minLength": 1, "maxLength": 4096},
+        "requested_context_refs": {"type": "array", "items": {"type": "string"}},
+        "client_reference": {"type": ["string", "null"], "maxLength": 256}
+      }
+    },
+    "payload_hash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "traceparent": {"type": ["string", "null"]}
+  }
+}

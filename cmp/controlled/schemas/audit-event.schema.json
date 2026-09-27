@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cfp.plus/schemas/cmp/audit-event.v1.json",
+  "title": "CMP Audit Event v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["audit_event_id", "event_type", "occurred_at", "recorded_at", "actor", "record_ref", "action", "payload_hash", "previous_event_hash", "event_hash", "policy_version", "schema_version"],
+  "properties": {
+    "audit_event_id": {"type": "string", "pattern": "^aud_[0-9A-HJKMNP-TV-Z]{26}$"},
+    "event_type": {"enum": ["COMMAND_RECEIVED", "COMMAND_VALIDATED", "COMMAND_REJECTED", "IDEMPOTENCY_REPLAY", "SNAPSHOT_CAPTURED", "OUTBOX_RECORDED", "EVIDENCE_REGISTERED", "EVIDENCE_VERIFIED", "EVIDENCE_INTEGRITY_FAILED", "EVIDENCE_SUPERSEDED", "REVIEW_RECEIPT_SUBMITTED", "REVIEW_INDEPENDENCE_REJECTED", "AUDIT_BATCH_SEALED", "AUDIT_REPLICA_VERIFIED", "RECOVERY_VERIFICATION_COMPLETED", "SECURITY_DENIAL"]},
+    "occurred_at": {"type": "string", "format": "date-time"},
+    "recorded_at": {"type": "string", "format": "date-time"},
+    "actor": {"type": "object", "required": ["principal_id", "principal_type", "auth_context_id"], "properties": {"principal_id": {"type": "string"}, "principal_type": {"enum": ["human", "service", "system"]}, "auth_context_id": {"type": "string"}}},
+    "record_ref": {"type": "object", "required": ["record_type", "record_id", "authority"], "properties": {"record_type": {"type": "string"}, "record_id": {"type": "string"}, "authority": {"type": "string"}}},
+    "action": {"type": "string"},
+    "correlation_id": {"type": ["string", "null"]},
+    "causation_id": {"type": ["string", "null"]},
+    "authority_version_before": {"type": ["integer", "null"]},
+    "authority_version_after": {"type": ["integer", "null"]},
+    "payload_hash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "previous_event_hash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$|^GENESIS$"},
+    "event_hash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "policy_version": {"type": "string"},
+    "schema_version": {"const": "cmp.audit_event.v1"}
+  }
+}

@@ -1,0 +1,62 @@
+version: cmp.error-taxonomy.v1
+errors:
+  AUTHENTICATION_FAILED:
+    class: security_rejection
+    http_status: 401
+    state: REJECTED
+  AUTHORIZATION_DENIED:
+    class: policy_rejection
+    http_status: 403
+    state: REJECTED
+  SCHEMA_INVALID:
+    class: validation_rejection
+    http_status: 400
+    state: REJECTED
+  PAYLOAD_HASH_MISMATCH:
+    class: integrity_security
+    http_status: 422
+    state: QUARANTINED
+  WORK_ORDER_REFERENCE_MISSING:
+    class: validation_rejection
+    http_status: 422
+    state: REJECTED
+  STABLE_ID_ACTION_PROHIBITED:
+    class: governance_security
+    http_status: 403
+    state: REJECTED
+  WORK_DEFINITION_SOURCE_UNAUTHORIZED:
+    class: security_rejection
+    http_status: 403
+    state: REJECTED
+  WORK_DEFINITION_VERSION_UNAVAILABLE:
+    class: dependency
+    http_status: 409
+    state: REJECTED
+  WORK_DEFINITION_HASH_MISMATCH:
+    class: integrity
+    http_status: 409
+    state: QUARANTINED
+  IDEMPOTENCY_KEY_REUSED_WITH_DIFFERENT_REQUEST:
+    class: security_validation
+    http_status: 409
+    state: REJECTED
+  REQUEST_IN_PROGRESS:
+    class: concurrency
+    http_status: 202
+    state: IN_PROGRESS
+  UNSUPPORTED_COMMAND_TYPE:
+    class: scope_guardrail
+    http_status: 403
+    state: REJECTED
+  PROTECTED_ACTION_NOT_AUTHORIZED:
+    class: governance
+    http_status: 403
+    state: REJECTED
+  ATOMIC_PERSISTENCE_FAILED:
+    class: infrastructure
+    http_status: 503
+    state: NONE_ACCEPTED
+  INTERNAL_INTEGRITY_FAILURE:
+    class: security_incident
+    http_status: 500
+    state: QUARANTINED

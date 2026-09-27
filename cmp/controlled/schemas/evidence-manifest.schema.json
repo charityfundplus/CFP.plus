@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cfp.plus/schemas/cmp/evidence-manifest.v1.json",
+  "title": "CMP Evidence Manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["evidence_manifest_id", "manifest_version", "work_order_ref", "correlation_id", "evidence_type", "captured_at", "captured_by", "source", "retained_object", "integrity", "classification", "retention", "status"],
+  "properties": {
+    "evidence_manifest_id": {"type": "string", "pattern": "^evm_[0-9A-HJKMNP-TV-Z]{26}$"},
+    "manifest_version": {"type": "integer", "minimum": 1},
+    "work_order_ref": {"type": "string", "minLength": 1},
+    "correlation_id": {"type": "string", "pattern": "^cor_[0-9A-HJKMNP-TV-Z]{26}$"},
+    "command_id": {"type": ["string", "null"], "pattern": "^cmd_[0-9A-HJKMNP-TV-Z]{26}$"},
+    "evidence_type": {"enum": ["TEST_RUN", "DATABASE_RECONCILIATION", "AUDIT_EXPORT", "SOURCE_ARTIFACT", "REVIEW_RECEIPT", "SECURITY_EVENT", "RECOVERY_VERIFICATION", "OTHER_APPROVED"]},
+    "captured_at": {"type": "string", "format": "date-time"},
+    "captured_by": {"type": "object", "additionalProperties": false, "required": ["principal_id", "collector_id", "environment_id"], "properties": {"principal_id": {"type": "string"}, "collector_id": {"type": "string"}, "environment_id": {"type": "string"}}},
+    "source": {"type": "object", "additionalProperties": false, "required": ["source_system", "source_reference", "source_observed_at"], "properties": {"source_system": {"enum": ["CMP_CORE", "NOTION", "GITHUB", "EVIDENCE_STORE", "TEST_HARNESS", "OTHER_APPROVED"]}, "source_reference": {"type": "string"}, "source_revision": {"type": ["string", "null"]}, "source_url": {"type": ["string", "null"], "format": "uri"}, "source_observed_at": {"type": "string", "format": "date-time"}}},
+    "retained_object": {"type": "object", "additionalProperties": false, "required": ["storage_class", "object_uri", "object_version", "media_type", "byte_size"], "properties": {"storage_class": {"enum": ["IMMUTABLE_WORM", "CONTENT_ADDRESSED", "APPROVED_ARCHIVE"]}, "object_uri": {"type": "string"}, "object_version": {"type": "string"}, "media_type": {"type": "string"}, "byte_size": {"type": "integer", "minimum": 0}}},
+    "integrity": {"type": "object", "additionalProperties": false, "required": ["algorithm", "content_hash", "canonicalization_version", "verified_at", "verification_status"], "properties": {"algorithm": {"const": "SHA-256"}, "content_hash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"}, "canonicalization_version": {"type": "string"}, "verified_at": {"type": "string", "format": "date-time"}, "verification_status": {"enum": ["VERIFIED", "FAILED", "PENDING"]}}},
+    "classification": {"type": "object", "additionalProperties": false, "required": ["data_class", "handling_policy_version"], "properties": {"data_class": {"type": "string"}, "handling_policy_version": {"type": "string"}, "redaction_applied": {"type": "boolean"}}},
+    "retention": {"type": "object", "additionalProperties": false, "required": ["retention_class", "retain_until"], "properties": {"retention_class": {"type": "string"}, "retain_until": {"type": "string", "format": "date-time"}, "hold_refs": {"type": "array", "items": {"type": "string"}}}},
+    "status": {"enum": ["REGISTERED", "VERIFIED", "SUPERSEDED", "QUARANTINED", "UNAVAILABLE"]},
+    "supersedes_manifest_id": {"type": ["string", "null"], "pattern": "^evm_[0-9A-HJKMNP-TV-Z]{26}$"},
+    "related_manifest_ids": {"type": "array", "items": {"type": "string", "pattern": "^evm_[0-9A-HJKMNP-TV-Z]{26}$"}}
+  }
+}

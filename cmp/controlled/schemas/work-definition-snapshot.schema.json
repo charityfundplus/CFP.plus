@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cfp.plus/schemas/cmp/work-definition-snapshot.v1.json",
+  "title": "CMP Work Definition Snapshot v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["snapshot_id", "work_order_ref", "source_authority", "source_record_id", "source_authority_version", "source_url", "retrieved_at", "content_hash", "canonical_payload", "policy_version"],
+  "properties": {
+    "snapshot_id": {"type": "string", "pattern": "^wds_[0-9A-HJKMNP-TV-Z]{26}$"},
+    "work_order_ref": {"type": "string", "minLength": 1, "description": "Existing approved reference; not created or altered by CMP."},
+    "source_authority": {"const": "notion_control_plane"},
+    "source_record_id": {"type": "string", "minLength": 1},
+    "source_authority_version": {"type": "string", "minLength": 1},
+    "source_url": {"type": "string", "format": "uri"},
+    "retrieved_at": {"type": "string", "format": "date-time"},
+    "content_hash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "canonical_payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["objective", "scope", "output_contract", "acceptance_criteria", "human_gate"],
+      "properties": {
+        "objective": {"type": "string", "minLength": 1},
+        "scope": {"type": "string", "minLength": 1},
+        "inputs": {"type": "array", "items": {"type": "string"}},
+        "output_contract": {"type": "string", "minLength": 1},
+        "acceptance_criteria": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "priority_class": {"type": "string", "enum": ["P0", "P1", "P2", "P3"]},
+        "human_gate": {"type": "string", "enum": ["NONE", "REVIEW", "DECISION", "ID_SLOT_CHECK", "CANONICAL_LOCK"]},
+        "allowed_actions": {"type": "array", "items": {"type": "string"}},
+        "data_classification": {"type": "string"},
+        "approved_context_refs": {"type": "array", "items": {"type": "string"}},
+        "closure_requirements": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "policy_version": {"type": "string", "minLength": 1},
+    "captured_by": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["principal_id", "connector_id"],
+      "properties": {"principal_id": {"type": "string"}, "connector_id": {"type": "string"}}
+    }
+  }
+}
