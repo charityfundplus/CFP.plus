@@ -3,94 +3,131 @@
   "$id": "https://cfp.plus/schemas/cfp.enterprise.v1.schema.json",
   "title": "CFP+ Enterprise Normalized Content Object",
   "type": "object",
+  "additionalProperties": false,
   "required": [
-    "schema_version",
-    "canonical_id",
-    "record_type",
-    "entity",
-    "publication",
-    "governance",
-    "provenance"
+    "schema_version","canonical_id","record_type","revision_id","revision_created_at",
+    "content_state","entity","publication","governance","identity","overview",
+    "ai_and_models","developer_and_api","products_and_services","evidence",
+    "working_links","render_contract","pending_verification","provenance","integrity"
   ],
   "properties": {
-    "schema_version": {
-      "const": "cfp.enterprise.v1"
-    },
-    "canonical_id": {
-      "type": "string",
-      "pattern": "^[0-9]+$"
-    },
-    "record_type": {
-      "const": "enterprise_root"
-    },
+    "schema_version": {"const": "cfp.enterprise.v1"},
+    "canonical_id": {"type": "string", "pattern": "^[0-9]+$"},
+    "record_type": {"const": "enterprise_root"},
+    "revision_id": {"type": "string", "pattern": "^rev_[0-9]+_[0-9]{4}-[0-9]{2}-[0-9]{2}_[0-9]{3}$"},
+    "revision_created_at": {"type": "string", "format": "date-time"},
+    "content_state": {"enum": ["draft","review","approved","rejected","archived"]},
     "entity": {
-      "type": "object",
-      "required": [
-        "legal_name",
-        "public_route"
-      ],
+      "type": "object","additionalProperties": false,
+      "required": ["legal_name","display_name","country_code","country_name","website_parent_id","public_route"],
       "properties": {
-        "legal_name": {
-          "type": "string"
-        },
-        "public_route": {
-          "type": "string"
-        }
+        "legal_name":{"type":"string","minLength":1},
+        "display_name":{"type":"string","minLength":1},
+        "country_code":{"type":"string","pattern":"^[A-Z]{2}$"},
+        "country_name":{"type":"string","minLength":1},
+        "website_parent_id":{"type":"string","pattern":"^[0-9]+$"},
+        "public_route":{"type":"string","pattern":"^/[0-9]+$"}
       }
     },
     "publication": {
-      "type": "object",
-      "required": [
-        "revision_id",
-        "status"
-      ],
-      "properties": {
-        "revision_id": {
-          "type": "string"
-        },
-        "status": {
-          "type": "string"
-        }
-      }
+      "type":"object","additionalProperties":false,
+      "required":["eligible_for_publish"],
+      "properties":{"eligible_for_publish":{"type":"boolean"}}
     },
     "governance": {
-      "type": "object",
-      "required": [
-        "canonical_lock",
-        "no_duplicate_enterprise_root",
-        "runtime_connection",
-        "is_official_meta_rep",
-        "production_lock"
-      ],
-      "properties": {
-        "canonical_lock": {
-          "const": true
-        },
-        "no_duplicate_enterprise_root": {
-          "const": true
-        },
-        "runtime_connection": {
-          "enum": [
-            "human_mediated",
-            "direct",
-            "connected",
-            "active"
-          ]
-        },
-        "is_official_meta_rep": {
-          "type": "boolean"
-        },
-        "production_lock": {
-          "type": "boolean"
-        }
+      "type":"object","additionalProperties":false,
+      "required":["canonical_lock","canonical_mutation_allowed","no_duplicate_enterprise_root",
+        "meta_ai_canonical_ai_id","meta_ai_id_status","runtime_connection",
+        "is_official_meta_rep","production_lock"],
+      "properties":{
+        "canonical_lock":{"const":true},
+        "canonical_mutation_allowed":{"const":false},
+        "no_duplicate_enterprise_root":{"const":true},
+        "meta_ai_canonical_ai_id":{"type":["string","null"]},
+        "meta_ai_id_status":{"enum":["pending_verification","confirmed"]},
+        "runtime_connection":{"enum":["human_mediated","direct","connected","active"]},
+        "is_official_meta_rep":{"type":"boolean"},
+        "production_lock":{"type":"boolean"}
       }
     },
-    "provenance": {
-      "type": "object",
-      "required": [
-        "sources"
-      ]
-    }
+    "identity":{"type":"object","required":["record_class","summary"],"additionalProperties":false,
+      "properties":{"record_class":{"type":"array","minItems":1,"items":{"type":"string"}},"summary":{"type":"string","minLength":1}}},
+    "overview":{"type":"object","required":["portfolio_summary"],"additionalProperties":false,
+      "properties":{"portfolio_summary":{"type":"array","minItems":1,"items":{"type":"string"}}}},
+    "ai_and_models":{"type":"object","required":["taxonomy"],"additionalProperties":false,
+      "properties":{"taxonomy":{"type":"array","items":{"$ref":"#/$defs/workingNode"}}}},
+    "developer_and_api":{"type":"object","required":["surfaces"],"additionalProperties":false,
+      "properties":{"surfaces":{"type":"array","items":{"type":"object"}}}},
+    "products_and_services":{"type":"object","required":["items","scope_note"],"additionalProperties":false,
+      "properties":{"items":{"type":"array","items":{"type":"string"}},"scope_note":{"type":"string"}}},
+    "evidence":{"type":"array","minItems":1,"items":{"$ref":"#/$defs/evidence"}},
+    "working_links":{"type":"array","items":{"$ref":"#/$defs/workingLink"}},
+    "render_contract":{"type":"object","additionalProperties":false,"required":["required_sections"],
+      "properties":{"required_sections":{"type":"array","minItems":8,"uniqueItems":true,"items":{"enum":[
+        "identity","overview","ai_and_models","developer_and_api","products_and_services","evidence","governance","working_links"
+      ]}}}},
+    "pending_verification":{"type":"array","items":{"type":"string"}},
+    "provenance":{"type":"object","additionalProperties":false,"required":["sources","normalizer_version"],
+      "properties":{
+        "sources":{"type":"array","minItems":1,"items":{"$ref":"#/$defs/source"}},
+        "normalizer_version":{"type":"string","minLength":1}
+      }},
+    "integrity":{"type":"object","additionalProperties":false,"required":["algorithm","canonicalization","content_hash"],
+      "properties":{
+        "algorithm":{"const":"sha256"},
+        "canonicalization":{"type":"string","minLength":1},
+        "content_hash":{"type":"string","pattern":"^sha256:[a-f0-9]{64}$"}
+      }}
   },
-  "additionalProperties": true
+  "$defs":{
+    "workingNode":{
+      "type":"object",
+      "required":["name","kind","canonical_id","stable_id_status","identity_status","stable_id_assignment","relationship_type"],
+      "properties":{
+        "name":{"type":"string"},"kind":{"type":"string"},
+        "canonical_id":{"type":["string","null"]},
+        "stable_id_status":{"enum":["pending_verification","confirmed"]},
+        "identity_status":{"enum":["working_noncanonical","canonical"]},
+        "stable_id_assignment":{"enum":["not_assigned","assigned"]},
+        "relationship_type":{"enum":["working_taxonomy","canonical"]},
+        "parent_canonical_id":{"type":"string"},"parent_working_ref":{"type":"string"},
+        "runtime":{"enum":["human_mediated","direct","connected","active"]},
+        "version_records":{"type":"array","items":{"type":"string"}}
+      },
+      "allOf":[{"if":{"properties":{"stable_id_status":{"const":"pending_verification"}}},
+        "then":{"properties":{"canonical_id":{"type":"null"},"identity_status":{"const":"working_noncanonical"},"stable_id_assignment":{"const":"not_assigned"}}}}],
+      "additionalProperties":false
+    },
+    "workingLink":{
+      "type":"object","additionalProperties":false,
+      "required":["label","kind","canonical_id","status","identity_status","parent_canonical_id"],
+      "properties":{
+        "label":{"type":"string"},"kind":{"const":"working_page"},"canonical_id":{"type":"null"},
+        "status":{"const":"pending_cfp_stable_id_verification"},
+        "identity_status":{"const":"working_noncanonical"},
+        "parent_canonical_id":{"type":"string","pattern":"^[0-9]+$"}
+      }
+    },
+    "evidence":{
+      "type":"object","additionalProperties":false,
+      "required":["evidence_id","title","url","source_type","publisher","status","verified_at","claim_scope","claim_limitations"],
+      "properties":{
+        "evidence_id":{"type":"string"},"title":{"type":"string"},
+        "url":{"type":"string","format":"uri"},"source_type":{"type":"string"},"publisher":{"type":"string"},
+        "status":{"enum":["verified","pending","rejected"]},"verified_at":{"type":"string","format":"date"},
+        "claim_scope":{"type":"array","minItems":1,"items":{"type":"string"}},
+        "claim_limitations":{"type":"array","items":{"type":"string"}}
+      }
+    },
+    "source":{
+      "type":"object","additionalProperties":false,
+      "required":["type","source_id","source_revision","retrieved_at"],
+      "properties":{
+        "type":{"enum":["google_doc","notion_page","import_json","markdown"]},
+        "source_id":{"type":"string","minLength":1},
+        "source_revision":{"type":"string","minLength":1},
+        "retrieved_at":{"type":"string","format":"date-time"}
+      }
+    }
+  }
 }
