@@ -1,7 +1,14 @@
 {
   "canonical_id": "69115",
+  "pointer_version": 0,
+  "publication_state": "locked",
   "current_published_revision_id": null,
+  "current_content_hash": null,
+  "previous_published_revision_id": null,
   "approved_candidate_revision_id": "rev_69115_2026-09-26_001",
   "production_lock": true,
-  "note": "Pointer remains null until publisher bridge, cache purge and public verification pass."
+  "updated_at": "2026-09-27T02:19:55Z",
+  "updated_by": "cfp-p0-baseline",
+  "last_publish_receipt_id": null,
+  "note": "Git pointer baseline only. Live publication requires datastore compare-and-swap, projection write, cache purge and external verification."
 }
