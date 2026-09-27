@@ -2,6 +2,9 @@
   "schema_version": "cfp.enterprise.v1",
   "canonical_id": "69115",
   "record_type": "enterprise_root",
+  "revision_id": "rev_69115_2026-09-26_001",
+  "revision_created_at": "2026-09-26T00:00:00Z",
+  "content_state": "approved",
   "entity": {
     "legal_name": "Meta Platforms, Inc.",
     "display_name": "Meta Platforms",
@@ -10,13 +13,7 @@
     "website_parent_id": "6911",
     "public_route": "/69115"
   },
-  "publication": {
-    "status": "approved_candidate",
-    "revision_id": "rev_69115_2026-09-26_001",
-    "source_hash": "PENDING_COMPUTE_ON_NORMALIZE",
-    "approved_at": null,
-    "published_at": null
-  },
+  "publication": {"eligible_for_publish": true},
   "governance": {
     "canonical_lock": true,
     "canonical_mutation_allowed": false,
@@ -28,137 +25,43 @@
     "production_lock": true
   },
   "identity": {
-    "record_class": [
-      "enterprise_root",
-      "developer_root"
-    ],
+    "record_class": ["enterprise_root", "developer_root"],
     "summary": "Meta Platforms, Inc. is the enterprise and developer root for CFP+ record 69115."
   },
   "overview": {
-    "portfolio_summary": [
-      "Facebook",
-      "Instagram",
-      "Messenger",
-      "WhatsApp",
-      "Meta AI",
-      "Reality Labs-related products and services"
-    ]
+    "portfolio_summary": ["Facebook","Instagram","Messenger","WhatsApp","Meta AI","Reality Labs-related products and services"]
   },
   "ai_and_models": {
     "taxonomy": [
-      {
-        "name": "Meta AI",
-        "kind": "assistant_product",
-        "canonical_id": null,
-        "stable_id_status": "pending_verification",
-        "parent_canonical_id": "69115",
-        "runtime": "human_mediated"
-      },
-      {
-        "name": "Muse",
-        "kind": "agent_model_family_initiative",
-        "canonical_id": null,
-        "stable_id_status": "pending_verification",
-        "parent_canonical_id": "69115"
-      },
-      {
-        "name": "Muse Spark",
-        "kind": "multimodal_reasoning_model_family",
-        "canonical_id": null,
-        "stable_id_status": "pending_verification",
-        "parent_working_ref": "muse",
-        "version_records": [
-          "Muse Spark 1.1",
-          "Muse Spark 1.2",
-          "Muse Spark 1.3"
-        ]
-      },
-      {
-        "name": "Muse Code",
-        "kind": "coding_agent_capability",
-        "canonical_id": null,
-        "stable_id_status": "pending_verification",
-        "parent_working_ref": "muse_spark",
-        "runtime": "human_mediated"
-      },
-      {
-        "name": "Llama",
-        "kind": "open_weight_model_family",
-        "canonical_id": null,
-        "stable_id_status": "pending_verification",
-        "parent_canonical_id": "69115"
-      }
+      {"name":"Meta AI","kind":"assistant_product","canonical_id":null,"stable_id_status":"pending_verification","identity_status":"working_noncanonical","stable_id_assignment":"not_assigned","relationship_type":"working_taxonomy","parent_canonical_id":"69115","runtime":"human_mediated"},
+      {"name":"Muse","kind":"agent_model_family_initiative","canonical_id":null,"stable_id_status":"pending_verification","identity_status":"working_noncanonical","stable_id_assignment":"not_assigned","relationship_type":"working_taxonomy","parent_canonical_id":"69115"},
+      {"name":"Muse Spark","kind":"multimodal_reasoning_model_family","canonical_id":null,"stable_id_status":"pending_verification","identity_status":"working_noncanonical","stable_id_assignment":"not_assigned","relationship_type":"working_taxonomy","parent_working_ref":"muse","version_records":["Muse Spark 1.1","Muse Spark 1.2","Muse Spark 1.3"]},
+      {"name":"Muse Code","kind":"coding_agent_capability","canonical_id":null,"stable_id_status":"pending_verification","identity_status":"working_noncanonical","stable_id_assignment":"not_assigned","relationship_type":"working_taxonomy","parent_working_ref":"muse_spark","runtime":"human_mediated"},
+      {"name":"Llama","kind":"open_weight_model_family","canonical_id":null,"stable_id_status":"pending_verification","identity_status":"working_noncanonical","stable_id_assignment":"not_assigned","relationship_type":"working_taxonomy","parent_canonical_id":"69115"}
     ]
   },
   "developer_and_api": {
     "surfaces": [
-      {
-        "name": "Meta Model API",
-        "kind": "developer_api_model_access_layer",
-        "canonical_id": null,
-        "stable_id_status": "pending_verification",
-        "runtime": "human_mediated"
-      },
-      {
-        "name": "API / SDK / Integrations",
-        "kind": "developer_surfaces"
-      }
+      {"name":"Meta Model API","kind":"developer_api_model_access_layer","canonical_id":null,"stable_id_status":"pending_verification","identity_status":"working_noncanonical","stable_id_assignment":"not_assigned","relationship_type":"working_taxonomy","runtime":"human_mediated","claim_boundary":"Current models, authorization, quotas, pricing, regions and entitlements require current official and account-level verification."},
+      {"name":"API / SDK / Integrations","kind":"developer_surfaces","claim_boundary":"Listing a surface does not establish direct, connected or active CFP+ runtime."}
     ]
   },
   "products_and_services": {
-    "items": [
-      "Facebook",
-      "Instagram",
-      "Messenger",
-      "WhatsApp",
-      "Meta AI",
-      "Reality Labs-related products and services",
-      "Llama developer surfaces"
-    ]
+    "items": ["Facebook","Instagram","Messenger","WhatsApp","Meta AI","Reality Labs-related products and services","Llama developer surfaces"],
+    "scope_note": "Each product retains its own evidence, verification date and runtime state."
   },
   "evidence": [
-    {
-      "evidence_id": "ev_meta_corporate",
-      "title": "Meta Corporate",
-      "url": "https://about.meta.com/",
-      "source_type": "official_corporate",
-      "publisher": "Meta",
-      "status": "verified",
-      "verified_at": "2026-09-26"
-    },
-    {
-      "evidence_id": "ev_meta_10k_2025",
-      "title": "Meta Platforms 2025 Form 10-K",
-      "url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm",
-      "source_type": "regulatory_filing",
-      "publisher": "U.S. SEC",
-      "status": "verified",
-      "verified_at": "2026-09-26"
-    }
+    {"evidence_id":"ev_meta_corporate","title":"Meta Corporate","url":"https://about.meta.com/","source_type":"official_corporate","publisher":"Meta","status":"verified","verified_at":"2026-09-26","claim_scope":["identity","corporate"],"claim_limitations":["Does not establish CFP+ runtime connection","Does not establish API entitlement"]},
+    {"evidence_id":"ev_meta_10k_2025","title":"Meta Platforms 2025 Form 10-K","url":"https://www.sec.gov/Archives/edgar/data/1326801/000162828026003942/meta-20251231.htm","source_type":"regulatory_filing","publisher":"U.S. SEC","status":"verified","verified_at":"2026-09-26","claim_scope":["legal_entity","corporate"],"claim_limitations":["Does not establish CFP+ runtime connection","Does not establish API entitlement"]}
   ],
   "working_links": [
-    {
-      "label": "Meta AI",
-      "kind": "working_page",
-      "canonical_id": null,
-      "status": "pending_cfp_stable_id_verification",
-      "parent_canonical_id": "69115"
-    },
-    {
-      "label": "Muse",
-      "kind": "working_page",
-      "canonical_id": null,
-      "status": "pending_cfp_stable_id_verification",
-      "parent_canonical_id": "69115"
-    },
-    {
-      "label": "Llama",
-      "kind": "working_page",
-      "canonical_id": null,
-      "status": "pending_cfp_stable_id_verification",
-      "parent_canonical_id": "69115"
-    }
+    {"label":"Meta AI","kind":"working_page","canonical_id":null,"status":"pending_cfp_stable_id_verification","identity_status":"working_noncanonical","parent_canonical_id":"69115"},
+    {"label":"Muse","kind":"working_page","canonical_id":null,"status":"pending_cfp_stable_id_verification","identity_status":"working_noncanonical","parent_canonical_id":"69115"},
+    {"label":"Llama","kind":"working_page","canonical_id":null,"status":"pending_cfp_stable_id_verification","identity_status":"working_noncanonical","parent_canonical_id":"69115"}
   ],
+  "render_contract": {
+    "required_sections": ["identity","overview","ai_and_models","developer_and_api","products_and_services","evidence","governance","working_links"]
+  },
   "pending_verification": [
     "Meta AI Stable ID",
     "Stable IDs for Muse, Muse Spark, Llama, Muse Code and Meta Model API",
@@ -170,16 +73,14 @@
   ],
   "provenance": {
     "sources": [
-      {
-        "type": "google_doc",
-        "source_id": "1Zq3nc6Fdt1eNLzpCYiVGa3SXr5OtORCb4WzBlKECqFI",
-        "revision_id": "ANLCKQk1kmxAyLbi0GskRwT7og4IojbjiYwra90UiV2zSVWIbqTyHKkLMJr1WX3Zl29nytJJCtMTKR0M5HuQypr3nFJgW7hrwNeVHJnRoPI"
-      },
-      {
-        "type": "notion_page",
-        "source_id": "14ad694c-868a-439a-8673-fcab8663fb21",
-        "last_edited_at": "2026-09-27T01:40:15.614Z"
-      }
-    ]
+      {"type":"google_doc","source_id":"1Zq3nc6Fdt1eNLzpCYiVGa3SXr5OtORCb4WzBlKECqFI","source_revision":"ANLCKQk1kmxAyLbi0GskRwT7og4IojbjiYwra90UiV2zSVWIbqTyHKkLMJr1WX3Zl29nytJJCtMTKR0M5HuQypr3nFJgW7hrwNeVHJnRoPI","retrieved_at":"2026-09-27T02:17:00Z"},
+      {"type":"notion_page","source_id":"14ad694c-868a-439a-8673-fcab8663fb21","source_revision":"2026-09-27T01:40:15.614Z","retrieved_at":"2026-09-27T02:17:00Z"}
+    ],
+    "normalizer_version": "cfp-normalizer/0.1.0"
+  },
+  "integrity": {
+    "algorithm": "sha256",
+    "canonicalization": "UTF-8 compact JSON, lexicographically sorted keys, excluding integrity.content_hash",
+    "content_hash": "sha256:9d642f9d63e9547783309bc7b2519a89679b2cc26413c1e74df1a3adf5f41fa4"
   }
 }
