@@ -1,0 +1,7 @@
+{
+  "canonical_id": "69115",
+  "current_published_revision_id": null,
+  "approved_candidate_revision_id": "rev_69115_2026-09-26_001",
+  "production_lock": true,
+  "note": "Pointer remains null until publisher bridge, cache purge and public verification pass."
+}
