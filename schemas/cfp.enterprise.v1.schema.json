@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cfp.plus/schemas/cfp.enterprise.v1.schema.json",
+  "title": "CFP+ Enterprise Normalized Content Object",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "canonical_id",
+    "record_type",
+    "entity",
+    "publication",
+    "governance",
+    "provenance"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "cfp.enterprise.v1"
+    },
+    "canonical_id": {
+      "type": "string",
+      "pattern": "^[0-9]+$"
+    },
+    "record_type": {
+      "const": "enterprise_root"
+    },
+    "entity": {
+      "type": "object",
+      "required": [
+        "legal_name",
+        "public_route"
+      ],
+      "properties": {
+        "legal_name": {
+          "type": "string"
+        },
+        "public_route": {
+          "type": "string"
+        }
+      }
+    },
+    "publication": {
+      "type": "object",
+      "required": [
+        "revision_id",
+        "status"
+      ],
+      "properties": {
+        "revision_id": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "required": [
+        "canonical_lock",
+        "no_duplicate_enterprise_root",
+        "runtime_connection",
+        "is_official_meta_rep",
+        "production_lock"
+      ],
+      "properties": {
+        "canonical_lock": {
+          "const": true
+        },
+        "no_duplicate_enterprise_root": {
+          "const": true
+        },
+        "runtime_connection": {
+          "enum": [
+            "human_mediated",
+            "direct",
+            "connected",
+            "active"
+          ]
+        },
+        "is_official_meta_rep": {
+          "type": "boolean"
+        },
+        "production_lock": {
+          "type": "boolean"
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "sources"
+      ]
+    }
+  },
+  "additionalProperties": true
+}
