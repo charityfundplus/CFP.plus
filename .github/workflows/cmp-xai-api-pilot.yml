@@ -1,0 +1,87 @@
+name: CMP xAI API Transport Pilot
+
+on:
+  push:
+    branches:
+      - review/cmp-xai-api-pilot
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  transport:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+      WORK_ORDER_ID: CMP-WO-XAI-API-PILOT-001
+      XAI_MODEL: grok-4.5
+    steps:
+      - name: Execute xAI API request and verify transport
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ -z "$XAI_API_KEY" ]; then
+            echo "XAI_API_SECRET: MISSING"
+            echo "MACHINE_TO_MACHINE_API_TRANSPORT: NOT VERIFIED"
+            exit 1
+          fi
+
+          REQUEST_TS="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+
+          jq -n \
+            --arg model "$XAI_MODEL" \
+            --arg wo "$WORK_ORDER_ID" \
+            '{model:$model,messages:[{role:"system",content:"Return exactly the requested structured result. Evidence First."},{role:"user",content:("Return exactly these 12 lines and nothing else:\nWORK_ORDER_ID: "+$wo+"\nTARGET: Grok • xAI\nREQUEST_RECEIVED: YES\nWORK_ORDER_ID_MATCH: PASS\nMODE: READ ONLY • RESPONSE ONLY\nTASK_EXECUTED: PASS\nSTRUCTURED_RESULT_RETURNED: YES\nNUMERIC_ID_CHANGED: NO\nEXTERNAL_SYSTEM_CHANGED: NO\nGOVERNANCE_APPROVED: NO\nCANONICAL_LOCKED: NO\nERROR: NONE")}]}' > request.json
+
+          REQUEST_SHA256="$(sha256sum request.json | awk '{print $1}')"
+
+          HTTP_STATUS="$(curl -sS -o response.json -w '%{http_code}' \
+            https://api.x.ai/v1/chat/completions \
+            -H "Authorization: Bearer $XAI_API_KEY" \
+            -H "Content-Type: application/json" \
+            --data-binary @request.json)"
+
+          RESPONSE_TS="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          RESPONSE_SHA256="$(sha256sum response.json | awk '{print $1}')"
+          PROVIDER_REQUEST_ID="$(jq -r '.id // "N/A"' response.json)"
+          STRUCTURED_RESULT="$(jq -r '.choices[0].message.content // empty' response.json)"
+          FIRST_LINE="$(printf '%s\n' "$STRUCTURED_RESULT" | head -n 1)"
+          LINE_COUNT="$(printf '%s\n' "$STRUCTURED_RESULT" | wc -l | tr -d ' ')"
+
+          echo "WORK_ORDER_ID: $WORK_ORDER_ID"
+          echo "REQUEST_TIMESTAMP: $REQUEST_TS"
+          echo "RESPONSE_TIMESTAMP: $RESPONSE_TS"
+          echo "MODEL: $XAI_MODEL"
+          echo "HTTP_STATUS: $HTTP_STATUS"
+          echo "PROVIDER_REQUEST_ID: $PROVIDER_REQUEST_ID"
+          echo "REQUEST_SHA256: $REQUEST_SHA256"
+          echo "RESPONSE_SHA256: $RESPONSE_SHA256"
+          echo "STRUCTURED_RESULT_LINE_COUNT: $LINE_COUNT"
+          echo "STRUCTURED_RESULT_FIRST_LINE: $FIRST_LINE"
+
+          if [ "$HTTP_STATUS" != "200" ]; then
+            echo "MACHINE_TO_MACHINE_API_TRANSPORT: NOT VERIFIED"
+            exit 1
+          fi
+
+          if [ "$FIRST_LINE" != "WORK_ORDER_ID: $WORK_ORDER_ID" ]; then
+            echo "WORK_ORDER_ID_MATCH: FAIL"
+            echo "MACHINE_TO_MACHINE_API_TRANSPORT: NOT VERIFIED"
+            exit 1
+          fi
+
+          if [ "$LINE_COUNT" != "12" ]; then
+            echo "STRUCTURED_RESULT_VALID: NO"
+            echo "MACHINE_TO_MACHINE_API_TRANSPORT: NOT VERIFIED"
+            exit 1
+          fi
+
+          echo "WORK_ORDER_ID_MATCH: PASS"
+          echo "STRUCTURED_RESULT_VALID: YES"
+          echo "NUMERIC_ID_CHANGED: NO"
+          echo "GOVERNANCE_APPROVED: NO"
+          echo "CANONICAL_LOCKED: NO"
+          echo "MACHINE_TO_MACHINE_API_TRANSPORT: VERIFIED"
