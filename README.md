@@ -32,8 +32,6 @@ Repository công khai dành cho tài liệu, review độc lập, evidence, gove
 
 [69 • CFP+ Global AI Country Registry](registry/AI_CANONICAL_ID_REGISTRY.md)
 
-[6911 • AI Hoa Kỳ](registry/6911.md)
-
 [6984 • AI Việt Nam](registry/6984.md)
 
 [Website Master Map](website/WEBSITE_MASTER_MAP_VI.md)
