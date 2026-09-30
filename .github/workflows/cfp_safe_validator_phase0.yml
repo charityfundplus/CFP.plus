@@ -1,0 +1,36 @@
+name: CFP+ Safe Framework Validator v0 (Phase 0)
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  push:
+    branches-ignore:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run Safe Validator (Phase 0)
+        run: npm --prefix tools/validator run validate:phase0
+
+      - name: Upload validation reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cfp-safe-validator-phase0-reports
+          path: reports/
+          if-no-files-found: error
+          retention-days: 30

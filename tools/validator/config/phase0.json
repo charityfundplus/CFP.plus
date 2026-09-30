@@ -1,0 +1,20 @@
+{
+  "repository": {
+    "owner": "charityfundplus",
+    "name": "CFP.plus",
+    "defaultBranch": "main"
+  },
+  "paths": {
+    "registryDir": "registry",
+    "reportsDir": "reports"
+  },
+  "rootExceptions": [],
+  "blockedSpecifications": [
+    {
+      "specId": "VALIDATION_RULES_001_016",
+      "status": "SOURCE_REQUIRED",
+      "note": "CANONICAL SPECIFICATION NOT YET LOCATED IN MAIN",
+      "proposedPath": "governance/validation/VALIDATION_SCRIPT_SPECIFICATION_v1.2.md"
+    }
+  ]
+}
