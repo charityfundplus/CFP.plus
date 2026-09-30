@@ -1,0 +1,28 @@
+{
+  "policy_version": "cfp.meta-69115.v1",
+  "canonical_id": "69115",
+  "public_route": "/69115",
+  "legal_name": "Meta Platforms, Inc.",
+  "record_type": "enterprise_root",
+  "required_record_classes": ["enterprise_root","developer_root"],
+  "governance": {
+    "canonical_lock": true,
+    "canonical_mutation_allowed": false,
+    "no_duplicate_enterprise_root": true,
+    "meta_ai_canonical_ai_id": null,
+    "meta_ai_id_status": "pending_verification",
+    "runtime_connection": "human_mediated",
+    "is_official_meta_rep": false,
+    "production_lock": true
+  },
+  "working_child_policy": {
+    "pending_verification_requires_null_canonical_id": true,
+    "identity_status": "working_noncanonical"
+  },
+  "publication": {
+    "raw_google_doc_publish_allowed": false,
+    "raw_notion_publish_allowed": false,
+    "authority": "immutable_nco_revision_plus_published_pointer",
+    "public_verification_required": true
+  }
+}

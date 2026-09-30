@@ -1,0 +1,47 @@
+name: nco-69115-verify
+on:
+  pull_request:
+    paths:
+      - "69115/**"
+      - "nco/69115/**"
+      - "schemas/cfp.enterprise.v1.schema.json"
+      - "policies/meta-69115.policy.json"
+      - "scripts/validate_meta_69115.py"
+      - ".github/workflows/nco-69115-verify.yml"
+  push:
+    branches: ["p0/nco-meta-69115"]
+    paths:
+      - "69115/**"
+      - "nco/69115/**"
+      - "schemas/cfp.enterprise.v1.schema.json"
+      - "policies/meta-69115.policy.json"
+      - "scripts/validate_meta_69115.py"
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Validate Meta 69115 NCO baseline
+        run: python3 scripts/validate_meta_69115.py
+      - name: Guard approved revision from in-place changes after baseline
+        if: github.event_name == 'pull_request'
+        run: |
+          BASE="${{ github.event.pull_request.base.sha }}"
+          git diff --name-status "$BASE"...HEAD -- 'nco/*/revisions/*.json' | tee /tmp/revisions.diff
+          python3 - <<'PY'
+          import pathlib, sys
+          bad=[]
+          p=pathlib.Path('/tmp/revisions.diff')
+          if p.exists():
+              for line in p.read_text().splitlines():
+                  parts=line.split('\t')
+                  if parts and parts[0] in {'M','D','R'}:
+                      bad.append(line)
+          # This PR establishes the first baseline revision; future PRs must use new revision IDs.
+          # The validator below only blocks destructive actions against revision artifacts already present in base.
+          if bad:
+              print("Revision immutability guard:", *bad, sep="\n")
+              sys.exit(1)
+          PY
