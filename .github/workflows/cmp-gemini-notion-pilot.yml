@@ -23,9 +23,12 @@ jobs:
       EXECUTION_ID: ${{ inputs.execution_id || github.event.client_payload.execution_id || format('WO-CH7-GH-{0}', github.run_id) }}
     steps:
       - name: Validate required secrets
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
         run: |
-          test -n "${{ secrets.GEMINI_API_KEY }}"
-          test -n "${{ secrets.NOTION_TOKEN }}"
+          test -n "${GEMINI_API_KEY}"
+          test -n "${NOTION_TOKEN}"
 
       - name: Call Gemini API
         env:
