@@ -1,0 +1,51 @@
+# Adopt on the existing main Website trigger after PR review; not an additional trigger.
+substitutions:
+  _SERVICE: cfp-plus
+  _REGION: ''
+  _IMAGE_REPOSITORY: ''
+steps:
+  - id: validate
+    name: gcr.io/google.com/cloudsdktool/google-cloud-cli:stable
+    entrypoint: python3
+    args: [scripts/deploy_cloud_run.py, --validate-only]
+    env:
+      - CFP_PROJECT=$PROJECT_ID
+      - CFP_REGION=${_REGION}
+      - CFP_SERVICE=${_SERVICE}
+      - CFP_IMAGE_REPOSITORY=${_IMAGE_REPOSITORY}
+      - CFP_BUILD_ID=$BUILD_ID
+      - CFP_BUILD_REGION=$LOCATION
+      - CFP_COMMIT_SHA=$COMMIT_SHA
+      - CFP_BRANCH=$BRANCH_NAME
+  - id: build
+    name: gcr.io/cloud-builders/docker
+    waitFor: [validate]
+    args: [build, -t, '${_IMAGE_REPOSITORY}:$BUILD_ID', .]
+  - id: push
+    name: gcr.io/cloud-builders/docker
+    waitFor: [build]
+    args: [push, '${_IMAGE_REPOSITORY}:$BUILD_ID']
+  - id: digest
+    name: gcr.io/cloud-builders/docker
+    waitFor: [push]
+    entrypoint: bash
+    args:
+      - -ceu
+      - "docker image inspect --format '{{index .RepoDigests 0}}' '${_IMAGE_REPOSITORY}:$BUILD_ID' > /workspace/image-digest.txt"
+  - id: deploy
+    name: gcr.io/google.com/cloudsdktool/google-cloud-cli:stable
+    waitFor: [digest]
+    entrypoint: python3
+    args: [scripts/deploy_cloud_run.py]
+    env:
+      - CFP_PROJECT=$PROJECT_ID
+      - CFP_REGION=${_REGION}
+      - CFP_SERVICE=${_SERVICE}
+      - CFP_IMAGE_REPOSITORY=${_IMAGE_REPOSITORY}
+      - CFP_BUILD_ID=$BUILD_ID
+      - CFP_BUILD_REGION=$LOCATION
+      - CFP_COMMIT_SHA=$COMMIT_SHA
+      - CFP_BRANCH=$BRANCH_NAME
+# Keep the existing trigger's service account and approved logs bucket/behavior.
+# No service creation, IAM change, environment rewrite, or second deployment job.
+timeout: 1800s
