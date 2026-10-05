@@ -3,7 +3,7 @@
   const chapter = location.pathname.split('/').filter(Boolean)[0];
   if (!/^[0-9]$/.test(chapter || '')) return;
   const panel = document.createElement('section');
-  panel.id = 'chapter-pair'; panel.className = 'section panel';
+  panel.id = 'chapter-pair'; panel.className = 'section panel'; panel.style.overflowWrap = 'anywhere';
   document.querySelector('main').append(panel);
   const element = (tag, text, parent = panel) => {
     const node = document.createElement(tag); node.textContent = text; parent.append(node); return node;

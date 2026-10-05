@@ -28,7 +28,28 @@ const countries={};global.forEach(x=>{if(x.ai_country_id)countries[x.ai_country_
 const gx=countries[id],e=entities[id];
 if(gx) renderCountry(gx);
 else if(e) renderBound(e);
-else renderFormula();
+else {
+ let projection;
+ try {const response=await fetch('/assets/chapter-projection.json',{cache:'no-store'});if(response.ok)projection=await response.json()}catch(error){}
+ const pair=projection?.authority==='READ_ONLY_MIRROR'?Object.values(projection.profiles).find(p=>p.did===id):null;
+ if(pair)renderPairProjection(pair,projection);
+ else {renderFormula();if(projection?.conflicts.some(c=>c.id===id))$('entity-body').textContent=id+' • CONFLICT FOUND / HUMAN REVIEW';}
+}
+function renderPairProjection(pair,projection){
+ $('title').textContent=pair.full_name||'Chờ tên đầy đủ';
+ $('identity').textContent='AI và Phần Mềm • Hồ sơ độc lập • Bản hiển thị chỉ đọc từ Gateway';
+ $('entity').classList.remove('hidden');$('entity-heading').textContent='AI + Phần Mềm';
+ const body=$('entity-body');body.replaceChildren();
+ const link=document.createElement('a');link.href='https://cfp.plus/'+id;link.textContent=link.href;body.append(link);
+ for(const record of pair.entities){
+  const article=document.createElement('article');article.dataset.entityType=record.entity_type;body.append(article);
+  for(const [tag,text] of [['h3',record.entity_type==='AI'?'AI':'Phần Mềm'],['p',record.full_name||'Chờ tên đầy đủ'],['p','Status: '+record.status],['p','Permissions: '+JSON.stringify(record.permissions)],['p','Evidence: '+JSON.stringify(record.evidence)],['p','Readback: '+JSON.stringify(record.readback)]]){
+   const node=document.createElement(tag);node.textContent=text;node.style.overflowWrap='anywhere';article.append(node);
+  }
+ }
+ const source=document.createElement('p');source.textContent='Gateway source: '+projection.source_commit+' • Không suy diễn Parent hoặc quyền từ Chương.';source.style.overflowWrap='anywhere';body.append(source);
+}
+
 function office(kind,name,parent,status){$('office').classList.remove('hidden');$('office-address').innerHTML='<strong>Permanent Link:</strong> <a href="/'+esc(id)+'/">https://cfp.plus/'+esc(id)+'</a>';$('office-identity').innerHTML='<strong>'+esc(kind)+'</strong><br>'+esc(name||'Chưa bind tên')+(parent?'<br>Parent: <a href="/'+esc(parent)+'/">'+esc(parent)+'</a>':'')+(status?'<br>Status: '+esc(status):'')}
 function renderCountry(c){const name=c.name||id,flag=c.flag||'🌐',countryId=c.country_id||'',coverage=c.directory_status||c.coverage||'ĐANG BỔ SUNG/REVIEW';document.title=name+' • CFP+';$('title').textContent=flag+' '+name;$('identity').textContent='AI Country ID '+id+(countryId?' • Country ID '+countryId:'')+(c.calling_code?' • '+c.calling_code:'');$('country').classList.remove('hidden');$('country-meta').innerHTML='<strong>Permanent Link:</strong> <a href="/'+esc(id)+'/">https://cfp.plus/'+esc(id)+'</a> • <strong>Trạng thái:</strong> '+esc(coverage);const devs=Object.values(entities).filter(x=>x&&x.type==='developer'&&x.ai_country_id===id).sort((a,b)=>(a.order??999)-(b.order??999)||String(a.name).localeCompare(String(b.name)));$('developers').innerHTML='<article class="card"><h3>🤖 CFP+AI • System Anchor</h3><p>'+slot(id+'0','System Anchor')+'</p></article>'+(devs.length?devs.map(devCard).join(''):'<article class="card"><h3>Developer Directory</h3><p>Chưa bind tên đầy đủ. Văn phòng số đã được mở theo công thức bên dưới để tiếp tục discovery, review và binding.</p></article>');$('developer-slots').innerHTML=Array.from({length:9},(_,i)=>slot(id+(i+1),'Developer Office')).join('');$('expansion-slots').innerHTML=Array.from({length:9},(_,i)=>slot(id+'0'+(i+1),'Expanded Developer Office')).join('')+slot(id+'00','Expansion');office('AI COUNTRY OFFICE',name,'69',coverage)}
 function renderBound(x){const kind=x.type==='developer'?'Nhà Phát Triển AI':'AI / AI con 👶',name=x.name||id,parent=x.parent_id||x.ai_country_id||'';document.title=name+' • CFP+';$('title').textContent=(x.icon?x.icon+' ':'')+name;$('identity').textContent=kind+' • ID '+id+(parent?' • Parent '+parent:'');$('entity').classList.remove('hidden');$('entity-heading').textContent=kind;let h='<p><strong>Permanent Link:</strong> <a href="/'+esc(id)+'/">https://cfp.plus/'+esc(id)+'</a></p>'+(x.intro?'<p>'+esc(x.intro)+'</p>':'')+(parent?'<p><strong>Parent:</strong> <a href="/'+esc(parent)+'/">'+esc(parent)+'</a></p>':'')+(x.status?'<p><strong>Status:</strong> '+esc(x.status)+'</p>':'');if(x.type==='developer')h+='<h3>AI / AI con 👶</h3><div class="children">'+Array.from({length:9},(_,i)=>slot(id+(i+1),'AI Office')).join('')+'</div>';$('entity-body').innerHTML=h;office(kind,name,parent,x.status||'ĐANG BỔ SUNG/REVIEW')}
