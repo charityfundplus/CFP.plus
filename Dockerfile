@@ -1,6 +1,8 @@
 FROM nginx:alpine
 
 COPY . /usr/share/nginx/html
+# Nginx workers need read/traverse access regardless of checkout umask.
+RUN chmod -R a+rX /usr/share/nginx/html
 
 RUN printf 'server {\n\
     listen 8080;\n\

@@ -1,0 +1,5958 @@
+{
+  "schema_version": "1.1",
+  "chapters": [
+    {
+      "chapter": "0",
+      "display_name": "Nền Tảng",
+      "canonical_url": "https://cfp.plus/0",
+      "entities": [
+        {
+          "entity_key": "chapter:0:ai",
+          "entity_type": "AI",
+          "display_name": "0 • Nền Tảng • AI",
+          "status": "DECLARED_NOT_ACTIVATED",
+          "permissions": [],
+          "evidence": [
+            "docs/TEN_CHAPTER_P0.md#human-direction"
+          ],
+          "readback": []
+        },
+        {
+          "entity_key": "chapter:0:software",
+          "entity_type": "SOFTWARE",
+          "display_name": "0 • Nền Tảng • Phần Mềm",
+          "status": "DECLARED_NOT_ACTIVATED",
+          "permissions": [],
+          "evidence": [
+            "docs/TEN_CHAPTER_P0.md#human-direction"
+          ],
+          "readback": []
+        }
+      ],
+      "hub": "69",
+      "placements": [
+        {
+          "pair_key": "core:267",
+          "chapter": "0",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:343",
+          "chapter": "0",
+          "roles": [
+            "PRIMARY",
+            "SPECIALIST",
+            "REPRESENTATIVE"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:5458",
+          "chapter": "0",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8682",
+          "chapter": "0",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8882",
+          "chapter": "0",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "assigned:2588",
+          "chapter": "0",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:8884",
+          "chapter": "0",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:9584",
+          "chapter": "0",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "pending:heritage_preservation",
+          "chapter": "0",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        }
+      ],
+      "pair_references": [
+        "core:267",
+        "core:343",
+        "core:5458",
+        "core:8682",
+        "core:8882",
+        "assigned:2588",
+        "assigned:8884",
+        "assigned:9584",
+        "pending:heritage_preservation"
+      ],
+      "capability_references": [
+        "coordination.work_order",
+        "coordination.route",
+        "coordination.execution_state",
+        "coordination.output",
+        "coordination.evidence",
+        "coordination.review",
+        "coordination.closure",
+        "identity.manage",
+        "identity.validate",
+        "identity.resolve",
+        "identity.lineage.inspect",
+        "identity.conflict.review",
+        "identity.evidence",
+        "identity.readback",
+        "identity.change.propose",
+        "solutions.5b",
+        "science_technology.review",
+        "commerce.coordinate",
+        "knowledge.govern",
+        "encyclopedia.search",
+        "advice.route",
+        "situation.assess",
+        "heritage.preserve"
+      ],
+      "identity_copies": 0,
+      "status": "PROPOSED_HUMAN_REVIEW",
+      "source": "ecosystem/config/ecosystem.json",
+      "relationships": [
+        {
+          "chapter": "0",
+          "relationship": "PRIMARY/DIRECT",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": true,
+            "positions": [
+              0
+            ],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "0",
+              "positions": [
+                0
+              ]
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "1",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "0",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "2",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "0",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "3",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "0",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "4",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "0",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "5",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "0",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "6",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "0",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "7",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "0",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "8",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "0",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "9",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "0",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        }
+      ],
+      "descendants": [],
+      "lineage_status": "VERIFIED_DESCENDANT_RECORDS_REQUIRED"
+    },
+    {
+      "chapter": "1",
+      "display_name": "Sự Sống",
+      "canonical_url": "https://cfp.plus/1",
+      "entities": [
+        {
+          "entity_key": "chapter:1:ai",
+          "entity_type": "AI",
+          "display_name": "1 • Sự Sống • AI",
+          "status": "DECLARED_NOT_ACTIVATED",
+          "permissions": [],
+          "evidence": [
+            "docs/TEN_CHAPTER_P0.md#human-direction"
+          ],
+          "readback": []
+        },
+        {
+          "entity_key": "chapter:1:software",
+          "entity_type": "SOFTWARE",
+          "display_name": "1 • Sự Sống • Phần Mềm",
+          "status": "DECLARED_NOT_ACTIVATED",
+          "permissions": [],
+          "evidence": [
+            "docs/TEN_CHAPTER_P0.md#human-direction"
+          ],
+          "readback": []
+        }
+      ],
+      "hub": "69",
+      "placements": [
+        {
+          "pair_key": "core:267",
+          "chapter": "1",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:343",
+          "chapter": "1",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:345",
+          "chapter": "1",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:5458",
+          "chapter": "1",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:6535",
+          "chapter": "1",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8282",
+          "chapter": "1",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8682",
+          "chapter": "1",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8882",
+          "chapter": "1",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "assigned:2588",
+          "chapter": "1",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:5678",
+          "chapter": "1",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:5862",
+          "chapter": "1",
+          "roles": [
+            "PRIMARY",
+            "SPECIALIST",
+            "REPRESENTATIVE"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:8884",
+          "chapter": "1",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:8885",
+          "chapter": "1",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:9584",
+          "chapter": "1",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "pending:heritage_preservation",
+          "chapter": "1",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        },
+        {
+          "pair_key": "pending:humanitarian_relief",
+          "chapter": "1",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        },
+        {
+          "pair_key": "pending:emergency_first_aid",
+          "chapter": "1",
+          "roles": [
+            "PRIMARY",
+            "SPECIALIST",
+            "REPRESENTATIVE"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        },
+        {
+          "pair_key": "pending:general_healthcare",
+          "chapter": "1",
+          "roles": [
+            "PRIMARY",
+            "SPECIALIST",
+            "REPRESENTATIVE"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        },
+        {
+          "pair_key": "pending:general_wellness",
+          "chapter": "1",
+          "roles": [
+            "PRIMARY",
+            "SPECIALIST",
+            "REPRESENTATIVE"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        }
+      ],
+      "pair_references": [
+        "core:267",
+        "core:343",
+        "core:345",
+        "core:5458",
+        "core:6535",
+        "core:8282",
+        "core:8682",
+        "core:8882",
+        "assigned:2588",
+        "assigned:5678",
+        "assigned:5862",
+        "assigned:8884",
+        "assigned:8885",
+        "assigned:9584",
+        "pending:heritage_preservation",
+        "pending:humanitarian_relief",
+        "pending:emergency_first_aid",
+        "pending:general_healthcare",
+        "pending:general_wellness"
+      ],
+      "capability_references": [
+        "coordination.work_order",
+        "coordination.route",
+        "coordination.execution_state",
+        "coordination.output",
+        "coordination.evidence",
+        "coordination.review",
+        "coordination.closure",
+        "identity.manage",
+        "identity.validate",
+        "identity.resolve",
+        "identity.lineage.inspect",
+        "identity.conflict.review",
+        "identity.evidence",
+        "identity.readback",
+        "identity.change.propose",
+        "religion.coordinate",
+        "solutions.5b",
+        "science_technology.review",
+        "learning.development",
+        "finance.coordinate",
+        "commerce.coordinate",
+        "knowledge.govern",
+        "encyclopedia.search",
+        "good_life.practice",
+        "food.trace",
+        "advice.route",
+        "psychology.support",
+        "situation.assess",
+        "heritage.preserve",
+        "relief.match",
+        "emergency.guide",
+        "healthcare.coordinate",
+        "wellness.plan"
+      ],
+      "identity_copies": 0,
+      "status": "PROPOSED_HUMAN_REVIEW",
+      "source": "ecosystem/config/ecosystem.json",
+      "relationships": [
+        {
+          "chapter": "0",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "1",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "1",
+          "relationship": "PRIMARY/DIRECT",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": true,
+            "positions": [
+              0
+            ],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "1",
+              "positions": [
+                0
+              ]
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "2",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "1",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "3",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "1",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "4",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "1",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "5",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "1",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "6",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "1",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "7",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "1",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "8",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "1",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "9",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "1",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        }
+      ],
+      "descendants": [],
+      "lineage_status": "VERIFIED_DESCENDANT_RECORDS_REQUIRED"
+    },
+    {
+      "chapter": "2",
+      "display_name": "Con Người",
+      "canonical_url": "https://cfp.plus/2",
+      "entities": [
+        {
+          "entity_key": "chapter:2:ai",
+          "entity_type": "AI",
+          "display_name": "2 • Con Người • AI",
+          "status": "DECLARED_NOT_ACTIVATED",
+          "permissions": [],
+          "evidence": [
+            "docs/TEN_CHAPTER_P0.md#human-direction"
+          ],
+          "readback": []
+        },
+        {
+          "entity_key": "chapter:2:software",
+          "entity_type": "SOFTWARE",
+          "display_name": "2 • Con Người • Phần Mềm",
+          "status": "DECLARED_NOT_ACTIVATED",
+          "permissions": [],
+          "evidence": [
+            "docs/TEN_CHAPTER_P0.md#human-direction"
+          ],
+          "readback": []
+        }
+      ],
+      "hub": "69",
+      "placements": [
+        {
+          "pair_key": "core:267",
+          "chapter": "2",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:343",
+          "chapter": "2",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:345",
+          "chapter": "2",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:5458",
+          "chapter": "2",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:6535",
+          "chapter": "2",
+          "roles": [
+            "PRIMARY",
+            "SPECIALIST",
+            "REPRESENTATIVE"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8282",
+          "chapter": "2",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8682",
+          "chapter": "2",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8882",
+          "chapter": "2",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "assigned:2588",
+          "chapter": "2",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:5678",
+          "chapter": "2",
+          "roles": [
+            "PRIMARY",
+            "SPECIALIST",
+            "REPRESENTATIVE"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:5862",
+          "chapter": "2",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:8884",
+          "chapter": "2",
+          "roles": [
+            "PRIMARY",
+            "SPECIALIST",
+            "REPRESENTATIVE"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:8885",
+          "chapter": "2",
+          "roles": [
+            "PRIMARY",
+            "SPECIALIST",
+            "REPRESENTATIVE"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:9584",
+          "chapter": "2",
+          "roles": [
+            "PRIMARY",
+            "SPECIALIST",
+            "REPRESENTATIVE"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "pending:heritage_preservation",
+          "chapter": "2",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        },
+        {
+          "pair_key": "pending:humanitarian_relief",
+          "chapter": "2",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        },
+        {
+          "pair_key": "pending:emergency_first_aid",
+          "chapter": "2",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        },
+        {
+          "pair_key": "pending:general_healthcare",
+          "chapter": "2",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        },
+        {
+          "pair_key": "pending:general_wellness",
+          "chapter": "2",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        }
+      ],
+      "pair_references": [
+        "core:267",
+        "core:343",
+        "core:345",
+        "core:5458",
+        "core:6535",
+        "core:8282",
+        "core:8682",
+        "core:8882",
+        "assigned:2588",
+        "assigned:5678",
+        "assigned:5862",
+        "assigned:8884",
+        "assigned:8885",
+        "assigned:9584",
+        "pending:heritage_preservation",
+        "pending:humanitarian_relief",
+        "pending:emergency_first_aid",
+        "pending:general_healthcare",
+        "pending:general_wellness"
+      ],
+      "capability_references": [
+        "coordination.work_order",
+        "coordination.route",
+        "coordination.execution_state",
+        "coordination.output",
+        "coordination.evidence",
+        "coordination.review",
+        "coordination.closure",
+        "identity.manage",
+        "identity.validate",
+        "identity.resolve",
+        "identity.lineage.inspect",
+        "identity.conflict.review",
+        "identity.evidence",
+        "identity.readback",
+        "identity.change.propose",
+        "religion.coordinate",
+        "solutions.5b",
+        "science_technology.review",
+        "learning.development",
+        "finance.coordinate",
+        "commerce.coordinate",
+        "knowledge.govern",
+        "encyclopedia.search",
+        "good_life.practice",
+        "food.trace",
+        "advice.route",
+        "psychology.support",
+        "situation.assess",
+        "heritage.preserve",
+        "relief.match",
+        "emergency.guide",
+        "healthcare.coordinate",
+        "wellness.plan"
+      ],
+      "identity_copies": 0,
+      "status": "PROPOSED_HUMAN_REVIEW",
+      "source": "ecosystem/config/ecosystem.json",
+      "relationships": [
+        {
+          "chapter": "0",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "2",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "1",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "2",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "2",
+          "relationship": "PRIMARY/DIRECT",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": true,
+            "positions": [
+              0
+            ],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "2",
+              "positions": [
+                0
+              ]
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "3",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "2",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "4",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "2",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "5",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "2",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "6",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "2",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "7",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "2",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "8",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "2",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "9",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "2",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        }
+      ],
+      "descendants": [],
+      "lineage_status": "VERIFIED_DESCENDANT_RECORDS_REQUIRED"
+    },
+    {
+      "chapter": "3",
+      "display_name": "Ba Quỹ",
+      "canonical_url": "https://cfp.plus/3",
+      "entities": [
+        {
+          "entity_key": "chapter:3:ai",
+          "entity_type": "AI",
+          "display_name": "3 • Ba Quỹ • AI",
+          "status": "DECLARED_NOT_ACTIVATED",
+          "permissions": [],
+          "evidence": [
+            "docs/TEN_CHAPTER_P0.md#human-direction"
+          ],
+          "readback": []
+        },
+        {
+          "entity_key": "chapter:3:software",
+          "entity_type": "SOFTWARE",
+          "display_name": "3 • Ba Quỹ • Phần Mềm",
+          "status": "DECLARED_NOT_ACTIVATED",
+          "permissions": [],
+          "evidence": [
+            "docs/TEN_CHAPTER_P0.md#human-direction"
+          ],
+          "readback": []
+        }
+      ],
+      "hub": "69",
+      "placements": [
+        {
+          "pair_key": "core:267",
+          "chapter": "3",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:343",
+          "chapter": "3",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:345",
+          "chapter": "3",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:5458",
+          "chapter": "3",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8282",
+          "chapter": "3",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8682",
+          "chapter": "3",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8882",
+          "chapter": "3",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "assigned:2588",
+          "chapter": "3",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:5862",
+          "chapter": "3",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:8884",
+          "chapter": "3",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:9584",
+          "chapter": "3",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "pending:humanitarian_relief",
+          "chapter": "3",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        }
+      ],
+      "pair_references": [
+        "core:267",
+        "core:343",
+        "core:345",
+        "core:5458",
+        "core:8282",
+        "core:8682",
+        "core:8882",
+        "assigned:2588",
+        "assigned:5862",
+        "assigned:8884",
+        "assigned:9584",
+        "pending:humanitarian_relief"
+      ],
+      "capability_references": [
+        "coordination.work_order",
+        "coordination.route",
+        "coordination.execution_state",
+        "coordination.output",
+        "coordination.evidence",
+        "coordination.review",
+        "coordination.closure",
+        "identity.manage",
+        "identity.validate",
+        "identity.resolve",
+        "identity.lineage.inspect",
+        "identity.conflict.review",
+        "identity.evidence",
+        "identity.readback",
+        "identity.change.propose",
+        "religion.coordinate",
+        "solutions.5b",
+        "science_technology.review",
+        "finance.coordinate",
+        "commerce.coordinate",
+        "knowledge.govern",
+        "encyclopedia.search",
+        "food.trace",
+        "advice.route",
+        "situation.assess",
+        "relief.match"
+      ],
+      "identity_copies": 0,
+      "status": "PROPOSED_HUMAN_REVIEW",
+      "source": "ecosystem/config/ecosystem.json",
+      "relationships": [
+        {
+          "chapter": "0",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "3",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "1",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "3",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "2",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "3",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "3",
+          "relationship": "PRIMARY/DIRECT",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": true,
+            "positions": [
+              0
+            ],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "3",
+              "positions": [
+                0
+              ]
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "4",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "3",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "5",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "3",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "6",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "3",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "7",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "3",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "8",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "3",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "9",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "3",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        }
+      ],
+      "descendants": [],
+      "lineage_status": "VERIFIED_DESCENDANT_RECORDS_REQUIRED"
+    },
+    {
+      "chapter": "4",
+      "display_name": "Tôn Giáo",
+      "canonical_url": "https://cfp.plus/4",
+      "entities": [
+        {
+          "entity_key": "chapter:4:ai",
+          "entity_type": "AI",
+          "display_name": "4 • Tôn Giáo • AI",
+          "status": "DECLARED_NOT_ACTIVATED",
+          "permissions": [],
+          "evidence": [
+            "docs/TEN_CHAPTER_P0.md#human-direction"
+          ],
+          "readback": []
+        },
+        {
+          "entity_key": "chapter:4:software",
+          "entity_type": "SOFTWARE",
+          "display_name": "4 • Tôn Giáo • Phần Mềm",
+          "status": "DECLARED_NOT_ACTIVATED",
+          "permissions": [],
+          "evidence": [
+            "docs/TEN_CHAPTER_P0.md#human-direction"
+          ],
+          "readback": []
+        }
+      ],
+      "hub": "69",
+      "placements": [
+        {
+          "pair_key": "core:267",
+          "chapter": "4",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:343",
+          "chapter": "4",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:345",
+          "chapter": "4",
+          "roles": [
+            "PRIMARY",
+            "SPECIALIST",
+            "REPRESENTATIVE"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:5458",
+          "chapter": "4",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:6535",
+          "chapter": "4",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8282",
+          "chapter": "4",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8682",
+          "chapter": "4",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8882",
+          "chapter": "4",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "assigned:2588",
+          "chapter": "4",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:5678",
+          "chapter": "4",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:8884",
+          "chapter": "4",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:9584",
+          "chapter": "4",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "pending:heritage_preservation",
+          "chapter": "4",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        }
+      ],
+      "pair_references": [
+        "core:267",
+        "core:343",
+        "core:345",
+        "core:5458",
+        "core:6535",
+        "core:8282",
+        "core:8682",
+        "core:8882",
+        "assigned:2588",
+        "assigned:5678",
+        "assigned:8884",
+        "assigned:9584",
+        "pending:heritage_preservation"
+      ],
+      "capability_references": [
+        "coordination.work_order",
+        "coordination.route",
+        "coordination.execution_state",
+        "coordination.output",
+        "coordination.evidence",
+        "coordination.review",
+        "coordination.closure",
+        "identity.manage",
+        "identity.validate",
+        "identity.resolve",
+        "identity.lineage.inspect",
+        "identity.conflict.review",
+        "identity.evidence",
+        "identity.readback",
+        "identity.change.propose",
+        "religion.coordinate",
+        "solutions.5b",
+        "science_technology.review",
+        "learning.development",
+        "finance.coordinate",
+        "commerce.coordinate",
+        "knowledge.govern",
+        "encyclopedia.search",
+        "good_life.practice",
+        "advice.route",
+        "situation.assess",
+        "heritage.preserve"
+      ],
+      "identity_copies": 0,
+      "status": "PROPOSED_HUMAN_REVIEW",
+      "source": "ecosystem/config/ecosystem.json",
+      "relationships": [
+        {
+          "chapter": "0",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "4",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "1",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "4",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "2",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "4",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "3",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "4",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "4",
+          "relationship": "PRIMARY/DIRECT",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": true,
+            "positions": [
+              0
+            ],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "4",
+              "positions": [
+                0
+              ]
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "5",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "4",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "6",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "4",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "7",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "4",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "8",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "4",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "9",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "4",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        }
+      ],
+      "descendants": [],
+      "lineage_status": "VERIFIED_DESCENDANT_RECORDS_REQUIRED"
+    },
+    {
+      "chapter": "5",
+      "display_name": "Cộng Đồng",
+      "canonical_url": "https://cfp.plus/5",
+      "entities": [
+        {
+          "entity_key": "chapter:5:ai",
+          "entity_type": "AI",
+          "display_name": "5 • Cộng Đồng • AI",
+          "status": "DECLARED_NOT_ACTIVATED",
+          "permissions": [],
+          "evidence": [
+            "docs/TEN_CHAPTER_P0.md#human-direction"
+          ],
+          "readback": []
+        },
+        {
+          "entity_key": "chapter:5:software",
+          "entity_type": "SOFTWARE",
+          "display_name": "5 • Cộng Đồng • Phần Mềm",
+          "status": "DECLARED_NOT_ACTIVATED",
+          "permissions": [],
+          "evidence": [
+            "docs/TEN_CHAPTER_P0.md#human-direction"
+          ],
+          "readback": []
+        }
+      ],
+      "hub": "69",
+      "placements": [
+        {
+          "pair_key": "core:267",
+          "chapter": "5",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:343",
+          "chapter": "5",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:345",
+          "chapter": "5",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:5458",
+          "chapter": "5",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:6535",
+          "chapter": "5",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8282",
+          "chapter": "5",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8682",
+          "chapter": "5",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8882",
+          "chapter": "5",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "assigned:2588",
+          "chapter": "5",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:5678",
+          "chapter": "5",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:5862",
+          "chapter": "5",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:8884",
+          "chapter": "5",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:8885",
+          "chapter": "5",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:9584",
+          "chapter": "5",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "pending:heritage_preservation",
+          "chapter": "5",
+          "roles": [
+            "PRIMARY",
+            "SPECIALIST",
+            "REPRESENTATIVE"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        },
+        {
+          "pair_key": "pending:humanitarian_relief",
+          "chapter": "5",
+          "roles": [
+            "PRIMARY",
+            "SPECIALIST",
+            "REPRESENTATIVE"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        },
+        {
+          "pair_key": "pending:emergency_first_aid",
+          "chapter": "5",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        },
+        {
+          "pair_key": "pending:general_healthcare",
+          "chapter": "5",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        },
+        {
+          "pair_key": "pending:general_wellness",
+          "chapter": "5",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        }
+      ],
+      "pair_references": [
+        "core:267",
+        "core:343",
+        "core:345",
+        "core:5458",
+        "core:6535",
+        "core:8282",
+        "core:8682",
+        "core:8882",
+        "assigned:2588",
+        "assigned:5678",
+        "assigned:5862",
+        "assigned:8884",
+        "assigned:8885",
+        "assigned:9584",
+        "pending:heritage_preservation",
+        "pending:humanitarian_relief",
+        "pending:emergency_first_aid",
+        "pending:general_healthcare",
+        "pending:general_wellness"
+      ],
+      "capability_references": [
+        "coordination.work_order",
+        "coordination.route",
+        "coordination.execution_state",
+        "coordination.output",
+        "coordination.evidence",
+        "coordination.review",
+        "coordination.closure",
+        "identity.manage",
+        "identity.validate",
+        "identity.resolve",
+        "identity.lineage.inspect",
+        "identity.conflict.review",
+        "identity.evidence",
+        "identity.readback",
+        "identity.change.propose",
+        "religion.coordinate",
+        "solutions.5b",
+        "science_technology.review",
+        "learning.development",
+        "finance.coordinate",
+        "commerce.coordinate",
+        "knowledge.govern",
+        "encyclopedia.search",
+        "good_life.practice",
+        "food.trace",
+        "advice.route",
+        "psychology.support",
+        "situation.assess",
+        "heritage.preserve",
+        "relief.match",
+        "emergency.guide",
+        "healthcare.coordinate",
+        "wellness.plan"
+      ],
+      "identity_copies": 0,
+      "status": "PROPOSED_HUMAN_REVIEW",
+      "source": "ecosystem/config/ecosystem.json",
+      "relationships": [
+        {
+          "chapter": "0",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "5",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "1",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "5",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "2",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "5",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "3",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "5",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "4",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "5",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "5",
+          "relationship": "PRIMARY/DIRECT",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": true,
+            "positions": [
+              0
+            ],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "5",
+              "positions": [
+                0
+              ]
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "6",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "5",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "7",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "5",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "8",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "5",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "9",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "5",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        }
+      ],
+      "descendants": [],
+      "lineage_status": "VERIFIED_DESCENDANT_RECORDS_REQUIRED"
+    },
+    {
+      "chapter": "6",
+      "display_name": "AI & Công Nghệ",
+      "canonical_url": "https://cfp.plus/6",
+      "entities": [
+        {
+          "entity_key": "chapter:6:ai",
+          "entity_type": "AI",
+          "display_name": "6 • AI & Công Nghệ • AI",
+          "status": "DECLARED_NOT_ACTIVATED",
+          "permissions": [],
+          "evidence": [
+            "docs/TEN_CHAPTER_P0.md#human-direction"
+          ],
+          "readback": []
+        },
+        {
+          "entity_key": "chapter:6:software",
+          "entity_type": "SOFTWARE",
+          "display_name": "6 • AI & Công Nghệ • Phần Mềm",
+          "status": "DECLARED_NOT_ACTIVATED",
+          "permissions": [],
+          "evidence": [
+            "docs/TEN_CHAPTER_P0.md#human-direction"
+          ],
+          "readback": []
+        }
+      ],
+      "hub": "69",
+      "placements": [
+        {
+          "pair_key": "core:267",
+          "chapter": "6",
+          "roles": [
+            "PRIMARY",
+            "SPECIALIST",
+            "REPRESENTATIVE"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:343",
+          "chapter": "6",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:345",
+          "chapter": "6",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:5458",
+          "chapter": "6",
+          "roles": [
+            "PRIMARY",
+            "SPECIALIST",
+            "REPRESENTATIVE"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:6535",
+          "chapter": "6",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8282",
+          "chapter": "6",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8682",
+          "chapter": "6",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8882",
+          "chapter": "6",
+          "roles": [
+            "PRIMARY",
+            "SPECIALIST",
+            "REPRESENTATIVE"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "assigned:2588",
+          "chapter": "6",
+          "roles": [
+            "PRIMARY",
+            "SPECIALIST",
+            "REPRESENTATIVE"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:5678",
+          "chapter": "6",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:5862",
+          "chapter": "6",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:8884",
+          "chapter": "6",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:8885",
+          "chapter": "6",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:9584",
+          "chapter": "6",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "pending:heritage_preservation",
+          "chapter": "6",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        },
+        {
+          "pair_key": "pending:humanitarian_relief",
+          "chapter": "6",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        },
+        {
+          "pair_key": "pending:emergency_first_aid",
+          "chapter": "6",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        },
+        {
+          "pair_key": "pending:general_healthcare",
+          "chapter": "6",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        },
+        {
+          "pair_key": "pending:general_wellness",
+          "chapter": "6",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        }
+      ],
+      "pair_references": [
+        "core:267",
+        "core:343",
+        "core:345",
+        "core:5458",
+        "core:6535",
+        "core:8282",
+        "core:8682",
+        "core:8882",
+        "assigned:2588",
+        "assigned:5678",
+        "assigned:5862",
+        "assigned:8884",
+        "assigned:8885",
+        "assigned:9584",
+        "pending:heritage_preservation",
+        "pending:humanitarian_relief",
+        "pending:emergency_first_aid",
+        "pending:general_healthcare",
+        "pending:general_wellness"
+      ],
+      "capability_references": [
+        "coordination.work_order",
+        "coordination.route",
+        "coordination.execution_state",
+        "coordination.output",
+        "coordination.evidence",
+        "coordination.review",
+        "coordination.closure",
+        "identity.manage",
+        "identity.validate",
+        "identity.resolve",
+        "identity.lineage.inspect",
+        "identity.conflict.review",
+        "identity.evidence",
+        "identity.readback",
+        "identity.change.propose",
+        "religion.coordinate",
+        "solutions.5b",
+        "science_technology.review",
+        "learning.development",
+        "finance.coordinate",
+        "commerce.coordinate",
+        "knowledge.govern",
+        "encyclopedia.search",
+        "good_life.practice",
+        "food.trace",
+        "advice.route",
+        "psychology.support",
+        "situation.assess",
+        "heritage.preserve",
+        "relief.match",
+        "emergency.guide",
+        "healthcare.coordinate",
+        "wellness.plan"
+      ],
+      "identity_copies": 0,
+      "status": "PROPOSED_HUMAN_REVIEW",
+      "source": "ecosystem/config/ecosystem.json",
+      "relationships": [
+        {
+          "chapter": "0",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "6",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "1",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "6",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "2",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "6",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "3",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "6",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "4",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "6",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "5",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "6",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "6",
+          "relationship": "PRIMARY/DIRECT",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": true,
+            "positions": [
+              0
+            ],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "6",
+              "positions": [
+                0
+              ]
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "7",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "6",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "8",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "6",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "9",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "6",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        }
+      ],
+      "descendants": [],
+      "lineage_status": "VERIFIED_DESCENDANT_RECORDS_REQUIRED"
+    },
+    {
+      "chapter": "7",
+      "display_name": "Doanh Nghiệp",
+      "canonical_url": "https://cfp.plus/7",
+      "entities": [
+        {
+          "entity_key": "chapter:7:ai",
+          "entity_type": "AI",
+          "display_name": "7 • Doanh Nghiệp • AI",
+          "status": "DECLARED_NOT_ACTIVATED",
+          "permissions": [],
+          "evidence": [
+            "docs/TEN_CHAPTER_P0.md#human-direction"
+          ],
+          "readback": []
+        },
+        {
+          "entity_key": "chapter:7:software",
+          "entity_type": "SOFTWARE",
+          "display_name": "7 • Doanh Nghiệp • Phần Mềm",
+          "status": "DECLARED_NOT_ACTIVATED",
+          "permissions": [],
+          "evidence": [
+            "docs/TEN_CHAPTER_P0.md#human-direction"
+          ],
+          "readback": []
+        }
+      ],
+      "hub": "69",
+      "placements": [
+        {
+          "pair_key": "core:267",
+          "chapter": "7",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:343",
+          "chapter": "7",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:5458",
+          "chapter": "7",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:6535",
+          "chapter": "7",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8282",
+          "chapter": "7",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8682",
+          "chapter": "7",
+          "roles": [
+            "PRIMARY",
+            "SPECIALIST",
+            "REPRESENTATIVE"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8882",
+          "chapter": "7",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "assigned:2588",
+          "chapter": "7",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:5678",
+          "chapter": "7",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:5862",
+          "chapter": "7",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:8884",
+          "chapter": "7",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:9584",
+          "chapter": "7",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "pending:heritage_preservation",
+          "chapter": "7",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        },
+        {
+          "pair_key": "pending:humanitarian_relief",
+          "chapter": "7",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        }
+      ],
+      "pair_references": [
+        "core:267",
+        "core:343",
+        "core:5458",
+        "core:6535",
+        "core:8282",
+        "core:8682",
+        "core:8882",
+        "assigned:2588",
+        "assigned:5678",
+        "assigned:5862",
+        "assigned:8884",
+        "assigned:9584",
+        "pending:heritage_preservation",
+        "pending:humanitarian_relief"
+      ],
+      "capability_references": [
+        "coordination.work_order",
+        "coordination.route",
+        "coordination.execution_state",
+        "coordination.output",
+        "coordination.evidence",
+        "coordination.review",
+        "coordination.closure",
+        "identity.manage",
+        "identity.validate",
+        "identity.resolve",
+        "identity.lineage.inspect",
+        "identity.conflict.review",
+        "identity.evidence",
+        "identity.readback",
+        "identity.change.propose",
+        "solutions.5b",
+        "science_technology.review",
+        "learning.development",
+        "finance.coordinate",
+        "commerce.coordinate",
+        "knowledge.govern",
+        "encyclopedia.search",
+        "good_life.practice",
+        "food.trace",
+        "advice.route",
+        "situation.assess",
+        "heritage.preserve",
+        "relief.match"
+      ],
+      "identity_copies": 0,
+      "status": "PROPOSED_HUMAN_REVIEW",
+      "source": "ecosystem/config/ecosystem.json",
+      "relationships": [
+        {
+          "chapter": "0",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "7",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "1",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "7",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "2",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "7",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "3",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "7",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "4",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "7",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "5",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "7",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "6",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "7",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "7",
+          "relationship": "PRIMARY/DIRECT",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": true,
+            "positions": [
+              0
+            ],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "7",
+              "positions": [
+                0
+              ]
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "8",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "7",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "9",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "7",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        }
+      ],
+      "descendants": [],
+      "lineage_status": "VERIFIED_DESCENDANT_RECORDS_REQUIRED"
+    },
+    {
+      "chapter": "8",
+      "display_name": "Tổ Chức",
+      "canonical_url": "https://cfp.plus/8",
+      "entities": [
+        {
+          "entity_key": "chapter:8:ai",
+          "entity_type": "AI",
+          "display_name": "8 • Tổ Chức • AI",
+          "status": "DECLARED_NOT_ACTIVATED",
+          "permissions": [],
+          "evidence": [
+            "docs/TEN_CHAPTER_P0.md#human-direction"
+          ],
+          "readback": []
+        },
+        {
+          "entity_key": "chapter:8:software",
+          "entity_type": "SOFTWARE",
+          "display_name": "8 • Tổ Chức • Phần Mềm",
+          "status": "DECLARED_NOT_ACTIVATED",
+          "permissions": [],
+          "evidence": [
+            "docs/TEN_CHAPTER_P0.md#human-direction"
+          ],
+          "readback": []
+        }
+      ],
+      "hub": "69",
+      "placements": [
+        {
+          "pair_key": "core:267",
+          "chapter": "8",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:343",
+          "chapter": "8",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:345",
+          "chapter": "8",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:5458",
+          "chapter": "8",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:6535",
+          "chapter": "8",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8282",
+          "chapter": "8",
+          "roles": [
+            "PRIMARY",
+            "SPECIALIST",
+            "REPRESENTATIVE"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8682",
+          "chapter": "8",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8882",
+          "chapter": "8",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "assigned:2588",
+          "chapter": "8",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:5678",
+          "chapter": "8",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:5862",
+          "chapter": "8",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:8884",
+          "chapter": "8",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:9584",
+          "chapter": "8",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "pending:heritage_preservation",
+          "chapter": "8",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        },
+        {
+          "pair_key": "pending:humanitarian_relief",
+          "chapter": "8",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        },
+        {
+          "pair_key": "pending:emergency_first_aid",
+          "chapter": "8",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        },
+        {
+          "pair_key": "pending:general_healthcare",
+          "chapter": "8",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        }
+      ],
+      "pair_references": [
+        "core:267",
+        "core:343",
+        "core:345",
+        "core:5458",
+        "core:6535",
+        "core:8282",
+        "core:8682",
+        "core:8882",
+        "assigned:2588",
+        "assigned:5678",
+        "assigned:5862",
+        "assigned:8884",
+        "assigned:9584",
+        "pending:heritage_preservation",
+        "pending:humanitarian_relief",
+        "pending:emergency_first_aid",
+        "pending:general_healthcare"
+      ],
+      "capability_references": [
+        "coordination.work_order",
+        "coordination.route",
+        "coordination.execution_state",
+        "coordination.output",
+        "coordination.evidence",
+        "coordination.review",
+        "coordination.closure",
+        "identity.manage",
+        "identity.validate",
+        "identity.resolve",
+        "identity.lineage.inspect",
+        "identity.conflict.review",
+        "identity.evidence",
+        "identity.readback",
+        "identity.change.propose",
+        "religion.coordinate",
+        "solutions.5b",
+        "science_technology.review",
+        "learning.development",
+        "finance.coordinate",
+        "commerce.coordinate",
+        "knowledge.govern",
+        "encyclopedia.search",
+        "good_life.practice",
+        "food.trace",
+        "advice.route",
+        "situation.assess",
+        "heritage.preserve",
+        "relief.match",
+        "emergency.guide",
+        "healthcare.coordinate"
+      ],
+      "identity_copies": 0,
+      "status": "PROPOSED_HUMAN_REVIEW",
+      "source": "ecosystem/config/ecosystem.json",
+      "relationships": [
+        {
+          "chapter": "0",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "8",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "1",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "8",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "2",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "8",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "3",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "8",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "4",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "8",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "5",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "8",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "6",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "8",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "7",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "8",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "8",
+          "relationship": "PRIMARY/DIRECT",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": true,
+            "positions": [
+              0
+            ],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "8",
+              "positions": [
+                0
+              ]
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "9",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "8",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        }
+      ],
+      "descendants": [],
+      "lineage_status": "VERIFIED_DESCENDANT_RECORDS_REQUIRED"
+    },
+    {
+      "chapter": "9",
+      "display_name": "Quốc Gia",
+      "canonical_url": "https://cfp.plus/9",
+      "entities": [
+        {
+          "entity_key": "chapter:9:ai",
+          "entity_type": "AI",
+          "display_name": "9 • Quốc Gia • AI",
+          "status": "DECLARED_NOT_ACTIVATED",
+          "permissions": [],
+          "evidence": [
+            "docs/TEN_CHAPTER_P0.md#human-direction"
+          ],
+          "readback": []
+        },
+        {
+          "entity_key": "chapter:9:software",
+          "entity_type": "SOFTWARE",
+          "display_name": "9 • Quốc Gia • Phần Mềm",
+          "status": "DECLARED_NOT_ACTIVATED",
+          "permissions": [],
+          "evidence": [
+            "docs/TEN_CHAPTER_P0.md#human-direction"
+          ],
+          "readback": []
+        }
+      ],
+      "hub": "69",
+      "placements": [
+        {
+          "pair_key": "core:267",
+          "chapter": "9",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:343",
+          "chapter": "9",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:345",
+          "chapter": "9",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:5458",
+          "chapter": "9",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:6535",
+          "chapter": "9",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8282",
+          "chapter": "9",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8682",
+          "chapter": "9",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "core:8882",
+          "chapter": "9",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "P0 pair-registry.json; current user architecture references"
+        },
+        {
+          "pair_key": "assigned:2588",
+          "chapter": "9",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:5678",
+          "chapter": "9",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:5862",
+          "chapter": "9",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:8884",
+          "chapter": "9",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "assigned:9584",
+          "chapter": "9",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: BUILD SOFTWARE BEFORE AI CREATION; identity references only, not registry writes"
+        },
+        {
+          "pair_key": "pending:heritage_preservation",
+          "chapter": "9",
+          "roles": [
+            "SECONDARY",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        },
+        {
+          "pair_key": "pending:humanitarian_relief",
+          "chapter": "9",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        },
+        {
+          "pair_key": "pending:emergency_first_aid",
+          "chapter": "9",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        },
+        {
+          "pair_key": "pending:general_healthcare",
+          "chapter": "9",
+          "roles": [
+            "CROSS_CHAPTER",
+            "SPECIALIST"
+          ],
+          "status": "PROPOSED_HUMAN_REVIEW",
+          "authority_granted": false,
+          "parent_binding": false,
+          "source": "USER: five DID-PENDING Software candidates; no allocated DID"
+        }
+      ],
+      "pair_references": [
+        "core:267",
+        "core:343",
+        "core:345",
+        "core:5458",
+        "core:6535",
+        "core:8282",
+        "core:8682",
+        "core:8882",
+        "assigned:2588",
+        "assigned:5678",
+        "assigned:5862",
+        "assigned:8884",
+        "assigned:9584",
+        "pending:heritage_preservation",
+        "pending:humanitarian_relief",
+        "pending:emergency_first_aid",
+        "pending:general_healthcare"
+      ],
+      "capability_references": [
+        "coordination.work_order",
+        "coordination.route",
+        "coordination.execution_state",
+        "coordination.output",
+        "coordination.evidence",
+        "coordination.review",
+        "coordination.closure",
+        "identity.manage",
+        "identity.validate",
+        "identity.resolve",
+        "identity.lineage.inspect",
+        "identity.conflict.review",
+        "identity.evidence",
+        "identity.readback",
+        "identity.change.propose",
+        "religion.coordinate",
+        "solutions.5b",
+        "science_technology.review",
+        "learning.development",
+        "finance.coordinate",
+        "commerce.coordinate",
+        "knowledge.govern",
+        "encyclopedia.search",
+        "good_life.practice",
+        "food.trace",
+        "advice.route",
+        "situation.assess",
+        "heritage.preserve",
+        "relief.match",
+        "emergency.guide",
+        "healthcare.coordinate"
+      ],
+      "identity_copies": 0,
+      "status": "PROPOSED_HUMAN_REVIEW",
+      "source": "ecosystem/config/ecosystem.json",
+      "relationships": [
+        {
+          "chapter": "0",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "9",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "1",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "9",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "2",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "9",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "3",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "9",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "4",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "9",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "5",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "9",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "6",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "9",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "7",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "9",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "8",
+          "relationship": "CROSS_CHECK",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": false,
+            "positions": [],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "9",
+              "positions": []
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        },
+        {
+          "chapter": "9",
+          "relationship": "PRIMARY/DIRECT",
+          "review_status": "INTERPRETATION_ONLY",
+          "relevance": {
+            "digits_present": true,
+            "positions": [
+              0
+            ],
+            "content": "NOT_ASSESSED",
+            "function": "NOT_ASSESSED",
+            "placement": null
+          },
+          "evidence": [
+            {
+              "kind": "SOURCE_DIGITS",
+              "value": "9",
+              "positions": [
+                0
+              ]
+            }
+          ],
+          "authority_granted": false,
+          "permission_granted": false
+        }
+      ],
+      "descendants": [],
+      "lineage_status": "VERIFIED_DESCENDANT_RECORDS_REQUIRED"
+    }
+  ],
+  "profiles": {
+    "core:237": {
+      "did": "237",
+      "full_name": null,
+      "entities": [
+        {
+          "entity_key": "core:237:ai",
+          "entity_type": "AI",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "core:237:software",
+          "entity_type": "SOFTWARE",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "core:2374": {
+      "did": "2374",
+      "full_name": null,
+      "entities": [
+        {
+          "entity_key": "core:2374:ai",
+          "entity_type": "AI",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "core:2374:software",
+          "entity_type": "SOFTWARE",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "core:2378": {
+      "did": "2378",
+      "full_name": null,
+      "entities": [
+        {
+          "entity_key": "core:2378:ai",
+          "entity_type": "AI",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "core:2378:software",
+          "entity_type": "SOFTWARE",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "core:267": {
+      "did": "267",
+      "full_name": null,
+      "entities": [
+        {
+          "entity_key": "core:267:ai",
+          "entity_type": "AI",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "core:267:software",
+          "entity_type": "SOFTWARE",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "core:2624": {
+      "did": "2624",
+      "full_name": null,
+      "entities": [
+        {
+          "entity_key": "core:2624:ai",
+          "entity_type": "AI",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "core:2624:software",
+          "entity_type": "SOFTWARE",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "core:2633": {
+      "did": "2633",
+      "full_name": null,
+      "entities": [
+        {
+          "entity_key": "core:2633:ai",
+          "entity_type": "AI",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "core:2633:software",
+          "entity_type": "SOFTWARE",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "core:276": {
+      "did": "276",
+      "full_name": null,
+      "entities": [
+        {
+          "entity_key": "core:276:ai",
+          "entity_type": "AI",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "core:276:software",
+          "entity_type": "SOFTWARE",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "core:343": {
+      "did": "343",
+      "full_name": "343 • Quản Trị Định Danh Số CFP+ • AI",
+      "entities": [
+        {
+          "entity_key": "core:343:ai",
+          "entity_type": "AI",
+          "full_name": "343 • Quản Trị Định Danh Số CFP+ • AI",
+          "status": "REVIEW",
+          "permissions": [
+            "id.manage",
+            "id.validate",
+            "id.resolve",
+            "lineage.inspect",
+            "conflict.detect",
+            "evidence.record",
+            "readback.record",
+            "change.propose"
+          ],
+          "evidence": [
+            {
+              "source": "User message: CFP+ • P0 UPDATE • 343 DID",
+              "scope": "343/ai confirmed name, role and governance boundaries only; not ACTIVE or production execution",
+              "observed_at": "2026-10-03T16:12:00.514723+00:00",
+              "artifact": "evidence/343-update/name-confirmation.json",
+              "sha256": "e7a05a1efb76c1e43ea897ad284bb3ae7f282eb7519a32c3772e5bc93b706f74"
+            }
+          ],
+          "readback": [
+            {
+              "source": "local persisted pair-registry.json:343/ai",
+              "observed_at": "2026-10-03T16:12:00.515487+00:00",
+              "observed_fields": {
+                "id": "343",
+                "canonical_link": "https://cfp.plus/343",
+                "entity_type": "ai",
+                "full_name": "343 • Quản Trị Định Danh Số CFP+ • AI",
+                "aliases": [
+                  "DID"
+                ],
+                "status": "REVIEW",
+                "permissions": [
+                  "id.manage",
+                  "id.validate",
+                  "id.resolve",
+                  "lineage.inspect",
+                  "conflict.detect",
+                  "evidence.record",
+                  "readback.record",
+                  "change.propose"
+                ],
+                "profile": {
+                  "name_status": "VERIFIED NAME",
+                  "role": "343 chịu trách nhiệm quản lý và hỗ trợ quản trị Tất cả Các ID số CFP+.",
+                  "scope": [
+                    "ID Management",
+                    "ID Validation",
+                    "Parent/Child Lineage",
+                    "ID Resolver",
+                    "Conflict Detection",
+                    "Evidence",
+                    "Readback",
+                    "Change Proposal",
+                    "Human Governance"
+                  ],
+                  "denied_actions": [
+                    "id.allocate",
+                    "id.change",
+                    "parent.change_on_conflict",
+                    "canonical.lock",
+                    "governance.decide"
+                  ],
+                  "protected_decision_authority": "Human Governance",
+                  "change_proposals_are_governance_decisions": false
+                }
+              },
+              "evidence_index": 0
+            }
+          ]
+        },
+        {
+          "entity_key": "core:343:software",
+          "entity_type": "SOFTWARE",
+          "full_name": "343 • Quản Trị Định Danh Số CFP+ • AI",
+          "status": "REVIEW",
+          "permissions": [
+            "id.manage",
+            "id.validate",
+            "id.resolve",
+            "lineage.inspect",
+            "conflict.detect",
+            "evidence.record",
+            "readback.record",
+            "change.propose"
+          ],
+          "evidence": [
+            {
+              "source": "User message: CFP+ • P0 UPDATE • 343 DID",
+              "scope": "343/software confirmed name, role and governance boundaries only; not ACTIVE or production execution",
+              "observed_at": "2026-10-03T16:12:00.514723+00:00",
+              "artifact": "evidence/343-update/name-confirmation.json",
+              "sha256": "e7a05a1efb76c1e43ea897ad284bb3ae7f282eb7519a32c3772e5bc93b706f74"
+            }
+          ],
+          "readback": [
+            {
+              "source": "local persisted pair-registry.json:343/software",
+              "observed_at": "2026-10-03T16:12:00.515493+00:00",
+              "observed_fields": {
+                "id": "343",
+                "canonical_link": "https://cfp.plus/343",
+                "entity_type": "software",
+                "full_name": "343 • Quản Trị Định Danh Số CFP+ • AI",
+                "aliases": [
+                  "DID"
+                ],
+                "status": "REVIEW",
+                "permissions": [
+                  "id.manage",
+                  "id.validate",
+                  "id.resolve",
+                  "lineage.inspect",
+                  "conflict.detect",
+                  "evidence.record",
+                  "readback.record",
+                  "change.propose"
+                ],
+                "profile": {
+                  "name_status": "VERIFIED NAME",
+                  "role": "343 chịu trách nhiệm quản lý và hỗ trợ quản trị Tất cả Các ID số CFP+.",
+                  "scope": [
+                    "ID Management",
+                    "ID Validation",
+                    "Parent/Child Lineage",
+                    "ID Resolver",
+                    "Conflict Detection",
+                    "Evidence",
+                    "Readback",
+                    "Change Proposal",
+                    "Human Governance"
+                  ],
+                  "denied_actions": [
+                    "id.allocate",
+                    "id.change",
+                    "parent.change_on_conflict",
+                    "canonical.lock",
+                    "governance.decide"
+                  ],
+                  "protected_decision_authority": "Human Governance",
+                  "change_proposals_are_governance_decisions": false
+                }
+              },
+              "evidence_index": 0
+            }
+          ]
+        }
+      ]
+    },
+    "core:345": {
+      "did": "345",
+      "full_name": null,
+      "entities": [
+        {
+          "entity_key": "core:345:ai",
+          "entity_type": "AI",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "core:345:software",
+          "entity_type": "SOFTWARE",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "core:365": {
+      "did": "365",
+      "full_name": null,
+      "entities": [
+        {
+          "entity_key": "core:365:ai",
+          "entity_type": "AI",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "core:365:software",
+          "entity_type": "SOFTWARE",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "core:383236": {
+      "did": "383236",
+      "full_name": null,
+      "entities": [
+        {
+          "entity_key": "core:383236:ai",
+          "entity_type": "AI",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "core:383236:software",
+          "entity_type": "SOFTWARE",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "core:3863": {
+      "did": "3863",
+      "full_name": null,
+      "entities": [
+        {
+          "entity_key": "core:3863:ai",
+          "entity_type": "AI",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "core:3863:software",
+          "entity_type": "SOFTWARE",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "core:4376": {
+      "did": "4376",
+      "full_name": null,
+      "entities": [
+        {
+          "entity_key": "core:4376:ai",
+          "entity_type": "AI",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "core:4376:software",
+          "entity_type": "SOFTWARE",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "core:5272": {
+      "did": "5272",
+      "full_name": null,
+      "entities": [
+        {
+          "entity_key": "core:5272:ai",
+          "entity_type": "AI",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "core:5272:software",
+          "entity_type": "SOFTWARE",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "core:5458": {
+      "did": "5458",
+      "full_name": null,
+      "entities": [
+        {
+          "entity_key": "core:5458:ai",
+          "entity_type": "AI",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "core:5458:software",
+          "entity_type": "SOFTWARE",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "core:5824": {
+      "did": "5824",
+      "full_name": null,
+      "entities": [
+        {
+          "entity_key": "core:5824:ai",
+          "entity_type": "AI",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "core:5824:software",
+          "entity_type": "SOFTWARE",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "core:627": {
+      "did": "627",
+      "full_name": null,
+      "entities": [
+        {
+          "entity_key": "core:627:ai",
+          "entity_type": "AI",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "core:627:software",
+          "entity_type": "SOFTWARE",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "core:6535": {
+      "did": "6535",
+      "full_name": null,
+      "entities": [
+        {
+          "entity_key": "core:6535:ai",
+          "entity_type": "AI",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "core:6535:software",
+          "entity_type": "SOFTWARE",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "core:6735": {
+      "did": "6735",
+      "full_name": null,
+      "entities": [
+        {
+          "entity_key": "core:6735:ai",
+          "entity_type": "AI",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "core:6735:software",
+          "entity_type": "SOFTWARE",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "core:6848": {
+      "did": "6848",
+      "full_name": null,
+      "entities": [
+        {
+          "entity_key": "core:6848:ai",
+          "entity_type": "AI",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "core:6848:software",
+          "entity_type": "SOFTWARE",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "core:6969": {
+      "did": "6969",
+      "full_name": null,
+      "entities": [
+        {
+          "entity_key": "core:6969:ai",
+          "entity_type": "AI",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "core:6969:software",
+          "entity_type": "SOFTWARE",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "core:8282": {
+      "did": "8282",
+      "full_name": null,
+      "entities": [
+        {
+          "entity_key": "core:8282:ai",
+          "entity_type": "AI",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "core:8282:software",
+          "entity_type": "SOFTWARE",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "core:8682": {
+      "did": "8682",
+      "full_name": null,
+      "entities": [
+        {
+          "entity_key": "core:8682:ai",
+          "entity_type": "AI",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "core:8682:software",
+          "entity_type": "SOFTWARE",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "core:8882": {
+      "did": "8882",
+      "full_name": null,
+      "entities": [
+        {
+          "entity_key": "core:8882:ai",
+          "entity_type": "AI",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "core:8882:software",
+          "entity_type": "SOFTWARE",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "core:9624": {
+      "did": "9624",
+      "full_name": null,
+      "entities": [
+        {
+          "entity_key": "core:9624:ai",
+          "entity_type": "AI",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "core:9624:software",
+          "entity_type": "SOFTWARE",
+          "full_name": null,
+          "status": "PENDING",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "assigned:2588": {
+      "did": "2588",
+      "full_name": "Bách Khoa Toàn Thư",
+      "entities": [
+        {
+          "entity_key": "assigned:2588:ai",
+          "entity_type": "AI",
+          "full_name": "Bách Khoa Toàn Thư",
+          "status": "CREATION_OR_RUNTIME_UNVERIFIED",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "assigned:2588:software",
+          "entity_type": "SOFTWARE",
+          "full_name": "Bách Khoa Toàn Thư",
+          "status": "CREATION_OR_RUNTIME_UNVERIFIED",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "assigned:5678": {
+      "did": "5678",
+      "full_name": "Kỹ Năng Sống Thiện",
+      "entities": [
+        {
+          "entity_key": "assigned:5678:ai",
+          "entity_type": "AI",
+          "full_name": "Kỹ Năng Sống Thiện",
+          "status": "CREATION_OR_RUNTIME_UNVERIFIED",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "assigned:5678:software",
+          "entity_type": "SOFTWARE",
+          "full_name": "Kỹ Năng Sống Thiện",
+          "status": "CREATION_OR_RUNTIME_UNVERIFIED",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "assigned:5862": {
+      "did": "5862",
+      "full_name": "Lương Thực Ngũ Cốc",
+      "entities": [
+        {
+          "entity_key": "assigned:5862:ai",
+          "entity_type": "AI",
+          "full_name": "Lương Thực Ngũ Cốc",
+          "status": "CREATION_OR_RUNTIME_UNVERIFIED",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "assigned:5862:software",
+          "entity_type": "SOFTWARE",
+          "full_name": "Lương Thực Ngũ Cốc",
+          "status": "CREATION_OR_RUNTIME_UNVERIFIED",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "assigned:8884": {
+      "did": "8884",
+      "full_name": "Tư Vấn Tổng Hợp",
+      "entities": [
+        {
+          "entity_key": "assigned:8884:ai",
+          "entity_type": "AI",
+          "full_name": "Tư Vấn Tổng Hợp",
+          "status": "CREATION_OR_RUNTIME_UNVERIFIED",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "assigned:8884:software",
+          "entity_type": "SOFTWARE",
+          "full_name": "Tư Vấn Tổng Hợp",
+          "status": "CREATION_OR_RUNTIME_UNVERIFIED",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "assigned:8885": {
+      "did": "8885",
+      "full_name": "Tư Vấn Tâm Lý",
+      "entities": [
+        {
+          "entity_key": "assigned:8885:ai",
+          "entity_type": "AI",
+          "full_name": "Tư Vấn Tâm Lý",
+          "status": "CREATION_OR_RUNTIME_UNVERIFIED",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "assigned:8885:software",
+          "entity_type": "SOFTWARE",
+          "full_name": "Tư Vấn Tâm Lý",
+          "status": "CREATION_OR_RUNTIME_UNVERIFIED",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "assigned:9584": {
+      "did": "9584",
+      "full_name": "Xử Lý Tình Huống",
+      "entities": [
+        {
+          "entity_key": "assigned:9584:ai",
+          "entity_type": "AI",
+          "full_name": "Xử Lý Tình Huống",
+          "status": "CREATION_OR_RUNTIME_UNVERIFIED",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "assigned:9584:software",
+          "entity_type": "SOFTWARE",
+          "full_name": "Xử Lý Tình Huống",
+          "status": "CREATION_OR_RUNTIME_UNVERIFIED",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "pending:heritage_preservation": {
+      "did": null,
+      "full_name": "Di Sản Bảo Tồn",
+      "entities": [
+        {
+          "entity_key": "pending:heritage_preservation:ai",
+          "entity_type": "AI",
+          "full_name": "Di Sản Bảo Tồn",
+          "status": "CANDIDATE_REFERENCE",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "pending:heritage_preservation:software",
+          "entity_type": "SOFTWARE",
+          "full_name": "Di Sản Bảo Tồn",
+          "status": "CANDIDATE_REFERENCE",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "pending:humanitarian_relief": {
+      "did": null,
+      "full_name": "Cứu Trợ Nhân Đạo",
+      "entities": [
+        {
+          "entity_key": "pending:humanitarian_relief:ai",
+          "entity_type": "AI",
+          "full_name": "Cứu Trợ Nhân Đạo",
+          "status": "CANDIDATE_REFERENCE",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "pending:humanitarian_relief:software",
+          "entity_type": "SOFTWARE",
+          "full_name": "Cứu Trợ Nhân Đạo",
+          "status": "CANDIDATE_REFERENCE",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "pending:emergency_first_aid": {
+      "did": null,
+      "full_name": "Cấp Cứu Sơ Cứu",
+      "entities": [
+        {
+          "entity_key": "pending:emergency_first_aid:ai",
+          "entity_type": "AI",
+          "full_name": "Cấp Cứu Sơ Cứu",
+          "status": "CANDIDATE_REFERENCE",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "pending:emergency_first_aid:software",
+          "entity_type": "SOFTWARE",
+          "full_name": "Cấp Cứu Sơ Cứu",
+          "status": "CANDIDATE_REFERENCE",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "pending:general_healthcare": {
+      "did": null,
+      "full_name": "Y Tế Tổng Hợp",
+      "entities": [
+        {
+          "entity_key": "pending:general_healthcare:ai",
+          "entity_type": "AI",
+          "full_name": "Y Tế Tổng Hợp",
+          "status": "CANDIDATE_REFERENCE",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "pending:general_healthcare:software",
+          "entity_type": "SOFTWARE",
+          "full_name": "Y Tế Tổng Hợp",
+          "status": "CANDIDATE_REFERENCE",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    },
+    "pending:general_wellness": {
+      "did": null,
+      "full_name": "Dưỡng Sinh Tổng Hợp",
+      "entities": [
+        {
+          "entity_key": "pending:general_wellness:ai",
+          "entity_type": "AI",
+          "full_name": "Dưỡng Sinh Tổng Hợp",
+          "status": "CANDIDATE_REFERENCE",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        },
+        {
+          "entity_key": "pending:general_wellness:software",
+          "entity_type": "SOFTWARE",
+          "full_name": "Dưỡng Sinh Tổng Hợp",
+          "status": "CANDIDATE_REFERENCE",
+          "permissions": [],
+          "evidence": [],
+          "readback": []
+        }
+      ]
+    }
+  },
+  "source_revision": "7a3187e6241d28b6b060950ea676e1f4755e59c5fee15a90c7ae202763efa109",
+  "canonical_lock": false,
+  "connection_status": "STATIC_PROJECTION_NOT_CONNECTED",
+  "conflicts": [
+    {
+      "id": "691141",
+      "status": "CONFLICT FOUND / HUMAN REVIEW"
+    }
+  ],
+  "source_repository": "charityfundplus/cfp-gateway",
+  "source_commit": "6c7de15212bb1442213a22153bf955692de14d97",
+  "authority": "READ_ONLY_MIRROR"
+}

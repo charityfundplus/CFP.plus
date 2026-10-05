@@ -1,7 +1,6 @@
 .git
 .env
 .env.*
-*.secret.json
 *.pem
 *.key
 service-account*.json
