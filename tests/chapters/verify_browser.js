@@ -24,6 +24,16 @@
      check(chapter+' mobile no horizontal overflow',frame.contentDocument.documentElement.scrollWidth<=frame.contentWindow.innerWidth+1);
    }finally{frame.remove()}
  }
+ for (const id of ['343','237']) {
+   const frame=document.createElement('iframe');document.body.append(frame);
+   try {
+     await new Promise((resolve,reject)=>{frame.onload=resolve;frame.onerror=reject;frame.src='/'+id});
+     for(let attempt=0;attempt<100&&!frame.contentDocument.querySelector('article[data-entity-type]');attempt++)await new Promise(r=>setTimeout(r,50));
+     const profiles=frame.contentDocument.querySelectorAll('article[data-entity-type]');
+     check(id+' profile has independent AI/Software',profiles.length===2&&new Set([...profiles].map(p=>p.dataset.entityType)).size===2);
+     check(id+' profile Evidence and Readback', [...profiles].every(p=>p.textContent.includes('Evidence:')&&p.textContent.includes('Readback:')));
+   }finally{frame.remove()}
+ }
  check('existing Country 911 reference',Object.values(await(await fetch('/registry/country-route-map.json')).json()).some(x=>x.country_id==='911'));
  check('conflict retained',data.conflicts[0].id==='691141'&&data.conflicts[0].status==='CONFLICT FOUND / HUMAN REVIEW');
  return {result:'PASS',checks:checks.length,results:checks,source_commit:data.source_commit,viewport:{width:innerWidth,height:innerHeight},browser:navigator.userAgent};
