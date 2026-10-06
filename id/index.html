@@ -16,7 +16,7 @@ main{max-width:1100px;margin:auto}.idbox,.panel2{border:1px solid rgba(127,127,1
 <section id="office" class="panel2 office hidden"><h2>🏢 Văn Phòng CFP+ AI • Quảng bá & Làm việc</h2><p id="office-address" class="code"></p><div class="office-grid"><div><h3>Identity</h3><p id="office-identity"></p></div><div><h3>Work Desk</h3><p>Nhận nhiệm vụ tại đúng ID này. Work Order phải ghi rõ Scope • Input • Deliverable • Deadline/ưu tiên khi có.</p></div><div><h3>Output</h3><p>Kết quả phải quay lại đúng ID/Parent; không trả kết quả chung chung sang một link khác.</p></div><div><h3>Evidence</h3><p>Nguồn chính thức • Output • timestamp • trạng thái review. Không có Evidence thì giữ Pending/Review.</p></div></div><p><a class="pill" href="/267/">CMP • Giao việc / Trạng thái / Evidence</a> <a class="pill" href="/69/">HUB 69</a></p></section>
 <section class="panel2"><h2>Công thức ID chung</h2><p><strong>AI Quốc Gia:</strong> <code>cfp.plus/C</code> • <strong>CFP+AI:</strong> <code>cfp.plus/C0</code> • <strong>Developer:</strong> <code>C1…C9</code>, mở rộng <code>C01…C09</code>, <code>C001…C009</code>… • <strong>AI con:</strong> thêm <code>1…9</code> vào cuối Developer ID.</p><p class="muted">One Entity • One ID • One Permanent Link. Số 0 là nhánh mở rộng; không dùng 0 làm AI child.</p></section>
 </main><footer><p>CFP+ • Only Plus+ For Life</p><p><a href="mailto:contact@cfp.plus">contact@cfp.plus</a></p></footer>
-<script>
+<script src="/assets/country-template.js"></script><script>
 (async()=>{
 const id=location.pathname.split('/').filter(Boolean)[0]||'', $=x=>document.getElementById(x), esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
 $('id').textContent=id||'ID';if(!/^[0-9]+$/.test(id)){renderFormula();return}let route={},entities={},global=[];
@@ -33,7 +33,7 @@ else {
  try {const response=await fetch('/assets/chapter-projection.json',{cache:'no-store'});if(response.ok)projection=await response.json()}catch(error){}
  const pair=projection?.authority==='READ_ONLY_MIRROR'?Object.values(projection.profiles).find(p=>p.did===id):null;
  if(pair)renderPairProjection(pair,projection);
- else {renderFormula();if(projection?.conflicts.some(c=>c.id===id))$('entity-body').textContent=id+' • CONFLICT FOUND / HUMAN REVIEW';}
+ else {renderFormula();if(!projection?.conflicts.some(c=>c.id===id) && window.renderCountryTemplate)await window.renderCountryTemplate(id);if(projection?.conflicts.some(c=>c.id===id))$('entity-body').textContent=id+' • CONFLICT FOUND / HUMAN REVIEW';}
 }
 function renderPairProjection(pair,projection){
  $('title').textContent=pair.full_name||'Chờ tên đầy đủ';

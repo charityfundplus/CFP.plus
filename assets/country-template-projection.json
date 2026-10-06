@@ -1,0 +1,417 @@
+{
+  "schema_version": "1",
+  "authority": "READ_ONLY_MIRROR",
+  "enabled": true,
+  "source": {
+    "repository": "charityfundplus/CFP.plus",
+    "path": "registry/country-route-map.json",
+    "commit_sha": "e2d6431e3fc013bf5dd0902864ef7e8b9f2a5153",
+    "sha256": "ce048e97a5e4c5cf902b33bb1b3755d05acfc7f93ea4bd72d0a093115d65e3c2",
+    "authority": "CONFIGURATION_REFERENCE"
+  },
+  "max_identifier_length": 128,
+  "countries": [
+    {
+      "country_root": "910",
+      "display_name": "Canada",
+      "source_record_key": "6910",
+      "evidence_status": "CONFIGURATION_REFERENCE",
+      "assignment_status": "SOURCE_REFERENCE_ONLY",
+      "publication_status": "STRUCTURAL_PREVIEW_ONLY",
+      "source_evidence": [
+        "registry/country-route-map.json#6910"
+      ],
+      "source": {
+        "repository": "charityfundplus/CFP.plus",
+        "path": "registry/country-route-map.json",
+        "commit_sha": "e2d6431e3fc013bf5dd0902864ef7e8b9f2a5153",
+        "sha256": "ce048e97a5e4c5cf902b33bb1b3755d05acfc7f93ea4bd72d0a093115d65e3c2",
+        "authority": "CONFIGURATION_REFERENCE"
+      },
+      "chapters": [
+        {
+          "chapter": "0",
+          "display_name": "Nền Tảng",
+          "identifier": "9100",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "1",
+          "display_name": "Sự Sống",
+          "identifier": "9101",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "2",
+          "display_name": "Con Người",
+          "identifier": "9102",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "3",
+          "display_name": "Ba Quỹ",
+          "identifier": "9103",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "4",
+          "display_name": "Tôn Giáo",
+          "identifier": "9104",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "5",
+          "display_name": "Cộng Đồng",
+          "identifier": "9105",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "6",
+          "display_name": "AI & Công Nghệ",
+          "identifier": "9106",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "7",
+          "display_name": "Doanh Nghiệp",
+          "identifier": "9107",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "8",
+          "display_name": "Tổ Chức",
+          "identifier": "9108",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "9",
+          "display_name": "Quốc Gia",
+          "identifier": "9109",
+          "assignment_status": "UNASSIGNED"
+        }
+      ]
+    },
+    {
+      "country_root": "911",
+      "display_name": "Hoa Kỳ",
+      "source_record_key": "6911",
+      "evidence_status": "CONFIGURATION_REFERENCE",
+      "assignment_status": "SOURCE_REFERENCE_ONLY",
+      "publication_status": "STRUCTURAL_PREVIEW_ONLY",
+      "source_evidence": [
+        "registry/country-route-map.json#6911"
+      ],
+      "source": {
+        "repository": "charityfundplus/CFP.plus",
+        "path": "registry/country-route-map.json",
+        "commit_sha": "e2d6431e3fc013bf5dd0902864ef7e8b9f2a5153",
+        "sha256": "ce048e97a5e4c5cf902b33bb1b3755d05acfc7f93ea4bd72d0a093115d65e3c2",
+        "authority": "CONFIGURATION_REFERENCE"
+      },
+      "chapters": [
+        {
+          "chapter": "0",
+          "display_name": "Nền Tảng",
+          "identifier": "9110",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "1",
+          "display_name": "Sự Sống",
+          "identifier": "9111",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "2",
+          "display_name": "Con Người",
+          "identifier": "9112",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "3",
+          "display_name": "Ba Quỹ",
+          "identifier": "9113",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "4",
+          "display_name": "Tôn Giáo",
+          "identifier": "9114",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "5",
+          "display_name": "Cộng Đồng",
+          "identifier": "9115",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "6",
+          "display_name": "AI & Công Nghệ",
+          "identifier": "9116",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "7",
+          "display_name": "Doanh Nghiệp",
+          "identifier": "9117",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "8",
+          "display_name": "Tổ Chức",
+          "identifier": "9118",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "9",
+          "display_name": "Quốc Gia",
+          "identifier": "9119",
+          "assignment_status": "UNASSIGNED"
+        }
+      ]
+    },
+    {
+      "country_root": "981",
+      "display_name": "Japan",
+      "source_record_key": "6981",
+      "evidence_status": "CONFIGURATION_REFERENCE",
+      "assignment_status": "SOURCE_REFERENCE_ONLY",
+      "publication_status": "STRUCTURAL_PREVIEW_ONLY",
+      "source_evidence": [
+        "registry/country-route-map.json#6981"
+      ],
+      "source": {
+        "repository": "charityfundplus/CFP.plus",
+        "path": "registry/country-route-map.json",
+        "commit_sha": "e2d6431e3fc013bf5dd0902864ef7e8b9f2a5153",
+        "sha256": "ce048e97a5e4c5cf902b33bb1b3755d05acfc7f93ea4bd72d0a093115d65e3c2",
+        "authority": "CONFIGURATION_REFERENCE"
+      },
+      "chapters": [
+        {
+          "chapter": "0",
+          "display_name": "Nền Tảng",
+          "identifier": "9810",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "1",
+          "display_name": "Sự Sống",
+          "identifier": "9811",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "2",
+          "display_name": "Con Người",
+          "identifier": "9812",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "3",
+          "display_name": "Ba Quỹ",
+          "identifier": "9813",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "4",
+          "display_name": "Tôn Giáo",
+          "identifier": "9814",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "5",
+          "display_name": "Cộng Đồng",
+          "identifier": "9815",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "6",
+          "display_name": "AI & Công Nghệ",
+          "identifier": "9816",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "7",
+          "display_name": "Doanh Nghiệp",
+          "identifier": "9817",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "8",
+          "display_name": "Tổ Chức",
+          "identifier": "9818",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "9",
+          "display_name": "Quốc Gia",
+          "identifier": "9819",
+          "assignment_status": "UNASSIGNED"
+        }
+      ]
+    },
+    {
+      "country_root": "982",
+      "display_name": "South Korea",
+      "source_record_key": "6982",
+      "evidence_status": "CONFIGURATION_REFERENCE",
+      "assignment_status": "SOURCE_REFERENCE_ONLY",
+      "publication_status": "STRUCTURAL_PREVIEW_ONLY",
+      "source_evidence": [
+        "registry/country-route-map.json#6982"
+      ],
+      "source": {
+        "repository": "charityfundplus/CFP.plus",
+        "path": "registry/country-route-map.json",
+        "commit_sha": "e2d6431e3fc013bf5dd0902864ef7e8b9f2a5153",
+        "sha256": "ce048e97a5e4c5cf902b33bb1b3755d05acfc7f93ea4bd72d0a093115d65e3c2",
+        "authority": "CONFIGURATION_REFERENCE"
+      },
+      "chapters": [
+        {
+          "chapter": "0",
+          "display_name": "Nền Tảng",
+          "identifier": "9820",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "1",
+          "display_name": "Sự Sống",
+          "identifier": "9821",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "2",
+          "display_name": "Con Người",
+          "identifier": "9822",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "3",
+          "display_name": "Ba Quỹ",
+          "identifier": "9823",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "4",
+          "display_name": "Tôn Giáo",
+          "identifier": "9824",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "5",
+          "display_name": "Cộng Đồng",
+          "identifier": "9825",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "6",
+          "display_name": "AI & Công Nghệ",
+          "identifier": "9826",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "7",
+          "display_name": "Doanh Nghiệp",
+          "identifier": "9827",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "8",
+          "display_name": "Tổ Chức",
+          "identifier": "9828",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "9",
+          "display_name": "Quốc Gia",
+          "identifier": "9829",
+          "assignment_status": "UNASSIGNED"
+        }
+      ]
+    },
+    {
+      "country_root": "984",
+      "display_name": "Việt Nam",
+      "source_record_key": "6984",
+      "evidence_status": "CONFIGURATION_REFERENCE",
+      "assignment_status": "SOURCE_REFERENCE_ONLY",
+      "publication_status": "STRUCTURAL_PREVIEW_ONLY",
+      "source_evidence": [
+        "registry/country-route-map.json#6984"
+      ],
+      "source": {
+        "repository": "charityfundplus/CFP.plus",
+        "path": "registry/country-route-map.json",
+        "commit_sha": "e2d6431e3fc013bf5dd0902864ef7e8b9f2a5153",
+        "sha256": "ce048e97a5e4c5cf902b33bb1b3755d05acfc7f93ea4bd72d0a093115d65e3c2",
+        "authority": "CONFIGURATION_REFERENCE"
+      },
+      "chapters": [
+        {
+          "chapter": "0",
+          "display_name": "Nền Tảng",
+          "identifier": "9840",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "1",
+          "display_name": "Sự Sống",
+          "identifier": "9841",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "2",
+          "display_name": "Con Người",
+          "identifier": "9842",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "3",
+          "display_name": "Ba Quỹ",
+          "identifier": "9843",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "4",
+          "display_name": "Tôn Giáo",
+          "identifier": "9844",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "5",
+          "display_name": "Cộng Đồng",
+          "identifier": "9845",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "6",
+          "display_name": "AI & Công Nghệ",
+          "identifier": "9846",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "7",
+          "display_name": "Doanh Nghiệp",
+          "identifier": "9847",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "8",
+          "display_name": "Tổ Chức",
+          "identifier": "9848",
+          "assignment_status": "UNASSIGNED"
+        },
+        {
+          "chapter": "9",
+          "display_name": "Quốc Gia",
+          "identifier": "9849",
+          "assignment_status": "UNASSIGNED"
+        }
+      ]
+    }
+  ],
+  "source_repository": "charityfundplus/cfp-gateway",
+  "source_commit": "31c10cba73f2d17fd604feff06c2db2f25ec278d"
+}
