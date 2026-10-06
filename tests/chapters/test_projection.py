@@ -19,3 +19,16 @@ class ProjectionTests(unittest.TestCase):
   self.assertEqual(len(keys),20);self.assertEqual(len(set(keys)),20)
   self.assertFalse(d['canonical_lock']);self.assertEqual(d['conflicts'][0]['status'],'CONFLICT FOUND / HUMAN REVIEW')
 if __name__=='__main__':unittest.main()
+
+class CountryProjectionTests(unittest.TestCase):
+    def test_country_source_and_projection(self):
+        import hashlib
+        from pathlib import Path
+        root=Path(__file__).resolve().parents[2]
+        p=json.loads((root/'assets/country-template-projection.json').read_text())
+        self.assertEqual(p['authority'],'READ_ONLY_MIRROR')
+        self.assertEqual(p['source']['sha256'],hashlib.sha256((root/'registry/country-route-map.json').read_bytes()).hexdigest())
+        self.assertEqual({c['country_root'] for c in p['countries']},{'910','911','981','982','984'})
+        for c in p['countries']:
+            self.assertEqual({v['chapter'] for v in c['chapters']},set('0123456789'))
+            self.assertTrue(all(v['assignment_status']=='UNASSIGNED' for v in c['chapters']))
