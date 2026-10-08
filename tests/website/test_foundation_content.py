@@ -42,6 +42,17 @@ class FoundationContent(unittest.TestCase):
         text=(ROOT/'9/index.html').read_text()
         for boundary in ['984','6984','4984','98441']:
             self.assertIn(boundary,text)
+    def test_4376_source_projection_and_no_mapping_activation(self):
+        import tempfile
+        spec=importlib.util.spec_from_file_location("builder",ROOT/"scripts/build_public_site.py")
+        builder=importlib.util.module_from_spec(spec);spec.loader.exec_module(builder)
+        with tempfile.TemporaryDirectory() as temp:
+            destination=Path(temp)/"public";builder.build(destination)
+            text=(destination/"4376/index.html").read_text()
+            for token in ["Bảng Chữ Số Cổ","CFP-ALPHA-1","5 Đ","SOURCE CONFLICT / HUMAN REVIEW",'data-entity-type="ai"','data-entity-type="software"']:
+                self.assertIn(token,text)
+            self.assertFalse((destination/"content/number-system-sources.json").exists())
+            self.assertFalse((destination/"D4376").exists())
     def test_priority_pages_remain_separate(self):
         self.assertEqual(set(self.data['pages']),{'000','69','5272','6535','6735','343','267'})
         self.assertIn('PENDING',(ROOT/'267/index.html').read_text())

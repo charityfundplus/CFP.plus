@@ -72,7 +72,8 @@ def build(destination):
   detail='<section><h2>Backend source readback</h2><p>Source: '+esc(snapshot['source_repository'])+' / '+snapshot['source_path']+' @'+snapshot['source_head']+'</p><p>AI ≠ Software. Nội dung nghiệp vụ: ĐANG HOÀN THIỆN. Snapshot ≠ live Backend connection; không cấp quyền, bind Parent hoặc nâng trạng thái.</p>'+''.join(sections)+'</section>'
   target=destination/key/'index.html'
   # Preserve current Human editorial pages; add independent source record detail.
-  if key in json.loads((ROOT/'content/site-standard.json').read_text())['pages']:
+  standard_content=json.loads((ROOT/'content/site-standard.json').read_text())
+  if key in standard_content['pages'] or key in standard_content.get('foundations',{}):
    text=target.read_text();target.write_text(text.replace('</main>',detail+'</main>',1))
   else:
    target.parent.mkdir(parents=True,exist_ok=True)
