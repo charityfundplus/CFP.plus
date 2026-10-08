@@ -8,7 +8,10 @@ on:
       - 'run_ctttc_v066_tests.py'
       - '.github/workflows/ctttc_ci.yml'
       - 'content/**'
-      - 'scripts/build_priority_pages.py'
+      - 'scripts/**'
+      - 'Dockerfile'
+      - 'nginx.conf'
+      - 'registry/**'
       - 'tests/website/**'
       - '**/*.html'
   pull_request:
@@ -18,7 +21,10 @@ on:
       - 'run_ctttc_v066_tests.py'
       - '.github/workflows/ctttc_ci.yml'
       - 'content/**'
-      - 'scripts/build_priority_pages.py'
+      - 'scripts/**'
+      - 'Dockerfile'
+      - 'nginx.conf'
+      - 'registry/**'
       - 'tests/website/**'
       - '**/*.html'
 
@@ -79,3 +85,53 @@ jobs:
           name: public-numeric-readback
           path: public-readback-evidence
           if-no-files-found: error
+
+  nginx-routing-verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Unit HTTP publication gate
+        run: python tests/website/test_public_routing.py
+      - name: Build isolated candidate (no push or deployment)
+        run: |
+          python scripts/build_public_site.py --output "$RUNNER_TEMP/public" --evidence public-bindings.json
+          docker build -t cfp-routing-candidate .
+          docker run --rm cfp-routing-candidate nginx -t
+          docker run -d --name cfp-routing-preview -p 127.0.0.1:8080:8080 cfp-routing-candidate
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:8080/69 > /dev/null; then break; fi
+            sleep 1
+          done
+      - name: Actual Nginx HTTP/content and reserved-slot gate
+        run: python tests/website/test_public_routing.py --root "$RUNNER_TEMP/public" --base http://127.0.0.1:8080 --evidence nginx-http-evidence.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser tooling
+        run: |
+          npm install --prefix "$RUNNER_TEMP/routing-browser" playwright@1.55.0
+          "$RUNNER_TEMP/routing-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Desktop/mobile actual container readback
+        env:
+          NODE_PATH: ${{ runner.temp }}/routing-browser/node_modules
+          PUBLIC_ROOT: ${{ runner.temp }}/public
+        run: node tests/website/container_browser.cjs
+      - name: Preserve candidate Evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nginx-routing-evidence
+          path: |
+            public-bindings.json
+            nginx-http-evidence.json
+            container-browser-evidence.json
+            container-*.png
+          if-no-files-found: error
+      - name: Stop test container
+        if: always()
+        run: docker rm -f cfp-routing-preview || true
