@@ -1,5 +1,5 @@
 """Build public assets from existing source; never assign IDs or infer lineage."""
-import argparse, html, json, re, shutil
+import argparse, hashlib, html, json, re, shutil
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 ASSETS={'.html','.css','.js','.png','.jpg','.jpeg','.svg','.webp','.ico','.woff','.woff2'}
@@ -51,6 +51,33 @@ def build(destination):
   body='<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+key+' • '+esc(record['name'])+' • CFP+</title><link rel="canonical" href="https://cfp.plus/'+key+'"><link rel="stylesheet" href="/styles.css"><style>main{max-width:1000px;margin:auto;padding:20px;overflow-wrap:anywhere}</style></head><body><main><nav><a href="/69">HUB 69</a> • <a href="/6">AI &amp; Công Nghệ</a> • <a href="/9">Quốc Gia</a></nav><h1>'+key+' • '+esc(record['name'])+'</h1><p>'+esc(record.get('intro') or 'Danh mục quốc gia theo cấu hình nguồn; dữ liệu hồ sơ và Evidence vận hành còn chờ kiểm chứng.')+'</p><p>Nội dung chuyên sâu: ĐANG HOÀN THIỆN; chỉ dùng dữ liệu đã có trong nguồn, không giả mạo hồ sơ đầy đủ.</p><p>Record Type: '+esc(record.get('type') or 'COUNTRY DIRECTORY CONTEXT')+'</p><p>Source status: '+esc(status)+'</p><section><h2>Quan hệ từ Registry</h2>'+relations+'</section><section><h2>Evidence và quản trị</h2><p>Source: '+esc(source)+' • ID '+key+'</p><p>Publication: REVIEW CANDIDATE. Registry reference ≠ VERIFIED; Link ≠ CONNECTED. Không chứng minh executor, permissions hoặc ACTIVE. Canonical Lock: NO.</p></section></main></body></html>\n'
   target=destination/key/'index.html';target.parent.mkdir(parents=True,exist_ok=True);target.write_text(body)
   rows.append({'id':key,'name':record['name'],'source':source,'status':status,'parent':parent,'content_status':'SOURCE INTRO AVAILABLE' if record.get('intro') else 'INCOMPLETE CONTENT','assignment_status':'SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED','acceptance':'PENDING EVIDENCE'})
+ # Reuse the observed Backend baseline through a versioned, read-only source snapshot.
+ # Existing P0 IDs must not 404 merely because their Full Name/content is PENDING.
+ snapshot=json.loads((ROOT/'content/backend-p0-source.json').read_text())
+ if hashlib.sha256(snapshot['raw_json'].encode()).hexdigest()!=snapshot['source_sha256']:
+  raise ValueError('Backend source snapshot integrity mismatch')
+ seen=set()
+ for pair in json.loads(snapshot['raw_json']):
+  key=pair['id']
+  if not re.fullmatch('[0-9]+',key) or key in seen or pair.get('canonical_locked'):
+   raise ValueError('Invalid/duplicate/protected Backend snapshot ID: '+key)
+  seen.add(key)
+  if key in bindings:
+   raise ValueError('Backend ID competes with Website directory binding: '+key)
+  sections=[]
+  for kind in ['ai','software']:
+   entity=pair[kind]
+   if entity['entity_type']!=kind:raise ValueError('Merged/mismatched entity: '+key)
+   sections.append('<section data-entity-type="'+kind+'"><h2>'+('AI Record' if kind=='ai' else 'Software Record')+'</h2><p>Full Name: '+esc(entity.get('full_name') or 'PENDING — chưa xác nhận Full Name')+'</p><p>Alias: '+esc(', '.join(entity.get('aliases',[])) or 'PENDING')+'</p><p>Status: '+esc(entity['status'])+'</p><p>Permissions nguồn: '+esc(', '.join(entity.get('permissions',[])) or 'NONE / FAIL CLOSED')+'</p><p>Evidence records: '+str(len(entity.get('evidence',[])))+' • Readback records: '+str(len(entity.get('readback',[])))+'</p></section>')
+  detail='<section><h2>Backend source readback</h2><p>Source: '+esc(snapshot['source_repository'])+' / '+snapshot['source_path']+' @'+snapshot['source_head']+'</p><p>AI ≠ Software. Nội dung nghiệp vụ: ĐANG HOÀN THIỆN. Snapshot ≠ live Backend connection; không cấp quyền, bind Parent hoặc nâng trạng thái.</p>'+''.join(sections)+'</section>'
+  target=destination/key/'index.html'
+  # Preserve current Human editorial pages; add independent source record detail.
+  if key in json.loads((ROOT/'content/site-standard.json').read_text())['pages']:
+   text=target.read_text();target.write_text(text.replace('</main>',detail+'</main>',1))
+  else:
+   target.parent.mkdir(parents=True,exist_ok=True)
+   target.write_text('<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+key+' • Full Name PENDING • CFP+</title><link rel="canonical" href="https://cfp.plus/'+key+'"><link rel="stylesheet" href="/styles.css"></head><body><main><h1>'+key+' • Full Name PENDING</h1><p>ID có trong Backend P0. Không tạo lại ID; tên và nội dung đang hoàn thiện theo nguồn. Parent/Child: UNKNOWN — không suy diễn.</p>'+detail+'<p>Source SHA256: '+snapshot['source_sha256']+' • Canonical Lock: NO • Publication: REVIEW CANDIDATE</p><a href="/69">HUB 69</a></main></body></html>')
+  rows.append({'id':key,'name':pair.get('display_name'),'source':snapshot['source_repository']+'@'+snapshot['source_head']+':'+snapshot['source_path'],'status':'BACKEND SOURCE RECORD / NO PROMOTION','parent':None,'content_status':'INCOMPLETE CONTENT','assignment_status':'HUMAN P0 ID LIST / LOCAL BACKEND SOURCE; NO NEW ASSIGNMENT','acceptance':'PENDING EVIDENCE'})
  # Human-provided foundation navigation, not new Registry assignments or Parent claims.
  standard=json.loads((ROOT/'content/site-standard.json').read_text())
  groups=['V','000','135','246','789']

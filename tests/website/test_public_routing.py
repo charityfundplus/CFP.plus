@@ -44,7 +44,11 @@ class PublicationTests(unittest.TestCase):
    self.assertGreaterEqual(len(rows),1110)
    for record in bindings:
     body=(root/record['id']/'index.html').read_text()
-    self.assertIn('<h1>'+record['id']+' • '+html.escape(record['name'])+'</h1>',body)
+    if record['name'] and record['status']!='BACKEND SOURCE RECORD / NO PROMOTION':
+     self.assertIn('<h1>'+record['id']+' • '+html.escape(record['name'])+'</h1>',body)
+    if record['status']=='BACKEND SOURCE RECORD / NO PROMOTION':
+     self.assertIn('data-entity-type="ai"',body)
+     self.assertIn('data-entity-type="software"',body)
     self.assertIn('Canonical Lock: NO',body)
    self.assertEqual((root/'691141/index.html').read_text(),(R/'691141/index.html').read_text())
    self.assertFalse((root/'999/index.html').exists())
