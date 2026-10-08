@@ -3,7 +3,7 @@ import argparse, hashlib, html, json, re, shutil
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 ASSETS={'.html','.css','.js','.png','.jpg','.jpeg','.svg','.webp','.ico','.woff','.woff2'}
-PUBLIC_DIRS={'ai','cmp','foundation','hub69','id','website'}
+PUBLIC_DIRS={'V','ai','cmp','foundation','hub69','id','website'}
 REGISTRY_FILES={'ai-entity-registry.json','country-route-map.json','global-country-ai-index.json'}
 def build(destination):
  destination=Path(destination).resolve()

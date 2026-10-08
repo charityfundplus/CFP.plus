@@ -59,7 +59,9 @@ jobs:
         with:
           python-version: '3.11'
       - name: Verify editorial content, links and governance guards
-        run: python tests/website/test_numeric_content.py
+        run: |
+          python tests/website/test_numeric_content.py
+          python tests/website/test_foundation_content.py
 
   public-readback-observation:
     if: github.event_name == 'pull_request'
