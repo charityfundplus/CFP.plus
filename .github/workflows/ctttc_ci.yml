@@ -7,12 +7,16 @@ on:
       - 'tests/ctttc/**'
       - 'run_ctttc_v066_tests.py'
       - '.github/workflows/ctttc_ci.yml'
+      - '.github/workflows/cmp-gemini-notion-pilot.yml'
+      - 'tests/workflows/**'
   pull_request:
     paths:
       - 'schemas/**'
       - 'tests/ctttc/**'
       - 'run_ctttc_v066_tests.py'
       - '.github/workflows/ctttc_ci.yml'
+      - '.github/workflows/cmp-gemini-notion-pilot.yml'
+      - 'tests/workflows/**'
 
 jobs:
   ctttc-verify:
@@ -32,3 +36,21 @@ jobs:
         run: python run_ctttc_v066_tests.py
       - name: Execute Unicode Duplicate Regression v0.6.6
         run: python -m tests.ctttc.duplicate_unicode_regression_v066
+
+  gemini-contract-verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout workflow history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install workflow parser
+        run: python -m pip install PyYAML==6.0.2
+      - name: Verify mocked Gemini contract without provider or Notion credentials
+        run: python tests/workflows/test_gemini_workflow.py

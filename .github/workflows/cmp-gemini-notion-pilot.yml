@@ -23,20 +23,72 @@ jobs:
       EXECUTION_ID: ${{ inputs.execution_id || github.event.client_payload.execution_id || format('WO-CH7-GH-{0}', github.run_id) }}
     steps:
       - name: Validate required secrets
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
         run: |
-          test -n "${{ secrets.GEMINI_API_KEY }}"
-          test -n "${{ secrets.NOTION_TOKEN }}"
+          test -n "${GEMINI_API_KEY}"
+          test -n "${NOTION_TOKEN}"
 
       - name: Call Gemini API
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL || 'gemini-2.5-pro' }}
         run: |
-          curl --fail-with-body --silent --show-error \
+          set -euo pipefail
+          if [[ ! "$GEMINI_MODEL" =~ ^[A-Za-z0-9._-]+$ ]]; then
+            echo 'Invalid GEMINI_MODEL identifier'
+            exit 1
+          fi
+          set +e
+          HTTP_STATUS=$(curl --silent --show-error \
+            --connect-timeout 10 --max-time 60 \
             -H 'Content-Type: application/json' \
+            -H "x-goog-api-key: ${GEMINI_API_KEY}" \
             -X POST \
-            "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent?key=${GEMINI_API_KEY}" \
-            -d '{"contents":[{"parts":[{"text":"CFP+ CMP pilot acknowledgement. Return READY."}]}]}' \
-            > gemini-response.json
+            "https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent" \
+            -o gemini-response.json -w '%{http_code}' \
+            -d '{"contents":[{"parts":[{"text":"CFP+ CMP pilot acknowledgement. Return READY."}]}]}')
+          CURL_EXIT=$?
+          set -e
+          export HTTP_STATUS CURL_EXIT
+          python - <<'PY_DIAGNOSTIC'
+          import json, os
+          from pathlib import Path
+          status = os.environ['HTTP_STATUS']
+          curl_exit = int(os.environ['CURL_EXIT'])
+          result = {'model': os.environ['GEMINI_MODEL'], 'http_status': status,
+                    'transport_exit_code': curl_exit, 'response_valid': False,
+                    'provider_status': 'UNKNOWN', 'result': 'FAIL'}
+          try:
+              body = json.loads(Path('gemini-response.json').read_text())
+              error = body.get('error', {}) if isinstance(body, dict) else {}
+              provider_status = error.get('status', 'UNKNOWN') if isinstance(error, dict) else 'UNKNOWN'
+              if provider_status in {'NOT_FOUND', 'INVALID_ARGUMENT', 'PERMISSION_DENIED',
+                                     'UNAUTHENTICATED', 'RESOURCE_EXHAUSTED', 'UNAVAILABLE'}:
+                  result['provider_status'] = provider_status
+              candidates = body.get('candidates', []) if isinstance(body, dict) else []
+              result['response_valid'] = isinstance(candidates, list) and any(
+                  isinstance(c, dict) and isinstance(c.get('content'), dict) and
+                  isinstance(c['content'].get('parts'), list) and any(
+                      isinstance(part, dict) and isinstance(part.get('text'), str) and
+                      part['text'].strip() for part in c['content']['parts']) for c in candidates)
+          except (OSError, ValueError, TypeError):
+              pass
+          if curl_exit == 0 and status == '200' and result['response_valid']:
+              result['result'] = 'PASS'
+          Path('gemini-call-status.json').write_text(json.dumps(result, indent=2) + '\n')
+          print(json.dumps(result))
+          raise SystemExit(0 if result['result'] == 'PASS' else 1)
+          PY_DIAGNOSTIC
+
+      - name: Upload sanitized Gemini diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cmp-gemini-call-status
+          path: gemini-call-status.json
+          if-no-files-found: warn
 
       - name: Read locked Notion page blocks
         env:
