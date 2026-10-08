@@ -31,6 +31,25 @@ def verify(root,base):
    assert all('href="/'+str(chapter)+'"' in body for chapter in range(10)),('chapter navigation',key)
  return rows
 class PublicationTests(unittest.TestCase):
+ def test_home_navigation_and_country_identity(self):
+  with tempfile.TemporaryDirectory() as temp:
+   root=Path(temp)/'public';builder.build(root)
+   from html.parser import HTMLParser
+   class Links(HTMLParser):
+    def __init__(self):super().__init__();self.links=[]
+    def handle_starttag(self,tag,attrs):
+     if tag=='a':self.links.append(dict(attrs).get('href',''))
+   parser=Links();parser.feed((root/'index.html').read_text())
+   for target in ['/V','/000','/135','/246','/789',*(f'/{i}' for i in range(10))]:
+    self.assertIn(target,parser.links)
+    self.assertTrue((root/target.lstrip('/')/'index.html').is_file(),target)
+   country=(root/'911/index.html').read_text();ai=(root/'6911/index.html').read_text()
+   self.assertIn('<h1>911 • Hoa Kỳ</h1>',country)
+   self.assertIn('Record Type: COUNTRY</p>',country)
+   self.assertIn('<h1>6911 • Hoa Kỳ</h1>',ai)
+   self.assertNotIn('Record Type: COUNTRY</p>',ai)
+   for body in [country,ai]:self.assertNotIn('location.replace',body)
+   self.assertNotEqual(country,ai)
  def test_build_and_http(self):
   with tempfile.TemporaryDirectory() as temp:
    root=Path(temp)/'public';bindings=builder.build(root)
