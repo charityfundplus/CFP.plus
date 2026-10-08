@@ -98,3 +98,6 @@ footer p { margin: 0; }
 }
 /* Registry/source documents must remain readable without widening mobile pages. */
 pre { white-space: pre-wrap; overflow-wrap: anywhere; max-width: 100%; min-width: 0; }
+/* Wrap provenance hashes and status rows instead of clipping their evidence. */
+body { overflow-wrap: anywhere; }
+.status { flex-wrap: wrap; max-width: 100%; overflow-wrap: anywhere; }
