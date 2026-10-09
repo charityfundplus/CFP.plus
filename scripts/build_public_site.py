@@ -77,7 +77,11 @@ def build(destination):
    text=target.read_text();target.write_text(text.replace('</main>',detail+'</main>',1))
   else:
    target.parent.mkdir(parents=True,exist_ok=True)
-   target.write_text('<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+key+' • Full Name PENDING • CFP+</title><link rel="canonical" href="https://cfp.plus/'+key+'"><link rel="stylesheet" href="/styles.css"></head><body><main><h1>'+key+' • Full Name PENDING</h1><p>ID có trong Backend P0. Không tạo lại ID; tên và nội dung đang hoàn thiện theo nguồn. Parent/Child: UNKNOWN — không suy diễn.</p>'+detail+'<p>Source SHA256: '+snapshot['source_sha256']+' • Canonical Lock: NO • Publication: REVIEW CANDIDATE</p><a href="/69">HUB 69</a></main></body></html>')
+   reference=json.loads((ROOT/'content/pending-display-references.json').read_text())
+   display=reference['entries'].get(key)
+   label=key+' • '+(display['literal']+' • PENDING' if display else 'Full Name PENDING')
+   reference_note='<p>Display reference: '+esc(display['status'])+' • '+esc(reference['source'])+'</p>' if display else ''
+   target.write_text('<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+esc(label)+' • CFP+</title><link rel="canonical" href="https://cfp.plus/'+key+'"><link rel="stylesheet" href="/styles.css"></head><body><main><h1>'+esc(label)+'</h1>'+reference_note+'<p>ID có trong Backend P0. Không tạo lại ID; tên và nội dung đang hoàn thiện theo nguồn. Parent/Child: UNKNOWN — không suy diễn.</p>'+detail+'<p>Source SHA256: '+snapshot['source_sha256']+' • Canonical Lock: NO • Publication: REVIEW CANDIDATE</p><a href="/69">HUB 69</a></main></body></html>')
   rows.append({'id':key,'name':pair.get('display_name'),'source':snapshot['source_repository']+'@'+snapshot['source_head']+':'+snapshot['source_path'],'status':'BACKEND SOURCE RECORD / NO PROMOTION','parent':None,'content_status':'INCOMPLETE CONTENT','assignment_status':'HUMAN P0 ID LIST / LOCAL BACKEND SOURCE; NO NEW ASSIGNMENT','acceptance':'PENDING EVIDENCE'})
  # Human-provided foundation navigation, not new Registry assignments or Parent claims.
  standard=json.loads((ROOT/'content/site-standard.json').read_text())
@@ -89,6 +93,10 @@ def build(destination):
   target=destination/group/'index.html'
   if not target.exists():
    target.parent.mkdir(parents=True,exist_ok=True)
+   reference=json.loads((ROOT/'content/pending-display-references.json').read_text())
+   display=reference['entries'].get(key)
+   label=key+' • '+(display['literal']+' • PENDING' if display else 'Full Name PENDING')
+   reference_note='<p>Display reference: '+esc(display['status'])+' • '+esc(reference['source'])+'</p>' if display else ''
    target.write_text('<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+group+' • Nhóm CFP+</title><link rel="stylesheet" href="/styles.css"></head><body><main><h1>'+group+' • Nhóm CFP+</h1><p>Nhóm trong khung 5 Nhóm do Human Governance cung cấp: V • 000 • 135 • 246 • 789.</p><p>Nội dung nghiệp vụ chuyên sâu: đang hoàn thiện theo nguồn chuẩn. Không tự đặt tên, cấp ID hoặc suy diễn Parent.</p>'+navigation+'<p>Source: Human Website Work Order 2026-10-08 • HUMAN PROVIDED / PENDING REVIEW • Canonical Lock: NO</p><a href="/69">HUB 69</a></main></body></html>')
  for key in ['000','69',*(str(i) for i in range(10))]:
   target=destination/key/'index.html'

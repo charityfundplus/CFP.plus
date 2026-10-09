@@ -50,6 +50,20 @@ class PublicationTests(unittest.TestCase):
    self.assertNotIn('Record Type: COUNTRY</p>',ai)
    for body in [country,ai]:self.assertNotIn('location.replace',body)
    self.assertNotEqual(country,ai)
+ def test_pending_display_references_do_not_promote_registry(self):
+  source=(R/'content/backend-p0-source.json').read_bytes()
+  with tempfile.TemporaryDirectory() as temp:
+   root=Path(temp)/'public';builder.build(root)
+   for did,literal in [('237','CFP+'),('8882','TTTC')]:
+    body=(root/did/'index.html').read_text()
+    self.assertIn('<h1>'+did+' • '+literal+' • PENDING</h1>',body)
+    self.assertIn('Full Name: PENDING',body)
+    self.assertIn('https://cfp.plus/'+did+'"',body)
+    self.assertNotIn('AI Office',body)
+    self.assertIn('Parent/Child: UNKNOWN',body)
+    self.assertIn('data-entity-type="ai"',body)
+    self.assertIn('data-entity-type="software"',body)
+   self.assertEqual(source,(R/'content/backend-p0-source.json').read_bytes())
  def test_build_and_http(self):
   with tempfile.TemporaryDirectory() as temp:
    root=Path(temp)/'public';bindings=builder.build(root)
