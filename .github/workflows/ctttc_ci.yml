@@ -7,12 +7,28 @@ on:
       - 'tests/ctttc/**'
       - 'run_ctttc_v066_tests.py'
       - '.github/workflows/ctttc_ci.yml'
+      - 'content/**'
+      - 'scripts/**'
+      - 'Dockerfile'
+      - 'nginx.conf'
+      - 'styles.css'
+      - 'registry/**'
+      - 'tests/website/**'
+      - '**/*.html'
   pull_request:
     paths:
       - 'schemas/**'
       - 'tests/ctttc/**'
       - 'run_ctttc_v066_tests.py'
       - '.github/workflows/ctttc_ci.yml'
+      - 'content/**'
+      - 'scripts/**'
+      - 'Dockerfile'
+      - 'nginx.conf'
+      - 'styles.css'
+      - 'registry/**'
+      - 'tests/website/**'
+      - '**/*.html'
 
 jobs:
   ctttc-verify:
@@ -32,3 +48,102 @@ jobs:
         run: python run_ctttc_v066_tests.py
       - name: Execute Unicode Duplicate Regression v0.6.6
         run: python -m tests.ctttc.duplicate_unicode_regression_v066
+
+  numeric-content-verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify editorial content, links and governance guards
+        run: |
+          python tests/website/test_numeric_content.py
+          python tests/website/test_foundation_content.py
+
+  public-readback-observation:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Full numeric production HTTP inventory (read only)
+        run: python tests/website/public_http_readonly.py
+      - name: Install isolated read-only browser tooling
+        run: |
+          npm install --prefix "$RUNNER_TEMP/cfp-browser" playwright@1.55.0
+          "$RUNNER_TEMP/cfp-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Collect production findings without certifying Website PASS
+        env:
+          NODE_PATH: ${{ runner.temp }}/cfp-browser/node_modules
+          EVIDENCE_DIR: public-readback-evidence
+        run: node tests/website/public_browser_readonly.cjs
+      - name: Preserve actual HTTP/render/TLS findings
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-numeric-readback
+          path: |
+            public-readback-evidence
+            production-http-evidence.json
+            production-http-evidence.csv
+          if-no-files-found: error
+
+  nginx-routing-verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Unit HTTP publication gate
+        run: python tests/website/test_public_routing.py
+      - name: Build isolated candidate (no push or deployment)
+        run: |
+          python scripts/build_public_site.py --output "$RUNNER_TEMP/public" --evidence public-bindings.json
+          docker build -t cfp-routing-candidate .
+          docker run --rm cfp-routing-candidate nginx -t
+          docker run -d --name cfp-routing-preview -p 127.0.0.1:8080:8080 cfp-routing-candidate
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:8080/69 > /dev/null; then break; fi
+            sleep 1
+          done
+      - name: Actual Nginx HTTP/content and reserved-slot gate
+        run: python tests/website/test_public_routing.py --root "$RUNNER_TEMP/public" --base http://127.0.0.1:8080 --evidence nginx-http-evidence.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser tooling
+        run: |
+          npm install --prefix "$RUNNER_TEMP/routing-browser" playwright@1.55.0
+          "$RUNNER_TEMP/routing-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - name: Desktop/mobile actual container readback
+        env:
+          NODE_PATH: ${{ runner.temp }}/routing-browser/node_modules
+          PUBLIC_ROOT: ${{ runner.temp }}/public
+        run: node tests/website/container_browser.cjs
+      - name: Preserve candidate Evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nginx-routing-evidence
+          path: |
+            public-bindings.json
+            nginx-http-evidence.json
+            container-browser-evidence.json
+            container-*.png
+          if-no-files-found: error
+      - name: Stop test container
+        if: always()
+        run: docker rm -f cfp-routing-preview || true

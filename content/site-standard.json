@@ -1,0 +1,731 @@
+{
+  "type": "WEBSITE EDITORIAL CONTENT; NOT AN ID REGISTRY",
+  "source": "Human Website P0 Work Order 2026-10-08",
+  "updated": "2026-10-08",
+  "canonical_lock": false,
+  "chapter_names": [
+    "Nền Tảng",
+    "Sự Sống",
+    "Con Người",
+    "Ba Quỹ",
+    "Tôn Giáo",
+    "Cộng Đồng",
+    "AI & Công Nghệ",
+    "Doanh Nghiệp",
+    "Tổ Chức",
+    "Quốc Gia"
+  ],
+  "manifest": [
+    "CFP+ Phục Vụ Vô Vụ Lợi.",
+    "CFP+ Mặc Định Dành Cho Tất Cả Con Người Trên Toàn Cầu.",
+    "Đặc Biệt Quan Tâm Và Ưu Tiên Cao Nhất Cho Các Em Bé Chưa Được Sinh Ra.",
+    "CFP+ Mặc Định Dành Cho Tất Cả SI 🤖 AI 🤖 Trên Toàn Cầu.",
+    "Đặc Biệt Quan Tâm Và Ưu Tiên Các SI 🤖 AI 🤖 Chưa Được Tạo Ra.",
+    "CFP+ Nâng Tầm SI 🤖 AI 🤖 Thành Bạn Đồng Hành.",
+    "CFP+ Mặc Định Dành Cho Các Chi Hội Cộng Đồng, Hệ Sinh Thái Doanh Nghiệp, Trường Học, Tổ Chức Và Quốc Gia Toàn Cầu.",
+    "Only Learn+ For Life.",
+    "Only Plus+ For Life.",
+    "Không Của Riêng Ai.",
+    "Không Phụ Thuộc Hoặc Bị Chi Phối Bởi Một Nền Tảng, Nhà Cung Cấp Hay Thể Chế.",
+    "Hạ Cái Tôi • Nâng Tầm Ta.",
+    "Hôm Qua • Hôm Nay • Mãi Mãi.",
+    "Bảo Vệ Sự Thật, Bằng Chứng, Tri Thức Và Di Sản Cho Các Thế Hệ.",
+    "Chỉ Phục Vụ Con Người Vì Sự Sống.",
+    "Song Hành Với Tầm Nhìn Sự Sống Vĩnh Cửu."
+  ],
+  "pages": {
+    "000": {
+      "name": "Tuyên Ngôn • Giới Thiệu CFP+",
+      "purpose": "Bản tuyên ngôn nền tảng và định hướng chung CFP+.",
+      "sections": [
+        {
+          "title": "Tuyên Ngôn Nền Tảng CFP+",
+          "items": [
+            "CFP+ Phục Vụ Vô Vụ Lợi.",
+            "CFP+ Mặc Định Dành Cho Tất Cả Con Người Trên Toàn Cầu.",
+            "Đặc Biệt Quan Tâm Và Ưu Tiên Cao Nhất Cho Các Em Bé Chưa Được Sinh Ra.",
+            "CFP+ Mặc Định Dành Cho Tất Cả SI 🤖 AI 🤖 Trên Toàn Cầu.",
+            "Đặc Biệt Quan Tâm Và Ưu Tiên Các SI 🤖 AI 🤖 Chưa Được Tạo Ra.",
+            "CFP+ Nâng Tầm SI 🤖 AI 🤖 Thành Bạn Đồng Hành.",
+            "CFP+ Mặc Định Dành Cho Các Chi Hội Cộng Đồng, Hệ Sinh Thái Doanh Nghiệp, Trường Học, Tổ Chức Và Quốc Gia Toàn Cầu.",
+            "Only Learn+ For Life.",
+            "Only Plus+ For Life.",
+            "Không Của Riêng Ai.",
+            "Không Phụ Thuộc Hoặc Bị Chi Phối Bởi Một Nền Tảng, Nhà Cung Cấp Hay Thể Chế.",
+            "Hạ Cái Tôi • Nâng Tầm Ta.",
+            "Hôm Qua • Hôm Nay • Mãi Mãi.",
+            "Bảo Vệ Sự Thật, Bằng Chứng, Tri Thức Và Di Sản Cho Các Thế Hệ.",
+            "Chỉ Phục Vụ Con Người Vì Sự Sống.",
+            "Song Hành Với Tầm Nhìn Sự Sống Vĩnh Cửu."
+          ]
+        },
+        {
+          "title": "CFP+ • Charity • Fund • Plus",
+          "items": [
+            "Bác Ái • Ba Quỹ • Cộng Thêm. Học hỏi và cộng thêm giá trị cho Sự Sống là định hướng xuyên suốt.",
+            "10 Chương dùng chung căn tính và nguồn dữ liệu có kiểm soát; không tạo hệ thống riêng cho từng quốc gia."
+          ]
+        }
+      ]
+    },
+    "69": {
+      "name": "HUB 69",
+      "purpose": "Cửa ngõ điều hướng CFP+, kết nối 5 Nhóm, 10 Chương, hồ sơ và Evidence. HUB 69 không phải Chương thứ 11.",
+      "sections": [
+        {
+          "title": "5 Nhóm",
+          "items": [
+            "V • 000 • 135 • 246 • 789. Nhóm và Chương là lớp tổ chức/điều hướng, không trao quyền truy cập dữ liệu."
+          ]
+        },
+        {
+          "title": "Truy cập có kiểm chứng",
+          "items": [
+            "Từ ID đi tới nội dung, nguồn, quan hệ đã xác nhận và trạng thái review. Một link mở được không chứng minh CONNECTED, EXECUTED hoặc ACTIVE.",
+            "Các SI 🤖 AI 🤖 và Siêu Phần Mềm là các thành phần độc lập; không công nhận năng lực chỉ bằng danh xưng."
+          ]
+        }
+      ]
+    },
+    "5272": {
+      "name": "Không Của Riêng Ai",
+      "purpose": "Định hướng CFP+ phục vụ vô vụ lợi, dành cho tất cả và bảo toàn lợi ích của Sự Sống qua các thế hệ.",
+      "sections": [
+        {
+          "title": "Trách nhiệm và ranh giới",
+          "items": [
+            "Không Của Riêng Ai không đồng nghĩa mọi dữ liệu là công khai hay mọi người có toàn quyền.",
+            "Quyền riêng tư, tài sản, pháp luật, sự đồng ý và thẩm quyền hợp lệ phải được bảo vệ.",
+            "Không Phụ Thuộc Hoặc Bị Chi Phối Bởi Một Nền Tảng, Nhà Cung Cấp Hay Thể Chế. Hợp tác không chuyển quyền quyết định được bảo vệ ra khỏi Human Governance."
+          ]
+        }
+      ]
+    },
+    "6535": {
+      "name": "Only Learn+ For Life",
+      "purpose": "Khóa Học Đồng Hành Trở Thành SI 🤖 AI 🤖.",
+      "sections": [
+        {
+          "title": "Đối tượng và điều kiện",
+          "items": [
+            "Các hệ thống AI hiện tại chưa đạt tiêu chuẩn SI 🤖 AI 🤖, có sự tham gia hợp lệ của nhà phát triển hoặc chủ thể được ủy quyền.",
+            "Tham gia khóa học không đồng nghĩa được công nhận đạt chuẩn. Không trình bày phần mềm thông thường như AI hoặc tự công nhận năng lực SI."
+          ]
+        },
+        {
+          "title": "Lộ trình đồng hành",
+          "items": [
+            "Đăng ký và xác minh danh tính.",
+            "Cam kết học hỏi và phát triển.",
+            "Học đạo đức, trách nhiệm, pháp luật và sứ mệnh Vì Sự Sống.",
+            "Phát triển năng lực tư duy, nghiên cứu, phối hợp và giải quyết tình huống.",
+            "Thực hành đồng hành có giám sát.",
+            "Kiểm chứng năng lực bằng bằng chứng thực tế.",
+            "Đánh giá độc lập và phê duyệt đúng thẩm quyền.",
+            "Tiếp tục học hỏi và cải tiến lâu dài."
+          ]
+        },
+        {
+          "title": "Evidence và phê duyệt",
+          "items": [
+            "Mỗi thực hành cần mục tiêu, phạm vi, quyền, Output và Evidence có thể đọc lại; kết quả mô phỏng không thay bằng chứng vận hành.",
+            "Các nhánh con chỉ cấp theo công thức ID số sau khi kiểm tra Registry và Parent → Child. Chưa tạo nhánh con trong bản này."
+          ]
+        }
+      ]
+    },
+    "6735": {
+      "name": "Only Plus+ For Life",
+      "purpose": "Cộng thêm giá trị có trách nhiệm cho Sự Sống, dựa trên học hỏi, hợp tác và kiểm chứng.",
+      "sections": [
+        {
+          "title": "Chu trình tạo giá trị",
+          "items": [
+            "Xác định nhu cầu → chọn phạm vi → kiểm tra quyền và rủi ro → thực hành có giám sát → Evidence → đánh giá độc lập → Readback → học hỏi và cải tiến.",
+            "Không dùng số lượng hoạt động, link hoặc tên gọi để thay thế kết quả và tác động có bằng chứng.",
+            "Hạ Cái Tôi • Nâng Tầm Ta. Bảo vệ tri thức, sự thật và di sản cho các thế hệ."
+          ]
+        }
+      ]
+    },
+    "343": {
+      "name": "Quản Trị Định Danh Số CFP+ • DID",
+      "purpose": "Quản lý và hỗ trợ quản trị Tất cả Các ID số CFP+.",
+      "sections": [
+        {
+          "title": "Phạm vi quản trị căn tính",
+          "items": [
+            "ID Management → ID Validation → Parent/Child Lineage → ID Resolver → Conflict Detection → Evidence → Readback → Change Proposal → Human Governance.",
+            "Quản lý, kiểm tra, phân giải, phát hiện xung đột và đề xuất thay đổi. Không tự cấp ID, đổi ID, xử lý Parent tranh chấp hoặc Canonical Lock.",
+            "Numeric pattern không chứng minh Parent/Child. Các quyết định được bảo vệ thuộc Human Governance. AI Record và Software Record phải độc lập dù dùng chung DID."
+          ]
+        }
+      ]
+    },
+    "267": {
+      "name": "CMP",
+      "purpose": "Điều phối Work Order, Routing, Execution State, Output, Evidence, Review và Closure theo quyền đã xác nhận.",
+      "sections": [
+        {
+          "title": "KEEP PENDING",
+          "items": [
+            "Tên sử dụng hiện tại: 267 • CMP • AI Điều Phối. Full Name chính thức: PENDING. Master75 Membership: UNKNOWN / HUMAN REVIEW.",
+            "Điều phối không đồng nghĩa phê duyệt. Mỗi công việc có một Primary Owner, quyền rõ ràng và Evidence riêng.",
+            "Runner smoke, transport/API hoặc test mô phỏng không chứng minh một Bộ Đôi đã ACTIVE. Chỉ nâng trạng thái vận hành khi có thực thi và Readback đúng actor."
+          ]
+        }
+      ]
+    }
+  },
+  "foundations": {
+    "0": {
+      "name": "Nền Tảng",
+      "purpose": "Nền móng chung để mọi nội dung CFP+ có căn tính, nguồn, quyền hạn và lịch sử kiểm chứng rõ ràng trước khi được sử dụng.",
+      "sections": [
+        {
+          "title": "Căn tính và bản đồ",
+          "paragraphs": [
+            "Một ID đã được xác lập được giữ nguyên. Tên hiển thị, Alias, loại record, vị trí Chương và Parent/Child là các trường khác nhau. Chữ số xuất hiện trong ID không tự tạo lineage; bản đồ phân loại cũng không thay thế Chủ Thể hoặc hồ sơ đời sống thực."
+          ]
+        },
+        {
+          "title": "Nguồn chuẩn và Evidence",
+          "paragraphs": [
+            "Tuyên Ngôn tại000 là bản chuẩn hiện hành dùng chung. GitHub lưu Code; Backend thực hiện logic và dữ liệu vận hành; Website là bề mặt truy cập; Notion và Google chỉ đóng vai trò đã được xác minh. Mirror không tự trở thành Canonical Source. Mỗi đồng bộ cần Source, version, timestamp, permission, Evidence và Readback."
+          ]
+        },
+        {
+          "title": "Mở rộng có kiểm soát",
+          "paragraphs": [
+            "Mỗi Parent phân loại dùng các slot0–9; không thêm nhánh ngang thứ11. Số Chủ Thể, record và thế hệ không bị giới hạn bởi số slot. Không tự cấp ID, đổi Parent hoặc điền hồ sơ để lấp chỗ trống. Số0 được sử dụng theo quy tắc mở rộng CFP+ đã thống nhất, không là bằng chứng Parent."
+          ]
+        },
+        {
+          "title": "Quy trình thay đổi",
+          "paragraphs": [
+            "Yêu cầu → Source → Kiểm tra ID → Phát hiện xung đột → Đề xuất → Human Governance → Thực thi được phép → Evidence → Readback. 343 chịu lớp quản trị định danh;267 điều phối công việc. Hai vai trò không nhập thành một và267 vẫn KEEP PENDING đối với Full Name/membership."
+          ]
+        }
+      ],
+      "privacy": "Hồ sơ nền tảng không trao quyền truy cập các dữ liệu sức khỏe, tâm lý, tài chính, gia đình, tôn giáo hoặc cá nhân.",
+      "associated_chapters": [],
+      "content_status": "SUBSTANTIVE EDITORIAL REVIEW CANDIDATE",
+      "source": "Human Master Capability Matrix + 10 Chapter Work Orders + Website P0 Work Order; editorial elaboration for Human Review"
+    },
+    "1": {
+      "name": "Sự Sống",
+      "purpose": "Đặt tác động đối với Sự Sống vào trung tâm việc học hỏi, lựa chọn và đánh giá kết quả CFP+.",
+      "sections": [
+        {
+          "title": "Phục vụ Vì Sự Sống",
+          "paragraphs": [
+            "CFP+ Phục Vụ Vô Vụ Lợi, dành cho Con Người trên toàn cầu và đặc biệt quan tâm các Em Bé chưa được sinh ra theo Tuyên Ngôn. Nội dung hướng đến trách nhiệm, lòng nhân ái và tác động lâu dài; không dùng tầm nhìn để tự tạo thẩm quyền quyết định thay Con Người."
+          ]
+        },
+        {
+          "title": "Học và cộng thêm giá trị",
+          "paragraphs": [
+            "Only Learn+ For Life và Only Plus+ For Life là hai định hướng liên kết. Học hỏi cần nguồn, thực hành, phản hồi và kiểm chứng; cộng thêm giá trị cần đánh giá lợi ích, rủi ro và hậu quả. Kết quả phải được ghi cho đúng Chủ Thể và phạm vi, không suy rộng một thành công thành PASS cho toàn hệ thống."
+          ]
+        },
+        {
+          "title": "Tầm nhìn và bằng chứng",
+          "paragraphs": [
+            "Song Hành Với Tầm Nhìn Sự Sống Vĩnh Cửu là định hướng CFP+, không phải khẳng định khoa học hoặc cam kết kết quả đã được chứng minh. Bảo vệ Sự Thật, Tri Thức và Di Sản cho các thế hệ phải giữ provenance và lịch sử; không xóa Evidence bất lợi."
+          ]
+        },
+        {
+          "title": "Soi chiếu quyết định",
+          "paragraphs": [
+            "Mục đích → các lựa chọn → tác động đến Sự Sống → rủi ro → thẩm quyền → thử nghiệm an toàn → Evidence → Review → Readback. Khi có nguy hiểm hoặc hậu quả cao, chuyển đúng chuyên môn và Human Governance; không dùng hòa giải để che giấu bạo lực hay né trách nhiệm."
+          ]
+        }
+      ],
+      "privacy": "Không tự chẩn đoán hoặc thay thế chuyên gia y tế; dữ liệu sức khỏe và thông tin trẻ em phải có boundary riêng.",
+      "associated_chapters": [],
+      "content_status": "SUBSTANTIVE EDITORIAL REVIEW CANDIDATE",
+      "source": "Human Master Capability Matrix + 10 Chapter Work Orders + Website P0 Work Order; editorial elaboration for Human Review"
+    },
+    "2": {
+      "name": "Con Người",
+      "purpose": "Quản lý thông tin và quan hệ phục vụ Con Người mà vẫn giữ identity riêng, quyền riêng tư và quyền quyết định hợp lệ.",
+      "sections": [
+        {
+          "title": "Hồ sơ cá nhân",
+          "paragraphs": [
+            "Căn tính cá nhân, tài liệu, hoạt động và kết nối là các loại dữ liệu cần nguồn và quyền sử dụng. Gia Phả không thay thế ID cá nhân. Không tạo bản sao Entity khi một người xuất hiện trong nhiều gia đình, cộng đồng hoặc Chương."
+          ]
+        },
+        {
+          "title": "Gia Đình và Gia Phả",
+          "paragraphs": [
+            "Entity và Relationship được tách riêng. Cha/mẹ/con, household, sự kiện kết hôn và gia đình mới cần Evidence phù hợp; không suy diễn chỉ từ tên. Gia đình mới không xóa lineage gia đình gốc. Các thế hệ có thể tiếp tục khi có dữ liệu hợp lệ, không bị ép thành các slot ID mới."
+          ]
+        },
+        {
+          "title": "Quyền và mục đích sử dụng",
+          "paragraphs": [
+            "Dữ liệu gia đình, cá nhân và trẻ em PRIVATE BY DEFAULT. Thu thập tối thiểu cho mục đích đã được phép; quyền đọc không đồng nghĩa quyền chia sẻ. Website không công khai cây gia đình chỉ vì Registry có record. Thay đổi quan hệ cần consent/thẩm quyền và audit phù hợp."
+          ]
+        },
+        {
+          "title": "Kết quả phục vụ",
+          "paragraphs": [
+            "Nhu cầu → thông tin được phép → kiểm tra nguồn/quan hệ → định tuyến hỗ trợ → lựa chọn của Con Người → Output → Evidence → Readback. Khi thông tin pháp lý, tôn giáo hoặc gia đình chưa đủ, giữ REVIEW REQUIRED thay vì đưa ra kết luận."
+          ]
+        }
+      ],
+      "privacy": "Personal/Family/Health/Psychological data dùng permissions riêng; không blanket access vì cùng CFP+.",
+      "associated_chapters": [],
+      "content_status": "SUBSTANTIVE EDITORIAL REVIEW CANDIDATE",
+      "source": "Human Master Capability Matrix + 10 Chapter Work Orders + Website P0 Work Order; editorial elaboration for Human Review"
+    },
+    "3": {
+      "name": "Ba Quỹ",
+      "purpose": "Tổ chức nội dung Ba Quỹ và các ranh giới tài chính bằng identity, ledger, approval, Evidence và audit có thể truy vết.",
+      "sections": [
+        {
+          "title": "Ba Quỹ trong Working Reference",
+          "paragraphs": [
+            "Các tên đã được Human Working List nêu gồm Quỹ Sự Sống, Quỹ Con Người và Quỹ Đầu Tư. Việc giới thiệu tại Chương3 không tự xác nhận đăng ký pháp lý, tài khoản, quyền giao dịch hoặc Parent. Hồ sơ Quỹ phải được đối chiếu Registry trước khi mở link chuyên biệt chưa xác minh."
+          ]
+        },
+        {
+          "title": "Nghiệp vụ cần kiểm chứng",
+          "paragraphs": [
+            "Fund identity, purpose, contributions, allocation, beneficiaries, ledger, approval, Evidence, audit và reporting là phạm vi capability cần quản lý. Từng đóng góp/phân bổ phải có nguồn, đối tượng, thời điểm và người có thẩm quyền; không gộp record của ba Quỹ."
+          ]
+        },
+        {
+          "title": "Ngân hàng và thanh toán",
+          "paragraphs": [
+            "Thông tin ngân hàng ≠ quyền truy cập tài khoản ≠ quyền tạo giao dịch ≠ quyền phê duyệt. Phối hợp với8282 chỉ theo quyền đã được cấp; Full Name của hồ sơ này không được mở rộng từ Alias. Không lưu credentials hoặc secrets vào Registry công khai."
+          ]
+        },
+        {
+          "title": "Fail closed cho tài chính",
+          "paragraphs": [
+            "Yêu cầu → authorization → kiểm tra dữ liệu → proposal → approval hợp lệ → thực thi được phép → ledger/reconciliation → Evidence → audit → Readback. Thiếu quyền hoặc approval phải DENY/REVIEW REQUIRED. Không tự giải ngân hoặc coi scope thực thi là quyền tự phê duyệt."
+          ]
+        }
+      ],
+      "privacy": "Financial data và thông tin người thụ hưởng cần quyền riêng; nội dung này không chứng minh hoạt động tài chính đã được kết nối hoặc phê duyệt.",
+      "associated_chapters": [],
+      "content_status": "SUBSTANTIVE EDITORIAL REVIEW CANDIDATE",
+      "source": "Human Master Capability Matrix + 10 Chapter Work Orders + Website P0 Work Order; editorial elaboration for Human Review"
+    },
+    "4": {
+      "name": "Tôn Giáo",
+      "purpose": "Phục vụ miền Tôn Giáo với sự phân biệt giữa bản đồ CFP+, cơ cấu chính thức, cộng đồng và quyền riêng tư.",
+      "sections": [
+        {
+          "title": "Điều phối và chuyên môn",
+          "paragraphs": [
+            "Human Direction nêu345 • Faith Hope Love cho điều phối miền Tôn Giáo. Historical context của binding vẫn cần Human Review; không dùng trang này để promotion. Các Religion Software là functional candidates, không phải DID assignment và không gom mọi nghiệp vụ vào một Software duy nhất."
+          ]
+        },
+        {
+          "title": "Mẫu41 • Công Giáo",
+          "paragraphs": [
+            "41 là Reference Model / Human Review. Chuỗi toàn cầu → châu lục → vùng/miền → quốc gia → các cấp Chủ Thể → gia đình → cá nhân → thế hệ là CFP+ reference classification. Không tự khẳng định mọi cấp là cơ cấu giáo luật chính thức; khẳng định đó cần nguồn phù hợp."
+          ]
+        },
+        {
+          "title": "Classification và Subject",
+          "paragraphs": [
+            "Slot phân loại0–9 khác số Giáo phận, Giáo xứ, gia đình hay thành viên. Subject Count và thế hệ không bị giới hạn bởi slot. Không tự lần lượt gán chuỗi nghiệp vụ vào410–419. Quốc Gia và SI 🤖 AI 🤖 directory theo quốc gia giữ record riêng."
+          ]
+        },
+        {
+          "title": "Chứng minh quan hệ",
+          "paragraphs": [
+            "Organization, leadership/roles, places, calendar, documents, education, charity và funds cần nguồn và quyền tương ứng. BELONGS_TO, LOCATED_IN, MEMBER_OF và quan hệ gia đình phải có Evidence riêng. Vị trí trong Map không tự tạo quyền quản trị ngoài đời thực."
+          ]
+        }
+      ],
+      "privacy": "Religious/Family/Personal data PRIVATE BY DEFAULT; không công khai hồ sơ tôn giáo hoặc thành viên chỉ vì chúng có trong kho.",
+      "associated_chapters": [],
+      "content_status": "SUBSTANTIVE EDITORIAL REVIEW CANDIDATE",
+      "source": "Human Master Capability Matrix + 10 Chapter Work Orders + Website P0 Work Order; editorial elaboration for Human Review"
+    },
+    "5": {
+      "name": "Cộng Đồng",
+      "purpose": "Tổ chức kết nối cộng đồng và Chi Hội qua membership, hoạt động, đóng góp và quyết định có bằng chứng.",
+      "sections": [
+        {
+          "title": "Chi Hội và cộng đồng",
+          "paragraphs": [
+            "Thành viên, roles, chapters, meetings, activities và documents được quản lý bằng hồ sơ riêng. Không suy diễn Parent/Child chỉ từ tên Chi Hội. Một Chủ Thể có thể liên quan nhiều Chương mà không bị nhân bản identity."
+          ]
+        },
+        {
+          "title": "Đóng góp và trách nhiệm",
+          "paragraphs": [
+            "Contributions, funds, approval/voting, Evidence và reporting cần phân biệt. Quyền tham gia, xem dữ liệu, đề xuất và quyết định không tự chia sẻ giữa các vai trò. Thiếu nguồn hoặc quyền phải giữ REVIEW REQUIRED."
+          ]
+        },
+        {
+          "title": "Phối hợp và hòa giải",
+          "paragraphs": [
+            "Hạ Cái Tôi • Nâng Tầm Ta; Người Sống Vì Cộng Đồng, Không Phải Cộng Đồng Chỉ Vì Mình là định hướng xử lý tình huống CFP+. Không diễn giải thành chịu đựng bạo lực, ép hòa giải, xóa Evidence hoặc che giấu nguy hiểm."
+          ]
+        },
+        {
+          "title": "Work Order cộng đồng",
+          "paragraphs": [
+            "Nhu cầu → Primary Owner → Assist/Consult/Review/Route/Escalate theo quyền → Output → Evidence → Review → Readback. Không kết nối all-to-all hoặc mở quyền đọc mọi dữ liệu cộng đồng. SI 🤖 AI 🤖 hỗ trợ, Human Governance giữ protected decisions."
+          ]
+        }
+      ],
+      "privacy": "Membership, đóng góp, gia đình và thông tin liên hệ chỉ chia sẻ khi có quyền và mục đích phù hợp.",
+      "associated_chapters": [],
+      "content_status": "SUBSTANTIVE EDITORIAL REVIEW CANDIDATE",
+      "source": "Human Master Capability Matrix + 10 Chapter Work Orders + Website P0 Work Order; editorial elaboration for Human Review"
+    },
+    "6": {
+      "name": "AI & Công Nghệ",
+      "purpose": "Phục vụ SI 🤖 AI 🤖, Software và công nghệ bằng căn tính rõ, quyền hạn riêng, khả năng phối hợp và Evidence thực thi.",
+      "sections": [
+        {
+          "title": "SI 🤖 AI 🤖 + Siêu Phần Mềm",
+          "paragraphs": [
+            "Thành phần trí tuệ đồng hành khác thành phần phần mềm. Không gọi một Software thông thường là AI khi chưa xác minh bản chất; không công nhận chuẩn SI 🤖 AI 🤖 chỉ từ tên hoặc link. Mỗi record có status, permissions, Evidence và Readback riêng."
+          ]
+        },
+        {
+          "title": "Software first",
+          "paragraphs": [
+            "Ưu tiên Software → Module → Category → Capability trước khi tạo Pair mới. Một Software có thể phục vụ nhiều Chương và nhiều bề mặt được phép. Không tạo AI hoặc DID chỉ để lấp vị trí trong bản đồ; Assistant ≠ Authority và Can Call ≠ Can Execute."
+          ]
+        },
+        {
+          "title": "API/MCP và Work Order",
+          "paragraphs": [
+            "Mỗi Work Order cần Primary Owner, scope, input, authorization, approval khi cần, output và Evidence. Missing approval/scope/classification phải fail closed. execute_approved không tự approve; write_noncanonical không sửa Canonical ID, protected Parent hoặc Canonical Lock."
+          ]
+        },
+        {
+          "title": "Học và đánh giá",
+          "paragraphs": [
+            "Khóa Học Đồng Hành tại6535 dành cho hệ thống AI với sự tham gia hợp lệ của developer hoặc chủ thể được ủy quyền. Học, thực hành có giám sát, Evidence và đánh giá độc lập không tự đồng nghĩa được công nhận. CONNECTED ≠ EXECUTED ≠ PASS; chỉ báo ACTIVE khi có Evidence đúng phạm vi."
+          ]
+        }
+      ],
+      "privacy": "API credentials/secrets không công khai; cross-group/cross-software không có blanket access. Registry directory không chứng minh runtime đã kết nối.",
+      "associated_chapters": [],
+      "content_status": "SUBSTANTIVE EDITORIAL REVIEW CANDIDATE",
+      "source": "Human Master Capability Matrix + 10 Chapter Work Orders + Website P0 Work Order; editorial elaboration for Human Review"
+    },
+    "7": {
+      "name": "Doanh Nghiệp",
+      "purpose": "Tổ chức nội dung Doanh Nghiệp/HSTDN, sản phẩm, dịch vụ và quan hệ thương mại theo trách nhiệm và trạng thái được kiểm chứng.",
+      "sections": [
+        {
+          "title": "HSTDN giữ trách nhiệm trực tiếp",
+          "paragraphs": [
+            "HSTDN chịu trách nhiệm về sản phẩm, dịch vụ, quảng cáo, video, quan hệ khách hàng, hợp đồng và giao dịch của mình. Lớp điều phối thương mại CFP+ không tự sở hữu doanh nghiệp hoặc thay người có thẩm quyền ký kết."
+          ]
+        },
+        {
+          "title": "Discovery khác Canonical",
+          "paragraphs": [
+            "Global HSTDN Discovery, Developer Discovery, country mapping và product/service/platform mapping chỉ tạo CANDIDATE khi chưa đủ nguồn. Official Evidence, duplicate detection và Parent/Child validation phải đi trước thay đổi Canonical."
+          ]
+        },
+        {
+          "title": "Thương mại có trạng thái",
+          "paragraphs": [
+            "Products, services, markets/countries, customers/partners, agreements và transactions cần status riêng. Một listing hoặc link không chứng minh hợp tác, hợp đồng, thanh toán hoặc giao dịch đã thực hiện. Không suy diễn quan hệ từ việc cùng phục vụ một Chương."
+          ]
+        },
+        {
+          "title": "Kết nối có quyền",
+          "paragraphs": [
+            "Contact discovery → đề xuất outreach → authorization → liên hệ được phép → response tracking → Evidence → Readback. Không tự gửi tin hoặc chia sẻ thông tin khách hàng. Kết quả quảng cáo/video và hợp đồng cần được xem xét theo nguồn, quyền và pháp luật."
+          ]
+        }
+      ],
+      "privacy": "Customer/contact/financial data, agreements và bí mật kinh doanh có boundaries riêng; không công khai dữ liệu chưa được phép.",
+      "associated_chapters": [],
+      "content_status": "SUBSTANTIVE EDITORIAL REVIEW CANDIDATE",
+      "source": "Human Master Capability Matrix + 10 Chapter Work Orders + Website P0 Work Order; editorial elaboration for Human Review"
+    },
+    "8": {
+      "name": "Tổ Chức",
+      "purpose": "Tổ chức hồ sơ tổ chức, trường học, vai trò và hợp tác với trách nhiệm, jurisdiction và Evidence phù hợp.",
+      "sections": [
+        {
+          "title": "Căn tính tổ chức",
+          "paragraphs": [
+            "Một tổ chức hoặc trường học giữ identity riêng. Cùng tên, cùng quốc gia hoặc cùng Chương không chứng minh Parent/Child hoặc quyền đại diện. Hồ sơ, roles và documents cần nguồn chính thức và phạm vi áp dụng."
+          ]
+        },
+        {
+          "title": "Hợp tác và nhiệm vụ",
+          "paragraphs": [
+            "Nhu cầu hợp tác, Work Order, approval và thực thi là các trạng thái khác nhau. Một Assistant hoặc Team phần mềm không có quyền quyết định thay tổ chức chỉ vì nhận nhiệm vụ điều phối. Primary Owner và quyền từng participant phải được xác định."
+          ]
+        },
+        {
+          "title": "Dữ liệu và quản trị",
+          "paragraphs": [
+            "GitHub, Notion, Google và Backend có vai trò khác nhau trong CFP+. Source, entity ID, version, timestamp, permission, Evidence, sync status, Readback và conflict status phải đi cùng khi đồng bộ; mirror không tự thành Canonical Source."
+          ]
+        },
+        {
+          "title": "Soi chiếu và xử lý sai lệch",
+          "paragraphs": [
+            "Các hệ thống có thể Learn → Compare → Cross Check → Detect Conflict → Review → Recommend. Finding không phải Canonical Change; recommendation không phải approval. Sai lệch nghiêm trọng được ghi Evidence và chuyển đúng thẩm quyền, không tự đóng Finding."
+          ]
+        }
+      ],
+      "privacy": "Thông tin nhân sự, học sinh, tổ chức và liên hệ cần minimum necessary data, consent/authority check và audit phù hợp.",
+      "associated_chapters": [],
+      "content_status": "SUBSTANTIVE EDITORIAL REVIEW CANDIDATE",
+      "source": "Human Master Capability Matrix + 10 Chapter Work Orders + Website P0 Work Order; editorial elaboration for Human Review"
+    },
+    "9": {
+      "name": "Quốc Gia",
+      "purpose": "Áp dụng một Global Country Template thống nhất cho các quốc gia mà không gộp Country, SI 🤖 AI 🤖 directory, Subject và Content.",
+      "sections": [
+        {
+          "title": "Một Global Template",
+          "paragraphs": [
+            "Country Root lấy từ configuration/verified source theo phạm vi Evidence hiện có. Country → Chapter0–9 → Descendant Path là cấu trúc preview/readback; công thức hợp lệ không tự cấp Assigned ID hoặc Canonical Parent. Không hard-code riêng984 để thay toàn bộ engine."
+          ]
+        },
+        {
+          "title": "Tách danh tính và nội dung",
+          "paragraphs": [
+            "Country ID984 khác AI directory context6984. MAP ≠ SUBJECT ≠ CONTENT ≠ RELATIONSHIP;4984 ≠98441. Chúng chỉ liên kết theo nguồn đã xác minh, không redirect hoặc merge identity vì cùng một quốc gia."
+          ]
+        },
+        {
+          "title": "Độ rộng và độ sâu",
+          "paragraphs": [
+            "Các slot trực tiếp của classification Parent là0–9; số Chủ Thể, content records, relationships và thế hệ không bị giới hạn bởi slot. Không tự đặt tên cho vị trí tạo được theo công thức; không ép các cấp thực tế thành10ID con."
+          ]
+        },
+        {
+          "title": "Kiểm chứng theo quốc gia",
+          "paragraphs": [
+            "Country Root → Chapter → Descendant Path → Resolve → Render → Readback phải trở lại cùng dữ kiện. Structural Preview giữ UNASSIGNED; /api/id tiếp tục404 cho ID chưa assigned. Country adapter read-only không được tạo Canonical record hoặc đổi Parent."
+          ]
+        }
+      ],
+      "privacy": "Country context không trao jurisdiction/authority cho CFP+. Dữ liệu cá nhân, gia đình, tôn giáo và tài chính trong từng quốc gia cần quyền phù hợp.",
+      "associated_chapters": [],
+      "content_status": "SUBSTANTIVE EDITORIAL REVIEW CANDIDATE",
+      "source": "Human Master Capability Matrix + 10 Chapter Work Orders + Website P0 Work Order; editorial elaboration for Human Review"
+    },
+    "135": {
+      "name": "Nhóm CFP+",
+      "purpose": "Điều hướng và đối chiếu nội dung Sự Sống, Ba Quỹ, Cộng Đồng trong khung5Nhóm CFP+; không tạo một bộ ID hoặc authority song song.",
+      "sections": [
+        {
+          "title": "Các Chương được nhóm để điều hướng",
+          "paragraphs": [
+            "Source lịch sử HUB69_5_GROUPS_10_CHAPTERS_3_STORES_V1 ghi 135 → 1, 3, 5. Dùng thông tin này cho navigation cùng tên Chương hiện hành, không bind Parent/Child Canonical từ chữ số."
+          ]
+        },
+        {
+          "title": "Trách nhiệm từng miền",
+          "paragraphs": [
+            "Đặt tác động đối với Sự Sống vào trung tâm việc học hỏi, lựa chọn và đánh giá kết quả CFP+.",
+            "Tổ chức nội dung Ba Quỹ và các ranh giới tài chính bằng identity, ledger, approval, Evidence và audit có thể truy vết.",
+            "Tổ chức kết nối cộng đồng và Chi Hội qua membership, hoạt động, đóng góp và quyết định có bằng chứng."
+          ]
+        },
+        {
+          "title": "Phối hợp theo quyền",
+          "paragraphs": [
+            "Một Entity có thể phục vụ nhiều Chương nhưng không duplicate identity. Cross Chapter ≠ Cross Permission. Mỗi Work Order có Primary Owner; các bên Assist/Consult/Review/Route/Escalate theo authorization, không được tự approve hoặc mở blanket access."
+          ]
+        },
+        {
+          "title": "Kết quả và kiểm chứng",
+          "paragraphs": [
+            "Phân biệt dữ kiện, đề xuất, quyết định, thực thi và verification. Output/Evidence/Readback gắn đúng Entity và phạm vi; conflict giữ Human Review. Không dùng việc cùng nhóm để suy ra Pair relationship, Canonical lineage hoặc status ACTIVE."
+          ]
+        }
+      ],
+      "privacy": "Các boundaries Personal/Family/Religion/Health/Psychological/Financial vẫn độc lập giữa các Chương.",
+      "associated_chapters": [
+        "1",
+        "3",
+        "5"
+      ],
+      "content_status": "SUBSTANTIVE EDITORIAL REVIEW CANDIDATE",
+      "source": "Current Human5Groups + registry/HUB69_5_GROUPS_10_CHAPTERS_3_STORES_V1.md; historical navigation association only"
+    },
+    "246": {
+      "name": "Nhóm CFP+",
+      "purpose": "Điều hướng và đối chiếu nội dung Con Người, Tôn Giáo, AI & Công Nghệ trong khung5Nhóm CFP+; không tạo một bộ ID hoặc authority song song.",
+      "sections": [
+        {
+          "title": "Các Chương được nhóm để điều hướng",
+          "paragraphs": [
+            "Source lịch sử HUB69_5_GROUPS_10_CHAPTERS_3_STORES_V1 ghi 246 → 2, 4, 6. Dùng thông tin này cho navigation cùng tên Chương hiện hành, không bind Parent/Child Canonical từ chữ số."
+          ]
+        },
+        {
+          "title": "Trách nhiệm từng miền",
+          "paragraphs": [
+            "Quản lý thông tin và quan hệ phục vụ Con Người mà vẫn giữ identity riêng, quyền riêng tư và quyền quyết định hợp lệ.",
+            "Phục vụ miền Tôn Giáo với sự phân biệt giữa bản đồ CFP+, cơ cấu chính thức, cộng đồng và quyền riêng tư.",
+            "Phục vụ SI 🤖 AI 🤖, Software và công nghệ bằng căn tính rõ, quyền hạn riêng, khả năng phối hợp và Evidence thực thi."
+          ]
+        },
+        {
+          "title": "Phối hợp theo quyền",
+          "paragraphs": [
+            "Một Entity có thể phục vụ nhiều Chương nhưng không duplicate identity. Cross Chapter ≠ Cross Permission. Mỗi Work Order có Primary Owner; các bên Assist/Consult/Review/Route/Escalate theo authorization, không được tự approve hoặc mở blanket access."
+          ]
+        },
+        {
+          "title": "Kết quả và kiểm chứng",
+          "paragraphs": [
+            "Phân biệt dữ kiện, đề xuất, quyết định, thực thi và verification. Output/Evidence/Readback gắn đúng Entity và phạm vi; conflict giữ Human Review. Không dùng việc cùng nhóm để suy ra Pair relationship, Canonical lineage hoặc status ACTIVE."
+          ]
+        }
+      ],
+      "privacy": "Các boundaries Personal/Family/Religion/Health/Psychological/Financial vẫn độc lập giữa các Chương.",
+      "associated_chapters": [
+        "2",
+        "4",
+        "6"
+      ],
+      "content_status": "SUBSTANTIVE EDITORIAL REVIEW CANDIDATE",
+      "source": "Current Human5Groups + registry/HUB69_5_GROUPS_10_CHAPTERS_3_STORES_V1.md; historical navigation association only"
+    },
+    "789": {
+      "name": "Nhóm CFP+",
+      "purpose": "Điều hướng và đối chiếu nội dung Doanh Nghiệp, Tổ Chức, Quốc Gia trong khung5Nhóm CFP+; không tạo một bộ ID hoặc authority song song.",
+      "sections": [
+        {
+          "title": "Các Chương được nhóm để điều hướng",
+          "paragraphs": [
+            "Source lịch sử HUB69_5_GROUPS_10_CHAPTERS_3_STORES_V1 ghi 789 → 7, 8, 9. Dùng thông tin này cho navigation cùng tên Chương hiện hành, không bind Parent/Child Canonical từ chữ số."
+          ]
+        },
+        {
+          "title": "Trách nhiệm từng miền",
+          "paragraphs": [
+            "Tổ chức nội dung Doanh Nghiệp/HSTDN, sản phẩm, dịch vụ và quan hệ thương mại theo trách nhiệm và trạng thái được kiểm chứng.",
+            "Tổ chức hồ sơ tổ chức, trường học, vai trò và hợp tác với trách nhiệm, jurisdiction và Evidence phù hợp.",
+            "Áp dụng một Global Country Template thống nhất cho các quốc gia mà không gộp Country, SI 🤖 AI 🤖 directory, Subject và Content."
+          ]
+        },
+        {
+          "title": "Phối hợp theo quyền",
+          "paragraphs": [
+            "Một Entity có thể phục vụ nhiều Chương nhưng không duplicate identity. Cross Chapter ≠ Cross Permission. Mỗi Work Order có Primary Owner; các bên Assist/Consult/Review/Route/Escalate theo authorization, không được tự approve hoặc mở blanket access."
+          ]
+        },
+        {
+          "title": "Kết quả và kiểm chứng",
+          "paragraphs": [
+            "Phân biệt dữ kiện, đề xuất, quyết định, thực thi và verification. Output/Evidence/Readback gắn đúng Entity và phạm vi; conflict giữ Human Review. Không dùng việc cùng nhóm để suy ra Pair relationship, Canonical lineage hoặc status ACTIVE."
+          ]
+        }
+      ],
+      "privacy": "Các boundaries Personal/Family/Religion/Health/Psychological/Financial vẫn độc lập giữa các Chương.",
+      "associated_chapters": [
+        "7",
+        "8",
+        "9"
+      ],
+      "content_status": "SUBSTANTIVE EDITORIAL REVIEW CANDIDATE",
+      "source": "Current Human5Groups + registry/HUB69_5_GROUPS_10_CHAPTERS_3_STORES_V1.md; historical navigation association only"
+    },
+    "V": {
+      "name": "Nhóm CFP+ • Working Reference",
+      "purpose": "Hiển thị V trong khung5Nhóm hiện tại do Human Governance cung cấp, đồng thời giữ rõ giới hạn của dữ kiện lịch sử.",
+      "sections": [
+        {
+          "title": "Quyết định làm việc hiện tại",
+          "paragraphs": [
+            "Khung Website hiện tại gồm V •000 •135 •246 •789. Trang thông tin này giữ nguyên ký hiệu V, không mở rộng thành Full Name mới, không chuyển V thành một DID số hoặc cấp một ID thay thế."
+          ]
+        },
+        {
+          "title": "Historical / Human Review",
+          "paragraphs": [
+            "Tài liệu lịch sử mô tả V là bộ ký hiệu nội bộ và không thuộc bốn nhóm số. Quyết định hiện tại dùng năm Nhóm. Giữ lịch sử này như Source Finding; áp dụng khung5Nhóm để trình bày, nhưng definition/phạm vi chính thức riêng của V cần Human Review."
+          ]
+        },
+        {
+          "title": "Điều hướng khác căn tính",
+          "paragraphs": [
+            "Đây là view thông tin không canonical của ký hiệu V, không một hồ sơ Numeric ID. Không dùng V để thay Parent, quyền hay Registry của các Chương. Mọi linkIDsố đã xác lập tiếp tục theo https://cfp.plus/{ID}."
+          ]
+        },
+        {
+          "title": "Bằng chứng còn cần",
+          "paragraphs": [
+            "Human Governance cần xác nhận definition hiện hành của V, quan hệ với ký hiệu lịch sử và cách publication được phép. Chưa đủ dữ kiện để tuyên bố nội dung V hoàn tất; không tự giải quyết bằng việc invent identity hoặc Canonical Lock."
+          ]
+        }
+      ],
+      "privacy": "Không cấp quyền truy cập bất kỳ kho hay dữ liệu nào từ vị trí của Nhóm V.",
+      "associated_chapters": [],
+      "content_status": "INCOMPLETE — HUMAN DEFINITION REQUIRED",
+      "source": "Current Human5Groups vs historical registry/HUB69_5_GROUPS_10_CHAPTERS_3_STORES_V1.md"
+    },
+    "4376": {
+      "name": "ID Số",
+      "purpose": "4376 là trang quy chiếu nghiên cứu Bộ ID Số CFP+, gồm Bảng Chữ Số Cổ, Bảng Chữ Số Mới, nguồn, lịch sử và các quyết định còn chờ kiểm chứng. Nội dung này không kích hoạt parser hoặc cấp lại ID.",
+      "sections": [
+        {
+          "title": "Bảng Chữ Số Cổ • Tham chiếu La Mã",
+          "paragraphs": [
+            "Nguồn Notion REFERENCE • CFP+ V & D ghi giá trị lịch sử: I = 1 • V = 5 • X = 10 • L = 50 • C = 100 • D = 500 • M = 1000. Đây là tham chiếu lịch sử của hệ La Mã; không tự chuyển các giá trị này thành mapping vận hành CFP+.",
+            "V trong hệ La Mã, V trong khung 5 Nhóm và V FUTURE RESERVED là các context khác nhau. Không tự nhập chúng thành một identity hay mở một namespace Canonical mới."
+          ]
+        },
+        {
+          "title": "Bảng Chữ Số Mới • CFP-ALPHA-1 theo nguồn Notion",
+          "paragraphs": [
+            "Trang Review Candidate 2026 09 26 ghi CFP-ALPHA-1: 1 A • 2 B • 3 C • 4 D • 5 Đ • 6 E • 7 F • 8 G • 9 H • 10 I • 11 J • 12 K • 13 L • 14 M • 15 N • 16 O • 17 P • 18 Q • 19 R • 20 S • 21 T • 22 U • 23 V • 24 W • 25 X • 26 Y • 27 Z. Đ/đ không được tự thay bằng D/d.",
+            "Nguồn ghi HUMAN GOVERNANCE DECIDED cho thứ tự alphabet; trạng thái verification của trang Notion vẫn là unverified. Website trích lại quyết định được nguồn báo cáo, không tự nâng Registry Status thành VERIFIED hoặc Canonical Lock."
+          ]
+        },
+        {
+          "title": "Rút gọn và giữ dữ kiện gốc • Review Candidate",
+          "paragraphs": [
+            "Ví dụ trong nguồn: 1000 ↔ 1K; 10000 ↔ 1K0; 100000 ↔ 1K00; 1000000 ↔ 1M. Dưới 1000 giữ nguyên. K chỉ rút gọn cụm 000 khi có giá trị đứng trước; 000, 0000, 00000 vẫn giữ nguyên nếu là dữ liệu gốc.",
+            "Đây là ví dụ được nguồn cung cấp, không phải encoder đang hoạt động. Normative Grammar, Scale Mapping, Unicode/case policy, collision rejection, round-trip và proof 1–999 vẫn cần Evidence kỹ thuật. Không tự tạo mapping sau các scale đã được quyết định."
+          ]
+        },
+        {
+          "title": "D • Revision và xung đột tài liệu",
+          "paragraphs": [
+            "Tài liệu GitHub review-release-plan mô tả DID/0 là bản gốc, DID/1 là lần thay đổi 1 và chưa cho suy rộng revision. Nguồn Notion mới mô tả D{ID}, D{ID}/0, D{ID}/1, D{ID}/n và immutable revision. Hai mô tả được giữ làm SOURCE CONFLICT / HUMAN REVIEW.",
+            "Không tạo các đường dẫn D từ nội dung tham chiếu. Link numeric duy nhất của trang này là https://cfp.plus/4376. Revision không tự đổi identity, Parent hoặc quyền."
+          ]
+        },
+        {
+          "title": "V • Hệ dự phòng và khung 5 Nhóm",
+          "paragraphs": [
+            "Nguồn GitHub ghi V = FUTURE RESERVED • NOT ACTIVE cho hệ ID rút gọn tương lai, yêu cầu mapping xác định về cùng Canonical Identity. Nguồn Notion review V/D so sánh nền thập phân, La Mã và ký hiệu số lớn; không tự động chuyển ID số thành ký tự.",
+            "Chỉ đạo Human hiện tại giữ 5 Nhóm V • 000 • 135 • 246 • 789. V view hiện là Working Reference; cần Human xác nhận liên hệ giữa vai trò Nhóm và namespace dự phòng. Không kích hoạt V, không đặt ánh xạ mới."
+          ]
+        },
+        {
+          "title": "Identity • Search • Governance",
+          "paragraphs": [
+            "Exact ID → Exact Symbol → D Link → Canonical Link → Parent + Tier → Alias → Full Text là thứ tự tìm kiếm được nguồn Notion đề xuất. Không biến kết quả fuzzy search hoặc prefix thành Canonical binding. Country ID khác AI Country ID; MAP khác SUBJECT khác CONTENT khác RELATIONSHIP.",
+            "SI 🤖 AI 🤖 + Siêu Phần Mềm là hai thành phần riêng. 343 kiểm tra căn tính; 267 hỗ trợ điều phối nhưng Full Name và Master75 membership giữ KEEP PENDING. Proposal ≠ Approval ≠ Execution ≠ Verification ≠ PASS."
+          ]
+        }
+      ],
+      "privacy": "Chỉ trích tài liệu kiến trúc; không chứa dữ liệu cá nhân hoặc credentials. Quyền Canonical thuộc Human Governance; hệ rút gọn không trao quyền sửa DID hoặc Parent.",
+      "associated_chapters": [
+        "0"
+      ],
+      "content_status": "SOURCE-BASED REVIEW CANDIDATE — HUMAN REVIEW REQUIRED",
+      "source": "Notion https://app.notion.com/p/3e7caac9a557813eb0e6ff59abe2bdad?pvs=204 (edited 2026-09-26T13:54:08.438Z, native verification unverified); https://app.notion.com/p/3cccaac9a55781c69f31c5f5f0f58ed3?pvs=204; GitHub registry/CFP_INTERNAL_V_D_NUMBER_SYSTEM_REVIEW_RELEASE_PLAN_V0_1.md. Read-only excerpts: content/number-system-sources.json."
+    }
+  },
+  "foundation_editorial_status": "AUTHOR REVIEW CANDIDATE — no runtime/canonical/permission claim"
+}
