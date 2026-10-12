@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CFP+ Quantum Research Evidence Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "experiment_ref",
+    "backend_type",
+    "source_uri",
+    "evidence_sha256",
+    "review_status",
+    "created_at"
+  ],
+  "properties": {
+    "experiment_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "backend_type": {
+      "enum": [
+        "simulator",
+        "quantum_inspired",
+        "physical_qpu"
+      ]
+    },
+    "source_uri": {
+      "type": "string",
+      "format": "uri"
+    },
+    "evidence_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "review_status": {
+      "enum": [
+        "SOURCE_REPORTED",
+        "MISSING_EVIDENCE",
+        "CONFLICT",
+        "HUMAN_REVIEW",
+        "VERIFIED"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "dataset_ref": {
+      "type": "string"
+    },
+    "model_ref": {
+      "type": "string"
+    },
+    "parent_ref": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "owner": {
+      "type": "string"
+    },
+    "access_class": {
+      "enum": [
+        "public",
+        "internal",
+        "restricted"
+      ]
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}
