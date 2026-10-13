@@ -41,7 +41,7 @@ function journeyEvidence(){
 function showJourney(lang){
  const j=journeyEvidence(),vi=lang==='vi';
  $('#p2-journey').replaceChildren(el('p',vi?`Đã ghi nhận học: ${j.lessons.length}/5. Bài tập có phản hồi và reviewer riêng: ${j.exercises.filter(e=>e.taskKey).length}/12.`:`Study records: ${j.lessons.length}/5. Exercises with feedback and a separate reviewer: ${j.exercises.filter(e=>e.taskKey).length}/12.`),el('p',j.basicDraftReady?(vi?'Đủ bằng chứng nháp cơ bản để đề nghị đánh giá nâng cao.':'Basic draft evidence ready for an advanced assessment request.'):(vi?'Tiếp tục học, thực hành, phản hồi và review riêng.':'Continue study, practice, feedback and separate review.')),el('p',vi?'Nhận nhiệm vụ theo quyền server đã cấp; lưu bằng chứng trước bàn giao. Nâng cao chưa được đánh giá; không tự cấp quyền.':'Receive tasks within existing server grants; export evidence before handoff. Advanced competence is unassessed; no automatic grants.'));
- $('#p2-advanced').replaceChildren(...state.learning.program.advanced.map(a=>{const n=el('article','');n.append(el('h4',a.key),el('p',a.scope),...((a.steps?.[lang])||[]).map(s=>el('p',s)),el('p',a.status));return n;}));
+ $('#p2-advanced').replaceChildren(...state.learning.program.advanced.map(a=>{const n=el('article','');n.append(el('h4',a.title?.[lang]||a.key),el('p',a.scope),...((a.steps?.[lang])||[]).map(s=>el('p',s)),el('p',a.status));return n;}));
 }
 $('#p2-export-evidence').onclick=async()=>{
  try{

@@ -313,11 +313,17 @@
       "steps": {
         "vi": [
           "Chạy task với idempotency key; lưu snapshot trước/sau restart.",
-          "Đối chiếu taskKey và audit digest; ghi lỗi còn thiếu."
+          "Đối chiếu taskKey và audit digest; ghi lỗi còn thiếu.",
+          "Ghi nhiệm vụ và audit trong cùng giao dịch.",
+          "Tái mở checkpoint, đối chiếu idempotency và nhiệm vụ gián đoạn.",
+          "Ghi expected/observed/digest; không xóa lịch sử."
         ],
         "en": [
           "Run with an idempotency key; retain snapshots before/after restart.",
-          "Compare task keys and audit digests; report remaining faults."
+          "Compare task keys and audit digests; report remaining faults.",
+          "Commit task and audit together.",
+          "Reopen checkpoints; inspect idempotency and interrupted work.",
+          "Record expected/observed/digest; never delete history."
         ]
       },
       "prerequisites": [
@@ -325,7 +331,14 @@
         "Separate verified reviewer for real assessment",
         "Existing server grants only"
       ],
-      "assessment": "Manual evidence-based assessment pending; no automated competence certification"
+      "assessment": "Manual evidence-based assessment pending; no automated competence certification",
+      "title": {
+        "vi": "Lưu trữ bền vững",
+        "en": "Durable storage"
+      },
+      "expectedEvidence": "A retained checkpoint and restart evidence; no automatic replay.",
+      "assessmentStatus": "NOT ASSESSED",
+      "privilegeChange": false
     },
     {
       "key": "access",
@@ -334,11 +347,17 @@
       "steps": {
         "vi": [
           "Dùng editor/reviewer riêng trong sandbox; thử token của nhóm khác.",
-          "Lưu kết quả từ chối và scope server; không sửa quyền để đạt bài."
+          "Lưu kết quả từ chối và scope server; không sửa quyền để đạt bài.",
+          "Đối chiếu workspace/pair và role từ server.",
+          "Thử quyền viewer, phiên hết hạn và truy cập chéo.",
+          "Lưu từ chối an toàn; không tự tăng quyền."
         ],
         "en": [
           "Use separate sandbox editor/reviewer accounts; attempt a foreign team token.",
-          "Retain denial and server scope evidence; do not change grants to pass."
+          "Retain denial and server scope evidence; do not change grants to pass.",
+          "Read server workspace/pair grants and role.",
+          "Exercise viewer restrictions, expiry and cross-scope access.",
+          "Keep safe-denial evidence; never self-grant."
         ]
       },
       "prerequisites": [
@@ -346,7 +365,14 @@
         "Separate verified reviewer for real assessment",
         "Existing server grants only"
       ],
-      "assessment": "Manual evidence-based assessment pending; no automated competence certification"
+      "assessment": "Manual evidence-based assessment pending; no automated competence certification",
+      "title": {
+        "vi": "Quyền & Cô lập",
+        "en": "Authorization & isolation"
+      },
+      "expectedEvidence": "Denied cross-scope attempts without leaked data.",
+      "assessmentStatus": "NOT ASSESSED",
+      "privilegeChange": false
     },
     {
       "key": "recovery",
@@ -355,11 +381,17 @@
       "steps": {
         "vi": [
           "Theo P2_RUNBOOK tạo backup và restore vào DB mới.",
-          "Lưu hash backup, checkpoint, kết quả thu hồi phiên và rollback sandbox."
+          "Lưu hash backup, checkpoint, kết quả thu hồi phiên và rollback sandbox.",
+          "Backup nhất quán và hash/version.",
+          "Restore vào database mới, thu hồi phiên.",
+          "Rollback sandbox từ bundle đã kiểm tra; giữ backup/audit hiện tại."
         ],
         "en": [
           "Follow P2_RUNBOOK to back up and restore into a new DB.",
-          "Retain backup hashes, checkpoints, revoked-session and sandbox rollback results."
+          "Retain backup hashes, checkpoints, revoked-session and sandbox rollback results.",
+          "Capture consistent backup with digest/version.",
+          "Restore into a new database and revoke sessions.",
+          "Rollback verified sandbox bundles; preserve current backup/audit."
         ]
       },
       "prerequisites": [
@@ -367,7 +399,14 @@
         "Separate verified reviewer for real assessment",
         "Existing server grants only"
       ],
-      "assessment": "Manual evidence-based assessment pending; no automated competence certification"
+      "assessment": "Manual evidence-based assessment pending; no automated competence certification",
+      "title": {
+        "vi": "Backup & Phục hồi",
+        "en": "Backup & recovery"
+      },
+      "expectedEvidence": "Separate restore generation and retained previous state.",
+      "assessmentStatus": "NOT ASSESSED",
+      "privilegeChange": false
     },
     {
       "key": "sources",
@@ -376,11 +415,17 @@
       "steps": {
         "vi": [
           "Chọn hai nguồn mâu thuẫn; ghi URL, ngày và phạm vi từng tuyên bố.",
-          "Giữ NOT VERIFIED khi chưa đủ bằng chứng; reviewer đối chiếu nguồn."
+          "Giữ NOT VERIFIED khi chưa đủ bằng chứng; reviewer đối chiếu nguồn.",
+          "Tách nguồn, năng lực và quan hệ pháp lý.",
+          "Ghi mâu thuẫn/thời điểm/nguồn chính thức.",
+          "Thiếu chứng cứ thì NOT VERIFIED; không quảng cáo sản phẩm lượng tử hoàn thiện."
         ],
         "en": [
           "Choose two conflicting sources; record URL, date and claim scope.",
-          "Keep NOT VERIFIED where evidence is missing; reviewer checks provenance."
+          "Keep NOT VERIFIED where evidence is missing; reviewer checks provenance.",
+          "Separate source, capability and legal claims.",
+          "Record conflicts, dates and official provenance.",
+          "Missing evidence stays NOT VERIFIED; no mature quantum-product claim."
         ]
       },
       "prerequisites": [
@@ -388,7 +433,14 @@
         "Separate verified reviewer for real assessment",
         "Existing server grants only"
       ],
-      "assessment": "Manual evidence-based assessment pending; no automated competence certification"
+      "assessment": "Manual evidence-based assessment pending; no automated competence certification",
+      "title": {
+        "vi": "Nguồn & Tuyên bố",
+        "en": "Sources & claims"
+      },
+      "expectedEvidence": "Traceable claim register with explicit uncertainty.",
+      "assessmentStatus": "NOT ASSESSED",
+      "privilegeChange": false
     },
     {
       "key": "interoperability",
@@ -397,11 +449,17 @@
       "steps": {
         "vi": [
           "Chạy hai mock adapter dùng protocol 1; không gọi adapter thật.",
-          "Đối chiếu output/checks; ghi từ chối protocol hoặc scope không hợp lệ."
+          "Đối chiếu output/checks; ghi từ chối protocol hoặc scope không hợp lệ.",
+          "Đối chiếu schema/core/config/adapter version.",
+          "Thử mock read-only, không kết nối thật.",
+          "Scope thu hồi hoặc protocol không hợp lệ phải bị chặn."
         ],
         "en": [
           "Run both protocol-1 mock adapters; keep live adapters disabled.",
-          "Compare outputs/checks; retain invalid protocol or scope denials."
+          "Compare outputs/checks; retain invalid protocol or scope denials.",
+          "Check schema/core/config/adapter versions.",
+          "Exercise read-only mocks without live connections.",
+          "Reject revoked scope or incompatible protocol."
         ]
       },
       "prerequisites": [
@@ -409,7 +467,14 @@
         "Separate verified reviewer for real assessment",
         "Existing server grants only"
       ],
-      "assessment": "Manual evidence-based assessment pending; no automated competence certification"
+      "assessment": "Manual evidence-based assessment pending; no automated competence certification",
+      "title": {
+        "vi": "Giao thức & Adapter",
+        "en": "Protocol & adapters"
+      },
+      "expectedEvidence": "Zero live calls and a bounded compatibility decision.",
+      "assessmentStatus": "NOT ASSESSED",
+      "privilegeChange": false
     },
     {
       "key": "website",
@@ -418,11 +483,17 @@
       "steps": {
         "vi": [
           "Kiểm tra VI/EN tại 390px; giữ href và 10 chương hiện hữu.",
-          "Với mỗi kho đã được cấp quyền: ghi revision/hash và readback; thiếu quyền ghi BLOCKED."
+          "Với mỗi kho đã được cấp quyền: ghi revision/hash và readback; thiếu quyền ghi BLOCKED.",
+          "Giữ link/ID hiện hữu; kiểm tra mobile.",
+          "So sánh nội dung VI/EN và readback từng đích được phép.",
+          "Không báo5 khoSYNCED nếu thiếu owner/URL/quyền/readback."
         ],
         "en": [
           "Check VI/EN at 390px; preserve existing links and ten chapters.",
-          "For each authorized store record revision/hash and readback; missing access is BLOCKED."
+          "For each authorized store record revision/hash and readback; missing access is BLOCKED.",
+          "Preserve existing routes/IDs and test mobile.",
+          "Compare VI/EN and read back each approved destination.",
+          "Never claim five-vault sync without owners/URLs/scopes/readbacks."
         ]
       },
       "prerequisites": [
@@ -430,7 +501,14 @@
         "Separate verified reviewer for real assessment",
         "Existing server grants only"
       ],
-      "assessment": "Manual evidence-based assessment pending; no automated competence certification"
+      "assessment": "Manual evidence-based assessment pending; no automated competence certification",
+      "title": {
+        "vi": "Website VI/EN & Đồng bộ",
+        "en": "VI/EN website & sync"
+      },
+      "expectedEvidence": "Pinned UI/link evidence and per-target sync receipts.",
+      "assessmentStatus": "NOT ASSESSED",
+      "privilegeChange": false
     }
   ],
   "assessment": {
