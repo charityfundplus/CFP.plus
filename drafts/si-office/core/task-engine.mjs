@@ -9,6 +9,7 @@ export class TaskEngine {
   const resource=input.resource||config.permissions.resources[0];if(!config.permissions.resources.includes(resource))throw Error('TASK_RESOURCE_DENIED');const t={key:key(),pairKey:config.key,kind:input.kind,title:input.title,text:input.text||'',scenario:input.scenario||'normal',resource,owner:actor.id,status:'QUEUED',progress:0,attempt:retryOf?2:1,retryOf,output:null,error:null,checks:[],review:null};this.#tasks.push(t);return t;
  }
  get(id){const t=this.#tasks.find(x=>x.key===id);if(!t)throw Error('TASK_NOT_FOUND');return t;}
+ restore(tasks){this.#tasks=clone(tasks);}
  all(){return clone(this.#tasks);}
  pending(pairKey){return this.#tasks.some(t=>t.pairKey===pairKey&&['RUNNING','QUEUED','AWAITING HUMAN REVIEW'].includes(t.status));}
  interrupt(pairKey){for(const t of this.#tasks)if(t.pairKey===pairKey&&['QUEUED','RUNNING'].includes(t.status)){t.status='INTERRUPTED';t.error='SAFE_STOP';}}

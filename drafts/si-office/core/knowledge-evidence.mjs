@@ -8,6 +8,7 @@ export class KnowledgeEvidence {
  #events=[];
  read(resource){const r=records[resource];if(!r)throw Error('SOURCE_NOT_FOUND');return {...clone(r),resource,sha256:hash(r)};}
  append(actor,action,result,details={}){const e={sequence:this.#events.length+1,time:new Date().toISOString(),actor:{id:actor.id,role:actor.role},action,result,details:clone(details),previousHash:this.#events.at(-1)?.sha256||'GENESIS'};e.sha256=hash(e);this.#events.push(freeze(e));return clone(e);}
+ restore(events){this.#events=clone(events);if(!this.verify())throw Error("AUDIT_INTEGRITY_FAILURE");}
  events(){return clone(this.#events);}
  verify(){let previous='GENESIS';for(const {sha256,...e} of this.#events){if(e.previousHash!==previous||hash(e)!==sha256)return false;previous=sha256;}return true;}
  inventory(){return Object.keys(records).map(k=>this.read(k));}

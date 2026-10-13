@@ -1,1 +1,15 @@
-{"name": "cfp-si-office-draft", "private": true, "type": "module", "scripts": {"start": "node server.mjs", "test": "node scripts/run-tests.mjs", "demo:core": "node scripts/core-demo.mjs"}, "engines": {"node": ">=22"}}
+{
+  "name": "cfp-si-office-draft",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node scripts/run-tests.mjs",
+    "demo:core": "node scripts/core-demo.mjs",
+    "test:p2": "node tests/p2.test.mjs",
+    "demo:p2": "node scripts/p2-demo.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

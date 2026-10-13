@@ -23,11 +23,20 @@ export function validateConfig(config){
  return freeze(clone(config));
 }
 export class CoreEngine {
- #pairs=new Map();#tasks=new TaskEngine();#knowledge=new KnowledgeEvidence();#learning=new LearningTraining();#monitor=new MonitoringRecovery();#upgrades=new VersionUpgrade();#templates;#adapterFactory;#timeout;
- constructor({configs=templates,adapterFactory=provider=>new MockSIAdapter(provider),timeoutMs=150}={}){
+ #pairs=new Map();#tasks=new TaskEngine();#knowledge=new KnowledgeEvidence();#learning=new LearningTraining();#monitor=new MonitoringRecovery();#upgrades=new VersionUpgrade();#templates;#adapterFactory;#timeout;#checkpointWriter;
+ constructor({configs=templates,adapterFactory=provider=>new MockSIAdapter(provider),timeoutMs=150,checkpoint=null,checkpointWriter=null}={}){
   if(!Array.isArray(configs)||!configs.length)throw Error('CONFIG_REQUIRED');this.#templates=configs.map(validateConfig);if(new Set(this.#templates.map(c=>c.key)).size!==this.#templates.length)throw Error('DUPLICATE_PAIR_CONFIG');
-  this.#adapterFactory=adapterFactory;this.#timeout=timeoutMs;
-  this.instantiate(system,this.#templates[0].key,true);
+  this.#checkpointWriter=checkpointWriter;this.#adapterFactory=adapterFactory;this.#timeout=timeoutMs;
+  if(checkpoint)this.#restore(checkpoint);else this.instantiate(system,this.#templates[0].key,true);
+ }
+ checkpoint(){return clone({schema:1,pairs:[...this.#pairs.values()].map(p=>({...p,busy:false})),tasks:this.#tasks.all(),audit:this.#knowledge.events(),learning:this.#learning.snapshot(),alerts:this.#monitor.alerts(),upgrade:{version:this.#upgrades.version,history:this.#upgrades.history}});}
+ #restore(c){
+  if(c.schema!==1||!Array.isArray(c.pairs)||!Array.isArray(c.tasks))throw Error('CHECKPOINT_INCOMPATIBLE');
+  this.#knowledge.restore(c.audit);this.#tasks.restore(c.tasks);this.#learning.restore(c.learning);this.#monitor.restore(c.alerts);
+  if(!['0.1.0-sandbox','0.1.1-sandbox'].includes(c.upgrade.version))throw Error('CHECKPOINT_VERSION_INVALID');
+  this.#upgrades.version=c.upgrade.version;this.#upgrades.history=clone(c.upgrade.history);
+  for(const saved of c.pairs){const config=validateConfig(saved.config);if(!this.#templates.some(t=>t.key===config.key&&hash(t)===hash(config)))throw Error('CHECKPOINT_CONFIG_CONFLICT');this.#pairs.set(config.key,{...clone(saved),config,busy:false,identity:inspectIdentity(config.identity)});}
+  for(const t of this.#tasks.all())if(t.status==='RUNNING'){const live=this.#tasks.get(t.key);live.status='INTERRUPTED';live.output=null;live.error='PROCESS_RESTART';const p=this.#pair(t.pairKey);p.status='STOPPED';p.epoch++;p.stopReason='PROCESS_RESTART';this.#knowledge.append(system,'restart-interrupt','REVIEW REQUIRED',{taskKey:t.key});}
  }
  #pair(k){const p=this.#pairs.get(k);if(!p)throw Error('PAIR_NOT_FOUND');return p;}
  #authorize(actor,action){try{checkActor(actor,action);}catch(e){this.#knowledge.append({id:actor?.id||'unknown',role:actor?.role||'unknown'},action,'DENIED');throw e;}}
@@ -41,6 +50,7 @@ export class CoreEngine {
   if(p.status!=='READY'||p.busy||t.status!=='QUEUED'){this.#knowledge.append(actor,'run-task','DENIED',{taskKey,reason:'TASK_OR_PAIR_NOT_READY'});throw Error('TASK_OR_PAIR_NOT_READY');}
   const epoch=p.epoch,controller=new AbortController();p.busy=true;this.#monitor.attach(p.config.key,controller);t.status='RUNNING';t.progress=10;
   this.#knowledge.append(actor,'task-start','PASS',{taskKey});let timer;
+  if(this.#checkpointWriter){try{this.#checkpointWriter(this.checkpoint());}catch(e){controller.abort();p.busy=false;this.#monitor.detach(p.config.key);throw e;}}
   try{
    t.checks.push(inspectInput(t,p.config));checkTool(p.config,{tool:'source.read',resource:t.resource});if(t.kind!=='registry-audit')checkTool(p.config,{tool:'draft.write',resource:t.resource});const source=this.#knowledge.read(t.resource);
    const adapter=this.#adapterFactory(p.config.si.provider);
