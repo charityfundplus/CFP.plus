@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "url": "https://expdp-195-64-119-175.run.pinggy-free.link/p2",
+  "commit": "b75b780eb64430355f0b51a4b58b9e5269e0db43",
+  "verifiedAt": "2026-10-13T20:52:23Z",
+  "checks": [
+    "HTTPS public URL and Enter site interstitial",
+    "Actual synthetic editor + Secure/HttpOnly session",
+    "5 basic lessons +12 choices +6 NOT ASSESSED tracks",
+    "VI/EN display and exercise prepares task",
+    "Scoped evidence export SHA-256",
+    "Viewer denies writes; reviewer has no maintainer permission",
+    "390px no overflow/page errors; logged out after QA"
+  ],
+  "reviewWorkspace": "cfp-review1",
+  "startsWithoutTaskMutations": true,
+  "pageErrors": [],
+  "serverKeptOpenForUserReview": true,
+  "lifecycle": "EPHEMERAL; browser runtime expiry may precede provider60min",
+  "manifestSHA256": "9c8a0ce6cc1c5ea4dcf9bd1505237f966d9733b10fa2f316d1c7265ab0088832",
+  "manifestFiles": 77,
+  "accounts": [
+    {
+      "id": "cfp-editor",
+      "role": "editor",
+      "workspace": "cfp-review1",
+      "synthetic": true
+    },
+    {
+      "id": "cfp-reviewer",
+      "role": "reviewer",
+      "workspace": "cfp-review1",
+      "synthetic": true
+    },
+    {
+      "id": "cfp-viewer",
+      "role": "viewer",
+      "workspace": "cfp-review1",
+      "synthetic": true
+    }
+  ],
+  "credentials": "Private user handoff only; no passwords in GitHub/Notion",
+  "securityFix": "POST fallback, submit disabled until handler ready; old probe accounts not used",
+  "persistentHosting": "BLOCKED: primary cloud raw networking unavailable; TCP proxy refused; use supported configuration workflow or approved host"
+}
