@@ -256,8 +256,8 @@
     },
     {
       "path": "docs/WORKING_PREVIEW_PROVISION_TEST_RESULTS.txt",
-      "bytes": 222,
-      "sha256": "319f26e1fd23ee232e9205b521535719e8566747eeca504180b304d3a11a1591"
+      "bytes": 306,
+      "sha256": "40e729155d33461b270912b6955a208b4d9c10a1f8193857ca24bda0608e2030"
     },
     {
       "path": "docs/WORKING_PREVIEW_RUNBOOK.md",
@@ -281,8 +281,8 @@
     },
     {
       "path": "public/core.js",
-      "bytes": 11959,
-      "sha256": "0dc02cde9bb3620de1f8ff2b6e26b1dcd5526ad5225b335eec9285489e8892d7"
+      "bytes": 12042,
+      "sha256": "cf79255086a929c955c9d05af042b36493c78f1e4bdc2d0fd3e21da03bee54e9"
     },
     {
       "path": "public/p2-office.js",
@@ -291,8 +291,8 @@
     },
     {
       "path": "public/p2.html",
-      "bytes": 9240,
-      "sha256": "acdd07c7dbe5387387031ad11d8f66b06880d384f9b3f85a8face89b558423bc"
+      "bytes": 9355,
+      "sha256": "49143965cebc240f89bfea7ea6dcc04b556cbb3388900f6421166d391123defa"
     },
     {
       "path": "public/style.css",
@@ -386,8 +386,9 @@
     },
     {
       "path": "tests/working-preview.test.mjs",
-      "bytes": 1578,
-      "sha256": "99e31d9a363514e2bd08a51c225bca869ea5834f1bdabbd57ba55cc8c39869c4"
+      "bytes": 2494,
+      "sha256": "0d277a6262b02d76c3fd6027b9b14f1cfa5759ab6a738261d8d056a37e39ac3c"
     }
-  ]
+  ],
+  "securityFix": "POST credential form; submit disabled until handler ready; old probe accounts not handed off"
 }
