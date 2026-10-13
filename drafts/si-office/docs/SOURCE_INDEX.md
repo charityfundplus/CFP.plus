@@ -10,3 +10,5 @@
 - DID history reference: registry/CFP_INTERNAL_V_D_NUMBER_SYSTEM_REVIEW_RELEASE_PLAN_V0_1.md — read this revision; not exact D 500 authority.
 
 No private Notion/Drive content is replicated as a public corpus. Links do not establish permissions for other systems. No new HUB, Registry authority or vault is created.
+
+Standard Core revision read-only coordination sources: https://github.com/charityfundplus/CFP.plus/issues/125 (website), /issues/126 (learn/practice), /issues/127 (US HSTDN and display groups), /issues/129 (Siêu Trí Tuệ (SI🤖AI🤖) naming). Read this turn; no issue state/assignments changed. PR124 reused as the source/review channel.

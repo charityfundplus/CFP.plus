@@ -2,6 +2,8 @@
 
 Ngày 13/10/2026 • P0 • HUB 69 duy nhất • PRODUCTION NO-GO.
 
+**Current extension: Bộ Code Lõi Chuẩn + Siêu Bộ Đôi sandbox; combined tests 40/40.** See core/, configs/pairs.json and CORE_RUNBOOK. Earlier office-phase evidence is retained below.
+
 Bản mẫu Node.js không dependency runtime: 12 phân hệ responsive, đăng ký theo Registry snapshot, bản ghi giả lập, draft/review, role demo, export JSON, audit hash chain. Đây là prototype vận hành thử; CRM, hợp đồng, thương mại và các module khác dùng chung cấu trúc bản ghi nháp, chưa phải sản phẩm đầy đủ.
 
 ## Chạy và thử
@@ -50,3 +52,11 @@ Human steps:
 SI AI steps: read WORK_ORDER.md and canonical sources → operate only synthetic/local authorized actions → collect output/evidence → return scoped findings to PR #124. Do not assign ID/DID/Parent/Canonical or infer partner status.
 
 Current browser testing is BLOCKED by sandbox socket EPERM; initial screenshots are baseline only. The expanded browser suite is ready for a permitted local machine; its current pass is not claimed. Read [test matrix](docs/TEST_MATRIX.md), [security report](docs/SECURITY_REPORT.md), [review handoff](docs/REVIEW_REQUEST.md), [independent Codex review](docs/INDEPENDENT_REVIEW.md), [manifest](docs/EVIDENCE_MANIFEST.json). OpenSI/Grok authorship and acceptance remain pending. Verdict: P1 DESIGN READINESS CANDIDATE / PARTIAL, not production approval.
+
+## Bộ Code Lõi Chuẩn • Siêu Bộ Đôi
+
+New shared modules are in `core/`; instances come from `configs/pairs.json`, not copied code. Run `npm run demo:core` without network for a runnable sample. On a permitted local machine run `npm start` and open **http://127.0.0.1:4173/core** for task assignment, supervision, exercise faults, safe-stop/recovery and synchronized version-metadata rehearsal. Existing office UI remains at `/`.
+
+Siêu Bộ Đôi = **Siêu Trí Tuệ (SI🤖AI🤖) + Siêu Phần Mềm**. Current mock identities are explicitly unverified with null ID/Parent/DID/Canonical. The Core never enables production or commercial/legal claims. Configuration does not grant actual model/API/vault access.
+
+[Core architecture](docs/CORE_ARCHITECTURE.md) • [Step-by-step runbook](docs/CORE_RUNBOOK.md) • [40-test matrix](docs/CORE_TEST_MATRIX.md) • [Core status](docs/CORE_STATUS.md) • [Independent Codex review](docs/CORE_INDEPENDENT_REVIEW.md). New tests include hostile proposals/tool omissions, evidence/identity forgery, timeouts, late results after stop, recovery, concurrency and upgrade/rollback. Current browser remains BLOCKED; earlier office screenshots are baseline only. Version upgrade is metadata rehearsal, not a binary installer. Cross-checks run independent deterministic code outside the SI adapter, not eight real reviewers.
