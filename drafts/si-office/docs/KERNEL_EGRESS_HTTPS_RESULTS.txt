@@ -1,0 +1,11 @@
+test_budget_forecast_stops_actual_https (__main__.Checks.test_budget_forecast_stops_actual_https) ... ok
+test_expiry_stops_actual_https_without_request (__main__.Checks.test_expiry_stops_actual_https_without_request) ... ok
+test_meter_missing_stops_actual_https_not_only_admission (__main__.Checks.test_meter_missing_stops_actual_https_not_only_admission) ... ok
+test_missing_authority_never_arms (__main__.Checks.test_missing_authority_never_arms) ... ok
+test_real_tls_traffic_is_seen_in_all_visible_kernel_counters (__main__.Checks.test_real_tls_traffic_is_seen_in_all_visible_kernel_counters) ... ok
+test_traffic_outside_proxy_triggers_actual_tls_listener_close (__main__.Checks.test_traffic_outside_proxy_triggers_actual_tls_listener_close) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.759s
+
+OK

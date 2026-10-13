@@ -1,0 +1,51 @@
+{
+  "base": "42e8baeed1b6fd2e6114b7b54c69c94747aee51f",
+  "scope": "Preparation additions only, pinned Preview not changed; historical source snapshot retained; old suites not rerun",
+  "files": [
+    {
+      "path": "drafts/si-office/scripts/kernel-egress-guard.py",
+      "bytes": 5459,
+      "sha256": "4aac1fd95a6832acf3bae9dc2dc12068da7f8c589aeecc6b8710d68012b17c9f"
+    },
+    {
+      "path": "drafts/si-office/tests/kernel-egress-https.py",
+      "bytes": 5290,
+      "sha256": "a577ae6cc6ff8c831817b23acd703bee02b09dbd7b098e80dd37b0944d423ee7"
+    },
+    {
+      "path": "drafts/si-office/docs/DIGITALOCEAN_PREVIEW_PREPARATION.md",
+      "bytes": 6064,
+      "sha256": "7adeec22ea1c06faab79afb821fc1037083eec7401a804336818b8f7c91fcc3d"
+    },
+    {
+      "path": "drafts/si-office/docs/CHECKOUT_SHORT_VI.md",
+      "bytes": 2063,
+      "sha256": "6ad07a8f6b1927813122178eee21d6f7596eed8dcb00629eebd12f2550748165"
+    },
+    {
+      "path": "drafts/si-office/docs/TRAINING_HSTDN_WORKBOOK_VI_EN.md",
+      "bytes": 7308,
+      "sha256": "416186b5e6ff5d15f002437a2d0a0c9b7f5a7793ff6c06e7b70fc1d094d56ce6"
+    },
+    {
+      "path": "drafts/si-office/docs/HANDOFF_WORKSHEETS.json",
+      "bytes": 8033,
+      "sha256": "51d65279044425f5aca5a1cfced4fa9a0749cc9cc7c5744b3eecaf19f2e236f4"
+    },
+    {
+      "path": "drafts/si-office/docs/KERNEL_EGRESS_HTTPS_RECEIPT.json",
+      "bytes": 880,
+      "sha256": "a4a509a91633e9f9cdaeb40499d2709532b0a61efc24a05e25e57833c2880d4e"
+    },
+    {
+      "path": "drafts/si-office/docs/KERNEL_EGRESS_HTTPS_RESULTS.txt",
+      "bytes": 850,
+      "sha256": "8bd3ce42f94ee9f72e096105a3ab9101ce8ca63fbdd8b178478df0629669faca"
+    },
+    {
+      "path": "drafts/si-office/docs/digitalocean-preview-history/CFP_PREVIEW_APPROVAL_VI.md",
+      "bytes": 10156,
+      "sha256": "30b1c898eba6772d0a6a977ccdb9f452b54d589ec9c250974334f0e1b24a8716"
+    }
+  ]
+}
