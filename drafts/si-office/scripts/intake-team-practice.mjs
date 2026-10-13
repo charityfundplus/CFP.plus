@@ -13,7 +13,7 @@ export async function rehearseIntakePractice({teams=4}={}){
  const rows=Array.from({length:teams},(_,i)=>{
   const workspace='practice-'+i,database=join(root,workspace+'.db'),service=new P2Sandbox(database),password=randomBytes(24).toString('hex');services.push(service);
   for(const [id,role] of [['learner','editor'],['reviewer','reviewer']])service.provision({id,password,role,workspace,pairs:['*']});
-  return {workspace,database,service,learner:service.login('learner',password),reviewer:service.login('reviewer',password),entityType:['new-ai','existing-ai','developer','enterprise'][i%4],tasks:[],applications:[],enrollments:[]};
+  return {workspace,database,service,learner:service.login('learner',password),reviewer:service.login('reviewer',password),entityType:['new-ai','existing-ai','developer','enterprise'][i%4],tasks:[],taskTracks:[],applications:[],enrollments:[]};
  });
  for(const row of rows){
   for(const template of templates){
@@ -22,7 +22,7 @@ export async function rehearseIntakePractice({teams=4}={}){
    row.applications.push(application);
    for(const [i,track] of program.advanced.entries())if(templates[i%templates.length].key===template.key){
     const enrollment=await row.service.execute(row.learner,'officeCreate',{pairKey:template.key,kind:'enrollment',input:{name:'Synthetic advanced practice '+track.key,officeRef:application.key,source:'https://github.com/charityfundplus/CFP.plus/issues/130',scope:'Draft exercise only; verified assessor and real assessment pending',track:track.key,commitment:true,synthetic:true}});row.enrollments.push(enrollment);
-    const task=await row.service.execute(row.learner,'createTask',{pairKey:template.key,input:{kind:'training-drill',title:'Advanced practice draft: '+track.key,text:'Synthetic reflection for '+track.key+'. Evidence and permission prerequisites remain pending. No competency or execution approval.',scenario:'normal',resource:template.permissions.resources[0]}},{idempotencyKey:'advanced-'+track.key});row.tasks.push(task);
+    const task=await row.service.execute(row.learner,'createTask',{pairKey:template.key,input:{kind:'training-drill',title:'Advanced practice draft: '+track.key,text:'Synthetic reflection for '+track.key+'. Evidence and permission prerequisites remain pending. No competency or execution approval.',scenario:'normal',resource:template.permissions.resources[0]}},{idempotencyKey:'advanced-'+track.key});row.tasks.push(task);row.taskTracks.push({taskKey:task.key,track:track.key,expectedEvidence:track.expectedEvidence});
    }
   }
  }
@@ -46,7 +46,8 @@ export async function rehearseIntakePractice({teams=4}={}){
   assert.throws(()=>row.service.context(rows[(i+1)%teams].learner),/AUTH_DENIED/);
   const checkpoint=row.service.verify();row.service.close();const reopened=new P2Sandbox(row.database);services.push(reopened);assert.deepEqual(reopened.verify(),checkpoint);
   for(const template of templates){const office=await reopened.execute(row.learner,'officeSnapshot',{pairKey:template.key});assert.equal(office.registrations.length,1);assert.equal(office.records.filter(r=>r.kind==='enrollment').length,2);}
-  result.push({workspace:row.workspace,entityType:row.entityType,applications:3,enrollments:6,reviewedAdvancedDrafts:6,pairs:3,restartVerified:true,foreignTokenDenied:true,audit:checkpoint});
+  const taskEvidence=row.taskTracks.map(mapping=>{const task=snapshot.tasks.find(t=>t.key===mapping.taskKey);assert(task&&task.review.actor!==task.owner);return {...mapping,task,assessment:'NOT ASSESSED',assessorVerified:false,prerequisitesVerified:false,competencyPass:false};});
+  result.push({workspace:row.workspace,entityType:row.entityType,applications:3,enrollments:6,reviewedAdvancedDrafts:6,pairs:3,restartVerified:true,foreignTokenDenied:true,audit:checkpoint,taskEvidence});
  }
  return {mode:'SYNTHETIC ADVANCED PRACTICE / NOT ASSESSED',teams,concurrentServices:teams,sharedDatabase:false,results:result,realMemberACK:false,productionApproved:false};
  }finally{for(const service of services)service.close();rmSync(root,{recursive:true,force:true});}
