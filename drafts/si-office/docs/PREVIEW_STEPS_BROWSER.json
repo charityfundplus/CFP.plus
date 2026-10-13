@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "scope": "Only new seven-step navigation integrated with concurrent8b53169 intake; underlying intake/full training suites not rerun",
+  "checks": [
+    "Anonymous seven-step navigation resolves; registration/work/evidence lead to issued-account login",
+    "Authenticated links use existing universal intake/review/study/work/export; viewer permissions retained",
+    "VI/EN320/390, logout resets links, no page errors; certificate QA limited to exact local SPKI"
+  ],
+  "pageErrors": [],
+  "syntheticOnly": true,
+  "servicesStopped": true,
+  "remoteIPhoneURL": null,
+  "realVerification": "NOT VERIFIED"
+}

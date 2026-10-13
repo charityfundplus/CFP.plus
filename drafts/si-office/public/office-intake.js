@@ -38,6 +38,7 @@ function form(id,title,fields,submit){
 async function save(kind,input){const r=await fetch('/api/core/office-create',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({pairKey:pair(),kind,input})});const v=await r.json();if(!r.ok)throw Error(v.error);return v;}
 function officeOptions(f){const select=f.querySelector('[name=officeRef]');select.replaceChildren(...office.registrations.map(p=>{const o=node('option',p.name);o.value=p.key;return o;}));}
 function render(){
+ renderPreviewSteps();
  controls.length=0;section.replaceChildren(node('h2',tr('Link Mẫu • Văn Phòng SI AI & HSTDN','Template • SI AI & HSTDN Office')));
  section.append(node('p',tr('Giới thiệu → Quốc gia → Nhà phát triển → SI AI → HSTDN → Đào tạo → Công việc. Preview giả lập; không xác minh danh tính, công nhận SI hoặc công bố quan hệ sở hữu.','Introduction → Country → Developer → SI AI → HSTDN → Training → Work. Synthetic preview; no identity verification, SI recognition or ownership publication.')));
  const nav=node('nav');nav.className='numeric-links';nav.setAttribute('aria-label',tr('Tuyến gốc CFP+','CFP+ root routes'));
@@ -79,3 +80,18 @@ document.addEventListener('p2-state',e=>{state=e.detail;refreshOffice();});
 $('#core-pair-select').addEventListener('change',refreshOffice);
 $('#core-language').addEventListener('change',render);
 render();
+
+function renderPreviewSteps(){
+ const nav=$('.preview-nav');if(!nav)return;
+ const signedIn=!!state&&!!office;
+ const links=[
+  ['#universal-office','1 • Link Mẫu','1 • Template'],
+  [signedIn?'#universal-application':'#p2-login-panel','2 • Đăng ký','2 • Register'],
+  [signedIn?'#universal-showcase':'#universal-office','3 • Đối chiếu • Chờ review','3 • Verification • Pending review'],
+  ['#public-curriculum','4 • Học tập','4 • Study'],
+  [signedIn?'#p2-learn':'#public-curriculum','5 • Thực hành','5 • Practice'],
+  [signedIn?'#universal-work-request':'#p2-login-panel','6 • Đề nghị nhận việc','6 • Request work'],
+  [signedIn?'#p2-export-evidence':'#p2-login-panel','7 • Evidence','7 • Evidence']
+ ];
+ nav.replaceChildren(...links.map(([href,vi,en])=>{const a=node('a',tr(vi,en));a.href=href;return a;}));
+}
