@@ -13,6 +13,7 @@ import {VersionUpgrade} from './version-upgrade.mjs';
 import {hubInventory} from './hub69-integration.mjs';
 import {createState,validateRegistration,validateHSTDN,safeURL,modules,registry} from '../model.mjs';
 import {moduleContracts} from '../public/office-contracts.js';
+import {createOfficeIntake} from './office-intake.mjs';
 const system={id:'core-system-synthetic',role:'system'};
 export function validateConfig(config){
  requireKeys(config,['key','name','mode','identity','si','software','assignment','missions','supervision','permissions','owner','sources','testStatus','operatingStatus']);
@@ -49,7 +50,8 @@ export class CoreEngine {
  #officeState(pairKey){this.#pair(pairKey);if(!this.#office.has(pairKey))this.#office.set(pairKey,createState());return this.#office.get(pairKey);}
  officeSnapshot(actor,pairKey){this.#authorize(actor,'read');return clone({...this.#officeState(pairKey),modules,moduleContracts,registry});}
  officeCreate(actor,pairKey,kind,input){return this.#act(actor,'office-create',()=>{const state=this.#officeState(pairKey);let row;
-  if(kind==='profile'){row=validateRegistration(input);if(state.registrations.some(p=>p.name===row.name&&p.developer===row.developer))throw Error('DUPLICATE_PROFILE');row.key=key();state.registrations.push(row);}
+  if(['application','enrollment','marketing','work-request'].includes(kind)){row=createOfficeIntake(state,kind,input,actor,this.#learning.snapshot().program);}
+  else if(kind==='profile'){row=validateRegistration(input);if(state.registrations.some(p=>p.name===row.name&&p.developer===row.developer))throw Error('DUPLICATE_PROFILE');row.key=key();state.registrations.push(row);}
   else if(kind==='hstdn'){row=validateHSTDN(input,state);row.key=key();state.hstdn.push(row);}
   else if(['product','service'].includes(kind)){requireKeys(input,['name','source','officeRef','hstdnRef','scope','maturity','synthetic']);if(input.synthetic!==true||!text(input.name,200)||!safeURL(input.source)||!state.registrations.some(p=>p.key===input.officeRef)||input.hstdnRef&&!state.hstdn.some(h=>h.key===input.hstdnRef&&h.members.includes(input.officeRef)))throw Error('CATALOG_SCOPE_INVALID');if(kind==='product'&&!['concept','research','prototype'].includes(input.maturity)||kind==='service'&&!text(input.scope,300))throw Error('CATALOG_MATURITY_REQUIRED');row={...clone(input),kind,key:key(),status:'DRAFT',sourceVerification:'NOT VERIFIED',capabilityVerification:'NOT VERIFIED',legalRelationshipVerification:'NOT VERIFIED'};state.records.push(row);}
   else throw Error('OFFICE_KIND_DENIED');this.#knowledge.append(actor,'office-record','DRAFT ONLY',{pairKey,kind,recordKey:row.key,recordHash:hash(row)});return row;});}

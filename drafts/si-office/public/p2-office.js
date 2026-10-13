@@ -20,8 +20,8 @@ document.addEventListener('p2-state',e=>{state=e.detail;refresh().catch(e=>$('#p
 $('#p2-lesson-form').onsubmit=e=>{e.preventDefault();save(()=>api('learn',{pairKey:pair(),lesson:new FormData(e.target).get('lesson')}));};
 $('#p2-feedback-form').onsubmit=e=>{e.preventDefault();save(()=>api('feedback',Object.fromEntries(new FormData(e.target))));};
 $('#p2-profile-form').onsubmit=e=>{e.preventDefault();const input=Object.fromEntries(new FormData(e.target));input.synthetic=true;input.identityEvidence=input.source;save(()=>api('office-create',{pairKey:pair(),kind:'profile',input}));};
-$('#p2-hstdn-form').onsubmit=e=>{e.preventDefault();const {member,...input}=Object.fromEntries(new FormData(e.target));Object.assign(input,{members:[member],relation_type:'proposed-collaboration',source:'https://github.com/charityfundplus/CFP.plus/issues/130',synthetic:true});save(()=>api('office-create',{pairKey:pair(),kind:'hstdn',input}));};
-$('#p2-catalog-form').onsubmit=e=>{e.preventDefault();const {kind,...input}=Object.fromEntries(new FormData(e.target));Object.assign(input,{maturity:'research',source:'https://github.com/charityfundplus/CFP.plus/issues/130',synthetic:true});save(()=>api('office-create',{pairKey:pair(),kind,input}));};
+$('#p2-hstdn-form').onsubmit=e=>{e.preventDefault();const {member,...input}=Object.fromEntries(new FormData(e.target));Object.assign(input,{members:[member],synthetic:true});save(()=>api('office-create',{pairKey:pair(),kind:'hstdn',input}));};
+$('#p2-catalog-form').onsubmit=e=>{e.preventDefault();const {kind,...input}=Object.fromEntries(new FormData(e.target));Object.assign(input,{maturity:'research',synthetic:true});save(()=>api('office-create',{pairKey:pair(),kind,input}));};
 
 $('#p2-lesson-form [name=lesson]').addEventListener('change',showLesson);
 
@@ -48,7 +48,8 @@ $('#p2-export-evidence').onclick=async()=>{
   // Fetch current server-filtered state; never export cookies or account secrets.
   const response=await fetch('/api/core/state');if(!response.ok)throw Error('AUTHENTICATED STATE REQUIRED');state=await response.json();
   const j=journeyEvidence(),tasks=state.tasks.filter(t=>t.pairKey===j.pairKey&&t.owner===j.subject),keys=new Set(tasks.map(t=>t.key));
-  const payload={format:'cfp-training-evidence-v1',exportedAt:new Date().toISOString(),mode:state.mode,journey:j,tasks,feedback:state.learning.feedback.filter(f=>keys.has(f.taskKey)),observations:state.learning.observations.filter(o=>o.subject===j.subject&&o.pairKey===j.pairKey),audit:state.audit.filter(a=>a.details?.pairKey===j.pairKey||keys.has(a.details?.taskKey)),auditValid:state.auditValid,sourceRevision:'SEE BUILD MANIFEST; EXPORT DOES NOT CERTIFY REVISION'};
+  const scopedOffice=await api('office',{pairKey:j.pairKey});const ownApplications=scopedOffice.registrations.filter(r=>r.subject===j.subject),ownRefs=new Set(ownApplications.map(r=>r.key));
+  const payload={format:'cfp-training-evidence-v1',exportedAt:new Date().toISOString(),mode:state.mode,journey:j,tasks,office:{applications:ownApplications,hstdn:scopedOffice.hstdn.filter(r=>r.members.some(k=>ownRefs.has(k))),records:scopedOffice.records.filter(r=>r.subject===j.subject||ownRefs.has(r.officeRef))},feedback:state.learning.feedback.filter(f=>keys.has(f.taskKey)),observations:state.learning.observations.filter(o=>o.subject===j.subject&&o.pairKey===j.pairKey),audit:state.audit.filter(a=>a.details?.pairKey===j.pairKey||keys.has(a.details?.taskKey)),auditValid:state.auditValid,sourceRevision:'SEE BUILD MANIFEST; EXPORT DOES NOT CERTIFY REVISION'};
   const payloadJSON=JSON.stringify(payload),digest=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(payloadJSON))),b=>b.toString(16).padStart(2,'0')).join('');
   const url=URL.createObjectURL(new Blob([JSON.stringify({sha256:digest,digestOf:'UTF-8 payloadJSON bytes',payloadJSON},null,2)],{type:'application/json'}));
   const a=el('a','');a.href=url;a.download='cfp-training-evidence.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);$('#p2-export-status').textContent='SHA-256 '+digest;
