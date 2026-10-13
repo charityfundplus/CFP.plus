@@ -1,6 +1,1 @@
-CURRENT REVISION: BLOCKED / MISSING EVIDENCE
-Chromium launch in restricted execution sandbox failed: socket shutdown/setsockopt EPERM.
-Two socket-permission runs were interrupted before execution; they do not count as tests or approval.
-Baseline browser pass and screenshots belong to initial PR commit 1e84c7b2c9d67af653ee89b8c6f2785e3ffa52ff only.
-Current VI/EN, proposal and HSTDN browser suite is prepared in tests/browser.mjs but has not passed in this environment.
-Current handler tests execute actual server request listener in process, without testing socket transport or browser behavior.
+Current browser PASS: 16/16 check groups. See BROWSER_QA_REPORT.json. Pinned application 50d17cc1be8408e4e0fd9981a4ff0e15129e6efa. Historical EPERM preserved in CORE_BROWSER_STATUS_HISTORICAL.md. Synthetic ephemeral loopback only; server stopped.

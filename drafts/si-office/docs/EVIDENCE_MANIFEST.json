@@ -1,6 +1,6 @@
 {
-  "version": 3,
-  "createdAt": "2026-10-13T04:34:04.976Z",
+  "version": 4,
+  "createdAt": "2026-10-13T09:00:12.241Z",
   "owner": "Codex",
   "mode": "RESEARCH ONLY • HUMAN REVIEW • PRODUCTION NO-GO",
   "registryBaseline": "835616308111f6851c0387fa9f5eda60c9ffa624",
@@ -11,7 +11,7 @@
     "did": null,
     "canonical": null
   },
-  "testScope": "40 combined tests: actual HTTP handler and shared Standard Core methods in process; no socket/browser test for current revision",
+  "testScope": "40 combined handler/Core tests; 16 actual browser check groups against pinned application commit 50d17cc1be8408e4e0fd9981a4ff0e15129e6efa",
   "core": {
     "version": "0.1.0-sandbox",
     "modules": 12,
@@ -20,14 +20,14 @@
     "crossCheck": "4 axes / 8 deterministic checks / 2 rounds; not 8 real reviewers"
   },
   "independentReview": "Separate Codex agent verified permission-omission repair and 40/40; not OpenSI/Grok",
-  "browserStatus": "BLOCKED: sandbox EPERM; baseline evidence retained separately",
+  "browserStatus": "PASS: 16/16 remote ephemeral loopback checks; 65 pinned source hashes verified; server stopped; baseline images remain historical",
   "openSIReview": "PENDING; independent Codex review is not OpenSI",
   "grokReview": "PENDING; source authorship unverified",
   "files": [
     {
       "path": "README.md",
-      "bytes": 6895,
-      "sha256": "e91053a3ee4b428b46311f6d334c8558f3581b48365645640a05c832ac125b6b",
+      "bytes": 7122,
+      "sha256": "b5c98828b8a8771aa3b463e0222b4fd0b43739eea479d56f22bc5359044950e0",
       "scope": "DRAFT EVIDENCE"
     },
     {
@@ -139,6 +139,24 @@
       "scope": "DRAFT EVIDENCE"
     },
     {
+      "path": "docs/ARCHIVE_RECONCILIATION.json",
+      "bytes": 906,
+      "sha256": "399b07d2591336461f92f1fe3b8f4c3d004722d9ec74083670f20d70630190d0",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "docs/BROWSER_QA_ATTEMPTS.json",
+      "bytes": 4061,
+      "sha256": "b8aac2920894c760a645f80371f864bad5232acfedc7e9ee829c1de92f520a54",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "docs/BROWSER_QA_REPORT.json",
+      "bytes": 1563,
+      "sha256": "17311ab7641b52ec7f457d547a6a1f0f0cb70976fdf826d9a4ff5a988dd4687b",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
       "path": "docs/CORE_ARCHITECTURE.md",
       "bytes": 6151,
       "sha256": "620a472f16f3e70d46b1c6b4c5c4e6e32ae5f95e117c9e089d3466a4549346d0",
@@ -146,6 +164,12 @@
     },
     {
       "path": "docs/CORE_BROWSER_STATUS.md",
+      "bytes": 1832,
+      "sha256": "98097b95b3c4e22b499f740625bca49ed27c6d22c241ccaee8484ee290b8183d",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "docs/CORE_BROWSER_STATUS_HISTORICAL.md",
       "bytes": 506,
       "sha256": "c17220131cde2dc3b7bb8104161ac31162b3baf536addf347714112fbf489194",
       "scope": "DRAFT EVIDENCE"
@@ -158,20 +182,20 @@
     },
     {
       "path": "docs/CORE_RUNBOOK.md",
-      "bytes": 4056,
-      "sha256": "cfe4ee88efd0a49ae9dbfd7347062672c2f89d4a9c4296cf1e5b8b0801f1a8bd",
+      "bytes": 4213,
+      "sha256": "e60d28780de08e17fafcf084195b509a9e694f13fd747cfccb72a78730d6d056",
       "scope": "DRAFT EVIDENCE"
     },
     {
       "path": "docs/CORE_STATUS.md",
-      "bytes": 2470,
-      "sha256": "8edd83d3b2909f3cd9c697d191832592d27416f01a0ade7ae60147b30ff69f14",
+      "bytes": 2627,
+      "sha256": "2604201d936eb5b183623cf5ebe134c7ea901a7ba02c496abb97c26589e1dfb4",
       "scope": "DRAFT EVIDENCE"
     },
     {
       "path": "docs/CORE_TEST_MATRIX.md",
-      "bytes": 2593,
-      "sha256": "994c19af32d5552535d2a74facb3d14c546581f3c4c1260ce73f81a64f394a4f",
+      "bytes": 2750,
+      "sha256": "cf249efee573b97b56ce6dc360093dcc9035cd9e9aa140544bc5f80f1007cd2e",
       "scope": "DRAFT EVIDENCE"
     },
     {
@@ -187,9 +211,27 @@
       "scope": "DRAFT EVIDENCE"
     },
     {
+      "path": "docs/NOTION_SYNC_PACKET.md",
+      "bytes": 1509,
+      "sha256": "3c858e303ac8bee633432542fb80f67aade72e700f6d9e4cc67e28b9f8d77c6f",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "docs/P1_DECISION_PACK.md",
+      "bytes": 3355,
+      "sha256": "3727dfb58a53ae78b1e6e0e9ad1b29904df1eedcefd24838affc80ad4e64839f",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "docs/P1_INDEPENDENT_REVIEW.md",
+      "bytes": 4929,
+      "sha256": "fbfb44a311169dd8185c5e252a65d2ed2ad5399705a007ed65fdc5ca6114e768",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
       "path": "docs/PR_BODY.md",
-      "bytes": 2148,
-      "sha256": "d8f18f64b5d30efb017e689b2d43b1201bad045d7e2ae969fe31f770af1663d1",
+      "bytes": 1485,
+      "sha256": "692ed01aac9486bfc3699d52930e33a0de8193eee9e75fd3ba84a2acfce9618b",
       "scope": "DRAFT EVIDENCE"
     },
     {
@@ -212,8 +254,8 @@
     },
     {
       "path": "docs/STATUS.md",
-      "bytes": 3829,
-      "sha256": "9999489a9257bacae7b90c2dd5e062ed21238c8cef0fa4f936efa94752ab4d7d",
+      "bytes": 1832,
+      "sha256": "98097b95b3c4e22b499f740625bca49ed27c6d22c241ccaee8484ee290b8183d",
       "scope": "DRAFT EVIDENCE"
     },
     {
@@ -223,9 +265,15 @@
       "scope": "DRAFT EVIDENCE"
     },
     {
+      "path": "docs/STATUS_HISTORICAL.md",
+      "bytes": 3829,
+      "sha256": "9999489a9257bacae7b90c2dd5e062ed21238c8cef0fa4f936efa94752ab4d7d",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
       "path": "docs/TEST_MATRIX.md",
-      "bytes": 3147,
-      "sha256": "db40c22641cecd957cda7f5cea683a51d041995b004b7ac3ba12a6d83f8994d7",
+      "bytes": 3304,
+      "sha256": "5bd90ba36ce1caf5e4c2963980b25b8357f11cdcc7b46c8cd3cf09c1e7d4573c",
       "scope": "DRAFT EVIDENCE"
     },
     {
@@ -260,8 +308,8 @@
     },
     {
       "path": "docs/browser-test-results.txt",
-      "bytes": 598,
-      "sha256": "4d6612bc28798d975ba7f9eb89d6eb258328158e18a8d7f3376366312d7e0ec6",
+      "bytes": 247,
+      "sha256": "32fc8371697e2d4bedf14d8ccdcd33accea6cd64c32bf83ba27faec0b20f7ef2",
       "scope": "DRAFT EVIDENCE"
     },
     {
@@ -362,8 +410,8 @@
     },
     {
       "path": "scripts/evidence.mjs",
-      "bytes": 2320,
-      "sha256": "06536e2bf455bf4b4bb223c7d2510af57ce2c3ac2042032effa2d42f4ad405be",
+      "bytes": 2398,
+      "sha256": "f092c627d2773bed109cff45d6258bf66cd47ae081b1b5b32a5eb789936edefe",
       "scope": "DRAFT EVIDENCE"
     },
     {
@@ -382,6 +430,12 @@
       "path": "server.mjs",
       "bytes": 9338,
       "sha256": "e2cb6a2d4ec1a5cd81f1bfc98fa1b3273f4a63b204c139368887f34204871d9f",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "tests/browser-qa.py",
+      "bytes": 15790,
+      "sha256": "2129b9fe998003aef44131edaf37a5ae908de7ad2b2d65f7a73de8f3e7e0e3c8",
       "scope": "DRAFT EVIDENCE"
     },
     {

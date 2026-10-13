@@ -1,9 +1,14 @@
-Relates to #119, #125, #126, #127 and #129. Adds the CFP+ Standard Core and a runnable synthetic Super Pair on top of the existing office draft: 12 shared modules, configuration-based instances, provider-neutral mock SI adapters, mission/resource/tool policy, supervised task staging, 4 axes/8 deterministic checks/2 rounds, training exercises, alerts/safe stop/recovery, evidence hashes and synchronized version-metadata upgrade/rollback.
+## Result
 
-Adds local /core task/supervision UI and three config templates (HUB69 content, training, US HSTDN). Website output is a 5-group/10-chapter draft scaffold; US HSTDN uses a fictional profile and research products/services. Existing office VI/EN/onboarding and mock integrations are reused, not rebuilt. Canonical IDs, Parent, DID, Canonical and baseline evidence remain unchanged. New naming follows Issue #129; display labels never allocate identity.
+Extends the existing HUB 69 office draft with a shared 12-module Standard Super Pair Core, configurable synthetic pairs, task supervision, independent deterministic cross-checks, stop/recovery and bounded metadata upgrade/rollback. No duplicate HUB or live integration.
 
-Validation: 40/40 combined tests (18 office regression + 22 Standard Core), actual request handler and core methods in process without sockets. Independent Codex reviewer identified and verified repair of a tool-omission permission bypass; required draft.write is now checked by trusted Core before adapter and again by checker. CLI sample executes drafting, demo review, denied-tool training/recovery, HSTDN sample and upgrade/rollback.
+## Validation and readiness
 
-Limits: identities and adapters are synthetic, not verified real SI. Cross-checkers are deterministic code outside adapter, not eight independent reviewers. Upgrade changes built-in version metadata, not executable binaries. Audit is in-memory, not durable WORM. Current browser/UI QA remains BLOCKED by sandbox EPERM; prepared suite is unexecuted, initial screenshots are office baseline only. Genuine OpenSI/Grok, D500, registry conflict and real vault/access evidence remain pending.
+- 40/40 combined handler/Core tests, including denied permissions, faults, recovery and omitted-tool regression.
+- Actual ephemeral loopback browser: 16/16 check groups PASS, VI/EN desktop/mobile, no page errors; server stopped. Pinned app commit 50d17cc1be8408e4e0fd9981a4ff0e15129e6efa, 65 source hashes verified. CSP unchanged; harness locator polling avoids eval.
+- Prior 18-test office ZIP and 40-test Core ZIP independently reconciled: 35/65 entries, zero hash mismatches, matching ZIP sidecars. New manifest includes current evidence and review.
+- Independent Codex review recommends DESIGN / SYNTHETIC TESTING ACCEPTED. Not an OpenSI/Grok ACK or Human Governance decision.
 
-Evidence manifest + SHA-256, CORE_RUNBOOK, test matrix/status, security report and independent Codex review included. All changes remain under drafts/si-office. DESIGN + BUILD + TESTING • HUMAN REVIEW • PRODUCTION NO-GO. No merge/deploy/publish/live model/tool/vault connection, customer data, payment or production grants.
+See docs/P1_DECISION_PACK.md, P1_INDEPENDENT_REVIEW.md, BROWSER_QA_REPORT.json, ARCHIVE_RECONCILIATION.json and NOTION_SYNC_PACKET.md. Named reviews and real-operation gates remain pending. Demo identities null; registry conflicts blocked; all adapters mock/disconnected/read-only. In-memory audit and demo roles are not production security.
+
+Draft remains unmerged. PRODUCTION NO-GO: no deployment, publication, real payment/customer data, DID/0, or locked ID/Parent/DID/Canonical mutation.

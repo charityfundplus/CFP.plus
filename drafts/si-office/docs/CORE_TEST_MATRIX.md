@@ -1,3 +1,5 @@
+> Current P1 evidence supersedes historical browser BLOCKED statements below: 16/16 actual browser checks PASS for commit 50d17cc; see P1_DECISION_PACK.md.
+
 # Standard Core automated evidence • 13/10/2026
 
 40/40 combined tests passed: 18 retained office/adapter regression tests + 22 Standard Core tests. In-process HTTP handler + actual core/adapter/checker methods, no socket/real model/network calls. Output: standard-core-test-results.txt; sample: core-demo-results.json.

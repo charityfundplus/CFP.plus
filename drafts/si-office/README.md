@@ -1,3 +1,5 @@
+> Current P1: 40/40 combined tests and 16/16 actual browser QA groups PASS. Human review pending; PRODUCTION NO-GO. See [decision packet](docs/P1_DECISION_PACK.md). Older browser-blocked statements describe earlier snapshots.
+
 # CFP+ • Global SI AI Office • Implementation Draft
 
 Ngày 13/10/2026 • P0 • HUB 69 duy nhất • PRODUCTION NO-GO.

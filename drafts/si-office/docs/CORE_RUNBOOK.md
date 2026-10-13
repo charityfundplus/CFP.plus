@@ -1,3 +1,5 @@
+> Current P1 evidence supersedes historical browser BLOCKED statements below: 16/16 actual browser checks PASS for commit 50d17cc; see P1_DECISION_PACK.md.
+
 # Chạy, nhân rộng, giám sát và nâng cấp • Step by Step
 
 ## Local quick start

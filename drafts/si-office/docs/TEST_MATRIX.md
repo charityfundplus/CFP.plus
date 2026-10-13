@@ -1,3 +1,5 @@
+> Current P1 evidence supersedes historical browser BLOCKED statements below: 16/16 actual browser checks PASS for commit 50d17cc; see P1_DECISION_PACK.md.
+
 # 12-module test matrix
 
 Execution: `npm test` → 18 tests / 18 passed. Actual HTTP handler invoked in process; socket transport/current browser not verified.
