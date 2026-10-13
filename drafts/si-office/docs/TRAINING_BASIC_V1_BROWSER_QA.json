@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "commit": "676834efee08cacfe4aa541ef29f126c29e2b7c5",
+  "verifiedFiles": 59,
+  "checks": [
+    "VI/EN basic lesson content",
+    "12 exercise choices load a training task",
+    "supervised task and feedback evidence",
+    "390px mobile no overflow/page errors"
+  ],
+  "serverStopped": true,
+  "scope": "TARGETED TRAINING V1 / SYNTHETIC EPHEMERAL LOOPBACK"
+}
