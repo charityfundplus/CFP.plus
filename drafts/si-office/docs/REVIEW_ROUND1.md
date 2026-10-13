@@ -1,3 +1,5 @@
+> Current candidate: targeted Browser QA 10/10 PASS at application commit ad2b0437ef85937cca2f30688bef33352a10eef6; 47 pinned source/evidence hashes verified remotely, Round1 5/5 + P2 10/10 + HTTP/release 5/5 executed remotely, no page errors, VI/EN desktop/mobile390, server/session stopped. Final follow-up changes only evidence/documentation/hash verifier; UI/Core runtime unchanged. Public phone URL remains BLOCKED without approved hosting/tunnel.
+
 # HUB69 Review Round1 — revised build candidate
 
 Central review: https://github.com/charityfundplus/CFP.plus/issues/130 . Code remains Draft PR124; existing Notion report retained. One CoreEngine; no new HUB, public Site or provider-specific copy.

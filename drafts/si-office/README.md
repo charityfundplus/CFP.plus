@@ -1,3 +1,5 @@
+> Review Round1 current: Issue #130, revised training/feedback + authenticated pair Office/HSTDN/catalog on existing Core. 5 new tests and 10 browser groups PASS at pinned application revision. Public preview URL pending approved Node/SQLite host; no deploy. Current integrity: node scripts/verify-evidence.mjs. See docs/REVIEW_ROUND1.md; older statuses below remain history.
+
 > Current P2 extension: authenticated /p2 HTTP/UI, pair/workspace authorization and bounded executable rollback/isolated restore. Run `npm run start:p2` only after local synthetic provisioning; see docs/P2_RUNBOOK.md. 10 P2 + 5 HTTP/release tests PASS; targeted browser 8/8 PASS at its pinned application commit. Independent audit remains pending; live adapters disconnected; PRODUCTION NO-GO. Current hashes: `node scripts/verify-evidence.mjs`. P1/initial P2 manifests are historical and verify only at their pinned commits.
 
 > Current P1: 40/40 combined tests and 16/16 actual browser QA groups PASS. Human review pending; PRODUCTION NO-GO. See [decision packet](docs/P1_DECISION_PACK.md). Older browser-blocked statements describe earlier snapshots.
