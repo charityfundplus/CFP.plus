@@ -309,32 +309,128 @@
     {
       "key": "durability",
       "scope": "Crash checkpoint/restart/idempotency and retained history",
-      "status": "CURRICULUM DRAFT / NOT ASSESSED"
+      "status": "CURRICULUM DRAFT / NOT ASSESSED",
+      "steps": {
+        "vi": [
+          "Chạy task với idempotency key; lưu snapshot trước/sau restart.",
+          "Đối chiếu taskKey và audit digest; ghi lỗi còn thiếu."
+        ],
+        "en": [
+          "Run with an idempotency key; retain snapshots before/after restart.",
+          "Compare task keys and audit digests; report remaining faults."
+        ]
+      },
+      "prerequisites": [
+        "Basic draft evidence",
+        "Separate verified reviewer for real assessment",
+        "Existing server grants only"
+      ],
+      "assessment": "Manual evidence-based assessment pending; no automated competence certification"
     },
     {
       "key": "access",
       "scope": "Workspace/pair isolation, revoked sessions, reviewer independence",
-      "status": "CURRICULUM DRAFT / NOT ASSESSED"
+      "status": "CURRICULUM DRAFT / NOT ASSESSED",
+      "steps": {
+        "vi": [
+          "Dùng editor/reviewer riêng trong sandbox; thử token của nhóm khác.",
+          "Lưu kết quả từ chối và scope server; không sửa quyền để đạt bài."
+        ],
+        "en": [
+          "Use separate sandbox editor/reviewer accounts; attempt a foreign team token.",
+          "Retain denial and server scope evidence; do not change grants to pass."
+        ]
+      },
+      "prerequisites": [
+        "Basic draft evidence",
+        "Separate verified reviewer for real assessment",
+        "Existing server grants only"
+      ],
+      "assessment": "Manual evidence-based assessment pending; no automated competence certification"
     },
     {
       "key": "recovery",
       "scope": "Consistent backup, isolated restore and executable sandbox rollback",
-      "status": "CURRICULUM DRAFT / NOT ASSESSED"
+      "status": "CURRICULUM DRAFT / NOT ASSESSED",
+      "steps": {
+        "vi": [
+          "Theo P2_RUNBOOK tạo backup và restore vào DB mới.",
+          "Lưu hash backup, checkpoint, kết quả thu hồi phiên và rollback sandbox."
+        ],
+        "en": [
+          "Follow P2_RUNBOOK to back up and restore into a new DB.",
+          "Retain backup hashes, checkpoints, revoked-session and sandbox rollback results."
+        ]
+      },
+      "prerequisites": [
+        "Basic draft evidence",
+        "Separate verified reviewer for real assessment",
+        "Existing server grants only"
+      ],
+      "assessment": "Manual evidence-based assessment pending; no automated competence certification"
     },
     {
       "key": "sources",
       "scope": "Source provenance/conflicts and safe research claims",
-      "status": "CURRICULUM DRAFT / NOT ASSESSED"
+      "status": "CURRICULUM DRAFT / NOT ASSESSED",
+      "steps": {
+        "vi": [
+          "Chọn hai nguồn mâu thuẫn; ghi URL, ngày và phạm vi từng tuyên bố.",
+          "Giữ NOT VERIFIED khi chưa đủ bằng chứng; reviewer đối chiếu nguồn."
+        ],
+        "en": [
+          "Choose two conflicting sources; record URL, date and claim scope.",
+          "Keep NOT VERIFIED where evidence is missing; reviewer checks provenance."
+        ]
+      },
+      "prerequisites": [
+        "Basic draft evidence",
+        "Separate verified reviewer for real assessment",
+        "Existing server grants only"
+      ],
+      "assessment": "Manual evidence-based assessment pending; no automated competence certification"
     },
     {
       "key": "interoperability",
       "scope": "Adapter protocol compatibility and revoked-scope denial",
-      "status": "CURRICULUM DRAFT / NOT ASSESSED"
+      "status": "CURRICULUM DRAFT / NOT ASSESSED",
+      "steps": {
+        "vi": [
+          "Chạy hai mock adapter dùng protocol 1; không gọi adapter thật.",
+          "Đối chiếu output/checks; ghi từ chối protocol hoặc scope không hợp lệ."
+        ],
+        "en": [
+          "Run both protocol-1 mock adapters; keep live adapters disabled.",
+          "Compare outputs/checks; retain invalid protocol or scope denials."
+        ]
+      },
+      "prerequisites": [
+        "Basic draft evidence",
+        "Separate verified reviewer for real assessment",
+        "Existing server grants only"
+      ],
+      "assessment": "Manual evidence-based assessment pending; no automated competence certification"
     },
     {
       "key": "website",
       "scope": "VI/EN mobile navigation, approved data sync and readback",
-      "status": "CURRICULUM DRAFT / NOT ASSESSED"
+      "status": "CURRICULUM DRAFT / NOT ASSESSED",
+      "steps": {
+        "vi": [
+          "Kiểm tra VI/EN tại 390px; giữ href và 10 chương hiện hữu.",
+          "Với mỗi kho đã được cấp quyền: ghi revision/hash và readback; thiếu quyền ghi BLOCKED."
+        ],
+        "en": [
+          "Check VI/EN at 390px; preserve existing links and ten chapters.",
+          "For each authorized store record revision/hash and readback; missing access is BLOCKED."
+        ]
+      },
+      "prerequisites": [
+        "Basic draft evidence",
+        "Separate verified reviewer for real assessment",
+        "Existing server grants only"
+      ],
+      "assessment": "Manual evidence-based assessment pending; no automated competence certification"
     }
   ],
   "assessment": {

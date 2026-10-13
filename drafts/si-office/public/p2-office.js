@@ -11,6 +11,7 @@ async function refresh(){if(!state||!pair())return;const requested=pair(),next=a
  $('#p2-office-records').replaceChildren(...[...office.registrations,...office.hstdn,...office.records.filter(r=>r.kind)].map(r=>{const a=el('article','');a.append(el('strong',r.name),el('p',(r.kind||'profile/HSTDN')+' • '+r.status+' • '+(r.legalRelationshipVerification||'NOT VERIFIED')));return a;}));
  const done=state.tasks.filter(t=>['AWAITING HUMAN REVIEW','REVIEWED DRAFT','REJECTED DRAFT','BLOCKED','FAILED','INTERRUPTED'].includes(t.status)&&t.pairKey===pair());fill($('#p2-feedback-task'),done,r=>r.title+' • '+r.status);
  fill($('#p2-exercise'),state.learning.program.exercises.map(e=>({...e,key:e.localKey})),r=>String(r.officeModule+1)+' • '+r.name);$('#p2-load-exercise').disabled=state.auth.role==='viewer';showLesson();$('#p2-learning-evidence').textContent=JSON.stringify({learning:state.learning.observations.filter(x=>x.pairKey===pair()),practice:state.learning.evaluations.filter(x=>x.pairKey===pair()),feedback:state.learning.feedback.filter(x=>x.pairKey===pair()),autoPromotion:false},null,2);
+ showJourney(lang);
  for(const f of ['p2-lesson-form','p2-feedback-form','p2-profile-form','p2-hstdn-form','p2-catalog-form'])$('#'+f+' button').disabled=state.auth.role==='viewer';
 }
 function catalogHSTDN(){fill($('#p2-catalog-hstdn'),[{key:'',name:'None / Không liên kết'},...office.hstdn.filter(h=>h.members.includes($('#p2-catalog-office').value))],r=>r.name);}
@@ -25,3 +26,31 @@ $('#p2-catalog-form').onsubmit=e=>{e.preventDefault();const {kind,...input}=Obje
 $('#p2-lesson-form [name=lesson]').addEventListener('change',showLesson);
 
 $('#p2-load-exercise').onclick=()=>{const exercise=state.learning.program.exercises.find(e=>e.localKey===$('#p2-exercise').value);if(!state.pairs.some(p=>p.key===exercise.pairTemplate)){ $('#p2-office-status').textContent='Pair not available in authorized scope';return; }$('#core-pair-select').value=exercise.pairTemplate;$('#core-pair-select').dispatchEvent(new Event('change'));$('#core-kind').value=exercise.task.kind;for(const name of ['title','text','scenario'])$('#core-task-form [name='+name+']').value=exercise.task[name];$('#core-task-form').scrollIntoView({behavior:'smooth'});};
+
+// Display-only progress from retained evidence. This never changes permissions.
+function journeyEvidence(){
+ const subject=state.auth.id,pairKey=pair(),program=state.learning.program;
+ const lessons=program.basic.lessons.filter(l=>state.learning.observations.some(o=>o.subject===subject&&o.pairKey===pairKey&&o.lesson===l.key)).map(l=>l.key);
+ const exercises=program.exercises.map(e=>{
+  const tasks=state.tasks.filter(t=>t.owner===subject&&t.pairKey===pairKey&&t.pairKey===e.pairTemplate&&t.kind===e.task.kind&&t.title===e.task.title&&t.text===e.task.text&&t.scenario===e.task.scenario&&t.resource===e.task.resource);
+  const reviewed=tasks.find(t=>t.status==='REVIEWED DRAFT'&&t.review?.actor!==subject&&t.review?.verdict==='acknowledge-draft'&&t.checks.length===18&&t.checks.every(c=>c.pass===true||c.result==='PASS')&&state.learning.feedback.some(f=>f.subject===subject&&f.taskKey===t.key&&f.outputHash===t.proposalHash));
+  return {exercise:e.localKey,taskKey:reviewed?.key||null,status:reviewed?'REVIEWED SYNTHETIC DRAFT':'EVIDENCE PENDING'};
+ });
+ return {subject,pairKey,lessons,exercises,basicDraftReady:lessons.length===program.basic.lessons.length&&exercises.every(e=>e.taskKey),advancedStatus:'CURRICULUM DRAFT / NOT ASSESSED',privilegeChange:false,certification:false};
+}
+function showJourney(lang){
+ const j=journeyEvidence(),vi=lang==='vi';
+ $('#p2-journey').replaceChildren(el('p',vi?`Đã ghi nhận học: ${j.lessons.length}/5. Bài tập có phản hồi và reviewer riêng: ${j.exercises.filter(e=>e.taskKey).length}/12.`:`Study records: ${j.lessons.length}/5. Exercises with feedback and a separate reviewer: ${j.exercises.filter(e=>e.taskKey).length}/12.`),el('p',j.basicDraftReady?(vi?'Đủ bằng chứng nháp cơ bản để đề nghị đánh giá nâng cao.':'Basic draft evidence ready for an advanced assessment request.'):(vi?'Tiếp tục học, thực hành, phản hồi và review riêng.':'Continue study, practice, feedback and separate review.')),el('p',vi?'Nhận nhiệm vụ theo quyền server đã cấp; lưu bằng chứng trước bàn giao. Nâng cao chưa được đánh giá; không tự cấp quyền.':'Receive tasks within existing server grants; export evidence before handoff. Advanced competence is unassessed; no automatic grants.'));
+ $('#p2-advanced').replaceChildren(...state.learning.program.advanced.map(a=>{const n=el('article','');n.append(el('h4',a.key),el('p',a.scope),...((a.steps?.[lang])||[]).map(s=>el('p',s)),el('p',a.status));return n;}));
+}
+$('#p2-export-evidence').onclick=async()=>{
+ try{
+  // Fetch current server-filtered state; never export cookies or account secrets.
+  const response=await fetch('/api/core/state');if(!response.ok)throw Error('AUTHENTICATED STATE REQUIRED');state=await response.json();
+  const j=journeyEvidence(),tasks=state.tasks.filter(t=>t.pairKey===j.pairKey&&t.owner===j.subject),keys=new Set(tasks.map(t=>t.key));
+  const payload={format:'cfp-training-evidence-v1',exportedAt:new Date().toISOString(),mode:state.mode,journey:j,tasks,feedback:state.learning.feedback.filter(f=>keys.has(f.taskKey)),observations:state.learning.observations.filter(o=>o.subject===j.subject&&o.pairKey===j.pairKey),audit:state.audit.filter(a=>a.details?.pairKey===j.pairKey||keys.has(a.details?.taskKey)),auditValid:state.auditValid,sourceRevision:'SEE BUILD MANIFEST; EXPORT DOES NOT CERTIFY REVISION'};
+  const payloadJSON=JSON.stringify(payload),digest=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(payloadJSON))),b=>b.toString(16).padStart(2,'0')).join('');
+  const url=URL.createObjectURL(new Blob([JSON.stringify({sha256:digest,digestOf:'UTF-8 payloadJSON bytes',payloadJSON},null,2)],{type:'application/json'}));
+  const a=el('a','');a.href=url;a.download='cfp-training-evidence.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);$('#p2-export-status').textContent='SHA-256 '+digest;
+ }catch(e){$('#p2-export-status').textContent=e.message;}
+};
