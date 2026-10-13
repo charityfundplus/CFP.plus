@@ -11,7 +11,9 @@
     "start:p2": "node sandbox/p2-http.mjs",
     "provision:p2": "node scripts/p2-provision.mjs",
     "test:p2:http": "node tests/p2-http.test.mjs",
-    "test:review1": "node tests/review-round1.test.mjs"
+    "test:review1": "node tests/review-round1.test.mjs",
+    "test:training": "node tests/training-basic-v1.test.mjs",
+    "demo:training": "node scripts/training-exercises.mjs"
   },
   "engines": {
     "node": ">=22"

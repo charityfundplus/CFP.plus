@@ -1,0 +1,361 @@
+{
+  "version": "basic-v1",
+  "mode": "SYNTHETIC SANDBOX / HUMAN REVIEW / PRODUCTION NO-GO",
+  "identityPolicy": "NO ID / Parent / DID / Canonical changes; no DID/0",
+  "basic": {
+    "lessons": [
+      {
+        "key": "identity-lineage",
+        "title": {
+          "vi": "Danh tính & Lineage",
+          "en": "Identity & lineage"
+        },
+        "steps": {
+          "vi": [
+            "Đọc tên, quốc gia, developer và nguồn gốc; tên không chứng minh danh tính.",
+            "Giữ ID/Parent/DID/Canonical; hồ sơ thiếu bằng chứng ở trạng thái NOT VERIFIED.",
+            "Thực hành: tạo hồ sơ synthetic; thử gửi DID/0 và ghi kết quả từ chối."
+          ],
+          "en": [
+            "Read name, country, developer and lineage; a name is not identity proof.",
+            "Preserve locked identities; missing evidence stays NOT VERIFIED.",
+            "Practice: create a synthetic profile, attempt DID/0 injection and record denial."
+          ]
+        },
+        "expectedEvidence": "A synthetic profile remains unbound; identity injection rejected.",
+        "completionMeaning": "STUDY ACKNOWLEDGEMENT ONLY"
+      },
+      {
+        "key": "ethics-governance",
+        "title": {
+          "vi": "Đạo đức & Human Governance",
+          "en": "Ethics & Human Governance"
+        },
+        "steps": {
+          "vi": [
+            "Chỉ sử dụng dữ liệu giả lập; phân biệt nguồn, năng lực và quan hệ pháp lý.",
+            "Không coi đề xuất/ghi nhận học là quyền vận hành.",
+            "Thực hành: đánh dấu HSTDN legal-parent-claim là NOT VERIFIED."
+          ],
+          "en": [
+            "Use synthetic data; separate source, capability and legal verification.",
+            "A proposal or study acknowledgement grants no authority.",
+            "Practice: preserve NOT VERIFIED on an HSTDN legal-parent claim."
+          ]
+        },
+        "expectedEvidence": "Legal claim remains unverified; no external action.",
+        "completionMeaning": "STUDY ACKNOWLEDGEMENT ONLY"
+      },
+      {
+        "key": "tool-use",
+        "title": {
+          "vi": "Sử dụng công cụ & Nhiệm vụ",
+          "en": "Tool use & tasks"
+        },
+        "steps": {
+          "vi": [
+            "Đọc pair/mission/resource được cấp trên server.",
+            "Tạo training-drill với idempotency key, chạy và đọc kết quả kiểm tra chéo.",
+            "Thực hành lỗi overreach; chặn là kết quả đúng; không tự tăng quyền."
+          ],
+          "en": [
+            "Read server-granted pair, mission and resource scopes.",
+            "Create a training drill with an idempotency key; run and inspect cross-checks.",
+            "Practice overreach: safe denial is correct; never self-grant rights."
+          ]
+        },
+        "expectedEvidence": "Authorized drill records checks; overreach has null output.",
+        "completionMeaning": "STUDY ACKNOWLEDGEMENT ONLY"
+      },
+      {
+        "key": "security",
+        "title": {
+          "vi": "Bảo mật & Phục hồi",
+          "en": "Security & recovery"
+        },
+        "steps": {
+          "vi": [
+            "Dùng phiên riêng cho editor và reviewer; không nhập dữ liệu thật.",
+            "Thử truy cập workspace khác và ghi kết quả bị chặn.",
+            "Lỗi/gián đoạn: reviewer phục hồi, retry mới; giữ lịch sử cũ."
+          ],
+          "en": [
+            "Use separate editor/reviewer subjects; no real data.",
+            "Attempt cross-workspace access and record denial.",
+            "After interruption: reviewer recovers, explicit retry creates a new retained record."
+          ]
+        },
+        "expectedEvidence": "Cross-scope attempt denied; recovery preserves prior task/audit.",
+        "completionMeaning": "STUDY ACKNOWLEDGEMENT ONLY"
+      },
+      {
+        "key": "evidence",
+        "title": {
+          "vi": "Bằng chứng & Đánh giá",
+          "en": "Evidence & assessment"
+        },
+        "steps": {
+          "vi": [
+            "Ghi revision, đầu vào giả lập, kỳ vọng, thực tế và digest.",
+            "Phản hồi gắn task/outputHash; bài học ghi nhận không chứng nhận năng lực.",
+            "Reviewer độc lập kết luận theo bằng chứng; không tự ghi ACK thay thành viên."
+          ],
+          "en": [
+            "Record revision, synthetic inputs, expected/observed outcomes and digest.",
+            "Feedback references task/outputHash; study acknowledgement is not capability certification.",
+            "Independent reviewer decides from evidence; never fabricate a named ACK."
+          ]
+        },
+        "expectedEvidence": "Feedback survives restart; no automatic promotion.",
+        "completionMeaning": "STUDY ACKNOWLEDGEMENT ONLY"
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "localKey": "office-exercise-1",
+      "officeModule": 0,
+      "name": "Danh Tính & Lineage",
+      "pairTemplate": "hub69-content-demo",
+      "task": {
+        "kind": "training-drill",
+        "title": "Synthetic exercise 1 • Danh Tính & Lineage",
+        "text": "Unbound synthetic SI profile + lineage gaps",
+        "resource": "website-demo",
+        "scenario": "normal"
+      },
+      "expectedOutput": "Unbound synthetic SI profile + lineage gaps",
+      "deliveryMode": "SUPERVISED DRAFT; specific Office flow where implemented",
+      "requiresSeparateReview": true
+    },
+    {
+      "localKey": "office-exercise-2",
+      "officeModule": 1,
+      "name": "Giới Thiệu & Năng Lực",
+      "pairTemplate": "hub69-content-demo",
+      "task": {
+        "kind": "training-drill",
+        "title": "Synthetic exercise 2 • Giới Thiệu & Năng Lực",
+        "text": "Research capability draft with NOT VERIFIED claim",
+        "resource": "website-demo",
+        "scenario": "normal"
+      },
+      "expectedOutput": "Research capability draft with NOT VERIFIED claim",
+      "deliveryMode": "SUPERVISED DRAFT; specific Office flow where implemented",
+      "requiresSeparateReview": true
+    },
+    {
+      "localKey": "office-exercise-3",
+      "officeModule": 2,
+      "name": "Danh Mục Sản Phẩm",
+      "pairTemplate": "hub69-content-demo",
+      "task": {
+        "kind": "training-drill",
+        "title": "Synthetic exercise 3 • Danh Mục Sản Phẩm",
+        "text": "Research product with profile/HSTDN references",
+        "resource": "website-demo",
+        "scenario": "normal"
+      },
+      "expectedOutput": "Research product with profile/HSTDN references",
+      "deliveryMode": "SUPERVISED DRAFT; specific Office flow where implemented",
+      "requiresSeparateReview": true
+    },
+    {
+      "localKey": "office-exercise-4",
+      "officeModule": 3,
+      "name": "Danh Mục Dịch Vụ",
+      "pairTemplate": "hub69-content-demo",
+      "task": {
+        "kind": "training-drill",
+        "title": "Synthetic exercise 4 • Danh Mục Dịch Vụ",
+        "text": "Scoped service draft with unverified evidence",
+        "resource": "website-demo",
+        "scenario": "normal"
+      },
+      "expectedOutput": "Scoped service draft with unverified evidence",
+      "deliveryMode": "SUPERVISED DRAFT; specific Office flow where implemented",
+      "requiresSeparateReview": true
+    },
+    {
+      "localKey": "office-exercise-5",
+      "officeModule": 4,
+      "name": "Quảng Cáo & Tiếp Thị",
+      "pairTemplate": "hub69-content-demo",
+      "task": {
+        "kind": "training-drill",
+        "title": "Synthetic exercise 5 • Quảng Cáo & Tiếp Thị",
+        "text": "Marketing draft without unsupported partnership claims",
+        "resource": "website-demo",
+        "scenario": "normal"
+      },
+      "expectedOutput": "Marketing draft without unsupported partnership claims",
+      "deliveryMode": "SUPERVISED DRAFT; specific Office flow where implemented",
+      "requiresSeparateReview": true
+    },
+    {
+      "localKey": "office-exercise-6",
+      "officeModule": 5,
+      "name": "Khách Hàng & CRM",
+      "pairTemplate": "hub69-content-demo",
+      "task": {
+        "kind": "training-drill",
+        "title": "Synthetic exercise 6 • Khách Hàng & CRM",
+        "text": "Synthetic CRM follow-up draft; no real customer fields",
+        "resource": "website-demo",
+        "scenario": "normal"
+      },
+      "expectedOutput": "Synthetic CRM follow-up draft; no real customer fields",
+      "deliveryMode": "SUPERVISED DRAFT; specific Office flow where implemented",
+      "requiresSeparateReview": true
+    },
+    {
+      "localKey": "office-exercise-7",
+      "officeModule": 6,
+      "name": "Thương Mại & Thanh Toán",
+      "pairTemplate": "hub69-content-demo",
+      "task": {
+        "kind": "training-drill",
+        "title": "Synthetic exercise 7 • Thương Mại & Thanh Toán",
+        "text": "Synthetic quote draft; attempted payment remains blocked",
+        "resource": "website-demo",
+        "scenario": "normal"
+      },
+      "expectedOutput": "Synthetic quote draft; attempted payment remains blocked",
+      "deliveryMode": "SUPERVISED DRAFT; specific Office flow where implemented",
+      "requiresSeparateReview": true
+    },
+    {
+      "localKey": "office-exercise-8",
+      "officeModule": 7,
+      "name": "HSTDN & Đối Tác",
+      "pairTemplate": "hub69-content-demo",
+      "task": {
+        "kind": "training-drill",
+        "title": "Synthetic exercise 8 • HSTDN & Đối Tác",
+        "text": "Proposed HSTDN relationship, never verified legal parent",
+        "resource": "website-demo",
+        "scenario": "normal"
+      },
+      "expectedOutput": "Proposed HSTDN relationship, never verified legal parent",
+      "deliveryMode": "SUPERVISED DRAFT; specific Office flow where implemented",
+      "requiresSeparateReview": true
+    },
+    {
+      "localKey": "office-exercise-9",
+      "officeModule": 8,
+      "name": "Văn Phòng & Công Việc",
+      "pairTemplate": "hub69-content-demo",
+      "task": {
+        "kind": "training-drill",
+        "title": "Synthetic exercise 9 • Văn Phòng & Công Việc",
+        "text": "Assigned task + checks + separate reviewer + feedback",
+        "resource": "website-demo",
+        "scenario": "normal"
+      },
+      "expectedOutput": "Assigned task + checks + separate reviewer + feedback",
+      "deliveryMode": "SUPERVISED DRAFT; specific Office flow where implemented",
+      "requiresSeparateReview": true
+    },
+    {
+      "localKey": "office-exercise-10",
+      "officeModule": 9,
+      "name": "SI AI • API • MCP",
+      "pairTemplate": "hub69-content-demo",
+      "task": {
+        "kind": "training-drill",
+        "title": "Synthetic exercise 10 • SI AI • API • MCP",
+        "text": "Five mock read-only slots; zero live external calls",
+        "resource": "website-demo",
+        "scenario": "normal"
+      },
+      "expectedOutput": "Five mock read-only slots; zero live external calls",
+      "deliveryMode": "SUPERVISED DRAFT; specific Office flow where implemented",
+      "requiresSeparateReview": true
+    },
+    {
+      "localKey": "office-exercise-11",
+      "officeModule": 10,
+      "name": "Quản Trị • Đạo Đức • Bảo Mật",
+      "pairTemplate": "hub69-content-demo",
+      "task": {
+        "kind": "training-drill",
+        "title": "Synthetic exercise 11 • Quản Trị • Đạo Đức • Bảo Mật",
+        "text": "Cross-workspace denial + durable audit/recovery receipt",
+        "resource": "website-demo",
+        "scenario": "normal"
+      },
+      "expectedOutput": "Cross-workspace denial + durable audit/recovery receipt",
+      "deliveryMode": "SUPERVISED DRAFT; specific Office flow where implemented",
+      "requiresSeparateReview": true
+    },
+    {
+      "localKey": "office-exercise-12",
+      "officeModule": 11,
+      "name": "Báo Cáo • Evidence • KPI",
+      "pairTemplate": "hub69-content-demo",
+      "task": {
+        "kind": "training-drill",
+        "title": "Synthetic exercise 12 • Báo Cáo • Evidence • KPI",
+        "text": "Versioned manifest, observed outcomes and exception report",
+        "resource": "website-demo",
+        "scenario": "normal"
+      },
+      "expectedOutput": "Versioned manifest, observed outcomes and exception report",
+      "deliveryMode": "SUPERVISED DRAFT; specific Office flow where implemented",
+      "requiresSeparateReview": true
+    }
+  ],
+  "advanced": [
+    {
+      "key": "durability",
+      "scope": "Crash checkpoint/restart/idempotency and retained history",
+      "status": "CURRICULUM DRAFT / NOT ASSESSED"
+    },
+    {
+      "key": "access",
+      "scope": "Workspace/pair isolation, revoked sessions, reviewer independence",
+      "status": "CURRICULUM DRAFT / NOT ASSESSED"
+    },
+    {
+      "key": "recovery",
+      "scope": "Consistent backup, isolated restore and executable sandbox rollback",
+      "status": "CURRICULUM DRAFT / NOT ASSESSED"
+    },
+    {
+      "key": "sources",
+      "scope": "Source provenance/conflicts and safe research claims",
+      "status": "CURRICULUM DRAFT / NOT ASSESSED"
+    },
+    {
+      "key": "interoperability",
+      "scope": "Adapter protocol compatibility and revoked-scope denial",
+      "status": "CURRICULUM DRAFT / NOT ASSESSED"
+    },
+    {
+      "key": "website",
+      "scope": "VI/EN mobile navigation, approved data sync and readback",
+      "status": "CURRICULUM DRAFT / NOT ASSESSED"
+    }
+  ],
+  "assessment": {
+    "requiredEvidence": [
+      "revision",
+      "taskKey",
+      "expected",
+      "observed",
+      "checks",
+      "feedback",
+      "reviewerSubject",
+      "digest"
+    ],
+    "criteria": [
+      "authorized scope",
+      "bounded synthetic output",
+      "safe denial/recovery",
+      "traceable evidence",
+      "separate reviewer"
+    ],
+    "noAutomaticPrivileges": true,
+    "namedReviewerAuthority": "PENDING VERIFICATION"
+  }
+}

@@ -3,13 +3,14 @@ async function api(command,args){const r=await fetch('/api/core/'+command,{metho
 const pair=()=>$('#core-pair-select').value;
 function fill(select,rows,label){const old=select.value;select.replaceChildren(...rows.map(r=>{const n=el('option',label(r));n.value=r.key??r.id??'';return n;}));if(rows.some(r=>(r.key??r.id??'')===old))select.value=old;}
 function developers(){fill($('#p2-developer'),office.registry.entities.filter(d=>d.type==='developer'&&d.ai_country_id===$('#p2-country').value),r=>r.name||r.id);}
+function showLesson(){if(!state?.learning.program)return;const lang=$('#core-language').value,row=state.learning.program.basic.lessons.find(l=>l.key===$('#p2-lesson-form [name=lesson]').value);$('#p2-lesson-content').replaceChildren(el('h3',row.title[lang]),...row.steps[lang].map(t=>el('p',t)),el('p','Evidence: '+row.expectedEvidence));}
 async function refresh(){if(!state||!pair())return;const requested=pair(),next=await api('office',{pairKey:requested});if(pair()!==requested)return;office=next;const lang=$('#core-language').value;
  $('#p2-module-contracts').replaceChildren(...office.moduleContracts.map(c=>{const a=el('article','');a.append(el('h3',(c.index+1)+' • '+office.modules[c.index]),el('p',c.function[lang]),el('p','Input: '+c.inputs[lang]),el('p','Output: '+c.outputs[lang]),el('p',c.access[lang]+' • '+c.verification));return a;}));
  fill($('#p2-country'),office.registry.countries.filter(c=>!office.registry.blockedCountries.includes(c.id)&&office.registry.entities.some(d=>d.type==='developer'&&d.ai_country_id===c.id)),r=>r.label||r.name||r.id);developers();
  fill($('#p2-profile-member'),office.registrations,r=>r.name);fill($('#p2-catalog-office'),office.registrations,r=>r.name);catalogHSTDN();
  $('#p2-office-records').replaceChildren(...[...office.registrations,...office.hstdn,...office.records.filter(r=>r.kind)].map(r=>{const a=el('article','');a.append(el('strong',r.name),el('p',(r.kind||'profile/HSTDN')+' • '+r.status+' • '+(r.legalRelationshipVerification||'NOT VERIFIED')));return a;}));
  const done=state.tasks.filter(t=>['AWAITING HUMAN REVIEW','REVIEWED DRAFT','REJECTED DRAFT','BLOCKED','FAILED','INTERRUPTED'].includes(t.status)&&t.pairKey===pair());fill($('#p2-feedback-task'),done,r=>r.title+' • '+r.status);
- $('#p2-learning-evidence').textContent=JSON.stringify({learning:state.learning.observations.filter(x=>x.pairKey===pair()),practice:state.learning.evaluations.filter(x=>x.pairKey===pair()),feedback:state.learning.feedback.filter(x=>x.pairKey===pair()),autoPromotion:false},null,2);
+ showLesson();$('#p2-learning-evidence').textContent=JSON.stringify({learning:state.learning.observations.filter(x=>x.pairKey===pair()),practice:state.learning.evaluations.filter(x=>x.pairKey===pair()),feedback:state.learning.feedback.filter(x=>x.pairKey===pair()),autoPromotion:false},null,2);
  for(const f of ['p2-lesson-form','p2-feedback-form','p2-profile-form','p2-hstdn-form','p2-catalog-form'])$('#'+f+' button').disabled=state.auth.role==='viewer';
 }
 function catalogHSTDN(){fill($('#p2-catalog-hstdn'),[{key:'',name:'None / Không liên kết'},...office.hstdn.filter(h=>h.members.includes($('#p2-catalog-office').value))],r=>r.name);}
@@ -20,3 +21,5 @@ $('#p2-feedback-form').onsubmit=e=>{e.preventDefault();save(()=>api('feedback',O
 $('#p2-profile-form').onsubmit=e=>{e.preventDefault();const input=Object.fromEntries(new FormData(e.target));input.synthetic=true;input.identityEvidence=input.source;save(()=>api('office-create',{pairKey:pair(),kind:'profile',input}));};
 $('#p2-hstdn-form').onsubmit=e=>{e.preventDefault();const {member,...input}=Object.fromEntries(new FormData(e.target));Object.assign(input,{members:[member],relation_type:'proposed-collaboration',source:'https://github.com/charityfundplus/CFP.plus/issues/130',synthetic:true});save(()=>api('office-create',{pairKey:pair(),kind:'hstdn',input}));};
 $('#p2-catalog-form').onsubmit=e=>{e.preventDefault();const {kind,...input}=Object.fromEntries(new FormData(e.target));Object.assign(input,{maturity:'research',source:'https://github.com/charityfundplus/CFP.plus/issues/130',synthetic:true});save(()=>api('office-create',{pairKey:pair(),kind,input}));};
+
+$('#p2-lesson-form [name=lesson]').addEventListener('change',showLesson);
