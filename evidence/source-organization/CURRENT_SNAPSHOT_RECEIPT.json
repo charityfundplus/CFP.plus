@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-13",
+  "revision": "b75b780eb64430355f0b51a4b58b9e5269e0db43",
+  "files": 150,
+  "archive": "CFP-HUB69-20261013-b75b780eb644-snapshot.zip",
+  "bytes": 435855,
+  "sha256": "cf0b9a40d6f215c7d058a988e9f84c0fc5632bacd290a692e9f54f25e7eb5d45",
+  "manifestSHA256": "a22cebc88de1acdf36a6fca89b7786591c4b71608fec2644850f01ee65df3ff5",
+  "zipRoundtrip": "PASS",
+  "scope": [
+    "drafts/si-office/",
+    "69/"
+  ],
+  "gitHistoryIncluded": false,
+  "privateStateIncluded": false,
+  "driveFileId": "1rhjwMu4OB9kxdtJ07gNiycFDCXFvpk81",
+  "driveURL": "https://drive.google.com/file/d/1rhjwMu4OB9kxdtJ07gNiycFDCXFvpk81/view?usp=drivesdk",
+  "driveParentVerified": "1JxTGabFVepUW22TwyyeUEV0ZBCpszr9Z",
+  "driveReadback": "SYNC VERIFIED; full downloaded archive digest and150 source entry digests match"
+}

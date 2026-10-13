@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-13",
+  "sourceHead": "5b4cd758c19060e3b028b4799b0883ba595e8747",
+  "previousPinnedRuntime": "b75b780eb64430355f0b51a4b58b9e5269e0db43",
+  "sourceFilesNow": 658,
+  "runtimeChanged": false,
+  "newFiles": [
+    {
+      "path": "drafts/si-office/docs/WORKING_PREVIEW_LIVE_RECEIPT.json",
+      "bytes": 1616,
+      "gitBlob": "458b64b60ddeb36acee9d3c79b284326b4c11db1",
+      "sha256": "ec57667c746f939fdb97ee8b0c43b830f0f0204605b86381bc11482ae6f7137e"
+    },
+    {
+      "path": "drafts/si-office/docs/WORKING_PREVIEW_LIVE_RECEIPT.sha256",
+      "bytes": 100,
+      "gitBlob": "f90518e85b39b4b80bcbd1390722d21cb97dfacc",
+      "sha256": "cc692499ff27a6c7c54936284370921ee956d7da52ebc0a976867a9be5aca134"
+    }
+  ],
+  "note": "Concurrent preview receipt added after pinned656 source inventory/Drive pack. Preserved unchanged; no extra runtime rerun needed. Public receipt URL not treated as current reachability; production not authorized."
+}
