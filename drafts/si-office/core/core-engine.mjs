@@ -1,5 +1,5 @@
 import templates from '../configs/pairs.json' with {type:'json'};
-import {clone,freeze,hash,requireKeys,text,MODULES} from './common.mjs';
+import {clone,freeze,hash,requireKeys,text,MODULES,key} from './common.mjs';
 import {inspectIdentity} from './identity-registry.mjs';
 import {MockSIAdapter} from './si-adapter.mjs';
 import {TaskEngine,buildDraftArtifact} from './task-engine.mjs';
@@ -11,6 +11,8 @@ import {MonitoringRecovery} from './monitoring-recovery.mjs';
 import {KnowledgeEvidence} from './knowledge-evidence.mjs';
 import {VersionUpgrade} from './version-upgrade.mjs';
 import {hubInventory} from './hub69-integration.mjs';
+import {createState,validateRegistration,validateHSTDN,safeURL,modules,registry} from '../model.mjs';
+import {moduleContracts} from '../public/office-contracts.js';
 const system={id:'core-system-synthetic',role:'system'};
 export function validateConfig(config){
  requireKeys(config,['key','name','mode','identity','si','software','assignment','missions','supervision','permissions','owner','sources','testStatus','operatingStatus']);
@@ -23,16 +25,16 @@ export function validateConfig(config){
  return freeze(clone(config));
 }
 export class CoreEngine {
- #pairs=new Map();#tasks=new TaskEngine();#knowledge=new KnowledgeEvidence();#learning=new LearningTraining();#monitor=new MonitoringRecovery();#upgrades=new VersionUpgrade();#templates;#adapterFactory;#timeout;#checkpointWriter;
+ #office=new Map();#pairs=new Map();#tasks=new TaskEngine();#knowledge=new KnowledgeEvidence();#learning=new LearningTraining();#monitor=new MonitoringRecovery();#upgrades=new VersionUpgrade();#templates;#adapterFactory;#timeout;#checkpointWriter;
  constructor({configs=templates,adapterFactory=provider=>new MockSIAdapter(provider),timeoutMs=150,checkpoint=null,checkpointWriter=null}={}){
   if(!Array.isArray(configs)||!configs.length)throw Error('CONFIG_REQUIRED');this.#templates=configs.map(validateConfig);if(new Set(this.#templates.map(c=>c.key)).size!==this.#templates.length)throw Error('DUPLICATE_PAIR_CONFIG');
   this.#checkpointWriter=checkpointWriter;this.#adapterFactory=adapterFactory;this.#timeout=timeoutMs;
   if(checkpoint)this.#restore(checkpoint);else this.instantiate(system,this.#templates[0].key,true);
  }
- checkpoint(){return clone({schema:1,pairs:[...this.#pairs.values()].map(p=>({...p,busy:false})),tasks:this.#tasks.all(),audit:this.#knowledge.events(),learning:this.#learning.snapshot(),alerts:this.#monitor.alerts(),upgrade:{version:this.#upgrades.version,history:this.#upgrades.history}});}
+ checkpoint(){return clone({schema:1,office:[...this.#office.entries()],pairs:[...this.#pairs.values()].map(p=>({...p,busy:false})),tasks:this.#tasks.all(),audit:this.#knowledge.events(),learning:this.#learning.snapshot(),alerts:this.#monitor.alerts(),upgrade:{version:this.#upgrades.version,history:this.#upgrades.history}});}
  #restore(c){
   if(c.schema!==1||!Array.isArray(c.pairs)||!Array.isArray(c.tasks))throw Error('CHECKPOINT_INCOMPATIBLE');
-  this.#knowledge.restore(c.audit);this.#tasks.restore(c.tasks);this.#learning.restore(c.learning);this.#monitor.restore(c.alerts);
+  this.#office=new Map(clone(c.office||[]));this.#knowledge.restore(c.audit);this.#tasks.restore(c.tasks);this.#learning.restore(c.learning);this.#monitor.restore(c.alerts);
   if(!['0.1.0-sandbox','0.1.1-sandbox'].includes(c.upgrade.version))throw Error('CHECKPOINT_VERSION_INVALID');
   this.#upgrades.version=c.upgrade.version;this.#upgrades.history=clone(c.upgrade.history);
   for(const saved of c.pairs){const config=validateConfig(saved.config);if(!this.#templates.some(t=>t.key===config.key&&hash(t)===hash(config)))throw Error('CHECKPOINT_CONFIG_CONFLICT');this.#pairs.set(config.key,{...clone(saved),config,busy:false,identity:inspectIdentity(config.identity)});}
@@ -44,6 +46,15 @@ export class CoreEngine {
  instantiate(actor,templateKey,bootstrap=false){if(!bootstrap)this.#authorize(actor,'instantiate');else if(actor!==system)throw Error('BOOTSTRAP_FORBIDDEN');const config=this.#templates.find(c=>c.key===templateKey);if(!config)throw Error('CONFIG_NOT_FOUND');if(this.#pairs.has(config.key))throw Error('PAIR_ALREADY_EXISTS');config.permissions.resources.forEach(r=>this.#knowledge.read(r));const p={config,status:'READY',epoch:0,busy:false,stopReason:null,modules:Object.fromEntries(MODULES.map(k=>[k,this.#upgrades.version])),identity:inspectIdentity(config.identity)};this.#pairs.set(config.key,p);this.#knowledge.append(actor,'instantiate','PASS',{pairKey:config.key,configHash:hash(config)});return this.#publicPair(p);}
  #publicPair(p){return clone({key:p.config.key,name:p.config.name,status:p.status,busy:p.busy,stopReason:p.stopReason,config:p.config,identity:p.identity,modules:p.modules});}
  snapshot(actor){this.#authorize(actor,'read');return {mode:'SYNTHETIC SANDBOX • PRODUCTION NO-GO',pairs:[...this.#pairs.values()].map(p=>this.#publicPair(p)),templates:this.#templates.map(c=>({key:c.key,name:c.name,assignment:clone(c.assignment)})),tasks:this.#tasks.all(),learning:this.#learning.snapshot(),alerts:this.#monitor.alerts(),versions:this.#upgrades.snapshot(),knowledge:this.#knowledge.inventory(),audit:this.#knowledge.events(),auditValid:this.#knowledge.verify(),hub69:hubInventory(),groups:['V','000','135','246','789'],chapters:Array.from({length:10},(_,i)=>i)};}
+ #officeState(pairKey){this.#pair(pairKey);if(!this.#office.has(pairKey))this.#office.set(pairKey,createState());return this.#office.get(pairKey);}
+ officeSnapshot(actor,pairKey){this.#authorize(actor,'read');return clone({...this.#officeState(pairKey),modules,moduleContracts,registry});}
+ officeCreate(actor,pairKey,kind,input){return this.#act(actor,'office-create',()=>{const state=this.#officeState(pairKey);let row;
+  if(kind==='profile'){row=validateRegistration(input);if(state.registrations.some(p=>p.name===row.name&&p.developer===row.developer))throw Error('DUPLICATE_PROFILE');row.key=key();state.registrations.push(row);}
+  else if(kind==='hstdn'){row=validateHSTDN(input,state);row.key=key();state.hstdn.push(row);}
+  else if(['product','service'].includes(kind)){requireKeys(input,['name','source','officeRef','hstdnRef','scope','maturity','synthetic']);if(input.synthetic!==true||!text(input.name,200)||!safeURL(input.source)||!state.registrations.some(p=>p.key===input.officeRef)||input.hstdnRef&&!state.hstdn.some(h=>h.key===input.hstdnRef&&h.members.includes(input.officeRef)))throw Error('CATALOG_SCOPE_INVALID');if(kind==='product'&&!['concept','research','prototype'].includes(input.maturity)||kind==='service'&&!text(input.scope,300))throw Error('CATALOG_MATURITY_REQUIRED');row={...clone(input),kind,key:key(),status:'DRAFT',sourceVerification:'NOT VERIFIED',capabilityVerification:'NOT VERIFIED',legalRelationshipVerification:'NOT VERIFIED'};state.records.push(row);}
+  else throw Error('OFFICE_KIND_DENIED');this.#knowledge.append(actor,'office-record','DRAFT ONLY',{pairKey,kind,recordKey:row.key,recordHash:hash(row)});return row;});}
+ learn(actor,pairKey,lesson){return this.#act(actor,'learn',()=>{this.#pair(pairKey);return this.#learning.lesson(actor,pairKey,lesson);});}
+ feedback(actor,taskKey,feedback){return this.#act(actor,'feedback',()=>this.#learning.feedback(actor,this.#tasks.get(taskKey),feedback));}
  createTask(actor,pairKey,input){return this.#act(actor,'create-task',()=>{const p=this.#pair(pairKey);if(p.status!=='READY')throw Error('PAIR_STOPPED');return this.#tasks.create(p.config,actor,input);});}
  async runTask(actor,taskKey){
   this.#authorize(actor,'run-task');const t=this.#tasks.get(taskKey),p=this.#pair(t.pairKey);

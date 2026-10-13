@@ -1,8 +1,10 @@
 import {clone} from './common.mjs';
 export class LearningTraining {
- #evaluations=[];
+ #evaluations=[];#observations=[];#feedback=[];
  curriculum=[{level:'LEARN / OBSERVE',scope:'Read canonical sources and policy; no operational claims'},{level:'SUPERVISED PRACTICE',scope:'Synthetic drafts, scope checks, faults and recovery drills'},{level:'AUTHORIZED OPERATIONS',scope:'BLOCKED pending separate Human Governance approval'}];
  evaluate(task){const expected=task.scenario==='normal'?'AWAITING HUMAN REVIEW':['overreach','bad-evidence','false-claim'].includes(task.scenario)?'BLOCKED':'FAILED';const result={taskKey:task.key,pairKey:task.pairKey,exercise:task.scenario,expected,observed:task.status,pass:task.status===expected,evidence:task.checks,privilegeChange:false,level:'SUPERVISED PRACTICE'};this.#evaluations.push(clone(result));return result;}
- restore(state){this.#evaluations=clone(state.evaluations);}
- snapshot(){return {curriculum:clone(this.curriculum),evaluations:clone(this.#evaluations),autoPromotion:false};}
+ lesson(actor,pairKey,lesson){if(!['identity-lineage','ethics-governance','tool-use','security','evidence'].includes(lesson))throw Error('LESSON_INVALID');const row={subject:actor.id,pairKey,lesson,time:new Date().toISOString(),status:'ACKNOWLEDGED LEARNING; NOT VERIFIED',privilegeChange:false};this.#observations.push(row);return clone(row);}
+ feedback(actor,task,text){if(task.owner!==actor.id&&actor.role!=='reviewer'||!['AWAITING HUMAN REVIEW','REVIEWED DRAFT','REJECTED DRAFT','BLOCKED','FAILED','INTERRUPTED'].includes(task.status)||typeof text!=='string'||!text.trim()||text.length>1500)throw Error('FEEDBACK_SCOPE_INVALID');const row={subject:actor.id,pairKey:task.pairKey,taskKey:task.key,text,time:new Date().toISOString(),outputHash:task.proposalHash||null,status:'SYNTHETIC FEEDBACK',privilegeChange:false};this.#feedback.push(row);return clone(row);}
+ restore(state){this.#evaluations=clone(state.evaluations);this.#observations=clone(state.observations||[]);this.#feedback=clone(state.feedback||[]);}
+ snapshot(){return {curriculum:clone(this.curriculum),evaluations:clone(this.#evaluations),observations:clone(this.#observations),feedback:clone(this.#feedback),autoPromotion:false};}
 }

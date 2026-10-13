@@ -10,7 +10,8 @@
     "demo:p2": "node scripts/p2-demo.mjs",
     "start:p2": "node sandbox/p2-http.mjs",
     "provision:p2": "node scripts/p2-provision.mjs",
-    "test:p2:http": "node tests/p2-http.test.mjs"
+    "test:p2:http": "node tests/p2-http.test.mjs",
+    "test:review1": "node tests/review-round1.test.mjs"
   },
   "engines": {
     "node": ">=22"
