@@ -1,0 +1,10 @@
+✔ Basic v1 gives executable exercises for all 12 modules and keeps privileges unchanged (37.35661ms)
+✔ Six advanced tracks have VI/EN practice steps and never imply assessed competence (1.908831ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 52.953832

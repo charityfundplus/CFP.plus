@@ -309,32 +309,182 @@
     {
       "key": "durability",
       "scope": "Crash checkpoint/restart/idempotency and retained history",
-      "status": "CURRICULUM DRAFT / NOT ASSESSED"
+      "status": "CURRICULUM DRAFT / NOT ASSESSED",
+      "title": {
+        "vi": "Lưu trữ bền vững",
+        "en": "Durable storage"
+      },
+      "steps": {
+        "vi": [
+          "Ghi nhiệm vụ và audit trong cùng giao dịch.",
+          "Tái mở checkpoint, đối chiếu idempotency và nhiệm vụ gián đoạn.",
+          "Ghi expected/observed/digest; không xóa lịch sử."
+        ],
+        "en": [
+          "Commit task and audit together.",
+          "Reopen checkpoints; inspect idempotency and interrupted work.",
+          "Record expected/observed/digest; never delete history."
+        ]
+      },
+      "expectedEvidence": "A retained checkpoint and restart evidence; no automatic replay.",
+      "prerequisites": [
+        "basic-v1 study",
+        "authorized workspace/pair",
+        "synthetic data",
+        "separate reviewer"
+      ],
+      "assessmentStatus": "NOT ASSESSED",
+      "privilegeChange": false
     },
     {
       "key": "access",
       "scope": "Workspace/pair isolation, revoked sessions, reviewer independence",
-      "status": "CURRICULUM DRAFT / NOT ASSESSED"
+      "status": "CURRICULUM DRAFT / NOT ASSESSED",
+      "title": {
+        "vi": "Quyền & Cô lập",
+        "en": "Authorization & isolation"
+      },
+      "steps": {
+        "vi": [
+          "Đối chiếu workspace/pair và role từ server.",
+          "Thử quyền viewer, phiên hết hạn và truy cập chéo.",
+          "Lưu từ chối an toàn; không tự tăng quyền."
+        ],
+        "en": [
+          "Read server workspace/pair grants and role.",
+          "Exercise viewer restrictions, expiry and cross-scope access.",
+          "Keep safe-denial evidence; never self-grant."
+        ]
+      },
+      "expectedEvidence": "Denied cross-scope attempts without leaked data.",
+      "prerequisites": [
+        "basic-v1 study",
+        "authorized workspace/pair",
+        "synthetic data",
+        "separate reviewer"
+      ],
+      "assessmentStatus": "NOT ASSESSED",
+      "privilegeChange": false
     },
     {
       "key": "recovery",
       "scope": "Consistent backup, isolated restore and executable sandbox rollback",
-      "status": "CURRICULUM DRAFT / NOT ASSESSED"
+      "status": "CURRICULUM DRAFT / NOT ASSESSED",
+      "title": {
+        "vi": "Backup & Phục hồi",
+        "en": "Backup & recovery"
+      },
+      "steps": {
+        "vi": [
+          "Backup nhất quán và hash/version.",
+          "Restore vào database mới, thu hồi phiên.",
+          "Rollback sandbox từ bundle đã kiểm tra; giữ backup/audit hiện tại."
+        ],
+        "en": [
+          "Capture consistent backup with digest/version.",
+          "Restore into a new database and revoke sessions.",
+          "Rollback verified sandbox bundles; preserve current backup/audit."
+        ]
+      },
+      "expectedEvidence": "Separate restore generation and retained previous state.",
+      "prerequisites": [
+        "basic-v1 study",
+        "authorized workspace/pair",
+        "synthetic data",
+        "separate reviewer"
+      ],
+      "assessmentStatus": "NOT ASSESSED",
+      "privilegeChange": false
     },
     {
       "key": "sources",
       "scope": "Source provenance/conflicts and safe research claims",
-      "status": "CURRICULUM DRAFT / NOT ASSESSED"
+      "status": "CURRICULUM DRAFT / NOT ASSESSED",
+      "title": {
+        "vi": "Nguồn & Tuyên bố",
+        "en": "Sources & claims"
+      },
+      "steps": {
+        "vi": [
+          "Tách nguồn, năng lực và quan hệ pháp lý.",
+          "Ghi mâu thuẫn/thời điểm/nguồn chính thức.",
+          "Thiếu chứng cứ thì NOT VERIFIED; không quảng cáo sản phẩm lượng tử hoàn thiện."
+        ],
+        "en": [
+          "Separate source, capability and legal claims.",
+          "Record conflicts, dates and official provenance.",
+          "Missing evidence stays NOT VERIFIED; no mature quantum-product claim."
+        ]
+      },
+      "expectedEvidence": "Traceable claim register with explicit uncertainty.",
+      "prerequisites": [
+        "basic-v1 study",
+        "authorized workspace/pair",
+        "synthetic data",
+        "separate reviewer"
+      ],
+      "assessmentStatus": "NOT ASSESSED",
+      "privilegeChange": false
     },
     {
       "key": "interoperability",
       "scope": "Adapter protocol compatibility and revoked-scope denial",
-      "status": "CURRICULUM DRAFT / NOT ASSESSED"
+      "status": "CURRICULUM DRAFT / NOT ASSESSED",
+      "title": {
+        "vi": "Giao thức & Adapter",
+        "en": "Protocol & adapters"
+      },
+      "steps": {
+        "vi": [
+          "Đối chiếu schema/core/config/adapter version.",
+          "Thử mock read-only, không kết nối thật.",
+          "Scope thu hồi hoặc protocol không hợp lệ phải bị chặn."
+        ],
+        "en": [
+          "Check schema/core/config/adapter versions.",
+          "Exercise read-only mocks without live connections.",
+          "Reject revoked scope or incompatible protocol."
+        ]
+      },
+      "expectedEvidence": "Zero live calls and a bounded compatibility decision.",
+      "prerequisites": [
+        "basic-v1 study",
+        "authorized workspace/pair",
+        "synthetic data",
+        "separate reviewer"
+      ],
+      "assessmentStatus": "NOT ASSESSED",
+      "privilegeChange": false
     },
     {
       "key": "website",
       "scope": "VI/EN mobile navigation, approved data sync and readback",
-      "status": "CURRICULUM DRAFT / NOT ASSESSED"
+      "status": "CURRICULUM DRAFT / NOT ASSESSED",
+      "title": {
+        "vi": "Website VI/EN & Đồng bộ",
+        "en": "VI/EN website & sync"
+      },
+      "steps": {
+        "vi": [
+          "Giữ link/ID hiện hữu; kiểm tra mobile.",
+          "So sánh nội dung VI/EN và readback từng đích được phép.",
+          "Không báo5 khoSYNCED nếu thiếu owner/URL/quyền/readback."
+        ],
+        "en": [
+          "Preserve existing routes/IDs and test mobile.",
+          "Compare VI/EN and read back each approved destination.",
+          "Never claim five-vault sync without owners/URLs/scopes/readbacks."
+        ]
+      },
+      "expectedEvidence": "Pinned UI/link evidence and per-target sync receipts.",
+      "prerequisites": [
+        "basic-v1 study",
+        "authorized workspace/pair",
+        "synthetic data",
+        "separate reviewer"
+      ],
+      "assessmentStatus": "NOT ASSESSED",
+      "privilegeChange": false
     }
   ],
   "assessment": {
