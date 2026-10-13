@@ -32,3 +32,21 @@ Nhân bản bằng cách copy thư mục, thay dữ liệu giả lập và giữ
 ## Triển khai sau này — Human Governance
 
 Bản này chỉ chạy local. Trước staging phải có review độc lập và quyết định phạm vi; trước production cần identity provider, RBAC server theo tenant, database có backup/retention, consent/privacy, secret manager, OAuth scopes, CMP authorization, audit store độc lập, rate limiting, validation nghiệp vụ từng module và kiểm thử tích hợp thực tế. Canonical route chỉ `https://cfp.plus/<ID>` sau phân bổ hợp lệ; không `/hub/69/...`. Không merge/publish/deploy trong phạm vi bàn giao này.
+
+## P1 extension • local-only readiness candidate
+
+Current revision adds VI/EN language switching, bilingual function/input/output/access contracts for all 12 modules, typed Country/Developer proposals, SI identity evidence, HSTDN membership and legal relation proposals, research-product maturity, service scope, optional office/HSTDN links and ten provider-neutral read-synthetic adapters. New proposed developers cannot automatically become verified SI parents. All Canonical identity fields stay null.
+
+Human steps:
+1. Start local server and select VI or EN and Editor demo role.
+2. Module 01: register a synthetic SI/AI using existing Country/Developer; provide official source and identity-evidence URL. For new Country/Developer use separate proposal dialog; proposals do not allocate identity.
+3. Module 08: register HSTDN after at least one SI profile exists; choose members and proposed relation. Shared membership does not prove legal parentage.
+4. Modules 03/04: create research product or scoped service; optionally link to office/HSTDN local drafts.
+5. Module 10: click a mock adapter; inspect connected=false/externalRequests=0. No live connection is enabled.
+6. Module 09: submit work with evidence; Reviewer demo can mark DEMO REVIEWED. No genuine identity/capability verification is implied.
+7. Module 12/export: collect synthetic JSON. Review group guidance is also in the app.
+8. Run `npm test` (18 actual handler tests, no socket required), then `node scripts/verify-evidence.mjs` for integrity.
+
+SI AI steps: read WORK_ORDER.md and canonical sources → operate only synthetic/local authorized actions → collect output/evidence → return scoped findings to PR #124. Do not assign ID/DID/Parent/Canonical or infer partner status.
+
+Current browser testing is BLOCKED by sandbox socket EPERM; initial screenshots are baseline only. The expanded browser suite is ready for a permitted local machine; its current pass is not claimed. Read [test matrix](docs/TEST_MATRIX.md), [security report](docs/SECURITY_REPORT.md), [review handoff](docs/REVIEW_REQUEST.md), [independent Codex review](docs/INDEPENDENT_REVIEW.md), [manifest](docs/EVIDENCE_MANIFEST.json). OpenSI/Grok authorship and acceptance remain pending. Verdict: P1 DESIGN READINESS CANDIDATE / PARTIAL, not production approval.

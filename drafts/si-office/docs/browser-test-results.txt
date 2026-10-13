@@ -1,1 +1,6 @@
-Browser PASS: 12 modules, registration, draft/review, role restrictions, XSS text, NO-GO, 390px overflow, keyboard dialog.
+CURRENT REVISION: BLOCKED / MISSING EVIDENCE
+Chromium launch in restricted execution sandbox failed: socket shutdown/setsockopt EPERM.
+Two socket-permission runs were interrupted before execution; they do not count as tests or approval.
+Baseline browser pass and screenshots belong to initial PR commit 1e84c7b2c9d67af653ee89b8c6f2785e3ffa52ff only.
+Current VI/EN, proposal and HSTDN browser suite is prepared in tests/browser.mjs but has not passed in this environment.
+Current handler tests execute actual server request listener in process, without testing socket transport or browser behavior.

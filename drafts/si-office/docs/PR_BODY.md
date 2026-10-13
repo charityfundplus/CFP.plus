@@ -1,11 +1,7 @@
-## CFP+ SI AI Office prototype under HUB 69
+Relates to #119. Builds a local-only global SI AI office draft within HUB 69, adding VI/EN, 12 module contracts (function/input/output/access/status), typed Country/Developer proposals, SI profiles, HSTDN relationships, research product/service drafts, four participant guides and ten provider-neutral read-synthetic mock adapters.
 
-Adds a mobile responsive 12-module office draft with synthetic registration, registry lineage checks, draft/review records, demo role enforcement, audit hash chain and JSON export. Blocks identity binding, live integrations and payments server-side. No IDs, DID, locked registry records or production routes are changed.
+Existing IDs, Parent, DID, Canonical and baseline evidence are preserved. Proposals use local keys and null Canonical identity. US mapping conflict stays blocked; exact D 500 authority is missing. Adapter receipts state connected=false and externalRequests=0. No live integrations, payment, production grants, merge or deploy.
 
-Only drafts/si-office is added. No workflow, deployment or production configuration. CRM/catalog/contracts are shared record scaffolds, not full business systems. Authentication and audit are intentionally local demo implementations; do not expose this server publicly.
+Validation: 18/18 actual HTTP handler tests executed in process without sockets, covering all 12 module workflows, rights/audit, identities, HSTDN/catalog and mock contracts. Current browser VI/EN/HSTDN retest is BLOCKED by sandbox EPERM; initial browser/screenshots are explicitly baseline only. Expanded browser suite is ready for a permitted local environment.
 
-Registry review found conflicting US developer mappings between HUB69.md and ai-entity-registry.json; registration on 6911 is blocked pending Human Governance. New canonical ID allocation remains blocked, with null identity fields.
-
-Validation: 11/11 API tests; Chromium browser flow checks (registration, draft/review, roles, XSS text rendering, payment denial, 390px overflow and keyboard dialog). Desktop/mobile screenshots and test outputs included.
-
-Research notes attribute SpaceX/Starmind, IBM Qiskit and NVIDIA HPC claims and flag missing independent evidence. Grok v0.1 authorship and independent review of this draft remain unverified. Human Governance decision pack included. PRODUCTION NO-GO: do not merge, publish or deploy without review and approval.
+Includes TEST_MATRIX, SECURITY_REPORT, EVIDENCE_MANIFEST + SHA-256 verifier, independent Codex-agent review (not OpenSI/Grok), and REVIEW_REQUEST for genuine reviewers. Verdict: P1 DESIGN READINESS CANDIDATE / PARTIAL; not DESIGN / TESTING ACCEPTED. PRODUCTION NO-GO. Changes only drafts/si-office.

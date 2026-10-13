@@ -1,23 +1,30 @@
 
 > test
-> node --test tests/*.test.mjs
+> node tests/core.test.mjs
 
-✔ unauthenticated access rejected (60.98386ms)
-✔ 12 modules and null identity; no production route (44.720432ms)
-✔ viewer cannot write and editor cannot review (19.731389ms)
-✔ workflow requires submission and HTTPS evidence; reviewer result is demo only (38.835952ms)
-✔ registration validates lineage and refuses identity fields (7.675863ms)
-✔ origin protection and invalid sessions (9.299366ms)
-✔ rejects unsafe URLs and unexpected record fields (7.774975ms)
-✔ all modules accept synthetic drafts (34.753522ms)
-✔ audit hash links recompute, including denied actions (6.803028ms)
-✔ static security headers and traversal rejection (9.053531ms)
-✔ conflicting US registry branch blocked, numeric strings retain zeros (1.025097ms)
-ℹ tests 11
+✔ unauthenticated access rejected (3.344816ms)
+✔ 12 modules and null identity; no production route (9.650036ms)
+✔ viewer cannot write and editor cannot review (1.602563ms)
+✔ workflow requires submission and HTTPS evidence; reviewer result is demo only (3.394991ms)
+✔ registration validates lineage and refuses identity fields (1.75294ms)
+✔ origin protection and invalid sessions (0.971501ms)
+✔ rejects unsafe URLs and unexpected record fields (1.350771ms)
+✔ all modules accept synthetic drafts (3.517366ms)
+✔ audit hash links recompute, including denied actions (2.626253ms)
+✔ static security headers and traversal rejection (2.912512ms)
+✔ conflicting US registry branch blocked, numeric strings retain zeros (0.433891ms)
+✔ HSTDN validates members, blocks identity fields and keeps legal claims unverified (2.115046ms)
+✔ mock adapters never connect and reject credentials/live writes (5.601936ms)
+✔ 12 bilingual contracts; product maturity/service scope validated (3.017077ms)
+✔ identity evidence, duplicate profiles, hostile Host and denial audit (1.840985ms)
+✔ Country/Developer proposals preserve identity and validate local relationship (1.778827ms)
+✔ 12-module functional matrix: create, submit, review, audit and role denial (22.565664ms)
+✔ catalog relations enforce office membership; adapters deny viewer and live mode (1.003474ms)
+ℹ tests 18
 ℹ suites 0
-ℹ pass 11
+ℹ pass 18
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 366.806124
+ℹ duration_ms 82.058237

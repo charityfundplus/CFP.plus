@@ -1,0 +1,9 @@
+# Security / Access / Audit • local draft
+
+VERIFIED in handler tests: viewer mutation denial; editor review denial; unauthorized sessions; payment/connect/bind denial; loopback Host allowlist; same-origin JSON mutation gate; identity field rejection; source URL syntax; duplicate profile/HSTDN checks; local member/catalog reference validation; mock allowlist and credential/live-write denial. All these tests run actual request listener without sockets. UI source uses textContent and static CSP; initial browser XSS-text behavior passed, current revision browser recheck is BLOCKED.
+
+Audit records timestamp, actor role, action, result, sequence, previousHash and hash. Handler denials for Host/Origin/content-type/payload/session are logged without request secrets or payload. Tests recompute the chain and verify module reviews generate audit evidence. Role here is self-selected demo role, not verified identity. Session tokens are memory-only and not exported. No production grant exists.
+
+PARTIAL: in-memory state/logs reset on restart, shared demo state, no durable WORM or tenant isolation, no real identity provider/consent/PII detection/rate limit. URL validity is not source or domain-ownership proof. Synthetic declaration is a guardrail, not an automatic PII guarantee. Do not expose the local server publicly or enter real data. Reusing commercial names does not prove identity; new proposals always remain NOT VERIFIED.
+
+Third-party logos/assets were not imported. Public-source technology claims remain attributed research, not commercial promises. No production credential, live adapter call, payment charge, storage creation, reverse write or cascade delete is implemented. Human Governance gates real authentication, legal claims, real customers/payments, integration scopes and deployment.

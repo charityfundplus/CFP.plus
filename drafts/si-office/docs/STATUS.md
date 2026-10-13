@@ -1,39 +1,34 @@
-# Bảng bàn giao chung • 13/10/2026
+# P0 independent review → P1 design readiness • 13/10/2026
 
-Scope: RESEARCH + DESIGN + IMPLEMENTATION DRAFT + TESTING. PRODUCTION NO-GO.
-Owner thực hiện bản này: Codex. Grok independent review chưa thực hiện/xác minh trong phiên này. Không ghi ACCEPTED thay cho hệ thống khác.
+Verdict: **P1 DESIGN READINESS CANDIDATE / PARTIAL**. Not DESIGN / TESTING ACCEPTED. Human review and current browser retest remain required. Production NO-GO. Initial status retained in STATUS_BASELINE.md.
 
-| Hạng mục | Trạng thái | Evidence / phần còn thiếu |
+| Deliverable | Classification | Evidence / limitation |
 |---|---|---|
-| Giao diện 12 phân hệ, desktop/mobile | COMPLETED | public/, desktop.png, mobile.png; chung record scaffold |
-| Đăng ký giả lập Country → Developer | COMPLETED | tests/core.test.mjs, browser.mjs; null ID/DID/Canonical |
-| Draft → review mô phỏng | COMPLETED | DEMO REVIEWED, không xác minh danh tính thật |
-| Functional/security API checks | VERIFIED (phạm vi local) | 11/11 Node tests, api-test-results.txt |
-| Browser flow + XSS text + 390px + keyboard | VERIFIED (phạm vi local) | browser-test-results.txt; không chứng nhận accessibility đầy đủ |
-| Registry/HUB read-only | VERIFIED (đã đọc) | commit 835616308111f6851c0387fa9f5eda60c9ffa624; không suy ra đồng nhất toàn Registry |
-| ID số con cho Link Mẫu | BLOCKED / HUMAN REVIEW | Không có allocation record; cấm suy diễn khoảng trống |
-| US developer mapping | BLOCKED / HUMAN REVIEW | HUB69.md ≠ entity registry; server block 6911 |
-| VN/global đầy đủ | MISSING EVIDENCE | VN route có nhưng snapshot không có VN developers; không tự điền |
-| Xác minh ownership/domain, pháp nhân, developer | MISSING EVIDENCE | Form/source URL không phải ownership proof |
-| Notion/Drive/GitHub read scope | VERIFIED (đã đọc) | Read connector thành công; không chứng minh integration runtime |
-| Notion/Drive/MCP/website runtime integration | MISSING EVIDENCE | Thiết kế CMP/scopes, chưa OAuth/write-readback trong app |
-| 5 kho CFP+ | MISSING EVIDENCE | Cần exact URL/owner/scopes; không tạo kho mới |
-| SpaceX/Starmind reference | VERIFIED (nguồn đã đọc) | Provider claim; độc lập và khả năng dùng CFP+ chưa verified |
-| Grok v0.1 AI1 metrics | HUMAN REVIEW / MISSING EVIDENCE | Xung đột công suất/kích thước với source hiện tại; authorship unverified |
-| Quantum SI commercial capability | MISSING EVIDENCE | Không mở bán, không badge capability |
-| Quảng bá VI/EN | COMPLETED (Codex draft) / HUMAN REVIEW | EVIDENCE_REVIEW.md; cần reviewer độc lập |
-| Grok independent review | MISSING EVIDENCE | Không có kênh Grok execution/acceptance; không giả lập reviewer là Grok |
-| Payment/customer data/production auth | BLOCKED | Server NO-GO; synthetic-only; role demo không IdP |
-| Draft PR | COMPLETED khi PR URL được xác nhận | Chỉ drafts/si-office; không merge/publish/deploy |
+| Responsive VI/EN office + 12 function/input/output/access/status contracts | PARTIAL | Implemented; syntax validated; current interactive browser retest BLOCKED |
+| Country/Developer synthetic proposals | VERIFIED handler | Null ID/Parent/DID/Canonical; no Registry allocation; local reference only |
+| SI/AI profile + identity-evidence intake | VERIFIED handler | Registry snapshot lineage; US conflict blocked; source/capability/legal NOT VERIFIED |
+| HSTDN typed membership/relation proposal | VERIFIED handler | Duplicate/member/identity validation; legal-parent claim NOT VERIFIED |
+| Products/Services typed drafts | VERIFIED handler / PARTIAL | Research maturity/service scope + optional office/HSTDN references; not commercial catalog engine |
+| 12 module record workflows + permissions + audit | VERIFIED handler / PARTIAL business scope | TEST_MATRIX.md; modules 02/05/06/07 remain common draft workflows |
+| Ten read-only synthetic adapters | VERIFIED mock / MISSING EVIDENCE live | No provider lock-in; connected=false, externalRequests=0; five actual vault identities pending |
+| 18/18 handler tests | VERIFIED scoped execution | api-test-results.txt; no socket transport test in current revision |
+| Initial browser + desktop/mobile | VERIFIED baseline only | Initial commit 1e84c7b2; evidence/screenshots retained, not current UI evidence |
+| Current VI/EN/HSTDN browser | BLOCKED | Sandbox EPERM; runnable tests/browser.mjs prepared |
+| Step-by-step guides for AI/developer/HSTDN/reviewer | PARTIAL | Implemented VI/EN; browser usability validation pending |
+| Independent Codex review | PARTIAL | INDEPENDENT_REVIEW.md; no claim to be OpenSI/Grok |
+| Grok/OpenSI/Team review | MISSING EVIDENCE | REVIEW_REQUEST.md; review request at PR #124, no acceptance inferred |
+| Registry US conflict / new allocation | CONFLICT / HUMAN GOVERNANCE | No renumber or self-allocation; existing source unchanged |
+| D 500 authoritative rule | MISSING EVIDENCE / HUMAN GOVERNANCE | Exact standard not found; DID null, no DID/0 |
+| SpaceX/Quantum SI/legal relationships | MISSING EVIDENCE | Provider source ≠ capability ≠ legal relation; see EVIDENCE_REVIEW.md |
+| Evidence SHA-256 manifest | VERIFIED integrity after generation | scripts/evidence.mjs + verify-evidence.mjs; hashes do not certify truth |
+| Draft PR #124 | DRAFT / HUMAN REVIEW | Additions only in drafts/si-office; no merge/deploy/live credentials |
 
-## Human Governance decision pack
+## Material gates
 
-1. Chỉ định allocation record số con, exact Parent, DID (nếu có), Canonical và nguồn authoritative sau giải quyết conflict. Không sửa/renumber locked ID.
-2. Xác nhận 5 kho hiện hữu và phạm vi read/write từng kho; CMP envelope, người sở hữu token, tenant model và review evidence.
-3. Chỉ định reviewer độc lập cho source/code/security và xác minh authorship Grok v0.1; phân biệt SI spatial với superintelligence.
-4. Quyết định acceptance cho module-specific schemas, data privacy/retention, audit persistence, identity provider và integration acceptance tests.
-5. Chỉ khi đã có evidence và phê duyệt mới mở staging/production, real customer data, payment hoặc production credentials. Draft này không yêu cầu hoặc thực hiện deploy.
+1. Current browser test on permitted local environment, including VI/EN switching, six entity types, adapter receipts, 390px layout and keyboard flow.
+2. Genuine independent OpenSI/Grok review with system identity, revision SHA, scope and findings. Separate Codex review cannot replace this.
+3. Human Governance resolves Registry authority conflict, provides allocation record and exact D 500 version. No identity changes before that.
+4. Five existing vaults: precise URL/owner/scopes; CMP authorization; no reverse write or cascade delete. Current mock mode is allowed and remains default.
+5. Production remains gated separately: IdP/tenant permissions, durable audit, privacy/retention, real integrations, payments/customer data and deployment. No such action requested or performed here.
 
-## Giới hạn kiểm thử
-
-Role demo có thể chọn từ browser; kiểm thử chứng minh server enforcement theo role session, không chứng minh user identity. Audit trong memory, không WORM. Check HTTPS không kiểm chứng nội dung nguồn. Không benchmark QPU/HPC/orbital hardware, không test payment provider, không test tenant isolation production. Các trường lineage theo registry snapshot giữ số dạng string và không cấp mới.
+Noncritical copy/style/refinement can proceed internally within HSTDN; no need to block draft review for perfect polish. Files preserve initial test and status evidence separately. Run `node scripts/verify-evidence.mjs` before reviewing this package.

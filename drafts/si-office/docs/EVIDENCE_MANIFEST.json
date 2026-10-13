@@ -1,0 +1,235 @@
+{
+  "version": 2,
+  "createdAt": "2026-10-13T03:36:05.906Z",
+  "owner": "Codex",
+  "mode": "RESEARCH ONLY • HUMAN REVIEW • PRODUCTION NO-GO",
+  "registryBaseline": "835616308111f6851c0387fa9f5eda60c9ffa624",
+  "initialDraftCommit": "1e84c7b2c9d67af653ee89b8c6f2785e3ffa52ff",
+  "identity": {
+    "id": null,
+    "parent": null,
+    "did": null,
+    "canonical": null
+  },
+  "testScope": "Actual HTTP request handler in process; no socket/browser test for current revision",
+  "browserStatus": "BLOCKED: sandbox EPERM; baseline evidence retained separately",
+  "openSIReview": "PENDING; independent Codex review is not OpenSI",
+  "grokReview": "PENDING; source authorship unverified",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 5329,
+      "sha256": "4b5cefe1f00d219c11a508aaec843d84e0758f6a564a93414b2ea8cd1c849ef0",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "adapters.mjs",
+      "bytes": 760,
+      "sha256": "f6db020422dbf067f726a0917a193584056174a4b73ba540f75081c62b332b4b",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "ai-entity-registry.json",
+      "bytes": 9655,
+      "sha256": "c97681cf7cdd494e4bb4658550c6db76546a00676c9eff8e8c83fb72ca1950f6",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "country-route-map.json",
+      "bytes": 4723,
+      "sha256": "344d373c39a48505f50d6222cc12e03db69df6f0d98f39ce980c9cc5bef9bc5e",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "bytes": 6249,
+      "sha256": "2725d5900ec0760e455dc3687a095b3017cd4eb4734061a7d72aac47039ee9a8",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "docs/EVIDENCE_REVIEW.md",
+      "bytes": 7335,
+      "sha256": "db745b924381b697cb19035b23e427efd323ce20871d0d6f8e428f2bc209a15a",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "docs/INDEPENDENT_REVIEW.md",
+      "bytes": 9954,
+      "sha256": "c1e189085dea4aaf4e86461d5603078733eca7a86e847101e6a206224202b51e",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "docs/PR_BODY.md",
+      "bytes": 1325,
+      "sha256": "1e81a7c47bfe74ccba772ff1a87b20b1dba1402ff61f00c3715a4af1420d85ba",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "docs/REVIEW_REQUEST.md",
+      "bytes": 1815,
+      "sha256": "6530173936b5e98d0b4ea589f98bae0b247cbf9253d4c780ea3af8bb37a88170",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "docs/SECURITY_REPORT.md",
+      "bytes": 1813,
+      "sha256": "ead65f06565299837f735cef3b07d24dbdd6319f53e3de7d22e2bd072053e9f5",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "docs/SOURCE_INDEX.md",
+      "bytes": 1469,
+      "sha256": "3015ebb758a4c806e63a785c39a1e5dc93e342e579d3686dffee20f9253d6c4b",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "docs/STATUS.md",
+      "bytes": 3829,
+      "sha256": "9999489a9257bacae7b90c2dd5e062ed21238c8cef0fa4f936efa94752ab4d7d",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "docs/STATUS_BASELINE.md",
+      "bytes": 4084,
+      "sha256": "189f10e4d3fd63d91085a603ebc0ac7c45f561782e7695645b99ad33247577c5",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "docs/TEST_MATRIX.md",
+      "bytes": 3147,
+      "sha256": "db40c22641cecd957cda7f5cea683a51d041995b004b7ac3ba12a6d83f8994d7",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "docs/WORK_ORDER.md",
+      "bytes": 1000,
+      "sha256": "04be1af3dbe6079c80ff08ab62d15d859a6abfb55669cfb347104e44313cfbd0",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "docs/api-baseline-test-results.txt",
+      "bytes": 907,
+      "sha256": "9394181910b9be8a2fca3ca5d793a2aa6c07bafec854e0deeb9b2d4b20d9ef79",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "docs/api-test-results.txt",
+      "bytes": 1528,
+      "sha256": "821daa2bf1eef8a78ee4fea4c57f9b06ad24a66f61a4bc2fdaa8267c60b6216a",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "docs/browser-baseline-test-results.txt",
+      "bytes": 123,
+      "sha256": "d8d668c99a6c7624f3b5786026b1ff455c3488b137dcee467224ba6729323e8c",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "docs/browser-test-results.txt",
+      "bytes": 598,
+      "sha256": "4d6612bc28798d975ba7f9eb89d6eb258328158e18a8d7f3376366312d7e0ec6",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "docs/desktop.png",
+      "bytes": 84599,
+      "sha256": "8e1c3c45800cfde26904a554f7c50e7ab30f91a221daa0d12dd474291bce4aef",
+      "scope": "BASELINE VISUAL ONLY"
+    },
+    {
+      "path": "docs/mobile.png",
+      "bytes": 57007,
+      "sha256": "7044dc6199ca5c9abb73ee9bdd1ad6ad63fd73f0fdca79929deec7b0f7599689",
+      "scope": "BASELINE VISUAL ONLY"
+    },
+    {
+      "path": "global-country-ai-index.json",
+      "bytes": 11934,
+      "sha256": "651fa05c7dc633120c65cbaa0905e5dda0da9b0c3bf41ba1f062b7bdf0ed4679",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "model.mjs",
+      "bytes": 5168,
+      "sha256": "cd0b4a7a1fffc0eaf6c600d02fbe46ff9221451a9f33b8812eee9cd7e59899a9",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "package.json",
+      "bytes": 173,
+      "sha256": "92d83ada49e2e013db27151c3ac8b1788713a1071a47e31d1e38e350c6bb4358",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "public/app.js",
+      "bytes": 14453,
+      "sha256": "4fa93f4c9f59975438e933eb30f817b451c8f834d9aeef4e2340f89bd2976c6a",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "public/i18n.js",
+      "bytes": 8451,
+      "sha256": "8fdab2a4ec9dd51e9fc2f45f0a29ffd4c32404cc3ed1fcd441168a6d74041562",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "public/index.html",
+      "bytes": 9477,
+      "sha256": "100268c3290f6a103df9379c54f043e0c05cbb5fb2858f317894eac32bbecfb7",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "public/office-contracts.js",
+      "bytes": 3992,
+      "sha256": "aec908e5d5f92132360583a3f7e974a307b2df882038248dcedbf60e1f210ce9",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "public/style.css",
+      "bytes": 8892,
+      "sha256": "7fcd25f0a549a1471f01df764e19e4490126e4ecaba3dea64704fc5763901ab2",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "scripts/evidence.mjs",
+      "bytes": 1984,
+      "sha256": "79df76cec82dc3634ed212ab38769940edd15b03b3bf4ff0c84b5d3bd7f69cb9",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "scripts/verify-evidence.mjs",
+      "bytes": 896,
+      "sha256": "89037dd8dd40d9a69d1aa2a5ac17f8ba04d49472c9097b1c8af1e312448ef9f8",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "server.mjs",
+      "bytes": 7681,
+      "sha256": "de8fb67b5baf931076efec29786e52fa5cf61d4ffebb48944d7418e0eb470ed4",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "tests/browser.mjs",
+      "bytes": 4831,
+      "sha256": "36ae737cfac6e206b9097f8b848537ee313f22faffd192bd54b67c968c5dafda",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "tests/core.test.mjs",
+      "bytes": 10455,
+      "sha256": "61c3376634eba3d2be64ef4b14fcc67df0b7dd7b3bba31803bf5f3c31f794d98",
+      "scope": "DRAFT EVIDENCE"
+    },
+    {
+      "path": "tests/harness.mjs",
+      "bytes": 923,
+      "sha256": "9ca603fc57b2a7d7169be4907cac85fd851c88639333bfc078d103e83990f2d4",
+      "scope": "DRAFT EVIDENCE"
+    }
+  ],
+  "exclusions": [
+    "manifest itself and sidecar: avoid recursive hashes",
+    "node_modules",
+    ".git"
+  ]
+}
