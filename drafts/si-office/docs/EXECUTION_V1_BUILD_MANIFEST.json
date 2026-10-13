@@ -210,13 +210,13 @@
     },
     {
       "path": "public/p2-office.js",
-      "bytes": 5098,
-      "sha256": "8e63e4f8be7d8ecc1877c9354f46f34bc485d9e569146aa714015f5edb8d8533"
+      "bytes": 5881,
+      "sha256": "5594dddf01e480ebf6e5dc0d78aea64da9347a541c90ab22f94b0c4376ece9da"
     },
     {
       "path": "public/p2.html",
-      "bytes": 8807,
-      "sha256": "d0db5a2ee8f705ce61c4ce84ad83e6c10e00a3e0f4cbdb95c3b6427bb660a2fb"
+      "bytes": 8965,
+      "sha256": "2687907cb2ed9a32d8d33fc122f6f20ecb52dbd7917a7a366947c5eb22be2ee6"
     },
     {
       "path": "public/style.css",

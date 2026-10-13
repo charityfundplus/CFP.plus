@@ -10,7 +10,7 @@ async function refresh(){if(!state||!pair())return;const requested=pair(),next=a
  fill($('#p2-profile-member'),office.registrations,r=>r.name);fill($('#p2-catalog-office'),office.registrations,r=>r.name);catalogHSTDN();
  $('#p2-office-records').replaceChildren(...[...office.registrations,...office.hstdn,...office.records.filter(r=>r.kind)].map(r=>{const a=el('article','');a.append(el('strong',r.name),el('p',(r.kind||'profile/HSTDN')+' • '+r.status+' • '+(r.legalRelationshipVerification||'NOT VERIFIED')));return a;}));
  const done=state.tasks.filter(t=>['AWAITING HUMAN REVIEW','REVIEWED DRAFT','REJECTED DRAFT','BLOCKED','FAILED','INTERRUPTED'].includes(t.status)&&t.pairKey===pair());fill($('#p2-feedback-task'),done,r=>r.title+' • '+r.status);
- showLesson();$('#p2-learning-evidence').textContent=JSON.stringify({learning:state.learning.observations.filter(x=>x.pairKey===pair()),practice:state.learning.evaluations.filter(x=>x.pairKey===pair()),feedback:state.learning.feedback.filter(x=>x.pairKey===pair()),autoPromotion:false},null,2);
+ fill($('#p2-exercise'),state.learning.program.exercises.map(e=>({...e,key:e.localKey})),r=>String(r.officeModule+1)+' • '+r.name);$('#p2-load-exercise').disabled=state.auth.role==='viewer';showLesson();$('#p2-learning-evidence').textContent=JSON.stringify({learning:state.learning.observations.filter(x=>x.pairKey===pair()),practice:state.learning.evaluations.filter(x=>x.pairKey===pair()),feedback:state.learning.feedback.filter(x=>x.pairKey===pair()),autoPromotion:false},null,2);
  for(const f of ['p2-lesson-form','p2-feedback-form','p2-profile-form','p2-hstdn-form','p2-catalog-form'])$('#'+f+' button').disabled=state.auth.role==='viewer';
 }
 function catalogHSTDN(){fill($('#p2-catalog-hstdn'),[{key:'',name:'None / Không liên kết'},...office.hstdn.filter(h=>h.members.includes($('#p2-catalog-office').value))],r=>r.name);}
@@ -23,3 +23,5 @@ $('#p2-hstdn-form').onsubmit=e=>{e.preventDefault();const {member,...input}=Obje
 $('#p2-catalog-form').onsubmit=e=>{e.preventDefault();const {kind,...input}=Object.fromEntries(new FormData(e.target));Object.assign(input,{maturity:'research',source:'https://github.com/charityfundplus/CFP.plus/issues/130',synthetic:true});save(()=>api('office-create',{pairKey:pair(),kind,input}));};
 
 $('#p2-lesson-form [name=lesson]').addEventListener('change',showLesson);
+
+$('#p2-load-exercise').onclick=()=>{const exercise=state.learning.program.exercises.find(e=>e.localKey===$('#p2-exercise').value);if(!state.pairs.some(p=>p.key===exercise.pairTemplate)){ $('#p2-office-status').textContent='Pair not available in authorized scope';return; }$('#core-pair-select').value=exercise.pairTemplate;$('#core-pair-select').dispatchEvent(new Event('change'));$('#core-kind').value=exercise.task.kind;for(const name of ['title','text','scenario'])$('#core-task-form [name='+name+']').value=exercise.task[name];$('#core-task-form').scrollIntoView({behavior:'smooth'});};
