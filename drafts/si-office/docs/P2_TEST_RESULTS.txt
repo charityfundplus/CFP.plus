@@ -1,13 +1,13 @@
-✔ P2-A authentication rejects forged/expired/revoked sessions; no plaintext secrets (687.635362ms)
-✔ P2-B server roles, independent subject review and workspace isolation (590.881871ms)
-✔ P2-C durable task/idempotency and audit survive reopen (342.816118ms)
-✔ P2-C audit tampering and state mutation fail closed (443.859926ms)
-✔ P2-D five slots remain disconnected; no live credentials or identity mutation (334.266478ms)
-✔ P2-E backup/restore preserves task history, revokes sessions and rejects corruption (299.296179ms)
-✔ P2-E incompatible storage and metadata upgrade/rollback are bounded (247.660381ms)
-✔ P2-C storage commit failure returns no task and rolls back state (227.766552ms)
-✔ P2-E persisted RUNNING checkpoint recovers interrupted without replay (381.979821ms)
-✔ P2-B reviewer cannot acknowledge own task after restart (268.46004ms)
+✔ P2-A authentication rejects forged/expired/revoked sessions; no plaintext secrets (533.195982ms)
+✔ P2-B server roles, independent subject review and workspace isolation (477.134279ms)
+✔ P2-C durable task/idempotency and audit survive reopen (280.999526ms)
+✔ P2-C audit tampering and state mutation fail closed (1030.032361ms)
+✔ P2-D five slots remain disconnected; no live credentials or identity mutation (720.844862ms)
+✔ P2-E backup/restore preserves task history, revokes sessions and rejects corruption (417.10149ms)
+✔ P2-E incompatible storage and metadata upgrade/rollback are bounded (398.216911ms)
+✔ P2-C storage commit failure returns no task and rolls back state (366.25301ms)
+✔ P2-E persisted RUNNING checkpoint recovers interrupted without replay (416.654327ms)
+✔ P2-B reviewer cannot acknowledge own task after restart (471.941723ms)
 ℹ tests 10
 ℹ suites 0
 ℹ pass 10
@@ -15,4 +15,4 @@
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 3832.878443
+ℹ duration_ms 5123.42625

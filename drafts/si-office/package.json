@@ -7,7 +7,10 @@
     "test": "node scripts/run-tests.mjs",
     "demo:core": "node scripts/core-demo.mjs",
     "test:p2": "node tests/p2.test.mjs",
-    "demo:p2": "node scripts/p2-demo.mjs"
+    "demo:p2": "node scripts/p2-demo.mjs",
+    "start:p2": "node sandbox/p2-http.mjs",
+    "provision:p2": "node scripts/p2-provision.mjs",
+    "test:p2:http": "node tests/p2-http.test.mjs"
   },
   "engines": {
     "node": ">=22"

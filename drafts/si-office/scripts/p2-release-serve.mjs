@@ -1,0 +1,4 @@
+import {readFileSync} from 'node:fs';import {join} from 'node:path';import {pathToFileURL} from 'node:url';
+import {verifyRelease} from '../sandbox/release-control.mjs';
+if(!process.env.CFP_P2_RELEASE_DIR)throw Error('CFP_P2_RELEASE_DIR_REQUIRED');const active=JSON.parse(readFileSync(join(process.env.CFP_P2_RELEASE_DIR,'active.json')));verifyRelease(active.release,active.digest);
+const {P2Sandbox}=await import(pathToFileURL(join(active.release,'sandbox/p2-service.mjs'))),{createP2HTTP}=await import(pathToFileURL(join(active.release,'sandbox/p2-http.mjs')));const database=active.database||process.env.CFP_P2_DB;if(!database)throw Error('CFP_P2_DB_REQUIRED');const service=new P2Sandbox(database),server=createP2HTTP({service});server.listen(Number(process.env.CFP_P2_PORT||4174),'127.0.0.1');process.on('SIGTERM',()=>server.close(()=>{service.close();process.exit(0);}));
