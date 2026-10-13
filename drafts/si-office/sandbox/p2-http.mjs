@@ -9,7 +9,7 @@ export function createP2HTTP({service}){
  const server=http.createServer(async(req,res)=>{
   const send=(code,data)=>{res.writeHead(code,{'Content-Type':'application/json; charset=utf-8'});res.end(JSON.stringify(data));};
   res.setHeader('Cache-Control','no-store');res.setHeader('X-Content-Type-Options','nosniff');res.setHeader('Referrer-Policy','no-referrer');res.setHeader('Content-Security-Policy',"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; form-action 'self'; base-uri 'none'");
-  if(!/^(localhost|127\.0\.0\.1)(:\d+)?$/.test(req.headers.host||'')){service.httpDenial('HOST_DENIED');return send(403,{error:'LOOPBACK_ONLY'});}
+  if(!/^(localhost|127\.0\.0\.1)(:\d+)?$/.test(req.headers.host||'')){try{service.httpDenial('HOST_DENIED');}catch{}return send(403,{error:'LOOPBACK_ONLY'});}
   const path=new URL(req.url,'http://localhost').pathname;
   try{
    const assets={'/':'p2.html','/p2':'p2.html','/core.js':'core.js','/style.css':'style.css'};

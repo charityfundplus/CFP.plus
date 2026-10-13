@@ -1,0 +1,215 @@
+{
+  "version": 3,
+  "scope": "P2 HTTP/UI and bounded executable sandbox rollback; not production",
+  "baseline": "87c763ba575dabcce0c7eabbbbb4546d3d6a94ae",
+  "browserCommit": "566c7067885db15bb14d5c026525765cc20b0eb0",
+  "tests": {
+    "p2": 10,
+    "httpRelease": 5,
+    "regression": 40,
+    "browser": 8
+  },
+  "findings": "Independent audit and live adapters pending; no general migration/live daemon replacement",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 7649,
+      "sha256": "0cf975d7c8c12bd707926a280d6b20045b989139dd8ba472b9e9a847acb313dc"
+    },
+    {
+      "path": "ai-entity-registry.json",
+      "bytes": 9655,
+      "sha256": "c97681cf7cdd494e4bb4658550c6db76546a00676c9eff8e8c83fb72ca1950f6"
+    },
+    {
+      "path": "core/common.mjs",
+      "bytes": 882,
+      "sha256": "f93f027c200da272aa059a61ea7412e00096f0a50b7258a240629d33343700e0"
+    },
+    {
+      "path": "core/core-engine.mjs",
+      "bytes": 11870,
+      "sha256": "aaa2383f17410fcdfa78af902152ce51e2ae3498662b968f557d3d2f0a91e598"
+    },
+    {
+      "path": "core/cross-check-engine.mjs",
+      "bytes": 1379,
+      "sha256": "bb8d503d036098f0e7aaa6c8f7bebb28e85cb2cc75588727df0d3d38672759fa"
+    },
+    {
+      "path": "core/hub69-integration.mjs",
+      "bytes": 419,
+      "sha256": "14fb53cf1ba15e1c5889afb022ec1d60a5a49a3a1c5bb2b90c4486b6e88e5bd7"
+    },
+    {
+      "path": "core/identity-registry.mjs",
+      "bytes": 1782,
+      "sha256": "3d47d937d62dffd66a7712608afcf9ac5d52d0143e64348e6a5819e004c43ced"
+    },
+    {
+      "path": "core/knowledge-evidence.mjs",
+      "bytes": 1776,
+      "sha256": "3aa78103ed6225f490a25a95848085a8b0074ce0faeb6cdb98aec22525db3e0a"
+    },
+    {
+      "path": "core/learning-training.mjs",
+      "bytes": 982,
+      "sha256": "0f9124475d0dffc33596f2694325889dd82c5b4997d2a3a42effed860df7a33a"
+    },
+    {
+      "path": "core/monitoring-recovery.mjs",
+      "bytes": 981,
+      "sha256": "d65e654fc08d123fbb91b6699e631b032c716c966110f6093ee13ad36255e754"
+    },
+    {
+      "path": "core/security-permission.mjs",
+      "bytes": 911,
+      "sha256": "bfa7f4d4704f0368f4bc72eb350e5022097801b3a3b1ab76524266de04370077"
+    },
+    {
+      "path": "core/si-adapter.mjs",
+      "bytes": 1216,
+      "sha256": "3aa9235a35bef76615172b662e5ba2537326a2bf85ac792f6abf9d22d15e97b9"
+    },
+    {
+      "path": "core/supervision-engine.mjs",
+      "bytes": 1138,
+      "sha256": "234b61a29dca36653e27e7b424fab4ca606f775a793e698311ee43012d503007"
+    },
+    {
+      "path": "core/task-engine.mjs",
+      "bytes": 3652,
+      "sha256": "ff6896f78ecae79bc6bce0c55029861e76ddf7f1f64aed6b93ecb259446b1d3d"
+    },
+    {
+      "path": "core/version-upgrade.mjs",
+      "bytes": 1558,
+      "sha256": "b8b93d65fea1aae9bb72851d4f5d3034c9a6fc54c614ebefc8ae448db611236e"
+    },
+    {
+      "path": "country-route-map.json",
+      "bytes": 4723,
+      "sha256": "344d373c39a48505f50d6222cc12e03db69df6f0d98f39ce980c9cc5bef9bc5e"
+    },
+    {
+      "path": "docs/P2_BROWSER_QA_REPORT.json",
+      "bytes": 770,
+      "sha256": "fa66d921d63cc8db1a0fc367aed1180af75fbfe80c254a52d62f0c20a4b19088"
+    },
+    {
+      "path": "docs/P2_BUILD_MANIFEST.json",
+      "bytes": 4247,
+      "sha256": "526bf1e80f54dd366a1db7158775e0cad839ffcc9c4c665802672eb9a981d2ae"
+    },
+    {
+      "path": "docs/P2_BUILD_MANIFEST.sha256",
+      "bytes": 89,
+      "sha256": "8eda8943f23c1124c87fa9609d11988ac6f203c08de4046a4a23a492678616c5"
+    },
+    {
+      "path": "docs/P2_CORE_REGRESSION_RESULTS.txt",
+      "bytes": 3769,
+      "sha256": "24a6cd3d4a372a7ba2ba1da72d7754cc0a393cf04c02bccf56ac705fe5ff618e"
+    },
+    {
+      "path": "docs/P2_HTTP_RELEASE_TEST_RESULTS.txt",
+      "bytes": 625,
+      "sha256": "90b75f83b6d881272fa10ccb5bac2f5f692803d2ec49e99ca5629e8faa8b2c3c"
+    },
+    {
+      "path": "docs/P2_RUNBOOK.md",
+      "bytes": 5081,
+      "sha256": "0010894f7c3ba8ef5346de04318240ce4f47d7390fd999d881bec8db64208b01"
+    },
+    {
+      "path": "docs/P2_STATUS.md",
+      "bytes": 6388,
+      "sha256": "d69d36e09165532c80d96e029013ec4f5375f159fdf03dcde713d38457ece1ee"
+    },
+    {
+      "path": "docs/P2_TEST_RESULTS.txt",
+      "bytes": 986,
+      "sha256": "12f03a453012b7591844edc9e63e42753685c181d7a3b36abf855ae08d7aee0c"
+    },
+    {
+      "path": "global-country-ai-index.json",
+      "bytes": 11934,
+      "sha256": "651fa05c7dc633120c65cbaa0905e5dda0da9b0c3bf41ba1f062b7bdf0ed4679"
+    },
+    {
+      "path": "package.json",
+      "bytes": 486,
+      "sha256": "7df9ebaae52dadad2c544220bbd5f4c25ebcb8815aceef85adb85ee1cc5be085"
+    },
+    {
+      "path": "public/core.js",
+      "bytes": 11798,
+      "sha256": "ce77abf13f6750ee24d80e25b6a9cc769d908fb5443eb03dcab01dfafd399907"
+    },
+    {
+      "path": "public/p2.html",
+      "bytes": 5649,
+      "sha256": "055b7cdc6cf045ce7c195f91c081debad193800ea98f63f398c5b92a3e84c878"
+    },
+    {
+      "path": "public/style.css",
+      "bytes": 9746,
+      "sha256": "3a63ab0006910709702ba49cc1a0fde49eb9ad244a102c2c035deaaa8a5443c6"
+    },
+    {
+      "path": "sandbox/p2-http.mjs",
+      "bytes": 4757,
+      "sha256": "d0eff133283719d3358fe832095d3882ab1a8bf7c5f67a2c877cc125f1385414"
+    },
+    {
+      "path": "sandbox/p2-service.mjs",
+      "bytes": 11517,
+      "sha256": "8c113e1933c6bc46c69c2193336b8fa35e193255bfa2de43bd73e16688ef8848"
+    },
+    {
+      "path": "sandbox/release-control.mjs",
+      "bytes": 5185,
+      "sha256": "b7ade2c6a4c339ed954bf6f503d4c7c50e8ab3db8300008bf303d3f24171639d"
+    },
+    {
+      "path": "sandbox/release-health.mjs",
+      "bytes": 481,
+      "sha256": "d0f727c78cbabd5392e6a6640d8dbce152988396f185a52fdf8a74003ab5ba19"
+    },
+    {
+      "path": "scripts/p2-demo.mjs",
+      "bytes": 1499,
+      "sha256": "343612b1f3ac15c52662e080527f1cbb300a6916676d872ec8c425e622fbce2e"
+    },
+    {
+      "path": "scripts/p2-provision.mjs",
+      "bytes": 589,
+      "sha256": "5e0c008d09389f26cfe0d2f0aa5069e7ff464df939804c62b9312d4e349c3350"
+    },
+    {
+      "path": "scripts/p2-release-serve.mjs",
+      "bytes": 878,
+      "sha256": "516327eef188f8e12f6765912a2aa35f1827abb4a84f10aafec191c97595c235"
+    },
+    {
+      "path": "scripts/verify-evidence.mjs",
+      "bytes": 1044,
+      "sha256": "55d3cf1110eae384cc4adf006f76618dd5070163a01eda152a062ba45ad2f7f4"
+    },
+    {
+      "path": "tests/p2-browser-qa.py",
+      "bytes": 5345,
+      "sha256": "44ba8f94f2d29d84556bb9b4abb97b904bc2e913f4c2f31b566711f71f794e76"
+    },
+    {
+      "path": "tests/p2-http.test.mjs",
+      "bytes": 6530,
+      "sha256": "5face1953b655400fd6174ec5c6b71fa1732765f85d025ff9824c8113f216d57"
+    },
+    {
+      "path": "tests/p2.test.mjs",
+      "bytes": 7955,
+      "sha256": "40074f518f2336bd5c36bfe5a2cb8d693dbef6df9bbea9a89fa2b648e784d269"
+    }
+  ]
+}

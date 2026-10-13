@@ -1,8 +1,8 @@
-✔ P2 HTTP secure headers/cookie and deny anonymous, origin, hostile Host and self-selected role (280.286092ms)
-✔ P2 HTTP task workflow, cross-workspace denial, viewer restriction and logout (397.386579ms)
-✔ P2 HTTP pair grants filter snapshots and deny ungranted pair creation (681.138627ms)
-✔ P2 release executes two verified bundles; rollback restores separate DB and retains current audit (929.502621ms)
-✔ P2 maintenance lease denies concurrent work; queued tasks block activation (362.549672ms)
+✔ P2 HTTP secure headers/cookie and deny anonymous, origin, hostile Host and self-selected role (281.705743ms)
+✔ P2 HTTP task workflow, cross-workspace denial, viewer restriction and logout (400.745328ms)
+✔ P2 HTTP pair grants filter snapshots and deny ungranted pair creation (282.682141ms)
+✔ P2 release executes two verified bundles; rollback restores separate DB and retains current audit (567.567929ms)
+✔ P2 maintenance lease denies concurrent work; queued tasks block activation (233.080754ms)
 ℹ tests 5
 ℹ suites 0
 ℹ pass 5
@@ -10,4 +10,4 @@
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 2663.889698
+ℹ duration_ms 1775.574093

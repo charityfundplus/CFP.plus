@@ -90,8 +90,8 @@
     },
     {
       "path": "sandbox/p2-http.mjs",
-      "bytes": 4745,
-      "sha256": "4dc2313eee88d7680743d4fd003a29abe0f91de701012dde2baa271e6384edfa"
+      "bytes": 4757,
+      "sha256": "d0eff133283719d3358fe832095d3882ab1a8bf7c5f67a2c877cc125f1385414"
     },
     {
       "path": "sandbox/p2-service.mjs",
@@ -125,8 +125,8 @@
     },
     {
       "path": "tests/p2-http.test.mjs",
-      "bytes": 6433,
-      "sha256": "b98c3a817a273329990ef21835f94b8e02823c58c99a91fd8a540960d0e612de"
+      "bytes": 6530,
+      "sha256": "5face1953b655400fd6174ec5c6b71fa1732765f85d025ff9824c8113f216d57"
     },
     {
       "path": "tests/p2.test.mjs",

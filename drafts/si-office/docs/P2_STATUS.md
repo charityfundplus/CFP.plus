@@ -1,3 +1,13 @@
+# Current P2 extension — PASS WITH FINDINGS / HUMAN REVIEW
+
+Authenticated HTTP/UI implemented; 10/10 P2, 5/5 HTTP/release and 40/40 shared regression PASS. Browser actual 8/8 PASS at commit 566c7067885db15bb14d5c026525765cc20b0eb0; verified 26 build files, VI/EN desktop/mobile390, no page errors, server/session stopped. Following that browser run, only Host-denial handling during maintenance was hardened; its targeted HTTP regression passes. UI bytes unchanged; no final-revision browser rerun is claimed.
+
+Executable rollback is bounded local release control: actual code health executed from two verified complete runtime bundles, active pointer switched, pre-upgrade DB restored into a new generation; current DB/audit retained. Trusted local sources and stopped HTTP process required; automatic live-daemon replacement, cross-schema migrations and multi-process lock not certified. Full production/executable upgrade approval remains NO-GO.
+
+Remaining material findings: independent external audit checkpoints/WORM; real five-vault owner/URL/scope and approved adapters; independent OpenSI post-review tied to new commit; broader independent process-kill rehearsal. Account pair scope added and tested; existing locally provisioned accounts retain legacy workspace-wide scope. Nothing grants real authority or binds locked identity.
+
+Evidence: P2_BROWSER_QA_REPORT.json; P2_HTTP_RELEASE_TEST_RESULTS.txt; P2_TEST_RESULTS.txt; P2_CORE_REGRESSION_RESULTS.txt; P2_EXTENSION_MANIFEST.json + SHA-256. Earlier sections below are retained phase history.
+
 # P2-A to P2-E sandbox implementation — PARTIAL / HUMAN REVIEW
 
 2026-10-13. Single shared CoreEngine; existing PR124; PRODUCTION NO-GO.
