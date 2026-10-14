@@ -2,8 +2,8 @@ import http from 'node:http';
 import {readFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import {P2Sandbox} from './p2-service.mjs';
-const commands={pairs:'instantiate',tasks:'createTask',run:'runTask',review:'reviewTask',stop:'stop',recover:'recover',retry:'retry',upgrade:'upgrade',rollback:'rollback',learn:'learn',feedback:'feedback',office:'officeSnapshot','office-create':'officeCreate'};
-const fields={pairs:['templateKey'],tasks:['pairKey','kind','title','text','scenario','resource','idempotencyKey'],run:['taskKey'],review:['taskKey','verdict'],stop:['pairKey'],recover:['pairKey'],retry:['taskKey'],upgrade:['target'],rollback:[],learn:['pairKey','lesson'],feedback:['taskKey','feedback'],office:['pairKey'],'office-create':['pairKey','kind','input']};
+const commands={pairs:'instantiate',tasks:'createTask',run:'runTask',review:'reviewTask',stop:'stop',recover:'recover',retry:'retry',upgrade:'upgrade',rollback:'rollback',learn:'learn',feedback:'feedback',office:'officeSnapshot','office-create':'officeCreate','assessment-submit':'prepareAssessment','assessment-review':'reviewAssessment'};
+const fields={pairs:['templateKey'],tasks:['pairKey','kind','title','text','scenario','resource','idempotencyKey'],run:['taskKey'],review:['taskKey','verdict'],stop:['pairKey'],recover:['pairKey'],retry:['taskKey'],upgrade:['target'],rollback:[],learn:['pairKey','lesson'],feedback:['taskKey','feedback'],office:['pairKey'],'office-create':['pairKey','kind','input'],'assessment-submit':['taskKey','input'],'assessment-review':['assessmentKey','input']};
 export function createP2HTTP({service,previewOrigin=null}){
  let preview=null;if(previewOrigin){preview=new URL(previewOrigin);if(preview.protocol!=='https:'||preview.username||preview.password||preview.pathname!=='/'||preview.search||preview.hash)throw Error('PREVIEW_ORIGIN_INVALID');}
  const loginWindows=new Map();
@@ -14,13 +14,13 @@ export function createP2HTTP({service,previewOrigin=null}){
   if(!previewRequest&&!/^(localhost|127\.0\.0\.1)(:\d+)?$/.test(req.headers.host||'')){try{service.httpDenial('HOST_DENIED');}catch{}return send(403,{error:'LOOPBACK_ONLY'});}
   const path=new URL(req.url,'http://localhost').pathname;
   try{
-   const assets={'/':'p2.html','/p2':'p2.html','/core.js':'core.js','/p2-office.js':'p2-office.js','/office-intake.js':'office-intake.js','/style.css':'style.css'};
+   const assets={'/':'p2.html','/p2':'p2.html','/core.js':'core.js','/p2-office.js':'p2-office.js','/office-intake.js':'office-intake.js','/assessment-export.js':'assessment-export.js','/style.css':'style.css'};
    if(!path.startsWith('/api/')){if(req.method!=='GET'||!assets[path])return send(404,{error:'NOT_FOUND'});res.setHeader('Content-Type',path.endsWith('.js')?'text/javascript':path.endsWith('.css')?'text/css':'text/html');return res.end(await readFile(new URL('../public/'+assets[path],import.meta.url)));}
    if(path==='/api/curriculum'&&req.method==='GET')return send(200,JSON.parse(await readFile(new URL('../configs/training-basic-v1.json',import.meta.url),'utf8')));
    let body={};if(req.method==='POST'){
     if(req.headers.origin!==expectedOrigin){service.httpDenial('ORIGIN_DENIED');return send(403,{error:'ORIGIN_DENIED'});}
     if(!req.headers['content-type']?.startsWith('application/json'))return send(415,{error:'JSON_REQUIRED'});
-    const maxBytes=path==='/api/core/office-create'?32768:8192;
+    const maxBytes=['/api/core/office-create','/api/core/assessment-submit'].includes(path)?32768:8192;
     let raw='';for await(const c of req){raw+=c;if(Buffer.byteLength(raw)>maxBytes)return send(413,{error:'PAYLOAD_TOO_LARGE'});}body=JSON.parse(raw||'{}');if(!body||typeof body!=='object'||Array.isArray(body))return send(400,{error:'INVALID_FIELDS'});
    }else if(req.method!=='GET')return send(405,{error:'METHOD_DENIED'});
    const exact=keys=>{if(Object.keys(body).some(k=>!keys.includes(k)))throw Error('INVALID_FIELDS');};

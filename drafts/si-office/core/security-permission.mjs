@@ -6,4 +6,4 @@ export function checkTool(config,request){
  if(!['source.read','draft.write'].includes(request.tool))throw Error('TOOL_DENIED');
  return true;
 }
-export function checkActor(actor,action){requireRole(actor,['viewer','editor','reviewer']);if(action==='read')return;if(['review','recover','upgrade','rollback'].includes(action))requireRole(actor,['reviewer']);else requireRole(actor,['editor','reviewer']);}
+export function checkActor(actor,action){requireRole(actor,['viewer','editor','reviewer']);if(action==='read')return;if(['review','assessment-review','recover','upgrade','rollback'].includes(action))requireRole(actor,['reviewer']);else requireRole(actor,['editor','reviewer']);}

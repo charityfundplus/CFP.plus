@@ -57,6 +57,8 @@ export class CoreEngine {
   else throw Error('OFFICE_KIND_DENIED');this.#knowledge.append(actor,'office-record','DRAFT ONLY',{pairKey,kind,recordKey:row.key,recordHash:hash(row)});return row;});}
  learn(actor,pairKey,lesson){return this.#act(actor,'learn',()=>{this.#pair(pairKey);return this.#learning.lesson(actor,pairKey,lesson);});}
  feedback(actor,taskKey,feedback){return this.#act(actor,'feedback',()=>this.#learning.feedback(actor,this.#tasks.get(taskKey),feedback));}
+ prepareAssessment(actor,taskKey,input){return this.#act(actor,'assessment-submit',()=>{const row=this.#learning.prepareAssessment(actor,this.#tasks.get(taskKey),input);this.#knowledge.append(actor,'assessment-evidence','SYNTHETIC ONLY',{pairKey:row.pairKey,taskKey,assessmentKey:row.key,artifactSetDigest:row.artifactSetDigest});return row;});}
+ reviewAssessment(actor,assessmentKey,input){return this.#act(actor,'assessment-review',()=>{const row=this.#learning.reviewAssessment(actor,assessmentKey,input);this.#knowledge.append(actor,'assessment-rubric','NOT CERTIFIED',{pairKey:row.pairKey,taskKey:row.taskKey,assessmentKey,artifactSetDigest:row.artifactSetDigest});return row;});}
  createTask(actor,pairKey,input){return this.#act(actor,'create-task',()=>{const p=this.#pair(pairKey);if(p.status!=='READY')throw Error('PAIR_STOPPED');return this.#tasks.create(p.config,actor,input);});}
  async runTask(actor,taskKey){
   this.#authorize(actor,'run-task');const t=this.#tasks.get(taskKey),p=this.#pair(t.pairKey);
