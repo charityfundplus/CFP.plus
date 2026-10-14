@@ -1,0 +1,73 @@
+{
+  "evaluationBaseline": "b75b780eb64430355f0b51a4b58b9e5269e0db43",
+  "parentDevelopmentRevision": "4e6e11a1e7d8d4edcf361ac2f79b183d678cb20a",
+  "mode": "ADDITIVE LOCAL DEVELOPMENT / HOLD ACTIVATION / PRODUCTION NO-GO",
+  "originalCostSourceRecoveredByteForByte": false,
+  "newTests": {
+    "cost": 5,
+    "trainingPack": 3
+  },
+  "historicalPassSuitesRerun": false,
+  "files": [
+    {
+      "path": "drafts/si-office/scripts/cost-bound.mjs",
+      "sha256": "870ef9a1dfcf4e043f088869021c274fe38ffbf1ea66caa11a2affc8337684a0",
+      "gitBlobSha": "f72af4f4a8c8c6a2d970de236e3afc094198258d",
+      "bytes": 2724
+    },
+    {
+      "path": "drafts/si-office/tests/cost-bound.test.mjs",
+      "sha256": "3cca40f957f6ab9cde8d45562db83c9511ecb5a5616caf83ba70f185969d20be",
+      "gitBlobSha": "539a7ea46108a9bc0e0161ed73e54d3f30fa3bd6",
+      "bytes": 2649
+    },
+    {
+      "path": "drafts/si-office/scripts/training-evidence-pack.mjs",
+      "sha256": "9085e75f604b5fce01c83402521213df745b4535ef6ad2b0eac1c98776ca8203",
+      "gitBlobSha": "38539c003bd8fe946e97dd500926bc8fdaeb2ddc",
+      "bytes": 4457
+    },
+    {
+      "path": "drafts/si-office/tests/training-evidence-pack.test.mjs",
+      "sha256": "069314f45d8fd1528882bdb064f8aa768a90a4b9dd35a5abee662a8c910c8979",
+      "gitBlobSha": "a80eb76b291ebbd123af3f10387d246cc0b9f906",
+      "bytes": 3530
+    },
+    {
+      "path": "drafts/si-office/docs/cost-continuation-20261014/CONTINUATION_RECEIPT_VI.md",
+      "sha256": "cb9144ffa9f806a1bb75d0768624bb31a6eca71b2082cd224979144decdf879f",
+      "gitBlobSha": "07e0be1b2d5cbbddf0849805c015a1e50d54381c",
+      "bytes": 3455
+    },
+    {
+      "path": "drafts/si-office/docs/cost-continuation-20261014/COST_BOUND_TEST_RESULTS.txt",
+      "sha256": "86daf0aff6a6c8a4ce36036a6f8f5519e697b14e8f18c9e6617a8d46ae352e42",
+      "gitBlobSha": "c1ae2fe851c186027aaa62d9eb42efd8fa0e6400",
+      "bytes": 507
+    },
+    {
+      "path": "drafts/si-office/docs/cost-continuation-20261014/COST_COMPARISON_VI.md",
+      "sha256": "1b8039310e9283839aa0760c438488d68c79f98601a43d54b4bc2f889f02ea25",
+      "gitBlobSha": "821e0128716055b1e603718cdec6f2ab47881e93",
+      "bytes": 7977
+    },
+    {
+      "path": "drafts/si-office/docs/cost-continuation-20261014/HOST_ACCOUNTS_ROLLBACK_CHECKLIST_VI.md",
+      "sha256": "cac0142b669e808358db9ce0d9dfe273e5583bd978f07609f3b3dbabe216d0b7",
+      "gitBlobSha": "168c8fc1c948bd4fe26add001f58b7fb6cb3e362",
+      "bytes": 6039
+    },
+    {
+      "path": "drafts/si-office/docs/cost-continuation-20261014/LOCAL_TRAINING_PACK_VI_EN.md",
+      "sha256": "1eb9d1735738b06c7d4852e4115feadd34baa929c0cbf6b808b31f89b339f3aa",
+      "gitBlobSha": "88389cfd48567d679dd3d1ee97adf9b57cf0137e",
+      "bytes": 2922
+    },
+    {
+      "path": "drafts/si-office/docs/cost-continuation-20261014/TRAINING_PACK_TEST_RESULTS.txt",
+      "sha256": "8604030c51d64cb9908a9b3c640a270d8a5c920c61bb39566d1a684d05f6618f",
+      "gitBlobSha": "c30677d35d38edef7cb1d362a2745498412c665c",
+      "bytes": 425
+    }
+  ]
+}
