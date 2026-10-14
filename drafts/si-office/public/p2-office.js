@@ -29,12 +29,12 @@ $('#p2-lesson-form [name=lesson]').addEventListener('change',showLesson);
 $('#p2-load-exercise').onclick=()=>{const exercise=state.learning.program.exercises.find(e=>e.localKey===$('#p2-exercise').value);if(!state.pairs.some(p=>p.key===exercise.pairTemplate)){ $('#p2-office-status').textContent='Pair not available in authorized scope';return; }$('#core-pair-select').value=exercise.pairTemplate;$('#core-pair-select').dispatchEvent(new Event('change'));$('#core-kind').value=exercise.task.kind;for(const name of ['title','text','scenario'])$('#core-task-form [name='+name+']').value=exercise.task[name];$('#core-task-form').scrollIntoView({behavior:'smooth'});};
 
 // Display-only progress from retained evidence. This never changes permissions.
-function journeyEvidence(){
- const subject=state.auth.id,pairKey=pair(),program=state.learning.program;
- const lessons=program.basic.lessons.filter(l=>state.learning.observations.some(o=>o.subject===subject&&o.pairKey===pairKey&&o.lesson===l.key)).map(l=>l.key);
+function journeyEvidence(snapshot=state,pairKey=pair()){
+ const subject=snapshot.auth.id,program=snapshot.learning.program;
+ const lessons=program.basic.lessons.filter(l=>snapshot.learning.observations.some(o=>o.subject===subject&&o.pairKey===pairKey&&o.lesson===l.key)).map(l=>l.key);
  const exercises=program.exercises.map(e=>{
-  const tasks=state.tasks.filter(t=>t.owner===subject&&t.pairKey===pairKey&&t.pairKey===e.pairTemplate&&t.kind===e.task.kind&&t.title===e.task.title&&t.text===e.task.text&&t.scenario===e.task.scenario&&t.resource===e.task.resource);
-  const reviewed=tasks.find(t=>t.status==='REVIEWED DRAFT'&&t.review?.actor!==subject&&t.review?.verdict==='acknowledge-draft'&&t.checks.length===18&&t.checks.every(c=>c.pass===true||c.result==='PASS')&&state.learning.feedback.some(f=>f.subject===subject&&f.taskKey===t.key&&f.outputHash===t.proposalHash));
+  const tasks=snapshot.tasks.filter(t=>t.owner===subject&&t.pairKey===pairKey&&t.pairKey===e.pairTemplate&&t.kind===e.task.kind&&t.title===e.task.title&&t.text===e.task.text&&t.scenario===e.task.scenario&&t.resource===e.task.resource);
+  const reviewed=tasks.find(t=>t.status==='REVIEWED DRAFT'&&t.review?.actor!==subject&&t.review?.verdict==='acknowledge-draft'&&t.checks.length===18&&t.checks.every(c=>c.pass===true||c.result==='PASS')&&snapshot.learning.feedback.some(f=>f.subject===subject&&f.taskKey===t.key&&f.outputHash===t.proposalHash));
   return {exercise:e.localKey,taskKey:reviewed?.key||null,status:reviewed?'REVIEWED SYNTHETIC DRAFT':'EVIDENCE PENDING'};
  });
  return {subject,pairKey,lessons,exercises,basicDraftReady:lessons.length===program.basic.lessons.length&&exercises.every(e=>e.taskKey),advancedStatus:'CURRICULUM DRAFT / NOT ASSESSED',privilegeChange:false,certification:false};
@@ -47,11 +47,19 @@ function showJourney(lang){
 $('#p2-export-evidence').onclick=async()=>{
  try{
   // Fetch current server-filtered state; never export cookies or account secrets.
-  const response=await fetch('/api/core/state');if(!response.ok)throw Error('AUTHENTICATED STATE REQUIRED');state=await response.json();
-  const j=journeyEvidence(),tasks=state.tasks.filter(t=>t.pairKey===j.pairKey&&t.owner===j.subject),keys=new Set(tasks.map(t=>t.key));
+  if(!state?.auth)throw Error('AUTHENTICATED STATE REQUIRED');
+  const exportScope={pairKey:pair(),subject:state.auth.id,workspace:state.auth.workspace};
+  const assertScope=auth=>{if(pair()!==exportScope.pairKey||state?.auth.id!==exportScope.subject||state?.auth.workspace!==exportScope.workspace||auth.id!==exportScope.subject||auth.workspace!==exportScope.workspace)throw Error('EXPORT_SCOPE_CHANGED');};
+  const response=await fetch('/api/core/state');if(!response.ok)throw Error('AUTHENTICATED STATE REQUIRED');const snapshot=await response.json();assertScope(snapshot.auth);
+  const j=journeyEvidence(snapshot,exportScope.pairKey),tasks=snapshot.tasks.filter(t=>t.pairKey===j.pairKey&&t.owner===j.subject),keys=new Set(tasks.map(t=>t.key));
   const scopedOffice=await api('office',{pairKey:j.pairKey});const ownApplications=scopedOffice.registrations.filter(r=>r.subject===j.subject),ownRefs=new Set(ownApplications.map(r=>r.key));
-  const payload={format:'cfp-training-evidence-v1',workspace:state.auth.workspace,exportedAt:new Date().toISOString(),mode:state.mode,journey:j,tasks,assessments:scopedAssessmentEvidence(state,j.subject,j.pairKey),office:{applications:ownApplications,hstdn:scopedOffice.hstdn.filter(r=>r.members.some(k=>ownRefs.has(k))),records:scopedOffice.records.filter(r=>r.subject===j.subject||ownRefs.has(r.officeRef))},feedback:state.learning.feedback.filter(f=>keys.has(f.taskKey)),observations:state.learning.observations.filter(o=>o.subject===j.subject&&o.pairKey===j.pairKey),audit:state.audit.filter(a=>a.details?.pairKey===j.pairKey||keys.has(a.details?.taskKey)),auditValid:state.auditValid,sourceRevision:state.buildProvenance?.verified===true?state.buildProvenance.revision:null,buildProvenance:state.buildProvenance||{verified:false,finding:'BUILD_PROVENANCE_MISSING'}};
+  const commercial=await api('commerce-state',{pairKey:j.pairKey});
+  const authReadback=await fetch('/api/core/state');if(!authReadback.ok)throw Error('AUTHENTICATED STATE REQUIRED');const finalSnapshot=await authReadback.json();assertScope(finalSnapshot.auth);if(JSON.stringify(finalSnapshot.buildProvenance)!==JSON.stringify(snapshot.buildProvenance))throw Error('EXPORT_BUILD_CHANGED');
+  const commerce={synthetic:true,approval:'NOT AUTHORIZED',inquiries:commercial.inquiries.filter(r=>r.subject===j.subject),opportunities:commercial.opportunities.filter(r=>r.subject===j.subject)};
+  for(const row of [...commerce.inquiries,...commerce.opportunities]){const link=row.auditLink,event=finalSnapshot.audit.find(a=>a.sequence===link?.sequence&&a.sha256===link?.sha256);const record={...row};delete record.auditLink;const digest=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(JSON.stringify(record)))),b=>b.toString(16).padStart(2,'0')).join('');if(!event||event.details?.recordKey!==row.key||event.details?.recordHash!==digest||link.recordHash!==digest)throw Error('COMMERCE_AUDIT_READBACK_FAILED');}
+  const payload={format:'cfp-training-evidence-v1',workspace:snapshot.auth.workspace,exportedAt:new Date().toISOString(),mode:snapshot.mode,journey:j,tasks,commerce,assessments:scopedAssessmentEvidence(snapshot,j.subject,j.pairKey),office:{applications:ownApplications,hstdn:scopedOffice.hstdn.filter(r=>r.members.some(k=>ownRefs.has(k))),records:scopedOffice.records.filter(r=>r.subject===j.subject||ownRefs.has(r.officeRef))},feedback:snapshot.learning.feedback.filter(f=>keys.has(f.taskKey)),observations:snapshot.learning.observations.filter(o=>o.subject===j.subject&&o.pairKey===j.pairKey),audit:finalSnapshot.audit.filter(a=>a.details?.pairKey===j.pairKey||keys.has(a.details?.taskKey)),auditValid:finalSnapshot.auditValid,sourceRevision:snapshot.buildProvenance?.verified===true?snapshot.buildProvenance.revision:null,buildProvenance:snapshot.buildProvenance||{verified:false,finding:'BUILD_PROVENANCE_MISSING'}};
   const payloadJSON=JSON.stringify(payload),digest=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(payloadJSON))),b=>b.toString(16).padStart(2,'0')).join('');
+  assertScope(snapshot.auth);
   const url=URL.createObjectURL(new Blob([JSON.stringify({sha256:digest,digestOf:'UTF-8 payloadJSON bytes',payloadJSON},null,2)],{type:'application/json'}));
   const a=el('a','');a.href=url;a.download='cfp-training-evidence.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);$('#p2-export-status').textContent='SHA-256 '+digest;
  }catch(e){$('#p2-export-status').textContent=e.message;}

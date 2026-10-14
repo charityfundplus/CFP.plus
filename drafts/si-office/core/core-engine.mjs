@@ -1,3 +1,4 @@
+import {searchCatalog,createInquiry,matchInquiry,createOpportunity,updateOpportunity,commercialState} from './commercial-intake.mjs';
 import templates from '../configs/pairs.json' with {type:'json'};
 import {clone,freeze,hash,requireKeys,text,MODULES,key} from './common.mjs';
 import {inspectIdentity} from './identity-registry.mjs';
@@ -32,15 +33,29 @@ export class CoreEngine {
   this.#checkpointWriter=checkpointWriter;this.#adapterFactory=adapterFactory;this.#timeout=timeoutMs;
   if(checkpoint)this.#restore(checkpoint);else this.instantiate(system,this.#templates[0].key,true);
  }
- checkpoint(){return clone({schema:this.#learning.snapshot().assessments.length?2:1,office:[...this.#office.entries()],pairs:[...this.#pairs.values()].map(p=>({...p,busy:false})),tasks:this.#tasks.all(),audit:this.#knowledge.events(),learning:this.#learning.snapshot(),alerts:this.#monitor.alerts(),upgrade:{version:this.#upgrades.version,history:this.#upgrades.history}});}
+ checkpoint(){return clone({schema:[...this.#office.values()].some(o=>o.commercial?.inquiries?.length||o.commercial?.opportunities?.length)?3:this.#learning.snapshot().assessments.length?2:1,office:[...this.#office.entries()],pairs:[...this.#pairs.values()].map(p=>({...p,busy:false})),tasks:this.#tasks.all(),audit:this.#knowledge.events(),learning:this.#learning.snapshot(),alerts:this.#monitor.alerts(),upgrade:{version:this.#upgrades.version,history:this.#upgrades.history}});}
  #restore(c){
-  if(![1,2].includes(c.schema)||!Array.isArray(c.pairs)||!Array.isArray(c.tasks))throw Error('CHECKPOINT_INCOMPATIBLE');
+  if(![1,2,3].includes(c.schema)||!Array.isArray(c.pairs)||!Array.isArray(c.tasks))throw Error('CHECKPOINT_INCOMPATIBLE');
   // Schema 2 makes legacy readers refuse assessment-bearing evidence instead of
   // silently discarding it on their next checkpoint. Never migrate the audit.
   const assessments=c.learning?.assessments;
-  if(c.schema===2&&!Array.isArray(assessments)||assessments!==undefined&&!Array.isArray(assessments))throw Error('CHECKPOINT_ASSESSMENT_RETENTION_REQUIRED');
+  if(c.schema>=2&&!Array.isArray(assessments)||assessments!==undefined&&!Array.isArray(assessments))throw Error('CHECKPOINT_ASSESSMENT_RETENTION_REQUIRED');
   const assessmentKeys=new Set((assessments||[]).map(row=>row.key));
   if(assessmentKeys.size!==(assessments||[]).length||(c.audit||[]).some(event=>['assessment-evidence','assessment-rubric'].includes(event.action)&&!assessmentKeys.has(event.details?.assessmentKey)))throw Error('CHECKPOINT_ASSESSMENT_RETENTION_REQUIRED');
+  // Commercial state needs owner-aware readers; predecessors accepting only 1/2
+  // must refuse schema 3 rather than expose private records via old Office routes.
+  const officeRows=c.office||[];if(!Array.isArray(officeRows))throw Error('CHECKPOINT_COMMERCE_RETENTION_REQUIRED');
+  const retained=new Map(),officeKeys=new Set();for(const [pairKey,state] of officeRows){if(!text(pairKey)||officeKeys.has(pairKey)||!state||typeof state!=='object')throw Error('CHECKPOINT_COMMERCE_RETENTION_REQUIRED');officeKeys.add(pairKey);if(!state.commercial)continue;
+   if(!Array.isArray(state.commercial.inquiries)||!Array.isArray(state.commercial.opportunities))throw Error('CHECKPOINT_COMMERCE_RETENTION_REQUIRED');
+   for(const row of [...state.commercial.inquiries,...state.commercial.opportunities]){if(!text(row.key)||!text(row.subject)||retained.has(row.key))throw Error('CHECKPOINT_COMMERCE_RETENTION_REQUIRED');retained.set(row.key,{pairKey,row});}
+  }
+  const latest=new Map();for(const event of c.audit||[])if(['inquiry-create-evidence','opportunity-create-evidence','opportunity-status-evidence'].includes(event.action)){
+   const saved=retained.get(event.details?.recordKey);if(!saved||saved.pairKey!==event.details?.pairKey||saved.row.subject!==event.details?.subject)throw Error('CHECKPOINT_COMMERCE_RETENTION_REQUIRED');latest.set(saved.row.key,event);
+  }
+  for(const {row} of retained.values()){const event=latest.get(row.key),record=clone(row);delete record.auditLink;
+   if(!event||row.auditLink?.sequence!==event.sequence||row.auditLink?.sha256!==event.sha256||row.auditLink?.recordHash!==hash(record)||event.details.recordHash!==hash(record))throw Error('CHECKPOINT_COMMERCE_RETENTION_REQUIRED');
+  }
+  if((retained.size||latest.size)&&c.schema!==3)throw Error('CHECKPOINT_COMMERCE_SCHEMA_REQUIRED');
   this.#office=new Map(clone(c.office||[]));this.#knowledge.restore(c.audit);this.#tasks.restore(c.tasks);this.#learning.restore(c.learning);this.#monitor.restore(c.alerts);
   if(!['0.1.0-sandbox','0.1.1-sandbox'].includes(c.upgrade.version))throw Error('CHECKPOINT_VERSION_INVALID');
   this.#upgrades.version=c.upgrade.version;this.#upgrades.history=clone(c.upgrade.history);
@@ -54,13 +69,20 @@ export class CoreEngine {
  #publicPair(p){return clone({key:p.config.key,name:p.config.name,status:p.status,busy:p.busy,stopReason:p.stopReason,config:p.config,identity:p.identity,modules:p.modules});}
  snapshot(actor){this.#authorize(actor,'read');return {mode:'SYNTHETIC SANDBOX • PRODUCTION NO-GO',pairs:[...this.#pairs.values()].map(p=>this.#publicPair(p)),templates:this.#templates.map(c=>({key:c.key,name:c.name,assignment:clone(c.assignment)})),tasks:this.#tasks.all(),learning:this.#learning.snapshot(),alerts:this.#monitor.alerts(),versions:this.#upgrades.snapshot(),knowledge:this.#knowledge.inventory(),audit:this.#knowledge.events(),auditValid:this.#knowledge.verify(),hub69:hubInventory(),groups:['V','000','135','246','789'],chapters:Array.from({length:10},(_,i)=>i)};}
  #officeState(pairKey){this.#pair(pairKey);if(!this.#office.has(pairKey))this.#office.set(pairKey,createState());return this.#office.get(pairKey);}
- officeSnapshot(actor,pairKey){this.#authorize(actor,'read');return clone({...this.#officeState(pairKey),modules,moduleContracts,registry});}
+ officeSnapshot(actor,pairKey){this.#authorize(actor,'read');const state=clone(this.#officeState(pairKey));if(state.commercial)state.commercial=commercialState(state,actor);return {...state,modules,moduleContracts,registry};}
  officeCreate(actor,pairKey,kind,input){return this.#act(actor,'office-create',()=>{const state=this.#officeState(pairKey);let row;
   if(['application','enrollment','marketing','work-request'].includes(kind)){row=createOfficeIntake(state,kind,input,actor,this.#learning.snapshot().program);}
   else if(kind==='profile'){row=validateRegistration(input);if(state.registrations.some(p=>p.name===row.name&&p.developer===row.developer))throw Error('DUPLICATE_PROFILE');row.key=key();state.registrations.push(row);}
   else if(kind==='hstdn'){row=validateHSTDN(input,state);row.key=key();state.hstdn.push(row);}
-  else if(['product','service'].includes(kind)){requireKeys(input,['name','source','officeRef','hstdnRef','scope','maturity','synthetic']);if(input.synthetic!==true||!text(input.name,200)||!safeURL(input.source)||!state.registrations.some(p=>p.key===input.officeRef)||input.hstdnRef&&!state.hstdn.some(h=>h.key===input.hstdnRef&&h.members.includes(input.officeRef)))throw Error('CATALOG_SCOPE_INVALID');if(kind==='product'&&!['concept','research','prototype'].includes(input.maturity)||kind==='service'&&!text(input.scope,300))throw Error('CATALOG_MATURITY_REQUIRED');row={...clone(input),kind,key:key(),status:'DRAFT',sourceVerification:'NOT VERIFIED',capabilityVerification:'NOT VERIFIED',legalRelationshipVerification:'NOT VERIFIED'};state.records.push(row);}
-  else throw Error('OFFICE_KIND_DENIED');this.#knowledge.append(actor,'office-record','DRAFT ONLY',{pairKey,kind,recordKey:row.key,recordHash:hash(row)});return row;});}
+  else if(['product','service'].includes(kind)){requireKeys(input,['name','source','officeRef','hstdnRef','scope','maturity','synthetic']);if(input.synthetic!==true||!text(input.name,200)||!safeURL(input.source)||!state.registrations.some(p=>p.key===input.officeRef&&p.subject===actor.id)||input.hstdnRef&&!state.hstdn.some(h=>h.key===input.hstdnRef&&h.members.includes(input.officeRef)))throw Error('CATALOG_SCOPE_INVALID');if(kind==='product'&&!['concept','research','prototype'].includes(input.maturity)||kind==='service'&&!text(input.scope,300))throw Error('CATALOG_MATURITY_REQUIRED');row={...clone(input),kind,key:key(),status:'DRAFT',sourceVerification:'NOT VERIFIED',capabilityVerification:'NOT VERIFIED',legalRelationshipVerification:'NOT VERIFIED'};state.records.push(row);}
+  else throw Error('OFFICE_KIND_DENIED');row.subject??=actor.id;this.#knowledge.append(actor,'office-record','DRAFT ONLY',{pairKey,kind,recordKey:row.key,recordHash:hash(row)});return row;});}
+ catalogSearch(actor,pairKey,input){this.#authorize(actor,'read');return searchCatalog(this.#officeState(pairKey),input);}
+ commerceState(actor,pairKey){this.#authorize(actor,'read');return commercialState(this.#officeState(pairKey),actor);}
+ inquiryMatch(actor,pairKey,input){this.#authorize(actor,'read');return matchInquiry(this.#officeState(pairKey),actor,input);}
+ #commercialWrite(actor,pairKey,input,action,fn){return this.#act(actor,action,()=>{const row=fn(this.#officeState(pairKey),actor,input);delete row.auditLink;const event=this.#knowledge.append(actor,action+'-evidence','SYNTHETIC ONLY',{pairKey,subject:actor.id,recordKey:row.key,recordHash:hash(row)});row.auditLink={sequence:event.sequence,sha256:event.sha256,recordHash:event.details.recordHash};return row;});}
+ inquiryCreate(actor,pairKey,input){return this.#commercialWrite(actor,pairKey,input,'inquiry-create',createInquiry);}
+ opportunityCreate(actor,pairKey,input){return this.#commercialWrite(actor,pairKey,input,'opportunity-create',createOpportunity);}
+ opportunityStatus(actor,pairKey,input){return this.#commercialWrite(actor,pairKey,input,'opportunity-status',updateOpportunity);}
  learn(actor,pairKey,lesson){return this.#act(actor,'learn',()=>{this.#pair(pairKey);return this.#learning.lesson(actor,pairKey,lesson);});}
  feedback(actor,taskKey,feedback){return this.#act(actor,'feedback',()=>this.#learning.feedback(actor,this.#tasks.get(taskKey),feedback));}
  prepareAssessment(actor,taskKey,input){return this.#act(actor,'assessment-submit',()=>{const row=this.#learning.prepareAssessment(actor,this.#tasks.get(taskKey),input);this.#knowledge.append(actor,'assessment-evidence','SYNTHETIC ONLY',{pairKey:row.pairKey,taskKey,assessmentKey:row.key,artifactSetDigest:row.artifactSetDigest});return row;});}

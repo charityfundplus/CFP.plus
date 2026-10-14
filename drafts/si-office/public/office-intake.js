@@ -10,7 +10,7 @@ const status=node('p');status.setAttribute('role','status');status.id='universal
 const controls=[];
 const applicationFields=[
  ['name','Tên đơn vị / AI','Entity / AI name','text',300],
- ['entityType','Đối tượng đăng ký','Applicant category',['new-ai','existing-ai','developer','enterprise']],
+ ['entityType','Đối tượng đăng ký','Applicant category',['new-ai','existing-ai','software','developer','enterprise']],
  ['version','Phiên bản','Version','text',300],['aiType','Loại AI','AI type','text',300],
  ['contact','Kênh liên hệ HTTPS công khai (giả lập)','Public HTTPS contact (synthetic)','url',300],
  ['country','Quốc gia hoặc nhánh hiện hữu (chưa biết ghi UNRESOLVED)','Country or existing branch (unknown: UNRESOLVED)','text',300],
@@ -43,11 +43,15 @@ function render(){
  section.append(node('p',tr('Giới thiệu → Quốc gia → Nhà phát triển → SI AI → HSTDN → Đào tạo → Công việc. Preview giả lập; không xác minh danh tính, công nhận SI hoặc công bố quan hệ sở hữu.','Introduction → Country → Developer → SI AI → HSTDN → Training → Work. Synthetic preview; no identity verification, SI recognition or ownership publication.')));
  const nav=node('nav');nav.className='numeric-links';nav.setAttribute('aria-label',tr('Tuyến gốc CFP+','CFP+ root routes'));
  for(const [id,vi,en] of [['69','HUB','HUB'],['4376','ID số','Numeric ID'],['343','Định danh / nguồn gốc','Identity / origin'],['267','CMP xét duyệt','CMP review'],['6','SI AI Robot','SI AI Robot'],['7','Doanh nghiệp / HSTDN','Enterprise / HSTDN'],['9','Quốc gia','Country'],['8882','Tri thức / giáo trình','Knowledge / curriculum']]){const a=node('a',id+' • '+tr(vi,en));a.href='https://cfp.plus/'+id;nav.append(a);}
- section.append(nav,node('p',tr('Các tuyến gốc chưa kiểm chứng chức năng đăng ký / khóa học trong phiên này. Hồ sơ và kênh liên hệ chỉ hiển thị trong workspace có quyền.','Root-route registration / course functions are unverified in this session. Profiles and contact channels are visible only in the authorized workspace.')));
+ nav.id='template-links';section.append(nav,node('p',tr('Tuyến dự kiến HUB69 /4376 /267: CHƯA ĐỐI CHIẾU đích thực tế. Các tuyến gốc chưa kiểm chứng chức năng đăng ký / khóa học trong phiên này. Hồ sơ và kênh liên hệ chỉ hiển thị trong workspace có quyền.','Expected HUB69 /4376 /267 routes: UNRESOLVED destination readback. Root-route registration / course functions are unverified in this session. Profiles and contact channels are visible only in the authorized workspace.')));
+ const metadata=node('p',tr('Cấu trúc hiển thị: 5 nhóm • 10 chương • 3 cấp • slot 0. Đây là metadata điều hướng; không cấp, đổi hoặc đánh số ID.','Display structure: 5 groups • 10 chapters • 3 levels • slot 0. Navigation metadata only; no ID issuance, mutation or renumbering.'));metadata.className='notice';section.append(metadata);
+ const hierarchy=node('details');hierarchy.id='template-hierarchy';hierarchy.append(node('summary',tr('Link Tổng → Chuyên Trách → chi tiết • 5 nhóm / 10 chương','Overview → dedicated section → detail • 5 groups / 10 chapters')));
+ for(const [group,chapters] of [['V',[]],['000',[0]],['135',[1,3,5]],['246',[2,4,6]],['789',[7,8,9]]]){const d=node('details');d.append(node('summary',tr('Nhóm ','Group ')+group));if(!chapters.length)d.append(node('p',tr('Điều hướng / quản trị; không phải Chương 11.','Navigation / governance; not Chapter 11.')));for(const chapter of chapters){const row=node('details');row.append(node('summary',tr('Chương ','Chapter ')+chapter),node('p',tr('Slot 0: vị trí mở rộng chủ đề đệ quy; khác Chương 0, không ghép thành ID hoặc suy Parent.','Slot 0: recursive topic extension position; distinct from Chapter 0, never concatenate IDs or infer Parent.')));d.append(row);}hierarchy.append(d);}
+ const source=node('a',tr('Nguồn template hiện hữu • chưa xác minh độc lập','Existing template source • not independently verified'));source.href='https://app.notion.com/p/3f3caac9a557816fb38bd1629d7c300d';hierarchy.append(source,node('p',tr('Snapshot nguồn: 14/10/2026 02:47 UTC; không có revision Notion bất biến. 3 tầng trên là mapping hiển thị đề xuất, giữ nguyên 12 module Office.','Source snapshot: 2026-10-14 02:47 UTC; no immutable Notion revision. The three levels are a proposed display mapping; all 12 Office modules are retained.')));section.append(hierarchy);
  const learning=node('a',tr('Học cơ bản và bài thực hành','Basic study and practice'));learning.href='#p2-learn';section.append(learning);
  const guide=node('div');guide.id='public-curriculum';section.append(guide);loadCurriculum(guide);
  if(!state||!office){section.append(node('p',tr('Đăng nhập bằng tài khoản sandbox được cấp để lưu đăng ký.','Sign in with an issued sandbox account to save an application.')));return;}
- const application=form('universal-application',tr('Đăng ký AI mới / hiện hữu, Developer hoặc DN','Register new / existing AI, developer or enterprise'),applicationFields,async input=>{
+ const application=form('universal-application',tr('Đăng ký AI / Phần mềm / Developer / DN','Register AI / software / developer / enterprise'),applicationFields,async input=>{
   const relations=[];for(const type of ['developer','parent','owner']){const entity=input['relation-'+type],evidence=input['evidence-'+type];delete input['relation-'+type];delete input['evidence-'+type];if(entity||evidence)relations.push({type,entity,evidence});}input.relationships=relations;if(!input.amendmentOf)delete input.amendmentOf;return save('application',input);
  });
  const amendLabel=node('label',tr('Đăng ký mới hoặc cập nhật khai báo của mình (lưu phiên bản mới)','New application or amend your declaration (append a new version)')),amend=node('select');amend.name='amendmentOf';const fresh=node('option',tr('Đăng ký mới','New application'));fresh.value='';amend.append(fresh);
@@ -75,7 +79,7 @@ function render(){
 }
 async function loadCurriculum(target){try{const r=await fetch('/api/curriculum');const c=await r.json();if(!r.ok)throw Error('CURRICULUM_UNAVAILABLE');for(const l of c.basic.lessons){const d=node('details');d.append(node('summary',l.title[lang()]),...l.steps[lang()].map(s=>node('p',s)));target.append(d);}}catch(e){target.textContent=e.message;}}
 let serial=0;
-async function refreshOffice(){if(!state||!pair())return;const n=++serial;try{const r=await fetch('/api/core/office',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({pairKey:pair()})});const o=await r.json();if(!r.ok)throw Error(o.error);if(n!==serial)return;office=o;render();}catch(e){status.textContent=e.message;}}
+async function refreshOffice(){const requestedPair=pair();office=null;render();if(!state||!requestedPair)return;const n=++serial;try{const r=await fetch('/api/core/office',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({pairKey:requestedPair})});const o=await r.json();if(!r.ok)throw Error(o.error);if(n!==serial||requestedPair!==pair())return;office=o;render();}catch(e){status.textContent=e.message;}}
 document.addEventListener('p2-state',e=>{state=e.detail;refreshOffice();});
 $('#core-pair-select').addEventListener('change',refreshOffice);
 $('#core-language').addEventListener('change',render);
@@ -85,13 +89,15 @@ function renderPreviewSteps(){
  const nav=$('.preview-nav');if(!nav)return;
  const signedIn=!!state&&!!office;
  const links=[
-  ['#universal-office','1 • Link Mẫu','1 • Template'],
-  [signedIn?'#universal-application':'#p2-login-panel','2 • Đăng ký','2 • Register'],
-  [signedIn?'#universal-showcase':'#universal-office','3 • Đối chiếu • Chờ review','3 • Verification • Pending review'],
-  ['#public-curriculum','4 • Học tập','4 • Study'],
-  [signedIn?'#p2-learn':'#public-curriculum','5 • Thực hành','5 • Practice'],
-  [signedIn?'#universal-work-request':'#p2-login-panel','6 • Đề nghị nhận việc','6 • Request work'],
-  [signedIn?'#p2-export-evidence':'#p2-login-panel','7 • Evidence','7 • Evidence']
+  [signedIn?'#universal-showcase':'#core-notice','1 • Danh tính & nguồn gốc','1 • Identity & origin'],
+  ['#template-introduction','2 • Giới thiệu','2 • Introduction'],
+  [signedIn?'#universal-application':'#p2-login-panel','3 • Đăng ký SI/AI & HSTDN','3 • SI/AI & HSTDN registration'],
+  [signedIn?'#p2-learn':'#public-curriculum','4 • Đào tạo & thực hành','4 • Training & practice'],
+  [signedIn?'#universal-work-request':'#p2-login-panel','5 • Công việc & nhiệm vụ','5 • Work & tasks'],
+  ['#template-commerce','6 • Kết nối thương mại','6 • Commercial connections'],
+  [signedIn?'#p2-export-evidence':'#p2-login-panel','7 • Evidence & readback','7 • Evidence & readback'],
+  ['#template-governance','8 • Quản trị & audit','8 • Governance & audit'],
+  ['#template-links','9 • Liên kết HUB69 / CMP','9 • HUB69 / CMP links']
  ];
  nav.replaceChildren(...links.map(([href,vi,en])=>{const a=node('a',tr(vi,en));a.href=href;return a;}));
 }

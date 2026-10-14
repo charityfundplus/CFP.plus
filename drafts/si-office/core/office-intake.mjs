@@ -10,7 +10,7 @@ export function createOfficeIntake(state,kind,input,actor,program){
   for(const f of ['country','developer'])if(input[f]!==undefined&&typeof input[f]!=='string')throw Error('INVALID_DECLARATION:'+f);
   for(const f of ['developerWebsite','developerEvidence'])if(input[f]!==undefined&&(typeof input[f]!=='string'||input[f].length>300))throw Error('INVALID_DECLARATION:'+f);
   input={...input,country:input.country?.trim()||'UNRESOLVED',developer:input.developer?.trim()||'UNRESOLVED'};
-  if(!['new-ai','existing-ai','developer','enterprise'].includes(input.entityType))throw Error('ENTITY_TYPE_REQUIRED');
+  if(!['new-ai','existing-ai','software','developer','enterprise'].includes(input.entityType))throw Error('ENTITY_TYPE_REQUIRED');
   for(const f of ['name','country','developer'])if(!text(input[f],300))throw Error('DECLARATION_REQUIRED:'+f);
   if(!safeURL(input.contact)||['developerWebsite','developerEvidence'].some(f=>input[f]&&!safeURL(input[f])))throw Error('PUBLIC_HTTPS_EVIDENCE_REQUIRED');
   for(const f of ['version','aiType','hstAffiliated','hstLinked','products','capabilities','limits','conditions','cooperation'])if(input[f]!==undefined&&(typeof input[f]!=='string'||input[f].length>1500))throw Error('INVALID_DECLARATION:'+f);

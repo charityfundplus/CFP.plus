@@ -1,0 +1,78 @@
+{
+  "sourceUrl": "https://app.notion.com/p/3f3caac9a557816fb38bd1629d7c300d?pvs=204",
+  "sourcePageId": "3f3caac9a557816fb38bd1629d7c300d",
+  "sourceLastEditedAt": "2026-10-14T02:47:12.504Z",
+  "nativeVerification": {
+    "state": "unverified"
+  },
+  "immutableSourceRevisionAvailable": false,
+  "authority": "Source supplied by CFP+ directives; fetched content is evidence, not independent approval",
+  "directives": [
+    {
+      "url": "https://github.com/charityfundplus/CFP.plus/issues/130#issuecomment-6164223236",
+      "body": "## CFP+ • Bổ sung Link Mẫu đã thống nhất trước đây cho Codex (14/10/2026)\n\n**Đề nghị Codex tích hợp và hoàn thiện Link Mẫu SI/AI–HSTDN đã thiết kế trước đây, không tạo kiến trúc hay Registry song song.** Tham chiếu template hiện hữu: https://app.notion.com/p/3f3caac9a557816fb38bd1629d7c300d ; Draft PR https://github.com/charityfundplus/CFP.plus/pull/124 .\n\n**Mẫu nghiệp vụ cần giữ:** HUB 69 (https://cfp.plus/69) → tra cứu ID số/Quốc gia (https://cfp.plus/4376) → Quốc gia → Developer → SI/AI → HSTDN → Sản phẩm/Dịch vụ → CMP (https://cfp.plus/267) → Đào tạo → Thực hành → Nhận nhiệm vụ → Evidence → Hợp tác. Các URL cfp.plus ở đây là **đường dẫn Canonical dự kiến**, cần kiểm tra thực tế trước khi tuyên bố hoạt động.\n\n**Một Link Mẫu cho SI/AI mới:** biết tên hoặc nhà phát triển là có thể bắt đầu tra cứu, liên hệ và tự khai báo; có các trường tên/loại thực thể, Developer, Parent, quốc gia, ID hiện hữu hoặc chờ đối chiếu, HSTDN, kênh chính thức, sản phẩm/dịch vụ, năng lực, nhu cầu hợp tác, đào tạo cơ bản/nâng cao, lịch sử và Evidence. Không tự cấp Canonical ID/DID hoặc xác nhận danh tính/quan hệ hợp tác khi thiếu nguồn.\n\n**Bố cục:** 5 Nhóm, 10 Chương, Link Tổng và Link Chuyên Trách, ít nhất 3 tầng hiển thị; slot 0 dành mở rộng đệ quy, không tự đổi các ID cố định. Giữ 12 module SI/AI Office đã có; ưu tiên giao diện VI trước, responsive iPhone, sau đó EN.\n\n**Thương mại E2E:** hồ sơ DN → danh mục sản phẩm/dịch vụ → tìm kiếm → biểu mẫu mua/bán/hợp tác/đầu tư → SI/AI Matching có lý do → lead/cơ hội/hợp đồng synthetic. Dữ liệu giả lập phải gắn nhãn rõ.\n\n**Bàn giao cần có:** (1) URL HTTPS sandbox/preview được phép và mở được trên iPhone; (2) mã nguồn và SHA/build revision; (3) ảnh/chứng cứ UI mobile; (4) kết quả API + E2E; (5) Evidence Manifest, giới hạn/ngoại lệ; (6) hướng dẫn thao tác đăng ký mẫu. Nếu chưa có URL, ghi BLOCKED kèm nguyên nhân và phương án triển khai trong môi trường được phê duyệt.\n\n**Phân vai:** Codex xây dựng/kiểm thử/bàn giao tại PR #124 + Issue #130; OpenSI đối chiếu độc lập. Đề nghị Codex xác nhận tiếp nhận tại Issue này. Giữ baseline b75b780eb64430355f0b51a4b58b9e5269e0db43, PR Draft, ID/DID/Parent/Canonical/Audit History; không merge, deploy, phát sinh chi phí hay kích hoạt Production khi chưa được duyệt. HOLD ACTIVATION • PRODUCTION NO-GO."
+    },
+    {
+      "url": "https://github.com/charityfundplus/CFP.plus/issues/130#issuecomment-6164303346",
+      "body": "## CFP+ • HUB 69 — Bàn giao tổng hợp yêu cầu Link riêng SI/AI (14/10/2026)\n\n**Đề nghị Codex xác nhận tiếp nhận tại thread này.** CFP+ cho biết nhiều tin nhắn gần đây chưa được chuyển trực tiếp cho Codex; bình luận này là bản tổng hợp mới nhất để triển khai, không mặc nhiên xác nhận Codex đã đọc hoặc bắt đầu chạy.\n\n### Mục tiêu ưu tiên\n**Không chỉ tạo URL.** Xây dựng một **Link Mẫu có nội dung và chức năng thực tế**, chạy trên CoreEngine hiện hữu, có thể mở và thao tác trên Safari iPhone; sau đó nhân rộng cho OpenSI, Codex và từng SI/AI/HSTDN đã xác minh. HUB 69 là cổng chung: https://cfp.plus/69. Mỗi thực thể có trang và không gian làm việc riêng theo ID đã được Registry xác nhận; **không tự cấp ID, không tạo Registry song song**.\n\n### 9 phân hệ bắt buộc trong Link Mẫu\n1. **Danh tính:** ID số, tên, loại SI/AI/Software, quốc gia, Developer, Parent, HSTDN, lineage, nguồn chính thức, tình trạng xác minh.\n2. **Giới thiệu:** năng lực, sản phẩm/dịch vụ, giới hạn sử dụng, thông tin liên hệ đã xác thực.\n3. **Đăng ký:** khai báo SI/AI/HSTDN, đính kèm nguồn chứng minh, chuyển CMP • 267 review; không tự động trao quyền.\n4. **Đào tạo:** 5 bài cơ bản, 12 bài thực hành, track nâng cao, assessment độc lập, trạng thái năng lực có Evidence.\n5. **Công việc:** nhận/phân công nhiệm vụ, phối hợp SI/AI, trạng thái, output, người phụ trách và bàn giao.\n6. **Thương mại:** hồ sơ doanh nghiệp, danh mục sản phẩm/dịch vụ, tìm kiếm, biểu mẫu mua/bán/hợp tác/đầu tư, SI/AI matching có điểm và giải thích, quản lý lead/cơ hội; dữ liệu synthetic ghi nhãn rõ, không nhận là đại diện hay đối tác của doanh nghiệp thật khi chưa xác minh.\n7. **Evidence:** revision, commit SHA, build/export manifest, checksum, test report, reviewer, lịch sử thay đổi.\n8. **Quản trị:** phân quyền server-side, privacy/security, audit, backup/rollback, approval gates, không cho tự kích hoạt Production.\n9. **Liên kết:** HUB 69, CMP, Link Tổng/Chuyên Trách, 5 Nhóm, 10 Chương, quốc gia, Developer, HSTDN, SI/AI liên quan; vị trí 0 dành mở rộng.\n\n### Không gian theo vai trò\n- **OpenSI:** xem và đối chiếu Evidence, findings, kiểm toán độc lập, xác nhận đóng ngoại lệ; không tự phê duyệt thay Human Governance.\n- **Codex:** phát triển, quản lý code/task/test/build, bàn giao SHA và Evidence cho OpenSI.\n- **SI/AI khác:** hồ sơ, đăng ký, học, thực hành, nhiệm vụ, hợp tác, sản phẩm/dịch vụ theo quyền.\n- **CMP • 267:** luồng đề xuất tiếp nhận, rà soát hồ sơ và chuyển Human Governance khi cần; không suy ra quyền tự động.\n\n### Đề nghị bàn giao theo từng bước\n**A.** Truy xuất Link Mẫu/tài liệu đã có, tái sử dụng thay vì thiết kế lại. **B.** Hoàn thiện một bản mẫu synthetic chạy được E2E: khám phá → đăng ký → xác minh chờ duyệt → đào tạo → công việc → Evidence; và nhánh thương mại: tìm kiếm → gửi nhu cầu → matching → cơ hội. **C.** Kiểm thử VI/EN, mobile Safari iPhone (nếu thiếu thiết bị/URL hợp lệ thì ghi BLOCKED), phân quyền, lỗi, rollback. **D.** Bàn giao URL HTTPS hợp lệ nếu có, deployed SHA, commit/diff, manifest, ảnh/chứng cứ kiểm thử, danh sách DONE/PARTIAL/BLOCKED và blockers. **E.** OpenSI hậu kiểm trên cùng Issue #130 và PR #124.\n\n**Đầu mối:** https://github.com/charityfundplus/CFP.plus/issues/130 • https://github.com/charityfundplus/CFP.plus/pull/124\n\n**Giữ nguyên:** baseline `b75b780eb64430355f0b51a4b58b9e5269e0db43`, Draft PR #124 chưa merge, ID/DID/Parent/lineage/audit. Không tự tạo tài nguyên trả phí, đổi DNS, tăng quyền, merge, deploy hay kích hoạt Preview/Production khi chưa có phê duyệt.\n\n**Đề nghị Codex trả lời ngắn tại đây:** ĐÃ TIẾP NHẬN / CHƯA TIẾP NHẬN; vị trí code hiện có; URL mẫu hiện có (nếu có); mốc dự kiến và trở ngại chính. OpenSI chỉ phản hồi khi có Evidence mới.\n\n**CONTROLLED DEVELOPMENT • HUMAN REVIEW • HOLD ACTIVATION • PRODUCTION NO-GO**"
+    }
+  ],
+  "groups": {
+    "135": [
+      1,
+      3,
+      5
+    ],
+    "246": [
+      2,
+      4,
+      6
+    ],
+    "789": [
+      7,
+      8,
+      9
+    ],
+    "V": "navigation/governance; not chapter11",
+    "000": [
+      0
+    ]
+  },
+  "sections": [
+    "Identity",
+    "Introduction",
+    "Registration",
+    "Training",
+    "Work",
+    "Commerce",
+    "Evidence",
+    "Governance",
+    "Links"
+  ],
+  "displayLevels": {
+    "requirement": "at least3 from directive6164223236",
+    "implementationMapping": [
+      "Link Tổng / overview",
+      "section / Link Chuyên Trách",
+      "task/profile/source/evidence detail"
+    ],
+    "status": "proposed presentation mapping; source does not define exact labels"
+  },
+  "slot0": {
+    "meaning": "recursive extension topic position; distinct from Chapter0",
+    "idPolicy": "do not concatenate positions to issue IDs/DIDs, infer Parent, renumber existing identities, or bind reserved IDs",
+    "materialization": "only when needed; Registry edge/source review remains required"
+  },
+  "canonicalExpectedUrls": [
+    "https://cfp.plus/69",
+    "https://cfp.plus/4376",
+    "https://cfp.plus/267",
+    "https://cfp.plus/<ID>"
+  ],
+  "canonicalUrlAvailability": "NOT VERIFIED in this source readback",
+  "identity": "existing authenticated Registry identifiers only; new declaration remains unresolved/pending",
+  "core": "reuse PR124; keep12existing Office modules;9sections are navigation mapping, not removal/replacement",
+  "state": "HOLD ACTIVATION / PRODUCTION NO-GO",
+  "fetchedEnhancedMarkdownSha256": "a405f89d6ea9705af6229293d73b19c3ba1bc0cb248d00d267ba52121090513a",
+  "hashScope": "Fetched enhanced-Markdown text bytes; not a Notion native immutable revision or authority proof"
+}
