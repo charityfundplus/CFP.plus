@@ -1,0 +1,236 @@
+{
+  "format": 1,
+  "owner": "Codex evidence custodian in current session",
+  "executionSourceRevision": "b3816488073623041d17b65433dace9b6e22f56a",
+  "assessmentBaseline": "b75b780eb64430355f0b51a4b58b9e5269e0db43",
+  "scope": "source delta and local direct coordination evidence; not runtime database backup",
+  "files": [
+    {
+      "path": "drafts/si-office/configs/training-basic-v1.json",
+      "bytes": 25204,
+      "sha256": "528ef09c2a7ac671eca56a6370ff3489657c0d9dfa33c2466f08ded48067f200",
+      "gitBlobSha": "e8c49eee3b669558a264b2102ee491ea1a639eb0"
+    },
+    {
+      "path": "drafts/si-office/core/core-engine.mjs",
+      "bytes": 15732,
+      "sha256": "98a2b2d040d532cb97e24ff2dd37972879870a9ef4258e9ac9f93837b42f0997",
+      "gitBlobSha": "d3c89c0560a3a981cdde4037ebd7be2c5f30a50d"
+    },
+    {
+      "path": "drafts/si-office/docs/TRAINING_BASIC_V1.md",
+      "bytes": 5369,
+      "sha256": "f166af3f3071e8fc2345ef6c16a46a6046b6bcea55510ad80016a4f37e150b34",
+      "gitBlobSha": "bd1e2f418dfbf89d4e59158efc71bb5d198600c1"
+    },
+    {
+      "path": "drafts/si-office/docs/TRAINING_HSTDN_WORKBOOK_VI_EN.md",
+      "bytes": 9750,
+      "sha256": "33346f6a93868be48e12a22357a85763fe7037dacf7f98087df8e68a2acc02b1",
+      "gitBlobSha": "53a78cf8b71eab23107d32d441457a872cbd79d6"
+    },
+    {
+      "path": "drafts/si-office/docs/direct-coordination-20261014/ASSESSMENT_RETENTION_HANDOFF_VI.md",
+      "bytes": 2096,
+      "sha256": "69a06212882f55115dc0b96e88a6de840d2e8223d4c9be17e6e6894adfcc631d",
+      "gitBlobSha": "8f31e88e15a16bebdf00c91683ed6667c4d85696"
+    },
+    {
+      "path": "drafts/si-office/docs/direct-coordination-20261014/ASSESSMENT_RETENTION_RESULTS.txt",
+      "bytes": 435,
+      "sha256": "8f3c75bbf20a0bee6448b66a743cb79c2cf927901fcf98e020b6a5c77133333e",
+      "gitBlobSha": "3c93250977ae4d9fb5004940d2993a013c305039"
+    },
+    {
+      "path": "drafts/si-office/docs/direct-coordination-20261014/BUILD_MANIFEST.json",
+      "bytes": 8663,
+      "sha256": "dab59c782ff1dc2a9010762c9d7a509e9b12cba7c6857aa3897917f79417c0df",
+      "gitBlobSha": "a88147e275f90ffd55bc1272ea213af45731ef17"
+    },
+    {
+      "path": "drafts/si-office/docs/direct-coordination-20261014/BUILD_PROVENANCE_RESULTS.txt",
+      "bytes": 499,
+      "sha256": "7172d7595fe6c4ee77e9530bf8acfeeb3fa830698f4c0fd590d1c718e6bb86c8",
+      "gitBlobSha": "a292f37e0322a873be79f8f94df923911c7deaa1"
+    },
+    {
+      "path": "drafts/si-office/docs/direct-coordination-20261014/BUILD_PROVENANCE_SCOPE_VI_EN.md",
+      "bytes": 2545,
+      "sha256": "2fdf725b74e77456dabf58080270ca9c557e41417f728173dac9ba21b7ccaffd",
+      "gitBlobSha": "826168d237ee442625c7e4b4637684addebd7dfb"
+    },
+    {
+      "path": "drafts/si-office/docs/direct-coordination-20261014/CHANGED_SCOPE_VALIDATION.json",
+      "bytes": 3201,
+      "sha256": "7828372dca9d5b9fdd5bf1632be58a4012513ea7dc718cc57875c7b993489960",
+      "gitBlobSha": "62a9a8432fa26e67fb90316023dcd37b05b09c20"
+    },
+    {
+      "path": "drafts/si-office/docs/direct-coordination-20261014/DIRECT_HANDLER_FLOW_RECEIPT.json",
+      "bytes": 42112,
+      "sha256": "d4b3576c0fa8dab22895e6fa5c81b342caf216433e09d64791d8c83324ea4106",
+      "gitBlobSha": "6d63752b04201f38e3deca0f15e78e0d968361e9"
+    },
+    {
+      "path": "drafts/si-office/docs/direct-coordination-20261014/DIRECT_HANDLER_FLOW_RESULTS.txt",
+      "bytes": 354,
+      "sha256": "6650489887a171a9ffdd530feeb3809e44cc009d5f32b757079ce6b795f8e71e",
+      "gitBlobSha": "23f9780db9074b130c21372cb7e4d0b27513adba"
+    },
+    {
+      "path": "drafts/si-office/docs/direct-coordination-20261014/E1_PROVENANCE_LEDGER.json",
+      "bytes": 1409,
+      "sha256": "1c93d7e45d25fd8ff252e1ccd687572ce125d1bc097ca42d7c8d71311b5f7da8",
+      "gitBlobSha": "878456337851006051d6d521dd4595deb7253369"
+    },
+    {
+      "path": "drafts/si-office/docs/direct-coordination-20261014/E3_REVIEWER_PREREQUISITES.json",
+      "bytes": 808,
+      "sha256": "81c3f50cca282bd631ef6744eb8b1815b541841c0bf511575be5aedf9f0d2e29",
+      "gitBlobSha": "4ab18f0fe918de983e424d68bc7959a1dd09d50a"
+    },
+    {
+      "path": "drafts/si-office/docs/direct-coordination-20261014/E4_SOURCE_REFERENCE.json",
+      "bytes": 14874,
+      "sha256": "b23c690e25ef760cfdd276dbfcfc9831c5452274f3e0e02255f2c50a00af939c",
+      "gitBlobSha": "aa9913c051af39e6558566968c23ce0c7a3a05f4"
+    },
+    {
+      "path": "drafts/si-office/docs/direct-coordination-20261014/HANDOFF_7_GROUPS_VI.md",
+      "bytes": 6164,
+      "sha256": "3cce5febf185965e76cd8d3b55d8720a8c298378bb1c8fbe47851b0132ac5003",
+      "gitBlobSha": "8e5fcee6d515fd2f3bb3f5c24c937d814de41329"
+    },
+    {
+      "path": "drafts/si-office/docs/direct-coordination-20261014/PREVIEW_EXCEPTION_RECEIPT.json",
+      "bytes": 1376,
+      "sha256": "5ba95828af6cfcddc0849b7f296eb312dfff5ec0cced3d7b0ebf5a7030e13765",
+      "gitBlobSha": "b65cf82bda1e27ade6c2fd5aff95dcc0933ebc9c"
+    },
+    {
+      "path": "drafts/si-office/docs/direct-coordination-20261014/PROVENANCE_HANDOFF.json",
+      "bytes": 3459,
+      "sha256": "2aa38eef1804c98ef5c4b80fcb306f8f246e8340d09a5c7c74ee3ca677cb49bd",
+      "gitBlobSha": "14eac6f1b4870319c636cd65ccbb69980641ae74"
+    },
+    {
+      "path": "drafts/si-office/docs/direct-coordination-20261014/REGISTRY_STANDARD_FINDINGS_VI_EN.md",
+      "bytes": 6046,
+      "sha256": "ca89f0898f557d433923d6e57b6bbd00a46973def2322ea0b600fd19bfdab91d",
+      "gitBlobSha": "5bda57b310e59bcc679dda7865544385b85c24b3"
+    },
+    {
+      "path": "drafts/si-office/docs/direct-coordination-20261014/REGISTRY_STANDARD_SOURCE_RECEIPT.json",
+      "bytes": 2068,
+      "sha256": "eb1fc14f624448baf8b3fa7e48498335b5bebcb56f234886cd7aca83f23570e9",
+      "gitBlobSha": "a6751b6db17eb486a353b459e58fb78c4e4bb933"
+    },
+    {
+      "path": "drafts/si-office/docs/direct-coordination-20261014/SOURCE_REMOTE_READBACK.json",
+      "bytes": 5005,
+      "sha256": "b9ebd78bf14822caa80ce9bdd9b537f5f860deb7a1a9b743aa010ab64e3757df",
+      "gitBlobSha": "741fb3e4d2ce9e0d544ad70ad05f7af2dc419299"
+    },
+    {
+      "path": "drafts/si-office/docs/direct-coordination-20261014/TASK_PROVENANCE_RESULTS.txt",
+      "bytes": 239,
+      "sha256": "8dd81e6bd5f40e67c7fc10d05aace2d1c04190d59b61b69e97a6ddd270ee2c66",
+      "gitBlobSha": "a89998763c3f2d447515098f81beb7c0dd4d5380"
+    },
+    {
+      "path": "drafts/si-office/docs/direct-coordination-20261014/TRAINING_CHANGED_CONFIG_RESULTS.txt",
+      "bytes": 316,
+      "sha256": "16e267ce110355fe9d0265d3466d2213c2e56ac5c1894be8935767d7355c9fbc",
+      "gitBlobSha": "497430acb73fda5965b656785bd2c025f0036f9f"
+    },
+    {
+      "path": "drafts/si-office/docs/direct-coordination-20261014/TRAINING_EXPORT.json",
+      "bytes": 27382,
+      "sha256": "5e7cf36f59aa8d92652dd836614263cdf222a5809e31e57cfcbd88cd23909021",
+      "gitBlobSha": "3c0bd94d21fd89a1642960db7c14954d86082bce"
+    },
+    {
+      "path": "drafts/si-office/docs/direct-coordination-20261014/TRAINING_INTEGRATION_RECEIPT.json",
+      "bytes": 1285,
+      "sha256": "940c85cbed77a35f5e45bcbbb1a80891f01df8473fd0c8e53bf0b0c2d61778df",
+      "gitBlobSha": "80c87f21b0eca173793ceeeb79f8ff3904d9a6dc"
+    },
+    {
+      "path": "drafts/si-office/public/p2-office.js",
+      "bytes": 10406,
+      "sha256": "6b8ffd4ccb41e2a49a260fff422c944cfc967ddfb106a6032dc5495ac1b5c68b",
+      "gitBlobSha": "97486f0dcb11e271a186a0df46707a3066ce7691"
+    },
+    {
+      "path": "drafts/si-office/sandbox/p2-http.mjs",
+      "bytes": 6604,
+      "sha256": "db32b973fbc7b12b93a3b6be9b25f4d012f8cb5661cdb63938af176a77b58342",
+      "gitBlobSha": "da5f2fadada8850418203d7a7a361f28c8338cb0"
+    },
+    {
+      "path": "drafts/si-office/sandbox/p2-service.mjs",
+      "bytes": 14186,
+      "sha256": "786b1a5a5d252c8597ab98be98c30f755c6903bcc01ff4cf1a99941f95723703",
+      "gitBlobSha": "22e6d6ba6e40369bf587cbdd6d3be0faf9a9fd5b"
+    },
+    {
+      "path": "drafts/si-office/scripts/build-provenance.mjs",
+      "bytes": 3213,
+      "sha256": "a789577bbe68bacd3214d2f81b6b27b56fab6951362b5743c28443486bc79c82",
+      "gitBlobSha": "526d95bce5b8810d8262e3e07ccef6389c48ea7c"
+    },
+    {
+      "path": "drafts/si-office/scripts/training-export-worksheet.mjs",
+      "bytes": 7658,
+      "sha256": "593815234f6685e4a6da4bb596ed6a1542a9f6404e05184abafd30d6521b9d49",
+      "gitBlobSha": "90b3e9a559e09005371ad7aa4ac493853d3369b1"
+    },
+    {
+      "path": "drafts/si-office/scripts/working-preview.mjs",
+      "bytes": 2629,
+      "sha256": "fe305bccdea929bf6277b25cd0d495a8dcdf80515b083e9747d46bf70f8c895a",
+      "gitBlobSha": "318aba7110425f5224e1f043936d963330b87cbb"
+    },
+    {
+      "path": "drafts/si-office/tests/assessment-retention.test.mjs",
+      "bytes": 5447,
+      "sha256": "a08a69608e3a853c6950c92626008e4566b2cad4fc608f5747a9ea889ef41b71",
+      "gitBlobSha": "575af5cd610baa06644bf15698a1703c946204bb"
+    },
+    {
+      "path": "drafts/si-office/tests/build-provenance.test.mjs",
+      "bytes": 3996,
+      "sha256": "f6fc457f51f3ce821dbfad063b4b78ea1ae99479153e2f9f7f35dfb645aec312",
+      "gitBlobSha": "3c621a91c824e3d76f9f8b556a900f7153ddee4a"
+    },
+    {
+      "path": "drafts/si-office/tests/direct-coordination-flow.mjs",
+      "bytes": 7359,
+      "sha256": "ed33c8e2af4e129c76c9c3cd1e2ddc227330e826c332140ce6e593b85861c400",
+      "gitBlobSha": "136a999427a312a2f16a14340b6960c5d4039505"
+    },
+    {
+      "path": "drafts/si-office/tests/fixtures/core-engine-11bb.txt",
+      "bytes": 14985,
+      "sha256": "e36e30f4b8f0813c357d001aa4f38ac0bfbd7ab2f24ac314d3ffbd19bcee851b",
+      "gitBlobSha": "fa73ae63d2b1b353efccbccebe8f3eabdda30dcb"
+    },
+    {
+      "path": "drafts/si-office/tests/task-execution-provenance.test.mjs",
+      "bytes": 5013,
+      "sha256": "670d805a801210ef467b616418a0f437f7a2a1af5bed4ea802e6f352fac6e91f",
+      "gitBlobSha": "6abb20a248afe695aca67ff15fdee57e676faaf4"
+    }
+  ],
+  "totalTargetedTestsPass": 10,
+  "newHandlerIntegrationAssertionsPass": 17,
+  "browserTested": false,
+  "actualIphoneSafari": false,
+  "authorityVerified": false,
+  "activationAllowed": false,
+  "notes": [
+    "Manifest self and sidecar excluded to avoid circular hash.",
+    "Source artifacts at runtime revision; subsequent commit adds evidence/docs only.",
+    "Raw private Notion/Drive search responses, credentials/TLS keys and live SQLite excluded."
+  ]
+}
