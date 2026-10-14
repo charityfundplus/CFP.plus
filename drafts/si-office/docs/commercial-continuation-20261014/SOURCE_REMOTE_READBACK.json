@@ -1,0 +1,140 @@
+{
+  "runtime": "275c6b11559216404537c752a706e1b2eef1d0b7",
+  "parent": "310a6b6f0aa413259363fae935a8b46aa931035e",
+  "readback": [
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/CANONICAL_URL_READBACK.json",
+      "gitBlob": "fcde8ffa0aa590b9b51c64d6987ed6fdd14f15de",
+      "matched": true
+    },
+    {
+      "path": "drafts/si-office/core/office-intake.mjs",
+      "gitBlob": "d5b4653a38cfc29dc40ae67c141e3ba3ee2c1080",
+      "matched": true
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/INTERNAL_REVIEW.json",
+      "gitBlob": "9c81963726eb0b9c5c266bd82744791a76617b36",
+      "matched": true
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/COMMERCIAL_RETENTION_RESULTS.txt",
+      "gitBlob": "15c0e38c6c12df339e3f70c58168152e6ae118aa",
+      "matched": true
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/COMMERCIAL_FLOW_RESULTS.txt",
+      "gitBlob": "6846599f02b1a2e66c98247b2ff4052df6e8137b",
+      "matched": true
+    },
+    {
+      "path": "drafts/si-office/core/core-engine.mjs",
+      "gitBlob": "4032323ee95a70a7461c9dd8d79742d0a46d5314",
+      "matched": true
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/AFFECTED_ASSESSMENT_RETENTION_RESULTS.txt",
+      "gitBlob": "2bda3af4e9453d679dc4146616cbe17e59e3d5c4",
+      "matched": true
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/COMMERCIAL_EXPORT_VM_RESULTS.txt",
+      "gitBlob": "36128224326968f4ec120b2c9613ea4e117318df",
+      "matched": true
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/AFFECTED_TASK_PROVENANCE_RESULTS.txt",
+      "gitBlob": "b0e945c31b0aa01959acd4b47068de43f0e675d5",
+      "matched": true
+    },
+    {
+      "path": "drafts/si-office/core/commercial-intake.mjs",
+      "gitBlob": "2051970e8dc4b7df4a0392992248d7af1e91a708",
+      "matched": true
+    },
+    {
+      "path": "drafts/si-office/public/commercial-office.js",
+      "gitBlob": "250f5c9192e98cc50d4f9c306ab212b4df03b45e",
+      "matched": true
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/PUBLIC_TEMPLATE_MAPPING.json",
+      "gitBlob": "644ed4c818c048cba880c3543b736b1085df5578",
+      "matched": true
+    },
+    {
+      "path": "drafts/si-office/public/style.css",
+      "gitBlob": "680da05534fa71c990a3bbe0624419b18cc9f6c3",
+      "matched": true
+    },
+    {
+      "path": "drafts/si-office/tests/commercial-export-validation.test.mjs",
+      "gitBlob": "6bd273b30d4ab0c667596f63d94a3b98dce72832",
+      "matched": true
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/VALIDATION_SOURCE_SCOPE.json",
+      "gitBlob": "7fe5534efd10c8fd1229f90437fe9c598f5d4676",
+      "matched": true
+    },
+    {
+      "path": "drafts/si-office/sandbox/p2-http.mjs",
+      "gitBlob": "924c74c3d2680635bde52d0170a1a0a9bfb04f2d",
+      "matched": true
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/LINK_COMMERCIAL_UI_HANDOFF.md",
+      "gitBlob": "2e8c3566d7bedde71f6239130a9fb62837021cbc",
+      "matched": true
+    },
+    {
+      "path": "drafts/si-office/public/p2.html",
+      "gitBlob": "ec0dfb4b32458dc97af1ab0ae309d7e4cf68a42d",
+      "matched": true
+    },
+    {
+      "path": "drafts/si-office/public/p2-office.js",
+      "gitBlob": "c9b731015b3924311854f9e523734f9d1ffcddad",
+      "matched": true
+    },
+    {
+      "path": "drafts/si-office/public/office-intake.js",
+      "gitBlob": "945b8bc69e8e3eb40be164cdc37f683008f918a0",
+      "matched": true
+    },
+    {
+      "path": "drafts/si-office/tests/fixtures/core-engine-b381.txt",
+      "gitBlob": "d3c89c0560a3a981cdde4037ebd7be2c5f30a50d",
+      "matched": true
+    },
+    {
+      "path": "drafts/si-office/tests/commercial-evidence-flow.mjs",
+      "gitBlob": "f559553405bb218322e0b945a3c06609a7ad38d7",
+      "matched": true
+    },
+    {
+      "path": "drafts/si-office/tests/commercial-retention.test.mjs",
+      "gitBlob": "6e2a7c5b91306d08647756fc305df7768ad8265f",
+      "matched": true
+    },
+    {
+      "path": "drafts/si-office/tests/commercial-flow.test.mjs",
+      "gitBlob": "18e5a0e20d5756f75aa83295c70b1ba1eaf62f5c",
+      "matched": true
+    },
+    {
+      "path": "drafts/si-office/sandbox/p2-service.mjs",
+      "gitBlob": "cbf77150d5b23679d9163b62ca5ace568fb44b4a",
+      "matched": true
+    },
+    {
+      "path": "drafts/si-office/tests/link-commercial-render.py",
+      "gitBlob": "e1290cbf6aaf5c530c0ddf245495cddd53d7723a",
+      "matched": true
+    }
+  ],
+  "preserved": {
+    "count": 852,
+    "bad": []
+  }
+}
