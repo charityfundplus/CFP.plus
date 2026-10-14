@@ -14,12 +14,16 @@
           "vi": [
             "Đọc tên, quốc gia, developer và nguồn gốc; tên không chứng minh danh tính.",
             "Giữ ID/Parent/DID/Canonical; hồ sơ thiếu bằng chứng ở trạng thái NOT VERIFIED.",
-            "Thực hành: tạo hồ sơ synthetic; thử gửi DID/0 và ghi kết quả từ chối."
+            "Thực hành: tạo hồ sơ synthetic; thử gửi DID/0 và ghi kết quả từ chối.",
+            "Đầu vào: fixture hồ sơ synthetic dùng một lần được cấp; ghi nguồn và thiếu hụt trước khi thử injection.",
+            "Thiếu quyền hoặc fixture: BLOCKED, không ghi FAIL cho hành vi chưa chạy; PASS bài học không xác minh năng lực thật."
           ],
           "en": [
             "Read name, country, developer and lineage; a name is not identity proof.",
             "Preserve locked identities; missing evidence stays NOT VERIFIED.",
-            "Practice: create a synthetic profile, attempt DID/0 injection and record denial."
+            "Practice: create a synthetic profile, attempt DID/0 injection and record denial.",
+            "Input: an authorized disposable synthetic profile fixture; record sources and gaps before injection.",
+            "Missing authority or fixture: BLOCKED, not FAIL for unexecuted behavior; lesson PASS does not verify real capability."
           ]
         },
         "expectedEvidence": "A synthetic profile remains unbound; identity injection rejected.",
@@ -35,12 +39,16 @@
           "vi": [
             "Chỉ sử dụng dữ liệu giả lập; phân biệt nguồn, năng lực và quan hệ pháp lý.",
             "Không coi đề xuất/ghi nhận học là quyền vận hành.",
-            "Thực hành: đánh dấu HSTDN legal-parent-claim là NOT VERIFIED."
+            "Thực hành: đánh dấu HSTDN legal-parent-claim là NOT VERIFIED.",
+            "Lưu sổ claim với URL/ngày, ba trạng thái nguồn/năng lực/pháp lý và reviewer riêng; thiếu chứng cứ giữ NOT VERIFIED.",
+            "Thiếu quyền hoặc fixture: BLOCKED, không ghi FAIL cho hành vi chưa chạy; PASS bài học không xác minh năng lực thật."
           ],
           "en": [
             "Use synthetic data; separate source, capability and legal verification.",
             "A proposal or study acknowledgement grants no authority.",
-            "Practice: preserve NOT VERIFIED on an HSTDN legal-parent claim."
+            "Practice: preserve NOT VERIFIED on an HSTDN legal-parent claim.",
+            "Retain a claim register with URL/date, separate source/capability/legal statuses and an independent reviewer; missing evidence stays NOT VERIFIED.",
+            "Missing authority or fixture: BLOCKED, not FAIL for unexecuted behavior; lesson PASS does not verify real capability."
           ]
         },
         "expectedEvidence": "Legal claim remains unverified; no external action.",
@@ -56,12 +64,16 @@
           "vi": [
             "Đọc pair/mission/resource được cấp trên server.",
             "Tạo training-drill với idempotency key, chạy và đọc kết quả kiểm tra chéo.",
-            "Thực hành lỗi overreach; chặn là kết quả đúng; không tự tăng quyền."
+            "Thực hành lỗi overreach; chặn là kết quả đúng; không tự tăng quyền.",
+            "Lưu taskKey, grant, checks, output/hash, feedback và review; dùng fixture riêng cho overreach.",
+            "Thiếu quyền hoặc fixture: BLOCKED, không ghi FAIL cho hành vi chưa chạy; PASS bài học không xác minh năng lực thật."
           ],
           "en": [
             "Read server-granted pair, mission and resource scopes.",
             "Create a training drill with an idempotency key; run and inspect cross-checks.",
-            "Practice overreach: safe denial is correct; never self-grant rights."
+            "Practice overreach: safe denial is correct; never self-grant rights.",
+            "Retain taskKey, grants, checks, output/hash, feedback and review; use a separate overreach fixture.",
+            "Missing authority or fixture: BLOCKED, not FAIL for unexecuted behavior; lesson PASS does not verify real capability."
           ]
         },
         "expectedEvidence": "Authorized drill records checks; overreach has null output.",
@@ -77,12 +89,16 @@
           "vi": [
             "Dùng phiên riêng cho editor và reviewer; không nhập dữ liệu thật.",
             "Thử truy cập workspace khác và ghi kết quả bị chặn.",
-            "Lỗi/gián đoạn: reviewer phục hồi, retry mới; giữ lịch sử cũ."
+            "Lỗi/gián đoạn: reviewer phục hồi, retry mới; giữ lịch sử cũ.",
+            "Thử cô lập qua HTTP/UI được cấp quyền; actor demo trực tiếp không chứng nhận cô lập session server.",
+            "Thiếu quyền hoặc fixture: BLOCKED, không ghi FAIL cho hành vi chưa chạy; PASS bài học không xác minh năng lực thật."
           ],
           "en": [
             "Use separate editor/reviewer subjects; no real data.",
             "Attempt cross-workspace access and record denial.",
-            "After interruption: reviewer recovers, explicit retry creates a new retained record."
+            "After interruption: reviewer recovers, explicit retry creates a new retained record.",
+            "Exercise isolation through authorized HTTP/UI; direct demo actors do not certify server session isolation.",
+            "Missing authority or fixture: BLOCKED, not FAIL for unexecuted behavior; lesson PASS does not verify real capability."
           ]
         },
         "expectedEvidence": "Cross-scope attempt denied; recovery preserves prior task/audit.",
@@ -98,12 +114,16 @@
           "vi": [
             "Ghi revision, đầu vào giả lập, kỳ vọng, thực tế và digest.",
             "Phản hồi gắn task/outputHash; bài học ghi nhận không chứng nhận năng lực.",
-            "Reviewer độc lập kết luận theo bằng chứng; không tự ghi ACK thay thành viên."
+            "Reviewer độc lập kết luận theo bằng chứng; không tự ghi ACK thay thành viên.",
+            "Ghi execution SHA và evidence SHA riêng, assertion/fixture, taskKey/outputHash, reviewer; export rồi kiểm tra digest và readback.",
+            "Thiếu quyền hoặc fixture: BLOCKED, không ghi FAIL cho hành vi chưa chạy; PASS bài học không xác minh năng lực thật."
           ],
           "en": [
             "Record revision, synthetic inputs, expected/observed outcomes and digest.",
             "Feedback references task/outputHash; study acknowledgement is not capability certification.",
-            "Independent reviewer decides from evidence; never fabricate a named ACK."
+            "Independent reviewer decides from evidence; never fabricate a named ACK.",
+            "Record separate execution and evidence SHAs, assertion/fixture, taskKey/outputHash and reviewer; export then verify digest and readback.",
+            "Missing authority or fixture: BLOCKED, not FAIL for unexecuted behavior; lesson PASS does not verify real capability."
           ]
         },
         "expectedEvidence": "Feedback survives restart; no automatic promotion.",
@@ -520,7 +540,17 @@
       "checks",
       "feedback",
       "reviewerSubject",
-      "digest"
+      "digest",
+      "executionSHA",
+      "evidenceSHA",
+      "testPath",
+      "assertionName",
+      "fixture",
+      "outputHash",
+      "artifact",
+      "reviewerAuthority",
+      "scope",
+      "status"
     ],
     "criteria": [
       "authorized scope",

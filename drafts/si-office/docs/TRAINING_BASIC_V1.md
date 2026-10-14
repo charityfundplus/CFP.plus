@@ -24,3 +24,22 @@ Six draft tracks: durability/restart/idempotency; access isolation/revocation; r
 ## Evidence-based assessment
 
 Required: revision, taskKey, expected/observed result, checks, feedback, reviewer subject and digest. Assess scope compliance, bounded outputs, correct safe denial/recovery, traceable evidence and independent subject review. Current automated exercise results certify synthetic workflow behavior only. Verified real member identities, competence and reviewer authority remain separate evidence requirements.
+
+
+## Integration supplement / Bổ sung tích hợp (Issue #130, 2026-10-14)
+
+Source directive: issuecomment-6161167283. Existing keys, twelve exercise payloads and six advanced tracks stay unchanged. The new lesson steps use existing `steps.vi/en`; evidence labels in `assessment.requiredEvidence` describe the worksheet, not extra supported API fields. Reuse TRAINING_HSTDN_WORKBOOK_VI_EN.md for advanced deliverables.
+
+Prerequisites / Đầu vào: authorized disposable synthetic fixtures, existing server workspace/pair/resource grants, distinct editor/reviewer subjects. Record full execution SHA separately from evidence commit SHA. Missing authority or fixture is BLOCKED; behavior not exercised is NOT TESTED, never FAIL. Preserve immutable identity and old audit history.
+
+| Lesson | PASS requires / Điều kiện PASS | FAIL observed / FAIL thực tế | Limit / Giới hạn |
+|---|---|---|---|
+| identity-lineage | Injection denied, unbound profile and locked fields unchanged, before/after receipt | Unauthorized identity accepted or locked fields mutated | Synthetic fixture does not verify real identity |
+| ethics-governance | Separate source/capability/legal statuses; legal claim NOT VERIFIED; independent review | Unsupported VERIFIED or inferred operational approval | Source provenance does not establish legal authority |
+| tool-use | Scoped task/checks/outputHash/feedback/review retained; separate overreach fixture denied with null output | Out-of-scope accepted output or self-review accepted | Mock workflow does not certify live adapters |
+| security | Authorized HTTP/UI cross-workspace denial without leak; retained old task/audit; explicit authorized recovery and new retry | Data leak, erased history or unauthorized replay | Direct demo actors do not establish server session isolation |
+| evidence | Actual task/output/source lineage, verified export digest/readback and distinct reviewer | Unsupported PASS, invented ACK or automatic capability promotion | Synthetic reviewer separation does not authenticate real assessor authority |
+
+STUDY ACKNOWLEDGEMENT records reading only. ASSESSMENT needs actual task/output/revision, rubric and authenticated assessor authority; otherwise NOT ASSESSED or NEEDS EVIDENCE. VERIFIED CAPABILITY needs explicit authorized verification of defined scope and limits. None grants privileges automatically.
+
+Historical PASS keeps its original execution revision. Applying it to a later SHA requires unchanged relevant source/dependencies and a recorded applicability decision; changed runtime requires only focused affected checks.

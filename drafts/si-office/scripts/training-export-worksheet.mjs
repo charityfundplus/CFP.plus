@@ -1,18 +1,27 @@
 import {createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
+import {verifyExportProvenance} from './build-provenance.mjs';
 const digest=text=>createHash('sha256').update(text).digest('hex');
 const text=value=>typeof value==='string'&&value.trim().length>0;
 const PIN='b75b780eb64430355f0b51a4b58b9e5269e0db43';
 const publicEvidence=value=>{try{const u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password;}catch{return false;}};
 
 // Consumes the existing UI envelope; never writes the Core or accepts authority.
-export function trainingWorksheet(envelope,program,{developmentRevision,allowedPairs}){
+export function trainingWorksheet(envelope,program,{developmentRevision,allowedPairs,sourceRoot=fileURLToPath(new URL('../',import.meta.url))}){
  if(!/^[a-f0-9]{40}$/.test(developmentRevision||'')||!Array.isArray(allowedPairs))throw Error('DEVELOPMENT_PROVENANCE_REQUIRED');
  if(typeof envelope?.payloadJSON!=='string'||envelope.digestOf!=='UTF-8 payloadJSON bytes'||envelope.sha256!==digest(envelope.payloadJSON))throw Error('EXPORT_HASH_MISMATCH');
  const p=JSON.parse(envelope.payloadJSON),j=p.journey;
  if(p.format!=='cfp-training-evidence-v1'||!text(j?.subject)||!allowedPairs.includes(j?.pairKey)||!Array.isArray(p.tasks)||!Array.isArray(p.observations)||!Array.isArray(p.feedback))throw Error('EXPORT_SCOPE_INVALID');
- const findings=['REVISION_REQUIRES_BUILD_MANIFEST_READBACK','ASSESSOR_AUTHORITY_PENDING'];
+ let sourceRevisionVerified=false,verifiedBuild=null;
+ if(p.buildProvenance?.verified===true){verifiedBuild=verifyExportProvenance(p.buildProvenance,sourceRoot);if(p.sourceRevision!==verifiedBuild.revision)throw Error('EXPORT_SOURCE_REVISION_MISMATCH');sourceRevisionVerified=true;}
+ const findings=[...(sourceRevisionVerified?[]:['REVISION_REQUIRES_BUILD_MANIFEST_READBACK']),'ASSESSOR_AUTHORITY_PENDING'];
+ const taskSourceReceipts=p.tasks.map(task=>{const r=task.executionReceipt;if(!r||r.sourceVerified!==true)return {taskKey:task.key,verified:false,finding:'TASK_EXECUTION_SOURCE_RECEIPT_MISSING_OR_UNVERIFIED'};
+  if(!sourceRevisionVerified||r.taskKey!==task.key||r.pairKey!==task.pairKey||r.subject!==task.owner||r.subject!==j.subject||!text(p.workspace)||r.workspace!==p.workspace||!r.completedAt||!r.startedAt||!Number.isFinite(Date.parse(r.startedAt))||!Number.isFinite(Date.parse(r.completedAt))||Date.parse(r.completedAt)<Date.parse(r.startedAt)||r.revision!==verifiedBuild.revision||r.manifestSha256!==verifiedBuild.manifestSha256||JSON.stringify(r.manifest)!==JSON.stringify(verifiedBuild.manifest)||r.outputSha256!==(task.output?digest(JSON.stringify(task.output)):null))throw Error('TASK_EXECUTION_SOURCE_RECEIPT_MISMATCH');
+  return {taskKey:task.key,verified:true,revision:r.revision,manifestSha256:r.manifestSha256,outputSha256:r.outputSha256,authorityVerified:false};});
+ const taskReceiptBindingsVerified=p.tasks.length>0&&taskSourceReceipts.every(r=>r.verified);
+ const taskExecutionRevisionVerified=false;
+ if(p.tasks.length&&!taskReceiptBindingsVerified)findings.push('TASK_EXECUTION_SOURCE_RECEIPTS_PENDING');
  const taskKeys=new Set();
  for(const task of p.tasks){
   if(!text(task.key)||taskKeys.has(task.key)||task.pairKey!==j.pairKey||task.owner!==j.subject)throw Error('TASK_SCOPE_OR_DUPLICATE');
@@ -50,7 +59,7 @@ export function trainingWorksheet(envelope,program,{developmentRevision,allowedP
  const ready=lessons.every(l=>l.acknowledged)&&exercises.every(e=>e.basicDraftEvidenceReady);
  if(j.basicDraftReady!==ready)findings.push('DECLARED_JOURNEY_READINESS_DIFFERS_FROM_RETAINED_EVIDENCE');
  return {schemaVersion:1,mode:'READ_ONLY VI/EN WORKSHEET',approvedPreviewRevision:PIN,
-  developmentRevision,sourceRevisionClaim:p.sourceRevision||null,sourceRevisionVerified:false,
+  developmentRevision,sourceRevisionClaim:p.sourceRevision||null,sourceRevisionVerified,sourceVerificationScope:sourceRevisionVerified?'EXPORT_PROCESS_SOURCE_BYTES':null,taskExecutionRevisionVerified,taskReceiptBindingsVerified,taskSourceReceipts,buildManifestSha256:verifiedBuild?.manifestSha256||null,
   inputSha256:envelope.sha256,subject:j.subject,pairKey:j.pairKey,lessons,exercises,
   advanced:program.advanced.map(track=>({key:track.key,title:track.title||null,prerequisites:track.prerequisites,assessment:'NOT ASSESSED',competencyPass:false})),
   declarations,hstdn,findings,basicDraftEvidenceReady:ready,privilegeChange:false,
@@ -62,3 +71,4 @@ if(process.argv[1]===fileURLToPath(import.meta.url)){
  const pairs=JSON.parse(readFileSync(new URL('../configs/pairs.json',import.meta.url)));
  console.log(JSON.stringify(trainingWorksheet(JSON.parse(readFileSync(inputPath)),program,{developmentRevision:revision,allowedPairs:pairs.map(p=>p.key)}),null,2));
 }
+

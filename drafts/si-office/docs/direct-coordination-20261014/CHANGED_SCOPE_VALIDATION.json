@@ -1,0 +1,91 @@
+{
+  "scope": "new provenance/retention source and tests; code bytes tested before final source commit",
+  "tests": [
+    {
+      "command": "node tests/assessment-retention.test.mjs",
+      "passed": 3,
+      "failed": 0,
+      "exitCode": 0,
+      "fixture": "actual predecessor CoreEngine Git blob fa73ae63d2b1b353efccbccebe8f3eabdda30dcb"
+    },
+    {
+      "command": "node tests/build-provenance.test.mjs",
+      "passed": 4,
+      "failed": 0,
+      "exitCode": 0,
+      "fixture": "disposable synthetic Git source"
+    },
+    {
+      "command": "node tests/task-execution-provenance.test.mjs",
+      "passed": 1,
+      "failed": 0,
+      "exitCode": 0,
+      "fixture": "synthetic source copy in disposable Git checkout/SQLite"
+    },
+    {
+      "command": "node tests/training-basic-v1.test.mjs",
+      "passed": 2,
+      "failed": 0,
+      "exitCode": 0,
+      "scope": "affected existing curriculum checks after training config and Core integration; generic synthetic workflow only"
+    }
+  ],
+  "files": [
+    {
+      "path": "drafts/si-office/core/core-engine.mjs",
+      "sha256": "98a2b2d040d532cb97e24ff2dd37972879870a9ef4258e9ac9f93837b42f0997"
+    },
+    {
+      "path": "drafts/si-office/sandbox/p2-service.mjs",
+      "sha256": "786b1a5a5d252c8597ab98be98c30f755c6903bcc01ff4cf1a99941f95723703"
+    },
+    {
+      "path": "drafts/si-office/sandbox/p2-http.mjs",
+      "sha256": "db32b973fbc7b12b93a3b6be9b25f4d012f8cb5661cdb63938af176a77b58342"
+    },
+    {
+      "path": "drafts/si-office/public/p2-office.js",
+      "sha256": "6b8ffd4ccb41e2a49a260fff422c944cfc967ddfb106a6032dc5495ac1b5c68b"
+    },
+    {
+      "path": "drafts/si-office/scripts/build-provenance.mjs",
+      "sha256": "a789577bbe68bacd3214d2f81b6b27b56fab6951362b5743c28443486bc79c82"
+    },
+    {
+      "path": "drafts/si-office/scripts/training-export-worksheet.mjs",
+      "sha256": "593815234f6685e4a6da4bb596ed6a1542a9f6404e05184abafd30d6521b9d49"
+    },
+    {
+      "path": "drafts/si-office/scripts/working-preview.mjs",
+      "sha256": "fe305bccdea929bf6277b25cd0d495a8dcdf80515b083e9747d46bf70f8c895a"
+    },
+    {
+      "path": "drafts/si-office/tests/assessment-retention.test.mjs",
+      "sha256": "a08a69608e3a853c6950c92626008e4566b2cad4fc608f5747a9ea889ef41b71"
+    },
+    {
+      "path": "drafts/si-office/tests/fixtures/core-engine-11bb.txt",
+      "sha256": "e36e30f4b8f0813c357d001aa4f38ac0bfbd7ab2f24ac314d3ffbd19bcee851b"
+    },
+    {
+      "path": "drafts/si-office/tests/build-provenance.test.mjs",
+      "sha256": "f6fc457f51f3ce821dbfad063b4b78ea1ae99479153e2f9f7f35dfb645aec312"
+    },
+    {
+      "path": "drafts/si-office/tests/task-execution-provenance.test.mjs",
+      "sha256": "670d805a801210ef467b616418a0f437f7a2a1af5bed4ea802e6f352fac6e91f"
+    },
+    {
+      "path": "drafts/si-office/tests/direct-coordination-flow.mjs",
+      "sha256": "ed33c8e2af4e129c76c9c3cd1e2ddc227330e826c332140ce6e593b85861c400"
+    }
+  ],
+  "oldPassSuitesRerun": false,
+  "deploymentTested": false,
+  "assessorVerified": false,
+  "competencyPass": false,
+  "activationAllowed": false,
+  "noBroadHistoricalSuitesRerun": true,
+  "totalTargetedTestCases": 10,
+  "affectedExistingCurriculumChecks": 2
+}

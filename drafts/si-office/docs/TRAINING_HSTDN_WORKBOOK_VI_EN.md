@@ -100,3 +100,39 @@ These are instructional cases, not executed tasks/users or actual reviewer ACK.
 No production identity/data/adapters/payment, no rename/renumberID/Parent/DID/
 Canonical or rewriting historic audit. Host gate affects Preview availability,
 not preparation of learning materials or review packets.
+
+
+## Assertion worksheet / Phiếu assertion cho 12 bài hiện hữu
+
+Each row must retain its existing localKey, full execution SHA, evidence SHA,
+test path + assertion name, fixture, expected/observed, actual taskKey/outputHash,
+artifact URL + SHA-256, reviewer/authority, scope and status. Null means missing,
+never PASS. Keep worksheet metadata outside unsupported API payload fields.
+
+| localKey | Specialized evidence needed / Evidence riêng cần có |
+|---|---|
+| office-exercise-1 | Actual identity injection denial and locked-field before/after |
+| office-exercise-2 | Capability claim remains NOT VERIFIED; sources and limits retained |
+| office-exercise-3 | Product officeRef/HSTDN member references and provenance |
+| office-exercise-4 | Scoped service reference and uncertainty retained |
+| office-exercise-5 | Marketing remains draft; no invented partnership or publication |
+| office-exercise-6 | Synthetic CRM input/output contains no real customer fields |
+| office-exercise-7 | Separate attempted-payment fixture denied; quote alone is insufficient |
+| office-exercise-8 | Legal-parent claim retained NOT VERIFIED without canonical Parent binding |
+| office-exercise-9 | Actual task/checks/outputHash/feedback and independent review |
+| office-exercise-10 | Mock-only adapter receipts, zero live calls, incompatible protocol rejection |
+| office-exercise-11 | Actual HTTP cross-workspace denial and restart/recovery history receipts |
+| office-exercise-12 | Export digest/readback and distinct execution/build/evidence revisions |
+
+The existing normal-scenario training-drill test establishes draft workflow only;
+it does not execute all these specialized assertions. Link already-existing exact
+revision evidence first. Missing fixture/grant remains BLOCKED; unexecuted checks
+remain NOT TESTED. Four original P1 artifacts, authoritative approved module
+catalog and standard v0.2 mapping remain blocked until pinned sources are found.
+
+Link Mẫu closure also requires authorized SI/AI declaration → Developer/Parent/
+country/ID source review → HSTDN → study → practice → task → export trace. A
+synthetic unbound declaration never closes real Registry identity verification.
+For navigation retain HUB69/CMP existing hrefs; record destination readback only
+where authorized. Local Chromium mobile checks are not Safari iPhone evidence;
+missing approved HTTPS Preview and actual Safari receipt remain BLOCKED.

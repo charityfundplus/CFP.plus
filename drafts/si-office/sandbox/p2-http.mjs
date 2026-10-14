@@ -2,10 +2,13 @@ import http from 'node:http';
 import {readFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import {P2Sandbox} from './p2-service.mjs';
+import {executionProvenance} from '../scripts/build-provenance.mjs';
+const sourceRoot=fileURLToPath(new URL('../',import.meta.url));
 const commands={pairs:'instantiate',tasks:'createTask',run:'runTask',review:'reviewTask',stop:'stop',recover:'recover',retry:'retry',upgrade:'upgrade',rollback:'rollback',learn:'learn',feedback:'feedback',office:'officeSnapshot','office-create':'officeCreate','assessment-submit':'prepareAssessment','assessment-review':'reviewAssessment'};
 const fields={pairs:['templateKey'],tasks:['pairKey','kind','title','text','scenario','resource','idempotencyKey'],run:['taskKey'],review:['taskKey','verdict'],stop:['pairKey'],recover:['pairKey'],retry:['taskKey'],upgrade:['target'],rollback:[],learn:['pairKey','lesson'],feedback:['taskKey','feedback'],office:['pairKey'],'office-create':['pairKey','kind','input'],'assessment-submit':['taskKey','input'],'assessment-review':['assessmentKey','input']};
 export function createP2HTTP({service,previewOrigin=null}){
  let preview=null;if(previewOrigin){preview=new URL(previewOrigin);if(preview.protocol!=='https:'||preview.username||preview.password||preview.pathname!=='/'||preview.search||preview.hash)throw Error('PREVIEW_ORIGIN_INVALID');}
+ const startupProvenance=executionProvenance(sourceRoot);
  const loginWindows=new Map();
  const server=http.createServer(async(req,res)=>{
   const send=(code,data)=>{res.writeHead(code,{'Content-Type':'application/json; charset=utf-8'});res.end(JSON.stringify(data));};
@@ -30,7 +33,7 @@ export function createP2HTTP({service,previewOrigin=null}){
    }
    const cookies=String(req.headers.cookie||'').split(';').map(x=>x.trim());const matches=cookies.filter(x=>x.startsWith('cfp_p2='));if(matches.length!==1)throw Error('AUTH_DENIED');const token=matches[0].slice(7);const auth=service.context(token);
    if(path==='/api/logout'&&req.method==='POST'){exact([]);service.revoke(token);res.setHeader('Set-Cookie','cfp_p2=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0'+secureCookie);return send(200,{loggedOut:true});}
-   if(path==='/api/core/state'&&req.method==='GET')return send(200,await service.execute(token,'snapshot'));
+   if(path==='/api/core/state'&&req.method==='GET'){const result=await service.execute(token,'snapshot');const current=executionProvenance(sourceRoot);result.buildProvenance=startupProvenance.verified&&current.verified&&startupProvenance.manifestSha256===current.manifestSha256?current:{verified:false,revision:null,manifest:null,manifestSha256:null,finding:'EXECUTION_SOURCE_UNVERIFIED_OR_CHANGED',authorityVerified:false,activationAllowed:false};return send(200,result);}
    const name=path.startsWith('/api/core/')?path.slice(10):'';if(req.method!=='POST'||!commands[name])return send(404,{error:'NOT_FOUND'});exact(fields[name]);let args=body,options={};if(name==='tasks'){const {pairKey,idempotencyKey,...input}=body;args={pairKey,input};options={idempotencyKey};}
    return send(200,await service.execute(token,commands[name],args,options));
   }catch(e){try{service.httpDenial(/AUTH_DENIED/.test(e.message)?'AUTH_DENIED':'REQUEST_DENIED');}catch{}const code=/AUTH_DENIED/.test(e.message)?401:/PERMISSION|SCOPE_DENIED|MAINTAINER|INDEPENDENT/.test(e.message)?403:/BUSY|NOT_READY|CONFLICT/.test(e.message)?409:/INTEGRITY|STORAGE|SQLITE/.test(e.message)?503:400;return send(code,{error:code===503?'STORAGE_UNAVAILABLE':e.message});}
@@ -40,3 +43,4 @@ if(process.argv[1]===fileURLToPath(import.meta.url)){
  if(!process.env.CFP_P2_DB)throw Error('CFP_P2_DB_REQUIRED: provision synthetic accounts locally first');
  const service=new P2Sandbox(process.env.CFP_P2_DB),server=createP2HTTP({service,previewOrigin:process.env.CFP_P2_PREVIEW_ORIGIN||null});server.listen(Number(process.env.CFP_P2_PORT||4174),'127.0.0.1');process.on('SIGTERM',()=>server.close(()=>{service.close();process.exit(0);}));
 }
+

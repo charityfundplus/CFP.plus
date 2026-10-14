@@ -32,9 +32,15 @@ export class CoreEngine {
   this.#checkpointWriter=checkpointWriter;this.#adapterFactory=adapterFactory;this.#timeout=timeoutMs;
   if(checkpoint)this.#restore(checkpoint);else this.instantiate(system,this.#templates[0].key,true);
  }
- checkpoint(){return clone({schema:1,office:[...this.#office.entries()],pairs:[...this.#pairs.values()].map(p=>({...p,busy:false})),tasks:this.#tasks.all(),audit:this.#knowledge.events(),learning:this.#learning.snapshot(),alerts:this.#monitor.alerts(),upgrade:{version:this.#upgrades.version,history:this.#upgrades.history}});}
+ checkpoint(){return clone({schema:this.#learning.snapshot().assessments.length?2:1,office:[...this.#office.entries()],pairs:[...this.#pairs.values()].map(p=>({...p,busy:false})),tasks:this.#tasks.all(),audit:this.#knowledge.events(),learning:this.#learning.snapshot(),alerts:this.#monitor.alerts(),upgrade:{version:this.#upgrades.version,history:this.#upgrades.history}});}
  #restore(c){
-  if(c.schema!==1||!Array.isArray(c.pairs)||!Array.isArray(c.tasks))throw Error('CHECKPOINT_INCOMPATIBLE');
+  if(![1,2].includes(c.schema)||!Array.isArray(c.pairs)||!Array.isArray(c.tasks))throw Error('CHECKPOINT_INCOMPATIBLE');
+  // Schema 2 makes legacy readers refuse assessment-bearing evidence instead of
+  // silently discarding it on their next checkpoint. Never migrate the audit.
+  const assessments=c.learning?.assessments;
+  if(c.schema===2&&!Array.isArray(assessments)||assessments!==undefined&&!Array.isArray(assessments))throw Error('CHECKPOINT_ASSESSMENT_RETENTION_REQUIRED');
+  const assessmentKeys=new Set((assessments||[]).map(row=>row.key));
+  if(assessmentKeys.size!==(assessments||[]).length||(c.audit||[]).some(event=>['assessment-evidence','assessment-rubric'].includes(event.action)&&!assessmentKeys.has(event.details?.assessmentKey)))throw Error('CHECKPOINT_ASSESSMENT_RETENTION_REQUIRED');
   this.#office=new Map(clone(c.office||[]));this.#knowledge.restore(c.audit);this.#tasks.restore(c.tasks);this.#learning.restore(c.learning);this.#monitor.restore(c.alerts);
   if(!['0.1.0-sandbox','0.1.1-sandbox'].includes(c.upgrade.version))throw Error('CHECKPOINT_VERSION_INVALID');
   this.#upgrades.version=c.upgrade.version;this.#upgrades.history=clone(c.upgrade.history);
