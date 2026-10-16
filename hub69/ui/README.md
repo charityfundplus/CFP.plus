@@ -33,8 +33,22 @@ Mở file được build `HUB69-review.html` để tra cứu offline; file chứ
 
 ## Kiểm thử và giới hạn
 
-39/39 kiểm thử Node/VM PASS: 14 kiểm tra nguồn/baseline UI hiện hữu, 19 kiểm tra P0 và 6 kiểm tra trạng thái ứng dụng với DOM stub. Có kiểm tra các hash route/link nội bộ, dữ liệu nguồn, ba tầng, dự án/riêng tư, OpenAI và trạng thái kho. Đây không phải browser rendering hay iPhone acceptance.
+Mốc lịch sử: 39/39 kiểm thử Node/VM PASS (14 nguồn/baseline, 19 P0 và 6 trạng thái ứng dụng với DOM stub). Bàn giao tích hợp mới được ghi riêng tại `INTEGRATION-READINESS.md`. Có kiểm tra các hash route/link nội bộ, dữ liệu nguồn, ba tầng, dự án/riêng tư, OpenAI và trạng thái kho. Đây không phải browser rendering hay iPhone acceptance.
 
-Browser/CSS rendering, screenshots mới, Safari/WebKit, iPhone thật, HTTPS/quyền truy cập và E2E Core API **chưa kiểm thử**. Phiên này không có `$control-browser`; Sites skill yêu cầu bỏ qua browser QA trong trường hợp đó, không khởi chạy một đường điều khiển trình duyệt khác.
+Browser/CSS rendering, screenshots mới, Safari/WebKit, iPhone thật, HTTPS/quyền truy cập và E2E Core API trên môi trường HTTPS **chưa kiểm thử**. Phiên này không có `$control-browser`; Sites skill yêu cầu bỏ qua browser QA trong trường hợp đó, không khởi chạy một đường điều khiển trình duyệt khác.
 
 Chỉ thêm `hub69/ui/**`; không sửa `/69`, `/id`, Registry, nhánh Codex 1, Core API hoặc Draft PR #124. Tích hợp lên cổng chính và nghiệm thu thiết bị là bước tiếp theo sau khi Codex 1 bàn giao read model/authority và môi trường được phê duyệt.
+
+## Tiếp tục integration-readiness
+
+Nhánh `codex2/integration-readiness` kế thừa PR140 ở `6daec1ca72a65f542392aeb70592a7ed9b5453f6`. Có màn hình đào tạo 5/12/6 từ Codex 1 và bản build `core-dist/` để mount cùng miền với Core hiện hữu. `dist/` và `HUB69-review.html` vẫn là bản snapshot; `core-dist/registry.js` bắt đầu với danh sách rỗng, không dùng snapshot khi Core lỗi. Không chạy Core thứ hai.
+
+Core dùng `/registry-client.js` của Codex 1 ở revision trong `integration/source-pins.json`. Client phải được phục vụ đúng từ Core hiện hữu; mở `core-dist` trên một host tĩnh khác không tự tạo kết nối. Xem `INTEGRATION-READINESS.md` cho contract, giới hạn và Evidence mới.
+
+Kiểm HTTP + trạng thái UI với checkout Codex 1 đúng pin:
+
+```bash
+CFP_CODEX1_SOURCE=/absolute/path/to/pinned-CFP.plus node --test integration/core-http.test.mjs
+```
+
+Màn hình `#training` và `#lesson/security` có nội dung bài học, 12 bài thực hành có giám sát và 6 hướng nâng cao. Dấu đã đọc chỉ lưu trên trình duyệt, không nộp assessment, không đổi Registry hoặc cấp quyền.

@@ -1,0 +1,40 @@
+{
+  "recordedAt": "2026-10-16T21:45:19.382627+00:00",
+  "executionRevision": "0145feb42c2e453af99d8b6bf184b6b82e3d32a8",
+  "codex1Revision": "06f386b1ba52358779cec6bc26c2d88f6a33664a",
+  "unitAndState": {
+    "tests": 48,
+    "pass": 48,
+    "fail": 0,
+    "skipped": 0
+  },
+  "loopbackHTTPWithDOMStub": {
+    "tests": 6,
+    "pass": 6,
+    "fail": 0,
+    "skipped": 0
+  },
+  "totalPass": 54,
+  "totalFail": 0,
+  "registryCanonicalParentDIDChanged": false,
+  "existing69AndIDChanged": false,
+  "registryWrites": 0,
+  "productionActivated": false,
+  "accessExpanded": false,
+  "browserRenderingVerified": false,
+  "iphoneSafariVerified": false,
+  "privateHTTPSPreviewURL": null,
+  "deployedRevisionVerified": false,
+  "independentAcceptance": false,
+  "staticReviewOnly": true,
+  "coreRuntimeMount": "PREPARED; NOT DEPLOYED",
+  "blockers": [
+    "EXISTING_PRIVATE_HTTPS_STAGING_ENDPOINT_AND_OWNER_MOUNT_REQUIRED",
+    "SUPPORTED_BROWSER_AND_PHYSICAL_IPHONE_ACCEPTANCE_PENDING"
+  ],
+  "sourceIntegrityManifestSHA256": "6d135ba54dcf98b6b45dd6d18e8f169b12cc3b8cdf16c346af092d6a0334b6aa",
+  "savedSiteVersion": 3,
+  "siteExportRevision": "92cea0584da46628868a5551c6e9a239f98139b0",
+  "siteDeploymentID": null,
+  "accessPolicyRevision": 1
+}
