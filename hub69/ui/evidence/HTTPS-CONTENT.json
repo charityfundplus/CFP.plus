@@ -1,0 +1,68 @@
+[
+  {
+    "url": "https://cfp.plus/69",
+    "checkedAt": "2026-10-16T21:42:02.285776+00:00",
+    "status": 200,
+    "finalURL": "https://cfp.plus/69",
+    "sha256": "1834ff48806b0cedc65791d69687f30406d066bf970787252cb034bdb9339cc4",
+    "bytes": 8927,
+    "title": "69 • HUB 69 • Cổng Duy Nhất CFP+",
+    "anonymousRequest": true,
+    "signals": {
+      "HUB 69": true,
+      "ChatGPT": false,
+      "691181": false,
+      "Sign in": false,
+      "accounts.google.com": false,
+      "cfp_p2": false,
+      "registry-client.js": false
+    },
+    "sameAsNewCodex2Build": false,
+    "deploymentRevisionVerified": false,
+    "privateAccessVerified": false
+  },
+  {
+    "url": "https://cfp.plus/691181",
+    "checkedAt": "2026-10-16T21:42:02.069327+00:00",
+    "status": 200,
+    "finalURL": "https://cfp.plus/691181",
+    "sha256": "3f710e3f46c87b5499a3984c17e3af07dad290937b7091efab20eef70e285234",
+    "bytes": 2871,
+    "title": "691181 • ChatGPT • CFP+",
+    "anonymousRequest": true,
+    "signals": {
+      "HUB 69": true,
+      "ChatGPT": true,
+      "691181": true,
+      "Sign in": false,
+      "accounts.google.com": false,
+      "cfp_p2": false,
+      "registry-client.js": false
+    },
+    "sameAsNewCodex2Build": false,
+    "deploymentRevisionVerified": false,
+    "privateAccessVerified": false
+  },
+  {
+    "url": "https://sites.google.com/cfp.plus/hub69",
+    "checkedAt": "2026-10-16T21:42:01.457744+00:00",
+    "status": 200,
+    "finalURL": "https://sites.google.com/cfp.plus/hub69",
+    "sha256": "2c9b84124f5b43c34b8cd7529c9f4ba0a268ca547065ca095dd3845e20cbf4cb",
+    "bytes": 111377,
+    "title": "HUB 69",
+    "anonymousRequest": true,
+    "signals": {
+      "HUB 69": true,
+      "ChatGPT": false,
+      "691181": false,
+      "Sign in": false,
+      "accounts.google.com": true,
+      "cfp_p2": false,
+      "registry-client.js": false
+    },
+    "sameAsNewCodex2Build": false,
+    "deploymentRevisionVerified": false,
+    "privateAccessVerified": false
+  }
+]
