@@ -3,6 +3,7 @@ import {readFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import {P2Sandbox} from './p2-service.mjs';
 import {executionProvenance} from '../scripts/build-provenance.mjs';
+import {registrySourceFromEnvironment} from '../core/registry-read-model.mjs';
 const sourceRoot=fileURLToPath(new URL('../',import.meta.url));
 const commands={'catalog-search':'catalogSearch','commerce-state':'commerceState','inquiry-create':'inquiryCreate','inquiry-match':'inquiryMatch','opportunity-create':'opportunityCreate','opportunity-status':'opportunityStatus',pairs:'instantiate',tasks:'createTask',run:'runTask',review:'reviewTask',stop:'stop',recover:'recover',retry:'retry',upgrade:'upgrade',rollback:'rollback',learn:'learn',feedback:'feedback',office:'officeSnapshot','office-create':'officeCreate','assessment-submit':'prepareAssessment','assessment-review':'reviewAssessment'};
 const fields={'catalog-search':['pairKey','input'],'commerce-state':['pairKey'],'inquiry-create':['pairKey','input','idempotencyKey'],'inquiry-match':['pairKey','input'],'opportunity-create':['pairKey','input','idempotencyKey'],'opportunity-status':['pairKey','input'],pairs:['templateKey'],tasks:['pairKey','kind','title','text','scenario','resource','idempotencyKey'],run:['taskKey'],review:['taskKey','verdict'],stop:['pairKey'],recover:['pairKey'],retry:['taskKey'],upgrade:['target'],rollback:[],learn:['pairKey','lesson'],feedback:['taskKey','feedback'],office:['pairKey'],'office-create':['pairKey','kind','input'],'assessment-submit':['taskKey','input'],'assessment-review':['assessmentKey','input']};
@@ -17,7 +18,7 @@ export function createP2HTTP({service,previewOrigin=null}){
   if(!previewRequest&&!/^(localhost|127\.0\.0\.1)(:\d+)?$/.test(req.headers.host||'')){try{service.httpDenial('HOST_DENIED');}catch{}return send(403,{error:'LOOPBACK_ONLY'});}
   const requestURL=new URL(req.url,'http://localhost'),path=requestURL.pathname;
   try{
-   const assets={'/':'p2.html','/p2':'p2.html','/core.js':'core.js','/p2-office.js':'p2-office.js','/office-intake.js':'office-intake.js','/assessment-export.js':'assessment-export.js','/commercial-office.js':'commercial-office.js','/registry-office.js':'registry-office.js','/style.css':'style.css'};
+   const assets={'/':'p2.html','/p2':'p2.html','/core.js':'core.js','/p2-office.js':'p2-office.js','/office-intake.js':'office-intake.js','/assessment-export.js':'assessment-export.js','/commercial-office.js':'commercial-office.js','/registry-office.js':'registry-office.js','/registry-client.js':'registry-client.js','/style.css':'style.css'};
    if(!path.startsWith('/api/')){if(req.method!=='GET'||!assets[path])return send(404,{error:'NOT_FOUND'});res.setHeader('Content-Type',path.endsWith('.js')?'text/javascript':path.endsWith('.css')?'text/css':'text/html');return res.end(await readFile(new URL('../public/'+assets[path],import.meta.url)));}
    if(path==='/api/curriculum'&&req.method==='GET')return send(200,JSON.parse(await readFile(new URL('../configs/training-basic-v1.json',import.meta.url),'utf8')));
    let body={};if(req.method==='POST'){
@@ -47,6 +48,6 @@ export function createP2HTTP({service,previewOrigin=null}){
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)){
  if(!process.env.CFP_P2_DB)throw Error('CFP_P2_DB_REQUIRED: provision synthetic accounts locally first');
- const service=new P2Sandbox(process.env.CFP_P2_DB),server=createP2HTTP({service,previewOrigin:process.env.CFP_P2_PREVIEW_ORIGIN||null});server.listen(Number(process.env.CFP_P2_PORT||4174),'127.0.0.1');process.on('SIGTERM',()=>server.close(()=>{service.close();process.exit(0);}));
+ const service=new P2Sandbox(process.env.CFP_P2_DB,{registrySource:registrySourceFromEnvironment()}),server=createP2HTTP({service,previewOrigin:process.env.CFP_P2_PREVIEW_ORIGIN||null});server.listen(Number(process.env.CFP_P2_PORT||4174),'127.0.0.1');process.on('SIGTERM',()=>server.close(()=>{service.close();process.exit(0);}));
 }
 

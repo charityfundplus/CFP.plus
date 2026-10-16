@@ -6,13 +6,14 @@ import {randomBytes,scryptSync,timingSafeEqual,createHash} from 'node:crypto';
 import {chmodSync,readFileSync,writeFileSync,existsSync,realpathSync} from 'node:fs';
 import {CoreEngine} from '../core/core-engine.mjs';
 import {hash} from '../core/common.mjs';
-import {loadRegistryReadModel} from '../core/registry-read-model.mjs';
+import {loadRegistryReadModel,bindRegistrySource} from '../core/registry-read-model.mjs';
 const digest=s=>createHash('sha256').update(s).digest('hex');
 const compat={schema:1,core:'0.1.0-sandbox',config:1,adapter:1};
 export class P2Sandbox {
  #db;#source;#coordinationKey;#busy=false;#closed=false;#maintenance=false;#adminCall=false;#clock;#factory;#registryFactory;
- constructor(path,{clock=()=>Date.now(),adapterFactory,registryFactory=loadRegistryReadModel}={}){
-  this.#source=executionProvenance(sourceRoot);this.#clock=clock;this.#factory=adapterFactory;this.#registryFactory=registryFactory;this.#db=new DatabaseSync(path);this.#coordinationKey=path===':memory:'?randomBytes(16).toString('hex'):digest(realpathSync(path));if(path!==':memory:')chmodSync(path,0o600);
+ constructor(path,{clock=()=>Date.now(),adapterFactory,registryFactory,registrySource}={}){
+  if(registryFactory&&registrySource)throw Error('REGISTRY_BINDING_CONFLICT');
+  this.#source=executionProvenance(sourceRoot);this.#clock=clock;this.#factory=adapterFactory;this.#registryFactory=registryFactory||(registrySource?bindRegistrySource(registrySource):loadRegistryReadModel);this.#db=new DatabaseSync(path);this.#coordinationKey=path===':memory:'?randomBytes(16).toString('hex'):digest(realpathSync(path));if(path!==':memory:')chmodSync(path,0o600);
   this.#db.exec('PRAGMA foreign_keys=ON; PRAGMA journal_mode=WAL; PRAGMA synchronous=FULL; PRAGMA busy_timeout=1000; CREATE TABLE IF NOT EXISTS meta(k TEXT PRIMARY KEY,v TEXT NOT NULL); CREATE TABLE IF NOT EXISTS users(id TEXT PRIMARY KEY,salt TEXT,secret TEXT,role TEXT,workspace TEXT,maintainer INTEGER); CREATE TABLE IF NOT EXISTS sessions(token TEXT PRIMARY KEY,subject TEXT REFERENCES users(id),expires INTEGER); CREATE TABLE IF NOT EXISTS states(workspace TEXT PRIMARY KEY,value TEXT NOT NULL); CREATE TABLE IF NOT EXISTS events(seq INTEGER PRIMARY KEY,value TEXT NOT NULL,sha TEXT NOT NULL); CREATE TABLE IF NOT EXISTS attempts(id TEXT PRIMARY KEY,n INTEGER,until INTEGER); CREATE TABLE IF NOT EXISTS grants(subject TEXT PRIMARY KEY REFERENCES users(id),pairs TEXT NOT NULL); CREATE TABLE IF NOT EXISTS requests(workspace TEXT,key TEXT,digest TEXT,result TEXT,PRIMARY KEY(workspace,key));');
   const m=this.#db.prepare('SELECT v FROM meta WHERE k=?').get('compat');if(m&&m.v!==JSON.stringify(compat)){this.close();throw Error('VERSION_INCOMPATIBLE');}
   if(!m)this.#db.prepare('INSERT INTO meta VALUES(?,?)').run('compat',JSON.stringify(compat));try{this.verify();}catch(e){this.close();throw e;}

@@ -1,7 +1,8 @@
 import {readFileSync, lstatSync, realpathSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
-import {resolve, sep} from 'node:path';
+import {resolve, sep, isAbsolute} from 'node:path';
 import {gitRead, sha256} from '../scripts/build-provenance.mjs';
+import {openAIReferenceContent, projectsDocumentationURL} from './openai-reference.mjs';
 
 const repositoryRoot = fileURLToPath(new URL('../../../', import.meta.url));
 const sourcePaths = [
@@ -9,7 +10,8 @@ const sourcePaths = [
   'registry/country-route-map.json',
   'registry/ai-entity-registry.json',
   'registry/AI_CANONICAL_ID_REGISTRY.md',
-  'registry/CFP_GLOBAL_AI_ID_LINK_MASTER_STANDARD.md'
+  'registry/CFP_GLOBAL_AI_ID_LINK_MASTER_STANDARD.md',
+  'registry/SYNC_CURRENT_SYSTEM.md'
 ];
 const types = ['country', 'ai-country', 'developer', 'ai', 'si', 'super-pair', 'hstdn'];
 const publicFields = ['id', 'parent', 'type', 'name', 'countryID', 'aiCountryID', 'country', 'developer', 'did', 'description', 'sourceStatus', 'sourcePath'];
@@ -90,7 +92,7 @@ export function createRegistryReadModel({rows, provenance, blockedIds = []}) {
       return {...meta(), records: records.length, namedBindings: records.filter(r => !['country', 'ai-country'].includes(r.type)).length,
         counts: Object.fromEntries(types.map(type => [type, records.filter(r => r.type === type).length])),
         findings: clone(uniqueFindings), verifiedOperationalEntities: 0, roster91Verified: false,
-        blockers: ['91_PAIR_ROSTER_NOT_SUPPLIED', 'SI_AND_HSTDN_BINDINGS_NOT_SUPPLIED', 'IDENTITY_AND_RUNTIME_GRANTS_NOT_VERIFIED']};
+        blockers: ['AUTHORITATIVE_91_PAIR_BINDINGS_NOT_SUPPLIED', 'SI_AND_HSTDN_BINDINGS_NOT_SUPPLIED', 'IDENTITY_AND_RUNTIME_GRANTS_NOT_VERIFIED']};
     },
     project(id) {
       const record = get(id);
@@ -107,7 +109,7 @@ export function createRegistryReadModel({rows, provenance, blockedIds = []}) {
       ].join('\n');
       return {...meta(), id: record.id, parent: record.parent, canonicalLink: record.canonicalLink,
         label: 'Làm Dự Án tại ChatGPT', projectID: null, allocatedID: false, externalProjectCreated: false,
-        entryURL: 'https://chatgpt.com/', projectURL: null, documentationURL: 'https://learn.chatgpt.com/docs/projects',
+        entryURL: 'https://chatgpt.com/', projectURL: null, documentationURL: projectsDocumentationURL,
         mode: 'MANUAL HANDOFF / PUBLIC REFERENCE ONLY', reviewStatus: record.reviewStatus, issues: record.issues, instructions};
     },
     openai() {
@@ -117,27 +119,38 @@ export function createRegistryReadModel({rows, provenance, blockedIds = []}) {
         existingTemplateLink: developer.canonicalLink, country, aiCountry, developer, ai: [ai], si: [],
         introduction: 'OpenAI là nhà phát triển của ChatGPT theo Registry CFP+ hiện hữu. Hồ sơ tham chiếu này liên kết quốc gia, nhà phát triển và AI để chuẩn bị học tập và cộng tác.',
         products: [{name: ai.name, referenceID: ai.id, canonicalLink: ai.canonicalLink, sourcePath: ai.sourcePath, capabilityVerified: false}],
-        capabilities: [{name: 'Làm việc theo Dự án trong ChatGPT', scope: 'Tổ chức hội thoại, tệp, nguồn và hướng dẫn theo Dự án', sourceURL: 'https://learn.chatgpt.com/docs/projects', competencyCertified: false}],
+        ...openAIReferenceContent(),
         limits: ['Không xác nhận quan hệ pháp lý hoặc đối tác CFP+–OpenAI', 'Không tự cấp quyền, ID, DID hoặc chứng nhận năng lực', 'Chỉ dùng dữ liệu được phép chia sẻ'],
-        contacts: [], contactVerification: 'NOT VERIFIED',
         learning: {basic: '/p2#p2-learn', evidence: '/p2#p2-journey', advancedAssessment: 'NOT ASSESSED'},
-        sources: [{url: 'https://learn.chatgpt.com/docs/projects', checkedAt: '2026-10-16', scope: 'Project organization guidance; not CFP+ identity authority'}],
         vaults: ['quantum', 'cloud', 'github', 'notion', 'google', 'website'].map(kind => ({kind,
           url: kind === 'github' ? 'https://github.com/charityfundplus/CFP.plus' : kind === 'website' ? developer.canonicalLink : null,
           status: kind === 'github' ? 'SOURCE REPOSITORY; NOT LIVE SYNC' : kind === 'website' ? 'REGISTRY LINK; ROUTE NOT VERIFIED' : 'NOT CONFIGURED', connected: false})),
         project: this.project(ai.id), reviewStatus: developer.reviewStatus, identityVerified: false, legalRelationshipVerified: false,
-        blockers: ['HSTDN_CANONICAL_ID_NOT_SUPPLIED', 'US_MAPPING_GOVERNANCE_HOLD_RETAINED', 'SI_ROSTER_NOT_SUPPLIED', 'NO_VERIFIED_CONTACT_OR_PARTNERSHIP', 'HTTPS_PREVIEW_NOT_ACTIVATED']};
+        blockers: ['HSTDN_CANONICAL_ID_NOT_SUPPLIED', 'US_MAPPING_GOVERNANCE_HOLD_RETAINED', 'SI_ROSTER_NOT_SUPPLIED', 'NO_VERIFIED_CFP_CONTACT_OR_PARTNERSHIP', 'HTTPS_PREVIEW_NOT_ACTIVATED']};
     }
   };
 }
 
-// Only current repository source paths are read. Missing source/Git fails closed;
-// a packaged release must be given an approved source integration before using these routes.
-export function loadRegistryReadModel(root = repositoryRoot) {
+// A release may point at the EXISTING repository with a server-owned path + exact
+// revision. Nothing is copied into a second registry or selected by an HTTP caller.
+export function bindRegistrySource({root, revision} = {}) {
+  if (typeof root !== 'string' || !isAbsolute(root) || !/^[a-f0-9]{40}$/.test(revision ?? '')) throw Error('REGISTRY_BINDING_INVALID');
+  return () => loadRegistryReadModel(root, {expectedRevision: revision});
+}
+export function registrySourceFromEnvironment(env = process.env) {
+  const root = env.CFP_REGISTRY_SOURCE_ROOT, revision = env.CFP_REGISTRY_SOURCE_REVISION;
+  if (root === undefined && revision === undefined) return undefined;
+  const source = {root, revision}; bindRegistrySource(source); return source;
+}
+
+// Fixed source paths only. Missing/changed source, moved HEAD and Git failure
+// remain 503; a release never falls back to its historical duplicate JSON files.
+export function loadRegistryReadModel(root = repositoryRoot, {expectedRevision} = {}) {
   try {
     root = realpathSync(root);
+    if (realpathSync(gitRead(root, 'rev-parse', '--show-toplevel').toString().trim()) !== root) throw Error('SOURCE_ROOT');
     const revision = gitRead(root, 'rev-parse', 'HEAD').toString().trim();
-    if (!/^[a-f0-9]{40}$/.test(revision)) throw Error('REVISION');
+    if (!/^[a-f0-9]{40}$/.test(revision) || expectedRevision !== undefined && revision !== expectedRevision) throw Error('REVISION');
     const loaded = new Map(), files = [];
     for (const path of sourcePaths) {
       const full = resolve(root, path);
@@ -161,6 +174,9 @@ export function loadRegistryReadModel(root = repositoryRoot) {
         did: e.did ?? null, description: e.intro ?? '', sourceStatus: e.status, sourcePath: sourcePaths[2]});
     }
     for (const c of index) if (routes[c.ai_country_id] && routes[c.ai_country_id].country_id !== c.country_id) throw Error('SOURCE_COUNTRY_CONFLICT');
-    return createRegistryReadModel({rows, provenance: {revision, files, sourceBytesVerified: true, authorityVerified: false}, blockedIds: ['6911']});
+    return createRegistryReadModel({rows, provenance: {revision, files, sourceBytesVerified: true, authorityVerified: false,
+      sourceAuthority: 'REVIEW / WORKING REGISTRY; NOT CANONICAL LOCK',
+      sourceOrderPath: 'registry/SYNC_CURRENT_SYSTEM.md', governance: 'CFP+ Human Governance',
+      binding: expectedRevision === undefined ? 'REPOSITORY_CHECKOUT' : 'EXPLICIT_EXISTING_REPOSITORY_PIN'}, blockedIds: ['6911']});
   } catch { throw Error('REGISTRY_SOURCE_UNAVAILABLE'); }
 }

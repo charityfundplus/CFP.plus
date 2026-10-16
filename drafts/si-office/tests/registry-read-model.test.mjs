@@ -14,7 +14,7 @@ test('actual root Registry: hashes, 26 named bindings, 99 countries, explicit Op
   const m = loadRegistryReadModel(), v = m.validation(), p = m.openai();
   assert.equal(v.records, 224); assert.equal(v.namedBindings, 26); assert.equal(v.counts.country, 99);
   assert.equal(v.counts.developer, 20); assert.equal(v.counts.ai, 6); assert.equal(v.counts['super-pair'], 0);
-  assert.equal(v.provenance.sourceBytesVerified, true); assert.equal(v.provenance.files.length, 5);
+  assert.equal(v.provenance.sourceBytesVerified, true); assert.equal(v.provenance.files.length, 6);
   assert.equal(v.roster91Verified, false); assert.equal(v.verifiedOperationalEntities, 0);
   assert.deepEqual([p.country.id, p.aiCountry.id, p.developer.id, p.ai[0].id], ['911', '6911', '69118', '691181']);
   assert.deepEqual([p.aiCountry.parent, p.developer.parent, p.ai[0].parent], ['911', '6911', '69118']);
