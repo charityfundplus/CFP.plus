@@ -1,0 +1,14 @@
+
+> test:training
+> node tests/training-basic-v1.test.mjs
+
+✔ Basic v1 gives executable exercises for all 12 modules and keeps privileges unchanged (12.787049ms)
+✔ Six advanced tracks have VI/EN practice steps and never imply assessed competence (0.139396ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 18.048191

@@ -1,0 +1,44 @@
+# REVIEW TEMPLATE ONLY. Do not load until activation is separately approved.
+# 203.0.113.10 is a documentation IP, not a live endpoint.
+# Backend uses unchanged b75 createReviewSandbox, origin=https://REAL_PUBLIC_IP.
+# Certbot >=5.4, certonly/webroot/shortlived. No DNS or Cloudflare changes.
+
+server {
+    listen 80 default_server;
+    server_name _;
+    return 444;
+}
+server {
+    listen 80;
+    server_name 203.0.113.10;
+    location ^~ /.well-known/acme-challenge/ {
+        root /var/lib/cfp-acme;
+        try_files $uri =404;
+    }
+    location / {
+        return 308 https://203.0.113.10$request_uri;
+    }
+}
+server {
+    listen 443 ssl default_server;
+    server_name 203.0.113.10;
+    ssl_certificate /etc/letsencrypt/live/203.0.113.10/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/203.0.113.10/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    if ($host != "203.0.113.10") { return 421; }
+    client_max_body_size 8k;
+    location / {
+        proxy_pass http://127.0.0.1:4189;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header X-Forwarded-Host "";
+    }
+}
+# Certificate issuance/renewal is NOT executed by this template.
+# Bootstrap HTTP-01-only config before first certificate; then enable TLS.
+# Certbot certonly --staging --preferred-profile shortlived --webroot
+#   --webroot-path /var/lib/cfp-acme --ip-address REAL_PUBLIC_IP
+# Staging certificates are NOT publicly trusted. Production issuance needs approval.
+# A renew timer + deploy-hook "nginx -t && systemctl reload nginx" must be verified.
+# Default application state and operator gate remain HOLD/CLOSED.

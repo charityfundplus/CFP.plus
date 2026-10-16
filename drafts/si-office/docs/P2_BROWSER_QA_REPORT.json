@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "commit": "566c7067885db15bb14d5c026525765cc20b0eb0",
+  "manifestFiles": 26,
+  "p2Tests": "10/10",
+  "httpReleaseTests": "5/5",
+  "browserChecks": [
+    "Actual HTTP login; HttpOnly cookie inaccessible to JS; scoped editor",
+    "UI create task; hostile title escaped as text",
+    "Authenticated supervised run with actual durable service",
+    "Separate authenticated reviewer; persisted task after logout/login",
+    "Different workspace sees no alpha tasks",
+    "Viewer UI disables write/upgrade; backend gates covered in HTTP tests",
+    "VI/EN desktop and 390px mobile without overflow",
+    "No browser page errors; CSP retained"
+  ],
+  "pageErrors": [],
+  "serverStopped": true,
+  "scope": "REMOTE EPHEMERAL LOOPBACK / SYNTHETIC ONLY"
+}

@@ -1,0 +1,66 @@
+{
+  "mode": "SYNTHETIC ADVANCED PRACTICE / NOT ASSESSED",
+  "teams": 4,
+  "concurrentServices": 4,
+  "sharedDatabase": false,
+  "results": [
+    {
+      "workspace": "practice-0",
+      "entityType": "new-ai",
+      "applications": 3,
+      "enrollments": 6,
+      "reviewedAdvancedDrafts": 6,
+      "pairs": 3,
+      "restartVerified": true,
+      "foreignTokenDenied": true,
+      "audit": {
+        "sequence": 52,
+        "sha256": "782bb295a2d0badadbc9db685dfe9460e610881af8e764228ed5abef4871e3d0"
+      }
+    },
+    {
+      "workspace": "practice-1",
+      "entityType": "existing-ai",
+      "applications": 3,
+      "enrollments": 6,
+      "reviewedAdvancedDrafts": 6,
+      "pairs": 3,
+      "restartVerified": true,
+      "foreignTokenDenied": true,
+      "audit": {
+        "sequence": 52,
+        "sha256": "3cc57e0d5309046d07e5dea5e55f52db4865ed4ec2c98d0d4822c3bab3f59a89"
+      }
+    },
+    {
+      "workspace": "practice-2",
+      "entityType": "developer",
+      "applications": 3,
+      "enrollments": 6,
+      "reviewedAdvancedDrafts": 6,
+      "pairs": 3,
+      "restartVerified": true,
+      "foreignTokenDenied": true,
+      "audit": {
+        "sequence": 52,
+        "sha256": "e8e1128433e1117a06a2b4eaeeab54b0c4427d93e424167ef49d9565d54aeae1"
+      }
+    },
+    {
+      "workspace": "practice-3",
+      "entityType": "enterprise",
+      "applications": 3,
+      "enrollments": 6,
+      "reviewedAdvancedDrafts": 6,
+      "pairs": 3,
+      "restartVerified": true,
+      "foreignTokenDenied": true,
+      "audit": {
+        "sequence": 52,
+        "sha256": "38abf174233e734a6b80561c4ea68eef5f5b373762eb17079c70abe299c928a6"
+      }
+    }
+  ],
+  "realMemberACK": false,
+  "productionApproved": false
+}

@@ -1,0 +1,76 @@
+{
+  "observedDate": "2026-10-14",
+  "mode": "READ_ONLY_METADATA_COMPARISON",
+  "proposedOfficialFolderId": "1FyEKdgVwS8LZwxRJ07cyDXydXqnr5c2q",
+  "designation": "PROPOSED / PENDING HUMAN GOVERNANCE",
+  "decryptionAttempted": false,
+  "filesMoved": false,
+  "filesDeleted": false,
+  "permissionsChanged": false,
+  "folders": [
+    {
+      "id": "1FyEKdgVwS8LZwxRJ07cyDXydXqnr5c2q",
+      "url": "https://drive.google.com/drive/folders/1FyEKdgVwS8LZwxRJ07cyDXydXqnr5c2q",
+      "title": "CFP-HUB69-b75b780-Encrypted-Backups-HOLD",
+      "parents": [
+        "0AHzaPXPzxiv8Uk9PVA"
+      ],
+      "shared": false,
+      "permissions": [
+        {
+          "type": "user",
+          "role": "owner"
+        }
+      ],
+      "files": [
+        {
+          "id": "1mBMZ1HHa69sBcjrG9G0VOp-2aNV2vni0",
+          "name": "DRIVE_DRILL_RECEIPT.json",
+          "bytes": 646,
+          "mimeType": "application/json"
+        },
+        {
+          "id": "1apjIE0qUSAjGpE-sb4n936IfTEKu1mz0",
+          "name": "READINESS_SUPPLEMENT_VI.md",
+          "bytes": 10949,
+          "mimeType": "text/markdown"
+        },
+        {
+          "id": "1VEJwsHd3YXpvWEEZIZYSAti7egcuiR3r",
+          "name": "SYNTHETIC-transport-drill.sqlite.encrypted.json",
+          "bytes": 11649,
+          "mimeType": "application/json"
+        }
+      ]
+    },
+    {
+      "id": "15Rg4eNnrJUEc22GTqOnTMmhkIJawvAgS",
+      "url": "https://drive.google.com/drive/folders/15Rg4eNnrJUEc22GTqOnTMmhkIJawvAgS",
+      "title": "CFP+ HUB 69 • Restricted Synthetic Backup • b75b780 • 2026-10-14",
+      "parents": [
+        "1JxTGabFVepUW22TwyyeUEV0ZBCpszr9Z"
+      ],
+      "shared": false,
+      "permissions": [
+        {
+          "type": "user",
+          "role": "owner"
+        }
+      ],
+      "files": [
+        {
+          "id": "1DEv_P9vnjDBRrpUH5NkuX-aEfleyLGZW",
+          "name": "CFP-b75b780-activation-gates-20261014.zip",
+          "bytes": 7568,
+          "mimeType": "application/zip"
+        },
+        {
+          "id": "1rFD3WVsdt-vGsrWpyClW8X9GmsALrb3H",
+          "name": "CFP-b75b780-synthetic-remote-backup-20261014.fernet",
+          "bytes": 95672,
+          "mimeType": "application/octet-stream"
+        }
+      ]
+    }
+  ]
+}

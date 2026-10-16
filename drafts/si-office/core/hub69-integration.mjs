@@ -1,0 +1,2 @@
+import {executeMock} from '../adapters.mjs';
+export function hubInventory(){return {gateway:'https://cfp.plus/69',soleHub:true,providers:['website','notion','github','google-drive','mcp-gateway',...Array.from({length:5},(_,i)=>'cfp-vault-'+(i+1))].map(provider=>({...executeMock({provider,action:'read-synthetic',synthetic:true}),direction:'approved source → independent vault; no reverse write/cascade delete'}))};}

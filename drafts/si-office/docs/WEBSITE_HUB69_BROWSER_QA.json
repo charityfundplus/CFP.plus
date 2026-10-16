@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "commit": "54504713df1794dbbdea3b4d42ec356458c05d60",
+  "checks": [
+    "Existing 69 and ten chapter links present",
+    "EN/VI heading and training section",
+    "All hrefs unchanged by language switch",
+    "390px mobile no overflow/page errors"
+  ],
+  "serverStopped": true,
+  "coverage": "SELECTED LABELS + NEW TRAINING SECTION; LEGACY PROSE EN PARTIAL",
+  "scope": "DRAFT WEBSITE / EPHEMERAL LOOPBACK / NO DEPLOY"
+}

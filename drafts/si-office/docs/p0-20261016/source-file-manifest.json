@@ -1,0 +1,55 @@
+{
+  "scope": "Codex 1 P0 changed code and tests; Registry root unchanged",
+  "testedRuntimeRevision": "62e0e5f3b4156eab44e02f065f0bb62061905518",
+  "testedSourceTree": "a2a83e64211c0bc322ea214993603a3c25fd74da",
+  "remoteTreeMatchedLocalTestedTree": true,
+  "baseRevision": "775cd90b89b205c9234acfbc8edbc27b8ab06810",
+  "sourceBytesVerified": true,
+  "files": [
+    {
+      "path": "drafts/si-office/core/registry-read-model.mjs",
+      "sha256": "293209314c73a586bf8517bfae2e0b8ddf6c667c46d697f83db77db9133437c2"
+    },
+    {
+      "path": "drafts/si-office/public/p2.html",
+      "sha256": "4c0b8fc5b291e5f0f70e8b877a0628eabafb03080ae06886745d57443c4421a4"
+    },
+    {
+      "path": "drafts/si-office/public/registry-office.js",
+      "sha256": "ceec88c232bfd306a953ead4f737c2ef1d9ea2ade51b7ddb75a3cefe8db886ab"
+    },
+    {
+      "path": "drafts/si-office/sandbox/p2-http.mjs",
+      "sha256": "6b6b327d0ffc891f174f2b6bc23b107a1cbbfca332558864ed8eb2cbceef5c05"
+    },
+    {
+      "path": "drafts/si-office/sandbox/p2-service.mjs",
+      "sha256": "244440da99c72a58ef3fbbf87e15b3da43796942fa2baddba9962c537ca8b92a"
+    },
+    {
+      "path": "drafts/si-office/scripts/hub69-data.mjs",
+      "sha256": "0a209f7fc1e17ec11ca50393441005e740f44367bdfe62383d0fa2608bf591e0"
+    },
+    {
+      "path": "drafts/si-office/tests/hub69-data.test.mjs",
+      "sha256": "66da0887fe2ed323783c3b81db3af302526fd36dead3562f29250931b9fd6010"
+    },
+    {
+      "path": "drafts/si-office/tests/registry-browser.mjs",
+      "sha256": "2fd1a05ebeb91c542082ee4ece44ecb313b64db2d21084900bd9bf2cedfe608a"
+    },
+    {
+      "path": "drafts/si-office/tests/registry-http.test.mjs",
+      "sha256": "083e914cc0862c86457d887f80a5ed3b836ab6b002f65083a747ebcc5270574a"
+    },
+    {
+      "path": "drafts/si-office/tests/registry-loopback.test.mjs",
+      "sha256": "d8e0f6a72dc5cc2c67f8e75dbc80947d4aa5b8e0768d73d8aa3ed96453e13b85"
+    },
+    {
+      "path": "drafts/si-office/tests/registry-read-model.test.mjs",
+      "sha256": "8e5a3348ef5a5adb3175c0f6bf26c6a78819b1b27f38859962b97b6ee1e7a4b7"
+    }
+  ],
+  "activationAllowed": false
+}

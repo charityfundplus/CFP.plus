@@ -1,0 +1,13 @@
+✔ Round1 learn → assigned training drill → practice → feedback persists without granting rights (405.764861ms)
+✔ Round1 Office SI/HSTDN/products/services share durable pair scope and unverified claims (355.191238ms)
+✔ Round1 denied viewer, forbidden identity fields and foreign feedback remain denied (304.879565ms)
+✔ Round1 HTTP exposes protected learning/Office routes and new UI assets (234.742307ms)
+✔ Round1 preview origin is explicitly configured HTTPS, Secure cookies and no reflected proxy authority (200.090357ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1507.830838

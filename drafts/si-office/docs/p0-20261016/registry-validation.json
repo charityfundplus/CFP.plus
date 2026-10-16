@@ -1,0 +1,67 @@
+{
+  "provenance": {
+    "revision": "62e0e5f3b4156eab44e02f065f0bb62061905518",
+    "files": [
+      {
+        "path": "registry/global-country-ai-index.json",
+        "bytes": 11933,
+        "sha256": "21c870aba50dafac45675172687dec01d4facf1d679f63d27e21ba8777648764",
+        "gitBlobSHA": "f8372e5ca64dac109b7e1e360594552213cb8dfd"
+      },
+      {
+        "path": "registry/country-route-map.json",
+        "bytes": 4722,
+        "sha256": "ce048e97a5e4c5cf902b33bb1b3755d05acfc7f93ea4bd72d0a093115d65e3c2",
+        "gitBlobSHA": "df852ca8a28493af21669ce709f47d044cd88511"
+      },
+      {
+        "path": "registry/ai-entity-registry.json",
+        "bytes": 9654,
+        "sha256": "a63c5e0b8af157b0938014d51da94ea924b9721acd0a11a9107f5deea3c6f507",
+        "gitBlobSHA": "1f18068d66379ce90bb079dc56c77b4c4d66dcdf"
+      },
+      {
+        "path": "registry/AI_CANONICAL_ID_REGISTRY.md",
+        "bytes": 1489,
+        "sha256": "310e694ff47cc51b3e85a9816f443af6b0ff7f45303fdf4314b43f3281c225ad",
+        "gitBlobSHA": "ac687cdc6222d47c63454dce1ee81ff53affd482"
+      },
+      {
+        "path": "registry/CFP_GLOBAL_AI_ID_LINK_MASTER_STANDARD.md",
+        "bytes": 2587,
+        "sha256": "c86b7494a6a39dc0cf7038634c5538724fd4b8647cee5e913fb61a52607dc556",
+        "gitBlobSHA": "d82c7c11f436327fa1e834c69e91078e308eda7a"
+      }
+    ],
+    "sourceBytesVerified": true,
+    "authorityVerified": false
+  },
+  "hub": "https://cfp.plus/69",
+  "readOnly": true,
+  "registryWrites": 0,
+  "activationAllowed": false,
+  "records": 224,
+  "namedBindings": 26,
+  "counts": {
+    "country": 99,
+    "ai-country": 99,
+    "developer": 20,
+    "ai": 6,
+    "si": 0,
+    "super-pair": 0,
+    "hstdn": 0
+  },
+  "findings": [
+    {
+      "code": "EXISTING_GOVERNANCE_HOLD",
+      "id": "6911"
+    }
+  ],
+  "verifiedOperationalEntities": 0,
+  "roster91Verified": false,
+  "blockers": [
+    "91_PAIR_ROSTER_NOT_SUPPLIED",
+    "SI_AND_HSTDN_BINDINGS_NOT_SUPPLIED",
+    "IDENTITY_AND_RUNTIME_GRANTS_NOT_VERIFIED"
+  ]
+}

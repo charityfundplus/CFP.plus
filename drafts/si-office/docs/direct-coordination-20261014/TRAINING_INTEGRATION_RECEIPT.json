@@ -1,0 +1,34 @@
+{
+  "directive": "https://github.com/charityfundplus/CFP.plus/issues/130#issuecomment-6161167283",
+  "owner": "Codex training integrator",
+  "lessonKeysPreserved": 5,
+  "exercisePayloadsPreservedExactly": 12,
+  "advancedTracksPreservedExactly": 6,
+  "staticComparisonAgainst": "11bb42464afebcd2962ca0ab94df0822853445c3",
+  "changes": [
+    "existing VI/EN lesson steps",
+    "worksheet evidence labels",
+    "prerequisites/rubric/12 specialist assertion mapping in existing documents"
+  ],
+  "files": [
+    {
+      "path": "drafts/si-office/configs/training-basic-v1.json",
+      "sha256": "528ef09c2a7ac671eca56a6370ff3489657c0d9dfa33c2466f08ded48067f200"
+    },
+    {
+      "path": "drafts/si-office/docs/TRAINING_BASIC_V1.md",
+      "sha256": "f166af3f3071e8fc2345ef6c16a46a6046b6bcea55510ad80016a4f37e150b34"
+    },
+    {
+      "path": "drafts/si-office/docs/TRAINING_HSTDN_WORKBOOK_VI_EN.md",
+      "sha256": "33346f6a93868be48e12a22357a85763fe7037dacf7f98087df8e68a2acc02b1"
+    }
+  ],
+  "actualBrowserRun": false,
+  "socketBrowserStatus": "BLOCKED_EPERM_SOCKET; additional permission command aborted, no approval inferred",
+  "iphoneSafari": "NOT TESTED",
+  "standardV02": "SOURCE BLOCKED",
+  "assessorVerified": false,
+  "competencyPass": false,
+  "activationAllowed": false
+}

@@ -1,0 +1,11 @@
+✔ assessment-bearing checkpoint refuses legacy schema reader and detects evidence loss without audit edits (16.1852ms)
+✔ upgrade and sandbox rollback retain assessment checkpoints, review, and prior audit prefix (3.927437ms)
+✔ SQLite backup restore retains schema2 packets and revokes old sessions (302.433753ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 329.149017

@@ -1,0 +1,11 @@
+{
+  "store": "Google",
+  "fileId": "1cYeGMACdnkQSR3PSKiB88PA6u5nM_Px5",
+  "sha256": "50c3093c670dc4b8731c3bb6ae95705f3e6d818024eefcad583662638c2c3719",
+  "bytes": 143892,
+  "byteForByteReadback": true,
+  "archiveFiles": 73,
+  "secretsIncluded": false,
+  "routingEvidenceRetained": true,
+  "allFiveStoresSynced": false
+}

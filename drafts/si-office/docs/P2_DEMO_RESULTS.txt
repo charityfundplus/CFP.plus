@@ -1,0 +1,85 @@
+
+> demo:p2
+> node scripts/p2-demo.mjs
+
+{
+  "mode": "P2 SYNTHETIC ONLY / PRODUCTION NO-GO",
+  "reviewedTask": "REVIEWED DRAFT",
+  "restoredTasks": 1,
+  "checkpoint": {
+    "sequence": 8,
+    "sha256": "5b8a9d3afe8e48b1e28450f1eb75fb48a53a0a688eaec13417a153c21a8d5e01"
+  },
+  "restoreCheckpoint": {
+    "sequence": 11,
+    "sha256": "0867e5edbace7919488014adea5e70c6f9b8e2d45e49bc29f4eff19ef701331b"
+  },
+  "adapters": [
+    {
+      "slot": 1,
+      "status": "DISCONNECTED / MISSING EVIDENCE",
+      "readOnly": true,
+      "connected": false,
+      "externalCalls": 0,
+      "owner": null,
+      "url": null,
+      "scope": null,
+      "protocol": 1
+    },
+    {
+      "slot": 2,
+      "status": "DISCONNECTED / MISSING EVIDENCE",
+      "readOnly": true,
+      "connected": false,
+      "externalCalls": 0,
+      "owner": null,
+      "url": null,
+      "scope": null,
+      "protocol": 1
+    },
+    {
+      "slot": 3,
+      "status": "DISCONNECTED / MISSING EVIDENCE",
+      "readOnly": true,
+      "connected": false,
+      "externalCalls": 0,
+      "owner": null,
+      "url": null,
+      "scope": null,
+      "protocol": 1
+    },
+    {
+      "slot": 4,
+      "status": "DISCONNECTED / MISSING EVIDENCE",
+      "readOnly": true,
+      "connected": false,
+      "externalCalls": 0,
+      "owner": null,
+      "url": null,
+      "scope": null,
+      "protocol": 1
+    },
+    {
+      "slot": 5,
+      "status": "DISCONNECTED / MISSING EVIDENCE",
+      "readOnly": true,
+      "connected": false,
+      "externalCalls": 0,
+      "owner": null,
+      "url": null,
+      "scope": null,
+      "protocol": 1
+    }
+  ],
+  "identity": {
+    "name": "Siêu Trí Tuệ (SI🤖AI🤖) • Synthetic Demo",
+    "developer": "Synthetic Developer • not a legal entity",
+    "country": "Synthetic / Unassigned",
+    "id": null,
+    "parent": null,
+    "did": null,
+    "canonical": null,
+    "verification": "SYNTHETIC ONLY",
+    "source": "local-synthetic-fixture"
+  }
+}
