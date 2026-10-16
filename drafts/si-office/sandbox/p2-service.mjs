@@ -6,12 +6,13 @@ import {randomBytes,scryptSync,timingSafeEqual,createHash} from 'node:crypto';
 import {chmodSync,readFileSync,writeFileSync,existsSync,realpathSync} from 'node:fs';
 import {CoreEngine} from '../core/core-engine.mjs';
 import {hash} from '../core/common.mjs';
+import {loadRegistryReadModel} from '../core/registry-read-model.mjs';
 const digest=s=>createHash('sha256').update(s).digest('hex');
 const compat={schema:1,core:'0.1.0-sandbox',config:1,adapter:1};
 export class P2Sandbox {
- #db;#source;#coordinationKey;#busy=false;#closed=false;#maintenance=false;#adminCall=false;#clock;#factory;
- constructor(path,{clock=()=>Date.now(),adapterFactory}={}){
-  this.#source=executionProvenance(sourceRoot);this.#clock=clock;this.#factory=adapterFactory;this.#db=new DatabaseSync(path);this.#coordinationKey=path===':memory:'?randomBytes(16).toString('hex'):digest(realpathSync(path));if(path!==':memory:')chmodSync(path,0o600);
+ #db;#source;#coordinationKey;#busy=false;#closed=false;#maintenance=false;#adminCall=false;#clock;#factory;#registryFactory;
+ constructor(path,{clock=()=>Date.now(),adapterFactory,registryFactory=loadRegistryReadModel}={}){
+  this.#source=executionProvenance(sourceRoot);this.#clock=clock;this.#factory=adapterFactory;this.#registryFactory=registryFactory;this.#db=new DatabaseSync(path);this.#coordinationKey=path===':memory:'?randomBytes(16).toString('hex'):digest(realpathSync(path));if(path!==':memory:')chmodSync(path,0o600);
   this.#db.exec('PRAGMA foreign_keys=ON; PRAGMA journal_mode=WAL; PRAGMA synchronous=FULL; PRAGMA busy_timeout=1000; CREATE TABLE IF NOT EXISTS meta(k TEXT PRIMARY KEY,v TEXT NOT NULL); CREATE TABLE IF NOT EXISTS users(id TEXT PRIMARY KEY,salt TEXT,secret TEXT,role TEXT,workspace TEXT,maintainer INTEGER); CREATE TABLE IF NOT EXISTS sessions(token TEXT PRIMARY KEY,subject TEXT REFERENCES users(id),expires INTEGER); CREATE TABLE IF NOT EXISTS states(workspace TEXT PRIMARY KEY,value TEXT NOT NULL); CREATE TABLE IF NOT EXISTS events(seq INTEGER PRIMARY KEY,value TEXT NOT NULL,sha TEXT NOT NULL); CREATE TABLE IF NOT EXISTS attempts(id TEXT PRIMARY KEY,n INTEGER,until INTEGER); CREATE TABLE IF NOT EXISTS grants(subject TEXT PRIMARY KEY REFERENCES users(id),pairs TEXT NOT NULL); CREATE TABLE IF NOT EXISTS requests(workspace TEXT,key TEXT,digest TEXT,result TEXT,PRIMARY KEY(workspace,key));');
   const m=this.#db.prepare('SELECT v FROM meta WHERE k=?').get('compat');if(m&&m.v!==JSON.stringify(compat)){this.close();throw Error('VERSION_INCOMPATIBLE');}
   if(!m)this.#db.prepare('INSERT INTO meta VALUES(?,?)').run('compat',JSON.stringify(compat));try{this.verify();}catch(e){this.close();throw e;}
@@ -50,11 +51,23 @@ export class P2Sandbox {
    this.#actor(token);if(req)req.result=result;this.#save(a,bindReceipt(engine.checkpoint()),command,'PASS',req);return result;
   }catch(e){try{this.#tx(()=>this.#event(a.id,a.workspace,'command','DENIED'));}catch{this.close();}throw e;}finally{this.#busy=false;}
  }
+ // Registry responses contain only the existing public source projection, never office/customer data.
+ readRegistry(token,operation,input={}){
+  this.#guard();const a=this.#actor(token);
+  if(!input||typeof input!=='object'||Array.isArray(input))throw Error('REGISTRY_INVALID_FIELDS');
+  const keys=operation==='search'?['query','type','chapter','limit','offset']:['detail','project'].includes(operation)?['id']:[];
+  if(Object.keys(input).some(k=>!keys.includes(k)))throw Error('REGISTRY_INVALID_FIELDS');
+  const model=this.#registryFactory();let result;
+  switch(operation){case 'search':result=model.search(input);break;case 'detail':result=model.detail(input.id);break;case 'validation':result=model.validation();break;case 'openai':result=model.openai();break;case 'project':result=model.project(input.id);break;default:throw Error('COMMAND_DENIED');}
+  // Bind the exact response bytes into the durable audit without copying another Master Registry.
+  this.#tx(()=>this.#event(a.id,a.workspace,'registry:'+operation,'sha256:'+hash(result)));
+  return result;
+ }
  adapters(token){this.#guard();this.#actor(token);return Array.from({length:5},(_,i)=>({slot:i+1,status:'DISCONNECTED / MISSING EVIDENCE',readOnly:true,connected:false,externalCalls:0,owner:null,url:null,scope:null,protocol:1}));}
  maintenanceLease(token){this.requireQuiescent(token);const auth=this.context(token);this.#maintenance=true;let released=false;return {auth,backup:(path)=>{if(released)throw Error('LEASE_RELEASED');this.#adminCall=true;try{return this.backup(token,path);}finally{this.#adminCall=false;}},release:()=>{released=true;this.#maintenance=false;}};}
  requireQuiescent(token){this.#guard();const a=this.#actor(token);if(!a.maintainer||!a.pairs.includes('*'))throw Error('MAINTAINER_REQUIRED');for(const row of this.#db.prepare('SELECT value FROM states').all()){const c=JSON.parse(row.value);if(c.tasks.some(t=>['RUNNING','QUEUED','AWAITING HUMAN REVIEW'].includes(t.status)))throw Error('QUIESCENCE_REQUIRED');}return true;}
  httpDenial(code){this.#guard();this.#tx(()=>this.#event('http-transport','unknown','http-policy',code));}
- backup(token,path){this.#guard();const a=this.#actor(token);if(!a.maintainer)throw Error('MAINTAINER_REQUIRED');if(existsSync(path)||existsSync(path+'.json'))throw Error('BACKUP_EXISTS');const quoted="'"+path.replaceAll("'","''")+"'";this.#db.exec('VACUUM INTO '+quoted);chmodSync(path,0o600);const manifest={compat,checkpoint:this.verify(),sha256:digest(readFileSync(path)),synthetic:true};writeFileSync(path+'.json',JSON.stringify(manifest),{mode:0o600,flag:'wx'});return manifest;}
+ backup(token,path){this.#guard();const a=this.#actor(token);if(!a.maintainer||!a.pairs.includes('*'))throw Error('MAINTAINER_REQUIRED');if(existsSync(path)||existsSync(path+'.json'))throw Error('BACKUP_EXISTS');const quoted="'"+path.replaceAll("'","''")+"'";this.#db.exec('VACUUM INTO '+quoted);chmodSync(path,0o600);const manifest={compat,checkpoint:this.verify(),sha256:digest(readFileSync(path)),synthetic:true};writeFileSync(path+'.json',JSON.stringify(manifest),{mode:0o600,flag:'wx'});return manifest;}
  static restore(backup,destination){if(existsSync(destination))throw Error('DESTINATION_EXISTS');const m=JSON.parse(readFileSync(backup+'.json','utf8'));if(JSON.stringify(m.compat)!==JSON.stringify(compat)||m.sha256!==digest(readFileSync(backup)))throw Error('BACKUP_INVALID');writeFileSync(destination,readFileSync(backup),{mode:0o600,flag:'wx'});const s=new P2Sandbox(destination);if(JSON.stringify(s.verify())!==JSON.stringify(m.checkpoint)){s.close();throw Error('CHECKPOINT_MISMATCH');}s.#tx(()=>{s.#db.exec('DELETE FROM sessions');s.#event('local-restorer','system','restore','NEW GENERATION');});return s;}
  close(){if(!this.#closed){this.#db.close();this.#closed=true;}}
 }

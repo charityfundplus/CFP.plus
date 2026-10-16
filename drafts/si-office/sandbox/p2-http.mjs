@@ -15,9 +15,9 @@ export function createP2HTTP({service,previewOrigin=null}){
   res.setHeader('Cache-Control','no-store');res.setHeader('X-Content-Type-Options','nosniff');res.setHeader('Referrer-Policy','no-referrer');res.setHeader('Content-Security-Policy',"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; form-action 'self'; base-uri 'none'");
   const previewRequest=!!preview&&req.headers.host===preview.host;const expectedOrigin=previewRequest?preview.origin:'http://'+req.headers.host;const secureCookie=previewRequest?'; Secure':'';
   if(!previewRequest&&!/^(localhost|127\.0\.0\.1)(:\d+)?$/.test(req.headers.host||'')){try{service.httpDenial('HOST_DENIED');}catch{}return send(403,{error:'LOOPBACK_ONLY'});}
-  const path=new URL(req.url,'http://localhost').pathname;
+  const requestURL=new URL(req.url,'http://localhost'),path=requestURL.pathname;
   try{
-   const assets={'/':'p2.html','/p2':'p2.html','/core.js':'core.js','/p2-office.js':'p2-office.js','/office-intake.js':'office-intake.js','/assessment-export.js':'assessment-export.js','/commercial-office.js':'commercial-office.js','/style.css':'style.css'};
+   const assets={'/':'p2.html','/p2':'p2.html','/core.js':'core.js','/p2-office.js':'p2-office.js','/office-intake.js':'office-intake.js','/assessment-export.js':'assessment-export.js','/commercial-office.js':'commercial-office.js','/registry-office.js':'registry-office.js','/style.css':'style.css'};
    if(!path.startsWith('/api/')){if(req.method!=='GET'||!assets[path])return send(404,{error:'NOT_FOUND'});res.setHeader('Content-Type',path.endsWith('.js')?'text/javascript':path.endsWith('.css')?'text/css':'text/html');return res.end(await readFile(new URL('../public/'+assets[path],import.meta.url)));}
    if(path==='/api/curriculum'&&req.method==='GET')return send(200,JSON.parse(await readFile(new URL('../configs/training-basic-v1.json',import.meta.url),'utf8')));
    let body={};if(req.method==='POST'){
@@ -33,10 +33,16 @@ export function createP2HTTP({service,previewOrigin=null}){
    }
    const cookies=String(req.headers.cookie||'').split(';').map(x=>x.trim());const matches=cookies.filter(x=>x.startsWith('cfp_p2='));if(matches.length!==1)throw Error('AUTH_DENIED');const token=matches[0].slice(7);const auth=service.context(token);
    if(path==='/api/logout'&&req.method==='POST'){exact([]);service.revoke(token);res.setHeader('Set-Cookie','cfp_p2=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0'+secureCookie);return send(200,{loggedOut:true});}
+   if(req.method==='GET'&&['/api/core/registry','/api/core/registry-validation','/api/core/hstdn-openai'].includes(path)){
+    const input=Object.create(null);for(const [key,value] of requestURL.searchParams){if(Object.hasOwn(input,key))throw Error('REGISTRY_INVALID_FIELDS');input[key]=['limit','offset'].includes(key)&&/^\d+$/.test(value)?Number(value):value;}
+    const operation=path==='/api/core/registry'?'search':path==='/api/core/registry-validation'?'validation':'openai';return send(200,service.readRegistry(token,operation,input));
+   }
+   if(req.method==='GET'&&path.startsWith('/api/core/registry/')){if(requestURL.search)throw Error('REGISTRY_INVALID_FIELDS');return send(200,service.readRegistry(token,'detail',{id:path.slice('/api/core/registry/'.length)}));}
+   if(path==='/api/core/chatgpt-project'&&req.method==='POST'){exact(['id']);return send(200,service.readRegistry(token,'project',body));}
    if(path==='/api/core/state'&&req.method==='GET'){const result=await service.execute(token,'snapshot');const current=executionProvenance(sourceRoot);result.buildProvenance=startupProvenance.verified&&current.verified&&startupProvenance.manifestSha256===current.manifestSha256?current:{verified:false,revision:null,manifest:null,manifestSha256:null,finding:'EXECUTION_SOURCE_UNVERIFIED_OR_CHANGED',authorityVerified:false,activationAllowed:false};return send(200,result);}
    const name=path.startsWith('/api/core/')?path.slice(10):'';if(req.method!=='POST'||!commands[name])return send(404,{error:'NOT_FOUND'});exact(fields[name]);let args=body,options={};if(['inquiry-create','opportunity-create'].includes(name)){const {idempotencyKey,...payload}=body;args=payload;options={idempotencyKey};}if(name==='tasks'){const {pairKey,idempotencyKey,...input}=body;args={pairKey,input};options={idempotencyKey};}
    return send(200,await service.execute(token,commands[name],args,options));
-  }catch(e){try{service.httpDenial(/AUTH_DENIED/.test(e.message)?'AUTH_DENIED':'REQUEST_DENIED');}catch{}const code=/AUTH_DENIED/.test(e.message)?401:/PERMISSION|SCOPE_DENIED|MAINTAINER|INDEPENDENT/.test(e.message)?403:/BUSY|NOT_READY|CONFLICT/.test(e.message)?409:/INTEGRITY|STORAGE|SQLITE/.test(e.message)?503:400;return send(code,{error:code===503?'STORAGE_UNAVAILABLE':e.message});}
+  }catch(e){try{service.httpDenial(/AUTH_DENIED/.test(e.message)?'AUTH_DENIED':'REQUEST_DENIED');}catch{}const code=e.message==='REGISTRY_NOT_FOUND'?404:/REGISTRY_ID_CONFLICT/.test(e.message)?409:/REGISTRY_SOURCE_UNAVAILABLE/.test(e.message)?503:/AUTH_DENIED/.test(e.message)?401:/PERMISSION|SCOPE_DENIED|MAINTAINER|INDEPENDENT/.test(e.message)?403:/BUSY|NOT_READY|CONFLICT/.test(e.message)?409:/INTEGRITY|STORAGE|SQLITE/.test(e.message)?503:400;return send(code,{error:code===503?(e.message==='REGISTRY_SOURCE_UNAVAILABLE'?e.message:'STORAGE_UNAVAILABLE'):e.message});}
  });return server;
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)){
