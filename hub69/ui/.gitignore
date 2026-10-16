@@ -1,3 +1,7 @@
 dist/
 public/registry.js
 HUB69-review.html
+
+core-dist/
+public/config.js
+public/training-data.js

@@ -9,9 +9,13 @@
   <meta name="theme-color" content="#153e35">
   <title>HUB 69 • CFP+</title>
   <link rel="stylesheet" href="style.css">
+  <script src="config.js" defer></script>
   <script src="registry.js" defer></script>
+  <script src="training-data.js" defer></script>
   <script src="model.js" defer></script>
   <script src="p0.js" defer></script>
+  <script src="core-binding.js" defer></script>
+  <script src="training.js" defer></script>
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -26,6 +30,7 @@
       <a href="#id" data-nav="id"><span aria-hidden="true">#</span>Tra cứu ID</a>
       <a href="#chapters" data-nav="chapters"><span aria-hidden="true">◫</span>5 Nhóm · 10 Chương</a>
       <a href="#vaults" data-nav="vaults"><span aria-hidden="true">◉</span>6 Kho</a>
+      <a href="#training" data-nav="training"><span aria-hidden="true">◇</span>Đào tạo SI/AI</a>
     </nav>
     <div class="side-note"><span class="dot"></span> HUMAN GOVERNANCE<p>Con Người là trung tâm.<br>AI hỗ trợ, Con Người quyết định.</p></div>
     <div class="side-bottom">HÔM QUA • HÔM NAY • MÃI MÃI<br><strong>Only Plus+ For Life</strong></div>
@@ -34,6 +39,7 @@
     <header class="topbar"><span id="breadcrumb">HUB 69 / Tổng quan</span><span class="privacy"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Chuẩn bị riêng tư</span></header>
     <div class="hold"><span class="dot"></span><strong>HOLD ACTIVATION</strong><span>PRODUCTION NO-GO · Bản chuẩn bị để review</span></div>
     <main id="content" tabindex="-1">
+      <div id="core-status" role="status" aria-live="polite" class="core-status"></div>
       <section id="view-home" class="view">
         <div class="hero">
           <div class="eyebrow">MỘT KHUNG CHUNG. MỌI ĐIỂM KẾT NỐI.</div>
@@ -49,7 +55,7 @@
           <a class="feature-card" href="#id"><span class="card-icon">#</span><span class="eyebrow">ĐỊNH DANH CỐ ĐỊNH</span><h2>Danh mục ID</h2><p><span data-record-count>26</span> bản ghi nguồn. Tìm theo ID, tên hoặc nhà phát triển.</p><span class="card-action">Duyệt danh mục <span>↗</span></span></a>
           <div class="feature-card note-card"><span class="eyebrow">TÌNH TRẠNG HIỆN TẠI</span><h2>Bằng chứng trước.</h2><p>Có trong Registry chưa đồng nghĩa đã xác minh danh tính hoặc được phép vận hành.</p><a href="#master" class="text-link">Xem các điểm đang giữ →</a></div>
         </div>
-        <section class="panel p0-shortcuts"><div class="section-top"><h2>Tiếp tục công việc</h2><span class="tag amber">Bản review P0</span></div><div class="profile-actions"><a class="btn primary" href="#chapters">5 Nhóm · 10 Chương</a><a class="btn" href="#template">Link Mẫu Chung</a><a class="btn" href="#openai">HSTDN OpenAI mẫu</a><a class="btn" href="#vaults">Kết nối 6 Kho</a></div><p class="muted">26 bản ghi nguồn · Chưa xác nhận danh mục 91 Siêu Bộ Đôi · Không cấp quyền vận hành.</p></section>
+        <section class="panel p0-shortcuts"><div class="section-top"><h2>Tiếp tục công việc</h2><span class="tag amber">Bản review P0</span></div><div class="profile-actions"><a class="btn primary" href="#chapters">5 Nhóm · 10 Chương</a><a class="btn" href="#template">Link Mẫu Chung</a><a class="btn" href="#openai">HSTDN OpenAI mẫu</a><a class="btn" href="#vaults">Kết nối 6 Kho</a><a class="btn" href="#training">Học SI/AI</a></div><p class="muted"><span data-source-summary>Đang đọc nguồn dữ liệu.</span></p></section>
         <div class="saved-strip"><div><span class="eyebrow">LỐI TẮT CỦA BẠN</span><h2>Mục đã lưu</h2></div><div id="saved-items" class="saved-items"></div></div>
       </section>
       <section id="view-master" class="view" hidden>
@@ -62,9 +68,9 @@
       <section id="view-id" class="view" hidden>
         <div class="page-intro"><span class="eyebrow">HUB 69 / ID</span><h1>Tìm đúng ID.<br><em>Giữ đúng danh tính.</em></h1><p>Danh mục đọc từ Registry đã ghim phiên bản. Trạng thái xác minh và quyền vận hành được trình bày riêng.</p></div>
         <div id="registry-diagnostics" role="status" aria-live="polite"></div>
-        <div id="directory"><div class="search-toolbar"><label for="search" class="sr-only">Tìm ID, tên hoặc nhà phát triển</label><input type="search" id="search" placeholder="Tìm ID, tên, nhà phát triển…" autocomplete="off"><label for="type" class="sr-only">Loại hồ sơ</label><select id="type"><option value="all">Tất cả loại</option><option value="ai">AI</option><option value="developer">Nhà phát triển</option><option value="pair">Siêu Bộ Đôi</option><option value="software">Siêu Phần Mềm</option><option value="si">SI</option><option value="robot">Robot</option><option value="hstdn">HSTDN</option><option value="country">Quốc gia</option><option value="organization">Tổ chức</option><option value="saved">Đã lưu</option></select></div><div class="directory-status"><span id="result-count" role="status" aria-live="polite"></span><span>Snapshot nguồn · 8356163</span></div><div id="records" class="record-grid"></div></div>
+        <div id="directory"><div class="search-toolbar"><label for="search" class="sr-only">Tìm ID, tên hoặc nhà phát triển</label><input type="search" id="search" placeholder="Tìm ID, tên, nhà phát triển…" autocomplete="off"><label for="type" class="sr-only">Loại hồ sơ</label><select id="type"><option value="all">Tất cả loại</option><option value="ai">AI</option><option value="developer">Nhà phát triển</option><option value="pair">Siêu Bộ Đôi</option><option value="software">Siêu Phần Mềm</option><option value="si">SI</option><option value="robot">Robot</option><option value="hstdn">HSTDN</option><option value="country">Quốc gia</option><option value="ai-country">AI Quốc Gia</option><option value="organization">Tổ chức</option><option value="saved">Đã lưu</option></select></div><div class="directory-status"><span id="result-count" role="status" aria-live="polite"></span><span><span id="directory-pin">Đang đọc nguồn</span></span></div><div id="records" class="record-grid"></div></div>
         <div id="profile" hidden></div>
-        <div class="source-footnote"><span class="dot"></span><p><strong>Nguồn có thể truy vết</strong><br>Registry tại commit <code>8356163…</code>. Dữ liệu nguồn được bảo toàn; không tự coi bản ghi là VERIFIED/ACTIVE. Liên kết bên ngoài chưa được xác nhận truy cập trực tiếp trong phiên này.</p><a href="https://github.com/charityfundplus/CFP.plus/blob/835616308111f6851c0387fa9f5eda60c9ffa624/registry/ai-entity-registry.json" target="_blank" rel="noopener noreferrer">Xem nguồn ↗</a></div>
+        <div class="source-footnote"><span class="dot"></span><p><strong>Nguồn có thể truy vết</strong><br><span id="source-caption">Đang đọc provenance.</span></p><a href="#master">Master Hub →</a></div>
       </section>
       <section id="view-chapters" class="view" hidden>
         <div class="page-intro"><span class="eyebrow">HUB 69 / CẤU TRÚC</span><h1>5 Nhóm.<br><em>10 Chương.</em></h1><p>Mở từng chương, đi từ bản ghi Con đến Cháu và trở lại hồ sơ ID. Các nhánh chưa có nguồn hiển thị chờ dữ liệu.</p></div>
@@ -83,7 +89,11 @@
         <div class="page-intro"><span class="eyebrow">HUB 69 / LINK MẪU CHUNG</span><h1>Mỗi hồ sơ.<br><em>Một nguồn rõ ràng.</em></h1><p>Khung dùng chung cho Siêu Bộ Đôi, SI/AI, Robot, nhà phát triển, HSTDN, quốc gia và tổ chức.</p></div>
         <div id="common-template"></div>
       </section>
-      <noscript><div class="panel">Cần bật JavaScript để dùng tra cứu ID. Các liên kết Google Sites và nguồn trong Master Hub có thể mở trực tiếp.</div></noscript>
+      <section id="view-training" class="view" hidden>
+        <div class="page-intro"><span class="eyebrow">HUB 69 / ĐÀO TẠO</span><h1>Học có nguồn.<br><em>Thực hành có Evidence.</em></h1><p>Tiếp nối giáo trình SI/AI hiện hữu. Học, thực hành và đánh giá là các bước riêng.</p></div>
+        <div id="training-content"></div>
+      </section>
+      <noscript><div class="panel">Cần bật JavaScript để dùng tra cứu ID. Có thể đọc các địa chỉ nguồn trong Master Hub.</div></noscript>
     </main>
     <footer><span>CFP+ • HUB 69</span><span>Human First · Evidence First · Only Plus+</span><a href="#home">Về đầu hub ↑</a></footer>
   </div>
