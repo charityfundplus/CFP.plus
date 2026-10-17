@@ -1,6 +1,6 @@
 # CFP+ • HSTDN • Namecheap và Cloudflare • Giới thiệu V1
 
-Trạng thái: Nội dung đề xuất quảng bá độc lập, chưa xác nhận hợp tác hoặc ủy quyền. Chưa cấp Canonical ID cho hai doanh nghiệp; đối chiếu Master Registry trước khi tạo URL số.
+Trạng thái: CFP+ xác nhận đang sử dụng dịch vụ Namecheap và Cloudflare với tư cách khách hàng. Nội dung quảng bá độc lập; chưa xác nhận quan hệ đối tác hoặc ủy quyền. Không công bố gói dịch vụ, cấu hình hoặc phạm vi tích hợp cụ thể khi chưa có Evidence. Chưa cấp Canonical ID cho hai doanh nghiệp; đối chiếu Master Registry trước khi tạo URL số.
 
 ## Namecheap
 - Website chính thức: https://www.namecheap.com/
