@@ -1,0 +1,67 @@
+{
+  "issue": 148,
+  "baseRevision": "835616308111f6851c0387fa9f5eda60c9ffa624",
+  "scope": "LOCAL SYNTHETIC CONTRACT TESTS; NOT LIVE PROVIDER/NOTION ACCEPTANCE",
+  "tests": {
+    "pass": 31,
+    "fail": 0,
+    "command": "python -m unittest discover -s cmp/executor/tests -v"
+  },
+  "live": {
+    "gemini": "BLOCKED / NOT TESTED",
+    "meta": "BLOCKED / NOT TESTED",
+    "notionRead": "NOT TESTED",
+    "notionCreate": "NOT TESTED",
+    "notionReadback": "NOT TESTED",
+    "credentialsVerified": false,
+    "stagingURL": null
+  },
+  "files": [
+    {
+      "path": "cmp/executor/provider_notion.py",
+      "sha256": "85bf7ab28d962422dca15acbc00345fbcb6ae085fbfc94127aedd7460dc07543"
+    },
+    {
+      "path": "cmp/executor/run_provider_notion.py",
+      "sha256": "ddb58825b6d6fa3c74dfe94e10b234de3b54998ac7c7a9a8943610e3d0d7d436"
+    },
+    {
+      "path": "cmp/executor/tests/test_provider_notion.py",
+      "sha256": "2024ce8b63ed4b859a343e111ae427c4a48ae12fcfd9800d4a930c13332d151d"
+    },
+    {
+      "path": "cmp/executor/README.md",
+      "sha256": "b6eec4667dde4b27fd1a46d6ae46d5187790649c4366c53d0dee7a5469a954d3"
+    },
+    {
+      "path": "cmp/executor/requirements.txt",
+      "sha256": "e33009d2fa46846b5632b786de061a9fb48860a5c5df03d39a6cd4ffd5a005f3"
+    },
+    {
+      "path": ".github/workflows/cmp-gemini-notion-pilot.yml",
+      "sha256": "360be91559f081488ecfb38ab028bb1ef363f6e6cb5cb2783063c07c03db54b3"
+    },
+    {
+      "path": ".github/workflows/cmp-meta-content-pilot.yml",
+      "sha256": "0660a255efe342d48af0de2f2f9cf3c700ee9e823eddc2d4fc0d7d1d47774c71"
+    },
+    {
+      "path": ".github/workflows/cmp-provider-notion-contract.yml",
+      "sha256": "fe4d660cfdaffe3c6493fc1013342a04f6405b2f6b161e4ee89d90731cedad36"
+    },
+    {
+      "path": "cmp/executor/evidence/issue148-tests.txt",
+      "sha256": "fc936b3e206fd39eaf8531446ddc8607bc9086ab7a6aa49a0c1483c5e5749465"
+    },
+    {
+      "path": "cmp/executor/.gitignore",
+      "sha256": "3c41c09b7628700167453ab10b72e6add0d0e9ee3fdb2cad7a138fc60275506d"
+    }
+  ],
+  "activationAllowed": false,
+  "checks": {
+    "workflowYAMLParse": 3,
+    "pythonCompile": "PASS",
+    "gitDiffCheck": "PASS"
+  }
+}
