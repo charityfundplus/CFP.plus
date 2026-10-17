@@ -1,0 +1,36 @@
+test_401_403_not_retried_or_leaked (test_provider_notion.TestAdapters.test_401_403_not_retried_or_leaked) ... ok
+test_acl_denies_before_read (test_provider_notion.TestAdapters.test_acl_denies_before_read) ... ok
+test_changed_target_denied (test_provider_notion.TestAdapters.test_changed_target_denied) ... ok
+test_changed_text_denied_before_network (test_provider_notion.TestAdapters.test_changed_text_denied_before_network) ... ok
+test_create_private_child_and_exact_readback (test_provider_notion.TestAdapters.test_create_private_child_and_exact_readback) ... ok
+test_create_runner_never_calls_provider_or_changes_approved_text (test_provider_notion.TestAdapters.test_create_runner_never_calls_provider_or_changes_approved_text) ... ok
+test_draft_uses_read_only_source_and_no_write (test_provider_notion.TestAdapters.test_draft_uses_read_only_source_and_no_write) ... ok
+test_environment_missing_or_unprotected_denied (test_provider_notion.TestAdapters.test_environment_missing_or_unprotected_denied) ... ok
+test_expired_and_future_approval_denied (test_provider_notion.TestAdapters.test_expired_and_future_approval_denied) ... ok
+test_gemini_header_and_response_contract (test_provider_notion.TestAdapters.test_gemini_header_and_response_contract) ... ok
+test_get_retries_are_bounded (test_provider_notion.TestAdapters.test_get_retries_are_bounded) ... ok
+test_invalid_signature_zero_calls (test_provider_notion.TestAdapters.test_invalid_signature_zero_calls) ... ok
+test_meta_fixed_api_and_no_arbitrary_base_url (test_provider_notion.TestAdapters.test_meta_fixed_api_and_no_arbitrary_base_url) ... ok
+test_missing_approval_zero_calls (test_provider_notion.TestAdapters.test_missing_approval_zero_calls) ... ok
+test_model_path_injection_denied (test_provider_notion.TestAdapters.test_model_path_injection_denied) ... ok
+test_official_append_action_denied (test_provider_notion.TestAdapters.test_official_append_action_denied) ... ok
+test_post_timeout_not_retried (test_provider_notion.TestAdapters.test_post_timeout_not_retried) ... ok
+test_provider_errors_and_incomplete_output_not_success (test_provider_notion.TestAdapters.test_provider_errors_and_incomplete_output_not_success) ... ok
+test_provider_secret_echo_is_blocked (test_provider_notion.TestAdapters.test_provider_secret_echo_is_blocked) ... ok
+test_read_pagination (test_provider_notion.TestAdapters.test_read_pagination) ... ok
+test_readback_mismatch_not_pass (test_provider_notion.TestAdapters.test_readback_mismatch_not_pass) ... ok
+test_redirects_denied_and_secret_endpoint_rejected (test_provider_notion.TestAdapters.test_redirects_denied_and_secret_endpoint_rejected) ... ok
+test_replay_denied (test_provider_notion.TestAdapters.test_replay_denied) ... ok
+test_response_size_bound (test_provider_notion.TestAdapters.test_response_size_bound) ... ok
+test_returned_parent_must_match (test_provider_notion.TestAdapters.test_returned_parent_must_match) ... ok
+test_uncertain_post_consumes_nonce_and_does_not_retry (test_provider_notion.TestAdapters.test_uncertain_post_consumes_nonce_and_does_not_retry) ... ok
+test_unsigned_boolean_does_not_authorize (test_provider_notion.TestAdapters.test_unsigned_boolean_does_not_authorize) ... ok
+test_unsupported_or_nested_blocks_do_not_silently_disappear (test_provider_notion.TestAdapters.test_unsupported_or_nested_blocks_do_not_silently_disappear) ... ok
+test_workflows_have_no_secret_shell_interpolation_or_raw_artifacts (test_provider_notion.TestAdapters.test_workflows_have_no_secret_shell_interpolation_or_raw_artifacts) ... ok
+test_wrong_public_key_denied (test_provider_notion.TestAdapters.test_wrong_public_key_denied) ... ok
+test_wrong_run_attempt_provider_and_source_sha_denied (test_provider_notion.TestAdapters.test_wrong_run_attempt_provider_and_source_sha_denied) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 0.014s
+
+OK
