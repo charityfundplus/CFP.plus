@@ -1,0 +1,23 @@
+name: CMP Notion Bridge Contract
+on:
+  workflow_call:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'cmp/executor/**'
+      - 'tests/cmp/**'
+      - '.github/workflows/cmp-*-pilot.yml'
+      - '.github/workflows/cmp-notion-contract.yml'
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Offline contract and security checks (no credentials or live writes)
+        run: python3 -m unittest discover -s tests/cmp -v
+

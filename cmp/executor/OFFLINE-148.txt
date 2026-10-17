@@ -1,0 +1,38 @@
+test_invalid_metadata_does_not_escape_safe_error (test_independent_review.IndependentReviewTests.test_invalid_metadata_does_not_escape_safe_error) ... ok
+test_journal_rejects_symlink_without_touching_target (test_independent_review.IndependentReviewTests.test_journal_rejects_symlink_without_touching_target) ... ok
+test_malformed_gemini_parts_are_safe_errors (test_independent_review.IndependentReviewTests.test_malformed_gemini_parts_are_safe_errors) ... ok
+test_malformed_notion_blocks_are_safe_errors (test_independent_review.IndependentReviewTests.test_malformed_notion_blocks_are_safe_errors) ... ok
+test_malformed_notion_richtext_are_safe_errors (test_independent_review.IndependentReviewTests.test_malformed_notion_richtext_are_safe_errors) ... ok
+test_plan_save_is_private_and_never_overwrites (test_independent_review.IndependentReviewTests.test_plan_save_is_private_and_never_overwrites) ... ok
+test_private_json_rejects_fifo_without_blocking (test_independent_review.IndependentReviewTests.test_private_json_rejects_fifo_without_blocking) ... ok
+test_private_json_rejects_symlink_and_public_permissions (test_independent_review.IndependentReviewTests.test_private_json_rejects_symlink_and_public_permissions) ... ok
+test_audit_failure_blocks_create (test_notion_bridge.ContractTests.test_audit_failure_blocks_create) ... ok
+test_bad_model_and_tool_response_fail_closed (test_notion_bridge.ContractTests.test_bad_model_and_tool_response_fail_closed) ... ok
+test_credentials_only_in_headers (test_notion_bridge.ContractTests.test_credentials_only_in_headers) ... ok
+test_durable_reservation_prevents_replay (test_notion_bridge.ContractTests.test_durable_reservation_prevents_replay) ... ok
+test_expired_approval_denied (test_notion_bridge.ContractTests.test_expired_approval_denied) ... ok
+test_failed_readback_never_passes (test_notion_bridge.ContractTests.test_failed_readback_never_passes) ... ok
+test_gemini_read_create_readback (test_notion_bridge.ContractTests.test_gemini_read_create_readback) ... ok
+test_meta_read_create_readback_native_contract (test_notion_bridge.ContractTests.test_meta_read_create_readback_native_contract) ... ok
+test_meta_string_content (test_notion_bridge.ContractTests.test_meta_string_content) ... ok
+test_plan_changes_invalidate_approval (test_notion_bridge.ContractTests.test_plan_changes_invalidate_approval) ... ok
+test_prepare_never_writes (test_notion_bridge.ContractTests.test_prepare_never_writes) ... ok
+test_private_parent_and_egress_gates (test_notion_bridge.ContractTests.test_private_parent_and_egress_gates) ... ok
+test_repeated_cursor_fails_closed (test_notion_bridge.ContractTests.test_repeated_cursor_fails_closed) ... ok
+test_source_changed_blocks_write (test_notion_bridge.ContractTests.test_source_changed_blocks_write) ... ok
+test_tampering_approval_denied (test_notion_bridge.ContractTests.test_tampering_approval_denied) ... ok
+test_top_level_pagination (test_notion_bridge.ContractTests.test_top_level_pagination) ... ok
+test_uncertain_create_is_reserved_and_not_retried (test_notion_bridge.ContractTests.test_uncertain_create_is_reserved_and_not_retried) ... ok
+test_unlisted_source_and_parent_denied (test_notion_bridge.ContractTests.test_unlisted_source_and_parent_denied) ... ok
+test_unsigned_approval_denied_before_network (test_notion_bridge.ContractTests.test_unsigned_approval_denied_before_network) ... ok
+test_get_rate_limit_retry_after (test_notion_bridge.TransportTests.test_get_rate_limit_retry_after) ... ok
+test_long_retry_after_is_deferred_not_retried_early (test_notion_bridge.TransportTests.test_long_retry_after_is_deferred_not_retried_early) ... ok
+test_network_error_redacted (test_notion_bridge.TransportTests.test_network_error_redacted) ... ok
+test_oversized_and_invalid_json_fail_closed (test_notion_bridge.TransportTests.test_oversized_and_invalid_json_fail_closed) ... ok
+test_post_and_auth_errors_never_retry_or_expose_body (test_notion_bridge.TransportTests.test_post_and_auth_errors_never_retry_or_expose_body) ... ok
+test_redirects_disabled (test_notion_bridge.TransportTests.test_redirects_disabled) ... ok
+
+----------------------------------------------------------------------
+Ran 33 tests in 0.088s
+
+OK

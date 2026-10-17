@@ -1,0 +1,49 @@
+{
+  "baseline": "835616308111f6851c0387fa9f5eda60c9ffa624",
+  "files": [
+    {
+      "path": "cmp/executor/notion_bridge.py",
+      "sha256": "7977e04686fd8c74f81fd69a978d9c43320ba7ca3bc7349ed4629776fd937b6f"
+    },
+    {
+      "path": "cmp/executor/bridge_cli.py",
+      "sha256": "9aac71ccd4810a6cfbbdf7a0df8e7f6abdeff753bd7476db1bdf36ec529e7511"
+    },
+    {
+      "path": "cmp/executor/README.md",
+      "sha256": "91d1d31d4e9729bd30b4dbcee152c8863dc364f76fe840356dbb21e6598c5bb1"
+    },
+    {
+      "path": "cmp/executor/.gitignore",
+      "sha256": "b27964f0c97ae586267d8a47ca5607fab4cdb223d9ccea48f106b32cb3780eb1"
+    },
+    {
+      "path": "tests/cmp/test_notion_bridge.py",
+      "sha256": "44bdb9c87bda355275f3ed122b91882b2f48e971d966bd8ca726952ac9b3e3c9"
+    },
+    {
+      "path": "tests/cmp/test_independent_review.py",
+      "sha256": "d0b44658906ea88877d1cc44602cb57834b272841cfe96842f0d6c915d6d55aa"
+    },
+    {
+      "path": "tests/cmp/.gitignore",
+      "sha256": "32dae3052f331ee34d628ef535709b301259a45df7c7522c4d35dcf49873f00b"
+    },
+    {
+      "path": ".github/workflows/cmp-gemini-notion-pilot.yml",
+      "sha256": "1e2f334c5f4fbdbbe926834cb4bdb77bd6cf125bd8198d1750a092526cb04cd2"
+    },
+    {
+      "path": ".github/workflows/cmp-meta-content-pilot.yml",
+      "sha256": "59c5d4024fcec80676515ac9e4bc07ba15975e9fd4c61c382eebb9b1a1d57ec9"
+    },
+    {
+      "path": ".github/workflows/cmp-notion-contract.yml",
+      "sha256": "11ffeb9e7837fdaf17c603bb90555fa6f85fcf5732945771f860d8534f43d3a4"
+    },
+    {
+      "path": "cmp/executor/OFFLINE-148.txt",
+      "sha256": "6cfdbc8b8bfdee386ef26e65d0962f23c353228c24ff01c2b949c585afc96b53"
+    }
+  ]
+}
