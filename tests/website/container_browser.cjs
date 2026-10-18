@@ -3,7 +3,7 @@ const {chromium} = require('playwright');
 (async () => {
   const root = process.env.PUBLIC_ROOT;
   assert(root);
-  const browser = await chromium.launch();
+  const browser = await chromium.launch(process.env.CFP_CHROMIUM_PATH ? {executablePath: process.env.CFP_CHROMIUM_PATH} : {});
   let checks = 0;
   const rows = [], errors = [];
   const ids = fs.readdirSync(root).filter(id => (/^[0-9]+$/.test(id) || id === 'V') && fs.existsSync(path.join(root, id, 'index.html')));

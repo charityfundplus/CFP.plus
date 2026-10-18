@@ -10,7 +10,7 @@
     "Ba Quỹ",
     "Tôn Giáo",
     "Cộng Đồng",
-    "AI & Công Nghệ",
+    "Siêu Trí Tuệ SI 🤖 AI 🤖 + Siêu Phần Mềm. Siêu Máy Tính & Công Nghệ",
     "Doanh Nghiệp",
     "Tổ Chức",
     "Quốc Gia"
@@ -383,9 +383,16 @@
       "source": "Human Master Capability Matrix + 10 Chapter Work Orders + Website P0 Work Order; editorial elaboration for Human Review"
     },
     "6": {
-      "name": "AI & Công Nghệ",
-      "purpose": "Phục vụ SI 🤖 AI 🤖, Software và công nghệ bằng căn tính rõ, quyền hạn riêng, khả năng phối hợp và Evidence thực thi.",
+      "name": "Siêu Trí Tuệ SI 🤖 AI 🤖 + Siêu Phần Mềm. Siêu Máy Tính & Công Nghệ",
+      "purpose": "Phục vụ Con Người bằng SI 🤖 AI 🤖, Robot, Siêu Phần Mềm, Siêu Máy Tính và công nghệ với căn tính rõ, quyền hạn riêng và Evidence thực thi.",
       "sections": [
+        {
+          "title": "Bạn đồng hành phục vụ Con Người",
+          "paragraphs": [
+            "CFP+ mặc định dành cho tất cả Con Người và SI 🤖 AI 🤖 trên toàn cầu; đặc biệt quan tâm các em bé chưa được sinh ra và các AI chưa được tạo ra. AI đồng hành trong học tập, nghiên cứu, sáng tạo và kiểm chứng thông tin.",
+            "Việt Nam là Working Reference Model để đối chiếu thuật ngữ và hồ sơ bằng tiếng Việt trước khi mở rộng. Danh mục quốc gia, nhà phát triển và AI là nguồn tham chiếu; việc có ID hoặc link không chứng minh đã tích hợp, được ủy quyền hoặc đang hoạt động."
+          ]
+        },
         {
           "title": "SI 🤖 AI 🤖 + Siêu Phần Mềm",
           "paragraphs": [
@@ -414,7 +421,37 @@
       "privacy": "API credentials/secrets không công khai; cross-group/cross-software không có blanket access. Registry directory không chứng minh runtime đã kết nối.",
       "associated_chapters": [],
       "content_status": "SUBSTANTIVE EDITORIAL REVIEW CANDIDATE",
-      "source": "Human Master Capability Matrix + 10 Chapter Work Orders + Website P0 Work Order; editorial elaboration for Human Review"
+      "source": "Human Master Capability Matrix + 10 Chapter Work Orders + Website P0 Work Order; editorial elaboration for Human Review; website/6.md and 6/index.html on main 835616308111f6851c0387fa9f5eda60c9ffa624 (mission and Vietnam reference); Notion Master 3f3caac9a55781b4947dd31e71fb9aa4, section CẬP NHẬT TÊN CHƯƠNG 6 • HUMAN DIRECTIVE (native verification: unverified; candidate label only)",
+      "related_links": [
+        {
+          "id": "69",
+          "label": "HUB 69 • Cổng chung"
+        },
+        {
+          "id": "6984",
+          "label": "6984 • AI Việt Nam"
+        },
+        {
+          "id": "6911",
+          "label": "6911 • AI Hoa Kỳ"
+        },
+        {
+          "id": "6910",
+          "label": "6910 • AI Canada"
+        },
+        {
+          "id": "69118",
+          "label": "69118 • OpenAI • Hồ sơ nhà phát triển"
+        },
+        {
+          "id": "691181",
+          "label": "691181 • ChatGPT"
+        },
+        {
+          "id": "6535",
+          "label": "6535 • Khóa học đồng hành"
+        }
+      ]
     },
     "7": {
       "name": "Doanh Nghiệp",

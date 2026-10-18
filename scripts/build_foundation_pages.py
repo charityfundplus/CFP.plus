@@ -8,6 +8,8 @@ def render(key, record, standard):
     esc = html.escape
     canonical = '' if key == 'V' else '<link rel="canonical" href="https://cfp.plus/'+key+'">'
     sections = ''.join('<section><h2>'+esc(s['title'])+'</h2>'+''.join('<p>'+esc(p)+'</p>' for p in s['paragraphs'])+'</section>' for s in record['sections'])
+    if record.get('related_links'):
+        sections += '<section><h2>Khám phá Chương '+esc(key)+'</h2><ul>'+''.join('<li><a href="/'+esc(link['id'])+'">'+esc(link['label'])+'</a></li>' for link in record['related_links'])+'</ul></section>'
     chapters = ' '.join('<a href="/'+str(i)+'">'+str(i)+' • '+esc(name)+'</a>' for i,name in enumerate(standard['chapter_names']))
     groups = ' '.join('<a href="/'+g+'">'+g+'</a>' for g in ['V','000','135','246','789'])
     priorities = ' '.join('<a href="/'+did+'">'+did+' • '+esc(p['name'])+'</a>' for did,p in standard['pages'].items())
@@ -19,6 +21,10 @@ def main():
         target=ROOT/key/'index.html'
         target.parent.mkdir(exist_ok=True)
         target.write_text(render(key,record,standard))
+    # Reuse the same chapter names and group targets as the foundation pages.
+    chapters = ''.join('<li><a href="/'+str(i)+'">'+str(i)+' • '+html.escape(name)+'</a></li>' for i,name in enumerate(standard['chapter_names']))
+    groups = ' '.join('<a href="/'+key+'">'+key+'</a>' for key in ['V','000','135','246','789'])
+    (ROOT/'0123456789/index.html').write_text('<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>10 Chương • CFP+</title><link rel="canonical" href="https://cfp.plus/0123456789"><link rel="stylesheet" href="/styles.css"></head><body><header class="site-header"><a class="brand" href="/">CFP+</a><nav><a href="/69">HUB 69</a></nav></header><main><section class="hero"><h1>5 Nhóm • 10 Chương CFP+</h1><p>Đi từ bản đồ tới nội dung từng Chương.</p></section><section class="section"><h2>5 Nhóm</h2><nav aria-label="5 Nhóm">'+groups+'</nav><p>Nhóm là lớp điều hướng; không tự xác nhận Parent hoặc quyền hạn.</p><h2>10 Chương</h2><nav aria-label="10 Chương"><ol>'+chapters+'</ol></nav><p>Publication: REVIEW CANDIDATE • Canonical Lock: NO. Nội dung được review theo từng trang.</p></section></main></body></html>\n')
 
 if __name__ == '__main__':
     main()
