@@ -3,6 +3,8 @@ const {chromium} = require('playwright');
 (async () => {
   const root = process.env.PUBLIC_ROOT;
   assert(root);
+  const evidenceDir = process.env.EVIDENCE_DIR || '.';
+  fs.mkdirSync(evidenceDir, {recursive: true});
   const browser = await chromium.launch(process.env.CFP_CHROMIUM_PATH ? {executablePath: process.env.CFP_CHROMIUM_PATH} : {});
   let checks = 0;
   const rows = [], errors = [];
@@ -29,7 +31,7 @@ const {chromium} = require('playwright');
               assert((await page.locator('h1').first().innerText()).startsWith(id + ' • ')); checks++;
             }
             rows.push({id, viewport: width, result: 'PASS', scope: 'candidate container only; not production'});
-            if (id === '6535') await page.screenshot({path: 'container-6535-' + width + '.png', fullPage: true});
+            if (id === '6535') await page.screenshot({path: path.join(evidenceDir, 'container-6535-' + width + '.png'), fullPage: true});
           } catch (error) {
             rows.push({id, viewport: width, result: 'FAIL', error: error.message});
             errors.push(error.message);
@@ -42,7 +44,7 @@ const {chromium} = require('playwright');
       await context.close();
     }));
     rows.sort((a, b) => a.viewport - b.viewport || a.id.localeCompare(b.id));
-    fs.writeFileSync('container-browser-evidence.json', JSON.stringify({result: errors.length ? 'FAIL' : 'PASS', checks, errors, rows}, null, 2));
+    fs.writeFileSync(path.join(evidenceDir, 'container-browser-evidence.json'), JSON.stringify({result: errors.length ? 'FAIL' : 'PASS', checks, errors, rows}, null, 2));
     assert.equal(errors.length, 0, errors.join('\n'));
     console.log('PASS', checks, 'actual container browser checks;', rows.length, 'page/viewport observations');
   } finally { await browser.close(); }
