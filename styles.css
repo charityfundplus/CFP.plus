@@ -96,3 +96,8 @@ footer p { margin: 0; }
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
   .chapter-card:hover, .chapter-card:focus-visible { transform: none; }
 }
+/* Registry/source documents must remain readable without widening mobile pages. */
+pre { white-space: pre-wrap; overflow-wrap: anywhere; max-width: 100%; min-width: 0; }
+/* Wrap provenance hashes and status rows instead of clipping their evidence. */
+body { overflow-wrap: anywhere; }
+.status { flex-wrap: wrap; max-width: 100%; overflow-wrap: anywhere; }

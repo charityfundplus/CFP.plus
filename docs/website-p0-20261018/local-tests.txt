@@ -1,0 +1,44 @@
+$ python tests/website/test_numeric_content.py
+test_6535_eight_steps_and_no_automatic_certification (__main__.ContentTests.test_6535_eight_steps_and_no_automatic_certification) ... ok
+test_no_generated_subjects_or_child_assignment (__main__.ContentTests.test_no_generated_subjects_or_child_assignment) ... ok
+test_no_prefix_fallback_or_automatic_active (__main__.ContentTests.test_no_prefix_fallback_or_automatic_active) ... ok
+test_protected_conflict (__main__.ContentTests.test_protected_conflict) ... ok
+test_repeatable_generation (__main__.ContentTests.test_repeatable_generation) ... ok
+test_root_names_and_navigation (__main__.ContentTests.test_root_names_and_navigation) ... ok
+test_single_declaration_source_and_rendered_content (__main__.ContentTests.test_single_declaration_source_and_rendered_content) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.044s
+
+OK
+
+$ python tests/website/test_foundation_content.py
+........
+----------------------------------------------------------------------
+Ran 8 tests in 0.068s
+
+OK
+
+$ python tests/website/test_p0_identity_navigation.py
+test_chapter_six_and_template_have_review_boundaries (__main__.P0Tests.test_chapter_six_and_template_have_review_boundaries) ... ok
+test_exact_id_and_leading_zeros (__main__.P0Tests.test_exact_id_and_leading_zeros) ... ok
+test_map_groups_chapters_and_no_empty_links (__main__.P0Tests.test_map_groups_chapters_and_no_empty_links) ... ok
+test_reject_identity_parent_and_did_corruption (__main__.P0Tests.test_reject_identity_parent_and_did_corruption) ... ok
+test_source_identity_is_not_promoted (__main__.P0Tests.test_source_identity_is_not_promoted) ... ok
+test_source_url_must_match_exact_identity (__main__.P0Tests.test_source_url_must_match_exact_identity) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.088s
+
+OK
+
+$ python tests/website/test_public_routing.py
+test_build_and_http (__main__.PublicationTests.test_build_and_http) ... ok
+test_home_navigation_and_country_identity (__main__.PublicationTests.test_home_navigation_and_country_identity) ... ok
+test_pending_display_references_do_not_promote_registry (__main__.PublicationTests.test_pending_display_references_do_not_promote_registry) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 2.180s
+
+OK
+

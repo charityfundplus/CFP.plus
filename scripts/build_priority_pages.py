@@ -1,0 +1,9 @@
+from pathlib import Path
+import json,html
+R=Path(__file__).resolve().parents[1];d=json.loads((R/'content/site-standard.json').read_text());e=html.escape
+chapter_links=' '.join('<a href="/'+str(i)+'">'+str(i)+' • '+e(name)+'</a>' for i,name in enumerate(d['chapter_names']))
+for did,p in d['pages'].items():
+ sections=''.join('<section><h2>'+e(s['title'])+'</h2><ol>'+''.join('<li>'+e(t)+'</li>' for t in s['items'])+'</ol></section>' for s in p['sections'])
+ related=' '.join('<a href="/'+x+'">'+x+' • '+e(y['name'])+'</a>' for x,y in d['pages'].items() if x!=did)
+ body='<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+did+' • '+e(p['name'])+' • CFP+</title><link rel="canonical" href="https://cfp.plus/'+did+'"><link rel="stylesheet" href="/styles.css"><style>main{max-width:1000px;margin:auto;padding:20px}nav,a,li,p{overflow-wrap:anywhere}nav a{display:inline-block;margin:6px}section{margin:24px 0}li{margin:10px 0}</style></head><body><header><a href="/69">HUB 69</a><nav aria-label="10 Chương">'+chapter_links+'</nav></header><main><h1>'+did+' • '+e(p['name'])+'</h1><p>'+e(p['purpose'])+'</p>'+sections+'<section><h2>Quan hệ và quản lý</h2><p>Parent/Child Canonical: chưa đủ Evidence trong bản xuất bản này; không suy diễn từ chữ số. SI 🤖 AI 🤖 và Siêu Phần Mềm quản lý: chỉ ghi khi có hồ sơ và quyền đã xác minh.</p></section><section><h2>Link liên quan</h2><nav>'+related+'</nav><p>Các link điều hướng không tự xác nhận quan hệ Pair hoặc Parent/Child.</p></section><section><h2>Nguồn • Evidence • Trạng thái</h2><p>'+e(d['source'])+'</p><p>Content: HUMAN PROVIDED • Publication: REVIEW CANDIDATE • Updated: '+d['updated']+' • Canonical Lock: NO. Trang này chưa chứng minh kết nối Backend, publication production hoặc trạng thái ACTIVE.</p></section></main></body></html>'
+ path=R/did/'index.html';path.parent.mkdir(exist_ok=True);path.write_text(body+'\n')
