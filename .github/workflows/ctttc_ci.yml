@@ -64,6 +64,13 @@ jobs:
           python tests/website/test_foundation_content.py
           python tests/website/test_p0_identity_navigation.py
           python scripts/check_public_identity.py
+      - name: Fetch exact existing Core and HUB source pins for offline preparation
+        run: git fetch --no-tags origin 8ca11c26fbe3ba76db75ae1aa62b204744233d85 06f386b1ba52358779cec6bc26c2d88f6a33664a 835616308111f6851c0387fa9f5eda60c9ffa624
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Verify unmounted Core reuse preparation
+        run: python tests/website/test_core_reuse.py
 
   public-readback-observation:
     if: github.event_name == 'pull_request'
