@@ -1,0 +1,209 @@
+{
+  "uiRevision": "8ca11c26fbe3ba76db75ae1aa62b204744233d85",
+  "coreRevision": "06f386b1ba52358779cec6bc26c2d88f6a33664a",
+  "sourceFiles": [
+    {
+      "path": "hub69/ui/.gitignore",
+      "gitBlobSHA": "f2a9a6b69ce73274cc8ee2302c53fc9dc91f6491",
+      "sha256": "c32ba07dc55de8f2ba290d14caa8cd85a79e4419b096d8c23676f6769b60b293"
+    },
+    {
+      "path": "hub69/ui/INTEGRATION-READINESS.md",
+      "gitBlobSHA": "06ca876de0a244eac9f4de479551b80ba13d9e30",
+      "sha256": "0cc3d542f649ac3e254c1fb0b6b58bca48ff9148e80d58e83ba6df750c33ca54"
+    },
+    {
+      "path": "hub69/ui/INTEGRATION.md",
+      "gitBlobSHA": "dd8465faaa033eb72bcf6cde39f3d8b67f668ba2",
+      "sha256": "d7a547ed0591f68c0bf22b31f0e5e798341800dd2f326529b422030873c676c6"
+    },
+    {
+      "path": "hub69/ui/README.md",
+      "gitBlobSHA": "65560a85d0514940a1835e02773e29d7fdb53b37",
+      "sha256": "294569101d608b2588cbda4557c9657e2c4ccc8cb221f96d142925dfe77b46db"
+    },
+    {
+      "path": "hub69/ui/build.mjs",
+      "gitBlobSHA": "866612c2537854b5eb99a5d9a33209e4dc197fa5",
+      "sha256": "d99f8419b37caff5c4d212e6aadc93e2cf9811cc6929b64b34d42f15289c7c08"
+    },
+    {
+      "path": "hub69/ui/evidence/HANDOFF-INTEGRATION-READINESS.md",
+      "gitBlobSHA": "7984e7f93f1aea1e20577ca745283add5f187a30",
+      "sha256": "31170ffd4ef9e2a24ecb6444593527447183cef7ba486435878b7b7d4976a3d6"
+    },
+    {
+      "path": "hub69/ui/evidence/HTTPS-CONTENT.json",
+      "gitBlobSHA": "522cb48e8fba31f8134263026da2e5fe7e6caa92",
+      "sha256": "887d5779df897c1d866de2ddb18880b93ad04b6bf7903b2fa37716fb7af89d23"
+    },
+    {
+      "path": "hub69/ui/evidence/HTTPS-READBACK.json",
+      "gitBlobSHA": "e92377161165b87d5e6ea6ecc54721808ceaecc1",
+      "sha256": "508dab30f4226868cab3241c07513581d09e6c0d6f6837ce8b421286cfefacb5"
+    },
+    {
+      "path": "hub69/ui/evidence/INTEGRATION-BUILD-MANIFEST.json",
+      "gitBlobSHA": "90e604f364ba475084ae98a6bad7e547effa0617",
+      "sha256": "6d135ba54dcf98b6b45dd6d18e8f169b12cc3b8cdf16c346af092d6a0334b6aa"
+    },
+    {
+      "path": "hub69/ui/evidence/INTEGRATION-HTTP.tap",
+      "gitBlobSHA": "e44155b193af164fa1c0c297fd58b812a331b18c",
+      "sha256": "3ffc687b05eca6658e79649ab7c793d6736227a37c264a9d1b772f18d99ce15d"
+    },
+    {
+      "path": "hub69/ui/evidence/INTEGRATION-RESULTS.json",
+      "gitBlobSHA": "5ba122a342afa6586c654a10d2539bba34b8391d",
+      "sha256": "d8471df710d2eee08ccdff6dfd4e4e72c2fc98895f1a0986b074dccd4467662a"
+    },
+    {
+      "path": "hub69/ui/evidence/INTEGRATION-UNIT.tap",
+      "gitBlobSHA": "ab730ac68940f8da0ca19f4cbce7809058b3e084",
+      "sha256": "24c49fe107ff37bacbceb070ec5aaa861917904c69c1ea99b5e6351233900c79"
+    },
+    {
+      "path": "hub69/ui/evidence/P0-RESULTS.json",
+      "gitBlobSHA": "c300a9fd9075ec939885cdf103c4902d7fa51cfe",
+      "sha256": "7243f68294997e0c94e8e3e4e342c3bb66e1627cd1002fb9525c6592f06e5d3f"
+    },
+    {
+      "path": "hub69/ui/evidence/SITE-SAVE-RECEIPT.json",
+      "gitBlobSHA": "d152cc0cd75dccdfe3dc44299e00847a75e0821e",
+      "sha256": "f750663a97cfbaaeee6ecd79f765be10aba5e66121c9c189d23b64eba73c0df3"
+    },
+    {
+      "path": "hub69/ui/evidence/training-basic-v1.json",
+      "gitBlobSHA": "e8c49eee3b669558a264b2102ee491ea1a639eb0",
+      "sha256": "528ef09c2a7ac671eca56a6370ff3489657c0d9dfa33c2466f08ded48067f200"
+    },
+    {
+      "path": "hub69/ui/integration/core-http.test.mjs",
+      "gitBlobSHA": "5b175b19d3acbf3b2f8093226033749a63cafe8a",
+      "sha256": "f93a7c6eebc4a53993426107463dd2a30fbebbe4436ca8c9c3c14fca0d3fde7e"
+    },
+    {
+      "path": "hub69/ui/integration/source-pins.json",
+      "gitBlobSHA": "cd906bd932ed94a2ab591772979eafe46d958df6",
+      "sha256": "0ad7d26ff693887b1b76c15df30e9b2bf969067c1b5c050fd79f3a0b1dabe7ee"
+    },
+    {
+      "path": "hub69/ui/package.json",
+      "gitBlobSHA": "6676143b8f192351e7d640bf21c0d9d215576b84",
+      "sha256": "502b4d9ba1a4968647b1ccac0493914cbb1324505097512ffd2a04043950fc36"
+    },
+    {
+      "path": "hub69/ui/profile.schema.json",
+      "gitBlobSHA": "1204675a1e48b541e06778fe69a6d68d27e54339",
+      "sha256": "3d79aa7e19c90bd16c72743e97492ce55cb936b84e091ac354ae7331abdc2198"
+    },
+    {
+      "path": "hub69/ui/public/app.js",
+      "gitBlobSHA": "aaa50ad134e60c50d8fcae3481f5529efeba9515",
+      "sha256": "3fb1eecc5aa5361586d06324afbe4ece3e0f9c420ce1453ed6eece3875471153"
+    },
+    {
+      "path": "hub69/ui/public/core-binding.js",
+      "gitBlobSHA": "23de197ad2bc4cba302a154d3263d0e318f913d3",
+      "sha256": "5ed1afe6aab265d0bc44dbfc30804937b64dc7a70bf097d5daf6fc4e1748908c"
+    },
+    {
+      "path": "hub69/ui/public/index.html",
+      "gitBlobSHA": "a1223c21e09a17772654cefb2c4a5ed49cdf163f",
+      "sha256": "adcffdd6629561464a1bcac7828e80e43f43d7da2016680b240ed25e6fe01ca5"
+    },
+    {
+      "path": "hub69/ui/public/model.js",
+      "gitBlobSHA": "d0904a2646a821dc3e2ee11273f5ec67b9997701",
+      "sha256": "335937b68a56600af118aa7ba8b5b3cc2c583241e8ec8f6884dbfb546e1b14bf"
+    },
+    {
+      "path": "hub69/ui/public/p0.js",
+      "gitBlobSHA": "8063a2eb637eda9308216aecfd1c63c234512f89",
+      "sha256": "1fdd6ec33041f820ea97b3b1b32a6c2233b98c8d77993a76b9bfa9e9f2cd2171"
+    },
+    {
+      "path": "hub69/ui/public/style.css",
+      "gitBlobSHA": "f9bdaa18e6161d511041b76ad00761048b6e6bb8",
+      "sha256": "9960a5627598f5dd7676eb86e87d972a91d57904271e75ad216e7e9e016ff6e3"
+    },
+    {
+      "path": "hub69/ui/public/training.js",
+      "gitBlobSHA": "34b2ca7eb781c432a4cb8e8458fd92bc122ff98c",
+      "sha256": "a97eb75a2a5d3230e0e2b2fd20dd0171473e74671bcec5455f012d10f891795a"
+    },
+    {
+      "path": "hub69/ui/tests/app-state.test.mjs",
+      "gitBlobSHA": "6ce828d5b8900e3d71c043c559bfd76380396649",
+      "sha256": "65d432ed31e91f35235f2350330e97698c44ff1c22951f6fa6e6329cc7984975"
+    },
+    {
+      "path": "hub69/ui/tests/harness.mjs",
+      "gitBlobSHA": "73fc1cd7a4f1c0c36e87902deb3f4567cd0d0d8b",
+      "sha256": "b86cf7876e9cfc986809598319e612b13c93a377b827ede101c8b414f027ffcd"
+    },
+    {
+      "path": "hub69/ui/tests/integration-readiness.test.mjs",
+      "gitBlobSHA": "972c3aca68dc5f82a9d6e29e4f0f0b834014d8cd",
+      "sha256": "41776c338abbc3b0ee90bcee5a986216bb7f4409c072078e89d1ace56d1ec23d"
+    },
+    {
+      "path": "hub69/ui/tests/p0.test.mjs",
+      "gitBlobSHA": "a6542ce4e339453d3e2e9d5b645125bf369768b1",
+      "sha256": "cd1f513eb6e6de7faae61122f94fc73e330cd6a9180ebfe6646c7c2e3a10aa0c"
+    },
+    {
+      "path": "hub69/ui/tests/source-baseline.test.mjs",
+      "gitBlobSHA": "13b60384db202986055a6c49b1d60b27cd030ec4",
+      "sha256": "76a4c34b8b3e168628fc5bb1bc8a29b2f88c34bb099c3bc910621f6da42195a9"
+    },
+    {
+      "path": "drafts/si-office/public/registry-client.js",
+      "gitBlobSHA": "ec8f432a618c1efec7586cd2d710caf98f6518e9",
+      "sha256": "e3e3f5bf5a6a6cca23dbc3aa690e2e591e4fc7f466e23eaa4688f3277ce3e151"
+    },
+    {
+      "path": "registry/ai-entity-registry.json",
+      "gitBlobSHA": "1f18068d66379ce90bb079dc56c77b4c4d66dcdf",
+      "sha256": "a63c5e0b8af157b0938014d51da94ea924b9721acd0a11a9107f5deea3c6f507"
+    }
+  ],
+  "artifacts": {
+    "hub69-assets/app.js": "3fb1eecc5aa5361586d06324afbe4ece3e0f9c420ce1453ed6eece3875471153",
+    "hub69-assets/config.js": "6f72b6df06f807b735a368c04c4ddec238393a8005354e7a683dc5571bf9c637",
+    "hub69-assets/core-binding.js": "5ed1afe6aab265d0bc44dbfc30804937b64dc7a70bf097d5daf6fc4e1748908c",
+    "hub69-assets/index.html": "adcffdd6629561464a1bcac7828e80e43f43d7da2016680b240ed25e6fe01ca5",
+    "hub69-assets/model.js": "335937b68a56600af118aa7ba8b5b3cc2c583241e8ec8f6884dbfb546e1b14bf",
+    "hub69-assets/p0.js": "1fdd6ec33041f820ea97b3b1b32a6c2233b98c8d77993a76b9bfa9e9f2cd2171",
+    "hub69-assets/registry.js": "f1549d3b8ea7fe15f7ba0960780d2098dc72a7ed5360f02ab59ebd185635a7f4",
+    "hub69-assets/style.css": "9960a5627598f5dd7676eb86e87d972a91d57904271e75ad216e7e9e016ff6e3",
+    "hub69-assets/training-data.js": "815285c5d6ea207e221d5b92a470cecae2b2910e452c0925e1137fb022f8e0dd",
+    "hub69-assets/training.js": "a97eb75a2a5d3230e0e2b2fd20dd0171473e74671bcec5455f012d10f891795a",
+    "registry-client.js": "e3e3f5bf5a6a6cca23dbc3aa690e2e591e4fc7f466e23eaa4688f3277ce3e151"
+  },
+  "mode": "core",
+  "status": "UNMOUNTED LOCAL PREPARATION",
+  "activationAllowed": false,
+  "published": false,
+  "registryWrites": 0,
+  "api": "/api/core/",
+  "client": "/registry-client.js",
+  "session": "existing same-origin Core cookie; no token input/storage",
+  "surfaces": [
+    "Website",
+    "App web surface",
+    "8682 read-only reference"
+  ],
+  "commerce": {
+    "id": "8682",
+    "bindingVerified": false,
+    "ordersEnabled": false,
+    "paymentEnabled": false
+  },
+  "mountBlockers": [
+    "Existing p2-http asset allowlist has no HUB UI mount",
+    "Relative UI asset URLs need route review before mounting /69",
+    "Approved private HTTPS origin, account and Registry read mount missing",
+    "Actual iPhone Safari acceptance missing"
+  ]
+}
