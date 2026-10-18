@@ -16,6 +16,13 @@ def check_entities(records):
         canonical_url(identity)
         if record.get('id') != identity:
             raise ValueError('Key/Canonical ID mismatch: ' + identity)
+        public_link = record.get('public_link')
+        if public_link is not None:
+            expected = canonical_url(identity)
+            if public_link == expected + '/':
+                findings.append({'id': identity, 'finding': 'Legacy trailing slash; canonical presentation is ' + expected})
+            elif public_link != expected:
+                raise ValueError('Canonical URL/ID mismatch: ' + identity)
         # DID is optional in these legacy records. Absence is a finding, never
         # permission to synthesize an identifier or a revision path.
         if 'did' in record and record['did'] != identity:

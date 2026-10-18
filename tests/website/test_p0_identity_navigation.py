@@ -50,6 +50,17 @@ class P0Tests(unittest.TestCase):
         for records in invalid:
             with self.subTest(records=records), self.assertRaises(ValueError): identity.check_entities(records)
 
+    def test_source_url_must_match_exact_identity(self):
+        for link in ['https://cfp.plus/999','https://evil.example/69','https://cfp.plus/69?revision=2',
+                     'https://cfp.plus/69#review','http://cfp.plus/69','https://cfp.plus/069']:
+            with self.subTest(link=link), self.assertRaises(ValueError):
+                identity.check_entities({'69': {'id':'69', 'public_link':link}})
+        record = {'000': {'id':'000', 'public_link':'https://cfp.plus/000/'}}
+        before = json.dumps(record)
+        findings = identity.check_entities(record)
+        self.assertTrue(any('Legacy trailing slash' in x['finding'] for x in findings))
+        self.assertEqual(json.dumps(record), before)
+
     def test_map_groups_chapters_and_no_empty_links(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)/'public'; builder.build(root)
