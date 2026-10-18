@@ -1,0 +1,27 @@
+{
+  "source_commit": "779526404300e4f88a591d49da000674f50c9cc8",
+  "render_commit": "fa752ecbce380ff8d37ef53431d65458e316f00a",
+  "candidate_base": "c0c9d37fe6f3dccac0567c6949c45fd26eac12a9",
+  "unit_local_http_tests": {
+    "pass": 24,
+    "fail": 0
+  },
+  "nginx_http_content_checks": 1399,
+  "nginx_exposure_checks": 7,
+  "browser_checks": 2852,
+  "browser_page_viewports": 704,
+  "browser": "system Chromium; 1280px/390px; not Safari/iPhone",
+  "docker_build": "PASS",
+  "nginx_syntax": "PASS",
+  "local_image_id": "sha256:a953918e0281a2ea233001c8467cd3305c351c3b71b02be60cfcfe6055f17734",
+  "numeric_candidate_urls": 351,
+  "production_gets": 26,
+  "production_http_200": 26,
+  "production_responses_equal_main_file_bytes": 21,
+  "registry_changed": false,
+  "production_acceptance": "NO-GO",
+  "merge_publish_performed": false,
+  "independent_codex2_finding": "P2 CLOSED; canonical URL validation fixed",
+  "claude_receipt": "NOT AVAILABLE",
+  "gemini_cloud_receipt": "NOT AVAILABLE"
+}
