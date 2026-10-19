@@ -10,7 +10,7 @@
   "activationAllowed": false,
   "filesSHA256": {
     "API_CONTRACT.md": "e88acc86996b62fc0a601832fea1067f4faf30ca3dbfaf4533e9ec5f66bb7c79",
-    "README.md": "2dd70e65f250afd2a13492a677efd9ad44cd200c24c589f11f23694b56642096",
+    "README.md": "13a626cbb9d907159135952f521b97b246c2118903d29c407a5d305d369a1591",
     "REGISTRY_MAPPING.md": "b4b7c5b21d1ca20df1a88f159ba320d57f1a021a39c296dc678f47b75fabe38a",
     "adapters.json": "a1d5fe4049a6dc503c0cb7f46a077fc71255732a4e308fc1d1742313b4787e5b",
     "openapi.json": "953fe716c858397697a3d7c0e1602d2b4aef107a1a25f1fecda5e7a71e8a2155",
@@ -260,5 +260,28 @@
     ],
     "closureAuthority": "Claude and other named reviewers supply their own exact-SHA receipts; Human Governance retains final authority",
     "activationAllowed": false
+  },
+  "inventoryFollowup": {
+    "inventorySourceSHA": "35cb6b00e7876f12f35c4cfa3ab558bdd800ebe6",
+    "reviewedInventoryCommitSHA": "1dd3b679b4d299411ebe14836ce9e8e920c7a6a8",
+    "scope": "Reuse the existing README inventory; add malformed-receipt gap, deduplication observation and current entry-point link; preserve prior verification receipts",
+    "inputPayloadHashMatches": 16,
+    "embeddedOffline41LogHash": "PASS; 41 unique log case names match source methods; not rerun by this follow-up",
+    "semanticReceipt": "Existing inventoryVerification records PASS with openapi-spec-validator 0.7.2; not rerun or attributed to this follow-up",
+    "exactDuplicateFileGroupsAtInventorySource": 0,
+    "schemaLocalReferenceCheck": "53/53 resolve; structural only",
+    "openMalformedReceiptFinding": {
+      "sourceSHA": "35cb6b00e7876f12f35c4cfa3ab558bdd800ebe6",
+      "url": "https://github.com/charityfundplus/CFP.plus/pull/157#issuecomment-6269905599",
+      "severity": "LOW/P3",
+      "status": "OPEN",
+      "owner": "Codex 1; Codex 2 verification",
+      "closure": "Typed receipt validation and targeted mixed-page regression; independent review required"
+    },
+    "historicalMetadata": "Top-level command/result/historical25/fullOpenAPISemanticValidation retain the earlier remediation state; inventoryVerification contains the later exact-source local execution receipt",
+    "externalIndependentAcceptance": "NOT VERIFIED",
+    "runtimeAcceptance": "NOT VERIFIED",
+    "activationAllowed": false,
+    "registryWrites": 0
   }
 }

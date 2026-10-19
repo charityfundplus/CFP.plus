@@ -2,6 +2,10 @@
 
 **HOLD ACTIVATION • PRODUCTION NO-GO**
 
+**Đầu mối hiện hành:** [bảng kiểm kê thống nhất 17 file](#kiểm-kê-thống-nhất--19102026)
+và verification receipt trong manifest. Các đoạn bàn giao ban đầu dưới đây giữ
+nguyên phạm vi lịch sử; verification mới không phải runtime acceptance.
+
 - `openapi.json`: OpenAPI 3.1, existing Core list/detail and disabled public design.
 - `API_CONTRACT.md`: integration, security review, adapters, rollback and blockers.
 - `REGISTRY_MAPPING.md`: original Registry comparison and conflicts.
@@ -109,6 +113,10 @@ phải lần chạy mới hoặc chứng minh PR157 đã được mount.
   bằng link trong đợt biên tập sau; không có dữ liệu nào bị xóa ở lượt này.
 - 25 baseline và19 targeted có3 checks trùng. Rerun toàn bộ là41 =20+16+5,
   không44 và không cộng số test từ PR khác để tuyên bố coverage end-to-end.
+- Đối chiếu SHA-256 toàn bộ17 file tại H không có cặp file trùng byte. Năm
+  adapter có cùng policy fields ngoài key/label/referenceIDs, nhưng vẫn là5
+  slot tham chiếu khác nhau. Có thể review shared policy khi triển khai transport;
+  không gộp slot, xóa snapshot hoặc refactor config trong lượt kiểm kê.
 
 ### Evidence mới và giới hạn
 
@@ -150,6 +158,16 @@ total_count=0. Không có CI PASS được xác nhận tại H; đây là local 
    `registry.read` riêng hoặc Registry read rate limit, mỗi read ghi audit.
    F04 least-privilege/audit-flood defense chưa đủ evidence. Session expiry,
    logout, Host/Origin/cookie có source, nhưng F05 adversarial runtime chưa chạy.
+   **LOW/P3 còn OPEN — malformed approval receipt:** review tại đúng H
+   [6269905599](https://github.com/charityfundplus/CFP.plus/pull/157#issuecomment-6269905599)
+   ghi expiresAt=None/int gây AttributeError, fields=None/mixed list gây TypeError;
+   published_page chỉ bắt ValueError/ValidationError nên có thể làm hỏng cả page.
+   Đối chiếu source H xác nhận khoảng trống kiểm kiểu; đây là robustness fail-closed,
+   không phải bằng chứng disclosure/live exploit. **Owner: Codex1; Codex2 kiểm tra**.
+   **Closure:** xác minh expiresAt là string, fields là list[str], chuẩn hóa lỗi;
+   negative tests chứng minh receipt sai bị loại, record hợp lệ vẫn được trả và
+   pagination fail-closed. Chưa sửa policy hoặc đóng finding trong kiểm kê này;
+   không tự gán LOW này vào mã Claude F01–F15 khi thiếu original manifest.
 4. **P1 • actual Core handler contract:** Codex2 chạy Core124 pinned handler
    với SQLite/account synthetic trong thư mục tạm, validate200 CorePage/CoreDetail,
    401/400/404/409/503, duplicate query, source mismatch, revoke/audit failure;
