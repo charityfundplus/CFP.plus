@@ -1,0 +1,22 @@
+{
+  "baseCoreSHA": "06f386b1ba52358779cec6bc26c2d88f6a33664a",
+  "registrySHA": "835616308111f6851c0387fa9f5eda60c9ffa624",
+  "python": "3.12.14",
+  "jsonschema": "4.26.0",
+  "command": "python -m unittest -v test_contract test_sources",
+  "result": "25 PASS / 0 FAIL; offline only",
+  "fullOpenAPISemanticValidation": "BLOCKED: validator dependency absent; installation proxy unavailable",
+  "filesSHA256": {
+    "REGISTRY_MAPPING.md": "cbe1f871a72148ffc03adadb02cdcd19d546b9a0c4d7f80ecfbdbda639446f41",
+    "openapi.json": "c6277b770436dabe138cba01ae9ea382276b91a046a145f228aa5a23f38efa07",
+    "API_CONTRACT.md": "2031a3222ca9b2c51e19f1813ad0b739f06b21001890597e1cffddcddf21d7e1",
+    "README.md": "81054159f6fa8e7e3eaaa06262aede8813a2cff1445d96d3a51114a616b576e5",
+    "source-observations.json": "e7039a1260198981abf37ccd4f27facdc457fc9aba1a1af674b875fcf1312a19",
+    "test_sources.py": "20b66e5bcd177e69613b2d96ae858789a70bf0455f1af4936970e74b3ea451bd",
+    "adapters.json": "a1d5fe4049a6dc503c0cb7f46a077fc71255732a4e308fc1d1742313b4787e5b",
+    "test-results.txt": "f33647f776f87f9cb8df79a50815815f519bd8db20ca2481ee4f95f5167093e3",
+    "requirements-test.txt": "756cc9e506ae4ee1a6f6c0507088b5cfc0dc8ba350fb2d2d46f1ffa72033adb6",
+    "test_contract.py": "b1df149e1843e7d9eabf9c90e07343873f5874d7ca56b7d2bde74013267b3746",
+    "publication_policy.py": "2f59aea12418e9085c7c3a58800caaa18169bdc27a479af1512b8fa805bf2346"
+  }
+}
