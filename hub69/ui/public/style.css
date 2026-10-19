@@ -10,3 +10,48 @@
 
 .core-status{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:20px}.core-status .callout{width:100%;margin:0}.study-steps{padding-left:22px}.study-steps li{padding:8px 0;font-size:14px}.study-check{display:flex;align-items:center;gap:12px;min-height:48px;cursor:pointer}.study-check input{width:22px;height:22px;accent-color:var(--green)}.study-detail{border-top:1px solid var(--line);padding:12px 0}.study-detail summary{cursor:pointer;min-height:44px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}.study-detail p{overflow-wrap:anywhere}progress{width:100%;height:10px;accent-color:var(--green)}
 @media(max-width:700px){.sidebar{padding-top:max(12px,env(safe-area-inset-top));}footer{padding-bottom:max(20px,env(safe-area-inset-bottom))}.study-steps li{font-size:14px}.quick-links a{min-height:44px;display:inline-flex;align-items:center}.id-tree li>a,.id-tree summary a{display:inline-block;min-height:44px;padding-top:8px}.source-address code{word-break:break-word}}
+
+/* Website/App P0: inherits PR141 colors and shared panel/button components. */
+.workspace,main,.catalog-view{min-width:0}
+.sidebar{overflow-y:auto;max-height:100vh;max-height:100dvh}
+.catalog-crumbs{display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;gap:4px;margin-bottom:20px}
+.catalog-crumbs a{display:inline-flex;flex:0 1 auto;min-width:0;min-height:44px;padding:8px;font-size:12px;text-decoration:underline;text-underline-offset:4px;white-space:normal}
+.catalog-crumbs>span{color:var(--muted)}
+.catalog-banner{border-left:3px solid var(--green);padding:14px 18px;margin-bottom:24px;background:var(--lime);border-radius:0 10px 10px 0}
+.catalog-banner strong{font-size:16px}
+.catalog-banner p{font-size:14px;line-height:1.7;margin:8px 0 0}
+.catalog-filter{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;max-width:34rem;margin:24px 0 12px}
+.catalog-filter label{font-size:14px;font-weight:600}
+.catalog-filter select{width:100%;max-width:100%;min-width:0;min-height:44px;padding:10px 12px;font-size:16px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:7px}
+.catalog-caption,.catalog-count{color:var(--muted);font-size:13px;overflow-wrap:anywhere}
+.catalog-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:18px 0 24px}
+.catalog-grid>.empty{margin:0}
+.catalog-card{display:flex;flex-direction:column;min-width:0;margin:0;padding:24px;gap:16px;overflow-wrap:anywhere}
+.catalog-card h2{font-size:23px;line-height:1.3}
+.catalog-card p{font-size:14px;line-height:1.7;margin:0}
+.catalog-card>.btn,.catalog-card>.profile-actions{margin-top:auto}
+.catalog-card .profile-actions{align-items:flex-start}
+.catalog-mark{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:8px;background:var(--paper);border:1px solid var(--line);border-radius:10px;font-size:14px;color:var(--green)}
+.catalog-meta{margin:0;display:grid;gap:12px}
+.catalog-meta dt{font-size:12px;color:var(--muted)}
+.catalog-meta dd{font-size:14px;margin:2px 0 0}
+.catalog-title{margin-top:20px!important}
+.catalog-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0}
+.catalog-view .btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;min-width:0;max-width:100%;font-size:14px;white-space:normal;overflow-wrap:anywhere}
+.catalog-view .profile-actions{align-items:center}
+.trade-gateway{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;margin-top:24px}
+.trade-gateway h2{margin:8px 0}
+.trade-gateway p{font-size:14px;margin:8px 0}
+.trade-gateway .profile-actions{margin:0}
+@media(max-width:1100px){.catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){
+  .sidebar{max-height:none;overflow-y:visible}
+  .sidebar nav{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .sidebar nav a{min-height:44px;flex-wrap:wrap;gap:3px;font-size:11px}
+  .catalog-grid{grid-template-columns:minmax(0,1fr);gap:14px}
+  .catalog-card{padding:20px}
+  .catalog-crumbs a{flex:0 1 auto;font-size:12px}
+  .catalog-view .profile-dl{grid-template-columns:minmax(0,1fr)}
+  .catalog-view .profile-actions>.btn{flex:1 1 140px}
+  .catalog-view .page-intro h1{font-size:clamp(28px,8.5vw,37px);overflow-wrap:anywhere}
+}

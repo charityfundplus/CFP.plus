@@ -1,5 +1,72 @@
 # HUB 69 • Codex 2 • Giao diện P0
 
+## Website/App P0 • 19/10/2026
+
+**ACK cả hai P0** từ [Issue #156](https://github.com/charityfundplus/CFP.plus/issues/156#issuecomment-6271840896)
+và [Evidence Inbox hiện hữu](https://app.notion.com/p/3fecaac9a5578117a3a6c3d079f70aff?pvs=204).
+Tiếp tục nhánh `codex2/integration-readiness`, Draft PR #141, trên baseline
+`8ca11c26fbe3ba76db75ae1aa62b204744233d85`. Đây là prototype để review trên
+cùng UI; chưa nghiệm thu staging, Safari hoặc native App. Các mục bàn giao
+phía dưới giữ phạm vi lịch sử của từng revision.
+
+Sau `node build.mjs`, mở `HUB69-review.html` trực tiếp bằng trình duyệt, không
+cần server, tài khoản, API hoặc mạng để dùng điều hướng nội bộ. Liên kết ngoài
+chỉ mở khi người review chọn. Dùng cùng component ở `dist/` và `core-dist/`;
+bản Core tiếp tục bắt đầu với `records:[]` và cần mount được duyệt.
+
+| Luồng review | Chức năng | Nguồn / giới hạn |
+|---|---|---|
+| `#chapters` → `#group/789` → `#chapter/7` → `#hstdn` | Lọc quốc gia Việt Nam / Hoa Kỳ / chưa có phạm vi; mở hồ sơ thương hiệu | Hai hồ sơ được ghi **MINH HỌA**, không phải doanh nghiệp thật; không gán ID/Parent/DID |
+| `#brand/sample-vn`, `#brand/sample-us` | Bố cục pháp nhân, thương hiệu, sản phẩm, nguồn, chất lượng, hàng tại quốc gia và giao tại chỗ | Tồn kho, giao hàng, chứng nhận, liên hệ và quyền media đều chờ Evidence |
+| `#commerce` → `#brand/amazon` → `https://cfp.plus/8682` | Danh mục sàn tham chiếu; mở trang sàn gốc hoặc cổng TMTC | Amazon được nêu trong [nguồn 8682](https://app.notion.com/p/3decaac9a55781be8616d39de9978bce); quốc gia phục vụ chưa xác minh, bộ lọc VN/US trả rỗng |
+| `#chapter/6` → `#technology` | Phân khu Quantum / Space / Future Technologies | 6 nguồn được dẫn từ Evidence Inbox + 2 hướng nghiên cứu được ghi là đề xuất; không suy binding HSTDN/country hoặc tích hợp |
+
+Các slug `vn`, `us`, `sample-vn`, `amazon` là khóa điều hướng UI, **không phải
+Canonical ID mới**. Prototype không gửi dữ liệu, tạo giao dịch, gọi API mới,
+sao chép Registry hoặc kích hoạt adapter. Các tham chiếu công khai/đề bài vẫn
+đọc được khi Core lỗi; bản ghi Core cũ được xóa theo controller hiện hữu.
+
+### Design Tokens 1.0.0 và Google Sites
+
+`public/design-tokens.json` xuất lại đúng 7 biến màu `:root` hiện hữu của
+PR #141. Kiểm thử bắt buộc đối chiếu từng giá trị với `public/style.css`.
+Không đổi palette hoặc tạo Design System thứ hai.
+
+| Token / quy tắc | Website / App web | Áp dụng thủ công cho Google Sites |
+|---|---|---|
+| `--paper`, `--ink`, `--green` | Nền, chữ, nút chính hiện hữu | Màu nền section, chữ và theme accent tương ứng |
+| `--muted`, `--line`, `--lime`, `--amber` | Chú thích, viền, callout, trạng thái chờ | Màu văn bản phụ, đường chia, nền section/callout theo khả năng trình biên tập |
+| Typography | Inter / Segoe UI / Arial / sans-serif; body 15px, line-height 1.6 | Chọn font sans-serif gần nhất được hỗ trợ; ghi rõ sai khác |
+| Touch / form | Nút tối thiểu 44px; select 16px; focus-visible | Đối chiếu bản mobile; không giả định chỉnh được CSS hoặc pixel chính xác |
+| Catalog | 3 cột lớn, 2 cột ≤1100px, 1 cột ≤700px | Dùng layout section thích ứng sẵn có, kiểm tra preview riêng |
+
+Gemini giữ trách nhiệm đối chiếu Google Sites và cung cấp Preview URL/receipt
+của chính mình. Chưa có thao tác Google Sites, publish hoặc thay quyền.
+
+### Kiểm thử và nghiệm thu P0 mới
+
+`node --test tests/*.test.mjs` chạy các test kế thừa và
+`tests/website-p0.test.mjs`: deep links, lọc quốc gia, empty state, nguồn tham
+chiếu, escaping, trạng thái Core lỗi, tokens, hai bundle và responsive source
+guards. Log/receipt của lượt này ở `evidence/WEBSITE-P0-20261019.*` sau bàn giao.
+
+**Responsive source PASS chỉ kiểm các quy tắc CSS**, gồm viewport/safe-area,
+1 cột trên mobile, target 44px, form 16px, wrapping và focus/reduced motion.
+Chưa đo layout, overflow, contrast hoặc touch thực tế trên browser.
+Theo Sites skill, thiếu `$control-browser` trong managed environment phải bỏ
+qua browser QA; không dựng preview server hoặc dùng đường điều khiển khác.
+File HTML chạy độc lập là đầu ra prototype, không phải ảnh chụp render.
+
+**Safari iPhone / HTTPS staging: BLOCKED.** Chủ môi trường cần bàn giao URL
+HTTPS riêng tư hiện hữu được duyệt, mount cùng origin đúng SHA, tài khoản thử
+và readback. Checklist thiết bị: Safari thật; 320/375/390/430px và landscape;
+text zoom 200%; không tràn ngang; tất cả route/back/reload; bộ lọc quốc gia;
+nút/link chạm được; VoiceOver/keyboard; Core 401/403/404/503/logout; anonymous
+không đọc được hồ sơ riêng tư. Mỗi receipt cần SHA, URL, thiết bị/iOS/Safari,
+thời điểm, ảnh/video và người review. Chưa đánh dấu PASS cho các bước này.
+
+HOLD ACTIVATION • PRODUCTION NO-GO. Chờ review độc lập và Human Governance.
+
 Tiếp tục giao diện HUB 69 hiện hữu từ source `6d2fd6f0c19ebaa0fcbfa53850bcce1b5bf7287f`. Module này đưa mã giao diện về repository CFP.plus để review và tích hợp; không tạo Site, HUB, Registry hay Core API mới. Site review hiện hữu giữ nguyên định danh và quyền truy cập. **HOLD ACTIVATION • PRODUCTION NO-GO.**
 
 ## Sử dụng bản review

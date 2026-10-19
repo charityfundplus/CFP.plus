@@ -1,5 +1,24 @@
 # Codex 2 • Website & Preview • Integration readiness
 
+## Bổ sung Website/App P0 • 19/10/2026
+
+Hai P0 đã ACK trong phiên triển khai: HSTDN/danh mục sàn/8682 TMTC và
+Quantum/Space/Future Technologies. Tiếp tục đúng nhánh/Draft PR #141, từ
+`8ca11c26fbe3ba76db75ae1aa62b204744233d85`. Xem phần đầu README hiện hữu
+cho tuyến review, Design Tokens 1.0.0, mapping Google Sites và checklist Safari.
+Receipt mới nằm tại `evidence/WEBSITE-P0-20261019.*`; logs lịch sử dưới đây
+không được dùng thay test của thay đổi mới.
+
+Prototype mở offline ở `HUB69-review.html`; HSTDN minh họa, sàn tham chiếu
+và tài liệu nghiên cứu tách khỏi các binding Core. Không có thay đổi Core
+client, nguồn Registry, grant, mount hoặc adapter. Core bundle vẫn bắt đầu
+rỗng; không thay bằng mẫu minh họa khi tra cứu ID thật thất bại.
+
+**BLOCKED cho browser responsive / screenshot / Safari iPhone thật / HTTPS**:
+thiếu browser được hỗ trợ; chưa có URL staging riêng tư được duyệt, mount,
+tài khoản thử, deployment readback và receipt thiết bị. Source guards chỉ
+đối chiếu CSS, không phải nghiệm thu render. HOLD ACTIVATION • PRODUCTION NO-GO.
+
 Nhánh tiếp tục: `codex2/integration-readiness`. Nguồn UI: PR140, commit `6daec1ca72a65f542392aeb70592a7ed9b5453f6`. Nhánh đích chưa có trên remote ở đầu lượt làm việc; bản này tiếp tục đúng UI đó, không thay hoặc merge nhánh Codex 1.
 
 ## Những gì đã triển khai

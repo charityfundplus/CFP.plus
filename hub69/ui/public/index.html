@@ -13,6 +13,7 @@
   <script src="registry.js" defer></script>
   <script src="training-data.js" defer></script>
   <script src="model.js" defer></script>
+  <script src="explore.js" defer></script>
   <script src="p0.js" defer></script>
   <script src="core-binding.js" defer></script>
   <script src="training.js" defer></script>
@@ -29,6 +30,8 @@
       <a href="#master" data-nav="master"><span aria-hidden="true">◈</span>Master Hub</a>
       <a href="#id" data-nav="id"><span aria-hidden="true">#</span>Tra cứu ID</a>
       <a href="#chapters" data-nav="chapters"><span aria-hidden="true">◫</span>5 Nhóm · 10 Chương</a>
+      <a href="#hstdn" data-nav="hstdn"><span aria-hidden="true">⊞</span>HSTDN</a>
+      <a href="#technology" data-nav="technology"><span aria-hidden="true">◎</span>Công nghệ</a>
       <a href="#vaults" data-nav="vaults"><span aria-hidden="true">◉</span>6 Kho</a>
       <a href="#training" data-nav="training"><span aria-hidden="true">◇</span>Đào tạo SI/AI</a>
     </nav>
@@ -56,6 +59,7 @@
           <div class="feature-card note-card"><span class="eyebrow">TÌNH TRẠNG HIỆN TẠI</span><h2>Bằng chứng trước.</h2><p>Có trong Registry chưa đồng nghĩa đã xác minh danh tính hoặc được phép vận hành.</p><a href="#master" class="text-link">Xem các điểm đang giữ →</a></div>
         </div>
         <section class="panel p0-shortcuts"><div class="section-top"><h2>Tiếp tục công việc</h2><span class="tag amber">Bản review P0</span></div><div class="profile-actions"><a class="btn primary" href="#chapters">5 Nhóm · 10 Chương</a><a class="btn" href="#template">Link Mẫu Chung</a><a class="btn" href="#openai">HSTDN OpenAI mẫu</a><a class="btn" href="#vaults">Kết nối 6 Kho</a><a class="btn" href="#training">Học SI/AI</a></div><p class="muted"><span data-source-summary>Đang đọc nguồn dữ liệu.</span></p></section>
+        <section class="panel"><div class="section-top"><h2>Website + App · Hai P0</h2><span class="tag amber">Prototype review</span></div><div class="profile-actions"><a class="btn primary" href="#hstdn">HSTDN theo quốc gia</a><a class="btn" href="#commerce">Danh mục sàn · 8682 TMTC</a><a class="btn" href="#technology">Quantum · Space · Future Technologies</a></div></section>
         <div class="saved-strip"><div><span class="eyebrow">LỐI TẮT CỦA BẠN</span><h2>Mục đã lưu</h2></div><div id="saved-items" class="saved-items"></div></div>
       </section>
       <section id="view-master" class="view" hidden>
@@ -79,6 +83,18 @@
       <section id="view-vaults" class="view" hidden>
         <div class="page-intro"><span class="eyebrow">HUB 69 / KẾT NỐI</span><h1>Theo dõi 6 Kho.<br><em>Đọc đúng trạng thái.</em></h1><p>Phân biệt bản đọc nguồn, kết nối vận hành và nghiên cứu. Mỗi kho hiển thị dữ liệu đồng bộ, lỗi và Evidence đang có.</p></div>
         <div id="vault-monitor"></div>
+      </section>
+      <section id="view-hstdn" class="view catalog-view" hidden>
+        <div class="page-intro"><span class="eyebrow">HUB 69 / CHƯƠNG 7 / HSTDN</span><h1>Đi từ quốc gia.<br><em>Đọc từng hồ sơ.</em></h1><p>Bản thiết kế HSTDN theo quốc gia, hồ sơ thương hiệu và nguồn thương mại. Hồ sơ minh họa được ghi rõ, tách khỏi Registry.</p></div>
+        <div id="hstdn-content"></div>
+      </section>
+      <section id="view-commerce" class="view catalog-view" hidden>
+        <div class="page-intro"><span class="eyebrow">HUB 69 / LIÊN KẾT 8682 TMTC</span><h1>Tìm nguồn giao thương.<br><em>Về đúng sàn gốc.</em></h1><p>Danh mục tham chiếu sàn và cấu trúc thông tin hàng tại quốc gia, giao tại chỗ. Khả năng cung ứng cần hồ sơ riêng cho từng mặt hàng và thị trường.</p></div>
+        <div id="commerce-content"></div>
+      </section>
+      <section id="view-technology" class="view catalog-view" hidden>
+        <div class="page-intro"><span class="eyebrow">HUB 69 / CHƯƠNG 6 / CÔNG NGHỆ</span><h1>Quantum. Space.<br><em>Future Technologies.</em></h1><p>Đọc nguồn nghiên cứu, nhận biết công nghệ, sản phẩm và tổ chức; khám phá ứng dụng phục vụ Con Người và Sự Sống.</p></div>
+        <div id="technology-content"></div>
       </section>
       <section id="view-openai" class="view" hidden>
         <div class="page-intro"><span class="eyebrow">HUB 69 / LINK MẪU</span><h1>HSTDN OpenAI.<br><em>Mẫu theo nguồn.</em></h1><p>Nhà phát triển, sản phẩm và doanh nghiệp được trình bày theo từng vai trò. Chưa xác nhận quan hệ hợp tác.</p></div>
