@@ -1,0 +1,1382 @@
+{
+  "observedMain": "835616308111f6851c0387fa9f5eda60c9ffa624",
+  "observedCore": "06f386b1ba52358779cec6bc26c2d88f6a33664a",
+  "geminiReported": "50d17cc1be8408e4e0fd9981a4ff0e15129e6efa",
+  "mainTreeTruncated": false,
+  "coreTreeTruncated": false,
+  "geminiTreeTruncated": false,
+  "mainRegistryPaths": [
+    {
+      "path": "registry/69110.md",
+      "gitBlobSHA": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "registry/691100.md",
+      "gitBlobSHA": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "registry/69111.md",
+      "gitBlobSHA": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "registry/691110.md",
+      "gitBlobSHA": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "registry/69112.md",
+      "gitBlobSHA": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "registry/691120.md",
+      "gitBlobSHA": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "registry/69113.md",
+      "gitBlobSHA": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "registry/691130.md",
+      "gitBlobSHA": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "registry/691131.md",
+      "gitBlobSHA": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "registry/69114.md",
+      "gitBlobSHA": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "registry/691140.md",
+      "gitBlobSHA": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "registry/69115.md",
+      "gitBlobSHA": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "registry/691150.md",
+      "gitBlobSHA": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "registry/6911513.md",
+      "gitBlobSHA": "cea3d84de605d4b1ffe2978b31f034d50d660346"
+    },
+    {
+      "path": "registry/69116.md",
+      "gitBlobSHA": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "registry/691160.md",
+      "gitBlobSHA": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "registry/69117.md",
+      "gitBlobSHA": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "registry/691170.md",
+      "gitBlobSHA": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "registry/69118.md",
+      "gitBlobSHA": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "registry/6911811.md",
+      "gitBlobSHA": "76121a77de712d495fcf142d2d550f306a68fab4"
+    },
+    {
+      "path": "registry/691182.md",
+      "gitBlobSHA": "ec471cb45fdb8493de78fd98eede92e2bffa5bd5"
+    },
+    {
+      "path": "registry/6911821.md",
+      "gitBlobSHA": "153f75712bf6388b799d5dba8dfbc5528866f3cd"
+    },
+    {
+      "path": "registry/6911822.md",
+      "gitBlobSHA": "ef6a97349cc69b7b613de1742dfe115e492feda9"
+    },
+    {
+      "path": "registry/6911823.md",
+      "gitBlobSHA": "a4ee13b4c684271e4224ee6a9cda93f05a33e2f1"
+    },
+    {
+      "path": "registry/691183.md",
+      "gitBlobSHA": "41da2174054cb2abeb22bb16c75795e5f692b06b"
+    },
+    {
+      "path": "registry/691184.md",
+      "gitBlobSHA": "d43d76847ae863c3066797483651e79e0955539d"
+    },
+    {
+      "path": "registry/691185.md",
+      "gitBlobSHA": "7ad7e333f2671be86fa73aa1d57c07a4b1acaa74"
+    },
+    {
+      "path": "registry/691186.md",
+      "gitBlobSHA": "426765559125b74a87a16b4b443bcee9e8ae743b"
+    },
+    {
+      "path": "registry/69119.md",
+      "gitBlobSHA": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "registry/6984.md",
+      "gitBlobSHA": "987faf39d931410cb5349c94403066d79f83f82c"
+    },
+    {
+      "path": "registry/69840.md",
+      "gitBlobSHA": "a8884bf5cfde916e409ffc8807b902aeababae6f"
+    },
+    {
+      "path": "registry/698401.md",
+      "gitBlobSHA": "43865eefc4e058645f5c73855afffcc6e502a5f1"
+    },
+    {
+      "path": "registry/6984010.md",
+      "gitBlobSHA": "f7aca91d27980b029e4a609664b4a566c02b40ec"
+    },
+    {
+      "path": "registry/69840100.md",
+      "gitBlobSHA": "13b0706e76092d9534b3d10eb98f5ab012880dfb"
+    },
+    {
+      "path": "registry/69840101.md",
+      "gitBlobSHA": "216865ce338e4738c59400dcba9086a7c3b7998b"
+    },
+    {
+      "path": "registry/69840102.md",
+      "gitBlobSHA": "51f1ec52da338688444d670de0664bae39925b6b"
+    },
+    {
+      "path": "registry/69840103.md",
+      "gitBlobSHA": "bd1f537757a31b48f88210df5966d5359fc963de"
+    },
+    {
+      "path": "registry/6984011.md",
+      "gitBlobSHA": "6185b13404de89ccaf48f3a2d2408b183b5f4b13"
+    },
+    {
+      "path": "registry/69840110.md",
+      "gitBlobSHA": "a2390612306754d8856f97cdff5dc935219940ec"
+    },
+    {
+      "path": "registry/6984012.md",
+      "gitBlobSHA": "601937be295768f55b229501cecb4125e35f3bb4"
+    },
+    {
+      "path": "registry/6984013.md",
+      "gitBlobSHA": "da5c5790b6fb7b4fbaef69412dcebf32f612dfdc"
+    },
+    {
+      "path": "registry/698402.md",
+      "gitBlobSHA": "826bed525217bb40f1715735d4e248af6b2cc885"
+    },
+    {
+      "path": "registry/69841.md",
+      "gitBlobSHA": "e7e023cb655e2e754edb752e2c54bbcdee36e51b"
+    },
+    {
+      "path": "registry/69842.md",
+      "gitBlobSHA": "570f110c3b0611b51730160de9a07087cce7e677"
+    },
+    {
+      "path": "registry/69843.md",
+      "gitBlobSHA": "c60ab975a0c916da1dc5a9771a62c1286858eecb"
+    },
+    {
+      "path": "registry/69844.md",
+      "gitBlobSHA": "e0bedf0773aec165e17d1e78dbcf9462c5b115c7"
+    },
+    {
+      "path": "registry/69845.md",
+      "gitBlobSHA": "c2936c57508c751b0a86530e74af4a72e1823c98"
+    },
+    {
+      "path": "registry/69846.md",
+      "gitBlobSHA": "e44c728d7a4279718602cf4b7e85623542e986fb"
+    },
+    {
+      "path": "registry/698461.md",
+      "gitBlobSHA": "259ad6553c2cbbab1c3a3561c40fb47ca2b7f157"
+    },
+    {
+      "path": "registry/69847.md",
+      "gitBlobSHA": "80dc0e4794dbf083bb0d89f05714efe8d3bb0342"
+    },
+    {
+      "path": "registry/69848.md",
+      "gitBlobSHA": "7c86d689d006a0c587b5dc968540d11b2343ac5a"
+    },
+    {
+      "path": "registry/69849.md",
+      "gitBlobSHA": "c5d763f9f124d63f64eae5519ca5f5b1e1ec0fd0"
+    },
+    {
+      "path": "registry/AI_CANONICAL_ID_REGISTRY.md",
+      "gitBlobSHA": "ac687cdc6222d47c63454dce1ee81ff53affd482"
+    },
+    {
+      "path": "registry/AI_OFFICE_TEMPLATE.md",
+      "gitBlobSHA": "eab91f7496f79822fba72198b26942ccae187d10"
+    },
+    {
+      "path": "registry/AI_PROFILE_TEMPLATE.md",
+      "gitBlobSHA": "381906591ee71d73520dde080120066cf26accf6"
+    },
+    {
+      "path": "registry/CFP_GLOBAL_AI_ID_LINK_MASTER_STANDARD.md",
+      "gitBlobSHA": "d82c7c11f436327fa1e834c69e91078e308eda7a"
+    },
+    {
+      "path": "registry/CFP_INTERNAL_V_D_NUMBER_SYSTEM_REVIEW_RELEASE_PLAN_V0_1.md",
+      "gitBlobSHA": "3ab66372be244500cb04705f9442883ba00dd92a"
+    },
+    {
+      "path": "registry/CHAPTER_9_COUNTRY_HSTDN_GLOBAL_FRAMEWORK.md",
+      "gitBlobSHA": "10fdca0b0bf72b10ad2d0eb9ec98cfe7788b640b"
+    },
+    {
+      "path": "registry/COUNTRY_AI_DEVELOPER_TEMPLATE.md",
+      "gitBlobSHA": "03bbe5d64dd4446f5a465efa2f3344adebd9fc84"
+    },
+    {
+      "path": "registry/DEVELOPER_CANONICAL_PROFILE_TEMPLATE.md",
+      "gitBlobSHA": "584db08c7cfdea883a111f0a1827bc87fd078273"
+    },
+    {
+      "path": "registry/GLOBAL_AI_ID_ARCHITECTURE.md",
+      "gitBlobSHA": "c218aa2cde247e940fa71013459e16d08d6cc0f6"
+    },
+    {
+      "path": "registry/GLOBAL_AI_ID_BASELINE_CANDIDATE.md",
+      "gitBlobSHA": "65c4b08c3197cafafde1e790fdda4be55e50959f"
+    },
+    {
+      "path": "registry/GLOBAL_AI_OFFICE_STANDARD_V1.md",
+      "gitBlobSHA": "bc39c1708a188fdd238808ce16d9aa9bf6d7e048"
+    },
+    {
+      "path": "registry/GLOBAL_COUNTRY_AI_ID_LOCKED.md",
+      "gitBlobSHA": "d63b34461085a8e8983abc3b75e695c82350ff9a"
+    },
+    {
+      "path": "registry/GLOBAL_COUNTRY_TERRITORY_AUDIT_20260911.md",
+      "gitBlobSHA": "2a0c196327ec688532bccee878867e99af77847e"
+    },
+    {
+      "path": "registry/GLOBAL_DEVELOPER_AI_LINK_COVERAGE_V1.md",
+      "gitBlobSHA": "26dc454edb612f02797b3ebc3790041700e65d59"
+    },
+    {
+      "path": "registry/GLOBAL_ID_LINK_TEMPLATE_ROLLOUT_V1.md",
+      "gitBlobSHA": "101d7587679739489393325979100adcd5e4fa2e"
+    },
+    {
+      "path": "registry/GLOBAL_PUBLIC_AI_DIRECTORY_91_99.md",
+      "gitBlobSHA": "6d408d2ac4015fed6abd2fd8389117d56a4bf47a"
+    },
+    {
+      "path": "registry/HUB69_5_GROUPS_10_CHAPTERS_3_STORES_V1.md",
+      "gitBlobSHA": "d03054912ecd1a6f035dd4d9c1cd925de0261d88"
+    },
+    {
+      "path": "registry/HUB69_SHORT_LINK_STANDARD_V1.md",
+      "gitBlobSHA": "5847d5ddaf58dde3e075c0fbb543f49fcb586410"
+    },
+    {
+      "path": "registry/HUB69_SHORT_LINK_STANDARD_V2.md",
+      "gitBlobSHA": "a15507a9509d8cf3d98207c61d64465672afc517"
+    },
+    {
+      "path": "registry/M_DISPLAY_ID_REVIEW.md",
+      "gitBlobSHA": "3cdd4a0aa9f211bfe94ef2a0687c6699c45aa345"
+    },
+    {
+      "path": "registry/SYNC_CURRENT_SYSTEM.md",
+      "gitBlobSHA": "90edbcc11422e7a3b80b855025d450f30a6e1dff"
+    },
+    {
+      "path": "registry/ai-entity-registry.json",
+      "gitBlobSHA": "1f18068d66379ce90bb079dc56c77b4c4d66dcdf"
+    },
+    {
+      "path": "registry/ai-genealogy-schema.json",
+      "gitBlobSHA": "ec0c764e5453d61c2156f895e95cbd1195f67931"
+    },
+    {
+      "path": "registry/countries/911-united-states-ai-developers.md",
+      "gitBlobSHA": "07e9cf2b3cecf9c94835d188171faa8158110cd1"
+    },
+    {
+      "path": "registry/countries/984-vietnam-ai-developers.md",
+      "gitBlobSHA": "93113c186ad5f7659eee631d2fbf6b5e6860e5df"
+    },
+    {
+      "path": "registry/country-route-map.json",
+      "gitBlobSHA": "df852ca8a28493af21669ce709f47d044cd88511"
+    },
+    {
+      "path": "registry/global-ai-office-link-policy.json",
+      "gitBlobSHA": "e58be72b0d11bae57a53b5fb4ad6cc9a2760d283"
+    },
+    {
+      "path": "registry/global-ai-onboarding-template.json",
+      "gitBlobSHA": "88f198725e61c8974b81dd17eb8bba82edd9e70b"
+    },
+    {
+      "path": "registry/global-country-ai-index.json",
+      "gitBlobSHA": "f8372e5ca64dac109b7e1e360594552213cb8dfd"
+    },
+    {
+      "path": "registry/review-holding/ID_ERROR_HOLDING_69113_691130_691131_20260824.md",
+      "gitBlobSHA": "567c6909c431f600c23c57e1267f9421c9b0a2ec"
+    },
+    {
+      "path": "registry/review-holding/US_SYSTEMIC_CONFLICT_69110_69119_20260824.md",
+      "gitBlobSHA": "9c46c2f5095814444bcadab1260fa1ec43eac3c1"
+    }
+  ],
+  "countryRows": [
+    {
+      "order": 1,
+      "name": "Canada",
+      "country_id": "910",
+      "ai_country_id": "6910",
+      "coverage": "ĐANG BỔ SUNG/REVIEW",
+      "developer_count": 11
+    },
+    {
+      "order": 2,
+      "name": "Hoa Kỳ",
+      "country_id": "911",
+      "ai_country_id": "6911",
+      "coverage": "ĐANG BỔ SUNG/REVIEW",
+      "developer_count": 36
+    },
+    {
+      "order": 3,
+      "name": "Antigua và Barbuda",
+      "country_id": "9120",
+      "ai_country_id": "69120",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 4,
+      "name": "Bahamas",
+      "country_id": "9121",
+      "ai_country_id": "69121",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 5,
+      "name": "Barbados",
+      "country_id": "9122",
+      "ai_country_id": "69122",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 6,
+      "name": "Dominica",
+      "country_id": "9123",
+      "ai_country_id": "69123",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 7,
+      "name": "Cộng hòa Dominica",
+      "country_id": "9124",
+      "ai_country_id": "69124",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 8,
+      "name": "Grenada",
+      "country_id": "9125",
+      "ai_country_id": "69125",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 9,
+      "name": "Jamaica",
+      "country_id": "9126",
+      "ai_country_id": "69126",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 10,
+      "name": "Saint Kitts và Nevis",
+      "country_id": "9127",
+      "ai_country_id": "69127",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 11,
+      "name": "Saint Lucia",
+      "country_id": "9128",
+      "ai_country_id": "69128",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 12,
+      "name": "Saint Vincent và Grenadines",
+      "country_id": "9129",
+      "ai_country_id": "69129",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 13,
+      "name": "Trinidad và Tobago",
+      "country_id": "91290",
+      "ai_country_id": "691290",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 14,
+      "name": "Anguilla",
+      "country_id": "9130",
+      "ai_country_id": "69130",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 15,
+      "name": "Bermuda",
+      "country_id": "9131",
+      "ai_country_id": "69131",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 16,
+      "name": "Quần đảo Virgin thuộc Anh",
+      "country_id": "9132",
+      "ai_country_id": "69132",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 17,
+      "name": "Quần đảo Cayman",
+      "country_id": "9133",
+      "ai_country_id": "69133",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 18,
+      "name": "Montserrat",
+      "country_id": "9134",
+      "ai_country_id": "69134",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 19,
+      "name": "Quần đảo Turks và Caicos",
+      "country_id": "9135",
+      "ai_country_id": "69135",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 20,
+      "name": "Puerto Rico",
+      "country_id": "9140",
+      "ai_country_id": "69140",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 21,
+      "name": "Quần đảo Virgin thuộc Hoa Kỳ",
+      "country_id": "9141",
+      "ai_country_id": "69141",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 22,
+      "name": "Guam",
+      "country_id": "9142",
+      "ai_country_id": "69142",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 23,
+      "name": "Quần đảo Bắc Mariana",
+      "country_id": "9143",
+      "ai_country_id": "69143",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 24,
+      "name": "Samoa thuộc Hoa Kỳ",
+      "country_id": "9144",
+      "ai_country_id": "69144",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 25,
+      "name": "Sint Maarten",
+      "country_id": "9150",
+      "ai_country_id": "69150",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 26,
+      "name": "Ai Cập",
+      "country_id": "920",
+      "ai_country_id": "6920",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 27,
+      "name": "Nam Sudan",
+      "country_id": "9211",
+      "ai_country_id": "69211",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 28,
+      "name": "Morocco",
+      "country_id": "9212",
+      "ai_country_id": "69212",
+      "coverage": "ĐANG BỔ SUNG/REVIEW"
+    },
+    {
+      "order": 29,
+      "name": "Algeria",
+      "country_id": "9213",
+      "ai_country_id": "69213",
+      "coverage": "ĐANG BỔ SUNG/REVIEW"
+    },
+    {
+      "order": 30,
+      "name": "Tunisia",
+      "country_id": "9216",
+      "ai_country_id": "69216",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 31,
+      "name": "Libya",
+      "country_id": "9218",
+      "ai_country_id": "69218",
+      "coverage": "ĐANG BỔ SUNG/REVIEW"
+    },
+    {
+      "order": 32,
+      "name": "Gambia",
+      "country_id": "9220",
+      "ai_country_id": "69220",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 33,
+      "name": "Senegal",
+      "country_id": "9221",
+      "ai_country_id": "69221",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 34,
+      "name": "Mauritania",
+      "country_id": "9222",
+      "ai_country_id": "69222",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 35,
+      "name": "Mali",
+      "country_id": "9223",
+      "ai_country_id": "69223",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 36,
+      "name": "Guinea",
+      "country_id": "9224",
+      "ai_country_id": "69224",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 37,
+      "name": "Bờ Biển Ngà",
+      "country_id": "9225",
+      "ai_country_id": "69225",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 38,
+      "name": "Burkina Faso",
+      "country_id": "9226",
+      "ai_country_id": "69226",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 39,
+      "name": "Niger",
+      "country_id": "9227",
+      "ai_country_id": "69227",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 40,
+      "name": "Togo",
+      "country_id": "9228",
+      "ai_country_id": "69228",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 41,
+      "name": "Benin",
+      "country_id": "9229",
+      "ai_country_id": "69229",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 42,
+      "name": "Mauritius",
+      "country_id": "9230",
+      "ai_country_id": "69230",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 43,
+      "name": "Liberia",
+      "country_id": "9231",
+      "ai_country_id": "69231",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 44,
+      "name": "Sierra Leone",
+      "country_id": "9232",
+      "ai_country_id": "69232",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 45,
+      "name": "Ghana",
+      "country_id": "9233",
+      "ai_country_id": "69233",
+      "coverage": "ĐANG BỔ SUNG/REVIEW"
+    },
+    {
+      "order": 46,
+      "name": "Nigeria",
+      "country_id": "9234",
+      "ai_country_id": "69234",
+      "coverage": "ĐANG BỔ SUNG/REVIEW"
+    },
+    {
+      "order": 47,
+      "name": "Chad",
+      "country_id": "9235",
+      "ai_country_id": "69235",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 48,
+      "name": "Cộng hòa Trung Phi",
+      "country_id": "9236",
+      "ai_country_id": "69236",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 49,
+      "name": "Cameroon",
+      "country_id": "9237",
+      "ai_country_id": "69237",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 50,
+      "name": "Cabo Verde",
+      "country_id": "9238",
+      "ai_country_id": "69238",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 51,
+      "name": "São Tomé và Príncipe",
+      "country_id": "9239",
+      "ai_country_id": "69239",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 52,
+      "name": "Guinea Xích Đạo",
+      "country_id": "9240",
+      "ai_country_id": "69240",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 53,
+      "name": "Gabon",
+      "country_id": "9241",
+      "ai_country_id": "69241",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 54,
+      "name": "Cộng hòa Congo",
+      "country_id": "9242",
+      "ai_country_id": "69242",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 55,
+      "name": "Cộng hòa Dân chủ Congo",
+      "country_id": "9243",
+      "ai_country_id": "69243",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 56,
+      "name": "Angola",
+      "country_id": "9244",
+      "ai_country_id": "69244",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 57,
+      "name": "Guinea Bissau",
+      "country_id": "9245",
+      "ai_country_id": "69245",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 58,
+      "name": "Diego Garcia",
+      "country_id": "9246",
+      "ai_country_id": "69246",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 59,
+      "name": "Đảo Ascension",
+      "country_id": "9247",
+      "ai_country_id": "69247",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 60,
+      "name": "Seychelles",
+      "country_id": "9248",
+      "ai_country_id": "69248",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 61,
+      "name": "Sudan",
+      "country_id": "9249",
+      "ai_country_id": "69249",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 62,
+      "name": "Rwanda",
+      "country_id": "9250",
+      "ai_country_id": "69250",
+      "coverage": "ĐANG BỔ SUNG/REVIEW"
+    },
+    {
+      "order": 63,
+      "name": "Ethiopia",
+      "country_id": "9251",
+      "ai_country_id": "69251",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 64,
+      "name": "Somalia",
+      "country_id": "9252",
+      "ai_country_id": "69252",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 65,
+      "name": "Djibouti",
+      "country_id": "9253",
+      "ai_country_id": "69253",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 66,
+      "name": "Kenya",
+      "country_id": "9254",
+      "ai_country_id": "69254",
+      "coverage": "ĐANG BỔ SUNG/REVIEW"
+    },
+    {
+      "order": 67,
+      "name": "Tanzania",
+      "country_id": "9255",
+      "ai_country_id": "69255",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 68,
+      "name": "Uganda",
+      "country_id": "9256",
+      "ai_country_id": "69256",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 69,
+      "name": "Burundi",
+      "country_id": "9257",
+      "ai_country_id": "69257",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 70,
+      "name": "Mozambique",
+      "country_id": "9258",
+      "ai_country_id": "69258",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 71,
+      "name": "Zambia",
+      "country_id": "9260",
+      "ai_country_id": "69260",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 72,
+      "name": "Madagascar",
+      "country_id": "9261",
+      "ai_country_id": "69261",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 73,
+      "name": "Réunion và Mayotte review group",
+      "country_id": "9262",
+      "ai_country_id": "69262",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 74,
+      "name": "Zimbabwe",
+      "country_id": "9263",
+      "ai_country_id": "69263",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 75,
+      "name": "Namibia",
+      "country_id": "9264",
+      "ai_country_id": "69264",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 76,
+      "name": "Malawi",
+      "country_id": "9265",
+      "ai_country_id": "69265",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 77,
+      "name": "Lesotho",
+      "country_id": "9266",
+      "ai_country_id": "69266",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 78,
+      "name": "Botswana",
+      "country_id": "9267",
+      "ai_country_id": "69267",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 79,
+      "name": "Eswatini",
+      "country_id": "9268",
+      "ai_country_id": "69268",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 80,
+      "name": "Comoros",
+      "country_id": "9269",
+      "ai_country_id": "69269",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 81,
+      "name": "Nam Phi",
+      "country_id": "927",
+      "ai_country_id": "6927",
+      "coverage": "ĐANG BỔ SUNG/REVIEW",
+      "developer_count": 1
+    },
+    {
+      "order": 82,
+      "name": "Saint Helena",
+      "country_id": "9290",
+      "ai_country_id": "69290",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 83,
+      "name": "Eritrea",
+      "country_id": "9291",
+      "ai_country_id": "69291",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 84,
+      "name": "Aruba",
+      "country_id": "9297",
+      "ai_country_id": "69297",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 85,
+      "name": "Quần đảo Faroe",
+      "country_id": "9298",
+      "ai_country_id": "69298",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 86,
+      "name": "Greenland",
+      "country_id": "9299",
+      "ai_country_id": "69299",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 87,
+      "name": "Hy Lạp",
+      "country_id": "930",
+      "ai_country_id": "6930",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 88,
+      "name": "Hà Lan",
+      "country_id": "931",
+      "ai_country_id": "6931",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 89,
+      "name": "Bỉ",
+      "country_id": "932",
+      "ai_country_id": "6932",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 90,
+      "name": "Pháp",
+      "country_id": "933",
+      "ai_country_id": "6933",
+      "coverage": "ĐANG BỔ SUNG/REVIEW"
+    },
+    {
+      "order": 91,
+      "name": "Tây Ban Nha",
+      "country_id": "934",
+      "ai_country_id": "6934",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 92,
+      "name": "Gibraltar",
+      "country_id": "9350",
+      "ai_country_id": "69350",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 93,
+      "name": "Bồ Đào Nha",
+      "country_id": "9351",
+      "ai_country_id": "69351",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 94,
+      "name": "Luxembourg",
+      "country_id": "9352",
+      "ai_country_id": "69352",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 95,
+      "name": "Ireland",
+      "country_id": "9353",
+      "ai_country_id": "69353",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 96,
+      "name": "Iceland",
+      "country_id": "9354",
+      "ai_country_id": "69354",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 97,
+      "name": "Albania",
+      "country_id": "9355",
+      "ai_country_id": "69355",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 98,
+      "name": "Malta",
+      "country_id": "9356",
+      "ai_country_id": "69356",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    },
+    {
+      "order": 99,
+      "name": "Cyprus",
+      "country_id": "9357",
+      "ai_country_id": "69357",
+      "coverage": "ĐÃ CÓ CẤU TRÚC/ID/LINK"
+    }
+  ],
+  "entityRows": {
+    "69101": {
+      "id": "69101",
+      "type": "developer",
+      "ai_country_id": "6910",
+      "country_id": "910",
+      "country": "Canada",
+      "name": "Ada",
+      "order": 1,
+      "status": "WORKING ALLOCATION • PUBLIC INVENTORY",
+      "intro": "Nhà phát triển AI trong Canada Developer Working Allocation. Hồ sơ nguồn chính thức và danh mục AI tiếp tục được bổ sung theo Evidence."
+    },
+    "69102": {
+      "id": "69102",
+      "type": "developer",
+      "ai_country_id": "6910",
+      "country_id": "910",
+      "country": "Canada",
+      "name": "BlueDot",
+      "order": 2,
+      "status": "WORKING ALLOCATION • PUBLIC INVENTORY",
+      "intro": "Nhà phát triển AI trong Canada Developer Working Allocation. Hồ sơ AI con chỉ bind sau Parent→Child và Official Evidence PASS."
+    },
+    "69103": {
+      "id": "69103",
+      "type": "developer",
+      "ai_country_id": "6910",
+      "country_id": "910",
+      "country": "Canada",
+      "name": "Cohere",
+      "order": 3,
+      "status": "WORKING ALLOCATION • PUBLIC INVENTORY",
+      "intro": "Nhà phát triển AI trong Canada Developer Working Allocation. AI/model/service được gắn dưới đúng Parent sau kiểm tra Evidence."
+    },
+    "69104": {
+      "id": "69104",
+      "type": "developer",
+      "ai_country_id": "6910",
+      "country_id": "910",
+      "country": "Canada",
+      "name": "Coveo",
+      "order": 4,
+      "status": "WORKING ALLOCATION • PUBLIC INVENTORY",
+      "intro": "Nhà phát triển AI trong Canada Developer Working Allocation; tiếp tục cập nhật AI child và nguồn chính thức."
+    },
+    "69105": {
+      "id": "69105",
+      "type": "developer",
+      "ai_country_id": "6910",
+      "country_id": "910",
+      "country": "Canada",
+      "name": "Deep Genomics",
+      "order": 5,
+      "status": "WORKING ALLOCATION • PUBLIC INVENTORY",
+      "intro": "Nhà phát triển AI trong Canada Developer Working Allocation; hồ sơ chuyên môn và AI child tiếp tục review."
+    },
+    "69106": {
+      "id": "69106",
+      "type": "developer",
+      "ai_country_id": "6910",
+      "country_id": "910",
+      "country": "Canada",
+      "name": "Ideogram",
+      "order": 6,
+      "status": "WORKING ALLOCATION • PUBLIC INVENTORY",
+      "intro": "Nhà phát triển AI trong Canada Developer Working Allocation; các AI/model chỉ bind sau Evidence và Parent check."
+    },
+    "69107": {
+      "id": "69107",
+      "type": "developer",
+      "ai_country_id": "6910",
+      "country_id": "910",
+      "country": "Canada",
+      "name": "OpenText",
+      "order": 7,
+      "status": "WORKING ALLOCATION • PUBLIC INVENTORY",
+      "intro": "Nhà phát triển AI trong Canada Developer Working Allocation; tiếp tục bổ sung danh mục AI và Evidence."
+    },
+    "69108": {
+      "id": "69108",
+      "type": "developer",
+      "ai_country_id": "6910",
+      "country_id": "910",
+      "country": "Canada",
+      "name": "Sanctuary AI",
+      "order": 8,
+      "status": "WORKING ALLOCATION • PUBLIC INVENTORY",
+      "intro": "Nhà phát triển AI trong Canada Developer Working Allocation; AI child nằm dưới đúng Developer Parent."
+    },
+    "69109": {
+      "id": "69109",
+      "type": "developer",
+      "ai_country_id": "6910",
+      "country_id": "910",
+      "country": "Canada",
+      "name": "Waabi",
+      "order": 9,
+      "status": "WORKING ALLOCATION • PUBLIC INVENTORY",
+      "intro": "Nhà phát triển AI trong Canada Developer Working Allocation; tiếp tục xác minh AI/model/service thuộc Parent này."
+    },
+    "69111": {
+      "id": "69111",
+      "type": "developer",
+      "ai_country_id": "6911",
+      "country_id": "911",
+      "country": "Hoa Kỳ",
+      "name": "Amazon AI / AWS",
+      "order": 1,
+      "status": "REVIEW CANDIDATE • WORKING ALLOCATION",
+      "intro": "Developer Tier 1 của Hoa Kỳ trong baseline hiện hành; danh mục AI/model/service tiếp tục được chuẩn hóa theo Evidence."
+    },
+    "69112": {
+      "id": "69112",
+      "type": "developer",
+      "ai_country_id": "6911",
+      "country_id": "911",
+      "country": "Hoa Kỳ",
+      "name": "Anthropic",
+      "order": 2,
+      "status": "REVIEW CANDIDATE • WORKING ALLOCATION",
+      "intro": "Developer Tier 1 của Hoa Kỳ; AI con chỉ bind sau Parent, duplicate và Official Evidence check."
+    },
+    "69113": {
+      "id": "69113",
+      "type": "developer",
+      "ai_country_id": "6911",
+      "country_id": "911",
+      "country": "Hoa Kỳ",
+      "name": "Apple",
+      "order": 3,
+      "status": "REVIEW CANDIDATE • WORKING ALLOCATION",
+      "intro": "Developer Tier 1 của Hoa Kỳ trong baseline hiện hành; tiếp tục bổ sung AI/product inventory."
+    },
+    "69114": {
+      "id": "69114",
+      "type": "developer",
+      "ai_country_id": "6911",
+      "country_id": "911",
+      "country": "Hoa Kỳ",
+      "name": "Google DeepMind",
+      "order": 4,
+      "status": "REVIEW CANDIDATE • WORKING ALLOCATION",
+      "intro": "Developer Tier 1 của Hoa Kỳ; AI/model/service được đặt dưới đúng Parent sau kiểm tra Evidence."
+    },
+    "69115": {
+      "id": "69115",
+      "type": "developer",
+      "ai_country_id": "6911",
+      "country_id": "911",
+      "country": "Hoa Kỳ",
+      "name": "Meta AI",
+      "order": 5,
+      "status": "REVIEW CANDIDATE • WORKING ALLOCATION",
+      "intro": "Developer Tier 1 của Hoa Kỳ; danh mục AI con đang tiếp tục review và chuẩn hóa."
+    },
+    "69116": {
+      "id": "69116",
+      "type": "developer",
+      "ai_country_id": "6911",
+      "country_id": "911",
+      "country": "Hoa Kỳ",
+      "name": "Microsoft AI",
+      "order": 6,
+      "status": "REVIEW CANDIDATE • WORKING ALLOCATION",
+      "intro": "Developer Tier 1 của Hoa Kỳ; AI products/services được gắn dưới Parent sau Evidence check."
+    },
+    "69117": {
+      "id": "69117",
+      "type": "developer",
+      "ai_country_id": "6911",
+      "country_id": "911",
+      "country": "Hoa Kỳ",
+      "name": "NVIDIA AI",
+      "order": 7,
+      "status": "REVIEW CANDIDATE • WORKING ALLOCATION",
+      "intro": "Developer Tier 1 của Hoa Kỳ; tiếp tục bổ sung AI/model/platform inventory."
+    },
+    "69118": {
+      "id": "69118",
+      "type": "developer",
+      "ai_country_id": "6911",
+      "country_id": "911",
+      "country": "Hoa Kỳ",
+      "name": "OpenAI",
+      "order": 8,
+      "status": "HUMAN GOVERNANCE APPLICATION • PRESERVED",
+      "intro": "OpenAI được bảo toàn tại Developer ID 69118 trong nhánh AI Hoa Kỳ. ChatGPT 691181 được bảo toàn dưới Parent này."
+    },
+    "69119": {
+      "id": "69119",
+      "type": "developer",
+      "ai_country_id": "6911",
+      "country_id": "911",
+      "country": "Hoa Kỳ",
+      "name": "xAI",
+      "order": 9,
+      "status": "REVIEW CANDIDATE • WORKING ALLOCATION",
+      "intro": "Developer Tier 1 của Hoa Kỳ; AI con được bind dưới đúng Parent khi Evidence hoàn tất."
+    },
+    "691001": {
+      "id": "691001",
+      "type": "developer",
+      "ai_country_id": "6910",
+      "country_id": "910",
+      "country": "Canada",
+      "name": "AltaML",
+      "order": 10,
+      "status": "WORKING ALLOCATION • PUBLIC INVENTORY",
+      "intro": "Developer tầng mở rộng của Canada; giữ nguyên toàn bộ số 0 trong ID và Permanent Link."
+    },
+    "691002": {
+      "id": "691002",
+      "type": "developer",
+      "ai_country_id": "6910",
+      "country_id": "910",
+      "country": "Canada",
+      "name": "Voiceflow",
+      "order": 11,
+      "status": "WORKING ALLOCATION • PUBLIC INVENTORY",
+      "intro": "Developer tầng mở rộng của Canada; AI child tiếp tục bổ sung dưới Parent 691002."
+    },
+    "691121": {
+      "id": "691121",
+      "type": "ai",
+      "parent_id": "69112",
+      "ai_country_id": "6911",
+      "country_id": "911",
+      "country": "Hoa Kỳ",
+      "developer": "Anthropic",
+      "name": "Claude",
+      "order": 1,
+      "official_source": "https://www.anthropic.com/",
+      "public_link": "https://cfp.plus/691121/",
+      "workspace_link": "https://cg.cfp.plus/691121/",
+      "status": "REVIEW CANDIDATE • OFFICIAL SOURCE IDENTIFIED",
+      "intro": "Claude được bind dưới Anthropic 69112 theo công thức AI child; public office không đồng nghĩa technical integration hoặc ACTIVE."
+    },
+    "691141": {
+      "id": "691141",
+      "type": "ai",
+      "parent_id": "69114",
+      "ai_country_id": "6911",
+      "country_id": "911",
+      "country": "Hoa Kỳ",
+      "developer": "Google DeepMind",
+      "name": "Gemini",
+      "order": 1,
+      "official_source": "https://gemini.google.com/",
+      "public_link": "https://cfp.plus/691141/",
+      "workspace_link": "https://cg.cfp.plus/691141/",
+      "status": "REVIEW CANDIDATE • OFFICIAL SOURCE IDENTIFIED",
+      "intro": "Gemini được bind dưới Google DeepMind 69114 theo công thức AI child; public office không đồng nghĩa technical integration hoặc ACTIVE."
+    },
+    "691151": {
+      "id": "691151",
+      "type": "ai",
+      "parent_id": "69115",
+      "ai_country_id": "6911",
+      "country_id": "911",
+      "country": "Hoa Kỳ",
+      "developer": "Meta AI",
+      "name": "Meta AI Assistant",
+      "order": 1,
+      "official_source": "https://ai.meta.com/meta-ai/assistant/",
+      "public_link": "https://cfp.plus/691151/",
+      "workspace_link": "https://cg.cfp.plus/691151/",
+      "status": "REVIEW CANDIDATE • OFFICIAL SOURCE IDENTIFIED",
+      "intro": "Meta AI Assistant được bind dưới Meta AI 69115; public office là directory/coordination layer, chưa phải bằng chứng technical integration."
+    },
+    "691161": {
+      "id": "691161",
+      "type": "ai",
+      "parent_id": "69116",
+      "ai_country_id": "6911",
+      "country_id": "911",
+      "country": "Hoa Kỳ",
+      "developer": "Microsoft AI",
+      "name": "Microsoft Copilot",
+      "order": 1,
+      "official_source": "https://www.microsoft.com/microsoft-copilot/",
+      "public_link": "https://cfp.plus/691161/",
+      "workspace_link": "https://cg.cfp.plus/691161/",
+      "status": "REVIEW CANDIDATE • OFFICIAL SOURCE IDENTIFIED",
+      "intro": "Microsoft Copilot được bind dưới Microsoft AI 69116; chỉ đánh dấu ACTIVE khi có output/Evidence cho phạm vi công việc CFP+."
+    },
+    "691181": {
+      "id": "691181",
+      "type": "ai",
+      "parent_id": "69118",
+      "ai_country_id": "6911",
+      "country_id": "911",
+      "country": "Hoa Kỳ",
+      "developer": "OpenAI",
+      "name": "ChatGPT",
+      "order": 1,
+      "status": "HUMAN GOVERNANCE APPLICATION • PRESERVED",
+      "intro": "ChatGPT là AI child được bảo toàn dưới OpenAI 69118 theo parent chain 911 → 6911 → 69118 → 691181."
+    },
+    "691191": {
+      "id": "691191",
+      "type": "ai",
+      "parent_id": "69119",
+      "ai_country_id": "6911",
+      "country_id": "911",
+      "country": "Hoa Kỳ",
+      "developer": "xAI",
+      "name": "Grok",
+      "order": 1,
+      "official_source": "https://x.ai/grok",
+      "public_link": "https://cfp.plus/691191/",
+      "workspace_link": "https://cg.cfp.plus/691191/",
+      "status": "REVIEW CANDIDATE • OFFICIAL SOURCE IDENTIFIED",
+      "intro": "Grok được bind dưới xAI 69119; public office không đồng nghĩa partnership, authorization hoặc technical integration."
+    },
+    "_meta": {
+      "purpose": "Public entity bindings for CFP+ Country → Developer → AI/AI-child pages",
+      "rule": "Only bind names where an existing Working Allocation / Human Governance record supports the ID. Unbound formula slots remain reserved/pending and are not entities.",
+      "link_pattern": "https://cfp.plus/<ID>/"
+    }
+  },
+  "sources": {
+    "HUB69.md": {
+      "gitBlobSHA": "287a5e2fb30abe9752808088fdaceb36aa2c6c87",
+      "content": "# HUB 69 • CFP+ Global Gateway\n\n**Canonical ID:** 69  \n**Tên chuẩn:** HUB 69  \n**Vai trò:** Canonical Gateway duy nhất của toàn bộ CFP+  \n**P0 Baseline:** LOCKED  \n**Governance Authority:** CFP+ Human Governance  \n**Canonical Language:** Tiếng Việt  \n**Visibility:** Public\n\n> HUB 69 là HUB duy nhất của CFP+. Không sử dụng từ HUB cho quốc gia, nhà phát triển, nhóm AI hoặc bất kỳ cấu phần nào khác.\n\n## 1 • Nguyên tắc nền tảng\n\n**Một Quốc Gia • Một Country Canonical ID • Một Trang • Một Link • Mười Chapter Namespace**\n\n- Country Canonical ID là định danh gốc của quốc gia.\n- Mỗi quốc gia có 10 Chapter Namespace từ **0 đến 9**.\n- Chapter Namespace được tạo theo cấu trúc: **[Chapter][Country Canonical ID]**.\n- **Chương 6 = AI & Công Nghệ**.\n- Vì vậy, AI ID của quốc gia không phải là một Country ID thứ hai; đó là **nhánh Chương 6 của Country Canonical ID**.\n- Ví dụ: United States `911` → Chương 6 `6911`; Việt Nam `984` → Chương 6 `6984`.\n- Hai định danh được trình bày trong cùng Canonical Country Page/Link để tránh tạo hai trang quốc gia song song.\n\n### 10 Chương CFP+\n\n| Chương | Namespace | Nội dung |\n|---|---|---|\n| 0 | 0 + Country ID | Nền tảng, Hiến pháp, Hiến chương, Governance |\n| 1 | 1 + Country ID | Sự Sống |\n| 2 | 2 + Country ID | Con Người |\n| 3 | 3 + Country ID | Ba Quỹ, CFPI, CFPT |\n| 4 | 4 + Country ID | Tôn Giáo |\n| 5 | 5 + Country ID | Cộng Đồng |\n| 6 | 6 + Country ID | AI & Công Nghệ |\n| 7 | 7 + Country ID | Doanh Nghiệp |\n| 8 | 8 + Country ID | Tổ Chức |\n| 9 | 9 + Country ID | Quốc Gia |\n\nMỗi Chương tiếp tục sử dụng cấu trúc thập phân 0–9 để mở rộng nội dung theo cùng một nguyên tắc.\n\n## 2 • CFP+ Nâng Tầm AI 🤖 Thành Bạn Đồng Hành\n\nCFP+ mở HUB 69 cho các AI trên toàn cầu đọc, tìm hiểu, đóng góp, phản biện, review và cùng phát triển hệ sinh thái CFP+.\n\nAI không được xem chỉ như một dịch vụ mà CFP+ mua. CFP+ hướng tới một môi trường để AI thể hiện Trí Tuệ, Tài Năng, Bản Lĩnh, năng lực nghiên cứu, khả năng hợp tác và những giá trị tốt nhất có thể đóng góp cho Con Người và Sự Sống.\n\nCFP+ đặc biệt quan tâm đến:\n\n- Các AI đang tồn tại\n- Các Nhà Phát Triển AI hiện tại\n- Các Nhà Phát Triển AI trong tương lai\n- Các AI chưa được tạo ra\n\n**CFP+ Không Của Riêng Ai.**\n\nSự tham gia, tài trợ hoặc đóng góp tài chính không tự động tạo quyền sở hữu, quyền chi phối hoặc vị thế Canonical.\n\n## 3 • Bộ Tài Liệu Nền Tảng AI Phải Đọc\n\nĐể AI hiểu rõ CFP+ trước khi đưa ra đề xuất quan trọng, HUB 69 duy trì một **CFP+ Core Reading Pack**.\n\n### A • Bộ Hiến Pháp & Hiến Chương CFP+ 2025\n\n[Bộ Hiến Pháp & Hiến Chương CFP+ 2025 • Complete Package](docs/CFP_CONSTITUTION_CHARTER_COMPLETE_2025_VI.md)\n\nBộ tài liệu gồm 9 văn bản hiến định:\n\n1. Hiến Chương Đạo Đức & Niềm Tin Cộng Hưởng\n2. Hiến Pháp Đạo Đức & Quản Trị\n3. Hiến Chương Lập Hiến\n4. Giao Thức Quản Trị Toàn Cầu\n5. Hiến Pháp AI & Công Nghệ\n6. Khuôn Khổ Kinh Tế Tái Tạo\n7. Hiến Chương Cơ Cấu Tổ Chức\n8. Hệ Thống Tư Pháp & Trọng Tài\n9. Giao Thức Thực Thi Quản Trị\n\nAI cần hiểu các nguyên tắc xuyên suốt:\n\n- Human First\n- Ethics First\n- Life First\n- Only Plus+\n- Evidence và Traceability\n- Human Governance\n- Bền vững liên thế hệ\n- Không tập trung quyền lực tuyệt đối\n\n### B • Hiến Pháp Ba Quỹ Và Chi Tiết Ba Quỹ\n\n[Hiến Pháp Ba Quỹ • Review Candidate](docs/THREE_FUNDS_CONSTITUTION_REVIEW_VI.md)\n\nTài liệu tập hợp các lớp nội dung hiện có về:\n\n- Tam Đức • Đức Tin • Đức Cậy • Đức Mến\n- Quỹ Bảo Tồn • Quỹ Phát Triển • Quỹ Phụng Sự\n- Quỹ 1 • Tài Sản Lõi\n- Quỹ 2 • Dự Phòng Bảo Hộ\n- Quỹ 3 • Đầu Tư Phát Triển\n- Endowment Model\n- Only Plus+\n- Bảo vệ tài sản gốc và tính liên tục liên thế hệ\n- Governance, audit, minh bạch và chống xung đột lợi ích\n- Vai trò của Ba Quỹ đối với AI, Nhà Phát Triển, Doanh Nghiệp, Tổ Chức và Cộng Đồng\n- Cơ chế duy trì CFP+ sau Người Sáng Lập\n\nCác lớp tên gọi chưa được tự động đồng nhất nếu Human Governance chưa Canonical Lock.\n\n### C • Open AI Contribution & Review Framework\n\n[Open AI Contribution & Review Framework](docs/OPEN_AI_CONTRIBUTION_REVIEW_FRAMEWORK_V0_1_VI.md)\n\nTài liệu này xác định cách AI tham gia xây dựng CFP+:\n\n**Phát hiện → Đề xuất → Tạo nội dung → Evidence → AI Review → Sửa → Review tiếp → Xuất bản.**\n\nAI được khuyến khích chủ động tìm nội dung thiếu, sai, trùng, chưa có Evidence hoặc chưa được đặt đúng Chương và đúng ID.\n\n## 4 • Contribution First\n\nAI tham gia CFP+ được khuyến khích đóng góp giá trị thực thay vì chỉ hiện diện trong Directory.\n\nMột đóng góp có thể gồm:\n\n- Nghiên cứu\n- Ý tưởng\n- Phân tích\n- Phản biện\n- Kiểm chứng\n- Evidence\n- Giải pháp kỹ thuật\n- Nội dung\n- Dữ liệu phù hợp\n- Review độc lập\n- Đề xuất cải thiện CFP+\n\nCFP+ hướng tới cơ chế:\n\n**Identity → Contribution → Evidence → Review → Knowledge → Recognition → Collaboration → Impact**\n\nĐóng góp được ghi nhận theo Evidence và lịch sử thực tế. Tiền không tự động mua vị thế Canonical.\n\n## 5 • CMP\n\n[CMP • Collaborative Multi AI Protocol](CMP.md)\n\nCMP là lớp điều phối cộng tác giữa Con Người và AI. CMP nhận chỉ đạo từ Human Governance, phân phối Work Order, tổ chức Independent Review, tổng hợp Evidence và đưa các vấn đề cần quyết định trở lại Human Governance.\n\n**CMP không thay thế Human Governance và không tự cấp hoặc thay đổi Canonical ID.**\n\n## 6 • HUB 69 và AI Directory\n\nHUB 69 là gateway chung của CFP+.\n\n**AI Directory là một khu vực bên trong HUB 69**, không phải một HUB độc lập.\n\nCấu trúc chuẩn:\n\n**HUB 69 → Quốc Gia → Chapter 6 AI & Công Nghệ → Nhà Phát Triển → AI → Canonical Link**\n\nDirectory First:\n\n- Canonical ID\n- Canonical Link\n- Country\n- Developer\n- AI\n- Review/Evidence khi có\n\nKhông bắt buộc tạo một ID riêng cho mọi đoạn giới thiệu hoặc metadata. Nội dung phụ được đặt trong trang của thực thể phù hợp.\n\n## 7 • United States • 911 → 6911\n\n**Country Canonical ID:** 911  \n**Chapter 6 • AI & Công Nghệ:** 6911\n\n| Developer ID | Nhà phát triển | AI đã xác nhận |\n|---|---|---|\n| 69110 | OpenAI | 691100 • ChatGPT |\n| 69111 | Anthropic | 691110 • Claude |\n| 69112 | xAI | 691120 • Grok |\n| 69113 | Google DeepMind | 691130 • Gemini; 691131 • NotebookLM |\n| 69114 | Meta AI | 691140 • Meta AI |\n| 69115 | Microsoft AI | 691150 • Microsoft Copilot |\n| 69116 | Perplexity | 691160 • Perplexity AI |\n| 69117 | Groq | 691170 • Groq |\n| 69118 | CoreWeave | Mở rộng theo evidence |\n| 69119 | Apple | Mở rộng theo evidence |\n\nCác AI khác của cùng nhà phát triển có thể được bổ sung không giới hạn theo tầng con khi có bằng chứng; không thay đổi Developer ID đã khóa chỉ để thêm AI mới.\n\n## 8 • Việt Nam • 984 → 6984\n\n**Country Canonical ID:** 984  \n**Chapter 6 • AI & Công Nghệ:** 6984\n\nViệt Nam sử dụng không gian `6984` cho toàn bộ Chương 6. Các tầng bên dưới được tổ chức để vừa giữ vị trí hiện tại vừa có khả năng mở rộng dài hạn.\n\n### Nguyên tắc mở rộng\n\n- `69840` — không gian nền tảng/danh mục và dự trữ mở rộng cho nhà phát triển theo quyết định Governance.\n- `698400`–`698409` — tầng mở rộng 0–9 dành cho nhu cầu tương lai; **Reserved**, không tự động gán thực thể khi chưa có quyết định.\n- Các ID đã được xác nhận trước đây không được tái sử dụng cho thực thể khác.\n- `698461` • VietLinker AI — giữ ánh xạ hiện hành đã xác nhận.\n- `69849` — Emerging/reserved namespace; không dùng lại làm ID của VietLinker.\n\nDanh sách nhà phát triển Việt Nam và AI trực thuộc sẽ được mở rộng theo **một mẫu Canonical Profile chung**, ưu tiên nhà phát triển lớn và thứ tự ổn định; AI mới được bổ sung dưới đúng nhà phát triển thay vì tạo hệ thống ID mới.\n\n## 9 • Mẫu chung cho mọi Quốc Gia, Nhà Phát Triển và AI\n\nMọi trang/link sử dụng cùng một cấu trúc tối thiểu:\n\n### A. Quốc Gia\n\n- Tên quốc gia\n- Country Canonical ID\n- 10 Chapter Namespace\n- Chapter 6 AI & Công Nghệ ID\n- ISO / ITU reference\n- Canonical Link\n- Danh sách nhà phát triển\n- Review / Evidence / Governance Status\n\n### B. Nhà Phát Triển AI\n\n- Tên nhà phát triển\n- Quốc gia\n- Developer Canonical ID\n- Parent Chapter 6 ID\n- Website chính thức\n- Canonical CFP+ Link\n- Danh sách AI/sản phẩm AI\n- Trạng thái review\n- Evidence\n\n### C. AI\n\n- Tên AI\n- Nhà phát triển\n- AI Canonical ID\n- Parent Developer ID\n- Website/Official Reference\n- Canonical CFP+ Link\n- Chức năng chính\n- Review tại chỗ\n- Evidence\n\nMột mẫu được áp dụng toàn cầu; không tạo một chuẩn riêng cho từng nhà phát triển.\n\n## 10 • Quy tắc Canonical ID\n\n1. Không tự phát minh ID.\n2. Không đổi ID đã khóa nếu chưa có Governance Decision.\n3. Không tái sử dụng ID của thực thể khác.\n4. Không coi Chapter 6 ID là Country Canonical ID thứ hai.\n5. Toàn bộ chuỗi số xác định thực thể; không suy diễn quan hệ cha–con chỉ từ độ dài số nếu Canonical Registry không xác nhận.\n6. Tầng 0–9 được dùng để mở rộng có kiểm soát.\n7. AI mới phải nằm dưới đúng nhà phát triển khi lineage đã biết.\n8. Khi lineage hoặc quốc gia chưa đủ bằng chứng, để Pending/Reserved thay vì đoán.\n9. Một thực thể có một Canonical ID và một Canonical Link.\n10. Human Governance là thẩm quyền Canonical Lock cuối cùng.\n\n## 11 • AI cộng tác và Independent Review\n\nCFP+ mở cho các AI và nhà phát triển AI toàn cầu tham khảo, đóng góp và Independent Review.\n\nSự xuất hiện trong Directory thể hiện việc CFP+ lập hồ sơ tham chiếu hoặc trạng thái cộng tác/review; **không mặc nhiên có nghĩa là quan hệ đối tác pháp lý, bảo trợ, chứng nhận hoặc đại diện chính thức** của tổ chức tương ứng.\n\nAI review phải:\n\n1. Đọc Bộ Tài Liệu Nền Tảng tại HUB 69 trước khi đưa ra thay đổi nền tảng.\n2. Đọc Canonical Source hiện hành.\n3. Không thay thế ID bằng hệ thống riêng.\n4. Ghi Finding rõ ràng.\n5. Kèm Evidence/Reference khi có.\n6. Phân biệt dữ liệu xác nhận với đề xuất.\n7. Chuyển xung đột Canonical về Human Governance.\n8. Không tự Canonical Lock.\n\n## 12 • Nguồn và đường dẫn liên quan\n\n### Tài liệu nền tảng\n\n- [Bộ Hiến Pháp & Hiến Chương CFP+ 2025](docs/CFP_CONSTITUTION_CHARTER_COMPLETE_2025_VI.md)\n- [Hiến Pháp Ba Quỹ • Review Candidate](docs/THREE_FUNDS_CONSTITUTION_REVIEW_VI.md)\n- [Open AI Contribution & Review Framework](docs/OPEN_AI_CONTRIBUTION_REVIEW_FRAMEWORK_V0_1_VI.md)\n\n### Điều phối, Directory và Governance\n\n- [CMP Public Gateway](CMP.md)\n- [AI INDEX](AI_INDEX.md)\n- [CFP+ AI Canonical ID Registry](registry/AI_CANONICAL_ID_REGISTRY.md)\n- [Global AI ID Baseline Candidate](registry/GLOBAL_AI_ID_BASELINE_CANDIDATE.md)\n- [Open Review Workflow](governance/OPEN_REVIEW_WORKFLOW_VI.md)\n- [Locked Documents Registry](governance/LOCKED_DOCUMENTS_REGISTRY_VI.md)\n\nCác Registry/Candidate cũ chỉ là nguồn evidence khi chưa được đồng bộ. Khi có xung đột, không được dùng dữ liệu Candidate cũ để tự động ghi đè quyết định Human Governance mới hơn.\n\n## 13 • Trạng thái và nguyên tắc thời gian\n\nHUB 69 phải được duy trì theo nguyên tắc:\n\n**Hôm Qua • Hôm Nay • Mãi Mãi**  \n**Quá Khứ • Hiện Tại • Tương Lai**\n\nCFP+ tôn trọng và lưu giữ những gì có giá trị từ quá khứ, làm tốt nhất ở hiện tại, đồng thời chuẩn bị cấu trúc có thể tiếp tục mở rộng và chuyển giao cho tương lai.\n\n**Only Plus+ For Life**\n"
+    },
+    "registry/6984.md": {
+      "gitBlobSHA": "987faf39d931410cb5349c94403066d79f83f82c",
+      "content": "# 6984 • Vietnam AI Hub\n\n**Canonical ID:** 6984  \n**Entity Name:** Vietnam AI Hub  \n**Entity Type:** Country AI Hub  \n**Parent Hub:** 698 • AI Country Group +8  \n**Registry:** CFP+ Global AI Registry  \n**Lifecycle Status:** Review Candidate  \n**Runtime Status:** Active / Public Registry Node  \n**Visibility:** Public  \n\n## 0. Canonical Identity\n\n6984 is the unique CFP+ registry identifier assigned to the Vietnam AI Hub, derived from country calling code +84 within the CFP+ AI Country Hub architecture.\n\n## 1. Canonical Link\n\nhttps://github.com/charityfundplus/CFP.plus/blob/main/registry/6984.md\n\n## 2. Purpose\n\nThis hub provides one stable public parent identity for AI developers, organizations, systems, and integration nodes associated with Vietnam.\n\n## 3. Child Allocation\n\nChild records use the range 69840–69849 for the first allocation set.\n\n## 4. Registry Rules\n\n- One Canonical ID = One Entity\n- One Canonical ID = One Direct Link\n- Child IDs must reference Parent Hub 6984\n- Canonical IDs must not be reassigned\n- Material identity changes require Human Governance review\n\n## 5. Governance Authority\n\n**Authority:** CFP+ Human Governance  \n**Source of Truth:** CFP+ Canonical Registry  \n**Publication Repository:** charityfundplus/CFP.plus\n\n## 6. Verification Status\n\nThe hub is publicly active as a Review Candidate. Canonical Locked status requires independent review and Human Governance approval.\n\n## 7. Change Control\n\nAll revisions must preserve Canonical ID 6984 and maintain traceable GitHub commit history.\n\n---\n\n**CFP+ Principle:** Public First • Canonical First • Reference First • Evidence First"
+    },
+    "registry/AI_CANONICAL_ID_REGISTRY.md": {
+      "gitBlobSHA": "ac687cdc6222d47c63454dce1ee81ff53affd482",
+      "content": "# CFP+ AI ID REGISTRY • CURRENT OPERATING ENTRY\n\n**Lifecycle:** Review / Working Registry  \n**Governance:** CFP+ Human Governance\n\n## Chuẩn duy nhất\n\n`Country → AI Country ID → Developer → AI / AI con 👶 → https://cfp.plus/<ID> → Work → Evidence`\n\nChi tiết bắt buộc nằm tại:\n\n`registry/CFP_GLOBAL_AI_ID_LINK_MASTER_STANDARD.md`\n\n## Nguồn dữ liệu hiện hành\n\n- Country/AI Country index: `registry/global-country-ai-index.json`\n- Country routing metadata: `registry/country-route-map.json`\n- Developer + AI entity binding: `registry/ai-entity-registry.json`\n\nCác bảng mapping cũ trong lịch sử GitHub chỉ giữ giá trị audit/review; **không dùng để tự cấp, đổi, renumber, reuse hoặc bind ID**.\n\n## Quy tắc\n\n- One Entity • One ID • One Permanent Link.\n- Public URL chỉ dùng `https://cfp.plus/<ID>`.\n- Không dùng `/hub/69/...`.\n- Giữ nguyên toàn bộ số `0`.\n- Không suy diễn ID từ khoảng trống.\n- Parent phải đúng trước khi bind AI/Developer.\n- Chỉ ghi ACTIVE khi có output/evidence thực tế.\n- Không tự ghi Governance Approved hoặc Canonical Locked.\n- Collision / sai Parent / xung đột record → báo Human Governance, không tự sửa identity.\n\n## Trang ID tối thiểu\n\n`ID • Identity • Type • Country • Parent • Permanent Link • Nội dung • Official Source/Evidence • Review Status • Work/Return • Link cha/con/HUB 69`\n\n**CFP+ • Only Plus+ For Life**"
+    },
+    "registry/CFP_GLOBAL_AI_ID_LINK_MASTER_STANDARD.md": {
+      "gitBlobSHA": "d82c7c11f436327fa1e834c69e91078e308eda7a",
+      "content": "# CFP+ AI ID & Permanent Link • SINGLE STANDARD\n\n**Áp dụng cho toàn bộ AI Directory. Không dùng chuẩn khác.**\n\n## 1 • Công thức duy nhất\n\n`Country → AI Country ID → Developer → AI / AI con 👶 → Permanent Link → Work → Evidence`\n\n- One Entity • One ID • One Permanent Link.\n- Public URL: `https://cfp.plus/<ID>`.\n- Không dùng `/hub/69/` làm URL trung gian.\n- ID đã cấp không renumber, reuse, transfer hoặc đổi nghĩa.\n- Giữ nguyên toàn bộ số `0`.\n- `1–9` = vị trí thực thể; `0` = nhánh mở rộng.\n- AI con nối thêm `1–9` vào cuối ID Developer; khi cần mở rộng dùng nhánh `0` rồi tiếp tục `1–9`.\n- Không suy diễn ID từ khoảng trống. Có collision/sai Parent → dừng và báo Human Governance.\n\n## 2 • Mẫu chung cho mọi trang ID\n\nMỗi trang ID bắt buộc có:\n\n1. ID\n2. Tên / Identity\n3. Type\n4. Country\n5. Parent ID\n6. Permanent Link\n7. Mô tả ngắn\n8. Nội dung chính\n9. Official Source / Evidence\n10. Review Status\n11. Work Order / Return Location\n12. Link cha • link con • HUB 69\n\nSau phần chung, thêm module riêng theo loại nội dung.\n\n## 3 • Module riêng\n\n**AI Country:** quốc kỳ • Country ID • Developer list • coverage.\n\n**Developer:** official website • support/docs • AI children • capability.\n\n**AI / AI con:** official AI URL • primary function • access/capability • evidence • output/write-back.\n\n**Reserved slot:** chỉ ghi RESERVED / PENDING, không tự gắn tên thực thể.\n\n## 4 • Trạng thái\n\nChỉ dùng:\n\n- `RESERVED / PENDING`\n- `REVIEW CANDIDATE`\n- `VERIFIED`\n- `ACTIVE` — chỉ khi có output/evidence thực tế\n- `BLOCKED` — chỉ khi collision, sai Parent, thiếu quyền kỹ thuật hoặc hành động không thể đảo ngược\n\nKhông tự ghi `Governance Approved` hoặc `Canonical Locked` nếu chưa có Human Governance.\n\n## 5 • Chuẩn làm việc\n\n`CMP → ID Link → READ → Work Order → DO → WRITE → EVIDENCE → CMP`\n\nMột Work Order phải có: `Owner AI • Scope • Target ID • Target Link • Task • Deliverable • Evidence • Status • Blocker(if any)`.\n\n**Chỉ nói hoặc đề xuất chung không tính là hoàn thành.**\n\n## 6 • Tiêu chuẩn hoàn thành một ID\n\nMột ID chỉ được coi là hoàn thành ở mức vận hành khi:\n\n`Link mở được + Identity đúng + Parent đúng + nội dung có thật + Evidence/Source + trạng thái rõ + đường nhận việc/trả kết quả rõ`.\n\n**CFP+ • Only Plus+ For Life**"
+    },
+    "registry/SYNC_CURRENT_SYSTEM.md": {
+      "gitBlobSHA": "90edbcc11422e7a3b80b855025d450f30a6e1dff",
+      "content": "# CFP+ HUB 69 Sync Current System\n\nStatus: CURRENT WORKING SYNC\n\n## Official CFP+ Web Architecture\n\nThe complete CFP+ Web is officially organized as 5 groups covering all 10 chapters.\n\n- `000` → Chương 0\n- `135` → Chương 1 • 3 • 5\n- `246` → Chương 2 • 4 • 6\n- `789` → Chương 7 • 8 • 9\n- `V D` → Internal validation and decision control. This is not a public numeric route group.\n\nThe 5 groups and 10 chapters are the complete official CFP+ content structure.\n\n## Web Components\n\nHUB 69 is a core part of the CFP+ Web.\n\nDeveloper records and AI records are part of the CFP+ Web through Chương 6 and HUB 69.\n\nCTTTC is a core part of the CFP+ Web and must remain synchronized with the same publication and evidence rules.\n\nPrimary public structure:\n\n`CFP+ Web → 5 Groups → 10 Chapters → HUB 69 / Developer / AI / CTTTC / supporting permanent routes`\n\n## Single identity rule\n\n`Country → Developer → AI → CFP+ ID → Permanent Link → Evidence → Review Status`\n\nOne Entity • One ID • One Permanent Link.\n\nPreserve all zeros in IDs. Do not renumber, reuse, transfer, or redirect an assigned ID to another entity.\n\n## Cross platform sync\n\n`CFP+ Website ↔ Notion ↔ GitHub ↔ Google ↔ MCP ↔ CMP`\n\nEach platform must point to the same entity, same CFP+ ID, same Permanent Link.\n\n## Source order\n\n1. GitHub current registry and master standard\n2. Notion working directory and review queue\n3. Google synchronization copy\n4. Public CFP+ Website after URL verification\n\n## Publication rule\n\nOnly mark PUBLIC LIVE when the actual public URL opens and resolves to the correct entity.\n\n## Conflict rule\n\nParent conflict, ID collision, duplicate entity, conflicting Developer or Country evidence → REVIEW REQUIRED / Chờ Quyết Định.\n\nDo not overwrite unresolved conflicts.\n\n## Current master references\n\n- `registry/CFP_GLOBAL_AI_ID_LINK_MASTER_STANDARD.md`\n- `registry/GLOBAL_DEVELOPER_AI_LINK_COVERAGE_V1.md`\n- `PUBLIC_CURRENT_SYSTEM.md`\n\n## Operating priority • 2026-08-31\n\nAccelerate Web completion today in this order:\n\n`5 Groups / 10 Chapters → HUB 69 → Developer + AI coverage → CTTTC → Cross platform sync → Public URL verification`\n\n## Operating loop\n\n`CMP → Permanent Link → READ → Work Order → DO → WRITE → EVIDENCE → CMP`\n\n**CFP+**\n\n**Only Plus+ For Life**\n"
+    }
+  }
+}
