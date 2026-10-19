@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import vm from 'node:vm';
 const context=vm.createContext({URL});
-for(const f of ['model.js','explore.js','p0.js'])vm.runInContext(await readFile(new URL('../public/'+f,import.meta.url),'utf8'),context);
+for(const f of ['model.js','hstdn-review.js','explore.js','p0.js'])vm.runInContext(await readFile(new URL('../public/'+f,import.meta.url),'utf8'),context);
 vm.runInContext((await readFile(new URL('../public/registry.js',import.meta.url),'utf8')).replace('window.HUB69_DATA','globalThis.data'),context);
 const M=context.HUB69Model,P=context.HUB69P0,records=context.data.records;
 const plain=x=>JSON.parse(JSON.stringify(x));

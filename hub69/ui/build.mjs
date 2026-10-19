@@ -22,7 +22,7 @@ if(records.length!==26||new Set(records.map(r=>r.id)).size!==26)throw Error('SOU
 const data={sourceCommit,registryBlobSHA,sourceSHA256:createHash('sha256').update(raw).digest('hex'),sourceURL,activationAllowed:false,published:false,records};
 await writeFile(new URL('public/registry.js',root),'window.HUB69_DATA='+JSON.stringify(data).replace(/</g,'\\u003c')+';\n');
 await mkdir(new URL('dist/',root),{recursive:true});
-const names=['index.html','style.css','design-tokens.json','config.js','registry.js','training-data.js','model.js','explore.js','p0.js','core-binding.js','training.js','app.js'];
+const names=['index.html','style.css','design-tokens.json','config.js','registry.js','training-data.js','model.js','hstdn-review.js','explore.js','p0.js','core-binding.js','training.js','app.js'];
 for(const name of names)await copyFile(new URL('public/'+name,root),new URL('dist/'+name,root));
 // A same-origin mount for Codex 1. No snapshot rows are shipped in Core mode.
 await mkdir(new URL('core-dist/',root),{recursive:true});

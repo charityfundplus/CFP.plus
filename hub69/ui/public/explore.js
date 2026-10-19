@@ -7,7 +7,7 @@
     trade:'https://app.notion.com/p/3decaac9a55781be8616d39de9978bce',
     tmtc:'https://cfp.plus/8682'
   });
-  const countries=Object.freeze({all:'Tất cả quốc gia',vn:'Việt Nam',us:'Hoa Kỳ',unknown:'Chưa có phạm vi quốc gia'});
+  const countries=Object.freeze({all:'Tất cả quốc gia',vn:'Việt Nam',us:'Hoa Kỳ',global:'Quốc gia / thị trường khác',unknown:'Chưa có phạm vi quốc gia'});
   const topics=Object.freeze({all:'Tất cả công nghệ',quantum:'Quantum',space:'Space',future:'Future Technologies'});
   const frozen=rows=>Object.freeze(rows.map(r=>Object.freeze(r)));
   // UI-only slugs are not Registry IDs. Sample businesses are visibly synthetic.
@@ -29,6 +29,8 @@
     {key:'future-life',topic:'future',name:'Công nghệ phục vụ Sự Sống',kind:'Hướng nghiên cứu đề xuất',url:null,description:'Khung trình bày ứng dụng trong giáo dục, môi trường và cộng đồng; chờ hồ sơ có Evidence.'}
   ]);
   function route(hash){
+    const review=root.HUB69HSTDNReview?.route(hash);
+    if(review)return review;
     if(hash==='#hstdn')return {view:'hstdn',country:'all'};
     if(hash==='#commerce')return {view:'commerce',country:'all'};
     if(hash==='#technology')return {view:'technology',topic:'all'};
@@ -41,6 +43,9 @@
     return null;
   }
   function filterRoute(state,key,value){
+    const review=root.HUB69HSTDNReview?.filterRoute(state,key,value);
+    if(review)return review;
+    if(value==='global'&&state.view!=='hstdn')return null;
     if(key==='country'&&['hstdn','commerce'].includes(state.view)&&Object.hasOwn(countries,value))return '#'+state.view+(value==='all'?'':'/'+value);
     if(key==='topic'&&state.view==='technology'&&Object.hasOwn(topics,value))return '#technology'+(value==='all'?'':'/'+value);
     return null;
@@ -50,7 +55,7 @@
   const field=(label,value)=>'<div><dt>'+esc(label)+'</dt><dd>'+esc(value)+'</dd></div>';
   const crumbs=()=>'<nav class="catalog-crumbs" aria-label="Đường đi trong HUB 69"><a href="#home">HUB 69</a><span aria-hidden="true">/</span><a href="#group/789">Nhóm 789</a><span aria-hidden="true">/</span><a href="#chapter/7">Chương 7</a><span aria-hidden="true">/</span><a href="#hstdn">HSTDN</a></nav>';
   function countryFilter(view,country){
-    return '<div class="catalog-filter"><label for="catalog-country">Phạm vi quốc gia</label><select id="catalog-country" data-catalog-filter="country">'+Object.entries(countries).map(([key,label])=>'<option value="'+key+'"'+(country===key?' selected':'')+'>'+esc(label)+'</option>').join('')+'</select><span class="catalog-caption">Bộ lọc trình bày; chưa gắn Canonical ID quốc gia.</span></div>';
+    return '<div class="catalog-filter"><label for="catalog-country">Phạm vi quốc gia</label><select id="catalog-country" data-catalog-filter="country">'+Object.entries(countries).filter(([key])=>view==='hstdn'||key!=='global').map(([key,label])=>'<option value="'+key+'"'+(country===key?' selected':'')+'>'+esc(label)+'</option>').join('')+'</select><span class="catalog-caption">Bộ lọc trình bày; chưa gắn Canonical ID quốc gia.</span></div>';
   }
   const tradeGateway=()=>'<article class="panel trade-gateway"><div><span class="eyebrow">8682 · TMTC</span><h2>Tiếp tục tại cổng thương mại</h2><p>Địa chỉ do CFP+ chỉ định. Nội dung tuyến công khai và khả năng giao dịch chưa được nghiệm thu cho bản này.</p></div><div class="profile-actions">'+out(sources.tmtc,'Mở cfp.plus/8682')+out(sources.trade,'Đọc nguồn định hướng')+'</div></article>';
   function brandCard(b){return '<article class="panel catalog-card"><div class="section-top"><span class="catalog-mark" aria-hidden="true">'+(b.sample?'MẪU':'TMTC')+'</span><span class="tag amber">'+(b.sample?'MINH HỌA':'THAM KHẢO')+'</span></div><h2>'+esc(b.name)+'</h2><p>'+esc(b.description)+'</p><dl class="catalog-meta">'+field('Quốc gia trong bố cục',countries[b.country])+field('Hàng tại quốc gia / giao tại chỗ','Chưa có Evidence cung ứng')+'</dl><a class="btn primary" href="#brand/'+esc(b.key)+'">'+(b.sample?'Xem bố cục hồ sơ':'Xem hồ sơ tham chiếu')+' →</a></article>';}
@@ -72,6 +77,16 @@
     const topic=state.topic||'all',rows=selectRows(technologies,'topic',topic);
     return '<nav class="catalog-crumbs" aria-label="Đường đi công nghệ"><a href="#home">HUB 69</a><span aria-hidden="true">/</span><a href="#group/246">Nhóm 246</a><span aria-hidden="true">/</span><a href="#chapter/6">Chương 6</a><span aria-hidden="true">/</span><a href="#technology">Công nghệ</a></nav><div class="catalog-banner"><strong>Danh mục nghiên cứu từ Evidence Inbox</strong><p>Phân biệt tổ chức, nguồn công nghệ và sản phẩm/dịch vụ. Chưa có bằng chứng tích hợp, tài khoản truy cập, hợp tác hoặc lưu trữ dữ liệu CFP+.</p></div><div class="catalog-tabs" role="navigation" aria-label="Phân khu công nghệ">'+Object.entries(topics).map(([key,label])=>'<a class="btn '+(topic===key?'primary':'')+'" href="#technology'+(key==='all'?'':'/'+key)+'"'+(topic===key?' aria-current="page"':'')+'>'+esc(label)+'</a>').join('')+'</div><p class="catalog-count" role="status">'+rows.length+' nguồn / hướng nghiên cứu</p><div class="catalog-grid">'+rows.map(t=>'<article class="panel catalog-card"><div class="section-top"><span class="catalog-mark" aria-hidden="true">'+esc(t.topic==='quantum'?'Q':t.topic==='space'?'S':'F')+'</span><span class="tag">'+esc(topics[t.topic])+'</span></div><h2>'+esc(t.name)+'</h2><p>'+esc(t.description)+'</p><dl class="catalog-meta">'+field('Loại tham chiếu',t.kind)+field('Integration Evidence / Country / HSTDN','Chưa được bàn giao')+'</dl><div class="profile-actions">'+out(t.url||sources.inbox,t.url?'Đọc nguồn được dẫn':'Đọc đề bài nghiên cứu')+'</div></article>').join('')+'</div><article class="panel"><h2>Từ nguồn đến hồ sơ có Evidence</h2><p>Chủ thể → Sản phẩm / Dịch vụ → Công nghệ → Evidence tích hợp → Quốc gia → HSTDN.</p><p class="catalog-caption">Các URL được kế thừa từ Evidence Inbox. Khả năng truy cập và nội dung hiện tại của từng trang cần kiểm chứng riêng.</p><div class="profile-actions">'+out(sources.inbox,'Evidence Inbox hiện hữu')+'<a class="btn" href="#hstdn">Xem HSTDN</a><a class="btn" href="#training">Học SI/AI</a></div></article>';
   }
-  function view(state){return state.view==='hstdn'?hstdnView(state):state.view==='commerce'?commerceView(state):state.view==='technology'?technologyView(state):'';}
+  function view(state){
+    if(state.view==='hstdn'){
+      const current=hstdnView(state),review=root.HUB69HSTDNReview?.view(state)||'';
+      // Keep one country selector and one review presenter inside the existing view.
+      if(!review)return current;
+      const marker='<p class="catalog-count"';
+      const pos=current.indexOf(marker);
+      return pos>=0?current.slice(0,pos)+review+current.slice(pos):current+review;
+    }
+    return state.view==='commerce'?commerceView(state):state.view==='technology'?technologyView(state):'';
+  }
   root.HUB69Explore=Object.freeze({sources,countries,topics,brands,markets,technologies,route,filterRoute,selectRows,out,brandCard,brandView,view});
 })(typeof window!=='undefined'?window:globalThis);

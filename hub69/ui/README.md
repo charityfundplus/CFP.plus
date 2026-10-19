@@ -1,5 +1,67 @@
 # HUB 69 • Codex 2 • Giao diện P0
 
+## HSTDN Việt Nam mẫu → Hoa Kỳ → toàn cầu • 19/10/2026
+
+ACK chỉ đạo [PR #157, comment 6276298491](https://github.com/charityfundplus/CFP.plus/pull/157#issuecomment-6276298491).
+Nguồn review duy nhất cho gói mới là [hồ sơ Notion hiện hữu](https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552),
+last edit `2026-10-19T20:08:51.750Z`. Tuyên bố VERIFIED trong bàn giao GrokSI
+chưa phải kết luận kiểm chứng độc lập. Không sao chép thành hồ sơ Registry.
+
+Tiếp tục chính nhánh `codex2/integration-readiness` / Draft PR #141 trên HEAD
+`47be3310421c14e6de413189f2aad0839d18e78b`. Có một presenter dùng chung
+Website/App web, dùng nguyên Design Tokens 1.0.0 và component hiện hữu:
+
+- `#hstdn/vn/starlink`: mẫu Việt Nam với thông tin bàn giao về Starlink được
+  gắn nguồn và trạng thái theo trường; tên pháp lý/số giấy phép chưa VERIFIED.
+- Đổi chủ thể trong select: Starlink, SpaceX, Tesla/Optimus, xAI/Grok, X,
+  Neuralink, The Boring Company/Loop. Đây là danh sách chủ đề của nguồn,
+  không xác lập các chủ thể có cùng loại, Parent hoặc chủ sở hữu.
+- `#hstdn/us/<subject>` và `#hstdn/global/<subject>` tái sử dụng cùng khung;
+  đổi thị trường giữ chủ đề đang chọn nhưng không mang tên pháp lý/giấy phép
+  Việt Nam sang Hoa Kỳ hoặc quốc gia khác. `global` là ngữ cảnh UI, không là
+  Canonical ID hoặc tuyên bố phủ thị trường.
+- Mỗi trường có giá trị được bàn giao, nguồn/loại nguồn, ngày nguồn, ngày
+  sự kiện nếu có, trích đoạn, nguồn gốc còn thiếu, trạng thái và bước kiểm chứng.
+  BLOCKED có thể áp dụng riêng giấy phép/sở hữu trong khi trường tên tham
+  chiếu vẫn NOT VERIFIED. Không có verdict VERIFIED cho toàn hồ sơ.
+- Nhãn VERIFIED có chú giải nhưng **0 trường được nâng VERIFIED**. URL,
+  boolean, nhãn của nguồn hoặc chuỗi receipt tự nhập không tạo thẩm quyền.
+  Receipt độc lập/mapping chưa có được để chờ; Codex 2 không thay Claude.
+- API HTTP do nguồn đề xuất chỉ là văn bản; không tạo link hoặc gọi endpoint.
+  Pháp nhân, thương hiệu, segment, sản phẩm và sở hữu doanh nghiệp tách khỏi
+  ID/Parent/DID/Canonical/country ID; toàn bộ binding mới vẫn null.
+
+### Schema đã đọc và điểm nối còn BLOCKED
+
+Đã đọc [bàn giao schema–Registry của Codex 1](https://github.com/charityfundplus/CFP.plus/pull/157#issuecomment-6276360601).
+Đây là proposal review, chưa phải contract mới được phê duyệt. Đối chiếu
+OpenAPI/API_CONTRACT tại HEAD PR157 mới
+`383ffcf5fa3a229d442393a86fa189e52bc09289`: Evidence hiện có
+`additionalProperties:false`; không đưa field/date/excerpt/status mới vào
+response hiện hành hoặc giả `verifiedAt`. Các enum type giữ nguyên.
+Không chạy review/test lại candidate LOW/P3 trong lượt phát triển giao diện này.
+
+| Nguồn tại full SHA | Điều đã kiểm tra | Cách tái sử dụng / phụ thuộc |
+|---|---|---|
+| UI `47be3310421c14e6de413189f2aad0839d18e78b`, `profile.schema.json` | Projection bắt buộc numeric `id`, `name`, `type`; chưa có field-level evidence contract | Giữ nguyên schema; review notes không được nhập thành Registry record có ID tự tạo |
+| Core `06f386b1ba52358779cec6bc26c2d88f6a33664a`, `public/registry-client.js` | Same-origin read client, projection `hstdn:null`; endpoint HSTDN OpenAI riêng | Giữ client/endpoint và fail-closed hiện hữu; chưa nối gói mới vào Core |
+| Cùng Core SHA, `docs/p0-20261016/openai-profile.json` | Mẫu `hstdn-reference` giữ ID/Parent/DID/Canonical null, nguồn và blocker riêng | Tái sử dụng nguyên tắc reference-only, không coi file snapshot là generic API schema |
+| Notion snapshot nêu trên | Đề xuất trường JSON-like chưa phải contract được phê duyệt | Codex 1 cần xác nhận mapping legal_entity/brand/segment/product và receipt theo trường trước nối API |
+
+`public/hstdn-review.js` là presenter và ghi chú nguồn phục vụ review, không là
+hợp đồng API, Registry hoặc nguồn thẩm quyền mới. Tài liệu bàn giao được cập
+nhật ngay trong README này và comment ACK hiện hữu, không mở hồ sơ cạnh tranh.
+Receipt/log mới: `evidence/HSTDN-REVIEW-20261019.json` và `.tap`; logs lượt P0
+trước giữ nguyên. Chạy `node build.mjs`, mở `HUB69-review.html` hoặc dùng cùng
+asset trong `dist/` và `core-dist/` sau mount được duyệt.
+
+Phần presenter có thể review offline. **BLOCKED** cho nối API mới (Codex 1
+xác nhận contract/mapping), dữ liệu VERIFIED (nguồn gốc + reviewer độc lập),
+browser responsive/Safari iPhone thật (browser hỗ trợ + staging riêng tư,
+mount, tài khoản thử và device Evidence). Native App binary chưa được build.
+Theo Sites workflow, thiếu `$control-browser` phải bỏ qua browser QA, không
+dựng một đường điều khiển khác. HOLD ACTIVATION • PRODUCTION NO-GO.
+
 ## Website/App P0 • 19/10/2026
 
 **ACK cả hai P0** từ [Issue #156](https://github.com/charityfundplus/CFP.plus/issues/156#issuecomment-6271840896)

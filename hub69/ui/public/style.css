@@ -36,6 +36,23 @@
 .catalog-meta dt{font-size:12px;color:var(--muted)}
 .catalog-meta dd{font-size:14px;margin:2px 0 0}
 .catalog-title{margin-top:20px!important}
+.evidence-review{margin:22px 0;padding:24px;overflow-wrap:anywhere}
+.evidence-review>h2{font-size:26px;line-height:1.35;margin:12px 0}
+.evidence-review>p{font-size:14px}
+.field-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:20px 0}
+.evidence-field{min-width:0;border:1px solid var(--line);border-radius:10px;padding:18px;background:var(--paper)}
+.evidence-field h3{font-size:16px;line-height:1.5;margin:0}
+.field-value{font-size:15px;overflow-wrap:anywhere}
+.field-evidence{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;margin:16px 0 0}
+.field-evidence>div{min-width:0;border-top:1px solid var(--line);padding-top:10px}
+.field-evidence dt{font-size:12px;color:var(--muted)}
+.field-evidence dd{font-size:14px;margin:5px 0 0;overflow-wrap:anywhere}
+.field-evidence a{display:inline-block;min-height:44px;padding:8px 0;text-decoration:underline;text-underline-offset:4px}
+.field-evidence q{quotes:"“" "”"}
+.field-legend{padding:14px 0;border-block:1px solid var(--line)}
+.field-legend summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-size:14px;font-weight:600}
+.field-legend p{font-size:14px}
+#review-subject{width:100%;max-width:100%;min-height:44px;padding:10px 12px;font-size:16px;background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:7px}
 .catalog-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0}
 .catalog-view .btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;min-width:0;max-width:100%;font-size:14px;white-space:normal;overflow-wrap:anywhere}
 .catalog-view .profile-actions{align-items:center}
@@ -49,6 +66,8 @@
   .sidebar nav{grid-template-columns:repeat(4,minmax(0,1fr))}
   .sidebar nav a{min-height:44px;flex-wrap:wrap;gap:3px;font-size:11px}
   .catalog-grid{grid-template-columns:minmax(0,1fr);gap:14px}
+  .field-grid{grid-template-columns:minmax(0,1fr)}
+  .evidence-review{padding:18px}
   .catalog-card{padding:20px}
   .catalog-crumbs a{flex:0 1 auto;font-size:12px}
   .catalog-view .profile-dl{grid-template-columns:minmax(0,1fr)}

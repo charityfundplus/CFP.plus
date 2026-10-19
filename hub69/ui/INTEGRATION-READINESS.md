@@ -1,5 +1,16 @@
 # Codex 2 • Website & Preview • Integration readiness
 
+## Tiếp nhận gói HSTDN US–VN • 19/10/2026
+
+Tiếp tục từ UI `47be3310421c14e6de413189f2aad0839d18e78b`, không thay Core
+`06f386b1ba52358779cec6bc26c2d88f6a33664a`. Presenter review theo trường nằm
+trong cùng view HSTDN: `#hstdn/vn/starlink`, đổi chủ đề/thị trường theo README.
+Không đưa review notes có binding null vào projection Registry bắt buộc ID.
+Codex 1 chưa xác nhận generic HSTDN field/receipt contract cho gói mới; nối API
+mới BLOCKED. Claude/reviewer độc lập xác minh nguồn, không lấy nhãn GrokSI
+làm verdict. Receipt/log mới: `evidence/HSTDN-REVIEW-20261019.*`.
+Giữ các giới hạn browser/HTTPS/Safari bên dưới. HOLD ACTIVATION • PRODUCTION NO-GO.
+
 ## Bổ sung Website/App P0 • 19/10/2026
 
 Hai P0 đã ACK trong phiên triển khai: HSTDN/danh mục sàn/8682 TMTC và
