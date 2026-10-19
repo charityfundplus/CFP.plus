@@ -64,6 +64,32 @@ dựng một đường điều khiển khác. HOLD ACTIVATION • PRODUCTION NO-
 
 ## Website/App P0 • 19/10/2026
 
+### Tiếp nhận Evidence theo trường • candidate chưa publish
+
+Code được kiểm thử: `7752326b66f205b1bf9f31bae1560fccff737b23`, tiếp nối
+`7a3061ee5b9f0bac59cb680791ce9ecc69abba86`. Presenter hiện hữu bổ sung phần
+**Trường → Nguồn đã đọc → Khớp / Sai lệch / Chưa xác minh → Cách xử lý**.
+Kết quả đọc nguồn của Codex khác với VERIFIED độc lập; chưa có receipt Claude.
+Giữ riêng ngày bàn giao, ngày công bố/cập nhật nguồn, ngày đọc và ngày sự kiện.
+Không có ngày nguồn hoặc trích đoạn thì để thiếu; không dùng ngày đọc thay thế.
+
+Starlink VN giữ cả ngày giấy phép nguồn bàn giao (03/03/2026) và thông báo chính
+quyền (13/02/2026); chưa chọn giá trị thay thế trước bản gốc. Pháp nhân Grok,
+tên thương mại, bên bán bundle, thuê bao hiện hữu, phí API, Parent pháp lý và
+Parent CFP+ có trường/ghi chú riêng. Megapack giữ điều kiện của chú thích đã
+đọc, chờ claim/hợp đồng gốc. Trường nguồn không đọc được bị chặn riêng.
+
+Ma trận, URL, ngày và giới hạn xem property
+`fieldComparisonFollowup20261019` trong receipt hiện hữu
+`evidence/HSTDN-REVIEW-20261019.json`. Lịch sử 73-test/log phía trước giữ nguyên.
+Lượt mới chạy **18/18** kiểm thử ảnh hưởng (12 kế thừa + 6 mới), 0 fail/skip;
+không chạy lại các suite không đổi. `node build.mjs` PASS, vẫn 26 bản ghi, blob
+Registry không đổi. Hai file code/test đã đọc lại remote khớp byte trước bàn giao.
+Không có browser/HTTPS/iPhone/native App/CI hoặc kiểm thử API thật trong lượt này.
+Schema/API/Registry/binding chưa sửa; mọi trạng thái VERIFIED vẫn bằng 0.
+
+**HOLD ACTIVATION • PRODUCTION NO-GO.** Nhánh Draft hiện hữu; chưa publish.
+
 **ACK cả hai P0** từ [Issue #156](https://github.com/charityfundplus/CFP.plus/issues/156#issuecomment-6271840896)
 và [Evidence Inbox hiện hữu](https://app.notion.com/p/3fecaac9a5578117a3a6c3d079f70aff?pvs=204).
 Tiếp tục nhánh `codex2/integration-readiness`, Draft PR #141, trên baseline

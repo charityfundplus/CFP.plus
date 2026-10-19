@@ -573,5 +573,345 @@
       "changedFromBaseline": true
     }
   ],
-  "hashScope": "Receipt excludes itself; evidence commit follows sourceCommit without code changes. Older receipts/logs remain immutable."
+  "hashScope": "Receipt excludes itself; evidence commit follows sourceCommit without code changes. Older receipts/logs remain immutable.",
+  "fieldComparisonFollowup20261019": {
+    "date": "2026-10-19",
+    "readAtUTC": "2026-10-19T22:50:49.993Z",
+    "reviewer": "Codex current session; not a Claude receipt",
+    "sourceCommit": "7752326b66f205b1bf9f31bae1560fccff737b23",
+    "parentCommit": "7a3061ee5b9f0bac59cb680791ce9ecc69abba86",
+    "reviewedContractCommit": "383ffcf5fa3a229d442393a86fa189e52bc09289",
+    "originalPackage": "Existing Notion summary read; complete forwarded GrokSI evidence/field URLs were not found in accessible sources.",
+    "independentAcceptance": false,
+    "providerVerifiedAccepted": false,
+    "verifiedFields": 0,
+    "identityBindingModified": false,
+    "registryModified": false,
+    "apiContractModified": false,
+    "activationAllowed": false,
+    "published": false,
+    "tests": {
+      "command": "node --test tests/hstdn-review.test.mjs",
+      "execution": "local Node/VM/source only",
+      "tests": 18,
+      "pass": 18,
+      "fail": 0,
+      "skip": 0,
+      "durationMs": 168.736541,
+      "newTests": 6,
+      "existingAffectedTests": 12,
+      "unaffectedSuitesRerun": false,
+      "rawLog": "Structured summary transcribed from the actual tool output; historical 73-test TAP remains unchanged."
+    },
+    "build": {
+      "command": "node build.mjs",
+      "exitCode": 0,
+      "records": 26,
+      "registryBlobSHA": "1f18068d66379ce90bb079dc56c77b4c4d66dcdf",
+      "registrySHA256": "a63c5e0b8af157b0938014d51da94ea924b9721acd0a11a9107f5deea3c6f507",
+      "published": false
+    },
+    "codeHashes": [
+      {
+        "path": "hub69/ui/public/hstdn-review.js",
+        "sha256": "d5ddf35dcbb63dcaff90e970a328bfa6fb31fb47d1d2a360d020df79c94b918c"
+      },
+      {
+        "path": "hub69/ui/tests/hstdn-review.test.mjs",
+        "sha256": "642db334ed3524fd701a051096cf254a8c226263cab02b0c8ecf304fbfe76974"
+      }
+    ],
+    "sourceCapture": "URLs, publication/update dates where provided, read time and bounded excerpts; no immutable source-page hashes or legal-register readback claimed.",
+    "sourceAccessFailures": [
+      {
+        "url": "https://starlink.com/vn/service-plans",
+        "result": "Page extraction returned no usable price content"
+      },
+      {
+        "url": "https://www.tesla.com/support/megapack",
+        "result": "Tool reported URL inaccessible"
+      }
+    ],
+    "workflowInspection": "Three workflow files read at parent SHA; two dispatch-only; one paths-scoped CTTTC CI. No deployment workflow or matching automatic trigger observed for this delta. No workflow dispatch performed.",
+    "matrix": [
+      {
+        "field": "starlink.vn.legal_name",
+        "readSource": "Notion + thông báo chính quyền 23/06/2026",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552",
+          "https://cattien2.lamdong.gov.vn/chi-tiet-tin-tuc/?param=tuan-thu-quy-dinh-phap-luat-khi-su-dung-thiet-bi-dau-cuoi-thu-phat-song-ve-tinh-phi-dia-tinh-tai-viet-nam"
+        ],
+        "result": "Khớp",
+        "handling": "Tên khớp thông báo; chưa đọc đăng ký doanh nghiệp gốc. Giữ claim, chưa binding."
+      },
+      {
+        "field": "starlink.vn.tax_id",
+        "readSource": "Notion: 0111212828",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "GrokSI bổ sung URL/trích lục thuế hoặc đăng ký gốc đúng trường."
+      },
+      {
+        "field": "starlink.vn.registration_date",
+        "readSource": "Notion: 10/09/2025",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Cần giấy đăng ký gốc, không dùng ngày bàn giao làm ngày thành lập."
+      },
+      {
+        "field": "starlink.vn.registered_address",
+        "readSource": "Notion: 49 Hai Bà Trưng, Hà Nội",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Cần đăng ký gốc và thời điểm hiệu lực địa chỉ."
+      },
+      {
+        "field": "starlink.vn.charter_capital",
+        "readSource": "Notion: 30 tỷ VND",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Cần bản đăng ký/thay đổi vốn có hiệu lực."
+      },
+      {
+        "field": "starlink.vn.legal_parent",
+        "readSource": "Notion: Starlink Holdings Netherlands B.V.",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Cần chứng cứ sở hữu gốc; không chép vào Parent CFP+."
+      },
+      {
+        "field": "starlink.vn.legal_representative",
+        "readSource": "Notion: Lauren Ashley Dreyer",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Cần trích lục gốc, chức danh và ngày hiệu lực."
+      },
+      {
+        "field": "starlink.vn.general_director",
+        "readSource": "Notion: Đỗ Bá Thích",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Giữ riêng giám đốc và người đại diện pháp luật; cần nguồn gốc."
+      },
+      {
+        "field": "starlink.vn.license_number",
+        "readSource": "Notion + thông báo chính quyền",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552",
+          "https://cattien2.lamdong.gov.vn/chi-tiet-tin-tuc/?param=tuan-thu-quy-dinh-phap-luat-khi-su-dung-thiet-bi-dau-cuoi-thu-phat-song-ve-tinh-phi-dia-tinh-tai-viet-nam"
+        ],
+        "result": "Khớp",
+        "handling": "57/GP-CVT khớp thông báo; chưa xác nhận bản giấy phép và phạm vi."
+      },
+      {
+        "field": "starlink.vn.license_issue_date",
+        "readSource": "Notion 03/03/2026; thông báo 13/02/2026",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552",
+          "https://cattien2.lamdong.gov.vn/chi-tiet-tin-tuc/?param=tuan-thu-quy-dinh-phap-luat-khi-su-dung-thiet-bi-dau-cuoi-thu-phat-song-ve-tinh-phi-dia-tinh-tai-viet-nam"
+        ],
+        "result": "Sai lệch",
+        "handling": "Giữ cả hai giá trị; chặn riêng trường này, yêu cầu bản gốc từ cơ quan cấp."
+      },
+      {
+        "field": "starlink.vn.license_issuer",
+        "readSource": "Thông báo chính quyền",
+        "sourceURLs": [
+          "https://cattien2.lamdong.gov.vn/chi-tiet-tin-tuc/?param=tuan-thu-quy-dinh-phap-luat-khi-su-dung-thiet-bi-dau-cuoi-thu-phat-song-ve-tinh-phi-dia-tinh-tai-viet-nam"
+        ],
+        "result": "Khớp",
+        "handling": "Thông báo nêu Cục Viễn thông thuộc Bộ KH&CN; vẫn chờ bản gốc giấy phép."
+      },
+      {
+        "field": "starlink.vn.gateway_count",
+        "readSource": "Notion: 4 gateway",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Cần quyết định/phụ lục xác định số trạm, địa điểm và trạng thái vận hành."
+      },
+      {
+        "field": "starlink.vn.pilot_cap",
+        "readSource": "Notion: tối đa 600.000 terminal đến 2030",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Cần văn bản gốc làm rõ thuê bao/thiết bị và thời hạn; không suy đang cung ứng."
+      },
+      {
+        "field": "starlink.vn.price",
+        "readSource": "Trang kế hoạch Starlink Việt Nam (không trích xuất được giá)",
+        "sourceURLs": [
+          "https://starlink.com/vn/service-plans"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Chỉ chặn giá/khả năng đăng ký; cần giá theo địa chỉ, gói, thuế, thiết bị và ngày."
+      },
+      {
+        "field": "grok.provider_legal_name",
+        "readSource": "Notion + Consumer Terms, cập nhật 12/10/2026",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552",
+          "https://x.ai/legal/terms-of-service"
+        ],
+        "result": "Khớp",
+        "handling": "Điều khoản tự nêu SpaceXAI LLC; chưa thay legal_name/Registry hoặc chứng nhận đăng ký pháp nhân."
+      },
+      {
+        "field": "grok.provider_trade_name",
+        "readSource": "Notion + Consumer Terms",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552",
+          "https://x.ai/legal/terms-of-service"
+        ],
+        "result": "Khớp",
+        "handling": "SpaceXSI là tên gọi trong điều khoản; tách khỏi sản phẩm Grok và thương hiệu xAI trong Registry."
+      },
+      {
+        "field": "grok.products",
+        "readSource": "Consumer Terms",
+        "sourceURLs": [
+          "https://x.ai/legal/terms-of-service"
+        ],
+        "result": "Khớp",
+        "handling": "Grok/Grokipedia được liệt kê là dịch vụ/sản phẩm; không coi là pháp nhân."
+      },
+      {
+        "field": "grok.legal_parent",
+        "readSource": "Notion + Consumer Terms (không đủ chứng cứ sở hữu)",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552",
+          "https://x.ai/legal/terms-of-service"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Không suy Parent pháp lý từ tên SpaceXAI/SpaceXSI hoặc việc dùng chung điều khoản."
+      },
+      {
+        "field": "grok.cfp_parent",
+        "readSource": "Registry tại SHA 383ffcf5fa3a229d442393a86fa189e52bc09289",
+        "sourceURLs": [
+          "https://github.com/charityfundplus/CFP.plus/blob/383ffcf5fa3a229d442393a86fa189e52bc09289/registry/ai-entity-registry.json"
+        ],
+        "result": "Khớp",
+        "handling": "Grok 691191 có parent_id 69119 (xAI). Chỉ quan sát nguồn mã; giữ nguyên và không cấp HSTDN binding."
+      },
+      {
+        "field": "grok.subscription_seller",
+        "readSource": "Bundled Subscription Terms, cập nhật 07/10/2026",
+        "sourceURLs": [
+          "https://x.ai/legal/bundled-subscription-terms"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Nguồn mới nêu X Subscription Corp là bên bán bundle; thiếu claim tương ứng trong gói gốc để so. Tách khỏi bên cung cấp Grok."
+      },
+      {
+        "field": "grok.subscription_prices",
+        "readSource": "Bảng x.ai/pricing đọc 19/10/2026",
+        "sourceURLs": [
+          "https://x.ai/pricing"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Nguồn mới: USD/tháng Free 0, Plus 8, Premium 30, Super 100, Ultra 200; chưa gồm thuế/phí. Thiếu claim giá gốc; không là báo giá theo quốc gia."
+      },
+      {
+        "field": "grok.legacy_subscriptions",
+        "readSource": "Tài liệu gói thuê bao, cập nhật 11/10/2026",
+        "sourceURLs": [
+          "https://docs.x.ai/x-subscription/pricing"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Nguồn nói gói SuperGrok hiện hữu tiếp tục, đổi gói tùy chọn. Cần Evidence đúng gói; không tự thay bằng gói gộp."
+      },
+      {
+        "field": "grok.api_endpoint",
+        "readSource": "Notion HTTP; Quickstart HTTPS cập nhật 10/10/2026",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552",
+          "https://docs.x.ai/developers/quickstart"
+        ],
+        "result": "Sai lệch",
+        "handling": "Tài liệu dùng https://api.x.ai/v1. Lưu đề xuất trong candidate; chưa gọi API/kích hoạt adapter."
+      },
+      {
+        "field": "grok.api_pricing",
+        "readSource": "Tài liệu API Pricing, cập nhật 10/10/2026",
+        "sourceURLs": [
+          "https://docs.x.ai/developers/pricing",
+          "https://x.ai/pricing"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Usage API tính riêng với thuê bao. Cần claim gốc và model/ngữ cảnh/token/endpoint/công cụ/ngày; không dùng một giá chung."
+      },
+      {
+        "field": "megapack.availability_conditions",
+        "readSource": "Trang Megapack; chỉ đọc được chú thích",
+        "sourceURLs": [
+          "https://www.tesla.com/megapack"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Nguồn giới hạn phép đo vào dự án ký Availability Guarantee, vận hành >30 ngày, trung bình 12 tháng trọng số GWh. Thiếu claim gốc; không suy bảo đảm chung."
+      },
+      {
+        "field": "megapack.commercial_terms",
+        "readSource": "Notion thiếu claim; trang Support không đọc được",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552",
+          "https://www.tesla.com/support/megapack"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "GrokSI bổ sung báo giá/hợp đồng: model/cấu hình, nơi giao, thuế, lắp đặt, bảo hành, phạm vi và ngày. Chỉ chặn các trường đó."
+      },
+      {
+        "field": "spacex.ownership_and_voting",
+        "readSource": "Notion: số liệu GrokSI chuyển tiếp",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Còn thiếu accession/URL filing, lớp cổ phần, mẫu số và ngày hiệu lực; chưa đọc filing trong lượt này."
+      },
+      {
+        "field": "optimus.commercial_availability",
+        "readSource": "Notion: kế hoạch sản xuất/bán ngoài",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Chưa đọc nguồn Tesla IR xác nhận số lượng/lịch bán; không niêm yết hàng sẵn có."
+      },
+      {
+        "field": "loop.project_status",
+        "readSource": "Notion: Vegas/Nashville/Dubai",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Cần Evidence riêng theo dự án/ngày; chưa kiểm nguồn mới trong lượt này."
+      }
+    ],
+    "remaining": [
+      "Claude independent source/quote receipts",
+      "Original license and corporate-register evidence",
+      "Missing complete GrokSI package/claims and Megapack project contract",
+      "Approved field-level API mapping",
+      "Browser, private HTTPS, iPhone Safari, native App not tested"
+    ],
+    "boundary": "HOLD ACTIVATION • PRODUCTION NO-GO"
+  }
 }
