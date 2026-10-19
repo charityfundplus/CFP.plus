@@ -69,4 +69,40 @@ class FindingTests(unittest.TestCase):
  def test_public_page_schema_requires_approval_pin(self):
   p=self.page();del p['approvalSetRevision']
   with self.assertRaises(ValidationError):validate('PublishedPage',p)
+class LowApprovalTypeTests(unittest.TestCase):
+ def setUp(self):
+  self.r,self.a=fixture();self.now=datetime(2026,10,19,tzinfo=timezone.utc)
+ def project(self):return project(self.r,self.a,trusted_revision=self.r['sourceRevision'],now=self.now)
+ def page(self,**kw):return published_page([self.r],{self.r['id']:self.a},trusted_revision=self.r['sourceRevision'],now=self.now,**kw)
+ def test_expiry_type_and_parse_failures_are_valueerror(self):
+  for value in [None,1,True,[],{},b'2026-10-20T00:00:00Z','invalid-date']:
+   with self.subTest(value=value):
+    self.a['expiresAt']=value
+    with self.assertRaisesRegex(ValueError,'APPROVAL_EXPIRY_INVALID'):self.project()
+  del self.a['expiresAt']
+  with self.assertRaisesRegex(ValueError,'APPROVAL_EXPIRY_INVALID'):self.project()
+ def test_fields_type_failures_are_valueerror(self):
+  for value in [None,1,True,'id',{},('id',),['id',1],['id',None]]:
+   with self.subTest(value=value):
+    self.a['fields']=value
+    with self.assertRaisesRegex(ValueError,'APPROVAL_FIELDS_INVALID'):self.project()
+  del self.a['fields']
+  with self.assertRaisesRegex(ValueError,'APPROVAL_FIELDS_INVALID'):self.project()
+ def test_malformed_receipts_do_not_abort_mixed_page(self):
+  good=copy.deepcopy(self.r);good['id']='00069';good['canonicalLink']='https://cfp.plus/00069'
+  good_approval=copy.deepcopy(self.a);good_approval['recordHash']=digest(good)
+  for field,value in [('expiresAt',None),('expiresAt',1),('fields',None),('fields',['id',1])]:
+   with self.subTest(field=field,value=value):
+    bad=copy.deepcopy(self.a);bad[field]=value
+    page=published_page([self.r,good],{self.r['id']:bad,good['id']:good_approval},trusted_revision=self.r['sourceRevision'],now=self.now)
+    validate('PublishedPage',page);self.assertEqual(page['total'],1);self.assertEqual([r['id'] for r in page['records']],['00069'])
+ def test_malformed_only_receipt_is_excluded(self):
+  self.a['expiresAt']=None;p=self.page();self.assertEqual(p['total'],0);self.assertEqual(p['records'],[])
+ def test_receipt_becomes_malformed_rejects_continuation(self):
+  for field,value in [('expiresAt',None),('fields',['id',1])]:
+   with self.subTest(field=field):
+    self.r,self.a=fixture();first=self.page();self.a[field]=value
+    with self.assertRaisesRegex(ValueError,'PUBLICATION_SNAPSHOT_CHANGED'):
+     self.page(offset=1,revision=first['sourceRevision'],approval_revision=first['approvalSetRevision'])
+
 if __name__=='__main__':unittest.main(verbosity=2)

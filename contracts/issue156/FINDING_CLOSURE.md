@@ -15,6 +15,31 @@ hash is embedded in its own contents.
 | Vietnam Parent / coverage | HIGH/Governance | Registry custodian + Human Governance; cross-check requested | GOV packet, 6984.md, HUB69.md, country index | authoritative explicit Parent/chapter relationship and source disposition; no guessed edge | OPEN/BLOCKED |
 | Existing/proposed errors | LOW/P3 | Codex1; Codex2 review requested | operation-specific OpenAPI404/409/503 descriptions | existing Core source mismatch described503, ID conflict409; proposed approval pin mismatch409; consumer review | DOCUMENTATION CORRECTED / RUNTIME NOT RETESTED |
 
+## LOW/P3 malformed receipt — remediation candidate
+
+Base before this fix: `ac39c1db344629f96aadb549451b5a30108afc37`.
+Original repro/source: `35cb6b00e7876f12f35c4cfa3ab558bdd800ebe6`.
+Owner: Codex 1. Verdict: FIXED IN OFFLINE CANDIDATE / REVIEW PENDING.
+
+`project()` now checks expiresAt is a string before parsing and fields is a
+list of strings before sorting. Missing/wrong-type/invalid expiry normalizes to
+ValueError(APPROVAL_EXPIRY_INVALID); missing/wrong-type fields normalizes to
+ValueError(APPROVAL_FIELDS_INVALID). A malformed receipt is excluded by the
+existing page catch, so healthy authorized records still return. If an effective
+approval becomes malformed during pagination, its changed approval-set pin
+rejects continuation; no fallback to stale approval.
+
+Closure criteria: targeted regressions demonstrate ValueError rather than
+AttributeError/TypeError, mixed-page survival with unauthorized row excluded,
+empty-page behavior, continuation conflict and unchanged valid approved flow;
+review exact published fix SHA. This is not live endpoint acceptance.
+
+7/7 focused tests PASS: five new low-type regression methods and two affected
+valid-flow/pagination methods. Full suites, inventory and historical logs were
+not rerun/replaced. Exact command and new log are in manifest.lowP3Remediation.
+Existing inventory/semantic receipts are preserved as historical evidence.
+No new source/doc/log file is added. HIGH Governance and runtime remain BLOCKED.
+
 ## Validation scope
 
 Command:

@@ -14,15 +14,15 @@
     "REGISTRY_MAPPING.md": "b4b7c5b21d1ca20df1a88f159ba320d57f1a021a39c296dc678f47b75fabe38a",
     "adapters.json": "a1d5fe4049a6dc503c0cb7f46a077fc71255732a4e308fc1d1742313b4787e5b",
     "openapi.json": "953fe716c858397697a3d7c0e1602d2b4aef107a1a25f1fecda5e7a71e8a2155",
-    "publication_policy.py": "c79a7d26158de168e9add37e935ab901fc33521c30fa8a42e57591e7db6bfb7e",
+    "publication_policy.py": "89bcc4e25743cf65b87cc72a0b6ea89321ad8ef28090cc908155abbf01c5cc74",
     "requirements-test.txt": "756cc9e506ae4ee1a6f6c0507088b5cfc0dc8ba350fb2d2d46f1ffa72033adb6",
     "source-observations.json": "e7039a1260198981abf37ccd4f27facdc457fc9aba1a1af674b875fcf1312a19",
     "test-results.txt": "f33647f776f87f9cb8df79a50815815f519bd8db20ca2481ee4f95f5167093e3",
     "test_contract.py": "b1df149e1843e7d9eabf9c90e07343873f5874d7ca56b7d2bde74013267b3746",
     "test_sources.py": "20b66e5bcd177e69613b2d96ae858789a70bf0455f1af4936970e74b3ea451bd",
-    "test_findings.py": "a0d13f06f4a2741096cba075d5c5b41c646bad9ec5d135ca6928f8b2ca7a40a8",
+    "test_findings.py": "6a2758053cfe883915dc1a95199e180203a3fe02de6150e543713809a15312c0",
     "findings-test-results.txt": "80ecdd7eca9ef3120f56ee1acc1001777f840b1535d415f3535fb2a640d86fb5",
-    "FINDING_CLOSURE.md": "af95594e66f7e860567c21e89e2544b373d2e5ffee5d21c55551f57efb1a3cd4",
+    "FINDING_CLOSURE.md": "3315fd363702d9b905e3ce2be5b2413ce13cb55bc74d58fd42b55470d6de4208",
     "GOVERNANCE_DECISION_PACKET.md": "86e64f98cccd2d49c3a2c608fbf86d3bf9dda942bda69770cee5d5411d9cf82e",
     "governance-source-evidence.json": "c5293188c9694fe714d981572b32c489a26f838bd62c1f1c28bc36be06e1347f"
   },
@@ -283,5 +283,20 @@
     "runtimeAcceptance": "NOT VERIFIED",
     "activationAllowed": false,
     "registryWrites": 0
+  },
+  "lowP3Remediation": {
+    "baseSHA": "ac39c1db344629f96aadb549451b5a30108afc37",
+    "originalReproSHA": "35cb6b00e7876f12f35c4cfa3ab558bdd800ebe6",
+    "scope": "Only malformed expiresAt/fields fix and targeted regressions; no inventory or full suite rerun; prior receipts preserved",
+    "command": "python -m unittest -v test_findings.LowApprovalTypeTests test_findings.FindingTests.test_approved_binding_and_capability_with_evidence_preserve_identity test_findings.FindingTests.test_first_page_and_continuation_share_both_pins",
+    "result": "7/7 PASS, 0 FAIL, offline only",
+    "log": "test_expiry_type_and_parse_failures_are_valueerror (test_findings.LowApprovalTypeTests.test_expiry_type_and_parse_failures_are_valueerror) ... ok\ntest_fields_type_failures_are_valueerror (test_findings.LowApprovalTypeTests.test_fields_type_failures_are_valueerror) ... ok\ntest_malformed_only_receipt_is_excluded (test_findings.LowApprovalTypeTests.test_malformed_only_receipt_is_excluded) ... ok\ntest_malformed_receipts_do_not_abort_mixed_page (test_findings.LowApprovalTypeTests.test_malformed_receipts_do_not_abort_mixed_page) ... ok\ntest_receipt_becomes_malformed_rejects_continuation (test_findings.LowApprovalTypeTests.test_receipt_becomes_malformed_rejects_continuation) ... ok\ntest_approved_binding_and_capability_with_evidence_preserve_identity (test_findings.FindingTests.test_approved_binding_and_capability_with_evidence_preserve_identity) ... ok\ntest_first_page_and_continuation_share_both_pins (test_findings.FindingTests.test_first_page_and_continuation_share_both_pins) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.013s\n\nOK\n",
+    "logSHA256": "94a192bbb2cf836fd854e520d81065c794845e6d96cbc77c27f2d12e1703ba25",
+    "owner": "Codex 1",
+    "closure": "Exact fix SHA review; malformed receipt ValueError, mixed-page survival, continuation consistency, valid flow unchanged",
+    "verdict": "FIXED OFFLINE CANDIDATE / REVIEW PENDING",
+    "externalIndependentAcceptance": "NOT VERIFIED",
+    "runtimeAcceptance": "BLOCKED",
+    "activationAllowed": false
   }
 }

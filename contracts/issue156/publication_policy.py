@@ -23,12 +23,18 @@ def project(record, approval, *, trusted_revision, now):
         raise ValueError('APPROVAL_SCOPE_DENIED')
     if not isinstance(approval.get('decisionURL'),str) or not approval['decisionURL'].startswith('https://'):
         raise ValueError('DECISION_EVIDENCE_REQUIRED')
-    try: expiry=datetime.fromisoformat(approval['expiresAt'].replace('Z','+00:00'))
-    except (ValueError,KeyError,TypeError): raise ValueError('APPROVAL_EXPIRY_INVALID')
+    expires_at = approval.get('expiresAt')
+    if not isinstance(expires_at, str):
+        raise ValueError('APPROVAL_EXPIRY_INVALID')
+    try: expiry=datetime.fromisoformat(expires_at.replace('Z','+00:00'))
+    except ValueError: raise ValueError('APPROVAL_EXPIRY_INVALID')
     if expiry.tzinfo is None or expiry<=now: raise ValueError('APPROVAL_EXPIRED')
     if approval.get('recordHash') != digest(record) or record.get('sourceRevision') != trusted_revision:
         raise ValueError('SOURCE_CHANGED')
-    if sorted(approval.get('fields',[])) != sorted(record): raise ValueError('FIELD_APPROVAL_REQUIRED')
+    fields = approval.get('fields')
+    if not isinstance(fields, list) or not all(isinstance(field, str) for field in fields):
+        raise ValueError('APPROVAL_FIELDS_INVALID')
+    if sorted(fields) != sorted(record): raise ValueError('FIELD_APPROVAL_REQUIRED')
     if record.get('status') != 'approved' or not record.get('evidence'):
         raise ValueError('PUBLICATION_NOT_APPROVED')
     if record.get('readOnly') is not True or record.get('activationAllowed') is not False:
