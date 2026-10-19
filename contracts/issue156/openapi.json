@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "CFP+ HUB 69 / Registry Siêu Bộ Đôi — review contract",
-    "version": "0.1.0-draft",
+    "version": "0.2.0-draft",
     "description": "Issue #156. HOLD ACTIVATION • PRODUCTION NO-GO. Existing Core read routes plus disabled publication design. No additional service or Canonical Registry. Publication approval and operational activation are separate. SI/AI/Robot bindings remain empty when unverified."
   },
   "servers": [
@@ -116,7 +116,7 @@
             }
           },
           "404": {
-            "description": "Unknown or unpublished ID (no existence disclosure)",
+            "description": "Unknown Registry ID; current authenticated source route has no unpublished-record filter.",
             "content": {
               "application/json": {
                 "schema": {
@@ -126,7 +126,7 @@
             }
           },
           "409": {
-            "description": "ID conflict or source revision changed",
+            "description": "Duplicate Registry ID conflict (REGISTRY_ID_CONFLICT).",
             "content": {
               "application/json": {
                 "schema": {
@@ -136,7 +136,7 @@
             }
           },
           "503": {
-            "description": "Source, approval or audit unavailable; no stale fallback",
+            "description": "Missing, modified or revision-mismatched source, or audit/storage unavailable; no stale fallback.",
             "content": {
               "application/json": {
                 "schema": {
@@ -206,7 +206,7 @@
             }
           },
           "404": {
-            "description": "Unknown or unpublished ID (no existence disclosure)",
+            "description": "Unknown Registry ID; current authenticated source route has no unpublished-record filter.",
             "content": {
               "application/json": {
                 "schema": {
@@ -216,7 +216,7 @@
             }
           },
           "409": {
-            "description": "ID conflict or source revision changed",
+            "description": "Duplicate Registry ID conflict (REGISTRY_ID_CONFLICT).",
             "content": {
               "application/json": {
                 "schema": {
@@ -226,7 +226,7 @@
             }
           },
           "503": {
-            "description": "Source, approval or audit unavailable; no stale fallback",
+            "description": "Missing, modified or revision-mismatched source, or audit/storage unavailable; no stale fallback.",
             "content": {
               "application/json": {
                 "schema": {
@@ -280,6 +280,15 @@
               "type": "string",
               "pattern": "^[a-f0-9]{40}$"
             }
+          },
+          {
+            "name": "approvalRevision",
+            "in": "query",
+            "description": "Approval-set SHA-256 from first page. Required together with revision for offset > 0. Recomputed from one atomic current authorization snapshot; changes return 409.",
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
           }
         ],
         "responses": {
@@ -324,7 +333,7 @@
             }
           },
           "409": {
-            "description": "ID conflict or source revision changed",
+            "description": "ID conflict, changed source revision or approval-set revision; discard pages and restart.",
             "content": {
               "application/json": {
                 "schema": {
@@ -365,7 +374,7 @@
           }
         },
         "x-implementation-status": "DESIGN_ONLY_DISABLED",
-        "description": "Reject duplicate and unknown query keys. Never accepts source paths, ACL, Parent, DID, Owner or approval input. Only externally approved exact public field projection. No Core cookie/token in Google Sites.",
+        "description": "Reject duplicate and unknown query keys. Never accepts source paths, ACL, Parent, DID, Owner or approval input. Only externally approved exact public field projection. No Core cookie/token in Google Sites. First page returns sourceRevision and approvalSetRevision; every continuation must send both as revision and approvalRevision. Never reuse offsets across changed approval/source sets; reject with 409. Authorization filtering precedes counts, search and paging.",
         "security": []
       }
     },
@@ -425,7 +434,7 @@
             }
           },
           "409": {
-            "description": "ID conflict or source revision changed",
+            "description": "ID conflict, changed source revision or approval-set revision; discard pages and restart.",
             "content": {
               "application/json": {
                 "schema": {
@@ -573,7 +582,8 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Evidence"
-            }
+            },
+            "minItems": 1
           }
         },
         "required": [
@@ -598,7 +608,8 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Evidence"
-            }
+            },
+            "minItems": 1
           }
         },
         "required": [
@@ -757,7 +768,7 @@
           "capability": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/Capability"
+              "$ref": "#/components/schemas/PublishedCapability"
             }
           },
           "owner": {
@@ -772,10 +783,7 @@
           },
           "status": {
             "enum": [
-              "discovered",
-              "pending_review",
-              "approved",
-              "active"
+              "approved"
             ]
           },
           "sourceStatus": {
@@ -785,7 +793,8 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Evidence"
-            }
+            },
+            "minItems": 1
           },
           "canonicalLink": {
             "type": "string",
@@ -860,6 +869,10 @@
           },
           "activationAllowed": {
             "const": false
+          },
+          "approvalSetRevision": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
           }
         },
         "required": [
@@ -870,7 +883,8 @@
           "sourceRevision",
           "readOnly",
           "registryWrites",
-          "activationAllowed"
+          "activationAllowed",
+          "approvalSetRevision"
         ]
       },
       "CoreRecord": {
@@ -1268,6 +1282,32 @@
           "record",
           "children",
           "descendants"
+        ]
+      },
+      "PublishedCapability": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "approved"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Evidence"
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "name",
+          "status",
+          "evidence"
         ]
       }
     }

@@ -9,13 +9,16 @@
 - `publication_policy.py`: offline policy reference; no signature verifier or endpoint.
 - `test-results.txt`, `manifest.json`: reproducible offline results/source hashes.
 - `source-observations.json`: pinned read-only evidence, not a runtime Registry.
+- `FINDING_CLOSURE.md`: per-finding SHA/Evidence/Severity/Owner/criteria/verdict.
+- `GOVERNANCE_DECISION_PACKET.md`: identity evidence requiring Human decision.
 
 Run from this directory with Python 3 and requirements-test.txt installed:
 
 ```sh
-python -m unittest -v test_contract test_sources
+python -m unittest -v test_findings
 ```
 
-25 offline checks PASS. No runtime HTTP, live adapter, device test, formal OpenAPI
+Historical 25-check baseline is pinned in test-results.txt; it was not rerun for this delta.
+Targeted remediation checks and scope are in findings-test-results.txt / FINDING_CLOSURE.md. No runtime HTTP, live adapter, device test, formal OpenAPI
 semantic lint or independent Gemini/Codex 2 acceptance claimed. All sample approval
 receipts use example.invalid and are synthetic, never Governance authority.

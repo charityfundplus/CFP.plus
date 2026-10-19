@@ -62,10 +62,13 @@ are empty arrays. Null is unknown, never a new allocation or a claim of no owner
 Each exposed field (including evidence URLs, Owner and Parent references) needs
 an explicit public disclosure decision. DID has no invented syntax: original
 Registry value only. Capabilities and binding references grant no execution rights.
-`status` is integration review lifecycle; `sourceStatus` preserves raw Registry
-status. `approved` publication does not activate operations. `active` requires
-separate actual output/readback evidence and Governance authorization; this
-handoff creates no active records.
+`status` in public records/capabilities is restricted to `approved` during HOLD;
+`sourceStatus` preserves raw Registry status. Internal Capability lifecycle remains
+separate. `active`, `discovered` and `pending_review` cannot appear as public status.
+Populated SI/AI/Robot bindings and software claims require nonempty Evidence;
+missing verified bindings stay empty. A later active schema requires separate
+review of actual output/readback and Governance authorization. This Draft grants
+no activation. An externally approved claim remains subject to all these checks.
 
 `publication_policy.py` is an OFFLINE reference helper, not a deployed endpoint,
 signature verifier or approval issuer. Caller MUST verify external Governance
@@ -77,6 +80,30 @@ JSON with ensure_ascii=False; this is not a cross-language canonicalization
 standard. Other languages must consume exact signed bytes or agree on a reviewed
 canonical encoding before integration. No unsigned checkbox is an approval.
 
+## Public pagination pin (disabled facade / offline model)
+
+`published_page()` models fail-closed publication filtering BEFORE search/counts/
+offsets. It accepts trusted source records and externally verified current approval
+receipts from ONE atomic authorization snapshot. The real caller must verify
+signatures, linked-field disclosure and revocation; caller-injected booleans never
+authorize public access. Malformed/unapproved claims are excluded; an inconsistent
+source or duplicate ID fails the request. Every outcome still requires runtime audit.
+
+The helper sorts public records by exact ID string. It derives approvalSetRevision
+as SHA-256 of the sorted public `{id, recordHash, approvalHash}` receipt list using
+the documented JSON digest encoding. It exposes only the pin, not approval content.
+Expired/revoked receipts are removed by current policy before pinning. Renewal of
+an effective decision changes approvalHash. The pin identifies the authorized
+public view, never counts/private contents. Query is applied after deriving the
+pin; repeat the same query/limit for continuation.
+
+Initial offset=0 may omit pins and returns both. For offset>0, clients must send
+`revision=sourceRevision` AND `approvalRevision=approvalSetRevision`. Missing pins
+map to 400; source/approval mismatch maps to 409 PUBLICATION_SNAPSHOT_CHANGED.
+Discard all partial pages and restart; never reuse old approval snapshots or offset.
+A long gap/expiry requires revalidation. Native real signature verification,
+revocation snapshot consistency and audit are still NOT IMPLEMENTED by this helper.
+
 ## Security review and acceptance requirements
 
 | Control | Inspected current behavior | Proposed / unresolved requirement |
@@ -85,7 +112,7 @@ canonical encoding before integration. No unsigned checkbox is an approval.
 | Authorization | `readRegistry` authenticates any provisioned account; Registry is a public-reference view, not pair grants | Record/field publication filter is NOT implemented by existing routes; do not expose Core directly to Google Sites |
 | Least privilege | Fixed source paths/revision binding, no HTTP-selected source path; no Registry writer in read model | Source mount read-only; adapter identity only approved-reference.read, no canonical write scopes; no role inheritance from capability/Owner |
 | Audit | Existing readRegistry appends response hash in service transaction; denies go through httpDenial | Public route must audit allow/deny with correlation, pseudonymous actor, operation, source/approval hashes and decision; log failure returns 503; retention/access/redaction and independent custody remain pending |
-| Idempotency/replay | GET reads do not mutate Registry, though audit grows | Bind retry/pagination to source+approval revision, discard mixed pages; signature/expiry/revocation on every request, no promotion on replay; no write idempotency endpoint |
+| Idempotency/replay | GET reads do not mutate Registry, though audit grows | Public first page returns sourceRevision + approvalSetRevision; continuation must send revision + approvalRevision. Re-evaluate current signatures/expiry/revocation, recompute approval-set pin from one atomic source/auth snapshot; mismatch returns 409, discard mixed pages. No promotion on replay or write idempotency endpoint |
 | Retry | No new transport added | Safe GET only, <=3 attempts, 5s each, total 20s, full jitter 1s/2s capped 5s; retry 429/502/503/504, validated connection resets/timeouts only; no auth/parse/conflict retry; long Retry-After ends this budget |
 | Credentials | No credential accessed by this change | Dedicated runtime secret bindings, never URLs/logs/query/browser/localStorage/artifacts; rotate/revoke per owner; TLS verification, fixed HTTPS origin+path allowlist, no redirects, no caller URL, block private/metadata destinations and DNS rebinding |
 | Browser access | Existing exact Host policy, no CORS; POST Origin check; no-store response, CSP frame-ancestors none | Preserve same-origin Core. Google Sites cannot embed existing P2 iframe/cookie flow; approved public projection fetch or generated link card only. CORS allowlisted approved origins, no credentials, no wildcard credentialed policy; preview tests pending |
@@ -146,4 +173,6 @@ requires a separate data-preserving reviewed plan; do not switch live pointers.
   origin/preview or authorized live readback; no device/Safari acceptance.
 - Full OpenAPI semantic validator unavailable locally (dependency installation
   blocked by proxy); JSON Schema Draft2020-12 and structural checks are separate.
-- Independent Gemini/Codex 2 review and Human Governance decision pending.
+- Independent external Gemini/Codex 2 review and Human Governance decision pending.
+- Medium remediation is candidate-only; see FINDING_CLOSURE.md for evidence, owners
+  and exact closure criteria. Same-session checks are not external acceptance.
