@@ -10,7 +10,7 @@
   "activationAllowed": false,
   "filesSHA256": {
     "API_CONTRACT.md": "e88acc86996b62fc0a601832fea1067f4faf30ca3dbfaf4533e9ec5f66bb7c79",
-    "README.md": "f7dd9b837a23e292bf058c8481398fb559eabbf10c88bcaa7b0d21657877aa5b",
+    "README.md": "2dd70e65f250afd2a13492a677efd9ad44cd200c24c589f11f23694b56642096",
     "REGISTRY_MAPPING.md": "b4b7c5b21d1ca20df1a88f159ba320d57f1a021a39c296dc678f47b75fabe38a",
     "adapters.json": "a1d5fe4049a6dc503c0cb7f46a077fc71255732a4e308fc1d1742313b4787e5b",
     "openapi.json": "953fe716c858397697a3d7c0e1602d2b4aef107a1a25f1fecda5e7a71e8a2155",
@@ -25,5 +25,240 @@
     "FINDING_CLOSURE.md": "af95594e66f7e860567c21e89e2544b373d2e5ffee5d21c55551f57efb1a3cd4",
     "GOVERNANCE_DECISION_PACKET.md": "86e64f98cccd2d49c3a2c608fbf86d3bf9dda942bda69770cee5d5411d9cf82e",
     "governance-source-evidence.json": "c5293188c9694fe714d981572b32c489a26f838bd62c1f1c28bc36be06e1347f"
+  },
+  "inventoryVerification": {
+    "scope": "Unified inventory only; README and manifest update; other 15 payload files unchanged. No runtime, Registry, IAM, deployment or adapter activation.",
+    "observedAtUTC": "2026-10-19T14:44:31.510604+00:00",
+    "inventorySourceSHA": "35cb6b00e7876f12f35c4cfa3ab558bdd800ebe6",
+    "baseCoreSHA": "06f386b1ba52358779cec6bc26c2d88f6a33664a",
+    "websitePR110SHA": "f3e2b77413939cd6c4365f8045dea2865f376313",
+    "uiPR141SHA": "8ca11c26fbe3ba76db75ae1aa62b204744233d85",
+    "reviewedSecurityBaselineSHA": "652dd252cf37a3a4991f8bc9abf52b99abce68d0",
+    "sourceAcquisition": "GitHub connector exact UTF-8 content at pinned refs; no git checkout; full inventory tree truncated=false; PR157 files list matches17 paths; no AGENTS.md in source tree",
+    "baselineBlobVerification": {
+      "result": "17/17 PASS",
+      "files": [
+        {
+          "path": "contracts/issue156/API_CONTRACT.md",
+          "sha": "2b4ea2545e07b0fad1b64f847e36593692d56fc6"
+        },
+        {
+          "path": "contracts/issue156/FINDING_CLOSURE.md",
+          "sha": "3068272ed25cc59d9408d30d509e30b375024a86"
+        },
+        {
+          "path": "contracts/issue156/GOVERNANCE_DECISION_PACKET.md",
+          "sha": "057427858178cafeff6bbfa1ee7c40cad1f90274"
+        },
+        {
+          "path": "contracts/issue156/README.md",
+          "sha": "41a871badc5922a598630ee47d312a27d669ca2c"
+        },
+        {
+          "path": "contracts/issue156/REGISTRY_MAPPING.md",
+          "sha": "c3dbdb8a3802dd229c3a4f74158b556bf1c23cbb"
+        },
+        {
+          "path": "contracts/issue156/adapters.json",
+          "sha": "547beb27387deda52f9758e1199d8a9b8ba428b1"
+        },
+        {
+          "path": "contracts/issue156/findings-test-results.txt",
+          "sha": "62438872c30bb9e5ae5615724109298cf9517b3a"
+        },
+        {
+          "path": "contracts/issue156/governance-source-evidence.json",
+          "sha": "51c4d72717fb15ae60fe25ad0abab1eba2ebc3e2"
+        },
+        {
+          "path": "contracts/issue156/manifest.json",
+          "sha": "00975c8c0b546a22bb0705a361345b08bea17109"
+        },
+        {
+          "path": "contracts/issue156/openapi.json",
+          "sha": "fe448894ce11c9616a2f74f53a921b7821465bc5"
+        },
+        {
+          "path": "contracts/issue156/publication_policy.py",
+          "sha": "caa4fc7a804984640f187345bd6d8bb6d4167e4f"
+        },
+        {
+          "path": "contracts/issue156/requirements-test.txt",
+          "sha": "3ee1ea1a4270a73d0a83859fefca415177450121"
+        },
+        {
+          "path": "contracts/issue156/source-observations.json",
+          "sha": "2958be70c7cb5680a378c6f6096b07c0e0d898da"
+        },
+        {
+          "path": "contracts/issue156/test-results.txt",
+          "sha": "c84f7729281ca8c090a5b945941fdc6e2e58228b"
+        },
+        {
+          "path": "contracts/issue156/test_contract.py",
+          "sha": "b6797e60a7f0ba789fc1d1b9b4b32c147463d2c4"
+        },
+        {
+          "path": "contracts/issue156/test_findings.py",
+          "sha": "9c84bca254fcaf44f8d8a04857cfbefdf4faffe2"
+        },
+        {
+          "path": "contracts/issue156/test_sources.py",
+          "sha": "048d77d3019ae53e62cbb34d9673f56488643fb8"
+        }
+      ]
+    },
+    "baselineManifestVerification": {
+      "result": "16/16 PASS",
+      "filesSHA256": {
+        "API_CONTRACT.md": "e88acc86996b62fc0a601832fea1067f4faf30ca3dbfaf4533e9ec5f66bb7c79",
+        "README.md": "f7dd9b837a23e292bf058c8481398fb559eabbf10c88bcaa7b0d21657877aa5b",
+        "REGISTRY_MAPPING.md": "b4b7c5b21d1ca20df1a88f159ba320d57f1a021a39c296dc678f47b75fabe38a",
+        "adapters.json": "a1d5fe4049a6dc503c0cb7f46a077fc71255732a4e308fc1d1742313b4787e5b",
+        "openapi.json": "953fe716c858397697a3d7c0e1602d2b4aef107a1a25f1fecda5e7a71e8a2155",
+        "publication_policy.py": "c79a7d26158de168e9add37e935ab901fc33521c30fa8a42e57591e7db6bfb7e",
+        "requirements-test.txt": "756cc9e506ae4ee1a6f6c0507088b5cfc0dc8ba350fb2d2d46f1ffa72033adb6",
+        "source-observations.json": "e7039a1260198981abf37ccd4f27facdc457fc9aba1a1af674b875fcf1312a19",
+        "test-results.txt": "f33647f776f87f9cb8df79a50815815f519bd8db20ca2481ee4f95f5167093e3",
+        "test_contract.py": "b1df149e1843e7d9eabf9c90e07343873f5874d7ca56b7d2bde74013267b3746",
+        "test_sources.py": "20b66e5bcd177e69613b2d96ae858789a70bf0455f1af4936970e74b3ea451bd",
+        "test_findings.py": "a0d13f06f4a2741096cba075d5c5b41c646bad9ec5d135ca6928f8b2ca7a40a8",
+        "findings-test-results.txt": "80ecdd7eca9ef3120f56ee1acc1001777f840b1535d415f3535fb2a640d86fb5",
+        "FINDING_CLOSURE.md": "af95594e66f7e860567c21e89e2544b373d2e5ffee5d21c55551f57efb1a3cd4",
+        "GOVERNANCE_DECISION_PACKET.md": "86e64f98cccd2d49c3a2c608fbf86d3bf9dda942bda69770cee5d5411d9cf82e",
+        "governance-source-evidence.json": "c5293188c9694fe714d981572b32c489a26f838bd62c1f1c28bc36be06e1347f"
+      },
+      "selfHashExcluded": true
+    },
+    "rawSourceReadbacks": [
+      {
+        "path": "69110/index.html",
+        "revision": "652dd252cf37a3a4991f8bc9abf52b99abce68d0",
+        "expectedBlob": "de548974a8808abb2257908f0b01ec2469a361e0",
+        "actualBlob": "de548974a8808abb2257908f0b01ec2469a361e0",
+        "blobMatch": true,
+        "contentMatch": true
+      },
+      {
+        "path": "registry/69110.md",
+        "revision": "652dd252cf37a3a4991f8bc9abf52b99abce68d0",
+        "expectedBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+        "actualBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+        "blobMatch": true,
+        "contentMatch": true
+      },
+      {
+        "path": "registry/69118.md",
+        "revision": "652dd252cf37a3a4991f8bc9abf52b99abce68d0",
+        "expectedBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+        "actualBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+        "blobMatch": true,
+        "contentMatch": true
+      },
+      {
+        "path": "registry/6984.md",
+        "revision": "652dd252cf37a3a4991f8bc9abf52b99abce68d0",
+        "expectedBlob": "987faf39d931410cb5349c94403066d79f83f82c",
+        "actualBlob": "987faf39d931410cb5349c94403066d79f83f82c",
+        "blobMatch": true,
+        "contentMatch": true
+      },
+      {
+        "path": "registry/review-holding/US_SYSTEMIC_CONFLICT_69110_69119_20260824.md",
+        "revision": "652dd252cf37a3a4991f8bc9abf52b99abce68d0",
+        "expectedBlob": "9c46c2f5095814444bcadab1260fa1ec43eac3c1",
+        "actualBlob": "9c46c2f5095814444bcadab1260fa1ec43eac3c1",
+        "blobMatch": true,
+        "contentMatch": true
+      },
+      {
+        "path": "HUB69.md",
+        "revision": "835616308111f6851c0387fa9f5eda60c9ffa624",
+        "expectedBlob": "287a5e2fb30abe9752808088fdaceb36aa2c6c87",
+        "actualBlob": "287a5e2fb30abe9752808088fdaceb36aa2c6c87",
+        "blobMatch": true,
+        "contentMatch": true
+      },
+      {
+        "path": "registry/6984.md",
+        "revision": "835616308111f6851c0387fa9f5eda60c9ffa624",
+        "expectedBlob": "987faf39d931410cb5349c94403066d79f83f82c",
+        "actualBlob": "987faf39d931410cb5349c94403066d79f83f82c",
+        "blobMatch": true,
+        "contentMatch": true
+      },
+      {
+        "path": "registry/AI_CANONICAL_ID_REGISTRY.md",
+        "revision": "835616308111f6851c0387fa9f5eda60c9ffa624",
+        "expectedBlob": "ac687cdc6222d47c63454dce1ee81ff53affd482",
+        "actualBlob": "ac687cdc6222d47c63454dce1ee81ff53affd482",
+        "blobMatch": true,
+        "contentMatch": true
+      },
+      {
+        "path": "registry/CFP_GLOBAL_AI_ID_LINK_MASTER_STANDARD.md",
+        "revision": "835616308111f6851c0387fa9f5eda60c9ffa624",
+        "expectedBlob": "d82c7c11f436327fa1e834c69e91078e308eda7a",
+        "actualBlob": "d82c7c11f436327fa1e834c69e91078e308eda7a",
+        "blobMatch": true,
+        "contentMatch": true
+      },
+      {
+        "path": "registry/SYNC_CURRENT_SYSTEM.md",
+        "revision": "835616308111f6851c0387fa9f5eda60c9ffa624",
+        "expectedBlob": "90edbcc11422e7a3b80b855025d450f30a6e1dff",
+        "actualBlob": "90edbcc11422e7a3b80b855025d450f30a6e1dff",
+        "blobMatch": true,
+        "contentMatch": true
+      }
+    ],
+    "executionEnvironment": {
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+      "jsonschema": "4.26.0",
+      "openapi-spec-validator": "0.7.2",
+      "validatorInstallPath": "/tmp/cfp-validator",
+      "actors": "Single Codex session; no external independent acceptance claimed"
+    },
+    "offlineTests": {
+      "command": "python -m unittest -v test_contract test_findings test_sources",
+      "cwd": "contracts/issue156",
+      "result": "41/41 PASS, 0 FAIL",
+      "exitCode": 0,
+      "log": "test_adapter_hold (test_contract.ContractTests.test_adapter_hold) ... ok\ntest_content_change_denied (test_contract.ContractTests.test_content_change_denied) ... ok\ntest_evidence_required (test_contract.ContractTests.test_evidence_required) ... ok\ntest_expired_approval_denied (test_contract.ContractTests.test_expired_approval_denied) ... ok\ntest_idempotent_read (test_contract.ContractTests.test_idempotent_read) ... ok\ntest_missing_signature_denied (test_contract.ContractTests.test_missing_signature_denied) ... ok\ntest_no_activation (test_contract.ContractTests.test_no_activation) ... ok\ntest_numeric_strings_and_zero_preservation (test_contract.ContractTests.test_numeric_strings_and_zero_preservation) ... ok\ntest_oas_shape (test_contract.ContractTests.test_oas_shape) ... ok\ntest_positive_projection (test_contract.ContractTests.test_positive_projection) ... ok\ntest_private_audience_denied (test_contract.ContractTests.test_private_audience_denied) ... ok\ntest_projection_copy (test_contract.ContractTests.test_projection_copy) ... ok\ntest_read_only_paths (test_contract.ContractTests.test_read_only_paths) ... ok\ntest_references_resolve (test_contract.ContractTests.test_references_resolve) ... ok\ntest_retry_budget_and_denials (test_contract.ContractTests.test_retry_budget_and_denials) ... ok\ntest_revision_swap_denied (test_contract.ContractTests.test_revision_swap_denied) ... ok\ntest_schema_definitions (test_contract.ContractTests.test_schema_definitions) ... ok\ntest_unapproved_fields_denied (test_contract.ContractTests.test_unapproved_fields_denied) ... ok\ntest_unknown_fields_rejected (test_contract.ContractTests.test_unknown_fields_rejected) ... ok\ntest_unknown_states_denied (test_contract.ContractTests.test_unknown_states_denied) ... ok\ntest_active_capability_forbidden_during_hold_even_with_evidence (test_findings.FindingTests.test_active_capability_forbidden_during_hold_even_with_evidence) ... ok\ntest_all_populated_bindings_need_evidence (test_findings.FindingTests.test_all_populated_bindings_need_evidence) ... ok\ntest_approval_renewal_changes_pin_without_source_change (test_findings.FindingTests.test_approval_renewal_changes_pin_without_source_change) ... ok\ntest_approved_binding_and_capability_with_evidence_preserve_identity (test_findings.FindingTests.test_approved_binding_and_capability_with_evidence_preserve_identity) ... ok\ntest_capability_evidence_required (test_findings.FindingTests.test_capability_evidence_required) ... ok\ntest_continuation_requires_both_pins (test_findings.FindingTests.test_continuation_requires_both_pins) ... ok\ntest_expiry_during_pagination_conflicts (test_findings.FindingTests.test_expiry_during_pagination_conflicts) ... ok\ntest_first_page_and_continuation_share_both_pins (test_findings.FindingTests.test_first_page_and_continuation_share_both_pins) ... ok\ntest_pending_record_never_in_public_page (test_findings.FindingTests.test_pending_record_never_in_public_page) ... ok\ntest_public_page_schema_requires_approval_pin (test_findings.FindingTests.test_public_page_schema_requires_approval_pin) ... ok\ntest_public_schema_rejects_empty_evidence (test_findings.FindingTests.test_public_schema_rejects_empty_evidence) ... ok\ntest_public_schema_rejects_unpublished_and_active (test_findings.FindingTests.test_public_schema_rejects_unpublished_and_active) ... ok\ntest_revocation_during_pagination_conflicts (test_findings.FindingTests.test_revocation_during_pagination_conflicts) ... ok\ntest_software_evidence_required (test_findings.FindingTests.test_software_evidence_required) ... ok\ntest_source_change_conflicts (test_findings.FindingTests.test_source_change_conflicts) ... ok\ntest_unapproved_excluded_before_count_search_and_page (test_findings.FindingTests.test_unapproved_excluded_before_count_search_and_page) ... ok\ntest_chain_not_verified (test_sources.SourceTests.test_chain_not_verified) ... ok\ntest_complete_inventory (test_sources.SourceTests.test_complete_inventory) ... ok\ntest_entity_count_not_roster_acceptance (test_sources.SourceTests.test_entity_count_not_roster_acceptance) ... ok\ntest_us_conflict_reported (test_sources.SourceTests.test_us_conflict_reported) ... ok\ntest_vn_conflict_reported (test_sources.SourceTests.test_vn_conflict_reported) ... ok\n\n----------------------------------------------------------------------\nRan 41 tests in 0.053s\n\nOK\n",
+      "logSHA256": "72a20dd80455db4c58d0973cef9509e37c87906c069572711987fcf79ab05b77",
+      "uniqueTestCounts": {
+        "contract": 20,
+        "findings": 16,
+        "sources": 5
+      },
+      "overlap": "Historical25 + targeted19 share3 contract checks; unique union41"
+    },
+    "openAPI31SemanticValidation": {
+      "command": "PYTHONPATH=/tmp/cfp-validator python -c \"import json; from openapi_spec_validator import OpenAPIV31SpecValidator; e=list(OpenAPIV31SpecValidator(json.load(open('openapi.json'))).iter_errors()); print('OpenAPI 3.1 semantic errors:',len(e)); assert not e\"",
+      "result": "PASS",
+      "exitCode": 0,
+      "log": "OpenAPI 3.1 semantic errors: 0\n",
+      "runtimeConformanceVerified": false
+    },
+    "ciObservation": {
+      "sourceSHA": "35cb6b00e7876f12f35c4cfa3ab558bdd800ebe6",
+      "prWorkflowRuns": [],
+      "checkRunsCount": 0,
+      "checkRunsURL": "https://api.github.com/repos/charityfundplus/CFP.plus/commits/35cb6b00e7876f12f35c4cfa3ab558bdd800ebe6/check-runs",
+      "result": "No CI PASS verified for inventory source; local results only"
+    },
+    "remainingRisks": [
+      "F11/F15 original descriptions missing; two finding-number schemes must not be conflated",
+      "Server-side approval/signature/revocation/field/link enforcement not implemented by offline helper",
+      "Dedicated adapter identity, upstream GET/SSRF and denied-write controls not operationally verified",
+      "Core registry.read scope/rate limit/audit-flood defense not evidenced; session negative runtime tests pending",
+      "Actual Core handler contract validation not executed in this inventory",
+      "Cross-language canonical hashing and strict resource limits not validated",
+      "Governance identity/Parent/coverage decisions pending",
+      "HTTPS/private staging/origin/Google Sites/native App/Safari/live adapter readback missing"
+    ],
+    "closureAuthority": "Claude and other named reviewers supply their own exact-SHA receipts; Human Governance retains final authority",
+    "activationAllowed": false
   }
 }
