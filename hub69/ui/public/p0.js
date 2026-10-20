@@ -2,7 +2,7 @@
   'use strict';
   const M=root.HUB69Model, esc=M.esc;
   const source='https://github.com/charityfundplus/CFP.plus/blob/835616308111f6851c0387fa9f5eda60c9ffa624/registry/ai-entity-registry.json';
-  const types=Object.freeze({pair:'Siêu Bộ Đôi',super_pair:'Siêu Bộ Đôi',software:'Siêu Phần Mềm',super_software:'Siêu Phần Mềm',si:'SI',ai:'AI',robot:'Robot',developer:'Nhà phát triển',hstdn:'HSTDN',enterprise:'Doanh nghiệp',country:'Quốc gia',organization:'Tổ chức',entity:'Thực thể CFP+'});
+  const types=Object.freeze({pair:'Siêu Bộ Đôi',super_pair:'Siêu Bộ Đôi',software:'Siêu Phần Mềm',super_software:'Siêu Phần Mềm',si:'SI',ai:'AI',robot:'Robot',developer:'Nhà phát triển',hstdn:'HSTDN',enterprise:'Doanh nghiệp',country:'Quốc gia',organization:'Tổ chức','ai-country':'AI Quốc Gia',entity:'Thực thể CFP+'});
   const groups=Object.freeze([
     {id:'V',name:'Điều phối tổng thể',chapters:[]},
     {id:'000',name:'Nền tảng',chapters:['0']},
@@ -13,10 +13,15 @@
   const names=['Nền Tảng','Sự Sống','Con Người','Bộ Tam và Ba Quỹ','Tôn Giáo và Tín Ngưỡng','Bộ Ngũ và Cộng Đồng','SI · AI · Robot · Siêu Phần Mềm','Doanh Nghiệp','Tổ Chức và Quỹ','Quốc Gia và Vùng Lãnh Thổ'];
   const chapters=Object.freeze(names.map((name,i)=>({id:String(i),name,group:groups.find(g=>g.chapters.includes(String(i))).id})));
   function route(hash){
+    const exploration=root.HUB69Explore?.route(hash);
+    if(exploration)return exploration;
     if(hash==='#chapters')return {view:'chapters'};
     if(hash==='#vaults')return {view:'vaults'};
     if(hash==='#openai')return {view:'openai'};
     if(hash==='#template')return {view:'template'};
+    if(hash==='#training')return {view:'training'};
+    const lesson=/^#lesson\/([a-z-]+)$/.exec(hash);
+    if(lesson&&root.HUB69Training?.validKey(lesson[1]))return {view:'training',lesson:lesson[1]};
     const group=/^#group\/(V|000|135|246|789)$/.exec(hash);
     if(group)return {view:'chapters',group:group[1]};
     const chapter=/^#chapter\/([0-9])$/.exec(hash);
@@ -60,7 +65,8 @@
     const roots=rows.filter(r=>!r.parent_id||!ids.has(r.parent_id));
     const seen=new Set();const visit=r=>{if(seen.has(r.id))return;seen.add(r.id);children(rows,r.id).forEach(visit);};roots.forEach(visit);
     const unresolved=rows.filter(r=>!seen.has(r.id));
-    return '<article class="panel chapter-panel" id="chapter-'+chapter.id+'"><div class="section-top"><h2><a href="#chapter/'+chapter.id+'">Chương '+chapter.id+' · '+esc(chapter.name)+'</a></h2><span class="tag">'+rows.length+' bản ghi nguồn</span></div><p class="muted">Nhóm '+chapter.group+' · Chương được phân loại theo chữ số đầu; không tạo quan hệ Parent mới.</p>'+(roots.length?'<ul class="id-tree">'+roots.map(r=>treeNode(r,rows)).join('')+'</ul>':'<p class="empty">Chưa có bản ghi con đủ nguồn trong snapshot này.</p>')+(unresolved.length?'<p class="callout">'+unresolved.length+' bản ghi có vòng lặp hoặc chưa dựng được cây; xem lại Parent. Không tự sửa lineage.</p>':'')+'</article>';
+    const gateway=chapter.id==='7'?'<div class="profile-actions"><a class="btn primary" href="#hstdn">HSTDN theo quốc gia</a><a class="btn" href="#commerce">Danh mục sàn · 8682 TMTC</a></div>':chapter.id==='6'?'<div class="profile-actions"><a class="btn primary" href="#technology">Quantum · Space · Future Technologies</a></div>':'';
+    return '<article class="panel chapter-panel" id="chapter-'+chapter.id+'"><div class="section-top"><h2><a href="#chapter/'+chapter.id+'">Chương '+chapter.id+' · '+esc(chapter.name)+'</a></h2><span class="tag">'+rows.length+' bản ghi nguồn</span></div><p class="muted">Nhóm '+chapter.group+' · Chương được phân loại theo chữ số đầu; không tạo quan hệ Parent mới.</p>'+gateway+(roots.length?'<ul class="id-tree">'+roots.map(r=>treeNode(r,rows)).join('')+'</ul>':'<p class="empty">Chưa có bản ghi con đủ nguồn trong snapshot này.</p>')+(unresolved.length?'<p class="callout">'+unresolved.length+' bản ghi có vòng lặp hoặc chưa dựng được cây; xem lại Parent. Không tự sửa lineage.</p>':'')+'</article>';
   }
   function mapView(records,state={}){
     const selected=state.chapter?chapters.filter(c=>c.id===state.chapter):state.group?chapters.filter(c=>c.group===state.group):chapters;
@@ -77,13 +83,15 @@
   const field=(label,value)=>'<div><dt>'+esc(label)+'</dt><dd>'+value+'</dd></div>';
   function profileExtra(r,records){
     const evidence=Array.isArray(r.evidence)?r.evidence:[];
-    const pinned=r.provenance?.registryURL===source&&r.provenance?.sourceRevision==='835616308111f6851c0387fa9f5eda60c9ffa624';
-    return '<section class="panel"><h3>Nguồn gốc &amp; Evidence</h3><dl class="profile-dl">'+field('Loại hồ sơ',esc(types[r.type]||'Thực thể CFP+'))+field('Chương theo chữ số đầu',M.validID(r.id)?'<a href="#chapter/'+r.id[0]+'">Chương '+r.id[0]+'</a>':'Chưa định vị')+field('Nguồn Registry',pinned?'<a href="'+source+'" target="_blank" rel="noopener noreferrer">Bản nguồn 8356163 ↗</a>':'Chưa có provenance Registry được bàn giao')+field('Evidence được bàn giao',evidence.length?evidence.map(e=>linkView(e.link,e.title)).join('<br>'):'Chưa có Evidence xác minh vận hành')+field('DID theo nguồn',esc(r.did||'Chưa được bàn giao'))+field('Trạng thái xác minh',r.identityVerified===true?'Theo nguồn được bàn giao; cần đối chiếu Evidence':'CHƯA XÁC MINH')+'</dl>'+projectsView(r)+'</section>';
+    const pin=r.provenance;
+    const pinned=pin&&/^[a-f0-9]{40}$/.test(pin.sourceRevision)&&/^[a-f0-9]{40}$/.test(pin.registryBlobSHA)&&/^[a-f0-9]{64}$/.test(pin.sourceSHA256||'')&&M.safeURL(pin.registryURL)&&pin.registryURL.startsWith('https://github.com/charityfundplus/CFP.plus/blob/'+pin.sourceRevision+'/registry/')&&/^[A-Za-z0-9_-]+\.(json|md)$/.test(pin.registryURL.split('/registry/')[1]);
+    return '<section class="panel"><h3>Nguồn gốc &amp; Evidence</h3><dl class="profile-dl">'+field('Loại hồ sơ',esc(types[r.type]||'Thực thể CFP+'))+field('Chương theo chữ số đầu',M.validID(r.id)?'<a href="#chapter/'+r.id[0]+'">Chương '+r.id[0]+'</a>':'Chưa định vị')+field('Nguồn Registry',pinned?'<a href="'+esc(pin.registryURL)+'" target="_blank" rel="noopener noreferrer">Bản nguồn '+esc(pin.sourceRevision.slice(0,7))+' ↗</a><br><code>SHA-256 '+esc(pin.sourceSHA256)+'</code><br><code>Git blob '+esc(pin.registryBlobSHA)+'</code>':'Chưa có provenance Registry được bàn giao')+field('Evidence được bàn giao',evidence.length?evidence.map(e=>linkView(e.link,e.title)).join('<br>'):'Chưa có Evidence xác minh vận hành')+field('DID theo nguồn',esc(r.did||'Chưa được bàn giao'))+field('Trạng thái xác minh',r.identityVerified===true?'Theo nguồn được bàn giao; cần đối chiếu Evidence':'CHƯA XÁC MINH')+'</dl>'+projectsView(r)+'</section>';
   }
   function templateView(type='pair'){
     return '<article class="panel"><h2>Link Mẫu Chung</h2><p class="muted">Khung trình bày áp dụng cho các loại thực thể. Không tạo hồ sơ hoặc cấp ID. Mỗi hồ sơ thật giữ ID/Parent/Evidence của Registry.</p><label for="template-type">Xem cấu trúc cho </label><select id="template-type">'+Object.entries(types).filter(([k])=>!['super_pair','super_software'].includes(k)).map(([k,v])=>'<option value="'+k+'"'+(type===k?' selected':'')+'>'+esc(v)+'</option>').join('')+'</select><dl class="profile-dl">'+['Tên hồ sơ','Canonical ID số','Parent','Nhà phát triển','Quốc gia / tổ chức','HSTDN','Nguồn gốc / DID','Evidence','Trạng thái xác minh'].map(l=>field(l,'Chờ bản ghi có nguồn')).join('')+'</dl>'+(type==='pair'?'<section class="project-section"><h3>Làm Dự Án tại ChatGPT</h3><dl class="profile-dl">'+['Tên dự án','Phạm vi công việc','Trạng thái','Liên kết thực tế'].map(l=>field(l,'Chưa được bàn giao')).join('')+'</dl><p class="muted">Sử dụng Canonical ID và Link Mẫu của Siêu Bộ Đôi. Liên kết dự án chỉ xuất hiện sau kiểm chứng; không tự tạo dự án hoặc URL.</p></section>':'')+'</article>';
   }
-  function openaiView(records){
+  function openaiView(records,core){
+    if(core)return coreOpenaiView(core);
     const developer=records.find(r=>r.id==='69118'&&r.name==='OpenAI'&&r.type==='developer');
     const chatgpt=records.find(r=>r.id==='691181'&&r.name==='ChatGPT'&&r.parent_id==='69118');
     return '<div class="callout"><strong>HSTDN OpenAI mẫu · Chờ Registry HSTDN</strong><br>Đây là góc nhìn của Link Mẫu hiện hữu, chưa phải hồ sơ HSTDN đã được cấp ID. Không suy ID doanh nghiệp từ ID nhà phát triển. Quan hệ hợp tác CFP+–OpenAI: chưa có Evidence xác nhận.</div><div class="master-grid"><article class="panel"><span class="eyebrow">NHÀ PHÁT TRIỂN</span><h2>OpenAI</h2><p>'+ (developer?'<a class="text-link" href="#id/'+developer.id+'">'+developer.id+' · Mở bản ghi nhà phát triển</a>':'Chưa có nguồn nhà phát triển')+'</p><p class="muted">Nguồn Registry bảo toàn ID 69118. Xung đột nhánh Hoa Kỳ còn chờ Human Governance.</p></article><article class="panel"><span class="eyebrow">SẢN PHẨM / AI THEO NGUỒN</span><h2>ChatGPT</h2><p>'+(chatgpt?'<a class="text-link" href="#id/'+chatgpt.id+'">'+chatgpt.id+' · Parent '+chatgpt.parent_id+'</a>':'Chưa có bản ghi nguồn phù hợp')+'</p><p class="muted">Bản ghi sản phẩm/AI được trình bày riêng với nhà phát triển và HSTDN.</p></article></div><article class="panel"><h2>SI/AI liên quan theo Parent nguồn</h2><div class="record-grid">'+(developer?children(records,developer.id).map(M.card).join(''):'')+'</div><dl class="profile-dl">'+field('HSTDN Canonical ID','Chờ Codex 1 / Registry được xác minh')+field('SI, Siêu Bộ Đôi, Robot liên quan','Chưa có bản ghi xác nhận trong snapshot')+field('Quan hệ hợp tác đã xác thực','Chưa có Evidence được bàn giao')+field('Nguồn','<a href="'+source+'" target="_blank" rel="noopener noreferrer">Registry gốc ↗</a>')+'</dl></article>';
@@ -96,6 +104,13 @@
     {key:'google',name:'Kho Google',phase:'PENDING',status:'Chưa xác minh kết nối',error:'Chưa có bằng chứng truy cập hoặc đồng bộ',lastSync:null},
     {key:'website',name:'Kho Website CFP+',phase:'REVIEW',status:'Giao diện đang review',error:'Chưa deploy; chưa có URL HTTPS hoạt động',lastSync:null}
   ]);
-  function vaultsView(){return '<div class="callout">Trạng thái theo Evidence được bàn giao. Không có phép đo trực tiếp hoặc kết nối runtime trong giao diện này. Thời điểm đồng bộ chưa có sẽ để trống.</div><div class="vault-grid">'+vaults.map(v=>'<article class="panel"><div class="section-top"><h2>'+esc(v.name)+'</h2><span class="tag amber">'+esc(v.phase)+'</span></div><p>'+esc(v.status)+'</p><dl class="profile-dl">'+field('Đồng bộ gần nhất',v.lastSync||'Chưa có receipt')+field('Lỗi / dữ liệu còn thiếu',esc(v.error))+field('Evidence',v.evidenceURL?'<a href="'+esc(v.evidenceURL)+'" target="_blank" rel="noopener noreferrer">Snapshot nguồn ↗</a>':'Chưa có Evidence kết nối')+'</dl></article>').join('')+'</div>';}
+  function coreOpenaiView(core){
+    const chain=[core.country,core.aiCountry,core.developer,...(core.ai||[])].filter(Boolean);
+    return '<div class="callout">HSTDN OpenAI: hồ sơ tham chiếu, chưa có Canonical ID HSTDN. Quan hệ pháp lý, partnership và quyền vận hành chưa xác minh.</div><article class="panel"><h2>'+esc(core.name)+'</h2><p>'+esc(core.publicDescription||core.introduction)+'</p><div class="profile-actions">'+chain.map(r=>'<a class="btn" href="#id/'+esc(r.id)+'">'+esc(r.id)+' · '+esc(r.name)+'</a>').join('')+'</div><dl class="profile-dl">'+field('HSTDN ID / Parent / DID / Canonical',esc([core.id,core.parent,core.did,core.canonical].map(v=>v??'Chưa cấp').join(' / ')))+field('Trạng thái nguồn',esc(core.dataStatus))+field('Điểm chờ',core.blockers.map(esc).join('<br>'))+'</dl></article><article class="panel"><h2>Nguồn nội dung do Core bàn giao</h2>'+core.sources.map(s=>'<p>'+(M.safeURL(s.url)?'<a class="text-link" href="'+esc(s.url)+'" target="_blank" rel="noopener noreferrer">'+esc(s.title)+' ↗</a>':esc(s.title))+'<br><small>'+esc(s.checkedAt)+' · '+esc(s.scope)+'</small></p>').join('')+'<p class="muted">'+esc(core.contactVerification)+'</p><div class="profile-actions"><a class="btn" href="#training">Học SI/AI</a><a class="btn" href="/p2#p2-learn">Thực hành trong Core hiện hữu</a></div></article>';
+  }
+  function vaultsView(core){
+    if(core)return '<div class="callout">Trạng thái 6 Kho theo Core. Đọc được API không chứng minh đồng bộ kho.</div><div class="vault-grid">'+core.vaults.map(v=>'<article class="panel"><h2>'+esc(vaults.find(x=>x.key===v.kind)?.name||v.kind)+'</h2><p>'+esc(v.status)+'</p><p class="muted">Kết nối được xác nhận: '+(v.connected===true?'Theo receipt được bàn giao':'Chưa có')+'</p><p class="muted">URL tham chiếu: <code>'+esc(v.url||'Chưa cấu hình')+'</code></p></article>').join('')+'</div>';
+    return '<div class="callout">Trạng thái theo Evidence được bàn giao. Không có phép đo trực tiếp hoặc kết nối runtime trong giao diện này. Thời điểm đồng bộ chưa có sẽ để trống.</div><div class="vault-grid">'+vaults.map(v=>'<article class="panel"><div class="section-top"><h2>'+esc(v.name)+'</h2><span class="tag amber">'+esc(v.phase)+'</span></div><p>'+esc(v.status)+'</p><dl class="profile-dl">'+field('Đồng bộ gần nhất',v.lastSync||'Chưa có receipt')+field('Lỗi / dữ liệu còn thiếu',esc(v.error))+field('Evidence',v.evidenceURL?'<a href="'+esc(v.evidenceURL)+'" target="_blank" rel="noopener noreferrer">Snapshot nguồn ↗</a>':'Chưa có Evidence kết nối')+'</dl></article>').join('')+'</div>';
+  }
   root.HUB69P0=Object.freeze({types,groups,chapters,route,validate,verifiedLink,linkView,children,mapView,chapterView,projectsView,profileExtra,templateView,openaiView,vaults,vaultsView});
 })(typeof window!=='undefined'?window:globalThis);

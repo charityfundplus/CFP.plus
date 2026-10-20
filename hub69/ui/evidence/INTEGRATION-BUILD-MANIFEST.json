@@ -1,0 +1,139 @@
+{
+  "executionRevision": "0145feb42c2e453af99d8b6bf184b6b82e3d32a8",
+  "executionTreeSHA": "a3fd1538d3949fb6077b2403c0d0104a8f8b0fff",
+  "codex1Revision": "06f386b1ba52358779cec6bc26c2d88f6a33664a",
+  "verifiedAgainstCommit": true,
+  "sourceFiles": [
+    {
+      "path": "hub69/ui/.gitignore",
+      "sha256": "c32ba07dc55de8f2ba290d14caa8cd85a79e4419b096d8c23676f6769b60b293",
+      "gitBlobSHA": "f2a9a6b69ce73274cc8ee2302c53fc9dc91f6491"
+    },
+    {
+      "path": "hub69/ui/INTEGRATION-READINESS.md",
+      "sha256": "0cc3d542f649ac3e254c1fb0b6b58bca48ff9148e80d58e83ba6df750c33ca54",
+      "gitBlobSHA": "06ca876de0a244eac9f4de479551b80ba13d9e30"
+    },
+    {
+      "path": "hub69/ui/README.md",
+      "sha256": "294569101d608b2588cbda4557c9657e2c4ccc8cb221f96d142925dfe77b46db",
+      "gitBlobSHA": "65560a85d0514940a1835e02773e29d7fdb53b37"
+    },
+    {
+      "path": "hub69/ui/build.mjs",
+      "sha256": "d99f8419b37caff5c4d212e6aadc93e2cf9811cc6929b64b34d42f15289c7c08",
+      "gitBlobSHA": "866612c2537854b5eb99a5d9a33209e4dc197fa5"
+    },
+    {
+      "path": "hub69/ui/evidence/training-basic-v1.json",
+      "sha256": "528ef09c2a7ac671eca56a6370ff3489657c0d9dfa33c2466f08ded48067f200",
+      "gitBlobSHA": "e8c49eee3b669558a264b2102ee491ea1a639eb0"
+    },
+    {
+      "path": "hub69/ui/integration/core-http.test.mjs",
+      "sha256": "f93a7c6eebc4a53993426107463dd2a30fbebbe4436ca8c9c3c14fca0d3fde7e",
+      "gitBlobSHA": "5b175b19d3acbf3b2f8093226033749a63cafe8a"
+    },
+    {
+      "path": "hub69/ui/integration/source-pins.json",
+      "sha256": "0ad7d26ff693887b1b76c15df30e9b2bf969067c1b5c050fd79f3a0b1dabe7ee",
+      "gitBlobSHA": "cd906bd932ed94a2ab591772979eafe46d958df6"
+    },
+    {
+      "path": "hub69/ui/public/app.js",
+      "sha256": "3fb1eecc5aa5361586d06324afbe4ece3e0f9c420ce1453ed6eece3875471153",
+      "gitBlobSHA": "aaa50ad134e60c50d8fcae3481f5529efeba9515"
+    },
+    {
+      "path": "hub69/ui/public/core-binding.js",
+      "sha256": "5ed1afe6aab265d0bc44dbfc30804937b64dc7a70bf097d5daf6fc4e1748908c",
+      "gitBlobSHA": "23de197ad2bc4cba302a154d3263d0e318f913d3"
+    },
+    {
+      "path": "hub69/ui/public/index.html",
+      "sha256": "adcffdd6629561464a1bcac7828e80e43f43d7da2016680b240ed25e6fe01ca5",
+      "gitBlobSHA": "a1223c21e09a17772654cefb2c4a5ed49cdf163f"
+    },
+    {
+      "path": "hub69/ui/public/model.js",
+      "sha256": "335937b68a56600af118aa7ba8b5b3cc2c583241e8ec8f6884dbfb546e1b14bf",
+      "gitBlobSHA": "d0904a2646a821dc3e2ee11273f5ec67b9997701"
+    },
+    {
+      "path": "hub69/ui/public/p0.js",
+      "sha256": "1fdd6ec33041f820ea97b3b1b32a6c2233b98c8d77993a76b9bfa9e9f2cd2171",
+      "gitBlobSHA": "8063a2eb637eda9308216aecfd1c63c234512f89"
+    },
+    {
+      "path": "hub69/ui/public/style.css",
+      "sha256": "9960a5627598f5dd7676eb86e87d972a91d57904271e75ad216e7e9e016ff6e3",
+      "gitBlobSHA": "f9bdaa18e6161d511041b76ad00761048b6e6bb8"
+    },
+    {
+      "path": "hub69/ui/public/training.js",
+      "sha256": "a97eb75a2a5d3230e0e2b2fd20dd0171473e74671bcec5455f012d10f891795a",
+      "gitBlobSHA": "34b2ca7eb781c432a4cb8e8458fd92bc122ff98c"
+    },
+    {
+      "path": "hub69/ui/tests/app-state.test.mjs",
+      "sha256": "65d432ed31e91f35235f2350330e97698c44ff1c22951f6fa6e6329cc7984975",
+      "gitBlobSHA": "6ce828d5b8900e3d71c043c559bfd76380396649"
+    },
+    {
+      "path": "hub69/ui/tests/harness.mjs",
+      "sha256": "b86cf7876e9cfc986809598319e612b13c93a377b827ede101c8b414f027ffcd",
+      "gitBlobSHA": "73fc1cd7a4f1c0c36e87902deb3f4567cd0d0d8b"
+    },
+    {
+      "path": "hub69/ui/tests/integration-readiness.test.mjs",
+      "sha256": "41776c338abbc3b0ee90bcee5a986216bb7f4409c072078e89d1ace56d1ec23d",
+      "gitBlobSHA": "972c3aca68dc5f82a9d6e29e4f0f0b834014d8cd"
+    }
+  ],
+  "generatedOutputs": [
+    {
+      "path": "hub69/ui/dist/app.js",
+      "sha256": "3fb1eecc5aa5361586d06324afbe4ece3e0f9c420ce1453ed6eece3875471153"
+    },
+    {
+      "path": "hub69/ui/dist/config.js",
+      "sha256": "1729ecf686b3299dc064a28f7c946150e31eaf01bad77e4f28903229bd4bf3fb"
+    },
+    {
+      "path": "hub69/ui/dist/core-binding.js",
+      "sha256": "5ed1afe6aab265d0bc44dbfc30804937b64dc7a70bf097d5daf6fc4e1748908c"
+    },
+    {
+      "path": "hub69/ui/dist/index.html",
+      "sha256": "adcffdd6629561464a1bcac7828e80e43f43d7da2016680b240ed25e6fe01ca5"
+    },
+    {
+      "path": "hub69/ui/dist/model.js",
+      "sha256": "335937b68a56600af118aa7ba8b5b3cc2c583241e8ec8f6884dbfb546e1b14bf"
+    },
+    {
+      "path": "hub69/ui/dist/p0.js",
+      "sha256": "1fdd6ec33041f820ea97b3b1b32a6c2233b98c8d77993a76b9bfa9e9f2cd2171"
+    },
+    {
+      "path": "hub69/ui/dist/registry.js",
+      "sha256": "f1edbaa6a358af1f008132e14de08cbd70f88037c6a4c8d1b4dc1ae28f204efe"
+    },
+    {
+      "path": "hub69/ui/dist/style.css",
+      "sha256": "9960a5627598f5dd7676eb86e87d972a91d57904271e75ad216e7e9e016ff6e3"
+    },
+    {
+      "path": "hub69/ui/dist/training-data.js",
+      "sha256": "815285c5d6ea207e221d5b92a470cecae2b2910e452c0925e1137fb022f8e0dd"
+    },
+    {
+      "path": "hub69/ui/dist/training.js",
+      "sha256": "a97eb75a2a5d3230e0e2b2fd20dd0171473e74671bcec5455f012d10f891795a"
+    },
+    {
+      "path": "hub69/ui/HUB69-review.html",
+      "sha256": "703753dccebac0ef5c6889e8ebfbcabd3992e3d40a8c3550c5a345d464e08d88"
+    }
+  ]
+}
