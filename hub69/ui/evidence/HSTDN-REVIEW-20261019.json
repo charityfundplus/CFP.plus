@@ -574,6 +574,393 @@
     }
   ],
   "hashScope": "Receipt excludes itself; evidence commit follows sourceCommit without code changes. Older receipts/logs remain immutable.",
+  "intakeVerification20261019": {
+    "reportDateLocal": "2026-10-19",
+    "timezone": "America/New_York",
+    "checkedAtUTC": "2026-10-19T23:59:25.368Z",
+    "reviewer": "Current Codex session; independent of provider-labelled Verified; not an external Claude or other-session ACK",
+    "receiptStatus": "AVAILABLE_SUMMARY_AND_CANDIDATE_READ; ORIGINAL_PRIMARY_PACKAGE_INCOMPLETE",
+    "sourcePins": {
+      "ui": "beb5d432b776f40ef9f5acf16743fc76c97a10a1",
+      "contract": "383ffcf5fa3a229d442393a86fa189e52bc09289",
+      "notionLastEdited": "2026-10-19T20:08:51.750Z",
+      "unchangedTestedUICode": "7752326b66f205b1bf9f31bae1560fccff737b23"
+    },
+    "intake": {
+      "summaryRead": "PASS",
+      "githubRead": "PASS",
+      "notionRead": "PASS",
+      "localReadback": "8/8 PASS",
+      "originalPrimaryBundle": "NOT VERIFIED",
+      "otherWorkspaceSessions": "NOT OBSERVED"
+    },
+    "historicalRoleReceipts": [
+      {
+        "role": "Codex 1",
+        "url": "https://github.com/charityfundplus/CFP.plus/pull/157#issuecomment-6276360601",
+        "observedUpdatedAt": "2026-10-19T20:15:13Z",
+        "scope": "Existing source/schema ACK read; no new external ACK inferred"
+      },
+      {
+        "role": "Codex 2",
+        "url": "https://github.com/charityfundplus/CFP.plus/pull/157#issuecomment-6276388134",
+        "observedUpdatedAt": "2026-10-19T20:26:52Z",
+        "scope": "Existing UI candidate handoff read; no other-session intake inferred"
+      }
+    ],
+    "workspace": {
+      "root": "/workspace/scratch/dc9ff82e0956/CFP.plus-candidate",
+      "files": [
+        {
+          "path": "hub69/ui/evidence/HSTDN-REVIEW-20261019.json",
+          "sourceRevision": "beb5d432b776f40ef9f5acf16743fc76c97a10a1",
+          "gitBlobSHA": "ad0c7b2136e0e65f25e25fa0def697ab98bcc66c",
+          "sha256": "58b34142e290e41561114dd3f43d13e47a5cb480a2d38189422fd9ca9aef0d1e",
+          "alreadyPresent": true,
+          "readbackMatch": true
+        },
+        {
+          "path": "hub69/ui/README.md",
+          "sourceRevision": "beb5d432b776f40ef9f5acf16743fc76c97a10a1",
+          "gitBlobSHA": "d87bed91197a6436109d73f6cf8326d9e8ce6af8",
+          "sha256": "c3cc1ab370025bcfdfa6e41e8c08a8a3e7abef479cdef533b52f4a206a2f074a",
+          "alreadyPresent": true,
+          "readbackMatch": true
+        },
+        {
+          "path": "hub69/ui/public/hstdn-review.js",
+          "sourceRevision": "beb5d432b776f40ef9f5acf16743fc76c97a10a1",
+          "gitBlobSHA": "31c23e2754294d70bbecfef8da7ed6a9aa52c1c6",
+          "sha256": "d5ddf35dcbb63dcaff90e970a328bfa6fb31fb47d1d2a360d020df79c94b918c",
+          "alreadyPresent": true,
+          "readbackMatch": true
+        },
+        {
+          "path": "hub69/ui/profile.schema.json",
+          "sourceRevision": "beb5d432b776f40ef9f5acf16743fc76c97a10a1",
+          "gitBlobSHA": "1204675a1e48b541e06778fe69a6d68d27e54339",
+          "sha256": "3d79aa7e19c90bd16c72743e97492ce55cb936b84e091ac354ae7331abdc2198",
+          "alreadyPresent": true,
+          "readbackMatch": true
+        },
+        {
+          "path": "registry/ai-entity-registry.json",
+          "sourceRevision": "383ffcf5fa3a229d442393a86fa189e52bc09289",
+          "gitBlobSHA": "1f18068d66379ce90bb079dc56c77b4c4d66dcdf",
+          "sha256": "a63c5e0b8af157b0938014d51da94ea924b9721acd0a11a9107f5deea3c6f507",
+          "alreadyPresent": true,
+          "readbackMatch": true
+        },
+        {
+          "path": "contracts/issue156/openapi.json",
+          "sourceRevision": "383ffcf5fa3a229d442393a86fa189e52bc09289",
+          "gitBlobSHA": "fe448894ce11c9616a2f74f53a921b7821465bc5",
+          "sha256": "953fe716c858397697a3d7c0e1602d2b4aef107a1a25f1fecda5e7a71e8a2155",
+          "alreadyPresent": false,
+          "readbackMatch": true
+        },
+        {
+          "path": "contracts/issue156/REGISTRY_MAPPING.md",
+          "sourceRevision": "383ffcf5fa3a229d442393a86fa189e52bc09289",
+          "gitBlobSHA": "c3dbdb8a3802dd229c3a4f74158b556bf1c23cbb",
+          "sha256": "b4b7c5b21d1ca20df1a88f159ba320d57f1a021a39c296dc678f47b75fabe38a",
+          "alreadyPresent": false,
+          "readbackMatch": true
+        },
+        {
+          "path": "contracts/issue156/GOVERNANCE_DECISION_PACKET.md",
+          "sourceRevision": "383ffcf5fa3a229d442393a86fa189e52bc09289",
+          "gitBlobSHA": "057427858178cafeff6bbfa1ee7c40cad1f90274",
+          "sha256": "86e64f98cccd2d49c3a2c608fbf86d3bf9dda942bda69770cee5d5411d9cf82e",
+          "alreadyPresent": false,
+          "readbackMatch": true
+        }
+      ],
+      "note": "Paths are observations in this session. A different empty workspace should retrieve the immutable GitHub sources, not infer that the handoff is absent."
+    },
+    "verificationMeaning": {
+      "PASS": "Only the explicit source-reading, byte-match, or narrowly scoped published claim in that row. Never automatic factual/operational VERIFIED.",
+      "BLOCKED": "Specific unreadable source, contradictory field or incompatible contract requiring resolution.",
+      "NOT_VERIFIED": "Incomplete original claim/document, version mapping, effective-date or scope evidence.",
+      "VERIFIED": "Not granted in this receipt. Needs a readable authoritative source supporting the exact field, source version/date/excerpt and reproducible reviewer assessment independent of provider labels; publication/binding approval is separate."
+    },
+    "independentVerifiedFields": 0,
+    "providerVerifiedAccepted": false,
+    "fieldReviews": [
+      {
+        "sourceVersion": "2026-10-19T20:08:51.750Z",
+        "field": "intake.GrokSI_summary",
+        "evidenceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "status": "PASS",
+        "scope": "Đã đọc bản tóm lược hiện hữu; đây không phải toàn bộ gói chứng từ gốc.",
+        "nextAction": "Tiếp tục xử lý từng claim từ nguồn đã đọc; không yêu cầu có file local trước khi đọc URL.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "beb5d432b776f40ef9f5acf16743fc76c97a10a1",
+        "field": "intake.original_package",
+        "evidenceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552",
+          "https://github.com/charityfundplus/CFP.plus/blob/beb5d432b776f40ef9f5acf16743fc76c97a10a1/hub69/ui/evidence/HSTDN-REVIEW-20261019.json"
+        ],
+        "status": "NOT VERIFIED",
+        "scope": "Thiếu URL/tệp gói gốc, phiên bản, danh mục file và ánh xạ field → tài liệu gốc.",
+        "nextAction": "GrokSI bổ sung đúng manifest/URL/trích đoạn còn thiếu; không mở hồ sơ HSTDN khác.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "beb5d432b776f40ef9f5acf16743fc76c97a10a1 + 383ffcf5fa3a229d442393a86fa189e52bc09289",
+        "field": "workspace.source_readback",
+        "evidenceURLs": [
+          "https://github.com/charityfundplus/CFP.plus/blob/beb5d432b776f40ef9f5acf16743fc76c97a10a1/hub69/ui/evidence/HSTDN-REVIEW-20261019.json",
+          "https://github.com/charityfundplus/CFP.plus/blob/383ffcf5fa3a229d442393a86fa189e52bc09289/registry/ai-entity-registry.json",
+          "https://github.com/charityfundplus/CFP.plus/blob/383ffcf5fa3a229d442393a86fa189e52bc09289/contracts/issue156/openapi.json"
+        ],
+        "status": "PASS",
+        "scope": "8/8 file GitHub được đọc, hash blob xác nhận và byte local khớp trong phiên này; không xác nhận workspace phiên khác.",
+        "nextAction": "Dùng đường dẫn GitHub ghim SHA trong README hiện hữu nếu workspace khác trống.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "383ffcf5fa3a229d442393a86fa189e52bc09289",
+        "field": "schema.field_evidence_mapping",
+        "evidenceURLs": [
+          "https://github.com/charityfundplus/CFP.plus/blob/383ffcf5fa3a229d442393a86fa189e52bc09289/contracts/issue156/openapi.json",
+          "https://github.com/charityfundplus/CFP.plus/blob/383ffcf5fa3a229d442393a86fa189e52bc09289/contracts/issue156/REGISTRY_MAPPING.md"
+        ],
+        "status": "BLOCKED",
+        "scope": "Core Evidence additionalProperties=false; chưa nhận field/date/excerpt/status. Không nhập ghi chú presenter thành dữ liệu Core.",
+        "nextAction": "Codex 1 hoàn tất review tương thích mapping trong contract hiện hữu, chưa sửa Registry.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "Notion 2026-10-19T20:08:51.750Z",
+        "field": "starlink.vn.registration_fields",
+        "evidenceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552",
+          "https://mst.gov.vn/starlink-duoc-cap-phep-trien-khai-dich-vu-internet-ve-tinh-tai-viet-nam-19726021500204438.htm"
+        ],
+        "status": "NOT VERIFIED",
+        "scope": "Tên được nguồn Bộ nêu; thiếu đăng ký/thuế gốc cho legal_name, tax_id, registration_date, registered_address, charter_capital, legal_representative, general_director.",
+        "nextAction": "Bổ sung URL/trích lục đăng ký và thuế có phiên bản/ngày hiệu lực; giữ giám đốc riêng người đại diện.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "Notion 2026-10-19T20:08:51.750Z",
+        "field": "starlink.vn.legal_parent",
+        "evidenceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "status": "NOT VERIFIED",
+        "scope": "Chủ sở hữu Starlink Holdings Netherlands B.V. vẫn là claim chưa có chứng từ sở hữu gốc.",
+        "nextAction": "Bổ sung hồ sơ chủ sở hữu/phần vốn theo ngày; không chuyển sang Parent CFP+.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "Notion 2026-10-19; thông báo 2026-06-23",
+        "field": "starlink.vn.telecom_license_57",
+        "evidenceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552",
+          "https://cattien2.lamdong.gov.vn/chi-tiet-tin-tuc/?param=tuan-thu-quy-dinh-phap-luat-khi-su-dung-thiet-bi-dau-cuoi-thu-phat-song-ve-tinh-phi-dia-tinh-tai-viet-nam",
+          "https://mst.gov.vn/starlink-duoc-cap-phep-trien-khai-dich-vu-internet-ve-tinh-tai-viet-nam-19726021500204438.htm"
+        ],
+        "status": "BLOCKED",
+        "scope": "57/GP-CVT: bàn giao ghi 03/03/2026, thông báo ghi 13/02/2026. Bài Bộ về giấy phép tần số không nêu số 57/GP-CVT.",
+        "nextAction": "Cần bản gốc giấy phép viễn thông xác định số/ngày/cơ quan/phạm vi/hiệu lực; không sửa ngày theo giấy phép tần số.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "MST article 2026-02-15",
+        "field": "starlink.vn.spectrum_license_report",
+        "evidenceURLs": [
+          "https://mst.gov.vn/starlink-duoc-cap-phep-trien-khai-dich-vu-internet-ve-tinh-tai-viet-nam-19726021500204438.htm"
+        ],
+        "status": "PASS",
+        "scope": "Bộ công bố giấy phép tần số/thiết bị do Cục Tần số vô tuyến điện cấp ngày 13/02/2026; không là giấy phép viễn thông.",
+        "nextAction": "Lưu đúng loại giấy phép; cần bản cấp phép để xác nhận số và toàn bộ điều kiện.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "MST article 2026-02-15",
+        "field": "starlink.vn.planned_gateway_and_terminal_cap",
+        "evidenceURLs": [
+          "https://mst.gov.vn/starlink-duoc-cap-phep-trien-khai-dich-vu-internet-ve-tinh-tai-viet-nam-19726021500204438.htm"
+        ],
+        "status": "PASS",
+        "scope": "Nguồn nói dự kiến giai đoạn đầu 4 gateway, tối đa 600.000 thiết bị; không xác nhận vận hành thực tế.",
+        "nextAction": "Giữ planned và maximum; cần receipt vận hành riêng, không coi số trần là lượng khách hàng/thiết bị hoạt động.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "Notion 2026-10-19 + MST article 2026-02-15",
+        "field": "starlink.vn.operational_status_and_pilot_end",
+        "evidenceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552",
+          "https://mst.gov.vn/starlink-duoc-cap-phep-trien-khai-dich-vu-internet-ve-tinh-tai-viet-nam-19726021500204438.htm"
+        ],
+        "status": "NOT VERIFIED",
+        "scope": "Chưa có quyết định gốc chứng minh hạn 2030 và trạng thái từng gateway; bài Bộ vừa đọc không xác nhận hai trường này.",
+        "nextAction": "GrokSI bổ sung quyết định/phụ lục thí điểm và Evidence vận hành theo địa điểm/ngày.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "URL checked 2026-10-19T23:59:25.368Z",
+        "field": "starlink.vn.service_price_and_terms",
+        "evidenceURLs": [
+          "https://starlink.com/vn/service-plans",
+          "https://starlink.com/legal/documents/DOC-1020-91087-64"
+        ],
+        "status": "BLOCKED",
+        "scope": "Hai URL Starlink trả nội dung trích xuất trống, chưa đọc được giá/điều khoản tương ứng.",
+        "nextAction": "Chỉ chặn giá/điều khoản: cần nguồn giá đúng quốc gia/địa chỉ/model/ngày và bản Terms đọc được.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "Consumer Terms 2026-10-12",
+        "field": "grok.contract_provider_trade_name_product",
+        "evidenceURLs": [
+          "https://x.ai/legal/terms-of-service"
+        ],
+        "status": "PASS",
+        "scope": "Điều khoản nêu SpaceXAI LLC, gọi là SpaceXSI; Grok là dịch vụ/sản phẩm. Đây là nội dung điều khoản của nhà cung cấp.",
+        "nextAction": "Giữ pháp nhân theo điều khoản, tên gọi và sản phẩm riêng; đăng ký pháp nhân và quyền thương hiệu chưa VERIFIED.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "Announcement URL checked 2026-10-19T23:59:25.368Z",
+        "field": "xai.acquisition_announcement",
+        "evidenceURLs": [
+          "https://x.ai/news/xai-joins-spacex"
+        ],
+        "status": "PASS",
+        "scope": "Nguồn x.ai thông báo SpaceX đã mua xAI. Phạm vi PASS là nội dung thông báo nhóm doanh nghiệp.",
+        "nextAction": "Đối chiếu đúng pháp nhân và các bước pháp lý trước khi điền legal_parent.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "SEC accession 0001628280-26-036936; Exhibit 2.1; agreement 2026-01-31",
+        "field": "xai.merger_entity_mapping",
+        "evidenceURLs": [
+          "https://www.sec.gov/Archives/edgar/data/1181412/000162828026036936/exhibit21-sx1.htm",
+          "https://x.ai/legal/terms-of-service"
+        ],
+        "status": "NOT VERIFIED",
+        "scope": "Exhibit §§1.2/1.4/2.2 có X.AI Holdings Corp. → X.AI Holdings LLC và điều kiện hiệu lực qua hồ sơ Nevada; chưa có cầu nối tên/pháp nhân tới SpaceXAI LLC hiện tại.",
+        "nextAction": "Cần articles/certificate và lịch sử đổi tên/chuỗi sở hữu theo ngày; không tự đồng nhất tên và không đổi Parent CFP+.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "383ffcf5fa3a229d442393a86fa189e52bc09289",
+        "field": "grok.cfp_parent",
+        "evidenceURLs": [
+          "https://github.com/charityfundplus/CFP.plus/blob/383ffcf5fa3a229d442393a86fa189e52bc09289/registry/ai-entity-registry.json",
+          "https://github.com/charityfundplus/CFP.plus/blob/383ffcf5fa3a229d442393a86fa189e52bc09289/contracts/issue156/REGISTRY_MAPPING.md"
+        ],
+        "status": "PASS",
+        "scope": "Quan sát Registry: Grok 691191 có parent_id 69119, xAI là Developer. Không phải chứng nhận Parent pháp lý hoặc HSTDN authority.",
+        "nextAction": "Giữ nguyên các reference; source-conflict/authority cần Human Governance, không suy từ tiền tố.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "Bundled Subscription Terms 2026-10-07",
+        "field": "grok.bundle_seller",
+        "evidenceURLs": [
+          "https://x.ai/legal/bundled-subscription-terms"
+        ],
+        "status": "PASS",
+        "scope": "Điều khoản xác định X Subscription Corp là bên bán bundle; khác bên cung cấp Grok trong Consumer Terms.",
+        "nextAction": "Lưu bên bán/merchant of record riêng, không dùng làm Parent hoặc tự gộp pháp nhân.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "Pricing URL checked 2026-10-19T23:59:25.368Z",
+        "field": "grok.pricing_claim_vs_forwarded_package",
+        "evidenceURLs": [
+          "https://x.ai/pricing",
+          "https://docs.x.ai/developers/pricing",
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "status": "NOT VERIFIED",
+        "scope": "Nguồn bảng giá và phí API đã đọc, nhưng gói bàn giao không có claim giá cụ thể theo model/gói để so.",
+        "nextAction": "Cần claim/URL gói, tiền tệ, chu kỳ, thuế, model, context và endpoint; không coi giá web là giá checkout địa phương.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "Pricing URL checked 2026-10-19T23:59:25.368Z",
+        "field": "grok.subscription_api_billing_separation",
+        "evidenceURLs": [
+          "https://x.ai/pricing",
+          "https://docs.x.ai/developers/pricing"
+        ],
+        "status": "PASS",
+        "scope": "Trang giá tách quyền truy cập API trong gói trả phí với usage API tính riêng; không là API miễn phí kèm thuê bao.",
+        "nextAction": "Giữ billing API riêng; chưa gọi API/đặt mua hoặc kích hoạt.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "Tesla resources URL checked 2026-10-19T23:59:25.368Z",
+        "field": "megapack.entity_classification",
+        "evidenceURLs": [
+          "https://www.tesla.com/en_ph/support/energy/megapack/resources"
+        ],
+        "status": "PASS",
+        "scope": "Tesla Resources mô tả Megapack là sản phẩm lưu trữ điện utility-scale của Tesla, không phải một pháp nhân.",
+        "nextAction": "Dùng phân loại sản phẩm tham chiếu; không suy pháp nhân ký hợp đồng hay Parent Registry.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "Tesla Megapack URL checked 2026-10-19T23:59:25.368Z",
+        "field": "megapack.availability_conditions",
+        "evidenceURLs": [
+          "https://www.tesla.com/megapack"
+        ],
+        "status": "NOT VERIFIED",
+        "scope": "Chú thích chỉ áp dụng dự án ký Availability Guarantee, vận hành >30 ngày, bình quân 12 tháng trọng số GWh; thiếu claim gốc để so.",
+        "nextAction": "Giữ đầy đủ điều kiện; chưa xác nhận chỉ số/bảo đảm cho dự án cụ thể hoặc mọi thị trường.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "Notion 2026-10-19 + Tesla Resources checked 2026-10-19T23:59:25.368Z",
+        "field": "megapack.price_warranty_installation_delivery",
+        "evidenceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552",
+          "https://www.tesla.com/en_ph/support/energy/megapack/resources",
+          "https://www.tesla.com/megapack"
+        ],
+        "status": "NOT VERIFIED",
+        "scope": "Chưa có URL điều khoản/báo giá/hợp đồng Megapack cụ thể. Mục Purchase Agreement trong menu Powerwall không được dùng làm điều khoản Megapack.",
+        "nextAction": "Cần cấu hình, nơi giao, phạm vi lắp đặt/đấu nối, thuế, lịch, bảo hành và bản hợp đồng/ngày; không lấp bằng Terms sản phẩm khác.",
+        "verified": false
+      }
+    ],
+    "sourceCaptureLimits": "Git file bytes/blob/SHA256 checked. External pages use URLs, dates where stated and bounded notes; no whole-page content hashes, company-register certifications or missing primary documents fabricated.",
+    "validation": {
+      "kind": "Read-only source and receipt validation; documentation/evidence-only follow-up",
+      "githubFiles": 8,
+      "gitBlobHashPass": 8,
+      "localReadbackPass": 8,
+      "codeChanged": false,
+      "newRuntimeOrUITestRun": false,
+      "reason": "UI code unchanged; previous exact-SHA 18/18 test result retained as historical, not rerun or relabelled."
+    },
+    "permissions": {
+      "notionFetched": true,
+      "notionWriteRetried": false,
+      "priorNotionWrite403": "Previous attempt insufficient_access; no permission-change evidence; no alternate profile created"
+    },
+    "boundary": {
+      "activationAllowed": false,
+      "published": false,
+      "registryModified": false,
+      "canonicalIDModified": false,
+      "parentModified": false,
+      "didModified": false,
+      "apiContractModified": false,
+      "status": "HOLD ACTIVATION • PRODUCTION NO-GO"
+    }
+  },
   "fieldComparisonFollowup20261019": {
     "date": "2026-10-19",
     "readAtUTC": "2026-10-19T22:50:49.993Z",

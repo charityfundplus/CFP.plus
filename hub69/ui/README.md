@@ -66,6 +66,36 @@ dựng một đường điều khiển khác. HOLD ACTIVATION • PRODUCTION NO-
 
 ### Tiếp nhận Evidence theo trường • candidate chưa publish
 
+#### Xác nhận tiếp nhận và nguồn còn thiếu • 19/10/2026
+
+Đã đọc lại GitHub UI `beb5d432b776f40ef9f5acf16743fc76c97a10a1`, contract/
+Registry `383ffcf5fa3a229d442393a86fa189e52bc09289`, cùng [Notion nguồn](https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552)
+(last edit `2026-10-19T20:08:51.750Z`). Receipt hiện hữu có cả nội dung local và
+remote; **8/8** file nguồn khớp Git blob và byte local trong phiên kiểm tra.
+Điều này không chứng minh một workspace/phiên khác đã nhận file.
+
+Nếu workspace khác trống, đọc các URL GitHub ghim SHA bên trên và file
+`hub69/ui/evidence/HSTDN-REVIEW-20261019.json` trước; dữ liệu tiếp nhận ở
+`intakeVerification20261019`, ma trận trước ở `fieldComparisonFollowup20261019`.
+Không cần tạo hồ sơ/Registry mới hoặc chờ có bản local mới bắt đầu đọc URL.
+Phiên hiện tại dùng `/workspace/scratch/dc9ff82e0956/CFP.plus-candidate`;
+đường dẫn local này không phải địa chỉ dùng chung cho các phiên khác.
+
+**Phân biệt:** đã đọc bản tóm lược GrokSI và candidate; gói chứng từ gốc với
+manifest/URL/trích đoạn từng trường vẫn chưa đầy đủ. PASS chỉ áp dụng phạm vi
+ghi trên từng dòng, không tự cấp VERIFIED hoặc đóng authority/binding.
+
+Nguồn bổ sung Bộ KH&CN mô tả giấy phép **tần số**; không thay thế bản giấy phép
+viễn thông **57/GP-CVT** đang lệch ngày. SEC Exhibit 2.1 mô tả X.AI Holdings,
+chưa đủ cầu nối pháp nhân tới SpaceXAI LLC hiện tại. Điều khoản/báo giá Megapack
+riêng theo dự án vẫn thiếu; không lấy menu/hợp đồng Powerwall để điền.
+Các URL gốc, phiên bản, trường thiếu và việc tiếp theo đã ghi trong receipt.
+
+Lượt này chỉ cập nhật README/receipt; code/schema/API/Registry/ID/Parent/DID
+không đổi. Không chạy lại test không thay đổi và không claim một test PASS mới.
+Notion đọc được; chưa thử ghi lại sau lần trước trả 403 insufficient_access.
+**HOLD ACTIVATION • PRODUCTION NO-GO.**
+
 Code được kiểm thử: `7752326b66f205b1bf9f31bae1560fccff737b23`, tiếp nối
 `7a3061ee5b9f0bac59cb680791ce9ecc69abba86`. Presenter hiện hữu bổ sung phần
 **Trường → Nguồn đã đọc → Khớp / Sai lệch / Chưa xác minh → Cách xử lý**.
