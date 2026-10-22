@@ -1,7 +1,10 @@
+import {tokenCSS} from './token-css.mjs';
 import {readFile,writeFile,mkdir,copyFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {existsSync} from 'node:fs';
 const root=new URL('./',import.meta.url);
+const tokens=JSON.parse(await readFile(new URL('public/design-tokens.json',root),'utf8'));
+await writeFile(new URL('public/design-tokens.css',root),tokenCSS(tokens));
 const pins=JSON.parse(await readFile(new URL('integration/source-pins.json',root),'utf8'));
 const trainingRaw=await readFile(new URL('evidence/training-basic-v1.json',root));
 const trainingPin=pins.files.find(f=>f.path.endsWith('/training-basic-v1.json'));
@@ -22,7 +25,7 @@ if(records.length!==26||new Set(records.map(r=>r.id)).size!==26)throw Error('SOU
 const data={sourceCommit,registryBlobSHA,sourceSHA256:createHash('sha256').update(raw).digest('hex'),sourceURL,activationAllowed:false,published:false,records};
 await writeFile(new URL('public/registry.js',root),'window.HUB69_DATA='+JSON.stringify(data).replace(/</g,'\\u003c')+';\n');
 await mkdir(new URL('dist/',root),{recursive:true});
-const names=['index.html','style.css','design-tokens.json','config.js','registry.js','training-data.js','model.js','hstdn-review.js','explore.js','p0.js','core-binding.js','training.js','app.js'];
+const names=['index.html','design-tokens.css','style.css','design-system.css','design-tokens.json','config.js','registry.js','training-data.js','model.js','workspace.js','hstdn-review.js','explore.js','p0.js','core-binding.js','training.js','app.js'];
 for(const name of names)await copyFile(new URL('public/'+name,root),new URL('dist/'+name,root));
 // A same-origin mount for Codex 1. No snapshot rows are shipped in Core mode.
 await mkdir(new URL('core-dist/',root),{recursive:true});
@@ -30,7 +33,7 @@ for(const name of names)await copyFile(new URL('public/'+name,root),new URL('cor
 await writeFile(new URL('core-dist/config.js',root),'window.HUB69_CONFIG={mode:"core"};\n');
 await writeFile(new URL('core-dist/registry.js',root),'window.HUB69_DATA={records:[],activationAllowed:false,published:false};\n');
 let html=await readFile(new URL('public/index.html',root),'utf8');
-html=html.replace('<link rel="stylesheet" href="style.css">','<style>'+await readFile(new URL('public/style.css',root),'utf8')+'</style>');
+for(const name of ['design-tokens.css','style.css','design-system.css'])html=html.replace('<link rel="stylesheet" href="'+name+'">','<style>'+await readFile(new URL('public/'+name,root),'utf8')+'</style>');
 const scripts=[];
 for(const name of names.filter(n=>n.endsWith('.js'))){
   html=html.replace('<script src="'+name+'" defer></script>','');

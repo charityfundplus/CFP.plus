@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  const M=window.HUB69Model,P=window.HUB69P0,T=window.HUB69Training,C=window.HUB69CoreBinding,X=window.HUB69Explore;
+  const M=window.HUB69Model,P=window.HUB69P0,T=window.HUB69Training,C=window.HUB69CoreBinding,X=window.HUB69Explore,W=window.HUB69Workspace;
   const coreMode=window.HUB69_CONFIG?.mode==='core';
   let records=coreMode?[]:window.HUB69_DATA.records,coreState=null,coreController;
   let studyStorage;try{studyStorage=localStorage;}catch{}
@@ -18,9 +18,9 @@
   }
   function render(){
     const state=P.route(location.hash);
-    for(const view of ['home','master','id','chapters','vaults','openai','template','training','hstdn','commerce','technology'])$('view-'+view).hidden=view!==state.view;
-    document.querySelectorAll('[data-nav]').forEach(a=>{const active=a.dataset.nav===(state.view==='commerce'?'hstdn':state.view);a.classList.toggle('active',active);if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
-    const labels={home:'Tổng quan',master:'Master Hub',id:'Tra cứu ID',chapters:'5 Nhóm · 10 Chương',vaults:'6 Kho',openai:'HSTDN OpenAI mẫu',template:'Link Mẫu Chung',training:'Đào tạo SI/AI',hstdn:'HSTDN theo quốc gia',commerce:'Danh mục sàn · 8682 TMTC',technology:'Quantum · Space · Future Technologies'};
+    for(const view of ['home','master','id','chapters','vaults','openai','template','training','hstdn','commerce','technology','partners','reference','app'])$('view-'+view).hidden=view!==state.view;
+    document.querySelectorAll('[data-nav]').forEach(a=>{const active=a.dataset.nav===((state.view==='commerce'||state.view==='reference')?'hstdn':state.view);a.classList.toggle('active',active);if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+    const labels={partners:'Nhà cung cấp & đối tác',reference:'Tham chiếu đầu mối',app:'App · Bản review',home:'Tổng quan',master:'Master Hub',id:'Tra cứu ID',chapters:'5 Nhóm · 10 Chương',vaults:'6 Kho',openai:'HSTDN OpenAI mẫu',template:'Link Mẫu Chung',training:'Đào tạo SI/AI',hstdn:'HSTDN theo quốc gia',commerce:'Danh mục sàn · 8682 TMTC',technology:'Quantum · Space · Future Technologies'};
     $('breadcrumb').textContent='HUB 69 / '+labels[state.view]+(state.id?' / '+state.id:'')+(state.chapter?' / Chương '+state.chapter:state.group?' / Nhóm '+state.group:'');
     document.title=(state.id?state.id+' • ':state.view==='home'?'':labels[state.view]+' • ')+'HUB 69 • CFP+';
     $('directory').hidden=!!state.id||!!state.invalid;$('profile').hidden=!state.id&&!state.invalid;
@@ -44,17 +44,19 @@
     if(state.view==='template')$('common-template').innerHTML=P.templateView();
     if(state.view==='training')$('training-content').innerHTML=T.view(study,state.lesson);
     if(['hstdn','commerce','technology'].includes(state.view))$(state.view+'-content').innerHTML=X.view(state);
+    if(['partners','reference','app'].includes(state.view))$(state.view+'-content').innerHTML=W.view(state,{coreMode,coreState});
     renderSaved();
   }
   document.querySelectorAll('[data-lookup]').forEach(form=>form.addEventListener('submit',event=>{event.preventDefault();const input=form.elements.id;const id=input.value.trim();if(!M.validID(id)){notice('ID phải là chuỗi chữ số. Các số 0 được giữ nguyên.');input.focus();return;}const hash=id==='69'?'#home':'#id/'+id;if(location.hash===hash)render();else location.hash=hash;}));
   $('search').addEventListener('input',renderList);$('type').addEventListener('change',renderList);
   document.addEventListener('change',event=>{
-    if(event.target.dataset?.catalogFilter){const key=event.target.dataset.catalogFilter,state=P.route(location.hash);const next=X.filterRoute(state,key,event.target.value);if(next)location.hash=next;return;}
+    if(event.target.dataset?.catalogFilter){const key=event.target.dataset.catalogFilter,state=P.route(location.hash);const next=W.filterRoute(state,key,event.target.value)||X.filterRoute(state,key,event.target.value);if(next)location.hash=next;return;}
     if(event.target.id==='template-type'){$('common-template').innerHTML=P.templateView(event.target.value);$('template-type').focus();}
     const key=event.target.dataset?.study;
     if(key&&T.validKey(key)){study=event.target.checked?[...new Set([...study,key])]:study.filter(k=>k!==key);const stored=T.saveProgress(studyStorage,study);render();$('study-'+key)?.focus();notice(stored?'Đã lưu ghi nhận đọc trên trình duyệt; chưa phải đánh giá năng lực.':'Chỉ ghi nhận đọc trong phiên này; trình duyệt chặn lưu lâu dài.');}
   });
   document.addEventListener('click',async event=>{
+    if(event.target.closest('#menu-toggle')){const open=$('menu-toggle').getAttribute('aria-expanded')!=='true';$('menu-toggle').setAttribute('aria-expanded',String(open));$('primary-nav').classList.toggle('menu-open',open);return;}
     if(event.target.closest('a.skip')){event.preventDefault();$('content').focus();return;}
     if(event.target.closest('[data-core-retry]')&&coreController){await coreController.load(P.route(location.hash).id);return;}
     if(event.target.closest('[data-core-logout]')&&coreController){await coreController.logout();return;}
@@ -63,7 +65,9 @@
     const copy=event.target.closest('[data-copy]');
     if(copy){const link=new URL(location.href);link.hash='id/'+copy.dataset.copy;try{await navigator.clipboard.writeText(link.href);notice('Đã sao chép liên kết mục.');}catch{notice('Chưa sao chép được. Bạn có thể sao chép địa chỉ trên thanh trình duyệt.');}}
   });
-  window.addEventListener('hashchange',()=>{if(coreController)coreController.load(P.route(location.hash).id);else render();window.scrollTo({top:0,behavior:'auto'});$('content').focus({preventScroll:true});});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'&&$('menu-toggle').getAttribute('aria-expanded')==='true'){$('menu-toggle').setAttribute('aria-expanded','false');$('primary-nav').classList.toggle('menu-open',false);$('menu-toggle').focus();}});
+  if(typeof window.matchMedia==='function')$('menu-toggle').hidden=false;
+  window.addEventListener('hashchange',()=>{$('menu-toggle').setAttribute('aria-expanded','false');$('primary-nav').classList.toggle('menu-open',false);if(coreController)coreController.load(P.route(location.hash).id);else render();window.scrollTo({top:0,behavior:'auto'});$('content').focus({preventScroll:true});});
   document.querySelectorAll('[data-record-count]').forEach(el=>el.textContent=records.length);
   const issues=P.validate(records);
   if(issues.length)$('registry-diagnostics').innerHTML='<div class="callout">'+issues.length+' vấn đề cấu trúc nguồn: '+issues.map(i=>M.esc(i.code+' '+i.id)).join(' · ')+'. Chờ review; không tự sửa dữ liệu.</div>';

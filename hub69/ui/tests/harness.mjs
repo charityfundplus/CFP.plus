@@ -3,12 +3,12 @@ import {readFile} from 'node:fs/promises';
 import vm from 'node:vm';
 const root=new URL('../',import.meta.url);
 const html=await readFile(new URL('public/index.html',root),'utf8');
-const scripts=await Promise.all(['config.js','registry.js','training-data.js','model.js','hstdn-review.js','explore.js','p0.js','core-binding.js','training.js','app.js'].map(f=>readFile(new URL('public/'+f,root),'utf8')));
+const scripts=await Promise.all(['config.js','registry.js','training-data.js','model.js','workspace.js','hstdn-review.js','explore.js','p0.js','core-binding.js','training.js','app.js'].map(f=>readFile(new URL('public/'+f,root),'utf8')));
 export function harness({hash='#home',storageBlocked=false,clipboardBlocked=false,coreClient=null}={}){
   const elements=new Map(),events={},windowEvents={},values=new Map();
-  const element=id=>{if(elements.has(id))return elements.get(id);const e={id,hidden:false,textContent:'',value:id==='type'?'all':'',listeners:{},attributes:{},focused:false,classList:{toggle(){}},setAttribute(k,v){this.attributes[k]=v;},removeAttribute(k){delete this.attributes[k];},addEventListener(k,fn){this.listeners[k]=fn;},focus(){this.focused=true;}};let markup='';Object.defineProperty(e,'innerHTML',{get:()=>markup,set:v=>{markup=v;for(const m of v.matchAll(/\bid="([^"]+)"/g))element(m[1]);}});elements.set(id,e);return e;};
+  const element=id=>{if(elements.has(id))return elements.get(id);const e={id,hidden:false,textContent:'',value:id==='type'?'all':'',listeners:{},attributes:{},focused:false,classList:{toggle(){}},getAttribute(k){return this.attributes[k]??null;},setAttribute(k,v){this.attributes[k]=v;},removeAttribute(k){delete this.attributes[k];},addEventListener(k,fn){this.listeners[k]=fn;},focus(){this.focused=true;}};let markup='';Object.defineProperty(e,'innerHTML',{get:()=>markup,set:v=>{markup=v;for(const m of v.matchAll(/\bid="([^"]+)"/g))element(m[1]);}});elements.set(id,e);return e;};
   for(const m of html.matchAll(/\bid="([^"]+)"/g))element(m[1]);
-  const nav=['home','master','id','chapters','hstdn','technology','vaults','training'].map(id=>Object.assign(element('nav-'+id),{dataset:{nav:id}}));
+  const nav=['home','master','id','chapters','hstdn','technology','vaults','training','partners','app'].map(id=>Object.assign(element('nav-'+id),{dataset:{nav:id}}));
   const input={value:'',focus(){this.focused=true;}};
   const form=Object.assign(element('lookup'),{elements:{id:input}});
   const document={title:'',getElementById:id=>elements.get(id)||null,querySelectorAll:s=>s==='[data-nav]'?nav:s==='[data-lookup]'?[form]:[],addEventListener:(k,fn)=>events[k]=fn};
