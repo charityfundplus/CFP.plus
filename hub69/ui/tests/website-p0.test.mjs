@@ -16,7 +16,7 @@ test('existing HUB/group/chapter navigation reaches both P0 lanes and 8682',()=>
   const h=harness();
   for(const route of ['#chapters','#group/789','#chapter/7']){h.go(route);assert.match(h.elements.get('chapter-map').innerHTML,/href="#hstdn"/);}
   h.go('#hstdn');assert.match(h.elements.get('hstdn-content').innerHTML,/href="#commerce"/);
-  h.go('#commerce');assert.match(h.elements.get('commerce-content').innerHTML,/href="https:\/\/cfp\.plus\/8682"/);
+  h.go('#commerce');assert.match(h.elements.get('commerce-content').innerHTML,/href="#reference\/8682"/);
   h.go('#group/246');assert.match(h.elements.get('chapter-map').innerHTML,/href="#technology"/);
 });
 
@@ -104,11 +104,12 @@ test('untrusted labels are escaped and unsafe source URL schemes are not made cl
   assert.doesNotMatch(X.out('https://example.com/','<img src=x>'),/<img/);
 });
 
-test('versioned color tokens match the inherited CSS source exactly',async()=>{
+test('versioned tokens are the single source of the generated CSS in both bundles',async()=>{
   const tokens=JSON.parse(await readFile(new URL('public/design-tokens.json',root),'utf8'));
-  const css=await readFile(new URL('public/style.css',root),'utf8');
-  const values=Object.fromEntries([...css.match(/^:root\{([^}]+)\}/)[1].matchAll(/(--[\w-]+):([^;]+)/g)].map(m=>[m[1],m[2]]));
-  assert.equal(tokens.version,'1.0.0');assert.deepEqual(tokens.cssVariables,values);
+  const {tokenCSS}=await import('../token-css.mjs');
+  assert.equal(tokens.version,'1.1.0');
+  for(const dir of ['public','dist','core-dist'])assert.equal(await readFile(new URL(dir+'/design-tokens.css',root),'utf8'),tokenCSS(tokens));
+  assert.ok(Object.keys(tokens.cssVariables).length>=30);
 });
 
 test('standalone, snapshot and Core bundles all contain the same new UI without new network clients',async()=>{

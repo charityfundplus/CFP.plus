@@ -1,3 +1,5 @@
+> **Issue #156 • Shared Design 1.1.0 continuation:** xem [baseline, phạm vi, API seam, blockers và checklist thiết bị](ISSUE156-SHARED-DESIGN.md), [bàn giao theme Google Sites cho Gemini](GOOGLE-SITES-DESIGN-HANDOFF.md) và [bảng URL thực tế](evidence/shared-design/URLS.md). Các receipt cũ bên dưới chỉ chứng minh revision riêng của chúng. HOLD ACTIVATION • PRODUCTION NO-GO.
+
 # HUB 69 • Codex 2 • Giao diện P0
 
 ## HSTDN Việt Nam mẫu → Hoa Kỳ → toàn cầu • 19/10/2026

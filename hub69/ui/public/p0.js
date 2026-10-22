@@ -10,9 +10,11 @@
     {id:'246',name:'Con Người · Tôn Giáo · Công Nghệ',chapters:['2','4','6']},
     {id:'789',name:'Doanh Nghiệp · Tổ Chức · Quốc Gia',chapters:['7','8','9']}
   ]);
-  const names=['Nền Tảng','Sự Sống','Con Người','Bộ Tam và Ba Quỹ','Tôn Giáo và Tín Ngưỡng','Bộ Ngũ và Cộng Đồng','SI · AI · Robot · Siêu Phần Mềm','Doanh Nghiệp','Tổ Chức và Quỹ','Quốc Gia và Vùng Lãnh Thổ'];
+  const names=['Nền Tảng','Sự Sống','Con Người','Bộ Tam và Ba Quỹ','Tôn Giáo và Tín Ngưỡng','Chi Hội · Bộ Ngũ và Cộng Đồng','SI · AI · Robot · Siêu Phần Mềm & Công Nghệ','HSTDN · Doanh Nghiệp','Tổ Chức và Quỹ','Quốc Gia và Vùng Lãnh Thổ'];
   const chapters=Object.freeze(names.map((name,i)=>({id:String(i),name,group:groups.find(g=>g.chapters.includes(String(i))).id})));
   function route(hash){
+    const workspace=root.HUB69Workspace?.route(hash);
+    if(workspace)return workspace;
     const exploration=root.HUB69Explore?.route(hash);
     if(exploration)return exploration;
     if(hash==='#chapters')return {view:'chapters'};
@@ -66,7 +68,7 @@
     const seen=new Set();const visit=r=>{if(seen.has(r.id))return;seen.add(r.id);children(rows,r.id).forEach(visit);};roots.forEach(visit);
     const unresolved=rows.filter(r=>!seen.has(r.id));
     const gateway=chapter.id==='7'?'<div class="profile-actions"><a class="btn primary" href="#hstdn">HSTDN theo quốc gia</a><a class="btn" href="#commerce">Danh mục sàn · 8682 TMTC</a></div>':chapter.id==='6'?'<div class="profile-actions"><a class="btn primary" href="#technology">Quantum · Space · Future Technologies</a></div>':'';
-    return '<article class="panel chapter-panel" id="chapter-'+chapter.id+'"><div class="section-top"><h2><a href="#chapter/'+chapter.id+'">Chương '+chapter.id+' · '+esc(chapter.name)+'</a></h2><span class="tag">'+rows.length+' bản ghi nguồn</span></div><p class="muted">Nhóm '+chapter.group+' · Chương được phân loại theo chữ số đầu; không tạo quan hệ Parent mới.</p>'+gateway+(roots.length?'<ul class="id-tree">'+roots.map(r=>treeNode(r,rows)).join('')+'</ul>':'<p class="empty">Chưa có bản ghi con đủ nguồn trong snapshot này.</p>')+(unresolved.length?'<p class="callout">'+unresolved.length+' bản ghi có vòng lặp hoặc chưa dựng được cây; xem lại Parent. Không tự sửa lineage.</p>':'')+'</article>';
+    return '<article class="panel chapter-panel" id="chapter-'+chapter.id+'"><div class="section-top"><h2><a href="#chapter/'+chapter.id+'">Chương '+chapter.id+' · '+esc(chapter.name)+'</a></h2><span class="tag">'+rows.length+' bản ghi nguồn</span></div><p class="muted">Nhóm '+chapter.group+' · Chương được phân loại theo chữ số đầu; không tạo quan hệ Parent mới.</p>'+(root.HUB69Workspace?.chapterOverview(chapter.id)||'')+gateway+(roots.length?'<ul class="id-tree">'+roots.map(r=>treeNode(r,rows)).join('')+'</ul>':'<p class="empty">Chưa có bản ghi con đủ nguồn trong snapshot này.</p>')+(unresolved.length?'<p class="callout">'+unresolved.length+' bản ghi có vòng lặp hoặc chưa dựng được cây; xem lại Parent. Không tự sửa lineage.</p>':'')+'</article>';
   }
   function mapView(records,state={}){
     const selected=state.chapter?chapters.filter(c=>c.id===state.chapter):state.group?chapters.filter(c=>c.group===state.group):chapters;

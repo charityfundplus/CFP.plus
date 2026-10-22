@@ -1,0 +1,46 @@
+TAP version 13
+# Subtest: real Core -> UI: anonymous 401, login/retry, 224 references and dynamic record provenance
+ok 1 - real Core -> UI: anonymous 401, login/retry, 224 references and dynamic record provenance
+  ---
+  duration_ms: 1200.568028
+  type: 'test'
+  ...
+# Subtest: real Core -> UI: 0 and 000 stay distinct and 404 clears all earlier profile data
+ok 2 - real Core -> UI: 0 and 000 stay distinct and 404 clears all earlier profile data
+  ---
+  duration_ms: 1355.350683
+  type: 'test'
+  ...
+# Subtest: real Core -> UI: OpenAI and six vaults use Core readback, never a fabricated HSTDN or live sync
+ok 3 - real Core -> UI: OpenAI and six vaults use Core readback, never a fabricated HSTDN or live sync
+  ---
+  duration_ms: 1092.802394
+  type: 'test'
+  ...
+# Subtest: real Core -> UI: logout revokes the session and hides profiles and saved record labels
+ok 4 - real Core -> UI: logout revokes the session and hides profiles and saved record labels
+  ---
+  duration_ms: 917.983556
+  type: 'test'
+  ...
+# Subtest: UI clears rows after an injected 503 following a real Core read; no bundled snapshot fallback
+ok 5 - UI clears rows after an injected 503 following a real Core read; no bundled snapshot fallback
+  ---
+  duration_ms: 841.52876
+  type: 'test'
+  ...
+# Subtest: real Core source revision mismatch returns 503 and the UI remains empty
+ok 6 - real Core source revision mismatch returns 503 and the UI remains empty
+  ---
+  duration_ms: 3585.322239
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 9102.915578

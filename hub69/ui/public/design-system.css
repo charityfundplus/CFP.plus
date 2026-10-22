@@ -1,0 +1,68 @@
+/* Shared Website / browser App components. Values come from versioned tokens. */
+[hidden]{display:none!important}
+body{font-family:var(--font-body);font-size:var(--text-body);line-height:var(--line-height)}
+:where(a,button,input,select,summary):focus-visible{outline:var(--focus-width) solid var(--focus);outline-offset:4px}
+:where(input,select,button){font-size:var(--text-body)}
+.workspace main{max-width:var(--content-max);margin-inline:auto}
+.panel,.feature-card,.record-card{background:var(--surface);border-radius:var(--radius-md)}
+.panel{padding:var(--space-6)}
+.panel p,.page-intro p,.hero-description,.profile-description{font-size:var(--text-body)}
+.page-intro h1{font-size:var(--text-title);overflow-wrap:anywhere}
+.muted,.catalog-caption,.catalog-count,.source-address small{color:var(--muted);font-size:var(--text-sm)}
+.eyebrow,.nav-label,.hint,.side-bottom,.brand small,footer{font-size:var(--text-xs);color:var(--muted)}
+.tag{font-size:var(--text-xs);background:#edf1e5;color:var(--ink)}
+.tag.amber{background:var(--warning-surface);color:var(--amber)}
+.btn,.lookup button{min-height:var(--touch-target);font-size:var(--text-sm);font-weight:var(--weight-medium);border-radius:var(--radius-sm)}
+.btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;gap:var(--space-2)}
+.btn.primary{background:var(--green);color:var(--on-accent)}
+.btn:disabled{opacity:.7}
+.profile-actions{gap:var(--space-2)}
+.profile-dl dt,.catalog-meta dt{font-size:var(--text-sm);color:var(--muted)}
+.profile-dl dd,.catalog-meta dd{font-size:var(--text-body)}
+.sidebar nav a{font-size:var(--text-sm);min-height:var(--touch-target)}
+.sidebar nav a.active{color:var(--green)}
+.sidebar{padding-block:var(--space-6)}
+.nav-label{margin-top:var(--space-8)}
+.menu-toggle{display:none}
+.directory-filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-6)}
+.chapter-overview{border-top:1px solid var(--line);margin-top:var(--space-4);padding-block:var(--space-4)}
+.chapter-overview h3{font-size:var(--text-lg);margin:0}
+.chapter-overview p{margin-block:var(--space-3)}
+.app-shell-preview{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:var(--space-6)}
+.app-shortcuts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-3);margin-top:var(--space-6)}
+.app-shortcuts .btn{background:var(--paper);min-height:64px}
+.catalog-crumbs a,.profile-back,.text-link{min-height:var(--touch-target);align-content:center}
+.topbar,.directory-status,.source-footnote p{font-size:var(--text-xs);color:var(--muted)}
+.record-copy .tag,.record-copy code{font-size:var(--text-xs)}
+.record-copy h2{font-size:var(--text-body)}
+.card-action,.feature-card p,.quick-links,.flow small,.findings small{font-size:var(--text-sm)}
+.feature-card .eyebrow{font-size:var(--text-xs)}
+.dark .eyebrow{color:var(--lime)}
+.hold{color:var(--amber);font-size:var(--text-xs)}
+.hold strong,.hold span:last-child{font-size:inherit}
+@media(max-width:700px){
+  .sidebar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--space-2);position:sticky;z-index:20;padding:var(--space-3) var(--space-4);padding-top:max(12px,env(safe-area-inset-top))}
+  .sidebar .brand{min-width:0}
+  .menu-toggle:not([hidden]){display:inline-flex;align-self:center;font-size:var(--text-xs)}
+  .sidebar nav{grid-column:1/-1;margin:0;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sidebar:has(.menu-toggle:not([hidden])) nav:not(.menu-open){display:none}
+  .sidebar nav a{font-size:var(--text-sm);justify-content:flex-start;padding:var(--space-3)}
+  main{padding:var(--space-6) var(--space-4)}
+  .panel{padding:var(--space-4)}
+  .topbar{align-items:flex-start}
+  .privacy{white-space:normal;flex-shrink:1;font-size:var(--text-xs)}
+  .directory-filters,.app-shell-preview{grid-template-columns:minmax(0,1fr);gap:var(--space-3)}
+  .directory-filters .catalog-filter{margin:var(--space-2) 0}
+  .overview-grid{grid-template-columns:minmax(0,1fr)}
+  .note-card{grid-column:auto}
+  .lookup{flex-wrap:wrap}
+  .lookup input{min-width:0;font-size:var(--text-body)}
+  .lookup button{padding:var(--space-3)}
+  .lookup button span{display:none}
+  .catalog-crumbs{position:static;display:flex}
+  .catalog-crumbs a{font-size:var(--text-sm)}
+  .flow{grid-template-columns:minmax(0,1fr)}
+  .app-shortcuts{grid-template-columns:minmax(0,1fr)}
+  footer{padding-bottom:max(24px,env(safe-area-inset-bottom))}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
