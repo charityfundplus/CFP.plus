@@ -5,10 +5,10 @@ import {readFile} from 'node:fs/promises';
 const root=new URL('../',import.meta.url);
 const source=await readFile(new URL('public/sw.js',root),'utf8');
 function worker({offline=false}={}) {
-  const events={},stored=new Map(),network=[];
+  const events={},stored=new Map(),network=[],deleted=[];
   const cache={put:async(k,v)=>stored.set(k,v),match:async k=>stored.get(k)};
-  const context={URL,Response,self:{location:{href:'https://preview.test/hub69/sw.js'},addEventListener:(n,f)=>events[n]=f},caches:{open:async()=>cache},fetch:async(request)=>{network.push(request);if(offline&&typeof request!=='string')throw Error('offline');return new Response('fallback');}};
-  vm.runInNewContext(source,context);return {events,stored,network};
+  const context={URL,Response,self:{location:{href:'https://preview.test/hub69/sw.js'},addEventListener:(n,f)=>events[n]=f},caches:{open:async()=>cache,delete:async key=>{deleted.push(key);return true;}},fetch:async(request)=>{network.push(request);if(offline&&typeof request!=='string')throw Error('offline');return new Response('fallback');}};
+  vm.runInNewContext(source,context);return {events,stored,network,deleted};
 }
 test('offline install caches only a data-free fallback; API/auth/mutations are untouched',async()=>{
   const w=worker();let pending;w.events.install({waitUntil:p=>pending=p});await pending;
@@ -37,4 +37,8 @@ test('registration is inert in file review and unsupported/insecure contexts',as
   for(const [secure,protocol,worker] of [[true,'file:',true],[false,'http:',true],[true,'https:',false]]){
     vm.runInNewContext(js,{window:{isSecureContext:secure,addEventListener(){assert.fail('registered');}},navigator:worker?{serviceWorker:{}}:{},location:{protocol}});
   }
+});
+
+test('worker upgrade deletes only its known data-free v1 notice cache',async()=>{
+  const w=worker();let p;w.events.activate({waitUntil:v=>p=v});await p;assert.deepEqual(w.deleted,['hub69-offline-v1']);
 });
