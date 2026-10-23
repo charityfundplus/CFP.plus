@@ -1,0 +1,27 @@
+{
+  "baseline": "a1f888d4308636fde979e9a678ed8e15d0c69800",
+  "status": "HOLD ACTIVATION / PRODUCTION NO-GO",
+  "build": "PASS",
+  "unitTests": {
+    "pass": 92,
+    "fail": 0,
+    "execution": "Each tests/*.test.mjs invoked directly with Node v24.19.0; aggregate node --test file count is not assertion count."
+  },
+  "registryBlobSHA": "1f18068d66379ce90bb079dc56c77b4c4d66dcdf",
+  "browser": "BLOCKED: Chromium launch SIGTRAP, setsockopt Operation not permitted",
+  "physicalSafariIPhone": "NOT RUN",
+  "httpsStaging": "NOT RUN",
+  "nativeIOSAndroid": "NOT BUILT",
+  "coreIntegration": "NOT RERUN; existing Core binding unchanged",
+  "files": {
+    "build.mjs": "034855bad3c71c916827ae6e4fcc48ef7cca0d3f072d7bd240046e39f1df8061",
+    "pwa-icon.mjs": "324d77c3c9df1560724d2f7c99eded4a6a2ee2cbad098223f1768d52dab68244",
+    "public/index.html": "aab3197fac597a5eba11fcabd2b1d916b4c784f7b23c0956078f18b4af02c68c",
+    "public/workspace.js": "521f8f1efce0895f8f18b652fe06e2cce38a355d70065d4133c99477afc38f8f",
+    "public/manifest.webmanifest": "1eded38181a973a896dc464bad32def023067111fa56a2900d7359362177f568",
+    "public/pwa.js": "b8ecad494958ada64ca4e2f6627c48c029676bb04c81da0ef020679d2fd5197e",
+    "public/sw.js": "8e46becc7d2f84211bdcd5f17dbb0b29a76f7ef19e31b4789168e74cd87519fb",
+    "public/offline.html": "a6a51148070d44cefa2678471446b6fa2b73a9dbe26963733fc9733f51c62234",
+    "tests/pwa.test.mjs": "dd24872619fea551c0c0ff3fd06c3204f1fe421b49542a9b79fbfea4a2d379f9"
+  }
+}
