@@ -1,0 +1,28 @@
+{
+  "baseline": "06f386b1ba52358779cec6bc26c2d88f6a33664a",
+  "handlerAndAffectedTests": {
+    "pass": 7,
+    "fail": 0
+  },
+  "realLoopbackTCP": {
+    "pass": 1,
+    "fail": 0,
+    "executor": "primary agent with sandbox network permission",
+    "log": "loopback-root.log"
+  },
+  "companionUI": "Existing Draft PR #172: separate Registry6 + commerce1 HTTP and Chromium12 receipts",
+  "httpsSafariNative": "NOT RUN",
+  "status": "HOLD ACTIVATION / PRODUCTION NO-GO",
+  "files": {
+    "core/commerce-preview.mjs": "6e89e5de1d2741b617c9f12947c58d72aa525224580c35225e06e728653591ee",
+    "core/core-engine.mjs": "172eccf568b5e3e87825426c3f3fbb04190af53ab0e1e36614a82039cacf39e9",
+    "sandbox/p2-service.mjs": "f8a3b1f1ad3406355d55e7ce3fbd9d4e8bd42fba7f348ed2b4e1d0d53064cb6d",
+    "sandbox/p2-http.mjs": "265fb4292b3dccf9a2219cb1ef8687ab55b2021e739aa117547ed97d3a4c2e80",
+    "tests/commerce-catalog-v1.test.mjs": "8dfe36ca73194e2f9e5703f90eb6ee2528d57b634e4beb349e3835edf34f0779",
+    "tests/commerce-catalog-loopback.test.mjs": "7d19ef50c396c4a7793d366760a46d5b26d04cc45077fd4b4125a0c602690e90",
+    "docs/commerce-v1/API_CONTRACT.md": "c92a3ceb2ac404bf5ee8147756ed55a4d4599bdb6e4c5f10f9dc90aa1fdffa32",
+    "docs/commerce-v1/openapi.json": "922979bce926a56c18ff560916b3d41ba3a1f69b5a642c2d213aba3e5116b1fa",
+    "docs/commerce-v1/tests.log": "d64f58bf464c96ba6698e946471037940378afcdfd8a4b8a3163eb7c1823df22",
+    "docs/commerce-v1/loopback-root.log": "6ad13431821ebb02add44ae82dcd8ec2fed73a4c62ea4fb140e5644d5356baf0"
+  }
+}

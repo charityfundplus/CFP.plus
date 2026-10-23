@@ -1,0 +1,240 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "CFP+ Core sandbox catalogue",
+    "version": "0.1.0-review"
+  },
+  "security": [
+    {
+      "ExistingCoreSession": []
+    }
+  ],
+  "paths": {
+    "/api/v1/commerce/catalog": {
+      "get": {
+        "operationId": "readSandboxCommerceCatalog",
+        "summary": "Private existing Core read; no public listing or activation",
+        "parameters": [
+          {
+            "name": "pairKey",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9-]{0,79}$"
+            }
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 160,
+              "default": ""
+            }
+          },
+          {
+            "name": "kind",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "all",
+                "profile",
+                "hstdn",
+                "product",
+                "service"
+              ],
+              "default": "all"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 30
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10000,
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Authorized synthetic catalogue; no-store",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CatalogPage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid query or pair"
+          },
+          "401": {
+            "description": "Session denied"
+          },
+          "403": {
+            "description": "Host or pair denied"
+          },
+          "503": {
+            "description": "Audit/storage unavailable"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ExistingCoreSession": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "cfp_p2"
+      }
+    },
+    "schemas": {
+      "CatalogItem": {
+        "type": "object",
+        "required": [
+          "key",
+          "name",
+          "kind",
+          "scope",
+          "maturity",
+          "status",
+          "synthetic",
+          "verification",
+          "id",
+          "parent",
+          "did",
+          "canonical"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 300
+          },
+          "kind": {
+            "enum": [
+              "profile",
+              "hstdn",
+              "product",
+              "service"
+            ]
+          },
+          "scope": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "maturity": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "status": {
+            "const": "SANDBOX_ONLY"
+          },
+          "synthetic": {
+            "const": true
+          },
+          "verification": {
+            "const": "NOT VERIFIED"
+          },
+          "id": {
+            "type": "null"
+          },
+          "parent": {
+            "type": "null"
+          },
+          "did": {
+            "type": "null"
+          },
+          "canonical": {
+            "type": "null"
+          }
+        }
+      },
+      "CatalogPage": {
+        "type": "object",
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset",
+          "catalogRevision",
+          "registryWrites",
+          "activationAllowed",
+          "sandbox",
+          "synthetic",
+          "readOnly"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "type": "array",
+            "maxItems": 100,
+            "items": {
+              "$ref": "#/components/schemas/CatalogItem"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10000
+          },
+          "catalogRevision": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "registryWrites": {
+            "const": 0
+          },
+          "activationAllowed": {
+            "const": false
+          },
+          "sandbox": {
+            "const": true
+          },
+          "synthetic": {
+            "const": true
+          },
+          "readOnly": {
+            "const": true
+          }
+        }
+      }
+    }
+  }
+}
