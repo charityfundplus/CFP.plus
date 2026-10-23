@@ -1,0 +1,591 @@
+{
+  "mode": "Chromium loopback snapshot with synthetic fixtures",
+  "checks": [
+    {
+      "name": "loopback service worker controls page",
+      "pass": true
+    },
+    {
+      "name": "four visibly synthetic items",
+      "pass": true
+    },
+    {
+      "name": "Vietnamese accent-insensitive search",
+      "pass": true
+    },
+    {
+      "name": "search retains keyboard focus",
+      "pass": true
+    },
+    {
+      "name": "category combines with query and announces empty results",
+      "pass": true
+    },
+    {
+      "name": "product detail never binds identity",
+      "pass": true
+    },
+    {
+      "name": "390 #home no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "390 #home one visible main view",
+      "pass": true
+    },
+    {
+      "name": "390 #app no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "390 #app one visible main view",
+      "pass": true
+    },
+    {
+      "name": "390 #catalog no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "390 #catalog one visible main view",
+      "pass": true
+    },
+    {
+      "name": "390 #commerce no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "390 #commerce one visible main view",
+      "pass": true
+    },
+    {
+      "name": "390 #partners no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "390 #partners one visible main view",
+      "pass": true
+    },
+    {
+      "name": "390 #chapters no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "390 #chapters one visible main view",
+      "pass": true
+    },
+    {
+      "name": "390 #group/V no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "390 #group/V one visible main view",
+      "pass": true
+    },
+    {
+      "name": "390 #group/000 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "390 #group/000 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "390 #group/135 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "390 #group/135 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "390 #group/246 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "390 #group/246 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "390 #group/789 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "390 #group/789 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "390 #chapter/0 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "390 #chapter/0 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "390 #chapter/1 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "390 #chapter/1 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "390 #chapter/2 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "390 #chapter/2 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "390 #chapter/3 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "390 #chapter/3 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "390 #chapter/4 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "390 #chapter/4 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "390 #chapter/5 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "390 #chapter/5 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "390 #chapter/6 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "390 #chapter/6 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "390 #chapter/7 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "390 #chapter/7 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "390 #chapter/8 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "390 #chapter/8 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "390 #chapter/9 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "390 #chapter/9 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "768 #home no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "768 #home one visible main view",
+      "pass": true
+    },
+    {
+      "name": "768 #app no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "768 #app one visible main view",
+      "pass": true
+    },
+    {
+      "name": "768 #catalog no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "768 #catalog one visible main view",
+      "pass": true
+    },
+    {
+      "name": "768 #commerce no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "768 #commerce one visible main view",
+      "pass": true
+    },
+    {
+      "name": "768 #partners no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "768 #partners one visible main view",
+      "pass": true
+    },
+    {
+      "name": "768 #chapters no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "768 #chapters one visible main view",
+      "pass": true
+    },
+    {
+      "name": "768 #group/V no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "768 #group/V one visible main view",
+      "pass": true
+    },
+    {
+      "name": "768 #group/000 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "768 #group/000 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "768 #group/135 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "768 #group/135 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "768 #group/246 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "768 #group/246 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "768 #group/789 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "768 #group/789 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "768 #chapter/0 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "768 #chapter/0 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "768 #chapter/1 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "768 #chapter/1 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "768 #chapter/2 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "768 #chapter/2 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "768 #chapter/3 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "768 #chapter/3 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "768 #chapter/4 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "768 #chapter/4 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "768 #chapter/5 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "768 #chapter/5 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "768 #chapter/6 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "768 #chapter/6 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "768 #chapter/7 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "768 #chapter/7 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "768 #chapter/8 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "768 #chapter/8 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "768 #chapter/9 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "768 #chapter/9 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "1440 #home no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "1440 #home one visible main view",
+      "pass": true
+    },
+    {
+      "name": "1440 #app no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "1440 #app one visible main view",
+      "pass": true
+    },
+    {
+      "name": "1440 #catalog no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "1440 #catalog one visible main view",
+      "pass": true
+    },
+    {
+      "name": "1440 #commerce no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "1440 #commerce one visible main view",
+      "pass": true
+    },
+    {
+      "name": "1440 #partners no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "1440 #partners one visible main view",
+      "pass": true
+    },
+    {
+      "name": "1440 #chapters no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "1440 #chapters one visible main view",
+      "pass": true
+    },
+    {
+      "name": "1440 #group/V no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "1440 #group/V one visible main view",
+      "pass": true
+    },
+    {
+      "name": "1440 #group/000 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "1440 #group/000 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "1440 #group/135 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "1440 #group/135 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "1440 #group/246 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "1440 #group/246 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "1440 #group/789 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "1440 #group/789 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "1440 #chapter/0 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "1440 #chapter/0 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "1440 #chapter/1 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "1440 #chapter/1 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "1440 #chapter/2 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "1440 #chapter/2 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "1440 #chapter/3 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "1440 #chapter/3 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "1440 #chapter/4 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "1440 #chapter/4 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "1440 #chapter/5 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "1440 #chapter/5 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "1440 #chapter/6 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "1440 #chapter/6 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "1440 #chapter/7 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "1440 #chapter/7 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "1440 #chapter/8 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "1440 #chapter/8 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "1440 #chapter/9 no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "1440 #chapter/9 one visible main view",
+      "pass": true
+    },
+    {
+      "name": "mobile menu exposes expanded state",
+      "pass": true
+    },
+    {
+      "name": "Escape restores menu focus",
+      "pass": true
+    },
+    {
+      "name": "search has accessible label",
+      "pass": true
+    },
+    {
+      "name": "worker caches only data-free offline notice",
+      "pass": true
+    },
+    {
+      "name": "PWA icon 192x192 is served",
+      "pass": true
+    },
+    {
+      "name": "PWA icon 512x512 is served",
+      "pass": true
+    },
+    {
+      "name": "real offline navigation shows connection notice",
+      "pass": true
+    },
+    {
+      "name": "offline page has no data/login inputs",
+      "pass": true
+    },
+    {
+      "name": "reconnect returns to HUB69",
+      "pass": true
+    },
+    {
+      "name": "no JavaScript page errors",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "screenshots": [
+    {
+      "file": "catalog-390.png",
+      "sha256": "0ad0c6f0b1743ba0886811b56e3a6b3d39b63d8f93ab01d69af0729244c05433"
+    },
+    {
+      "file": "catalog-768.png",
+      "sha256": "d70d8ebbbb570f22e7760ba1744a7bde66442a5629be551b92deef1c52795b96"
+    },
+    {
+      "file": "catalog-1440.png",
+      "sha256": "e489345afd285990e6655dda325edc382808e32612b80267d81109781efb59eb"
+    }
+  ],
+  "physicalSafariIPhone": "NOT RUN",
+  "httpsStaging": "NOT RUN",
+  "browserVersion": "154.0.8037.57"
+}

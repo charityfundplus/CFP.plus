@@ -1,0 +1,13 @@
+anonymous catalog is hidden with no snapshot fallback True
+existing Core authenticates browser session True
+Core catalog renders three sandbox records True
+server search returns one product True
+detail keeps identity unbound True
+Website ID screen reads real Registry via same Core True
+App uses same authenticated Core session True
+App shortcut opens integrated TMTC True
+mobile integrated screen has no horizontal overflow True
+logout removes commerce data True
+logout revokes server session True
+no JavaScript errors True
+{"checks": 12, "failed": 0}
