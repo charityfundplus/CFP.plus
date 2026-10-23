@@ -33,6 +33,13 @@ export function createP2HTTP({service,previewOrigin=null}){
     const token=service.login(body.id,body.password);res.setHeader('Set-Cookie','cfp_p2='+token+'; HttpOnly; SameSite=Strict; Path=/; Max-Age=900'+secureCookie);return send(200,{auth:service.context(token),synthetic:true});
    }
    const cookies=String(req.headers.cookie||'').split(';').map(x=>x.trim());const matches=cookies.filter(x=>x.startsWith('cfp_p2='));if(matches.length!==1)throw Error('AUTH_DENIED');const token=matches[0].slice(7);const auth=service.context(token);
+   if(path==='/api/v1/commerce/catalog'&&req.method==='GET'){
+    const input=Object.create(null);for(const [key,value] of requestURL.searchParams){
+     if(!['pairKey','query','kind','limit','offset'].includes(key)||Object.hasOwn(input,key))throw Error('COMMERCE_QUERY_INVALID');
+     input[key]=['limit','offset'].includes(key)&&/^\d+$/.test(value)?Number(value):value;
+    }
+    const {pairKey,...query}=input;return send(200,service.readCommerce(token,pairKey,query));
+   }
    if(path==='/api/logout'&&req.method==='POST'){exact([]);service.revoke(token);res.setHeader('Set-Cookie','cfp_p2=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0'+secureCookie);return send(200,{loggedOut:true});}
    if(req.method==='GET'&&['/api/core/registry','/api/core/registry-validation','/api/core/hstdn-openai'].includes(path)){
     const input=Object.create(null);for(const [key,value] of requestURL.searchParams){if(Object.hasOwn(input,key))throw Error('REGISTRY_INVALID_FIELDS');input[key]=['limit','offset'].includes(key)&&/^\d+$/.test(value)?Number(value):value;}
