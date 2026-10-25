@@ -1,0 +1,7 @@
+.store-table-scroll {max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.store-table-scroll:focus {outline:3px solid currentColor;outline-offset:3px;}
+.store-table {width:100%;border-collapse:collapse;min-width:760px;text-align:left;}
+.store-table th,.store-table td {padding:.75rem;border:1px solid #62718c;vertical-align:top;overflow-wrap:anywhere;}
+.store-table caption {text-align:left;padding:.75rem 0;font-weight:600;}
+.store-table a {text-decoration:underline;}
+@media(max-width:480px){#five-store-status {min-width:0;} .store-table th,.store-table td {padding:.55rem;} }

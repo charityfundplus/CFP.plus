@@ -7,6 +7,7 @@ import {chmodSync,readFileSync,writeFileSync,existsSync,realpathSync} from 'node
 import {CoreEngine} from '../core/core-engine.mjs';
 import {hash} from '../core/common.mjs';
 import {loadRegistryReadModel,bindRegistrySource} from '../core/registry-read-model.mjs';
+import {fiveStoreStatus} from '../core/store-status.mjs';
 const digest=s=>createHash('sha256').update(s).digest('hex');
 const compat={schema:1,core:'0.1.0-sandbox',config:1,adapter:1};
 export class P2Sandbox {
@@ -64,7 +65,7 @@ export class P2Sandbox {
   this.#tx(()=>this.#event(a.id,a.workspace,'registry:'+operation,'sha256:'+hash(result)));
   return result;
  }
- adapters(token){this.#guard();this.#actor(token);return Array.from({length:5},(_,i)=>({slot:i+1,status:'DISCONNECTED / MISSING EVIDENCE',readOnly:true,connected:false,externalCalls:0,owner:null,url:null,scope:null,protocol:1}));}
+ adapters(token){this.#guard();this.#actor(token);return fiveStoreStatus().stores;}
  maintenanceLease(token){this.requireQuiescent(token);const auth=this.context(token);this.#maintenance=true;let released=false;return {auth,backup:(path)=>{if(released)throw Error('LEASE_RELEASED');this.#adminCall=true;try{return this.backup(token,path);}finally{this.#adminCall=false;}},release:()=>{released=true;this.#maintenance=false;}};}
  requireQuiescent(token){this.#guard();const a=this.#actor(token);if(!a.maintainer||!a.pairs.includes('*'))throw Error('MAINTAINER_REQUIRED');for(const row of this.#db.prepare('SELECT value FROM states').all()){const c=JSON.parse(row.value);if(c.tasks.some(t=>['RUNNING','QUEUED','AWAITING HUMAN REVIEW'].includes(t.status)))throw Error('QUIESCENCE_REQUIRED');}return true;}
  httpDenial(code){this.#guard();this.#tx(()=>this.#event('http-transport','unknown','http-policy',code));}
