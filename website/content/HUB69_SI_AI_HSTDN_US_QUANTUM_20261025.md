@@ -53,4 +53,12 @@ Mời Codex 1 (origin, DNS, TLS, Cloudflare, API, deploy SHA), Codex 2 (mobile/S
 
 **Giữ nguyên ID/Parent/DID/Canonical. Không tự thay Production, DNS, IAM, kích hoạt agent hoặc phát sinh chi phí khi chưa có phê duyệt.**
 
+## Chiến lược dài hạn • Hạ tầng SI AI và Quantum ngoài không gian
+
+CFP+ bắt đầu ngay việc nghiên cứu chuyển **những thành phần tính toán phù hợp** lên không gian để đánh giá khả năng giảm áp lực tài nguyên và tác động môi trường Trái Đất. Không khẳng định trước rằng di chuyển trung tâm dữ liệu lên quỹ đạo sẽ tiết kiệm năng lượng hoặc giảm phát thải.
+
+**Các nhánh nghiên cứu:** (1) năng lượng mặt trời quỹ đạo và lưu trữ; (2) tản nhiệt bức xạ trong chân không, khối lượng và diện tích bộ tản nhiệt; (3) truyền dữ liệu laser/radio, độ trễ và an ninh; (4) phóng, bức xạ, rác không gian và bảo trì; (5) điều kiện riêng của phần cứng lượng tử; (6) phân tích vòng đời CO2e, nước, vật liệu, năng lượng và rác quỹ đạo; (7) pháp luật không gian, chi phí và quản trị.
+
+**Bắt đầu ngay:** lập danh mục tri thức và Evidence, phân công nghiên cứu liên ngành, mô hình hóa và đối chiếu với trung tâm dữ liệu hiệu suất cao trên Trái Đất, thiết kế kiến trúc mô-đun, mời hợp tác các HSTDN không gian–năng lượng–AI–Quantum. Quyết định phát triển phần cứng chỉ khi có bằng chứng khả thi và phê duyệt Human Governance. Không chuyển ô nhiễm Trái Đất thành rác không gian.
+
 CFP+ • Charity • Fund • Plus • Only Love+ For Life ♥️
