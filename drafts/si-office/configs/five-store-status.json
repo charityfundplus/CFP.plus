@@ -1,0 +1,10 @@
+{
+  "sourceRevision": "06f386b1ba52358779cec6bc26c2d88f6a33664a",
+  "stores": [
+    {"name":"Notion","url":null,"owner":null,"scope":null,"access":"UNKNOWN — target and actor scope pending","checkedAt":null,"evidence":null},
+    {"name":"GitHub","url":"https://github.com/charityfundplus/CFP.plus/pull/124","owner":"charityfundplus (repository metadata)","scope":"Draft source read; operational vault grant unverified","access":"Source read observed; vault access UNKNOWN","checkedAt":null,"evidence":"https://github.com/charityfundplus/CFP.plus/tree/06f386b1ba52358779cec6bc26c2d88f6a33664a"},
+    {"name":"Google","url":null,"owner":null,"scope":null,"access":"UNKNOWN — historical archive receipt is not current sync","checkedAt":null,"evidence":null},
+    {"name":"MCP","url":"https://mcp.cfp.plus/mcp-public/","owner":null,"scope":null,"access":"UNKNOWN — content readback pending","checkedAt":null,"evidence":null},
+    {"name":"CMP","url":null,"owner":null,"scope":null,"access":"UNKNOWN — approved endpoint and actor scope pending","checkedAt":null,"evidence":null}
+  ]
+}

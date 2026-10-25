@@ -1,0 +1,502 @@
+/workspace/CFP.plus/run_ctttc_v066_tests.py:33: DeprecationWarning: Accessing jsonschema.__version__ is deprecated and will be removed in a future release. Use importlib.metadata directly to query for jsonschema's version.
+  print("jsonschema Version:", jsonschema.__version__)
+=== CFP+ CTTTC TEST RUNNER v0.6.6 ===
+Execution Timestamp: 2026-10-14T03:47:13+07:00
+Python Version: 3.12.14
+jsonschema Version: 4.26.0
+[PASS] valid fixture 01_past.json: OK
+[PASS] valid fixture 02_present.json: OK
+[PASS] valid fixture 03_future.json: OK
+[PASS] valid fixture 04_gregorian_leap.json: OK
+[PASS] valid fixture 05_structural_0229.json: OK
+[PASS] valid fixture 06_julian_leap.json: OK
+[PASS] valid fixture 07_bce.json: OK
+[PASS] valid fixture 08_approximate.json: OK
+[PASS] valid fixture 09_global.json: OK
+[PASS] valid fixture 10_delayed.json: OK
+[PASS] invalid fixture 11_invalid_0231.json: '02-31' does not match '^(01-(0[1-9]|[12][0-9]|3[01])|02-(0[1-9]|[12][0-9])|03-(0[1-9]|[12][0-9]|3[01])|04-(0[1-9]|[12][0-9]|30)|05-(0[1-9]|[12][0-9]|3[01])|06-(0[1-9]|[12][0-9]|30)|07-(0[1-9]|[12][0-9]|3[01])|08-(0[1-9]|[12][0-9]|3[01])|09-(0[1-9]|[12][0-9]|30)|10-(0[1-9]|[12][0-9]|3[01])|11-(0[1-9]|[12][0-9]|30)|12-(0[1-9]|[12][0-9]|3[01]))$'
+
+Failed validating 'pattern' in schema['properties']['day_key']:
+    {'type': 'string',
+     'pattern': '^(01-(0[1-9]|[12][0-9]|3[01])|02-(0[1-9]|[12][0-9])|03-(0[1-9]|[12][0-9]|3[01])|04-(0[1-9]|[12][0-9]|30)|05-(0[1-9]|[12][0-9]|3[01])|06-(0[1-9]|[12][0-9]|30)|07-(0[1-9]|[12][0-9]|3[01])|08-(0[1-9]|[12][0-9]|3[01])|09-(0[1-9]|[12][0-9]|30)|10-(0[1-9]|[12][0-9]|3[01])|11-(0[1-9]|[12][0-9]|30)|12-(0[1-9]|[12][0-9]|3[01]))$'}
+
+On instance['day_key']:
+    '02-31'
+[PASS] invalid fixture 12_invalid_0431.json: '04-31' does not match '^(01-(0[1-9]|[12][0-9]|3[01])|02-(0[1-9]|[12][0-9])|03-(0[1-9]|[12][0-9]|3[01])|04-(0[1-9]|[12][0-9]|30)|05-(0[1-9]|[12][0-9]|3[01])|06-(0[1-9]|[12][0-9]|30)|07-(0[1-9]|[12][0-9]|3[01])|08-(0[1-9]|[12][0-9]|3[01])|09-(0[1-9]|[12][0-9]|30)|10-(0[1-9]|[12][0-9]|3[01])|11-(0[1-9]|[12][0-9]|30)|12-(0[1-9]|[12][0-9]|3[01]))$'
+
+Failed validating 'pattern' in schema['properties']['day_key']:
+    {'type': 'string',
+     'pattern': '^(01-(0[1-9]|[12][0-9]|3[01])|02-(0[1-9]|[12][0-9])|03-(0[1-9]|[12][0-9]|3[01])|04-(0[1-9]|[12][0-9]|30)|05-(0[1-9]|[12][0-9]|3[01])|06-(0[1-9]|[12][0-9]|30)|07-(0[1-9]|[12][0-9]|3[01])|08-(0[1-9]|[12][0-9]|3[01])|09-(0[1-9]|[12][0-9]|30)|10-(0[1-9]|[12][0-9]|3[01])|11-(0[1-9]|[12][0-9]|30)|12-(0[1-9]|[12][0-9]|3[01]))$'}
+
+On instance['day_key']:
+    '04-31'
+[PASS] invalid fixture 13_future_missing_meta.json: 'future_metadata' is a required property
+
+Failed validating 'required' in schema['allOf'][0]['then']:
+    {'required': ['future_metadata']}
+
+On instance:
+    {'ingestion_id': 'ING-13',
+     'day_key': '08-23',
+     'temporal_position': {'numeric_value': 2030,
+                           'era': 'CE',
+                           'precision': 'EXACT',
+                           'calendar_type': 'Gregorian',
+                           'is_leap_slot_mapping': False,
+                           'actual_calendar_date': '2030-08-23'},
+     'temporal_class': 'FUTURE',
+     'event_status': 'RUNNING',
+     'title': 'Invalid',
+     'summary': 'Missing future metadata',
+     'country': 'Global',
+     'domain': 'Test',
+     'scale': 'Global',
+     'source_origin': 'Test',
+     'evidence': [],
+     'evidence_status': 'Pending Evidence',
+     'discovered_at': '2026-08-23',
+     'integrated_at': '2026-08-23'}
+[PASS] invalid fixture 14_verified_no_evidence.json: [] should be non-empty
+
+Failed validating 'minItems' in schema['allOf'][1]['then']['properties']['evidence']:
+    {'minItems': 1}
+
+On instance['evidence']:
+    []
+[PASS] invalid fixture 15_invalid_sha.json: 'bad' does not match '^[a-fA-F0-9]{64}$'
+
+Failed validating 'pattern' in schema['properties']['exact_fingerprint']:
+    {'type': ['string', 'null'], 'pattern': '^[a-fA-F0-9]{64}$'}
+
+On instance['exact_fingerprint']:
+    'bad'
+[PASS] invalid fixture 16_invalid_lat.json: 91 is greater than the maximum of 90
+
+Failed validating 'maximum' in schema['properties']['geographic_scope']['properties']['coordinates']['prefixItems'][0]:
+    {'type': 'number', 'minimum': -90, 'maximum': 90}
+
+On instance['geographic_scope']['coordinates'][0]:
+    91
+[PASS] invalid fixture 17_invalid_lon.json: 181 is greater than the maximum of 180
+
+Failed validating 'maximum' in schema['properties']['geographic_scope']['properties']['coordinates']['prefixItems'][1]:
+    {'type': 'number', 'minimum': -180, 'maximum': 180}
+
+On instance['geographic_scope']['coordinates'][1]:
+    181
+[PASS] invalid fixture 18_unknown_field.json: Additional properties are not allowed ('unexpected_field' was unexpected)
+
+Failed validating 'additionalProperties' in schema:
+    {'$schema': 'https://json-schema.org/draft/2020-12/schema',
+     '$id': 'https://cfp.plus/schemas/ctttc-universal-record.v0.6.6.json',
+     'title': 'CTTTCUniversalRecordV066',
+     'type': 'object',
+     'additionalProperties': False,
+     'required': ['ingestion_id',
+                  'day_key',
+                  'temporal_position',
+                  'temporal_class',
+                  'event_status',
+                  'title',
+                  'summary',
+                  'country',
+                  'domain',
+                  'scale',
+                  'source_origin',
+                  'evidence',
+                  'evidence_status',
+                  'discovered_at',
+                  'integrated_at'],
+     'properties': {'ingestion_id': {'type': 'string'},
+                    'canonical_record_id': {'type': ['string', 'null']},
+                    'day_key': {'type': 'string',
+                                'pattern': '^(01-(0[1-9]|[12][0-9]|3[01])|02-(0[1-9]|[12][0-9])|03-(0[1-9]|[12][0-9]|3[01])|04-(0[1-9]|[12][0-9]|30)|05-(0[1-9]|[12][0-9]|3[01])|06-(0[1-9]|[12][0-9]|30)|07-(0[1-9]|[12][0-9]|3[01])|08-(0[1-9]|[12][0-9]|3[01])|09-(0[1-9]|[12][0-9]|30)|10-(0[1-9]|[12][0-9]|3[01])|11-(0[1-9]|[12][0-9]|30)|12-(0[1-9]|[12][0-9]|3[01]))$'},
+                    'temporal_position': {'type': 'object',
+                                          'additionalProperties': False,
+                                          'required': ['numeric_value',
+                                                       'era',
+                                                       'precision',
+                                                       'calendar_type',
+                                                       'is_leap_slot_mapping'],
+                                          'properties': {'numeric_value': {'type': ['integer',
+                                                                                    'null']},
+                                                         'era': {'type': 'string',
+                                                                 'enum': ['CE',
+                                                                          'BCE',
+                                                                          'UNKNOWN']},
+                                                         'precision': {'type': 'string',
+                                                                       'enum': ['EXACT',
+                                                                                'APPROXIMATE',
+                                                                                'DECADE',
+                                                                                'CENTURY',
+                                                                                'RANGE',
+                                                                                'UNKNOWN']},
+                                                         'calendar_type': {'type': 'string',
+                                                                           'enum': ['Gregorian',
+                                                                                    'Julian',
+                                                                                    'Approximate',
+                                                                                    'Unknown']},
+                                                         'is_leap_slot_mapping': {'type': 'boolean'},
+                                                         'actual_calendar_date': {'type': ['string',
+                                                                                           'null'],
+                                                                                  'pattern': '^\\d{4}-\\d{2}-\\d{2}$'},
+                                                         'range_start': {'type': ['string',
+                                                                                  'null']},
+                                                         'range_end': {'type': ['string',
+                                                                                'null']},
+                                                         'original_expression': {'type': ['string',
+                                                                                          'null']}}},
+                    'temporal_class': {'type': 'string',
+                                       'enum': ['PAST',
+                                                'PRESENT',
+                                                'FUTURE']},
+                    'event_status': {'type': 'string',
+                                     'enum': ['ARCHIVED',
+                                              'OBSERVING',
+                                              'ACTIVE',
+                                              'ARMED_COUNTDOWN',
+                                              'RUNNING',
+                                              'REACHED_TARGET',
+                                              'VERIFY_ACTUAL_OUTCOME',
+                                              'OCCURRED',
+                                              'CHANGED',
+                                              'DELAYED',
+                                              'CANCELLED',
+                                              'NOT_VERIFIED',
+                                              'PENDING']},
+                    'title': {'type': 'string'},
+                    'summary': {'type': 'string'},
+                    'country': {'type': 'string'},
+                    'location': {'type': ['string', 'null']},
+                    'domain': {'type': 'string'},
+                    'scale': {'type': 'string'},
+                    'source_origin': {'type': 'string'},
+                    'exact_fingerprint': {'type': ['string', 'null'],
+                                          'pattern': '^[a-fA-F0-9]{64}$'},
+                    'evidence': {'type': 'array',
+                                 'items': {'$ref': '#/$defs/evidence'}},
+                    'evidence_status': {'type': 'string',
+                                        'enum': ['Verified',
+                                                 'Pending Evidence',
+                                                 'Conflicting']},
+                    'discovered_at': {'type': 'string', 'format': 'date'},
+                    'integrated_at': {'type': 'string', 'format': 'date'},
+                    'historical_date': {'type': ['string', 'null']},
+                    'geographic_scope': {'type': 'object',
+                                         'additionalProperties': False,
+                                         'properties': {'region': {'type': ['string',
+                                                                            'null']},
+                                                        'is_global': {'type': 'boolean'},
+                                                        'coordinates': {'type': ['array',
+                                                                                 'null'],
+                                                                        'prefixItems': [{'type': 'number',
+                                                                                         'minimum': -90,
+                                                                                         'maximum': 90},
+                                                                                        {'type': 'number',
+                                                                                         'minimum': -180,
+                                                                                         'maximum': 180}],
+                                                                        'items': False,
+                                                                        'minItems': 2,
+                                                                        'maxItems': 2}}},
+                    'future_metadata': {'type': 'object',
+                                        'additionalProperties': False,
+                                        'required': ['original_target_datetime',
+                                                     'current_target_datetime',
+                                                     'countdown_enabled',
+                                                     'countdown_status',
+                                                     'future_confidence'],
+                                        'properties': {'original_target_datetime': {'type': 'string',
+                                                                                    'format': 'date-time'},
+                                                       'current_target_datetime': {'type': 'string',
+                                                                                   'format': 'date-time'},
+                                                       'countdown_enabled': {'type': 'boolean'},
+                                                       'countdown_status': {'type': 'string',
+                                                                            'enum': ['RUNNING',
+                                                                                     'REACHED_TARGET',
+                                                                                     'PAUSED',
+                                                                                     'STOPPED']},
+                                                       'future_confidence': {'type': 'string',
+                                                                             'enum': ['CONFIRMED_FUTURE_EVENT',
+                                                                                      'SCHEDULED',
+                                                                                      'EXPECTED',
+                                                                                      'FORECAST',
+                                                                                      'PENDING_EVIDENCE']},
+                                                       'future_source': {'type': ['string',
+                                                                                  'null']},
+                                                       'reached_target_at': {'type': ['string',
+                                                                                      'null'],
+                                                                             'format': 'date-time'},
+                                                       'actual_outcome_status': {'type': ['string',
+                                                                                          'null'],
+                                                                                 'enum': [None,
+                                                                                          'OCCURRED',
+                                                                                          'CHANGED',
+                                                                                          'DELAYED',
+                                                                                          'CANCELLED',
+                                                                                          'NOT_VERIFIED']},
+                                                       'actual_outcome_evidence': {'type': 'array',
+                                                                                   'items': {'$ref': '#/$defs/evidence'}},
+                                                       'schedule_history': {'type': 'array',
+                                                                            'items': {'type': 'object',
+                                                                                      'additionalProperties': False,
+                                                                                      'required': ['changed_at',
+                                                                                                   'previous_target',
+                                                                                                   'new_target',
+                                                                                                   'reason'],
+                                                                                      'properties': {'changed_at': {'type': 'string',
+                                                                                                                    'format': 'date-time'},
+                                                                                                     'previous_target': {'type': 'string',
+                                                                                                                         'format': 'date-time'},
+                                                                                                     'new_target': {'type': 'string',
+                                                                                                                    'format': 'date-time'},
+                                                                                                     'reason': {'type': 'string'}}}}}}},
+     '$defs': {'evidence': {'type': 'object',
+                            'additionalProperties': False,
+                            'required': ['evidence_id',
+                                         'source_url',
+                                         'content_hash',
+                                         'evidence_type',
+                                         'description',
+                                         'verified_at',
+                                         'verification_actor'],
+                            'properties': {'evidence_id': {'type': 'string'},
+                                           'source_url': {'type': 'string',
+                                                          'format': 'uri'},
+                                           'content_hash': {'type': 'string',
+                                                            'pattern': '^[a-fA-F0-9]{64}$'},
+                                           'evidence_type': {'type': 'string',
+                                                             'enum': ['Official '
+                                                                      'Document',
+                                                                      'Media '
+                                                                      'Report',
+                                                                      'Blockchain '
+                                                                      'Hash',
+                                                                      'Direct '
+                                                                      'Observation',
+                                                                      'Expert '
+                                                                      'Analysis',
+                                                                      'Other']},
+                                           'description': {'type': 'string'},
+                                           'verified_at': {'type': 'string',
+                                                           'format': 'date'},
+                                           'verification_actor': {'type': 'string'}}}},
+     'allOf': [{'if': {'required': ['temporal_class'],
+                       'properties': {'temporal_class': {'const': 'FUTURE'}}},
+                'then': {'required': ['future_metadata']}},
+               {'if': {'required': ['evidence_status'],
+                       'properties': {'evidence_status': {'const': 'Verified'}}},
+                'then': {'properties': {'evidence': {'minItems': 1}}}}],
+     'unevaluatedProperties': False}
+
+On instance:
+    {'ingestion_id': 'ING-18',
+     'day_key': '08-23',
+     'temporal_position': {'numeric_value': 2026,
+                           'era': 'CE',
+                           'precision': 'EXACT',
+                           'calendar_type': 'Gregorian',
+                           'is_leap_slot_mapping': False,
+                           'actual_calendar_date': '2026-08-23'},
+     'temporal_class': 'PAST',
+     'event_status': 'ARCHIVED',
+     'title': 'Invalid',
+     'summary': 'Unknown field',
+     'country': 'VN',
+     'domain': 'Test',
+     'scale': 'Local',
+     'source_origin': 'Test',
+     'evidence': [],
+     'evidence_status': 'Pending Evidence',
+     'discovered_at': '2026-08-23',
+     'integrated_at': '2026-08-23',
+     'unexpected_field': 'x'}
+[PASS] invalid fixture 19_bad_0229_mapping.json: Non-leap year 02-29 requires structural-slot mapping.
+[PASS] invalid fixture 20_outcome_mismatch.json: Outcome status must exist and match event_status.
+[PASS] transition ACTIVE->ACTIVE expected=False got=False
+[PASS] transition ACTIVE->ARCHIVED expected=True got=True
+[PASS] transition ACTIVE->ARMED_COUNTDOWN expected=False got=False
+[PASS] transition ACTIVE->CANCELLED expected=False got=False
+[PASS] transition ACTIVE->CHANGED expected=False got=False
+[PASS] transition ACTIVE->DELAYED expected=False got=False
+[PASS] transition ACTIVE->NOT_VERIFIED expected=False got=False
+[PASS] transition ACTIVE->OBSERVING expected=False got=False
+[PASS] transition ACTIVE->OCCURRED expected=False got=False
+[PASS] transition ACTIVE->PENDING expected=False got=False
+[PASS] transition ACTIVE->REACHED_TARGET expected=False got=False
+[PASS] transition ACTIVE->RUNNING expected=True got=True
+[PASS] transition ACTIVE->VERIFY_ACTUAL_OUTCOME expected=False got=False
+[PASS] transition ARCHIVED->ACTIVE expected=False got=False
+[PASS] transition ARCHIVED->ARCHIVED expected=False got=False
+[PASS] transition ARCHIVED->ARMED_COUNTDOWN expected=False got=False
+[PASS] transition ARCHIVED->CANCELLED expected=False got=False
+[PASS] transition ARCHIVED->CHANGED expected=False got=False
+[PASS] transition ARCHIVED->DELAYED expected=False got=False
+[PASS] transition ARCHIVED->NOT_VERIFIED expected=False got=False
+[PASS] transition ARCHIVED->OBSERVING expected=False got=False
+[PASS] transition ARCHIVED->OCCURRED expected=False got=False
+[PASS] transition ARCHIVED->PENDING expected=False got=False
+[PASS] transition ARCHIVED->REACHED_TARGET expected=False got=False
+[PASS] transition ARCHIVED->RUNNING expected=False got=False
+[PASS] transition ARCHIVED->VERIFY_ACTUAL_OUTCOME expected=False got=False
+[PASS] transition ARMED_COUNTDOWN->ACTIVE expected=False got=False
+[PASS] transition ARMED_COUNTDOWN->ARCHIVED expected=True got=True
+[PASS] transition ARMED_COUNTDOWN->ARMED_COUNTDOWN expected=True got=True
+[PASS] transition ARMED_COUNTDOWN->CANCELLED expected=True got=True
+[PASS] transition ARMED_COUNTDOWN->CHANGED expected=False got=False
+[PASS] transition ARMED_COUNTDOWN->DELAYED expected=False got=False
+[PASS] transition ARMED_COUNTDOWN->NOT_VERIFIED expected=False got=False
+[PASS] transition ARMED_COUNTDOWN->OBSERVING expected=False got=False
+[PASS] transition ARMED_COUNTDOWN->OCCURRED expected=False got=False
+[PASS] transition ARMED_COUNTDOWN->PENDING expected=False got=False
+[PASS] transition ARMED_COUNTDOWN->REACHED_TARGET expected=False got=False
+[PASS] transition ARMED_COUNTDOWN->RUNNING expected=True got=True
+[PASS] transition ARMED_COUNTDOWN->VERIFY_ACTUAL_OUTCOME expected=False got=False
+[PASS] transition CANCELLED->ACTIVE expected=False got=False
+[PASS] transition CANCELLED->ARCHIVED expected=True got=True
+[PASS] transition CANCELLED->ARMED_COUNTDOWN expected=False got=False
+[PASS] transition CANCELLED->CANCELLED expected=True got=True
+[PASS] transition CANCELLED->CHANGED expected=False got=False
+[PASS] transition CANCELLED->DELAYED expected=False got=False
+[PASS] transition CANCELLED->NOT_VERIFIED expected=False got=False
+[PASS] transition CANCELLED->OBSERVING expected=False got=False
+[PASS] transition CANCELLED->OCCURRED expected=False got=False
+[PASS] transition CANCELLED->PENDING expected=False got=False
+[PASS] transition CANCELLED->REACHED_TARGET expected=False got=False
+[PASS] transition CANCELLED->RUNNING expected=False got=False
+[PASS] transition CANCELLED->VERIFY_ACTUAL_OUTCOME expected=False got=False
+[PASS] transition CHANGED->ACTIVE expected=True got=True
+[PASS] transition CHANGED->ARCHIVED expected=True got=True
+[PASS] transition CHANGED->ARMED_COUNTDOWN expected=False got=False
+[PASS] transition CHANGED->CANCELLED expected=False got=False
+[PASS] transition CHANGED->CHANGED expected=True got=True
+[PASS] transition CHANGED->DELAYED expected=False got=False
+[PASS] transition CHANGED->NOT_VERIFIED expected=False got=False
+[PASS] transition CHANGED->OBSERVING expected=False got=False
+[PASS] transition CHANGED->OCCURRED expected=False got=False
+[PASS] transition CHANGED->PENDING expected=False got=False
+[PASS] transition CHANGED->REACHED_TARGET expected=False got=False
+[PASS] transition CHANGED->RUNNING expected=False got=False
+[PASS] transition CHANGED->VERIFY_ACTUAL_OUTCOME expected=False got=False
+[PASS] transition DELAYED->ACTIVE expected=False got=False
+[PASS] transition DELAYED->ARCHIVED expected=True got=True
+[PASS] transition DELAYED->ARMED_COUNTDOWN expected=False got=False
+[PASS] transition DELAYED->CANCELLED expected=True got=True
+[PASS] transition DELAYED->CHANGED expected=False got=False
+[PASS] transition DELAYED->DELAYED expected=True got=True
+[PASS] transition DELAYED->NOT_VERIFIED expected=False got=False
+[PASS] transition DELAYED->OBSERVING expected=False got=False
+[PASS] transition DELAYED->OCCURRED expected=False got=False
+[PASS] transition DELAYED->PENDING expected=False got=False
+[PASS] transition DELAYED->REACHED_TARGET expected=False got=False
+[PASS] transition DELAYED->RUNNING expected=True got=True
+[PASS] transition DELAYED->VERIFY_ACTUAL_OUTCOME expected=False got=False
+[PASS] transition NOT_VERIFIED->ACTIVE expected=False got=False
+[PASS] transition NOT_VERIFIED->ARCHIVED expected=True got=True
+[PASS] transition NOT_VERIFIED->ARMED_COUNTDOWN expected=False got=False
+[PASS] transition NOT_VERIFIED->CANCELLED expected=False got=False
+[PASS] transition NOT_VERIFIED->CHANGED expected=False got=False
+[PASS] transition NOT_VERIFIED->DELAYED expected=False got=False
+[PASS] transition NOT_VERIFIED->NOT_VERIFIED expected=True got=True
+[PASS] transition NOT_VERIFIED->OBSERVING expected=False got=False
+[PASS] transition NOT_VERIFIED->OCCURRED expected=False got=False
+[PASS] transition NOT_VERIFIED->PENDING expected=False got=False
+[PASS] transition NOT_VERIFIED->REACHED_TARGET expected=False got=False
+[PASS] transition NOT_VERIFIED->RUNNING expected=False got=False
+[PASS] transition NOT_VERIFIED->VERIFY_ACTUAL_OUTCOME expected=False got=False
+[PASS] transition OBSERVING->ACTIVE expected=True got=True
+[PASS] transition OBSERVING->ARCHIVED expected=True got=True
+[PASS] transition OBSERVING->ARMED_COUNTDOWN expected=True got=True
+[PASS] transition OBSERVING->CANCELLED expected=False got=False
+[PASS] transition OBSERVING->CHANGED expected=False got=False
+[PASS] transition OBSERVING->DELAYED expected=False got=False
+[PASS] transition OBSERVING->NOT_VERIFIED expected=False got=False
+[PASS] transition OBSERVING->OBSERVING expected=False got=False
+[PASS] transition OBSERVING->OCCURRED expected=False got=False
+[PASS] transition OBSERVING->PENDING expected=False got=False
+[PASS] transition OBSERVING->REACHED_TARGET expected=False got=False
+[PASS] transition OBSERVING->RUNNING expected=False got=False
+[PASS] transition OBSERVING->VERIFY_ACTUAL_OUTCOME expected=False got=False
+[PASS] transition OCCURRED->ACTIVE expected=False got=False
+[PASS] transition OCCURRED->ARCHIVED expected=True got=True
+[PASS] transition OCCURRED->ARMED_COUNTDOWN expected=False got=False
+[PASS] transition OCCURRED->CANCELLED expected=False got=False
+[PASS] transition OCCURRED->CHANGED expected=False got=False
+[PASS] transition OCCURRED->DELAYED expected=False got=False
+[PASS] transition OCCURRED->NOT_VERIFIED expected=False got=False
+[PASS] transition OCCURRED->OBSERVING expected=False got=False
+[PASS] transition OCCURRED->OCCURRED expected=True got=True
+[PASS] transition OCCURRED->PENDING expected=False got=False
+[PASS] transition OCCURRED->REACHED_TARGET expected=False got=False
+[PASS] transition OCCURRED->RUNNING expected=False got=False
+[PASS] transition OCCURRED->VERIFY_ACTUAL_OUTCOME expected=False got=False
+[PASS] transition PENDING->ACTIVE expected=True got=True
+[PASS] transition PENDING->ARCHIVED expected=True got=True
+[PASS] transition PENDING->ARMED_COUNTDOWN expected=True got=True
+[PASS] transition PENDING->CANCELLED expected=False got=False
+[PASS] transition PENDING->CHANGED expected=False got=False
+[PASS] transition PENDING->DELAYED expected=False got=False
+[PASS] transition PENDING->NOT_VERIFIED expected=False got=False
+[PASS] transition PENDING->OBSERVING expected=True got=True
+[PASS] transition PENDING->OCCURRED expected=False got=False
+[PASS] transition PENDING->PENDING expected=False got=False
+[PASS] transition PENDING->REACHED_TARGET expected=False got=False
+[PASS] transition PENDING->RUNNING expected=False got=False
+[PASS] transition PENDING->VERIFY_ACTUAL_OUTCOME expected=False got=False
+[PASS] transition REACHED_TARGET->ACTIVE expected=False got=False
+[PASS] transition REACHED_TARGET->ARCHIVED expected=True got=True
+[PASS] transition REACHED_TARGET->ARMED_COUNTDOWN expected=False got=False
+[PASS] transition REACHED_TARGET->CANCELLED expected=False got=False
+[PASS] transition REACHED_TARGET->CHANGED expected=False got=False
+[PASS] transition REACHED_TARGET->DELAYED expected=False got=False
+[PASS] transition REACHED_TARGET->NOT_VERIFIED expected=False got=False
+[PASS] transition REACHED_TARGET->OBSERVING expected=False got=False
+[PASS] transition REACHED_TARGET->OCCURRED expected=False got=False
+[PASS] transition REACHED_TARGET->PENDING expected=False got=False
+[PASS] transition REACHED_TARGET->REACHED_TARGET expected=True got=True
+[PASS] transition REACHED_TARGET->RUNNING expected=False got=False
+[PASS] transition REACHED_TARGET->VERIFY_ACTUAL_OUTCOME expected=True got=True
+[PASS] transition RUNNING->ACTIVE expected=False got=False
+[PASS] transition RUNNING->ARCHIVED expected=True got=True
+[PASS] transition RUNNING->ARMED_COUNTDOWN expected=False got=False
+[PASS] transition RUNNING->CANCELLED expected=True got=True
+[PASS] transition RUNNING->CHANGED expected=False got=False
+[PASS] transition RUNNING->DELAYED expected=True got=True
+[PASS] transition RUNNING->NOT_VERIFIED expected=False got=False
+[PASS] transition RUNNING->OBSERVING expected=False got=False
+[PASS] transition RUNNING->OCCURRED expected=False got=False
+[PASS] transition RUNNING->PENDING expected=False got=False
+[PASS] transition RUNNING->REACHED_TARGET expected=True got=True
+[PASS] transition RUNNING->RUNNING expected=True got=True
+[PASS] transition RUNNING->VERIFY_ACTUAL_OUTCOME expected=False got=False
+[PASS] transition VERIFY_ACTUAL_OUTCOME->ACTIVE expected=False got=False
+[PASS] transition VERIFY_ACTUAL_OUTCOME->ARCHIVED expected=True got=True
+[PASS] transition VERIFY_ACTUAL_OUTCOME->ARMED_COUNTDOWN expected=False got=False
+[PASS] transition VERIFY_ACTUAL_OUTCOME->CANCELLED expected=True got=True
+[PASS] transition VERIFY_ACTUAL_OUTCOME->CHANGED expected=True got=True
+[PASS] transition VERIFY_ACTUAL_OUTCOME->DELAYED expected=True got=True
+[PASS] transition VERIFY_ACTUAL_OUTCOME->NOT_VERIFIED expected=True got=True
+[PASS] transition VERIFY_ACTUAL_OUTCOME->OBSERVING expected=False got=False
+[PASS] transition VERIFY_ACTUAL_OUTCOME->OCCURRED expected=True got=True
+[PASS] transition VERIFY_ACTUAL_OUTCOME->PENDING expected=False got=False
+[PASS] transition VERIFY_ACTUAL_OUTCOME->REACHED_TARGET expected=False got=False
+[PASS] transition VERIFY_ACTUAL_OUTCOME->RUNNING expected=False got=False
+[PASS] transition VERIFY_ACTUAL_OUTCOME->VERIFY_ACTUAL_OUTCOME expected=True got=True
+[PASS] unknown transition 'UNKNOWN'->'RUNNING' fails closed
+[PASS] unknown transition 'RUNNING'->'UNKNOWN' fails closed
+[PASS] unknown transition ''->'ARCHIVED' fails closed
+[PASS] temporal reconcile rejects FUTURE + OCCURRED: Final outcome state cannot remain temporal_class=FUTURE.
+[PASS] temporal reconcile rejects FUTURE + CANCELLED: Final outcome state cannot remain temporal_class=FUTURE.
+[PASS] temporal reconcile rejects FUTURE + NOT_VERIFIED: Final outcome state cannot remain temporal_class=FUTURE.
+[PASS] temporal reconcile allows FUTURE + CHANGED: OK
+[PASS] temporal reconcile allows FUTURE + DELAYED: OK
+[PASS] Evidence Positive
+{"source_url": "https://raw.githubusercontent.com/charityfundplus/CFP.plus/99aab62ef356d015a682ae85328b3e80a9df2ffe/README.md", "declared_sha256": "0cca6b93c8b705abfeb2b58f2669bb10f244ab80e4b63a53561b0ffd14d5a254", "retrieved_at": "2026-10-13T20:47:13.227935+00:00", "http_status": 200, "resolved_url": "https://raw.githubusercontent.com/charityfundplus/CFP.plus/99aab62ef356d015a682ae85328b3e80a9df2ffe/README.md", "content_type": "text/plain; charset=utf-8", "content_length": 1182, "computed_sha256": "0cca6b93c8b705abfeb2b58f2669bb10f244ab80e4b63a53561b0ffd14d5a254", "hash_match": true, "verification_result": "PASS_INTEGRITY"}
+[PASS] Evidence Negative: FAIL_HASH_MISMATCH
+[PASS] Claim Support: SEMANTIC_REVIEW_REQUIRED overlap=0.1111
+[PASS] Duplicate expected=EXACT_DUPLICATE got=EXACT_DUPLICATE: exact fingerprint is authoritative across presentation fields
+[PASS] Duplicate expected=SIMILARITY_REVIEW got=SIMILARITY_REVIEW: normalized case/whitespace/punctuation/diacritics
+[PASS] Duplicate expected=DISTINCT_EVENT got=DISTINCT_EVENT: same title/day but different domain avoids coarse false positive
+[PASS] Duplicate expected=DISTINCT_EVENT got=DISTINCT_EVENT: different structural day remains distinct without exact fingerprint match
+Total Passed: 204
+Total Failed: 0
+Exit Code: 0

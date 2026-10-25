@@ -1,0 +1,33 @@
+{
+  "runtimeRevision": "275c6b11559216404537c752a706e1b2eef1d0b7",
+  "assessmentBaseline": "b75b780eb64430355f0b51a4b58b9e5269e0db43",
+  "sourceReadbackFiles": 26,
+  "untouchedBlobCount": 852,
+  "unexpectedAlterations": 0,
+  "commercialNewAssertions": 38,
+  "onboardingAffectedAssertions": 17,
+  "testCounts": {
+    "newCommercialAndRetention": 6,
+    "newExportVmMockedTransport": 4,
+    "affectedAssessmentRetention": 3,
+    "affectedTaskSourceReceipt": 1
+  },
+  "buildManifestSha256": "4d1fd0b6b8ce54854e67a97ba8b9e5e1a0ddac88454051f2eee8e7cf93473be3",
+  "commercialReceiptSha256": "4ce7f290f20637df0c035d8b78a00b21079e1b083449b8159f4ad605e46f5ee0",
+  "onboardingReceiptSha256": "6a3caa274be22f0aa725e6ad281dee885bf7d382a7578b965fd9d6a64dae80d3",
+  "inquiryKey": "0ad5edd7-2355-4144-b168-7a99784294ad",
+  "opportunityKey": "1c5e35b3-4a94-488b-9b00-63baaece12fa",
+  "taskKey": "57d079ec-df81-4392-87c8-b35637348d88",
+  "seedKeys": {
+    "profile": "5bf34649-b858-4428-92ad-37cb1e1c555d",
+    "hstdn": "ebadc1b7-dce5-43ee-8d13-5f4eed97d8e4",
+    "product": "2f30cab5-76db-42c5-a7b6-2dd0c06d5cfa",
+    "service": "56064b40-c26b-4652-88fb-e4425f292f2d"
+  },
+  "browser": false,
+  "actualIphoneSafari": false,
+  "publicHttps": false,
+  "activationAllowed": false,
+  "authorityVerified": false,
+  "independentOpenSIAck": false
+}

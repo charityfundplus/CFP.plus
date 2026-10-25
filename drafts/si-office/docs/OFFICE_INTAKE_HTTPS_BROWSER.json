@@ -1,0 +1,29 @@
+{
+  "scope": "Real loopback HTTPS + exact certificate pin + Chromium; synthetic fixtures only",
+  "checks": [
+    "Anonymous basic curriculum and all eight root links; application needs issued account; root functionality not verified",
+    "All four applicant categories; US conflict and VN/CA/unresolved declarations persist unverified; script content safely displayed",
+    "Declared HSTDN legal-parent relation and product/service catalogs saved with source; legal relation remains NOT VERIFIED",
+    "Advanced enrollment, marketing and work intake saved as review requests with no certification, execution or publication",
+    "Declaration update appends a version and shows latest without inflating country counts",
+    "Reload persistence and own-subject office/training export with verified SHA256 and no session cookie",
+    "VI/EN at 390px and 320px without horizontal overflow; mobile screenshot recorded",
+    "Viewer reads but cannot submit",
+    "Foreign workspace sees no declarations or requests",
+    "Name + HTTPS contact can start an isolated application without invented country/developer evidence",
+    "Actual local TLS session cookies Secure/HttpOnly; exact certificate SPKI pinned",
+    "No browser page errors"
+  ],
+  "pageErrors": [],
+  "status": "PASS",
+  "publicPreview": "NOT CONFIGURED",
+  "realOnboardingCount": 0,
+  "syntheticCountryCountsPrimaryWorkspace": {
+    "US": 1,
+    "VN": 1,
+    "CA": 1,
+    "UNRESOLVED": 1
+  },
+  "namedOnlyApplicationSecondaryWorkspace": 1,
+  "servicesStopped": true
+}

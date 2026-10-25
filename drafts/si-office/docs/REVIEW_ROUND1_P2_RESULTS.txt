@@ -1,0 +1,18 @@
+✔ P2-A authentication rejects forged/expired/revoked sessions; no plaintext secrets (563.779494ms)
+✔ P2-B server roles, independent subject review and workspace isolation (404.988976ms)
+✔ P2-C durable task/idempotency and audit survive reopen (272.552816ms)
+✔ P2-C audit tampering and state mutation fail closed (492.419518ms)
+✔ P2-D five slots remain disconnected; no live credentials or identity mutation (367.631763ms)
+✔ P2-E backup/restore preserves task history, revokes sessions and rejects corruption (330.157106ms)
+✔ P2-E incompatible storage and metadata upgrade/rollback are bounded (237.806647ms)
+✔ P2-C storage commit failure returns no task and rolls back state (238.156752ms)
+✔ P2-E persisted RUNNING checkpoint recovers interrupted without replay (399.953233ms)
+✔ P2-B reviewer cannot acknowledge own task after restart (252.19177ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3567.329234

@@ -1,0 +1,56 @@
+{
+  "scope": "AGGREGATE OFFLINE RECONCILIATION; NO PRIVATE NOTION ROWS PUBLISHED",
+  "runtimeRevision": "51e8a39d12615fcfff11a418d78bb81ce44ec591",
+  "entityBindings": 26,
+  "entityCounts": {
+    "developer": 20,
+    "ai": 6
+  },
+  "reviewPositions": 91,
+  "reviewStatus": "REVIEW ONLY",
+  "masterRows": 84,
+  "masterDistinctIDs": 83,
+  "masterDerivedPositions": 83,
+  "additionalReviewPositions": 8,
+  "exactIDIntersectionCount": 0,
+  "countsAreCoverageRatio": false,
+  "importedReviewRecords": 0,
+  "registryWrites": 0,
+  "privateReconciliationSha256": "aaa474ef0ff409a37ec57d1de3681417f0e3707276c6f882985056d3c5fdb899",
+  "checks": [
+    {
+      "name": "JSON_BINDINGS_26",
+      "result": "PASS"
+    },
+    {
+      "name": "JSON_20_DEVELOPER_6_AI",
+      "result": "PASS"
+    },
+    {
+      "name": "REVIEW_91_DISTINCT_POSITIONS",
+      "result": "PASS"
+    },
+    {
+      "name": "MASTER_84_ROWS_83_IDS",
+      "result": "PASS"
+    },
+    {
+      "name": "REVIEW_COVERS_MASTER_IDS",
+      "result": "PASS"
+    },
+    {
+      "name": "EIGHT_ADDITIONAL_REVIEW_IDS",
+      "result": "PASS"
+    },
+    {
+      "name": "REVIEW_SOURCE_CLASSES_MATCH_MASTER",
+      "result": "PASS"
+    },
+    {
+      "name": "NO_REVIEW_BINDING_OR_PARENT_INFERENCE",
+      "result": "PASS"
+    }
+  ],
+  "runtimeMembershipVerified": false,
+  "activationAllowed": false
+}

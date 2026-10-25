@@ -1,0 +1,70 @@
+{
+  "checkedAt": "2026-10-13T21:01:22.575781+00:00",
+  "mode": "READ ONLY; production never changed",
+  "routes": [
+    {
+      "url": "https://cfp.plus/69",
+      "http": 200,
+      "finalURL": "https://cfp.plus/69",
+      "contentSHA256": "1834ff48806b0cedc65791d69687f30406d066bf970787252cb034bdb9339cc4",
+      "bytes": 8927,
+      "registrationOrTraining": "NOT VERIFIED: HTTP alone is not functional evidence"
+    },
+    {
+      "url": "https://cfp.plus/4376",
+      "http": 200,
+      "finalURL": "https://cfp.plus/4376",
+      "contentSHA256": "9ad7e89ff783822e4b391e2c73639108d4282b0ca73f869a1f2d07f512b1fe82",
+      "bytes": 21648,
+      "registrationOrTraining": "NOT VERIFIED: HTTP alone is not functional evidence"
+    },
+    {
+      "url": "https://cfp.plus/343",
+      "http": 200,
+      "finalURL": "https://cfp.plus/343",
+      "contentSHA256": "b75e8e629325ad0ef3ec07f9529e87825c9fbdae136f2faabc8bed1c06b2232f",
+      "bytes": 11377,
+      "registrationOrTraining": "NOT VERIFIED: HTTP alone is not functional evidence"
+    },
+    {
+      "url": "https://cfp.plus/267",
+      "http": 200,
+      "finalURL": "https://cfp.plus/267",
+      "contentSHA256": "af2dea8bcc93cf9ac97806af88b0a6ba9f046a57c78301c6d25c8e148fe1bed1",
+      "bytes": 7931,
+      "registrationOrTraining": "NOT VERIFIED: HTTP alone is not functional evidence"
+    },
+    {
+      "url": "https://cfp.plus/6",
+      "http": 200,
+      "finalURL": "https://cfp.plus/6",
+      "contentSHA256": "a10a4320a3eb72d720ac26b2d34e59ac49cfca5c3c35bef5f7786b5929ae6eea",
+      "bytes": 7676,
+      "registrationOrTraining": "NOT VERIFIED: HTTP alone is not functional evidence"
+    },
+    {
+      "url": "https://cfp.plus/7",
+      "http": 200,
+      "finalURL": "https://cfp.plus/7",
+      "contentSHA256": "00d6f8b8842da736a4d5770bd332170491b8d38ee7ad3ee1e7b4588cfc7f5eae",
+      "bytes": 6156,
+      "registrationOrTraining": "NOT VERIFIED: HTTP alone is not functional evidence"
+    },
+    {
+      "url": "https://cfp.plus/9",
+      "http": 200,
+      "finalURL": "https://cfp.plus/9",
+      "contentSHA256": "5f6975aa7dbdb63203fa19d484a4b9644f8148ae1c5eb50984e53d791c611aa9",
+      "bytes": 9977,
+      "registrationOrTraining": "NOT VERIFIED: HTTP alone is not functional evidence"
+    },
+    {
+      "url": "https://cfp.plus/8882",
+      "http": 200,
+      "finalURL": "https://cfp.plus/8882",
+      "contentSHA256": "b75e8e629325ad0ef3ec07f9529e87825c9fbdae136f2faabc8bed1c06b2232f",
+      "bytes": 11377,
+      "registrationOrTraining": "NOT VERIFIED: HTTP alone is not functional evidence"
+    }
+  ]
+}

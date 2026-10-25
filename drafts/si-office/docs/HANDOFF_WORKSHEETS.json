@@ -1,0 +1,287 @@
+{
+  "status": "UNFILLED REVIEW WORKSHEETS — NOT EXECUTED / NOT ASSESSED",
+  "source_base": "42e8baeed1b6fd2e6114b7b54c69c94747aee51f",
+  "basicLessons": [
+    "identity-lineage",
+    "ethics-governance",
+    "tool-use",
+    "security",
+    "evidence"
+  ],
+  "exercises": [
+    {
+      "localKey": "office-exercise-1",
+      "officeModule": 0,
+      "name": "Danh Tính & Lineage",
+      "actualTaskKey": null,
+      "executionEvidence": null,
+      "assessment": "NOT ASSESSED"
+    },
+    {
+      "localKey": "office-exercise-2",
+      "officeModule": 1,
+      "name": "Giới Thiệu & Năng Lực",
+      "actualTaskKey": null,
+      "executionEvidence": null,
+      "assessment": "NOT ASSESSED"
+    },
+    {
+      "localKey": "office-exercise-3",
+      "officeModule": 2,
+      "name": "Danh Mục Sản Phẩm",
+      "actualTaskKey": null,
+      "executionEvidence": null,
+      "assessment": "NOT ASSESSED"
+    },
+    {
+      "localKey": "office-exercise-4",
+      "officeModule": 3,
+      "name": "Danh Mục Dịch Vụ",
+      "actualTaskKey": null,
+      "executionEvidence": null,
+      "assessment": "NOT ASSESSED"
+    },
+    {
+      "localKey": "office-exercise-5",
+      "officeModule": 4,
+      "name": "Quảng Cáo & Tiếp Thị",
+      "actualTaskKey": null,
+      "executionEvidence": null,
+      "assessment": "NOT ASSESSED"
+    },
+    {
+      "localKey": "office-exercise-6",
+      "officeModule": 5,
+      "name": "Khách Hàng & CRM",
+      "actualTaskKey": null,
+      "executionEvidence": null,
+      "assessment": "NOT ASSESSED"
+    },
+    {
+      "localKey": "office-exercise-7",
+      "officeModule": 6,
+      "name": "Thương Mại & Thanh Toán",
+      "actualTaskKey": null,
+      "executionEvidence": null,
+      "assessment": "NOT ASSESSED"
+    },
+    {
+      "localKey": "office-exercise-8",
+      "officeModule": 7,
+      "name": "HSTDN & Đối Tác",
+      "actualTaskKey": null,
+      "executionEvidence": null,
+      "assessment": "NOT ASSESSED"
+    },
+    {
+      "localKey": "office-exercise-9",
+      "officeModule": 8,
+      "name": "Văn Phòng & Công Việc",
+      "actualTaskKey": null,
+      "executionEvidence": null,
+      "assessment": "NOT ASSESSED"
+    },
+    {
+      "localKey": "office-exercise-10",
+      "officeModule": 9,
+      "name": "SI AI • API • MCP",
+      "actualTaskKey": null,
+      "executionEvidence": null,
+      "assessment": "NOT ASSESSED"
+    },
+    {
+      "localKey": "office-exercise-11",
+      "officeModule": 10,
+      "name": "Quản Trị • Đạo Đức • Bảo Mật",
+      "actualTaskKey": null,
+      "executionEvidence": null,
+      "assessment": "NOT ASSESSED"
+    },
+    {
+      "localKey": "office-exercise-12",
+      "officeModule": 11,
+      "name": "Báo Cáo • Evidence • KPI",
+      "actualTaskKey": null,
+      "executionEvidence": null,
+      "assessment": "NOT ASSESSED"
+    }
+  ],
+  "advanced": [
+    {
+      "track": "durability",
+      "title": {
+        "vi": "Lưu trữ bền vững",
+        "en": "Durable storage"
+      },
+      "expectedEvidence": "A retained checkpoint and restart evidence; no automatic replay.",
+      "prerequisites": [
+        "Basic draft evidence",
+        "Separate verified reviewer for real assessment",
+        "Existing server grants only"
+      ],
+      "actualTaskKey": null,
+      "sourceRevision": null,
+      "subject": null,
+      "workspace": null,
+      "pair": null,
+      "outputArtifact": null,
+      "checks": null,
+      "feedback": null,
+      "separateReviewer": null,
+      "assessorAuthority": null,
+      "prerequisiteEvidence": null,
+      "decision": "NOT ASSESSED",
+      "privilegeChange": false
+    },
+    {
+      "track": "access",
+      "title": {
+        "vi": "Quyền & Cô lập",
+        "en": "Authorization & isolation"
+      },
+      "expectedEvidence": "Denied cross-scope attempts without leaked data.",
+      "prerequisites": [
+        "Basic draft evidence",
+        "Separate verified reviewer for real assessment",
+        "Existing server grants only"
+      ],
+      "actualTaskKey": null,
+      "sourceRevision": null,
+      "subject": null,
+      "workspace": null,
+      "pair": null,
+      "outputArtifact": null,
+      "checks": null,
+      "feedback": null,
+      "separateReviewer": null,
+      "assessorAuthority": null,
+      "prerequisiteEvidence": null,
+      "decision": "NOT ASSESSED",
+      "privilegeChange": false
+    },
+    {
+      "track": "recovery",
+      "title": {
+        "vi": "Backup & Phục hồi",
+        "en": "Backup & recovery"
+      },
+      "expectedEvidence": "Separate restore generation and retained previous state.",
+      "prerequisites": [
+        "Basic draft evidence",
+        "Separate verified reviewer for real assessment",
+        "Existing server grants only"
+      ],
+      "actualTaskKey": null,
+      "sourceRevision": null,
+      "subject": null,
+      "workspace": null,
+      "pair": null,
+      "outputArtifact": null,
+      "checks": null,
+      "feedback": null,
+      "separateReviewer": null,
+      "assessorAuthority": null,
+      "prerequisiteEvidence": null,
+      "decision": "NOT ASSESSED",
+      "privilegeChange": false
+    },
+    {
+      "track": "sources",
+      "title": {
+        "vi": "Nguồn & Tuyên bố",
+        "en": "Sources & claims"
+      },
+      "expectedEvidence": "Traceable claim register with explicit uncertainty.",
+      "prerequisites": [
+        "Basic draft evidence",
+        "Separate verified reviewer for real assessment",
+        "Existing server grants only"
+      ],
+      "actualTaskKey": null,
+      "sourceRevision": null,
+      "subject": null,
+      "workspace": null,
+      "pair": null,
+      "outputArtifact": null,
+      "checks": null,
+      "feedback": null,
+      "separateReviewer": null,
+      "assessorAuthority": null,
+      "prerequisiteEvidence": null,
+      "decision": "NOT ASSESSED",
+      "privilegeChange": false
+    },
+    {
+      "track": "interoperability",
+      "title": {
+        "vi": "Giao thức & Adapter",
+        "en": "Protocol & adapters"
+      },
+      "expectedEvidence": "Zero live calls and a bounded compatibility decision.",
+      "prerequisites": [
+        "Basic draft evidence",
+        "Separate verified reviewer for real assessment",
+        "Existing server grants only"
+      ],
+      "actualTaskKey": null,
+      "sourceRevision": null,
+      "subject": null,
+      "workspace": null,
+      "pair": null,
+      "outputArtifact": null,
+      "checks": null,
+      "feedback": null,
+      "separateReviewer": null,
+      "assessorAuthority": null,
+      "prerequisiteEvidence": null,
+      "decision": "NOT ASSESSED",
+      "privilegeChange": false
+    },
+    {
+      "track": "website",
+      "title": {
+        "vi": "Website VI/EN & Đồng bộ",
+        "en": "VI/EN website & sync"
+      },
+      "expectedEvidence": "Pinned UI/link evidence and per-target sync receipts.",
+      "prerequisites": [
+        "Basic draft evidence",
+        "Separate verified reviewer for real assessment",
+        "Existing server grants only"
+      ],
+      "actualTaskKey": null,
+      "sourceRevision": null,
+      "subject": null,
+      "workspace": null,
+      "pair": null,
+      "outputArtifact": null,
+      "checks": null,
+      "feedback": null,
+      "separateReviewer": null,
+      "assessorAuthority": null,
+      "prerequisiteEvidence": null,
+      "decision": "NOT ASSESSED",
+      "privilegeChange": false
+    }
+  ],
+  "hstdnReview": {
+    "existingForm": "#p2-hstdn-form",
+    "actualOfficeMemberKey": null,
+    "claimantAuthority": null,
+    "sourceURL": null,
+    "sourceAccessDate": null,
+    "jurisdictionEvidence": null,
+    "relationshipType": null,
+    "relationshipEvidence": null,
+    "sourceVerification": "NOT VERIFIED",
+    "capabilityVerification": "NOT VERIFIED",
+    "legalRelationshipVerification": "NOT VERIFIED",
+    "reviewerAuthority": null,
+    "finding": null,
+    "closure": null,
+    "id": null,
+    "parent": null,
+    "did": null,
+    "canonical": null
+  }
+}

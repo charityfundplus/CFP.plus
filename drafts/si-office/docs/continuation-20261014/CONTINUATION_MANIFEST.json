@@ -1,0 +1,39 @@
+{
+  "approvedPreviewRevision": "b75b780eb64430355f0b51a4b58b9e5269e0db43",
+  "activation": "HOLD",
+  "backupFoldersChanged": false,
+  "originalEvidencePackChanged": false,
+  "tests": "3 new export-adapter tests; no accepted suites rerun",
+  "files": [
+    {
+      "path": "docs/ACCEPTED_DELTA_INTEGRITY.json",
+      "sha256": "a407e9810c1ddb0661f81ff3b2ef882578fa92a435f306f89fdd833181288add",
+      "bytes": 2240
+    },
+    {
+      "path": "docs/HUMAN_GOVERNANCE_DECISION_TABLE_VI.md",
+      "sha256": "2f6b6072f29e1ea76cec4fc4352866cdafc49e2183602f355d2789639e013a70",
+      "bytes": 7011
+    },
+    {
+      "path": "docs/NEW_EXPORT_WORKSHEET_TEST_RESULTS.txt",
+      "sha256": "04bc3943509743642dbf3c567dc5e79a85d06074b4b4cb40e13343637dc71851",
+      "bytes": 427
+    },
+    {
+      "path": "docs/TRAINING_EXPORT_WORKSHEET_VI_EN.md",
+      "sha256": "3cc59b70013228a2c73c7721c7ba7a8884cf4824fbdc11fccd351b35413a2f4b",
+      "bytes": 2093
+    },
+    {
+      "path": "scripts/training-export-worksheet.mjs",
+      "sha256": "bb873479ca37b265c957ca830f55213d644c888f9a4a5f5b72dfe7013fc6a37f",
+      "bytes": 5785
+    },
+    {
+      "path": "tests/training-export-worksheet.test.mjs",
+      "sha256": "b151706148a5dce6690ee7cfd0b6c5538edbb40a9a34c9173e01bc74364b0ebe",
+      "bytes": 3579
+    }
+  ]
+}

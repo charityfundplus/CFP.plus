@@ -1,0 +1,50 @@
+{
+  "approvedPreviewRevision": "b75b780eb64430355f0b51a4b58b9e5269e0db43",
+  "originalEvidencePackChanged": false,
+  "activation": "HOLD",
+  "taxGross": "MISSING EVIDENCE",
+  "newTestsOnly": "practice-evidence-review synthetic fixtures, 3/3",
+  "backupDrillsRerun": false,
+  "files": [
+    {
+      "path": "docs/BACKUP_FOLDER_COMPARISON.json",
+      "sha256": "ef19f78b6a33c5a2b87cf9dbc2bee674478870b090686a9f5f02ef205b8e85d5",
+      "bytes": 2218
+    },
+    {
+      "path": "docs/HOLD_ACTIVATION_HANDOFF_VI.md",
+      "sha256": "5cdbb4a8ab1f35d089a5f0aa4a3fb5ede4d8ef634f44ab8764fe6b7d986bd080",
+      "bytes": 11679
+    },
+    {
+      "path": "docs/HSTDN_PRACTICE_ADDENDUM_VI_EN.md",
+      "sha256": "453b3db08a4df87eebc9a7e98192edbc92e48aeb5852bebd2279f5f5318741ba",
+      "bytes": 3050
+    },
+    {
+      "path": "docs/HTTPS_DO_IP_NGINX.conf.example",
+      "sha256": "02113479faf309040fd117a1e01bba3b37567e33fe2ba4c0052acb7e29ac51d5",
+      "bytes": 1716
+    },
+    {
+      "path": "docs/NEW_EVIDENCE_REVIEW_TEST_RESULTS.txt",
+      "sha256": "f2484adbccff05781be7db838820e2ae74e95f050ccad202961fc3b6cc64cebb",
+      "bytes": 406
+    },
+    {
+      "path": "docs/OPERATOR_CUSTODIAN_KEYS_VI.md",
+      "sha256": "a33565a728ee61f26438420d4ffe1b19de2c5924c75e1249de2076584a3261ca",
+      "bytes": 4516
+    },
+    {
+      "path": "scripts/practice-evidence-review.mjs",
+      "sha256": "fb5ad65c7d44529abc319aa0b48d41aa9805cd236b9db900f17bc5995460bc0f",
+      "bytes": 4945
+    },
+    {
+      "path": "tests/practice-evidence-review.test.mjs",
+      "sha256": "481a49988d15aaf815efdada9265d79fd33e434edd1d667679417918bdc1bf48",
+      "bytes": 3238
+    }
+  ]
+}

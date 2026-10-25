@@ -1,0 +1,178 @@
+TAP version 13
+# Subtest: P2 HTTP secure headers/cookie and deny anonymous, origin, hostile Host and self-selected role
+ok 1 - P2 HTTP secure headers/cookie and deny anonymous, origin, hostile Host and self-selected role
+  ---
+  duration_ms: 875.356585
+  type: 'test'
+  ...
+# Subtest: P2 HTTP task workflow, cross-workspace denial, viewer restriction and logout
+ok 2 - P2 HTTP task workflow, cross-workspace denial, viewer restriction and logout
+  ---
+  duration_ms: 2018.624889
+  type: 'test'
+  ...
+# Subtest: P2 HTTP pair grants filter snapshots and deny ungranted pair creation
+ok 3 - P2 HTTP pair grants filter snapshots and deny ungranted pair creation
+  ---
+  duration_ms: 1093.149264
+  type: 'test'
+  ...
+# Subtest: P2 release executes two verified bundles; rollback restores separate DB and retains current audit
+ok 4 - P2 release executes two verified bundles; rollback restores separate DB and retains current audit
+  ---
+  duration_ms: 1533.196623
+  type: 'test'
+  ...
+# Subtest: P2 maintenance lease denies concurrent work; queued tasks block activation
+ok 5 - P2 maintenance lease denies concurrent work; queued tasks block activation
+  ---
+  duration_ms: 733.92142
+  type: 'test'
+  ...
+# Subtest: explicit source binding requires absolute path and exact revision; no authority or identity writes
+ok 6 - explicit source binding requires absolute path and exact revision; no authority or identity writes
+  ---
+  duration_ms: 56.630743
+  type: 'test'
+  ...
+# Subtest: binding rejects modified bytes, moved HEAD, nested root and missing source without fallback
+ok 7 - binding rejects modified bytes, moved HEAD, nested root and missing source without fallback
+  ---
+  duration_ms: 225.144018
+  type: 'test'
+  ...
+# Subtest: real packaged launcher -> pinned Registry -> UI client: auth, 224 references, OpenAI data, assets and session revocation
+ok 8 - real packaged launcher -> pinned Registry -> UI client: auth, 224 references, OpenAI data, assets and session revocation
+  ---
+  duration_ms: 909.814791
+  type: 'test'
+  ...
+# Subtest: unbound release returns 503 instead of using its historical duplicate JSON
+ok 9 - unbound release returns 503 instead of using its historical duplicate JSON
+  ---
+  duration_ms: 453.307373
+  type: 'test'
+  ...
+# Subtest: Core client rejects 503, unverifiable metadata and changed revision during pagination
+ok 10 - Core client rejects 503, unverifiable metadata and changed revision during pagination
+  ---
+  duration_ms: 59.03729
+  type: 'test'
+  ...
+# Subtest: UI projection preserves 0/000/003, explicit Parent and source hash; refuses long IDs without truncation
+ok 11 - UI projection preserves 0/000/003, explicit Parent and source hash; refuses long IDs without truncation
+  ---
+  duration_ms: 0.650498
+  type: 'test'
+  ...
+# Subtest: registry routes require existing authentication and preserve 401/400/404, strict inputs and source failure 503
+ok 12 - registry routes require existing authentication and preserve 401/400/404, strict inputs and source failure 503
+  ---
+  duration_ms: 1859.804037
+  type: 'test'
+  ...
+# Subtest: OpenAI profile and ChatGPT packet are read-only for viewers; no identity mutation or external project creation
+ok 13 - OpenAI profile and ChatGPT packet are read-only for viewers; no identity mutation or external project creation
+  ---
+  duration_ms: 1135.20306
+  type: 'test'
+  ...
+# Subtest: public Registry cannot export private task content; response digest is durably bound to the authenticated workspace
+ok 14 - public Registry cannot export private task content; response digest is durably bound to the authenticated workspace
+  ---
+  duration_ms: 1018.467476
+  type: 'test'
+  ...
+# Subtest: actual loopback HTTP: authenticated Registry -> OpenAI -> ChatGPT packet, CSP assets, denied anonymous and revoked session
+ok 15 - actual loopback HTTP: authenticated Registry -> OpenAI -> ChatGPT packet, CSP assets, denied anonymous and revoked session
+  ---
+  duration_ms: 984.907025
+  type: 'test'
+  ...
+# Subtest: actual root Registry: hashes, 26 named bindings, 99 countries, explicit OpenAI chain and governance hold
+ok 16 - actual root Registry: hashes, 26 named bindings, 99 countries, explicit OpenAI chain and governance hold
+  ---
+  duration_ms: 64.949384
+  type: 'test'
+  ...
+# Subtest: numeric IDs stay strings: 0, 000, 003, 0031 and long IDs remain distinct; V is not an ID
+ok 17 - numeric IDs stay strings: 0, 000, 003, 0031 and long IDs remain distinct; V is not an ID
+  ---
+  duration_ms: 0.807003
+  type: 'test'
+  ...
+# Subtest: search supports all entity categories, pagination, same-name records and strict fields
+ok 18 - search supports all entity categories, pagination, same-name records and strict fields
+  ---
+  duration_ms: 0.639681
+  type: 'test'
+  ...
+# Subtest: duplicate, missing Parent, cycles and lineage conflicts are findings, never automatic repairs
+ok 19 - duplicate, missing Parent, cycles and lineage conflicts are findings, never automatic repairs
+  ---
+  duration_ms: 0.463957
+  type: 'test'
+  ...
+# Subtest: ChatGPT action reuses source ID/link, exports public instructions only and never allocates a project ID
+ok 20 - ChatGPT action reuses source ID/link, exports public instructions only and never allocates a project ID
+  ---
+  duration_ms: 0.267592
+  type: 'test'
+  ...
+# Subtest: source adapter rejects modified source bytes, missing source and symlinks without using a fallback Registry
+ok 21 - source adapter rejects modified source bytes, missing source and symlinks without using a fallback Registry
+  ---
+  duration_ms: 133.120231
+  type: 'test'
+  ...
+# Subtest: offline comparison preserves scopes, zeros, duplicate source rows and unknown Parent/DID
+ok 22 - offline comparison preserves scopes, zeros, duplicate source rows and unknown Parent/DID
+  ---
+  duration_ms: 4.876831
+  type: 'test'
+  ...
+# Subtest: incomplete pages, wrong source status and entity key conflicts cannot be used as evidence
+ok 23 - incomplete pages, wrong source status and entity key conflicts cannot be used as evidence
+  ---
+  duration_ms: 0.786933
+  type: 'test'
+  ...
+# Subtest: Round1 learn → assigned training drill → practice → feedback persists without granting rights
+ok 24 - Round1 learn → assigned training drill → practice → feedback persists without granting rights
+  ---
+  duration_ms: 1423.925961
+  type: 'test'
+  ...
+# Subtest: Round1 Office SI/HSTDN/products/services share durable pair scope and unverified claims
+ok 25 - Round1 Office SI/HSTDN/products/services share durable pair scope and unverified claims
+  ---
+  duration_ms: 551.393709
+  type: 'test'
+  ...
+# Subtest: Round1 denied viewer, forbidden identity fields and foreign feedback remain denied
+ok 26 - Round1 denied viewer, forbidden identity fields and foreign feedback remain denied
+  ---
+  duration_ms: 1087.688653
+  type: 'test'
+  ...
+# Subtest: Round1 HTTP exposes protected learning/Office routes and new UI assets
+ok 27 - Round1 HTTP exposes protected learning/Office routes and new UI assets
+  ---
+  duration_ms: 694.082174
+  type: 'test'
+  ...
+# Subtest: Round1 preview origin is explicitly configured HTTPS, Secure cookies and no reflected proxy authority
+ok 28 - Round1 preview origin is explicitly configured HTTPS, Secure cookies and no reflected proxy authority
+  ---
+  duration_ms: 679.033279
+  type: 'test'
+  ...
+1..28
+# tests 28
+# suites 0
+# pass 28
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6387.820709

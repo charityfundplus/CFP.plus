@@ -1,0 +1,17 @@
+{
+  "mode": "PREPARATION ONLY / HUMAN REVIEW / PRODUCTION NO-GO",
+  "gateway": "https://cfp.plus/69",
+  "direction": "Approved source to each approved destination; no reverse write or cascade delete",
+  "packet": "Approved own-subject export; SHA256 over UTF-8 payloadJSON; redact contact data before external sharing",
+  "sourceOfTruth": "Requires owner approval per data type; draft code is not identity authority",
+  "requiredReceiptFields": ["recordReference", "sourceRevision", "sourceHash", "destinationURL", "owner", "allowedScope", "writtenAt", "readbackHash", "reviewDecision"],
+  "repositories": [
+    {"name":"Notion", "status":"MISSING APPROVED TARGET/SCOPE", "referenceOnly":"https://app.notion.com/p/3f8caac9a55781f794dcc175b857057c", "writePerformed":false},
+    {"name":"Google", "status":"MISSING APPROVED TARGET/SCOPE", "writePerformed":false},
+    {"name":"GitHub", "status":"DRAFT SOURCE; NOT OPERATIONAL VAULT SYNC", "referenceOnly":"https://github.com/charityfundplus/CFP.plus/pull/124", "operationalDataWritePerformed":false},
+    {"name":"CFP+ Website", "status":"PRODUCTION NO-GO", "referenceOnly":"https://cfp.plus/69", "writePerformed":false},
+    {"name":"ChatGPT workspace", "status":"LOCAL DELIVERABLE ONLY; NO APPROVED VAULT TARGET/SCOPE", "writePerformed":false}
+  ],
+  "runtimeVaultAdapters": {"slots":5,"status":"DISCONNECTED","externalCalls":0,"syncReceiptCount":0},
+  "constraints": ["No credentials in packet", "No self-declaration promoted to verified identity/ownership", "No automatic privileges", "No ID/Parent/DID/Canonical or historical audit changes", "No automatic production publication"]
+}

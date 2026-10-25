@@ -1,0 +1,16 @@
+{
+  "scope": "draft changes only; no deployed-site verification",
+  "browserCommit": "54504713df1794dbbdea3b4d42ec356458c05d60",
+  "files": [
+    {
+      "repositoryPath": "69/index.html",
+      "bytes": 11412,
+      "sha256": "7eade1ab3c39d741bc650c780a12bc7e6301e7fbd4c3217c68edebcd0e8cf4f8"
+    },
+    {
+      "repositoryPath": "69/hub-language.js",
+      "bytes": 509,
+      "sha256": "feab87389aed50693c2026ad07f780375e1bde5a47c3a475ae18206a8879c9e6"
+    }
+  ]
+}

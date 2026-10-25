@@ -1,0 +1,36 @@
+{
+  "sourceRevision": "64b356e0812aae0c1c8f0230697bddd42a24fbbc",
+  "integrationDependenciesRevision": "11bb42464afebcd2962ca0ab94df0822853445c3",
+  "dependencies": [
+    "drafts/si-office/scripts/practice-evidence-review.mjs",
+    "drafts/si-office/configs/training-basic-v1.json",
+    "drafts/si-office/docs/team-readiness-20261014/team-readiness.mjs"
+  ],
+  "scope": "new local source-conflict training integration only",
+  "files": [
+    {
+      "path": "integrated-training.mjs",
+      "sha256": "dd8a40049dfe5caab97e07433c71dbb97ff9d550ce09bf0818cd03c98568f392"
+    },
+    {
+      "path": "integrated-training.test.mjs",
+      "sha256": "b263160f586e5e788a0d1795dc77ab27b87f69e83c7799af7645e2861b6f27cf"
+    },
+    {
+      "path": "NEW_INTEGRATION_TEST_RESULTS.txt",
+      "sha256": "646375d25893c25185333f1718d1b91b002896f080ae53238252df8d45f218e8"
+    },
+    {
+      "path": "INTEGRATED_PRACTICE_BOUND_RECEIPT.json",
+      "sha256": "5409842ad6efccb15924a485a0588747d489da2a8017ec3c77f68457afe0dfb1"
+    },
+    {
+      "path": "INTEGRATED_BOUND_EXECUTION.txt",
+      "sha256": "cbca007ba63b95a4cad689db00bfd6d10ba7dc808ed5e58e1306d3e82d232b0d"
+    },
+    {
+      "path": "TRAINING_CONTINUATION_VI.md",
+      "sha256": "de2bbef2c202ca8475b8a3606d876de3b926cc7ba8f27e04f9396445f247d434"
+    }
+  ]
+}

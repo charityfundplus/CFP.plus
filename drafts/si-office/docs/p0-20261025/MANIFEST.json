@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "runtimeRevision": "1958a3ff04c17dfa6c61d5dbde9dd51b46f98640",
+  "browserRevision": "599852c304a321abb9f134fb244d69cda4bbef42",
+  "scope": "New delta and retained evidence; manifest excludes itself",
+  "productionApproved": false,
+  "files": [
+    {
+      "path": "69/index.html",
+      "bytes": 17543,
+      "sha256": "5e415787b3b10694a1836b2514206f6274a07a5dbdbe578017621a8a25685ff3",
+      "gitBlobSHA": "d313adeadaaa01498f551b33b2858e9f4877ab36"
+    },
+    {
+      "path": "69/store-status.css",
+      "bytes": 1082,
+      "sha256": "823eddf018875f631a90df2c072f594107232718106140c82d99f8597d79c695",
+      "gitBlobSHA": "cee731a2cb4592547c04a969dff45729675bda7b"
+    },
+    {
+      "path": "69/store-status.json",
+      "bytes": 3091,
+      "sha256": "25cafef4e42c3e3d3ba71da9c0a90c4f39d7ae85df68b442ed482c4563ff9bdd",
+      "gitBlobSHA": "847b9696bfde66c32cb3f8d9edb90b9d06e764f4"
+    },
+    {
+      "path": "drafts/si-office/configs/five-store-status.json",
+      "bytes": 1088,
+      "sha256": "3b66a847dc5dcde0e19fbc2a586e0953cd8a192f8ffecaf5c4b8e3b6c5b2e417",
+      "gitBlobSHA": "0fe7c7db3d1b7aa2afac59c8b302a58c8e63625c"
+    },
+    {
+      "path": "drafts/si-office/core/store-status.mjs",
+      "bytes": 700,
+      "sha256": "713b488d34da936ac87f0f61f21edeb672302845741e51f67c178f62d9909863",
+      "gitBlobSHA": "e854c6e84a943e1580dc372104ca1304fc8c69e5"
+    },
+    {
+      "path": "drafts/si-office/docs/p0-20261025/BASELINE_SOURCE_READBACK.json",
+      "bytes": 20423,
+      "sha256": "1136b6cb7b949f18344239581df5a60ea06c7ec45f07254b2ec1360f160b2b80",
+      "gitBlobSHA": "b3daac8195f982187750f8fe3ca7639e055505d0"
+    },
+    {
+      "path": "drafts/si-office/docs/p0-20261025/BROWSER_RECEIPT.json",
+      "bytes": 3678,
+      "sha256": "e5222936f78a48662a3976d387ccfebef2b27db9eec27a8b535f2eb11f5f0140",
+      "gitBlobSHA": "6f0ff669598537c8b4c4ac7863fa8c093a6ab149"
+    },
+    {
+      "path": "drafts/si-office/docs/p0-20261025/HANDOFF_VI.md",
+      "bytes": 6186,
+      "sha256": "0b0e36041e29d5e0b319e0c5fe649e4f603434f4003c0946a9b9582a884e84e3",
+      "gitBlobSHA": "db70c1170e0c4a85204eafe40cba19e1801eada1"
+    },
+    {
+      "path": "drafts/si-office/docs/p0-20261025/HUB69-desktop-chromium.png",
+      "bytes": 132355,
+      "sha256": "a305677a84797dde0c972314ae5297c9a8d0f2d8adaa8222241047fc3b3c50d2",
+      "gitBlobSHA": "94a6acd292a705607aa9ec19ab30ca54972c1a85"
+    },
+    {
+      "path": "drafts/si-office/docs/p0-20261025/HUB69-mobile-chromium.png",
+      "bytes": 83191,
+      "sha256": "bf989edcfef4b19f03e9c45712e9e34b816819c21236acfe18e6445786aa7d60",
+      "gitBlobSHA": "c5f4f51e0bbcc23fbe0e37b8b2d2d8c832ed3a4c"
+    },
+    {
+      "path": "drafts/si-office/docs/p0-20261025/LIVE_ROUTES.json",
+      "bytes": 56146,
+      "sha256": "83c165bfbc44df3b78d0be3a95c80feebbdf65a50b63fc67fee84a91673c36f4",
+      "gitBlobSHA": "a034b64e0bbb6bb081bf23d5e76ee86a925d2db1"
+    },
+    {
+      "path": "drafts/si-office/docs/p0-20261025/RUNTIME_RECEIPT.json",
+      "bytes": 394606,
+      "sha256": "7e2737cab42ada42f9fcd6045bba60a454d4a9bf4ec8226e2debb0e5b0905c49",
+      "gitBlobSHA": "823cc6cccdb7536700408752155b411204cf89f0"
+    },
+    {
+      "path": "drafts/si-office/docs/p0-20261025/TEST_RESULTS.json",
+      "bytes": 736,
+      "sha256": "1e5d9c9ffbfc36af34bdda2ab3947a26145b3821942fa9b2f4a2c9da0f3b0e83",
+      "gitBlobSHA": "2a9fcd167cfb9ef28b1c18c26217257088f2ed3e"
+    },
+    {
+      "path": "drafts/si-office/docs/p0-20261025/p0-team-0.json",
+      "bytes": 69886,
+      "sha256": "e4de29e5991aaba6c9d2d546c871e21ca1debeccce7eb6851923c31133b1cff8",
+      "gitBlobSHA": "8d471ce161bbd7a7e73b2129a60d492226bbbb77"
+    },
+    {
+      "path": "drafts/si-office/docs/p0-20261025/p0-team-1.json",
+      "bytes": 69838,
+      "sha256": "1f801501acbaf47da57ceeab43b6d23ed6e623a5c9c0768f31a86afc230a32d7",
+      "gitBlobSHA": "b4ffd6963cb8c4a6f728bdd5afd7e24caf3139a1"
+    },
+    {
+      "path": "drafts/si-office/sandbox/p2-service.mjs",
+      "bytes": 16189,
+      "sha256": "2183db9e57459fa5e3bfde40ca92c2ba8e4f8c2cc5a064ad1e656dac320449ba",
+      "gitBlobSHA": "85721c80dd4323d776ead866134569f3aef2c32f"
+    },
+    {
+      "path": "drafts/si-office/scripts/render-hub69-stores.mjs",
+      "bytes": 2692,
+      "sha256": "e6d2053367342e4e940f977987c67cdd7094e3be64a9992e8632379dc2985982",
+      "gitBlobSHA": "ddabb269486d76909d3c9015c6d624cf18e8c0e6"
+    },
+    {
+      "path": "drafts/si-office/tests/p0-20261025-flow.mjs",
+      "bytes": 7871,
+      "sha256": "2bc06f443314ebf6234464e7907894c6ffa78dd03c7a0bd27a22c33e120d29b6",
+      "gitBlobSHA": "795b92eb51638a7f82fc21e5d29d49b3a80d79fd"
+    },
+    {
+      "path": "drafts/si-office/tests/p0-hub69-browser.py",
+      "bytes": 3683,
+      "sha256": "882aa0af224d4dd27fc392f2fa8478fc993b610e72329cd8be8736609f0ddd3d",
+      "gitBlobSHA": "925d7a5c56dd79b691fcb2f3b0ecbd69e66b2988"
+    },
+    {
+      "path": "drafts/si-office/tests/store-status.test.mjs",
+      "bytes": 1556,
+      "sha256": "ed52ca2f1fcfc134f4e49895309fea3a00280c67cdd49fb352bfa772d8e49b5a",
+      "gitBlobSHA": "246743cece609ab1f853d02c11e212fe419eeb4d"
+    }
+  ]
+}

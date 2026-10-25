@@ -1,0 +1,2 @@
+import {P2Sandbox} from './p2-service.mjs';
+export async function smoke(){const s=new P2Sandbox(':memory:');try{s.provision({id:'health-user',password:'Synthetic-health-password',role:'viewer',workspace:'health-space'});const t=s.login('health-user','Synthetic-health-password'),state=await s.execute(t,'snapshot');return {pass:state.pairs.length===1&&state.auditValid,contextSupport:typeof s.context==='function',coreVersion:state.versions.version,schema:1};}finally{s.close();}}

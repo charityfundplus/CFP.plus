@@ -1,0 +1,158 @@
+{
+  "version": 1,
+  "date": "2026-10-13",
+  "status": "SYNCED — document handover only",
+  "github": "https://github.com/charityfundplus/CFP.plus/pull/124",
+  "evidenceCommit": "61a32f4f949c0ce5fca1fe59fd838374802a72ec",
+  "drive": "https://drive.google.com/drive/folders/1b2ebHt2WIK6Ys5SuYsBGNZScZ6fi4IHO",
+  "notion": "https://app.notion.com/p/3f8caac9a55781f794dcc175b857057c?pvs=204",
+  "permissionCheck": "Drive connected identity matches parent owner; create/upload succeeded; parent sharing unchanged. Notion fetched existing Team parent; child create and readback succeeded; no permission modification.",
+  "files": [
+    {
+      "name": "04-cfp-p1-decision-pack-20261013.zip",
+      "id": "1WqzhW3RAPKFEF3Z0fZSKygpRIhrxphHs",
+      "url": "https://drive.google.com/file/d/1WqzhW3RAPKFEF3Z0fZSKygpRIhrxphHs/view?usp=drivesdk",
+      "bytes": 266743,
+      "sha256": "f616cf96d9b7f0476cd7e554a5ff77f77de2bb0e1215b8792094e145bad8ffe1",
+      "driveReadback": "NAME / ID / SIZE MATCH"
+    },
+    {
+      "name": "01-cfp-si-office-p0-draft.zip",
+      "id": "13DDGvBXp5_2ehBwtteXM-MATVe6QpNVG",
+      "url": "https://drive.google.com/file/d/13DDGvBXp5_2ehBwtteXM-MATVe6QpNVG/view?usp=drivesdk",
+      "bytes": 166993,
+      "sha256": "f91b7a8a4b26d236bab5c2e08906ce8ce41ea8b309a7034fecb34db79aeef45c",
+      "driveReadback": "NAME / ID / SIZE MATCH"
+    },
+    {
+      "name": "02-cfp-si-office-p1-readiness-draft.zip",
+      "id": "1FuKQTeexV6pU9mGH8f7x2VvgKXesbH5e",
+      "url": "https://drive.google.com/file/d/1FuKQTeexV6pU9mGH8f7x2VvgKXesbH5e/view?usp=drivesdk",
+      "bytes": 199312,
+      "sha256": "8fbe831fba6b73f111414a139de375bc91df2002e1f26755004a95003b7524f1",
+      "driveReadback": "NAME / ID / SIZE MATCH"
+    },
+    {
+      "name": "03-cfp-standard-core-draft.zip",
+      "id": "1htmCmu0E2CeSQ6sONDDtn2Mi6ijnHn_7",
+      "url": "https://drive.google.com/file/d/1htmCmu0E2CeSQ6sONDDtn2Mi6ijnHn_7/view?usp=drivesdk",
+      "bytes": 250569,
+      "sha256": "bc9ea2722d661a99600c680c4af34e7b07d4823d0a817e3e5c41c2ed4d02da84",
+      "driveReadback": "NAME / ID / SIZE MATCH"
+    },
+    {
+      "name": "EVIDENCE_MANIFEST.json",
+      "id": "1sRG0bkc3nkB81_vsRA3AGZ6VHp4GfL-J",
+      "url": "https://drive.google.com/file/d/1sRG0bkc3nkB81_vsRA3AGZ6VHp4GfL-J/view?usp=drivesdk",
+      "bytes": 15406,
+      "sha256": "f8b4e7ac04fdcefe1d0ec7940f9c12fbf939f649ad3db6a9915318932298ef73",
+      "driveReadback": "NAME / ID / SIZE MATCH"
+    },
+    {
+      "name": "EVIDENCE_MANIFEST.sha256",
+      "id": "1oU4NHPyF6g95er-eL2rL6q7UQaykMxAs",
+      "url": "https://drive.google.com/file/d/1oU4NHPyF6g95er-eL2rL6q7UQaykMxAs/view?usp=drivesdk",
+      "bytes": 89,
+      "sha256": "bd7d13579ac37ee6281b9750cd07269a348a051d82a462a02b6e720045b418e5",
+      "driveReadback": "NAME / ID / SIZE MATCH"
+    },
+    {
+      "name": "BROWSER_QA_REPORT.json",
+      "id": "17BQ_uvYtyZGUNA5YlIGbNMNYvs9KlEyU",
+      "url": "https://drive.google.com/file/d/17BQ_uvYtyZGUNA5YlIGbNMNYvs9KlEyU/view?usp=drivesdk",
+      "bytes": 1563,
+      "sha256": "17311ab7641b52ec7f457d547a6a1f0f0cb70976fdf826d9a4ff5a988dd4687b",
+      "driveReadback": "NAME / ID / SIZE MATCH"
+    },
+    {
+      "name": "ARCHIVE_RECONCILIATION.json",
+      "id": "1GbAWnhtBFTsPBUrCA_v-Uocs_B-Eyukf",
+      "url": "https://drive.google.com/file/d/1GbAWnhtBFTsPBUrCA_v-Uocs_B-Eyukf/view?usp=drivesdk",
+      "bytes": 906,
+      "sha256": "399b07d2591336461f92f1fe3b8f4c3d004722d9ec74083670f20d70630190d0",
+      "driveReadback": "NAME / ID / SIZE MATCH"
+    },
+    {
+      "name": "P1_INDEPENDENT_REVIEW.md",
+      "id": "19fNAfWH9vth19JhLw_jeRhs-TiwkvlFw",
+      "url": "https://drive.google.com/file/d/19fNAfWH9vth19JhLw_jeRhs-TiwkvlFw/view?usp=drivesdk",
+      "bytes": 4929,
+      "sha256": "fbfb44a311169dd8185c5e252a65d2ed2ad5399705a007ed65fdc5ca6114e768",
+      "driveReadback": "NAME / ID / SIZE MATCH"
+    },
+    {
+      "name": "P1_DECISION_PACK.md",
+      "id": "1bh0TrGq8rebVxPs56H4YdP_ktcYIkVnt",
+      "url": "https://drive.google.com/file/d/1bh0TrGq8rebVxPs56H4YdP_ktcYIkVnt/view?usp=drivesdk",
+      "bytes": 3355,
+      "sha256": "3727dfb58a53ae78b1e6e0e9ad1b29904df1eedcefd24838affc80ad4e64839f",
+      "driveReadback": "NAME / ID / SIZE MATCH"
+    },
+    {
+      "name": "CORE_RUNBOOK.md",
+      "id": "16UgF2P0oyjyr0yz4xKLY8cWEMwgiwLVF",
+      "url": "https://drive.google.com/file/d/16UgF2P0oyjyr0yz4xKLY8cWEMwgiwLVF/view?usp=drivesdk",
+      "bytes": 4213,
+      "sha256": "e60d28780de08e17fafcf084195b509a9e694f13fd747cfccb72a78730d6d056",
+      "driveReadback": "NAME / ID / SIZE MATCH"
+    },
+    {
+      "name": "desktop.png",
+      "id": "1ojuzrmatgbxAiWZQ_AxCt_Kz-NWFSKBN",
+      "url": "https://drive.google.com/file/d/1ojuzrmatgbxAiWZQ_AxCt_Kz-NWFSKBN/view?usp=drivesdk",
+      "bytes": 84599,
+      "sha256": "8e1c3c45800cfde26904a554f7c50e7ab30f91a221daa0d12dd474291bce4aef",
+      "driveReadback": "NAME / ID / SIZE MATCH"
+    },
+    {
+      "name": "mobile.png",
+      "id": "1-TPR2WLktj-RbFfr3j_lb2IVrQv7LYrS",
+      "url": "https://drive.google.com/file/d/1-TPR2WLktj-RbFfr3j_lb2IVrQv7LYrS/view?usp=drivesdk",
+      "bytes": 57007,
+      "sha256": "7044dc6199ca5c9abb73ee9bdd1ad6ad63fd73f0fdca79929deec7b0f7599689",
+      "driveReadback": "NAME / ID / SIZE MATCH"
+    },
+    {
+      "name": "CONSOLIDATED_HANDOVER.md",
+      "id": "1IHjGOzUpGX85-zTtHJHx0yMFAFTkv1nO",
+      "url": "https://drive.google.com/file/d/1IHjGOzUpGX85-zTtHJHx0yMFAFTkv1nO/view?usp=drivesdk",
+      "bytes": 4034,
+      "sha256": "779a77fa958855a94c3db5065c45fe8ef20fd871403a811435ae9f5799284813",
+      "driveReadback": "NAME / ID / SIZE MATCH"
+    },
+    {
+      "name": "DELIVERY_FILE_SHA256.json",
+      "id": "1A0LpY_u6y5O1mummjN5wbIrQpjrTS9_G",
+      "url": "https://drive.google.com/file/d/1A0LpY_u6y5O1mummjN5wbIrQpjrTS9_G/view?usp=drivesdk",
+      "bytes": 3391,
+      "sha256": "912cf6f89f918d665d1642505ed9ee47bebddf59f254b219f560bdedb3223f3a",
+      "driveReadback": "NAME / ID / SIZE MATCH"
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "id": "1yaypuhYAhOtPTKulC1Ts5KnNFzo_JYlP",
+      "url": "https://drive.google.com/file/d/1yaypuhYAhOtPTKulC1Ts5KnNFzo_JYlP/view?usp=drivesdk",
+      "bytes": 1270,
+      "sha256": "a2ee6d5abf980a0e353c986989643a4baa7f40c53419740b41f162f0962cdc29",
+      "driveReadback": "NAME / ID / SIZE MATCH"
+    }
+  ],
+  "zipRoundtrip": {
+    "file": "04-cfp-p1-decision-pack-20261013.zip",
+    "sha256": "f616cf96d9b7f0476cd7e554a5ff77f77de2bb0e1215b8792094e145bad8ffe1",
+    "status": "DOWNLOADED BY CONNECTOR AND RECOMPUTED — MATCH"
+  },
+  "notionReadback": "PR / Drive / manifest references present",
+  "tests": "Existing 40/40 automated + 16/16 browser results retained; no duplicate tests; no runtime changes",
+  "reviewers": {
+    "OpenSI": "PENDING ACK — direct delivery BLOCKED: no reachable verified agent/contact",
+    "Grok": "PENDING ACK — direct delivery BLOCKED: no reachable verified agent/contact",
+    "Team": "Packet available under existing Team page; actual recipient access/ACK unverified"
+  },
+  "humanGovernance": [
+    "Final P1 acceptance",
+    "Named reviewer requirements and verified review contacts",
+    "Five-vault owner/URL/scopes and registry authority conflicts",
+    "All future production/live operations remain NO-GO"
+  ]
+}

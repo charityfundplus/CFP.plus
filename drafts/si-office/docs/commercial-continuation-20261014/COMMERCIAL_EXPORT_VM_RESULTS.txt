@@ -1,0 +1,12 @@
+✔ Commerce export includes final audit readback and unchanged training digest envelope (5.611852ms)
+✔ Commerce export refuses tampered record bytes (1.047558ms)
+✔ Commerce export refuses changed selected pair (0.654812ms)
+✔ Commerce export refuses changed build claim (0.654962ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 12.587246

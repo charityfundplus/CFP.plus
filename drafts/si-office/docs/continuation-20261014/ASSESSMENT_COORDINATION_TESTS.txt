@@ -1,0 +1,16 @@
+✔ NEW assessment packet persists and independent rubric review grants no real competence (546.156925ms)
+✔ NEW packets reject tampered hashes, missing prerequisites, duplicate and foreign task bindings (458.529048ms)
+✔ NEW assessment viewer writes and cross-pair reviewer/readback are denied (461.225549ms)
+✔ NEW optional assessment collection reads an old checkpoint without inventing decisions (1.838576ms)
+✔ NEW coordinator runs independent DBs concurrently but same DB queues without BUSY (900.399032ms)
+✔ NEW assessment HTTP routes enforce auth and reject client authority injection (549.474536ms)
+✔ NEW coordinator has two genuinely in-flight mock tasks and per-DB isolation (1238.890685ms)
+✔ NEW Link Mẫu export includes only own selected-pair assessment copies (4.302218ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4357.236547

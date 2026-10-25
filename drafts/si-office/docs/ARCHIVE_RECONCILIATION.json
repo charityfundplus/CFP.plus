@@ -1,0 +1,26 @@
+[
+  {
+    "archive": "cfp-si-office-p0-draft.zip",
+    "sha256": "f91b7a8a4b26d236bab5c2e08906ce8ce41ea8b309a7034fecb34db79aeef45c",
+    "sidecarMatch": false,
+    "manifestStatus": "Initial P0 archive predates manifest; no retroactive certification"
+  },
+  {
+    "archive": "cfp-si-office-p1-readiness-draft.zip",
+    "sha256": "8fbe831fba6b73f111414a139de375bc91df2002e1f26755004a95003b7524f1",
+    "sidecarMatch": true,
+    "manifestHash": "c423c939293ecd45ea16aa1a2f70122cbf11642abbc654c8cdf78e72e1c60548",
+    "manifestMatch": true,
+    "files": 35,
+    "fileMismatches": []
+  },
+  {
+    "archive": "cfp-standard-core-draft.zip",
+    "sha256": "bc9ea2722d661a99600c680c4af34e7b07d4823d0a817e3e5c41c2ed4d02da84",
+    "sidecarMatch": true,
+    "manifestHash": "7784dd502bc9031f86db9168beb3024f6d690ef0f4facc07c456bc6b9e65facb",
+    "manifestMatch": true,
+    "files": 65,
+    "fileMismatches": []
+  }
+]

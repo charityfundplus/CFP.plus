@@ -1,0 +1,429 @@
+[
+  {
+    "branch": "agent/cfp-sync-001-recovery",
+    "revision": "9b8f4a72ed902edf39e2e173196436d5dd8c1db3",
+    "files": 214,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/9b8f4a72ed902edf39e2e173196436d5dd8c1db3"
+  },
+  {
+    "branch": "agent/chapter-fund-id-architecture",
+    "revision": "306db9d822c43591781b2f2bf2adfc111cdfca19",
+    "files": 4,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/306db9d822c43591781b2f2bf2adfc111cdfca19"
+  },
+  {
+    "branch": "agent/claude-pr-review",
+    "revision": "8f10b60e8565f6cfcd669e07c763937ccabc6e04",
+    "files": 57,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/8f10b60e8565f6cfcd669e07c763937ccabc6e04"
+  },
+  {
+    "branch": "agent/cmp-review-links-sync",
+    "revision": "b4b8ab4a55077dcaccad23a9060fc0f223318acd",
+    "files": 214,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/b4b8ab4a55077dcaccad23a9060fc0f223318acd"
+  },
+  {
+    "branch": "agent/create-ten-major-module-frameworks",
+    "revision": "6a6c50b6fb9d87281ae25c4e2f11786e34277994",
+    "files": 61,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/6a6c50b6fb9d87281ae25c4e2f11786e34277994"
+  },
+  {
+    "branch": "agent/fix-ai-index-identity-mappings",
+    "revision": "bfeac8ca92dae80a0f87da3a4648013b9adac54b",
+    "files": 51,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/bfeac8ca92dae80a0f87da3a4648013b9adac54b"
+  },
+  {
+    "branch": "agent/global-ai-registry-baseline",
+    "revision": "4438c47482f61fc532335d5f022018af59695bdc",
+    "files": 7,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/4438c47482f61fc532335d5f022018af59695bdc"
+  },
+  {
+    "branch": "agent/id-documents-migration",
+    "revision": "36ecba2108900c8df8ff6d36a2ca27de464e46dc",
+    "files": 29,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/36ecba2108900c8df8ff6d36a2ca27de464e46dc"
+  },
+  {
+    "branch": "agent/notion-canonical-migration-0000",
+    "revision": "a701e1b34bf64f859eaa9214df7a72aaac671ea2",
+    "files": 13,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/a701e1b34bf64f859eaa9214df7a72aaac671ea2"
+  },
+  {
+    "branch": "agent/p0-website-vi-release-1",
+    "revision": "10764864c949632692e4063ead98cf818ecad3c8",
+    "files": 331,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/10764864c949632692e4063ead98cf818ecad3c8"
+  },
+  {
+    "branch": "agent/partner-review-queue",
+    "revision": "dccca8bac27af374f77a00a94f5bd9aa886a354d",
+    "files": 26,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/dccca8bac27af374f77a00a94f5bd9aa886a354d"
+  },
+  {
+    "branch": "agent/safe-validator-phase0",
+    "revision": "0ddb1a37ff370c86d0c4d9f75bdd85f0f64f0b78",
+    "files": 61,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/0ddb1a37ff370c86d0c4d9f75bdd85f0f64f0b78"
+  },
+  {
+    "branch": "agent/standardize-ten-chapter-web-framework",
+    "revision": "099d15044dc7311454fff3f40fa635cee0fc8081",
+    "files": 56,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/099d15044dc7311454fff3f40fa635cee0fc8081"
+  },
+  {
+    "branch": "agent/website-id-foundation",
+    "revision": "51bd0efcb8f72565a55209d4b9ab3f6584db312d",
+    "files": 5,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/51bd0efcb8f72565a55209d4b9ab3f6584db312d"
+  },
+  {
+    "branch": "automation/cfp-ai-review-orchestrator",
+    "revision": "3e4c8da8f284de432f5b55ed0955047621963126",
+    "files": 191,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/3e4c8da8f284de432f5b55ed0955047621963126"
+  },
+  {
+    "branch": "automation/global-ai-working-links-20260926",
+    "revision": "94f66de75a6d91222bd40191d94f0a32cb958ec0",
+    "files": 493,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/94f66de75a6d91222bd40191d94f0a32cb958ec0"
+  },
+  {
+    "branch": "cfp-691181-office-v1",
+    "revision": "bfdb3a501325d3848ef52ed8670a5731e4c3a32e",
+    "files": 464,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/bfdb3a501325d3848ef52ed8670a5731e4c3a32e"
+  },
+  {
+    "branch": "cfp-google-69114-691141-cleanup-v1",
+    "revision": "93eaea1e6bff19102d26b2588e80c3f04e49ef1b",
+    "files": 462,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/93eaea1e6bff19102d26b2588e80c3f04e49ef1b"
+  },
+  {
+    "branch": "cleanup/p0-current-tree-69",
+    "revision": "94851bf3a230a7d53bb2445fe77d74b99e9668ac",
+    "files": 209,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/94851bf3a230a7d53bb2445fe77d74b99e9668ac"
+  },
+  {
+    "branch": "cmp-267-controlled-implementation-v1",
+    "revision": "b8c4a04cfd471c0ecef7cff7910a566de2a4daa3",
+    "files": 508,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/b8c4a04cfd471c0ecef7cff7910a566de2a4daa3"
+  },
+  {
+    "branch": "cmp-executor-write-gateway",
+    "revision": "bd3f283ac1ec1bdd7a388787bd61140b06290335",
+    "files": 226,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/bd3f283ac1ec1bdd7a388787bd61140b06290335"
+  },
+  {
+    "branch": "codex/si-office-p0-draft-20261013",
+    "revision": "3a883614c17443e1dd3bb94219139eb299f0e7ab",
+    "files": 649,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/3a883614c17443e1dd3bb94219139eb299f0e7ab"
+  },
+  {
+    "branch": "copilot/add-new-feature",
+    "revision": "ef7960dae6c1422aff3b0be91061ce1901c10897",
+    "files": 53,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/ef7960dae6c1422aff3b0be91061ce1901c10897"
+  },
+  {
+    "branch": "copilot/agentp0-website-vi-release-1",
+    "revision": "53d4585fa624642f6fbb6ed53aa96500ff9f73bc",
+    "files": 330,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/53d4585fa624642f6fbb6ed53aa96500ff9f73bc"
+  },
+  {
+    "branch": "copilot/build-openai-api-integration",
+    "revision": "992b83a0d8dcde6478859e9bfafc7207f522f663",
+    "files": 58,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/992b83a0d8dcde6478859e9bfafc7207f522f663"
+  },
+  {
+    "branch": "copilot/fix-69119-vietlinker-references",
+    "revision": "ccbffac776eee972db78063aed373edde8210398",
+    "files": 53,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/ccbffac776eee972db78063aed373edde8210398"
+  },
+  {
+    "branch": "copilot/research-inventory-standards-documents",
+    "revision": "ef7960dae6c1422aff3b0be91061ce1901c10897",
+    "files": 53,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/ef7960dae6c1422aff3b0be91061ce1901c10897"
+  },
+  {
+    "branch": "copilot/research-master-execution-plan",
+    "revision": "fb2c2eaf291a7fe141484109aef0e1b0cdb772dd",
+    "files": 203,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/fb2c2eaf291a7fe141484109aef0e1b0cdb772dd"
+  },
+  {
+    "branch": "copilot/track-a-standard-inventory",
+    "revision": "ef7960dae6c1422aff3b0be91061ce1901c10897",
+    "files": 53,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/ef7960dae6c1422aff3b0be91061ce1901c10897"
+  },
+  {
+    "branch": "docs/website-super-pairs-publication",
+    "revision": "ab819bf587c532a3ca36e84eda55517e46017515",
+    "files": 508,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/ab819bf587c532a3ca36e84eda55517e46017515"
+  },
+  {
+    "branch": "feat/911-us-ai-master",
+    "revision": "410c27f0cfd8e0aade024d923e387c2a4d04a816",
+    "files": 213,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/410c27f0cfd8e0aade024d923e387c2a4d04a816"
+  },
+  {
+    "branch": "feature/cmp-orchestrator-p0",
+    "revision": "a2575b2ba6efe34e04e84b105226a3cf7a911135",
+    "files": 172,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/a2575b2ba6efe34e04e84b105226a3cf7a911135"
+  },
+  {
+    "branch": "fix/cloud-run-conflict-retry",
+    "revision": "1d710c5bf9eea2b002ce15e478a066fb00362143",
+    "files": 510,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/1d710c5bf9eea2b002ce15e478a066fb00362143"
+  },
+  {
+    "branch": "fix/698461-vietlinker-developer",
+    "revision": "8b3205d6a9d3e6e227e94e54879e93765326c01d",
+    "files": 209,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/8b3205d6a9d3e6e227e94e54879e93765326c01d"
+  },
+  {
+    "branch": "governance/hub69-global-ai-invitation",
+    "revision": "ca5e41e6e56e71cb4e7bb7dcb4f72a0785328b3a",
+    "files": 54,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/ca5e41e6e56e71cb4e7bb7dcb4f72a0785328b3a"
+  },
+  {
+    "branch": "governance/vietnam-ai-hub-hierarchy-v1",
+    "revision": "118580a7c62a8ba69f74fdbadae26f53afe3cf21",
+    "files": 51,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/118580a7c62a8ba69f74fdbadae26f53afe3cf21"
+  },
+  {
+    "branch": "integration/controlled-country-template-base",
+    "revision": "bbd4f5752ccc64312953fc11a5e0450067d569ac",
+    "files": 514,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/bbd4f5752ccc64312953fc11a5e0450067d569ac"
+  },
+  {
+    "branch": "integration/openai-notion-v1",
+    "revision": "16406b3b0965f1f9b0687f66ab04d6899a3bf658",
+    "files": 171,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/16406b3b0965f1f9b0687f66ab04d6899a3bf658"
+  },
+  {
+    "branch": "main",
+    "revision": "835616308111f6851c0387fa9f5eda60c9ffa624",
+    "files": 503,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/835616308111f6851c0387fa9f5eda60c9ffa624"
+  },
+  {
+    "branch": "migration/0001-canonical-documents",
+    "revision": "4e8bfb47b7098cf3fd21df8a97d3116287e74419",
+    "files": 14,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/4e8bfb47b7098cf3fd21df8a97d3116287e74419"
+  },
+  {
+    "branch": "p0-website-public-v1",
+    "revision": "a73bcafdb8169bc8930423509cd92e6c536afdae",
+    "files": 382,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/a73bcafdb8169bc8930423509cd92e6c536afdae"
+  },
+  {
+    "branch": "p0/ai-id-link-skeleton",
+    "revision": "2474d3d9604aa0066314423f874b52aea9accdae",
+    "files": 369,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/2474d3d9604aa0066314423f874b52aea9accdae"
+  },
+  {
+    "branch": "p0/cfp-ai-country-zero-gateway",
+    "revision": "844f2081c59d67732ee55e5f5e8d06e41b8dd7ea",
+    "files": 367,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/844f2081c59d67732ee55e5f5e8d06e41b8dd7ea"
+  },
+  {
+    "branch": "p0/cmp-backend-foundation",
+    "revision": "686177b9706c6c0b602860d07d2f79ee86c38bd8",
+    "files": 261,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/686177b9706c6c0b602860d07d2f79ee86c38bd8"
+  },
+  {
+    "branch": "p0/ctttc-v0.6.6-ci",
+    "revision": "7b08f584d89eaf09d257462c9bfe21254c94ee1d",
+    "files": 366,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/7b08f584d89eaf09d257462c9bfe21254c94ee1d"
+  },
+  {
+    "branch": "p0/evidence-first-completion-gate",
+    "revision": "76f94b19c3ac3102616756459641f991ca5ac993",
+    "files": 369,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/76f94b19c3ac3102616756459641f991ca5ac993"
+  },
+  {
+    "branch": "p0/nco-meta-69115",
+    "revision": "7a66be38b04d1f2bf9bd219e519a3cd35a5d8457",
+    "files": 500,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/7a66be38b04d1f2bf9bd219e519a3cd35a5d8457"
+  },
+  {
+    "branch": "post-p0/github-first-website-audit",
+    "revision": "857aea18913a469a390fe13bb12b26ddda293e55",
+    "files": 506,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/857aea18913a469a390fe13bb12b26ddda293e55"
+  },
+  {
+    "branch": "research/quantum-vault-v01",
+    "revision": "75e4ae914ea9975de047af0d002f740f145361bc",
+    "files": 513,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/75e4ae914ea9975de047af0d002f740f145361bc"
+  },
+  {
+    "branch": "review/cmp-xai-api-pilot",
+    "revision": "be251bc3f2a13c1c9300cb9a8e28883dbf705b9e",
+    "files": 219,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/be251bc3f2a13c1c9300cb9a8e28883dbf705b9e"
+  },
+  {
+    "branch": "review/controlled-country-integration",
+    "revision": "8a7cf05b64731bb046a9b5a7e0bea8e2ecade336",
+    "files": 514,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/8a7cf05b64731bb046a9b5a7e0bea8e2ecade336"
+  },
+  {
+    "branch": "review/hub69-daily-global-news-time-id",
+    "revision": "caa68df97b7b036a8ef3fda735c0030a0067a3d0",
+    "files": 211,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/caa68df97b7b036a8ef3fda735c0030a0067a3d0"
+  },
+  {
+    "branch": "review/numeric-link-restoration-20261008",
+    "revision": "c0c9d37fe6f3dccac0567c6949c45fd26eac12a9",
+    "files": 525,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/c0c9d37fe6f3dccac0567c6949c45fd26eac12a9"
+  },
+  {
+    "branch": "review/003-005-gemini-diagnostics",
+    "revision": "cc3a9f961e13132ed05bf2cd039514c5527d070a",
+    "files": 504,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/cc3a9f961e13132ed05bf2cd039514c5527d070a"
+  },
+  {
+    "branch": "rp/691109",
+    "revision": "a4a7d12ba69154fcc92cbc753843aa54726da07e",
+    "files": 492,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/a4a7d12ba69154fcc92cbc753843aa54726da07e"
+  },
+  {
+    "branch": "website/full-skeleton-v1",
+    "revision": "c1ae29afa541b8b42560369bad9f8266099889bf",
+    "files": 177,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/c1ae29afa541b8b42560369bad9f8266099889bf"
+  },
+  {
+    "branch": "website/0000-ai-id-foundation",
+    "revision": "6eedb4c03a2e021e02b121afbe0e0fda5926eadf",
+    "files": 35,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/6eedb4c03a2e021e02b121afbe0e0fda5926eadf"
+  },
+  {
+    "branch": "website/0000-ai-id-foundation-2",
+    "revision": "50ac356c4ddc9daedc059bd6c0fc77f64451bc76",
+    "files": 16,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/50ac356c4ddc9daedc059bd6c0fc77f64451bc76"
+  },
+  {
+    "branch": "website-initial-launch",
+    "revision": "98ebe78d56886cc12de23f60f2c125a2738acf80",
+    "files": 30,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/98ebe78d56886cc12de23f60f2c125a2738acf80"
+  },
+  {
+    "branch": "website-master-map-import",
+    "revision": "f784f26b509b5cf9f9a6be8832a9e25c281bc2f1",
+    "files": 7,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/f784f26b509b5cf9f9a6be8832a9e25c281bc2f1"
+  },
+  {
+    "branch": "work/openai-2026-09-cfp-integration",
+    "revision": "2823a1787457e6b9c9e0a70bd75623c1c2fa0dd3",
+    "files": 493,
+    "truncated": false,
+    "source": "https://github.com/charityfundplus/CFP.plus/tree/2823a1787457e6b9c9e0a70bd75623c1c2fa0dd3"
+  }
+]

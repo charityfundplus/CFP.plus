@@ -1,0 +1,92 @@
+{
+  "status": "PASS",
+  "url": "https://idhzv-113-30-194-49.run.pinggy-free.link/p2",
+  "commit": "3a883614c17443e1dd3bb94219139eb299f0e7ab",
+  "publicHTTPS": true,
+  "basicLessons": 5,
+  "exercises": [
+    {
+      "exercise": "office-exercise-1",
+      "taskKey": "cf225688-18f4-41fc-8e39-128bc6c5ba02",
+      "checks": 18,
+      "status": "REVIEWED DRAFT"
+    },
+    {
+      "exercise": "office-exercise-2",
+      "taskKey": "17201363-ef7e-4dee-bcc7-0f0d369df674",
+      "checks": 18,
+      "status": "REVIEWED DRAFT"
+    },
+    {
+      "exercise": "office-exercise-3",
+      "taskKey": "e5fa4a0c-7cae-425e-9664-284c2373fb3e",
+      "checks": 18,
+      "status": "REVIEWED DRAFT"
+    },
+    {
+      "exercise": "office-exercise-4",
+      "taskKey": "b17957d7-e3a8-4d87-93a9-1216eebf1d7e",
+      "checks": 18,
+      "status": "REVIEWED DRAFT"
+    },
+    {
+      "exercise": "office-exercise-5",
+      "taskKey": "429de75c-146f-4878-96db-fbf2045acf62",
+      "checks": 18,
+      "status": "REVIEWED DRAFT"
+    },
+    {
+      "exercise": "office-exercise-6",
+      "taskKey": "433a9379-10aa-46ff-8e1c-0e0562ff3742",
+      "checks": 18,
+      "status": "REVIEWED DRAFT"
+    },
+    {
+      "exercise": "office-exercise-7",
+      "taskKey": "7e69ed2c-5421-42ed-b2d4-c57dd4769699",
+      "checks": 18,
+      "status": "REVIEWED DRAFT"
+    },
+    {
+      "exercise": "office-exercise-8",
+      "taskKey": "75d67d23-3601-4913-b05f-d56bf65c3f2b",
+      "checks": 18,
+      "status": "REVIEWED DRAFT"
+    },
+    {
+      "exercise": "office-exercise-9",
+      "taskKey": "1a21fb63-a682-4c76-93ee-bcf2698ea14d",
+      "checks": 18,
+      "status": "REVIEWED DRAFT"
+    },
+    {
+      "exercise": "office-exercise-10",
+      "taskKey": "065e1f84-7098-41e4-952a-f19b0c76adcf",
+      "checks": 18,
+      "status": "REVIEWED DRAFT"
+    },
+    {
+      "exercise": "office-exercise-11",
+      "taskKey": "7d072d1b-5e1f-4ee8-9ea0-7485e7cb19d7",
+      "checks": 18,
+      "status": "REVIEWED DRAFT"
+    },
+    {
+      "exercise": "office-exercise-12",
+      "taskKey": "a2dbc8ce-3275-452c-9fdc-bba09c5444a5",
+      "checks": 18,
+      "status": "REVIEWED DRAFT"
+    }
+  ],
+  "advancedPrograms": 6,
+  "advancedAssessment": "NOT ASSESSED",
+  "qaWorkspace": "qa-evidence",
+  "reviewWorkspace": "cfp-review1",
+  "cfpStartsEmpty": true,
+  "auditValid": true,
+  "verifiedFiles": 70,
+  "manifestSHA256": "27c34d5aee83e2c133791c036d47435720f95030cb87383d77b030bded3b9bde",
+  "noAutomaticPrivileges": true,
+  "verifiedAt": "2026-10-13T18:55:50Z",
+  "lifecycle": "FIRST EPHEMERAL TUNNEL VERIFIED THEN EXPIRED; not current live availability"
+}

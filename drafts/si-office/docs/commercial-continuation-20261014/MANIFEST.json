@@ -1,0 +1,182 @@
+{
+  "runtimeRevision": "275c6b11559216404537c752a706e1b2eef1d0b7",
+  "baseline": "b75b780eb64430355f0b51a4b58b9e5269e0db43",
+  "scope": "newcommercial source/test and pinned local evidence; no credentials/live SQLite/raw private Notion snapshots",
+  "files": [
+    {
+      "path": "drafts/si-office/core/commercial-intake.mjs",
+      "bytes": 5080,
+      "sha256": "78762134185ce0a67674a4101bc896977bc852eb7fa2b41d7f5ca8afabfb4f4d"
+    },
+    {
+      "path": "drafts/si-office/core/core-engine.mjs",
+      "bytes": 19080,
+      "sha256": "59e8eb0ee1142215b01061f1874456e58f01169c9f881ad3a4a38f50f383122b"
+    },
+    {
+      "path": "drafts/si-office/core/office-intake.mjs",
+      "bytes": 5028,
+      "sha256": "89f6b00c8eec7e9d76808bdaf1db9bb482db4974ac243c0713af9283e890fcc4"
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/AFFECTED_ASSESSMENT_RETENTION_RESULTS.txt",
+      "bytes": 434,
+      "sha256": "bf22906b15ebde7e0c85d689b23496bae38a6b332e1d650cac4a0c66ae198ac1"
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/AFFECTED_TASK_PROVENANCE_RESULTS.txt",
+      "bytes": 240,
+      "sha256": "04fa5f8c2a40971a4f3a471fb9346ee626972a69acc62340b4050242d47015d0"
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/BUILD_MANIFEST.json",
+      "bytes": 8918,
+      "sha256": "4d1fd0b6b8ce54854e67a97ba8b9e5e1a0ddac88454051f2eee8e7cf93473be3"
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/BUILD_MANIFEST.sha256",
+      "bytes": 86,
+      "sha256": "a7179d4826b83af9944bcdf9957b471b6a967aeec2269259e28c7dae6a15faaf"
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/CANONICAL_URL_READBACK.json",
+      "bytes": 723,
+      "sha256": "46526b95d02f749c85f088188ea7137de271caecc5413de03ba6dfca1c26efd2"
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/COMMERCIAL_E2E_RECEIPT.json",
+      "bytes": 46010,
+      "sha256": "4ce7f290f20637df0c035d8b78a00b21079e1b083449b8159f4ad605e46f5ee0"
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/COMMERCIAL_E2E_RESULTS.txt",
+      "bytes": 411,
+      "sha256": "b08890d889cb799316b41f578e58146963bfb234027cbf968544d69153a76ae8"
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/COMMERCIAL_EXPORT_VM_RESULTS.txt",
+      "bytes": 403,
+      "sha256": "6d05361bfea96c0100ef61a1800a522b0a083ab95d4b2c548ecc0a18bf7ae63c"
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/COMMERCIAL_FLOW_RESULTS.txt",
+      "bytes": 457,
+      "sha256": "365e775264f304353a274eb00cbc875a6400245a57215058b47507dab517ecbf"
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/COMMERCIAL_RETENTION_RESULTS.txt",
+      "bytes": 462,
+      "sha256": "9518e9196d8842c09d25c8dbd9eb29ee353ad150beca4d7f383dbb08a6539f6b"
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/HANDOFF_SUMMARY.json",
+      "bytes": 1326,
+      "sha256": "6c43c9832bb63b185fdac0d8dd6aeff0838340d958fa40bee372dd4099ba5224"
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/HANDOFF_VI.md",
+      "bytes": 6817,
+      "sha256": "803f40cc2ca03fc27029a5fd1c829d83615ee2bf79dfac2b6638af4424f1249a"
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/INTERNAL_REVIEW.json",
+      "bytes": 4205,
+      "sha256": "93a825b5d30b5c777506964ba1b450ff6aab31ea421fb07d763e369d4fddff43"
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/LINK_COMMERCIAL_UI_HANDOFF.md",
+      "bytes": 2560,
+      "sha256": "d56a21408d4ca7e28425e9b80127378ac48c207055de4b5b0bb75f09b93149d0"
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/ONBOARDING_AFFECTED_RECEIPT.json",
+      "bytes": 42672,
+      "sha256": "6a3caa274be22f0aa725e6ad281dee885bf7d382a7578b965fd9d6a64dae80d3"
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/ONBOARDING_AFFECTED_RESULTS.txt",
+      "bytes": 354,
+      "sha256": "4812e183dc4753c67d087589461fc32d960ec9cbedf23097f5307db09b75a3b1"
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/PUBLIC_TEMPLATE_MAPPING.json",
+      "bytes": 9803,
+      "sha256": "747be2112b49dda5646905a8764058897aab6d3bcdf235445803f8d79d42cdc2"
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/SOURCE_REMOTE_READBACK.json",
+      "bytes": 4692,
+      "sha256": "e7574a72468952001d234eee9a22900fa9db140899e69907877b60abff65adb8"
+    },
+    {
+      "path": "drafts/si-office/docs/commercial-continuation-20261014/VALIDATION_SOURCE_SCOPE.json",
+      "bytes": 3897,
+      "sha256": "379452bae23388a04be5c6323616f325cc286a550bba4e8c76a50f4f1a4dcdca"
+    },
+    {
+      "path": "drafts/si-office/public/commercial-office.js",
+      "bytes": 9525,
+      "sha256": "1abe0558a68f3a0dc3f5119f496eab83f42332dc43369c6cb60b3cbfd8812c80"
+    },
+    {
+      "path": "drafts/si-office/public/office-intake.js",
+      "bytes": 16215,
+      "sha256": "a9e6f6effedd8d300259344ba13606786ee31e41279ed285fad5040b908599f4"
+    },
+    {
+      "path": "drafts/si-office/public/p2-office.js",
+      "bytes": 12133,
+      "sha256": "efcb9d8e0cc02b6b370d71ec0a0c258d9202a6ce283c81958bdea314f24feb54"
+    },
+    {
+      "path": "drafts/si-office/public/p2.html",
+      "bytes": 10799,
+      "sha256": "bcdf3dcdfe67c4560b8fc59e118f46e8b59f5a16821d88eb11fc8ef4ba399e8b"
+    },
+    {
+      "path": "drafts/si-office/public/style.css",
+      "bytes": 11796,
+      "sha256": "4420f47e8c51ce56c694787be5df7fe7b8e70d5584524a9ea9773fc15df08768"
+    },
+    {
+      "path": "drafts/si-office/sandbox/p2-http.mjs",
+      "bytes": 7255,
+      "sha256": "503a565b8634718159bd4145a26ec373fec0dda5b84949b9c5fca956369794b2"
+    },
+    {
+      "path": "drafts/si-office/sandbox/p2-service.mjs",
+      "bytes": 14854,
+      "sha256": "c6afd018e186a7ae00bf9f80ee1920ee5c072880e75c9082b6830c305ec80f21"
+    },
+    {
+      "path": "drafts/si-office/tests/commercial-evidence-flow.mjs",
+      "bytes": 10555,
+      "sha256": "25db4f449ca7cc39526b919642a8d5ba6991280f8c7b8a251d23a818e858e595"
+    },
+    {
+      "path": "drafts/si-office/tests/commercial-export-validation.test.mjs",
+      "bytes": 2910,
+      "sha256": "fa11e5883c3b7860d76d5a1b8bcac2405140cfa05b90c756ebadb1c4d481421f"
+    },
+    {
+      "path": "drafts/si-office/tests/commercial-flow.test.mjs",
+      "bytes": 8196,
+      "sha256": "88e0ab8a66f7e7bb6c0ecd7158ad18ea0349348ffe3163204860c77e475c32f8"
+    },
+    {
+      "path": "drafts/si-office/tests/commercial-retention.test.mjs",
+      "bytes": 4738,
+      "sha256": "f7708e4e41ba08f8b3541f94ab069fad0f1da55c07c96dda23f2378f9f4fa099"
+    },
+    {
+      "path": "drafts/si-office/tests/fixtures/core-engine-b381.txt",
+      "bytes": 15732,
+      "sha256": "98a2b2d040d532cb97e24ff2dd37972879870a9ef4258e9ac9f93837b42f0997"
+    },
+    {
+      "path": "drafts/si-office/tests/link-commercial-render.py",
+      "bytes": 2145,
+      "sha256": "262e67fea91271fab61c29373badb9c8a26941e0146c418d0bb8d59757567ea0"
+    }
+  ]
+}

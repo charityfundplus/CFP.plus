@@ -1,0 +1,13 @@
+✔ P2 HTTP secure headers/cookie and deny anonymous, origin, hostile Host and self-selected role (602.188979ms)
+✔ P2 HTTP task workflow, cross-workspace denial, viewer restriction and logout (421.198783ms)
+✔ P2 HTTP pair grants filter snapshots and deny ungranted pair creation (295.718643ms)
+✔ P2 release executes two verified bundles; rollback restores separate DB and retains current audit (551.782484ms)
+✔ P2 maintenance lease denies concurrent work; queued tasks block activation (238.326845ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2118.161391

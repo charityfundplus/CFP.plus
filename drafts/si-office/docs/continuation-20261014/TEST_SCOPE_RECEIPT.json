@@ -1,0 +1,17 @@
+{
+  "base": "690b711316fd1dc41d7bee328609d471f1ddafb9",
+  "newAssessmentCoordinatorChecks": 8,
+  "newChromiumExportChecks": 2,
+  "newProviderPreflightChecks": 1,
+  "affectedRegression": {
+    "command": "node --test --test-name-pattern='P2-C durable task/idempotency|P2-E backup/restore|P2 HTTP pair grants filter' tests/p2.test.mjs tests/p2-http.test.mjs",
+    "exitCode": 0,
+    "runnerReportedFiles": 2,
+    "fullP2SuiteClaimed": false,
+    "reason": "New learning checkpoint collection/persistence and snapshot scope filters changed"
+  },
+  "unchangedPriorLedgerProxyKernelRoutingSuitesRerun": false,
+  "sourceAfterFunctionalTests": "Added one descriptive prerequisite-limit field only; syntax/diff checks done, no behavioral privilege or decision change",
+  "realCompetenceAssessed": false,
+  "hostActivated": false
+}

@@ -1,0 +1,20 @@
+{
+  "revision": "3a883614c17443e1dd3bb94219139eb299f0e7ab",
+  "date": "2026-10-13",
+  "archive": "CFP-HUB69-20261013-3a883614c174-snapshot.zip",
+  "sha256": "72cbd147cf8385a307591036aa96c6736cd20bb8f40356251abd8ff04006256f",
+  "bytes": 425041,
+  "sourceFiles": 143,
+  "scope": [
+    "drafts/si-office/",
+    "69/"
+  ],
+  "manifestSHA256": "05bb159cdae1558efb2d1fee356fb437bf9f7b7a736701f17764d2790d28f7e2",
+  "zipReadback": "PASS; every selected entry SHA-256 compared",
+  "gitHistory": "Not bundled; GitHub retains commit ancestry/branches. ZIP is a scoped snapshot, not a history backup.",
+  "privateState": "Not included; local SQLite training/user/audit state requires separately controlled P2 backup.",
+  "driveFileId": "1bT5fZNvm-TmHFqeaWB5U5dnYFrAOQAQ4",
+  "driveURL": "https://drive.google.com/file/d/1bT5fZNvm-TmHFqeaWB5U5dnYFrAOQAQ4/view?usp=drivesdk",
+  "driveParentVerified": "1JxTGabFVepUW22TwyyeUEV0ZBCpszr9Z",
+  "driveReadback": "SYNC VERIFIED; downloaded bytes, manifest and 143 source entries matched"
+}

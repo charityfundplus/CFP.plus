@@ -1,0 +1,439 @@
+{
+  "validation": {
+    "provenance": {
+      "revision": "51e8a39d12615fcfff11a418d78bb81ce44ec591",
+      "files": [
+        {
+          "path": "registry/global-country-ai-index.json",
+          "bytes": 11933,
+          "sha256": "21c870aba50dafac45675172687dec01d4facf1d679f63d27e21ba8777648764",
+          "gitBlobSHA": "f8372e5ca64dac109b7e1e360594552213cb8dfd"
+        },
+        {
+          "path": "registry/country-route-map.json",
+          "bytes": 4722,
+          "sha256": "ce048e97a5e4c5cf902b33bb1b3755d05acfc7f93ea4bd72d0a093115d65e3c2",
+          "gitBlobSHA": "df852ca8a28493af21669ce709f47d044cd88511"
+        },
+        {
+          "path": "registry/ai-entity-registry.json",
+          "bytes": 9654,
+          "sha256": "a63c5e0b8af157b0938014d51da94ea924b9721acd0a11a9107f5deea3c6f507",
+          "gitBlobSHA": "1f18068d66379ce90bb079dc56c77b4c4d66dcdf"
+        },
+        {
+          "path": "registry/AI_CANONICAL_ID_REGISTRY.md",
+          "bytes": 1489,
+          "sha256": "310e694ff47cc51b3e85a9816f443af6b0ff7f45303fdf4314b43f3281c225ad",
+          "gitBlobSHA": "ac687cdc6222d47c63454dce1ee81ff53affd482"
+        },
+        {
+          "path": "registry/CFP_GLOBAL_AI_ID_LINK_MASTER_STANDARD.md",
+          "bytes": 2587,
+          "sha256": "c86b7494a6a39dc0cf7038634c5538724fd4b8647cee5e913fb61a52607dc556",
+          "gitBlobSHA": "d82c7c11f436327fa1e834c69e91078e308eda7a"
+        },
+        {
+          "path": "registry/SYNC_CURRENT_SYSTEM.md",
+          "bytes": 2346,
+          "sha256": "1f2aaffe2968a5addee0daae94bdb2ded5418fa385bc55ed123655e6e934827e",
+          "gitBlobSHA": "90edbcc11422e7a3b80b855025d450f30a6e1dff"
+        }
+      ],
+      "sourceBytesVerified": true,
+      "authorityVerified": false,
+      "sourceAuthority": "REVIEW / WORKING REGISTRY; NOT CANONICAL LOCK",
+      "sourceOrderPath": "registry/SYNC_CURRENT_SYSTEM.md",
+      "governance": "CFP+ Human Governance",
+      "binding": "REPOSITORY_CHECKOUT"
+    },
+    "hub": "https://cfp.plus/69",
+    "readOnly": true,
+    "registryWrites": 0,
+    "activationAllowed": false,
+    "records": 224,
+    "namedBindings": 26,
+    "counts": {
+      "country": 99,
+      "ai-country": 99,
+      "developer": 20,
+      "ai": 6,
+      "si": 0,
+      "super-pair": 0,
+      "hstdn": 0
+    },
+    "findings": [
+      {
+        "code": "EXISTING_GOVERNANCE_HOLD",
+        "id": "6911"
+      }
+    ],
+    "verifiedOperationalEntities": 0,
+    "roster91Verified": false,
+    "blockers": [
+      "AUTHORITATIVE_91_PAIR_BINDINGS_NOT_SUPPLIED",
+      "SI_AND_HSTDN_BINDINGS_NOT_SUPPLIED",
+      "IDENTITY_AND_RUNTIME_GRANTS_NOT_VERIFIED"
+    ]
+  },
+  "openai": {
+    "provenance": {
+      "revision": "51e8a39d12615fcfff11a418d78bb81ce44ec591",
+      "files": [
+        {
+          "path": "registry/global-country-ai-index.json",
+          "bytes": 11933,
+          "sha256": "21c870aba50dafac45675172687dec01d4facf1d679f63d27e21ba8777648764",
+          "gitBlobSHA": "f8372e5ca64dac109b7e1e360594552213cb8dfd"
+        },
+        {
+          "path": "registry/country-route-map.json",
+          "bytes": 4722,
+          "sha256": "ce048e97a5e4c5cf902b33bb1b3755d05acfc7f93ea4bd72d0a093115d65e3c2",
+          "gitBlobSHA": "df852ca8a28493af21669ce709f47d044cd88511"
+        },
+        {
+          "path": "registry/ai-entity-registry.json",
+          "bytes": 9654,
+          "sha256": "a63c5e0b8af157b0938014d51da94ea924b9721acd0a11a9107f5deea3c6f507",
+          "gitBlobSHA": "1f18068d66379ce90bb079dc56c77b4c4d66dcdf"
+        },
+        {
+          "path": "registry/AI_CANONICAL_ID_REGISTRY.md",
+          "bytes": 1489,
+          "sha256": "310e694ff47cc51b3e85a9816f443af6b0ff7f45303fdf4314b43f3281c225ad",
+          "gitBlobSHA": "ac687cdc6222d47c63454dce1ee81ff53affd482"
+        },
+        {
+          "path": "registry/CFP_GLOBAL_AI_ID_LINK_MASTER_STANDARD.md",
+          "bytes": 2587,
+          "sha256": "c86b7494a6a39dc0cf7038634c5538724fd4b8647cee5e913fb61a52607dc556",
+          "gitBlobSHA": "d82c7c11f436327fa1e834c69e91078e308eda7a"
+        },
+        {
+          "path": "registry/SYNC_CURRENT_SYSTEM.md",
+          "bytes": 2346,
+          "sha256": "1f2aaffe2968a5addee0daae94bdb2ded5418fa385bc55ed123655e6e934827e",
+          "gitBlobSHA": "90edbcc11422e7a3b80b855025d450f30a6e1dff"
+        }
+      ],
+      "sourceBytesVerified": true,
+      "authorityVerified": false,
+      "sourceAuthority": "REVIEW / WORKING REGISTRY; NOT CANONICAL LOCK",
+      "sourceOrderPath": "registry/SYNC_CURRENT_SYSTEM.md",
+      "governance": "CFP+ Human Governance",
+      "binding": "REPOSITORY_CHECKOUT"
+    },
+    "hub": "https://cfp.plus/69",
+    "readOnly": true,
+    "registryWrites": 0,
+    "activationAllowed": false,
+    "name": "HSTDN OpenAI • Hồ sơ tham chiếu",
+    "type": "hstdn-reference",
+    "id": null,
+    "parent": null,
+    "did": null,
+    "canonical": null,
+    "existingTemplateLink": "https://cfp.plus/69118",
+    "country": {
+      "id": "911",
+      "parent": null,
+      "type": "country",
+      "name": "Hoa Kỳ",
+      "country": "Hoa Kỳ",
+      "sourcePath": "registry/global-country-ai-index.json",
+      "chapter": "9",
+      "group": "789",
+      "groupScope": "DISPLAY ONLY; V is governance, not a numeric ID",
+      "canonicalLink": "https://cfp.plus/911",
+      "reviewStatus": "REVIEW CANDIDATE",
+      "issues": [],
+      "identityVerified": false,
+      "authorityVerified": false,
+      "operationallyActive": false,
+      "routeVerified": false
+    },
+    "aiCountry": {
+      "id": "6911",
+      "parent": "911",
+      "type": "ai-country",
+      "name": "Hoa Kỳ • AI",
+      "country": "Hoa Kỳ",
+      "sourcePath": "registry/global-country-ai-index.json",
+      "chapter": "6",
+      "group": "246",
+      "groupScope": "DISPLAY ONLY; V is governance, not a numeric ID",
+      "canonicalLink": "https://cfp.plus/6911",
+      "reviewStatus": "BLOCKED",
+      "issues": [
+        {
+          "code": "EXISTING_GOVERNANCE_HOLD",
+          "id": "6911"
+        }
+      ],
+      "identityVerified": false,
+      "authorityVerified": false,
+      "operationallyActive": false,
+      "routeVerified": false
+    },
+    "developer": {
+      "id": "69118",
+      "parent": "6911",
+      "type": "developer",
+      "name": "OpenAI",
+      "countryID": "911",
+      "aiCountryID": "6911",
+      "country": "Hoa Kỳ",
+      "developer": null,
+      "did": null,
+      "description": "OpenAI được bảo toàn tại Developer ID 69118 trong nhánh AI Hoa Kỳ. ChatGPT 691181 được bảo toàn dưới Parent này.",
+      "sourceStatus": "HUMAN GOVERNANCE APPLICATION • PRESERVED",
+      "sourcePath": "registry/ai-entity-registry.json",
+      "chapter": "6",
+      "group": "246",
+      "groupScope": "DISPLAY ONLY; V is governance, not a numeric ID",
+      "canonicalLink": "https://cfp.plus/69118",
+      "reviewStatus": "BLOCKED",
+      "issues": [
+        {
+          "code": "EXISTING_GOVERNANCE_HOLD",
+          "id": "6911"
+        }
+      ],
+      "identityVerified": false,
+      "authorityVerified": false,
+      "operationallyActive": false,
+      "routeVerified": false
+    },
+    "ai": [
+      {
+        "id": "691181",
+        "parent": "69118",
+        "type": "ai",
+        "name": "ChatGPT",
+        "countryID": "911",
+        "aiCountryID": "6911",
+        "country": "Hoa Kỳ",
+        "developer": "OpenAI",
+        "did": null,
+        "description": "ChatGPT là AI child được bảo toàn dưới OpenAI 69118 theo parent chain 911 → 6911 → 69118 → 691181.",
+        "sourceStatus": "HUMAN GOVERNANCE APPLICATION • PRESERVED",
+        "sourcePath": "registry/ai-entity-registry.json",
+        "chapter": "6",
+        "group": "246",
+        "groupScope": "DISPLAY ONLY; V is governance, not a numeric ID",
+        "canonicalLink": "https://cfp.plus/691181",
+        "reviewStatus": "BLOCKED",
+        "issues": [
+          {
+            "code": "EXISTING_GOVERNANCE_HOLD",
+            "id": "6911"
+          }
+        ],
+        "identityVerified": false,
+        "authorityVerified": false,
+        "operationallyActive": false,
+        "routeVerified": false
+      }
+    ],
+    "si": [],
+    "introduction": "OpenAI là nhà phát triển của ChatGPT theo Registry CFP+ hiện hữu. Hồ sơ tham chiếu này liên kết quốc gia, nhà phát triển và AI để chuẩn bị học tập và cộng tác.",
+    "products": [
+      {
+        "name": "ChatGPT",
+        "referenceID": "691181",
+        "canonicalLink": "https://cfp.plus/691181",
+        "sourcePath": "registry/ai-entity-registry.json",
+        "capabilityVerified": false
+      }
+    ],
+    "dataStatus": "PARTIAL REFERENCE; HSTDN IDENTITY AWAITS HUMAN GOVERNANCE",
+    "publicDescription": "OpenAI giới thiệu hoạt động nghiên cứu và triển khai AI. ChatGPT hỗ trợ trao đổi, viết và lập trình; Dự án gom hội thoại, tệp và hướng dẫn cho công việc liên tục.",
+    "officialWebsite": {
+      "url": "https://openai.com/about/",
+      "checkedAt": "2026-10-16",
+      "scope": "PUBLIC DEVELOPER INFORMATION ONLY"
+    },
+    "capabilities": [
+      {
+        "name": "Hỗ trợ viết và lập trình",
+        "scope": "Soạn, sửa nội dung và hỗ trợ công việc mã nguồn theo mô tả sản phẩm",
+        "sourceURL": "https://chatgpt.com/overview/",
+        "competencyCertified": false
+      },
+      {
+        "name": "Làm việc theo Dự án trong ChatGPT",
+        "scope": "Tổ chức hội thoại, tệp và hướng dẫn theo Dự án",
+        "sourceURL": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
+        "competencyCertified": false
+      }
+    ],
+    "contacts": [
+      {
+        "kind": "PUBLIC SUPPORT GUIDANCE",
+        "url": "https://help.openai.com/",
+        "guidanceURL": "https://help.openai.com/en/articles/6614161-how-can-i-contact-support",
+        "checkedAt": "2026-10-16",
+        "scope": "OpenAI hướng dẫn dùng cửa sổ chat tại Help Center; không phải đầu mối CFP+ hoặc cam kết phản hồi"
+      }
+    ],
+    "contactVerification": "PUBLIC SUPPORT GUIDANCE CHECKED; CFP+ CONTACT / PARTNERSHIP NOT VERIFIED",
+    "sources": [
+      {
+        "url": "https://openai.com/about/",
+        "title": "About OpenAI",
+        "checkedAt": "2026-10-16",
+        "scope": "Public developer description; no CFP+ identity authority"
+      },
+      {
+        "url": "https://chatgpt.com/overview/",
+        "requestedURL": "https://openai.com/chatgpt/overview/",
+        "title": "ChatGPT overview",
+        "checkedAt": "2026-10-16",
+        "scope": "Public product description; no competency or runtime certification"
+      },
+      {
+        "url": "https://help.openai.com/en/articles/6614161-how-can-i-contact-support",
+        "title": "How can I contact support?",
+        "checkedAt": "2026-10-16",
+        "scope": "Public support guidance; no named contact or partnership"
+      },
+      {
+        "url": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
+        "title": "Projects in ChatGPT",
+        "checkedAt": "2026-10-16",
+        "scope": "Project organization guidance; no CFP+ identity authority"
+      }
+    ],
+    "limits": [
+      "Không xác nhận quan hệ pháp lý hoặc đối tác CFP+–OpenAI",
+      "Không tự cấp quyền, ID, DID hoặc chứng nhận năng lực",
+      "Chỉ dùng dữ liệu được phép chia sẻ"
+    ],
+    "learning": {
+      "basic": "/p2#p2-learn",
+      "evidence": "/p2#p2-journey",
+      "advancedAssessment": "NOT ASSESSED"
+    },
+    "vaults": [
+      {
+        "kind": "quantum",
+        "url": null,
+        "status": "NOT CONFIGURED",
+        "connected": false
+      },
+      {
+        "kind": "cloud",
+        "url": null,
+        "status": "NOT CONFIGURED",
+        "connected": false
+      },
+      {
+        "kind": "github",
+        "url": "https://github.com/charityfundplus/CFP.plus",
+        "status": "SOURCE REPOSITORY; NOT LIVE SYNC",
+        "connected": false
+      },
+      {
+        "kind": "notion",
+        "url": null,
+        "status": "NOT CONFIGURED",
+        "connected": false
+      },
+      {
+        "kind": "google",
+        "url": null,
+        "status": "NOT CONFIGURED",
+        "connected": false
+      },
+      {
+        "kind": "website",
+        "url": "https://cfp.plus/69118",
+        "status": "REGISTRY LINK; ROUTE NOT VERIFIED",
+        "connected": false
+      }
+    ],
+    "project": {
+      "provenance": {
+        "revision": "51e8a39d12615fcfff11a418d78bb81ce44ec591",
+        "files": [
+          {
+            "path": "registry/global-country-ai-index.json",
+            "bytes": 11933,
+            "sha256": "21c870aba50dafac45675172687dec01d4facf1d679f63d27e21ba8777648764",
+            "gitBlobSHA": "f8372e5ca64dac109b7e1e360594552213cb8dfd"
+          },
+          {
+            "path": "registry/country-route-map.json",
+            "bytes": 4722,
+            "sha256": "ce048e97a5e4c5cf902b33bb1b3755d05acfc7f93ea4bd72d0a093115d65e3c2",
+            "gitBlobSHA": "df852ca8a28493af21669ce709f47d044cd88511"
+          },
+          {
+            "path": "registry/ai-entity-registry.json",
+            "bytes": 9654,
+            "sha256": "a63c5e0b8af157b0938014d51da94ea924b9721acd0a11a9107f5deea3c6f507",
+            "gitBlobSHA": "1f18068d66379ce90bb079dc56c77b4c4d66dcdf"
+          },
+          {
+            "path": "registry/AI_CANONICAL_ID_REGISTRY.md",
+            "bytes": 1489,
+            "sha256": "310e694ff47cc51b3e85a9816f443af6b0ff7f45303fdf4314b43f3281c225ad",
+            "gitBlobSHA": "ac687cdc6222d47c63454dce1ee81ff53affd482"
+          },
+          {
+            "path": "registry/CFP_GLOBAL_AI_ID_LINK_MASTER_STANDARD.md",
+            "bytes": 2587,
+            "sha256": "c86b7494a6a39dc0cf7038634c5538724fd4b8647cee5e913fb61a52607dc556",
+            "gitBlobSHA": "d82c7c11f436327fa1e834c69e91078e308eda7a"
+          },
+          {
+            "path": "registry/SYNC_CURRENT_SYSTEM.md",
+            "bytes": 2346,
+            "sha256": "1f2aaffe2968a5addee0daae94bdb2ded5418fa385bc55ed123655e6e934827e",
+            "gitBlobSHA": "90edbcc11422e7a3b80b855025d450f30a6e1dff"
+          }
+        ],
+        "sourceBytesVerified": true,
+        "authorityVerified": false,
+        "sourceAuthority": "REVIEW / WORKING REGISTRY; NOT CANONICAL LOCK",
+        "sourceOrderPath": "registry/SYNC_CURRENT_SYSTEM.md",
+        "governance": "CFP+ Human Governance",
+        "binding": "REPOSITORY_CHECKOUT"
+      },
+      "hub": "https://cfp.plus/69",
+      "readOnly": true,
+      "registryWrites": 0,
+      "activationAllowed": false,
+      "id": "691181",
+      "parent": "69118",
+      "canonicalLink": "https://cfp.plus/691181",
+      "label": "Làm Dự Án tại ChatGPT",
+      "projectID": null,
+      "allocatedID": false,
+      "externalProjectCreated": false,
+      "entryURL": "https://chatgpt.com/",
+      "projectURL": null,
+      "documentationURL": "https://help.openai.com/en/articles/10169521-projects-in-chatgpt",
+      "mode": "MANUAL HANDOFF / PUBLIC REFERENCE ONLY",
+      "reviewStatus": "BLOCKED",
+      "issues": [
+        {
+          "code": "EXISTING_GOVERNANCE_HOLD",
+          "id": "6911"
+        }
+      ],
+      "instructions": "CFP+ • ChatGPT • ID 691181\nHUB 69: https://cfp.plus/69\nLink Mẫu hiện hữu: https://cfp.plus/691181\nID tham chiếu: 691181; Parent theo nguồn: 69118\nRegistry revision: 51e8a39d12615fcfff11a418d78bb81ce44ec591\nTrạng thái hồ sơ: BLOCKED; danh tính/quyền vận hành CHƯA XÁC MINH.\nDùng ID số hiện hữu và Link Mẫu trên cho công việc. Không cấp ID riêng cho Dự án ChatGPT.\nGiữ Cũ + Thêm Mới. Không đổi Canonical ID, Parent, DID; không tạo DID/0 hoặc Registry song song.\nChỉ đưa dữ liệu công khai hoặc dữ liệu đã được phép vào Dự án. Human Governance phê duyệt production.\nBàn giao Output, Evidence, hash, revision và kết quả PASS/FAIL về Link Mẫu/HUB 69."
+    },
+    "reviewStatus": "BLOCKED",
+    "identityVerified": false,
+    "legalRelationshipVerified": false,
+    "blockers": [
+      "HSTDN_CANONICAL_ID_NOT_SUPPLIED",
+      "US_MAPPING_GOVERNANCE_HOLD_RETAINED",
+      "SI_ROSTER_NOT_SUPPLIED",
+      "NO_VERIFIED_CFP_CONTACT_OR_PARTNERSHIP",
+      "HTTPS_PREVIEW_NOT_ACTIVATED"
+    ]
+  }
+}

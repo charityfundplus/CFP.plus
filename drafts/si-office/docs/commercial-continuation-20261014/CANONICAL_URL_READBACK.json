@@ -1,0 +1,24 @@
+{
+  "urls": [
+    {
+      "url": "https://cfp.plus/69",
+      "observed": "URL not accessible via web tool",
+      "httpStatus": null,
+      "functionalStatus": "NOT VERIFIED"
+    },
+    {
+      "url": "https://cfp.plus/4376",
+      "observed": "URL not accessible via web tool",
+      "httpStatus": null,
+      "functionalStatus": "NOT VERIFIED"
+    },
+    {
+      "url": "https://cfp.plus/267",
+      "observed": "URL not accessible via web tool",
+      "httpStatus": null,
+      "functionalStatus": "NOT VERIFIED"
+    }
+  ],
+  "scope": "read-only public web open tool on2026-10-14; not browser/device",
+  "conclusion": "Tool access failure does not prove endpoint is down. Canonical expected links remain unverified."
+}

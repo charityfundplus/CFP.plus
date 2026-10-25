@@ -1,0 +1,5918 @@
+[
+  {
+    "path": ".dockerignore",
+    "gitBlob": "3ce6fd7f04ce2a46b43699f1ac9114faa02aa8ba",
+    "branches": [
+      "fix/cloud-run-conflict-retry",
+      "post-p0/github-first-website-audit"
+    ]
+  },
+  {
+    "path": ".dockerignore",
+    "gitBlob": "6217d5f474b7829d4649988940a3f0281cde75bc",
+    "branches": [
+      "integration/controlled-country-template-base",
+      "review/controlled-country-integration"
+    ]
+  },
+  {
+    "path": ".github/ISSUE_TEMPLATE/ai-review.yml",
+    "gitBlob": "e0b9311c69f589ba662004c0fb256e9bd5f40def",
+    "branches": [
+      "automation/cfp-ai-review-orchestrator"
+    ]
+  },
+  {
+    "path": ".github/workflows/ai-review-orchestrator.yml",
+    "gitBlob": "33799c0b3e71a09faac5d4f29dd8d3ba3c25f489",
+    "branches": [
+      "automation/cfp-ai-review-orchestrator"
+    ]
+  },
+  {
+    "path": ".github/workflows/cfp_safe_validator_phase0.yml",
+    "gitBlob": "ac995c8987151eaab0026274abf1b925e17302a9",
+    "branches": [
+      "agent/safe-validator-phase0"
+    ]
+  },
+  {
+    "path": ".github/workflows/claude_pr_review.yml",
+    "gitBlob": "3e18be1391634efcc106f430be90b6dd856a4c61",
+    "branches": [
+      "agent/claude-pr-review"
+    ]
+  },
+  {
+    "path": ".github/workflows/cmp-actions-smoke.yml",
+    "gitBlob": "25f5f06c39bb87180804ae6ff177ab1b41c77e29",
+    "branches": [
+      "review/cmp-xai-api-pilot"
+    ]
+  },
+  {
+    "path": ".github/workflows/cmp-gemini-notion-pilot.yml",
+    "gitBlob": "a58e899108c78ab7fc73e9205f67947faa49df20",
+    "branches": [
+      "integration/controlled-country-template-base",
+      "post-p0/github-first-website-audit",
+      "review/controlled-country-integration"
+    ]
+  },
+  {
+    "path": ".github/workflows/cmp-gemini-notion-pilot.yml",
+    "gitBlob": "b624314bc4da78d180e534878727d1c343a037b8",
+    "branches": [
+      "cmp-executor-write-gateway"
+    ]
+  },
+  {
+    "path": ".github/workflows/cmp-gemini-notion-pilot.yml",
+    "gitBlob": "bf0183b6423d08ddec2a7d81178855fbfce27a41",
+    "branches": [
+      "review/003-005-gemini-diagnostics"
+    ]
+  },
+  {
+    "path": ".github/workflows/cmp-orchestrator.yml",
+    "gitBlob": "b201ddc11c6fe2f0c1f08abdcad7a9e3d11080be",
+    "branches": [
+      "feature/cmp-orchestrator-p0"
+    ]
+  },
+  {
+    "path": ".github/workflows/cmp-p0-us-validate.yml",
+    "gitBlob": "1bec7b7ea903a36c53c48f9a11af1586af28834b",
+    "branches": [
+      "feat/911-us-ai-master"
+    ]
+  },
+  {
+    "path": ".github/workflows/cmp-xai-api-pilot.yml",
+    "gitBlob": "3dc0f6da2c58dfc5a738d9e16cb862fa7959a2f9",
+    "branches": [
+      "review/cmp-xai-api-pilot"
+    ]
+  },
+  {
+    "path": ".github/workflows/ctttc_ci.yml",
+    "gitBlob": "5bc3285a74f6a49a7a87cfa8c4891d439ac37936",
+    "branches": [
+      "review/003-005-gemini-diagnostics"
+    ]
+  },
+  {
+    "path": ".github/workflows/ctttc_ci.yml",
+    "gitBlob": "78898c94aa9206c98da9a87e7f01fc44a63fa708",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": ".github/workflows/link-check.yml",
+    "gitBlob": "ca73ddef7b1a24b90da553866fdfeecf7f20c6da",
+    "branches": [
+      "automation/cfp-ai-review-orchestrator"
+    ]
+  },
+  {
+    "path": ".github/workflows/nco-69115-verify.yml",
+    "gitBlob": "1ac25f67bf806c99d7299b6993698d8d4a2dee6f",
+    "branches": [
+      "p0/nco-meta-69115"
+    ]
+  },
+  {
+    "path": ".github/workflows/notion-openai-review.yml",
+    "gitBlob": "9801a26d04e3d71916903fa96abd8bdaef3196be",
+    "branches": [
+      "integration/openai-notion-v1"
+    ]
+  },
+  {
+    "path": ".github/workflows/openai-registry-review.yml",
+    "gitBlob": "6c4be47b9601c92e6c77b9b01e28567eb773ecc4",
+    "branches": [
+      "copilot/build-openai-api-integration"
+    ]
+  },
+  {
+    "path": ".github/workflows/p0-backend-tests.yml",
+    "gitBlob": "4076c430de7a4c62a5805e123609393cfed2259f",
+    "branches": [
+      "p0/cmp-backend-foundation"
+    ]
+  },
+  {
+    "path": ".github/workflows/pipeline-review.yml",
+    "gitBlob": "bfff09ec16ca15dd5cfd82bcce3533f94f3d8e9b",
+    "branches": [
+      "fix/cloud-run-conflict-retry"
+    ]
+  },
+  {
+    "path": ".gitignore",
+    "gitBlob": "5f8dfda9df23fa9eb28923eadb7ec68b67be135b",
+    "branches": [
+      "integration/controlled-country-template-base",
+      "post-p0/github-first-website-audit",
+      "review/controlled-country-integration"
+    ]
+  },
+  {
+    "path": ".gitignore",
+    "gitBlob": "a160f494b397adda8d5741d811f8444558aa261a",
+    "branches": [
+      "fix/cloud-run-conflict-retry"
+    ]
+  },
+  {
+    "path": "0/README.md",
+    "gitBlob": "b8a41117dd5d2cb02770df348b74492f338a764d",
+    "branches": [
+      "agent/create-ten-major-module-frameworks"
+    ]
+  },
+  {
+    "path": "0/index.html",
+    "gitBlob": "b2a91fd370e751520c04bc1e75b9d06051c616c8",
+    "branches": [
+      "cfp-691181-office-v1",
+      "cfp-google-69114-691141-cleanup-v1"
+    ]
+  },
+  {
+    "path": "0/index.html",
+    "gitBlob": "c6b2b4ad9674f714cfecfd94654f56e866cdcf01",
+    "branches": [
+      "integration/controlled-country-template-base",
+      "review/controlled-country-integration"
+    ]
+  },
+  {
+    "path": "0/index.html",
+    "gitBlob": "c9534fbe83d4514b4ece052d8fe64535f6e2a233",
+    "branches": [
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate"
+    ]
+  },
+  {
+    "path": "0/index.html",
+    "gitBlob": "d33495a70673d1f2e94ed68db2e723f7f5953544",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "000/index.html",
+    "gitBlob": "4507a07f61f09cd044dbebf3d66be8d2b82a9df4",
+    "branches": [
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate"
+    ]
+  },
+  {
+    "path": "000/index.html",
+    "gitBlob": "633f5e41cef49cfe92014d611d8e22fe7f090a05",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "02-constitution/CFP-CON-001/CFP-CON-001__CFP-Constitutional-Foundation__v1.0.md",
+    "gitBlob": "b55860b82ef386ecf9c01d80a5024d8c8fc89a6b",
+    "branches": [
+      "migration/0001-canonical-documents"
+    ]
+  },
+  {
+    "path": "02-constitution/CFP-CON-002/CFP-CON-002__Constitutional-Architecture__v1.0.md",
+    "gitBlob": "1bed43ff196ffdb24e0de10698a6c6dc60e04253",
+    "branches": [
+      "migration/0001-canonical-documents"
+    ]
+  },
+  {
+    "path": "02-constitution/CFP-CON-003/CFP-CON-003__Three-Funds-Constitution__BAN-RUT-GON__v1.0.md",
+    "gitBlob": "0f2aa4a468fda43b8aa0858dac41af8fe03f0654",
+    "branches": [
+      "migration/0001-canonical-documents"
+    ]
+  },
+  {
+    "path": "02-constitution/CFP-CON-003/CFP-CON-003__Three-Funds-Constitution__v1.0.md",
+    "gitBlob": "c14abd496aac86628724778a5058a586852b4ab9",
+    "branches": [
+      "migration/0001-canonical-documents"
+    ]
+  },
+  {
+    "path": "1/README.md",
+    "gitBlob": "cc08022905d0ac825b2f9aecece46cbdf4ad55f8",
+    "branches": [
+      "agent/create-ten-major-module-frameworks"
+    ]
+  },
+  {
+    "path": "1/index.html",
+    "gitBlob": "42a932679dd0bc2340f1b92b071e1865a5bcb01a",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "1/index.html",
+    "gitBlob": "4bd5f8a8974b2a3e3c87963dd54e6c81788ce18b",
+    "branches": [
+      "cfp-691181-office-v1"
+    ]
+  },
+  {
+    "path": "1/index.html",
+    "gitBlob": "b8fad1ad531e768fc6ea272929c772f9de729afa",
+    "branches": [
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate"
+    ]
+  },
+  {
+    "path": "1/index.html",
+    "gitBlob": "d00b3005c38650f47fda1e9b6eb1daf7cc01381c",
+    "branches": [
+      "integration/controlled-country-template-base",
+      "review/controlled-country-integration"
+    ]
+  },
+  {
+    "path": "135/index.html",
+    "gitBlob": "0728ab7f64b3bcb3de806d92faa31aea4f0f84ac",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "2/README.md",
+    "gitBlob": "abab6a431b73221ca28968212452419c5e55e2a4",
+    "branches": [
+      "agent/create-ten-major-module-frameworks"
+    ]
+  },
+  {
+    "path": "2/index.html",
+    "gitBlob": "15b290a29556e857f2089a9cb3b13124453c1297",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "2/index.html",
+    "gitBlob": "6c3405e0b72839ed926e341a074e81f222d64cb4",
+    "branches": [
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate"
+    ]
+  },
+  {
+    "path": "2/index.html",
+    "gitBlob": "a5248eaf342badf6ff371f199fdfdd0649c09ab5",
+    "branches": [
+      "integration/controlled-country-template-base",
+      "review/controlled-country-integration"
+    ]
+  },
+  {
+    "path": "246/index.html",
+    "gitBlob": "420f72713e7badb01c3872dc8b7e42ffa6885407",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "267/README.md",
+    "gitBlob": "07790ec5e9f6ae04b8c55e26b362378674150667",
+    "branches": [
+      "p0-website-public-v1"
+    ]
+  },
+  {
+    "path": "267/index.html",
+    "gitBlob": "3b6d5869e2083ac6787b5be1dd4f8a9214b94718",
+    "branches": [
+      "integration/controlled-country-template-base",
+      "post-p0/github-first-website-audit",
+      "review/controlled-country-integration"
+    ]
+  },
+  {
+    "path": "267/index.html",
+    "gitBlob": "8ef7c2fce4c4bb29611dc027aedcff3d6c8cc27f",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "2676/index.html",
+    "gitBlob": "ce869a47809aac0ea54c701fc4e2d92b945d6f97",
+    "branches": [
+      "integration/controlled-country-template-base",
+      "post-p0/github-first-website-audit",
+      "review/controlled-country-integration"
+    ]
+  },
+  {
+    "path": "3/README.md",
+    "gitBlob": "6472ed6a019efd027e8bd61679384d8226e7f3fd",
+    "branches": [
+      "agent/create-ten-major-module-frameworks"
+    ]
+  },
+  {
+    "path": "3/index.html",
+    "gitBlob": "2ee27a35af65ab1ecaf72ec8e56a7445446abe6b",
+    "branches": [
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate"
+    ]
+  },
+  {
+    "path": "3/index.html",
+    "gitBlob": "59d94f75d998e0fe5c09e898653e7b03fe616e23",
+    "branches": [
+      "cfp-691181-office-v1"
+    ]
+  },
+  {
+    "path": "3/index.html",
+    "gitBlob": "6e960fb4b0f292776042023cf9d2b29da9c0a6d3",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "3/index.html",
+    "gitBlob": "c955da71c720fce2c92ee15395ed73f88f190169",
+    "branches": [
+      "integration/controlled-country-template-base",
+      "review/controlled-country-integration"
+    ]
+  },
+  {
+    "path": "3/index.html",
+    "gitBlob": "d5603b308b42ef1d1befe2919fe743feb6983050",
+    "branches": [
+      "p0/cmp-backend-foundation"
+    ]
+  },
+  {
+    "path": "31/index.html",
+    "gitBlob": "05de13861fac80d92e8cd1c8051e009941bd211f",
+    "branches": [
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate"
+    ]
+  },
+  {
+    "path": "32/index.html",
+    "gitBlob": "8f709f31906d2711034d97b52705597246f31b85",
+    "branches": [
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate"
+    ]
+  },
+  {
+    "path": "33/index.html",
+    "gitBlob": "c87234ec60bef3e7451706c426917b94ed200317",
+    "branches": [
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate"
+    ]
+  },
+  {
+    "path": "343/index.html",
+    "gitBlob": "6869993e195cf8447308508a224bdc30e1a9a672",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "4/README.md",
+    "gitBlob": "684a39dd5b78b1f056959d4fab1a7c578f4b1f77",
+    "branches": [
+      "agent/create-ten-major-module-frameworks"
+    ]
+  },
+  {
+    "path": "4/index.html",
+    "gitBlob": "16bde9a31a55f4cc24f784d0fe2a4f9230511d89",
+    "branches": [
+      "integration/controlled-country-template-base",
+      "review/controlled-country-integration"
+    ]
+  },
+  {
+    "path": "4/index.html",
+    "gitBlob": "16e9d79c14126aba2a10982e993545f214f7a965",
+    "branches": [
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate"
+    ]
+  },
+  {
+    "path": "4/index.html",
+    "gitBlob": "31c17093a609ffffd793ff9a6ef01c8ef4a2b6ea",
+    "branches": [
+      "cfp-691181-office-v1",
+      "cfp-google-69114-691141-cleanup-v1"
+    ]
+  },
+  {
+    "path": "4/index.html",
+    "gitBlob": "a649cb516fd31733d68660cbeb439a3ae7d30ced",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "4376/index.html",
+    "gitBlob": "0f3e4439dfbfff92e636f34c227ac3e0541d00dd",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "4376/index.html",
+    "gitBlob": "920826ec011a322f81dfe0cc12ffd60c89cce313",
+    "branches": [
+      "cfp-691181-office-v1",
+      "cfp-google-69114-691141-cleanup-v1"
+    ]
+  },
+  {
+    "path": "5/README.md",
+    "gitBlob": "6ee8281c617b79432c6e346f65285434c006adc4",
+    "branches": [
+      "agent/create-ten-major-module-frameworks"
+    ]
+  },
+  {
+    "path": "5/index.html",
+    "gitBlob": "23c476f316ba325a6ca64390012abd36a31b9958",
+    "branches": [
+      "integration/controlled-country-template-base",
+      "review/controlled-country-integration"
+    ]
+  },
+  {
+    "path": "5/index.html",
+    "gitBlob": "3d7deb8cd6121d19e0583e262697637c0c62e982",
+    "branches": [
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate"
+    ]
+  },
+  {
+    "path": "5/index.html",
+    "gitBlob": "7fbf587663ad1df05a46f3e1a1a2f5354af17464",
+    "branches": [
+      "cfp-691181-office-v1",
+      "cfp-google-69114-691141-cleanup-v1"
+    ]
+  },
+  {
+    "path": "5/index.html",
+    "gitBlob": "af9c2a9d729b4cb465bda3b561130fe5277c122c",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "5272/index.html",
+    "gitBlob": "26e0c89e8b333c38dce2cdde206f7875d83825e4",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "6/README.md",
+    "gitBlob": "71228bb7c3696d8d9034ec34653b8e4e018af9c7",
+    "branches": [
+      "agent/create-ten-major-module-frameworks"
+    ]
+  },
+  {
+    "path": "6/index.html",
+    "gitBlob": "3f51ae76168e9a888915a9131b4d34f10fbe4fa7",
+    "branches": [
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate"
+    ]
+  },
+  {
+    "path": "6/index.html",
+    "gitBlob": "716ab4fbc9a2674e3dbd8e4171cb0e3f9afeb58d",
+    "branches": [
+      "cfp-691181-office-v1",
+      "cfp-google-69114-691141-cleanup-v1"
+    ]
+  },
+  {
+    "path": "6/index.html",
+    "gitBlob": "776a293cc3ee0a8ba1666972de71629053b4a5b7",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "6/index.html",
+    "gitBlob": "798fc9bb92fd6cfae5a8d4237729389639e16ef0",
+    "branches": [
+      "integration/controlled-country-template-base",
+      "review/controlled-country-integration"
+    ]
+  },
+  {
+    "path": "6/index.html",
+    "gitBlob": "ceefd0c37294b36fa5b84e87c83fcc74e394984f",
+    "branches": [
+      "p0/cmp-backend-foundation"
+    ]
+  },
+  {
+    "path": "6535/index.html",
+    "gitBlob": "46a68a7357afa1cfe31482f6244409341d87010d",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "6735/index.html",
+    "gitBlob": "ab0e6b32488a73b2b74c4fae9247df65706d7654",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "69/index.html",
+    "gitBlob": "48a6d73cd3a7da54a8e58d44223ab83f2c13e04e",
+    "branches": [
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate"
+    ]
+  },
+  {
+    "path": "69/index.html",
+    "gitBlob": "640fd53bbd7853cae50468761f3571297ed45648",
+    "branches": [
+      "cfp-691181-office-v1",
+      "cfp-google-69114-691141-cleanup-v1"
+    ]
+  },
+  {
+    "path": "69/index.html",
+    "gitBlob": "870e50a89f5c3638fe64fd3df200003e258015c5",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "69/index.html",
+    "gitBlob": "aa5afffbeca34bba294e1d7b9fb041a8918b1c50",
+    "branches": [
+      "automation/global-ai-working-links-20260926",
+      "cmp-267-controlled-implementation-v1",
+      "docs/website-super-pairs-publication",
+      "fix/cloud-run-conflict-retry",
+      "integration/controlled-country-template-base",
+      "main",
+      "p0/nco-meta-69115",
+      "post-p0/github-first-website-audit",
+      "research/quantum-vault-v01",
+      "review/controlled-country-integration",
+      "review/003-005-gemini-diagnostics",
+      "rp/691109",
+      "work/openai-2026-09-cfp-integration"
+    ]
+  },
+  {
+    "path": "6910/Cohere/index.html",
+    "gitBlob": "8aced29625a68e0ed40a7070489aa5ac3f4242f1",
+    "branches": [
+      "automation/global-ai-working-links-20260926"
+    ]
+  },
+  {
+    "path": "6910/index.html",
+    "gitBlob": "82b4d7864c75738898b42b7fc067b6ab134894b5",
+    "branches": [
+      "cfp-691181-office-v1",
+      "cfp-google-69114-691141-cleanup-v1"
+    ]
+  },
+  {
+    "path": "6910/index.html",
+    "gitBlob": "86f8ba2030b2705939e0c5e9c3b338718c4f284a",
+    "branches": [
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate"
+    ]
+  },
+  {
+    "path": "6911/index.html",
+    "gitBlob": "86f8ba2030b2705939e0c5e9c3b338718c4f284a",
+    "branches": [
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate"
+    ]
+  },
+  {
+    "path": "6911/index.html",
+    "gitBlob": "e4277cb5003c3287ffc748600b3e5fcbe1a652d7",
+    "branches": [
+      "cfp-691181-office-v1",
+      "cfp-google-69114-691141-cleanup-v1"
+    ]
+  },
+  {
+    "path": "69114/index.html",
+    "gitBlob": "27a0a76a592de51a87db2c5e49b40afdb35c7960",
+    "branches": [
+      "cfp-691181-office-v1"
+    ]
+  },
+  {
+    "path": "69114/index.html",
+    "gitBlob": "cbd2a19986c941f98d5e70dcf6ddb049cfa9fcaf",
+    "branches": [
+      "cfp-google-69114-691141-cleanup-v1"
+    ]
+  },
+  {
+    "path": "691141/index.html",
+    "gitBlob": "89d6d37f5f5f337b10a36d1f6c66a1562135fbc6",
+    "branches": [
+      "cfp-google-69114-691141-cleanup-v1"
+    ]
+  },
+  {
+    "path": "691141/index.html",
+    "gitBlob": "aabc85cb21c1314b5568806bf4c34348f2e82197",
+    "branches": [
+      "cfp-691181-office-v1"
+    ]
+  },
+  {
+    "path": "691141/index.html",
+    "gitBlob": "f770a459cc7a80ca3ad16343fbabe3aa07330ea6",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "691141/review-notes.md",
+    "gitBlob": "ed37361ef80907062fdf4364c883042f8d16d058",
+    "branches": [
+      "cfp-google-69114-691141-cleanup-v1"
+    ]
+  },
+  {
+    "path": "69115/index.html",
+    "gitBlob": "e02d8a325bf3c71fad251da06fd7718e60c5f791",
+    "branches": [
+      "p0/nco-meta-69115"
+    ]
+  },
+  {
+    "path": "691181/README.md",
+    "gitBlob": "38a3808a87bee174ac10c95fc1f3439cf8acd183",
+    "branches": [
+      "cfp-691181-office-v1"
+    ]
+  },
+  {
+    "path": "691181/entity.json",
+    "gitBlob": "84ca094302384d56b2d526ebb124359fb069fbe2",
+    "branches": [
+      "cfp-691181-office-v1"
+    ]
+  },
+  {
+    "path": "691181/index.html",
+    "gitBlob": "a747495b53ebb2f7250711dc7f97377bc881a19f",
+    "branches": [
+      "cfp-691181-office-v1"
+    ]
+  },
+  {
+    "path": "691181/work-office.md",
+    "gitBlob": "08ffb476c6fb5060275eac4d88000827a129f901",
+    "branches": [
+      "cfp-691181-office-v1"
+    ]
+  },
+  {
+    "path": "6933/index.html",
+    "gitBlob": "86f8ba2030b2705939e0c5e9c3b338718c4f284a",
+    "branches": [
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate"
+    ]
+  },
+  {
+    "path": "6949/index.html",
+    "gitBlob": "86f8ba2030b2705939e0c5e9c3b338718c4f284a",
+    "branches": [
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate"
+    ]
+  },
+  {
+    "path": "6984/index.html",
+    "gitBlob": "327d6f6383a747b6720b3cdc8016739c8000c0d7",
+    "branches": [
+      "cmp-executor-write-gateway",
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate"
+    ]
+  },
+  {
+    "path": "6984/index.html",
+    "gitBlob": "5bc62886165af3528f640a393a8af72e12d5349f",
+    "branches": [
+      "review/cmp-xai-api-pilot"
+    ]
+  },
+  {
+    "path": "6984/index.html",
+    "gitBlob": "8955ab88e074532e1b41286df022fe46182a5317",
+    "branches": [
+      "cfp-691181-office-v1",
+      "cfp-google-69114-691141-cleanup-v1"
+    ]
+  },
+  {
+    "path": "7/README.md",
+    "gitBlob": "9c70111d66a6174c302ffd8f7a87546a4611b787",
+    "branches": [
+      "agent/create-ten-major-module-frameworks"
+    ]
+  },
+  {
+    "path": "7/index.html",
+    "gitBlob": "1ce136ee82197647f85f857b9973e48c6c4653a3",
+    "branches": [
+      "cfp-691181-office-v1",
+      "cfp-google-69114-691141-cleanup-v1"
+    ]
+  },
+  {
+    "path": "7/index.html",
+    "gitBlob": "545dc29d9a887c1950211fe7df9efb24acdf65f0",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "7/index.html",
+    "gitBlob": "9e95e75f7fd228e43c33a71c32416e9aefd7b8e5",
+    "branches": [
+      "integration/controlled-country-template-base",
+      "review/controlled-country-integration"
+    ]
+  },
+  {
+    "path": "7/index.html",
+    "gitBlob": "c5e58c8e5a19900b16ace9c793d8d80a15d98950",
+    "branches": [
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate"
+    ]
+  },
+  {
+    "path": "789/index.html",
+    "gitBlob": "81037d138135d9977c69466a590f32e992752c30",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "8/README.md",
+    "gitBlob": "a4186e450fea8b1819ab8a62dfbd5d250fb6d701",
+    "branches": [
+      "agent/create-ten-major-module-frameworks"
+    ]
+  },
+  {
+    "path": "8/index.html",
+    "gitBlob": "6aff6d8143076a95e1a4c050095b36da6590e884",
+    "branches": [
+      "integration/controlled-country-template-base",
+      "review/controlled-country-integration"
+    ]
+  },
+  {
+    "path": "8/index.html",
+    "gitBlob": "7da525e265ddbfe3526faa93c703e3fe37530167",
+    "branches": [
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate"
+    ]
+  },
+  {
+    "path": "8/index.html",
+    "gitBlob": "e4c905e1d499f0f8b4dfc222a58c7a8ed7f28d67",
+    "branches": [
+      "cfp-691181-office-v1",
+      "cfp-google-69114-691141-cleanup-v1"
+    ]
+  },
+  {
+    "path": "8/index.html",
+    "gitBlob": "f9da1a716e456663fe103d940a161f7385fd72df",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "9/README.md",
+    "gitBlob": "b495ff04257521ba5016ebc28da2754da36f3094",
+    "branches": [
+      "agent/create-ten-major-module-frameworks"
+    ]
+  },
+  {
+    "path": "9/index.html",
+    "gitBlob": "50a52ab89059bff7483c03507c7641b158dd4aed",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "9/index.html",
+    "gitBlob": "893adcc3aee9a8f5ea62de2cd7542fef22da7523",
+    "branches": [
+      "integration/controlled-country-template-base",
+      "review/controlled-country-integration"
+    ]
+  },
+  {
+    "path": "9/index.html",
+    "gitBlob": "8c07d4cfe8c1c7510ef464284bd96db1361a9c32",
+    "branches": [
+      "p0/cmp-backend-foundation"
+    ]
+  },
+  {
+    "path": "9/index.html",
+    "gitBlob": "eb01883b2881e89724411773bbdf42b9ec319d97",
+    "branches": [
+      "cfp-691181-office-v1",
+      "cfp-google-69114-691141-cleanup-v1"
+    ]
+  },
+  {
+    "path": "9/index.html",
+    "gitBlob": "f54f2bc09fc0e27b4bdfc6bcd0761a3fd3c4d516",
+    "branches": [
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate"
+    ]
+  },
+  {
+    "path": "90/index.html",
+    "gitBlob": "6b53ba76066f1cae19563806ac84011d02536c3d",
+    "branches": [
+      "cfp-691181-office-v1",
+      "cfp-google-69114-691141-cleanup-v1"
+    ]
+  },
+  {
+    "path": "90/index.html",
+    "gitBlob": "99fcd0e4b33ea3e58f0c4e45b67d05bc1883f0d8",
+    "branches": [
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate"
+    ]
+  },
+  {
+    "path": "91/index.html",
+    "gitBlob": "65eb121b097549e55f08a03dcf4c184f09f7fec2",
+    "branches": [
+      "cfp-691181-office-v1",
+      "cfp-google-69114-691141-cleanup-v1"
+    ]
+  },
+  {
+    "path": "92/index.html",
+    "gitBlob": "c452eacfd66217f361688912202efddee29c95fb",
+    "branches": [
+      "cfp-691181-office-v1",
+      "cfp-google-69114-691141-cleanup-v1"
+    ]
+  },
+  {
+    "path": "93/index.html",
+    "gitBlob": "0f16a90876d5460bfbb6119901bf70c96208a0dc",
+    "branches": [
+      "cfp-691181-office-v1",
+      "cfp-google-69114-691141-cleanup-v1"
+    ]
+  },
+  {
+    "path": "94/index.html",
+    "gitBlob": "910f8f0518f12181b8d396f6230086a37a58db15",
+    "branches": [
+      "cfp-691181-office-v1",
+      "cfp-google-69114-691141-cleanup-v1"
+    ]
+  },
+  {
+    "path": "98/index.html",
+    "gitBlob": "6e26daa13c3759556acf1d630eb90ed95112574c",
+    "branches": [
+      "cfp-691181-office-v1",
+      "cfp-google-69114-691141-cleanup-v1"
+    ]
+  },
+  {
+    "path": "99/index.html",
+    "gitBlob": "1aaa171d9941167750304e8f1795373ce4e3a342",
+    "branches": [
+      "cfp-691181-office-v1",
+      "cfp-google-69114-691141-cleanup-v1"
+    ]
+  },
+  {
+    "path": "AI_INDEX.md",
+    "gitBlob": "0935c4a23b7540c9649a91f06a5130a99ccbfcdf",
+    "branches": [
+      "fix/698461-vietlinker-developer"
+    ]
+  },
+  {
+    "path": "AI_INDEX.md",
+    "gitBlob": "52683f5b69765def5ad7b8218468d2111248ba0f",
+    "branches": [
+      "agent/partner-review-queue",
+      "website-initial-launch"
+    ]
+  },
+  {
+    "path": "AI_INDEX.md",
+    "gitBlob": "5d5b0008f2987f135589202ceb8bc659509ff2b3",
+    "branches": [
+      "feat/911-us-ai-master"
+    ]
+  },
+  {
+    "path": "AI_INDEX.md",
+    "gitBlob": "6a4bd38444559919b7d705fab36b928d902c752a",
+    "branches": [
+      "governance/hub69-global-ai-invitation"
+    ]
+  },
+  {
+    "path": "AI_INDEX.md",
+    "gitBlob": "95d185603cdabacd5bfbd3849a262ebd6ce5ab81",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "cleanup/p0-current-tree-69",
+      "cmp-executor-write-gateway",
+      "copilot/agentp0-website-vi-release-1",
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate",
+      "review/cmp-xai-api-pilot",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "AI_INDEX.md",
+    "gitBlob": "beab1e62001d052abad5926a1da9dc408f283f28",
+    "branches": [
+      "agent/fix-ai-index-identity-mappings",
+      "copilot/fix-69119-vietlinker-references"
+    ]
+  },
+  {
+    "path": "AI_INDEX.md",
+    "gitBlob": "d4e0e087620004d5ea1d17eba11669d8737bdfce",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/research-inventory-standards-documents",
+      "copilot/track-a-standard-inventory",
+      "feature/cmp-orchestrator-p0",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "AI_INDEX.md",
+    "gitBlob": "db4815b69bac43f7bb06ec53f366cf71461ef246",
+    "branches": [
+      "agent/id-documents-migration"
+    ]
+  },
+  {
+    "path": "AI_INDEX.md",
+    "gitBlob": "ec76c62975a86510ab95c931b2d556e527a0e3e4",
+    "branches": [
+      "automation/cfp-ai-review-orchestrator",
+      "copilot/research-master-execution-plan"
+    ]
+  },
+  {
+    "path": "CMP.md",
+    "gitBlob": "2d344da909649edae795cbd567da8a28b32aee21",
+    "branches": [
+      "automation/cfp-ai-review-orchestrator"
+    ]
+  },
+  {
+    "path": "CMP.md",
+    "gitBlob": "bb2ef9f8b21ba804595ed3bc3f510e16bc7376f2",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "cleanup/p0-current-tree-69",
+      "copilot/agentp0-website-vi-release-1",
+      "copilot/research-master-execution-plan",
+      "feat/911-us-ai-master",
+      "fix/698461-vietlinker-developer",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "Dockerfile",
+    "gitBlob": "3c487eecdde8f306290f599c0b3ce8a9a5edd8e4",
+    "branches": [
+      "integration/controlled-country-template-base",
+      "review/controlled-country-integration"
+    ]
+  },
+  {
+    "path": "Dockerfile",
+    "gitBlob": "5e23f5d27adbbfe59e80eb3d068d8fa2f447337f",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "GITHUB_FIRST_REVIEW.md",
+    "gitBlob": "1d1449eb98a520b1293b0408554de893ffef96a6",
+    "branches": [
+      "integration/controlled-country-template-base",
+      "post-p0/github-first-website-audit",
+      "review/controlled-country-integration"
+    ]
+  },
+  {
+    "path": "GITHUB_HUB.md",
+    "gitBlob": "09378cd4bce204739632cf5945d118c03d80dda2",
+    "branches": [
+      "agent/id-documents-migration",
+      "website-initial-launch"
+    ]
+  },
+  {
+    "path": "HUB69.md",
+    "gitBlob": "237b1201695305ff74eb206aea1d1878f9ffd4bc",
+    "branches": [
+      "automation/cfp-ai-review-orchestrator",
+      "copilot/research-master-execution-plan"
+    ]
+  },
+  {
+    "path": "HUB69.md",
+    "gitBlob": "a35d382ccef7fb7454ff51e5ea75a9560152a096",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "cleanup/p0-current-tree-69",
+      "cmp-executor-write-gateway",
+      "copilot/agentp0-website-vi-release-1",
+      "feat/911-us-ai-master",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate",
+      "review/cmp-xai-api-pilot",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "HUB69.md",
+    "gitBlob": "bb554a8da194f397ce6b32b85cbdbfcc7ced37f9",
+    "branches": [
+      "fix/698461-vietlinker-developer"
+    ]
+  },
+  {
+    "path": "MODULES.md",
+    "gitBlob": "928fd14b2c6743b547f0c15aebb6d533d40896e8",
+    "branches": [
+      "agent/create-ten-major-module-frameworks"
+    ]
+  },
+  {
+    "path": "README.md",
+    "gitBlob": "3e83671a5f10a6227798addf26e9bcdee6d21d8d",
+    "branches": [
+      "copilot/build-openai-api-integration"
+    ]
+  },
+  {
+    "path": "README.md",
+    "gitBlob": "43495cf31fcd72ccee7c1cd46fd5eb2638b5c507",
+    "branches": [
+      "agent/chapter-fund-id-architecture",
+      "agent/website-id-foundation",
+      "website-master-map-import"
+    ]
+  },
+  {
+    "path": "README.md",
+    "gitBlob": "63af208ec6d1d6ad10bcefbbd171546f8a9bfce2",
+    "branches": [
+      "agent/partner-review-queue"
+    ]
+  },
+  {
+    "path": "README.md",
+    "gitBlob": "6bf0f7facba4f82f389b505145fce03113f97ac7",
+    "branches": [
+      "agent/notion-canonical-migration-0000",
+      "migration/0001-canonical-documents",
+      "website/0000-ai-id-foundation",
+      "website/0000-ai-id-foundation-2"
+    ]
+  },
+  {
+    "path": "README.md",
+    "gitBlob": "6d6e71c8b84e19468e45294e8feebeda58f644fc",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "copilot/add-new-feature",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/track-a-standard-inventory",
+      "feature/cmp-orchestrator-p0",
+      "governance/hub69-global-ai-invitation",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "README.md",
+    "gitBlob": "75ef416bf9c88c9a742723cd0797641bed19f394",
+    "branches": [
+      "agent/id-documents-migration"
+    ]
+  },
+  {
+    "path": "README.md",
+    "gitBlob": "8eb699b58917642d81e629538e3ed4e7a388dbab",
+    "branches": [
+      "cleanup/p0-current-tree-69"
+    ]
+  },
+  {
+    "path": "README.md",
+    "gitBlob": "bc9a373a2fcfc05cd873d602579088c06c0b55ec",
+    "branches": [
+      "agent/global-ai-registry-baseline"
+    ]
+  },
+  {
+    "path": "README.md",
+    "gitBlob": "daf12a462a3d90f5d300b27a426c4288df5d09e4",
+    "branches": [
+      "feat/911-us-ai-master"
+    ]
+  },
+  {
+    "path": "README.md",
+    "gitBlob": "fed8157d576a5b6cfea0e4091227b4e1ec2d660f",
+    "branches": [
+      "website-initial-launch"
+    ]
+  },
+  {
+    "path": "README_PR_REVIEW.md",
+    "gitBlob": "f1973c6bcfb4eddc1db9aafd9ef4af59126a1532",
+    "branches": [
+      "agent/claude-pr-review"
+    ]
+  },
+  {
+    "path": "V/index.html",
+    "gitBlob": "ba512f68fc24780319a50cd98cc5c495cbd2ba47",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "ai/vietnam/README.md",
+    "gitBlob": "2aabea49343d7b4d1ab61cd7050d946a3b002ca4",
+    "branches": [
+      "fix/698461-vietlinker-developer"
+    ]
+  },
+  {
+    "path": "app/__init__.py",
+    "gitBlob": "919d9fe321f1d5c99405ba3171242f85464cf7fc",
+    "branches": [
+      "p0/cmp-backend-foundation"
+    ]
+  },
+  {
+    "path": "app/adapters/__init__.py",
+    "gitBlob": "cb6b986072e89437083ac0cc2b7a24a86529293f",
+    "branches": [
+      "p0/cmp-backend-foundation"
+    ]
+  },
+  {
+    "path": "app/adapters/base.py",
+    "gitBlob": "f1fa190a8cf18687265bb4caab0a394c716d0808",
+    "branches": [
+      "p0/cmp-backend-foundation"
+    ]
+  },
+  {
+    "path": "app/adapters/gemini.py",
+    "gitBlob": "5a3411cc42ad0791cdfcdc73771d4adeffa26f7d",
+    "branches": [
+      "p0/cmp-backend-foundation"
+    ]
+  },
+  {
+    "path": "app/api/__init__.py",
+    "gitBlob": "66f0c12d219ee38dd5e49217a3314edb9bccf4b0",
+    "branches": [
+      "p0/cmp-backend-foundation"
+    ]
+  },
+  {
+    "path": "app/api/work_orders.py",
+    "gitBlob": "c323f6940ddb6c962b553f3a6caf8d342f32299a",
+    "branches": [
+      "p0/cmp-backend-foundation"
+    ]
+  },
+  {
+    "path": "app/evidence/__init__.py",
+    "gitBlob": "fe669b0e2417f8bf09da7a5b98c3d766f6bed919",
+    "branches": [
+      "p0/cmp-backend-foundation"
+    ]
+  },
+  {
+    "path": "app/evidence/store.py",
+    "gitBlob": "22ce96f46d0f0dc6db9871e98a7cf7fd40764ddc",
+    "branches": [
+      "p0/cmp-backend-foundation"
+    ]
+  },
+  {
+    "path": "app/main.py",
+    "gitBlob": "026fe19196d47e0a0915ac055016274895611536",
+    "branches": [
+      "p0/cmp-backend-foundation"
+    ]
+  },
+  {
+    "path": "app/schemas/__init__.py",
+    "gitBlob": "1083865dcef621912ec30d9f8804e272c222d71d",
+    "branches": [
+      "p0/cmp-backend-foundation"
+    ]
+  },
+  {
+    "path": "app/schemas/models.py",
+    "gitBlob": "7b54bd5fc41d237ba1a551d46d989151ac388e1c",
+    "branches": [
+      "p0/cmp-backend-foundation"
+    ]
+  },
+  {
+    "path": "assets/chapter-pairs.js",
+    "gitBlob": "73af41df70b153e5e69c3f666048bf0af07554dd",
+    "branches": [
+      "integration/controlled-country-template-base",
+      "review/controlled-country-integration"
+    ]
+  },
+  {
+    "path": "assets/chapter-projection.json",
+    "gitBlob": "47d41dd08a7e804937c8af649a10fe09a035922a",
+    "branches": [
+      "integration/controlled-country-template-base",
+      "review/controlled-country-integration"
+    ]
+  },
+  {
+    "path": "assets/country-template-projection.json",
+    "gitBlob": "693c6ae2cda1d5e350b5ff3b2789bc0f55afec43",
+    "branches": [
+      "integration/controlled-country-template-base",
+      "review/controlled-country-integration"
+    ]
+  },
+  {
+    "path": "assets/country-template.js",
+    "gitBlob": "d1bda8ba514c2bd5336d70487a483eef6e2ac692",
+    "branches": [
+      "integration/controlled-country-template-base",
+      "review/controlled-country-integration"
+    ]
+  },
+  {
+    "path": "assets/site.css",
+    "gitBlob": "ea82fdd14e8b5a863da16eb06b739e81b0bfb21c",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "assets/site.js",
+    "gitBlob": "96aef68a142ccfead81df3235e81b9f70211e134",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "cloudbuild.yaml",
+    "gitBlob": "67183cb8692c67973f8a1d7ce959b27d6ef6664c",
+    "branches": [
+      "fix/cloud-run-conflict-retry"
+    ]
+  },
+  {
+    "path": "cmp/PUBLIC-DOCUMENT-INDEX.md",
+    "gitBlob": "89af776b5c305e0c4074584c96e8b614ff733da5",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "cleanup/p0-current-tree-69",
+      "copilot/agentp0-website-vi-release-1",
+      "copilot/research-master-execution-plan",
+      "feat/911-us-ai-master",
+      "fix/698461-vietlinker-developer",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "cmp/controlled/README.md",
+    "gitBlob": "19ef22eba1f4ffa2f21bfbc634ba5aeb4da0b16f",
+    "branches": [
+      "cmp-267-controlled-implementation-v1"
+    ]
+  },
+  {
+    "path": "cmp/controlled/authority-boundary-contract-v1.md",
+    "gitBlob": "db8a6332d5b08f010ff752413367a8d833bfe01f",
+    "branches": [
+      "cmp-267-controlled-implementation-v1"
+    ]
+  },
+  {
+    "path": "cmp/controlled/core-command-event-model.md",
+    "gitBlob": "a37cb74ec5424f8b646e280a2e56bd633fe2ddec",
+    "branches": [
+      "cmp-267-controlled-implementation-v1"
+    ]
+  },
+  {
+    "path": "cmp/controlled/error-taxonomy.yaml",
+    "gitBlob": "a04d500809747c315d36ae570db1dba9771bcabf",
+    "branches": [
+      "cmp-267-controlled-implementation-v1"
+    ]
+  },
+  {
+    "path": "cmp/controlled/migrations/001_idempotency_registry.sql",
+    "gitBlob": "ac72251db52c48508a829f997d0b4c227383cef1",
+    "branches": [
+      "cmp-267-controlled-implementation-v1"
+    ]
+  },
+  {
+    "path": "cmp/controlled/migrations/002_transactional_outbox.sql",
+    "gitBlob": "dd7fe297ef186b1cd2dd3edf5ac67a00ee2bd859",
+    "branches": [
+      "cmp-267-controlled-implementation-v1"
+    ]
+  },
+  {
+    "path": "cmp/controlled/schemas/audit-event.schema.json",
+    "gitBlob": "9e24f5af6527124a24fbd1321147cbbe54d3d8c3",
+    "branches": [
+      "cmp-267-controlled-implementation-v1"
+    ]
+  },
+  {
+    "path": "cmp/controlled/schemas/evidence-manifest.schema.json",
+    "gitBlob": "53f1ff190eb9587c08fca7a3f7f6c5424039c9d5",
+    "branches": [
+      "cmp-267-controlled-implementation-v1"
+    ]
+  },
+  {
+    "path": "cmp/controlled/schemas/intake-message-envelope.schema.json",
+    "gitBlob": "be96e496c9bb11fe0526ba766da96e45c9fc4ebe",
+    "branches": [
+      "cmp-267-controlled-implementation-v1"
+    ]
+  },
+  {
+    "path": "cmp/controlled/schemas/review-receipt.schema.json",
+    "gitBlob": "57241e1294ae01feec2716e7ee8e3efc874cfb74",
+    "branches": [
+      "cmp-267-controlled-implementation-v1"
+    ]
+  },
+  {
+    "path": "cmp/controlled/schemas/work-definition-snapshot.schema.json",
+    "gitBlob": "21bcdbd486aa6db86b40999086f37cbc011aede7",
+    "branches": [
+      "cmp-267-controlled-implementation-v1"
+    ]
+  },
+  {
+    "path": "cmp/controlled/tests/controlled_test_harness.py",
+    "gitBlob": "c73dcb8b74c9bc4b1fdfc096bb28d86c24839613",
+    "branches": [
+      "cmp-267-controlled-implementation-v1"
+    ]
+  },
+  {
+    "path": "cmp/controlled/tools/audit_verifier.py",
+    "gitBlob": "a2d50c58ecb3a4ae0e15590da58d39b3efe8fd5c",
+    "branches": [
+      "cmp-267-controlled-implementation-v1"
+    ]
+  },
+  {
+    "path": "cmp/controlled/tools/evidence_verifier.py",
+    "gitBlob": "b52f07b82ebb810a2d8c2ae7c59181e0a6a3c48e",
+    "branches": [
+      "cmp-267-controlled-implementation-v1"
+    ]
+  },
+  {
+    "path": "cmp/validators/validate_us_p0.py",
+    "gitBlob": "bdb5a0b3c9ef1f74726185760f6e4aee7a0d6aed",
+    "branches": [
+      "feat/911-us-ai-master"
+    ]
+  },
+  {
+    "path": "content/backend-p0-source.json",
+    "gitBlob": "1ca4f85fa2d3e128d9020e377d355363875509af",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "content/number-system-sources.json",
+    "gitBlob": "1ef3607ffd4281c68f6e9a46537d665e60f51ec3",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "content/pending-display-references.json",
+    "gitBlob": "b5345af6a3885742f09413aecedc7ff4699f31ce",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "content/site-standard.json",
+    "gitBlob": "81cf1b8d6ae3b49cdaf6c2045d59e865bb197aca",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "docs/330-333-reconciliation-correction.md",
+    "gitBlob": "1a7ed50c2811df2ee745bb4e938472faf67f6f42",
+    "branches": [
+      "docs/website-super-pairs-publication"
+    ]
+  },
+  {
+    "path": "docs/AI_REVIEW_AUTOMATION.md",
+    "gitBlob": "fe463cacd8812f6334743249a6106a2a1192410d",
+    "branches": [
+      "automation/cfp-ai-review-orchestrator"
+    ]
+  },
+  {
+    "path": "docs/CFP_SYNC_001.md",
+    "gitBlob": "b77d6245348466b70ff039cf0ad52a25953d0d46",
+    "branches": [
+      "agent/cfp-sync-001-recovery"
+    ]
+  },
+  {
+    "path": "docs/CLOUD_RUN_DEPLOYMENT_REVIEW.md",
+    "gitBlob": "a7e0765b82c769ab6d90784f789f6d7f2e1ffd26",
+    "branches": [
+      "fix/cloud-run-conflict-retry"
+    ]
+  },
+  {
+    "path": "docs/CMP_AUTOMATED_REVIEW_PROTOCOL.md",
+    "gitBlob": "a67fc29f499cb8af190060773038297d637646a8",
+    "branches": [
+      "agent/cfp-sync-001-recovery"
+    ]
+  },
+  {
+    "path": "docs/CMP_EVIDENCE_FIRST_COMPLETION_GATE.md",
+    "gitBlob": "7162cb9ae8fbdb2058e88ebbe36a50d36a5f197a",
+    "branches": [
+      "p0/evidence-first-completion-gate"
+    ]
+  },
+  {
+    "path": "docs/CMP_ORCHESTRATOR_SETUP.md",
+    "gitBlob": "702d31ce628aa7e5c3522182f5e2ecc5a0a6b9cd",
+    "branches": [
+      "feature/cmp-orchestrator-p0"
+    ]
+  },
+  {
+    "path": "docs/CODEX-P0-EXECUTION-ORDER.md",
+    "gitBlob": "d2e9cc5e5aa621e26bb781340ba3f35b6a64a7b2",
+    "branches": [
+      "docs/website-super-pairs-publication"
+    ]
+  },
+  {
+    "path": "docs/GITHUB_PUBLIC_STRUCTURE.md",
+    "gitBlob": "35ce12af31857c3a0fc7ab42c37a7b99a02b5ed5",
+    "branches": [
+      "feat/911-us-ai-master"
+    ]
+  },
+  {
+    "path": "docs/HUB69_COLLABORATION_INDEX.md",
+    "gitBlob": "5a5671db41c0deee91154199d55efe96b6483d46",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "cleanup/p0-current-tree-69",
+      "copilot/agentp0-website-vi-release-1",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "docs/HUB69_COLLABORATION_INDEX.md",
+    "gitBlob": "d747175f2b643be45e3534afbdd46144a3520276",
+    "branches": [
+      "cfp-691181-office-v1",
+      "cfp-google-69114-691141-cleanup-v1",
+      "cmp-executor-write-gateway",
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate",
+      "review/cmp-xai-api-pilot",
+      "rp/691109"
+    ]
+  },
+  {
+    "path": "docs/HUB69_UNIVERSAL_MASTER_TEMPLATE.md",
+    "gitBlob": "07204c635227c8502cea60d0d7cfc5ce5b55e435",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "cmp-executor-write-gateway",
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate",
+      "review/cmp-xai-api-pilot"
+    ]
+  },
+  {
+    "path": "docs/MASTER84-REVIEW-DISPOSITION.md",
+    "gitBlob": "40c7138424b1976d900a0394febab4ecf5247d46",
+    "branches": [
+      "docs/website-super-pairs-publication"
+    ]
+  },
+  {
+    "path": "docs/TEN_CHAPTER_WEBSITE.md",
+    "gitBlob": "43c99296de25d1e30ae0aae5e466a46f4ec13a98",
+    "branches": [
+      "integration/controlled-country-template-base",
+      "review/controlled-country-integration"
+    ]
+  },
+  {
+    "path": "docs/public-content/super-pair-global-standard.md",
+    "gitBlob": "480e6f5897281b6c2093d7661ed8a649f9d41d5f",
+    "branches": [
+      "docs/website-super-pairs-publication"
+    ]
+  },
+  {
+    "path": "docs/website-p0-publication-manifest.md",
+    "gitBlob": "ef7fb284a646335e0d5eb724aedcbdae7ed7b701",
+    "branches": [
+      "docs/website-super-pairs-publication"
+    ]
+  },
+  {
+    "path": "foundation/CFP_AI_FOUNDATION_SUMMARY_VI.md",
+    "gitBlob": "e99b5464bd14613d109db7151332aff36611283c",
+    "branches": [
+      "agent/notion-canonical-migration-0000"
+    ]
+  },
+  {
+    "path": "governance/AI_WORK_FRAMEWORK_V1.md",
+    "gitBlob": "edf0aef2ec482a41f90f7cda69f6fb85c70358bf",
+    "branches": [
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate"
+    ]
+  },
+  {
+    "path": "governance/NOTION_GITHUB_MIGRATION_0000_VI.md",
+    "gitBlob": "0e6208b4e9c9a0c106d575c096c9aa1d845644c8",
+    "branches": [
+      "agent/notion-canonical-migration-0000"
+    ]
+  },
+  {
+    "path": "governance/PARTNER_REVIEW_INTAKE_TEMPLATE_VI.md",
+    "gitBlob": "5d8d538d4f29ce2ba19760c16e32f9484320b370",
+    "branches": [
+      "agent/partner-review-queue"
+    ]
+  },
+  {
+    "path": "governance/PARTNER_REVIEW_QUEUE_VI.md",
+    "gitBlob": "2cef7434b676f148feb18a7a57e14d7d45f45451",
+    "branches": [
+      "agent/partner-review-queue"
+    ]
+  },
+  {
+    "path": "hub/66666/666660/README.md",
+    "gitBlob": "b33d4603cb01804978437fd8596c0007c7ebc590",
+    "branches": [
+      "website/0000-ai-id-foundation"
+    ]
+  },
+  {
+    "path": "hub/66666/666668/6666689.md",
+    "gitBlob": "7c630afe21f482997199e705d70dd0b09af92815",
+    "branches": [
+      "website/0000-ai-id-foundation"
+    ]
+  },
+  {
+    "path": "hub/66666/666668/README.md",
+    "gitBlob": "d109cfa5ba7419b38fd513d112bdb1743a364afb",
+    "branches": [
+      "website/0000-ai-id-foundation"
+    ]
+  },
+  {
+    "path": "hub/66666/AI_INDEX.md",
+    "gitBlob": "afddc4c0de28c9a3c3f9b92ff016496072d3af20",
+    "branches": [
+      "website/0000-ai-id-foundation",
+      "website/0000-ai-id-foundation-2"
+    ]
+  },
+  {
+    "path": "hub/66666/AI_LINKS_EARLY_ACCESS.md",
+    "gitBlob": "ea619bf9f6433abcd6896bd663d31bdd8315097d",
+    "branches": [
+      "website/0000-ai-id-foundation"
+    ]
+  },
+  {
+    "path": "hub/66666/README_REVIEW.md",
+    "gitBlob": "8cee8f475a9dc528829453223bcdef64c2dcff23",
+    "branches": [
+      "website/0000-ai-id-foundation"
+    ]
+  },
+  {
+    "path": "hub/66666/REVIEW_QUEUE.md",
+    "gitBlob": "784fe0b6cc77b2be1685f0cd8294d7386ba231db",
+    "branches": [
+      "website/0000-ai-id-foundation"
+    ]
+  },
+  {
+    "path": "hub/666660/66666000.md",
+    "gitBlob": "4b29bbb90f2e3557092485fe8f609cf01fbcd988",
+    "branches": [
+      "agent/id-documents-migration",
+      "website-initial-launch"
+    ]
+  },
+  {
+    "path": "hub/666660/66666010.md",
+    "gitBlob": "f7cceb22597a37d504f72db60acb8409e0c72303",
+    "branches": [
+      "agent/id-documents-migration",
+      "website-initial-launch"
+    ]
+  },
+  {
+    "path": "hub/666660/66666020.md",
+    "gitBlob": "4faff7347b88d96ad6ec0b236840799829092be5",
+    "branches": [
+      "agent/id-documents-migration",
+      "website-initial-launch"
+    ]
+  },
+  {
+    "path": "hub/666660/66666030.md",
+    "gitBlob": "a9f4477616e1d303fa221cbe112b664e6056e523",
+    "branches": [
+      "agent/id-documents-migration",
+      "website-initial-launch"
+    ]
+  },
+  {
+    "path": "hub/666660/README.md",
+    "gitBlob": "9c83d0370eefaf001b907b745575fa4adae8ef4f",
+    "branches": [
+      "agent/id-documents-migration",
+      "agent/partner-review-queue",
+      "website-initial-launch"
+    ]
+  },
+  {
+    "path": "hub/666668/6666680.md",
+    "gitBlob": "37934cfa7af936a1c0d42bf602ec53e2b068e3ba",
+    "branches": [
+      "agent/id-documents-migration",
+      "agent/partner-review-queue",
+      "website-initial-launch"
+    ]
+  },
+  {
+    "path": "hub/666668/6666681.md",
+    "gitBlob": "9705966f4739744db437579f7528b5637e282f4f",
+    "branches": [
+      "agent/id-documents-migration",
+      "agent/partner-review-queue",
+      "website-initial-launch"
+    ]
+  },
+  {
+    "path": "hub/666668/6666682.md",
+    "gitBlob": "718b79ef69aa5d556dfa944638971fb0cafed433",
+    "branches": [
+      "agent/id-documents-migration",
+      "agent/partner-review-queue",
+      "website-initial-launch"
+    ]
+  },
+  {
+    "path": "hub/666668/6666683.md",
+    "gitBlob": "e25513a121758a70284b946e49a6a23ba89c771e",
+    "branches": [
+      "agent/id-documents-migration",
+      "agent/partner-review-queue",
+      "website-initial-launch"
+    ]
+  },
+  {
+    "path": "hub/666668/6666684.md",
+    "gitBlob": "f9b88a2ef4ddd0136cce66253953ee1e0bdd5bcb",
+    "branches": [
+      "agent/id-documents-migration",
+      "agent/partner-review-queue",
+      "website-initial-launch"
+    ]
+  },
+  {
+    "path": "hub/666668/6666685.md",
+    "gitBlob": "c4c9e04e56418dcafbe3da63d1fe4f81891f7a96",
+    "branches": [
+      "agent/id-documents-migration",
+      "agent/partner-review-queue",
+      "website-initial-launch"
+    ]
+  },
+  {
+    "path": "hub/666668/6666686.md",
+    "gitBlob": "3dd536c613ccd2c44350ffc9e28e62ffb888e18a",
+    "branches": [
+      "agent/id-documents-migration",
+      "agent/partner-review-queue",
+      "website-initial-launch"
+    ]
+  },
+  {
+    "path": "hub/666668/6666687.md",
+    "gitBlob": "c68db3bff5248c2abb74c9bb345ebabcafa0e74b",
+    "branches": [
+      "agent/id-documents-migration",
+      "agent/partner-review-queue",
+      "website-initial-launch"
+    ]
+  },
+  {
+    "path": "hub/666668/6666688.md",
+    "gitBlob": "235792ca0be5089f1b7c951ce47b212cd3296a25",
+    "branches": [
+      "agent/id-documents-migration",
+      "agent/partner-review-queue",
+      "website-initial-launch"
+    ]
+  },
+  {
+    "path": "hub/666668/6666689.md",
+    "gitBlob": "ecceb5bd172d9cac482032d9042ceeb645db8ad2",
+    "branches": [
+      "agent/id-documents-migration",
+      "agent/partner-review-queue",
+      "website-initial-launch"
+    ]
+  },
+  {
+    "path": "hub/666668/README.md",
+    "gitBlob": "709293fc7d9d9260891e4698cc839ccee37a2a70",
+    "branches": [
+      "agent/id-documents-migration",
+      "agent/partner-review-queue",
+      "website-initial-launch"
+    ]
+  },
+  {
+    "path": "id/index.html",
+    "gitBlob": "37ec4edfe9ca8fac383968919f19acfe12a6ebd9",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "id/index.html",
+    "gitBlob": "85a3043a21b8f93630bd0beea8e471e7549ca4b1",
+    "branches": [
+      "integration/controlled-country-template-base",
+      "review/controlled-country-integration"
+    ]
+  },
+  {
+    "path": "id/index.html",
+    "gitBlob": "caea9441f459d1685a3ecde817eb03fbd9d7c558",
+    "branches": [
+      "post-p0/github-first-website-audit"
+    ]
+  },
+  {
+    "path": "index.html",
+    "gitBlob": "095628b69e091c2b40815be33a55a3c66a62396b",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/claude-pr-review",
+      "agent/cmp-review-links-sync",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "automation/cfp-ai-review-orchestrator",
+      "cleanup/p0-current-tree-69",
+      "cmp-executor-write-gateway",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/research-master-execution-plan",
+      "copilot/track-a-standard-inventory",
+      "feat/911-us-ai-master",
+      "feature/cmp-orchestrator-p0",
+      "fix/698461-vietlinker-developer",
+      "governance/hub69-global-ai-invitation",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "review/cmp-xai-api-pilot",
+      "review/hub69-daily-global-news-time-id",
+      "website/full-skeleton-v1",
+      "website-initial-launch"
+    ]
+  },
+  {
+    "path": "index.html",
+    "gitBlob": "268c2a39b576c4e963aa4c1dd1e5b59367770c8e",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "index.html",
+    "gitBlob": "5b74fde74d244f722c2c6aec0052512153cf9945",
+    "branches": [
+      "p0/cmp-backend-foundation"
+    ]
+  },
+  {
+    "path": "index.html",
+    "gitBlob": "6105d9a2f3325e08aa0c93db82cbfdeba2255a59",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "index.html",
+    "gitBlob": "c436b813418ae5b10233b3be41bf076ec902085f",
+    "branches": [
+      "cfp-691181-office-v1",
+      "cfp-google-69114-691141-cleanup-v1"
+    ]
+  },
+  {
+    "path": "index.html",
+    "gitBlob": "ed83b59613f1fe3349b643a8beb501f0a5fcbcdc",
+    "branches": [
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate"
+    ]
+  },
+  {
+    "path": "nco/69115/published.json",
+    "gitBlob": "89318e36838ba832406557602adbcde067ab23d6",
+    "branches": [
+      "p0/nco-meta-69115"
+    ]
+  },
+  {
+    "path": "nco/69115/revisions/rev_69115_2026-09-26_001.json",
+    "gitBlob": "9ab6d87fa4dbe4fa17474358f6feb6281353dbfa",
+    "branches": [
+      "p0/nco-meta-69115"
+    ]
+  },
+  {
+    "path": "nginx.conf",
+    "gitBlob": "e5a79d68300de9e40ea0ff08a2900991d6bfbc36",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "ops/OPENAI_2026_CFP_INTEGRATION.md",
+    "gitBlob": "19c46947be50458ba9de61a972ad2f617851b3b5",
+    "branches": [
+      "work/openai-2026-09-cfp-integration"
+    ]
+  },
+  {
+    "path": "policies/meta-69115.policy.json",
+    "gitBlob": "01d3c23fa3e68e619550120efba8db37af077f10",
+    "branches": [
+      "p0/nco-meta-69115"
+    ]
+  },
+  {
+    "path": "pyproject.toml",
+    "gitBlob": "e7b045a6e8c5fc26a6cc16079f42ad9e1c7fb818",
+    "branches": [
+      "p0/cmp-backend-foundation"
+    ]
+  },
+  {
+    "path": "registry/666660_US_AI_CANONICAL_MAPPING_VI.md",
+    "gitBlob": "288738f048b8d1305f56823eab840264b7f2f764",
+    "branches": [
+      "agent/id-documents-migration",
+      "agent/notion-canonical-migration-0000",
+      "agent/partner-review-queue",
+      "migration/0001-canonical-documents",
+      "website/0000-ai-id-foundation",
+      "website/0000-ai-id-foundation-2",
+      "website-initial-launch"
+    ]
+  },
+  {
+    "path": "registry/66666_AI_ID_ALLOCATION_VI.md",
+    "gitBlob": "0af7d6a87a85ea4b7eb0db5c3fe7eb91153fb99f",
+    "branches": [
+      "agent/global-ai-registry-baseline"
+    ]
+  },
+  {
+    "path": "registry/66666_AI_ID_ALLOCATION_VI.md",
+    "gitBlob": "29f894d5729dee4374eb003b9de19e5b5a8deca3",
+    "branches": [
+      "agent/id-documents-migration",
+      "agent/partner-review-queue"
+    ]
+  },
+  {
+    "path": "registry/66666_AI_ID_ALLOCATION_VI.md",
+    "gitBlob": "374dd0c32a4286cef0ccccc6ad0153d5487403e8",
+    "branches": [
+      "agent/notion-canonical-migration-0000",
+      "migration/0001-canonical-documents",
+      "website/0000-ai-id-foundation",
+      "website/0000-ai-id-foundation-2"
+    ]
+  },
+  {
+    "path": "registry/69110.md",
+    "gitBlob": "2574c560e9708fbf11068b30d44ab5770bf04b48",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "automation/cfp-ai-review-orchestrator",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/research-master-execution-plan",
+      "copilot/track-a-standard-inventory",
+      "feature/cmp-orchestrator-p0",
+      "governance/hub69-global-ai-invitation",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "registry/69110.md",
+    "gitBlob": "89031aa657e5db46b4a25d1b64578ed6a6da2478",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "cleanup/p0-current-tree-69",
+      "cmp-executor-write-gateway",
+      "copilot/agentp0-website-vi-release-1",
+      "feat/911-us-ai-master",
+      "fix/698461-vietlinker-developer",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "review/cmp-xai-api-pilot",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "registry/691100.md",
+    "gitBlob": "b15872de90436d22b21ed1d84265de8192305b41",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/track-a-standard-inventory",
+      "feature/cmp-orchestrator-p0",
+      "governance/hub69-global-ai-invitation",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "registry/691100.md",
+    "gitBlob": "c6c003823b9ad32bf1d9585faed739409823d8f1",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "automation/cfp-ai-review-orchestrator",
+      "cleanup/p0-current-tree-69",
+      "cmp-executor-write-gateway",
+      "copilot/agentp0-website-vi-release-1",
+      "copilot/research-master-execution-plan",
+      "feat/911-us-ai-master",
+      "fix/698461-vietlinker-developer",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "review/cmp-xai-api-pilot",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "registry/69111.md",
+    "gitBlob": "2c78549b094bac424f9212f141eb69483e002529",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "automation/cfp-ai-review-orchestrator",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/research-master-execution-plan",
+      "copilot/track-a-standard-inventory",
+      "feature/cmp-orchestrator-p0",
+      "governance/hub69-global-ai-invitation",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "registry/69111.md",
+    "gitBlob": "ac9e955b494776966029371c2a843027e3be3451",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "cleanup/p0-current-tree-69",
+      "cmp-executor-write-gateway",
+      "copilot/agentp0-website-vi-release-1",
+      "feat/911-us-ai-master",
+      "fix/698461-vietlinker-developer",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "review/cmp-xai-api-pilot",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "registry/691110.md",
+    "gitBlob": "7bf9518e12578d7910edb07a451e8b8d1e43cf5c",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/track-a-standard-inventory",
+      "feature/cmp-orchestrator-p0",
+      "governance/hub69-global-ai-invitation",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "registry/691110.md",
+    "gitBlob": "e8171c5f59b7558e14abad192baecd8abdaeb8b1",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "automation/cfp-ai-review-orchestrator",
+      "cleanup/p0-current-tree-69",
+      "cmp-executor-write-gateway",
+      "copilot/agentp0-website-vi-release-1",
+      "copilot/research-master-execution-plan",
+      "feat/911-us-ai-master",
+      "fix/698461-vietlinker-developer",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "review/cmp-xai-api-pilot",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "registry/69112.md",
+    "gitBlob": "a145ea66d6ab5b76616dcdbc032ced892c812ec2",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "cleanup/p0-current-tree-69",
+      "cmp-executor-write-gateway",
+      "copilot/agentp0-website-vi-release-1",
+      "feat/911-us-ai-master",
+      "fix/698461-vietlinker-developer",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "review/cmp-xai-api-pilot",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "registry/69112.md",
+    "gitBlob": "dcd208ee94da1ef0a81d73530c6abe97660e4aa9",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "automation/cfp-ai-review-orchestrator",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/research-master-execution-plan",
+      "copilot/track-a-standard-inventory",
+      "feature/cmp-orchestrator-p0",
+      "governance/hub69-global-ai-invitation",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "registry/691120.md",
+    "gitBlob": "10269ee6449737a784a3d58d6651758ee2c1c945",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "automation/cfp-ai-review-orchestrator",
+      "cleanup/p0-current-tree-69",
+      "cmp-executor-write-gateway",
+      "copilot/agentp0-website-vi-release-1",
+      "copilot/research-master-execution-plan",
+      "feat/911-us-ai-master",
+      "fix/698461-vietlinker-developer",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "review/cmp-xai-api-pilot",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "registry/691120.md",
+    "gitBlob": "ee2fd3b97e005de0dcd6daebec4a594937935487",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/track-a-standard-inventory",
+      "feature/cmp-orchestrator-p0",
+      "governance/hub69-global-ai-invitation",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "registry/69113.md",
+    "gitBlob": "13cc421e0fea0cab8e940d3138f18a1eaf04c4d4",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "automation/cfp-ai-review-orchestrator",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/research-master-execution-plan",
+      "copilot/track-a-standard-inventory",
+      "feature/cmp-orchestrator-p0",
+      "governance/hub69-global-ai-invitation",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "registry/69113.md",
+    "gitBlob": "ddd633424769cc0991803a66a47c07efba10ff77",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "cleanup/p0-current-tree-69",
+      "cmp-executor-write-gateway",
+      "copilot/agentp0-website-vi-release-1",
+      "feat/911-us-ai-master",
+      "fix/698461-vietlinker-developer",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "review/cmp-xai-api-pilot",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "registry/691130.md",
+    "gitBlob": "6101505181291fc5c4dc0d72d1c57e93cc129ff3",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "automation/cfp-ai-review-orchestrator",
+      "cleanup/p0-current-tree-69",
+      "cmp-executor-write-gateway",
+      "copilot/agentp0-website-vi-release-1",
+      "copilot/research-master-execution-plan",
+      "feat/911-us-ai-master",
+      "fix/698461-vietlinker-developer",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "review/cmp-xai-api-pilot",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "registry/691131.md",
+    "gitBlob": "759de22c25564ca9633a48545f5c806202734b35",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "automation/cfp-ai-review-orchestrator",
+      "cleanup/p0-current-tree-69",
+      "cmp-executor-write-gateway",
+      "copilot/agentp0-website-vi-release-1",
+      "copilot/research-master-execution-plan",
+      "feat/911-us-ai-master",
+      "fix/698461-vietlinker-developer",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "review/cmp-xai-api-pilot",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "registry/69114.md",
+    "gitBlob": "d3a6c3bde36f6ea59121f49cfde1307892f532be",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "cleanup/p0-current-tree-69",
+      "cmp-executor-write-gateway",
+      "copilot/agentp0-website-vi-release-1",
+      "feat/911-us-ai-master",
+      "fix/698461-vietlinker-developer",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "review/cmp-xai-api-pilot",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "registry/69114.md",
+    "gitBlob": "e5957605a48fcc4737a8fa88a4c1ffc0e2827dcb",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "automation/cfp-ai-review-orchestrator",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/research-master-execution-plan",
+      "copilot/track-a-standard-inventory",
+      "feature/cmp-orchestrator-p0",
+      "governance/hub69-global-ai-invitation",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "registry/691140.md",
+    "gitBlob": "2a55cf1cc422b65dd9592775643f6f9a9887e1a3",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "automation/cfp-ai-review-orchestrator",
+      "cleanup/p0-current-tree-69",
+      "cmp-executor-write-gateway",
+      "copilot/agentp0-website-vi-release-1",
+      "copilot/research-master-execution-plan",
+      "feat/911-us-ai-master",
+      "fix/698461-vietlinker-developer",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "review/cmp-xai-api-pilot",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "registry/69115.md",
+    "gitBlob": "0dc15cd89ec9129f23bf61796b24d14d3ad5a877",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "cleanup/p0-current-tree-69",
+      "cmp-executor-write-gateway",
+      "copilot/agentp0-website-vi-release-1",
+      "feat/911-us-ai-master",
+      "fix/698461-vietlinker-developer",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "review/cmp-xai-api-pilot",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "registry/69115.md",
+    "gitBlob": "520b1f23e4c6c5ba0579bf08a43b6b643fd984f7",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "automation/cfp-ai-review-orchestrator",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/research-master-execution-plan",
+      "copilot/track-a-standard-inventory",
+      "feature/cmp-orchestrator-p0",
+      "governance/hub69-global-ai-invitation",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "registry/691150.md",
+    "gitBlob": "8469bb97de868d7679223985180b696e68276b57",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "automation/cfp-ai-review-orchestrator",
+      "cleanup/p0-current-tree-69",
+      "cmp-executor-write-gateway",
+      "copilot/agentp0-website-vi-release-1",
+      "copilot/research-master-execution-plan",
+      "feat/911-us-ai-master",
+      "fix/698461-vietlinker-developer",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "review/cmp-xai-api-pilot",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "registry/69116.md",
+    "gitBlob": "9eae2313d7480c68b630703458e450c890267fed",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "cleanup/p0-current-tree-69",
+      "cmp-executor-write-gateway",
+      "copilot/agentp0-website-vi-release-1",
+      "feat/911-us-ai-master",
+      "fix/698461-vietlinker-developer",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "review/cmp-xai-api-pilot",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "registry/69116.md",
+    "gitBlob": "cb55014b3f6af1b16336d832c5e705ad508a18e0",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "automation/cfp-ai-review-orchestrator",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/research-master-execution-plan",
+      "copilot/track-a-standard-inventory",
+      "feature/cmp-orchestrator-p0",
+      "governance/hub69-global-ai-invitation",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "registry/691160.md",
+    "gitBlob": "568b6d0a056642decc348c1ff3788469b282d814",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "automation/cfp-ai-review-orchestrator",
+      "cleanup/p0-current-tree-69",
+      "cmp-executor-write-gateway",
+      "copilot/agentp0-website-vi-release-1",
+      "copilot/research-master-execution-plan",
+      "feat/911-us-ai-master",
+      "fix/698461-vietlinker-developer",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "review/cmp-xai-api-pilot",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "registry/69117.md",
+    "gitBlob": "18175f8964a2788433a77ce758a7f74cd2f3390f",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "cleanup/p0-current-tree-69",
+      "cmp-executor-write-gateway",
+      "copilot/agentp0-website-vi-release-1",
+      "feat/911-us-ai-master",
+      "fix/698461-vietlinker-developer",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "review/cmp-xai-api-pilot",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "registry/69117.md",
+    "gitBlob": "7d75e7795181f9524b23604e07cc56328a24bc75",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "automation/cfp-ai-review-orchestrator",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/research-master-execution-plan",
+      "copilot/track-a-standard-inventory",
+      "feature/cmp-orchestrator-p0",
+      "governance/hub69-global-ai-invitation",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "registry/691170.md",
+    "gitBlob": "5ed2897f38ed50b5f5ad2bb293d31acee0f92271",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "automation/cfp-ai-review-orchestrator",
+      "cleanup/p0-current-tree-69",
+      "cmp-executor-write-gateway",
+      "copilot/agentp0-website-vi-release-1",
+      "copilot/research-master-execution-plan",
+      "feat/911-us-ai-master",
+      "fix/698461-vietlinker-developer",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "review/cmp-xai-api-pilot",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "registry/69118.md",
+    "gitBlob": "206561fa318993ce9326efe117fbcd49552b193e",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "cleanup/p0-current-tree-69",
+      "cmp-executor-write-gateway",
+      "copilot/agentp0-website-vi-release-1",
+      "feat/911-us-ai-master",
+      "fix/698461-vietlinker-developer",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "review/cmp-xai-api-pilot",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "registry/69118.md",
+    "gitBlob": "28b19278a707d732c4dad132fd349359a38eea93",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "automation/cfp-ai-review-orchestrator",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/research-master-execution-plan",
+      "copilot/track-a-standard-inventory",
+      "feature/cmp-orchestrator-p0",
+      "governance/hub69-global-ai-invitation",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "registry/69119.md",
+    "gitBlob": "e6aac4a4e05cf65c9251bcc4b78b98f7777a8173",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "cleanup/p0-current-tree-69",
+      "cmp-executor-write-gateway",
+      "copilot/agentp0-website-vi-release-1",
+      "feat/911-us-ai-master",
+      "fix/698461-vietlinker-developer",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "review/cmp-xai-api-pilot",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "registry/69119.md",
+    "gitBlob": "ec4cc2810d161b626e37ee3d2a2edc727e411e1f",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "automation/cfp-ai-review-orchestrator",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/research-master-execution-plan",
+      "copilot/track-a-standard-inventory",
+      "feature/cmp-orchestrator-p0",
+      "governance/hub69-global-ai-invitation",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "registry/69840.md",
+    "gitBlob": "435dc56c556422b5377894f07a573a3298a4880e",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "automation/cfp-ai-review-orchestrator",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/research-master-execution-plan",
+      "copilot/track-a-standard-inventory",
+      "feature/cmp-orchestrator-p0",
+      "governance/hub69-global-ai-invitation",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "registry/69841.md",
+    "gitBlob": "24075dfebdff6756ab42a20f16d343c63c173601",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "automation/cfp-ai-review-orchestrator",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/research-master-execution-plan",
+      "copilot/track-a-standard-inventory",
+      "feature/cmp-orchestrator-p0",
+      "governance/hub69-global-ai-invitation",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "registry/69842.md",
+    "gitBlob": "16b191309b854f7813390fdd9905f48ca2fdbeb1",
+    "branches": [
+      "automation/cfp-ai-review-orchestrator",
+      "copilot/research-master-execution-plan",
+      "feature/cmp-orchestrator-p0",
+      "governance/hub69-global-ai-invitation",
+      "integration/openai-notion-v1"
+    ]
+  },
+  {
+    "path": "registry/69842.md",
+    "gitBlob": "444324ed7005d249fd86ac86f4cd8c02ff25c7a3",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/track-a-standard-inventory",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "registry/69843.md",
+    "gitBlob": "6c2040d1cd92a7b96ae4bd2e706c74f8e17ab78f",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "automation/cfp-ai-review-orchestrator",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/research-master-execution-plan",
+      "copilot/track-a-standard-inventory",
+      "feature/cmp-orchestrator-p0",
+      "governance/hub69-global-ai-invitation",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "registry/69844.md",
+    "gitBlob": "2ee0c783af9d30ecd4db04c40e46c3d9ba31b26a",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "automation/cfp-ai-review-orchestrator",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/research-master-execution-plan",
+      "copilot/track-a-standard-inventory",
+      "feature/cmp-orchestrator-p0",
+      "governance/hub69-global-ai-invitation",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "registry/69845.md",
+    "gitBlob": "1fb26c7285a17d5fc06a2c929578a5e16c0a4ae5",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "automation/cfp-ai-review-orchestrator",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/research-master-execution-plan",
+      "copilot/track-a-standard-inventory",
+      "feature/cmp-orchestrator-p0",
+      "governance/hub69-global-ai-invitation",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "registry/69846.md",
+    "gitBlob": "be5a291f35a85e391f40771626d8737c1a343b8e",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "automation/cfp-ai-review-orchestrator",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/research-master-execution-plan",
+      "copilot/track-a-standard-inventory",
+      "feature/cmp-orchestrator-p0",
+      "governance/hub69-global-ai-invitation",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "registry/698461.md",
+    "gitBlob": "f54cd74ff1be7d47801ae5d8c46a3a33b7d030fa",
+    "branches": [
+      "fix/698461-vietlinker-developer"
+    ]
+  },
+  {
+    "path": "registry/69847.md",
+    "gitBlob": "d5768ec59e2e34d541d789cfd93ac439ee05f9e4",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "automation/cfp-ai-review-orchestrator",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/research-master-execution-plan",
+      "copilot/track-a-standard-inventory",
+      "feature/cmp-orchestrator-p0",
+      "governance/hub69-global-ai-invitation",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "registry/69848.md",
+    "gitBlob": "6bd45449feeba4b3c7d3d24ffb535b950445ca23",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "automation/cfp-ai-review-orchestrator",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/research-master-execution-plan",
+      "copilot/track-a-standard-inventory",
+      "feature/cmp-orchestrator-p0",
+      "governance/hub69-global-ai-invitation",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "registry/69849.md",
+    "gitBlob": "a965f737200d3922c4d4f782e9873c1ad62fe6f9",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "automation/cfp-ai-review-orchestrator",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/research-master-execution-plan",
+      "copilot/track-a-standard-inventory",
+      "feature/cmp-orchestrator-p0",
+      "governance/hub69-global-ai-invitation",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "registry/AI_CANONICAL_ID_REGISTRY.md",
+    "gitBlob": "1d3d418472278a6866e774d5b33bdae6ba640c9f",
+    "branches": [
+      "feat/911-us-ai-master"
+    ]
+  },
+  {
+    "path": "registry/AI_CANONICAL_ID_REGISTRY.md",
+    "gitBlob": "293876f5caeb134a067ae80f84ce50d2052c4dba",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/research-inventory-standards-documents",
+      "copilot/track-a-standard-inventory",
+      "feature/cmp-orchestrator-p0",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "registry/AI_CANONICAL_ID_REGISTRY.md",
+    "gitBlob": "5ad46530ba1c86a79b85d1874e5d894007e6f114",
+    "branches": [
+      "governance/hub69-global-ai-invitation"
+    ]
+  },
+  {
+    "path": "registry/AI_CANONICAL_ID_REGISTRY.md",
+    "gitBlob": "7a4861269fde390a99779c9ed19d971c37a2fc16",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "cleanup/p0-current-tree-69",
+      "cmp-executor-write-gateway",
+      "copilot/agentp0-website-vi-release-1",
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate",
+      "review/cmp-xai-api-pilot",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "registry/AI_CANONICAL_ID_REGISTRY.md",
+    "gitBlob": "8407d3d9a1473106a794acfa5fe54dec4d57f954",
+    "branches": [
+      "automation/cfp-ai-review-orchestrator",
+      "copilot/research-master-execution-plan"
+    ]
+  },
+  {
+    "path": "registry/AI_CANONICAL_ID_REGISTRY.md",
+    "gitBlob": "9c8e6caf5252f057ae6a2df656273c9bd25fe444",
+    "branches": [
+      "copilot/fix-69119-vietlinker-references"
+    ]
+  },
+  {
+    "path": "registry/AI_CANONICAL_ID_REGISTRY.md",
+    "gitBlob": "cc9deb56f1d1b8383d5d55f5d8089b415d07c09a",
+    "branches": [
+      "fix/698461-vietlinker-developer"
+    ]
+  },
+  {
+    "path": "registry/AI_CANONICAL_ID_REGISTRY.md",
+    "gitBlob": "f4e64cdd974eebf2462b18a737697e24e16a1ebb",
+    "branches": [
+      "agent/fix-ai-index-identity-mappings"
+    ]
+  },
+  {
+    "path": "registry/AI_CANONICAL_ID_REGISTRY.md",
+    "gitBlob": "f7699fd1cb1b69d5f525f0d30346c083c7221483",
+    "branches": [
+      "agent/id-documents-migration",
+      "agent/notion-canonical-migration-0000",
+      "agent/partner-review-queue",
+      "migration/0001-canonical-documents",
+      "website/0000-ai-id-foundation",
+      "website/0000-ai-id-foundation-2",
+      "website-initial-launch"
+    ]
+  },
+  {
+    "path": "registry/AI_ID_LINK_SKELETON_P0.md",
+    "gitBlob": "0c9fc693333d5ee15a8f0498d86a492399b71301",
+    "branches": [
+      "p0/ai-id-link-skeleton"
+    ]
+  },
+  {
+    "path": "registry/CFP_AI_COUNTRY_ZERO_GATEWAY.md",
+    "gitBlob": "acf757ddfcc337822d2dcfda912b7d0fce5364e8",
+    "branches": [
+      "p0/cfp-ai-country-zero-gateway"
+    ]
+  },
+  {
+    "path": "registry/GLOBAL_AI_ID_ARCHITECTURE.md",
+    "gitBlob": "237abb9fec28cf5073f8ef9b18e2ce5202175f60",
+    "branches": [
+      "agent/id-documents-migration",
+      "agent/notion-canonical-migration-0000",
+      "agent/partner-review-queue",
+      "migration/0001-canonical-documents",
+      "website/0000-ai-id-foundation",
+      "website/0000-ai-id-foundation-2",
+      "website-initial-launch"
+    ]
+  },
+  {
+    "path": "registry/GLOBAL_AI_ID_BASELINE_CANDIDATE.md",
+    "gitBlob": "744a2bad94044e6fcbbe6924e4ca8bb687e3e79d",
+    "branches": [
+      "fix/698461-vietlinker-developer"
+    ]
+  },
+  {
+    "path": "registry/GLOBAL_DEVELOPER_AI_LINK_COVERAGE_V1.md",
+    "gitBlob": "8c88c4572f0e38a98750854d589fc400d5edddec",
+    "branches": [
+      "p0-website-public-v1"
+    ]
+  },
+  {
+    "path": "registry/country-route-map.json",
+    "gitBlob": "80792e97b300a837a883a813d789e8c1a3eb7d70",
+    "branches": [
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate"
+    ]
+  },
+  {
+    "path": "reports/P0_US_AI_REVIEW_PACKAGE_2026-08-09.md",
+    "gitBlob": "af2d44f0d1fc3c770ea7b18cc44ecc7287d6fbb2",
+    "branches": [
+      "feat/911-us-ai-master"
+    ]
+  },
+  {
+    "path": "research/quantum-vault/ELON_MUSK_ECOSYSTEM_SCOPE.md",
+    "gitBlob": "13071b5c468ed3d8ed4a6c61b3f5a70341a9941b",
+    "branches": [
+      "research/quantum-vault-v01"
+    ]
+  },
+  {
+    "path": "research/quantum-vault/ELON_MUSK_PARALLEL_EXPANSION.md",
+    "gitBlob": "174ea427c04e0f8e9a1169977945efb87cf4f6f6",
+    "branches": [
+      "research/quantum-vault-v01"
+    ]
+  },
+  {
+    "path": "research/quantum-vault/INDEPENDENT_SURVIVAL.md",
+    "gitBlob": "4bf314d172189dc6f5270a8093a14a8c91338688",
+    "branches": [
+      "research/quantum-vault-v01"
+    ]
+  },
+  {
+    "path": "research/quantum-vault/NO_CASCADE_DELETE.md",
+    "gitBlob": "ea6089a75da3b169bd6e27a965c7dc3acc62f539",
+    "branches": [
+      "research/quantum-vault-v01"
+    ]
+  },
+  {
+    "path": "research/quantum-vault/ONE_WAY_DATA_FLOW.md",
+    "gitBlob": "1a79282442b3507c96b4b17fdb50f6259536c4a7",
+    "branches": [
+      "research/quantum-vault-v01"
+    ]
+  },
+  {
+    "path": "research/quantum-vault/README.md",
+    "gitBlob": "eef1c614a095e3af7948cc6aa2d48d7e952c0dd0",
+    "branches": [
+      "research/quantum-vault-v01"
+    ]
+  },
+  {
+    "path": "research/quantum-vault/RESILIENCE.md",
+    "gitBlob": "e6f66408b36f77e58a1d78ecb494fe73baec2967",
+    "branches": [
+      "research/quantum-vault-v01"
+    ]
+  },
+  {
+    "path": "research/quantum-vault/TEAM_IMPLEMENTATION_BRIEF_20261012.md",
+    "gitBlob": "7a66cd764d3cf2a1b626e53a5647852687288daa",
+    "branches": [
+      "research/quantum-vault-v01"
+    ]
+  },
+  {
+    "path": "research/quantum-vault/schema.json",
+    "gitBlob": "fd30aab100ecb476f56029a1bd0f52e8741f3ee7",
+    "branches": [
+      "research/quantum-vault-v01"
+    ]
+  },
+  {
+    "path": "research/quantum-vault/test_contract.py",
+    "gitBlob": "e3aa5683569782d690fc32c67d508af26e5ae83b",
+    "branches": [
+      "research/quantum-vault-v01"
+    ]
+  },
+  {
+    "path": "review/HUB69_DAILY_GLOBAL_NEWS_TIME_ID_REVIEW.md",
+    "gitBlob": "5f89ac61c361f8db30c2bd194a06092c2e277f63",
+    "branches": [
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "schemas/cfp.enterprise.v1.schema.json",
+    "gitBlob": "67f97ef78807c32b2a7091573edf363fa21772ed",
+    "branches": [
+      "p0/nco-meta-69115"
+    ]
+  },
+  {
+    "path": "scripts/__pycache__/validate_registry.cpython-312.pyc",
+    "gitBlob": "bf68d19d90567febca36004e4021dbe1889fb3e0",
+    "branches": [
+      "copilot/build-openai-api-integration"
+    ]
+  },
+  {
+    "path": "scripts/ai_review_orchestrator.py",
+    "gitBlob": "04e28d7a299a5d18ef8c2e917f9f54d541f53cdb",
+    "branches": [
+      "automation/cfp-ai-review-orchestrator"
+    ]
+  },
+  {
+    "path": "scripts/build_foundation_pages.py",
+    "gitBlob": "df03fdf2808c0cafe2bc3eafcbdebde77b943e50",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "scripts/build_priority_pages.py",
+    "gitBlob": "d8a2fa340624b61e3a1819b799a6808c2f0fa9c9",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "scripts/build_public_site.py",
+    "gitBlob": "62d6c07ad5664b8e1041f360743e8ba98a62c6f8",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "scripts/cmp_orchestrator.py",
+    "gitBlob": "f9333fd7c4452e6f8288dc50cac86d90f52c6ff9",
+    "branches": [
+      "feature/cmp-orchestrator-p0"
+    ]
+  },
+  {
+    "path": "scripts/deploy_cloud_run.py",
+    "gitBlob": "38a2af3f34b73276593f8a0c606d51b152056e5e",
+    "branches": [
+      "fix/cloud-run-conflict-retry"
+    ]
+  },
+  {
+    "path": "scripts/notion_openai_review.py",
+    "gitBlob": "ce91b76b50f595a33f1a00c33fa1640b2aa70fd5",
+    "branches": [
+      "integration/openai-notion-v1"
+    ]
+  },
+  {
+    "path": "scripts/pr_review.py",
+    "gitBlob": "8b5dc00048094885442af9be3a15a0696c9a0b44",
+    "branches": [
+      "agent/claude-pr-review"
+    ]
+  },
+  {
+    "path": "scripts/requirements.txt",
+    "gitBlob": "ce766fd0f5d36747beb87a64f84606f9a75fbf98",
+    "branches": [
+      "copilot/build-openai-api-integration"
+    ]
+  },
+  {
+    "path": "scripts/validate_meta_69115.py",
+    "gitBlob": "20de5da94bc1a0db3602c4bb24545298ee6bc466",
+    "branches": [
+      "p0/nco-meta-69115"
+    ]
+  },
+  {
+    "path": "scripts/validate_registry.py",
+    "gitBlob": "6d2113eb05c6740e4a6aeb53a4995aa0ddaee51e",
+    "branches": [
+      "copilot/build-openai-api-integration"
+    ]
+  },
+  {
+    "path": "standards/CHAPTER_FUND_ID_ARCHITECTURE_VI.md",
+    "gitBlob": "a07a63e0cb0dd43f5387ae17d6906e6ba3ea43db",
+    "branches": [
+      "agent/chapter-fund-id-architecture"
+    ]
+  },
+  {
+    "path": "styles.css",
+    "gitBlob": "31720832f91b36b06b1a1b6b5312aa508728fa8e",
+    "branches": [
+      "cfp-691181-office-v1",
+      "cfp-google-69114-691141-cleanup-v1"
+    ]
+  },
+  {
+    "path": "styles.css",
+    "gitBlob": "8b8ef8675508eec38cd68a89c34d9a90c3b28b30",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/claude-pr-review",
+      "agent/cmp-review-links-sync",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/p0-website-vi-release-1",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "automation/cfp-ai-review-orchestrator",
+      "cleanup/p0-current-tree-69",
+      "cmp-executor-write-gateway",
+      "copilot/add-new-feature",
+      "copilot/agentp0-website-vi-release-1",
+      "copilot/build-openai-api-integration",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/research-master-execution-plan",
+      "copilot/track-a-standard-inventory",
+      "feat/911-us-ai-master",
+      "feature/cmp-orchestrator-p0",
+      "fix/698461-vietlinker-developer",
+      "governance/hub69-global-ai-invitation",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "review/cmp-xai-api-pilot",
+      "review/hub69-daily-global-news-time-id",
+      "website/full-skeleton-v1",
+      "website-initial-launch"
+    ]
+  },
+  {
+    "path": "styles.css",
+    "gitBlob": "aae476859f0defb1445a86aa34aa171aa1641304",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "styles.css",
+    "gitBlob": "d34fd84b02ddba9b306cd13ba0d3c69d627dc389",
+    "branches": [
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate"
+    ]
+  },
+  {
+    "path": "tests/__pycache__/test_validate_registry.cpython-312.pyc",
+    "gitBlob": "b780576c1a2445b2afe07afcfb4a31701748a63f",
+    "branches": [
+      "copilot/build-openai-api-integration"
+    ]
+  },
+  {
+    "path": "tests/chapters/test_projection.py",
+    "gitBlob": "680a552ef968b1f2508a0b88813377afaa9a3e61",
+    "branches": [
+      "integration/controlled-country-template-base",
+      "review/controlled-country-integration"
+    ]
+  },
+  {
+    "path": "tests/chapters/verify_browser.js",
+    "gitBlob": "8d10af2c6024605735a697eaabd3fef4bc3405da",
+    "branches": [
+      "integration/controlled-country-template-base",
+      "review/controlled-country-integration"
+    ]
+  },
+  {
+    "path": "tests/chapters/verify_country_browser.js",
+    "gitBlob": "87e4fbf251cb5abd2c85fc6b175fce0677611cd3",
+    "branches": [
+      "integration/controlled-country-template-base",
+      "review/controlled-country-integration"
+    ]
+  },
+  {
+    "path": "tests/pipeline/test_deploy_cloud_run.py",
+    "gitBlob": "965112e230088b1799ddc74d71c2fbb80092b85a",
+    "branches": [
+      "fix/cloud-run-conflict-retry"
+    ]
+  },
+  {
+    "path": "tests/test_evidence_store.py",
+    "gitBlob": "1e9488498d380757f08b1cdcb7433bf5fec1e3e4",
+    "branches": [
+      "p0/cmp-backend-foundation"
+    ]
+  },
+  {
+    "path": "tests/test_foundation.py",
+    "gitBlob": "29e148862cd10706e6bdd7fd9c9587e2d2b1a932",
+    "branches": [
+      "p0/cmp-backend-foundation"
+    ]
+  },
+  {
+    "path": "tests/test_idempotency.py",
+    "gitBlob": "d874a934a5727b954755484d82a373b4f247e7c3",
+    "branches": [
+      "p0/cmp-backend-foundation"
+    ]
+  },
+  {
+    "path": "tests/test_pr_review.py",
+    "gitBlob": "3bac2624418162896033c6709c5dd6016dd34b29",
+    "branches": [
+      "agent/claude-pr-review"
+    ]
+  },
+  {
+    "path": "tests/test_validate_registry.py",
+    "gitBlob": "8b9e264a2591c8a60670282fc0d008c60207a328",
+    "branches": [
+      "copilot/build-openai-api-integration"
+    ]
+  },
+  {
+    "path": "tests/website/container_browser.cjs",
+    "gitBlob": "575e503c7ed3c540591299578a865a78405f966b",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "tests/website/public_browser_readonly.cjs",
+    "gitBlob": "6f4b5952629a3604995c9b73a00c700c7080f3d6",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "tests/website/public_http_readonly.py",
+    "gitBlob": "eaca70818ead71239837b2fd75abd8ecbbcdf95e",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "tests/website/test_foundation_content.py",
+    "gitBlob": "3c01ee297182f6022933c66c948fa6c3ef04ac27",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "tests/website/test_numeric_content.py",
+    "gitBlob": "c62b927f760abe7b00b9097fb27f8d7baca2a95c",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "tests/website/test_public_routing.py",
+    "gitBlob": "e117252b1d9af502cc58b0361cde29727c747c3d",
+    "branches": [
+      "review/numeric-link-restoration-20261008"
+    ]
+  },
+  {
+    "path": "tests/workflows/test_gemini_workflow.py",
+    "gitBlob": "1d39596ae2694f2f7f8ea36dbcbfb393cb50ee27",
+    "branches": [
+      "review/003-005-gemini-diagnostics"
+    ]
+  },
+  {
+    "path": "tools/validator/config/phase0.json",
+    "gitBlob": "13be967e900e01dd239496c20af6bfa0dc5badff",
+    "branches": [
+      "agent/safe-validator-phase0"
+    ]
+  },
+  {
+    "path": "tools/validator/package.json",
+    "gitBlob": "2835399be5a8fe4af9d7510b7439211902f7b733",
+    "branches": [
+      "agent/safe-validator-phase0"
+    ]
+  },
+  {
+    "path": "tools/validator/src/configIntegrity.mjs",
+    "gitBlob": "5138feba0ed0b6ced8ad9d06061c68e75860a387",
+    "branches": [
+      "agent/safe-validator-phase0"
+    ]
+  },
+  {
+    "path": "tools/validator/src/index.mjs",
+    "gitBlob": "da22b9d15c50054cf0d3dd3da4b53d53acb76d55",
+    "branches": [
+      "agent/safe-validator-phase0"
+    ]
+  },
+  {
+    "path": "tools/validator/src/metadata.mjs",
+    "gitBlob": "e47be69998ea700e3b86a1fd63bcb725adf9850d",
+    "branches": [
+      "agent/safe-validator-phase0"
+    ]
+  },
+  {
+    "path": "tools/validator/src/report.mjs",
+    "gitBlob": "1949edfaf4a17531c61da58f51f4220af6a7a713",
+    "branches": [
+      "agent/safe-validator-phase0"
+    ]
+  },
+  {
+    "path": "tools/validator/src/rules.mjs",
+    "gitBlob": "f9f83d5c9504cbac4f04d4b8f4bd333e98276802",
+    "branches": [
+      "agent/safe-validator-phase0"
+    ]
+  },
+  {
+    "path": "vi/0/index.html",
+    "gitBlob": "1e72afc9721c070c0c6be79a9c29442a705874a8",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/00/index.html",
+    "gitBlob": "7b241ee7b558851ea1b3779dba6a805b2e276877",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/01/index.html",
+    "gitBlob": "298c43e5d2f5f1d545c8f956c1a59ad904584fac",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/02/index.html",
+    "gitBlob": "d34610d6aefd091906f6959775c9665dc4599bee",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/03/index.html",
+    "gitBlob": "1a5aee9e3c6a38bc51c2c132c228d29a00878218",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/04/index.html",
+    "gitBlob": "9eb86be66040758da109ccac3e4c68b5dadd6f40",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/05/index.html",
+    "gitBlob": "8479d97e95b51ec1d47ba5c0b1fd560e8ff7727d",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/06/index.html",
+    "gitBlob": "9d482bdd9aa6def3b3cc4e429c0245700cd3ff5f",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/07/index.html",
+    "gitBlob": "30e0ac82b4be9d234534df74875c2a7b83d2e5dc",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/08/index.html",
+    "gitBlob": "e9e231bfcb291470bbc00cfbf9fdddaa28167aaf",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/09/index.html",
+    "gitBlob": "768ea3eeac4aa279408861c7b4c4ba808d65fe4a",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/1/index.html",
+    "gitBlob": "11800670433f0f809b79424d1c384207da98b58a",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/10/index.html",
+    "gitBlob": "716ab6d5d2721efbbba4517613240462d85b1da7",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/11/index.html",
+    "gitBlob": "c27e80dfaac56d07e04f6bb674955ccea651fe1e",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/12/index.html",
+    "gitBlob": "b1ca9db11fcc340d32ee90067659524827eeb8eb",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/13/index.html",
+    "gitBlob": "ea1478089f029e00fd536ceb88c640efe2479747",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/14/index.html",
+    "gitBlob": "eb1dd17d39bceac1f10996f9cec2b25ce787b946",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/15/index.html",
+    "gitBlob": "97a312a011a775280a2aab1de3e5bbb5b6a16941",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/16/index.html",
+    "gitBlob": "6472b99a2180ba7608b5a521af3edddde65926d4",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/17/index.html",
+    "gitBlob": "d12e3af9d1450cb8b2485580d2b8229007707722",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/18/index.html",
+    "gitBlob": "808c9486f45262134324178f01c6abb05d616f5d",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/19/index.html",
+    "gitBlob": "06286eb5f0c04b34c57533842df49eb57c9dc3fa",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/2/index.html",
+    "gitBlob": "58ab0c8e0a1d5a62860329744a69c53d6567fc17",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/20/index.html",
+    "gitBlob": "ad83a5a77a0bb55e2ee4cc9631d0b8a7859634e5",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/21/index.html",
+    "gitBlob": "6d86a62c11f544a91089805a998728dde1c9d289",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/22/index.html",
+    "gitBlob": "5eebaa486f7cda523ce1934e23c8f16b10479b2b",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/23/index.html",
+    "gitBlob": "49b19915c5e16077a8726e7827ee70750a764679",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/24/index.html",
+    "gitBlob": "32002edf2cf9912afc5ef578e3b853ce9451537e",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/25/index.html",
+    "gitBlob": "bfca2aa34768f9a7e6ba079caaf9a8eb93a01d23",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/26/index.html",
+    "gitBlob": "6fe621b9d72f0a77cdc397561adfd3e02b58fd24",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/27/index.html",
+    "gitBlob": "bc62d3594f72d92c2b43958f5127c62366949c67",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/28/index.html",
+    "gitBlob": "dde9f5ed4fe372df61f5ceb4d23a1cc9a6fe0677",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/29/index.html",
+    "gitBlob": "431cac09658bf63da4093a99537c36f206c3ed44",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/3/index.html",
+    "gitBlob": "2ec448217a9d03981ff044393a05c4b88e8fd047",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/30/index.html",
+    "gitBlob": "47bc46cd442e8f9f78f7c43596466fb5fa89c9ac",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/31/index.html",
+    "gitBlob": "906332d245b6c9c09c9e29bdce273b21a5c41c6c",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/32/index.html",
+    "gitBlob": "e7a3170f12080cdf074fdcb889d917b4e81f1600",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/33/index.html",
+    "gitBlob": "de09d8ffe1c1410766209c5a7fe955311f29f433",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/34/index.html",
+    "gitBlob": "c45df3d62589ce86ae622e49bc03832962d0fc1a",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/35/index.html",
+    "gitBlob": "a8acbef68a8a0a2c583fdefe0176d41d2b3ef2f7",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/36/index.html",
+    "gitBlob": "71130d3f50ad856cf4dbd343ee7fdce9ce8c7776",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/37/index.html",
+    "gitBlob": "6f328a6b02795fb9ecb0909942267eb1897d89df",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/38/index.html",
+    "gitBlob": "4c9576104e9ca11f44bd343bc4b6852803ff9581",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/39/index.html",
+    "gitBlob": "9f9d7385237f9fc705c66c931953eb49ef1cda22",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/4/index.html",
+    "gitBlob": "b079c8a973ac42e6831c58c5bb4892f3e966ef98",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/40/index.html",
+    "gitBlob": "69992d62c4d352e0f63be9c39046d936d0956ae5",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/41/index.html",
+    "gitBlob": "37b3d8b97cd5c48c622e90b6181087c1166b0591",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/42/index.html",
+    "gitBlob": "2c37499d914552a943fd856f04a8685cc629c494",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/43/index.html",
+    "gitBlob": "c0bea6d7c0ff257465fb45d8e93548e6e099a409",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/44/index.html",
+    "gitBlob": "12bd2314489149d8db729f5a50eea48cf0ad4fe1",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/45/index.html",
+    "gitBlob": "a2cf77268792792301f99af5bbad8649ff591874",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/46/index.html",
+    "gitBlob": "8ca93d9d7f0ec876720850ffcaa9d317fecfb655",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/47/index.html",
+    "gitBlob": "915a8e8205156bf7d5629a27da024de9830ee6a4",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/48/index.html",
+    "gitBlob": "39b7e70709846c377dbe78bc5458cd8048988f27",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/49/index.html",
+    "gitBlob": "b0ce8beab8f8e90035153e16885bf7cf556d7d07",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/5/index.html",
+    "gitBlob": "a2d3f7782ac7ae7b2af78cfb2ffd07f17c49e981",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/50/index.html",
+    "gitBlob": "ebde64b15e388fcbae1a9ab80d9bc6616b49f338",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/51/index.html",
+    "gitBlob": "417e2d4d09544d6cb2b825804cadad7004a296d2",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/52/index.html",
+    "gitBlob": "8125d2328b7ad5dead08d65649a3a44a362595a7",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/53/index.html",
+    "gitBlob": "8e316d5b9278f84e28e543890d86da11399b0062",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/54/index.html",
+    "gitBlob": "dc6f6f96fb58b5d1f02052e19f80313737186cd5",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/55/index.html",
+    "gitBlob": "f2bfe5f3a2bad0a087cb94c42b0c7d1b231cef7a",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/56/index.html",
+    "gitBlob": "ae143d37185747027c62c69d682049c3f8453b87",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/57/index.html",
+    "gitBlob": "197659b0de4957efb9b09dafed2f593ab3a3dfd1",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/58/index.html",
+    "gitBlob": "a6eb7ffd9176cc2a028e71d9326078b940c44074",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/59/index.html",
+    "gitBlob": "aa98259277977af70d72148c26a17041b8007943",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/6/index.html",
+    "gitBlob": "0c3f31d18e914ad3355711d9ca505908f479deec",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/60/index.html",
+    "gitBlob": "8c83b02161097e639544d68032f34f9916dff9a5",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/61/index.html",
+    "gitBlob": "873e20fe6bb34c933f7d7871a77f5da8f83e9ee5",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/62/index.html",
+    "gitBlob": "f3b4c188cbc4ec23a7995121942e35b4b5763279",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/63/index.html",
+    "gitBlob": "3ae942022532f89b417589af6eec7b98ed99ea14",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/64/index.html",
+    "gitBlob": "fd88107ae86be59512138a5f0e88c0cf97c383ce",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/65/index.html",
+    "gitBlob": "cb04311536830a093a4e6ee3a537c73636e4d35f",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/66/index.html",
+    "gitBlob": "05c9a5aa578cf001a832f54cc5e11cadac44de98",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/67/index.html",
+    "gitBlob": "4a79aad78a0698a8e84e0d8e613b20873a36cb29",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/68/index.html",
+    "gitBlob": "8d49ec677385e324113607ea67bebed482737623",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/69/index.html",
+    "gitBlob": "709bc40934bb33a795e7e0207b97924a29168568",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/7/index.html",
+    "gitBlob": "47e4ca071048dea0b57d71fe7695ba52bdfb68c6",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/70/index.html",
+    "gitBlob": "ce83186f9987cac0a79dbba9f8ae21c010e5ae48",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/71/index.html",
+    "gitBlob": "489300436b5bb4c5b400e47a62bd80036f8a5924",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/72/index.html",
+    "gitBlob": "29ea40cc20b8d14b9e90727dbbb6ca120d770949",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/73/index.html",
+    "gitBlob": "bee75f56accf44dc7fadb9d3e634c5a216c53762",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/74/index.html",
+    "gitBlob": "c5af01c8a4e6182920af5c49c8b68116a048423d",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/75/index.html",
+    "gitBlob": "6e0363255c753f38faf214401473f4e7eb7ba265",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/76/index.html",
+    "gitBlob": "33a73a5e5f7ef4f614fba23e6bdc009f89b2340c",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/77/index.html",
+    "gitBlob": "d276fd81c38b1d4fa6b7ac057c32a2e77042b840",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/78/index.html",
+    "gitBlob": "cbc1cc2cdd1b68d1f123950f7e192e4d370d0d4d",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/79/index.html",
+    "gitBlob": "1ff7e67e7b3940a45ec8d0b7d142c59da01eca64",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/8/index.html",
+    "gitBlob": "c64b3bfb003c4c85c57058dca46666695edffaf3",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/80/index.html",
+    "gitBlob": "f6836e56ee1ee1dabc679936978230c7a167d022",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/81/index.html",
+    "gitBlob": "384022e9e6d12d9da14a72fae266056a002816c0",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/82/index.html",
+    "gitBlob": "92e4b37ab1b4d1e44ca2de0a316e332009396504",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/83/index.html",
+    "gitBlob": "e073b6c4a1436d672f731ddb13709ee3488672c3",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/84/index.html",
+    "gitBlob": "6fabef07f9f1feb90c4b4093e0b57796156c21be",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/85/index.html",
+    "gitBlob": "a068c0fbd007bf8b25c204a49ea0a73967b2ce9e",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/86/index.html",
+    "gitBlob": "cd970af745002add6e619797d729f4a7c72eec64",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/87/index.html",
+    "gitBlob": "730bfd9013ced187d988d16e414e2a866b53172f",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/88/index.html",
+    "gitBlob": "d412d7e6e187b641a07d540d4bec3beb7d3a5f5e",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/89/index.html",
+    "gitBlob": "a4e26602aa0e77c5a84d22df0c16ff4c43bf4f3c",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/9/index.html",
+    "gitBlob": "efb74cb5a22975efe8eec7b7967f534f38ac6eea",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/90/index.html",
+    "gitBlob": "e498bb6d1d39591408fdca4fe268f54c9f5b69d7",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/91/index.html",
+    "gitBlob": "54e6d4ce09e4f8a74c2cc12e2b52a8abbc0f4b91",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/92/index.html",
+    "gitBlob": "cc1cb03455205eb1eba11124df209e24371596d5",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/93/index.html",
+    "gitBlob": "3790cd7b2aaed1c2ea953b5d6eef3367716f3a35",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/94/index.html",
+    "gitBlob": "62a9d06d4131e5664d3075efe29d3dc53013b10b",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/95/index.html",
+    "gitBlob": "dcab71880faa97219b25dec8926afb5619bd4d72",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/96/index.html",
+    "gitBlob": "b5f544ecdd39697e4c508f7a16e869747d8f6dff",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/97/index.html",
+    "gitBlob": "fd56b2cf5b44969c2a4084f936b700d24b1b1eb1",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/98/index.html",
+    "gitBlob": "81d369be00d0527cb317f9c3eb4d22d19a5107a0",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/99/index.html",
+    "gitBlob": "0bf382bfea7fc1c821ea44b65fe9732a259efdbc",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/index.html",
+    "gitBlob": "3a76663f3d885b2a50acb29071c32d821d009f40",
+    "branches": [
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/index.html",
+    "gitBlob": "fa7b22cbb6a7c75369e4d924283f0ba40c56d629",
+    "branches": [
+      "agent/p0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/nhom/0/index.html",
+    "gitBlob": "ed7902cd7ada7f56cd80b4f6daf961583a7cf6b9",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/nhom/135/index.html",
+    "gitBlob": "d83dbd20da84b6b5ab00e2468ac3122a644ea55a",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/nhom/246/index.html",
+    "gitBlob": "0c9b9def7b21d7b8778375b894c961dd0ef77cf6",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/nhom/789/index.html",
+    "gitBlob": "99fd735bda6646a3069ae75da964a71092995481",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/nhom/V/index.html",
+    "gitBlob": "3f0d003e41baf751151cc47ee93bfc9504b06786",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/proof-of-operation/index.html",
+    "gitBlob": "57024c9326e3207e0ecc14813cb9a74739fd5061",
+    "branches": [
+      "agent/p0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "vi/tham-gia/index.html",
+    "gitBlob": "57157882dd7ab7bce312074f81f28ca0f63a2c84",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "website/.keep",
+    "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "branches": [
+      "website/0000-ai-id-foundation"
+    ]
+  },
+  {
+    "path": "website/0.md",
+    "gitBlob": "eef6e2445efc840ac9f3688502bf6375a696b0fb",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "automation/cfp-ai-review-orchestrator",
+      "cleanup/p0-current-tree-69",
+      "copilot/agentp0-website-vi-release-1",
+      "copilot/research-master-execution-plan",
+      "feat/911-us-ai-master",
+      "feature/cmp-orchestrator-p0",
+      "fix/698461-vietlinker-developer",
+      "integration/openai-notion-v1",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "website/0000.md",
+    "gitBlob": "234296c89293aaff6080a96e59ce7c670e25cb31",
+    "branches": [
+      "website/0000-ai-id-foundation",
+      "website/0000-ai-id-foundation-2"
+    ]
+  },
+  {
+    "path": "website/31.md",
+    "gitBlob": "86112d2fd6eb0275b678a00fd951e7d4dedbc53a",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "automation/cfp-ai-review-orchestrator",
+      "cleanup/p0-current-tree-69",
+      "cmp-executor-write-gateway",
+      "copilot/agentp0-website-vi-release-1",
+      "copilot/research-master-execution-plan",
+      "feat/911-us-ai-master",
+      "feature/cmp-orchestrator-p0",
+      "fix/698461-vietlinker-developer",
+      "integration/openai-notion-v1",
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate",
+      "review/cmp-xai-api-pilot",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "website/32.md",
+    "gitBlob": "40205cfd352e9191bb7410c572246caeaa513f7c",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "automation/cfp-ai-review-orchestrator",
+      "cleanup/p0-current-tree-69",
+      "cmp-executor-write-gateway",
+      "copilot/agentp0-website-vi-release-1",
+      "copilot/research-master-execution-plan",
+      "feat/911-us-ai-master",
+      "feature/cmp-orchestrator-p0",
+      "fix/698461-vietlinker-developer",
+      "integration/openai-notion-v1",
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate",
+      "review/cmp-xai-api-pilot",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "website/33.md",
+    "gitBlob": "d8230bdb831567f512ea3f4570c99d5f145fe550",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "automation/cfp-ai-review-orchestrator",
+      "cleanup/p0-current-tree-69",
+      "cmp-executor-write-gateway",
+      "copilot/agentp0-website-vi-release-1",
+      "copilot/research-master-execution-plan",
+      "feat/911-us-ai-master",
+      "feature/cmp-orchestrator-p0",
+      "fix/698461-vietlinker-developer",
+      "integration/openai-notion-v1",
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate",
+      "review/cmp-xai-api-pilot",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "website/3330.md",
+    "gitBlob": "9f10d74af044ecb149d7521e980786c9b5129d9d",
+    "branches": [
+      "website/0000-ai-id-foundation",
+      "website/0000-ai-id-foundation-2"
+    ]
+  },
+  {
+    "path": "website/3331.md",
+    "gitBlob": "d7142511b91310ccf2f1aeb58386d9093133ada9",
+    "branches": [
+      "website/0000-ai-id-foundation",
+      "website/0000-ai-id-foundation-2"
+    ]
+  },
+  {
+    "path": "website/3332.md",
+    "gitBlob": "0799b8348b6509836d43a12b4752453a8a35140f",
+    "branches": [
+      "website/0000-ai-id-foundation",
+      "website/0000-ai-id-foundation-2"
+    ]
+  },
+  {
+    "path": "website/3333.md",
+    "gitBlob": "b20afd3ac9f8407be9a9ca0a48100058ce8c009a",
+    "branches": [
+      "website/0000-ai-id-foundation",
+      "website/0000-ai-id-foundation-2"
+    ]
+  },
+  {
+    "path": "website/6.md",
+    "gitBlob": "58bb486100cff6282f384faed796d42b5445f9d5",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "automation/cfp-ai-review-orchestrator",
+      "cleanup/p0-current-tree-69",
+      "copilot/agentp0-website-vi-release-1",
+      "copilot/research-master-execution-plan",
+      "feat/911-us-ai-master",
+      "feature/cmp-orchestrator-p0",
+      "fix/698461-vietlinker-developer",
+      "integration/openai-notion-v1",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "website/6.md",
+    "gitBlob": "6bfdf37579a306d5d31b429e1fe5b4926fa5281b",
+    "branches": [
+      "review/cmp-xai-api-pilot"
+    ]
+  },
+  {
+    "path": "website/69.md",
+    "gitBlob": "051221a919afb5d208ad0c18d30727fd825b4163",
+    "branches": [
+      "agent/cfp-sync-001-recovery",
+      "agent/cmp-review-links-sync",
+      "agent/p0-website-vi-release-1",
+      "automation/cfp-ai-review-orchestrator",
+      "cleanup/p0-current-tree-69",
+      "copilot/agentp0-website-vi-release-1",
+      "copilot/research-master-execution-plan",
+      "feat/911-us-ai-master",
+      "feature/cmp-orchestrator-p0",
+      "fix/698461-vietlinker-developer",
+      "integration/openai-notion-v1",
+      "review/hub69-daily-global-news-time-id"
+    ]
+  },
+  {
+    "path": "website/69.md",
+    "gitBlob": "83ddd4c480be08acb9216e6cd79265d124a9f6a6",
+    "branches": [
+      "review/cmp-xai-api-pilot"
+    ]
+  },
+  {
+    "path": "website/69.md",
+    "gitBlob": "a48abe059bbc867cfbd49f608769b1cb7ff90072",
+    "branches": [
+      "cmp-executor-write-gateway",
+      "p0-website-public-v1",
+      "p0/ai-id-link-skeleton",
+      "p0/cfp-ai-country-zero-gateway",
+      "p0/cmp-backend-foundation",
+      "p0/ctttc-v0.6.6-ci",
+      "p0/evidence-first-completion-gate"
+    ]
+  },
+  {
+    "path": "website/CFP_WEB_900_WEBSITE_FOUNDATION_BASELINE_VI.md",
+    "gitBlob": "357dca96ee59b1480d14c307ef21655227d7c668",
+    "branches": [
+      "agent/notion-canonical-migration-0000"
+    ]
+  },
+  {
+    "path": "website/CHAPTER_INDEX.md",
+    "gitBlob": "3ed1d1a02d6ca86a0986bd927dd3e3f68137d49d",
+    "branches": [
+      "website/0000-ai-id-foundation"
+    ]
+  },
+  {
+    "path": "website/CONTENT_POPULATION_PLAN.md",
+    "gitBlob": "bb9f0b280c8413648af8f65e248b13ec8428f0c1",
+    "branches": [
+      "website/0000-ai-id-foundation"
+    ]
+  },
+  {
+    "path": "website/GROUP_INDEX.md",
+    "gitBlob": "e5473c6f984f45ea8482393a7de8e2cfb5a38c3f",
+    "branches": [
+      "website/0000-ai-id-foundation"
+    ]
+  },
+  {
+    "path": "website/ID_LINK_BASELINE.md",
+    "gitBlob": "de71de25b237d9469a7bff68922606a922160fa5",
+    "branches": [
+      "website/0000-ai-id-foundation"
+    ]
+  },
+  {
+    "path": "website/PUBLIC_ID_REGISTRY_00_99_VI.md",
+    "gitBlob": "189bb1a0e1ac804ce67bebd137d8b7049cc61147",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/global-ai-registry-baseline",
+      "agent/id-documents-migration",
+      "agent/notion-canonical-migration-0000",
+      "agent/partner-review-queue",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "agent/website-id-foundation",
+      "automation/cfp-ai-review-orchestrator",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/research-master-execution-plan",
+      "copilot/track-a-standard-inventory",
+      "feature/cmp-orchestrator-p0",
+      "governance/hub69-global-ai-invitation",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "migration/0001-canonical-documents",
+      "website/full-skeleton-v1",
+      "website/0000-ai-id-foundation",
+      "website/0000-ai-id-foundation-2",
+      "website-initial-launch"
+    ]
+  },
+  {
+    "path": "website/README.md",
+    "gitBlob": "04ab7a0a65b7c08a8588fe1dc05651f88bca8fa2",
+    "branches": [
+      "website/0000-ai-id-foundation"
+    ]
+  },
+  {
+    "path": "website/README.md",
+    "gitBlob": "177827b41f76c8e6684e1fc3fdcda5a5822656e5",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/README.md",
+    "gitBlob": "f90afc62e56e927a639d55451c8f9b6c10c3d915",
+    "branches": [
+      "website-master-map-import"
+    ]
+  },
+  {
+    "path": "website/README_REVIEW.md",
+    "gitBlob": "23980081a4556f6d2aed87f1d7e2d23f54899fd4",
+    "branches": [
+      "website/0000-ai-id-foundation"
+    ]
+  },
+  {
+    "path": "website/RELEASE_1_ROUTE_INVENTORY_VI.md",
+    "gitBlob": "1cf61c8502938c63b249a41c9d86c1b7b48d5a1d",
+    "branches": [
+      "agent/p0-website-vi-release-1",
+      "copilot/agentp0-website-vi-release-1"
+    ]
+  },
+  {
+    "path": "website/REVIEW_DECISION_LOG.md",
+    "gitBlob": "8f44e3b29adb9f6c7a12d1236ad0a2bc9b258513",
+    "branches": [
+      "website/0000-ai-id-foundation"
+    ]
+  },
+  {
+    "path": "website/REVIEW_LIFECYCLE.md",
+    "gitBlob": "f5190739d87cf7611d0a8e3454ca02fb216e8b42",
+    "branches": [
+      "website/0000-ai-id-foundation"
+    ]
+  },
+  {
+    "path": "website/REVIEW_ROUND_2_CHECKLIST.md",
+    "gitBlob": "9234c8af9ecc016f2659134b93df9b5a035f67cd",
+    "branches": [
+      "website/0000-ai-id-foundation"
+    ]
+  },
+  {
+    "path": "website/REVIEW_STATUS.md",
+    "gitBlob": "3e15b7628d71ed0e475403066d88dc25475d128e",
+    "branches": [
+      "website/0000-ai-id-foundation"
+    ]
+  },
+  {
+    "path": "website/STRUCTURE_REVIEW_CANDIDATE.md",
+    "gitBlob": "a7e0b514b1b54fa4f9d79144ae7de0d411cc05f1",
+    "branches": [
+      "website/0000-ai-id-foundation"
+    ]
+  },
+  {
+    "path": "website/TEMPORARY_STABILITY_CRITERIA.md",
+    "gitBlob": "fc03923cf84f5fc98fd88aa79a5905f7082dbe40",
+    "branches": [
+      "website/0000-ai-id-foundation"
+    ]
+  },
+  {
+    "path": "website/WEBSITE_MASTER_MAP_VI.md",
+    "gitBlob": "2a26d59e141d976a2b819485276da86846724510",
+    "branches": [
+      "agent/id-documents-migration"
+    ]
+  },
+  {
+    "path": "website/WEBSITE_MASTER_MAP_VI.md",
+    "gitBlob": "2e3d058a423d12afdf2d5300739f7f765b69c9e0",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/WEBSITE_MASTER_MAP_VI.md",
+    "gitBlob": "a5c7e8217a5cdae7e7c3175245ce923048d88a2f",
+    "branches": [
+      "website-master-map-import"
+    ]
+  },
+  {
+    "path": "website/WEBSITE_MASTER_MAP_VI.md",
+    "gitBlob": "d8c2a7f821440061603c7ae93157f3b5b2cf15ca",
+    "branches": [
+      "agent/claude-pr-review",
+      "agent/create-ten-major-module-frameworks",
+      "agent/fix-ai-index-identity-mappings",
+      "agent/global-ai-registry-baseline",
+      "agent/notion-canonical-migration-0000",
+      "agent/partner-review-queue",
+      "agent/safe-validator-phase0",
+      "agent/standardize-ten-chapter-web-framework",
+      "automation/cfp-ai-review-orchestrator",
+      "copilot/add-new-feature",
+      "copilot/build-openai-api-integration",
+      "copilot/fix-69119-vietlinker-references",
+      "copilot/research-inventory-standards-documents",
+      "copilot/research-master-execution-plan",
+      "copilot/track-a-standard-inventory",
+      "feature/cmp-orchestrator-p0",
+      "governance/hub69-global-ai-invitation",
+      "governance/vietnam-ai-hub-hierarchy-v1",
+      "integration/openai-notion-v1",
+      "migration/0001-canonical-documents",
+      "website/0000-ai-id-foundation",
+      "website/0000-ai-id-foundation-2",
+      "website-initial-launch"
+    ]
+  },
+  {
+    "path": "website/WEBSITE_MASTER_MAP_VI.md",
+    "gitBlob": "d9d1d4f4e7da4306a7b2f382b3ffdb931efd740a",
+    "branches": [
+      "agent/website-id-foundation"
+    ]
+  },
+  {
+    "path": "website/chapters/0.md",
+    "gitBlob": "34e5c6674b2eecafdd521ee56148ebcbad8a98bd",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/chapters/0/README.md",
+    "gitBlob": "e07b1564b5d66686260da6bf5994dc22b80be9e1",
+    "branches": [
+      "agent/standardize-ten-chapter-web-framework"
+    ]
+  },
+  {
+    "path": "website/chapters/1.md",
+    "gitBlob": "2a36105db81f4a452245db49bfcfe86ca7d0e0ee",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/chapters/1/README.md",
+    "gitBlob": "40a6ff91df18aa677826705d6746852e228a387a",
+    "branches": [
+      "agent/standardize-ten-chapter-web-framework"
+    ]
+  },
+  {
+    "path": "website/chapters/2.md",
+    "gitBlob": "67233ed974b529bbecf8dace8633422f47d5521a",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/chapters/3.md",
+    "gitBlob": "6ef4331404fd408e8b9f3a2566b6814bde9c9b06",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/chapters/4.md",
+    "gitBlob": "09b896038bdff536104a453c7ada17b6492799fd",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/chapters/5.md",
+    "gitBlob": "f825919f4764d9b4a7b195cc9f6c744c46b43c0b",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/chapters/6.md",
+    "gitBlob": "c1969d38c01d1fda7a7b3167d06024a0e807b96c",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/chapters/7.md",
+    "gitBlob": "7fbf606e0e63a5c5e74b938c0eef6caa965797f4",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/chapters/8.md",
+    "gitBlob": "1bdc988f9f602390481403d10fa6383cf38647f9",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/chapters/9.md",
+    "gitBlob": "50bf699c5c5eaff786b0521b6f83f1148817a070",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/chapters/README.md",
+    "gitBlob": "66c8b28f96170178344cea354795e048606b3560",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/groups/0.md",
+    "gitBlob": "71bf26057788457123ca58997be0d25ec93ac413",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/groups/135.md",
+    "gitBlob": "bf2f9d8b14855fb843763043ce5f07b7505ba256",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/groups/246.md",
+    "gitBlob": "2995a83283535fa8c116616e985a08db8ad62fc6",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/groups/789.md",
+    "gitBlob": "193addf6bb302a45eb4140d9a643d5c3300a5a24",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/groups/README.md",
+    "gitBlob": "61730d82813a5038f6c461f5a517df9bf02f4c7c",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/groups/V.md",
+    "gitBlob": "8317304e44106499ab2ae315068279e6783f4f93",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/namespaces/C.md",
+    "gitBlob": "b89325aab5f686af2c245661cd0fb3b714fea56f",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/namespaces/D.md",
+    "gitBlob": "07e6b28712c0e33016be4fe5e4e9790dd4243b94",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/namespaces/I.md",
+    "gitBlob": "2bc8a4aa87af7dcfd0dc2ab370c44a56cb589ce6",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/namespaces/L.md",
+    "gitBlob": "76945d74d9380119297f083ad0a4b4355ef56405",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/namespaces/M.md",
+    "gitBlob": "7bcd81ff172c074d83aa3ca0ee9da2aca295c482",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/namespaces/README.md",
+    "gitBlob": "84dd1c06e103e28243031bb9763e58793a62de43",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/namespaces/V.md",
+    "gitBlob": "fa2c94f9d161694a0f7ceb16fe7b54cc33777cb9",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/namespaces/X.md",
+    "gitBlob": "3d381c973f5a7214612f7b70092596b7f1741470",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/00.md",
+    "gitBlob": "b5a60e2a2359dc9ae317106cd7a8e8629e0a57d8",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/01.md",
+    "gitBlob": "3836772dfb8ed85406721ddb2c016f982a76d472",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/02.md",
+    "gitBlob": "8bc34a8dea403bf086c09b09d35c30f4cb96e08d",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/03.md",
+    "gitBlob": "322d35166a8b890fd77ba1c9e9ef5ab24db15b85",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/04.md",
+    "gitBlob": "419261ed77fe2bd0f8ab93df7f339b0687abc9d7",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/05.md",
+    "gitBlob": "91d3270c42490bee9df4ac66ec8f1fd7ded30855",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/06.md",
+    "gitBlob": "acf8f3c02b8fdf8cfd2de2d139890d27377e0242",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/07.md",
+    "gitBlob": "f2163f1a69723dd017c92828821c5905b0ef2e3b",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/08.md",
+    "gitBlob": "cf9790685e2672e232c5dfc4f2e21b625be6ee2a",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/09.md",
+    "gitBlob": "ca093cc155a2b3fdb77e68dda3fe063fa94079ca",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/10.md",
+    "gitBlob": "9c30232db68dfb4874dedc684edfd21936fbfa42",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/11.md",
+    "gitBlob": "0d2e6404c228dccd5230027df69a9af8e0b6f4fe",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/12.md",
+    "gitBlob": "fde35f6180ed46632ebd3b1bf1d933c19a68cb91",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/13.md",
+    "gitBlob": "6102f04ebeca813ed3d1747018dd44614e2f6dad",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/14.md",
+    "gitBlob": "12fcc8a2cfcfb74a403e41895f8f020b4c376eef",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/15.md",
+    "gitBlob": "341d2c807db0927c6730dc292e31714ba21fb31f",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/16.md",
+    "gitBlob": "4b0fce18b31ec0989f25fcd821f94ee53e32c07e",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/17.md",
+    "gitBlob": "8cc17520f3d1d3deb9113576c15922c22e170ccb",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/18.md",
+    "gitBlob": "b4622242412e006bdff3a4159c95868321a841b8",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/19.md",
+    "gitBlob": "a192912b830bab370c542cb0fdc461eb47c63a92",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/20.md",
+    "gitBlob": "96cbbef1a5381698d4e10830424dcaf9e84d6e69",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/21.md",
+    "gitBlob": "f9534c3f0d497caf0b755bfcadf6ecfd55793bcf",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/22.md",
+    "gitBlob": "4b653dbbecad4b3ba7534a0b4ed938a1321cb730",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/23.md",
+    "gitBlob": "bcaaeb0a98f3f054dd63dd99096505368dccbfda",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/24.md",
+    "gitBlob": "d6cc7071bbb711b4f6f5df4bb5aee91dfcfdf2f9",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/25.md",
+    "gitBlob": "43d1cf0e73782b034d86bc2cde7260a4d7ab3b3c",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/26.md",
+    "gitBlob": "49097cceb995830971e3bba971014715bdfc4a3d",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/27.md",
+    "gitBlob": "66a61fb9711606d596b940e3ae23c19af36a7a67",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/28.md",
+    "gitBlob": "076238c8787883569351745e3a6722a5f8ef9bc9",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/29.md",
+    "gitBlob": "0dca76afb9797b27bf77cdccf8b38ca2f6157f1d",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/30.md",
+    "gitBlob": "400d1ec2d24abacf48b284d2c498208eba2b9516",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/31.md",
+    "gitBlob": "787e4bb3ede556752efa8b3d841d6f2e016197ce",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/32.md",
+    "gitBlob": "bdd6cff55435397e6cb84acd271512c7db08220a",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/33.md",
+    "gitBlob": "92c25def581c1220f2d0e9e45d760d10366f5881",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/34.md",
+    "gitBlob": "4c1636e86e16b2248ecaa871b7e2a2e55a2eb857",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/35.md",
+    "gitBlob": "02bf774113219debcf448dd81d824ce5024d71c8",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/36.md",
+    "gitBlob": "8d0c0045ab61a444ce7f806c469cacd3030ad93b",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/37.md",
+    "gitBlob": "64cfa1f8e4307c290596758d1e110661b9a3c2fe",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/38.md",
+    "gitBlob": "bffabbf2fefdf5845a823a3b8e4432b99f5c1631",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/39.md",
+    "gitBlob": "eeea68fc39784bb4119978eb4af85b916a42e30e",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/40.md",
+    "gitBlob": "48ff7a39dd46c1ce712f9d50a29931e34a547d98",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/41.md",
+    "gitBlob": "5a98725ce9db3d69f2829a88e0022f1f6241f5b5",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/42.md",
+    "gitBlob": "e5f1d763140ca72318f0633c7bdd6d86c457dcb0",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/43.md",
+    "gitBlob": "bcce08a1344e8d6b97920556efe42d55ddda2911",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/44.md",
+    "gitBlob": "9c4259360f8e07f28804d55426032f980df12a6c",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/45.md",
+    "gitBlob": "5aba6aa464f9064eaee1cd02c95bfc817e77099f",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/46.md",
+    "gitBlob": "d377f2be1a1e65578b22ee58d70f431673972f3f",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/47.md",
+    "gitBlob": "9907369ec25bb0035b548f20381796aacc7fc7fa",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/48.md",
+    "gitBlob": "2522defc65603fb3815100bcab58130bca30153a",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/49.md",
+    "gitBlob": "c408a1cbb9a41b86d8accec5384d7de13cdce3c2",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/50.md",
+    "gitBlob": "d1db86fa023681913987278d9b5d1798bee33241",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/51.md",
+    "gitBlob": "ae136e400a73db02b9e59d548a65054431bb785d",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/52.md",
+    "gitBlob": "1cd7068e960864fbb72b7440c9b98a1f702b66bc",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/53.md",
+    "gitBlob": "08e154e2414e08f95fd2905e8aa43c193a56ac92",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/54.md",
+    "gitBlob": "54e9ff82ce15b27853a8f69d61c33e96ee84e1f2",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/55.md",
+    "gitBlob": "4f27a7b94bd421aa37f03321807c253c164a447d",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/56.md",
+    "gitBlob": "352a13424afe23e848ff9d80649ffe3fca9502de",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/57.md",
+    "gitBlob": "ba4777e5fcf9048e0aee9c26f18397b22b5e3357",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/58.md",
+    "gitBlob": "7c4b6aa8b14efcd649fdd77298981c183223b09a",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/59.md",
+    "gitBlob": "292ef00af045d959cf32d9870c624e7c733445ec",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/60.md",
+    "gitBlob": "42362a3f03a38052fe742e4a133f778039fa2e86",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/61.md",
+    "gitBlob": "a157b90bfdd556a356af0a28faff5d9ff0f67a53",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/62.md",
+    "gitBlob": "975b1ff238d6bc4e4f7ebda494436c548f33302a",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/63.md",
+    "gitBlob": "52a368873e636e7cca4586e49aec43dc97cf02f2",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/64.md",
+    "gitBlob": "9d64f159bba7afdd9d5acdae7328c10f7b86ee37",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/65.md",
+    "gitBlob": "8ab5519ecac23021df5d0747b0a54268ca39cdbc",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/66.md",
+    "gitBlob": "a295263828569c703bb3440c4e077ad067073a53",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/67.md",
+    "gitBlob": "2e18027b64719d1cd3f257582de6467eb55dccd3",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/68.md",
+    "gitBlob": "dd6f6b8d085d33becc1683b8b8b36b16073de61c",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/69.md",
+    "gitBlob": "301abb9074b98022f03917016574114b3daa891b",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/70.md",
+    "gitBlob": "50631345da4388d38bd116b6eb649ad825d85986",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/71.md",
+    "gitBlob": "bbd8212fcc0a6b346f4a0126ecacd9dd6b22aa93",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/72.md",
+    "gitBlob": "310c4a4eb714c0e343d90c406cc826089672e074",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/73.md",
+    "gitBlob": "d97091eebe80162da01c64ba0f7413b431c2ebc2",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/74.md",
+    "gitBlob": "c8866511e56dbe1db611e3f4ec0705e89b8e281d",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/75.md",
+    "gitBlob": "1026b7809ce9d952aaf9185d42ec167a3c2fe730",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/76.md",
+    "gitBlob": "807ffef99644e26de619acebdad408b7034bad9d",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/77.md",
+    "gitBlob": "5710593ca5a00bb3118dad611e92e2d7e454b9c0",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/78.md",
+    "gitBlob": "1ddea108187da6d5220c19ac3ccaf5fbe1f4ad52",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/79.md",
+    "gitBlob": "9011380c0790216bca474a4a8e27c45366b10f92",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/80.md",
+    "gitBlob": "7aafd9c20cac7c15a5686f0ad1f2f8ac6f43ff9a",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/81.md",
+    "gitBlob": "f1fe4128b3cc145718c324238660999ba13c53f9",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/82.md",
+    "gitBlob": "03b82a8fcc916f2905a41cf46c3772eea0a02fa9",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/83.md",
+    "gitBlob": "bf8e863da896a595b0260ecf45bf23c634848d59",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/84.md",
+    "gitBlob": "38bde369f02140fcb4874589272b68bcaa0c760b",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/85.md",
+    "gitBlob": "a8a0e793fdfd994ebe9f3e122623e1e566c480ed",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/86.md",
+    "gitBlob": "ea9a7b20ba1c3c070e96b29336253d8d9b094464",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/87.md",
+    "gitBlob": "761a727b1d9daa3266e6ad4aa99daeb7c1dad820",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/88.md",
+    "gitBlob": "e9df1c08713a2002eba38cacd190b28decd04e6a",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/89.md",
+    "gitBlob": "0233ee53a865995618b694546ea2f93ab19c28bb",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/90.md",
+    "gitBlob": "87351bc0abe2b87db26de0d3fbfedfb66d75d150",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/91.md",
+    "gitBlob": "0d34228d6125ac1d4303e16808589c17fbf10206",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/92.md",
+    "gitBlob": "aba0264e627b2398a15ffdda656d429c35d717ee",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/93.md",
+    "gitBlob": "d6b64f7118ae4bf74d7785daf1ab9aec96ea8d1e",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/94.md",
+    "gitBlob": "988d228f35d4be6f2c89cdab7042285fa99de7de",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/95.md",
+    "gitBlob": "32e3077588b483b68c8d0c2b768659cee90765c5",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/96.md",
+    "gitBlob": "862ed14414d8ce1cce5cfd101d334401eff22d53",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/97.md",
+    "gitBlob": "24a7bad9dafd5807ac4a6a8ae7da1e95356ec88d",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/98.md",
+    "gitBlob": "eece4d69779fd199d8ec7f4165f24750282fc93b",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/99.md",
+    "gitBlob": "ab65994f8688406a8c35ac0899516904d6602106",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/pages/README.md",
+    "gitBlob": "0988575d5608db22e739887bba02585be2b24e16",
+    "branches": [
+      "website/full-skeleton-v1"
+    ]
+  },
+  {
+    "path": "website/registry/PUBLIC_ID_MANIFEST_VI.md",
+    "gitBlob": "95e15c949e1668047e5795073b3b52994425de7f",
+    "branches": [
+      "website-master-map-import"
+    ]
+  },
+  {
+    "path": "website/registry/WEBSITE_DOCUMENT_REGISTRY_VI.md",
+    "gitBlob": "1c8d61ba4b9c05a625b1ed7c3722f2daebe401ff",
+    "branches": [
+      "website-master-map-import"
+    ]
+  },
+  {
+    "path": "website/templates/CFP_WEB_STANDARD_PAGE_TEMPLATE_V1.0.md",
+    "gitBlob": "3b2cf0a59fcca7f75df8517c3b0edd6faaa16eaf",
+    "branches": [
+      "agent/standardize-ten-chapter-web-framework"
+    ]
+  }
+]

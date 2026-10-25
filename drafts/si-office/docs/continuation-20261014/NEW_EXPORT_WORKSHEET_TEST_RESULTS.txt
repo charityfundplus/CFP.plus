@@ -1,0 +1,11 @@
+✔ existing UI envelope becomes worksheet without promoting revision/competence or mutating input (2.154085ms)
+✔ tampered hash, foreign workspace/pair feedback and duplicate task bindings fail closed (1.022901ms)
+✔ missing or self-reviewed exercise and unresolved HSTDN are retained as findings (0.439172ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10.492447

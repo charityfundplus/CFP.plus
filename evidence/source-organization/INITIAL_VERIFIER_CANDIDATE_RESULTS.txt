@@ -1,0 +1,2 @@
+VERIFIED 61 file hashes from RUNTIME_MANIFEST; integrity only, not capability/legal verification.
+Tampered training config rejected: PASS

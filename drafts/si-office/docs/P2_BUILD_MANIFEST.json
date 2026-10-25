@@ -1,0 +1,137 @@
+{
+  "version": 2,
+  "baseline": "87c763ba575dabcce0c7eabbbbb4546d3d6a94ae",
+  "scope": "P2 HTTP/UI, pair grants and bounded executable rollback build",
+  "files": [
+    {
+      "path": "core/common.mjs",
+      "bytes": 882,
+      "sha256": "f93f027c200da272aa059a61ea7412e00096f0a50b7258a240629d33343700e0"
+    },
+    {
+      "path": "core/core-engine.mjs",
+      "bytes": 11870,
+      "sha256": "aaa2383f17410fcdfa78af902152ce51e2ae3498662b968f557d3d2f0a91e598"
+    },
+    {
+      "path": "core/cross-check-engine.mjs",
+      "bytes": 1379,
+      "sha256": "bb8d503d036098f0e7aaa6c8f7bebb28e85cb2cc75588727df0d3d38672759fa"
+    },
+    {
+      "path": "core/hub69-integration.mjs",
+      "bytes": 419,
+      "sha256": "14fb53cf1ba15e1c5889afb022ec1d60a5a49a3a1c5bb2b90c4486b6e88e5bd7"
+    },
+    {
+      "path": "core/identity-registry.mjs",
+      "bytes": 1782,
+      "sha256": "3d47d937d62dffd66a7712608afcf9ac5d52d0143e64348e6a5819e004c43ced"
+    },
+    {
+      "path": "core/knowledge-evidence.mjs",
+      "bytes": 1776,
+      "sha256": "3aa78103ed6225f490a25a95848085a8b0074ce0faeb6cdb98aec22525db3e0a"
+    },
+    {
+      "path": "core/learning-training.mjs",
+      "bytes": 982,
+      "sha256": "0f9124475d0dffc33596f2694325889dd82c5b4997d2a3a42effed860df7a33a"
+    },
+    {
+      "path": "core/monitoring-recovery.mjs",
+      "bytes": 981,
+      "sha256": "d65e654fc08d123fbb91b6699e631b032c716c966110f6093ee13ad36255e754"
+    },
+    {
+      "path": "core/security-permission.mjs",
+      "bytes": 911,
+      "sha256": "bfa7f4d4704f0368f4bc72eb350e5022097801b3a3b1ab76524266de04370077"
+    },
+    {
+      "path": "core/si-adapter.mjs",
+      "bytes": 1216,
+      "sha256": "3aa9235a35bef76615172b662e5ba2537326a2bf85ac792f6abf9d22d15e97b9"
+    },
+    {
+      "path": "core/supervision-engine.mjs",
+      "bytes": 1138,
+      "sha256": "234b61a29dca36653e27e7b424fab4ca606f775a793e698311ee43012d503007"
+    },
+    {
+      "path": "core/task-engine.mjs",
+      "bytes": 3652,
+      "sha256": "ff6896f78ecae79bc6bce0c55029861e76ddf7f1f64aed6b93ecb259446b1d3d"
+    },
+    {
+      "path": "core/version-upgrade.mjs",
+      "bytes": 1558,
+      "sha256": "b8b93d65fea1aae9bb72851d4f5d3034c9a6fc54c614ebefc8ae448db611236e"
+    },
+    {
+      "path": "package.json",
+      "bytes": 486,
+      "sha256": "7df9ebaae52dadad2c544220bbd5f4c25ebcb8815aceef85adb85ee1cc5be085"
+    },
+    {
+      "path": "public/core.js",
+      "bytes": 11798,
+      "sha256": "ce77abf13f6750ee24d80e25b6a9cc769d908fb5443eb03dcab01dfafd399907"
+    },
+    {
+      "path": "public/p2.html",
+      "bytes": 5649,
+      "sha256": "055b7cdc6cf045ce7c195f91c081debad193800ea98f63f398c5b92a3e84c878"
+    },
+    {
+      "path": "public/style.css",
+      "bytes": 9746,
+      "sha256": "3a63ab0006910709702ba49cc1a0fde49eb9ad244a102c2c035deaaa8a5443c6"
+    },
+    {
+      "path": "sandbox/p2-http.mjs",
+      "bytes": 4757,
+      "sha256": "d0eff133283719d3358fe832095d3882ab1a8bf7c5f67a2c877cc125f1385414"
+    },
+    {
+      "path": "sandbox/p2-service.mjs",
+      "bytes": 11517,
+      "sha256": "8c113e1933c6bc46c69c2193336b8fa35e193255bfa2de43bd73e16688ef8848"
+    },
+    {
+      "path": "sandbox/release-control.mjs",
+      "bytes": 5185,
+      "sha256": "b7ade2c6a4c339ed954bf6f503d4c7c50e8ab3db8300008bf303d3f24171639d"
+    },
+    {
+      "path": "sandbox/release-health.mjs",
+      "bytes": 481,
+      "sha256": "d0f727c78cbabd5392e6a6640d8dbce152988396f185a52fdf8a74003ab5ba19"
+    },
+    {
+      "path": "scripts/p2-demo.mjs",
+      "bytes": 1499,
+      "sha256": "343612b1f3ac15c52662e080527f1cbb300a6916676d872ec8c425e622fbce2e"
+    },
+    {
+      "path": "scripts/p2-provision.mjs",
+      "bytes": 589,
+      "sha256": "5e0c008d09389f26cfe0d2f0aa5069e7ff464df939804c62b9312d4e349c3350"
+    },
+    {
+      "path": "scripts/p2-release-serve.mjs",
+      "bytes": 878,
+      "sha256": "516327eef188f8e12f6765912a2aa35f1827abb4a84f10aafec191c97595c235"
+    },
+    {
+      "path": "tests/p2-http.test.mjs",
+      "bytes": 6530,
+      "sha256": "5face1953b655400fd6174ec5c6b71fa1732765f85d025ff9824c8113f216d57"
+    },
+    {
+      "path": "tests/p2.test.mjs",
+      "bytes": 7955,
+      "sha256": "40074f518f2336bd5c36bfe5a2cb8d693dbef6df9bbea9a89fa2b648e784d269"
+    }
+  ]
+}
