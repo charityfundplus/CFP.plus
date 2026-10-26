@@ -29,6 +29,7 @@
     {key:'future-life',topic:'future',name:'Công nghệ phục vụ Sự Sống',kind:'Hướng nghiên cứu đề xuất',url:null,description:'Khung trình bày ứng dụng trong giáo dục, môi trường và cộng đồng; chờ hồ sơ có Evidence.'}
   ]);
   function route(hash){
+    const catalog=root.HUB69Commerce?.route(hash);if(catalog)return catalog;
     const review=root.HUB69HSTDNReview?.route(hash);
     if(review)return review;
     if(hash==='#hstdn')return {view:'hstdn',country:'all'};
@@ -43,6 +44,7 @@
     return null;
   }
   function filterRoute(state,key,value){
+    if(state.view==='commerce'&&key==='commerce-kind'&&Object.hasOwn(root.HUB69Commerce.kinds,value))return '#catalog/'+value;
     const review=root.HUB69HSTDNReview?.filterRoute(state,key,value);
     if(review)return review;
     if(value==='global'&&state.view!=='hstdn')return null;
@@ -77,7 +79,7 @@
     const topic=state.topic||'all',rows=selectRows(technologies,'topic',topic);
     return '<nav class="catalog-crumbs" aria-label="Đường đi công nghệ"><a href="#home">HUB 69</a><span aria-hidden="true">/</span><a href="#group/246">Nhóm 246</a><span aria-hidden="true">/</span><a href="#chapter/6">Chương 6</a><span aria-hidden="true">/</span><a href="#technology">Công nghệ</a></nav><div class="catalog-banner"><strong>Danh mục nghiên cứu từ Evidence Inbox</strong><p>Phân biệt tổ chức, nguồn công nghệ và sản phẩm/dịch vụ. Chưa có bằng chứng tích hợp, tài khoản truy cập, hợp tác hoặc lưu trữ dữ liệu CFP+.</p></div><div class="catalog-tabs" role="navigation" aria-label="Phân khu công nghệ">'+Object.entries(topics).map(([key,label])=>'<a class="btn '+(topic===key?'primary':'')+'" href="#technology'+(key==='all'?'':'/'+key)+'"'+(topic===key?' aria-current="page"':'')+'>'+esc(label)+'</a>').join('')+'</div><p class="catalog-count" role="status">'+rows.length+' nguồn / hướng nghiên cứu</p><div class="catalog-grid">'+rows.map(t=>'<article class="panel catalog-card"><div class="section-top"><span class="catalog-mark" aria-hidden="true">'+esc(t.topic==='quantum'?'Q':t.topic==='space'?'S':'F')+'</span><span class="tag">'+esc(topics[t.topic])+'</span></div><h2>'+esc(t.name)+'</h2><p>'+esc(t.description)+'</p><dl class="catalog-meta">'+field('Loại tham chiếu',t.kind)+field('Integration Evidence / Country / HSTDN','Chưa được bàn giao')+'</dl><div class="profile-actions">'+out(t.url||sources.inbox,t.url?'Đọc nguồn được dẫn':'Đọc đề bài nghiên cứu')+'</div></article>').join('')+'</div><article class="panel"><h2>Từ nguồn đến hồ sơ có Evidence</h2><p>Chủ thể → Sản phẩm / Dịch vụ → Công nghệ → Evidence tích hợp → Quốc gia → HSTDN.</p><p class="catalog-caption">Các URL được kế thừa từ Evidence Inbox. Khả năng truy cập và nội dung hiện tại của từng trang cần kiểm chứng riêng.</p><div class="profile-actions">'+out(sources.inbox,'Evidence Inbox hiện hữu')+'<a class="btn" href="#hstdn">Xem HSTDN</a><a class="btn" href="#training">Học SI/AI</a></div></article>';
   }
-  function view(state){
+  function view(state,context){
     if(state.view==='hstdn'){
       const current=hstdnView(state),review=root.HUB69HSTDNReview?.view(state)||'';
       // Keep one country selector and one review presenter inside the existing view.
@@ -86,7 +88,7 @@
       const pos=current.indexOf(marker);
       return pos>=0?current.slice(0,pos)+review+current.slice(pos):current+review;
     }
-    return state.view==='commerce'?commerceView(state):state.view==='technology'?technologyView(state):'';
+    return state.view==='commerce'?(state.catalog?'':commerceView(state))+(root.HUB69Commerce?.view(state,context)||''):state.view==='technology'?technologyView(state):'';
   }
   root.HUB69Explore=Object.freeze({sources,countries,topics,brands,markets,technologies,route,filterRoute,selectRows,out,brandCard,brandView,view});
 })(typeof window!=='undefined'?window:globalThis);

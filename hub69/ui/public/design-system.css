@@ -66,3 +66,5 @@ body{font-family:var(--font-body);font-size:var(--text-body);line-height:var(--l
   footer{padding-bottom:max(24px,env(safe-area-inset-bottom))}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+.catalog-filter input[type="search"]{min-height:44px;font-size:16px;max-width:100%;width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}

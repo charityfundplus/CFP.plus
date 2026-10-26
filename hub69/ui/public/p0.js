@@ -20,6 +20,8 @@
     if(hash==='#chapters')return {view:'chapters'};
     if(hash==='#vaults')return {view:'vaults'};
     if(hash==='#openai')return {view:'openai'};
+    const template=root.HUB69CommonTemplate?.route(hash);
+    if(template)return template;
     if(hash==='#template')return {view:'template'};
     if(hash==='#training')return {view:'training'};
     const lesson=/^#lesson\/([a-z-]+)$/.exec(hash);
