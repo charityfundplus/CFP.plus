@@ -1,0 +1,14 @@
+✔ ten sections and seven office children resolve through existing router (11.437364ms)
+✔ disabled module is absent from search and direct/deep links are rejected (4.287837ms)
+✔ query and labels cannot inject HTML or unsafe links (2.548626ms)
+✔ accent-insensitive search, English labels, empty results and forum limits (1.479146ms)
+✔ all configured destinations use supported existing routes or sole intake (2.366267ms)
+✔ standalone and both bundles include identical template code/config (1.434379ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 29.794292

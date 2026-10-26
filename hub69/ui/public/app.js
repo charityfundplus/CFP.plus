@@ -2,6 +2,7 @@
   'use strict';
   const M=window.HUB69Model,P=window.HUB69P0,T=window.HUB69Training,C=window.HUB69CoreBinding,X=window.HUB69Explore,W=window.HUB69Workspace;
   const coreMode=window.HUB69_CONFIG?.mode==='core';
+  let templateLanguage='vi',templateQuery='',templateType='pair';
   let commerceQuery='',commerceOffset=0,commerceKind=P.route(location.hash).kind||'all';
   const catalogOptions=()=>({query:commerceQuery,kind:P.route(location.hash).item?commerceKind:(P.route(location.hash).kind||'all'),offset:commerceOffset});
   let records=coreMode?[]:window.HUB69_DATA.records,coreState=null,coreController;
@@ -43,7 +44,7 @@
     if(state.view==='chapters')$('chapter-map').innerHTML=blocked?C.statusView(coreState):P.mapView(records,state);
     if(state.view==='vaults')$('vault-monitor').innerHTML=blocked?C.statusView(coreState):P.vaultsView(coreState?.data?.openai);
     if(state.view==='openai')$('openai-profile').innerHTML=blocked?C.statusView(coreState):P.openaiView(records,coreState?.data?.openai);
-    if(state.view==='template')$('common-template').innerHTML=P.templateView();
+    if(state.view==='template')$('common-template').innerHTML=window.HUB69CommonTemplate.view(state,templateLanguage,templateQuery)+(state.module||state.templateInvalid?'':P.templateView(templateType));
     if(state.view==='training')$('training-content').innerHTML=T.view(study,state.lesson);
     if(['hstdn','commerce','technology'].includes(state.view))$(state.view+'-content').innerHTML=X.view(state,{coreMode,coreState,query:commerceQuery});
     if(['partners','reference','app'].includes(state.view))$(state.view+'-content').innerHTML=W.view(state,{coreMode,coreState});
@@ -52,6 +53,7 @@
   document.querySelectorAll('[data-lookup]').forEach(form=>form.addEventListener('submit',event=>{event.preventDefault();const input=form.elements.id;const id=input.value.trim();if(!M.validID(id)){notice('ID phải là chuỗi chữ số. Các số 0 được giữ nguyên.');input.focus();return;}const hash=id==='69'?'#home':'#id/'+id;if(location.hash===hash)render();else location.hash=hash;}));
   $('search').addEventListener('input',renderList);$('type').addEventListener('change',renderList);
   document.addEventListener('input',event=>{
+    if(event.target.id==='template-search'){templateQuery=event.target.value.slice(0,120);$('template-results').innerHTML=window.HUB69CommonTemplate.results(templateLanguage,templateQuery);return;}
     if(event.target.id!=='commerce-search')return;
     commerceQuery=event.target.value.slice(0,120);
     const state=P.route(location.hash),catalog=coreState?.data?.catalog;
@@ -60,7 +62,8 @@
   });
   document.addEventListener('change',event=>{
     if(event.target.dataset?.catalogFilter){const key=event.target.dataset.catalogFilter,state=P.route(location.hash);const next=W.filterRoute(state,key,event.target.value)||X.filterRoute(state,key,event.target.value);if(next)location.hash=next;return;}
-    if(event.target.id==='template-type'){$('common-template').innerHTML=P.templateView(event.target.value);$('template-type').focus();}
+    if(event.target.id==='template-language'){templateLanguage=event.target.value==='en'?'en':'vi';render();$('template-language').focus();}
+    if(event.target.id==='template-type'){templateType=event.target.value;render();$('template-type').focus();}
     const key=event.target.dataset?.study;
     if(key&&T.validKey(key)){study=event.target.checked?[...new Set([...study,key])]:study.filter(k=>k!==key);const stored=T.saveProgress(studyStorage,study);render();$('study-'+key)?.focus();notice(stored?'Đã lưu ghi nhận đọc trên trình duyệt; chưa phải đánh giá năng lực.':'Chỉ ghi nhận đọc trong phiên này; trình duyệt chặn lưu lâu dài.');}
   });

@@ -1,0 +1,15 @@
+✔ application initializes all seven views and navigation state without missing controls (11.658095ms)
+✔ lookup submission preserves leading zeroes and rejects nonnumeric input (1.999054ms)
+✔ source ID profile opens with correct Parent and returning to directory works (2.394569ms)
+✔ saved item action works with unavailable local storage and reports session-only persistence (6.396754ms)
+✔ template type selection updates project fields and returns focus to control (4.405035ms)
+✔ copy failure leaves a clear message and skip navigation keeps the current route (3.282762ms)
+✔ shared template routes, language and search use application events (4.197724ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 41.547232

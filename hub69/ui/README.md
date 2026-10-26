@@ -239,3 +239,7 @@ CFP_CODEX1_SOURCE=/absolute/path/to/pinned-CFP.plus node --test integration/core
 ```
 
 Màn hình `#training` và `#lesson/security` có nội dung bài học, 12 bài thực hành có giám sát và 6 hướng nâng cao. Dấu đã đọc chỉ lưu trên trình duyệt, không nộp assessment, không đổi Registry hoặc cấp quyền.
+
+## Mẫu Website Chung • 26/10/2026
+
+Xem [bảng tái sử dụng, sơ đồ, demo, cấu hình và giới hạn](COMMON-TEMPLATE-20261026.md). Mở `HUB69-review.html#template` sau build. Khung 10 mục và Văn Phòng 7 Link con dùng UI hiện hữu; diễn đàn mới ở mức thiết kế, chưa có thread/reply/ACK thật. HOLD ACTIVATION • PRODUCTION NO-GO.

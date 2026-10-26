@@ -4,6 +4,8 @@ import {readFile,writeFile,mkdir,copyFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {existsSync} from 'node:fs';
 const root=new URL('./',import.meta.url);
+const template=JSON.parse(await readFile(new URL('template.config.json',root),'utf8'));
+await writeFile(new URL('public/template-config.js',root),'window.HUB69_TEMPLATE_CONFIG='+JSON.stringify(template).replace(/</g,'\\u003c')+';\n');
 const tokens=JSON.parse(await readFile(new URL('public/design-tokens.json',root),'utf8'));
 await writeFile(new URL('public/design-tokens.css',root),tokenCSS(tokens));
 const pins=JSON.parse(await readFile(new URL('integration/source-pins.json',root),'utf8'));
@@ -27,7 +29,7 @@ const data={sourceCommit,registryBlobSHA,sourceSHA256:createHash('sha256').updat
 await writeFile(new URL('public/registry.js',root),'window.HUB69_DATA='+JSON.stringify(data).replace(/</g,'\\u003c')+';\n');
 await mkdir(new URL('dist/',root),{recursive:true});
 for(const size of [192,512])await writeFile(new URL('public/icon-'+size+'.png',root),iconPNG(size));
-const names=['manifest.webmanifest','pwa.js','sw.js','offline.html','icon-192.png','icon-512.png','index.html','design-tokens.css','style.css','design-system.css','design-tokens.json','config.js','registry.js','training-data.js','model.js','workspace.js','hstdn-review.js','commerce.js','explore.js','p0.js','core-binding.js','training.js','app.js'];
+const names=['manifest.webmanifest','pwa.js','sw.js','offline.html','icon-192.png','icon-512.png','index.html','design-tokens.css','style.css','design-system.css','design-tokens.json','config.js','registry.js','training-data.js','model.js','workspace.js','hstdn-review.js','commerce.js','explore.js','p0.js','template-config.js','common-template.js','core-binding.js','training.js','app.js'];
 for(const name of names)await copyFile(new URL('public/'+name,root),new URL('dist/'+name,root));
 // A same-origin mount for Codex 1. No snapshot rows are shipped in Core mode.
 await mkdir(new URL('core-dist/',root),{recursive:true});

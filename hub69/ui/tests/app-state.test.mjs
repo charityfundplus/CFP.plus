@@ -36,3 +36,19 @@ test('copy failure leaves a clear message and skip navigation keeps the current 
   assert.ok(h.elements.get('notice').textContent.includes('Chưa sao chép được'));assert.equal(h.copied.length,0);
   await h.events.click(h.click('a.skip'));assert.equal(h.ctx.location.hash,'#id/691181');assert.ok(h.elements.get('content').focused);
 });
+
+ test('shared template routes, language and search use application events',()=>{
+  const h=harness({hash:'#template'});
+  assert.ok(h.elements.get('common-template').innerHTML.includes('Mẫu Website Chung'));
+  h.events.input({target:{id:'template-search',value:'van phong'}});
+  assert.ok(h.elements.get('template-results').innerHTML.includes('1 / 10'));
+  h.events.change({target:{id:'template-language',value:'en'}});
+  assert.ok(h.elements.get('common-template').innerHTML.includes('Shared Website Template'));
+  h.go('#template/office');
+  assert.ok(h.elements.get('common-template').innerHTML.includes('#template/office/tasks'));
+  assert.ok(!h.elements.get('common-template').innerHTML.includes('template-type'));
+  h.go('#template/office/evidence');
+  assert.ok(h.elements.get('common-template').innerHTML.includes('href="#vaults"'));
+  h.go('#template/forum');
+  assert.ok(h.elements.get('common-template').innerHTML.includes('not implemented'));
+});
