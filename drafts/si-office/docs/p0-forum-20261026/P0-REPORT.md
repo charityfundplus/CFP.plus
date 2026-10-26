@@ -146,3 +146,26 @@ Observed chain:
 Codex 2 handoff (prepared, no claim Codex 2 ACKed this handoff): use existing #172/UI branch and same Core SHA; distinguish sandbox application/work-request from forum topic/reply UI. Need approved HTTPS staging URL, deployment provenance, identical request correlation and screenshots; run actual iPhone Safari navigation/Form/keyboard/loading/auth/logout and before/after metrics. Keep unverified office/ID links PENDING. Website #176 remains higher priority than #178.
 
 Reviewer: inspect actual source, permission boundaries, new test cleanup and blocked receipt; independently run loopback test, confirm no mock result promoted to integration; review A1/authority/conflicts/security/retention. No merge/deploy/DNS/IAM/ID/Parent/DID/Canonical change. No costs or workflow activation. Syntax check: 32 JavaScript files passed node --check; this is not a full build.
+
+
+## 8. Follow-up • sandbox 400/403 correction • 2026-10-26
+
+Scope: user's existing PR #179 blocker only; no new Finding, registry, office, route or runtime activation. Earlier results above remain historical. Independent ReviewSI/SecuritySI acceptance remains pending.
+
+The authorized local TCP rerun of the unmodified PR head reproduced a failure at the foreign-workspace work-request assertion: actual HTTP 400, expected HTTP 403. The service rejected the request with INTAKE_SCOPE_OR_CONSENT_REQUIRED; no cross-workspace write success was observed.
+
+Minimal correction: keep malformed data/missing consent under the existing validation error (HTTP 400), then check whether officeRef exists in the actor's workspace and return INTAKE_SCOPE_DENIED (HTTP 403) for inaccessible or nonexistent references. Both references receive the same response; no global lookup or new access grant is introduced. Existing HTTP handler already maps SCOPE_DENIED to 403.
+
+The existing TCP test now checks foreign-workspace and unknown references return 403 with the same error, while missing consent and non-HTTPS evidence still return 400. Remaining original assertions run unchanged: registration, amendment version, duplicate rejection, viewer/Origin denial, SQLite/audit restart readback, empty foreign snapshot and logout invalidation.
+
+Validation on the reconstructed PR source subset plus this patch, Node v24.19.0:
+- node tests/office-intake.test.mjs: 6 tests, 6 pass, 0 fail, exit 0.
+- node tests/forum-foundation-loopback.test.mjs: 1 test, 1 pass, 0 fail, exit 0; real HTTP TCP on 127.0.0.1, temporary SQLite and synthetic accounts. Local execution permission was required to bind the socket.
+
+This resolves the reproduced HTTP contract mismatch locally; it does not close the original Finding without independent review. The source was reconstructed from immutable PR head 11310e40c6e925d47419624287983e181391d050 through GitHub and downloaded files were checked against Git blob SHA. This is not a complete git checkout, full build, CI result or runtime-provenance acceptance.
+
+MCP authenticated access, recipient ACK, real SI AI worker, CMP ingestion and independent full-chain acceptance remain NOT VERIFIED. Existing local synthetic adapters are not evidence of live MCP or AI execution. Notion central-page write remains blocked by 403 insufficient_access; no Notion edit or duplicate Finding was created. Form browser evidence from the previous local run applies to that prior version and is not relabeled as a browser rerun of this patch.
+
+Codex 2 integration boundary: preserve HTTP 400 validation versus HTTP 403 scope errors and display pending/blocked state; do not represent application save as verified identity, recipient ACK or authorized execution. No additional UI feature is introduced by this bounded fix.
+
+PILOT IN PROGRESS • HOLD ACTIVATION • PRODUCTION NO-GO.

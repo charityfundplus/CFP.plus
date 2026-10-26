@@ -31,7 +31,14 @@ test('real TCP intake survives restart; versions, isolation, origin and revoked 
   const version=await create(args('application',{...input,amendmentOf:original.key,capabilities:'Updated synthetic declaration'}));assert.equal(version.status,200);assert.equal((await version.json()).declarationVersion,2);
   assert.equal((await create(args('application',input))).status,400);
   const request={name:'Synthetic work',officeRef:original.key,source:'https://example.org/evidence',scope:'Bounded sandbox work',synthetic:true,commitment:true};
-  assert.equal((await post('/api/core/office-create',args('work-request',request),foreign)).status,403);
+  const foreignResult=await post('/api/core/office-create',args('work-request',request),foreign);
+  assert.equal(foreignResult.status,403);assert.equal((await foreignResult.json()).error,'INTAKE_SCOPE_DENIED');
+  const missingOffice=await create(args('work-request',{...request,officeRef:'unknown-synthetic-office'}));
+  assert.equal(missingOffice.status,403);assert.equal((await missingOffice.json()).error,'INTAKE_SCOPE_DENIED');
+  for(const invalid of [{...request,commitment:false},{...request,source:'http://invalid.example'}]){
+   const result=await create(args('work-request',invalid));assert.equal(result.status,400);
+   assert.equal((await result.json()).error,'INTAKE_SCOPE_OR_CONSENT_REQUIRED');
+  }
   const work=await create(args('work-request',request));assert.equal(work.status,200);assert.equal((await work.json()).execution,'NOT AUTHORIZED');
   const snapshot=async cookie=>{const r=await post('/api/core/office',{pairKey:'hub69-content-demo'},cookie);assert.equal(r.status,200);return r.json();};
   const before=await snapshot(editor);const checkpoint=service.verify();assert(checkpoint.sequence>0);
