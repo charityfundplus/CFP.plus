@@ -54,6 +54,17 @@ export class P2Sandbox {
   }catch(e){try{this.#tx(()=>this.#event(a.id,a.workspace,'command','DENIED'));}catch{this.close();}throw e;}finally{this.#busy=false;}
  }
  // Registry responses contain only the existing public source projection, never office/customer data.
+ readCommerce(token,pairKey,input={}){
+  this.#guard();const a=this.#actor(token);
+  if(typeof pairKey!=='string'||!/^[a-z][a-z0-9-]{0,79}$/.test(pairKey))throw Error('COMMERCE_PAIR_INVALID');
+  if(!a.pairs.includes('*')&&!a.pairs.includes(pairKey))throw Error('PAIR_SCOPE_DENIED');
+  const raw=this.#db.prepare('SELECT value FROM states WHERE workspace=?').get(a.workspace)?.value;
+  const engine=new CoreEngine({checkpoint:raw?JSON.parse(raw):null,adapterFactory:this.#factory});
+  const result=engine.catalogPreview(a,pairKey,input);
+  // Fail closed on audit/storage failure, and bind exactly the response returned.
+  this.#tx(()=>this.#event(a.id,a.workspace,'commerce:catalog','sha256:'+hash(result)));
+  return result;
+ }
  readRegistry(token,operation,input={}){
   this.#guard();const a=this.#actor(token);
   if(!input||typeof input!=='object'||Array.isArray(input))throw Error('REGISTRY_INVALID_FIELDS');

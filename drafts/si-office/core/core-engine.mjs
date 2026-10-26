@@ -1,4 +1,5 @@
 import {searchCatalog,createInquiry,matchInquiry,createOpportunity,updateOpportunity,commercialState} from './commercial-intake.mjs';
+import {commercePreview} from './commerce-preview.mjs';
 import templates from '../configs/pairs.json' with {type:'json'};
 import {clone,freeze,hash,requireKeys,text,MODULES,key} from './common.mjs';
 import {inspectIdentity} from './identity-registry.mjs';
@@ -77,6 +78,7 @@ export class CoreEngine {
   else if(['product','service'].includes(kind)){requireKeys(input,['name','source','officeRef','hstdnRef','scope','maturity','synthetic']);if(input.synthetic!==true||!text(input.name,200)||!safeURL(input.source)||!state.registrations.some(p=>p.key===input.officeRef&&p.subject===actor.id)||input.hstdnRef&&!state.hstdn.some(h=>h.key===input.hstdnRef&&h.members.includes(input.officeRef)))throw Error('CATALOG_SCOPE_INVALID');if(kind==='product'&&!['concept','research','prototype'].includes(input.maturity)||kind==='service'&&!text(input.scope,300))throw Error('CATALOG_MATURITY_REQUIRED');row={...clone(input),kind,key:key(),status:'DRAFT',sourceVerification:'NOT VERIFIED',capabilityVerification:'NOT VERIFIED',legalRelationshipVerification:'NOT VERIFIED'};state.records.push(row);}
   else throw Error('OFFICE_KIND_DENIED');row.subject??=actor.id;this.#knowledge.append(actor,'office-record','DRAFT ONLY',{pairKey,kind,recordKey:row.key,recordHash:hash(row)});return row;});}
  catalogSearch(actor,pairKey,input){this.#authorize(actor,'read');return searchCatalog(this.#officeState(pairKey),input);}
+ catalogPreview(actor,pairKey,input){this.#authorize(actor,'read');return commercePreview(this.#officeState(pairKey),input);}
  commerceState(actor,pairKey){this.#authorize(actor,'read');return commercialState(this.#officeState(pairKey),actor);}
  inquiryMatch(actor,pairKey,input){this.#authorize(actor,'read');return matchInquiry(this.#officeState(pairKey),actor,input);}
  #commercialWrite(actor,pairKey,input,action,fn){return this.#act(actor,action,()=>{const row=fn(this.#officeState(pairKey),actor,input);delete row.auditLink;const event=this.#knowledge.append(actor,action+'-evidence','SYNTHETIC ONLY',{pairKey,subject:actor.id,recordKey:row.key,recordHash:hash(row)});row.auditLink={sequence:event.sequence,sha256:event.sha256,recordHash:event.details.recordHash};return row;});}
