@@ -30,7 +30,8 @@ export function createOfficeIntake(state,kind,input,actor,program){
  }
  if(!['enrollment','marketing','work-request'].includes(kind))return null;
  requireKeys(input,['name','officeRef','source','scope','track','commitment','synthetic']);
- if(input.synthetic!==true||input.commitment!==true||!text(input.name,200)||!text(input.scope,1500)||!safeURL(input.source)||!state.registrations.some(p=>p.key===input.officeRef))throw Error('INTAKE_SCOPE_OR_CONSENT_REQUIRED');
+ if(input.synthetic!==true||input.commitment!==true||!text(input.name,200)||!text(input.scope,1500)||!safeURL(input.source))throw Error('INTAKE_SCOPE_OR_CONSENT_REQUIRED');
+ if(!state.registrations.some(p=>p.key===input.officeRef))throw Error('INTAKE_SCOPE_DENIED');
  if(kind==='enrollment'&&!program.advanced.some(t=>t.key===input.track))throw Error('TRAINING_TRACK_REQUIRED');
  if(kind!=='enrollment'&&input.track!==undefined)throw Error('INVALID_FIELDS');
  if(kind==='enrollment'&&state.records.some(r=>r.kind===kind&&r.subject===actor.id&&r.officeRef===input.officeRef&&r.track===input.track))throw Error('DUPLICATE_ENROLLMENT');
