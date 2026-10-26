@@ -1,0 +1,24 @@
+test_active_capability_forbidden_during_hold_even_with_evidence (test_findings.FindingTests.test_active_capability_forbidden_during_hold_even_with_evidence) ... ok
+test_all_populated_bindings_need_evidence (test_findings.FindingTests.test_all_populated_bindings_need_evidence) ... ok
+test_approval_renewal_changes_pin_without_source_change (test_findings.FindingTests.test_approval_renewal_changes_pin_without_source_change) ... ok
+test_approved_binding_and_capability_with_evidence_preserve_identity (test_findings.FindingTests.test_approved_binding_and_capability_with_evidence_preserve_identity) ... ok
+test_capability_evidence_required (test_findings.FindingTests.test_capability_evidence_required) ... ok
+test_continuation_requires_both_pins (test_findings.FindingTests.test_continuation_requires_both_pins) ... ok
+test_expiry_during_pagination_conflicts (test_findings.FindingTests.test_expiry_during_pagination_conflicts) ... ok
+test_first_page_and_continuation_share_both_pins (test_findings.FindingTests.test_first_page_and_continuation_share_both_pins) ... ok
+test_pending_record_never_in_public_page (test_findings.FindingTests.test_pending_record_never_in_public_page) ... ok
+test_public_page_schema_requires_approval_pin (test_findings.FindingTests.test_public_page_schema_requires_approval_pin) ... ok
+test_public_schema_rejects_empty_evidence (test_findings.FindingTests.test_public_schema_rejects_empty_evidence) ... ok
+test_public_schema_rejects_unpublished_and_active (test_findings.FindingTests.test_public_schema_rejects_unpublished_and_active) ... ok
+test_revocation_during_pagination_conflicts (test_findings.FindingTests.test_revocation_during_pagination_conflicts) ... ok
+test_software_evidence_required (test_findings.FindingTests.test_software_evidence_required) ... ok
+test_source_change_conflicts (test_findings.FindingTests.test_source_change_conflicts) ... ok
+test_unapproved_excluded_before_count_search_and_page (test_findings.FindingTests.test_unapproved_excluded_before_count_search_and_page) ... ok
+test_schema_definitions (test_contract.ContractTests.test_schema_definitions) ... ok
+test_references_resolve (test_contract.ContractTests.test_references_resolve) ... ok
+test_read_only_paths (test_contract.ContractTests.test_read_only_paths) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.060s
+
+OK

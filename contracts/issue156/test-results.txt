@@ -1,0 +1,30 @@
+test_adapter_hold (test_contract.ContractTests.test_adapter_hold) ... ok
+test_content_change_denied (test_contract.ContractTests.test_content_change_denied) ... ok
+test_evidence_required (test_contract.ContractTests.test_evidence_required) ... ok
+test_expired_approval_denied (test_contract.ContractTests.test_expired_approval_denied) ... ok
+test_idempotent_read (test_contract.ContractTests.test_idempotent_read) ... ok
+test_missing_signature_denied (test_contract.ContractTests.test_missing_signature_denied) ... ok
+test_no_activation (test_contract.ContractTests.test_no_activation) ... ok
+test_numeric_strings_and_zero_preservation (test_contract.ContractTests.test_numeric_strings_and_zero_preservation) ... ok
+test_oas_shape (test_contract.ContractTests.test_oas_shape) ... ok
+test_positive_projection (test_contract.ContractTests.test_positive_projection) ... ok
+test_private_audience_denied (test_contract.ContractTests.test_private_audience_denied) ... ok
+test_projection_copy (test_contract.ContractTests.test_projection_copy) ... ok
+test_read_only_paths (test_contract.ContractTests.test_read_only_paths) ... ok
+test_references_resolve (test_contract.ContractTests.test_references_resolve) ... ok
+test_retry_budget_and_denials (test_contract.ContractTests.test_retry_budget_and_denials) ... ok
+test_revision_swap_denied (test_contract.ContractTests.test_revision_swap_denied) ... ok
+test_schema_definitions (test_contract.ContractTests.test_schema_definitions) ... ok
+test_unapproved_fields_denied (test_contract.ContractTests.test_unapproved_fields_denied) ... ok
+test_unknown_fields_rejected (test_contract.ContractTests.test_unknown_fields_rejected) ... ok
+test_unknown_states_denied (test_contract.ContractTests.test_unknown_states_denied) ... ok
+test_chain_not_verified (test_sources.SourceTests.test_chain_not_verified) ... ok
+test_complete_inventory (test_sources.SourceTests.test_complete_inventory) ... ok
+test_entity_count_not_roster_acceptance (test_sources.SourceTests.test_entity_count_not_roster_acceptance) ... ok
+test_us_conflict_reported (test_sources.SourceTests.test_us_conflict_reported) ... ok
+test_vn_conflict_reported (test_sources.SourceTests.test_vn_conflict_reported) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 0.043s
+
+OK

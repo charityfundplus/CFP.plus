@@ -1,0 +1,1322 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "CFP+ HUB 69 / Registry Siêu Bộ Đôi — review contract",
+    "version": "0.2.0-draft",
+    "description": "Issue #156. HOLD ACTIVATION • PRODUCTION NO-GO. Existing Core read routes plus disabled publication design. No additional service or Canonical Registry. Publication approval and operational activation are separate. SI/AI/Robot bindings remain empty when unverified."
+  },
+  "servers": [
+    {
+      "url": "/",
+      "description": "Existing approved same-origin mount only; no deployed URL claimed"
+    }
+  ],
+  "security": [
+    {
+      "CoreSession": []
+    }
+  ],
+  "paths": {
+    "/api/core/registry": {
+      "get": {
+        "operationId": "searchRegistry",
+        "summary": "searchRegistry",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "maxLength": 160
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "enum": [
+                "country",
+                "ai-country",
+                "developer",
+                "ai",
+                "si",
+                "super-pair",
+                "hstdn"
+              ]
+            }
+          },
+          {
+            "name": "chapter",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "pattern": "^[0-9]$"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 30
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10000,
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Read-only projection; HTTP 200 is not operational acceptance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CorePage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid or duplicate/unknown query fields",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or revoked session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Host or permission denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown Registry ID; current authenticated source route has no unpublished-record filter.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Duplicate Registry ID conflict (REGISTRY_ID_CONFLICT).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Missing, modified or revision-mismatched source, or audit/storage unavailable; no stale fallback.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "x-implementation-status": "EXISTING_PR124_SOURCE_NOT_DEPLOYED",
+        "description": "Reject duplicate and unknown query keys. Never accepts source paths, ACL, Parent, DID, Owner or approval input. Existing cfp_p2 session. Registry read privilege does not imply pair workspace access."
+      }
+    },
+    "/api/core/registry/{id}": {
+      "get": {
+        "operationId": "getRegistry",
+        "summary": "getRegistry",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/ID"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Read-only projection; HTTP 200 is not operational acceptance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CoreDetail"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid or duplicate/unknown query fields",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Missing, expired or revoked session",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Host or permission denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown Registry ID; current authenticated source route has no unpublished-record filter.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Duplicate Registry ID conflict (REGISTRY_ID_CONFLICT).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Missing, modified or revision-mismatched source, or audit/storage unavailable; no stale fallback.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "x-implementation-status": "EXISTING_PR124_SOURCE_NOT_DEPLOYED",
+        "description": "Reject duplicate and unknown query keys. Never accepts source paths, ACL, Parent, DID, Owner or approval input. Existing cfp_p2 session. Registry read privilege does not imply pair workspace access."
+      }
+    },
+    "/api/core/public/registry": {
+      "get": {
+        "operationId": "searchPublishedRegistry",
+        "summary": "searchPublishedRegistry",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "maxLength": 160
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 30
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 10000,
+              "default": 0
+            }
+          },
+          {
+            "name": "revision",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{40}$"
+            }
+          },
+          {
+            "name": "approvalRevision",
+            "in": "query",
+            "description": "Approval-set SHA-256 from first page. Required together with revision for offset > 0. Recomputed from one atomic current authorization snapshot; changes return 409.",
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Read-only projection; HTTP 200 is not operational acceptance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublishedPage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid or duplicate/unknown query fields",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Host or permission denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown or unpublished ID (no existence disclosure)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "ID conflict, changed source revision or approval-set revision; discard pages and restart.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limited (proposed publication facade only)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "description": "Seconds before retry",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 30
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Source, approval or audit unavailable; no stale fallback",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "x-implementation-status": "DESIGN_ONLY_DISABLED",
+        "description": "Reject duplicate and unknown query keys. Never accepts source paths, ACL, Parent, DID, Owner or approval input. Only externally approved exact public field projection. No Core cookie/token in Google Sites. First page returns sourceRevision and approvalSetRevision; every continuation must send both as revision and approvalRevision. Never reuse offsets across changed approval/source sets; reject with 409. Authorization filtering precedes counts, search and paging.",
+        "security": []
+      }
+    },
+    "/api/core/public/registry/{id}": {
+      "get": {
+        "operationId": "getPublishedRegistry",
+        "summary": "getPublishedRegistry",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/ID"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Read-only projection; HTTP 200 is not operational acceptance.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublishedRecord"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid or duplicate/unknown query fields",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Host or permission denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Unknown or unpublished ID (no existence disclosure)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "ID conflict, changed source revision or approval-set revision; discard pages and restart.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limited (proposed publication facade only)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "description": "Seconds before retry",
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 30
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Source, approval or audit unavailable; no stale fallback",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "x-implementation-status": "DESIGN_ONLY_DISABLED",
+        "description": "Reject duplicate and unknown query keys. Never accepts source paths, ACL, Parent, DID, Owner or approval input. Only externally approved exact public field projection. No Core cookie/token in Google Sites.",
+        "security": []
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "CoreSession": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "cfp_p2",
+        "description": "Existing HttpOnly SameSite=Strict cookie; Secure mandatory on approved HTTPS. Login provisioning is outside this read-only contract."
+      }
+    },
+    "schemas": {
+      "ID": {
+        "type": "string",
+        "pattern": "^[0-9]{1,256}$"
+      },
+      "Evidence": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https://"
+          },
+          "sourceRevision": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{40}$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "verifiedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "claim": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "url",
+          "sourceRevision",
+          "sha256",
+          "verifiedAt",
+          "claim"
+        ]
+      },
+      "Owner": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "displayName": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "displayName"
+        ]
+      },
+      "Capability": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "discovered",
+              "pending_review",
+              "approved",
+              "active"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Evidence"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "status",
+          "evidence"
+        ]
+      },
+      "Binding": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Evidence"
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "id",
+          "evidence"
+        ]
+      },
+      "Software": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "version": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Evidence"
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "name",
+          "version",
+          "evidence"
+        ]
+      },
+      "Error": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "error": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "error"
+        ]
+      },
+      "Provenance": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "revision": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{40}$"
+          },
+          "files": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "path": {
+                  "type": "string"
+                },
+                "bytes": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "gitBlobSHA": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{40}$"
+                }
+              },
+              "required": [
+                "path",
+                "bytes",
+                "sha256",
+                "gitBlobSHA"
+              ]
+            }
+          },
+          "sourceBytesVerified": {
+            "const": true
+          },
+          "authorityVerified": {
+            "const": false
+          },
+          "sourceAuthority": {
+            "type": "string"
+          },
+          "sourceOrderPath": {
+            "type": "string"
+          },
+          "governance": {
+            "type": "string"
+          },
+          "binding": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "revision",
+          "files",
+          "sourceBytesVerified",
+          "authorityVerified",
+          "sourceAuthority",
+          "sourceOrderPath",
+          "governance",
+          "binding"
+        ]
+      },
+      "PublishedRecord": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "parent": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9]{1,256}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "did": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "country",
+              "ai-country",
+              "developer",
+              "ai",
+              "si",
+              "super-pair",
+              "hstdn",
+              "chapter",
+              "robot",
+              "chi-hoi",
+              "tmtc",
+              "tttc"
+            ]
+          },
+          "si": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Binding"
+            }
+          },
+          "ai": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Binding"
+            }
+          },
+          "software": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Software"
+            }
+          },
+          "robot": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Binding"
+            }
+          },
+          "capability": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PublishedCapability"
+            }
+          },
+          "owner": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Owner"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "status": {
+            "enum": [
+              "approved"
+            ]
+          },
+          "sourceStatus": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Evidence"
+            },
+            "minItems": 1
+          },
+          "canonicalLink": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https://"
+          },
+          "sourceRevision": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{40}$"
+          },
+          "readOnly": {
+            "const": true
+          },
+          "activationAllowed": {
+            "const": false
+          }
+        },
+        "required": [
+          "id",
+          "parent",
+          "did",
+          "name",
+          "type",
+          "si",
+          "ai",
+          "software",
+          "robot",
+          "capability",
+          "owner",
+          "status",
+          "sourceStatus",
+          "evidence",
+          "canonicalLink",
+          "sourceRevision",
+          "readOnly",
+          "activationAllowed"
+        ]
+      },
+      "PublishedPage": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PublishedRecord"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10000
+          },
+          "sourceRevision": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{40}$"
+          },
+          "readOnly": {
+            "const": true
+          },
+          "registryWrites": {
+            "const": 0
+          },
+          "activationAllowed": {
+            "const": false
+          },
+          "approvalSetRevision": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "required": [
+          "records",
+          "total",
+          "limit",
+          "offset",
+          "sourceRevision",
+          "readOnly",
+          "registryWrites",
+          "activationAllowed",
+          "approvalSetRevision"
+        ]
+      },
+      "CoreRecord": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "parent": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9]{1,256}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "type": {
+            "enum": [
+              "country",
+              "ai-country",
+              "developer",
+              "ai",
+              "si",
+              "super-pair",
+              "hstdn"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "countryID": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "aiCountryID": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "country": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "developer": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "did": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "description": {
+            "type": "string"
+          },
+          "sourceStatus": {
+            "type": "string"
+          },
+          "sourcePath": {
+            "type": "string"
+          },
+          "chapter": {
+            "type": "string",
+            "pattern": "^[0-9]$"
+          },
+          "group": {
+            "enum": [
+              "000",
+              "135",
+              "246",
+              "789"
+            ]
+          },
+          "groupScope": {
+            "type": "string"
+          },
+          "canonicalLink": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https://"
+          },
+          "reviewStatus": {
+            "enum": [
+              "BLOCKED",
+              "REVIEW CANDIDATE"
+            ]
+          },
+          "issues": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "id"
+              ]
+            }
+          },
+          "identityVerified": {
+            "const": false
+          },
+          "authorityVerified": {
+            "const": false
+          },
+          "operationallyActive": {
+            "const": false
+          },
+          "routeVerified": {
+            "const": false
+          }
+        },
+        "required": [
+          "id",
+          "parent",
+          "type",
+          "name",
+          "sourcePath",
+          "chapter",
+          "group",
+          "groupScope",
+          "canonicalLink",
+          "reviewStatus",
+          "issues",
+          "identityVerified",
+          "authorityVerified",
+          "operationallyActive",
+          "routeVerified"
+        ]
+      },
+      "CoreDescendant": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/ID"
+          },
+          "parent": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9]{1,256}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "type": {
+            "enum": [
+              "country",
+              "ai-country",
+              "developer",
+              "ai",
+              "si",
+              "super-pair",
+              "hstdn"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "countryID": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "aiCountryID": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "country": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "developer": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "did": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "description": {
+            "type": "string"
+          },
+          "sourceStatus": {
+            "type": "string"
+          },
+          "sourcePath": {
+            "type": "string"
+          },
+          "chapter": {
+            "type": "string",
+            "pattern": "^[0-9]$"
+          },
+          "group": {
+            "enum": [
+              "000",
+              "135",
+              "246",
+              "789"
+            ]
+          },
+          "groupScope": {
+            "type": "string"
+          },
+          "canonicalLink": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https://"
+          },
+          "reviewStatus": {
+            "enum": [
+              "BLOCKED",
+              "REVIEW CANDIDATE"
+            ]
+          },
+          "issues": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "code",
+                "id"
+              ]
+            }
+          },
+          "identityVerified": {
+            "const": false
+          },
+          "authorityVerified": {
+            "const": false
+          },
+          "operationallyActive": {
+            "const": false
+          },
+          "routeVerified": {
+            "const": false
+          },
+          "depth": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "id",
+          "parent",
+          "type",
+          "name",
+          "sourcePath",
+          "chapter",
+          "group",
+          "groupScope",
+          "canonicalLink",
+          "reviewStatus",
+          "issues",
+          "identityVerified",
+          "authorityVerified",
+          "operationallyActive",
+          "routeVerified",
+          "depth"
+        ]
+      },
+      "CorePage": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "provenance": {
+            "$ref": "#/components/schemas/Provenance"
+          },
+          "hub": {
+            "const": "https://cfp.plus/69"
+          },
+          "readOnly": {
+            "const": true
+          },
+          "registryWrites": {
+            "const": 0
+          },
+          "activationAllowed": {
+            "const": false
+          },
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CoreRecord"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10000
+          }
+        },
+        "required": [
+          "provenance",
+          "hub",
+          "readOnly",
+          "registryWrites",
+          "activationAllowed",
+          "records",
+          "total",
+          "limit",
+          "offset"
+        ]
+      },
+      "CoreDetail": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "provenance": {
+            "$ref": "#/components/schemas/Provenance"
+          },
+          "hub": {
+            "const": "https://cfp.plus/69"
+          },
+          "readOnly": {
+            "const": true
+          },
+          "registryWrites": {
+            "const": 0
+          },
+          "activationAllowed": {
+            "const": false
+          },
+          "record": {
+            "$ref": "#/components/schemas/CoreRecord"
+          },
+          "children": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CoreDescendant"
+            }
+          },
+          "descendants": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CoreDescendant"
+            }
+          }
+        },
+        "required": [
+          "provenance",
+          "hub",
+          "readOnly",
+          "registryWrites",
+          "activationAllowed",
+          "record",
+          "children",
+          "descendants"
+        ]
+      },
+      "PublishedCapability": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "approved"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Evidence"
+            },
+            "minItems": 1
+          }
+        },
+        "required": [
+          "name",
+          "status",
+          "evidence"
+        ]
+      }
+    }
+  },
+  "x-governance": {
+    "activationAllowed": false,
+    "registryWrites": 0,
+    "humanApprovalRequired": true,
+    "coreSourceRevision": "06f386b1ba52358779cec6bc26c2d88f6a33664a",
+    "registrySourceRevision": "835616308111f6851c0387fa9f5eda60c9ffa624"
+  }
+}

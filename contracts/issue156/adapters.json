@@ -1,0 +1,221 @@
+{
+  "mode": "DESIGN_ONLY_DISABLED",
+  "activationAllowed": false,
+  "adapters": [
+    {
+      "key": "hstdn-us",
+      "label": "HSTDN Hoa Kỳ",
+      "referenceIDs": [
+        "911",
+        "6911"
+      ],
+      "canonicalBinding": null,
+      "parent": null,
+      "did": null,
+      "owner": null,
+      "status": "pending_review",
+      "enabled": false,
+      "endpoint": null,
+      "credentialBinding": null,
+      "allowedMethods": [
+        "GET"
+      ],
+      "canonicalWrites": false,
+      "requiredScope": "approved-reference.read",
+      "sourceRevision": null,
+      "approvalEvidence": null,
+      "readbackEvidence": null,
+      "retry": {
+        "maxAttempts": 3,
+        "timeoutSeconds": 5,
+        "totalBudgetSeconds": 20,
+        "retryStatuses": [
+          429,
+          502,
+          503,
+          504
+        ],
+        "jitter": "full",
+        "maxDelaySeconds": 5,
+        "retryAfterMaxSeconds": 30
+      },
+      "blockers": [
+        "VERIFIED_BINDING_AND_OWNER_MISSING",
+        "APPROVED_ENDPOINT_AND_SCOPED_IDENTITY_MISSING",
+        "HUMAN_GOVERNANCE_APPROVAL_MISSING",
+        "LIVE_READBACK_NOT_RUN"
+      ]
+    },
+    {
+      "key": "hstdn-vn",
+      "label": "HSTDN Việt Nam",
+      "referenceIDs": [
+        "984",
+        "6984"
+      ],
+      "canonicalBinding": null,
+      "parent": null,
+      "did": null,
+      "owner": null,
+      "status": "pending_review",
+      "enabled": false,
+      "endpoint": null,
+      "credentialBinding": null,
+      "allowedMethods": [
+        "GET"
+      ],
+      "canonicalWrites": false,
+      "requiredScope": "approved-reference.read",
+      "sourceRevision": null,
+      "approvalEvidence": null,
+      "readbackEvidence": null,
+      "retry": {
+        "maxAttempts": 3,
+        "timeoutSeconds": 5,
+        "totalBudgetSeconds": 20,
+        "retryStatuses": [
+          429,
+          502,
+          503,
+          504
+        ],
+        "jitter": "full",
+        "maxDelaySeconds": 5,
+        "retryAfterMaxSeconds": 30
+      },
+      "blockers": [
+        "VERIFIED_BINDING_AND_OWNER_MISSING",
+        "APPROVED_ENDPOINT_AND_SCOPED_IDENTITY_MISSING",
+        "HUMAN_GOVERNANCE_APPROVAL_MISSING",
+        "LIVE_READBACK_NOT_RUN"
+      ]
+    },
+    {
+      "key": "chi-hoi",
+      "label": "Chi Hội",
+      "referenceIDs": [],
+      "canonicalBinding": null,
+      "parent": null,
+      "did": null,
+      "owner": null,
+      "status": "pending_review",
+      "enabled": false,
+      "endpoint": null,
+      "credentialBinding": null,
+      "allowedMethods": [
+        "GET"
+      ],
+      "canonicalWrites": false,
+      "requiredScope": "approved-reference.read",
+      "sourceRevision": null,
+      "approvalEvidence": null,
+      "readbackEvidence": null,
+      "retry": {
+        "maxAttempts": 3,
+        "timeoutSeconds": 5,
+        "totalBudgetSeconds": 20,
+        "retryStatuses": [
+          429,
+          502,
+          503,
+          504
+        ],
+        "jitter": "full",
+        "maxDelaySeconds": 5,
+        "retryAfterMaxSeconds": 30
+      },
+      "blockers": [
+        "VERIFIED_BINDING_AND_OWNER_MISSING",
+        "APPROVED_ENDPOINT_AND_SCOPED_IDENTITY_MISSING",
+        "HUMAN_GOVERNANCE_APPROVAL_MISSING",
+        "LIVE_READBACK_NOT_RUN"
+      ]
+    },
+    {
+      "key": "8682",
+      "label": "8682 TMTC",
+      "referenceIDs": [
+        "8682"
+      ],
+      "canonicalBinding": null,
+      "parent": null,
+      "did": null,
+      "owner": null,
+      "status": "pending_review",
+      "enabled": false,
+      "endpoint": null,
+      "credentialBinding": null,
+      "allowedMethods": [
+        "GET"
+      ],
+      "canonicalWrites": false,
+      "requiredScope": "approved-reference.read",
+      "sourceRevision": null,
+      "approvalEvidence": null,
+      "readbackEvidence": null,
+      "retry": {
+        "maxAttempts": 3,
+        "timeoutSeconds": 5,
+        "totalBudgetSeconds": 20,
+        "retryStatuses": [
+          429,
+          502,
+          503,
+          504
+        ],
+        "jitter": "full",
+        "maxDelaySeconds": 5,
+        "retryAfterMaxSeconds": 30
+      },
+      "blockers": [
+        "VERIFIED_BINDING_AND_OWNER_MISSING",
+        "APPROVED_ENDPOINT_AND_SCOPED_IDENTITY_MISSING",
+        "HUMAN_GOVERNANCE_APPROVAL_MISSING",
+        "LIVE_READBACK_NOT_RUN"
+      ]
+    },
+    {
+      "key": "8882",
+      "label": "8882 TTTC",
+      "referenceIDs": [
+        "8882"
+      ],
+      "canonicalBinding": null,
+      "parent": null,
+      "did": null,
+      "owner": null,
+      "status": "pending_review",
+      "enabled": false,
+      "endpoint": null,
+      "credentialBinding": null,
+      "allowedMethods": [
+        "GET"
+      ],
+      "canonicalWrites": false,
+      "requiredScope": "approved-reference.read",
+      "sourceRevision": null,
+      "approvalEvidence": null,
+      "readbackEvidence": null,
+      "retry": {
+        "maxAttempts": 3,
+        "timeoutSeconds": 5,
+        "totalBudgetSeconds": 20,
+        "retryStatuses": [
+          429,
+          502,
+          503,
+          504
+        ],
+        "jitter": "full",
+        "maxDelaySeconds": 5,
+        "retryAfterMaxSeconds": 30
+      },
+      "blockers": [
+        "VERIFIED_BINDING_AND_OWNER_MISSING",
+        "APPROVED_ENDPOINT_AND_SCOPED_IDENTITY_MISSING",
+        "HUMAN_GOVERNANCE_APPROVAL_MISSING",
+        "LIVE_READBACK_NOT_RUN"
+      ]
+    }
+  ]
+}
