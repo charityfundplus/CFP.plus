@@ -1,0 +1,233 @@
+{
+  "source": "e994ea884fdf7a06ca5efe20674b96a0d51e24f8",
+  "files": [
+    {
+      "path": "drafts/si-office/adapters.mjs",
+      "expectedGitBlob": "923193051c5ba59713c038d7e36198cd438f345b",
+      "actualGitBlob": "923193051c5ba59713c038d7e36198cd438f345b",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/ai-entity-registry.json",
+      "expectedGitBlob": "3afe0cc090d5e9f8d61158ecd520005f8108a1d2",
+      "actualGitBlob": "3afe0cc090d5e9f8d61158ecd520005f8108a1d2",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/configs/five-store-status.json",
+      "expectedGitBlob": "0fe7c7db3d1b7aa2afac59c8b302a58c8e63625c",
+      "actualGitBlob": "0fe7c7db3d1b7aa2afac59c8b302a58c8e63625c",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/configs/pairs.json",
+      "expectedGitBlob": "db18126068a02d8c7a4f9e7091c225cd46d5b309",
+      "actualGitBlob": "db18126068a02d8c7a4f9e7091c225cd46d5b309",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/configs/provider-preparation.json",
+      "expectedGitBlob": "2040c561071a35023918bac2a1cc6b1789c4b5f7",
+      "actualGitBlob": "2040c561071a35023918bac2a1cc6b1789c4b5f7",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/configs/training-basic-v1.json",
+      "expectedGitBlob": "e8c49eee3b669558a264b2102ee491ea1a639eb0",
+      "actualGitBlob": "e8c49eee3b669558a264b2102ee491ea1a639eb0",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/core/commercial-intake.mjs",
+      "expectedGitBlob": "2051970e8dc4b7df4a0392992248d7af1e91a708",
+      "actualGitBlob": "2051970e8dc4b7df4a0392992248d7af1e91a708",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/core/common.mjs",
+      "expectedGitBlob": "fa448f948b845978eaee6411cfe3e2bf04e72f29",
+      "actualGitBlob": "fa448f948b845978eaee6411cfe3e2bf04e72f29",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/core/core-engine.mjs",
+      "expectedGitBlob": "4032323ee95a70a7461c9dd8d79742d0a46d5314",
+      "actualGitBlob": "4032323ee95a70a7461c9dd8d79742d0a46d5314",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/core/cross-check-engine.mjs",
+      "expectedGitBlob": "957244be338ad6747ede31212225b6bd11c05451",
+      "actualGitBlob": "957244be338ad6747ede31212225b6bd11c05451",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/core/hub69-integration.mjs",
+      "expectedGitBlob": "985029042e00960c39d019eeb4bef046e43f86a1",
+      "actualGitBlob": "985029042e00960c39d019eeb4bef046e43f86a1",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/core/identity-registry.mjs",
+      "expectedGitBlob": "c681432b421c8af939b834d7d601f51ea5a317af",
+      "actualGitBlob": "c681432b421c8af939b834d7d601f51ea5a317af",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/core/knowledge-evidence.mjs",
+      "expectedGitBlob": "750f67c0bf72ce03cc584bc302065530bbd9d766",
+      "actualGitBlob": "750f67c0bf72ce03cc584bc302065530bbd9d766",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/core/learning-training.mjs",
+      "expectedGitBlob": "9c347568b3109aac2d4f0662ba77b973204f8930",
+      "actualGitBlob": "9c347568b3109aac2d4f0662ba77b973204f8930",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/core/monitoring-recovery.mjs",
+      "expectedGitBlob": "8909a2a0f1f3c5f1fd0e5ed7123b48ce1622a09d",
+      "actualGitBlob": "8909a2a0f1f3c5f1fd0e5ed7123b48ce1622a09d",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/core/office-intake.mjs",
+      "expectedGitBlob": "d5b4653a38cfc29dc40ae67c141e3ba3ee2c1080",
+      "actualGitBlob": "d5b4653a38cfc29dc40ae67c141e3ba3ee2c1080",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/core/openai-reference.mjs",
+      "expectedGitBlob": "3eb6e4195665ba67c2bf22a485b0028218dece8f",
+      "actualGitBlob": "3eb6e4195665ba67c2bf22a485b0028218dece8f",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/core/registry-read-model.mjs",
+      "expectedGitBlob": "545a129814202401bd4cf2c9b560a76dbb79f59d",
+      "actualGitBlob": "545a129814202401bd4cf2c9b560a76dbb79f59d",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/core/security-permission.mjs",
+      "expectedGitBlob": "cbeecdc9fecd3ad966d8ee484519ef2c0839205e",
+      "actualGitBlob": "cbeecdc9fecd3ad966d8ee484519ef2c0839205e",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/core/si-adapter.mjs",
+      "expectedGitBlob": "78d8936cff93d2b5fb6ab8627ae1fa3b67fd305a",
+      "actualGitBlob": "78d8936cff93d2b5fb6ab8627ae1fa3b67fd305a",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/core/store-status.mjs",
+      "expectedGitBlob": "e854c6e84a943e1580dc372104ca1304fc8c69e5",
+      "actualGitBlob": "e854c6e84a943e1580dc372104ca1304fc8c69e5",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/core/supervision-engine.mjs",
+      "expectedGitBlob": "71d70f2fdcf90354e00b190d101dbc9f9b38cd18",
+      "actualGitBlob": "71d70f2fdcf90354e00b190d101dbc9f9b38cd18",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/core/task-engine.mjs",
+      "expectedGitBlob": "4da290154ea3873d7ae9777e3e8fc1e06c5f14cc",
+      "actualGitBlob": "4da290154ea3873d7ae9777e3e8fc1e06c5f14cc",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/core/training-assessment.mjs",
+      "expectedGitBlob": "b959371f9c12b78da8ee5b8a613cd452834969f9",
+      "actualGitBlob": "b959371f9c12b78da8ee5b8a613cd452834969f9",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/core/version-upgrade.mjs",
+      "expectedGitBlob": "474cad1df42d00f6dd60ff4701a778c0be1cc046",
+      "actualGitBlob": "474cad1df42d00f6dd60ff4701a778c0be1cc046",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/country-route-map.json",
+      "expectedGitBlob": "f2fb0be96548f16a1f30bcdf8c05b2689651de0e",
+      "actualGitBlob": "f2fb0be96548f16a1f30bcdf8c05b2689651de0e",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/model.mjs",
+      "expectedGitBlob": "027788228d4bbd68147be2489ac1f82ca42b1da0",
+      "actualGitBlob": "027788228d4bbd68147be2489ac1f82ca42b1da0",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/package.json",
+      "expectedGitBlob": "c4c088f2aac8a0bf3e497e6cf986c9052d3b5c4c",
+      "actualGitBlob": "c4c088f2aac8a0bf3e497e6cf986c9052d3b5c4c",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/public/office-contracts.js",
+      "expectedGitBlob": "90ccea1194f2c41f0aeec709d20578c6b9483fbe",
+      "actualGitBlob": "90ccea1194f2c41f0aeec709d20578c6b9483fbe",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/public/office-intake.js",
+      "expectedGitBlob": "945b8bc69e8e3eb40be164cdc37f683008f918a0",
+      "actualGitBlob": "945b8bc69e8e3eb40be164cdc37f683008f918a0",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/sandbox/p2-http.mjs",
+      "expectedGitBlob": "19fb07170d43b468799a5bf7c8e769f0a6236041",
+      "actualGitBlob": "19fb07170d43b468799a5bf7c8e769f0a6236041",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/sandbox/p2-service.mjs",
+      "expectedGitBlob": "85721c80dd4323d776ead866134569f3aef2c32f",
+      "actualGitBlob": "85721c80dd4323d776ead866134569f3aef2c32f",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/sandbox/pair-coordinator.mjs",
+      "expectedGitBlob": "16c2ba8555a5aafc4ab31c3ab834569f81560766",
+      "actualGitBlob": "16c2ba8555a5aafc4ab31c3ab834569f81560766",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/sandbox/release-control.mjs",
+      "expectedGitBlob": "ba4c4ac004942aef8d27456fba8492e2b1f3ea87",
+      "actualGitBlob": "ba4c4ac004942aef8d27456fba8492e2b1f3ea87",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/sandbox/release-health.mjs",
+      "expectedGitBlob": "4b9bc5d42cbe5597f9b79269af3fe2637d39cb75",
+      "actualGitBlob": "4b9bc5d42cbe5597f9b79269af3fe2637d39cb75",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/scripts/build-provenance.mjs",
+      "expectedGitBlob": "526d95bce5b8810d8262e3e07ccef6389c48ea7c",
+      "actualGitBlob": "526d95bce5b8810d8262e3e07ccef6389c48ea7c",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/tests/harness.mjs",
+      "expectedGitBlob": "a467aea54a20eb770146a3e8c4376a6adae2207d",
+      "actualGitBlob": "a467aea54a20eb770146a3e8c4376a6adae2207d",
+      "match": true
+    },
+    {
+      "path": "drafts/si-office/tests/office-intake.test.mjs",
+      "expectedGitBlob": "67bc9d5bc74fd531e54c6355602174a358421d3f",
+      "actualGitBlob": "67bc9d5bc74fd531e54c6355602174a358421d3f",
+      "match": true
+    }
+  ]
+}
