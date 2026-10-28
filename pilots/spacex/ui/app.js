@@ -20,3 +20,20 @@ document.querySelector('#reverse').addEventListener('click', () => {
 });
 document.querySelector('#audit').textContent = data ? JSON.stringify({digest:data.digest,audit:data.audit},null,2) : 'Chưa có snapshot. Chạy python3 pilot.py --enable';
 render();
+
+// Session-only demonstrations: no storage, fetch, or authenticated ACK.
+document.querySelector('#demo-discussion').addEventListener('submit', event => {
+  event.preventDefault();
+  const input = document.querySelector('#demo-message');
+  const text = input.value.trim();
+  if (!text) return;
+  const note = document.createElement('p');
+  note.textContent = 'DEMO · ' + text;
+  document.querySelector('#demo-notes').append(note);
+  input.value = '';
+});
+for (const action of ['ack', 'decline']) {
+  document.querySelector('#demo-' + action).addEventListener('click', () => {
+    document.querySelector('#demo-task-status').textContent = 'DEMO · ' + action.toUpperCase() + ' · không gửi lên GitHub';
+  });
+}

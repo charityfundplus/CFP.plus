@@ -20,6 +20,23 @@ const fs = require('fs');
   assert(errors.length===0,'no page errors');
   await page.locator('a[href="#research"]').click();
   assert(new URL(page.url()).hash==='#research','section navigation');
+  for (const id of ['home','directory','discussion','tasks','evidence','governance']) {
+    assert(await page.locator('#'+id).count()===1,'required surface '+id);
+  }
+  await page.locator('#demo-message').fill('<img src=x onerror=alert(1)>');
+  await page.locator('#demo-discussion button').click();
+  assert(await page.locator('#demo-notes img').count()===0,'demo content treated as text');
+  assert((await page.locator('#demo-notes').textContent()).includes('<img'),'discussion demo added');
+  await page.locator('#demo-ack').click();
+  assert((await page.locator('#demo-task-status').textContent()).includes('DEMO · ACK'),'demo ACK labelled');
+  await page.locator('#demo-decline').click();
+  assert((await page.locator('#demo-task-status').textContent()).includes('DEMO · DECLINE'),'demo DECLINE labelled');
+  assert(await page.locator('#governance button').isDisabled(),'activation disabled');
+  await page.reload();
+  assert(await page.locator('#demo-notes').textContent()==='','discussion not persisted');
+  assert((await page.locator('#demo-task-status').textContent()).includes('PENDING'),'demo ACK not persisted');
+  assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),'final no horizontal overflow');
+  assert(errors.length===0,'final no page errors');
   await page.screenshot({path:__dirname+'/evidence/chromium-'+width+'.png',fullPage:true});
   await page.close();
  }

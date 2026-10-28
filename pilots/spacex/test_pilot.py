@@ -63,4 +63,20 @@ class PilotTests(unittest.TestCase):
         with sqlite3.connect(self.root/'pilot.sqlite') as c:
             self.assertEqual(c.execute('SELECT count(*) FROM snapshots').fetchone()[0],0)
 
+    def test_schema_version_rejected_before_io(self):
+        for version in (0, 2, '1', True, None):
+            with self.subTest(version=version), self.assertRaisesRegex(ValueError,'SCHEMA_VERSION'):
+                import_snapshot(self.rows,self.root/'absent',enabled=True,schema_version=version)
+        self.assertFalse((self.root/'absent').exists())
+
+    def test_missing_identifier(self):
+        bad=copy.deepcopy(self.rows); del bad[0]['id']
+        with self.assertRaises(ValueError): import_snapshot(bad,self.root,enabled=True)
+        self.assertFalse((self.root/'pilot.sqlite').exists())
+
+    def test_source_tampering(self):
+        source=self.root/'registry.json'
+        source.write_bytes((ROOT/'registry.json').read_bytes()+b' ')
+        with self.assertRaisesRegex(ValueError,'SOURCE_SNAPSHOT_UNVERIFIED'): fixture(source)
+
 if __name__=='__main__':unittest.main()

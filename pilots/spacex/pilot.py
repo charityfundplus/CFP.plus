@@ -3,6 +3,7 @@ import argparse, hashlib, json, sqlite3
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
+SOURCE_SHA256 = 'a63c5e0b8af157b0938014d51da94ea924b9721acd0a11a9107f5deea3c6f507'
 FIELDS = {'id', 'parent_id', 'name', 'type', 'status'}
 ALLOWED = {'691181': '69118'}  # existing Registry identity, fixture only; NOT SpaceX allocation
 
@@ -30,11 +31,13 @@ def validate(records):
         result.append(dict(item))
     return sorted(result, key=lambda r: r['id'])
 
-def import_snapshot(records, sandbox, *, enabled=False, reverse=False):
+def import_snapshot(records, sandbox, *, enabled=False, reverse=False, schema_version=1):
     if reverse:
         writeback()
     if not enabled:
         raise PermissionError('KILL_SWITCH_OFF')
+    if type(schema_version) is not int or schema_version != 1:
+        raise ValueError('SCHEMA_VERSION_UNSUPPORTED')
     rows = validate(records)  # reject before creating destination
     sandbox = Path(sandbox).resolve()
     sandbox.mkdir(parents=True, exist_ok=True)
@@ -67,7 +70,10 @@ def export_ui(sandbox, ui):
     return data
 
 def fixture(registry):
-    source = json.loads(Path(registry).read_text())
+    raw = Path(registry).read_bytes()
+    if hashlib.sha256(raw).hexdigest() != SOURCE_SHA256:
+        raise ValueError('SOURCE_SNAPSHOT_UNVERIFIED')
+    source = json.loads(raw)
     child, parent = source['691181'], source['69118']
     if child['parent_id'] != parent['id'] or parent['ai_country_id'] != '6911' or parent['country_id'] != '911':
         raise ValueError('Registry chain mismatch')

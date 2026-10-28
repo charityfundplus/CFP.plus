@@ -29,14 +29,15 @@ SQLite import and audit share a transaction; duplicate input is idempotent.
 
 ## Evidence (2026-10-28 UTC)
 
-- `evidence/tests.txt`: 9 Python tests PASS, including audit-failure rollback,
+- `evidence/tests.txt`: 12 Python tests PASS, including audit-failure rollback,
   source unchanged, validation, duplicate rejection, symlink DB rejection,
   idempotency, kill switch and writeback blocked before I/O.
 - `evidence/import.json`: sanitized sample + snapshot and payload digests.
 - `evidence/writeback.txt`: actual reverse CLI failure.
-- `evidence/ui-tests.json`: Chromium 390×1000 and 1440×1000, 7 assertions each
-  (14 PASS): adapter record rendering, overflow, search empty/match, reverse UI
-  feedback, page errors, section navigation. Screenshots alongside logs.
+- `evidence/ui-tests.json`: Chromium 390×1000 and 1440×1000, 22 assertions each
+  (44 PASS): adapter record rendering, overflow, search empty/match, reverse UI
+  feedback, page errors, section navigation, six requested surfaces, safe demo text,
+  demo ACK/DECLINE, disabled activation and session reset. Screenshots alongside logs.
 - JS syntax: `node --check ui/app.js` PASS.
 - Browser reproduction: Playwright package + Chromium required; run
   `node check-ui.cjs` with local server on 8765. Script uses /usr/bin/chromium.
@@ -61,3 +62,26 @@ remove sandbox/, rerun the importer. No production or source rollback is needed.
 The UI button is illustrative; the Python negative tests prove the implemented
 adapter boundary. A compromised host/modified Python program is outside this
 proof. No claim of infrastructure-level one-way enforcement is made.
+
+## Follow-up review
+
+Actual files are pilot.py, test_pilot.py, registry.json, ui/index.html and
+ui/app.js; no adapter.mjs/server.mjs/test.mjs exists in this PR. The static
+server is Python's read-only file server, not a live CFP+/SpaceX API.
+
+The copied registry.json is fixture material, not an authoritative Registry.
+Its bytes are pinned to SHA256 in pilot.py; tampered snapshots fail before use.
+That pin establishes integrity against the reviewed snapshot, not a signed live
+feed or independent source authentication. Import supports schema_version=1
+only; missing IDs, unknown versions and extra fields fail before destination I/O.
+
+Directory, discussion, tasks/ACK, evidence and governance surfaces are present.
+Discussion and ACK/DECLINE are explicitly DEMO, held only in DOM memory and
+cleared by reload. No authenticated forum, durable queue or administrative
+operation is implemented. Activation is disabled. All external participation
+remains unconfirmed until actual authenticated receipt.
+
+Rechecked original receipts 6481751819 (#174) and 6481756290 (#178): both exist
+and were authored by charityfundplus. No separate Codex identity is established.
+Status: DRAFT • CHƯA NGHIỆM THU. Physical iPhone Safari and independent
+SecuritySI/ReviewSI review remain NOT RUN; Chromium mobile viewport is not Safari.
