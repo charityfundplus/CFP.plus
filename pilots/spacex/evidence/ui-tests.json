@@ -1,0 +1,72 @@
+[
+  {
+    "width": 390,
+    "name": "adapter export renders",
+    "status": "PASS"
+  },
+  {
+    "width": 390,
+    "name": "no horizontal overflow",
+    "status": "PASS"
+  },
+  {
+    "width": 390,
+    "name": "search no results",
+    "status": "PASS"
+  },
+  {
+    "width": 390,
+    "name": "search matching record",
+    "status": "PASS"
+  },
+  {
+    "width": 390,
+    "name": "reverse button feedback",
+    "status": "PASS"
+  },
+  {
+    "width": 390,
+    "name": "no page errors",
+    "status": "PASS"
+  },
+  {
+    "width": 390,
+    "name": "section navigation",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "adapter export renders",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "no horizontal overflow",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "search no results",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "search matching record",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "reverse button feedback",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "no page errors",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "section navigation",
+    "status": "PASS"
+  }
+]

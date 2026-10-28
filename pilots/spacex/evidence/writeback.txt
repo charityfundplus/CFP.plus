@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/workspace/work/spacex-pilot/pilot.py", line 82, in <module>
+    writeback()
+  File "/workspace/work/spacex-pilot/pilot.py", line 10, in writeback
+    raise PermissionError('WRITEBACK_BLOCKED: no reverse capability')
+PermissionError: WRITEBACK_BLOCKED: no reverse capability

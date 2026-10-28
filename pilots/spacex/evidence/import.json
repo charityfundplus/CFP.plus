@@ -1,0 +1,2 @@
+IMPORTED
+{"source_unchanged": true, "source_sha256": "a63c5e0b8af157b0938014d51da94ea924b9721acd0a11a9107f5deea3c6f507", "digest": "b787bd5c22ea5de2b6781696ad95c5beaf27e380f207154f71f34a9b6a751208", "records": [{"id": "691181", "name": "ChatGPT", "parent_id": "69118", "status": "SANDBOX_FIXTURE_ONLY", "type": "ai"}]}
