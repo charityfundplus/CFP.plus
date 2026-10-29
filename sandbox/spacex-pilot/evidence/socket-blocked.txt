@@ -1,0 +1,35 @@
+UTC: 2026-10-28T22:03:31.077212+00:00
+Command: PILOT_SOCKET_TEST=1 node test.mjs
+Exit: 1
+✔ approval defaults to deny; registry statuses are preserved (1.866478ms)
+✔ approved test fixture imports once; retry is idempotent; copies cannot mutate state (0.76217ms)
+✔ reverse direction blocked and original source bytes unchanged (3.907009ms)
+✔ unknown fields, parent changes, unapproved IDs, missing provenance fail atomically (0.931907ms)
+✔ mismatch, duplicate batch and kill switch denied (0.613617ms)
+✖ HTTP preview serves allowlisted assets and rejects every write method (5.925663ms)
+✔ missing ID, wrong parent and wrong source version rejected individually (0.568749ms)
+✔ read-only request handler rejects writes and traversal without opening a socket (2.314745ms)
+✔ fixture is an exact versioned source copy, not an authoritative runtime registry (1.228255ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 8
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 23.87917
+
+✖ failing tests:
+
+test at test.mjs:47:1
+✖ HTTP preview serves allowlisted assets and rejects every write method (5.925663ms)
+  Error: listen EPERM: operation not permitted 127.0.0.1
+      at Server.setupListenHandle [as _listen2] (node:net:2145:21)
+      at listenInCluster (node:net:2224:12)
+      at node:net:2448:7
+      at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+    code: 'EPERM',
+    errno: -1,
+    syscall: 'listen',
+    address: '127.0.0.1'
+  }
