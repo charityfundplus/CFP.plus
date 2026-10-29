@@ -1,0 +1,133 @@
+{
+  "engine": "Chromium local, mobile viewport emulation; not physical Safari/iPhone",
+  "results": [
+    {
+      "width": 320,
+      "scrollWidth": 320,
+      "chapters": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "zones": [
+        "000",
+        "0",
+        "135",
+        "246",
+        "789"
+      ],
+      "smallTargets": [],
+      "overlaps": [],
+      "brokenAnchors": [],
+      "earthInChapter0": true,
+      "forumNavigation": true,
+      "detailsOpen": true,
+      "chapterNavigation": true,
+      "pageErrors": [],
+      "pass": true
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390,
+      "chapters": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "zones": [
+        "000",
+        "0",
+        "135",
+        "246",
+        "789"
+      ],
+      "smallTargets": [],
+      "overlaps": [],
+      "brokenAnchors": [],
+      "earthInChapter0": true,
+      "forumNavigation": true,
+      "detailsOpen": true,
+      "chapterNavigation": true,
+      "pageErrors": [],
+      "pass": true
+    },
+    {
+      "width": 430,
+      "scrollWidth": 430,
+      "chapters": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "zones": [
+        "000",
+        "0",
+        "135",
+        "246",
+        "789"
+      ],
+      "smallTargets": [],
+      "overlaps": [],
+      "brokenAnchors": [],
+      "earthInChapter0": true,
+      "forumNavigation": true,
+      "detailsOpen": true,
+      "chapterNavigation": true,
+      "pageErrors": [],
+      "pass": true
+    },
+    {
+      "width": 1280,
+      "scrollWidth": 1280,
+      "chapters": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "zones": [
+        "000",
+        "0",
+        "135",
+        "246",
+        "789"
+      ],
+      "smallTargets": [],
+      "overlaps": [],
+      "brokenAnchors": [],
+      "earthInChapter0": true,
+      "forumNavigation": true,
+      "detailsOpen": true,
+      "chapterNavigation": true,
+      "pageErrors": [],
+      "pass": true
+    }
+  ]
+}
