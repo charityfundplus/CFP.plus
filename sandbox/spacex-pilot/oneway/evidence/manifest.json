@@ -1,0 +1,20 @@
+{
+  "README.md": "18e9197e0c54ec30652aac0bb8e51837c734d316ff657965b15427906c242118",
+  "REPORT.md": "2ad749a7b564eed09170436622c593386dcfc11a5622ed77cc281d3458f80cc8",
+  "SPEC.md": "2a87370a4fe17ac5d50bc4cf813dc96f0d8d21359eb3fd9768f79b8514e6fd71",
+  "core.mjs": "1c1aa4bed1d481714d190f933481bf6e2b44d2ca1cf004f7d63ebae126d2a505",
+  "demo.mjs": "e6ba9ec7d488ed84573c60d0aeeeeadd383d63d5c0fe3d3052330efbdf3b75fc",
+  "evidence/audit.json": "1a9b9c0b221d5d4be339a584d5e36f5481a7fd3fe71994f591be54ea715b1785",
+  "evidence/browser.json": "0759f438d28e530b022ea67ff2f53ee06637539d29188295184dceeb806293af",
+  "evidence/demo.json": "3c070057f47f8f5c032d56c32a2c7ed388a67775231ca23b99a13a044c7a0469",
+  "evidence/http.txt": "28a8ec596d79a9e7b87085eb67f2dc093bc2307cadfba6aaff2cea59641161c4",
+  "evidence/isolated-run.json": "0afc45fbf653c14cfaaa7153126f9f215b81ec3e7c1c42e677ab14626716107a",
+  "evidence/isolation.json": "201f5b5a17d10fd1f26e384249c048c946123862f133a3cd1d2cb4af321da8f6",
+  "evidence/preview.html": "c59e4798ea0329988664a843ea8463c6445abf3754a6b5e4a69460840f11136c",
+  "evidence/synthetic-input.json": "3279a12e2fc39c73b990fae8886b13622e0887a7316530bec9da8e548d0e2adb",
+  "evidence/tests.tap": "88058eb383eab03ca92711228cd9fd2cf2a647b1024e26a7c3d55adb9cba456a",
+  "isolated-run.mjs": "f7666ca816af6007e80cac226fb9733a1d4da894bd9d8b4a6c3250ea836aa19a",
+  "permission-probe.mjs": "1f06309e2e2a3758dc13496a8c751bfbd19de7881fd9f9ec83a9e911fdf02069",
+  "server.mjs": "a2dde944955fb99ba95eb964b556d567ac17d7cfa6cbf866c18fbc0ed8d75b00",
+  "test.mjs": "df76edb22d34407e5e2c05fb8494707d757ba453f236d4d4b0236214de3f0ea6"
+}
