@@ -30,6 +30,27 @@
       "forumNavigation": true,
       "detailsOpen": true,
       "chapterNavigation": true,
+      "financeNavigation": true,
+      "funds": [
+        {
+          "id": "331",
+          "title": "Quỹ Sự Sống",
+          "description": "Bảo toàn • Phát triển"
+        },
+        {
+          "id": "332",
+          "title": "Quỹ Con Người",
+          "description": "Ổn định • An toàn"
+        },
+        {
+          "id": "333",
+          "title": "Quỹ Đầu Tư",
+          "description": "Tạo giá trị • Phục vụ xã hội"
+        }
+      ],
+      "fundNamesCorrect": true,
+      "marketNameCorrect": true,
+      "financeTextClipped": false,
       "pageErrors": [],
       "pass": true
     },
@@ -62,6 +83,27 @@
       "forumNavigation": true,
       "detailsOpen": true,
       "chapterNavigation": true,
+      "financeNavigation": true,
+      "funds": [
+        {
+          "id": "331",
+          "title": "Quỹ Sự Sống",
+          "description": "Bảo toàn • Phát triển"
+        },
+        {
+          "id": "332",
+          "title": "Quỹ Con Người",
+          "description": "Ổn định • An toàn"
+        },
+        {
+          "id": "333",
+          "title": "Quỹ Đầu Tư",
+          "description": "Tạo giá trị • Phục vụ xã hội"
+        }
+      ],
+      "fundNamesCorrect": true,
+      "marketNameCorrect": true,
+      "financeTextClipped": false,
       "pageErrors": [],
       "pass": true
     },
@@ -94,6 +136,27 @@
       "forumNavigation": true,
       "detailsOpen": true,
       "chapterNavigation": true,
+      "financeNavigation": true,
+      "funds": [
+        {
+          "id": "331",
+          "title": "Quỹ Sự Sống",
+          "description": "Bảo toàn • Phát triển"
+        },
+        {
+          "id": "332",
+          "title": "Quỹ Con Người",
+          "description": "Ổn định • An toàn"
+        },
+        {
+          "id": "333",
+          "title": "Quỹ Đầu Tư",
+          "description": "Tạo giá trị • Phục vụ xã hội"
+        }
+      ],
+      "fundNamesCorrect": true,
+      "marketNameCorrect": true,
+      "financeTextClipped": false,
       "pageErrors": [],
       "pass": true
     },
@@ -126,6 +189,27 @@
       "forumNavigation": true,
       "detailsOpen": true,
       "chapterNavigation": true,
+      "financeNavigation": true,
+      "funds": [
+        {
+          "id": "331",
+          "title": "Quỹ Sự Sống",
+          "description": "Bảo toàn • Phát triển"
+        },
+        {
+          "id": "332",
+          "title": "Quỹ Con Người",
+          "description": "Ổn định • An toàn"
+        },
+        {
+          "id": "333",
+          "title": "Quỹ Đầu Tư",
+          "description": "Tạo giá trị • Phục vụ xã hội"
+        }
+      ],
+      "fundNamesCorrect": true,
+      "marketNameCorrect": true,
+      "financeTextClipped": false,
       "pageErrors": [],
       "pass": true
     }

@@ -29,10 +29,17 @@ with sync_playwright() as p:
         data['detailsOpen']=page.locator('details').first.get_attribute('open') is not None
         page.get_by_role('link',name='Đến Chương 6',exact=True).click()
         data['chapterNavigation']=page.evaluate('location.hash')=='#chuong-6'
+        page.get_by_role('link',name='Cổng tài chính',exact=True).click()
+        data['financeNavigation']=page.evaluate('location.hash')=='#tai-chinh'
+        data['funds']=page.locator('[data-fund]').evaluate_all('(cards)=>cards.map(e=>({id:e.dataset.fund,title:e.querySelector("h3").textContent,description:e.querySelector("p").textContent}))')
+        data['fundNamesCorrect']=data['funds']==[{'id':'331','title':'Quỹ Sự Sống','description':'Bảo toàn • Phát triển'},{'id':'332','title':'Quỹ Con Người','description':'Ổn định • An toàn'},{'id':'333','title':'Quỹ Đầu Tư','description':'Tạo giá trị • Phục vụ xã hội'}]
+        data['marketNameCorrect']=page.locator('.market-name p').inner_text()=='Sàn TMTC • Thương mại tổng hợp toàn cầu'
+        data['financeTextClipped']=page.locator('#tai-chinh h3, #tai-chinh p').evaluate_all('(els)=>els.some(e=>e.scrollWidth>e.clientWidth+1||e.scrollHeight>e.clientHeight+1)')
+        page.locator('#tai-chinh').screenshot(path=str(root/f'finance-{width}.png'))
         page.evaluate('window.scrollTo(0,0)')
         page.screenshot(path=str(root/f'preview-{width}.png'),full_page=True)
         data['pageErrors']=errors
-        data['pass']=data['scrollWidth']<=width and data['chapters']==[str(i) for i in range(10)] and data['zones']==['000','0','135','246','789'] and not data['smallTargets'] and not data['overlaps'] and not data['brokenAnchors'] and data['forumNavigation'] and data['detailsOpen'] and data['chapterNavigation'] and data['earthInChapter0'] and not errors
+        data['pass']=data['scrollWidth']<=width and data['chapters']==[str(i) for i in range(10)] and data['zones']==['000','0','135','246','789'] and not data['smallTargets'] and not data['overlaps'] and not data['brokenAnchors'] and data['forumNavigation'] and data['detailsOpen'] and data['chapterNavigation'] and data['earthInChapter0'] and not errors and data['financeNavigation'] and data['fundNamesCorrect'] and data['marketNameCorrect'] and not data['financeTextClipped']
         results.append(data)
         context.close()
     browser.close()
