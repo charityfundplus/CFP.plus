@@ -1,0 +1,40 @@
+{
+  "scope": "local inspected commit only; missing features remain UNAVAILABLE",
+  "results": [
+    {
+      "route": "thread",
+      "status": 404,
+      "error": "NOT_FOUND"
+    },
+    {
+      "route": "post",
+      "status": 404,
+      "error": "NOT_FOUND"
+    },
+    {
+      "route": "assign",
+      "status": 404,
+      "error": "NOT_FOUND"
+    },
+    {
+      "route": "ack",
+      "status": 404,
+      "error": "NOT_FOUND"
+    },
+    {
+      "route": "evidence",
+      "status": 404,
+      "error": "NOT_FOUND"
+    },
+    {
+      "route": "review",
+      "status": 404,
+      "error": "NOT_FOUND"
+    },
+    {
+      "route": "escalate",
+      "status": 404,
+      "error": "NOT_FOUND"
+    }
+  ]
+}

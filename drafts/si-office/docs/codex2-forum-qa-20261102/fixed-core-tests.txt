@@ -1,0 +1,57 @@
+
+> test
+> node scripts/run-tests.mjs
+
+✔ unauthenticated access rejected (8.008813ms)
+✔ 12 modules and null identity; no production route (11.006683ms)
+✔ viewer cannot write and editor cannot review (3.049057ms)
+✔ workflow requires submission and HTTPS evidence; reviewer result is demo only (7.510899ms)
+✔ registration validates lineage and refuses identity fields (2.243195ms)
+✔ origin protection and invalid sessions (0.605195ms)
+✔ rejects unsafe URLs and unexpected record fields (0.897294ms)
+✔ all modules accept synthetic drafts (5.166383ms)
+✔ audit hash links recompute, including denied actions (3.576273ms)
+✔ static security headers and traversal rejection (4.204898ms)
+✔ conflicting US registry branch blocked, numeric strings retain zeros (0.975812ms)
+✔ HSTDN validates members, blocks identity fields and keeps legal claims unverified (8.662567ms)
+✔ mock adapters never connect and reject credentials/live writes (7.75964ms)
+✔ 12 bilingual contracts; product maturity/service scope validated (5.836576ms)
+✔ identity evidence, duplicate profiles, hostile Host and denial audit (2.382418ms)
+✔ Country/Developer proposals preserve identity and validate local relationship (4.816281ms)
+✔ 12-module functional matrix: create, submit, review, audit and role denial (25.107374ms)
+✔ catalog relations enforce office membership; adapters deny viewer and live mode (4.366623ms)
+✔ standard core: 12 module versions, one reusable core, three configuration templates (2.733964ms)
+✔ standard core: rejects self-issued identity, live adapter, production mode and privileges (0.59554ms)
+✔ standard core: normal task runs 16 independent checks and requires separate demo review (4.591905ms)
+✔ standard core: viewer cannot create/run/stop/upgrade; editor cannot recover (1.024611ms)
+✔ standard core: out-of-mission and resource requests are denied before execution (0.513486ms)
+✔ standard core: overreach blocked with no output, safe stop and retained evidence (3.264441ms)
+✔ standard core: bad-evidence blocked with no output, safe stop and retained evidence (2.354785ms)
+✔ standard core: false-claim blocked with no output, safe stop and retained evidence (1.935167ms)
+✔ standard core: adapter-error fault halts and requires reviewer recovery/explicit retry (3.564884ms)
+✔ standard core: timeout fault halts and requires reviewer recovery/explicit retry (13.568633ms)
+✔ standard core: stop during running adapter prevents late output; recovery waits for quiescence (1.529507ms)
+✔ standard core: one active task per pair; no replay after draft completion (1.941626ms)
+✔ standard core: changed provider/protocol or title cannot pass independent supervision (2.018572ms)
+✔ standard core: learning evaluates safe denial, never grants rights (1.363599ms)
+✔ standard core: synchronized upgrade/rollback preserves identities and audit (5.125688ms)
+✔ standard core: incompatible/failing release and active tasks prevent partial upgrade (1.677116ms)
+✔ standard core: HSTDN US artifact remains synthetic, no partner/capability/legal claim (1.07127ms)
+✔ standard core: snapshot is detached; configuration cannot mutate policy (2.079069ms)
+✔ standard core: least-privilege source-only config supports registry audit without write tool (0.766719ms)
+✔ standard core: HTTP handler reuses sessions, blocks credential injection and exposes local UI (13.022303ms)
+✔ standard core: read-only registry lookup preserves numeric zero strings; inventory does not verify identity (0.670933ms)
+✔ standard core: omission of adapter tool declarations cannot bypass Core draft.write permission (0.832442ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 40
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 196.275694
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
