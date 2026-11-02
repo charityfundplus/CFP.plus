@@ -16,8 +16,8 @@ export function createP2HTTP({service,previewOrigin=null}){
   res.setHeader('Cache-Control','no-store');res.setHeader('X-Content-Type-Options','nosniff');res.setHeader('Referrer-Policy','no-referrer');res.setHeader('Content-Security-Policy',"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; form-action 'self'; base-uri 'none'");
   const previewRequest=!!preview&&req.headers.host===preview.host;const expectedOrigin=previewRequest?preview.origin:'http://'+req.headers.host;const secureCookie=previewRequest?'; Secure':'';
   if(!previewRequest&&!/^(localhost|127\.0\.0\.1)(:\d+)?$/.test(req.headers.host||'')){try{service.httpDenial('HOST_DENIED');}catch{}return send(403,{error:'LOOPBACK_ONLY'});}
-  const requestURL=new URL(req.url,'http://localhost'),path=requestURL.pathname;
   try{
+   const requestURL=new URL(req.url,'http://localhost'),path=requestURL.pathname;
    const assets={'/':'p2.html','/p2':'p2.html','/core.js':'core.js','/p2-office.js':'p2-office.js','/office-intake.js':'office-intake.js','/assessment-export.js':'assessment-export.js','/commercial-office.js':'commercial-office.js','/registry-office.js':'registry-office.js','/registry-client.js':'registry-client.js','/style.css':'style.css'};
    if(!path.startsWith('/api/')){if(req.method!=='GET'||!assets[path])return send(404,{error:'NOT_FOUND'});res.setHeader('Content-Type',path.endsWith('.js')?'text/javascript':path.endsWith('.css')?'text/css':'text/html');return res.end(await readFile(new URL('../public/'+assets[path],import.meta.url)));}
    if(path==='/api/curriculum'&&req.method==='GET')return send(200,JSON.parse(await readFile(new URL('../configs/training-basic-v1.json',import.meta.url),'utf8')));
