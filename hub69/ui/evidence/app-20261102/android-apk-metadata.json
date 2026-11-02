@@ -1,0 +1,26 @@
+{
+  "status": "BUILD_AND_SIGNATURE_PASS",
+  "scope": "DEBUG review APK; bundled UI only until approved HTTPS backend configured; not physical device tested",
+  "observed_utc": "2026-11-02T21:58:55.982959+00:00",
+  "artifact": "/workspace/cfp-app-qa/CFP-plus-debug.apk",
+  "sha256": "a0f33f9590c61af8ec5184d8fb2829d1e783158e4dfbce86027b185db2086d09",
+  "size_bytes": 4201256,
+  "app_id": "plus.cfp.app",
+  "capacitor": "8.6.0",
+  "gradle": "8.14.3",
+  "jdk": "Temurin21.0.13+9",
+  "compile_target_sdk": 36,
+  "minimum_sdk": 24,
+  "build_tools_used": "35.0.0 (AGP default); verified with apksigner36.0.0",
+  "apk_signature_scheme_v2": true,
+  "api_endpoint_configured": false,
+  "physical_device_tested": false,
+  "asset_sha256": {
+    "app.js": "8b994a6b92d6094e95606d9087d3cb5ecf2e2092afd7419ffc654c0bbabfe0f6",
+    "forum.js": "d50cedc597d89d60d9cfd8af68f094f6d6ccfbc325c46f0cfba5a1126d17d9c9",
+    "app-integration.js": "781e09aa6fdd7de243560c5accebce90af61dc301b0af33be9480c550cacb914",
+    "index.html": "e94c38d6da1df640cc1ffcd32cff7d125c1b3fd2794bcea0a7233ae030360e10",
+    "THIRD_PARTY_NOTICES.txt": "56f15c672b94953b858b15be9c19843684a3add772c9ebdd4b95c0e1e8f34842"
+  },
+  "helper": "/workspace/.cfp-env/build-cfp-android.sh"
+}

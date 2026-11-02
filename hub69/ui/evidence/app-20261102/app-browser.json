@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "scope": "Real local HTTP/API/SQLite; existing PWA + Website; Chromium touch emulation, not a physical phone",
+  "checks": [
+    "App authenticates via existing Website session; reads authoritative pinned26 Registry rows through API",
+    "Exact numeric ID lookup and leading-zero isolation preserve source identities",
+    "App writes visible in Website; Website writes visible after App reload; both use exact same database and sync queue",
+    "Offline clears API Registry rows; reconnect rereads current authenticated data",
+    "Independent viewer App session reads shared data and cannot write",
+    "Forum task created; independent assigned recipient ACKs, replies, uploads actual UTF8 Evidence and verifies SHA256/task-key after reload",
+    "Website logout revokes the shared session; App does not fall back to a Registry snapshot",
+    "No browser page errors; responsive widths320/390/768/1440 checked"
+  ],
+  "page_errors": [],
+  "physical_device": "NOT RUN",
+  "canva_design_match": "BLOCKED",
+  "native_binary": "NOT BUILT"
+}
