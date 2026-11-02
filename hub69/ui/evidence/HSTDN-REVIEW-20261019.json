@@ -1,0 +1,1304 @@
+{
+  "date": "2026-10-19",
+  "owner": "Codex 2",
+  "observedAtUTC": "2026-10-19T20:23:33.025Z",
+  "mode": "DRAFT_RESEARCH_UI",
+  "status": "PROTOTYPE_COMPLETED_FOR_REVIEW",
+  "activationAllowed": false,
+  "sourceCommit": "cf32fd1f70220e597c819c0a1f76d47e46e46f57",
+  "baselineCommit": "47be3310421c14e6de413189f2aad0839d18e78b",
+  "branch": "codex2/integration-readiness",
+  "draftPR": "https://github.com/charityfundplus/CFP.plus/pull/141",
+  "assignment": "https://github.com/charityfundplus/CFP.plus/pull/157#issuecomment-6276298491",
+  "ackHandoff": "https://github.com/charityfundplus/CFP.plus/pull/157#issuecomment-6276388134",
+  "source": {
+    "url": "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552",
+    "lastEdited": "2026-10-19T20:08:51.750Z",
+    "verification": "unverified",
+    "scope": "User-forwarded GrokSI research; field source/date/excerpt are attributed handoff notes, not independent original evidence",
+    "primaryEvidenceRetrieved": false,
+    "independentVERIFIEDClaims": 0
+  },
+  "coordination": {
+    "codex1Review": "https://github.com/charityfundplus/CFP.plus/pull/157#issuecomment-6276360601",
+    "codex1ReviewedSource": "ac39c1db344629f96aadb549451b5a30108afc37",
+    "contractSourceRead": "383ffcf5fa3a229d442393a86fa189e52bc09289",
+    "coreSourceRead": "06f386b1ba52358779cec6bc26c2d88f6a33664a",
+    "newAPIContractApproved": false,
+    "securityRemediationCandidate": "383ffcf5fa3a229d442393a86fa189e52bc09289 observed; not reviewed/tested for LOW/P3 closure in this UI task",
+    "otherPlatformsACKClaimed": false
+  },
+  "schemaInspection": [
+    {
+      "path": "hub69/ui/profile.schema.json",
+      "ref": "47be3310421c14e6de413189f2aad0839d18e78b",
+      "gitBlobSHA": "1204675a1e48b541e06778fe69a6d68d27e54339",
+      "finding": "Required numeric id/name/type does not admit unbound source notes as Registry records; schema unchanged"
+    },
+    {
+      "path": "drafts/si-office/public/registry-client.js",
+      "ref": "06f386b1ba52358779cec6bc26c2d88f6a33664a",
+      "gitBlobSHA": "ec8f432a618c1efec7586cd2d710caf98f6518e9",
+      "finding": "Existing same-origin client and hstdn:null / evidence:[] projection unchanged; no generic field-level HSTDN endpoint supplied"
+    },
+    {
+      "path": "drafts/si-office/docs/p0-20261016/openai-profile.json",
+      "ref": "06f386b1ba52358779cec6bc26c2d88f6a33664a",
+      "gitBlobSHA": "bf6e856085457da05822a03a04cc1f5254ff0317",
+      "finding": "Reuse reference-only/null identity principles; snapshot is not generic endpoint schema"
+    },
+    {
+      "path": "contracts/issue156/openapi.json",
+      "ref": "383ffcf5fa3a229d442393a86fa189e52bc09289",
+      "gitBlobSHA": "fe448894ce11c9616a2f74f53a921b7821465bc5",
+      "finding": "Evidence additionalProperties=false, required url/sourceRevision/sha256/verifiedAt/claim; no field/date/excerpt/status contract; do not insert UI metadata in Core/public responses"
+    },
+    {
+      "path": "contracts/issue156/API_CONTRACT.md",
+      "ref": "383ffcf5fa3a229d442393a86fa189e52bc09289",
+      "gitBlobSHA": "2b4ea2545e07b0fad1b64f847e36593692d56fc6",
+      "finding": "No newly accepted entity-classification/claim-level contract found; Codex1 mapping proposal is pending review"
+    }
+  ],
+  "implementation": {
+    "singleUI": "hub69/ui",
+    "newComponent": "public/hstdn-review.js",
+    "tokens": "Design Tokens 1.0.0 unchanged",
+    "contexts": [
+      "vn",
+      "us",
+      "global"
+    ],
+    "subjects": 7,
+    "scope": "One presenter used by offline and Core asset bundles; explicit research notes outside Registry/API data",
+    "entry": "#hstdn/vn/starlink",
+    "countrySelection": "Retains selected subject; VN legal-name/license claims do not carry into US/global",
+    "classification": "Separate legal entity, brand/trade name, segment/product and ownership notes; no inferred corporate or Registry Parent",
+    "bindings": {
+      "id": null,
+      "parent": null,
+      "did": null,
+      "canonical": null,
+      "countryID": null
+    },
+    "statusPolicy": "Source-provided labels, booleans, URLs and claimed receipts never grant VERIFIED; current fields remain NOT VERIFIED or BLOCKED",
+    "allRecordVerdict": "NONE",
+    "proposedHTTPAPI": "Text only; no link, connection or protocol upgrade",
+    "nativeAppBinary": "NOT_BUILT"
+  },
+  "modelCoverage": [
+    {
+      "country": "vn",
+      "subject": "starlink",
+      "fields": 12,
+      "notVerified": 2,
+      "blocked": 10,
+      "verified": 0
+    },
+    {
+      "country": "vn",
+      "subject": "spacex",
+      "fields": 11,
+      "notVerified": 1,
+      "blocked": 10,
+      "verified": 0
+    },
+    {
+      "country": "vn",
+      "subject": "tesla",
+      "fields": 11,
+      "notVerified": 1,
+      "blocked": 10,
+      "verified": 0
+    },
+    {
+      "country": "vn",
+      "subject": "xai",
+      "fields": 12,
+      "notVerified": 1,
+      "blocked": 11,
+      "verified": 0
+    },
+    {
+      "country": "vn",
+      "subject": "x",
+      "fields": 11,
+      "notVerified": 1,
+      "blocked": 10,
+      "verified": 0
+    },
+    {
+      "country": "vn",
+      "subject": "neuralink",
+      "fields": 11,
+      "notVerified": 1,
+      "blocked": 10,
+      "verified": 0
+    },
+    {
+      "country": "vn",
+      "subject": "boring",
+      "fields": 11,
+      "notVerified": 1,
+      "blocked": 10,
+      "verified": 0
+    },
+    {
+      "country": "us",
+      "subject": "starlink",
+      "fields": 12,
+      "notVerified": 1,
+      "blocked": 11,
+      "verified": 0
+    },
+    {
+      "country": "us",
+      "subject": "spacex",
+      "fields": 11,
+      "notVerified": 1,
+      "blocked": 10,
+      "verified": 0
+    },
+    {
+      "country": "us",
+      "subject": "tesla",
+      "fields": 11,
+      "notVerified": 1,
+      "blocked": 10,
+      "verified": 0
+    },
+    {
+      "country": "us",
+      "subject": "xai",
+      "fields": 12,
+      "notVerified": 1,
+      "blocked": 11,
+      "verified": 0
+    },
+    {
+      "country": "us",
+      "subject": "x",
+      "fields": 11,
+      "notVerified": 1,
+      "blocked": 10,
+      "verified": 0
+    },
+    {
+      "country": "us",
+      "subject": "neuralink",
+      "fields": 11,
+      "notVerified": 1,
+      "blocked": 10,
+      "verified": 0
+    },
+    {
+      "country": "us",
+      "subject": "boring",
+      "fields": 11,
+      "notVerified": 1,
+      "blocked": 10,
+      "verified": 0
+    },
+    {
+      "country": "global",
+      "subject": "starlink",
+      "fields": 12,
+      "notVerified": 1,
+      "blocked": 11,
+      "verified": 0
+    },
+    {
+      "country": "global",
+      "subject": "spacex",
+      "fields": 11,
+      "notVerified": 1,
+      "blocked": 10,
+      "verified": 0
+    },
+    {
+      "country": "global",
+      "subject": "tesla",
+      "fields": 11,
+      "notVerified": 1,
+      "blocked": 10,
+      "verified": 0
+    },
+    {
+      "country": "global",
+      "subject": "xai",
+      "fields": 12,
+      "notVerified": 1,
+      "blocked": 11,
+      "verified": 0
+    },
+    {
+      "country": "global",
+      "subject": "x",
+      "fields": 11,
+      "notVerified": 1,
+      "blocked": 10,
+      "verified": 0
+    },
+    {
+      "country": "global",
+      "subject": "neuralink",
+      "fields": 11,
+      "notVerified": 1,
+      "blocked": 10,
+      "verified": 0
+    },
+    {
+      "country": "global",
+      "subject": "boring",
+      "fields": 11,
+      "notVerified": 1,
+      "blocked": 10,
+      "verified": 0
+    }
+  ],
+  "validation": {
+    "environment": {
+      "node": "v24.19.0",
+      "kind": "Managed local container"
+    },
+    "build": {
+      "exitCode": 0,
+      "log": "{\"records\":26,\"ai\":6,\"developers\":20,\"registryBlobSHA\":\"1f18068d66379ce90bb079dc56c77b4c4d66dcdf\",\"sourceSHA256\":\"a63c5e0b8af157b0938014d51da94ea924b9721acd0a11a9107f5deea3c6f507\",\"published\":false}\n"
+    },
+    "nodeVM": {
+      "command": "node --test --test-reporter=tap tests/*.test.mjs",
+      "exitCode": 0,
+      "tests": 73,
+      "pass": 73,
+      "fail": 0,
+      "skip": 0,
+      "inherited": 61,
+      "new": 12,
+      "log": "HSTDN-REVIEW-20261019.tap",
+      "logSHA256": "b0b0e5057bb6f628e4ddfa39f2eecd4fae5561766771cdffea0f4c36bc81cac5"
+    },
+    "syntax": {
+      "files": 16,
+      "failures": []
+    },
+    "baselineReadback": {
+      "files": 36,
+      "mismatches": 0,
+      "beforeEdits": true
+    },
+    "newSourceReadback": {
+      "commit": "cf32fd1f70220e597c819c0a1f76d47e46e46f57",
+      "files": 10,
+      "matches": 10
+    },
+    "responsive": "CSS/source guards only; no rendered browser layout or real device test",
+    "browserRuns": 0,
+    "sourceOnlyChangeScope": "10 paths under hub69/ui; Core, Registry, contracts and historical evidence unchanged",
+    "ci": "NOT_CLAIMED"
+  },
+  "artifact": {
+    "path": "hub69/ui/HUB69-review.html",
+    "bytes": 150319,
+    "sha256": "be341d95a3e5d04a6f86fdf8fdd3ee5585df8b36441e09b95f8119c646797d75",
+    "kind": "Generated standalone HTML with inline CSS/JS; runnable offline, not hosted",
+    "reproduce": "node hub69/ui/build.mjs; open hub69/ui/HUB69-review.html"
+  },
+  "findings": [
+    {
+      "id": "UI-SCHEMA",
+      "status": "BLOCKED_API_INTEGRATION",
+      "owner": "Codex 1 / contract reviewers",
+      "evidence": "Codex1 review + inspected sources above",
+      "next": "Confirm compatible entity/claim-level contract and authority before using existing Core read path; no new Registry/backend"
+    },
+    {
+      "id": "UI-EVIDENCE",
+      "status": "NOT_VERIFIED_OR_BLOCKED_PER_FIELD",
+      "owner": "Primary-source providers / Claude independent review / Human Governance",
+      "evidence": "Notion handoff snapshot and field conditions",
+      "next": "Provide original registration/license/filing/model/project source URL, source date, exact supporting excerpt and independent receipt; no universal VERIFIED label"
+    },
+    {
+      "id": "UI-IDENTITY",
+      "status": "BLOCKED_BINDINGS",
+      "owner": "Registry custodian / Human Governance",
+      "evidence": "Reference-only null bindings; Codex1 mapping review",
+      "next": "Supply approved identity/country bindings without deriving IDs or Parent from name, ownership or UI slugs"
+    },
+    {
+      "id": "UI-DEVICE",
+      "status": "BLOCKED",
+      "owner": "Existing environment owner / device reviewer",
+      "evidence": "Existing INTEGRATION-READINESS and Sites managed browser constraint",
+      "next": "Approved private HTTPS, same-origin mount, test account, deployment readback and supported browser/real iPhone receipt; keep native-app claim separate"
+    }
+  ],
+  "hold": {
+    "production": "NO-GO",
+    "merged": false,
+    "published": false,
+    "deployed": false,
+    "adapterActivations": 0,
+    "registryWrites": 0,
+    "iamDNSCredentialsChanged": false,
+    "recurringMonitor": "UNCHANGED_READ_ONLY"
+  },
+  "sourceFiles": [
+    {
+      "path": "hub69/ui/.gitignore",
+      "gitBlobSHA": "f2a9a6b69ce73274cc8ee2302c53fc9dc91f6491",
+      "sha256": "c32ba07dc55de8f2ba290d14caa8cd85a79e4419b096d8c23676f6769b60b293",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/INTEGRATION-READINESS.md",
+      "gitBlobSHA": "6331748f99c7d994ddd6cdf9304de332a10a1858",
+      "sha256": "018e38c895f70a5418c5b347e2ad046ba22fbb81edbb8f66b8993552578d8bb2",
+      "changedFromBaseline": true
+    },
+    {
+      "path": "hub69/ui/INTEGRATION.md",
+      "gitBlobSHA": "dd8465faaa033eb72bcf6cde39f3d8b67f668ba2",
+      "sha256": "d7a547ed0591f68c0bf22b31f0e5e798341800dd2f326529b422030873c676c6",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/README.md",
+      "gitBlobSHA": "65cb80fb4807308d71f6146230548c34a6bd4373",
+      "sha256": "ae1978a3e1b332cc1ab2f5bf29f392cc1741d2f1ae3fe70f007814eef03a5a97",
+      "changedFromBaseline": true
+    },
+    {
+      "path": "hub69/ui/build.mjs",
+      "gitBlobSHA": "0f9a9723dbdd1cfdb5178dda74aa6cd64984276f",
+      "sha256": "16661a35802516bd32e4920ee729c7a46c87d3edf0595826f600f40a1328a620",
+      "changedFromBaseline": true
+    },
+    {
+      "path": "hub69/ui/evidence/HANDOFF-INTEGRATION-READINESS.md",
+      "gitBlobSHA": "7984e7f93f1aea1e20577ca745283add5f187a30",
+      "sha256": "31170ffd4ef9e2a24ecb6444593527447183cef7ba486435878b7b7d4976a3d6",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/evidence/HTTPS-CONTENT.json",
+      "gitBlobSHA": "522cb48e8fba31f8134263026da2e5fe7e6caa92",
+      "sha256": "887d5779df897c1d866de2ddb18880b93ad04b6bf7903b2fa37716fb7af89d23",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/evidence/HTTPS-READBACK.json",
+      "gitBlobSHA": "e92377161165b87d5e6ea6ecc54721808ceaecc1",
+      "sha256": "508dab30f4226868cab3241c07513581d09e6c0d6f6837ce8b421286cfefacb5",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/evidence/INTEGRATION-BUILD-MANIFEST.json",
+      "gitBlobSHA": "90e604f364ba475084ae98a6bad7e547effa0617",
+      "sha256": "6d135ba54dcf98b6b45dd6d18e8f169b12cc3b8cdf16c346af092d6a0334b6aa",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/evidence/INTEGRATION-HTTP.tap",
+      "gitBlobSHA": "e44155b193af164fa1c0c297fd58b812a331b18c",
+      "sha256": "3ffc687b05eca6658e79649ab7c793d6736227a37c264a9d1b772f18d99ce15d",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/evidence/INTEGRATION-RESULTS.json",
+      "gitBlobSHA": "5ba122a342afa6586c654a10d2539bba34b8391d",
+      "sha256": "d8471df710d2eee08ccdff6dfd4e4e72c2fc98895f1a0986b074dccd4467662a",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/evidence/INTEGRATION-UNIT.tap",
+      "gitBlobSHA": "ab730ac68940f8da0ca19f4cbce7809058b3e084",
+      "sha256": "24c49fe107ff37bacbceb070ec5aaa861917904c69c1ea99b5e6351233900c79",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/evidence/P0-RESULTS.json",
+      "gitBlobSHA": "c300a9fd9075ec939885cdf103c4902d7fa51cfe",
+      "sha256": "7243f68294997e0c94e8e3e4e342c3bb66e1627cd1002fb9525c6592f06e5d3f",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/evidence/SITE-SAVE-RECEIPT.json",
+      "gitBlobSHA": "d152cc0cd75dccdfe3dc44299e00847a75e0821e",
+      "sha256": "f750663a97cfbaaeee6ecd79f765be10aba5e66121c9c189d23b64eba73c0df3",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/evidence/WEBSITE-P0-20261019.json",
+      "gitBlobSHA": "24e6e27f31ce01f2514cc9a300639dde590144a4",
+      "sha256": "2f4bffe1095126c1ca50dd8ebe0709a621180e08f0ef6177746145802231670a",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/evidence/WEBSITE-P0-20261019.tap",
+      "gitBlobSHA": "0409fc5e43e2b4b3715bc98d5dc60b88d838fcbc",
+      "sha256": "e7ba05419d0c4e7b6a138fc3d9371c3a5a17e3d95135342ef17626eece7a06bb",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/evidence/training-basic-v1.json",
+      "gitBlobSHA": "e8c49eee3b669558a264b2102ee491ea1a639eb0",
+      "sha256": "528ef09c2a7ac671eca56a6370ff3489657c0d9dfa33c2466f08ded48067f200",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/integration/core-http.test.mjs",
+      "gitBlobSHA": "5b175b19d3acbf3b2f8093226033749a63cafe8a",
+      "sha256": "f93a7c6eebc4a53993426107463dd2a30fbebbe4436ca8c9c3c14fca0d3fde7e",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/integration/source-pins.json",
+      "gitBlobSHA": "cd906bd932ed94a2ab591772979eafe46d958df6",
+      "sha256": "0ad7d26ff693887b1b76c15df30e9b2bf969067c1b5c050fd79f3a0b1dabe7ee",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/package.json",
+      "gitBlobSHA": "6676143b8f192351e7d640bf21c0d9d215576b84",
+      "sha256": "502b4d9ba1a4968647b1ccac0493914cbb1324505097512ffd2a04043950fc36",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/profile.schema.json",
+      "gitBlobSHA": "1204675a1e48b541e06778fe69a6d68d27e54339",
+      "sha256": "3d79aa7e19c90bd16c72743e97492ce55cb936b84e091ac354ae7331abdc2198",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/public/app.js",
+      "gitBlobSHA": "70255d1ff9ae82e171163299f3389d4faf9af354",
+      "sha256": "6da8e757489d1d6c0d388e9c4dbf47468fd48da454ee3597f425271311efd597",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/public/core-binding.js",
+      "gitBlobSHA": "23de197ad2bc4cba302a154d3263d0e318f913d3",
+      "sha256": "5ed1afe6aab265d0bc44dbfc30804937b64dc7a70bf097d5daf6fc4e1748908c",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/public/design-tokens.json",
+      "gitBlobSHA": "c2d13513bc34561f44a7ddc78a4af0ca05b05b76",
+      "sha256": "258179b78b164a501dd02bf0c54c4e8405d981b680c4dd968d18d14efb08630f",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/public/explore.js",
+      "gitBlobSHA": "666cfc3262711e9d1caf97f404aebca5c59235dc",
+      "sha256": "26a462da2d60e1d5f5a6f72b92343059b1cc8add8b1d920b7e2fecded67d00bd",
+      "changedFromBaseline": true
+    },
+    {
+      "path": "hub69/ui/public/index.html",
+      "gitBlobSHA": "40150742f241a7b24df6ce32297d4e88c17a8bd0",
+      "sha256": "da3798035ee907d6531476fb97bda6f8eb49a7d62941bdc650c8ed4cd75ee66b",
+      "changedFromBaseline": true
+    },
+    {
+      "path": "hub69/ui/public/model.js",
+      "gitBlobSHA": "d0904a2646a821dc3e2ee11273f5ec67b9997701",
+      "sha256": "335937b68a56600af118aa7ba8b5b3cc2c583241e8ec8f6884dbfb546e1b14bf",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/public/p0.js",
+      "gitBlobSHA": "ec75913763f71c9bb0cbd8e2b6650c432ec9ba55",
+      "sha256": "f507e0fc44242028e1b41444e341ca0e928e957bbc6ca6535aebe924108bd4c0",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/public/style.css",
+      "gitBlobSHA": "848492513fac03d21b9cfae15adc8d6ae0037fb0",
+      "sha256": "d1542cce5cc99608df812d15d0e1584dd575df492b3c37dac21f19eb07b4fdaa",
+      "changedFromBaseline": true
+    },
+    {
+      "path": "hub69/ui/public/training.js",
+      "gitBlobSHA": "34b2ca7eb781c432a4cb8e8458fd92bc122ff98c",
+      "sha256": "a97eb75a2a5d3230e0e2b2fd20dd0171473e74671bcec5455f012d10f891795a",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/tests/app-state.test.mjs",
+      "gitBlobSHA": "6ce828d5b8900e3d71c043c559bfd76380396649",
+      "sha256": "65d432ed31e91f35235f2350330e97698c44ff1c22951f6fa6e6329cc7984975",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/tests/harness.mjs",
+      "gitBlobSHA": "bc4ee67fbb9cc3918820128e8d15a2ccb00d5b16",
+      "sha256": "72557220d2e2f2fb6d500a0e0a59d13d93a054890e80583ac3776462853b75ba",
+      "changedFromBaseline": true
+    },
+    {
+      "path": "hub69/ui/tests/integration-readiness.test.mjs",
+      "gitBlobSHA": "972c3aca68dc5f82a9d6e29e4f0f0b834014d8cd",
+      "sha256": "41776c338abbc3b0ee90bcee5a986216bb7f4409c072078e89d1ace56d1ec23d",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/tests/p0.test.mjs",
+      "gitBlobSHA": "17c8e4bee2f8f7f139602d4dbca9d0f5e8cbcf36",
+      "sha256": "61658e9edcacf077c6182e8165d3bf447b1c766be398dab4e671bf0be9f821df",
+      "changedFromBaseline": true
+    },
+    {
+      "path": "hub69/ui/tests/source-baseline.test.mjs",
+      "gitBlobSHA": "13b60384db202986055a6c49b1d60b27cd030ec4",
+      "sha256": "76a4c34b8b3e168628fc5bb1bc8a29b2f88c34bb099c3bc910621f6da42195a9",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/tests/website-p0.test.mjs",
+      "gitBlobSHA": "e9c50b1a21622aa116b4745cffce051f33d4e11a",
+      "sha256": "7ec5fcd761ce18bdab467b8f25fea6abbbbc1fe5279bab22d6798eaebd041756",
+      "changedFromBaseline": false
+    },
+    {
+      "path": "hub69/ui/public/hstdn-review.js",
+      "gitBlobSHA": "7671db01c14f8905995e5a4411a4c5047a16d290",
+      "sha256": "4c6fe45b92149f5da4f7d3474f1b4db9c1c3e197c404bf49d04e633e7937fe51",
+      "changedFromBaseline": true
+    },
+    {
+      "path": "hub69/ui/tests/hstdn-review.test.mjs",
+      "gitBlobSHA": "205f3ec799f4b46c80539c5b5a88cc72d66c1c4f",
+      "sha256": "a61315bb4f4b88df22a7fd7db020e7444b003006c4c92c3c60691d195a9c5f49",
+      "changedFromBaseline": true
+    }
+  ],
+  "hashScope": "Receipt excludes itself; evidence commit follows sourceCommit without code changes. Older receipts/logs remain immutable.",
+  "intakeVerification20261019": {
+    "reportDateLocal": "2026-10-19",
+    "timezone": "America/New_York",
+    "checkedAtUTC": "2026-10-19T23:59:25.368Z",
+    "reviewer": "Current Codex session; independent of provider-labelled Verified; not an external Claude or other-session ACK",
+    "receiptStatus": "AVAILABLE_SUMMARY_AND_CANDIDATE_READ; ORIGINAL_PRIMARY_PACKAGE_INCOMPLETE",
+    "sourcePins": {
+      "ui": "beb5d432b776f40ef9f5acf16743fc76c97a10a1",
+      "contract": "383ffcf5fa3a229d442393a86fa189e52bc09289",
+      "notionLastEdited": "2026-10-19T20:08:51.750Z",
+      "unchangedTestedUICode": "7752326b66f205b1bf9f31bae1560fccff737b23"
+    },
+    "intake": {
+      "summaryRead": "PASS",
+      "githubRead": "PASS",
+      "notionRead": "PASS",
+      "localReadback": "8/8 PASS",
+      "originalPrimaryBundle": "NOT VERIFIED",
+      "otherWorkspaceSessions": "NOT OBSERVED"
+    },
+    "historicalRoleReceipts": [
+      {
+        "role": "Codex 1",
+        "url": "https://github.com/charityfundplus/CFP.plus/pull/157#issuecomment-6276360601",
+        "observedUpdatedAt": "2026-10-19T20:15:13Z",
+        "scope": "Existing source/schema ACK read; no new external ACK inferred"
+      },
+      {
+        "role": "Codex 2",
+        "url": "https://github.com/charityfundplus/CFP.plus/pull/157#issuecomment-6276388134",
+        "observedUpdatedAt": "2026-10-19T20:26:52Z",
+        "scope": "Existing UI candidate handoff read; no other-session intake inferred"
+      }
+    ],
+    "workspace": {
+      "root": "/workspace/scratch/dc9ff82e0956/CFP.plus-candidate",
+      "files": [
+        {
+          "path": "hub69/ui/evidence/HSTDN-REVIEW-20261019.json",
+          "sourceRevision": "beb5d432b776f40ef9f5acf16743fc76c97a10a1",
+          "gitBlobSHA": "ad0c7b2136e0e65f25e25fa0def697ab98bcc66c",
+          "sha256": "58b34142e290e41561114dd3f43d13e47a5cb480a2d38189422fd9ca9aef0d1e",
+          "alreadyPresent": true,
+          "readbackMatch": true
+        },
+        {
+          "path": "hub69/ui/README.md",
+          "sourceRevision": "beb5d432b776f40ef9f5acf16743fc76c97a10a1",
+          "gitBlobSHA": "d87bed91197a6436109d73f6cf8326d9e8ce6af8",
+          "sha256": "c3cc1ab370025bcfdfa6e41e8c08a8a3e7abef479cdef533b52f4a206a2f074a",
+          "alreadyPresent": true,
+          "readbackMatch": true
+        },
+        {
+          "path": "hub69/ui/public/hstdn-review.js",
+          "sourceRevision": "beb5d432b776f40ef9f5acf16743fc76c97a10a1",
+          "gitBlobSHA": "31c23e2754294d70bbecfef8da7ed6a9aa52c1c6",
+          "sha256": "d5ddf35dcbb63dcaff90e970a328bfa6fb31fb47d1d2a360d020df79c94b918c",
+          "alreadyPresent": true,
+          "readbackMatch": true
+        },
+        {
+          "path": "hub69/ui/profile.schema.json",
+          "sourceRevision": "beb5d432b776f40ef9f5acf16743fc76c97a10a1",
+          "gitBlobSHA": "1204675a1e48b541e06778fe69a6d68d27e54339",
+          "sha256": "3d79aa7e19c90bd16c72743e97492ce55cb936b84e091ac354ae7331abdc2198",
+          "alreadyPresent": true,
+          "readbackMatch": true
+        },
+        {
+          "path": "registry/ai-entity-registry.json",
+          "sourceRevision": "383ffcf5fa3a229d442393a86fa189e52bc09289",
+          "gitBlobSHA": "1f18068d66379ce90bb079dc56c77b4c4d66dcdf",
+          "sha256": "a63c5e0b8af157b0938014d51da94ea924b9721acd0a11a9107f5deea3c6f507",
+          "alreadyPresent": true,
+          "readbackMatch": true
+        },
+        {
+          "path": "contracts/issue156/openapi.json",
+          "sourceRevision": "383ffcf5fa3a229d442393a86fa189e52bc09289",
+          "gitBlobSHA": "fe448894ce11c9616a2f74f53a921b7821465bc5",
+          "sha256": "953fe716c858397697a3d7c0e1602d2b4aef107a1a25f1fecda5e7a71e8a2155",
+          "alreadyPresent": false,
+          "readbackMatch": true
+        },
+        {
+          "path": "contracts/issue156/REGISTRY_MAPPING.md",
+          "sourceRevision": "383ffcf5fa3a229d442393a86fa189e52bc09289",
+          "gitBlobSHA": "c3dbdb8a3802dd229c3a4f74158b556bf1c23cbb",
+          "sha256": "b4b7c5b21d1ca20df1a88f159ba320d57f1a021a39c296dc678f47b75fabe38a",
+          "alreadyPresent": false,
+          "readbackMatch": true
+        },
+        {
+          "path": "contracts/issue156/GOVERNANCE_DECISION_PACKET.md",
+          "sourceRevision": "383ffcf5fa3a229d442393a86fa189e52bc09289",
+          "gitBlobSHA": "057427858178cafeff6bbfa1ee7c40cad1f90274",
+          "sha256": "86e64f98cccd2d49c3a2c608fbf86d3bf9dda942bda69770cee5d5411d9cf82e",
+          "alreadyPresent": false,
+          "readbackMatch": true
+        }
+      ],
+      "note": "Paths are observations in this session. A different empty workspace should retrieve the immutable GitHub sources, not infer that the handoff is absent."
+    },
+    "verificationMeaning": {
+      "PASS": "Only the explicit source-reading, byte-match, or narrowly scoped published claim in that row. Never automatic factual/operational VERIFIED.",
+      "BLOCKED": "Specific unreadable source, contradictory field or incompatible contract requiring resolution.",
+      "NOT_VERIFIED": "Incomplete original claim/document, version mapping, effective-date or scope evidence.",
+      "VERIFIED": "Not granted in this receipt. Needs a readable authoritative source supporting the exact field, source version/date/excerpt and reproducible reviewer assessment independent of provider labels; publication/binding approval is separate."
+    },
+    "independentVerifiedFields": 0,
+    "providerVerifiedAccepted": false,
+    "fieldReviews": [
+      {
+        "sourceVersion": "2026-10-19T20:08:51.750Z",
+        "field": "intake.GrokSI_summary",
+        "evidenceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "status": "PASS",
+        "scope": "Đã đọc bản tóm lược hiện hữu; đây không phải toàn bộ gói chứng từ gốc.",
+        "nextAction": "Tiếp tục xử lý từng claim từ nguồn đã đọc; không yêu cầu có file local trước khi đọc URL.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "beb5d432b776f40ef9f5acf16743fc76c97a10a1",
+        "field": "intake.original_package",
+        "evidenceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552",
+          "https://github.com/charityfundplus/CFP.plus/blob/beb5d432b776f40ef9f5acf16743fc76c97a10a1/hub69/ui/evidence/HSTDN-REVIEW-20261019.json"
+        ],
+        "status": "NOT VERIFIED",
+        "scope": "Thiếu URL/tệp gói gốc, phiên bản, danh mục file và ánh xạ field → tài liệu gốc.",
+        "nextAction": "GrokSI bổ sung đúng manifest/URL/trích đoạn còn thiếu; không mở hồ sơ HSTDN khác.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "beb5d432b776f40ef9f5acf16743fc76c97a10a1 + 383ffcf5fa3a229d442393a86fa189e52bc09289",
+        "field": "workspace.source_readback",
+        "evidenceURLs": [
+          "https://github.com/charityfundplus/CFP.plus/blob/beb5d432b776f40ef9f5acf16743fc76c97a10a1/hub69/ui/evidence/HSTDN-REVIEW-20261019.json",
+          "https://github.com/charityfundplus/CFP.plus/blob/383ffcf5fa3a229d442393a86fa189e52bc09289/registry/ai-entity-registry.json",
+          "https://github.com/charityfundplus/CFP.plus/blob/383ffcf5fa3a229d442393a86fa189e52bc09289/contracts/issue156/openapi.json"
+        ],
+        "status": "PASS",
+        "scope": "8/8 file GitHub được đọc, hash blob xác nhận và byte local khớp trong phiên này; không xác nhận workspace phiên khác.",
+        "nextAction": "Dùng đường dẫn GitHub ghim SHA trong README hiện hữu nếu workspace khác trống.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "383ffcf5fa3a229d442393a86fa189e52bc09289",
+        "field": "schema.field_evidence_mapping",
+        "evidenceURLs": [
+          "https://github.com/charityfundplus/CFP.plus/blob/383ffcf5fa3a229d442393a86fa189e52bc09289/contracts/issue156/openapi.json",
+          "https://github.com/charityfundplus/CFP.plus/blob/383ffcf5fa3a229d442393a86fa189e52bc09289/contracts/issue156/REGISTRY_MAPPING.md"
+        ],
+        "status": "BLOCKED",
+        "scope": "Core Evidence additionalProperties=false; chưa nhận field/date/excerpt/status. Không nhập ghi chú presenter thành dữ liệu Core.",
+        "nextAction": "Codex 1 hoàn tất review tương thích mapping trong contract hiện hữu, chưa sửa Registry.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "Notion 2026-10-19T20:08:51.750Z",
+        "field": "starlink.vn.registration_fields",
+        "evidenceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552",
+          "https://mst.gov.vn/starlink-duoc-cap-phep-trien-khai-dich-vu-internet-ve-tinh-tai-viet-nam-19726021500204438.htm"
+        ],
+        "status": "NOT VERIFIED",
+        "scope": "Tên được nguồn Bộ nêu; thiếu đăng ký/thuế gốc cho legal_name, tax_id, registration_date, registered_address, charter_capital, legal_representative, general_director.",
+        "nextAction": "Bổ sung URL/trích lục đăng ký và thuế có phiên bản/ngày hiệu lực; giữ giám đốc riêng người đại diện.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "Notion 2026-10-19T20:08:51.750Z",
+        "field": "starlink.vn.legal_parent",
+        "evidenceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "status": "NOT VERIFIED",
+        "scope": "Chủ sở hữu Starlink Holdings Netherlands B.V. vẫn là claim chưa có chứng từ sở hữu gốc.",
+        "nextAction": "Bổ sung hồ sơ chủ sở hữu/phần vốn theo ngày; không chuyển sang Parent CFP+.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "Notion 2026-10-19; thông báo 2026-06-23",
+        "field": "starlink.vn.telecom_license_57",
+        "evidenceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552",
+          "https://cattien2.lamdong.gov.vn/chi-tiet-tin-tuc/?param=tuan-thu-quy-dinh-phap-luat-khi-su-dung-thiet-bi-dau-cuoi-thu-phat-song-ve-tinh-phi-dia-tinh-tai-viet-nam",
+          "https://mst.gov.vn/starlink-duoc-cap-phep-trien-khai-dich-vu-internet-ve-tinh-tai-viet-nam-19726021500204438.htm"
+        ],
+        "status": "BLOCKED",
+        "scope": "57/GP-CVT: bàn giao ghi 03/03/2026, thông báo ghi 13/02/2026. Bài Bộ về giấy phép tần số không nêu số 57/GP-CVT.",
+        "nextAction": "Cần bản gốc giấy phép viễn thông xác định số/ngày/cơ quan/phạm vi/hiệu lực; không sửa ngày theo giấy phép tần số.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "MST article 2026-02-15",
+        "field": "starlink.vn.spectrum_license_report",
+        "evidenceURLs": [
+          "https://mst.gov.vn/starlink-duoc-cap-phep-trien-khai-dich-vu-internet-ve-tinh-tai-viet-nam-19726021500204438.htm"
+        ],
+        "status": "PASS",
+        "scope": "Bộ công bố giấy phép tần số/thiết bị do Cục Tần số vô tuyến điện cấp ngày 13/02/2026; không là giấy phép viễn thông.",
+        "nextAction": "Lưu đúng loại giấy phép; cần bản cấp phép để xác nhận số và toàn bộ điều kiện.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "MST article 2026-02-15",
+        "field": "starlink.vn.planned_gateway_and_terminal_cap",
+        "evidenceURLs": [
+          "https://mst.gov.vn/starlink-duoc-cap-phep-trien-khai-dich-vu-internet-ve-tinh-tai-viet-nam-19726021500204438.htm"
+        ],
+        "status": "PASS",
+        "scope": "Nguồn nói dự kiến giai đoạn đầu 4 gateway, tối đa 600.000 thiết bị; không xác nhận vận hành thực tế.",
+        "nextAction": "Giữ planned và maximum; cần receipt vận hành riêng, không coi số trần là lượng khách hàng/thiết bị hoạt động.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "Notion 2026-10-19 + MST article 2026-02-15",
+        "field": "starlink.vn.operational_status_and_pilot_end",
+        "evidenceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552",
+          "https://mst.gov.vn/starlink-duoc-cap-phep-trien-khai-dich-vu-internet-ve-tinh-tai-viet-nam-19726021500204438.htm"
+        ],
+        "status": "NOT VERIFIED",
+        "scope": "Chưa có quyết định gốc chứng minh hạn 2030 và trạng thái từng gateway; bài Bộ vừa đọc không xác nhận hai trường này.",
+        "nextAction": "GrokSI bổ sung quyết định/phụ lục thí điểm và Evidence vận hành theo địa điểm/ngày.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "URL checked 2026-10-19T23:59:25.368Z",
+        "field": "starlink.vn.service_price_and_terms",
+        "evidenceURLs": [
+          "https://starlink.com/vn/service-plans",
+          "https://starlink.com/legal/documents/DOC-1020-91087-64"
+        ],
+        "status": "BLOCKED",
+        "scope": "Hai URL Starlink trả nội dung trích xuất trống, chưa đọc được giá/điều khoản tương ứng.",
+        "nextAction": "Chỉ chặn giá/điều khoản: cần nguồn giá đúng quốc gia/địa chỉ/model/ngày và bản Terms đọc được.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "Consumer Terms 2026-10-12",
+        "field": "grok.contract_provider_trade_name_product",
+        "evidenceURLs": [
+          "https://x.ai/legal/terms-of-service"
+        ],
+        "status": "PASS",
+        "scope": "Điều khoản nêu SpaceXAI LLC, gọi là SpaceXSI; Grok là dịch vụ/sản phẩm. Đây là nội dung điều khoản của nhà cung cấp.",
+        "nextAction": "Giữ pháp nhân theo điều khoản, tên gọi và sản phẩm riêng; đăng ký pháp nhân và quyền thương hiệu chưa VERIFIED.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "Announcement URL checked 2026-10-19T23:59:25.368Z",
+        "field": "xai.acquisition_announcement",
+        "evidenceURLs": [
+          "https://x.ai/news/xai-joins-spacex"
+        ],
+        "status": "PASS",
+        "scope": "Nguồn x.ai thông báo SpaceX đã mua xAI. Phạm vi PASS là nội dung thông báo nhóm doanh nghiệp.",
+        "nextAction": "Đối chiếu đúng pháp nhân và các bước pháp lý trước khi điền legal_parent.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "SEC accession 0001628280-26-036936; Exhibit 2.1; agreement 2026-01-31",
+        "field": "xai.merger_entity_mapping",
+        "evidenceURLs": [
+          "https://www.sec.gov/Archives/edgar/data/1181412/000162828026036936/exhibit21-sx1.htm",
+          "https://x.ai/legal/terms-of-service"
+        ],
+        "status": "NOT VERIFIED",
+        "scope": "Exhibit §§1.2/1.4/2.2 có X.AI Holdings Corp. → X.AI Holdings LLC và điều kiện hiệu lực qua hồ sơ Nevada; chưa có cầu nối tên/pháp nhân tới SpaceXAI LLC hiện tại.",
+        "nextAction": "Cần articles/certificate và lịch sử đổi tên/chuỗi sở hữu theo ngày; không tự đồng nhất tên và không đổi Parent CFP+.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "383ffcf5fa3a229d442393a86fa189e52bc09289",
+        "field": "grok.cfp_parent",
+        "evidenceURLs": [
+          "https://github.com/charityfundplus/CFP.plus/blob/383ffcf5fa3a229d442393a86fa189e52bc09289/registry/ai-entity-registry.json",
+          "https://github.com/charityfundplus/CFP.plus/blob/383ffcf5fa3a229d442393a86fa189e52bc09289/contracts/issue156/REGISTRY_MAPPING.md"
+        ],
+        "status": "PASS",
+        "scope": "Quan sát Registry: Grok 691191 có parent_id 69119, xAI là Developer. Không phải chứng nhận Parent pháp lý hoặc HSTDN authority.",
+        "nextAction": "Giữ nguyên các reference; source-conflict/authority cần Human Governance, không suy từ tiền tố.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "Bundled Subscription Terms 2026-10-07",
+        "field": "grok.bundle_seller",
+        "evidenceURLs": [
+          "https://x.ai/legal/bundled-subscription-terms"
+        ],
+        "status": "PASS",
+        "scope": "Điều khoản xác định X Subscription Corp là bên bán bundle; khác bên cung cấp Grok trong Consumer Terms.",
+        "nextAction": "Lưu bên bán/merchant of record riêng, không dùng làm Parent hoặc tự gộp pháp nhân.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "Pricing URL checked 2026-10-19T23:59:25.368Z",
+        "field": "grok.pricing_claim_vs_forwarded_package",
+        "evidenceURLs": [
+          "https://x.ai/pricing",
+          "https://docs.x.ai/developers/pricing",
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "status": "NOT VERIFIED",
+        "scope": "Nguồn bảng giá và phí API đã đọc, nhưng gói bàn giao không có claim giá cụ thể theo model/gói để so.",
+        "nextAction": "Cần claim/URL gói, tiền tệ, chu kỳ, thuế, model, context và endpoint; không coi giá web là giá checkout địa phương.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "Pricing URL checked 2026-10-19T23:59:25.368Z",
+        "field": "grok.subscription_api_billing_separation",
+        "evidenceURLs": [
+          "https://x.ai/pricing",
+          "https://docs.x.ai/developers/pricing"
+        ],
+        "status": "PASS",
+        "scope": "Trang giá tách quyền truy cập API trong gói trả phí với usage API tính riêng; không là API miễn phí kèm thuê bao.",
+        "nextAction": "Giữ billing API riêng; chưa gọi API/đặt mua hoặc kích hoạt.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "Tesla resources URL checked 2026-10-19T23:59:25.368Z",
+        "field": "megapack.entity_classification",
+        "evidenceURLs": [
+          "https://www.tesla.com/en_ph/support/energy/megapack/resources"
+        ],
+        "status": "PASS",
+        "scope": "Tesla Resources mô tả Megapack là sản phẩm lưu trữ điện utility-scale của Tesla, không phải một pháp nhân.",
+        "nextAction": "Dùng phân loại sản phẩm tham chiếu; không suy pháp nhân ký hợp đồng hay Parent Registry.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "Tesla Megapack URL checked 2026-10-19T23:59:25.368Z",
+        "field": "megapack.availability_conditions",
+        "evidenceURLs": [
+          "https://www.tesla.com/megapack"
+        ],
+        "status": "NOT VERIFIED",
+        "scope": "Chú thích chỉ áp dụng dự án ký Availability Guarantee, vận hành >30 ngày, bình quân 12 tháng trọng số GWh; thiếu claim gốc để so.",
+        "nextAction": "Giữ đầy đủ điều kiện; chưa xác nhận chỉ số/bảo đảm cho dự án cụ thể hoặc mọi thị trường.",
+        "verified": false
+      },
+      {
+        "sourceVersion": "Notion 2026-10-19 + Tesla Resources checked 2026-10-19T23:59:25.368Z",
+        "field": "megapack.price_warranty_installation_delivery",
+        "evidenceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552",
+          "https://www.tesla.com/en_ph/support/energy/megapack/resources",
+          "https://www.tesla.com/megapack"
+        ],
+        "status": "NOT VERIFIED",
+        "scope": "Chưa có URL điều khoản/báo giá/hợp đồng Megapack cụ thể. Mục Purchase Agreement trong menu Powerwall không được dùng làm điều khoản Megapack.",
+        "nextAction": "Cần cấu hình, nơi giao, phạm vi lắp đặt/đấu nối, thuế, lịch, bảo hành và bản hợp đồng/ngày; không lấp bằng Terms sản phẩm khác.",
+        "verified": false
+      }
+    ],
+    "sourceCaptureLimits": "Git file bytes/blob/SHA256 checked. External pages use URLs, dates where stated and bounded notes; no whole-page content hashes, company-register certifications or missing primary documents fabricated.",
+    "validation": {
+      "kind": "Read-only source and receipt validation; documentation/evidence-only follow-up",
+      "githubFiles": 8,
+      "gitBlobHashPass": 8,
+      "localReadbackPass": 8,
+      "codeChanged": false,
+      "newRuntimeOrUITestRun": false,
+      "reason": "UI code unchanged; previous exact-SHA 18/18 test result retained as historical, not rerun or relabelled."
+    },
+    "permissions": {
+      "notionFetched": true,
+      "notionWriteRetried": false,
+      "priorNotionWrite403": "Previous attempt insufficient_access; no permission-change evidence; no alternate profile created"
+    },
+    "boundary": {
+      "activationAllowed": false,
+      "published": false,
+      "registryModified": false,
+      "canonicalIDModified": false,
+      "parentModified": false,
+      "didModified": false,
+      "apiContractModified": false,
+      "status": "HOLD ACTIVATION • PRODUCTION NO-GO"
+    }
+  },
+  "fieldComparisonFollowup20261019": {
+    "date": "2026-10-19",
+    "readAtUTC": "2026-10-19T22:50:49.993Z",
+    "reviewer": "Codex current session; not a Claude receipt",
+    "sourceCommit": "7752326b66f205b1bf9f31bae1560fccff737b23",
+    "parentCommit": "7a3061ee5b9f0bac59cb680791ce9ecc69abba86",
+    "reviewedContractCommit": "383ffcf5fa3a229d442393a86fa189e52bc09289",
+    "originalPackage": "Existing Notion summary read; complete forwarded GrokSI evidence/field URLs were not found in accessible sources.",
+    "independentAcceptance": false,
+    "providerVerifiedAccepted": false,
+    "verifiedFields": 0,
+    "identityBindingModified": false,
+    "registryModified": false,
+    "apiContractModified": false,
+    "activationAllowed": false,
+    "published": false,
+    "tests": {
+      "command": "node --test tests/hstdn-review.test.mjs",
+      "execution": "local Node/VM/source only",
+      "tests": 18,
+      "pass": 18,
+      "fail": 0,
+      "skip": 0,
+      "durationMs": 168.736541,
+      "newTests": 6,
+      "existingAffectedTests": 12,
+      "unaffectedSuitesRerun": false,
+      "rawLog": "Structured summary transcribed from the actual tool output; historical 73-test TAP remains unchanged."
+    },
+    "build": {
+      "command": "node build.mjs",
+      "exitCode": 0,
+      "records": 26,
+      "registryBlobSHA": "1f18068d66379ce90bb079dc56c77b4c4d66dcdf",
+      "registrySHA256": "a63c5e0b8af157b0938014d51da94ea924b9721acd0a11a9107f5deea3c6f507",
+      "published": false
+    },
+    "codeHashes": [
+      {
+        "path": "hub69/ui/public/hstdn-review.js",
+        "sha256": "d5ddf35dcbb63dcaff90e970a328bfa6fb31fb47d1d2a360d020df79c94b918c"
+      },
+      {
+        "path": "hub69/ui/tests/hstdn-review.test.mjs",
+        "sha256": "642db334ed3524fd701a051096cf254a8c226263cab02b0c8ecf304fbfe76974"
+      }
+    ],
+    "sourceCapture": "URLs, publication/update dates where provided, read time and bounded excerpts; no immutable source-page hashes or legal-register readback claimed.",
+    "sourceAccessFailures": [
+      {
+        "url": "https://starlink.com/vn/service-plans",
+        "result": "Page extraction returned no usable price content"
+      },
+      {
+        "url": "https://www.tesla.com/support/megapack",
+        "result": "Tool reported URL inaccessible"
+      }
+    ],
+    "workflowInspection": "Three workflow files read at parent SHA; two dispatch-only; one paths-scoped CTTTC CI. No deployment workflow or matching automatic trigger observed for this delta. No workflow dispatch performed.",
+    "matrix": [
+      {
+        "field": "starlink.vn.legal_name",
+        "readSource": "Notion + thông báo chính quyền 23/06/2026",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552",
+          "https://cattien2.lamdong.gov.vn/chi-tiet-tin-tuc/?param=tuan-thu-quy-dinh-phap-luat-khi-su-dung-thiet-bi-dau-cuoi-thu-phat-song-ve-tinh-phi-dia-tinh-tai-viet-nam"
+        ],
+        "result": "Khớp",
+        "handling": "Tên khớp thông báo; chưa đọc đăng ký doanh nghiệp gốc. Giữ claim, chưa binding."
+      },
+      {
+        "field": "starlink.vn.tax_id",
+        "readSource": "Notion: 0111212828",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "GrokSI bổ sung URL/trích lục thuế hoặc đăng ký gốc đúng trường."
+      },
+      {
+        "field": "starlink.vn.registration_date",
+        "readSource": "Notion: 10/09/2025",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Cần giấy đăng ký gốc, không dùng ngày bàn giao làm ngày thành lập."
+      },
+      {
+        "field": "starlink.vn.registered_address",
+        "readSource": "Notion: 49 Hai Bà Trưng, Hà Nội",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Cần đăng ký gốc và thời điểm hiệu lực địa chỉ."
+      },
+      {
+        "field": "starlink.vn.charter_capital",
+        "readSource": "Notion: 30 tỷ VND",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Cần bản đăng ký/thay đổi vốn có hiệu lực."
+      },
+      {
+        "field": "starlink.vn.legal_parent",
+        "readSource": "Notion: Starlink Holdings Netherlands B.V.",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Cần chứng cứ sở hữu gốc; không chép vào Parent CFP+."
+      },
+      {
+        "field": "starlink.vn.legal_representative",
+        "readSource": "Notion: Lauren Ashley Dreyer",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Cần trích lục gốc, chức danh và ngày hiệu lực."
+      },
+      {
+        "field": "starlink.vn.general_director",
+        "readSource": "Notion: Đỗ Bá Thích",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Giữ riêng giám đốc và người đại diện pháp luật; cần nguồn gốc."
+      },
+      {
+        "field": "starlink.vn.license_number",
+        "readSource": "Notion + thông báo chính quyền",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552",
+          "https://cattien2.lamdong.gov.vn/chi-tiet-tin-tuc/?param=tuan-thu-quy-dinh-phap-luat-khi-su-dung-thiet-bi-dau-cuoi-thu-phat-song-ve-tinh-phi-dia-tinh-tai-viet-nam"
+        ],
+        "result": "Khớp",
+        "handling": "57/GP-CVT khớp thông báo; chưa xác nhận bản giấy phép và phạm vi."
+      },
+      {
+        "field": "starlink.vn.license_issue_date",
+        "readSource": "Notion 03/03/2026; thông báo 13/02/2026",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552",
+          "https://cattien2.lamdong.gov.vn/chi-tiet-tin-tuc/?param=tuan-thu-quy-dinh-phap-luat-khi-su-dung-thiet-bi-dau-cuoi-thu-phat-song-ve-tinh-phi-dia-tinh-tai-viet-nam"
+        ],
+        "result": "Sai lệch",
+        "handling": "Giữ cả hai giá trị; chặn riêng trường này, yêu cầu bản gốc từ cơ quan cấp."
+      },
+      {
+        "field": "starlink.vn.license_issuer",
+        "readSource": "Thông báo chính quyền",
+        "sourceURLs": [
+          "https://cattien2.lamdong.gov.vn/chi-tiet-tin-tuc/?param=tuan-thu-quy-dinh-phap-luat-khi-su-dung-thiet-bi-dau-cuoi-thu-phat-song-ve-tinh-phi-dia-tinh-tai-viet-nam"
+        ],
+        "result": "Khớp",
+        "handling": "Thông báo nêu Cục Viễn thông thuộc Bộ KH&CN; vẫn chờ bản gốc giấy phép."
+      },
+      {
+        "field": "starlink.vn.gateway_count",
+        "readSource": "Notion: 4 gateway",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Cần quyết định/phụ lục xác định số trạm, địa điểm và trạng thái vận hành."
+      },
+      {
+        "field": "starlink.vn.pilot_cap",
+        "readSource": "Notion: tối đa 600.000 terminal đến 2030",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Cần văn bản gốc làm rõ thuê bao/thiết bị và thời hạn; không suy đang cung ứng."
+      },
+      {
+        "field": "starlink.vn.price",
+        "readSource": "Trang kế hoạch Starlink Việt Nam (không trích xuất được giá)",
+        "sourceURLs": [
+          "https://starlink.com/vn/service-plans"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Chỉ chặn giá/khả năng đăng ký; cần giá theo địa chỉ, gói, thuế, thiết bị và ngày."
+      },
+      {
+        "field": "grok.provider_legal_name",
+        "readSource": "Notion + Consumer Terms, cập nhật 12/10/2026",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552",
+          "https://x.ai/legal/terms-of-service"
+        ],
+        "result": "Khớp",
+        "handling": "Điều khoản tự nêu SpaceXAI LLC; chưa thay legal_name/Registry hoặc chứng nhận đăng ký pháp nhân."
+      },
+      {
+        "field": "grok.provider_trade_name",
+        "readSource": "Notion + Consumer Terms",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552",
+          "https://x.ai/legal/terms-of-service"
+        ],
+        "result": "Khớp",
+        "handling": "SpaceXSI là tên gọi trong điều khoản; tách khỏi sản phẩm Grok và thương hiệu xAI trong Registry."
+      },
+      {
+        "field": "grok.products",
+        "readSource": "Consumer Terms",
+        "sourceURLs": [
+          "https://x.ai/legal/terms-of-service"
+        ],
+        "result": "Khớp",
+        "handling": "Grok/Grokipedia được liệt kê là dịch vụ/sản phẩm; không coi là pháp nhân."
+      },
+      {
+        "field": "grok.legal_parent",
+        "readSource": "Notion + Consumer Terms (không đủ chứng cứ sở hữu)",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552",
+          "https://x.ai/legal/terms-of-service"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Không suy Parent pháp lý từ tên SpaceXAI/SpaceXSI hoặc việc dùng chung điều khoản."
+      },
+      {
+        "field": "grok.cfp_parent",
+        "readSource": "Registry tại SHA 383ffcf5fa3a229d442393a86fa189e52bc09289",
+        "sourceURLs": [
+          "https://github.com/charityfundplus/CFP.plus/blob/383ffcf5fa3a229d442393a86fa189e52bc09289/registry/ai-entity-registry.json"
+        ],
+        "result": "Khớp",
+        "handling": "Grok 691191 có parent_id 69119 (xAI). Chỉ quan sát nguồn mã; giữ nguyên và không cấp HSTDN binding."
+      },
+      {
+        "field": "grok.subscription_seller",
+        "readSource": "Bundled Subscription Terms, cập nhật 07/10/2026",
+        "sourceURLs": [
+          "https://x.ai/legal/bundled-subscription-terms"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Nguồn mới nêu X Subscription Corp là bên bán bundle; thiếu claim tương ứng trong gói gốc để so. Tách khỏi bên cung cấp Grok."
+      },
+      {
+        "field": "grok.subscription_prices",
+        "readSource": "Bảng x.ai/pricing đọc 19/10/2026",
+        "sourceURLs": [
+          "https://x.ai/pricing"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Nguồn mới: USD/tháng Free 0, Plus 8, Premium 30, Super 100, Ultra 200; chưa gồm thuế/phí. Thiếu claim giá gốc; không là báo giá theo quốc gia."
+      },
+      {
+        "field": "grok.legacy_subscriptions",
+        "readSource": "Tài liệu gói thuê bao, cập nhật 11/10/2026",
+        "sourceURLs": [
+          "https://docs.x.ai/x-subscription/pricing"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Nguồn nói gói SuperGrok hiện hữu tiếp tục, đổi gói tùy chọn. Cần Evidence đúng gói; không tự thay bằng gói gộp."
+      },
+      {
+        "field": "grok.api_endpoint",
+        "readSource": "Notion HTTP; Quickstart HTTPS cập nhật 10/10/2026",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552",
+          "https://docs.x.ai/developers/quickstart"
+        ],
+        "result": "Sai lệch",
+        "handling": "Tài liệu dùng https://api.x.ai/v1. Lưu đề xuất trong candidate; chưa gọi API/kích hoạt adapter."
+      },
+      {
+        "field": "grok.api_pricing",
+        "readSource": "Tài liệu API Pricing, cập nhật 10/10/2026",
+        "sourceURLs": [
+          "https://docs.x.ai/developers/pricing",
+          "https://x.ai/pricing"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Usage API tính riêng với thuê bao. Cần claim gốc và model/ngữ cảnh/token/endpoint/công cụ/ngày; không dùng một giá chung."
+      },
+      {
+        "field": "megapack.availability_conditions",
+        "readSource": "Trang Megapack; chỉ đọc được chú thích",
+        "sourceURLs": [
+          "https://www.tesla.com/megapack"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Nguồn giới hạn phép đo vào dự án ký Availability Guarantee, vận hành >30 ngày, trung bình 12 tháng trọng số GWh. Thiếu claim gốc; không suy bảo đảm chung."
+      },
+      {
+        "field": "megapack.commercial_terms",
+        "readSource": "Notion thiếu claim; trang Support không đọc được",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552",
+          "https://www.tesla.com/support/megapack"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "GrokSI bổ sung báo giá/hợp đồng: model/cấu hình, nơi giao, thuế, lắp đặt, bảo hành, phạm vi và ngày. Chỉ chặn các trường đó."
+      },
+      {
+        "field": "spacex.ownership_and_voting",
+        "readSource": "Notion: số liệu GrokSI chuyển tiếp",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Còn thiếu accession/URL filing, lớp cổ phần, mẫu số và ngày hiệu lực; chưa đọc filing trong lượt này."
+      },
+      {
+        "field": "optimus.commercial_availability",
+        "readSource": "Notion: kế hoạch sản xuất/bán ngoài",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Chưa đọc nguồn Tesla IR xác nhận số lượng/lịch bán; không niêm yết hàng sẵn có."
+      },
+      {
+        "field": "loop.project_status",
+        "readSource": "Notion: Vegas/Nashville/Dubai",
+        "sourceURLs": [
+          "https://app.notion.com/p/3fecaac9a5578132a41fec206bfb0552"
+        ],
+        "result": "Chưa xác minh",
+        "handling": "Cần Evidence riêng theo dự án/ngày; chưa kiểm nguồn mới trong lượt này."
+      }
+    ],
+    "remaining": [
+      "Claude independent source/quote receipts",
+      "Original license and corporate-register evidence",
+      "Missing complete GrokSI package/claims and Megapack project contract",
+      "Approved field-level API mapping",
+      "Browser, private HTTPS, iPhone Safari, native App not tested"
+    ],
+    "boundary": "HOLD ACTIVATION • PRODUCTION NO-GO"
+  }
+}

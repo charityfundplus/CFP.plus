@@ -1,0 +1,29 @@
+[
+  {
+    "url": "https://cfp.plus/69",
+    "checkedAt": "2026-10-16T21:40:45.149941+00:00",
+    "purpose": "TLS and response inspection only; does not validate identity, ACL or deployment revision",
+    "status": 200,
+    "finalURL": "https://cfp.plus/69",
+    "tlsCertificateValidated": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://cfp.plus/691181",
+    "checkedAt": "2026-10-16T21:40:45.150349+00:00",
+    "purpose": "TLS and response inspection only; does not validate identity, ACL or deployment revision",
+    "status": 200,
+    "finalURL": "https://cfp.plus/691181",
+    "tlsCertificateValidated": true,
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://sites.google.com/cfp.plus/hub69",
+    "checkedAt": "2026-10-16T21:40:45.150601+00:00",
+    "purpose": "TLS and response inspection only; does not validate identity, ACL or deployment revision",
+    "status": 200,
+    "finalURL": "https://sites.google.com/cfp.plus/hub69",
+    "tlsCertificateValidated": true,
+    "contentType": "text/html; charset=utf-8"
+  }
+]

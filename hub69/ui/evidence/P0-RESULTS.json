@@ -1,0 +1,111 @@
+{
+  "date": "2026-10-16",
+  "owner": "Codex 2",
+  "mode": "REVIEW_ONLY",
+  "activationAllowed": false,
+  "sourceBase": "835616308111f6851c0387fa9f5eda60c9ffa624",
+  "originalUISource": "6d2fd6f0c19ebaa0fcbfa53850bcce1b5bf7287f",
+  "branch": "codex2/hub69-p0-ui-20261016",
+  "registry": {
+    "path": "registry/ai-entity-registry.json",
+    "records": 26,
+    "developers": 20,
+    "ai": 6,
+    "verifiedOperators": 0,
+    "blobSHA": "1f18068d66379ce90bb079dc56c77b4c4d66dcdf",
+    "sha256": "a63c5e0b8af157b0938014d51da94ea924b9721acd0a11a9107f5deea3c6f507",
+    "authority": "Existing Registry snapshot; not a new registry"
+  },
+  "checks": [
+    {
+      "command": "node build.mjs",
+      "status": "PASS",
+      "result": "26 source records; pinned Git blob matched; standalone and dist generated"
+    },
+    {
+      "command": "node --test tests/*.test.mjs",
+      "status": "PASS",
+      "exitCode": 0,
+      "tests": 39,
+      "pass": 39,
+      "fail": 0,
+      "kind": "Observed Node/VM result summary; not browser output",
+      "breakdown": {
+        "source_baseline": 14,
+        "p0": 19,
+        "application_DOM_stubs": 6
+      }
+    },
+    {
+      "command": "node --check public/model.js, public/p0.js, public/app.js, build.mjs",
+      "status": "PASS"
+    },
+    {
+      "scope": "profile.schema.json syntax",
+      "status": "PASS",
+      "fullSchemaValidation": "NOT_RUN",
+      "reason": "jsonschema package unavailable; no full JSON Schema conformance claim"
+    },
+    {
+      "scope": "Canonical ID, Parent, DID, Registry source and Codex 1 Core files",
+      "status": "UNCHANGED",
+      "implementationScope": "hub69/ui/** only"
+    },
+    {
+      "scope": "Browser rendering / new screenshots / WebKit / actual iPhone",
+      "status": "BLOCKED",
+      "reason": "control-browser unavailable in managed environment; not attempted through an alternative control path"
+    },
+    {
+      "scope": "Core API E2E / runtime vault sync",
+      "status": "NOT_TESTED",
+      "reason": "No approved contract or runtime connection attached"
+    },
+    {
+      "scope": "HTTPS preview",
+      "status": "NOT_AVAILABLE",
+      "reason": "Existing owner-private Site not deployed; HOLD ACTIVATION and PRODUCTION NO-GO"
+    },
+    {
+      "scope": "Public website link content checks",
+      "status": "INACCESSIBLE_VIA_TOOL",
+      "urls": [
+        "https://cfp.plus/69",
+        "https://cfp.plus/691181",
+        "https://sites.google.com/cfp.plus/hub69"
+      ],
+      "reason": "Read tool could not access these URLs; not a website failure verdict"
+    },
+    {
+      "scope": "Prior Codex 2 commit a5f5418724d181d0e5c2e4be8d3ac04cc560b95b",
+      "status": "SOURCE_UNRESOLVED",
+      "reason": "CFP.plus GitHub commit request returned 422; previous sandbox PASS not reasserted"
+    }
+  ],
+  "filesSHA256": {
+    "hub69/ui/.gitignore": "7cb0bf7b3eb234f5eaf641315830bb53b3f604e0015c85736182f14cd5d60bfc",
+    "hub69/ui/INTEGRATION.md": "d7a547ed0591f68c0bf22b31f0e5e798341800dd2f326529b422030873c676c6",
+    "hub69/ui/README.md": "84a612b675354ad9838e544c315470a624b99c5ce23406878acbd9faba175ef3",
+    "hub69/ui/build.mjs": "c3aaed1e8be8dd3b3b5d96b0b240f72c8d007efcddba7a34c2e1b926a0ec6f14",
+    "hub69/ui/package.json": "502b4d9ba1a4968647b1ccac0493914cbb1324505097512ffd2a04043950fc36",
+    "hub69/ui/profile.schema.json": "3d79aa7e19c90bd16c72743e97492ce55cb936b84e091ac354ae7331abdc2198",
+    "hub69/ui/public/app.js": "5c5ada89e2aee371b92ddb107ebd658ec613c732eced024f3b21f55e999c3242",
+    "hub69/ui/public/index.html": "dab87c3fffaae1d4087f75dc18238e2d0f13dd1e4400c22b7f5a0e1fa188fd6b",
+    "hub69/ui/public/model.js": "192dd9144b06485e8a876c4e2a7cb312f942bb5d57a490e84a68d33662a1380b",
+    "hub69/ui/public/p0.js": "8586035d01be64cbef7101a13040c18282966157704936e1fa34b394a09fd5d2",
+    "hub69/ui/public/style.css": "7a58469b94a385f69e565dba43c58d0501a650763754681c777a5168b194121e",
+    "hub69/ui/tests/app-state.test.mjs": "f1d60f17ef3cde70949d3b13b7a1ee218f074c51eba31a32c9d75927e1e97894",
+    "hub69/ui/tests/p0.test.mjs": "cd1f513eb6e6de7faae61122f94fc73e330cd6a9180ebfe6646c7c2e3a10aa0c",
+    "hub69/ui/tests/source-baseline.test.mjs": "76a4c34b8b3e168628fc5bb1bc8a29b2f88c34bb099c3bc910621f6da42195a9"
+  },
+  "blockers": [
+    "Registry 91 authority and records",
+    "Verified HSTDN OpenAI record and relationships",
+    "Actual pair/project link receipts",
+    "Codex 1 read contract and visibility scope",
+    "Approved HTTPS environment",
+    "Supported browser and actual iPhone QA",
+    "Independent review"
+  ],
+  "hashScope": "Code, schema, docs and tests; this report excluded to avoid self-reference. SHA256 integrity does not independently verify claims."
+}

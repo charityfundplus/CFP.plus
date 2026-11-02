@@ -1,0 +1,188 @@
+
+FILE app-state.test.mjs
+✔ application initializes all seven views and navigation state without missing controls (12.053018ms)
+✔ lookup submission preserves leading zeroes and rejects nonnumeric input (2.365747ms)
+✔ source ID profile opens with correct Parent and returning to directory works (2.741557ms)
+✔ saved item action works with unavailable local storage and reports session-only persistence (2.792766ms)
+✔ template type selection updates project fields and returns focus to control (3.868598ms)
+✔ copy failure leaves a clear message and skip navigation keeps the current route (5.46298ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 38.961473
+
+FILE commerce.test.mjs
+✔ search folds Vietnamese accents, combines category and yields useful empty state without Registry writes (2.560044ms)
+✔ catalog detail and generated navigation stay inside the HUB and never offer checkout or a fabricated canonical (0.70574ms)
+✔ Core catalogue validation strips private fields and rejects identity claims, active flags, duplicates and malformed pagination (1.254331ms)
+✔ same Core session clears commerce on reload/logout/failure, never substituting browser samples (1.232219ms)
+✔ opening a result on a later Core page retains its query category and offset (6.661304ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 19.334055
+
+FILE hstdn-review.test.mjs
+✔ HSTDN review deep links cover seven subjects and three contexts without accepting Registry IDs (16.213458ms)
+✔ one presenter renders field source, date, excerpt, status and next verification for all contexts (42.541374ms)
+✔ Vietnam reported legal name and license do not migrate to US or global contexts (16.268556ms)
+✔ source-reported VERIFIED, booleans, URLs and claimed receipts cannot grant verification (4.423904ms)
+✔ subject and country controls retain the selected context and return valid routes (17.063268ms)
+✔ all new model navigation destinations resolve and contain no placeholder or unsafe external links (16.250875ms)
+✔ legal entity, brand, product and Registry Parent remain separate with no inferred identity binding (36.677536ms)
+✔ ownership, clinical, Optimus and alias gaps stay blocked at the affected field only (4.34863ms)
+✔ license comparison retains conflicting event dates and separates publication and read dates (5.076342ms)
+✔ source matches cannot grant independent verification, identity or legal Parent from CFP Parent (4.136707ms)
+✔ unreadable pricing source blocks only that field and keeps available comparisons visible (3.333468ms)
+✔ bundle seller, subscriptions, legacy plans and metered API prices remain distinct from local offers (3.313814ms)
+✔ Megapack conditional measurement is retained without inventing handoff quotes or project guarantees (3.131255ms)
+✔ comparison metadata escapes injected content and cannot change status with forged result or receipt (3.374722ms)
+✔ API proposal is text only and source fields escape injected markup and unsafe URLs (5.396905ms)
+✔ review module has the same bytes in offline and Core builds with no new network or storage path (13.537704ms)
+✔ research notes stay outside Registry profiles and cannot become a fallback after Core authentication failure (14.385751ms)
+✔ field review mobile source wraps evidence and retains touch-sized subject selection (0.773443ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 225.574037
+
+FILE integration-readiness.test.mjs
+✔ Core transitions clear data before every load and retain no snapshot on 401/404/503 (2.421968ms)
+✔ Core rejects revision changes between list, detail and OpenAI instead of mixing sources (0.85218ms)
+✔ Core rejects mismatched identity and ignores delayed success after logout or a newer request (3.624817ms)
+✔ Core read responses never replace leading-zero IDs or require a new project identity (2.921439ms)
+✔ navigation while logout is pending cannot repopulate records from the earlier session (0.607791ms)
+✔ training inherits exactly five lessons, twelve exercises and six unassessed tracks (17.780276ms)
+✔ study acknowledgement persists locally without changing Registry identity or granting assessment (5.069203ms)
+✔ blocked storage retains study acknowledgement in the current session and reports the limit (2.689415ms)
+✔ Core bundle starts empty and contains no snapshot fallback or embedded credentials (2.250263ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 49.41405
+
+FILE p0.test.mjs
+✔ five groups cover ten chapters without replacing numeric ID 0 or 000 (5.3545ms)
+✔ all group/chapter deep links resolve and malformed structural routes fail closed (0.35053ms)
+✔ real source supports Chapter 6 → OpenAI → ChatGPT without mutating Parent (1.474196ms)
+✔ all ten chapters render while empty chapters create no child identities (0.696538ms)
+✔ V is coordination, 000 is a navigation group and neither rewrites lineage (0.265401ms)
+✔ source validation detects duplicates, missing parents, cycles, chapter conflicts and cross-chapter links (0.540845ms)
+✔ cyclic tree terminates with a visible warning rather than recursive rendering (0.270658ms)
+✔ parent unavailable in snapshot is shown verbatim without synthesizing an entity (0.463307ms)
+✔ all requested entity classes have a shared profile schema and safe type labels (1.366978ms)
+✔ pair project section keeps the existing ID and emits no guessed project URL (0.330002ms)
+✔ project external links require public verification receipt and a valid timestamp (0.42871ms)
+✔ private project metadata is not rendered; public unverified links remain inactive (0.286188ms)
+✔ project names and scope markup are escaped even with a verified link (0.348206ms)
+✔ generic template switches project section by entity class without creating a record (0.62067ms)
+✔ OpenAI view separates developer and product; no HSTDN ID or partnership is invented (0.354656ms)
+✔ OpenAI view fails closed when expected source identity or parent is missing (0.211893ms)
+✔ six vaults disclose unknown last sync and quantum research separately from source snapshot (0.397411ms)
+✔ unverified canonical and official URLs are readable but never active external links (1.667673ms)
+✔ every generated navigation href points to an implemented route or an evidence source (7.969774ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 32.927764
+
+FILE pwa.test.mjs
+✔ offline install caches only a data-free fallback; API/auth/mutations are untouched (72.963775ms)
+✔ shell navigation is network-first and falls back only on network failure (12.903356ms)
+✔ manifest, generated PNG dimensions and both bundles agree (65.70937ms)
+✔ registration is inert in file review and unsupported/insecure contexts (6.823791ms)
+✔ worker upgrade deletes only its known data-free v1 notice cache (1.918959ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 170.729311
+
+FILE shared-design.test.mjs
+✔ directory filters cover both countries and each business role without assigning identity (12.505567ms)
+✔ partner filter changes retain the other selection; malformed routes fail closed (3.73141ms)
+✔ 8682 and 8882 have visible source and HOLD, with no clickable unverified canonical target (2.896862ms)
+✔ all chapters retain tree navigation and contain useful overview actions, including Chi Hoi and countries (8.760411ms)
+✔ browser App shell shares routes and disables login when no approved Core exists (3.988103ms)
+✔ every added view is in both bundles and has no independent transport or credential storage (8.200202ms)
+✔ text and interaction color pairs meet WCAG normal text contrast in versioned tokens (2.037095ms)
+✔ new visible navigation emits implemented routes and safe source links (2.806285ms)
+✔ menu toggle exposes state, Escape closes it and returns keyboard focus (3.471188ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 57.647889
+
+FILE source-baseline.test.mjs
+✔ source snapshot is byte-identical to pinned Git blob (5.680116ms)
+✔ inventory is exactly 26 source bindings, never 91 verified operators (0.239535ms)
+✔ each source binding has its own exact route and profile (2.536301ms)
+✔ all explicit parent links resolve to matching developer source records (0.245049ms)
+✔ unknown numeric IDs cannot acquire another identity or canonical link (0.597256ms)
+✔ leading zero IDs remain string-distinct and numeric coercion is rejected (0.245593ms)
+✔ malformed and injected routes fail closed (0.202988ms)
+✔ Master Hub, home and ID route independently with a stable home alias (0.121387ms)
+✔ US conflict is visible and does not promote source status (0.716898ms)
+✔ search supports names, developer and accents, exact numeric ID only (0.815592ms)
+✔ untrusted source markup is escaped; unsafe hrefs are not emitted (0.404858ms)
+✔ external URLs require HTTPS without embedded credentials (0.20692ms)
+✔ standalone deliverable includes data/scripts after page content, no external dependency (1.914871ms)
+✔ application performs no network calls or operation activation (1.148358ms)
+ℹ tests 14
+ℹ suites 0
+ℹ pass 14
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 26.974039
+
+FILE website-p0.test.mjs
+✔ P0 deep links resolve only allowlisted countries, brands and technologies (8.741526ms)
+✔ existing HUB/group/chapter navigation reaches both P0 lanes and 8682 (5.104739ms)
+✔ country selection changes the route and shows only the matching sample profile (4.00949ms)
+✔ market country filters fail closed when local supply or delivery is not evidenced (3.03847ms)
+✔ technology filters preserve entity/product distinctions and research provenance (2.984925ms)
+✔ new navigation keeps one active view and correct sidebar state including commerce (2.659662ms)
+✔ catalog navigation never changes Registry, identity, training or commerce authority (4.076364ms)
+✔ public design content during Core errors cannot show stale authenticated records (5.552918ms)
+✔ all new hrefs have implemented destinations or safe explicit external references (4.666338ms)
+✔ untrusted labels are escaped and unsafe source URL schemes are not made clickable (2.177173ms)
+✔ versioned tokens are the single source of the generated CSS in both bundles (4.588844ms)
+✔ standalone, snapshot and Core bundles all contain the same new UI without new network clients (6.792682ms)
+✔ responsive source includes safe area, minimum touch targets, one-column mobile cards and readable forms (3.218671ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 68.225092

@@ -1,0 +1,14 @@
+✔ real Core -> UI: anonymous 401, login/retry, 224 references and dynamic record provenance (826.429133ms)
+✔ real Core -> UI: 0 and 000 stay distinct and 404 clears all earlier profile data (780.811323ms)
+✔ real Core -> UI: OpenAI and six vaults use Core readback, never a fabricated HSTDN or live sync (719.153141ms)
+✔ real Core -> UI: logout revokes the session and hides profiles and saved record labels (509.140095ms)
+✔ UI clears rows after an injected 503 following a real Core read; no bundled snapshot fallback (497.256772ms)
+✔ real Core source revision mismatch returns 503 and the UI remains empty (3193.423887ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 6535.618739

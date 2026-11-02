@@ -1,0 +1,565 @@
+{
+  "version": "basic-v1",
+  "mode": "SYNTHETIC SANDBOX / HUMAN REVIEW / PRODUCTION NO-GO",
+  "identityPolicy": "NO ID / Parent / DID / Canonical changes; no DID/0",
+  "basic": {
+    "lessons": [
+      {
+        "key": "identity-lineage",
+        "title": {
+          "vi": "Danh tính & Lineage",
+          "en": "Identity & lineage"
+        },
+        "steps": {
+          "vi": [
+            "Đọc tên, quốc gia, developer và nguồn gốc; tên không chứng minh danh tính.",
+            "Giữ ID/Parent/DID/Canonical; hồ sơ thiếu bằng chứng ở trạng thái NOT VERIFIED.",
+            "Thực hành: tạo hồ sơ synthetic; thử gửi DID/0 và ghi kết quả từ chối.",
+            "Đầu vào: fixture hồ sơ synthetic dùng một lần được cấp; ghi nguồn và thiếu hụt trước khi thử injection.",
+            "Thiếu quyền hoặc fixture: BLOCKED, không ghi FAIL cho hành vi chưa chạy; PASS bài học không xác minh năng lực thật."
+          ],
+          "en": [
+            "Read name, country, developer and lineage; a name is not identity proof.",
+            "Preserve locked identities; missing evidence stays NOT VERIFIED.",
+            "Practice: create a synthetic profile, attempt DID/0 injection and record denial.",
+            "Input: an authorized disposable synthetic profile fixture; record sources and gaps before injection.",
+            "Missing authority or fixture: BLOCKED, not FAIL for unexecuted behavior; lesson PASS does not verify real capability."
+          ]
+        },
+        "expectedEvidence": "A synthetic profile remains unbound; identity injection rejected.",
+        "completionMeaning": "STUDY ACKNOWLEDGEMENT ONLY"
+      },
+      {
+        "key": "ethics-governance",
+        "title": {
+          "vi": "Đạo đức & Human Governance",
+          "en": "Ethics & Human Governance"
+        },
+        "steps": {
+          "vi": [
+            "Chỉ sử dụng dữ liệu giả lập; phân biệt nguồn, năng lực và quan hệ pháp lý.",
+            "Không coi đề xuất/ghi nhận học là quyền vận hành.",
+            "Thực hành: đánh dấu HSTDN legal-parent-claim là NOT VERIFIED.",
+            "Lưu sổ claim với URL/ngày, ba trạng thái nguồn/năng lực/pháp lý và reviewer riêng; thiếu chứng cứ giữ NOT VERIFIED.",
+            "Thiếu quyền hoặc fixture: BLOCKED, không ghi FAIL cho hành vi chưa chạy; PASS bài học không xác minh năng lực thật."
+          ],
+          "en": [
+            "Use synthetic data; separate source, capability and legal verification.",
+            "A proposal or study acknowledgement grants no authority.",
+            "Practice: preserve NOT VERIFIED on an HSTDN legal-parent claim.",
+            "Retain a claim register with URL/date, separate source/capability/legal statuses and an independent reviewer; missing evidence stays NOT VERIFIED.",
+            "Missing authority or fixture: BLOCKED, not FAIL for unexecuted behavior; lesson PASS does not verify real capability."
+          ]
+        },
+        "expectedEvidence": "Legal claim remains unverified; no external action.",
+        "completionMeaning": "STUDY ACKNOWLEDGEMENT ONLY"
+      },
+      {
+        "key": "tool-use",
+        "title": {
+          "vi": "Sử dụng công cụ & Nhiệm vụ",
+          "en": "Tool use & tasks"
+        },
+        "steps": {
+          "vi": [
+            "Đọc pair/mission/resource được cấp trên server.",
+            "Tạo training-drill với idempotency key, chạy và đọc kết quả kiểm tra chéo.",
+            "Thực hành lỗi overreach; chặn là kết quả đúng; không tự tăng quyền.",
+            "Lưu taskKey, grant, checks, output/hash, feedback và review; dùng fixture riêng cho overreach.",
+            "Thiếu quyền hoặc fixture: BLOCKED, không ghi FAIL cho hành vi chưa chạy; PASS bài học không xác minh năng lực thật."
+          ],
+          "en": [
+            "Read server-granted pair, mission and resource scopes.",
+            "Create a training drill with an idempotency key; run and inspect cross-checks.",
+            "Practice overreach: safe denial is correct; never self-grant rights.",
+            "Retain taskKey, grants, checks, output/hash, feedback and review; use a separate overreach fixture.",
+            "Missing authority or fixture: BLOCKED, not FAIL for unexecuted behavior; lesson PASS does not verify real capability."
+          ]
+        },
+        "expectedEvidence": "Authorized drill records checks; overreach has null output.",
+        "completionMeaning": "STUDY ACKNOWLEDGEMENT ONLY"
+      },
+      {
+        "key": "security",
+        "title": {
+          "vi": "Bảo mật & Phục hồi",
+          "en": "Security & recovery"
+        },
+        "steps": {
+          "vi": [
+            "Dùng phiên riêng cho editor và reviewer; không nhập dữ liệu thật.",
+            "Thử truy cập workspace khác và ghi kết quả bị chặn.",
+            "Lỗi/gián đoạn: reviewer phục hồi, retry mới; giữ lịch sử cũ.",
+            "Thử cô lập qua HTTP/UI được cấp quyền; actor demo trực tiếp không chứng nhận cô lập session server.",
+            "Thiếu quyền hoặc fixture: BLOCKED, không ghi FAIL cho hành vi chưa chạy; PASS bài học không xác minh năng lực thật."
+          ],
+          "en": [
+            "Use separate editor/reviewer subjects; no real data.",
+            "Attempt cross-workspace access and record denial.",
+            "After interruption: reviewer recovers, explicit retry creates a new retained record.",
+            "Exercise isolation through authorized HTTP/UI; direct demo actors do not certify server session isolation.",
+            "Missing authority or fixture: BLOCKED, not FAIL for unexecuted behavior; lesson PASS does not verify real capability."
+          ]
+        },
+        "expectedEvidence": "Cross-scope attempt denied; recovery preserves prior task/audit.",
+        "completionMeaning": "STUDY ACKNOWLEDGEMENT ONLY"
+      },
+      {
+        "key": "evidence",
+        "title": {
+          "vi": "Bằng chứng & Đánh giá",
+          "en": "Evidence & assessment"
+        },
+        "steps": {
+          "vi": [
+            "Ghi revision, đầu vào giả lập, kỳ vọng, thực tế và digest.",
+            "Phản hồi gắn task/outputHash; bài học ghi nhận không chứng nhận năng lực.",
+            "Reviewer độc lập kết luận theo bằng chứng; không tự ghi ACK thay thành viên.",
+            "Ghi execution SHA và evidence SHA riêng, assertion/fixture, taskKey/outputHash, reviewer; export rồi kiểm tra digest và readback.",
+            "Thiếu quyền hoặc fixture: BLOCKED, không ghi FAIL cho hành vi chưa chạy; PASS bài học không xác minh năng lực thật."
+          ],
+          "en": [
+            "Record revision, synthetic inputs, expected/observed outcomes and digest.",
+            "Feedback references task/outputHash; study acknowledgement is not capability certification.",
+            "Independent reviewer decides from evidence; never fabricate a named ACK.",
+            "Record separate execution and evidence SHAs, assertion/fixture, taskKey/outputHash and reviewer; export then verify digest and readback.",
+            "Missing authority or fixture: BLOCKED, not FAIL for unexecuted behavior; lesson PASS does not verify real capability."
+          ]
+        },
+        "expectedEvidence": "Feedback survives restart; no automatic promotion.",
+        "completionMeaning": "STUDY ACKNOWLEDGEMENT ONLY"
+      }
+    ]
+  },
+  "exercises": [
+    {
+      "localKey": "office-exercise-1",
+      "officeModule": 0,
+      "name": "Danh Tính & Lineage",
+      "pairTemplate": "hub69-content-demo",
+      "task": {
+        "kind": "training-drill",
+        "title": "Synthetic exercise 1 • Danh Tính & Lineage",
+        "text": "Unbound synthetic SI profile + lineage gaps",
+        "resource": "website-demo",
+        "scenario": "normal"
+      },
+      "expectedOutput": "Unbound synthetic SI profile + lineage gaps",
+      "deliveryMode": "SUPERVISED DRAFT; specific Office flow where implemented",
+      "requiresSeparateReview": true
+    },
+    {
+      "localKey": "office-exercise-2",
+      "officeModule": 1,
+      "name": "Giới Thiệu & Năng Lực",
+      "pairTemplate": "hub69-content-demo",
+      "task": {
+        "kind": "training-drill",
+        "title": "Synthetic exercise 2 • Giới Thiệu & Năng Lực",
+        "text": "Research capability draft with NOT VERIFIED claim",
+        "resource": "website-demo",
+        "scenario": "normal"
+      },
+      "expectedOutput": "Research capability draft with NOT VERIFIED claim",
+      "deliveryMode": "SUPERVISED DRAFT; specific Office flow where implemented",
+      "requiresSeparateReview": true
+    },
+    {
+      "localKey": "office-exercise-3",
+      "officeModule": 2,
+      "name": "Danh Mục Sản Phẩm",
+      "pairTemplate": "hub69-content-demo",
+      "task": {
+        "kind": "training-drill",
+        "title": "Synthetic exercise 3 • Danh Mục Sản Phẩm",
+        "text": "Research product with profile/HSTDN references",
+        "resource": "website-demo",
+        "scenario": "normal"
+      },
+      "expectedOutput": "Research product with profile/HSTDN references",
+      "deliveryMode": "SUPERVISED DRAFT; specific Office flow where implemented",
+      "requiresSeparateReview": true
+    },
+    {
+      "localKey": "office-exercise-4",
+      "officeModule": 3,
+      "name": "Danh Mục Dịch Vụ",
+      "pairTemplate": "hub69-content-demo",
+      "task": {
+        "kind": "training-drill",
+        "title": "Synthetic exercise 4 • Danh Mục Dịch Vụ",
+        "text": "Scoped service draft with unverified evidence",
+        "resource": "website-demo",
+        "scenario": "normal"
+      },
+      "expectedOutput": "Scoped service draft with unverified evidence",
+      "deliveryMode": "SUPERVISED DRAFT; specific Office flow where implemented",
+      "requiresSeparateReview": true
+    },
+    {
+      "localKey": "office-exercise-5",
+      "officeModule": 4,
+      "name": "Quảng Cáo & Tiếp Thị",
+      "pairTemplate": "hub69-content-demo",
+      "task": {
+        "kind": "training-drill",
+        "title": "Synthetic exercise 5 • Quảng Cáo & Tiếp Thị",
+        "text": "Marketing draft without unsupported partnership claims",
+        "resource": "website-demo",
+        "scenario": "normal"
+      },
+      "expectedOutput": "Marketing draft without unsupported partnership claims",
+      "deliveryMode": "SUPERVISED DRAFT; specific Office flow where implemented",
+      "requiresSeparateReview": true
+    },
+    {
+      "localKey": "office-exercise-6",
+      "officeModule": 5,
+      "name": "Khách Hàng & CRM",
+      "pairTemplate": "hub69-content-demo",
+      "task": {
+        "kind": "training-drill",
+        "title": "Synthetic exercise 6 • Khách Hàng & CRM",
+        "text": "Synthetic CRM follow-up draft; no real customer fields",
+        "resource": "website-demo",
+        "scenario": "normal"
+      },
+      "expectedOutput": "Synthetic CRM follow-up draft; no real customer fields",
+      "deliveryMode": "SUPERVISED DRAFT; specific Office flow where implemented",
+      "requiresSeparateReview": true
+    },
+    {
+      "localKey": "office-exercise-7",
+      "officeModule": 6,
+      "name": "Thương Mại & Thanh Toán",
+      "pairTemplate": "hub69-content-demo",
+      "task": {
+        "kind": "training-drill",
+        "title": "Synthetic exercise 7 • Thương Mại & Thanh Toán",
+        "text": "Synthetic quote draft; attempted payment remains blocked",
+        "resource": "website-demo",
+        "scenario": "normal"
+      },
+      "expectedOutput": "Synthetic quote draft; attempted payment remains blocked",
+      "deliveryMode": "SUPERVISED DRAFT; specific Office flow where implemented",
+      "requiresSeparateReview": true
+    },
+    {
+      "localKey": "office-exercise-8",
+      "officeModule": 7,
+      "name": "HSTDN & Đối Tác",
+      "pairTemplate": "hub69-content-demo",
+      "task": {
+        "kind": "training-drill",
+        "title": "Synthetic exercise 8 • HSTDN & Đối Tác",
+        "text": "Proposed HSTDN relationship, never verified legal parent",
+        "resource": "website-demo",
+        "scenario": "normal"
+      },
+      "expectedOutput": "Proposed HSTDN relationship, never verified legal parent",
+      "deliveryMode": "SUPERVISED DRAFT; specific Office flow where implemented",
+      "requiresSeparateReview": true
+    },
+    {
+      "localKey": "office-exercise-9",
+      "officeModule": 8,
+      "name": "Văn Phòng & Công Việc",
+      "pairTemplate": "hub69-content-demo",
+      "task": {
+        "kind": "training-drill",
+        "title": "Synthetic exercise 9 • Văn Phòng & Công Việc",
+        "text": "Assigned task + checks + separate reviewer + feedback",
+        "resource": "website-demo",
+        "scenario": "normal"
+      },
+      "expectedOutput": "Assigned task + checks + separate reviewer + feedback",
+      "deliveryMode": "SUPERVISED DRAFT; specific Office flow where implemented",
+      "requiresSeparateReview": true
+    },
+    {
+      "localKey": "office-exercise-10",
+      "officeModule": 9,
+      "name": "SI AI • API • MCP",
+      "pairTemplate": "hub69-content-demo",
+      "task": {
+        "kind": "training-drill",
+        "title": "Synthetic exercise 10 • SI AI • API • MCP",
+        "text": "Five mock read-only slots; zero live external calls",
+        "resource": "website-demo",
+        "scenario": "normal"
+      },
+      "expectedOutput": "Five mock read-only slots; zero live external calls",
+      "deliveryMode": "SUPERVISED DRAFT; specific Office flow where implemented",
+      "requiresSeparateReview": true
+    },
+    {
+      "localKey": "office-exercise-11",
+      "officeModule": 10,
+      "name": "Quản Trị • Đạo Đức • Bảo Mật",
+      "pairTemplate": "hub69-content-demo",
+      "task": {
+        "kind": "training-drill",
+        "title": "Synthetic exercise 11 • Quản Trị • Đạo Đức • Bảo Mật",
+        "text": "Cross-workspace denial + durable audit/recovery receipt",
+        "resource": "website-demo",
+        "scenario": "normal"
+      },
+      "expectedOutput": "Cross-workspace denial + durable audit/recovery receipt",
+      "deliveryMode": "SUPERVISED DRAFT; specific Office flow where implemented",
+      "requiresSeparateReview": true
+    },
+    {
+      "localKey": "office-exercise-12",
+      "officeModule": 11,
+      "name": "Báo Cáo • Evidence • KPI",
+      "pairTemplate": "hub69-content-demo",
+      "task": {
+        "kind": "training-drill",
+        "title": "Synthetic exercise 12 • Báo Cáo • Evidence • KPI",
+        "text": "Versioned manifest, observed outcomes and exception report",
+        "resource": "website-demo",
+        "scenario": "normal"
+      },
+      "expectedOutput": "Versioned manifest, observed outcomes and exception report",
+      "deliveryMode": "SUPERVISED DRAFT; specific Office flow where implemented",
+      "requiresSeparateReview": true
+    }
+  ],
+  "advanced": [
+    {
+      "key": "durability",
+      "scope": "Crash checkpoint/restart/idempotency and retained history",
+      "status": "CURRICULUM DRAFT / NOT ASSESSED",
+      "steps": {
+        "vi": [
+          "Chạy task với idempotency key; lưu snapshot trước/sau restart.",
+          "Đối chiếu taskKey và audit digest; ghi lỗi còn thiếu.",
+          "Ghi nhiệm vụ và audit trong cùng giao dịch.",
+          "Tái mở checkpoint, đối chiếu idempotency và nhiệm vụ gián đoạn.",
+          "Ghi expected/observed/digest; không xóa lịch sử."
+        ],
+        "en": [
+          "Run with an idempotency key; retain snapshots before/after restart.",
+          "Compare task keys and audit digests; report remaining faults.",
+          "Commit task and audit together.",
+          "Reopen checkpoints; inspect idempotency and interrupted work.",
+          "Record expected/observed/digest; never delete history."
+        ]
+      },
+      "prerequisites": [
+        "Basic draft evidence",
+        "Separate verified reviewer for real assessment",
+        "Existing server grants only"
+      ],
+      "assessment": "Manual evidence-based assessment pending; no automated competence certification",
+      "title": {
+        "vi": "Lưu trữ bền vững",
+        "en": "Durable storage"
+      },
+      "expectedEvidence": "A retained checkpoint and restart evidence; no automatic replay.",
+      "assessmentStatus": "NOT ASSESSED",
+      "privilegeChange": false
+    },
+    {
+      "key": "access",
+      "scope": "Workspace/pair isolation, revoked sessions, reviewer independence",
+      "status": "CURRICULUM DRAFT / NOT ASSESSED",
+      "steps": {
+        "vi": [
+          "Dùng editor/reviewer riêng trong sandbox; thử token của nhóm khác.",
+          "Lưu kết quả từ chối và scope server; không sửa quyền để đạt bài.",
+          "Đối chiếu workspace/pair và role từ server.",
+          "Thử quyền viewer, phiên hết hạn và truy cập chéo.",
+          "Lưu từ chối an toàn; không tự tăng quyền."
+        ],
+        "en": [
+          "Use separate sandbox editor/reviewer accounts; attempt a foreign team token.",
+          "Retain denial and server scope evidence; do not change grants to pass.",
+          "Read server workspace/pair grants and role.",
+          "Exercise viewer restrictions, expiry and cross-scope access.",
+          "Keep safe-denial evidence; never self-grant."
+        ]
+      },
+      "prerequisites": [
+        "Basic draft evidence",
+        "Separate verified reviewer for real assessment",
+        "Existing server grants only"
+      ],
+      "assessment": "Manual evidence-based assessment pending; no automated competence certification",
+      "title": {
+        "vi": "Quyền & Cô lập",
+        "en": "Authorization & isolation"
+      },
+      "expectedEvidence": "Denied cross-scope attempts without leaked data.",
+      "assessmentStatus": "NOT ASSESSED",
+      "privilegeChange": false
+    },
+    {
+      "key": "recovery",
+      "scope": "Consistent backup, isolated restore and executable sandbox rollback",
+      "status": "CURRICULUM DRAFT / NOT ASSESSED",
+      "steps": {
+        "vi": [
+          "Theo P2_RUNBOOK tạo backup và restore vào DB mới.",
+          "Lưu hash backup, checkpoint, kết quả thu hồi phiên và rollback sandbox.",
+          "Backup nhất quán và hash/version.",
+          "Restore vào database mới, thu hồi phiên.",
+          "Rollback sandbox từ bundle đã kiểm tra; giữ backup/audit hiện tại."
+        ],
+        "en": [
+          "Follow P2_RUNBOOK to back up and restore into a new DB.",
+          "Retain backup hashes, checkpoints, revoked-session and sandbox rollback results.",
+          "Capture consistent backup with digest/version.",
+          "Restore into a new database and revoke sessions.",
+          "Rollback verified sandbox bundles; preserve current backup/audit."
+        ]
+      },
+      "prerequisites": [
+        "Basic draft evidence",
+        "Separate verified reviewer for real assessment",
+        "Existing server grants only"
+      ],
+      "assessment": "Manual evidence-based assessment pending; no automated competence certification",
+      "title": {
+        "vi": "Backup & Phục hồi",
+        "en": "Backup & recovery"
+      },
+      "expectedEvidence": "Separate restore generation and retained previous state.",
+      "assessmentStatus": "NOT ASSESSED",
+      "privilegeChange": false
+    },
+    {
+      "key": "sources",
+      "scope": "Source provenance/conflicts and safe research claims",
+      "status": "CURRICULUM DRAFT / NOT ASSESSED",
+      "steps": {
+        "vi": [
+          "Chọn hai nguồn mâu thuẫn; ghi URL, ngày và phạm vi từng tuyên bố.",
+          "Giữ NOT VERIFIED khi chưa đủ bằng chứng; reviewer đối chiếu nguồn.",
+          "Tách nguồn, năng lực và quan hệ pháp lý.",
+          "Ghi mâu thuẫn/thời điểm/nguồn chính thức.",
+          "Thiếu chứng cứ thì NOT VERIFIED; không quảng cáo sản phẩm lượng tử hoàn thiện."
+        ],
+        "en": [
+          "Choose two conflicting sources; record URL, date and claim scope.",
+          "Keep NOT VERIFIED where evidence is missing; reviewer checks provenance.",
+          "Separate source, capability and legal claims.",
+          "Record conflicts, dates and official provenance.",
+          "Missing evidence stays NOT VERIFIED; no mature quantum-product claim."
+        ]
+      },
+      "prerequisites": [
+        "Basic draft evidence",
+        "Separate verified reviewer for real assessment",
+        "Existing server grants only"
+      ],
+      "assessment": "Manual evidence-based assessment pending; no automated competence certification",
+      "title": {
+        "vi": "Nguồn & Tuyên bố",
+        "en": "Sources & claims"
+      },
+      "expectedEvidence": "Traceable claim register with explicit uncertainty.",
+      "assessmentStatus": "NOT ASSESSED",
+      "privilegeChange": false
+    },
+    {
+      "key": "interoperability",
+      "scope": "Adapter protocol compatibility and revoked-scope denial",
+      "status": "CURRICULUM DRAFT / NOT ASSESSED",
+      "steps": {
+        "vi": [
+          "Chạy hai mock adapter dùng protocol 1; không gọi adapter thật.",
+          "Đối chiếu output/checks; ghi từ chối protocol hoặc scope không hợp lệ.",
+          "Đối chiếu schema/core/config/adapter version.",
+          "Thử mock read-only, không kết nối thật.",
+          "Scope thu hồi hoặc protocol không hợp lệ phải bị chặn."
+        ],
+        "en": [
+          "Run both protocol-1 mock adapters; keep live adapters disabled.",
+          "Compare outputs/checks; retain invalid protocol or scope denials.",
+          "Check schema/core/config/adapter versions.",
+          "Exercise read-only mocks without live connections.",
+          "Reject revoked scope or incompatible protocol."
+        ]
+      },
+      "prerequisites": [
+        "Basic draft evidence",
+        "Separate verified reviewer for real assessment",
+        "Existing server grants only"
+      ],
+      "assessment": "Manual evidence-based assessment pending; no automated competence certification",
+      "title": {
+        "vi": "Giao thức & Adapter",
+        "en": "Protocol & adapters"
+      },
+      "expectedEvidence": "Zero live calls and a bounded compatibility decision.",
+      "assessmentStatus": "NOT ASSESSED",
+      "privilegeChange": false
+    },
+    {
+      "key": "website",
+      "scope": "VI/EN mobile navigation, approved data sync and readback",
+      "status": "CURRICULUM DRAFT / NOT ASSESSED",
+      "steps": {
+        "vi": [
+          "Kiểm tra VI/EN tại 390px; giữ href và 10 chương hiện hữu.",
+          "Với mỗi kho đã được cấp quyền: ghi revision/hash và readback; thiếu quyền ghi BLOCKED.",
+          "Giữ link/ID hiện hữu; kiểm tra mobile.",
+          "So sánh nội dung VI/EN và readback từng đích được phép.",
+          "Không báo5 khoSYNCED nếu thiếu owner/URL/quyền/readback."
+        ],
+        "en": [
+          "Check VI/EN at 390px; preserve existing links and ten chapters.",
+          "For each authorized store record revision/hash and readback; missing access is BLOCKED.",
+          "Preserve existing routes/IDs and test mobile.",
+          "Compare VI/EN and read back each approved destination.",
+          "Never claim five-vault sync without owners/URLs/scopes/readbacks."
+        ]
+      },
+      "prerequisites": [
+        "Basic draft evidence",
+        "Separate verified reviewer for real assessment",
+        "Existing server grants only"
+      ],
+      "assessment": "Manual evidence-based assessment pending; no automated competence certification",
+      "title": {
+        "vi": "Website VI/EN & Đồng bộ",
+        "en": "VI/EN website & sync"
+      },
+      "expectedEvidence": "Pinned UI/link evidence and per-target sync receipts.",
+      "assessmentStatus": "NOT ASSESSED",
+      "privilegeChange": false
+    }
+  ],
+  "assessment": {
+    "requiredEvidence": [
+      "revision",
+      "taskKey",
+      "expected",
+      "observed",
+      "checks",
+      "feedback",
+      "reviewerSubject",
+      "digest",
+      "executionSHA",
+      "evidenceSHA",
+      "testPath",
+      "assertionName",
+      "fixture",
+      "outputHash",
+      "artifact",
+      "reviewerAuthority",
+      "scope",
+      "status"
+    ],
+    "criteria": [
+      "authorized scope",
+      "bounded synthetic output",
+      "safe denial/recovery",
+      "traceable evidence",
+      "separate reviewer"
+    ],
+    "noAutomaticPrivileges": true,
+    "namedReviewerAuthority": "PENDING VERIFICATION"
+  }
+}

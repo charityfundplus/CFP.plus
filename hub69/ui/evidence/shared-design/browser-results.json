@@ -1,0 +1,21 @@
+{
+  "sourceRevision": "917e162d78354166ed2673f347546f3ec0095b4e",
+  "artifactSHA256": "b25250e9bdb28ec7a8bd83eccf858dfc19c5ac70c5bf4f9f26f7955dc5b4fb70",
+  "engine": "firefox",
+  "mode": "local file / desktop engine with phone viewport emulation",
+  "actualIPhone": "BLOCKED: no physical device or approved HTTPS staging",
+  "httpsStaging": "BLOCKED: no approved URL or deployed revision",
+  "checks": [],
+  "screenshots": [],
+  "externalRequests": [],
+  "errors": [
+    "Error: browser page timed out after 15000ms\n    at Timeout.<anonymous> (file:///workspace/scratch/80ed156aa363/CFP.plus/hub69/ui/integration/browser-review.mjs:19:105)\n    at listOnTimeout (node:internal/timers:635:17)\n    at process.processTimers (node:internal/timers:571:7)"
+  ],
+  "browserVersion": "153.0",
+  "status": "BLOCKED",
+  "counts": {
+    "total": 0,
+    "pass": 0,
+    "fail": 0
+  }
+}

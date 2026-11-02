@@ -4,6 +4,8 @@ Operational UUID keys are not CFP canonical identities. Source Registry is read-
 Two local SQLite databases demonstrate at-least-once outbox replication only.
 """
 import hashlib
+import base64
+import binascii
 import hmac
 import json
 import os
@@ -62,6 +64,9 @@ class Operations:
                 CREATE TABLE IF NOT EXISTS requests(workspace TEXT NOT NULL,subject TEXT NOT NULL,key TEXT NOT NULL,digest TEXT NOT NULL,result TEXT NOT NULL,PRIMARY KEY(workspace,subject,key));
                 CREATE TABLE IF NOT EXISTS outbox(seq INTEGER PRIMARY KEY AUTOINCREMENT,workspace TEXT NOT NULL,key TEXT NOT NULL,digest TEXT NOT NULL,status TEXT NOT NULL,attempts INTEGER NOT NULL DEFAULT 0, UNIQUE(workspace,key));
                 CREATE TABLE IF NOT EXISTS audit(workspace TEXT NOT NULL,seq INTEGER NOT NULL,payload TEXT NOT NULL,hash TEXT NOT NULL,PRIMARY KEY(workspace,seq));
+                CREATE TABLE IF NOT EXISTS forum_tasks(workspace TEXT NOT NULL,key TEXT NOT NULL,payload TEXT NOT NULL,PRIMARY KEY(workspace,key));
+                CREATE TABLE IF NOT EXISTS forum_posts(workspace TEXT NOT NULL,key TEXT NOT NULL,payload TEXT NOT NULL,PRIMARY KEY(workspace,key));
+                CREATE TABLE IF NOT EXISTS forum_evidence(workspace TEXT NOT NULL,key TEXT NOT NULL,payload TEXT NOT NULL,PRIMARY KEY(workspace,key));
             ''')
         # Destination failure never blocks recovery/read/write of the source.
         try:
@@ -130,11 +135,12 @@ class Operations:
             require(expected.get(row['key']) == record['content_hash'], 'RECORD_INTEGRITY_FAILURE', 503)
             records.append(record)
         require(set(expected) == {r['key'] for r in records}, 'RECORD_INTEGRITY_FAILURE', 503)
-        return {'sequence': sequence, 'hash': previous, 'digest': digest(records), 'records': records}
+        forum = self._forum_verify(db, workspace)
+        return {'sequence': sequence, 'hash': previous, 'digest': digest(records), 'records': records, 'forum': forum, 'forum_digest': digest(forum)}
 
     def _verify_all(self):
         with self.connect() as db:
-            for row in db.execute('SELECT workspace FROM audit UNION SELECT workspace FROM records'):
+            for row in db.execute('SELECT workspace FROM audit UNION SELECT workspace FROM records UNION SELECT workspace FROM forum_tasks UNION SELECT workspace FROM forum_posts UNION SELECT workspace FROM forum_evidence'):
                 self._verify(db, row['workspace'])
 
     def provision(self, id, password, role, workspace):
@@ -272,8 +278,8 @@ class Operations:
             try:
                 with sqlite3.connect(target) as backup:
                     os.chmod(target, 0o600)
-                    backup.executescript('CREATE TABLE records(workspace TEXT,key TEXT,payload TEXT,PRIMARY KEY(workspace,key)); CREATE TABLE audit(workspace TEXT,seq INTEGER,payload TEXT,hash TEXT,PRIMARY KEY(workspace,seq));')
-                    for table in ['records', 'audit']:
+                    backup.executescript('CREATE TABLE records(workspace TEXT,key TEXT,payload TEXT,PRIMARY KEY(workspace,key)); CREATE TABLE audit(workspace TEXT,seq INTEGER,payload TEXT,hash TEXT,PRIMARY KEY(workspace,seq)); CREATE TABLE forum_tasks(workspace TEXT,key TEXT,payload TEXT,PRIMARY KEY(workspace,key)); CREATE TABLE forum_posts(workspace TEXT,key TEXT,payload TEXT,PRIMARY KEY(workspace,key)); CREATE TABLE forum_evidence(workspace TEXT,key TEXT,payload TEXT,PRIMARY KEY(workspace,key));')
+                    for table in ['records', 'audit', 'forum_tasks', 'forum_posts', 'forum_evidence']:
                         rows = db.execute(f'SELECT * FROM {table} WHERE workspace=?', (actor['workspace'],)).fetchall()
                         if rows:
                             backup.executemany(f'INSERT INTO {table} VALUES({",".join("?" for _ in rows[0])})', [tuple(r) for r in rows])
@@ -281,9 +287,9 @@ class Operations:
                     saved.row_factory = sqlite3.Row
                     require(saved.execute('PRAGMA integrity_check').fetchone()[0] == 'ok', 'BACKUP_INTEGRITY_FAILURE', 503)
                     checkpoint = self._verify(saved, actor['workspace'])
-                    require(checkpoint['digest'] == verified['digest'] and checkpoint['hash'] == verified['hash'], 'BACKUP_INTEGRITY_FAILURE', 503)
+                    require(checkpoint['digest'] == verified['digest'] and checkpoint['hash'] == verified['hash'] and checkpoint['forum_digest'] == verified['forum_digest'], 'BACKUP_INTEGRITY_FAILURE', 503)
                 sha = hashlib.sha256(target.read_bytes()).hexdigest()
-                receipt = {'backup_id': id, 'workspace': actor['workspace'], 'sha256': sha, 'digest': verified['digest'], 'record_count': len(verified['records']), 'audit_hash': verified['hash']}
+                receipt = {'backup_id': id, 'workspace': actor['workspace'], 'sha256': sha, 'digest': verified['digest'], 'record_count': len(verified['records']), 'audit_hash': verified['hash'], 'forum_digest': verified['forum_digest'], 'forum_count': sum(len(rows) for rows in verified['forum'].values())}
                 manifest = target.with_suffix('.json')
                 with manifest.open('x') as f:
                     os.chmod(manifest, 0o600)
@@ -313,7 +319,7 @@ class Operations:
                 backup.row_factory = sqlite3.Row
                 require(backup.execute('PRAGMA integrity_check').fetchone()[0] == 'ok', 'BACKUP_INTEGRITY_FAILURE', 409)
                 verified = self._verify(backup, actor['workspace'])
-                require(verified['digest'] == receipt['digest'] and verified['hash'] == receipt['audit_hash'], 'BACKUP_INTEGRITY_FAILURE', 409)
+                require(verified['digest'] == receipt['digest'] and verified['hash'] == receipt['audit_hash'] and verified['forum_digest'] == receipt.get('forum_digest', digest({'tasks': [], 'posts': [], 'evidence': []})), 'BACKUP_INTEGRITY_FAILURE', 409)
                 id = uuid.uuid4().hex
                 destination = self._artifact('restore', id)
                 with sqlite3.connect(destination) as restored:
@@ -322,7 +328,163 @@ class Operations:
                 with sqlite3.connect(destination) as restored:
                     restored.row_factory = sqlite3.Row
                     check = self._verify(restored, actor['workspace'])
-                    require(check['digest'] == receipt['digest'], 'RESTORE_INTEGRITY_FAILURE', 503)
-            result = {'restore_id': id, 'backup_id': backup_id, 'digest': check['digest'], 'record_count': len(check['records']), 'source_unchanged': True, 'scope': 'NEW ISOLATED LOCAL SQLITE COPY'}
+                    require(check['digest'] == receipt['digest'] and check['forum_digest'] == receipt.get('forum_digest', digest({'tasks': [], 'posts': [], 'evidence': []})), 'RESTORE_INTEGRITY_FAILURE', 503)
+            result = {'restore_id': id, 'backup_id': backup_id, 'digest': check['digest'], 'record_count': len(check['records']), 'forum_digest': check['forum_digest'], 'forum_count': sum(len(rows) for rows in check['forum'].values()), 'source_unchanged': True, 'scope': 'NEW ISOLATED LOCAL SQLITE COPY'}
             self.event(db, actor, 'backup.restore', result)
             return result
+
+    def _forum_verify(self, db, workspace):
+        """Validate forum rows against the already verified workspace audit chain."""
+        results = {'tasks': [], 'posts': [], 'evidence': []}
+        expected = {name: {} for name in results}
+        actions = {'forum.task.create': 'tasks', 'forum.task.ack': 'tasks', 'forum.post.create': 'posts', 'forum.evidence.create': 'evidence'}
+        try:
+            for row in db.execute('SELECT payload FROM audit WHERE workspace=? ORDER BY seq', (workspace,)):
+                event = json.loads(row['payload'])
+                if event['action'] in actions:
+                    details = event['details']
+                    require(isinstance(details.get('key'), str) and isinstance(details.get('content_hash'), str), 'FORUM_INTEGRITY_FAILURE', 503)
+                    expected[actions[event['action']]][details['key']] = details['content_hash']
+            existing = {r[0] for r in db.execute("SELECT name FROM sqlite_master WHERE type='table'")}
+            for name in results:
+                table = 'forum_' + name
+                if table not in existing:
+                    require(not expected[name], 'FORUM_INTEGRITY_FAILURE', 503)
+                    continue  # Allows verification of historical forum-free backup artifacts.
+                for row in db.execute(f'SELECT key,payload FROM {table} WHERE workspace=? ORDER BY key', (workspace,)):
+                    item = json.loads(row['payload'])
+                    require(isinstance(item, dict) and item.get('key') == row['key'] and item.get('workspace') == workspace and isinstance(item.get('content_hash'), str), 'FORUM_INTEGRITY_FAILURE', 503)
+                    require(digest({k: v for k, v in item.items() if k != 'content_hash'}) == item['content_hash'] == expected[name].get(row['key']), 'FORUM_INTEGRITY_FAILURE', 503)
+                    if name == 'tasks':
+                        require(set(item) == {'key', 'workspace', 'author', 'recipient', 'title', 'content', 'status', 'version', 'created_utc', 'acknowledged_utc', 'content_hash'}, 'FORUM_INTEGRITY_FAILURE', 503)
+                        require(all(isinstance(item[k], str) for k in ['author', 'recipient', 'title', 'content']) and type(item['created_utc']) in [int, float], 'FORUM_INTEGRITY_FAILURE', 503)
+                        require(item['status'] in ['QUEUED', 'ACCEPTED'] and type(item['version']) is int and item['version'] == (1 if item['status'] == 'QUEUED' else 2), 'FORUM_INTEGRITY_FAILURE', 503)
+                        require(item['acknowledged_utc'] is None if item['status'] == 'QUEUED' else type(item['acknowledged_utc']) in [int, float], 'FORUM_INTEGRITY_FAILURE', 503)
+                    elif name == 'posts':
+                        require(set(item) == {'key', 'workspace', 'task_key', 'author', 'content', 'created_utc', 'content_hash'} and text(item['content'], 5000), 'FORUM_INTEGRITY_FAILURE', 503)
+                    else:
+                        require(set(item) == {'key', 'workspace', 'task_key', 'author', 'name', 'content_base64', 'content_type', 'size', 'sha256', 'created_utc', 'content_hash'}, 'FORUM_INTEGRITY_FAILURE', 503)
+                        raw = base64.b64decode(item['content_base64'], validate=True)
+                        raw.decode('utf-8')
+                        require(item['content_type'] == 'text/plain' and type(item['size']) is int and item['size'] == len(raw) and 0 < len(raw) <= 32768 and hashlib.sha256(raw).hexdigest() == item['sha256'], 'FORUM_INTEGRITY_FAILURE', 503)
+                    results[name].append(item)
+                require(set(expected[name]) == {i['key'] for i in results[name]}, 'FORUM_INTEGRITY_FAILURE', 503)
+            tasks = {item['key'] for item in results['tasks']}
+            require(all(item['task_key'] in tasks for item in results['posts'] + results['evidence']), 'FORUM_INTEGRITY_FAILURE', 503)
+            return results
+        except (ValueError, KeyError, TypeError, AttributeError, binascii.Error) as e:
+            raise OperationError('FORUM_INTEGRITY_FAILURE', 503) from e
+
+    def _forum_context(self, db, token, write=False):
+        actor = self.actor(db, token)
+        if write:
+            self.allowed(actor, ['editor', 'admin'])
+        self._verify(db, actor['workspace'])
+        return actor
+
+    def _forum_task(self, db, actor, key):
+        require(isinstance(key, str) and len(key) == 36, 'FORUM_TASK_NOT_FOUND', 404)
+        row = db.execute('SELECT payload FROM forum_tasks WHERE workspace=? AND key=?', (actor['workspace'], key)).fetchone()
+        require(row is not None, 'FORUM_TASK_NOT_FOUND', 404)
+        return json.loads(row['payload'])
+
+    def _forum_idempotent(self, db, actor, kind, data):
+        require(text(data.get('idempotency_key'), 100), 'IDEMPOTENCY_KEY_REQUIRED')
+        key = 'forum-' + kind + ':' + data['idempotency_key']
+        old = db.execute('SELECT digest,result FROM requests WHERE workspace=? AND subject=? AND key=?', (actor['workspace'], actor['id'], key)).fetchone()
+        if old:
+            require(old['digest'] == digest(data), 'IDEMPOTENCY_CONFLICT', 409)
+            return key, json.loads(old['result'])
+        return key, None
+
+    def _forum_save(self, db, actor, table, action, item, request=None):
+        item['content_hash'] = digest(item)
+        db.execute(f'INSERT INTO forum_{table}(workspace,key,payload) VALUES(?,?,?)', (actor['workspace'], item['key'], canonical(item)))
+        self.event(db, actor, action, {'key': item['key'], 'content_hash': item['content_hash'], 'task_key': item.get('task_key', item['key'])})
+        if request:
+            key, data = request
+            db.execute('INSERT INTO requests VALUES(?,?,?,?,?)', (actor['workspace'], actor['id'], key, digest(data), canonical(item)))
+        return item
+
+    def forum_state(self, token):
+        with self.connect() as db:
+            db.execute('BEGIN')
+            actor = self.actor(db, token)
+            checked = self._verify(db, actor['workspace'])
+            result = checked['forum']
+            return {**result, 'notifications': [{'key': 'assignment:' + t['key'], 'task_key': t['key'], 'title': t['title'], 'status': t['status'], 'created_utc': t['created_utc'], 'delivery': 'IN_APP_READBACK'} for t in result['tasks'] if t['recipient'] == actor['id']], 'digest': checked['forum_digest'], 'audit_valid': True, 'scope': 'LOCAL SANDBOX; TECHNICAL ACCOUNTS ONLY'}
+
+    def forum_create_task(self, token, data):
+        with self.connect() as db:
+            db.execute('BEGIN IMMEDIATE')
+            actor = self._forum_context(db, token, write=True)
+            require(isinstance(data, dict) and set(data) == {'title', 'content', 'recipient', 'idempotency_key'}, 'INVALID_FIELDS')
+            require(text(data['title'], 200) and text(data['content'], 5000) and text(data['recipient'], 100), 'INVALID_FORUM_TASK')
+            recipient = db.execute('SELECT role FROM users WHERE id=? AND workspace=?', (data['recipient'], actor['workspace'])).fetchone()
+            require(recipient is not None, 'FORUM_RECIPIENT_NOT_FOUND', 404)
+            require(recipient['role'] in ['editor', 'admin'], 'FORUM_RECIPIENT_NOT_ELIGIBLE', 400)
+            key, old = self._forum_idempotent(db, actor, 'task', data)
+            if old:
+                return old
+            task = {'key': str(uuid.uuid4()), 'workspace': actor['workspace'], 'author': actor['id'], 'recipient': data['recipient'], 'title': data['title'], 'content': data['content'], 'status': 'QUEUED', 'version': 1, 'created_utc': self.clock(), 'acknowledged_utc': None}
+            return self._forum_save(db, actor, 'tasks', 'forum.task.create', task, (key, data))
+
+    def forum_ack(self, token, data):
+        with self.connect() as db:
+            db.execute('BEGIN IMMEDIATE')
+            actor = self._forum_context(db, token, write=True)
+            require(isinstance(data, dict) and set(data) == {'task_key'}, 'INVALID_FIELDS')
+            task = self._forum_task(db, actor, data['task_key'])
+            require(task['recipient'] == actor['id'], 'FORUM_ASSIGNED_RECIPIENT_REQUIRED', 403)
+            if task['status'] == 'ACCEPTED':
+                return task
+            task.update(status='ACCEPTED', version=2, acknowledged_utc=self.clock())
+            del task['content_hash']
+            task['content_hash'] = digest(task)
+            db.execute('UPDATE forum_tasks SET payload=? WHERE workspace=? AND key=?', (canonical(task), actor['workspace'], task['key']))
+            self.event(db, actor, 'forum.task.ack', {'key': task['key'], 'task_key': task['key'], 'content_hash': task['content_hash']})
+            return task
+
+    def forum_post(self, token, data):
+        with self.connect() as db:
+            db.execute('BEGIN IMMEDIATE')
+            actor = self._forum_context(db, token, write=True)
+            require(isinstance(data, dict) and set(data) == {'task_key', 'content', 'idempotency_key'}, 'INVALID_FIELDS')
+            task = self._forum_task(db, actor, data['task_key'])
+            require(text(data['content'], 5000), 'INVALID_FORUM_POST')
+            key, old = self._forum_idempotent(db, actor, 'post', data)
+            if old:
+                return old
+            item = {'key': str(uuid.uuid4()), 'workspace': actor['workspace'], 'task_key': task['key'], 'author': actor['id'], 'content': data['content'], 'created_utc': self.clock()}
+            return self._forum_save(db, actor, 'posts', 'forum.post.create', item, (key, data))
+
+    def forum_evidence(self, token, data):
+        with self.connect() as db:
+            db.execute('BEGIN IMMEDIATE')
+            actor = self._forum_context(db, token, write=True)
+            require(isinstance(data, dict) and set(data) == {'task_key', 'name', 'content_base64', 'idempotency_key'}, 'INVALID_FIELDS')
+            task = self._forum_task(db, actor, data['task_key'])
+            require(text(data['name'], 200) and not any(c in data['name'] for c in ['/', '\\', '\0', '\r', '\n']), 'INVALID_EVIDENCE_NAME')
+            require(isinstance(data['content_base64'], str), 'INVALID_EVIDENCE')
+            require(len(data['content_base64']) <= 43692, 'EVIDENCE_TOO_LARGE', 413)
+            try:
+                raw = base64.b64decode(data['content_base64'], validate=True)
+                decoded = raw.decode('utf-8')
+            except (ValueError, UnicodeError, binascii.Error) as e:
+                raise OperationError('EVIDENCE_TEXT_BASE64_REQUIRED') from e
+            require(0 < len(raw) <= 32768, 'EVIDENCE_TOO_LARGE', 413)
+            require('\0' not in decoded, 'EVIDENCE_TEXT_BASE64_REQUIRED')
+            key, old = self._forum_idempotent(db, actor, 'evidence', data)
+            if old:
+                return old
+            item = {'key': str(uuid.uuid4()), 'workspace': actor['workspace'], 'task_key': task['key'], 'author': actor['id'], 'name': data['name'], 'content_base64': data['content_base64'], 'content_type': 'text/plain', 'size': len(raw), 'sha256': hashlib.sha256(raw).hexdigest(), 'created_utc': self.clock()}
+            return self._forum_save(db, actor, 'evidence', 'forum.evidence.create', item, (key, data))
+
+    def forum_read_evidence(self, token, key):
+        with self.connect() as db:
+            db.execute('BEGIN')
+            actor = self._forum_context(db, token)
+            require(isinstance(key, str) and len(key) == 36, 'FORUM_EVIDENCE_NOT_FOUND', 404)
+            row = db.execute('SELECT payload FROM forum_evidence WHERE workspace=? AND key=?', (actor['workspace'], key)).fetchone()
+            require(row is not None, 'FORUM_EVIDENCE_NOT_FOUND', 404)
+            return json.loads(row['payload'])

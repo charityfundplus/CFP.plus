@@ -1,0 +1,298 @@
+TAP version 13
+# Subtest: application initializes all seven views and navigation state without missing controls
+ok 1 - application initializes all seven views and navigation state without missing controls
+  ---
+  duration_ms: 8.498605
+  type: 'test'
+  ...
+# Subtest: lookup submission preserves leading zeroes and rejects nonnumeric input
+ok 2 - lookup submission preserves leading zeroes and rejects nonnumeric input
+  ---
+  duration_ms: 1.852402
+  type: 'test'
+  ...
+# Subtest: source ID profile opens with correct Parent and returning to directory works
+ok 3 - source ID profile opens with correct Parent and returning to directory works
+  ---
+  duration_ms: 2.064759
+  type: 'test'
+  ...
+# Subtest: saved item action works with unavailable local storage and reports session-only persistence
+ok 4 - saved item action works with unavailable local storage and reports session-only persistence
+  ---
+  duration_ms: 1.860085
+  type: 'test'
+  ...
+# Subtest: template type selection updates project fields and returns focus to control
+ok 5 - template type selection updates project fields and returns focus to control
+  ---
+  duration_ms: 1.257258
+  type: 'test'
+  ...
+# Subtest: copy failure leaves a clear message and skip navigation keeps the current route
+ok 6 - copy failure leaves a clear message and skip navigation keeps the current route
+  ---
+  duration_ms: 2.399576
+  type: 'test'
+  ...
+# Subtest: Core transitions clear data before every load and retain no snapshot on 401/404/503
+ok 7 - Core transitions clear data before every load and retain no snapshot on 401/404/503
+  ---
+  duration_ms: 1.64173
+  type: 'test'
+  ...
+# Subtest: Core rejects revision changes between list, detail and OpenAI instead of mixing sources
+ok 8 - Core rejects revision changes between list, detail and OpenAI instead of mixing sources
+  ---
+  duration_ms: 0.317642
+  type: 'test'
+  ...
+# Subtest: Core rejects mismatched identity and ignores delayed success after logout or a newer request
+ok 9 - Core rejects mismatched identity and ignores delayed success after logout or a newer request
+  ---
+  duration_ms: 5.546413
+  type: 'test'
+  ...
+# Subtest: Core read responses never replace leading-zero IDs or require a new project identity
+ok 10 - Core read responses never replace leading-zero IDs or require a new project identity
+  ---
+  duration_ms: 0.280677
+  type: 'test'
+  ...
+# Subtest: navigation while logout is pending cannot repopulate records from the earlier session
+ok 11 - navigation while logout is pending cannot repopulate records from the earlier session
+  ---
+  duration_ms: 0.886918
+  type: 'test'
+  ...
+# Subtest: training inherits exactly five lessons, twelve exercises and six unassessed tracks
+ok 12 - training inherits exactly five lessons, twelve exercises and six unassessed tracks
+  ---
+  duration_ms: 6.551997
+  type: 'test'
+  ...
+# Subtest: study acknowledgement persists locally without changing Registry identity or granting assessment
+ok 13 - study acknowledgement persists locally without changing Registry identity or granting assessment
+  ---
+  duration_ms: 5.407737
+  type: 'test'
+  ...
+# Subtest: blocked storage retains study acknowledgement in the current session and reports the limit
+ok 14 - blocked storage retains study acknowledgement in the current session and reports the limit
+  ---
+  duration_ms: 2.14641
+  type: 'test'
+  ...
+# Subtest: Core bundle starts empty and contains no snapshot fallback or embedded credentials
+ok 15 - Core bundle starts empty and contains no snapshot fallback or embedded credentials
+  ---
+  duration_ms: 2.421568
+  type: 'test'
+  ...
+# Subtest: five groups cover ten chapters without replacing numeric ID 0 or 000
+ok 16 - five groups cover ten chapters without replacing numeric ID 0 or 000
+  ---
+  duration_ms: 2.276323
+  type: 'test'
+  ...
+# Subtest: all group/chapter deep links resolve and malformed structural routes fail closed
+ok 17 - all group/chapter deep links resolve and malformed structural routes fail closed
+  ---
+  duration_ms: 0.216552
+  type: 'test'
+  ...
+# Subtest: real source supports Chapter 6 → OpenAI → ChatGPT without mutating Parent
+ok 18 - real source supports Chapter 6 → OpenAI → ChatGPT without mutating Parent
+  ---
+  duration_ms: 0.913848
+  type: 'test'
+  ...
+# Subtest: all ten chapters render while empty chapters create no child identities
+ok 19 - all ten chapters render while empty chapters create no child identities
+  ---
+  duration_ms: 1.538086
+  type: 'test'
+  ...
+# Subtest: V is coordination, 000 is a navigation group and neither rewrites lineage
+ok 20 - V is coordination, 000 is a navigation group and neither rewrites lineage
+  ---
+  duration_ms: 0.19465
+  type: 'test'
+  ...
+# Subtest: source validation detects duplicates, missing parents, cycles, chapter conflicts and cross-chapter links
+ok 21 - source validation detects duplicates, missing parents, cycles, chapter conflicts and cross-chapter links
+  ---
+  duration_ms: 0.271023
+  type: 'test'
+  ...
+# Subtest: cyclic tree terminates with a visible warning rather than recursive rendering
+ok 22 - cyclic tree terminates with a visible warning rather than recursive rendering
+  ---
+  duration_ms: 0.207628
+  type: 'test'
+  ...
+# Subtest: parent unavailable in snapshot is shown verbatim without synthesizing an entity
+ok 23 - parent unavailable in snapshot is shown verbatim without synthesizing an entity
+  ---
+  duration_ms: 0.380526
+  type: 'test'
+  ...
+# Subtest: all requested entity classes have a shared profile schema and safe type labels
+ok 24 - all requested entity classes have a shared profile schema and safe type labels
+  ---
+  duration_ms: 1.081868
+  type: 'test'
+  ...
+# Subtest: pair project section keeps the existing ID and emits no guessed project URL
+ok 25 - pair project section keeps the existing ID and emits no guessed project URL
+  ---
+  duration_ms: 0.224644
+  type: 'test'
+  ...
+# Subtest: project external links require public verification receipt and a valid timestamp
+ok 26 - project external links require public verification receipt and a valid timestamp
+  ---
+  duration_ms: 0.422277
+  type: 'test'
+  ...
+# Subtest: private project metadata is not rendered; public unverified links remain inactive
+ok 27 - private project metadata is not rendered; public unverified links remain inactive
+  ---
+  duration_ms: 0.212145
+  type: 'test'
+  ...
+# Subtest: project names and scope markup are escaped even with a verified link
+ok 28 - project names and scope markup are escaped even with a verified link
+  ---
+  duration_ms: 0.207368
+  type: 'test'
+  ...
+# Subtest: generic template switches project section by entity class without creating a record
+ok 29 - generic template switches project section by entity class without creating a record
+  ---
+  duration_ms: 0.488386
+  type: 'test'
+  ...
+# Subtest: OpenAI view separates developer and product; no HSTDN ID or partnership is invented
+ok 30 - OpenAI view separates developer and product; no HSTDN ID or partnership is invented
+  ---
+  duration_ms: 0.228729
+  type: 'test'
+  ...
+# Subtest: OpenAI view fails closed when expected source identity or parent is missing
+ok 31 - OpenAI view fails closed when expected source identity or parent is missing
+  ---
+  duration_ms: 0.137995
+  type: 'test'
+  ...
+# Subtest: six vaults disclose unknown last sync and quantum research separately from source snapshot
+ok 32 - six vaults disclose unknown last sync and quantum research separately from source snapshot
+  ---
+  duration_ms: 0.213577
+  type: 'test'
+  ...
+# Subtest: unverified canonical and official URLs are readable but never active external links
+ok 33 - unverified canonical and official URLs are readable but never active external links
+  ---
+  duration_ms: 1.007107
+  type: 'test'
+  ...
+# Subtest: every generated navigation href points to an implemented route or an evidence source
+ok 34 - every generated navigation href points to an implemented route or an evidence source
+  ---
+  duration_ms: 11.265588
+  type: 'test'
+  ...
+# Subtest: source snapshot is byte-identical to pinned Git blob
+ok 35 - source snapshot is byte-identical to pinned Git blob
+  ---
+  duration_ms: 7.2136
+  type: 'test'
+  ...
+# Subtest: inventory is exactly 26 source bindings, never 91 verified operators
+ok 36 - inventory is exactly 26 source bindings, never 91 verified operators
+  ---
+  duration_ms: 0.319224
+  type: 'test'
+  ...
+# Subtest: each source binding has its own exact route and profile
+ok 37 - each source binding has its own exact route and profile
+  ---
+  duration_ms: 2.449681
+  type: 'test'
+  ...
+# Subtest: all explicit parent links resolve to matching developer source records
+ok 38 - all explicit parent links resolve to matching developer source records
+  ---
+  duration_ms: 0.192677
+  type: 'test'
+  ...
+# Subtest: unknown numeric IDs cannot acquire another identity or canonical link
+ok 39 - unknown numeric IDs cannot acquire another identity or canonical link
+  ---
+  duration_ms: 0.394106
+  type: 'test'
+  ...
+# Subtest: leading zero IDs remain string-distinct and numeric coercion is rejected
+ok 40 - leading zero IDs remain string-distinct and numeric coercion is rejected
+  ---
+  duration_ms: 0.264774
+  type: 'test'
+  ...
+# Subtest: malformed and injected routes fail closed
+ok 41 - malformed and injected routes fail closed
+  ---
+  duration_ms: 0.210924
+  type: 'test'
+  ...
+# Subtest: Master Hub, home and ID route independently with a stable home alias
+ok 42 - Master Hub, home and ID route independently with a stable home alias
+  ---
+  duration_ms: 0.127891
+  type: 'test'
+  ...
+# Subtest: US conflict is visible and does not promote source status
+ok 43 - US conflict is visible and does not promote source status
+  ---
+  duration_ms: 1.59151
+  type: 'test'
+  ...
+# Subtest: search supports names, developer and accents, exact numeric ID only
+ok 44 - search supports names, developer and accents, exact numeric ID only
+  ---
+  duration_ms: 0.668383
+  type: 'test'
+  ...
+# Subtest: untrusted source markup is escaped; unsafe hrefs are not emitted
+ok 45 - untrusted source markup is escaped; unsafe hrefs are not emitted
+  ---
+  duration_ms: 0.3368
+  type: 'test'
+  ...
+# Subtest: external URLs require HTTPS without embedded credentials
+ok 46 - external URLs require HTTPS without embedded credentials
+  ---
+  duration_ms: 0.180098
+  type: 'test'
+  ...
+# Subtest: standalone deliverable includes data/scripts after page content, no external dependency
+ok 47 - standalone deliverable includes data/scripts after page content, no external dependency
+  ---
+  duration_ms: 6.819179
+  type: 'test'
+  ...
+# Subtest: application performs no network calls or operation activation
+ok 48 - application performs no network calls or operation activation
+  ---
+  duration_ms: 0.668994
+  type: 'test'
+  ...
+1..48
+# tests 48
+# suites 0
+# pass 48
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 117.93698

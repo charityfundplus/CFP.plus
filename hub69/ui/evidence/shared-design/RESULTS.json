@@ -1,0 +1,109 @@
+{
+  "workOrder": "Issue #156 / Codex 2 Shared Design",
+  "observedAt": "2026-10-22T02:00:35.603650+00:00",
+  "branch": "codex2/issue156-shared-design",
+  "baseline": "07f317888d2fac98da2a912329aaa86b170053e7",
+  "testedSourceRevision": "917e162d78354166ed2673f347546f3ec0095b4e",
+  "evidenceCommitPolicy": "The following commit adds only these receipts/logs. Compare source-manifest.json to the final HEAD; no untested code changes are included.",
+  "coreRevision": "06f386b1ba52358779cec6bc26c2d88f6a33664a",
+  "contractRevision": "383ffcf5fa3a229d442393a86fa189e52bc09289",
+  "designTokensVersion": "1.1.0",
+  "validation": {
+    "nodeVmAndSource": {
+      "status": "PASS",
+      "tests": 88,
+      "fail": 0,
+      "log": "unit.tap",
+      "scope": "Node/VM/source and six token contrast pairs; not a browser rendering test"
+    },
+    "coreHttpIntegration": {
+      "status": "PASS",
+      "tests": 6,
+      "fail": 0,
+      "log": "core-http.tap",
+      "scope": "Real ephemeral loopback HTTP and pinned actual Core loader/client plus UI DOM stubs; synthetic accounts and temporary SQLite; not HTTPS/staging"
+    },
+    "sourceParity": {
+      "status": "PASS",
+      "files": 34,
+      "manifest": "source-manifest.json"
+    },
+    "identityPreservation": {
+      "status": "PASS",
+      "changedPaths": 22,
+      "allUnder": "hub69/ui/",
+      "registryDiff": [],
+      "coreDiff": [],
+      "contractsDiff": []
+    },
+    "browser": {
+      "status": "BLOCKED",
+      "checks": 0,
+      "screenshots": 0,
+      "videos": 0,
+      "log": "browser-results.json",
+      "error": "Firefox launches but browser page creation times out at 15000ms"
+    },
+    "physicalIPhoneSafari": {
+      "status": "BLOCKED",
+      "evidence": null
+    },
+    "httpsStaging": {
+      "status": "BLOCKED",
+      "url": null
+    },
+    "googleSitesPreview": {
+      "status": "BLOCKED",
+      "url": null,
+      "geminiACK": false
+    },
+    "nativeApp": {
+      "status": "NOT BUILT",
+      "browserShell": "Built in standalone HTML"
+    },
+    "ci": {
+      "status": "NOT VERIFIED"
+    },
+    "independentAcceptance": {
+      "status": "PENDING"
+    }
+  },
+  "preview": {
+    "file": "HUB69-review.html",
+    "sha256": "b25250e9bdb28ec7a8bd83eccf858dfc19c5ac70c5bf4f9f26f7955dc5b4fb70",
+    "kind": "self-contained offline review HTML",
+    "hosted": false
+  },
+  "links": {
+    "log": "LINK-OBSERVATIONS.json",
+    "table": "URLS.md",
+    "observations": 16,
+    "scope": "Unauthenticated GET bounded to 128KiB; HTTP 200 does not mean correct identity or preview acceptance",
+    "findings": [
+      "8882 returns generic AI Office without TTTC marker",
+      "8682 returns Global Trade/TMTC content; Registry binding remains pending",
+      "Three old Google Sites pages return 200; no new revision preview receipt",
+      "IBM Quantum returns Site Unavailable",
+      "Google Sites help direct GET returned 429; theme capability was separately read via official search source"
+    ]
+  },
+  "hold": {
+    "activationAllowed": false,
+    "merged": false,
+    "deployed": false,
+    "published": false,
+    "dnsChanged": false,
+    "canonicalWrites": 0,
+    "adaptersActivated": 0
+  },
+  "files": {
+    "browser-results.json": "9c9116978ed57d27b37a61bfb870702f7d62afa80e1f056ea732fb988ecb0b73",
+    "LINK-OBSERVATIONS.json": "530ba3d902e6dbc7517c7581b18c2195cc8783d981e30bc59456675940f301d3",
+    "source-manifest.json": "fa6f8d214fe51bd6c0c50ee901b7211d5315a325f91f7f216b60d34c563c6beb",
+    "build.log": "e3259eca2c5e486f0ef9f925fe2e34f7715be8be0ad3ddcccc6cee83ba01e2a0",
+    "core-http.tap": "4aed7f69a69f194d66e2bb129fee34c9d6352d6af25eedc0434c580abcaf4be4",
+    "URLS.md": "3f08643a2603199d64f4b659be429ae1946f9be1bb0342874dfc2ef83ca4eb46",
+    "BROWSER-LIMITS.md": "73d0fac9c0cfc321ee393baf3c2190806b8ebdd2f9560155d2242976c6d42c2e",
+    "unit.tap": "241b9f7c897d082017d6aa7e6a8f90d899ea2d436dcad425b67939aad1e4508c"
+  }
+}

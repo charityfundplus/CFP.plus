@@ -1,3 +1,5 @@
+> App continuation02/11/2026: `/app/` now mounts the existing HUB69 PWA; authenticated `/api/app/registry` reads the pinned original Registry. Website/App share the SAME Operations source database/session. Forum task/assignedrecipientACK/posts/plaintext Evidence live in additional tables of that same DB and are included in verified backup/restore. Existing outbox replication still covers operational records only. Full source/commands/evidence are in `hub69/ui/README.md`; older receipts below retain their original scope. No external SI ACK, public staging or Production acceptance is claimed.
+
 # Kho HUB 69 SpaceX • vận hành sandbox hiện hữu
 
 Ưu tiên ứng dụng và vận hành theo Issue #174. Tiếp tục chính pilot này từ nhánh `pilot/spacex-reproducible-20261028`, commit `edb0016243d050b5974ccbad4dba933792518ffc`; không tạo repo hoặc diễn đàn mới. Bản bàn giao: `codex2/p0-spacex-operations-20261102`.

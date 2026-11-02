@@ -81,6 +81,7 @@
   }
   async function refresh() {
     state = await api('state'); render();
+    if (window.parent !== window) window.parent.postMessage({type:'cfp-session-changed'}, location.origin);
     connection('API CỤC BỘ ĐÃ XÁC MINH · ' + new Date().toLocaleTimeString('vi-VN') + ' · không chứng minh kết nối kho ngoài', true);
   }
   async function action(fn) {
@@ -122,6 +123,7 @@
   $('#ops-logout').onclick = () => action(async () => {
     await api('logout', {}); state = null; ready = false; render(); connection('ĐÃ ĐĂNG XUẤT');
     $('#ops-message').textContent = 'Phiên đã bị thu hồi.';
+    if(window.parent!==window)window.parent.postMessage({type:'cfp-session-changed'},location.origin);
   });
   $('#ops-write').onsubmit = event => {
     event.preventDefault();

@@ -1,0 +1,61 @@
+{
+  "mode": "Real Core + pinned Git Registry + synthetic Office on loopback Chromium",
+  "checks": [
+    {
+      "name": "anonymous catalog is hidden with no snapshot fallback",
+      "pass": true
+    },
+    {
+      "name": "existing Core authenticates browser session",
+      "pass": true
+    },
+    {
+      "name": "Core catalog renders three sandbox records",
+      "pass": true
+    },
+    {
+      "name": "server search returns one product",
+      "pass": true
+    },
+    {
+      "name": "detail keeps identity unbound",
+      "pass": true
+    },
+    {
+      "name": "Website ID screen reads real Registry via same Core",
+      "pass": true
+    },
+    {
+      "name": "App uses same authenticated Core session",
+      "pass": true
+    },
+    {
+      "name": "App shortcut opens integrated TMTC",
+      "pass": true
+    },
+    {
+      "name": "mobile integrated screen has no horizontal overflow",
+      "pass": true
+    },
+    {
+      "name": "logout removes commerce data",
+      "pass": true
+    },
+    {
+      "name": "logout revokes server session",
+      "pass": true
+    },
+    {
+      "name": "no JavaScript errors",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "physicalIPhone": "NOT RUN",
+  "httpsStaging": "NOT RUN",
+  "browserVersion": "154.0.8037.57",
+  "screenshot": {
+    "file": "core-mobile.png",
+    "sha256": "f8eb7ba184da983ef26cf9f220f81077bbc4daaf1014267f0af840dc51a260b0"
+  }
+}

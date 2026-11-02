@@ -1,0 +1,38 @@
+
+FILE commerce-catalog-v1.test.mjs
+✔ v1 GET reuses existing Office catalog with search/filter/pagination and null identity (1405.599529ms)
+✔ v1 GET denies unauthenticated/wrong pair/host and malformed query fields (2275.636281ms)
+✔ v1 projection excludes private declarations/tasks and isolates tenant with exact durable response audit (1491.248382ms)
+✔ v1 read fails closed on audit corruption without returning catalog and survives restart (1837.71337ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7019.038265
+
+FILE commercial-flow.test.mjs
+✔ new commerce catalog-to-inquiry-to-explainable-match-to-opportunity survives reopen backup rollback (1784.068811ms)
+✔ new commerce zero results, invalid fields, duplicates, idempotency conflicts and RBAC/user/tenant boundaries (1047.455436ms)
+✔ new commerce HTTP routes use authenticated grants and idempotency contract (1330.458249ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4167.601265
+
+FILE commerce-catalog-loopback.test.mjs
+✔ real loopback TCP login, private versioned catalog read, filtering, isolation and logout (944.253738ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 950.923415

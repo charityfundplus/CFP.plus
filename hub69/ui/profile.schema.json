@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HUB 69 existing Registry public UI projection",
+  "type": "object",
+  "required": ["id", "name", "type"],
+  "properties": {
+    "id": {"type":"string","pattern":"^[0-9]{1,80}$"},
+    "name": {"type":"string","minLength":1},
+    "type": {"enum":["pair","super_pair","software","super_software","si","ai","robot","developer","hstdn","enterprise","country","organization","entity"]},
+    "parent_id": {"type":["string","null"],"pattern":"^[0-9]{1,80}$"},
+    "developer": {"type":["string","null"]},
+    "country": {"type":["string","null"]},
+    "chapter": {"type":["string","null"],"pattern":"^[0-9]$"},
+    "hstdn": {"type":["object","null"]},
+    "did": {"type":["string","null"]},
+    "identityVerified": {"type":"boolean","default":false},
+    "operationsAllowed": {"const":false},
+    "provenance": {"type":"object","properties":{"registryURL":{"type":"string","format":"uri"},"sourceRevision":{"type":"string"},"registryBlobSHA":{"type":"string"}}},
+    "chatgptProjects": {
+      "type":"array",
+      "items": {
+        "type":"object",
+        "required":["name","scope","status","visibility"],
+        "additionalProperties":false,
+        "properties":{
+          "name":{"type":"string"},
+          "scope":{"type":"string"},
+          "status":{"type":"string"},
+          "visibility":{"enum":["public","private"]},
+          "link":{"$ref":"#/$defs/linkReceipt"}
+        }
+      }
+    }
+  },
+  "$defs": {
+    "linkReceipt": {
+      "type":"object",
+      "required":["url","verified","visibility","checkedAt","evidenceURL"],
+      "properties":{
+        "url":{"type":"string","format":"uri","pattern":"^https://"},
+        "verified":{"type":"boolean"},
+        "visibility":{"enum":["public","private"]},
+        "checkedAt":{"type":"string","format":"date-time"},
+        "evidenceURL":{"type":"string","format":"uri","pattern":"^https://"}
+      }
+    }
+  }
+}

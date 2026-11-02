@@ -1,0 +1,15 @@
+{
+  "repository": "charityfundplus/CFP.plus",
+  "codex2Baseline": "6daec1ca72a65f542392aeb70592a7ed9b5453f6",
+  "codex1Revision": "06f386b1ba52358779cec6bc26c2d88f6a33664a",
+  "files": [
+    {
+      "path": "drafts/si-office/configs/training-basic-v1.json",
+      "sha256": "528ef09c2a7ac671eca56a6370ff3489657c0d9dfa33c2466f08ded48067f200"
+    },
+    {
+      "path": "drafts/si-office/public/registry-client.js",
+      "sha256": "e3e3f5bf5a6a6cca23dbc3aa690e2e591e4fc7f466e23eaa4688f3277ce3e151"
+    }
+  ]
+}
