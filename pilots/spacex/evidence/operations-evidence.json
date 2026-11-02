@@ -1,0 +1,63 @@
+{
+  "observed_utc": "2026-11-02T06:01:38.559251+00:00",
+  "branch": "codex2/p0-spacex-operations-20261102",
+  "base_commit": "edb0016243d050b5974ccbad4dba933792518ffc",
+  "tested_code_commit": "8b2b4b5c4ae82b2eb17e660cf92eb6b2e528b33b",
+  "scope": "Existing CFP+ SpaceX pilot; local HTTP + two local SQLite files, not external cloud integration",
+  "results": {
+    "python_tests": {
+      "passed": 29,
+      "failed": 0
+    },
+    "operations_browser": {
+      "groups_passed": 9,
+      "page_errors": 0,
+      "viewports": [
+        320,
+        390,
+        1440
+      ]
+    },
+    "existing_ui_regression": {
+      "assertions_passed": 44,
+      "failed": 0
+    },
+    "initial_independent_http": {
+      "passed": 5,
+      "failed": 1,
+      "defect": "Malformed persisted JSON returned400 instead of503",
+      "resolution": "Fixed; all6 independent HTTP tests pass in final29"
+    },
+    "read": "PASS_LOCAL",
+    "write": "PASS_LOCAL",
+    "sync": "PASS_LOCAL_SQLITE",
+    "recovery": "PASS_ISOLATED_DATA_COPY_NOT_ACTIVE_SERVICE_RESTORE",
+    "protection": "PASS_TESTED_SANDBOX_CASES",
+    "external_connectors": "BLOCKED",
+    "physical_phone": "NOT_RUN",
+    "canva_visual_comparison": "BLOCKED_PROXY_CONNECT403",
+    "public_staging": "UNAVAILABLE",
+    "production_acceptance": "HUMAN_GOVERNANCE_ONLY"
+  },
+  "runtime_source_sha256": {
+    "operations.py": "a1788697bebd40fdc3e3d8596382426e874170378caad78ce28d7ca40402ba57",
+    "operations_server.py": "fefd9512b82287559ffeff57e9d96903ae489d00f9afa52484912116b905d4b2",
+    "pilot.py": "986d601cec60a89d4cff81e5e4b63f1943adbd6f480e901bf6785fe0a3353f81",
+    "registry.json": "a63c5e0b8af157b0938014d51da94ea924b9721acd0a11a9107f5deea3c6f507",
+    "ui/index.html": "8192c8fd849061428eede69c124daa5bc297119b8f1c94d5e309f4894d066cd6",
+    "ui/style.css": "6fa64ce522cf95cf78cd979a019fac04287d7b84633f86a3c1591e787e3985e2",
+    "ui/app.js": "ff3dc1fae65512c573b14a67fe8b59318db79c1f6bd75a6488ae031a76cc2621",
+    "ui/operations.js": "440895506191f1a0520945c977469a2585023ce2320a405d422d6587fde0ea7f",
+    "ui/snapshot.js": "9f7b84815ab054f638605db569ce5268dc99425df8de07a01c39d7defb63eccc"
+  },
+  "evidence_sha256": {
+    "operations-tests.txt": "ba2f74d564b1ed4ca539d5934cf24b4b6438c606ed0c30c5854e8ba400037283",
+    "operations-initial-http.txt": "a64ae6c0238eaeac0ae03ae77f77ad36fc19fb2249b4b4e887c5c9fcea807319",
+    "operations-browser.json": "04d667e1b8ebf9294346f12cccbf3b837a5331ee2e4dea1531e580144a6b2b14",
+    "operations-mobile.png": "5be6bcec6dcb7468bf236228c977ec9013fb3b28b76f745caed25444036474bb",
+    "operations-overview-mobile.png": "c86d9456e973cb290695d858240ef92cf88b8c6aa8293c88483bce11ec9a630a",
+    "operations-url-results.json": "020b9c6b53affef08db3c658d3a3af150bdce6b1a139d15c9b9cf5151b0b46c3",
+    "operations-ui-regression.json": "259e4773b68eab2530039cd3b8d640254927d8bf864cc317205bb85348d842fd",
+    "operations-ui-regression.txt": "0a77def7cf633234a9b00fc7bf0dd4e037350987a478bf9ebdd28b769c897794"
+  }
+}

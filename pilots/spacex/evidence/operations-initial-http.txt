@@ -1,0 +1,19 @@
+test_01_read_write_reload_independent_session_and_idempotency (test_operations_http.IndependentHTTPTests.test_01_read_write_reload_independent_session_and_idempotency) ... ok
+test_02_five_groups_ten_chapters_and_blocked_external_connectors (test_operations_http.IndependentHTTPTests.test_02_five_groups_ten_chapters_and_blocked_external_connectors) ... ok
+test_03_outage_survives_restart_then_catchup_without_duplicates (test_operations_http.IndependentHTTPTests.test_03_outage_survives_restart_then_catchup_without_duplicates) ... ok
+test_04_backup_restore_actual_file_readback_and_cross_workspace_denial (test_operations_http.IndependentHTTPTests.test_04_backup_restore_actual_file_readback_and_cross_workspace_denial) ... ok
+test_05_permission_origin_session_and_path_boundaries (test_operations_http.IndependentHTTPTests.test_05_permission_origin_session_and_path_boundaries) ... ok
+test_06_source_tampering_fails_closed_over_http (test_operations_http.IndependentHTTPTests.test_06_source_tampering_fails_closed_over_http) ... FAIL
+
+======================================================================
+FAIL: test_06_source_tampering_fails_closed_over_http (test_operations_http.IndependentHTTPTests.test_06_source_tampering_fails_closed_over_http)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/CFP.plus/pilots/spacex/test_operations_http.py", line 152, in test_06_source_tampering_fails_closed_over_http
+    self.assertEqual(code, 503)
+AssertionError: 400 != 503
+
+----------------------------------------------------------------------
+Ran 6 tests in 6.144s
+
+FAILED (failures=1)
