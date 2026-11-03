@@ -28,7 +28,7 @@ from fastapi import Depends, FastAPI, HTTPException, Request, Response
 from fastapi.responses import FileResponse, RedirectResponse
 from pydantic import BaseModel, Field
 from sqlalchemy import (Column, DateTime, ForeignKey, Integer, MetaData, String, Table, Text,
-                        create_engine, func, insert, select, update)
+                        create_engine, func, insert, select, text, update)
 from sqlalchemy.engine import Engine
 
 WEB_DIR = Path(__file__).parent / "web"
@@ -108,15 +108,33 @@ def _engine(url: str) -> Engine:
     return create_engine(url, **kw)
 
 
+def _location(eng: Engine) -> tuple:
+    """Nơi dữ liệu thực sự được ghi: (database, schema) với Postgres, file với SQLite."""
+    if eng.dialect.name == "postgresql":
+        with eng.connect() as c:
+            db, schema = c.execute(text("SELECT current_database(), current_schema()")).one()
+        if not schema:
+            raise RuntimeError("Kết nối Postgres không có schema hợp lệ (kiểm tra search_path của role).")
+        return ("postgresql", db, schema)
+    return (eng.dialect.name, eng.url.database)
+
+
 class Stores:
     def __init__(self, auth_url: str, forum_urls: dict[str, str]):
         if len(set(forum_urls.values())) != len(forum_urls) or auth_url in forum_urls.values():
             raise RuntimeError("Mỗi diễn đàn và auth phải dùng database riêng biệt.")
         self.auth = _engine(auth_url)
+        engines = {"auth": self.auth} | {k: _engine(u) for k, u in forum_urls.items()}
+        # URL khác nhau chưa đủ: hai URL có thể trỏ cùng database/schema (vd. cùng role
+        # Postgres). Kiểm tra nơi ghi thật trước khi tạo bảng.
+        self.locations = {name: _location(eng) for name, eng in engines.items()}
+        if len(set(self.locations.values())) != len(self.locations):
+            raise RuntimeError("Mỗi diễn đàn và auth phải dùng database/schema riêng biệt: "
+                               f"{self.locations}")
         auth_md.create_all(self.auth)
         self.forums: dict[str, Engine] = {}
-        for key, url in forum_urls.items():
-            eng = _engine(url)
+        for key in forum_urls:
+            eng = engines[key]
             forum_md.create_all(eng)
             with eng.begin() as c:
                 stamped = c.execute(select(meta_t.c.forum_key)).scalars().all()
@@ -252,11 +270,16 @@ def create_app(stores: Stores | None = None) -> FastAPI:
     # ---- health
     @app.get("/api/health")
     def health():
+        loc = st.locations
         out = {"status": "ok", "auth_db": st.auth.dialect.name, "forums": {}}
+        if loc["auth"][0] == "postgresql":
+            out["auth_schema"] = loc["auth"][2]
         for k, eng in st.forums.items():
             with eng.connect() as c:
                 out["forums"][k] = {"db": eng.dialect.name,
                                     "stamp": c.execute(select(meta_t.c.forum_key)).scalar_one()}
+            if loc[k][0] == "postgresql":
+                out["forums"][k]["schema"] = loc[k][2]
         return out
 
     # ---- auth

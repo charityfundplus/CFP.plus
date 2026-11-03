@@ -72,3 +72,43 @@ jobs:
           CFP_FORUM_DB_SIEU_BO_DOI: ${{ env.PG }}/e_sbd
           CFP_FORUM_DB_SI_AI_HSTDN: ${{ env.PG }}/e_hst
         run: NODE_PATH=$(npm root -g) node tests/forum/forum_e2e.test.js
+
+      # ---- Chế độ 3 schema trong 1 database (mô phỏng Supabase: người chạy
+      # migration KHÔNG phải superuser, chỉ có CREATEROLE và là chủ database).
+      - name: 3 schema — chuẩn bị database + chạy schemas_up.sql (2 lần, kiểm tra idempotent)
+        run: |
+          export PGPASSWORD=cfp
+          psql -v ON_ERROR_STOP=1 -h localhost -U cfp -d cfp -c "CREATE ROLE setup LOGIN CREATEROLE PASSWORD 'setup';" \
+                                                              -c "CREATE DATABASE sch OWNER setup;"
+          for i in 1 2; do PGPASSWORD=setup psql -v ON_ERROR_STOP=1 -h localhost -U setup -d sch -f services/forum/sql/schemas_up.sql; done
+          for r in auth sbd hstdn; do
+            pw=$(openssl rand -hex 24); echo "::add-mask::$pw"
+            PGPASSWORD=setup psql -v ON_ERROR_STOP=1 -h localhost -U setup -d sch -c "ALTER ROLE cfp_forum_${r}_rw PASSWORD '$pw';"
+            echo "PW_${r}=$pw" >> "$GITHUB_ENV"
+          done
+
+      - name: 3 schema — API tests + cách ly quyền
+        run: |
+          export CFP_FORUM_TEST_SCHEMA_MODE=1
+          export CFP_FORUM_TEST_AUTH_DB=postgresql+psycopg://cfp_forum_auth_rw:$PW_auth@localhost:5432/sch
+          export CFP_FORUM_TEST_DB_SIEU_BO_DOI=postgresql+psycopg://cfp_forum_sbd_rw:$PW_sbd@localhost:5432/sch
+          export CFP_FORUM_TEST_DB_SI_AI_HSTDN=postgresql+psycopg://cfp_forum_hstdn_rw:$PW_hstdn@localhost:5432/sch
+          python -m pytest tests/forum/test_forum_api.py tests/forum/test_schema_isolation.py -v
+
+      - name: 3 schema — E2E (Playwright + uvicorn, có restart server)
+        run: |
+          export CFP_FORUM_AUTH_DB=postgresql+psycopg://cfp_forum_auth_rw:$PW_auth@localhost:5432/sch
+          export CFP_FORUM_DB_SIEU_BO_DOI=postgresql+psycopg://cfp_forum_sbd_rw:$PW_sbd@localhost:5432/sch
+          export CFP_FORUM_DB_SI_AI_HSTDN=postgresql+psycopg://cfp_forum_hstdn_rw:$PW_hstdn@localhost:5432/sch
+          NODE_PATH=$(npm root -g) node tests/forum/forum_e2e.test.js
+
+      - name: 3 schema — khôi phục (schemas_down.sql) rồi dựng lại
+        run: |
+          export PGPASSWORD=setup
+          psql -v ON_ERROR_STOP=1 -h localhost -U setup -d sch -f services/forum/sql/schemas_down.sql
+          left=$(psql -tA -h localhost -U setup -d sch -c "SELECT count(*) FROM pg_namespace WHERE nspname LIKE 'cfp_forum_%';")
+          roles=$(psql -tA -h localhost -U setup -d sch -c "SELECT count(*) FROM pg_roles WHERE rolname LIKE 'cfp_forum_%';")
+          echo "sau down: schema=$left role=$roles"; test "$left" = 0 && test "$roles" = 0
+          psql -v ON_ERROR_STOP=1 -h localhost -U setup -d sch -f services/forum/sql/schemas_up.sql
+          test "$(psql -tA -h localhost -U setup -d sch -c "SELECT count(*) FROM pg_namespace WHERE nspname LIKE 'cfp_forum_%';")" = 3
+          echo "Khôi phục và dựng lại: OK"
