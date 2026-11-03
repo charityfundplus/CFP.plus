@@ -15,8 +15,9 @@ BEGIN
       ('cfp_forum_hstdn', 'cfp_forum_hstdn_rw')) AS t(sch, rol)
   LOOP
     IF NOT EXISTS (SELECT 1 FROM pg_roles WHERE rolname = r.rol) THEN
-      EXECUTE format('CREATE ROLE %I LOGIN NOINHERIT NOCREATEDB NOCREATEROLE CONNECTION LIMIT 10', r.rol);
+      EXECUTE format('CREATE ROLE %I LOGIN NOINHERIT NOCREATEDB NOCREATEROLE', r.rol);
     END IF;
+    EXECUTE format('ALTER ROLE %I CONNECTION LIMIT 20', r.rol);
     -- Người chạy script cần SET ROLE được để tạo schema thuộc role đó (PG16+).
     EXECUTE format('GRANT %I TO current_user', r.rol);
     EXECUTE format('CREATE SCHEMA IF NOT EXISTS %I AUTHORIZATION %I', r.sch, r.rol);

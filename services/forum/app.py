@@ -105,6 +105,10 @@ def _engine(url: str) -> Engine:
     kw = {"pool_pre_ping": True}
     if url.startswith("sqlite"):
         kw["connect_args"] = {"check_same_thread": False}
+    else:
+        # Pool nhỏ: sandbox (Supabase pooler, gói miễn phí) giới hạn kết nối theo role.
+        kw.update(pool_size=int(os.environ.get("CFP_FORUM_POOL_SIZE", "3")), max_overflow=2,
+                  pool_recycle=1800)
     return create_engine(url, **kw)
 
 
@@ -129,6 +133,8 @@ class Stores:
         # Postgres). Kiểm tra nơi ghi thật trước khi tạo bảng.
         self.locations = {name: _location(eng) for name, eng in engines.items()}
         if len(set(self.locations.values())) != len(self.locations):
+            for eng in engines.values():
+                eng.dispose()
             raise RuntimeError("Mỗi diễn đàn và auth phải dùng database/schema riêng biệt: "
                                f"{self.locations}")
         auth_md.create_all(self.auth)
@@ -143,6 +149,11 @@ class Stores:
                 elif stamped != [key]:
                     raise RuntimeError(f"Database của '{key}' đã thuộc về diễn đàn {stamped}.")
             self.forums[key] = eng
+
+    def dispose(self) -> None:
+        self.auth.dispose()
+        for eng in self.forums.values():
+            eng.dispose()
 
     @classmethod
     def from_env(cls) -> "Stores":

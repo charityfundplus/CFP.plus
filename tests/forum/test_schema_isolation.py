@@ -23,14 +23,17 @@ def urls():
     u = {"auth": os.environ["CFP_FORUM_TEST_AUTH_DB"],
          "sieu-bo-doi": os.environ["CFP_FORUM_TEST_DB_SIEU_BO_DOI"],
          "si-ai-hstdn": os.environ["CFP_FORUM_TEST_DB_SI_AI_HSTDN"]}
-    Stores(u["auth"], {k: u[k] for k in ("sieu-bo-doi", "si-ai-hstdn")})  # tạo bảng
+    Stores(u["auth"], {k: u[k] for k in ("sieu-bo-doi", "si-ai-hstdn")}).dispose()  # tạo bảng
     return u
 
 
 def test_each_store_lands_in_its_own_schema(urls):
     st = Stores(urls["auth"], {k: urls[k] for k in ("sieu-bo-doi", "si-ai-hstdn")})
-    assert {k: v[2] for k, v in st.locations.items()} == EXPECTED
-    assert len({v[1] for v in st.locations.values()}) == 1  # cùng một database vật lý
+    try:
+        assert {k: v[2] for k, v in st.locations.items()} == EXPECTED
+        assert len({v[1] for v in st.locations.values()}) == 1  # cùng một database vật lý
+    finally:
+        st.dispose()
 
 
 @pytest.mark.parametrize("who, target", [
