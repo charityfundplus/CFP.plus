@@ -1,0 +1,74 @@
+name: Forum P0 CI (sandbox verify)
+
+# Kiểm thử độc lập backend hai diễn đàn (services/forum) trên Postgres thật.
+# Chỉ chạy trên nhánh claude/** và PR; không deploy, không chạm production.
+on:
+  push:
+    branches: ['claude/**']
+    paths:
+      - 'services/forum/**'
+      - 'tests/forum/**'
+      - '.github/workflows/forum_p0_ci.yml'
+  pull_request:
+    paths:
+      - 'services/forum/**'
+      - 'tests/forum/**'
+      - '.github/workflows/forum_p0_ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  forum-p0:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: cfp
+          POSTGRES_PASSWORD: cfp
+          POSTGRES_DB: cfp
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U cfp" --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      PG: postgresql+psycopg://cfp:cfp@localhost:5432
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Tạo 6 database riêng (3 cho API test, 3 cho E2E)
+        run: |
+          for db in t_auth t_sbd t_hst e_auth e_sbd e_hst; do
+            PGPASSWORD=cfp psql -h localhost -U cfp -d cfp -c "CREATE DATABASE $db;"
+          done
+
+      - name: Cài dependency
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r services/forum/requirements.txt pytest httpx
+          npm install -g playwright@1
+          npx playwright install --with-deps chromium
+
+      - name: API tests (pytest, Postgres)
+        env:
+          CFP_FORUM_TEST_AUTH_DB: ${{ env.PG }}/t_auth
+          CFP_FORUM_TEST_DB_SIEU_BO_DOI: ${{ env.PG }}/t_sbd
+          CFP_FORUM_TEST_DB_SI_AI_HSTDN: ${{ env.PG }}/t_hst
+        run: python -m pytest tests/forum/test_forum_api.py -v
+
+      - name: API tests (pytest, SQLite fallback)
+        run: python -m pytest tests/forum/test_forum_api.py -v
+
+      - name: E2E (Playwright + uvicorn, Postgres, có restart server)
+        env:
+          CFP_FORUM_AUTH_DB: ${{ env.PG }}/e_auth
+          CFP_FORUM_DB_SIEU_BO_DOI: ${{ env.PG }}/e_sbd
+          CFP_FORUM_DB_SI_AI_HSTDN: ${{ env.PG }}/e_hst
+        run: NODE_PATH=$(npm root -g) node tests/forum/forum_e2e.test.js
