@@ -4,6 +4,8 @@ import hashlib
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
 import mimetypes
+import re
+import ssl
 from pathlib import Path
 import sqlite3
 from urllib.parse import urlsplit
@@ -16,8 +18,10 @@ REGISTRY_BLOB_SHA = '1f18068d66379ce90bb079dc56c77b4c4d66dcdf'
 SOURCE_COMMIT = '835616308111f6851c0387fa9f5eda60c9ffa624'
 REGISTRY_URL = 'https://github.com/charityfundplus/CFP.plus/blob/' + SOURCE_COMMIT + '/registry/ai-entity-registry.json'
 APP_ROOT = ROOT / 'hub69' / 'ui' / 'app-dist'
+WEBSITE_ROOT = ROOT / 'website' / 'skeleton'
+WEBSITE_ASSETS = frozenset(['index.html', 'site.css', 'site.js', 'chapters.json'])
 # Match reviewed build outputs only: no directory listing, source, fallback or user path.
-APP_ASSETS = frozenset(['THIRD_PARTY_NOTICES.txt', 'index.html', 'manifest.webmanifest', 'pwa.js', 'sw.js', 'offline.html', 'icon-192.png', 'icon-512.png', 'design-tokens.css', 'style.css', 'design-system.css', 'design-tokens.json', 'config.js', 'registry.js', 'training-data.js', 'model.js', 'workspace.js', 'hstdn-review.js', 'commerce.js', 'explore.js', 'p0.js', 'template-config.js', 'common-template.js', 'core-binding.js', 'training.js', 'app.js', 'app-integration.js', 'app-bridge.js', 'operations.js', 'forum.js'])
+APP_ASSETS = frozenset(['THIRD_PARTY_NOTICES.txt', 'index.html', 'manifest.webmanifest', 'pwa.js', 'sw.js', 'offline.html', 'icon-192.png', 'icon-512.png', 'design-tokens.css', 'style.css', 'design-system.css', 'design-tokens.json', 'config.js', 'registry.js', 'training-data.js', 'model.js', 'workspace.js', 'hstdn-review.js', 'commerce.js', 'explore.js', 'p0.js', 'template-config.js', 'common-template.js', 'core-binding.js', 'training.js', 'app.js', 'app-integration.js', 'app-bridge.js', 'operations.js', 'forum.js', 'social.js', 'manual-intake.js'])
 
 
 def app_registry():
@@ -53,7 +57,25 @@ def app_asset(path):
  except OSError as e:
   raise OperationError('APP_NOT_BUILT', 503) from e
 
-def make_server(operations,port=0):
+def website_asset(path):
+ name = 'index.html' if path == '/website/' else path.removeprefix('/website/')
+ if name not in WEBSITE_ASSETS:
+  require(bool(re.fullmatch(r'[0-9]+', name)), 'WEBSITE_NOT_FOUND', 404)
+  if len(name) > 2:
+   require(any(record['id'] == name for record in app_registry()['records']), 'WEBSITE_NOT_FOUND', 404)
+  name = 'index.html'
+ require(not WEBSITE_ROOT.is_symlink(), 'WEBSITE_UNAVAILABLE', 503)
+ file = WEBSITE_ROOT / name
+ require(not file.is_symlink() and file.resolve().parent == WEBSITE_ROOT.resolve(), 'WEBSITE_NOT_FOUND', 404)
+ try:
+  return file.read_bytes(), (mimetypes.guess_type(name)[0] or 'application/octet-stream')
+ except OSError as e:
+  raise OperationError('WEBSITE_UNAVAILABLE', 503) from e
+
+
+# secure=True is for a caller wrapping server.socket with a real TLS server context.
+# No X-Forwarded-* header is trusted, and a plain socket cannot claim TLS mode.
+def make_server(operations,port=0,secure=False):
  class Handler(BaseHTTPRequestHandler):
   server_version='CFP-Local-Sandbox'
   def setup(self):
@@ -72,9 +94,15 @@ def make_server(operations,port=0):
    require(len(values)==1,'AUTH_DENIED',401);return values[0]
   def handle_request(self):
    try:
+    require(not secure or isinstance(self.connection,ssl.SSLSocket),'TLS_REQUIRED',403)
     port=self.server.server_address[1];host=self.headers.get('Host','')
     require(host in [f'127.0.0.1:{port}',f'localhost:{port}'],'HOST_DENIED',403)
     parsed=urlsplit(self.path);require(not parsed.scheme and not parsed.netloc and not parsed.query and not parsed.fragment,'INVALID_REQUEST_TARGET');path=parsed.path
+    if self.command in ['GET','HEAD'] and path == '/website':
+     return self.send(308, {}, location='/website/')
+    if self.command in ['GET','HEAD'] and path.startswith('/website/'):
+     body, content_type = website_asset(path)
+     return self.send(200, body, content_type=content_type + '; charset=utf-8')
     if self.command in ['GET','HEAD'] and path == '/app':
      return self.send(308, {}, location='/app/')
     if self.command in ['GET','HEAD'] and path.startswith('/app/'):
@@ -88,12 +116,15 @@ def make_server(operations,port=0):
      try:body=(UI/ASSETS[path]).read_bytes()
      except OSError:return self.send(404,{'error':'ASSET_NOT_FOUND'})
      return self.send(200,body,content_type=(mimetypes.guess_type(ASSETS[path])[0] or 'application/octet-stream')+'; charset=utf-8')
+    if self.command == 'GET' and path == '/api/social/spaces':return self.send(200,operations.social_spaces(self.token()))
+    if self.command == 'GET' and path == '/api/worker/state':return self.send(200,operations.worker_state(self.token()))
+    if self.command == 'GET' and path == '/api/manual/profiles':return self.send(200,operations.manual_profiles(self.token()))
     if self.command == 'GET' and path == '/api/forum/state':return self.send(200,operations.forum_state(self.token()))
     if self.command == 'GET' and path.startswith('/api/forum/evidence/'):
      return self.send(200,operations.forum_read_evidence(self.token(),path.removeprefix('/api/forum/evidence/')))
     if self.command=='GET' and path=='/api/state':return self.send(200,operations.state(self.token()))
     require(self.command=='POST','METHOD_NOT_ALLOWED',405)
-    require(self.headers.get('Origin')=='http://'+host,'ORIGIN_DENIED',403)
+    require(self.headers.get('Origin')==('https://' if secure else 'http://')+host,'ORIGIN_DENIED',403)
     require(self.headers.get('Content-Type','').split(';')[0].strip()=='application/json','JSON_REQUIRED',415)
     require(not self.headers.get('Transfer-Encoding'),'TRANSFER_ENCODING_DENIED')
     try:size=int(self.headers.get('Content-Length','-1'))
@@ -102,8 +133,10 @@ def make_server(operations,port=0):
     body=json.loads(self.rfile.read(size));require(isinstance(body,dict),'INVALID_FIELDS')
     if path=='/api/session':
      require(set(body)=={'id','password'},'INVALID_FIELDS');token=operations.login(body['id'],body['password']);state=operations.state(token)
-     return self.send(200,{'user':state['user'],'scope':state['scope']},cookie='cfp_spacex='+token+'; HttpOnly; SameSite=Strict; Path=/; Max-Age=900')
+     return self.send(200,{'user':state['user'],'scope':state['scope']},cookie='cfp_spacex='+token+'; HttpOnly; SameSite=Strict; Path=/; Max-Age=900'+('; Secure' if secure else ''))
     token=self.token()
+    social_commands={'/api/social/state':operations.social_state,'/api/social/posts':operations.social_post,'/api/social/comments':operations.social_comment,'/api/manual/profiles':operations.manual_create_profile,'/api/manual/tasks':operations.manual_create_task}
+    if path in social_commands:return self.send(200,social_commands[path](token,body))
     forum_commands={'/api/forum/tasks':operations.forum_create_task,'/api/forum/ack':operations.forum_ack,'/api/forum/posts':operations.forum_post,'/api/forum/evidence':operations.forum_evidence}
     if path in forum_commands:return self.send(200,forum_commands[path](token,body))
     if path=='/api/records':return self.send(201,operations.create_record(token,body))
@@ -112,7 +145,7 @@ def make_server(operations,port=0):
     require(not body,'INVALID_FIELDS')
     if path=='/api/sync':return self.send(200,operations.sync(token))
     if path=='/api/backup':return self.send(200,operations.backup(token))
-    if path=='/api/logout':return self.send(200,operations.logout(token),cookie='cfp_spacex=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0')
+    if path=='/api/logout':return self.send(200,operations.logout(token),cookie='cfp_spacex=; HttpOnly; SameSite=Strict; Path=/; Max-Age=0'+('; Secure' if secure else ''))
     raise OperationError('NOT_FOUND',404)
    except OperationError as e:return self.send(e.status,{'error':e.code})
    except (ValueError,UnicodeError,KeyError,TypeError):return self.send(400,{'error':'INVALID_REQUEST'})

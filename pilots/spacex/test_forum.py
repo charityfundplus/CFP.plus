@@ -20,6 +20,9 @@ class ForumTests(unittest.TestCase):
         self.ops.provision_demo()
         self.ops.provision('recipient', DEMO_PASSWORD, 'editor', 'alpha')
         self.ops.provision('beta-admin', DEMO_PASSWORD, 'admin', 'beta')
+        self.ops.grant_space('recipient', 'si-ai-forum', True)
+        for space in ['community', 'chapter-association', 'si-ai-forum', 'super-pair-forum']:
+            self.ops.grant_space('beta-admin', space, True)
         self.author = self.ops.login('editor', DEMO_PASSWORD)
         self.recipient = self.ops.login('recipient', DEMO_PASSWORD)
         self.viewer = self.ops.login('viewer', DEMO_PASSWORD)

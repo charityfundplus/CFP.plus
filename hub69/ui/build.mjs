@@ -30,7 +30,7 @@ await writeFile(new URL('public/registry.js',root),'window.HUB69_DATA='+JSON.str
 await mkdir(new URL('dist/',root),{recursive:true});
 for(const size of [192,512])await writeFile(new URL('public/icon-'+size+'.png',root),iconPNG(size));
 await copyFile(new URL('THIRD_PARTY_NOTICES.txt',root),new URL('public/THIRD_PARTY_NOTICES.txt',root));
-const names=['THIRD_PARTY_NOTICES.txt','manifest.webmanifest','pwa.js','sw.js','offline.html','icon-192.png','icon-512.png','index.html','design-tokens.css','style.css','design-system.css','design-tokens.json','config.js','registry.js','training-data.js','model.js','workspace.js','hstdn-review.js','commerce.js','explore.js','p0.js','template-config.js','common-template.js','core-binding.js','training.js','app.js','app-integration.js','forum.js'];
+const names=['THIRD_PARTY_NOTICES.txt','manifest.webmanifest','pwa.js','sw.js','offline.html','icon-192.png','icon-512.png','index.html','design-tokens.css','style.css','design-system.css','design-tokens.json','config.js','registry.js','training-data.js','model.js','workspace.js','hstdn-review.js','commerce.js','explore.js','p0.js','template-config.js','common-template.js','core-binding.js','training.js','app.js','app-integration.js','forum.js','social.js','manual-intake.js'];
 for(const name of names)await copyFile(new URL('public/'+name,root),new URL('dist/'+name,root));
 // A same-origin mount for Codex 1. No snapshot rows are shipped in Core mode.
 await mkdir(new URL('core-dist/',root),{recursive:true});

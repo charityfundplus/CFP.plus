@@ -5,6 +5,7 @@
   let current = null, epoch = 0, busy = false;
   function element(tag, value) {const n = document.createElement(tag); n.textContent = value; return n;}
   async function request(path, body) {
+    if (window.Capacitor?.isNativePlatform?.() && !(location.protocol === 'https:' && location.origin === window.HUB69_CONFIG?.approvedStagingOrigin)) throw new Error('Chưa cấu hình HTTPS staging được phê duyệt cho gói native.');
     const r = await fetch('/api/' + path, {method: body === undefined ? 'GET' : 'POST', credentials: 'same-origin', cache: 'no-store', headers: {'Content-Type': 'application/json'}, ...(body === undefined ? {} : {body: JSON.stringify(body)})});
     const value = await r.json();
     if (!r.ok) {

@@ -13,6 +13,8 @@
   const names=['Nền Tảng','Sự Sống','Con Người','Bộ Tam và Ba Quỹ','Tôn Giáo và Tín Ngưỡng','Chi Hội · Bộ Ngũ và Cộng Đồng','SI · AI · Robot · Siêu Phần Mềm & Công Nghệ','HSTDN · Doanh Nghiệp','Tổ Chức và Quỹ','Quốc Gia và Vùng Lãnh Thổ'];
   const chapters=Object.freeze(names.map((name,i)=>({id:String(i),name,group:groups.find(g=>g.chapters.includes(String(i))).id})));
   function route(hash){
+    if(hash==='#intake')return {view:'intake'};
+    if(hash==='#social')return {view:'social'};
     if(hash==='#forum')return {view:'forum'};
     if(hash==='#operations')return {view:'operations'};
     const workspace=root.HUB69Workspace?.route(hash);

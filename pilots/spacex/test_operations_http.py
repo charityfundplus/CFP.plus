@@ -19,6 +19,8 @@ class IndependentHTTPTests(unittest.TestCase):
         self.ops = Operations(self.root)
         self.ops.provision_demo()
         self.ops.provision('beta-admin', DEMO_PASSWORD, 'admin', 'beta')
+        for space in ['community', 'chapter-association', 'si-ai-forum', 'super-pair-forum']:
+            self.ops.grant_space('beta-admin', space, False)
         self.start()
 
     def start(self):

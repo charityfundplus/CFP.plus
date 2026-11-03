@@ -36,7 +36,7 @@ class OperationsTests(unittest.TestCase):
   self.assertEqual(len(self.ops.state(independent)['records']),1);self.ops.clock=lambda:10**12
   with self.assertRaisesRegex(OperationError,'AUTH_DENIED'):self.ops.state(independent)
  def test_backup_restores_actual_new_sqlite_and_workspace_isolation(self):
-  record=self.ops.create_record(self.editor,self.record);receipt=self.ops.backup(self.admin);self.ops.provision('beta-admin',DEMO_PASSWORD,'admin','beta');beta=self.ops.login('beta-admin',DEMO_PASSWORD)
+  record=self.ops.create_record(self.editor,self.record);receipt=self.ops.backup(self.admin);self.ops.provision('beta-admin',DEMO_PASSWORD,'admin','beta');[self.ops.grant_space('beta-admin',space,True) for space in ['community','chapter-association','si-ai-forum','super-pair-forum']];beta=self.ops.login('beta-admin',DEMO_PASSWORD)
   with self.assertRaisesRegex(OperationError,'ARTIFACT_NOT_FOUND'):self.ops.restore(beta,receipt['backup_id'])
   before=self.ops.state(self.admin)['records'];restored=self.ops.restore(self.admin,receipt['backup_id']);self.assertTrue(restored['source_unchanged']);self.assertEqual(restored['digest'],digest([record]))
   with sqlite3.connect(self.ops._artifact('restore',restored['restore_id'])) as db:

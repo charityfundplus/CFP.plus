@@ -1,3 +1,35 @@
+## Bàn giao Codex 2 • Chương 0 / Mạng xã hội • 03/11/2026
+
+Codex 2 đảm nhận cả backend và giao diện, tiếp tục source `ca743c30947387435ab1d67a078a07b232e77bac`; tích hợp khung Website từ PR#189 (`488439a856e860037c3f6d8e94f938b7eda652ae`). Không tạo repo, Registry hay database App riêng. Nhánh review: `codex/product-social-20261103`.
+
+**Đường chạy trực tiếp trong cùng sandbox server:** `/website/` (khung Website), `/app/#intake` (ưu tiên Chương0, nhập hồ sơ và giao nhiệm vụ), `/app/#social` (Mạng xã hội, không phải tài liệu điều phối), `/app/#forum` (tiếp nhận/phản hồi/Evidence). Đây là các route nội bộ, **chưa có URL HTTPS Preview/Staging công khai được phê duyệt**. Không dùng `cfp.plus` Production làm Preview mới.
+
+- Hồ sơ thủ công Siêu Bộ Đôi/CMP1–CMP9/chủ đề dùng bảng records hiện hữu. Nhãn CMP là thông tin chờ kiểm chứng; Canonical/Parent/DID luôn null. Sau khi kiểm tra trọn luồng Chương0, các mapping nhập chủ đề Chương1..9 được kiểm tra; chưa tuyên bố có đầy đủ nội dung Canonical cho các chương.
+- Luồng đã kiểm thử qua UI/API thật: hồ sơ Chương0 → nhiệm vụ gắn đúng profile_key → tài khoản nhận độc lập ACK/phản hồi → tải Evidence văn bản và đọc lại SHA256/task_key → tải lại vẫn tồn tại.
+- Mạng xã hội: đăng nhập → bài đăng → bình luận từ phiên độc lập → tải lại. Cộng Đồng, Chi Hội, Diễn Đàn SI AI, Diễn Đàn Siêu Bộ Đôi có grant riêng; không được tự cấp từ HTTP. Viewer không được ghi; workspace khác không đọc được. Forum cũ cũng áp dụng grant SI AI. Root audit là projection được cấp quyền, backend vẫn kiểm tra full chain. Backup toàn workspace cần admin và đủ4 grant đọc.
+- Worker thử nghiệm là tiến trình Python thật, chỉ xử lý `sha256-text`, không shell/network/model/plugin. Nhận nhiệm vụ được giao, ACK bằng tài khoản kỹ thuật, ghi RECEIVED/RUNNING/COMPLETED hoặc FAILED, Evidence, heartbeat và cảnh báo. Tick lại không chạy trùng. Heartbeat mới không phải bằng chứng trực24/7 hay ACK của SI AI bên ngoài. Tất cả trung tâm mạng xã hội ngoài giữ **NOT VERIFIED**.
+- Website tái sử dụng PR189, sửa nhãn nhóm theo Master Map thành V/0/135/246/789, giữ nguyên ID số;10chương/100vị trí được ghi rõ là cấu trúc chờ xác minh. Không mượn hồ sơ cha cho ID không tồn tại, không tự gán vị trí thành Canonical.
+- HTTPS cục bộ đã kiểm tra CA và hostname, cookie Secure, auth/role, đọc/ghi/sync/restore và Forum. Đây không phải staging được triển khai. `staging-config.mjs` chỉ tạo cấu hình build HTTPS/exact-origin được chỉ định, từ chối Production/loopback và không đổi default. APK default vẫn chưa nối endpoint ngoài được duyệt. Thiết bị thật BLOCKED.
+
+```sh
+# từ hub69/ui, build và chạy toàn bộ check hiện hữu + bổ sung
+CFP_PRODUCT_EVIDENCE_DIR=/tmp/cfp-product-evidence python3 integration/run-product-checks.py
+# từ pilots/spacex, dữ liệu chỉ trong sandbox hiện hữu
+python3 operations_server.py --state-dir /workspace/.cfp-env/spacex-operations --port 8765 --provision-demo
+# terminal riêng, bật worker kỹ thuật cục bộ có giới hạn rõ ràng
+python3 software_worker.py --state-dir /workspace/.cfp-env/spacex-operations --poll-seconds 5 --provision-worker
+```
+
+Lỗi UI đã tái hiện và sửa: một lần đọc chậm sau ghi có thể giữ bảng tin trống dù backend đã commit. UI hiện cập nhật từ biên nhận server đã commit và vô hiệu hóa kết quả đọc cũ; test giữ chậm response thật chứng minh FAIL trước/PASS sau, rồi reload xác nhận dữ liệu thực. Không hạ assertion hoặc giả lập dữ liệu PASS.
+
+Mạng sau publish: CFP+/HUB69/GitHub API trả200; Canva Preview được nhận diện đúng “Prototype ứng dụng CFP+”, nhưng script/CDN `static.canva.com` còn bị proxy chặn; edit link yêu cầu đăng nhập. Không sao chép tài sản Canva hoặc xác nhận khớp thiết kế khi chưa render được. PublicHUB69 còn nhãn000 khác Master Map; chỉ ghi nhận, chưa sửa Production.
+
+**Đề xuất cần Human Governance (chưa thực hiện):**1 VM/container Staging riêng trong Cloud project hiện hữu,1 persistent disk để giữ chính SQLite, HTTPS trên hostname staging riêng, tài khoản thử hạn chế; tắt demo/provisioning công khai. Cần phê duyệt project/chi phí, hostname+TLS, quyền tối thiểu quản lý VM/disk/snapshot đúng staging và runtime service account đã chỉ định. Không xin Owner/Editor toàn project, không dùng DB/DNS/IAM Production, không lấy secret trong chat. Cloud connections hiện rỗng; chưa có deployment/host hợp lệ, không tạo URL giả.
+
+Mã, ảnh, log và manifest của lần bàn giao ở `evidence/product-20261103/`. APK là debug review, không phải phát hành hoặc nghiệm thu native kết nối đầy đủ. Owner thực hiện: Codex2; ReviewSI/SecuritySI/Human Governance vẫn phải review trước phát hành. Các receipt cũ bên dưới giữ nguyên phạm vi lịch sử.
+
+---
+
 ## App CFP+ • bàn giao tích hợp 02/11/2026
 
 Tiếp tục PWA hiện hữu tại `codex2/p0-pwa-sandbox` (`94261742b76f6550e7bcb9f8fa4d02b76548bcae`) trên backend SpaceX đã có; nhánh bàn giao `codex2/p0-app-integration-20261102`. Đảm nhận cả backend và giao diện theo yêu cầu khi Codex 1 bên ngoài tạm dừng. Không tuyên bố các phiên/đơn vị bên ngoài đã ACK.

@@ -17,8 +17,9 @@ paths = list((UI/'app-dist').glob('*'))
 paths += list((UI/'public').glob('*'))
 paths += [UI/name for name in ['build.mjs', 'pwa-icon.mjs', 'token-css.mjs', 'template.config.json', 'package-review.py', 'integration/source-pins.json', 'evidence/training-basic-v1.json']]
 paths += [REPO/'registry/ai-entity-registry.json']
-paths += [REPO/'pilots/spacex'/name for name in ['operations.py', 'operations_server.py', 'pilot.py', 'registry.json']]
+paths += [REPO/'pilots/spacex'/name for name in ['operations.py', 'operations_server.py', 'software_worker.py', 'pilot.py', 'registry.json']]
 paths += list((REPO/'pilots/spacex/ui').glob('*'))
+paths += list((REPO/'website/skeleton').glob('*'))
 paths += [UI/name for name in ['README.md', 'package.json', 'package-lock.json', 'capacitor.config.json', 'THIRD_PARTY_NOTICES.txt']]
 # Native projects are source scaffolds. Never package generated signing state.
 for directory in [UI/'android', UI/'ios']:

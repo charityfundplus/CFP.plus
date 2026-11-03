@@ -22,9 +22,9 @@
   }
   function render(){
     const state=P.route(location.hash);
-    for(const view of ['home','master','id','chapters','vaults','openai','template','training','hstdn','commerce','technology','partners','reference','app','operations','forum'])$('view-'+view).hidden=view!==state.view;
+    for(const view of ['home','master','id','chapters','vaults','openai','template','training','hstdn','commerce','technology','partners','reference','app','operations','forum','social','intake'])$('view-'+view).hidden=view!==state.view;
     document.querySelectorAll('[data-nav]').forEach(a=>{const active=a.dataset.nav===((state.view==='commerce'||state.view==='reference')?'hstdn':state.view);a.classList.toggle('active',active);if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
-    const labels={forum:'Diễn đàn SI AI',operations:'Vận hành dùng chung dữ liệu',partners:'Nhà cung cấp & đối tác',reference:'Tham chiếu đầu mối',app:'App · Bản review',home:'Tổng quan',master:'Master Hub',id:'Tra cứu ID',chapters:'5 Nhóm · 10 Chương',vaults:'6 Kho',openai:'HSTDN OpenAI mẫu',template:'Link Mẫu Chung',training:'Đào tạo SI/AI',hstdn:'HSTDN theo quốc gia',commerce:'Danh mục sàn · 8682 TMTC',technology:'Quantum · Space · Future Technologies'};
+    const labels={intake:'Chương 0 · Nhập hồ sơ',social:'Mạng xã hội CFP+',forum:'Diễn đàn SI AI',operations:'Vận hành dùng chung dữ liệu',partners:'Nhà cung cấp & đối tác',reference:'Tham chiếu đầu mối',app:'App · Bản review',home:'Tổng quan',master:'Master Hub',id:'Tra cứu ID',chapters:'5 Nhóm · 10 Chương',vaults:'6 Kho',openai:'HSTDN OpenAI mẫu',template:'Link Mẫu Chung',training:'Đào tạo SI/AI',hstdn:'HSTDN theo quốc gia',commerce:'Danh mục sàn · 8682 TMTC',technology:'Quantum · Space · Future Technologies'};
     $('breadcrumb').textContent='HUB 69 / '+labels[state.view]+(state.id?' / '+state.id:'')+(state.chapter?' / Chương '+state.chapter:state.group?' / Nhóm '+state.group:'');
     document.title=(state.id?state.id+' • ':state.view==='home'?'':labels[state.view]+' • ')+'HUB 69 • CFP+';
     $('directory').hidden=!!state.id||!!state.invalid;$('profile').hidden=!state.id&&!state.invalid;

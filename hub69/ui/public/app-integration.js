@@ -2,11 +2,17 @@
   'use strict';
   if (window.HUB69_CONFIG?.mode !== 'app') return;
   let epoch = 0;
+  const nativePlatform = () => !!window.Capacitor?.isNativePlatform?.();
+  const backendPermitted = () => !nativePlatform() || (location.protocol === 'https:' && location.origin === window.HUB69_CONFIG?.approvedStagingOrigin);
   function publish(phase, data, message) {
     window.dispatchEvent(new CustomEvent('cfp-registry', {detail: {phase, data, message}}));
   }
   async function readRegistry() {
     const run = ++epoch;
+    if (!backendPermitted()) {
+      publish('blocked', null, 'Gói native review chưa cấu hình HTTPS staging được phê duyệt.');
+      return;
+    }
     publish('loading', null, 'Đang đọc Registry qua phiên backend hiện hữu…');
     try {
       const response = await fetch('/api/app/registry', {credentials: 'same-origin', cache: 'no-store'});
@@ -20,8 +26,7 @@
   }
   window.addEventListener('DOMContentLoaded', () => {
     const frame = document.getElementById('operations-frame');
-    const native = !!window.Capacitor?.isNativePlatform?.();
-    if (!native && /^https?:$/.test(location.protocol)) {
+    if (backendPermitted() && /^https?:$/.test(location.protocol)) {
       frame.src = '/#operations';
       document.getElementById('operations-runtime-note').textContent = 'Dùng cùng phiên, API và SQLite với Website SpaceX; không sao chép dữ liệu sang kho App.';
     } else {
@@ -29,6 +34,7 @@
       document.getElementById('operations-runtime-note').textContent = 'Gói native chưa có endpoint HTTPS được duyệt. Chưa thể đăng nhập, đọc hoặc ghi backend từ thiết bị.';
     }
     document.querySelector('.mobile-tabs').hidden = false;
+    document.querySelectorAll('[data-website-preview]').forEach(link => {link.hidden = !backendPermitted() || !/^https?:$/.test(location.protocol);});
     readRegistry();
   });
   window.addEventListener('message', event => {
