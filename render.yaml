@@ -1,0 +1,26 @@
+# CFP+ Forum P0 • SANDBOX ONLY — Render Blueprint, gói Free (không phí, không cần thẻ).
+# Chỉ dịch vụ diễn đàn (services/forum); website tĩnh và production không thuộc file này.
+# Ba URL database được nhập tay lúc tạo Blueprint (sync: false) — không nằm trong repo.
+services:
+  - type: web
+    name: cfp-forum-sandbox
+    runtime: python
+    plan: free
+    region: oregon            # gần Supabase us-west-2
+    branch: claude/forum-p0-ci-verify
+    buildCommand: pip install -r services/forum/requirements.txt
+    startCommand: uvicorn services.forum.asgi:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: CFP_FORUM_COOKIE_SECURE
+        value: "1"
+      - key: CFP_FORUM_POOL_SIZE
+        value: "2"
+      - key: CFP_FORUM_AUTH_DB
+        sync: false
+      - key: CFP_FORUM_DB_SIEU_BO_DOI
+        sync: false
+      - key: CFP_FORUM_DB_SI_AI_HSTDN
+        sync: false

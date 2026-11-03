@@ -1,0 +1,144 @@
+name: Forum P0 CI (sandbox verify)
+
+# Kiểm thử độc lập backend hai diễn đàn (services/forum) trên Postgres thật.
+# Chỉ chạy trên nhánh claude/** và PR; không deploy, không chạm production.
+on:
+  push:
+    branches: ['claude/**']
+    paths:
+      - 'services/forum/**'
+      - 'tests/forum/**'
+      - '.github/workflows/forum_p0_ci.yml'
+  pull_request:
+    paths:
+      - 'services/forum/**'
+      - 'tests/forum/**'
+      - '.github/workflows/forum_p0_ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  forum-p0:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: cfp
+          POSTGRES_PASSWORD: cfp
+          POSTGRES_DB: cfp
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U cfp" --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      PG: postgresql+psycopg://cfp:cfp@localhost:5432
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Tạo 6 database riêng (3 cho API test, 3 cho E2E)
+        run: |
+          for db in t_auth t_sbd t_hst e_auth e_sbd e_hst; do
+            PGPASSWORD=cfp psql -h localhost -U cfp -d cfp -c "CREATE DATABASE $db;"
+          done
+
+      - name: Cài dependency
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r services/forum/requirements.txt pytest httpx
+          npm install -g playwright@1
+          npx playwright install --with-deps chromium
+
+      - name: API tests (pytest, Postgres)
+        env:
+          CFP_FORUM_TEST_AUTH_DB: ${{ env.PG }}/t_auth
+          CFP_FORUM_TEST_DB_SIEU_BO_DOI: ${{ env.PG }}/t_sbd
+          CFP_FORUM_TEST_DB_SI_AI_HSTDN: ${{ env.PG }}/t_hst
+        run: python -m pytest tests/forum/test_forum_api.py -v
+
+      - name: API tests (pytest, SQLite fallback)
+        run: python -m pytest tests/forum/test_forum_api.py -v
+
+      - name: E2E (Playwright + uvicorn, Postgres, có restart server)
+        env:
+          CFP_FORUM_AUTH_DB: ${{ env.PG }}/e_auth
+          CFP_FORUM_DB_SIEU_BO_DOI: ${{ env.PG }}/e_sbd
+          CFP_FORUM_DB_SI_AI_HSTDN: ${{ env.PG }}/e_hst
+        run: NODE_PATH=$(npm root -g) node tests/forum/forum_e2e.test.js
+
+      # ---- Chế độ 3 schema trong 1 database (mô phỏng Supabase: người chạy
+      # migration KHÔNG phải superuser, chỉ có CREATEROLE và là chủ database).
+      - name: 3 schema — chuẩn bị database + chạy schemas_up.sql (2 lần, kiểm tra idempotent)
+        run: |
+          export PGPASSWORD=cfp
+          psql -v ON_ERROR_STOP=1 -h localhost -U cfp -d cfp -c "CREATE ROLE setup LOGIN CREATEROLE PASSWORD 'setup';" \
+                                                              -c "CREATE DATABASE sch OWNER setup;"
+          for i in 1 2; do PGPASSWORD=setup psql -v ON_ERROR_STOP=1 -h localhost -U setup -d sch -f services/forum/sql/schemas_up.sql; done
+          for r in auth sbd hstdn; do
+            pw=$(openssl rand -hex 24); echo "::add-mask::$pw"
+            PGPASSWORD=setup psql -v ON_ERROR_STOP=1 -h localhost -U setup -d sch -c "ALTER ROLE cfp_forum_${r}_rw PASSWORD '$pw';"
+            echo "PW_${r}=$pw" >> "$GITHUB_ENV"
+          done
+
+      - name: 3 schema — API tests + cách ly quyền
+        run: |
+          export CFP_FORUM_TEST_SCHEMA_MODE=1
+          export CFP_FORUM_TEST_AUTH_DB=postgresql+psycopg://cfp_forum_auth_rw:$PW_auth@localhost:5432/sch
+          export CFP_FORUM_TEST_DB_SIEU_BO_DOI=postgresql+psycopg://cfp_forum_sbd_rw:$PW_sbd@localhost:5432/sch
+          export CFP_FORUM_TEST_DB_SI_AI_HSTDN=postgresql+psycopg://cfp_forum_hstdn_rw:$PW_hstdn@localhost:5432/sch
+          python -m pytest tests/forum/test_forum_api.py tests/forum/test_schema_isolation.py -v
+
+      - name: 3 schema — E2E (Playwright + uvicorn, có restart server)
+        run: |
+          export CFP_FORUM_AUTH_DB=postgresql+psycopg://cfp_forum_auth_rw:$PW_auth@localhost:5432/sch
+          export CFP_FORUM_DB_SIEU_BO_DOI=postgresql+psycopg://cfp_forum_sbd_rw:$PW_sbd@localhost:5432/sch
+          export CFP_FORUM_DB_SI_AI_HSTDN=postgresql+psycopg://cfp_forum_hstdn_rw:$PW_hstdn@localhost:5432/sch
+          NODE_PATH=$(npm root -g) node tests/forum/forum_e2e.test.js
+
+      - name: 3 schema — kiểm chứng script E2E từ xa (chạy, restart server, kiểm tra lại)
+        run: |
+          export CFP_FORUM_AUTH_DB=postgresql+psycopg://cfp_forum_auth_rw:$PW_auth@localhost:5432/sch
+          export CFP_FORUM_DB_SIEU_BO_DOI=postgresql+psycopg://cfp_forum_sbd_rw:$PW_sbd@localhost:5432/sch
+          export CFP_FORUM_DB_SI_AI_HSTDN=postgresql+psycopg://cfp_forum_hstdn_rw:$PW_hstdn@localhost:5432/sch
+          export CFP_FORUM_COOKIE_SECURE=0 FORUM_BASE=http://127.0.0.1:8099
+          python -m uvicorn services.forum.asgi:app --host 127.0.0.1 --port 8099 & pid=$!
+          NODE_PATH=$(npm root -g) node tests/forum/forum_remote_e2e.test.js | tee remote1.log
+          kill $pid; wait $pid || true
+          python -m uvicorn services.forum.asgi:app --host 127.0.0.1 --port 8099 & pid=$!
+          CHECK_STAMP=$(grep -o 'STAMP=[a-z0-9]*' remote1.log | cut -d= -f2) \
+            NODE_PATH=$(npm root -g) node tests/forum/forum_remote_e2e.test.js
+          kill $pid
+
+      - name: 3 schema — kiểm chứng set_passwords_sandbox.sql (sinh mật khẩu, đăng nhập được, URL đúng dạng)
+        run: |
+          export PGPASSWORD=setup
+          psql -v ON_ERROR_STOP=1 -h localhost -U setup -d sch -c "CREATE SCHEMA IF NOT EXISTS extensions; CREATE EXTENSION IF NOT EXISTS pgcrypto SCHEMA extensions;"
+          psql -q -v ON_ERROR_STOP=1 -tA -F ' ' -h localhost -U setup -d sch -f services/forum/sql/set_passwords_sandbox.sql > urls.txt
+          n=0
+          while read -r key url; do
+            case "$key" in CFP_FORUM_*) ;; *) continue;; esac
+            echo "$url" | grep -Eq '^postgresql\+psycopg://cfp_forum_[a-z]+_rw\.gmnsmggqvbwlgluvscfh:[0-9a-f]{48}@aws-0-us-west-2\.pooler\.supabase\.com:5432/postgres\?sslmode=require$' || { echo "URL sai dạng cho $key"; exit 1; }
+            role=$(echo "$url" | sed -E 's#^[^/]+//([^.]+)\..*#\1#'); pw=$(echo "$url" | sed -E 's#^.*:([0-9a-f]{48})@.*#\1#')
+            echo "::add-mask::$pw"
+            test "$(PGPASSWORD=$pw psql -tA -h localhost -U "$role" -d sch -c 'select current_schema()')" != "" && n=$((n+1))
+            echo "$key → $role: đăng nhập OK"
+          done < urls.txt
+          rm -f urls.txt; test "$n" = 3
+
+      - name: 3 schema — khôi phục (schemas_down.sql) rồi dựng lại
+        run: |
+          export PGPASSWORD=setup
+          psql -v ON_ERROR_STOP=1 -h localhost -U setup -d sch -f services/forum/sql/schemas_down.sql
+          left=$(psql -tA -h localhost -U setup -d sch -c "SELECT count(*) FROM pg_namespace WHERE nspname LIKE 'cfp_forum_%';")
+          roles=$(psql -tA -h localhost -U setup -d sch -c "SELECT count(*) FROM pg_roles WHERE rolname LIKE 'cfp_forum_%';")
+          echo "sau down: schema=$left role=$roles"; test "$left" = 0 && test "$roles" = 0
+          psql -v ON_ERROR_STOP=1 -h localhost -U setup -d sch -f services/forum/sql/schemas_up.sql
+          test "$(psql -tA -h localhost -U setup -d sch -c "SELECT count(*) FROM pg_namespace WHERE nspname LIKE 'cfp_forum_%';")" = 3
+          echo "Khôi phục và dựng lại: OK"

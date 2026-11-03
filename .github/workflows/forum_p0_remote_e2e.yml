@@ -1,0 +1,34 @@
+name: Forum P0 Remote E2E (sandbox URL)
+
+# Chạy E2E giả lập iPhone trên URL HTTPS sandbox thật.
+# Kích hoạt bằng commit sửa .github/forum-remote-target.json trên nhánh claude/**
+# (workflow_dispatch chỉ dùng được khi workflow có trên main — không chạm main).
+on:
+  push:
+    branches: ['claude/**']
+    paths:
+      - '.github/forum-remote-target.json'
+
+permissions:
+  contents: read
+
+jobs:
+  remote-e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: |
+          npm install -g playwright@1
+          npx playwright install --with-deps chromium
+      - name: Đọc đích kiểm thử
+        run: |
+          t=.github/forum-remote-target.json
+          echo "FORUM_BASE=$(jq -r .base_url $t)" >> "$GITHUB_ENV"
+          echo "FORUM_SCOPE=$(jq -r '.scope // "all"' $t)" >> "$GITHUB_ENV"
+          echo "CHECK_STAMP=$(jq -r '.check_stamp // ""' $t)" >> "$GITHUB_ENV"
+          cat $t
+      - name: E2E trên hosting thật
+        run: NODE_PATH=$(npm root -g) node tests/forum/forum_remote_e2e.test.js
