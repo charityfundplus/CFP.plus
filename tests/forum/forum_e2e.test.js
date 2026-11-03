@@ -183,6 +183,33 @@ function assert(c, m) { if (!c) throw new Error(m || 'assertion failed'); }
     assert(r.status() === 401, 'status ' + r.status());
   });
 
+  await check('iPhone 13 (mô phỏng viewport + touch): đăng ký → đăng bài → bình luận → tải lại', async () => {
+    const { devices } = require('playwright');
+    const m = await browser.newContext({ ...devices['iPhone 13'] });
+    const mp = await m.newPage();
+    mp.on('pageerror', (e) => jsErrors.push('iphone: ' + e.message));
+    await mp.goto(SBD); await mp.locator('[data-ready="1"]').waitFor();
+    const noHScroll = await mp.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth);
+    assert(noHScroll, 'có cuộn ngang trên iPhone');
+    await mp.getByTestId('auth-mode').selectOption('register');
+    await mp.getByTestId('auth-email').fill(`iphone-${stamp}@example.org`);
+    await mp.getByTestId('auth-password').fill('matkhau-e2e');
+    await mp.getByTestId('auth-name').fill('iPhone E2E');
+    await mp.getByTestId('auth-submit').tap();
+    await mp.getByTestId('join').tap();
+    await mp.getByTestId('post-title').fill('Bài iPhone ' + stamp);
+    await mp.getByTestId('post-body').fill('Gửi từ iPhone');
+    await mp.getByTestId('post-submit').tap();
+    const post = mp.locator('[data-testid=post]', { hasText: 'Bài iPhone ' + stamp });
+    await post.getByTestId('comment-input').fill('Bình luận iPhone');
+    await post.getByTestId('comment-submit').tap();
+    await post.getByTestId('comment-body').filter({ hasText: 'Bình luận iPhone' }).waitFor();
+    await mp.reload(); await mp.locator('[data-ready="1"]').waitFor();
+    assert(await mp.locator('[data-testid=post]', { hasText: 'Bài iPhone ' + stamp }).getByTestId('comment-body').count() === 1);
+    await mp.screenshot({ path: process.env.CFP_E2E_SCREENSHOT || path.join(require('os').tmpdir(), 'cfp-forum-iphone.png'), fullPage: false });
+    await m.close();
+  });
+
   await check('Không có lỗi JavaScript', async () => { assert(jsErrors.length === 0, jsErrors.join('; ')); });
 
   await browser.close();

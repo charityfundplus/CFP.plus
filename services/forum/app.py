@@ -20,12 +20,15 @@ import hmac
 import os
 import re
 import secrets
+import threading
+import time
+from collections import deque
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from fastapi import Depends, FastAPI, HTTPException, Request, Response
-from fastapi.responses import FileResponse, RedirectResponse
+from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
 from pydantic import BaseModel, Field
 from sqlalchemy import (Column, DateTime, ForeignKey, Integer, MetaData, String, Table, Text,
                         create_engine, func, insert, select, update)
@@ -35,6 +38,45 @@ WEB_DIR = Path(__file__).parent / "web"
 SESSION_COOKIE = "cfp_forum_session"
 SESSION_TTL = timedelta(days=14)
 CSRF_HEADER = "x-cfp-forum"
+MAX_BODY_BYTES = 64 * 1024
+SECURITY_HEADERS = {
+    "X-Content-Type-Options": "nosniff",
+    "Referrer-Policy": "same-origin",
+    "X-Frame-Options": "DENY",
+    "Content-Security-Policy": ("default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; "
+                                "connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'"),
+}
+
+
+class RateLimiter:
+    """Cửa sổ trượt trong bộ nhớ (theo tiến trình). Production nhiều instance cần Redis/DB."""
+
+    def __init__(self):
+        self._hits: dict[tuple, deque] = {}
+        self._lock = threading.Lock()
+
+    def hit(self, key: tuple, limit: int, window: float) -> float:
+        """Trả 0 nếu cho phép, ngược lại trả số giây cần chờ."""
+        now = time.monotonic()
+        with self._lock:
+            q = self._hits.setdefault(key, deque())
+            while q and q[0] <= now - window:
+                q.popleft()
+            if len(q) >= limit:
+                return max(0.0, q[0] + window - now)
+            q.append(now)
+            if len(self._hits) > 50_000:  # tránh phình bộ nhớ
+                self._hits = {k: v for k, v in self._hits.items() if v and v[-1] > now - window}
+            return 0.0
+
+
+def _limits() -> dict[str, tuple[int, float]]:
+    def env(name, default):
+        return int(os.environ.get(name, default))
+    return {
+        "auth": (env("CFP_FORUM_RL_AUTH_PER_MIN", 10), 60.0),    # đăng ký/đăng nhập theo IP
+        "write": (env("CFP_FORUM_RL_WRITE_PER_MIN", 30), 60.0),  # ghi khác theo IP
+    }
 
 
 # ---------------------------------------------------------------- forums
@@ -158,6 +200,7 @@ def _tok_hash(tok: str) -> str:
     return hashlib.sha256(tok.encode()).hexdigest()
 
 
+_DUMMY_HASH = hash_password(secrets.token_hex(16))
 EMAIL_RE = re.compile(r"^[^\s@]+@[^\s@]+\.[^\s@]+$")
 
 
@@ -189,15 +232,61 @@ def create_app(stores: Stores | None = None) -> FastAPI:
     app = FastAPI(title="CFP+ Forum Service", version="0.1.0-p0", docs_url=None, redoc_url=None)
     st = stores or Stores.from_env()
     app.state.stores = st
+    limiter = RateLimiter()
+    limits = _limits()
+    trust_proxy = os.environ.get("CFP_FORUM_TRUST_PROXY", "0") == "1"
+    cookie_secure_mode = os.environ.get("CFP_FORUM_COOKIE_SECURE", "1")  # "1" | "0" | "auto"
+    allowed_origins = {o.strip().rstrip("/") for o in os.environ.get("CFP_FORUM_ALLOWED_ORIGINS", "").split(",") if o.strip()}
+
+    def client_ip(request: Request) -> str:
+        if trust_proxy and request.headers.get("x-forwarded-for"):
+            return request.headers["x-forwarded-for"].split(",")[0].strip()
+        return request.client.host if request.client else "?"
+
+    def is_https(request: Request) -> bool:
+        if trust_proxy and request.headers.get("x-forwarded-proto"):
+            return request.headers["x-forwarded-proto"].split(",")[0].strip() == "https"
+        return request.url.scheme == "https"
+
+    def origin_ok(request: Request) -> bool:
+        origin = request.headers.get("origin")
+        if not origin:
+            return True  # trình duyệt hiện đại luôn gửi Origin cho fetch POST; header tuỳ chỉnh vẫn bắt buộc
+        origin = origin.rstrip("/")
+        if origin in allowed_origins:
+            return True
+        host = request.headers.get("x-forwarded-host") if trust_proxy else None
+        host = host or request.headers.get("host", "")
+        return origin in {f"https://{host}", f"http://{host}"}
+
+    def deny(status: int, detail: str, headers: dict | None = None):
+        return JSONResponse({"detail": detail}, status_code=status, headers={**SECURITY_HEADERS, **(headers or {})})
 
     @app.middleware("http")
-    async def csrf_guard(request: Request, call_next):
-        # Mọi request ghi phải có header tuỳ chỉnh (không gửi được từ form chéo site).
-        if request.method in {"POST", "PUT", "PATCH", "DELETE"} and request.url.path.startswith("/api/"):
+    async def guard(request: Request, call_next):
+        path = request.url.path
+        if request.method in {"POST", "PUT", "PATCH", "DELETE"} and path.startswith("/api/"):
+            # CSRF: header tuỳ chỉnh (form chéo site không gửi được) + Origin phải khớp.
             if request.headers.get(CSRF_HEADER) != "1":
-                from fastapi.responses import JSONResponse
-                return JSONResponse({"detail": "Thiếu header chống CSRF."}, status_code=403)
-        return await call_next(request)
+                return deny(403, "Thiếu header chống CSRF.")
+            if not origin_ok(request):
+                return deny(403, "Origin không được phép.")
+            try:
+                if int(request.headers.get("content-length") or 0) > MAX_BODY_BYTES:
+                    return deny(413, "Yêu cầu quá lớn.")
+            except ValueError:
+                return deny(400, "Content-Length không hợp lệ.")
+            bucket = "auth" if path in {"/api/auth/login", "/api/auth/register"} else "write"
+            limit, window = limits[bucket]
+            wait = limiter.hit((bucket, client_ip(request)), limit, window)
+            if wait:
+                return deny(429, "Quá nhiều yêu cầu, vui lòng thử lại sau.", {"Retry-After": str(int(wait) + 1)})
+        resp = await call_next(request)
+        for k, v in SECURITY_HEADERS.items():
+            resp.headers.setdefault(k, v)
+        if is_https(request):
+            resp.headers.setdefault("Strict-Transport-Security", "max-age=31536000")
+        return resp
 
     def current_user(request: Request) -> dict | None:
         tok = request.cookies.get(SESSION_COOKIE)
@@ -240,13 +329,13 @@ def create_app(stores: Stores | None = None) -> FastAPI:
             raise HTTPException(403, "Bạn chưa là thành viên đang hoạt động của diễn đàn này.")
         return m
 
-    def start_session(resp: Response, user_id: int) -> None:
+    def start_session(request: Request, resp: Response, user_id: int) -> None:
         tok = secrets.token_urlsafe(32)
         with st.auth.begin() as c:
             c.execute(insert(sessions_t).values(token_hash=_tok_hash(tok), user_id=user_id,
                                                 expires_at=datetime.now(timezone.utc) + SESSION_TTL))
         resp.set_cookie(SESSION_COOKIE, tok, httponly=True, samesite="strict",
-                        secure=os.environ.get("CFP_FORUM_COOKIE_SECURE", "1") != "0",
+                        secure=(is_https(request) if cookie_secure_mode == "auto" else cookie_secure_mode != "0"),
                         max_age=int(SESSION_TTL.total_seconds()), path="/")
 
     # ---- health
@@ -261,7 +350,7 @@ def create_app(stores: Stores | None = None) -> FastAPI:
 
     # ---- auth
     @app.post("/api/auth/register", status_code=201)
-    def register(data: RegisterIn, resp: Response):
+    def register(data: RegisterIn, request: Request, resp: Response):
         email = data.email.strip().lower()
         if not EMAIL_RE.match(email):
             raise HTTPException(422, "Email không hợp lệ.")
@@ -271,16 +360,18 @@ def create_app(stores: Stores | None = None) -> FastAPI:
             uid = c.execute(insert(users_t).values(email=email, name=data.name.strip(),
                                                    pw_hash=hash_password(data.password))
                             .returning(users_t.c.id)).scalar_one()
-        start_session(resp, uid)
+        start_session(request, resp, uid)
         return {"id": uid, "email": email, "name": data.name.strip()}
 
     @app.post("/api/auth/login")
-    def login(data: LoginIn, resp: Response):
+    def login(data: LoginIn, request: Request, resp: Response):
         with st.auth.connect() as c:
             row = c.execute(select(users_t).where(users_t.c.email == data.email.strip().lower())).mappings().first()
-        if not row or not verify_password(data.password, row["pw_hash"]):
+        # Luôn băm một lần để thời gian phản hồi không lộ email có tồn tại hay không.
+        ok = verify_password(data.password, row["pw_hash"] if row else _DUMMY_HASH)
+        if not row or not ok:
             raise HTTPException(401, "Email hoặc mật khẩu không đúng.")
-        start_session(resp, row["id"])
+        start_session(request, resp, row["id"])
         return {"id": row["id"], "email": row["email"], "name": row["name"]}
 
     @app.post("/api/auth/logout")
