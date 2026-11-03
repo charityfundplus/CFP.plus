@@ -11,3 +11,5 @@
 .forum-body { white-space: pre-wrap; overflow-wrap: anywhere; }
 .forum-comments { margin: 0; padding-left: 1.2rem; display: grid; gap: .5rem; }
 .forum-note { padding: .9rem 1rem; border-left: 4px solid var(--accent); background: var(--surface); border-radius: 8px; }
+.forum-form select { width: 100%; padding: .65rem .8rem; border: 1px solid var(--line); border-radius: 12px; font: inherit; }
+.forum-tag { display: inline-block; margin-right: .4rem; padding: .1rem .55rem; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: .85rem; }

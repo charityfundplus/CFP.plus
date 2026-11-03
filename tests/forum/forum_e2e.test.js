@@ -1,157 +1,192 @@
-// CFP+ Forum P0 • E2E: đăng nhập → đăng bài → bình luận → tải lại → dữ liệu còn.
-// Chạy: node tests/forum/forum_e2e.test.js  (cần Playwright + Chromium)
+// CFP+ Forum P0 • Playwright E2E với backend thật (uvicorn + FastAPI) và database thật.
+// Luồng: đăng ký/đăng nhập → tham gia → đăng bài → bình luận → tải lại → KHỞI ĐỘNG LẠI SERVER → dữ liệu còn.
+// Env: CFP_FORUM_AUTH_DB, CFP_FORUM_DB_SIEU_BO_DOI, CFP_FORUM_DB_SI_AI_HSTDN (database test riêng).
+// Chạy: NODE_PATH=$(npm root -g) node tests/forum/forum_e2e.test.js
 const { chromium } = require('playwright');
-const http = require('http');
-const fs = require('fs');
+const { spawn, execFileSync } = require('child_process');
 const path = require('path');
+const net = require('net');
 
 const ROOT = path.resolve(__dirname, '..', '..');
-const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css' };
-
-function serve() {
-  return new Promise((resolve) => {
-    const srv = http.createServer((req, res) => {
-      let p = decodeURIComponent(new URL(req.url, 'http://x').pathname);
-      let f = path.join(ROOT, p);
-      if (!f.startsWith(ROOT)) { res.writeHead(403); return res.end(); }
-      if (fs.existsSync(f) && fs.statSync(f).isDirectory()) f = path.join(f, 'index.html');
-      if (!fs.existsSync(f)) { res.writeHead(404); return res.end('404'); }
-      res.writeHead(200, { 'content-type': TYPES[path.extname(f)] || 'application/octet-stream' });
-      fs.createReadStream(f).pipe(res);
-    });
-    srv.listen(0, '127.0.0.1', () => resolve(srv));
-  });
+for (const k of ['CFP_FORUM_AUTH_DB', 'CFP_FORUM_DB_SIEU_BO_DOI', 'CFP_FORUM_DB_SI_AI_HSTDN']) {
+  if (!process.env[k]) { console.error('Thiếu ' + k); process.exit(2); }
 }
+const ENV = { ...process.env, CFP_FORUM_COOKIE_SECURE: '0', PYTHONPATH: ROOT };
+
+function freePort() {
+  return new Promise((res) => { const s = net.createServer(); s.listen(0, '127.0.0.1', () => { const p = s.address().port; s.close(() => res(p)); }); });
+}
+async function startServer(port) {
+  const proc = spawn('python3', ['-m', 'uvicorn', 'services.forum.asgi:app', '--host', '127.0.0.1', '--port', String(port)], { cwd: ROOT, env: ENV, stdio: ['ignore', 'ignore', 'pipe'] });
+  let log = ''; proc.stderr.on('data', (d) => { log += d; });
+  for (let i = 0; i < 100; i++) {
+    try { const r = await fetch(`http://127.0.0.1:${port}/api/health`); if (r.ok) return proc; } catch (e) { /* chưa sẵn sàng */ }
+    await new Promise((r) => setTimeout(r, 100));
+  }
+  proc.kill(); throw new Error('Server không khởi động: ' + log);
+}
+async function stopServer(proc) { proc.kill('SIGTERM'); await new Promise((r) => proc.once('exit', r)); }
 
 let passed = 0, failed = 0;
 async function check(label, fn) {
-  try { await fn(); console.log('[PASS] ' + label); passed++; }
-  catch (e) { console.log('[FAIL] ' + label + ' — ' + e.message); failed++; }
+  try { await fn(); console.log('[PASS] ' + label); passed++; } catch (e) { console.log('[FAIL] ' + label + ' — ' + e.message.split('\n')[0]); failed++; }
 }
 function assert(c, m) { if (!c) throw new Error(m || 'assertion failed'); }
 
 (async () => {
-  const srv = await serve();
-  const base = 'http://127.0.0.1:' + srv.address().port;
+  const port = await freePort();
+  const base = `http://127.0.0.1:${port}`;
+  const SBD = base + '/_internal/forum/sieu-bo-doi/';
+  const HST = base + '/_internal/forum/si-ai-hstdn/';
+  let server = await startServer(port);
   const browser = await chromium.launch();
   const ctx = await browser.newContext();
   const page = await ctx.newPage();
-  const errors = [];
-  page.on('pageerror', (e) => errors.push(e.message));
-  const SBD = base + '/forum/sieu-bo-doi/';
-  const HST = base + '/forum/si-ai-hstdn/';
+  const jsErrors = [];
+  page.on('pageerror', (e) => jsErrors.push(e.message));
+  const tid = (id) => page.getByTestId(id);
+  const ready = async (url) => { await page.goto(url); await page.locator('[data-forum][data-ready="1"]').waitFor(); };
+  const stamp = Date.now().toString(36);
+  const email = `e2e-${stamp}@example.org`, adminEmail = `admin-${stamp}@example.org`;
+  const T_SBD = 'Bài E2E Siêu Bộ Đôi ' + stamp, T_HST = 'Bài E2E HSTDN ' + stamp;
 
-  await check('Trang Siêu Bộ Đôi tải được, chưa đăng nhập thì không có form đăng bài', async () => {
-    await page.goto(SBD);
+  async function auth(mode, em, name) {
+    await tid('auth-mode').selectOption(mode);
+    await tid('auth-email').fill(em); await tid('auth-password').fill('matkhau-e2e');
+    if (name) await tid('auth-name').fill(name);
+    await tid('auth-submit').click(); await tid('user-name').waitFor();
+  }
+
+  await check('Server dùng database thật, mỗi diễn đàn một DB đã đóng dấu', async () => {
+    const h = await (await fetch(base + '/api/health')).json();
+    assert(h.forums['sieu-bo-doi'].stamp === 'sieu-bo-doi' && h.forums['si-ai-hstdn'].stamp === 'si-ai-hstdn', JSON.stringify(h));
+    console.log('       health=' + JSON.stringify(h));
+  });
+
+  await check('Khách: đọc được Siêu Bộ Đôi, không có form đăng bài', async () => {
+    await ready(SBD);
     assert((await page.title()).includes('Diễn Đàn Siêu Bộ Đôi'));
-    await page.getByTestId('login-form').waitFor();
-    assert(await page.getByTestId('post-form').count() === 0, 'post-form hiển thị khi chưa đăng nhập');
+    assert(await tid('post-form').count() === 0);
+    await tid('login-hint').waitFor();
   });
 
-  await check('Đăng nhập với tên rỗng bị từ chối', async () => {
-    await page.getByTestId('login-name').fill(' ');
-    await page.getByTestId('login-name').evaluate((n) => n.removeAttribute('required'));
-    await page.getByTestId('login-name').evaluate((n) => n.removeAttribute('minlength'));
-    await page.getByTestId('login-submit').click();
-    assert((await page.getByTestId('msg').textContent()).includes('ít nhất 2'));
+  await check('Khách: SI AI • HSTDN từ chối đọc', async () => {
+    await ready(HST);
+    assert((await tid('read-denied').textContent()).includes('đăng nhập'));
   });
 
-  await check('Đăng nhập thành công', async () => {
-    await page.getByTestId('login-name').fill('Thành Viên CFP');
-    await page.getByTestId('login-email').fill('member@example.org');
-    await page.getByTestId('login-submit').click();
-    assert((await page.getByTestId('user-name').textContent()) === 'Thành Viên CFP');
+  await check('Đăng ký tài khoản → đăng nhập (cookie HttpOnly)', async () => {
+    await ready(SBD);
+    await auth('register', email, 'Thành Viên E2E');
+    const ck = (await ctx.cookies()).find((c) => c.name === 'cfp_forum_session');
+    assert(ck && ck.httpOnly && ck.sameSite === 'Strict', JSON.stringify(ck));
+    assert(await page.evaluate(() => document.cookie.includes('cfp_forum_session')) === false, 'JS đọc được cookie');
   });
 
-  const xss = '<img src=x onerror="window.__xss=1">';
-  await check('Đăng bài', async () => {
-    await page.getByTestId('post-title').fill('Bài P0 Siêu Bộ Đôi');
-    await page.getByTestId('post-body').fill('Nội dung thử nghiệm ' + xss);
-    await page.getByTestId('post-submit').click();
-    await page.getByTestId('post').first().waitFor();
-    assert((await page.getByTestId('post-title-view').first().textContent()) === 'Bài P0 Siêu Bộ Đôi');
+  await check('Tham gia Siêu Bộ Đôi (mở) → đăng bài', async () => {
+    await tid('join').click(); await tid('post-form').waitFor();
+    assert(await tid('post-hstdn').count() === 0, 'Siêu Bộ Đôi không có trường HSTDN');
+    await tid('post-title').fill(T_SBD);
+    await tid('post-body').fill('Nội dung <img src=x onerror="window.__xss=1">');
+    await tid('post-submit').click();
+    await page.locator('[data-testid=post-title-view]', { hasText: T_SBD }).waitFor();
   });
 
   await check('Bình luận', async () => {
-    await page.getByTestId('comment-input').first().fill('Bình luận P0 đầu tiên');
-    await page.getByTestId('comment-submit').first().click();
-    assert((await page.getByTestId('comment-body').first().textContent()) === 'Bình luận P0 đầu tiên');
+    const post = page.locator('[data-testid=post]', { hasText: T_SBD });
+    await post.getByTestId('comment-input').fill('Bình luận E2E');
+    await post.getByTestId('comment-submit').click();
+    await post.getByTestId('comment-body').filter({ hasText: 'Bình luận E2E' }).waitFor();
   });
 
-  await check('Tải lại trang → phiên, bài viết, bình luận vẫn tồn tại', async () => {
-    await page.reload();
-    await page.getByTestId('post').first().waitFor();
-    assert((await page.getByTestId('user-name').textContent()) === 'Thành Viên CFP', 'mất phiên');
-    assert(await page.getByTestId('post').count() === 1);
-    assert((await page.getByTestId('post-title-view').first().textContent()) === 'Bài P0 Siêu Bộ Đôi');
-    assert((await page.getByTestId('comment-body').first().textContent()) === 'Bình luận P0 đầu tiên');
+  await check('Tải lại trang → phiên, bài, bình luận còn', async () => {
+    await ready(SBD);
+    assert((await tid('user-name').textContent()) === 'Thành Viên E2E');
+    const post = page.locator('[data-testid=post]', { hasText: T_SBD });
+    assert(await post.count() === 1);
+    assert((await post.getByTestId('comment-body').first().textContent()) === 'Bình luận E2E');
   });
 
-  await check('Nội dung người dùng được hiển thị dạng text (không thực thi HTML/XSS)', async () => {
-    assert((await page.getByTestId('post-body-view').first().textContent()).includes(xss));
-    assert(await page.evaluate(() => window.__xss) === undefined, 'XSS đã thực thi');
+  await check('Không dùng localStorage để lưu dữ liệu diễn đàn', async () => {
+    const n = await page.evaluate(() => localStorage.length + sessionStorage.length);
+    assert(n === 0, 'storage length=' + n);
   });
 
-  await check('Diễn Đàn SI AI • HSTDN tách biệt: không thấy bài của Siêu Bộ Đôi', async () => {
-    await page.goto(HST);
-    assert((await page.title()).includes('SI AI • HSTDN'));
-    await page.getByTestId('empty').waitFor();
-    assert(await page.getByTestId('post').count() === 0);
+  await check('XSS không thực thi', async () => {
+    assert(await page.evaluate(() => window.__xss) === undefined);
   });
 
-  await check('Đăng bài + bình luận ở SI AI • HSTDN, tải lại vẫn còn', async () => {
-    await page.getByTestId('post-title').fill('Bài P0 HSTDN');
-    await page.getByTestId('post-body').fill('Nội dung HSTDN');
-    await page.getByTestId('post-submit').click();
-    await page.getByTestId('comment-input').first().fill('Bình luận HSTDN');
-    await page.getByTestId('comment-submit').first().click();
-    await page.reload();
-    await page.getByTestId('post').first().waitFor();
-    assert(await page.getByTestId('post').count() === 1);
-    assert((await page.getByTestId('post-title-view').first().textContent()) === 'Bài P0 HSTDN');
-    assert((await page.getByTestId('comment-body').first().textContent()) === 'Bình luận HSTDN');
+  await check('KHỞI ĐỘNG LẠI server → đăng nhập lại → dữ liệu vẫn còn', async () => {
+    await stopServer(server);
+    server = await startServer(port);
+    await ready(SBD);
+    assert((await tid('user-name').textContent()) === 'Thành Viên E2E', 'phiên mất sau restart');
+    await tid('logout').click(); await tid('login-form').waitFor();
+    await auth('login', email);
+    const post = page.locator('[data-testid=post]', { hasText: T_SBD });
+    assert(await post.count() === 1, 'bài mất sau restart');
+    assert((await post.getByTestId('comment-body').first().textContent()) === 'Bình luận E2E');
   });
 
-  await check('Quay lại Siêu Bộ Đôi: chỉ còn đúng bài của Siêu Bộ Đôi', async () => {
-    await page.goto(SBD);
-    await page.getByTestId('post').first().waitFor();
-    assert(await page.getByTestId('post').count() === 1);
-    assert((await page.getByTestId('post-title-view').first().textContent()) === 'Bài P0 Siêu Bộ Đôi');
+  await check('SI AI • HSTDN: yêu cầu tham gia → chờ duyệt, chưa đọc/đăng được', async () => {
+    await ready(HST);
+    await tid('join').click();
+    await tid('member-status').filter({ hasText: 'chờ' }).waitFor();
+    assert(await tid('post-form').count() === 0);
+    await tid('read-denied').waitFor();
   });
 
-  await check('Hai namespace lưu trữ riêng biệt', async () => {
-    const keys = await page.evaluate(() => Object.keys(localStorage).sort());
-    assert(keys.includes('cfp.forum.v1.sieu-bo-doi') && keys.includes('cfp.forum.v1.si-ai-hstdn'), JSON.stringify(keys));
+  await check('Admin riêng của HSTDN duyệt (qua CLI + API)', async () => {
+    const c2 = await browser.newContext(); const p2 = await c2.newPage();
+    await p2.goto(HST); await p2.locator('[data-ready="1"]').waitFor();
+    await p2.getByTestId('auth-mode').selectOption('register');
+    await p2.getByTestId('auth-email').fill(adminEmail); await p2.getByTestId('auth-password').fill('matkhau-e2e');
+    await p2.getByTestId('auth-name').fill('Quản Trị HSTDN'); await p2.getByTestId('auth-submit').click();
+    await p2.getByTestId('user-name').waitFor();
+    execFileSync('python3', ['-m', 'services.forum.admin', 'grant-admin', 'si-ai-hstdn', adminEmail], { cwd: ROOT, env: ENV });
+    const me = await (await page.request.get(base + '/api/auth/me')).json();
+    const r = await p2.request.post(`${base}/api/forums/si-ai-hstdn/members/${me.user.id}/approve`, { headers: { 'X-CFP-Forum': '1' } });
+    assert(r.status() === 200, 'approve ' + r.status());
+    const r2 = await p2.request.get(`${base}/api/forums/sieu-bo-doi/members`);
+    assert(r2.status() === 403, 'admin HSTDN lại có quyền ở Siêu Bộ Đôi: ' + r2.status());
+    await c2.close();
   });
 
-  await check('Đăng xuất → ẩn form đăng bài, dữ liệu vẫn còn sau tải lại', async () => {
-    await page.getByTestId('logout').click();
-    await page.reload();
-    await page.getByTestId('login-form').waitFor();
-    assert(await page.getByTestId('post-form').count() === 0);
-    assert(await page.getByTestId('comment-form').count() === 0);
-    assert(await page.getByTestId('post').count() === 1);
+  await check('SI AI • HSTDN: đăng bài phải có HSTDN → bình luận → tải lại còn', async () => {
+    await ready(HST);
+    await tid('post-form').waitFor();
+    await tid('post-title').fill(T_HST); await tid('post-body').fill('Nội dung HSTDN');
+    await tid('post-hstdn').fill('HSTDN Thử Nghiệm'); await tid('post-country').fill('6984');
+    await tid('post-submit').click();
+    const post = page.locator('[data-testid=post]', { hasText: T_HST });
+    await post.waitFor();
+    await post.getByTestId('comment-input').fill('Bình luận HSTDN');
+    await post.getByTestId('comment-submit').click();
+    await post.getByTestId('comment-body').filter({ hasText: 'Bình luận HSTDN' }).waitFor();
+    await ready(HST);
+    const p = page.locator('[data-testid=post]', { hasText: T_HST });
+    assert(await p.count() === 1);
+    assert((await p.getByTestId('post-hstdn-view').textContent()).includes('HSTDN Thử Nghiệm'));
   });
 
-  await check('Engine chặn đăng bài khi chưa đăng nhập (API)', async () => {
-    const msg = await page.evaluate(() => {
-      try { new CFPForum.Forum('sieu-bo-doi').createPost('a', 'b'); return 'no-error'; } catch (e) { return e.message; }
-    });
-    assert(msg.includes('đăng nhập'), msg);
+  await check('Hai diễn đàn không thấy bài của nhau', async () => {
+    await ready(HST);
+    assert(await page.locator('[data-testid=post]', { hasText: T_SBD }).count() === 0);
+    await ready(SBD);
+    assert(await page.locator('[data-testid=post]', { hasText: T_HST }).count() === 0);
   });
 
-  await check('Trang chỉ mục /forum/ liên kết tới cả hai diễn đàn', async () => {
-    await page.goto(base + '/forum/');
-    assert(await page.locator('a[href="/forum/sieu-bo-doi/"]').count() === 1);
-    assert(await page.locator('a[href="/forum/si-ai-hstdn/"]').count() === 1);
+  await check('Đăng xuất → khách vẫn đọc được Siêu Bộ Đôi nhưng không ghi được', async () => {
+    await tid('logout').click(); await tid('login-form').waitFor();
+    assert(await tid('comment-form').count() === 0);
+    const r = await page.request.post(`${base}/api/forums/sieu-bo-doi/posts`, { headers: { 'X-CFP-Forum': '1' }, data: { title: 'a', body: 'b' } });
+    assert(r.status() === 401, 'status ' + r.status());
   });
 
-  await check('Không có lỗi JavaScript trên trang', async () => {
-    assert(errors.length === 0, errors.join('; '));
-  });
+  await check('Không có lỗi JavaScript', async () => { assert(jsErrors.length === 0, jsErrors.join('; ')); });
 
   await browser.close();
-  srv.close();
+  await stopServer(server);
   console.log(`\nTỔNG: ${passed} PASS • ${failed} FAIL`);
   process.exit(failed ? 1 : 0);
 })().catch((e) => { console.error(e); process.exit(1); });
