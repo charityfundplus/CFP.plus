@@ -1,0 +1,29 @@
+# CFP+ Forum • SANDBOX ONLY • Render Free (HTTPS *.onrender.com, $0, không cần nâng cấp).
+# Kích hoạt: Render Dashboard → New → Blueprint → repo charityfundplus/CFP.plus,
+#   branch claude/gallant-carson-8uogxj, Blueprint path: services/forum/render.yaml
+# Secrets KHÔNG nằm trong repo: 3 URL database nhập tay trong Dashboard (sync: false).
+# Supabase từ Render: dùng Session Pooler (IPv4), user dạng <role>.<project_ref>, ví dụ
+#   postgresql+psycopg://forum_sbd_app.gmnsmggqvbwlgluvscfh:<MẬT_KHẨU>@aws-0-us-west-2.pooler.supabase.com:5432/postgres?sslmode=require
+services:
+  - type: web
+    name: cfp-forum-sandbox
+    runtime: python
+    plan: free
+    branch: claude/gallant-carson-8uogxj
+    autoDeploy: false
+    buildCommand: pip install -r services/forum/requirements.txt
+    startCommand: uvicorn services.forum.asgi:app --host 0.0.0.0 --port $PORT --proxy-headers --forwarded-allow-ips='*'
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.7"
+      - key: CFP_FORUM_TRUST_PROXY
+        value: "1"
+      - key: CFP_FORUM_COOKIE_SECURE
+        value: "1"
+      - key: CFP_FORUM_AUTH_DB
+        sync: false
+      - key: CFP_FORUM_DB_SIEU_BO_DOI
+        sync: false
+      - key: CFP_FORUM_DB_SI_AI_HSTDN
+        sync: false
