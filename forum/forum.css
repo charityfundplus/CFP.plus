@@ -1,0 +1,13 @@
+.forum-auth { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; padding: 1rem 0; }
+.forum-auth .button { width: auto; }
+.forum-form { display: grid; gap: .75rem; padding: 1.2rem; margin: 1rem 0; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); }
+.forum-form.compact { padding: .75rem; margin: .5rem 0 0; }
+.forum-form label { display: grid; gap: .3rem; font-weight: 700; }
+.forum-form input, .forum-form textarea { width: 100%; padding: .65rem .8rem; border: 1px solid var(--line); border-radius: 12px; font: inherit; background: #fff; color: var(--ink); }
+.forum-msg { min-height: 1.4em; margin: .25rem 0; color: var(--accent); font-weight: 700; }
+.forum-msg.error { color: #b42318; }
+.forum-post { margin-top: 1rem; }
+.forum-meta { margin: 0; color: var(--muted); font-size: .9rem; }
+.forum-body { white-space: pre-wrap; overflow-wrap: anywhere; }
+.forum-comments { margin: 0; padding-left: 1.2rem; display: grid; gap: .5rem; }
+.forum-note { padding: .9rem 1rem; border-left: 4px solid var(--accent); background: var(--surface); border-radius: 8px; }
