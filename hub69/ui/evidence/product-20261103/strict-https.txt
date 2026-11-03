@@ -1,0 +1,8 @@
+test_certificate_verification_and_hostname_are_required (integration.test_local_tls.StrictLocalTLSTests.test_certificate_verification_and_hostname_are_required) ... ok
+test_https_forum_recipient_ack_evidence_and_origin_boundaries (integration.test_local_tls.StrictLocalTLSTests.test_https_forum_recipient_ack_evidence_and_origin_boundaries) ... ok
+test_https_login_registry_roles_write_sync_and_verified_restore (integration.test_local_tls.StrictLocalTLSTests.test_https_login_registry_roles_write_sync_and_verified_restore) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 4.359s
+
+OK

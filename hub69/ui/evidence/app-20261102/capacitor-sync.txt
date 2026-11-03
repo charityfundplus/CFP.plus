@@ -1,0 +1,15 @@
+✔ Copying web assets from app-dist to android/app/src/main/assets/public in 19.08ms
+✔ Creating capacitor.config.json in android/app/src/main/assets in 5.02ms
+✔ copy android in 42.08ms
+✔ Updating Android plugins in 1.16ms
+✔ update android in 65.13ms
+✔ Copying web assets from app-dist to ios/App/App/public in 11.32ms
+✔ Creating capacitor.config.json in ios/App/App in 765.76μs
+✔ copy ios in 31.77ms
+✔ Updating iOS plugins in 17.02ms
+[info] All Capacitor plugins have a Package.swift file and will be included in Package.swift
+[info] Writing Package.swift
+✔ update ios in 67.24ms
+✔ copy web in 6.08ms
+✔ update web in 9.15ms
+[info] Sync finished in 0.266s

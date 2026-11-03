@@ -1,0 +1,29 @@
+{
+  "observedOn": "2026-10-23",
+  "observations": [
+    {
+      "url": "https://cfp.plus/",
+      "title": "CFP+ • Only Plus+ For Life",
+      "status": 200,
+      "scrapeId": "01a16771-2746-733d-a039-27dcf0c99a5e",
+      "method": "Firecrawl live retrieval (maxAge 0), read-only",
+      "acceptance": "Page retrieval only; not deployed-revision/device/backend acceptance"
+    },
+    {
+      "url": "https://cfp.plus/69",
+      "title": "69 • HUB 69 • Cổng Duy Nhất CFP+",
+      "status": 200,
+      "scrapeId": "01a16771-2755-73f3-8001-cd8ea5421746",
+      "method": "Firecrawl live retrieval (maxAge 0), read-only",
+      "acceptance": "Page retrieval only; not deployed-revision/device/backend acceptance"
+    },
+    {
+      "url": "https://cfp.plus/8682",
+      "title": "8682 • CFP+ Global Trade • Thương Mại Toàn Cầu",
+      "status": 200,
+      "scrapeId": "01a16771-27f5-72c8-b5bf-3975ee720ce9",
+      "method": "Firecrawl live retrieval (maxAge 0), read-only",
+      "acceptance": "Page retrieval only; not deployed-revision/device/backend acceptance"
+    }
+  ]
+}

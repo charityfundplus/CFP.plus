@@ -1,0 +1,26 @@
+[
+  {
+    "url": "https://canva.link/nkzsml955cov73v",
+    "exit": 56,
+    "result": "000 https://canva.link/nkzsml955cov73v",
+    "error": "curl: (56) CONNECT tunnel failed, response 403\n"
+  },
+  {
+    "url": "https://canva.link/website-nghien-cuu-spacex",
+    "exit": 56,
+    "result": "000 https://canva.link/website-nghien-cuu-spacex",
+    "error": "curl: (56) CONNECT tunnel failed, response 403\n"
+  },
+  {
+    "url": "https://cfp.plus/69",
+    "exit": 56,
+    "result": "000 https://cfp.plus/69",
+    "error": "curl: (56) CONNECT tunnel failed, response 403\n"
+  },
+  {
+    "url": "https://github.com/charityfundplus/CFP.plus/issues/174",
+    "exit": 0,
+    "result": "200 https://github.com/charityfundplus/CFP.plus/issues/174",
+    "error": ""
+  }
+]

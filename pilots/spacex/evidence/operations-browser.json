@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "scope": "Real local HTTP + SQLite; Chromium mobile emulation, not physical Safari; synthetic test records only",
+  "checks": [
+    "Five canonical groups, ten existing chapter links, seven external connectors labelled BLOCKED",
+    "UI writes an actual SQLite record and durable outbox; title displayed safely as text",
+    "Authenticated API readback after page reload preserves exact record",
+    "UI sync moves the outbox to actual local replica; content and digests agree",
+    "Browser disconnect removes online claim and disables writes; reconnection verifies state without duplicates",
+    "No horizontal overflow at 320, 390 and 1440px; mobile screenshot recorded",
+    "Independent viewer context reads without write controls; foreign workspace cannot see source records",
+    "Admin UI backup/restore creates a separate SQLite file whose actual content matches the saved record",
+    "Logout revokes session; no browser page errors"
+  ],
+  "page_errors": [],
+  "record_key": "dec86e59-cfb1-49a9-b4b1-18249bf1938a",
+  "content_hash": "ce2b6d21564e8ec8218f0b911b0fbff97ea85cb9a8121c99472afeef0a41afc5",
+  "source_digest": "f418b21c5bb62ac5f8bdb3ff81e2b98c57cbe537ab8dddcefc31e8bf7fb13567",
+  "replica_digest": "f418b21c5bb62ac5f8bdb3ff81e2b98c57cbe537ab8dddcefc31e8bf7fb13567",
+  "external_sync": "BLOCKED",
+  "physical_phone": "NOT RUN"
+}

@@ -1,0 +1,9 @@
+{
+  "appId": "plus.cfp.app",
+  "appName": "CFP+",
+  "webDir": "app-dist",
+  "bundledWebRuntime": false,
+  "server": {
+    "cleartext": false
+  }
+}

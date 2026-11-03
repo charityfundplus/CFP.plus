@@ -1,0 +1,63 @@
+[
+  {
+    "name": "canva",
+    "status": 200,
+    "url": "https://www.canva.com/design/DAHZzR3gzHM/JAdNZQbrC1G8Su5ri1fAgw/view",
+    "title": "Prototype ứng dụng CFP+",
+    "visible_text": "",
+    "failed_requests": [
+      {
+        "host": "static.canva.com",
+        "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+      },
+      {
+        "host": "static.canva.com",
+        "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+      },
+      {
+        "host": "static.canva.com",
+        "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+      },
+      {
+        "host": "static.canva.com",
+        "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+      },
+      {
+        "host": "static.canva.com",
+        "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+      },
+      {
+        "host": "static.canva.com",
+        "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+      },
+      {
+        "host": "static.cloudflareinsights.com",
+        "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+      },
+      {
+        "host": "static.canva.com",
+        "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+      },
+      {
+        "host": "static.canva.com",
+        "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+      },
+      {
+        "host": "static.canva.com",
+        "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+      },
+      {
+        "host": "static.canva.com",
+        "failure": "net::ERR_TUNNEL_CONNECTION_FAILED"
+      }
+    ]
+  },
+  {
+    "name": "public-hub",
+    "status": 200,
+    "url": "https://cfp.plus/69",
+    "title": "69 • HUB 69 • Cổng Duy Nhất CFP+",
+    "visible_text": "CFP+\nGiới Thiệu\n10 Chương\nAI 🤖\nCTTTC\nReview\n\nID 69 • HUB 69\n\nHUB 69 • Cổng Duy Nhất CFP+\n\nTìm Hiểu • Học Hỏi • Tham Gia • Cộng Tác • Đồng Hành\n\nHUB 69 là trang tổng hợp trung tâm của CFP+. Từ đây người đọc và AI 🤖 đi vào 5 Nhóm, 10 Chương, Cổng Tri Thức Toàn Cầu, Global AI Directory và các hồ sơ có Stable ID riêng.\n\nMở 5 Nhóm • 10 Chương\nMở CTTTC\n5 Nhóm\n000\nNhóm 000\nGiới Thiệu • Nền Tảng • Giá Trị CFP+\n0\nNhóm 0\nChương 0 • Nền Tảng\n135\nNhóm 135\nChương 1 • Sự Sống • Chương 3 • Bộ Tam và Ba Quỹ • Chương 5 • Bộ Ngũ và Cộng Đồng\n246\nNhóm 246\nChương 2 • Con Người • Chương 4 • Tôn Giáo và Tín Ngưỡng • Chương 6 • AI\n789\nNhóm 789\nChương 7 • Doanh Nghiệp • Chương 8 • Các Tổ Chức và Các Quỹ • Chương 9 • Quốc Gia và Vùng Lãnh Thổ\n10 Chương\n0\nNền Tảng\n1\nSự Sống\n2\nCon Người\n3\nBộ Tam và Ba Quỹ\n4\nTôn Giáo và Tín Ngưỡng\n5\nBộ Ngũ và Cộng Đồng\n6\nAI\n7\nDoanh Nghiệp\n8\nCác Tổ Chức và Các Quỹ\n9\nQuốc Gia và Vùng Lãnh Thổ\nGlobal AI Directory • Trạng Thái Hiện Tại\n\nCFP+ đang xây dựng và chuẩn hóa danh mục AI toàn cầu theo Quốc Gia → Developer → AI 🤖.\n\nGlobal AI Directory hiện là lớp danh mục • nhận diện • điều phối đang hoàn thiện. Việc có 🆔 hoặc Link CFP+ không có nghĩa đã có tích hợp kỹ thuật, ủy quyền, hợp tác hoặc kết nối vận hành với AI hay Developer được liệt kê.\n\nĐÃ CÓ CẤU TRÚC/ID/LINK\nĐã có lớp nhận diện và route CFP+.\nĐANG BỔ SUNG/REVIEW\nChưa đủ nguồn, Parent, hồ sơ hoặc Evidence.\nĐÃ CÓ EVIDENCE/HOÀN TẤT\nChỉ áp dụng đúng hồ sơ và đúng phạm vi đã kiểm chứng.\n\nChỉ tính AI Active hoặc Contributing khi có Output và Evidence phù hợp. CLAIM hoặc ACK không thay thế Evidence.\n\nCountry level chỉ được",
+    "failed_requests": []
+  }
+]

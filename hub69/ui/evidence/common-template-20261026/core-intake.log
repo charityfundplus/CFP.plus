@@ -1,0 +1,14 @@
+✔ universal declarations preserve conflicts, unresolved countries and all locked fields; duplicate normalization (442.278451ms)
+✔ contact/evidence/consent validation, identity injection and viewer/foreign scope denial (526.902615ms)
+✔ advanced enrollment, marketing, work intake and HSTDN/catalog persist without execution/publication/authority (746.707706ms)
+✔ HTTP exposes read-only curriculum and protects application writes and HTTPS origin (615.249317ms)
+✔ amendments append without altering prior declaration or audit; stale and foreign amendments denied (415.492482ms)
+✔ named reachable-channel declaration can start before country/developer evidence exists (401.116235ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3156.148614

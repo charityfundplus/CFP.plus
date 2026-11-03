@@ -1,0 +1,50 @@
+test_audit_failure_rolls_back_import (test_pilot.PilotTests.test_audit_failure_rolls_back_import) ... ok
+test_audit_idempotency (test_pilot.PilotTests.test_audit_idempotency) ... ok
+test_duplicate (test_pilot.PilotTests.test_duplicate) ... ok
+test_idempotency (test_pilot.PilotTests.test_idempotency) ... ok
+test_import_readback_ui_and_source_unchanged (test_pilot.PilotTests.test_import_readback_ui_and_source_unchanged) ... ok
+test_kill_switch_before_io (test_pilot.PilotTests.test_kill_switch_before_io) ... ok
+test_missing_identifier (test_pilot.PilotTests.test_missing_identifier) ... ok
+test_schema_version_rejected_before_io (test_pilot.PilotTests.test_schema_version_rejected_before_io) ... ok
+test_source_tampering (test_pilot.PilotTests.test_source_tampering) ... ok
+test_symlink (test_pilot.PilotTests.test_symlink) ... ok
+test_validation (test_pilot.PilotTests.test_validation) ... ok
+test_writeback_before_io (test_pilot.PilotTests.test_writeback_before_io) ... ok
+test_audit_tampering_detected (test_operations.OperationsTests.test_audit_tampering_detected) ... ok
+test_backup_restores_actual_new_sqlite_and_workspace_isolation (test_operations.OperationsTests.test_backup_restores_actual_new_sqlite_and_workspace_isolation) ... ok
+test_corrupt_backup_and_rewritten_manifest_fail_closed (test_operations.OperationsTests.test_corrupt_backup_and_rewritten_manifest_fail_closed) ... ok
+test_deleted_source_record_detected (test_operations.OperationsTests.test_deleted_source_record_detected) ... ok
+test_http_auth_origin_host_limits_and_static_ui (test_operations.OperationsTests.test_http_auth_origin_host_limits_and_static_ui) ... ok
+test_idempotency_conflict_and_group_validation (test_operations.OperationsTests.test_idempotency_conflict_and_group_validation) ... ok
+test_malformed_persisted_record_audit_and_replica_are_integrity_failures (test_operations.OperationsTests.test_malformed_persisted_record_audit_and_replica_are_integrity_failures) ... ok
+test_permissions_workspace_sessions_expiry (test_operations.OperationsTests.test_permissions_workspace_sessions_expiry) ... ok
+test_read_write_restart_independent_session_and_mapping (test_operations.OperationsTests.test_read_write_restart_independent_session_and_mapping) ... ok
+test_replica_conflict_preserves_both_versions (test_operations.OperationsTests.test_replica_conflict_preserves_both_versions) ... ok
+test_replication_real_offline_retry_durable_outbox (test_operations.OperationsTests.test_replication_real_offline_retry_durable_outbox) ... ok
+test_01_read_write_reload_independent_session_and_idempotency (test_operations_http.IndependentHTTPTests.test_01_read_write_reload_independent_session_and_idempotency) ... ok
+test_02_five_groups_ten_chapters_and_blocked_external_connectors (test_operations_http.IndependentHTTPTests.test_02_five_groups_ten_chapters_and_blocked_external_connectors) ... ok
+test_03_outage_survives_restart_then_catchup_without_duplicates (test_operations_http.IndependentHTTPTests.test_03_outage_survives_restart_then_catchup_without_duplicates) ... ok
+test_04_backup_restore_actual_file_readback_and_cross_workspace_denial (test_operations_http.IndependentHTTPTests.test_04_backup_restore_actual_file_readback_and_cross_workspace_denial) ... ok
+test_05_permission_origin_session_and_path_boundaries (test_operations_http.IndependentHTTPTests.test_05_permission_origin_session_and_path_boundaries) ... ok
+test_06_source_tampering_fails_closed_over_http (test_operations_http.IndependentHTTPTests.test_06_source_tampering_fails_closed_over_http) ... ok
+test_existing_operations_share_auth_and_storage (test_app_bridge.AppBridgeTests.test_existing_operations_share_auth_and_storage) ... ok
+test_mount_allowlist_mime_manifest_and_sameorigin_frames (test_app_bridge.AppBridgeTests.test_mount_allowlist_mime_manifest_and_sameorigin_frames) ... ok
+test_mount_rejects_traversal_unknown_symlink_missing_build (test_app_bridge.AppBridgeTests.test_mount_rejects_traversal_unknown_symlink_missing_build) ... ok
+test_registry_exact_pin_projection_source_unchanged_no_extra_database (test_app_bridge.AppBridgeTests.test_registry_exact_pin_projection_source_unchanged_no_extra_database) ... ok
+test_registry_missing_source_fails_closed (test_app_bridge.AppBridgeTests.test_registry_missing_source_fails_closed) ... ok
+test_registry_pin_mismatch_fails_closed_no_snapshot_fallback (test_app_bridge.AppBridgeTests.test_registry_pin_mismatch_fails_closed_no_snapshot_fallback) ... ok
+test_registry_requires_current_shared_session (test_app_bridge.AppBridgeTests.test_registry_requires_current_shared_session) ... ok
+test_actual_http_full_flow_shared_session_and_no_new_database (test_forum.ForumTests.test_actual_http_full_flow_shared_session_and_no_new_database) ... ok
+test_author_cannot_impersonate_assigned_recipient_or_self_promote (test_forum.ForumTests.test_author_cannot_impersonate_assigned_recipient_or_self_promote) ... ok
+test_backup_contains_forum_evidence_cross_workspace_denied (test_forum.ForumTests.test_backup_contains_forum_evidence_cross_workspace_denied) ... ok
+test_evidence_bounds_plaintext_and_filename_labels (test_forum.ForumTests.test_evidence_bounds_plaintext_and_filename_labels) ... ok
+test_full_task_ack_reply_evidence_readback_restart_and_actual_restore (test_forum.ForumTests.test_full_task_ack_reply_evidence_readback_restart_and_actual_restore) ... ok
+test_idempotency_and_immutable_append_only_posts (test_forum.ForumTests.test_idempotency_and_immutable_append_only_posts) ... ok
+test_tampered_evidence_and_failed_audit_commit_roll_back (test_forum.ForumTests.test_tampered_evidence_and_failed_audit_commit_roll_back) ... ok
+test_tampered_forum_payload_and_missing_rows_detected (test_forum.ForumTests.test_tampered_forum_payload_and_missing_rows_detected) ... ok
+test_viewer_write_denial_foreign_workspace_and_recipient_no_disclosure (test_forum.ForumTests.test_viewer_write_denial_foreign_workspace_and_recipient_no_disclosure) ... ok
+
+----------------------------------------------------------------------
+Ran 45 tests in 26.358s
+
+OK

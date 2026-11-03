@@ -1,0 +1,81 @@
+{
+  "observed_utc": "2026-11-02T22:03:13.600981+00:00",
+  "branch": "codex2/p0-app-integration-20261102",
+  "tested_source_commit": "237e05d16e5f7beaf0ee6e6a825d2c96a6013f25",
+  "reused_pwa_commit": "94261742b76f6550e7bcb9f8fa4d02b76548bcae",
+  "results": {
+    "pwa_unit": {
+      "passed": 105,
+      "failed": 0
+    },
+    "backend_http_forum": {
+      "passed": 45,
+      "failed": 0
+    },
+    "browser": {
+      "passed": true,
+      "functional_groups": 8,
+      "page_errors": 0,
+      "engine": "Chromium",
+      "viewports": [
+        320,
+        390,
+        768,
+        1440
+      ]
+    },
+    "android_debug_build": "PASS",
+    "apk_v2_signature": "PASS",
+    "native_backend_configured": false,
+    "physical_phone_tested": false,
+    "ios_binary": "BLOCKED_XCODE_MACOS_SIGNING",
+    "canva_exact_design_reuse": "BLOCKED_PROXY_CONNECT403",
+    "external_sync_connectors": "BLOCKED",
+    "forum_notifications": "IN_APP_ONLY_NOT_PUSH",
+    "forum_evidence": "UTF8_TEXT_MAX32768_BYTES",
+    "forum_replica_sync": "NOT_IMPLEMENTED; shared source and backup verified",
+    "production_acceptance": "HUMAN_GOVERNANCE_ONLY"
+  },
+  "artifacts": {
+    "CFPplus-android-debug.apk": {
+      "path": "/workspace/artifacts/CFPplus-android-debug.apk",
+      "bytes": 4201256,
+      "sha256": "a0f33f9590c61af8ec5184d8fb2829d1e783158e4dfbce86027b185db2086d09"
+    },
+    "CFPplus-review.zip": {
+      "path": "/workspace/artifacts/CFPplus-review.zip",
+      "bytes": 606139,
+      "sha256": "21812717a9f00cf2c8f1b8e2c90fccafd19e6b852b1dd3f7c453dbded9d56f31"
+    }
+  },
+  "source_sha256": {
+    "pilots/spacex/operations.py": "4cee04da4a794feaec9e236dcdd67c7e21e13b9ab072fc1ad43a13814960abc3",
+    "pilots/spacex/operations_server.py": "62259a699fb6e28432f0d0a3c4a3b9cede8bb2c08fa281f849e683765d21ee02",
+    "pilots/spacex/ui/operations.js": "8bdc81c8c61aac899ec30bec5a30724e93c479677a5313e7ad9ae3d032eb1db1",
+    "registry/ai-entity-registry.json": "a63c5e0b8af157b0938014d51da94ea924b9721acd0a11a9107f5deea3c6f507",
+    "hub69/ui/build.mjs": "299d0e743c99df1c608558bdb53c4c394b16f377f58b23519dc6bccb7b2f4e07",
+    "hub69/ui/public/app.js": "8b994a6b92d6094e95606d9087d3cb5ecf2e2092afd7419ffc654c0bbabfe0f6",
+    "hub69/ui/public/forum.js": "d50cedc597d89d60d9cfd8af68f094f6d6ccfbc325c46f0cfba5a1126d17d9c9",
+    "hub69/ui/public/app-integration.js": "781e09aa6fdd7de243560c5accebce90af61dc301b0af33be9480c550cacb914",
+    "hub69/ui/public/index.html": "e94c38d6da1df640cc1ffcd32cff7d125c1b3fd2794bcea0a7233ae030360e10",
+    "hub69/ui/capacitor.config.json": "86d4fc60031880d49ee8afc494f9e9cabfd326904944fdd91e615d3835883396",
+    "hub69/ui/package-lock.json": "d255dc7b15ab50596ec53399c12825086062de964fd47564542ef8f55ee151c2"
+  },
+  "evidence_sha256": {
+    "pwa-tests.txt": "3604c08a3c21a9d80d576c9261e0be36c59003e97d21c74efa4de5f6d70f7259",
+    "backend-tests.txt": "85907b630af5ee8e99fc235be5421149fdbc91d04a8f35f5072ad365d161628b",
+    "app-browser.json": "7c2f6922720aba66c779c3459feca898d938488fd79bdd8bc4f39541fb7a6658",
+    "app-mobile.png": "aeee8279c37ba71555e3128ff9bcdc5bb10f2b1135455cd6be0f28845a92db2c",
+    "app-id-mobile.png": "6f5f48a09f51640f5d89d5033c8df17e8dc0c87b44856003f729e702f477fc1e",
+    "app-forum-mobile.png": "bb74388973a6892641dce63310687206b3b42748075ee411e6b494c57d8cf5ef",
+    "url-results.json": "18a300f2908252f08b03135875ea2098eda4ac1787ef694efc65fd0a8df418c5",
+    "capacitor-sync.txt": "ec2b6c927c120958ea66dfd82fe99bd1d4cecc4982a1aa414134aa1579d12522",
+    "capacitor-doctor.txt": "4f4955da4bae59773e1a9169e7f0b2a5eda2a85fc1ede16f55b5dff2cde6accb",
+    "android-build.txt": "50c74f41b13577c9419265b91ad50895953ead4e0e4f473721a99981c2f00362",
+    "android-apk-metadata.json": "98aa01a52d4df702282f57ad726c97106d7d06fa66ad5fe2ad64c5750a0f88bc",
+    "android-apk-signature.txt": "0c5205e3227f0751bbe8bfdf85eb737d4bb95d8ca152b2aaa7df6c1c079cf935",
+    "android-apk-badging.txt": "6bd5253a66b4e813305ca144c2302c0f2ea3a479bc4fffa9896abba38751b5fc",
+    "review-bundle.json": "bc9da8a7a397a750a202c29882bb6949f83082bf4a757a8342c6b79ea8f50f34",
+    "npm-ci.txt": "34cfcd64b8757f8dc0d7a2bf0f1af0cf7acc5d7cfa1d42c7f614f3df23632827"
+  }
+}

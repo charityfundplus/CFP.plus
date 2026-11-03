@@ -1,0 +1,5 @@
+[PASS] Chinese punctuation normalization: expected=SIMILARITY_REVIEW got=SIMILARITY_REVIEW
+[PASS] Japanese content preserved and domain separates scope: expected=DISTINCT_EVENT got=DISTINCT_EVENT
+[PASS] Korean content preserved: expected=SIMILARITY_REVIEW got=SIMILARITY_REVIEW
+[PASS] different CJK text must not collapse to empty normalization: expected=DISTINCT_EVENT got=DISTINCT_EVENT
+Unicode duplicate regression failed: 0

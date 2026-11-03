@@ -1,0 +1,122 @@
+{
+  "observedAt": "2026-10-26 21:58:36 UTC",
+  "actor": "Current Codex session; no assertion of external Codex 2, ReviewSI, SecuritySI or CMP ACK",
+  "notion": [
+    {
+      "id": "3cccaac9-a557-812f-8b75-ffd4ad10f276",
+      "url": "https://app.notion.com/p/3cccaac9a557812f8b75ffd4ad10f276?pvs=204",
+      "title": "🔷 🔷 HUB 69 — MẪU CHUNG HỆ THỐNG",
+      "verification": {
+        "state": "unverified"
+      },
+      "lastEdited": "2026-10-22T23:54:28.213Z",
+      "scope": "Read only; content is documentary evidence, not runtime acceptance"
+    },
+    {
+      "id": "3b9caac9-a557-8153-8005-c5d1d863d43b",
+      "url": "https://app.notion.com/p/3b9caac9a55781538005c5d1d863d43b?pvs=204",
+      "title": "🌐 HUB 69 • AI 🤖 • Chuẩn hiện hành",
+      "verification": {
+        "state": "unverified"
+      },
+      "lastEdited": "2026-10-15T13:49:13.832Z",
+      "scope": "Read only; content is documentary evidence, not runtime acceptance"
+    },
+    {
+      "id": "401caac9a557819e885fd962f56ee47c",
+      "url": "https://app.notion.com/p/401caac9a557819e885fd962f56ee47c?pvs=204",
+      "title": "🤖 CFP+ • HUB 69 • Link Mẫu Chung SI🤖AI🤖 + Siêu Phần Mềm • Áp Dụng Ngay",
+      "verification": {
+        "state": "unverified"
+      },
+      "lastEdited": "2026-10-22T23:54:27.562Z",
+      "scope": "Read only; content is documentary evidence, not runtime acceptance"
+    }
+  ],
+  "web": [
+    {
+      "url": "https://cfp.plus/69",
+      "status": 200,
+      "scrapeId": "01a17a30-6d2c-72fc-9c18-20c7c4a5232a",
+      "scope": "Content retrieval only, no deployment provenance or browser acceptance"
+    },
+    {
+      "url": "https://sites.google.com/cfp.plus/hub69",
+      "status": 200,
+      "scrapeId": "01a17a35-7eaa-76de-811f-ebf4dafcf0c9",
+      "scope": "Content retrieval only, no deployment provenance or browser acceptance"
+    }
+  ],
+  "pullRequests": [
+    {
+      "number": 157,
+      "url": "https://github.com/charityfundplus/CFP.plus/pull/157",
+      "head": "codex/issue156-openapi-readonly",
+      "headSHA": "383ffcf5fa3a229d442393a86fa189e52bc09289",
+      "baseSHA": "06f386b1ba52358779cec6bc26c2d88f6a33664a",
+      "draft": true,
+      "scope": "Metadata read. #172 full checkout inspected; #179 full checkout and targeted tests run. Others reuse candidates, not full audit."
+    },
+    {
+      "number": 164,
+      "url": "https://github.com/charityfundplus/CFP.plus/pull/164",
+      "head": "codex2/issue156-shared-design",
+      "headSHA": "a1f888d4308636fde979e9a678ed8e15d0c69800",
+      "baseSHA": "07f317888d2fac98da2a912329aaa86b170053e7",
+      "draft": true,
+      "scope": "Metadata read. #172 full checkout inspected; #179 full checkout and targeted tests run. Others reuse candidates, not full audit."
+    },
+    {
+      "number": 172,
+      "url": "https://github.com/charityfundplus/CFP.plus/pull/172",
+      "head": "codex2/p0-pwa-sandbox",
+      "headSHA": "bb88e54a7c80669e05af8183490a76d6f827ea26",
+      "baseSHA": "a1f888d4308636fde979e9a678ed8e15d0c69800",
+      "draft": true,
+      "scope": "Metadata read. #172 full checkout inspected; #179 full checkout and targeted tests run. Others reuse candidates, not full audit."
+    },
+    {
+      "number": 173,
+      "url": "https://github.com/charityfundplus/CFP.plus/pull/173",
+      "head": "codex1/issue154-commerce-read",
+      "headSHA": "3dc69aff7927a6538152d472cd4e3f74dc337be5",
+      "baseSHA": "06f386b1ba52358779cec6bc26c2d88f6a33664a",
+      "draft": true,
+      "scope": "Metadata read. #172 full checkout inspected; #179 full checkout and targeted tests run. Others reuse candidates, not full audit."
+    },
+    {
+      "number": 179,
+      "url": "https://github.com/charityfundplus/CFP.plus/pull/179",
+      "head": "codex1/p0-forum-foundation-audit-20261026",
+      "headSHA": "73e705edbe69e82a62791ec1e56072f990c011d5",
+      "baseSHA": "e994ea884fdf7a06ca5efe20674b96a0d51e24f8",
+      "draft": true,
+      "scope": "Metadata read. #172 full checkout inspected; #179 full checkout and targeted tests run. Others reuse candidates, not full audit."
+    }
+  ],
+  "licenses": [
+    {
+      "url": "https://raw.githubusercontent.com/discourse/discourse/main/LICENSE.txt",
+      "status": 200,
+      "scrapeId": "01a17a36-59e4-71bc-8fad-f8eb4253a900",
+      "firstLines": "                    GNU GENERAL PUBLIC LICENSE\n                       Version 2, June 1991\n\n Copyright (C) 1989, 1991 Free Software Foundation, Inc.,\n 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA\n Everyone is permitted to copy and distr"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/NodeBB/NodeBB/master/LICENSE",
+      "status": 200,
+      "scrapeId": "01a17a36-5a6e-7239-89e0-f8a415feb407",
+      "firstLines": "                    GNU GENERAL PUBLIC LICENSE\n                       Version 3, 29 June 2007\n\n Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>\n Everyone is permitted to copy and distribute verbatim copies\n of this license documen"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/flarum/framework/2.x/LICENSE.md",
+      "status": 200,
+      "scrapeId": "01a17a38-93d0-70c1-b339-d5aed148546d",
+      "firstLines": "The MIT License (MIT)\n\nCopyright (c) 2019-2024 Stichting Flarum (Flarum Foundation)\nCopyright (c) 2014-2019 Toby Zerner (toby.zerner@gmail.com)\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associa"
+    }
+  ],
+  "limits": [
+    "Flarum main/LICENSE, framework main/LICENSE and 1.x/LICENSE returned 404; resolved 2.x/LICENSE.md returned MIT.",
+    "No forum engine installed; SSO/integration/security/dependency review not completed.",
+    "No production mutations or independent acceptance."
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "status": "BUILD_AND_SIGNATURE_PASS",
+  "scope": "DEBUG review APK with current Social/Manual assets; native backend URL remains intentionally unconfigured; external staging absent/unapproved; no physical device acceptance",
+  "observed_utc": "2026-11-03T18:23:34.030354+00:00",
+  "source_commit": "efa066e54efa53276c75490b7edf67996500ab87",
+  "branch": "codex/product-social-20261103",
+  "artifact": "/workspace/cfp-product-qa/CFP-plus-debug.apk",
+  "sha256": "a04e2fee552af919d52a88f3a3d0805cad7f8cd1074a1bd318c8cb25f30a2203",
+  "size_bytes": 4217045,
+  "app_id": "plus.cfp.app",
+  "capacitor": "8.6.0",
+  "gradle": "8.14.3",
+  "jdk": "Temurin21.0.13+9",
+  "compile_target_sdk": 36,
+  "minimum_sdk": 24,
+  "apk_signature_scheme_v2": true,
+  "api_endpoint_configured": false,
+  "external_staging_approved": false,
+  "physical_device_tested": false,
+  "asset_sha256": {
+    "app.js": "9fc3fb36a00672ceecf6153b2b3fbe42dfdda66f3f827f5b9b9bf3afe1e49121",
+    "forum.js": "72d155aecffff9ac878382216873ad9450454ade91e92343e372231292d5ac1e",
+    "app-integration.js": "3367a01ba50b052a6b07565349839846eb2a2c44d025707913ec469bfbf65f81",
+    "social.js": "4af423ed9e68965310434bd18e9b75201e62d8b611788c6a8274cf48fd9c21c9",
+    "manual-intake.js": "d24706491d254c55d6f10115fd23abe253038ca064a3b8466695585a371a9512",
+    "index.html": "9c074b6e2a73c73694b66bdbef8a16178fe6fea233a6ec918eb9dbf17f6b2ff8",
+    "THIRD_PARTY_NOTICES.txt": "56f15c672b94953b858b15be9c19843684a3add772c9ebdd4b95c0e1e8f34842"
+  },
+  "license_asset": "THIRD_PARTY_NOTICES.txt",
+  "helper": "/workspace/.cfp-env/build-cfp-android.sh"
+}

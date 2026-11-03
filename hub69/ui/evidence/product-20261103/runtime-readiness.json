@@ -1,0 +1,8 @@
+{
+  "website_http": 200,
+  "app_http": 200,
+  "anonymous_social": 401,
+  "worker_api": 200,
+  "worker_heartbeat_fresh": true,
+  "scope": "Retained local sandbox, not a public Preview URL"
+}

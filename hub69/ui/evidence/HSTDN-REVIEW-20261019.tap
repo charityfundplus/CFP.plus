@@ -1,0 +1,448 @@
+TAP version 13
+# Subtest: application initializes all seven views and navigation state without missing controls
+ok 1 - application initializes all seven views and navigation state without missing controls
+  ---
+  duration_ms: 16.082991
+  type: 'test'
+  ...
+# Subtest: lookup submission preserves leading zeroes and rejects nonnumeric input
+ok 2 - lookup submission preserves leading zeroes and rejects nonnumeric input
+  ---
+  duration_ms: 3.035275
+  type: 'test'
+  ...
+# Subtest: source ID profile opens with correct Parent and returning to directory works
+ok 3 - source ID profile opens with correct Parent and returning to directory works
+  ---
+  duration_ms: 4.085703
+  type: 'test'
+  ...
+# Subtest: saved item action works with unavailable local storage and reports session-only persistence
+ok 4 - saved item action works with unavailable local storage and reports session-only persistence
+  ---
+  duration_ms: 9.015889
+  type: 'test'
+  ...
+# Subtest: template type selection updates project fields and returns focus to control
+ok 5 - template type selection updates project fields and returns focus to control
+  ---
+  duration_ms: 1.875657
+  type: 'test'
+  ...
+# Subtest: copy failure leaves a clear message and skip navigation keeps the current route
+ok 6 - copy failure leaves a clear message and skip navigation keeps the current route
+  ---
+  duration_ms: 2.231904
+  type: 'test'
+  ...
+# Subtest: HSTDN review deep links cover seven subjects and three contexts without accepting Registry IDs
+ok 7 - HSTDN review deep links cover seven subjects and three contexts without accepting Registry IDs
+  ---
+  duration_ms: 12.588683
+  type: 'test'
+  ...
+# Subtest: one presenter renders field source, date, excerpt, status and next verification for all contexts
+ok 8 - one presenter renders field source, date, excerpt, status and next verification for all contexts
+  ---
+  duration_ms: 25.82907
+  type: 'test'
+  ...
+# Subtest: Vietnam reported legal name and license do not migrate to US or global contexts
+ok 9 - Vietnam reported legal name and license do not migrate to US or global contexts
+  ---
+  duration_ms: 2.149139
+  type: 'test'
+  ...
+# Subtest: source-reported VERIFIED, booleans, URLs and claimed receipts cannot grant verification
+ok 10 - source-reported VERIFIED, booleans, URLs and claimed receipts cannot grant verification
+  ---
+  duration_ms: 1.607132
+  type: 'test'
+  ...
+# Subtest: subject and country controls retain the selected context and return valid routes
+ok 11 - subject and country controls retain the selected context and return valid routes
+  ---
+  duration_ms: 3.002876
+  type: 'test'
+  ...
+# Subtest: all new model navigation destinations resolve and contain no placeholder or unsafe external links
+ok 12 - all new model navigation destinations resolve and contain no placeholder or unsafe external links
+  ---
+  duration_ms: 6.975143
+  type: 'test'
+  ...
+# Subtest: legal entity, brand, product and Registry Parent remain separate with no inferred identity binding
+ok 13 - legal entity, brand, product and Registry Parent remain separate with no inferred identity binding
+  ---
+  duration_ms: 11.296696
+  type: 'test'
+  ...
+# Subtest: ownership, clinical, Optimus and alias gaps stay blocked at the affected field only
+ok 14 - ownership, clinical, Optimus and alias gaps stay blocked at the affected field only
+  ---
+  duration_ms: 3.470982
+  type: 'test'
+  ...
+# Subtest: API proposal is text only and source fields escape injected markup and unsafe URLs
+ok 15 - API proposal is text only and source fields escape injected markup and unsafe URLs
+  ---
+  duration_ms: 1.82488
+  type: 'test'
+  ...
+# Subtest: review module has the same bytes in offline and Core builds with no new network or storage path
+ok 16 - review module has the same bytes in offline and Core builds with no new network or storage path
+  ---
+  duration_ms: 3.526535
+  type: 'test'
+  ...
+# Subtest: research notes stay outside Registry profiles and cannot become a fallback after Core authentication failure
+ok 17 - research notes stay outside Registry profiles and cannot become a fallback after Core authentication failure
+  ---
+  duration_ms: 4.037986
+  type: 'test'
+  ...
+# Subtest: field review mobile source wraps evidence and retains touch-sized subject selection
+ok 18 - field review mobile source wraps evidence and retains touch-sized subject selection
+  ---
+  duration_ms: 0.866156
+  type: 'test'
+  ...
+# Subtest: Core transitions clear data before every load and retain no snapshot on 401/404/503
+ok 19 - Core transitions clear data before every load and retain no snapshot on 401/404/503
+  ---
+  duration_ms: 3.62913
+  type: 'test'
+  ...
+# Subtest: Core rejects revision changes between list, detail and OpenAI instead of mixing sources
+ok 20 - Core rejects revision changes between list, detail and OpenAI instead of mixing sources
+  ---
+  duration_ms: 0.824693
+  type: 'test'
+  ...
+# Subtest: Core rejects mismatched identity and ignores delayed success after logout or a newer request
+ok 21 - Core rejects mismatched identity and ignores delayed success after logout or a newer request
+  ---
+  duration_ms: 18.127592
+  type: 'test'
+  ...
+# Subtest: Core read responses never replace leading-zero IDs or require a new project identity
+ok 22 - Core read responses never replace leading-zero IDs or require a new project identity
+  ---
+  duration_ms: 5.280699
+  type: 'test'
+  ...
+# Subtest: navigation while logout is pending cannot repopulate records from the earlier session
+ok 23 - navigation while logout is pending cannot repopulate records from the earlier session
+  ---
+  duration_ms: 1.060719
+  type: 'test'
+  ...
+# Subtest: training inherits exactly five lessons, twelve exercises and six unassessed tracks
+ok 24 - training inherits exactly five lessons, twelve exercises and six unassessed tracks
+  ---
+  duration_ms: 8.165327
+  type: 'test'
+  ...
+# Subtest: study acknowledgement persists locally without changing Registry identity or granting assessment
+ok 25 - study acknowledgement persists locally without changing Registry identity or granting assessment
+  ---
+  duration_ms: 6.380647
+  type: 'test'
+  ...
+# Subtest: blocked storage retains study acknowledgement in the current session and reports the limit
+ok 26 - blocked storage retains study acknowledgement in the current session and reports the limit
+  ---
+  duration_ms: 2.764507
+  type: 'test'
+  ...
+# Subtest: Core bundle starts empty and contains no snapshot fallback or embedded credentials
+ok 27 - Core bundle starts empty and contains no snapshot fallback or embedded credentials
+  ---
+  duration_ms: 8.87708
+  type: 'test'
+  ...
+# Subtest: five groups cover ten chapters without replacing numeric ID 0 or 000
+ok 28 - five groups cover ten chapters without replacing numeric ID 0 or 000
+  ---
+  duration_ms: 3.239863
+  type: 'test'
+  ...
+# Subtest: all group/chapter deep links resolve and malformed structural routes fail closed
+ok 29 - all group/chapter deep links resolve and malformed structural routes fail closed
+  ---
+  duration_ms: 0.430829
+  type: 'test'
+  ...
+# Subtest: real source supports Chapter 6 → OpenAI → ChatGPT without mutating Parent
+ok 30 - real source supports Chapter 6 → OpenAI → ChatGPT without mutating Parent
+  ---
+  duration_ms: 1.865472
+  type: 'test'
+  ...
+# Subtest: all ten chapters render while empty chapters create no child identities
+ok 31 - all ten chapters render while empty chapters create no child identities
+  ---
+  duration_ms: 3.225762
+  type: 'test'
+  ...
+# Subtest: V is coordination, 000 is a navigation group and neither rewrites lineage
+ok 32 - V is coordination, 000 is a navigation group and neither rewrites lineage
+  ---
+  duration_ms: 0.302746
+  type: 'test'
+  ...
+# Subtest: source validation detects duplicates, missing parents, cycles, chapter conflicts and cross-chapter links
+ok 33 - source validation detects duplicates, missing parents, cycles, chapter conflicts and cross-chapter links
+  ---
+  duration_ms: 0.386533
+  type: 'test'
+  ...
+# Subtest: cyclic tree terminates with a visible warning rather than recursive rendering
+ok 34 - cyclic tree terminates with a visible warning rather than recursive rendering
+  ---
+  duration_ms: 0.19248
+  type: 'test'
+  ...
+# Subtest: parent unavailable in snapshot is shown verbatim without synthesizing an entity
+ok 35 - parent unavailable in snapshot is shown verbatim without synthesizing an entity
+  ---
+  duration_ms: 0.528096
+  type: 'test'
+  ...
+# Subtest: all requested entity classes have a shared profile schema and safe type labels
+ok 36 - all requested entity classes have a shared profile schema and safe type labels
+  ---
+  duration_ms: 1.649276
+  type: 'test'
+  ...
+# Subtest: pair project section keeps the existing ID and emits no guessed project URL
+ok 37 - pair project section keeps the existing ID and emits no guessed project URL
+  ---
+  duration_ms: 0.381235
+  type: 'test'
+  ...
+# Subtest: project external links require public verification receipt and a valid timestamp
+ok 38 - project external links require public verification receipt and a valid timestamp
+  ---
+  duration_ms: 0.508055
+  type: 'test'
+  ...
+# Subtest: private project metadata is not rendered; public unverified links remain inactive
+ok 39 - private project metadata is not rendered; public unverified links remain inactive
+  ---
+  duration_ms: 1.06149
+  type: 'test'
+  ...
+# Subtest: project names and scope markup are escaped even with a verified link
+ok 40 - project names and scope markup are escaped even with a verified link
+  ---
+  duration_ms: 0.188765
+  type: 'test'
+  ...
+# Subtest: generic template switches project section by entity class without creating a record
+ok 41 - generic template switches project section by entity class without creating a record
+  ---
+  duration_ms: 0.490439
+  type: 'test'
+  ...
+# Subtest: OpenAI view separates developer and product; no HSTDN ID or partnership is invented
+ok 42 - OpenAI view separates developer and product; no HSTDN ID or partnership is invented
+  ---
+  duration_ms: 0.348506
+  type: 'test'
+  ...
+# Subtest: OpenAI view fails closed when expected source identity or parent is missing
+ok 43 - OpenAI view fails closed when expected source identity or parent is missing
+  ---
+  duration_ms: 1.06198
+  type: 'test'
+  ...
+# Subtest: six vaults disclose unknown last sync and quantum research separately from source snapshot
+ok 44 - six vaults disclose unknown last sync and quantum research separately from source snapshot
+  ---
+  duration_ms: 0.292441
+  type: 'test'
+  ...
+# Subtest: unverified canonical and official URLs are readable but never active external links
+ok 45 - unverified canonical and official URLs are readable but never active external links
+  ---
+  duration_ms: 12.68301
+  type: 'test'
+  ...
+# Subtest: every generated navigation href points to an implemented route or an evidence source
+ok 46 - every generated navigation href points to an implemented route or an evidence source
+  ---
+  duration_ms: 21.964355
+  type: 'test'
+  ...
+# Subtest: source snapshot is byte-identical to pinned Git blob
+ok 47 - source snapshot is byte-identical to pinned Git blob
+  ---
+  duration_ms: 27.76318
+  type: 'test'
+  ...
+# Subtest: inventory is exactly 26 source bindings, never 91 verified operators
+ok 48 - inventory is exactly 26 source bindings, never 91 verified operators
+  ---
+  duration_ms: 0.558432
+  type: 'test'
+  ...
+# Subtest: each source binding has its own exact route and profile
+ok 49 - each source binding has its own exact route and profile
+  ---
+  duration_ms: 3.223809
+  type: 'test'
+  ...
+# Subtest: all explicit parent links resolve to matching developer source records
+ok 50 - all explicit parent links resolve to matching developer source records
+  ---
+  duration_ms: 0.240062
+  type: 'test'
+  ...
+# Subtest: unknown numeric IDs cannot acquire another identity or canonical link
+ok 51 - unknown numeric IDs cannot acquire another identity or canonical link
+  ---
+  duration_ms: 0.438671
+  type: 'test'
+  ...
+# Subtest: leading zero IDs remain string-distinct and numeric coercion is rejected
+ok 52 - leading zero IDs remain string-distinct and numeric coercion is rejected
+  ---
+  duration_ms: 0.241685
+  type: 'test'
+  ...
+# Subtest: malformed and injected routes fail closed
+ok 53 - malformed and injected routes fail closed
+  ---
+  duration_ms: 0.323909
+  type: 'test'
+  ...
+# Subtest: Master Hub, home and ID route independently with a stable home alias
+ok 54 - Master Hub, home and ID route independently with a stable home alias
+  ---
+  duration_ms: 0.210777
+  type: 'test'
+  ...
+# Subtest: US conflict is visible and does not promote source status
+ok 55 - US conflict is visible and does not promote source status
+  ---
+  duration_ms: 1.667052
+  type: 'test'
+  ...
+# Subtest: search supports names, developer and accents, exact numeric ID only
+ok 56 - search supports names, developer and accents, exact numeric ID only
+  ---
+  duration_ms: 0.788629
+  type: 'test'
+  ...
+# Subtest: untrusted source markup is escaped; unsafe hrefs are not emitted
+ok 57 - untrusted source markup is escaped; unsafe hrefs are not emitted
+  ---
+  duration_ms: 0.493334
+  type: 'test'
+  ...
+# Subtest: external URLs require HTTPS without embedded credentials
+ok 58 - external URLs require HTTPS without embedded credentials
+  ---
+  duration_ms: 0.200912
+  type: 'test'
+  ...
+# Subtest: standalone deliverable includes data/scripts after page content, no external dependency
+ok 59 - standalone deliverable includes data/scripts after page content, no external dependency
+  ---
+  duration_ms: 14.75526
+  type: 'test'
+  ...
+# Subtest: application performs no network calls or operation activation
+ok 60 - application performs no network calls or operation activation
+  ---
+  duration_ms: 1.597878
+  type: 'test'
+  ...
+# Subtest: P0 deep links resolve only allowlisted countries, brands and technologies
+ok 61 - P0 deep links resolve only allowlisted countries, brands and technologies
+  ---
+  duration_ms: 9.194709
+  type: 'test'
+  ...
+# Subtest: existing HUB/group/chapter navigation reaches both P0 lanes and 8682
+ok 62 - existing HUB/group/chapter navigation reaches both P0 lanes and 8682
+  ---
+  duration_ms: 4.355875
+  type: 'test'
+  ...
+# Subtest: country selection changes the route and shows only the matching sample profile
+ok 63 - country selection changes the route and shows only the matching sample profile
+  ---
+  duration_ms: 18.818224
+  type: 'test'
+  ...
+# Subtest: market country filters fail closed when local supply or delivery is not evidenced
+ok 64 - market country filters fail closed when local supply or delivery is not evidenced
+  ---
+  duration_ms: 3.249372
+  type: 'test'
+  ...
+# Subtest: technology filters preserve entity/product distinctions and research provenance
+ok 65 - technology filters preserve entity/product distinctions and research provenance
+  ---
+  duration_ms: 6.518049
+  type: 'test'
+  ...
+# Subtest: new navigation keeps one active view and correct sidebar state including commerce
+ok 66 - new navigation keeps one active view and correct sidebar state including commerce
+  ---
+  duration_ms: 5.422093
+  type: 'test'
+  ...
+# Subtest: catalog navigation never changes Registry, identity, training or commerce authority
+ok 67 - catalog navigation never changes Registry, identity, training or commerce authority
+  ---
+  duration_ms: 2.472477
+  type: 'test'
+  ...
+# Subtest: public design content during Core errors cannot show stale authenticated records
+ok 68 - public design content during Core errors cannot show stale authenticated records
+  ---
+  duration_ms: 9.346727
+  type: 'test'
+  ...
+# Subtest: all new hrefs have implemented destinations or safe explicit external references
+ok 69 - all new hrefs have implemented destinations or safe explicit external references
+  ---
+  duration_ms: 4.813766
+  type: 'test'
+  ...
+# Subtest: untrusted labels are escaped and unsafe source URL schemes are not made clickable
+ok 70 - untrusted labels are escaped and unsafe source URL schemes are not made clickable
+  ---
+  duration_ms: 2.016128
+  type: 'test'
+  ...
+# Subtest: versioned color tokens match the inherited CSS source exactly
+ok 71 - versioned color tokens match the inherited CSS source exactly
+  ---
+  duration_ms: 4.7169
+  type: 'test'
+  ...
+# Subtest: standalone, snapshot and Core bundles all contain the same new UI without new network clients
+ok 72 - standalone, snapshot and Core bundles all contain the same new UI without new network clients
+  ---
+  duration_ms: 2.053135
+  type: 'test'
+  ...
+# Subtest: responsive source includes safe area, minimum touch targets, one-column mobile cards and readable forms
+ok 73 - responsive source includes safe area, minimum touch targets, one-column mobile cards and readable forms
+  ---
+  duration_ms: 1.453992
+  type: 'test'
+  ...
+1..73
+# tests 73
+# suites 0
+# pass 73
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 287.387942

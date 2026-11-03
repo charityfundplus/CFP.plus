@@ -1,0 +1,4 @@
+{"result": "IDLE", "worker": "software-worker", "heartbeat_utc": 1793729781.1277232}
+{"result": "COMPLETED", "task_key": "5a42dd3f-9096-46f2-a3b0-8c5c630c6c8b", "output": {"operation": "sha256-text", "sha256": "6a32b3db351428b2134172c5c66e22cf48d3e2bed30cfb2a8c3ce01bbb19f30d", "bytes": 19}, "evidence_key": "5925d0dd-7065-4f2a-b83e-8e49c78040b4"}
+{"result": "IDLE", "worker": "software-worker", "heartbeat_utc": 1793729793.2107387}
+{"result": "FAILED", "task_key": "7c49329e-ce42-4c69-bd3e-83ef83d326a8", "error": "UNSUPPORTED_OPERATION"}

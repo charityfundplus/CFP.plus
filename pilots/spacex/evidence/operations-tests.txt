@@ -1,0 +1,34 @@
+test_audit_failure_rolls_back_import (test_pilot.PilotTests.test_audit_failure_rolls_back_import) ... ok
+test_audit_idempotency (test_pilot.PilotTests.test_audit_idempotency) ... ok
+test_duplicate (test_pilot.PilotTests.test_duplicate) ... ok
+test_idempotency (test_pilot.PilotTests.test_idempotency) ... ok
+test_import_readback_ui_and_source_unchanged (test_pilot.PilotTests.test_import_readback_ui_and_source_unchanged) ... ok
+test_kill_switch_before_io (test_pilot.PilotTests.test_kill_switch_before_io) ... ok
+test_missing_identifier (test_pilot.PilotTests.test_missing_identifier) ... ok
+test_schema_version_rejected_before_io (test_pilot.PilotTests.test_schema_version_rejected_before_io) ... ok
+test_source_tampering (test_pilot.PilotTests.test_source_tampering) ... ok
+test_symlink (test_pilot.PilotTests.test_symlink) ... ok
+test_validation (test_pilot.PilotTests.test_validation) ... ok
+test_writeback_before_io (test_pilot.PilotTests.test_writeback_before_io) ... ok
+test_audit_tampering_detected (test_operations.OperationsTests.test_audit_tampering_detected) ... ok
+test_backup_restores_actual_new_sqlite_and_workspace_isolation (test_operations.OperationsTests.test_backup_restores_actual_new_sqlite_and_workspace_isolation) ... ok
+test_corrupt_backup_and_rewritten_manifest_fail_closed (test_operations.OperationsTests.test_corrupt_backup_and_rewritten_manifest_fail_closed) ... ok
+test_deleted_source_record_detected (test_operations.OperationsTests.test_deleted_source_record_detected) ... ok
+test_http_auth_origin_host_limits_and_static_ui (test_operations.OperationsTests.test_http_auth_origin_host_limits_and_static_ui) ... ok
+test_idempotency_conflict_and_group_validation (test_operations.OperationsTests.test_idempotency_conflict_and_group_validation) ... ok
+test_malformed_persisted_record_audit_and_replica_are_integrity_failures (test_operations.OperationsTests.test_malformed_persisted_record_audit_and_replica_are_integrity_failures) ... ok
+test_permissions_workspace_sessions_expiry (test_operations.OperationsTests.test_permissions_workspace_sessions_expiry) ... ok
+test_read_write_restart_independent_session_and_mapping (test_operations.OperationsTests.test_read_write_restart_independent_session_and_mapping) ... ok
+test_replica_conflict_preserves_both_versions (test_operations.OperationsTests.test_replica_conflict_preserves_both_versions) ... ok
+test_replication_real_offline_retry_durable_outbox (test_operations.OperationsTests.test_replication_real_offline_retry_durable_outbox) ... ok
+test_01_read_write_reload_independent_session_and_idempotency (test_operations_http.IndependentHTTPTests.test_01_read_write_reload_independent_session_and_idempotency) ... ok
+test_02_five_groups_ten_chapters_and_blocked_external_connectors (test_operations_http.IndependentHTTPTests.test_02_five_groups_ten_chapters_and_blocked_external_connectors) ... ok
+test_03_outage_survives_restart_then_catchup_without_duplicates (test_operations_http.IndependentHTTPTests.test_03_outage_survives_restart_then_catchup_without_duplicates) ... ok
+test_04_backup_restore_actual_file_readback_and_cross_workspace_denial (test_operations_http.IndependentHTTPTests.test_04_backup_restore_actual_file_readback_and_cross_workspace_denial) ... ok
+test_05_permission_origin_session_and_path_boundaries (test_operations_http.IndependentHTTPTests.test_05_permission_origin_session_and_path_boundaries) ... ok
+test_06_source_tampering_fails_closed_over_http (test_operations_http.IndependentHTTPTests.test_06_source_tampering_fails_closed_over_http) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 12.231s
+
+OK

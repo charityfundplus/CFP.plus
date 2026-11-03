@@ -1,0 +1,102 @@
+{
+  "sourceRevision": "d9131c2268ad7d53d84e460f5b7f1db50dc8c931",
+  "baseline": "bb88e54a7c80669e05af8183490a76d6f827ea26",
+  "coreTestRevision": "73e705edbe69e82a62791ec1e56072f990c011d5",
+  "createdUTC": "2026-10-26T22:01:39.481499+00:00",
+  "files": [
+    {
+      "path": "hub69/ui/COMMON-TEMPLATE-20261026.md",
+      "sha256": "6485e64091a0487a6c5ff1628ce19819ed5d9ff54c35188700db660f1e226289"
+    },
+    {
+      "path": "hub69/ui/README.md",
+      "sha256": "7150e3dd1d1dca57c2f3109643b363700c152178cff5eacc2ec62ea28842353b"
+    },
+    {
+      "path": "hub69/ui/build.mjs",
+      "sha256": "dcd80096c02d3d5206b9a0de177d032c998e3fa6fe08d28713caebb7c4a8ba51"
+    },
+    {
+      "path": "hub69/ui/evidence/common-template-20261026/app-tests.log",
+      "sha256": "545570ad71e216ba9a597e0aedf6cd59dd87612f44693d95507cb74ab1b456d8"
+    },
+    {
+      "path": "hub69/ui/evidence/common-template-20261026/build.log",
+      "sha256": "e3259eca2c5e486f0ef9f925fe2e34f7715be8be0ad3ddcccc6cee83ba01e2a0"
+    },
+    {
+      "path": "hub69/ui/evidence/common-template-20261026/core-intake.log",
+      "sha256": "5cd880b79f6755c6934783e01997b22b939e454d507d9018a7409203985600f1"
+    },
+    {
+      "path": "hub69/ui/evidence/common-template-20261026/core-tcp.log",
+      "sha256": "086c744a075df188988b5647e7583d73723c7e91618f9c042fb4b5a2e8a993b7"
+    },
+    {
+      "path": "hub69/ui/evidence/common-template-20261026/source-observations.json",
+      "sha256": "5bc7f29336bf8d40379b6515b8b15feea426f57621e4c526e3a7a8aea7ec3510"
+    },
+    {
+      "path": "hub69/ui/evidence/common-template-20261026/template-tests.log",
+      "sha256": "fc35317db90d8905061db9b55cc00da23ce3bb727e8dfa0d0158d8beb633df84"
+    },
+    {
+      "path": "hub69/ui/evidence/common-template-20261026/ui-tests.log",
+      "sha256": "61c5e7a5406e797822276b9770baf13b8f1a0f92e91012182ff1c66e5ce037c1"
+    },
+    {
+      "path": "hub69/ui/public/app.js",
+      "sha256": "ea9debe0530d14a2c9620f47bc0a3486e5d00c607d0c2d039dc9d35a889a01f4"
+    },
+    {
+      "path": "hub69/ui/public/common-template.js",
+      "sha256": "437ddb1b3b30a8f8c28d11f7c031bd7c03ef86c91d7e7f242e396442a55e3c1c"
+    },
+    {
+      "path": "hub69/ui/public/index.html",
+      "sha256": "2661fc9b8efe2ae3e651267e4d3a27602aca678c79b2192dfb2ed2fbdc3eaead"
+    },
+    {
+      "path": "hub69/ui/public/p0.js",
+      "sha256": "e31375b8b5243519f83b4c829252b192bfa287e5641fd84de4ff97be904763f1"
+    },
+    {
+      "path": "hub69/ui/public/template-config.js",
+      "sha256": "b4e0efa3949ece0bd1bc28a3537542b6a854960d81571a7c8d7896a5865eef14"
+    },
+    {
+      "path": "hub69/ui/template.config.json",
+      "sha256": "29879dc7981aac6a3eecef6192fa4fe8d64ade1983e0e08c055440560244f569"
+    },
+    {
+      "path": "hub69/ui/tests/app-state.test.mjs",
+      "sha256": "c72028f786994224d241e2b8ff5638c3ecab571a8eb4e47f1f4c3d25d78b71ae"
+    },
+    {
+      "path": "hub69/ui/tests/common-template.test.mjs",
+      "sha256": "053fdf0c2bf2520d49e004ec51187b84600ab846025e2e3054886cacc21b9ea5"
+    },
+    {
+      "path": "hub69/ui/tests/harness.mjs",
+      "sha256": "40c883d92a8cad50f5d1766d2a2aeaab6cb227f39492cd9a1c58430740dac225"
+    }
+  ],
+  "standalone": {
+    "path": "hub69/ui/HUB69-review.html",
+    "sha256": "476c7292434cf16663723326b44f3c0dc04b52e19b548da89199c37bda37fcdc",
+    "tracked": false,
+    "rebuild": "cd hub69/ui && node build.mjs"
+  },
+  "scope": {
+    "uiFilesPassed": 10,
+    "newTemplateTests": 6,
+    "appStateTests": 7,
+    "coreIntakeTests": 6,
+    "coreTCPTests": 1,
+    "browser": "NOT RUN",
+    "safariIPhone": "NOT RUN",
+    "independentReview": "PENDING",
+    "production": "NO-GO"
+  },
+  "note": "Direct test counts are subsets of UI file suite, not additive. Hashes bind source and logs; no external acceptance implied."
+}
