@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "scope": "Real local HTTP/SQLite/Chromium + bounded worker subprocess; no external SI ACK, public preview or physical phone",
+  "checks": [
+    "Chapter0 manual CMP1 profile -> linked task -> independent assigned ACK/reply -> real Evidence SHA256 -> reload persistence; no Canonical/Parent/DID allocation",
+    "After Chapter0, manual topic intake mappings1..9 preserve chapter/group structure; all remain unverified",
+    "Login -> plaintext post -> independent comment -> reload retains exact server data; no HTML execution",
+    "Four spaces have separate grants/content; unauthorized/missing404 match, viewer403, foreign workspace has no posts",
+    "Real worker subprocess receives/ACKs/executes boundedSHA256, logs and heartbeats; duplicate ticks do not rerun, invalid operation creates persisted failure alert"
+  ],
+  "page_errors": [],
+  "profile_key": "08b53d2b-d9d0-4936-afd1-af7da06aa0c8",
+  "task_key": "bba690eb-54fb-41d3-ad8c-adec975088f0",
+  "evidence_sha256": "df28e2304af761048decf11842094d297d4a62fcb1291c0b853303b526f1917c",
+  "worker_alert_count": 1,
+  "physical_device": "BLOCKED",
+  "external_social_connectors": "NOT VERIFIED",
+  "public_preview": "BLOCKED_NO_APPROVED_HOST"
+}

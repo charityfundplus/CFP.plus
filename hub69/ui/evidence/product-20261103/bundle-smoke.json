@@ -1,0 +1,5 @@
+{
+  "status": "PASS",
+  "scope": "Extracted exact review ZIP: all file hashes, no keys/state, Website/App, shared auth, Registry26, Social and manualCMP1Chapter0 APIs",
+  "source_commit": "efa066e54efa53276c75490b7edf67996500ab87"
+}

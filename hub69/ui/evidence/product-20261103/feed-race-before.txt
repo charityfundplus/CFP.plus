@@ -1,0 +1,258 @@
+test_acknowledged_post_visible_before_slow_read_and_stale_read_cannot_erase_it (integration.test_social_feed.FeedRaceTests.test_acknowledged_post_visible_before_slow_read_and_stale_read_cannot_erase_it) ... Executing <Task pending name='Task-2' coro=<FeedRaceTests.test_acknowledged_post_visible_before_slow_read_and_stale_read_cannot_erase_it() running at /workspace/CFP.plus/hub69/ui/integration/test_social_feed.py:23> wait_for=<Future pending cb=[Task.task_wakeup()] created at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py:448> cb=[_run_until_complete_cb() at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py:181] created at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py:100> took 0.493 seconds
+Executing <Task finished name='Task-2' coro=<FeedRaceTests.test_acknowledged_post_visible_before_slow_read_and_stale_read_cannot_erase_it() done, defined at /workspace/CFP.plus/hub69/ui/integration/test_social_feed.py:16> exception=AssertionError('Locator expected to contain text \'Committed post survives\'\nActual value:  \nCall log:\n  - Expect "to_contain_text" with timeout 3000ms\n  - waiting for locator("#social-feed")\n    9 × locator resolved to <div id="social-feed"></div>\n      - unexpected value ""\n\nAria snapshot:\n- link "Đến nội dung chính":\n  - /url: "#content"\n- complementary:\n  - link "HUB 69 — Trang chính":\n    - /url: "#home"\n    - text: 69 + HUB 69 CFP+ • ONLY PLUS+\n  - text: KHÔNG GIAN LÀM VIỆC\n  - navigation "Điều hướng chính":\n    - link "Tổng quan":\n      - /url: "#home"\n    - link "Mẫu Website Chung":\n      - /url: "#template"\n    - link "Master Hub":\n      - /url: "#master"\n    - link "Tra cứu ID":\n      - /url: "#id"\n    - link "5 Nhóm · 10 Chương":\n      - /url: "#chapters"\n    - link "HSTDN":\n      - /url: "#hstdn"\n    - link "Công nghệ":\n      - /url: "#technology"\n    - link "6 Kho":\n      - /url: "#vaults"\n    - link "Đào tạo SI/AI":\n      - /url: "#training"\n    - link "Nhà cung cấp":\n      - /url: "#partners"\n    - link "Website · 10 Chương":\n      - /url: /website/\n    - link "Chương 0 · Nhập hồ sơ":\n      - /url: "#intake"\n    - link "Mạng xã hội CFP+":\n      - /url: "#social"\n    - link "Diễn đàn SI AI":\n      - /url: "#forum"\n    - link "▣ Vận hành SpaceX":\n      - /url: "#operations"\n    - link "App · Bản review":\n      - /url: "#app"\n  - text: HUMAN GOVERNANCE\n  - paragraph: Con Người là trung tâm. AI hỗ trợ, Con Người quyết định.\n  - text: HÔM QUA • HÔM NAY • MÃI MÃI\n  - strong: Only Plus+ For Life\n- banner: HUB 69 / Mạng xã hội CFP+ Chuẩn bị riêng tư\n- strong: HOLD ACTIVATION\n- text: PRODUCTION NO-GO · Bản chuẩn bị để review\n- main:\n  - status:\n    - text: Registry API · 26 bản ghi nguồn · không tự nâng quyền hoặc trạng thái VERIFIED\n    - button "Đọc lại Registry"\n    - link "Phiên backend":\n      - /url: "#operations"\n  - text: CFP+ / MẠNG XÃ HỘI SANDBOX\n  - heading "Chia sẻ trong đúng không gian." [level=1]\n  - paragraph: Đây là giao diện mạng xã hội nối backend hiện hữu, không phải tài liệu Trung tâm điều phối. Nội dung và bình luận được lưu trong cơ sở dữ liệu chung với Website và App.\n  - link "Đăng nhập / quản lý phiên":\n    - /url: "#operations"\n  - link "Nhiệm vụ và Evidence SI AI":\n    - /url: "#forum"\n  - status: Cộng Đồng · đã đọc qua API · Có quyền viết\n  - status: Bài đăng đã lưu vào backend chung.\n  - text: Không gian được cấp quyền\n  - combobox "Không gian được cấp quyền":\n    - option "Cộng Đồng" [selected]\n    - option "Diễn Đàn SI AI"\n  - paragraph: Cộng Đồng • Chi Hội • Diễn Đàn SI AI • Diễn Đàn Siêu Bộ Đôi được phân quyền riêng. Chỉ các không gian được cấp mới xuất hiện trong danh sách.\n  - button "Đọc lại"\n  - text: Bài đăng\n  - textbox "Bài đăng"\n  - button "Đăng bài" [disabled]\n  - paragraph: 0 bài đăng trong không gian này\n  - heading "Thử nghiệm Siêu Phần Mềm" [level=2]\n  - paragraph: Worker cục bộ chỉ nhận tác vụ tính SHA256 văn bản. Không chạy lệnh tùy ý, không gọi mô hình hoặc mạng xã hội bên ngoài. Heartbeat mới không phải bằng chứng trực 24/7.\n  - text: Văn bản thử nghiệm\n  - textbox "Văn bản thử nghiệm"\n  - button "Giao tác vụ cho worker thử nghiệm" [disabled]\n  - button "Đọc heartbeat và log"\n  - status: Chưa xác minh worker.\n  - heading "Kết nối mạng xã hội bên ngoài" [level=2]\n  - paragraph: NOT VERIFIED · chưa có API, quyền hợp lệ hoặc kiểm thử tích hợp. Không tự động kết nối hoặc đăng nội dung ra ngoài.\n- contentinfo:\n  - text: CFP+ • HUB 69 ·\n  - link "Giấy phép thành phần":\n    - /url: THIRD_PARTY_NOTICES.txt\n  - text: Human First · Evidence First · Design System 1.1.0\n  - link "Về đầu hub ↑":\n    - /url: "#home"') created at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py:100> took 0.438 seconds
+FAIL
+
+======================================================================
+FAIL: test_acknowledged_post_visible_before_slow_read_and_stale_read_cannot_erase_it (integration.test_social_feed.FeedRaceTests.test_acknowledged_post_visible_before_slow_read_and_stale_read_cannot_erase_it)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 691, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/workspace/CFP.plus/hub69/ui/integration/test_social_feed.py", line 43, in test_acknowledged_post_visible_before_slow_read_and_stale_read_cannot_erase_it
+    await expect(page.locator('#social-feed')).to_contain_text('Committed post survives',timeout=3000)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/async_api/_generated.py", line 21942, in to_contain_text
+    await self._impl_obj.to_contain_text(
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_assertions.py", line 303, in to_contain_text
+    await self._expect_impl(
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_assertions.py", line 128, in _expect_impl
+    _record_soft_or_raise(
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_assertions.py", line 60, in _record_soft_or_raise
+    raise error
+AssertionError: Locator expected to contain text 'Committed post survives'
+Actual value:  
+Call log:
+  - Expect "to_contain_text" with timeout 3000ms
+  - waiting for locator("#social-feed")
+    9 × locator resolved to <div id="social-feed"></div>
+      - unexpected value ""
+
+Aria snapshot:
+- link "Đến nội dung chính":
+  - /url: "#content"
+- complementary:
+  - link "HUB 69 — Trang chính":
+    - /url: "#home"
+    - text: 69 + HUB 69 CFP+ • ONLY PLUS+
+  - text: KHÔNG GIAN LÀM VIỆC
+  - navigation "Điều hướng chính":
+    - link "Tổng quan":
+      - /url: "#home"
+    - link "Mẫu Website Chung":
+      - /url: "#template"
+    - link "Master Hub":
+      - /url: "#master"
+    - link "Tra cứu ID":
+      - /url: "#id"
+    - link "5 Nhóm · 10 Chương":
+      - /url: "#chapters"
+    - link "HSTDN":
+      - /url: "#hstdn"
+    - link "Công nghệ":
+      - /url: "#technology"
+    - link "6 Kho":
+      - /url: "#vaults"
+    - link "Đào tạo SI/AI":
+      - /url: "#training"
+    - link "Nhà cung cấp":
+      - /url: "#partners"
+    - link "Website · 10 Chương":
+      - /url: /website/
+    - link "Chương 0 · Nhập hồ sơ":
+      - /url: "#intake"
+    - link "Mạng xã hội CFP+":
+      - /url: "#social"
+    - link "Diễn đàn SI AI":
+      - /url: "#forum"
+    - link "▣ Vận hành SpaceX":
+      - /url: "#operations"
+    - link "App · Bản review":
+      - /url: "#app"
+  - text: HUMAN GOVERNANCE
+  - paragraph: Con Người là trung tâm. AI hỗ trợ, Con Người quyết định.
+  - text: HÔM QUA • HÔM NAY • MÃI MÃI
+  - strong: Only Plus+ For Life
+- banner: HUB 69 / Mạng xã hội CFP+ Chuẩn bị riêng tư
+- strong: HOLD ACTIVATION
+- text: PRODUCTION NO-GO · Bản chuẩn bị để review
+- main:
+  - status:
+    - text: Registry API · 26 bản ghi nguồn · không tự nâng quyền hoặc trạng thái VERIFIED
+    - button "Đọc lại Registry"
+    - link "Phiên backend":
+      - /url: "#operations"
+  - text: CFP+ / MẠNG XÃ HỘI SANDBOX
+  - heading "Chia sẻ trong đúng không gian." [level=1]
+  - paragraph: Đây là giao diện mạng xã hội nối backend hiện hữu, không phải tài liệu Trung tâm điều phối. Nội dung và bình luận được lưu trong cơ sở dữ liệu chung với Website và App.
+  - link "Đăng nhập / quản lý phiên":
+    - /url: "#operations"
+  - link "Nhiệm vụ và Evidence SI AI":
+    - /url: "#forum"
+  - status: Cộng Đồng · đã đọc qua API · Có quyền viết
+  - status: Bài đăng đã lưu vào backend chung.
+  - text: Không gian được cấp quyền
+  - combobox "Không gian được cấp quyền":
+    - option "Cộng Đồng" [selected]
+    - option "Diễn Đàn SI AI"
+  - paragraph: Cộng Đồng • Chi Hội • Diễn Đàn SI AI • Diễn Đàn Siêu Bộ Đôi được phân quyền riêng. Chỉ các không gian được cấp mới xuất hiện trong danh sách.
+  - button "Đọc lại"
+  - text: Bài đăng
+  - textbox "Bài đăng"
+  - button "Đăng bài" [disabled]
+  - paragraph: 0 bài đăng trong không gian này
+  - heading "Thử nghiệm Siêu Phần Mềm" [level=2]
+  - paragraph: Worker cục bộ chỉ nhận tác vụ tính SHA256 văn bản. Không chạy lệnh tùy ý, không gọi mô hình hoặc mạng xã hội bên ngoài. Heartbeat mới không phải bằng chứng trực 24/7.
+  - text: Văn bản thử nghiệm
+  - textbox "Văn bản thử nghiệm"
+  - button "Giao tác vụ cho worker thử nghiệm" [disabled]
+  - button "Đọc heartbeat và log"
+  - status: Chưa xác minh worker.
+  - heading "Kết nối mạng xã hội bên ngoài" [level=2]
+  - paragraph: NOT VERIFIED · chưa có API, quyền hợp lệ hoặc kiểm thử tích hợp. Không tự động kết nối hoặc đăng nội dung ra ngoài.
+- contentinfo:
+  - text: CFP+ • HUB 69 ·
+  - link "Giấy phép thành phần":
+    - /url: THIRD_PARTY_NOTICES.txt
+  - text: Human First · Evidence First · Design System 1.1.0
+  - link "Về đầu hub ↑":
+    - /url: "#home"
+
+----------------------------------------------------------------------
+Ran 1 test in 9.801s
+
+FAILED (failures=1)
+Task exception was never retrieved
+future: <Task finished name='Task-13' coro=<Channel.send() done, defined at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_connection.py:68> exception=TargetClosedError('Route.fulfill: Target page, context or browser has been closed') created at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/tasks.py:420>
+source_traceback: Object created at (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/__main__.py", line 18, in <module>
+    main(module=None)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/main.py", line 105, in __init__
+    self.runTests()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/main.py", line 281, in runTests
+    self.result = testRunner.run(self.test)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/runner.py", line 240, in run
+    test(result)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py", line 122, in run
+    test(result)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py", line 122, in run
+    test(result)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py", line 122, in run
+    test(result)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py", line 690, in __call__
+    return self.run(*args, **kwds)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/async_case.py", line 132, in run
+    return super().run(result)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py", line 634, in run
+    self._callTestMethod(testMethod)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/async_case.py", line 91, in _callTestMethod
+    if self._callMaybeAsync(method) is not None:
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/async_case.py", line 113, in _callMaybeAsync
+    return self._asyncioRunner.run(
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 678, in run_until_complete
+    self.run_forever()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 645, in run_forever
+    self._run_once()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 1991, in _run_once
+    handle._run()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/workspace/CFP.plus/hub69/ui/integration/test_social_feed.py", line 35, in delayed
+    await route.fulfill(response=response,json=data)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/async_api/_generated.py", line 782, in fulfill
+    await self._impl_obj.fulfill(
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_network.py", line 391, in fulfill
+    await self._handle_route(
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_network.py", line 464, in _handle_route
+    await callback()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_network.py", line 459, in _inner_fulfill
+    await self._race_with_page_close(self._channel.send("fulfill", None, params))
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_network.py", line 550, in _race_with_page_close
+    fut = asyncio.create_task(future)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/tasks.py", line 420, in create_task
+    task = loop.create_task(coro)
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Route.fulfill: Target page, context or browser has been closed
+Task exception was never retrieved
+future: <Task finished name='Task-14' coro=<Channel.send() done, defined at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_connection.py:68> exception=TargetClosedError('Route.fulfill: Target page, context or browser has been closed') created at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/tasks.py:420>
+source_traceback: Object created at (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/__main__.py", line 18, in <module>
+    main(module=None)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/main.py", line 105, in __init__
+    self.runTests()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/main.py", line 281, in runTests
+    self.result = testRunner.run(self.test)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/runner.py", line 240, in run
+    test(result)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py", line 122, in run
+    test(result)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py", line 122, in run
+    test(result)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py", line 122, in run
+    test(result)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py", line 690, in __call__
+    return self.run(*args, **kwds)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/async_case.py", line 132, in run
+    return super().run(result)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py", line 634, in run
+    self._callTestMethod(testMethod)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/async_case.py", line 91, in _callTestMethod
+    if self._callMaybeAsync(method) is not None:
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/async_case.py", line 113, in _callMaybeAsync
+    return self._asyncioRunner.run(
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 678, in run_until_complete
+    self.run_forever()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 645, in run_forever
+    self._run_once()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 1991, in _run_once
+    handle._run()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+  File "/workspace/CFP.plus/hub69/ui/integration/test_social_feed.py", line 35, in delayed
+    await route.fulfill(response=response,json=data)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/async_api/_generated.py", line 782, in fulfill
+    await self._impl_obj.fulfill(
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_network.py", line 391, in fulfill
+    await self._handle_route(
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_network.py", line 464, in _handle_route
+    await callback()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_network.py", line 459, in _inner_fulfill
+    await self._race_with_page_close(self._channel.send("fulfill", None, params))
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_network.py", line 550, in _race_with_page_close
+    fut = asyncio.create_task(future)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/tasks.py", line 420, in create_task
+    task = loop.create_task(coro)
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TargetClosedError: Route.fulfill: Target page, context or browser has been closed

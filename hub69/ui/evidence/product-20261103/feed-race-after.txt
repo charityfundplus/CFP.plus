@@ -1,0 +1,8 @@
+test_acknowledged_post_visible_before_slow_read_and_stale_read_cannot_erase_it (integration.test_social_feed.FeedRaceTests.test_acknowledged_post_visible_before_slow_read_and_stale_read_cannot_erase_it) ... Executing <Task pending name='Task-2' coro=<FeedRaceTests.test_acknowledged_post_visible_before_slow_read_and_stale_read_cannot_erase_it() running at /workspace/CFP.plus/hub69/ui/integration/test_social_feed.py:23> wait_for=<Future pending cb=[Task.task_wakeup()] created at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py:448> cb=[_run_until_complete_cb() at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py:181] created at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py:100> took 0.287 seconds
+Executing <Task finished name='Task-2' coro=<FeedRaceTests.test_acknowledged_post_visible_before_slow_read_and_stale_read_cannot_erase_it() done, defined at /workspace/CFP.plus/hub69/ui/integration/test_social_feed.py:16> result=None created at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/runners.py:100> took 0.573 seconds
+ok
+
+----------------------------------------------------------------------
+Ran 1 test in 5.711s
+
+OK

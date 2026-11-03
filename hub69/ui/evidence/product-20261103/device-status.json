@@ -1,0 +1,8 @@
+{
+  "physical_phone": "BLOCKED_NO_AUTHORIZED_DEVICE_TARGET",
+  "usb_bus_available": false,
+  "kvm_available": false,
+  "adb_query": "BLOCKED_CONFIGURATION_DIRECTORY_READ_ONLY",
+  "adb_error_log": "adb-devices.txt",
+  "no_install_or_device_data_modified": true
+}

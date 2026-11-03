@@ -1,0 +1,60 @@
+{
+  "scope": "Local product suites; real HTTP/SQLite/browser and strict local TLS; not external staging/physical device",
+  "results": [
+    {
+      "name": "build",
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "build.txt"
+    },
+    {
+      "name": "pwa-unit",
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "pwa-unit.txt"
+    },
+    {
+      "name": "backend-website",
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "backend-website.txt"
+    },
+    {
+      "name": "strict-https",
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "strict-https.txt"
+    },
+    {
+      "name": "social-feed-race",
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "social-feed-race.txt"
+    },
+    {
+      "name": "app-browser",
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "app-browser.txt"
+    },
+    {
+      "name": "social-intake-browser",
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "social-intake-browser.txt"
+    },
+    {
+      "name": "ctttc",
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "ctttc.txt"
+    },
+    {
+      "name": "unicode",
+      "exit_code": 0,
+      "status": "PASS",
+      "log": "unicode.txt"
+    }
+  ],
+  "all_passed": true
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "url": "https://cfp.plus/",
+    "exit": 0,
+    "result": "200 https://cfp.plus/",
+    "error": "",
+    "redirect_query_redacted": false
+  },
+  {
+    "url": "https://cfp.plus/69",
+    "exit": 0,
+    "result": "200 https://cfp.plus/69",
+    "error": "",
+    "redirect_query_redacted": false
+  },
+  {
+    "url": "https://canva.link/urtcevo11xn75tp",
+    "exit": 0,
+    "result": "200 https://www.canva.com/design/DAHZzR3gzHM/JAdNZQbrC1G8Su5ri1fAgw/view",
+    "error": "",
+    "redirect_query_redacted": true
+  },
+  {
+    "url": "https://www.canva.com/d/QK0AJCFDfj-Ofe9",
+    "exit": 0,
+    "result": "200 https://www.canva.com/login/",
+    "error": "",
+    "redirect_query_redacted": true
+  },
+  {
+    "url": "https://api.github.com/repos/charityfundplus/CFP.plus",
+    "exit": 0,
+    "result": "200 https://api.github.com/repos/charityfundplus/CFP.plus",
+    "error": "",
+    "redirect_query_redacted": false
+  }
+]
