@@ -102,6 +102,36 @@ jobs:
           export CFP_FORUM_DB_SI_AI_HSTDN=postgresql+psycopg://cfp_forum_hstdn_rw:$PW_hstdn@localhost:5432/sch
           NODE_PATH=$(npm root -g) node tests/forum/forum_e2e.test.js
 
+      - name: 3 schema — kiểm chứng script E2E từ xa (chạy, restart server, kiểm tra lại)
+        run: |
+          export CFP_FORUM_AUTH_DB=postgresql+psycopg://cfp_forum_auth_rw:$PW_auth@localhost:5432/sch
+          export CFP_FORUM_DB_SIEU_BO_DOI=postgresql+psycopg://cfp_forum_sbd_rw:$PW_sbd@localhost:5432/sch
+          export CFP_FORUM_DB_SI_AI_HSTDN=postgresql+psycopg://cfp_forum_hstdn_rw:$PW_hstdn@localhost:5432/sch
+          export CFP_FORUM_COOKIE_SECURE=0 FORUM_BASE=http://127.0.0.1:8099
+          python -m uvicorn services.forum.asgi:app --host 127.0.0.1 --port 8099 & pid=$!
+          NODE_PATH=$(npm root -g) node tests/forum/forum_remote_e2e.test.js | tee remote1.log
+          kill $pid; wait $pid || true
+          python -m uvicorn services.forum.asgi:app --host 127.0.0.1 --port 8099 & pid=$!
+          CHECK_STAMP=$(grep -o 'STAMP=[a-z0-9]*' remote1.log | cut -d= -f2) \
+            NODE_PATH=$(npm root -g) node tests/forum/forum_remote_e2e.test.js
+          kill $pid
+
+      - name: 3 schema — kiểm chứng set_passwords_sandbox.sql (sinh mật khẩu, đăng nhập được, URL đúng dạng)
+        run: |
+          export PGPASSWORD=setup
+          psql -v ON_ERROR_STOP=1 -h localhost -U setup -d sch -c "CREATE SCHEMA IF NOT EXISTS extensions; CREATE EXTENSION IF NOT EXISTS pgcrypto SCHEMA extensions;"
+          psql -v ON_ERROR_STOP=1 -tA -F ' ' -h localhost -U setup -d sch -f services/forum/sql/set_passwords_sandbox.sql > urls.txt
+          n=0
+          while read -r key url; do
+            [ -z "$key" ] && continue
+            echo "$url" | grep -Eq '^postgresql\+psycopg://cfp_forum_[a-z]+_rw\.gmnsmggqvbwlgluvscfh:[0-9a-f]{48}@aws-0-us-west-2\.pooler\.supabase\.com:5432/postgres\?sslmode=require$' || { echo "URL sai dạng cho $key"; exit 1; }
+            role=$(echo "$url" | sed -E 's#^[^/]+//([^.]+)\..*#\1#'); pw=$(echo "$url" | sed -E 's#^.*:([0-9a-f]{48})@.*#\1#')
+            echo "::add-mask::$pw"
+            test "$(PGPASSWORD=$pw psql -tA -h localhost -U "$role" -d sch -c 'select current_schema()')" != "" && n=$((n+1))
+            echo "$key → $role: đăng nhập OK"
+          done < urls.txt
+          rm -f urls.txt; test "$n" = 3
+
       - name: 3 schema — khôi phục (schemas_down.sql) rồi dựng lại
         run: |
           export PGPASSWORD=setup
