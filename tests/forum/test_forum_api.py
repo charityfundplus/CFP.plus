@@ -31,7 +31,7 @@ def urls(tmp_path_factory):
     for url in env.values():  # bắt đầu sạch — chỉ trên database test
         eng = create_engine(url)
         with eng.begin() as c:
-            for t in ("comments", "posts", "members", "forum_meta", "sessions", "users"):
+            for t in ("audit_log", "comments", "posts", "members", "forum_meta", "auth_audit", "sessions", "users"):
                 c.execute(text(f"DROP TABLE IF EXISTS {t}"))
         eng.dispose()
     return env
@@ -154,3 +154,81 @@ def test_ui_is_internal_and_noindex(urls):
     r = c.get("/_internal/forum/sieu-bo-doi/")
     assert r.status_code == 200 and "noindex" in r.headers["x-robots-tag"]
     assert c.get("/_internal/forum/khong-co/").status_code == 404
+
+
+def _env(urls):
+    for k, v in {"CFP_FORUM_AUTH_DB": urls["auth"], "CFP_FORUM_DB_SIEU_BO_DOI": urls["sieu-bo-doi"],
+                 "CFP_FORUM_DB_SI_AI_HSTDN": urls["si-ai-hstdn"]}.items():
+        os.environ[k] = v
+
+
+def test_audit_full_loop_login_post_save_reply_audit(urls):
+    """Luồng P0: đăng nhập → đăng bài → lưu DB → phản hồi → kiểm toán."""
+    c = make_client(urls)
+    email = register(c, "Tác Giả Audit")
+    c.post("/api/auth/logout", headers=H)
+    assert c.post("/api/auth/login", json={"email": email, "password": "sai-mat-khau"}, headers=H).status_code == 401
+    assert c.post("/api/auth/login", json={"email": email, "password": "matkhau-p0"}, headers=H).status_code == 200
+    c.post("/api/forums/sieu-bo-doi/join", headers=H)
+    pid = c.post("/api/forums/sieu-bo-doi/posts", json={"title": "Audit", "body": "x"}, headers=H).json()["id"]
+    cid = c.post(f"/api/forums/sieu-bo-doi/posts/{pid}/comments", json={"body": "phản hồi"}, headers=H).json()["id"]
+    uid = c.get("/api/auth/me").json()["user"]["id"]
+
+    # Thành viên thường không đọc được nhật ký.
+    assert c.get("/api/forums/sieu-bo-doi/audit").status_code == 403
+
+    a = make_client(urls)
+    admin_email = register(a, "Kiểm Toán SBD")
+    a.post("/api/forums/sieu-bo-doi/join", headers=H)
+    _env(urls)
+    admin.grant_admin("sieu-bo-doi", admin_email)
+    r = a.get("/api/forums/sieu-bo-doi/audit?limit=500")
+    assert r.status_code == 200
+    mine = [(e["action"], e["target"]["type"], e["target"]["id"]) for e in r.json()["entries"]
+            if e["actor"]["id"] == uid]
+    assert ("join", "member", uid) in mine
+    assert ("post.create", "post", pid) in mine
+    assert ("comment.create", "comment", cid) in mine
+
+    # Nhật ký xác thực nằm ở auth DB, không lộ mật khẩu.
+    eng = create_engine(urls["auth"])
+    with eng.connect() as conn:
+        acts = [r[0] for r in conn.execute(text(
+            "SELECT action FROM auth_audit WHERE user_id = :u ORDER BY id"), {"u": uid})]
+        details = conn.execute(text("SELECT coalesce(string_agg(detail, ''), '') FROM auth_audit")).scalar_one() \
+            if eng.dialect.name == "postgresql" else \
+            conn.execute(text("SELECT coalesce(group_concat(detail, ''), '') FROM auth_audit")).scalar_one()
+    eng.dispose()
+    assert acts[:4] == ["register", "logout", "login.failed", "login"]
+    assert "matkhau" not in details and "sai-mat-khau" not in details
+
+
+def test_audit_isolated_per_forum(urls):
+    """Admin HSTDN không đọc được nhật ký Siêu Bộ Đôi; nhật ký SBD không nằm trong DB HSTDN."""
+    a = make_client(urls)
+    em = register(a, "Admin HSTDN 2")
+    a.post("/api/forums/si-ai-hstdn/join", headers=H)
+    _env(urls)
+    admin.grant_admin("si-ai-hstdn", em)
+    assert a.get("/api/forums/si-ai-hstdn/audit").status_code == 200
+    assert a.get("/api/forums/sieu-bo-doi/audit").status_code == 403
+    eng = create_engine(urls["si-ai-hstdn"])
+    with eng.connect() as conn:
+        n = conn.execute(text("SELECT count(*) FROM audit_log WHERE action = 'post.create' AND target_type = 'post' "
+                              "AND target_id IN (SELECT id FROM posts WHERE title = 'Audit')")).scalar_one()
+    eng.dispose()
+    assert n == 0
+
+
+def test_failed_write_leaves_no_audit(urls):
+    c = make_client(urls)
+    register(c)
+    c.post("/api/forums/sieu-bo-doi/join", headers=H)
+    uid = c.get("/api/auth/me").json()["user"]["id"]
+    assert c.post("/api/forums/sieu-bo-doi/posts/999999/comments", json={"body": "x"}, headers=H).status_code == 404
+    eng = create_engine(urls["sieu-bo-doi"])
+    with eng.connect() as conn:
+        n = conn.execute(text("SELECT count(*) FROM audit_log WHERE actor_id = :u AND action = 'comment.create'"),
+                         {"u": uid}).scalar_one()
+    eng.dispose()
+    assert n == 0

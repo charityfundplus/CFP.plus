@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import hashlib
 import hmac
+import json
 import os
 import re
 import secrets
@@ -74,6 +75,13 @@ sessions_t = Table("sessions", auth_md,
                    Column("user_id", Integer, ForeignKey("users.id"), nullable=False),
                    Column("expires_at", DateTime(timezone=True), nullable=False))
 
+auth_audit_t = Table("auth_audit", auth_md,
+                     Column("id", Integer, primary_key=True),
+                     Column("at", DateTime(timezone=True), nullable=False, server_default=func.now()),
+                     Column("user_id", Integer),               # NULL khi đăng nhập sai email
+                     Column("action", String(32), nullable=False),
+                     Column("detail", Text))
+
 forum_md = MetaData()
 meta_t = Table("forum_meta", forum_md,
                Column("forum_key", String(64), primary_key=True))
@@ -99,6 +107,32 @@ comments_t = Table("comments", forum_md,
                    Column("author_name", String(60), nullable=False),
                    Column("body", Text, nullable=False),
                    Column("created_at", DateTime(timezone=True), nullable=False, server_default=func.now()))
+
+
+audit_t = Table("audit_log", forum_md,
+                Column("id", Integer, primary_key=True),
+                Column("at", DateTime(timezone=True), nullable=False, server_default=func.now()),
+                Column("actor_id", Integer, nullable=False),
+                Column("actor_name", String(60), nullable=False),
+                Column("action", String(32), nullable=False),     # join|post.create|comment.create|member.approve
+                Column("target_type", String(16), nullable=False),
+                Column("target_id", Integer),
+                Column("detail", Text))
+
+# Nhật ký kiểm toán: chỉ ghi thêm (append-only) ở tầng ứng dụng — không có route sửa/xoá.
+# Mỗi bản ghi được ghi CÙNG transaction với thao tác nó mô tả: thao tác thành công
+# thì nhật ký có, thao tác rollback thì nhật ký cũng không có.
+
+
+def _audit(conn, user: dict, action: str, target_type: str, target_id: int | None, **detail) -> None:
+    conn.execute(insert(audit_t).values(actor_id=user["id"], actor_name=user["name"], action=action,
+                                        target_type=target_type, target_id=target_id,
+                                        detail=json.dumps(detail, ensure_ascii=False) if detail else None))
+
+
+def _auth_audit(conn, user_id: int | None, action: str, **detail) -> None:
+    conn.execute(insert(auth_audit_t).values(user_id=user_id, action=action,
+                                             detail=json.dumps(detail, ensure_ascii=False) if detail else None))
 
 
 def _engine(url: str) -> Engine:
@@ -305,6 +339,7 @@ def create_app(stores: Stores | None = None) -> FastAPI:
             uid = c.execute(insert(users_t).values(email=email, name=data.name.strip(),
                                                    pw_hash=hash_password(data.password))
                             .returning(users_t.c.id)).scalar_one()
+            _auth_audit(c, uid, "register")
         start_session(resp, uid)
         return {"id": uid, "email": email, "name": data.name.strip()}
 
@@ -313,7 +348,11 @@ def create_app(stores: Stores | None = None) -> FastAPI:
         with st.auth.connect() as c:
             row = c.execute(select(users_t).where(users_t.c.email == data.email.strip().lower())).mappings().first()
         if not row or not verify_password(data.password, row["pw_hash"]):
+            with st.auth.begin() as c:   # không lưu mật khẩu, không lưu email đã nhập
+                _auth_audit(c, row["id"] if row else None, "login.failed")
             raise HTTPException(401, "Email hoặc mật khẩu không đúng.")
+        with st.auth.begin() as c:
+            _auth_audit(c, row["id"], "login")
         start_session(resp, row["id"])
         return {"id": row["id"], "email": row["email"], "name": row["name"]}
 
@@ -322,7 +361,10 @@ def create_app(stores: Stores | None = None) -> FastAPI:
         tok = request.cookies.get(SESSION_COOKIE)
         if tok:
             with st.auth.begin() as c:
-                c.execute(sessions_t.delete().where(sessions_t.c.token_hash == _tok_hash(tok)))
+                uid = c.execute(sessions_t.delete().where(sessions_t.c.token_hash == _tok_hash(tok))
+                                .returning(sessions_t.c.user_id)).scalar()
+                if uid:
+                    _auth_audit(c, uid, "logout")
         resp.delete_cookie(SESSION_COOKIE, path="/")
         return {"ok": True}
 
@@ -348,6 +390,7 @@ def create_app(stores: Stores | None = None) -> FastAPI:
         with st.forums[key].begin() as c:
             c.execute(insert(members_t).values(user_id=user["id"], user_name=user["name"],
                                                role="member", status=status))
+            _audit(c, user, "join", "member", user["id"], status=status)
         return {"status": status}
 
     @app.get("/api/forums/{key}/members")
@@ -371,6 +414,8 @@ def create_app(stores: Stores | None = None) -> FastAPI:
             n = c.execute(update(members_t).where(members_t.c.user_id == member_id,
                                                   members_t.c.status == "pending")
                           .values(status="active")).rowcount
+            if n:
+                _audit(c, user, "member.approve", "member", member_id)
         if not n:
             raise HTTPException(404, "Không có yêu cầu chờ duyệt.")
         return {"status": "active"}
@@ -413,6 +458,7 @@ def create_app(stores: Stores | None = None) -> FastAPI:
             raise HTTPException(422, "Diễn đàn này không dùng trường HSTDN.")
         with st.forums[key].begin() as c:
             row = c.execute(insert(posts_t).values(**values).returning(*posts_t.c)).mappings().one()
+            _audit(c, user, "post.create", "post", row["id"])
         return _post_out(row, [])
 
     @app.post("/api/forums/{key}/posts/{post_id}/comments", status_code=201)
@@ -428,7 +474,23 @@ def create_app(stores: Stores | None = None) -> FastAPI:
             row = c.execute(insert(comments_t).values(post_id=post_id, author_id=user["id"],
                                                       author_name=user["name"], body=body)
                             .returning(*comments_t.c)).mappings().one()
+            _audit(c, user, "comment.create", "comment", row["id"], post_id=post_id)
         return _comment_out(row)
+
+    @app.get("/api/forums/{key}/audit")
+    def read_audit(key: str, limit: int = 100, user=Depends(require_user)):
+        """Nhật ký kiểm toán của RIÊNG diễn đàn này — chỉ quản trị viên của diễn đàn đó."""
+        forum_cfg(key)
+        m = require_active_member(key, user)
+        if m["role"] != "admin":
+            raise HTTPException(403, "Chỉ quản trị viên của diễn đàn này.")
+        limit = max(1, min(limit, 500))
+        with st.forums[key].connect() as c:
+            rows = c.execute(select(audit_t).order_by(audit_t.c.id.desc()).limit(limit)).mappings().all()
+        return {"forum": key, "entries": [
+            {"id": r["id"], "at": _iso(r["at"]), "actor": {"id": r["actor_id"], "name": r["actor_name"]},
+             "action": r["action"], "target": {"type": r["target_type"], "id": r["target_id"]},
+             "detail": json.loads(r["detail"]) if r["detail"] else None} for r in rows]}
 
     # ---- UI tại đường dẫn kỹ thuật nội bộ (không phải public route)
     @app.get("/styles.css")
