@@ -5,6 +5,13 @@
 # Supabase từ Render: dùng Session Pooler (IPv4), user dạng <role>.<project_ref>, ví dụ
 #   postgresql+psycopg://cfp_forum_sbd_rw.gmnsmggqvbwlgluvscfh:<MẬT_KHẨU>@aws-0-us-west-2.pooler.supabase.com:5432/postgres?sslmode=require
 # 3 URL diễn đàn: services/forum/sql/set_passwords_sandbox.sql • URL Văn Phòng: set_password_office_sandbox.sql
+#
+# LỰA CHỌN A — chạy ngay, không cần secrets DB (dữ liệu TẠM, mất khi instance khởi động lại/ngủ):
+#   CFP_SANDBOX_EPHEMERAL=1, KHÔNG đặt 5 biến CFP_*_DB. Mỗi kho 1 tệp SQLite riêng trên đĩa instance;
+#   worker chạy trong tiến trình (CFP_WORKER_INPROCESS=1). /api/health báo "storage": "ephemeral-sqlite…".
+#   Tài khoản governance/reviewer tạo sẵn lúc khởi động: CFP_BOOTSTRAP_GOV_EMAIL, CFP_BOOTSTRAP_REVIEWER_EMAIL,
+#   CFP_BOOTSTRAP_PASSWORD (secret ≥ 12 ký tự, nhập tay trong Dashboard, không ghi vào repo).
+# LỰA CHỌN B — bền vững (Supabase, role tách biệt): bỏ CFP_SANDBOX_EPHEMERAL, đặt 4 URL DB (+ CFP_WORKER_DB sau khi 004 được duyệt).
 services:
   - type: web
     name: cfp-forum-sandbox
@@ -40,5 +47,13 @@ services:
         sync: false
       - key: CFP_WORKER_INPROCESS
         value: "1"
+      - key: CFP_SANDBOX_EPHEMERAL    # "1" = Lựa chọn A (tạm). Bỏ trống = Lựa chọn B (cần 4 URL DB)
+        sync: false
+      - key: CFP_BOOTSTRAP_GOV_EMAIL   # chỉ dùng ở Lựa chọn A
+        sync: false
+      - key: CFP_BOOTSTRAP_REVIEWER_EMAIL
+        sync: false
+      - key: CFP_BOOTSTRAP_PASSWORD    # secret ≥ 12 ký tự
+        sync: false
       - key: CFP_SANDBOX_WEBSITE  # khung website chỉ đọc + thanh lối vào Siêu Bộ Đôi; "0" để tắt
         value: "1"

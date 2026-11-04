@@ -303,3 +303,51 @@ def test_forged_forwarded_host_cannot_whitelist_origin(urls, monkeypatch):
     r = c.post("/api/auth/login", json={"email": "a@b.cd", "password": "x"},
                headers={**H, "Origin": "https://evil.example", "X-Forwarded-Host": "evil.example"})
     assert r.status_code == 403
+
+
+def test_ephemeral_sandbox_mode(tmp_path, monkeypatch):
+    """CFP_SANDBOX_EPHEMERAL=1: kho SQLite tạm riêng từng kho, báo rõ ở health, bootstrap an toàn."""
+    from fastapi.testclient import TestClient
+    from services.forum.app import Stores, create_app
+    for n in ("CFP_FORUM_AUTH_DB", "CFP_FORUM_DB_SIEU_BO_DOI", "CFP_FORUM_DB_SI_AI_HSTDN", "CFP_OFFICE_DB", "CFP_WORKER_DB"):
+        monkeypatch.delenv(n, raising=False)
+    monkeypatch.setenv("CFP_SANDBOX_EPHEMERAL", "1")
+    monkeypatch.setenv("CFP_EPHEMERAL_DIR", str(tmp_path))
+    monkeypatch.setenv("CFP_BOOTSTRAP_GOV_EMAIL", "gov@example.org")
+    monkeypatch.setenv("CFP_BOOTSTRAP_REVIEWER_EMAIL", "rev@example.org")
+    monkeypatch.setenv("CFP_BOOTSTRAP_PASSWORD", "mat-khau-bootstrap-1")
+    st = Stores.from_env()
+    assert st.ephemeral and st.office is not None and st.worker is not None
+    assert len({str(e.url) for e in [st.auth, *st.forums.values(), st.office, st.worker]}) == 5  # mỗi kho một tệp
+    c = TestClient(create_app(st))
+    h = c.get("/api/health").json()
+    assert h["storage"].startswith("ephemeral-sqlite") and h["office"]["db"] == "sqlite"
+    assert c.get("/api/worker/status").json()["configured"] is True
+    H = {"X-CFP-Forum": "1"}
+    r = c.post("/api/auth/login", json={"email": "gov@example.org", "password": "mat-khau-bootstrap-1"}, headers=H)
+    assert r.status_code == 200
+    assert c.get("/api/office/board").json()["viewer"] == "governance"
+    assert c.get("/api/forums/si-ai-hstdn/members").status_code == 200  # admin HSTDN để duyệt thành viên
+    st.dispose()
+    # Chống chiếm email: tài khoản có sẵn với mật khẩu khác → không cấp vai trò
+    monkeypatch.setenv("CFP_BOOTSTRAP_PASSWORD", "mat-khau-khac-12345")
+    st2 = Stores.from_env()
+    assert all(x.startswith("SKIP") for x in st2.bootstrap_ephemeral())
+    st2.dispose()
+    # Không trộn kho tạm với kho thật
+    monkeypatch.setenv("CFP_OFFICE_DB", "sqlite:///x.db")
+    with pytest.raises(RuntimeError, match="không dùng cùng"):
+        Stores.from_env()
+
+
+def test_ephemeral_bootstrap_needs_strong_password(tmp_path, monkeypatch):
+    from services.forum.app import Stores
+    for n in ("CFP_FORUM_AUTH_DB", "CFP_FORUM_DB_SIEU_BO_DOI", "CFP_FORUM_DB_SI_AI_HSTDN", "CFP_OFFICE_DB", "CFP_WORKER_DB"):
+        monkeypatch.delenv(n, raising=False)
+    monkeypatch.setenv("CFP_SANDBOX_EPHEMERAL", "1")
+    monkeypatch.setenv("CFP_EPHEMERAL_DIR", str(tmp_path))
+    monkeypatch.setenv("CFP_BOOTSTRAP_GOV_EMAIL", "gov@example.org")
+    monkeypatch.setenv("CFP_BOOTSTRAP_PASSWORD", "ngan")
+    st = Stores.from_env()
+    assert st.bootstrap_ephemeral() == []
+    st.dispose()

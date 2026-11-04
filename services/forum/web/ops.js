@@ -37,6 +37,7 @@
     if (h._err) svc.push(el('li', {}, [badge('OFFLINE', 'svc-state'), ' API: ' + h._err.message]));
     else {
       svc.push(el('li', {}, [badge(h.status === 'ok' ? 'ONLINE' : 'DEGRADED', 'svc-state'), ' API • build ' + (h.build || 'local')]));
+      if (h.storage && h.storage !== 'configured') svc.push(el('li', { 'data-testid': 'svc-storage' }, [badge('EPHEMERAL', 'svc-storage-state'), ' ' + h.storage]));
       Object.keys(h.forums || {}).forEach(function (k) { svc.push(el('li', {}, [badge('ONLINE', 'svc-forum'), ' Diễn Đàn ' + k + ' • ' + h.forums[k].db])); });
       svc.push(el('li', {}, [badge(h.office ? 'ONLINE' : 'NOT CONFIGURED', 'svc-office'), ' Văn Phòng SI AI' + (h.office ? ' • ' + h.office.db : '')]));
       svc.push(el('li', {}, [badge('READ-ONLY', 'svc-registry'), ' Registry • ' + h.registry.entities + ' thực thể']));

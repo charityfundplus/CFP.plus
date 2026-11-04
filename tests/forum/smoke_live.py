@@ -108,10 +108,10 @@ def run(base: str, allow_http: bool) -> dict:
 
     def health():
         h = expect(guest.get("/api/health"), 200)
-        x["build"] = h.get("build")
+        x["build"], x["storage"] = h.get("build"), h.get("storage")
         assert h["status"] == "ok" and h.get("office"), "office chưa cấu hình"
         assert set(h["forums"]) == {"sieu-bo-doi", "si-ai-hstdn"}, h["forums"]
-        return {"build": h.get("build"), "auth_db": h["auth_db"], "office_db": h["office"]["db"],
+        return {"build": h.get("build"), "storage": h.get("storage"), "auth_db": h["auth_db"], "office_db": h["office"]["db"],
                 "forums": {k: v["db"] for k, v in h["forums"].items()}, "registry": h["registry"]}
     s.check("platform", "/api/health", health)
 
@@ -253,7 +253,7 @@ def run(base: str, allow_http: bool) -> dict:
 def finish(s: Smoke, base: str, tag: str) -> dict:
     gating = [r for r in s.results if r["group"] != "worker"]
     return {"base": base, "run": tag, "at": datetime.now(timezone.utc).isoformat(),
-            "build": s.ctx.get("build"), "task_id": s.ctx.get("task"), "post_id": s.ctx.get("post"),
+            "build": s.ctx.get("build"), "storage": s.ctx.get("storage"), "task_id": s.ctx.get("task"), "post_id": s.ctx.get("post"),
             "passed": sum(r["ok"] for r in gating), "failed": sum(not r["ok"] for r in gating),
             "result": "PASS" if gating and all(r["ok"] for r in gating) else "FAIL",
             "rate_limited_retries": RespectRateLimit.throttled, "mode": "SANDBOX PRACTICE • PRODUCTION NO GO", "checks": s.results}

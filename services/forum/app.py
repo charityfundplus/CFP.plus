@@ -193,6 +193,7 @@ class Stores:
             from services.forum.office import md as office_md
             self.office = _engine(office_url)
             office_md.create_all(self.office)
+        self.ephemeral = False  # True: SQLite tạm trên đĩa của instance (CFP_SANDBOX_EPHEMERAL=1)
         self.worker: Engine | None = None
         if worker_url:  # kho riêng của Worker P0 (004_worker.sql); app chỉ ĐỌC trạng thái
             from services.forum.worker import engine_for
@@ -204,6 +205,8 @@ class Stores:
 
     @classmethod
     def from_env(cls) -> "Stores":
+        if os.environ.get("CFP_SANDBOX_EPHEMERAL") == "1":
+            return cls.ephemeral_sandbox()
         auth = os.environ.get("CFP_FORUM_AUTH_DB")
         urls = {k: os.environ.get(f"CFP_FORUM_DB_{_env_key(k)}") for k in FORUMS}
         missing = [n for n, v in [("CFP_FORUM_AUTH_DB", auth)] +
@@ -211,6 +214,58 @@ class Stores:
         if missing:
             raise RuntimeError("Thiếu biến môi trường: " + ", ".join(missing))
         return cls(auth, urls, os.environ.get("CFP_OFFICE_DB") or None, os.environ.get("CFP_WORKER_DB") or None)
+
+    @classmethod
+    def ephemeral_sandbox(cls) -> "Stores":
+        """SANDBOX tạm: mỗi kho một tệp SQLite riêng trên đĩa của instance — không cần secrets DB,
+        không đụng Supabase/migration. Dữ liệu MẤT khi instance khởi động lại; health/ops báo rõ."""
+        names = ["CFP_FORUM_AUTH_DB", *[f"CFP_FORUM_DB_{_env_key(k)}" for k in FORUMS], "CFP_OFFICE_DB", "CFP_WORKER_DB"]
+        mixed = [n for n in names if os.environ.get(n)]
+        if mixed:  # không trộn kho tạm với kho thật
+            raise RuntimeError("CFP_SANDBOX_EPHEMERAL=1 không dùng cùng " + ", ".join(mixed))
+        d = Path(os.environ.get("CFP_EPHEMERAL_DIR", "/tmp/cfp-sandbox-ephemeral"))
+        d.mkdir(parents=True, exist_ok=True)
+        u = lambda n: f"sqlite:///{d / n}.db"  # noqa: E731
+        st = cls(u("auth"), {k: u(f"forum-{k}") for k in FORUMS}, u("office"), u("worker"))
+        st.ephemeral = True
+        return st
+
+    def bootstrap_ephemeral(self) -> list[str]:
+        """Chỉ ở chế độ tạm: tạo sẵn tài khoản governance/reviewer TRƯỚC khi nhận request, mật khẩu lấy
+        từ secret CFP_BOOTSTRAP_PASSWORD (không ghi log). Tài khoản đã tồn tại mà mật khẩu không khớp
+        → không cấp vai trò (chống chiếm email). Trả về danh sách vai trò đã cấp (để ghi log, không có mật khẩu)."""
+        from services.forum.office import roles_t
+        pw = os.environ.get("CFP_BOOTSTRAP_PASSWORD", "")
+        want = [(os.environ.get("CFP_BOOTSTRAP_GOV_EMAIL", ""), "governance"),
+                (os.environ.get("CFP_BOOTSTRAP_REVIEWER_EMAIL", ""), "reviewer")]
+        if not self.ephemeral or self.office is None or len(pw) < 12:
+            return []
+        done = []
+        for email, role in want:
+            email = email.strip().lower()
+            if not email:
+                continue
+            with self.auth.begin() as c:
+                row = c.execute(select(users_t).where(users_t.c.email == email)).mappings().first()
+                if row is None:
+                    uid = c.execute(insert(users_t).values(email=email, name=f"Sandbox {role}", pw_hash=hash_password(pw))
+                                    .returning(users_t.c.id)).scalar_one()
+                elif verify_password(pw, row["pw_hash"]):
+                    uid = row["id"]
+                else:
+                    done.append(f"SKIP {role}: tài khoản có sẵn, mật khẩu không khớp")
+                    continue
+            with self.office.begin() as c:
+                if not c.execute(select(roles_t.c.user_id).where(roles_t.c.user_id == uid, roles_t.c.role == role)).first():
+                    c.execute(insert(roles_t).values(user_id=uid, role=role))
+            if role == "governance":  # quản trị cả hai diễn đàn để duyệt thành viên SI AI • HSTDN
+                for eng in self.forums.values():
+                    with eng.begin() as c:
+                        if not c.execute(select(members_t.c.user_id).where(members_t.c.user_id == uid)).first():
+                            c.execute(insert(members_t).values(user_id=uid, user_name=f"Sandbox {role}",
+                                                               role="admin", status="active"))
+            done.append(f"{role}: {email}")
+        return done
 
 
 # ---------------------------------------------------------------- auth helpers
@@ -269,6 +324,9 @@ def create_app(stores: Stores | None = None) -> FastAPI:
                               "SANDBOX • NOT DEPLOYED.")
     st = stores or Stores.from_env()
     app.state.stores = st
+    if st.ephemeral:
+        for line in st.bootstrap_ephemeral():
+            print(f"[cfp-sandbox] bootstrap {line}", flush=True)
     limiter = RateLimiter()
     limits = _limits()
     trust_proxy = os.environ.get("CFP_FORUM_TRUST_PROXY", "0") == "1"
@@ -392,7 +450,8 @@ def create_app(stores: Stores | None = None) -> FastAPI:
 
     @app.get("/api/health")
     def health():
-        out = {"status": "ok", "version": app.version, "build": os.environ.get("RENDER_GIT_COMMIT", "")[:12] or None,
+        out = {"status": "ok", "version": app.version, "build": os.environ.get("RENDER_GIT_COMMIT", "") or None,
+               "storage": ("ephemeral-sqlite: dữ liệu mất khi instance khởi động lại" if st.ephemeral else "configured"),
                "auth_db": st.auth.dialect.name, "forums": {},
                "registry": {"entities": len(registry.entities), "read_only": True}}
         for k, eng in st.forums.items():
