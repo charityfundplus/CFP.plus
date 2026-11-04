@@ -54,6 +54,10 @@
       return api('GET', '/forums/' + KEY + '/posts').then(function (p) {
         state.posts = p.posts; state.readError = null;
       }, function (e) { state.posts = []; state.readError = e.message; });
+    }).then(function () {
+      state.taskLinks = [];  // liên kết ngược → nhiệm vụ: backend chỉ trả nhiệm vụ người xem được phép thấy
+      if (!state.user || state.readError) return;
+      return api('GET', '/office/forum-links?forum=' + encodeURIComponent(KEY)).then(function (r) { state.taskLinks = r.links || []; }, function () {});
     }).then(function () { render(); if (note) flash(note); })
       .catch(function (e) { render(); flash('Không kết nối được máy chủ diễn đàn: ' + e.message, true); });
   }
@@ -132,8 +136,13 @@
         return api('POST', '/forums/' + KEY + '/posts/' + p.id + '/comments', { body: ta.value }).then(function () { return reload('Đã bình luận.'); });
       });
     }
-    return el('article', { 'class': 'chapter-card forum-post', 'data-testid': 'post', 'data-post-id': String(p.id) }, [
+    var back = (state.taskLinks || []).filter(function (l) { return l.post_id === p.id; }).map(function (l) {
+      return el('a', { href: '/_internal/office/' + encodeURIComponent(l.office_id) + '/#task:' + l.task_id,
+        'class': 'forum-tag', 'data-testid': 'task-backlink', text: '↩ Nhiệm vụ task:' + l.task_id });
+    });
+    return el('article', { 'class': 'chapter-card forum-post', 'data-testid': 'post', 'data-post-id': String(p.id), id: 'post-' + p.id }, [
       el('h3', { 'data-testid': 'post-title-view', text: p.title }),
+      back.length ? el('p', {}, back) : null,
       el('p', { 'class': 'forum-meta', text: p.author.name + ' • ' + fmt(p.created_at) }),
       tags.length ? el('p', {}, tags) : null,
       el('p', { 'class': 'forum-body', 'data-testid': 'post-body-view', text: p.body }),
@@ -154,6 +163,8 @@
         [el('h2', { text: 'Bài viết (' + state.posts.length + ')' })].concat(list ? [list] : state.posts.map(postView)))];
     root.replaceChildren.apply(root, kids.filter(Boolean));
     root.setAttribute('data-ready', '1');
+    var target = location.hash.length > 1 && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (target) target.scrollIntoView();
   }
 
   reload();

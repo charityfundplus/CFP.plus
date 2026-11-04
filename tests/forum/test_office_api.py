@@ -514,3 +514,54 @@ def test_closure_after_independent_review(world):
     assert [h["to_status"] for h in task["history"]][-2:] == ["ACCEPTED", "CLOSED"]
     ev = ok(gov.get(f"/api/office/audit?ref=task:{t}"), 200)["events"]
     assert [e["action"] for e in ev if e["action"] == "task.closed"] == ["task.closed"]
+
+
+def _activate(world, key, who):
+    from services.forum.app import members_t
+    with world["st"].forums[key].begin() as c:
+        c.execute(insert(members_t).values(user_id=world["ids"][who], user_name=who, role="member", status="active"))
+
+
+def test_task_discussion_in_correct_forum_with_backlinks(world):
+    """Nhiệm vụ → mở thảo luận ở đúng Diễn Đàn → phản hồi → quay lại nhiệm vụ; quyền và tách kho được giữ."""
+    lead, rev, gov, other, o = world["lead"], world["rev"], world["gov"], world["other"], world["out"]
+    t = o["task"]
+    url = f"/api/office/tasks/{t}/discussions"
+    sbd = {"forum": "sieu-bo-doi", "title": "Thảo luận nhiệm vụ", "body": "Nhờ góp ý cách kiểm thử."}
+    hst = {"forum": "si-ai-hstdn", "title": "HSTDN cho nhiệm vụ", "body": "Dữ liệu doanh nghiệp", "hstdn": "Tập đoàn X"}
+    # Chưa là thành viên diễn đàn → diễn đàn tự từ chối (không có bài, không có liên kết)
+    assert lead.post(url, json=sbd, headers=H).status_code == 403
+    assert lead.post(url, json=hst, headers=H).status_code == 403
+    assert _anon(world).post(url, json=sbd, headers=H).status_code == 401
+    assert lead.post(url, json={**sbd, "forum": "khac"}, headers=H).status_code == 422
+    ok(lead.post("/api/forums/sieu-bo-doi/join", headers=H), 200)
+    ok(other.post("/api/forums/sieu-bo-doi/join", headers=H), 200)
+    assert other.post(url, json=sbd, headers=H).status_code == 404  # không thấy nhiệm vụ → không mở được
+    d = ok(lead.post(url, json=sbd, headers=H), 201)
+    assert d["forum"] == "sieu-bo-doi" and d["url"] == f"/_internal/forum/sieu-bo-doi/#post-{d['post_id']}"
+    # Bài nằm ở đúng diễn đàn, có phản hồi qua API diễn đàn
+    posts = ok(_anon(world).get("/api/forums/sieu-bo-doi/posts"), 200)["posts"]
+    assert any(p["id"] == d["post_id"] and p["title"] == "Thảo luận nhiệm vụ" for p in posts)
+    ok(other.post(f"/api/forums/sieu-bo-doi/posts/{d['post_id']}/comments", json={"body": "Góp ý: thêm test 401."}, headers=H), 201)
+    # Liên kết ngược bài → nhiệm vụ: chỉ người xem được nhiệm vụ
+    back = lambda c: ok(c.get("/api/office/forum-links?forum=sieu-bo-doi"), 200)["links"]
+    assert {"post_id": d["post_id"], "task_id": t, "office_id": CID} in back(lead)
+    assert {"post_id": d["post_id"], "task_id": t, "office_id": CID} in back(gov)
+    assert back(other) == [] and back(_anon(world)) == []
+    # Quay lại nhiệm vụ: thảo luận hiện trong nhiệm vụ cho người tham gia
+    task = lambda c: next(x for x in ok(c.get(f"/api/office/offices/{CID}"), 200)["tasks"] if x["id"] == t)
+    assert [x["ref"] for x in task(rev)["discussions"]] == [f"forum:sieu-bo-doi:{d['post_id']}"]
+    # HSTDN: thành viên đã duyệt mở thảo luận; người không phải thành viên HSTDN không thấy ref HSTDN
+    _activate(world, "si-ai-hstdn", "lead")
+    h = ok(lead.post(url, json=hst, headers=H), 201)
+    assert lead.post(url, json={**hst, "hstdn": None}, headers=H).status_code == 422  # quy tắc HSTDN của diễn đàn
+    assert [x["forum"] for x in task(lead)["discussions"]] == ["sieu-bo-doi", "si-ai-hstdn"]
+    assert [x["forum"] for x in task(rev)["discussions"]] == ["sieu-bo-doi"]  # rev không là thành viên HSTDN
+    assert ok(rev.get("/api/office/forum-links?forum=si-ai-hstdn"), 200)["links"] == []
+    assert not any(p["id"] == h["post_id"] and p["title"] == hst["title"]
+                   for p in ok(_anon(world).get("/api/forums/sieu-bo-doi/posts"), 200)["posts"])  # không lẫn kho
+    # Không tự tạo liên kết forum giả qua API links; audit đủ
+    assert lead.post("/api/office/links", json={"from_ref": f"task:{t}", "to_ref": "forum:sieu-bo-doi:999",
+                                                "relation": "discussion"}, headers=H).status_code == 422
+    ev = ok(gov.get(f"/api/office/audit?ref=task:{t}"), 200)["events"]
+    assert sum(1 for e in ev if e["action"] == "task.discussion") == 2

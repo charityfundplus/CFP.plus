@@ -507,6 +507,10 @@ def create_app(stores: Stores | None = None) -> FastAPI:
 
     @app.post("/api/forums/{key}/posts", status_code=201)
     def create_post(key: str, data: PostIn, user=Depends(require_user)):
+        return new_post(key, data, user)
+
+    def new_post(key: str, data: PostIn, user: dict) -> dict:
+        """Một đường duy nhất tạo bài (API diễn đàn + mở thảo luận từ nhiệm vụ Văn Phòng): cùng quy tắc quyền."""
         cfg = forum_cfg(key)
         require_active_member(key, user)
         title, body = data.title.strip(), data.body.strip()
@@ -544,7 +548,18 @@ def create_app(stores: Stores | None = None) -> FastAPI:
     # ---- Văn Phòng SI AI (kho dữ liệu riêng, tuỳ chọn)
     if st.office is not None:
         from services.forum.office import build_router
-        app.include_router(build_router(st.office, registry, current_user))
+        def forum_can_read(key: str, user: dict | None) -> bool:
+            if key not in st.forums:
+                return False
+            try:
+                can_read(forum_cfg(key), user)
+                return True
+            except HTTPException:
+                return False
+
+        bridge = {"keys": tuple(st.forums), "can_read": forum_can_read,
+                  "create_post": lambda key, d, user: new_post(key, PostIn(**d), user)}
+        app.include_router(build_router(st.office, registry, current_user, forums=bridge))
 
         @app.get("/_internal/office/office.js")
         def office_js():

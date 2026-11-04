@@ -45,6 +45,7 @@ Sinh tự động bởi `python -m services.forum.inventory --write` • CI ki�
 | office | GET | `/api/office/datasets/{did}` | công khai (+phiên nếu có) | access=members → người tạo / governance / người xem được nhiệm vụ dùng tài liệu |  | cfp_office |
 | office | POST | `/api/office/enterprises` | đăng nhập |  | header X-CFP-Forum + Origin | cfp_office |
 | office | GET | `/api/office/enterprises/{eid}` | công khai (+phiên nếu có) |  |  | cfp_office |
+| office | GET | `/api/office/forum-links` | công khai (+phiên nếu có) | chỉ nhiệm vụ người xem được phép thấy • diễn đàn người xem đọc được |  | cfp_office (liên kết) + diễn đàn tương ứng (bài, qua đúng quy tắc diễn đàn) |
 | office | GET | `/api/office/links` | công khai (+phiên nếu có) | ẩn liên kết tới nhiệm vụ/tài liệu không được xem |  | cfp_office |
 | office | POST | `/api/office/links` | đăng nhập | chủ sở hữu mục nguồn / maintainer / governance • đích phải được xem | header X-CFP-Forum + Origin | cfp_office |
 | office | POST | `/api/office/offices` | đăng nhập | governance • ID phải có trong Registry (type ai) | header X-CFP-Forum + Origin | cfp_office |
@@ -58,6 +59,7 @@ Sinh tự động bởi `python -m services.forum.inventory --write` • CI ki�
 | office | POST | `/api/office/tasks/{tid}/ack` | đăng nhập | người thực thi | header X-CFP-Forum + Origin | cfp_office |
 | office | POST | `/api/office/tasks/{tid}/close` | đăng nhập | governance hoặc người giao việc • không phải người thực thi • cần ACCEPTED | header X-CFP-Forum + Origin | cfp_office |
 | office | POST | `/api/office/tasks/{tid}/comments` | đăng nhập | người tham gia / maintainer / governance của đúng nhiệm vụ | header X-CFP-Forum + Origin | cfp_office |
+| office | POST | `/api/office/tasks/{tid}/discussions` | đăng nhập | người xem được nhiệm vụ • thành viên active của ĐÚNG diễn đàn (diễn đàn tự kiểm) | header X-CFP-Forum + Origin | cfp_office (liên kết) + diễn đàn tương ứng (bài, qua đúng quy tắc diễn đàn) |
 | office | POST | `/api/office/tasks/{tid}/evidence` | đăng nhập | người thực thi | header X-CFP-Forum + Origin | cfp_office |
 | office | POST | `/api/office/tasks/{tid}/review` | đăng nhập | reviewer được chỉ định | header X-CFP-Forum + Origin | cfp_office |
 | office | POST | `/api/office/tasks/{tid}/start` | đăng nhập | người thực thi • tối đa 5 việc song song | header X-CFP-Forum + Origin | cfp_office |

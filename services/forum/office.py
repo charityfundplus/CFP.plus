@@ -278,6 +278,14 @@ class CommentIn(BaseModel):
     body: str = Field(min_length=1, max_length=2000)
 
 
+class DiscussionIn(BaseModel):
+    forum: Literal["sieu-bo-doi", "si-ai-hstdn"]
+    title: str = Field(min_length=1, max_length=200)
+    body: str = Field(min_length=1, max_length=10000)
+    hstdn: str | None = Field(default=None, max_length=200)
+    country_id: str | None = Field(default=None, max_length=32)
+
+
 class LinkIn(BaseModel):
     from_ref: str = Field(max_length=64)
     to_ref: str = Field(max_length=64)
@@ -286,7 +294,9 @@ class LinkIn(BaseModel):
 
 # ------------------------------------------------------------- router
 
-def build_router(engine: Engine, registry: Registry, current_user, max_wip: int | None = None) -> APIRouter:
+def build_router(engine: Engine, registry: Registry, current_user, max_wip: int | None = None,
+                 forums: dict | None = None) -> APIRouter:
+    """forums: cầu nối tới hai Diễn Đàn (kho riêng) — {"keys", "can_read", "create_post"}; None → tắt thảo luận."""
     r = APIRouter(prefix="/api/office", tags=["office"])
     is_pg = engine.dialect.name == "postgresql"
 
@@ -406,6 +416,9 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
         if kind == "dataset" and val.isdigit():
             d = c.execute(select(datasets_t).where(datasets_t.c.id == int(val))).mappings().first()
             return bool(d) and dataset_visible(c, p, d)
+        if kind == "forum":  # forum:<key>:<post_id> — chỉ người đọc được diễn đàn đó mới thấy
+            key = val.partition(":")[0]
+            return bool(forums) and forums["can_read"](key, p and {"id": p["id"]})
         return True
 
     def can_link_from(c: Connection, p: dict, ref: str) -> bool:
@@ -498,6 +511,7 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
             rv = c.execute(select(reviews_t).where(reviews_t.c.task_id.in_(tids)).order_by(reviews_t.c.id)).mappings().all() if tids else []
             hist = c.execute(select(task_events_t).where(task_events_t.c.task_id.in_(tids)).order_by(task_events_t.c.id)).mappings().all() if tids else []
             maint = c.execute(select(maintainers_t.c.user_id).where(maintainers_t.c.canonical_id == cid)).scalars().all()
+            disc = {t["id"]: discussions_of(c, t["id"], user) for t in tasks}
         e = registry.get(cid)
         insider = bool(p and (cid in p["maintains"] or "governance" in p["roles"]))
         public_office = {k: v for k, v in _row(o).items() if k != "created_by"}
@@ -513,7 +527,8 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
                                                     and (is_staff(p) or p["id"] == t["created_by"])),
                        "evidence": [_row(x) for x in ev if x["task_id"] == t["id"]],
                        "reviews": [_row(x) for x in rv if x["task_id"] == t["id"]],
-                       "history": [_row(x) for x in hist if x["task_id"] == t["id"]]} for t in tasks],
+                       "history": [_row(x) for x in hist if x["task_id"] == t["id"]],
+                       "discussions": disc.get(t["id"], [])} for t in tasks],
             "links": links_of(f"office:{cid}", user), "public_link": f"https://cfp.plus/{cid}/",
             "developer": registry.get(e.parent_id).public() if e and e.parent_id and registry.get(e.parent_id) else None,
         }
@@ -793,6 +808,56 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
                 conflict("Thiếu Review ACCEPT của reviewer được chỉ định.")
             move(c, t, user["id"], "CLOSED", data.note)
         return {"id": tid, "status": "CLOSED"}
+
+    def discussions_of(c: Connection, tid: int, user: dict | None) -> list[dict]:
+        if not forums:
+            return []
+        rows = c.execute(select(links_t.c.to_ref).where(links_t.c.from_ref == f"task:{tid}",
+                                                        links_t.c.relation == "discussion").order_by(links_t.c.id)).scalars().all()
+        out = []
+        for ref in rows:
+            _, key, pid = ref.split(":", 2)
+            if forums["can_read"](key, user):
+                out.append({"forum": key, "post_id": int(pid), "ref": ref, "url": f"/_internal/forum/{key}/#post-{pid}"})
+        return out
+
+    @r.post("/tasks/{tid}/discussions", status_code=201)
+    def open_discussion(tid: int, data: DiscussionIn, user=Depends(require_user)):
+        """Mở thảo luận ở đúng Diễn Đàn cho nhiệm vụ: bài tạo theo quy tắc của diễn đàn đó + liên kết hai chiều."""
+        if not forums or data.forum not in forums["keys"]:
+            raise HTTPException(404, "Không có diễn đàn này.")
+        with _connect() as c:
+            t = load_task(c, tid, lock=False)
+            if not task_visible(c, principal(c, user), t):
+                raise HTTPException(404, "Không có nhiệm vụ.")
+            if t["status"] == "CLOSED":
+                conflict("Nhiệm vụ đã đóng.")
+        # Diễn đàn tự kiểm: thành viên active của ĐÚNG diễn đàn, trường HSTDN… (kho riêng, không dùng chung giao dịch)
+        post = forums["create_post"](data.forum, data.model_dump(exclude={"forum"}), user)
+        ref = f"forum:{data.forum}:{post['id']}"
+        with _begin() as c:
+            link(c, user["id"], f"task:{tid}", ref, "discussion")
+            audit(c, user["id"], "task.discussion", f"task:{tid}", {"forum": data.forum, "post_id": post["id"]})
+        return {"task_id": tid, "forum": data.forum, "post_id": post["id"], "ref": ref,
+                "url": f"/_internal/forum/{data.forum}/#post-{post['id']}"}
+
+    @r.get("/forum-links")
+    def forum_links(forum: str, user=Depends(optional_user)):
+        """Liên kết ngược bài diễn đàn → nhiệm vụ; chỉ trả nhiệm vụ người xem được phép thấy."""
+        if not forums or forum not in forums["keys"] or not forums["can_read"](forum, user):
+            return {"links": []}
+        with _connect() as c:
+            p = principal(c, user)
+            rows = c.execute(select(links_t.c.from_ref, links_t.c.to_ref).where(
+                links_t.c.relation == "discussion", links_t.c.to_ref.like(f"forum:{forum}:%"))).all()
+            out = []
+            for fr, to in rows:
+                if not fr.startswith("task:"):
+                    continue
+                t = c.execute(select(tasks_t).where(tasks_t.c.id == int(fr[5:]))).mappings().first()
+                if t and task_visible(c, p, t):
+                    out.append({"post_id": int(to.rsplit(":", 1)[1]), "task_id": t["id"], "office_id": task_office(c, t)})
+        return {"links": out}
 
     @r.post("/tasks/{tid}/comments", status_code=201)
     def comment(tid: int, data: CommentIn, user=Depends(require_user)):

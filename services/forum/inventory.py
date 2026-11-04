@@ -34,6 +34,8 @@ ROLE_RULES = {
     ("POST", "/api/office/tasks/{tid}/submit"): "người thực thi • cần ≥1 Evidence",
     ("POST", "/api/office/tasks/{tid}/evidence"): "người thực thi",
     ("POST", "/api/office/tasks/{tid}/close"): "governance hoặc người giao việc • không phải người thực thi • cần ACCEPTED",
+    ("POST", "/api/office/tasks/{tid}/discussions"): "người xem được nhiệm vụ • thành viên active của ĐÚNG diễn đàn (diễn đàn tự kiểm)",
+    ("GET", "/api/office/forum-links"): "chỉ nhiệm vụ người xem được phép thấy • diễn đàn người xem đọc được",
     ("POST", "/api/office/tasks/{tid}/comments"): "người tham gia / maintainer / governance của đúng nhiệm vụ",
     ("POST", "/api/office/tasks/{tid}/review"): "reviewer được chỉ định",
     ("GET", "/api/office/audit"): "governance • hoặc người tham gia/maintainer của đúng nhiệm vụ",
@@ -50,6 +52,8 @@ def _store(path: str) -> str:
         return "auth (cfp_forum_auth)"
     if path.startswith("/api/forums"):
         return "diễn đàn tương ứng (cfp_forum_sbd | cfp_forum_hstdn)"
+    if path in ("/api/office/tasks/{tid}/discussions", "/api/office/forum-links"):
+        return "cfp_office (liên kết) + diễn đàn tương ứng (bài, qua đúng quy tắc diễn đàn)"
     if path.startswith("/api/office"):
         return "cfp_office"
     if path.startswith(("/api/hub", "/api/directory", "/api/modules")):

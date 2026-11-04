@@ -97,6 +97,9 @@
           el('p', { text: 'Tiêu chí nghiệm thu: ' + t.acceptance }),
           el('h4', { text: 'Evidence' }), el('ul', {}, t.evidence.map(function (e) { return el('li', { 'data-testid': 'evidence' }, [e.kind + ': ', ext(e.url), ' — ' + e.description]); })),
           el('h4', { text: 'Review' }), el('ul', {}, t.reviews.map(function (r) { return el('li', { 'data-testid': 'review', text: r.decision + ' — ' + r.notes }); })),
+          el('h4', { text: 'Thảo luận trên Diễn Đàn' }), el('ul', {}, (t.discussions || []).map(function (x) {
+            return el('li', { 'data-testid': 'task-discussion' }, [el('a', { href: x.url, 'data-testid': 'discussion-link', text: x.forum + ' • bài #' + x.post_id })]);
+          })),
           el('h4', { text: 'Trao đổi' }), el('ul', {}, t.history.filter(function (h) { return h.to_status === 'COMMENT'; }).map(function (h) {
             return el('li', { 'data-testid': 'task-comment', text: '#' + h.actor_id + ': ' + h.note });
           })),
@@ -166,6 +169,20 @@
     if (t.can_close) {  // backend tính quyền Closure; UI chỉ hiển thị
       var closeNote = el('textarea', { 'aria-label': 'Ghi chú Closure' }); box.append(el('label', {}, ['Ghi chú Closure', closeNote]));
       action('Đóng nhiệm vụ (Closure)', 'close', function () { return { note: closeNote.value }; });
+    }
+    if (t.status !== 'CLOSED') {
+      var forum = el('select', { 'aria-label': 'Mở thảo luận ở' }, [el('option', { value: 'sieu-bo-doi', text: 'Diễn Đàn Siêu Bộ Đôi (công khai)' }),
+        el('option', { value: 'si-ai-hstdn', text: 'Diễn Đàn SI AI • HSTDN (thành viên)' })]);
+      var dTitle = el('input', { 'aria-label': 'Tiêu đề thảo luận', maxlength: '200' });
+      var dBody = el('textarea', { 'aria-label': 'Nội dung thảo luận', maxlength: '10000' });
+      var dHstdn = el('input', { 'aria-label': 'HSTDN (chỉ Diễn Đàn SI AI • HSTDN)', maxlength: '200' });
+      box.append(el('label', {}, ['Mở thảo luận ở', forum]), el('label', {}, ['Tiêu đề thảo luận', dTitle]),
+        el('label', {}, ['Nội dung thảo luận', dBody]), el('label', {}, ['HSTDN (chỉ Diễn Đàn SI AI • HSTDN)', dHstdn]));
+      action('Mở thảo luận', 'discussions', function () {
+        var b = { forum: forum.value, title: dTitle.value, body: dBody.value };
+        if (forum.value === 'si-ai-hstdn') b.hstdn = dHstdn.value;
+        return b;
+      });
     }
     var talk = el('textarea', { 'aria-label': 'Trao đổi nhiệm vụ', maxlength: '2000' });
     box.append(el('label', {}, ['Trao đổi', talk]));

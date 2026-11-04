@@ -85,6 +85,43 @@ const assert = (c, m) => { if (!c) throw new Error(m || 'assertion failed'); };
     assert((await sel().getByTestId('task-status').textContent()) === 'ACCEPTED');
     assert((await sel().locator('.forum-meta').textContent()) === 'QUEUED → ACKED → IN_PROGRESS → IN_REVIEW → ACCEPTED');
   });
+  await check('Nhiệm vụ → mở thảo luận ở Diễn Đàn Siêu Bộ Đôi → phản hồi → quay lại nhiệm vụ', async () => {
+    const sel = () => page.locator('[data-testid=task]', { hasText: `[${prefix}] Luồng Link Mẫu SI AI xuyên suốt` });
+    const j = await page.request.post(base + '/api/forums/sieu-bo-doi/join', { headers: { 'X-CFP-Forum': '1' } });
+    assert([200, 409].includes(j.status()), 'join ' + j.status());
+    await sel().getByLabel('Mở thảo luận ở').selectOption('sieu-bo-doi');
+    await sel().getByLabel('Tiêu đề thảo luận').fill('Thảo luận E2E ' + prefix);
+    await sel().getByLabel('Nội dung thảo luận').fill('Nhờ góp ý tiêu chí nghiệm thu.');
+    await sel().getByRole('button', { name: 'Mở thảo luận' }).click();
+    const link = sel().getByTestId('discussion-link').last();
+    await link.waitFor();
+    await link.click();
+    await page.waitForURL(/\/_internal\/forum\/sieu-bo-doi\/#post-\d+$/);
+    await page.locator('[data-ready="1"]').waitFor();
+    const pid = page.url().split('#post-')[1];
+    const post = page.locator('#post-' + pid);
+    assert((await post.getByTestId('post-title-view').textContent()) === 'Thảo luận E2E ' + prefix);
+    await post.getByTestId('comment-input').fill('Phản hồi E2E ' + prefix);
+    await post.getByTestId('comment-submit').click();
+    await page.locator('#post-' + pid + ' [data-testid=comment-body]', { hasText: 'Phản hồi E2E ' + prefix }).waitFor();
+    const back = page.locator('#post-' + pid).getByTestId('task-backlink');
+    assert((await back.count()) === 1, 'thiếu liên kết ngược về nhiệm vụ');
+    await back.click();
+    await page.waitForURL(/\/_internal\/office\/691121\/#task:\d+$/);
+    await page.locator('[data-ready="1"]').waitFor();
+    assert((await sel().getByTestId('task-discussion').count()) >= 1);
+    const vw = await page.evaluate(() => [window.innerWidth, document.documentElement.scrollWidth]);
+    assert(vw[0] === 390 && vw[1] <= 390, 'layout iPhone: ' + vw.join(','));
+  });
+  await check('Khách: không thấy liên kết ngược bài diễn đàn → nhiệm vụ', async () => {
+    const anon = await browser.newContext({ ...devices['iPhone 13'] });
+    const ap = await anon.newPage();
+    await ap.goto(base + '/_internal/forum/sieu-bo-doi/'); await ap.locator('[data-ready="1"]').waitFor();
+    assert((await ap.getByTestId('task-backlink').count()) === 0, 'khách thấy liên kết nhiệm vụ');
+    const r = await ap.request.get(base + '/api/office/forum-links?forum=sieu-bo-doi');
+    assert(JSON.stringify((await r.json()).links) === '[]');
+    await anon.close();
+  });
   await check('Điều hướng hai chiều: Nhiệm vụ → HSTDN → Quốc gia → Back về HSTDN', async () => {
     await page.goto('about:blank'); await page.goto(URL + `#task:${seeded.task}`); await page.locator('[data-ready="1"]').waitFor();
     await page.getByTestId('detail').getByTestId('ref-link').filter({ hasText: `enterprise:${seeded.enterprise}` }).tap();
@@ -127,10 +164,13 @@ const assert = (c, m) => { if (!c) throw new Error(m || 'assertion failed'); };
     const r = await page.request.get(base + '/api/office/registry/99999999');
     assert(r.status() === 404);
   });
-  await check('Diễn đàn vẫn độc lập: Văn Phòng không ghi vào hai diễn đàn', async () => {
+  await check('Diễn đàn vẫn độc lập: Văn Phòng chỉ ghi khi người dùng chủ động mở thảo luận', async () => {
     for (const k of ['sieu-bo-doi', 'si-ai-hstdn']) {
       const r = await page.request.get(`${base}/api/forums/${k}/posts`);
-      if (k === 'sieu-bo-doi') assert((await r.json()).posts.every((p) => !p.title.includes(prefix)));
+      if (k === 'sieu-bo-doi') {
+        const mine = (await r.json()).posts.filter((p) => p.title.includes(prefix));
+        assert(mine.length === 1 && mine[0].title === 'Thảo luận E2E ' + prefix, mine.map((p) => p.title).join('|'));
+      }
       else assert([401, 403].includes(r.status()), 'HSTDN phải từ chối người không phải thành viên: ' + r.status());
     }
   });
