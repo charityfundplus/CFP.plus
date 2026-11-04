@@ -170,6 +170,23 @@ def _engine(url: str) -> Engine:
     return engine
 
 
+class HeadAsGet:
+    """HEAD = GET không có body (RFC 9110). Uptime monitor/health check của Render gửi HEAD; trước đây 405."""
+
+    def __init__(self, app):
+        self.app = app
+
+    async def __call__(self, scope, receive, send):
+        if scope["type"] != "http" or scope["method"] != "HEAD":
+            return await self.app(scope, receive, send)
+
+        async def send_no_body(msg):
+            if msg["type"] == "http.response.body":
+                msg = {**msg, "body": b""}
+            await send(msg)
+        return await self.app({**scope, "method": "GET"}, receive, send_no_body)
+
+
 class Stores:
     def __init__(self, auth_url: str, forum_urls: dict[str, str], office_url: str | None = None,
                  worker_url: str | None = None):
@@ -330,6 +347,7 @@ def create_app(stores: Stores | None = None) -> FastAPI:
                               "SANDBOX • NOT DEPLOYED.")
     st = stores or Stores.from_env()
     app.state.stores = st
+    app.add_middleware(HeadAsGet)
     if st.ephemeral:
         for line in st.bootstrap_ephemeral():
             print(f"[cfp-sandbox] bootstrap {line}", flush=True)

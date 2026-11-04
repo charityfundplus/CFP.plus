@@ -389,3 +389,21 @@ def test_worker_kill_switch_http_governance_only(tmp_path, monkeypatch):
     with st.worker.connect() as c:
         assert c.execute(select(jobs_t.c.status)).scalar() == "done"
     st.dispose()
+
+
+def test_head_requests_answered_without_body(tmp_path, monkeypatch):
+    """HEAD trên trang/health trả cùng mã như GET, không có body (monitor/health check không bị 405)."""
+    from fastapi.testclient import TestClient
+    from services.forum.app import Stores, create_app
+    for n in ("CFP_FORUM_AUTH_DB", "CFP_FORUM_DB_SIEU_BO_DOI", "CFP_FORUM_DB_SI_AI_HSTDN", "CFP_OFFICE_DB", "CFP_WORKER_DB"):
+        monkeypatch.delenv(n, raising=False)
+    monkeypatch.setenv("CFP_SANDBOX_EPHEMERAL", "1")
+    monkeypatch.setenv("CFP_EPHEMERAL_DIR", str(tmp_path))
+    st = Stores.from_env()
+    c = TestClient(create_app(st))
+    for path in ("/", "/691121/", "/api/health", "/_internal/forum/sieu-bo-doi/"):
+        r = c.head(path)
+        assert r.status_code == 200 and r.content == b"", path
+    assert c.head("/99999999/").status_code == 404
+    assert c.post("/api/auth/login", json={}).status_code == 403  # HEAD không ảnh hưởng chặn CSRF
+    st.dispose()
