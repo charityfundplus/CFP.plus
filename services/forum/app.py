@@ -152,7 +152,20 @@ def _engine(url: str) -> Engine:
         kw["pool_size"] = int(os.environ.get("CFP_FORUM_POOL_SIZE", "3"))
         kw["max_overflow"] = int(os.environ.get("CFP_FORUM_POOL_OVERFLOW", "2"))
         kw["pool_recycle"] = 300
-    return create_engine(url, **kw)
+    engine = create_engine(url, **kw)
+    if url.startswith("sqlite"):
+        # pysqlite legacy mode otherwise releases an outermost SAVEPOINT before audit/link writes.
+        # Serialize sandbox SQLite transactions so competing retries observe the complete receipt.
+        from sqlalchemy import event
+
+        @event.listens_for(engine, "connect")
+        def sqlite_connect(dbapi_connection, _):
+            dbapi_connection.isolation_level = None
+
+        @event.listens_for(engine, "begin")
+        def sqlite_begin(conn):
+            conn.exec_driver_sql("BEGIN IMMEDIATE")
+    return engine
 
 
 class Stores:
@@ -536,6 +549,15 @@ def create_app(stores: Stores | None = None) -> FastAPI:
         @app.get("/_internal/office/office.js")
         def office_js():
             return FileResponse(WEB_DIR / "office.js", media_type="text/javascript")
+
+        @app.get("/_internal/office/directory.js")
+        def directory_js():
+            return FileResponse(WEB_DIR / "directory.js", media_type="text/javascript")
+
+        @app.get("/_internal/office/")
+        def office_directory():
+            return FileResponse(WEB_DIR / "directory.html", media_type="text/html",
+                                headers={"X-Robots-Tag": "noindex, nofollow"})
 
         @app.get("/_internal/office/{cid}/")
         def office_page(cid: str):

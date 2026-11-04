@@ -64,7 +64,7 @@ jobs:
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client >/dev/null
           python -m pip install --upgrade pip
-          pip install -r services/forum/requirements.txt pytest==8.3.4 httpx==0.28.1
+          pip install -r services/forum/requirements.txt pytest==8.3.4 httpx==0.28.1 playwright==1.49.1
           mkdir -p "$RUNNER_TEMP/pw" && cd "$RUNNER_TEMP/pw" && npm init -y >/dev/null && npm install playwright@1.49.1
           npx --prefix "$RUNNER_TEMP/pw" playwright install --with-deps chromium
 
@@ -82,7 +82,9 @@ jobs:
         env:
           NODE_PATH: ${{ runner.temp }}/pw/node_modules
           CFP_E2E_SCREENSHOT: ${{ github.workspace }}/office-iphone.png
-        run: tests/forum/run_all.sh cfp_ci
+        run: |
+          tests/forum/run_all.sh cfp_ci
+          python -m tests.forum.directory_browser
 
       - name: Tương thích ngược — chỉ 002 (đúng trạng thái Supabase hiện tại), pytest Postgres
         env:

@@ -150,7 +150,8 @@ def test_duplicates_rejected(world):
                              headers=H).status_code == 409
     assert world["gov"].post("/api/office/offices", json=SAMPLE["office"], headers=H).status_code == 409
     again = lead.post("/api/office/tasks", json={"pair_id": o["pair"], "title": "Luồng Link Mẫu SI AI xuyên suốt",
-                                                 "acceptance": "x" * 5, "reviewer_id": world["ids"]["rev"],
+                                                 "acceptance": "API + migration + test PASS; dữ liệu còn sau restart", "reviewer_id": world["ids"]["rev"],
+                                                 "refs": [f"enterprise:{o['enterprise']}", f"topic:{o['topic']}", f"dataset:{o['dataset']}", f"registry:{CID}"],
                                                  "idempotency_key": f"office-flow-base-{world['ids']['lead']}"}, headers=H)
     assert again.status_code == 201 and again.json()["duplicate"] is True and again.json()["id"] == o["task"]
 
@@ -345,7 +346,8 @@ def test_sec01_participants_and_staff_see_tasks(world):
 def test_sec02_idempotency_checked_after_authorization(world, urls):
     o, ids = world["out"], world["ids"]
     key = f"office-flow-base-{ids['lead']}"  # khoá thật của nhiệm vụ đã có
-    body = {"pair_id": o["pair"], "title": "Luồng Link Mẫu SI AI xuyên suốt", "acceptance": "xxxxx",
+    body = {"pair_id": o["pair"], "title": "Luồng Link Mẫu SI AI xuyên suốt", "acceptance": "API + migration + test PASS; dữ liệu còn sau restart",
+            "refs": [f"enterprise:{o['enterprise']}", f"topic:{o['topic']}", f"dataset:{o['dataset']}", f"registry:{CID}"],
             "reviewer_id": ids["rev"], "idempotency_key": key}
     r = world["other"].post("/api/office/tasks", json=body, headers=H)  # người ngoài đoán đúng khoá
     assert r.status_code == 403 and "id" not in r.json()
@@ -448,3 +450,19 @@ def test_concurrent_same_idempotency_key_never_500(world):
     codes = [r.status_code for r in res]
     assert all(code == 201 for code in codes), codes
     assert len({r.json()["id"] for r in res}) == 1  # đúng một nhiệm vụ được tạo
+
+def test_task_idempotency_cannot_bypass_office_authorization(world):
+    """Replay keys must never reveal task receipts to an unrelated authenticated user."""
+    payload = {"pair_id": world["out"]["pair"], "title": "Replay authorization regression",
+               "acceptance": "Evidence required", "reviewer_id": world["ids"]["rev"],
+               "idempotency_key": "replay-auth-regression", "refs": []}
+    first = world["lead"].post('/api/office/tasks', json=payload, headers=H)
+    assert first.status_code == 201
+    other = world["other"].post('/api/office/tasks', json=payload, headers=H)
+    assert other.status_code == 403
+    duplicate = world["lead"].post('/api/office/tasks', json=payload, headers=H)
+    assert duplicate.status_code == 201 and duplicate.json()['id'] == first.json()['id']
+    for changed in ({"acceptance": "Different criteria"}, {"description": "Changed work"},
+                    {"refs": ["registry:691121"]}):
+        response = world["lead"].post('/api/office/tasks', json={**payload, **changed}, headers=H)
+        assert response.status_code == 409

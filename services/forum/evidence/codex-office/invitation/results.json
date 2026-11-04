@@ -1,0 +1,41 @@
+{
+  "invitation": "https://github.com/charityfundplus/CFP.plus/pull/196#issuecomment-6622843781",
+  "previous_head": "0478292c6cd15c52aea72143cf35e6284a121623",
+  "scope": "Sandbox temporary SQLite, real HTTP API + Chromium; synthetic independent accounts, no external SI ACK",
+  "pytest": "44 PASS; 19 PostgreSQL-specific SKIPPED",
+  "browser": "5 groups PASS; includes UI login → API task create → UI ACK/start/Evidence → separate reviewer UI → reload/readback; self-review403; API503 retry",
+  "security": {
+    "SEC-P0-195-01": "Application office/task/link read ACL regression PASS; independent security review pending",
+    "SEC-P0-195-02": "Previous fix retained; unauthorized replay403, altered request409",
+    "SEC-P0-195-03": "OPEN: office_app all-row RLS is service boundary, not tenant ACL; no migration change",
+    "SEC-P0-195-04": "PARTIAL: private dataset creator/governance and search ACL; filtered link reads; full write ACL still OPEN",
+    "SEC-P0-195-05": "OPEN: proxy config unchanged, HTTPS ingress unverified"
+  },
+  "blocked": [
+    "Local PostgreSQL/Supabase identity unavailable",
+    "Approved external HTTPS sandbox absent",
+    "WebKit download403; physical iPhone unavailable"
+  ],
+  "prior_ci": {
+    "sha": "0478292c6cd15c52aea72143cf35e6284a121623",
+    "url": "https://github.com/charityfundplus/CFP.plus/actions/runs/41774455684",
+    "conclusion": "success; not evidence for new changes"
+  },
+  "commands": [
+    "/workspace/.cfp-env/office-venv/bin/python -m pytest tests/forum -q -p no:cacheprovider",
+    "/workspace/.cfp-env/office-venv/bin/python -m tests.forum.directory_browser"
+  ],
+  "sha256": {
+    "services/forum/office.py": "d35bb1efdde2d75765555f7712f7a27ee1db59d7a0c838bcc9060a235bcd0d59",
+    "services/forum/web/office.js": "42074e537c64452b97c417127c9f899524e90295aea293a8ffc9fb84388250e9",
+    "tests/forum/test_office_api.py": "426fd441116e4b7a42b6bbac7365fe839682079d24494a99391bee39e0968ffd",
+    "tests/forum/directory_browser.py": "bf07ce5cd145deae7ee3aa4c6a27ef0f53db7fadc47b6c3b34881f8b1366c301",
+    "tests/forum/office_e2e.test.js": "f19efb0ec76c2402014e06fb8cb5040023c25b8f858034b0819c0e15c1b7ed79",
+    "services/forum/inventory.py": "0b42bf4e6a642cdc26de62038efd3e94e19325bb064e480eb1a3fd79b47d5ee2"
+  },
+  "log_sha256": {
+    "pytest.log": "6c6dbc27c607ab4a3299ff321c6f0eb8ac969de1ecac1b4483767d016399d4b3",
+    "browser.log": "ebbd63ce0d4d4b279f37045c53a45257df6aace9956b8a9d3372bb75e27f9da5"
+  },
+  "production": "NO GO; no merge/deployment/Registry changes"
+}

@@ -5,6 +5,10 @@
   if (!root) return;
   var CID = (location.pathname.match(/\/_internal\/office\/([0-9]+)\//) || [])[1];
 
+  var currentUser = null;
+  function write(path, body) {
+    return fetch('/api' + path, { method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json', 'X-CFP-Forum': '1' }, body: JSON.stringify(body) }).then(function (r) { return r.json().then(function (j) { if (!r.ok) throw new Error(typeof j.detail === 'string' ? j.detail : 'Lỗi ' + r.status); return j; }); });
+  }
   function api(path) {
     return fetch('/api/office' + path, { credentials: 'same-origin', headers: { Accept: 'application/json' } })
       .then(function (r) { return r.json().then(function (j) { if (!r.ok) throw new Error(typeof j.detail === 'string' ? j.detail : 'Lỗi ' + r.status); return j; }); });
@@ -69,6 +73,7 @@
       return el('li', { 'class': d.taxonomy.group && g.code === d.taxonomy.group.code ? 'forum-tag active' : 'forum-tag' }, [g.name]);
     });
     var kids = [
+      sessionPanel(),
       section('5 Nhóm • 10 Chương', 'taxonomy', [el('ul', { 'class': 'forum-tags' }, groupCards),
         el('p', { text: 'Chương ' + d.taxonomy.chapter.id + ' • ' + d.taxonomy.chapter.name + ' • HUB 69 • CMP 267' })]),
       section('Gia phả định danh (Registry)', 'chain', [el('ol', {}, d.registry_chain.map(function (x) {
@@ -93,7 +98,7 @@
           el('h4', { text: 'Evidence' }), el('ul', {}, t.evidence.map(function (e) { return el('li', { 'data-testid': 'evidence' }, [e.kind + ': ', ext(e.url), ' — ' + e.description]); })),
           el('h4', { text: 'Review' }), el('ul', {}, t.reviews.map(function (r) { return el('li', { 'data-testid': 'review', text: r.decision + ' — ' + r.notes }); })),
           el('h4', { text: 'Lịch sử' }), el('p', { 'class': 'forum-meta', text: t.history.map(function (h) { return h.to_status; }).join(' → ') }),
-          el('p', {}, [refLink('task:' + t.id)])]);
+          el('p', {}, [refLink('task:' + t.id)]), taskControls(t)]);
       }) : [el('p', { text: 'Chưa có nhiệm vụ.' })]),
       section('Liên kết hai chiều', 'office-links', [linksBlock(d.links)]),
       section('Kết nối hệ sinh thái', 'connections', [el('ul', {}, tax.connections.map(function (c) {
@@ -106,8 +111,64 @@
     root.setAttribute('data-ready', '1');
   }
 
+  function sessionPanel() {
+    var box = el('section', { 'class': 'forum-form' });
+    if (currentUser) {
+      box.appendChild(el('p', { text: 'Đã đăng nhập: ' + currentUser.name }));
+      var logout = el('button', { type: 'button', text: 'Đăng xuất' });
+      logout.addEventListener('click', function () { write('/auth/logout', {}).then(function () { currentUser = null; root.replaceChildren(sessionPanel()); }); });
+      box.appendChild(logout); return box;
+    }
+    var form = el('form', { 'class': 'forum-form' });
+    var email = el('input', { type: 'email', required: '', autocomplete: 'username' });
+    var password = el('input', { type: 'password', required: '', autocomplete: 'current-password' });
+    var button = el('button', { type: 'submit', text: 'Đăng nhập' });
+    var msg = el('p', { role: 'status' });
+    form.append(el('label', {}, ['Email', email]), el('label', {}, ['Mật khẩu', password]), button, msg);
+    form.addEventListener('submit', function (ev) {
+      ev.preventDefault(); button.disabled = true;
+      write('/auth/login', { email: email.value, password: password.value }).then(function (u) { currentUser = u; password.value = ''; return load(); })
+        .catch(function (e) { msg.textContent = e.message; }).finally(function () { button.disabled = false; });
+    }); box.appendChild(form); return box;
+  }
+  function taskControls(t) {
+    var box = el('div', { 'class': 'forum-form compact' });
+    if (!currentUser) return box;
+    var msg = el('p', { role: 'status' });
+    function action(label, endpoint, body) {
+      var button = el('button', { type: 'button', text: label });
+      button.addEventListener('click', function () {
+        button.disabled = true;
+        write('/office/tasks/' + t.id + '/' + endpoint, body()).then(load)
+          .catch(function (e) { msg.textContent = e.message; }).finally(function () { button.disabled = false; });
+      }); box.appendChild(button);
+    }
+    if (currentUser.id === t.assignee_id) {
+      if (t.status === 'QUEUED') action('ACK nhiệm vụ', 'ack', function () { return { note: 'ACK từ tài khoản đang đăng nhập' }; });
+      if (t.status === 'ACKED' || t.status === 'CHANGES_REQUESTED') action('Bắt đầu', 'start', function () { return {}; });
+      if (t.status === 'ACKED' || t.status === 'IN_PROGRESS') {
+        var url = el('input', { type: 'url', placeholder: 'https://…', 'aria-label': 'URL Evidence' });
+        var sha = el('input', { 'aria-label': 'SHA Evidence', placeholder: 'SHA commit hoặc SHA256' });
+        var desc = el('textarea', { 'aria-label': 'Mô tả Evidence' });
+        box.append(el('label', {}, ['URL Evidence', url]), el('label', {}, ['SHA Evidence', sha]), el('label', {}, ['Mô tả Evidence', desc]));
+        action('Nộp Evidence', 'evidence', function () { return { kind: 'test_report', url: url.value, sha: sha.value || null, description: desc.value }; });
+        action('Gửi Review', 'submit', function () { return { note: 'Gửi kiểm tra độc lập' }; });
+      }
+    }
+    if (currentUser.id === t.reviewer_id && t.status === 'IN_REVIEW') {
+      var notes = el('textarea', { 'aria-label': 'Nhận xét Review' }); box.append(el('label', {}, ['Nhận xét Review', notes]));
+      action('Chấp nhận kết quả', 'review', function () { return { decision: 'ACCEPT', notes: notes.value }; });
+      action('Yêu cầu sửa', 'review', function () { return { decision: 'CHANGES_REQUESTED', notes: notes.value }; });
+    }
+    box.appendChild(msg); return box;
+  }
+  function load() {
+    root.removeAttribute('data-ready');
+    return Promise.all([api('/offices/' + CID), api('/taxonomy')]).then(function (r) {
+      render(r[0], r[1]); if (location.hash.length > 1) showRef(decodeURIComponent(location.hash.slice(1)));
+    }).catch(function (e) { root.replaceChildren(sessionPanel(), el('p', { 'class': 'forum-msg error', 'data-testid': 'error', text: e.message })); root.setAttribute('data-ready', '1'); });
+  }
   if (!CID) { root.textContent = 'Thiếu ID.'; return; }
   window.addEventListener('hashchange', function () { if (location.hash.length > 1) showRef(decodeURIComponent(location.hash.slice(1))); });
-  Promise.all([api('/offices/' + CID), api('/taxonomy')]).then(function (r) { render(r[0], r[1]); if (location.hash.length > 1) showRef(decodeURIComponent(location.hash.slice(1))); })
-    .catch(function (e) { root.replaceChildren(el('p', { 'class': 'forum-msg error', 'data-testid': 'error', text: e.message })); root.setAttribute('data-ready', '1'); });
+  fetch('/api/auth/me', { credentials: 'same-origin' }).then(function (r) { return r.json(); }).then(function (d) { currentUser = d.user; return load(); });
 })();

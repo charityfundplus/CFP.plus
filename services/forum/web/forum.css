@@ -18,3 +18,13 @@
 #detail:empty { display: none; }
 [data-office-root] p, [data-office-root] li, [data-office-root] a, [data-office-root] strong { overflow-wrap: anywhere; word-break: break-word; }
 [data-office-root] ul, [data-office-root] ol { padding-left: 1.1rem; }
+
+/* Touch targets and safe-area spacing also apply in WebKit, without disabling zoom. */
+.site-header nav { display: flex; flex-wrap: wrap; gap: .75rem; }
+.site-header nav a, [data-directory-root] a, [data-office-root] a { display: inline-block; min-height: 44px; padding-block: .5rem; }
+[data-directory-root] { overflow-wrap: anywhere; }
+[data-directory-root] input { font-size: 16px; min-height: 44px; }
+[data-directory-root] .office-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1rem; padding: 0; list-style: none; }
+[data-directory-root] .chapter-card { min-width: 0; }
+main { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }

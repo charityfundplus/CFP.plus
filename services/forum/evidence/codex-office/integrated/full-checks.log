@@ -1,0 +1,145 @@
+::group::pytest SQLite
+................ssssss........................sssssssssssss............. [100%]
+=============================== warnings summary ===============================
+../.cfp-env/office-venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /workspace/.cfp-env/office-venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+53 passed, 19 skipped, 1 warning in 5.32s
+::endgroup::
+::group::pytest Postgres (4 schema/role)
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.2.0, pluggy-1.7.0 -- /workspace/.cfp-env/office-venv/bin/python
+rootdir: /workspace/CFP.plus
+plugins: anyio-4.16.0
+collecting ... collected 72 items
+
+tests/forum/test_forum_api.py::test_full_flow_persists_across_app_restart PASSED [  1%]
+tests/forum/test_forum_api.py::test_login_rejects_wrong_password PASSED  [  2%]
+tests/forum/test_forum_api.py::test_csrf_header_required PASSED          [  4%]
+tests/forum/test_forum_api.py::test_anonymous_cannot_write PASSED        [  5%]
+tests/forum/test_forum_api.py::test_sieu_bo_doi_public_read_hstdn_private PASSED [  6%]
+tests/forum/test_forum_api.py::test_hstdn_requires_approval_and_hstdn_field PASSED [  8%]
+tests/forum/test_forum_api.py::test_data_isolated_between_forums PASSED  [  9%]
+tests/forum/test_forum_api.py::test_refuses_shared_database PASSED       [ 11%]
+tests/forum/test_forum_api.py::test_ui_is_internal_and_noindex PASSED    [ 12%]
+tests/forum/test_forum_api.py::test_security_headers PASSED              [ 13%]
+tests/forum/test_forum_api.py::test_csrf_rejects_foreign_origin PASSED   [ 15%]
+tests/forum/test_forum_api.py::test_body_size_limit PASSED               [ 16%]
+tests/forum/test_forum_api.py::test_rate_limit_auth PASSED               [ 18%]
+tests/forum/test_forum_api.py::test_rate_limit_write PASSED              [ 19%]
+tests/forum/test_forum_api.py::test_cookie_secure_on_https PASSED        [ 20%]
+tests/forum/test_forum_api.py::test_default_cookie_is_secure PASSED      [ 22%]
+tests/forum/test_forum_api.py::test_db_roles_cannot_cross_schemas[sieu-bo-doi-forbidden0] PASSED [ 23%]
+tests/forum/test_forum_api.py::test_db_roles_cannot_cross_schemas[si-ai-hstdn-forbidden1] PASSED [ 25%]
+tests/forum/test_forum_api.py::test_db_roles_cannot_cross_schemas[auth-forbidden2] PASSED [ 26%]
+tests/forum/test_forum_api.py::test_supabase_api_roles_have_no_access[anon] PASSED [ 27%]
+tests/forum/test_forum_api.py::test_supabase_api_roles_have_no_access[authenticated] PASSED [ 29%]
+tests/forum/test_forum_api.py::test_tampered_stamp_blocks_startup PASSED [ 30%]
+tests/forum/test_forum_api.py::test_forged_forwarded_for_does_not_bypass_rate_limit PASSED [ 31%]
+tests/forum/test_forum_api.py::test_forged_forwarded_host_cannot_whitelist_origin PASSED [ 33%]
+tests/forum/test_hub_contract.py::test_openapi_contract_matches_snapshot PASSED [ 34%]
+tests/forum/test_hub_contract.py::test_inventory_matches_code PASSED     [ 36%]
+tests/forum/test_hub_contract.py::test_openapi_served_and_tagged PASSED  [ 37%]
+tests/forum/test_hub_contract.py::test_every_write_endpoint_requires_csrf PASSED [ 38%]
+tests/forum/test_hub_contract.py::test_login_required_endpoints_reject_anonymous PASSED [ 40%]
+tests/forum/test_hub_contract.py::test_hub69_summary PASSED              [ 41%]
+tests/forum/test_hub_contract.py::test_directory_read_only PASSED        [ 43%]
+tests/forum/test_hub_contract.py::test_health_reports_modules PASSED     [ 44%]
+tests/forum/test_office_api.py::test_registry_chain_and_no_invented_ids PASSED [ 45%]
+tests/forum/test_office_api.py::test_full_flow_and_reload_after_restart PASSED [ 47%]
+tests/forum/test_office_api.py::test_bidirectional_links PASSED          [ 48%]
+tests/forum/test_office_api.py::test_search_by_chapter PASSED            [ 50%]
+tests/forum/test_office_api.py::test_no_new_canonical_ids PASSED         [ 51%]
+tests/forum/test_office_api.py::test_only_governance_opens_office PASSED [ 52%]
+tests/forum/test_office_api.py::test_brand_authorization_labels PASSED   [ 54%]
+tests/forum/test_office_api.py::test_duplicates_rejected PASSED          [ 55%]
+tests/forum/test_office_api.py::test_task_state_machine_and_independent_review PASSED [ 56%]
+tests/forum/test_office_api.py::test_wip_limit_five PASSED               [ 58%]
+tests/forum/test_office_api.py::test_members_only_dataset PASSED         [ 59%]
+tests/forum/test_office_api.py::test_audit_log_and_access PASSED         [ 61%]
+tests/forum/test_office_api.py::test_csrf_required_on_office_writes PASSED [ 62%]
+tests/forum/test_office_api.py::test_office_ui_page PASSED               [ 63%]
+tests/forum/test_office_api.py::test_office_and_forums_cannot_cross[sieu-bo-doi-target0] PASSED [ 65%]
+tests/forum/test_office_api.py::test_office_and_forums_cannot_cross[si-ai-hstdn-target1] PASSED [ 66%]
+tests/forum/test_office_api.py::test_office_and_forums_cannot_cross[auth-target2] PASSED [ 68%]
+tests/forum/test_office_api.py::test_office_and_forums_cannot_cross[office-target3] PASSED [ 69%]
+tests/forum/test_office_api.py::test_office_and_forums_cannot_cross[office-target4] PASSED [ 70%]
+tests/forum/test_office_api.py::test_office_and_forums_cannot_cross[office-target5] PASSED [ 72%]
+tests/forum/test_office_api.py::test_office_role_append_only_and_no_self_grant[UPDATE audit_log SET action = 'x'] PASSED [ 73%]
+tests/forum/test_office_api.py::test_office_role_append_only_and_no_self_grant[DELETE FROM audit_log] PASSED [ 75%]
+tests/forum/test_office_api.py::test_office_role_append_only_and_no_self_grant[DELETE FROM evidence] PASSED [ 76%]
+tests/forum/test_office_api.py::test_office_role_append_only_and_no_self_grant[UPDATE reviews SET decision = 'ACCEPT'] PASSED [ 77%]
+tests/forum/test_office_api.py::test_office_role_append_only_and_no_self_grant[INSERT INTO office_roles VALUES (999, 'governance')] PASSED [ 79%]
+tests/forum/test_office_api.py::test_forum_data_untouched_by_office PASSED [ 80%]
+tests/forum/test_office_api.py::test_office_rows_visible_only_to_office_role PASSED [ 81%]
+tests/forum/test_office_api.py::test_migration_002_matches_code PASSED   [ 83%]
+tests/forum/test_office_api.py::test_groups_follow_directive PASSED      [ 84%]
+tests/forum/test_office_api.py::test_sec01_office_view_hides_tasks_from_anonymous_and_unrelated PASSED [ 86%]
+tests/forum/test_office_api.py::test_sec01_participants_and_staff_see_tasks PASSED [ 87%]
+tests/forum/test_office_api.py::test_sec02_idempotency_checked_after_authorization PASSED [ 88%]
+tests/forum/test_office_api.py::test_sec04_members_dataset_object_acl PASSED [ 90%]
+tests/forum/test_office_api.py::test_sec04_link_creation_requires_ownership PASSED [ 91%]
+tests/forum/test_office_api.py::test_sec04_task_links_need_participation PASSED [ 93%]
+tests/forum/test_office_api.py::test_sec06_reviewer_role_sees_only_assigned_tasks PASSED [ 94%]
+tests/forum/test_office_api.py::test_sec06_unrelated_cannot_see_ids_of_participants PASSED [ 95%]
+tests/forum/test_office_api.py::test_task_refs_must_be_visible PASSED    [ 97%]
+tests/forum/test_office_api.py::test_concurrent_same_idempotency_key_never_500 PASSED [ 98%]
+tests/forum/test_office_api.py::test_task_idempotency_cannot_bypass_office_authorization PASSED [100%]
+
+=============================== warnings summary ===============================
+../.cfp-env/office-venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /workspace/.cfp-env/office-venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+tests/forum/test_office_api.py::test_concurrent_same_idempotency_key_never_500
+  /workspace/.cfp-env/office-venv/lib/python3.12/site-packages/pydantic/_internal/_generate_schema.py:2350: UnsupportedFieldAttributeWarning: The 'alias' attribute with value 'data' was provided to the `Field()` function, which has no effect in the context it was used. 'alias' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+----------- generated xml file: /workspace/CFP.plus/forum-pytest.xml -----------
+======================== 72 passed, 2 warnings in 8.38s ========================
+::endgroup::
+::group::Playwright diễn đàn
+       health={"status":"ok","version":"0.2.0-p0","build":null,"auth_db":"postgresql","forums":{"sieu-bo-doi":{"db":"postgresql","stamp":"sieu-bo-doi"},"si-ai-hstdn":{"db":"postgresql","stamp":"si-ai-hstdn"}},"registry":{"entities":267,"read_only":true},"office":{"db":"postgresql","offices":1}}
+[PASS] Server dùng database thật, mỗi diễn đàn một DB đã đóng dấu
+[PASS] Khách: đọc được Siêu Bộ Đôi, không có form đăng bài
+[PASS] Khách: SI AI • HSTDN từ chối đọc
+[PASS] Đăng ký tài khoản → đăng nhập (cookie HttpOnly)
+[PASS] Tham gia Siêu Bộ Đôi (mở) → đăng bài
+[PASS] Bình luận
+[PASS] Tải lại trang → phiên, bài, bình luận còn
+[PASS] Không dùng localStorage để lưu dữ liệu diễn đàn
+[PASS] XSS không thực thi
+[PASS] KHỞI ĐỘNG LẠI server → đăng nhập lại → dữ liệu vẫn còn
+[PASS] SI AI • HSTDN: yêu cầu tham gia → chờ duyệt, chưa đọc/đăng được
+[PASS] Admin riêng của HSTDN duyệt (qua CLI + API)
+[PASS] SI AI • HSTDN: đăng bài phải có HSTDN → bình luận → tải lại còn
+[PASS] Hai diễn đàn không thấy bài của nhau
+[PASS] Đăng xuất → khách vẫn đọc được Siêu Bộ Đôi nhưng không ghi được
+[PASS] iPhone 13 (mô phỏng viewport + touch): đăng ký → đăng bài → bình luận → tải lại
+[PASS] Không có lỗi JavaScript
+
+TỔNG: 17 PASS • 0 FAIL
+::endgroup::
+::group::Playwright Văn Phòng SI AI (iPhone 13)
+[PASS] Seed luồng xuyên suốt qua API thật (5 Nhóm → … → Review)
+[PASS] Khởi động lại server
+[PASS] Khách (chưa đăng nhập) không thấy nhiệm vụ/Evidence/Review (SEC-P0-195-01)
+[PASS] Đăng nhập người thực thi (lead) qua API thật
+[PASS] Văn Phòng Claude 691121 hiển thị sau restart (iPhone 13 viewport)
+[PASS] 5 Nhóm + Chương 6 + gia phả Registry 911 → 6911 → 69112 → 691121
+[PASS] Thương hiệu gắn nhãn nguồn công khai, không phải quảng bá ủy quyền
+[PASS] Nhiệm vụ ACCEPTED có Evidence + Review + lịch sử
+[PASS] Điều hướng hai chiều: Nhiệm vụ → HSTDN → Quốc gia → Back về HSTDN
+[PASS] Điều hướng: Kho dữ liệu → Chủ đề nghiên cứu (Chương 6 • Nhóm 246)
+[PASS] Gia phả: Hoa Kỳ 911 → AI Hoa Kỳ 6911 → Anthropic 69112 → Claude 691121 → Văn Phòng
+[PASS] Kết nối hệ sinh thái: HUB 69, CMP 267, Sàn TMTC 8682, hai diễn đàn
+[PASS] HUB 69 API: Văn Phòng 691121 + 2 diễn đàn + module thiếu được ghi trung thực
+[PASS] ID không có trong Registry → 404, không tự cấp
+[PASS] Diễn đàn vẫn độc lập: Văn Phòng không ghi vào hai diễn đàn
+[PASS] Không có lỗi JavaScript
+
+TỔNG: 16 PASS • 0 FAIL
+::endgroup::

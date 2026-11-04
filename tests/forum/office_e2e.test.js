@@ -34,8 +34,9 @@ const assert = (c, m) => { if (!c) throw new Error(m || 'assertion failed'); };
   });
   await check('Khởi động lại server', async () => { await stop(server); server = await start(port); });
 
-  const browser = await chromium.launch();
+  const browser = await chromium.launch(process.env.CFP_BROWSER ? { executablePath: process.env.CFP_BROWSER } : {});
   const ctx = await browser.newContext({ ...devices['iPhone 13'] });
+  await ctx.request.post(base + '/api/auth/login', { data: { email: prefix + '-lead@example.org', password: 'matkhau-office-p0' }, headers: { 'X-CFP-Forum': '1' } });
   const page = await ctx.newPage();
   const jsErrors = []; page.on('pageerror', (e) => jsErrors.push(e.message));
   const URL = base + '/_internal/office/691121/';

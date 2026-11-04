@@ -39,7 +39,7 @@ function assert(c, m) { if (!c) throw new Error(m || 'assertion failed'); }
   const SBD = base + '/_internal/forum/sieu-bo-doi/';
   const HST = base + '/_internal/forum/si-ai-hstdn/';
   let server = await startServer(port);
-  const browser = await chromium.launch();
+  const browser = await chromium.launch(process.env.CFP_BROWSER ? { executablePath: process.env.CFP_BROWSER } : {});
   const ctx = await browser.newContext();
   const page = await ctx.newPage();
   const jsErrors = [];

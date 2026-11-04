@@ -634,6 +634,14 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
             audit(c, user["id"], "pair.create", f"pair:{pid}", data.model_dump())
         return {"id": pid}
 
+    def same_task_request(c: Connection, prev, data: TaskIn, uid: int) -> bool:
+        if not prev or prev["created_by"] != uid:
+            return False
+        original = c.execute(select(audit_t.c.data).where(
+            audit_t.c.ref == f"task:{prev['id']}", audit_t.c.action == "task.create"
+        ).order_by(audit_t.c.id)).scalar()
+        return bool(original) and json.loads(original) == data.model_dump()
+
     @r.post("/tasks", status_code=201)
     def add_task(data: TaskIn, user=Depends(require_user)):
         with _begin() as c:
@@ -645,7 +653,7 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
                 raise HTTPException(403, "Chỉ người duy trì Văn Phòng hoặc Governance được giao việc.")
             prev = c.execute(select(tasks_t).where(tasks_t.c.idempotency_key == data.idempotency_key)).mappings().first()
             if prev:  # chống tạo trùng khi chính người đó gửi lại; không lộ thông tin cho người khác
-                if prev["created_by"] != user["id"] or prev["pair_id"] != data.pair_id or prev["title"] != _clean(data.title):
+                if not same_task_request(c, prev, data, user["id"]):
                     conflict("idempotency_key không dùng được, hãy tạo khoá mới.")
                 return {"id": prev["id"], "status": prev["status"], "duplicate": True}
             if data.reviewer_id == p["lead_user_id"]:
@@ -666,8 +674,7 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
             except IntegrityError:
                 # Hai request cùng khoá chạy đồng thời: request thua nhận kết quả như gửi lại, không lỗi 500.
                 prev = c.execute(select(tasks_t).where(tasks_t.c.idempotency_key == data.idempotency_key)).mappings().first()
-                if prev and prev["created_by"] == user["id"] and prev["pair_id"] == data.pair_id \
-                        and prev["title"] == _clean(data.title):
+                if same_task_request(c, prev, data, user["id"]):
                     return {"id": prev["id"], "status": prev["status"], "duplicate": True}
                 conflict("idempotency_key không dùng được, hãy tạo khoá mới.")
             c.execute(insert(task_events_t).values(task_id=tid, actor_id=user["id"], from_status=None, to_status="QUEUED"))
