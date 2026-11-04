@@ -44,6 +44,7 @@ jobs:
           curl -s -o /dev/null -D - --max-time 30 "$BASE/" | grep -i '^\(HTTP\|x-render\|rndr\|server\)' || echo "không có phản hồi HTTP từ /"
       - name: Smoke
         run: |
+          set -o pipefail  # FAIL của smoke phải làm job đỏ (không bị | tee che)
           MODE=--public-only; [ -n "$SMOKE_PASSWORD" ] && MODE=
           python -m tests.forum.smoke_live --base "$BASE" --out render-smoke.json $MODE | tee render-smoke.log
       - if: always()
