@@ -618,3 +618,32 @@ def test_ops_page_served_noindex(world):
     r = world["gov"].get("/_internal/ops/")
     assert r.status_code == 200 and "noindex" in r.headers.get("x-robots-tag", "")
     assert world["gov"].get("/_internal/ops/ops.js").status_code == 200
+
+
+def test_sandbox_website_entry_points(world, urls, monkeypatch):
+    """Khung website sandbox: trang tĩnh có sẵn (chỉ đọc) + thanh lối vào Siêu Bộ Đôi/Văn Phòng/Diễn Đàn."""
+    from pathlib import Path
+    c = _anon(world)
+    root = Path(__file__).resolve().parents[2]
+    for path, cid in (("/", None), ("/69/", "69"), (f"/{CID}/", CID)):
+        r = c.get(path)
+        assert r.status_code == 200 and "noindex" in r.headers["x-robots-tag"], path
+        assert 'data-testid="sandbox-entry"' in r.text and 'href="/_internal/forum/sieu-bo-doi/"' in r.text
+        assert "/_internal/site/sandbox.css" in r.text and "style=" not in r.text  # CSP style-src 'self'
+        src = (root / (cid or "") / "index.html").read_text(encoding="utf-8")
+        body = src.split("<body", 1)[1].split(">", 1)[1]
+        assert body.strip()[:200] in r.text  # nội dung gốc giữ nguyên, chỉ chèn thêm
+    assert f'href="/_internal/office/{CID}/"' in c.get(f"/{CID}/").text  # Văn Phòng cố định theo ID có sẵn
+    assert 'href="/_internal/office/69/"' not in c.get("/69/").text  # 69 không phải Văn Phòng SI AI → không tự tạo
+    assert c.get(f"/{CID}").status_code in (307, 308) or c.get(f"/{CID}", follow_redirects=False).status_code in (307, 308)
+    for bad in ("/99999999/", "/abc/", "/%2e%2e%2fservices/", "/services/", "/1%2F..%2Fservices/"):
+        assert c.get(bad).status_code == 404, bad
+    assert "Disallow: /" in c.get("/robots.txt").text
+    assert c.get("/_internal/site/sandbox.css").status_code == 200
+
+
+def test_sandbox_website_flag_off(urls, monkeypatch):
+    monkeypatch.setenv("CFP_SANDBOX_WEBSITE", "0")
+    c = client(stores(urls))
+    assert c.get("/").status_code == 404 and c.get(f"/{CID}/").status_code == 404
+    assert c.get("/api/health").status_code == 200

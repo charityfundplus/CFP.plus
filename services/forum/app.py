@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import hashlib
 import hmac
+import html
 import os
 import re
 import secrets
@@ -638,6 +639,60 @@ def create_app(stores: Stores | None = None) -> FastAPI:
 
     from services.forum.hub import build_hub_router
     app.include_router(build_hub_router(registry, st, FORUMS))
+
+    # ---- Khung website trong SANDBOX (cờ CFP_SANDBOX_WEBSITE, mặc định bật; "0" để tắt).
+    # Phục vụ CHỈ ĐỌC các trang tĩnh có sẵn trong repo (/, /{ID số}/) và chèn thanh lối vào
+    # Siêu Bộ Đôi • Văn Phòng • Diễn Đàn • Bảng điều phối. Không sửa tệp tĩnh, không tạo route
+    # Canonical mới, không cấp ID: chỉ ID đã có thư mục trong repo. noindex: bản chính là cfp.plus.
+    if os.environ.get("CFP_SANDBOX_WEBSITE", "1") != "0":
+        site_root = WEB_DIR.parents[2]
+        office_on = st.office is not None
+
+        def site_page(rel: Path, cid: str | None) -> Response:
+            f = site_root / rel
+            if not f.is_file():
+                raise HTTPException(404)
+            links = [("/_internal/office/", "HUB 69 • Văn Phòng SI AI"),
+                     ("/_internal/forum/sieu-bo-doi/", "Diễn Đàn Siêu Bộ Đôi"),
+                     ("/_internal/forum/si-ai-hstdn/", "Diễn Đàn SI AI • HSTDN"),
+                     ("/_internal/ops/", "Bảng điều phối")]
+            if cid and office_on and registry.get(cid) is not None:
+                links.insert(0, (f"/_internal/office/{cid}/", f"Văn Phòng {cid}"))
+            if not office_on:
+                links = [x for x in links if not x[0].startswith(("/_internal/office/", "/_internal/ops/"))]
+            bar = ('<div class="sandbox-entry" data-testid="sandbox-entry" role="region" aria-label="Lối vào sandbox">'
+                   '<strong>SANDBOX • Siêu Bộ Đôi</strong> · '
+                   + " · ".join(f'<a href="{h}">{html.escape(t)}</a>' for h, t in links)
+                   + ' · <span>PRODUCTION NO GO</span></div>')
+            page = f.read_text(encoding="utf-8")
+            page = page.replace("</head>", '<link rel="stylesheet" href="/_internal/site/sandbox.css"></head>', 1)
+            page = re.sub(r"(<body[^>]*>)", lambda m: m.group(1) + bar, page, count=1)
+            return Response(page, media_type="text/html; charset=utf-8",
+                            headers={"X-Robots-Tag": "noindex, nofollow", "Cache-Control": "no-store"})
+
+        @app.get("/_internal/site/sandbox.css", include_in_schema=False)
+        def site_sandbox_css():
+            return FileResponse(WEB_DIR / "sandbox.css", media_type="text/css")
+
+        @app.get("/", include_in_schema=False)
+        def site_home():
+            return site_page(Path("index.html"), None)
+
+        @app.get("/robots.txt", include_in_schema=False)
+        def site_robots():  # bản sandbox không được lập chỉ mục
+            return Response("User-agent: *\nDisallow: /\n", media_type="text/plain")
+
+        @app.get("/{cid}/", include_in_schema=False)
+        def site_id_page(cid: str):
+            if not re.fullmatch(r"[0-9]{1,32}", cid):
+                raise HTTPException(404)
+            return site_page(Path(cid) / "index.html", cid)
+
+        @app.get("/{cid}", include_in_schema=False)
+        def site_id_redirect(cid: str):
+            if not re.fullmatch(r"[0-9]{1,32}", cid) or not (site_root / cid / "index.html").is_file():
+                raise HTTPException(404)
+            return RedirectResponse(f"/{cid}/")
 
     # Gắn tag OpenAPI theo module (dùng cho hợp đồng API và bảng kiểm kê).
     from fastapi.routing import APIRoute

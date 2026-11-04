@@ -40,3 +40,5 @@ services:
         sync: false
       - key: CFP_WORKER_INPROCESS
         value: "1"
+      - key: CFP_SANDBOX_WEBSITE  # khung website chỉ đọc + thanh lối vào Siêu Bộ Đôi; "0" để tắt
+        value: "1"

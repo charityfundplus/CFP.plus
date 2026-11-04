@@ -115,6 +115,16 @@ def run(base: str, allow_http: bool) -> dict:
                 "forums": {k: v["db"] for k, v in h["forums"].items()}, "registry": h["registry"]}
     s.check("platform", "/api/health", health)
 
+    def website():
+        out = {}
+        for path in ("/", f"/{CID}/"):
+            r = guest.get(path)
+            assert r.status_code == 200 and 'data-testid="sandbox-entry"' in r.text, f"{path} → {r.status_code}"
+            out[path] = 200
+        assert f'href="/_internal/office/{CID}/"' in guest.get(f"/{CID}/").text, "thiếu lối vào Văn Phòng"
+        return out
+    s.check("platform", "website sandbox: lối vào Siêu Bộ Đôi / Văn Phòng", website)
+
     def csrf():
         r = guest.post("/api/auth/login", json={"email": "x@example.org", "password": "x" * 10})
         assert r.status_code == 403, f"thiếu header CSRF → {r.status_code}"

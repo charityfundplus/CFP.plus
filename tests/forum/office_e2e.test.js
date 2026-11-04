@@ -174,6 +174,20 @@ const assert = (c, m) => { if (!c) throw new Error(m || 'assertion failed'); };
       else assert([401, 403].includes(r.status()), 'HSTDN phải từ chối người không phải thành viên: ' + r.status());
     }
   });
+  await check('Website sandbox: trang 691121 có lối vào Siêu Bộ Đôi → mở Văn Phòng 691121 (không cuộn ngang)', async () => {
+    const wp = await ctx.newPage(); wp.on('pageerror', (e) => jsErrors.push('site: ' + e.message));
+    await wp.goto(base + '/');
+    await wp.getByTestId('sandbox-entry').waitFor();
+    await wp.goto(base + '/691121/');
+    const bar = wp.getByTestId('sandbox-entry');
+    assert(await bar.getByRole('link', { name: 'Diễn Đàn Siêu Bộ Đôi' }).count() === 1, 'thiếu lối vào diễn đàn');
+    const sw = await wp.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    assert(sw <= 1, 'cuộn ngang ' + sw + 'px');
+    await bar.getByRole('link', { name: 'Văn Phòng 691121' }).click();
+    await wp.getByTestId('office-title').waitFor();
+    assert(wp.url().split('#')[0].endsWith('/_internal/office/691121/'), wp.url());
+    await wp.close();
+  });
   await check('Bảng điều phối: ONLINE thật + nhiệm vụ REVIEWED theo quyền; khách không thấy nhiệm vụ', async () => {
     const op = await ctx.newPage(); op.on('pageerror', (e) => jsErrors.push('ops: ' + e.message));
     await op.goto(base + '/_internal/ops/');
