@@ -269,7 +269,7 @@ class LinkIn(BaseModel):
 # ------------------------------------------------------------- router
 
 def build_router(engine: Engine, registry: Registry, current_user, max_wip: int | None = None) -> APIRouter:
-    r = APIRouter(prefix="/api/office")
+    r = APIRouter(prefix="/api/office", tags=["office"])
     wip_limit = max_wip if max_wip is not None else int(os.environ.get("CFP_OFFICE_MAX_WIP", "5"))
 
     def require_user(request: Request) -> dict:

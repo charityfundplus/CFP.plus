@@ -91,6 +91,14 @@ const assert = (c, m) => { if (!c) throw new Error(m || 'assertion failed'); };
       assert(hrefs.includes(h), 'thiếu ' + h);
     const r = await page.request.get(base + '/_internal/forum/sieu-bo-doi/'); assert(r.status() === 200);
   });
+  await check('HUB 69 API: Văn Phòng 691121 + 2 diễn đàn + module thiếu được ghi trung thực', async () => {
+    const h = await (await page.request.get(base + '/api/hub/69')).json();
+    assert(h.offices.some((o) => o.canonical_id === '691121'), 'thiếu Văn Phòng 691121');
+    assert(h.forums.length === 2 && h.status === 'SANDBOX • NOT DEPLOYED');
+    assert(h.modules.find((m) => m.key === 'tmtc').status === 'missing');
+    const spec = await (await page.request.get(base + '/api/openapi.json')).json();
+    assert(Object.keys(spec.paths).length >= 37, 'openapi thiếu path');
+  });
   await check('ID không có trong Registry → 404, không tự cấp', async () => {
     const r = await page.request.get(base + '/api/office/registry/99999999');
     assert(r.status() === 404);

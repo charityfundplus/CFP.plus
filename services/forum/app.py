@@ -244,7 +244,10 @@ class CommentIn(BaseModel):
 # ---------------------------------------------------------------- app
 
 def create_app(stores: Stores | None = None) -> FastAPI:
-    app = FastAPI(title="CFP+ Forum Service", version="0.1.0-p0", docs_url=None, redoc_url=None)
+    app = FastAPI(title="CFP+ Backend API (sandbox)", version="0.2.0-p0", docs_url=None, redoc_url=None,
+                  openapi_url="/api/openapi.json",
+                  description="API dùng chung: hai diễn đàn, Văn Phòng SI AI, HUB 69, AI Directory (Registry chỉ đọc). "
+                              "SANDBOX • NOT DEPLOYED.")
     st = stores or Stores.from_env()
     app.state.stores = st
     limiter = RateLimiter()
@@ -354,13 +357,25 @@ def create_app(stores: Stores | None = None) -> FastAPI:
                         max_age=int(SESSION_TTL.total_seconds()), path="/")
 
     # ---- health
+    from services.forum.registry import Registry
+    registry = Registry()
+
     @app.get("/api/health")
     def health():
-        out = {"status": "ok", "auth_db": st.auth.dialect.name, "forums": {}}
+        out = {"status": "ok", "version": app.version, "build": os.environ.get("RENDER_GIT_COMMIT", "")[:12] or None,
+               "auth_db": st.auth.dialect.name, "forums": {},
+               "registry": {"entities": len(registry.entities), "read_only": True}}
         for k, eng in st.forums.items():
             with eng.connect() as c:
                 out["forums"][k] = {"db": eng.dialect.name,
                                     "stamp": c.execute(select(meta_t.c.forum_key)).scalar_one()}
+        if st.office is not None:
+            from services.forum.office import offices_t
+            with st.office.connect() as c:
+                out["office"] = {"db": st.office.dialect.name,
+                                 "offices": c.execute(select(func.count()).select_from(offices_t)).scalar_one()}
+        else:
+            out["office"] = None
         return out
 
     # ---- auth
@@ -505,8 +520,7 @@ def create_app(stores: Stores | None = None) -> FastAPI:
     # ---- Văn Phòng SI AI (kho dữ liệu riêng, tuỳ chọn)
     if st.office is not None:
         from services.forum.office import build_router
-        from services.forum.registry import Registry
-        app.include_router(build_router(st.office, Registry(), current_user))
+        app.include_router(build_router(st.office, registry, current_user))
 
         @app.get("/_internal/office/office.js")
         def office_js():
@@ -543,6 +557,19 @@ def create_app(stores: Stores | None = None) -> FastAPI:
         return FileResponse(WEB_DIR / f"{key}.html", media_type="text/html",
                             headers={"X-Robots-Tag": "noindex, nofollow"})
 
+    from services.forum.hub import build_hub_router
+    app.include_router(build_hub_router(registry, st, FORUMS))
+
+    # Gắn tag OpenAPI theo module (dùng cho hợp đồng API và bảng kiểm kê).
+    from fastapi.routing import APIRoute
+    for route in app.routes:
+        if isinstance(route, APIRoute) and not route.tags:
+            p = route.path
+            route.tags = (["auth"] if p.startswith("/api/auth") else ["forums"] if p.startswith("/api/forums")
+                          else ["health"] if p == "/api/health" else ["ui-internal"])
+        if isinstance(route, APIRoute) and not route.path.startswith("/api/"):
+            route.include_in_schema = False  # trang/tệp tĩnh nội bộ không thuộc hợp đồng API
+    app.openapi_schema = None
     return app
 
 
