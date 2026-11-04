@@ -362,12 +362,14 @@ def test_sec04_members_dataset_object_acl(world):
     lead = world["lead"]
     d = ok(lead.post("/api/office/datasets", json={**SAMPLE["dataset"], "title": "Tài liệu nội bộ ACL", "access": "members",
                                                   "version": f"acl-{uuid.uuid4().hex[:6]}"}, headers=H), 201)["id"]
-    assert world["other"].get(f"/api/office/datasets/{d}").status_code == 403
-    assert not any(x["ref"] == f"dataset:{d}" for x in
-                   world["other"].get("/api/office/search", params={"q": "nội bộ acl"}).json()["results"])
-    for who in ("lead", "rev", "gov"):
+    # SEC-06: vai trò reviewer không còn quyền xem tài liệu nội bộ không liên quan.
+    for who in ("other", "rev"):
+        assert world[who].get(f"/api/office/datasets/{d}").status_code == 403, who
+        assert not any(x["ref"] == f"dataset:{d}" for x in
+                       world[who].get("/api/office/search", params={"q": "nội bộ acl"}).json()["results"]), who
+    for who in ("lead", "gov"):
         assert world[who].get(f"/api/office/datasets/{d}").status_code == 200, who
-    assert world["rev"].get("/api/office/search", params={"q": "nội bộ acl"}).json()["results"]
+    assert world["gov"].get("/api/office/search", params={"q": "nội bộ acl"}).json()["results"]
 
 
 def test_sec04_link_creation_requires_ownership(world):
@@ -392,3 +394,56 @@ def test_sec04_task_links_need_participation(world):
     body = {"from_ref": f"task:{o['task']}", "to_ref": f"topic:{o['topic']}", "relation": "about"}
     assert world["other"].post("/api/office/links", json=body, headers=H).status_code == 422  # task không hiển thị
     assert world["lead"].post("/api/office/links", json=body, headers=H).status_code == 201
+
+
+# ---------- SecuritySI re-review @ 4ed670a: SEC-06 (quyền tối thiểu) + idempotency đồng thời
+
+def test_sec06_reviewer_role_sees_only_assigned_tasks(world):
+    o, ids = world["out"], world["ids"]
+    # Nhiệm vụ mới giao cho reviewer khác (governance) → người có vai trò reviewer không được thấy.
+    t = ok(world["lead"].post("/api/office/tasks", json={"pair_id": o["pair"], "title": "Không giao cho rev",
+                                                        "acceptance": "abc", "reviewer_id": ids["gov"],
+                                                        "idempotency_key": f"sec06-{uuid.uuid4().hex[:8]}"}, headers=H), 201)["id"]
+    seen = {x["id"] for x in ok(world["rev"].get(f"/api/office/offices/{CID}"), 200)["tasks"]}
+    assert o["task"] in seen and t not in seen
+    assert world["rev"].get(f"/api/office/audit?ref=task:{t}").status_code == 403
+    assert world["rev"].get(f"/api/office/audit?ref=task:{o['task']}").status_code == 200   # được chỉ định
+    assert world["rev"].get(f"/api/office/audit?ref=office:{CID}").status_code == 403       # không phải nhiệm vụ
+    assert world["lead"].get(f"/api/office/audit?ref=task:{t}").status_code == 200          # người thực thi
+    assert world["other"].get(f"/api/office/audit?ref=task:{t}").status_code == 403
+    assert world["gov"].get(f"/api/office/audit?ref=office:{CID}").status_code == 200
+
+
+def test_sec06_unrelated_cannot_see_ids_of_participants(world):
+    for who in ("other",):
+        d = ok(world[who].get(f"/api/office/offices/{CID}"), 200)
+        blob = str(d)
+        assert "assignee_id" not in blob and "reviewer_id" not in blob and "lead_user_id" not in blob
+        assert "created_by" not in blob
+
+
+def test_task_refs_must_be_visible(world):
+    hidden = ok(world["other"].post("/api/office/datasets", json={**SAMPLE["dataset"], "title": "Riêng người ngoài",
+                                                                 "access": "members", "version": f"r-{uuid.uuid4().hex[:6]}"},
+                                    headers=H), 201)["id"]
+    r = world["lead"].post("/api/office/tasks", json={"pair_id": world["out"]["pair"], "title": "Tham chiếu ẩn",
+                                                     "acceptance": "abc", "reviewer_id": world["ids"]["rev"],
+                                                     "idempotency_key": f"hid-{uuid.uuid4().hex[:8]}",
+                                                     "refs": [f"dataset:{hidden}"]}, headers=H)
+    assert r.status_code == 422
+
+
+def test_concurrent_same_idempotency_key_never_500(world):
+    from concurrent.futures import ThreadPoolExecutor
+    body = {"pair_id": world["out"]["pair"], "title": "Gửi đồng thời", "acceptance": "abc",
+            "reviewer_id": world["ids"]["rev"], "idempotency_key": f"race-{uuid.uuid4().hex[:10]}"}
+    clients = []
+    for _ in range(4):
+        c = client(world["st"])
+        c.cookies = world["lead"].cookies
+        clients.append(c)
+    with ThreadPoolExecutor(4) as ex:
+        res = list(ex.map(lambda c: c.post("/api/office/tasks", json=body, headers=H), clients))
+    codes = [r.status_code for r in res]
+    assert all(code == 201 for code in codes), codes
+    assert len({r.json()["id"] for r in res}) == 1  # đúng một nhiệm vụ được tạo

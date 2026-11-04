@@ -40,15 +40,15 @@ Sinh tự động bởi `python -m services.forum.inventory --write` • CI ki�
 | health | GET | `/api/health` | công khai |  |  | tất cả (chỉ đọc trạng thái) |
 | hub69 | GET | `/api/hub/69` | công khai |  |  | Registry (tệp, chỉ đọc) + cfp_office (đọc) |
 | hub69 | GET | `/api/modules` | công khai |  |  | Registry (tệp, chỉ đọc) + cfp_office (đọc) |
-| office | GET | `/api/office/audit` | đăng nhập | governance/reviewer |  | cfp_office |
+| office | GET | `/api/office/audit` | đăng nhập | governance • hoặc người tham gia/maintainer của đúng nhiệm vụ |  | cfp_office |
 | office | POST | `/api/office/datasets` | đăng nhập |  | header X-CFP-Forum + Origin | cfp_office |
-| office | GET | `/api/office/datasets/{did}` | công khai (+phiên nếu có) | access=members → người tạo / maintainer / governance / reviewer |  | cfp_office |
+| office | GET | `/api/office/datasets/{did}` | công khai (+phiên nếu có) | access=members → người tạo / governance / người xem được nhiệm vụ dùng tài liệu |  | cfp_office |
 | office | POST | `/api/office/enterprises` | đăng nhập |  | header X-CFP-Forum + Origin | cfp_office |
 | office | GET | `/api/office/enterprises/{eid}` | công khai (+phiên nếu có) |  |  | cfp_office |
 | office | GET | `/api/office/links` | công khai (+phiên nếu có) | ẩn liên kết tới nhiệm vụ/tài liệu không được xem |  | cfp_office |
 | office | POST | `/api/office/links` | đăng nhập | chủ sở hữu mục nguồn / maintainer / governance • đích phải được xem | header X-CFP-Forum + Origin | cfp_office |
 | office | POST | `/api/office/offices` | đăng nhập | governance • ID phải có trong Registry (type ai) | header X-CFP-Forum + Origin | cfp_office |
-| office | GET | `/api/office/offices/{cid}` | công khai (+phiên nếu có) | khách: hồ sơ công khai • nhiệm vụ/evidence/review: người tham gia, maintainer, governance/reviewer |  | cfp_office |
+| office | GET | `/api/office/offices/{cid}` | công khai (+phiên nếu có) | khách: hồ sơ công khai • nhiệm vụ/evidence/review: người tham gia (assignee/reviewer/người tạo), maintainer, governance |  | cfp_office |
 | office | POST | `/api/office/offices/{cid}/brand` | đăng nhập | maintainer/governance • nhãn xác nhận/ủy quyền: chỉ governance | header X-CFP-Forum + Origin | cfp_office |
 | office | POST | `/api/office/offices/{cid}/maintainers/{uid}` | đăng nhập | governance | header X-CFP-Forum + Origin | cfp_office |
 | office | POST | `/api/office/pairs` | đăng nhập | maintainer/governance | header X-CFP-Forum + Origin | cfp_office |
