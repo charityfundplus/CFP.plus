@@ -72,21 +72,6 @@
     "title": "BrandIn",
     "type": "object"
    },
-   "CommentIn": {
-    "properties": {
-     "body": {
-      "maxLength": 5000,
-      "minLength": 1,
-      "title": "Body",
-      "type": "string"
-     }
-    },
-    "required": [
-     "body"
-    ],
-    "title": "CommentIn",
-    "type": "object"
-   },
    "DatasetIn": {
     "properties": {
      "access": {
@@ -629,6 +614,36 @@
     ],
     "title": "ValidationError",
     "type": "object"
+   },
+   "services__forum__app__CommentIn": {
+    "properties": {
+     "body": {
+      "maxLength": 5000,
+      "minLength": 1,
+      "title": "Body",
+      "type": "string"
+     }
+    },
+    "required": [
+     "body"
+    ],
+    "title": "CommentIn",
+    "type": "object"
+   },
+   "services__forum__office__CommentIn": {
+    "properties": {
+     "body": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Body",
+      "type": "string"
+     }
+    },
+    "required": [
+     "body"
+    ],
+    "title": "CommentIn",
+    "type": "object"
    }
   }
  },
@@ -1098,7 +1113,7 @@
      "content": {
       "application/json": {
        "schema": {
-        "$ref": "#/components/schemas/CommentIn"
+        "$ref": "#/components/schemas/services__forum__app__CommentIn"
        }
       }
      },
@@ -1860,6 +1875,57 @@
      }
     },
     "summary": "Ack",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/tasks/{tid}/comments": {
+   "post": {
+    "description": "Trao đổi trong nhiệm vụ: ghi vào task_events (to_status=COMMENT), không đổi trạng thái.",
+    "operationId": "comment_api_office_tasks__tid__comments_post",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "tid",
+      "required": true,
+      "schema": {
+       "title": "Tid",
+       "type": "integer"
+      }
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/services__forum__office__CommentIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "201": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Comment",
     "tags": [
      "office"
     ]

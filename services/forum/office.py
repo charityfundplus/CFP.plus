@@ -270,6 +270,10 @@ class TransitionIn(BaseModel):
     note: str = Field(default="", max_length=2000)
 
 
+class CommentIn(BaseModel):
+    body: str = Field(min_length=1, max_length=2000)
+
+
 class LinkIn(BaseModel):
     from_ref: str = Field(max_length=64)
     to_ref: str = Field(max_length=64)
@@ -761,6 +765,21 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
             c.execute(insert(reviews_t).values(task_id=tid, reviewer_id=user["id"], decision=data.decision, notes=data.notes))
             move(c, t, user["id"], "ACCEPTED" if data.decision == "ACCEPT" else "CHANGES_REQUESTED", data.notes)
         return {"id": tid, "status": "ACCEPTED" if data.decision == "ACCEPT" else "CHANGES_REQUESTED"}
+
+    @r.post("/tasks/{tid}/comments", status_code=201)
+    def comment(tid: int, data: CommentIn, user=Depends(require_user)):
+        """Trao đổi trong nhiệm vụ: ghi vào task_events (to_status=COMMENT), không đổi trạng thái."""
+        body = data.body.strip()
+        if not body:
+            raise HTTPException(422, "Nội dung trao đổi trống.")
+        with _begin() as c:
+            t = load_task(c, tid)
+            if not task_visible(c, principal(c, user), t):
+                raise HTTPException(404, "Không có nhiệm vụ.")  # không lộ sự tồn tại cho người ngoài
+            c.execute(insert(task_events_t).values(task_id=tid, actor_id=user["id"], from_status=t["status"],
+                                                   to_status="COMMENT", note=body))
+            audit(c, user["id"], "task.comment", f"task:{tid}", {"status": t["status"], "length": len(body)})
+        return {"id": tid, "ok": True}
 
     # ---- liên kết hai chiều + tìm kiếm + lịch sử
     def links_of(ref: str, user: dict | None) -> dict:

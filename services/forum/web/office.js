@@ -97,7 +97,10 @@
           el('p', { text: 'Tiêu chí nghiệm thu: ' + t.acceptance }),
           el('h4', { text: 'Evidence' }), el('ul', {}, t.evidence.map(function (e) { return el('li', { 'data-testid': 'evidence' }, [e.kind + ': ', ext(e.url), ' — ' + e.description]); })),
           el('h4', { text: 'Review' }), el('ul', {}, t.reviews.map(function (r) { return el('li', { 'data-testid': 'review', text: r.decision + ' — ' + r.notes }); })),
-          el('h4', { text: 'Lịch sử' }), el('p', { 'class': 'forum-meta', text: t.history.map(function (h) { return h.to_status; }).join(' → ') }),
+          el('h4', { text: 'Trao đổi' }), el('ul', {}, t.history.filter(function (h) { return h.to_status === 'COMMENT'; }).map(function (h) {
+            return el('li', { 'data-testid': 'task-comment', text: '#' + h.actor_id + ': ' + h.note });
+          })),
+          el('h4', { text: 'Lịch sử' }), el('p', { 'class': 'forum-meta', text: t.history.filter(function (h) { return h.to_status !== 'COMMENT'; }).map(function (h) { return h.to_status; }).join(' → ') }),
           el('p', {}, [refLink('task:' + t.id)]), taskControls(t)]);
       }) : [el('p', { text: 'Chưa có nhiệm vụ.' })]),
       section('Liên kết hai chiều', 'office-links', [linksBlock(d.links)]),
@@ -160,6 +163,9 @@
       action('Chấp nhận kết quả', 'review', function () { return { decision: 'ACCEPT', notes: notes.value }; });
       action('Yêu cầu sửa', 'review', function () { return { decision: 'CHANGES_REQUESTED', notes: notes.value }; });
     }
+    var talk = el('textarea', { 'aria-label': 'Trao đổi nhiệm vụ', maxlength: '2000' });
+    box.append(el('label', {}, ['Trao đổi', talk]));
+    action('Gửi trao đổi', 'comments', function () { return { body: talk.value }; });
     box.appendChild(msg); return box;
   }
   function load() {

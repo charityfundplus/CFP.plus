@@ -466,3 +466,22 @@ def test_task_idempotency_cannot_bypass_office_authorization(world):
                     {"refs": ["registry:691121"]}):
         response = world["lead"].post('/api/office/tasks', json={**payload, **changed}, headers=H)
         assert response.status_code == 409
+
+
+def test_task_comments_participants_only(world):
+    """Trao đổi theo nhiệm vụ: người tham gia/staff ghi & đọc; người ngoài/khách không ghi, không thấy."""
+    t = world["out"]["task"]
+    ok(world["lead"].post(f"/api/office/tasks/{t}/comments", json={"body": "Đã cập nhật Evidence, nhờ xem lại."}, headers=H), 201)
+    ok(world["rev"].post(f"/api/office/tasks/{t}/comments", json={"body": "Đã nhận, sẽ phản hồi."}, headers=H), 201)
+    assert world["other"].post(f"/api/office/tasks/{t}/comments", json={"body": "chen ngang"}, headers=H).status_code in (403, 404)
+    assert _anon(world).post(f"/api/office/tasks/{t}/comments", json={"body": "khách"}, headers=H).status_code == 401
+    assert world["lead"].post(f"/api/office/tasks/{t}/comments", json={"body": "   "}, headers=H).status_code == 422
+    assert world["lead"].post(f"/api/office/tasks/{t}/comments", json={"body": "x"}).status_code == 403  # thiếu CSRF header
+    before = next(x for x in ok(world["gov"].get(f"/api/office/offices/{CID}"), 200)["tasks"] if x["id"] == t)["status"]
+    task = next(x for x in ok(world["gov"].get(f"/api/office/offices/{CID}"), 200)["tasks"] if x["id"] == t)
+    notes = [h["note"] for h in task["history"] if h["to_status"] == "COMMENT"]
+    assert notes == ["Đã cập nhật Evidence, nhờ xem lại.", "Đã nhận, sẽ phản hồi."]
+    assert task["status"] == before == "ACCEPTED"  # trao đổi không đổi trạng thái
+    assert "chen ngang" not in str(task["history"])
+    audit = ok(world["gov"].get(f"/api/office/audit?ref=task:{t}"), 200)
+    assert sum(1 for a in audit["events"] if a["action"] == "task.comment") == 2

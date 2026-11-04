@@ -75,6 +75,16 @@ const assert = (c, m) => { if (!c) throw new Error(m || 'assertion failed'); };
     assert((await task.getByTestId('evidence').count()) === 1 && (await task.getByTestId('review').textContent()).startsWith('ACCEPT'));
     assert((await task.locator('.forum-meta').textContent()) === 'QUEUED → ACKED → IN_PROGRESS → IN_REVIEW → ACCEPTED');
   });
+  await check('Trao đổi trong nhiệm vụ qua giao diện (lưu DB, còn sau tải lại, không đổi trạng thái)', async () => {
+    const sel = () => page.locator('[data-testid=task]', { hasText: `[${prefix}] Luồng Link Mẫu SI AI xuyên suốt` });
+    await sel().getByLabel('Trao đổi nhiệm vụ').fill('Trao đổi E2E ' + prefix);
+    await sel().getByRole('button', { name: 'Gửi trao đổi' }).click();
+    await sel().getByTestId('task-comment').filter({ hasText: 'Trao đổi E2E ' + prefix }).waitFor();
+    await page.reload(); await page.locator('[data-ready="1"]').waitFor();
+    assert((await sel().getByTestId('task-comment').allTextContents()).some((t) => t.endsWith('Trao đổi E2E ' + prefix)), 'mất sau reload');
+    assert((await sel().getByTestId('task-status').textContent()) === 'ACCEPTED');
+    assert((await sel().locator('.forum-meta').textContent()) === 'QUEUED → ACKED → IN_PROGRESS → IN_REVIEW → ACCEPTED');
+  });
   await check('Điều hướng hai chiều: Nhiệm vụ → HSTDN → Quốc gia → Back về HSTDN', async () => {
     await page.goto('about:blank'); await page.goto(URL + `#task:${seeded.task}`); await page.locator('[data-ready="1"]').waitFor();
     await page.getByTestId('detail').getByTestId('ref-link').filter({ hasText: `enterprise:${seeded.enterprise}` }).tap();
