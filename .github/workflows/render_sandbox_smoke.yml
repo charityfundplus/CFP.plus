@@ -21,7 +21,7 @@ permissions:
 jobs:
   smoke:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     env:
       BASE: ${{ inputs.base || 'https://cfp-forum-office-sandbox-p0.onrender.com' }}
       SMOKE_GOV_EMAIL: ${{ secrets.SMOKE_GOV_EMAIL }}
@@ -36,11 +36,12 @@ jobs:
       - name: Đánh thức instance Free + ghi health thô
         run: |
           for i in 1 2 3 4 5 6; do
-            code=$(curl -s -o health.json -w '%{http_code}' --max-time 60 "$BASE/api/health" || echo 000)
+            code=$(curl -s -o health.json -w '%{http_code}' --max-time 60 "$BASE/api/health" || true)
             echo "lần $i: HTTP $code"; [ "$code" = 200 ] && break; sleep 20
           done
           cat health.json || true; echo
           curl -s -o /dev/null -w 'worker/status HTTP %{http_code}\n' --max-time 30 "$BASE/api/worker/status" || true
+          curl -s -o /dev/null -D - --max-time 30 "$BASE/" | grep -i '^\(HTTP\|x-render\|rndr\|server\)' || echo "không có phản hồi HTTP từ /"
       - name: Smoke
         run: |
           MODE=--public-only; [ -n "$SMOKE_PASSWORD" ] && MODE=

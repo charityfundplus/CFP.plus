@@ -113,7 +113,8 @@ def run(base: str, allow_http: bool, public_only: bool = False) -> dict:
         assert set(h["forums"]) == {"sieu-bo-doi", "si-ai-hstdn"}, h["forums"]
         return {"build": h.get("build"), "storage": h.get("storage"), "auth_db": h["auth_db"], "office_db": h["office"]["db"],
                 "forums": {k: v["db"] for k, v in h["forums"].items()}, "registry": h["registry"]}
-    s.check("platform", "/api/health", health)
+    if not s.check("platform", "/api/health", health):
+        return finish(s, base, tag)  # server không trả lời/không sẵn sàng → dừng, không gọi tiếp cho hết giờ
 
     def website():
         out = {}
