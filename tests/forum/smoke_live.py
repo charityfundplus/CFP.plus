@@ -88,12 +88,12 @@ def login(c: httpx.Client, email: str, pw: str) -> dict:
     return expect(c.post("/api/auth/login", json={"email": email, "password": pw}, headers=H), 200)
 
 
-def run(base: str, allow_http: bool) -> dict:
+def run(base: str, allow_http: bool, public_only: bool = False) -> dict:
     s = Smoke(base)
     gov_email, rev_email = os.environ.get("SMOKE_GOV_EMAIL"), os.environ.get("SMOKE_REVIEWER_EMAIL")
     pw = os.environ.get("SMOKE_PASSWORD")
-    if not (gov_email and rev_email and pw):
-        sys.exit("Thiếu SMOKE_GOV_EMAIL / SMOKE_REVIEWER_EMAIL / SMOKE_PASSWORD")
+    if not public_only and not (gov_email and rev_email and pw):
+        sys.exit("Thiếu SMOKE_GOV_EMAIL / SMOKE_REVIEWER_EMAIL / SMOKE_PASSWORD (hoặc dùng --public-only)")
     tag = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
     prefix = f"[smoke-{tag}] "
     guest, gov, lead, rev = s.client(), s.client(), s.client(), s.client()
@@ -140,6 +140,23 @@ def run(base: str, allow_http: bool) -> dict:
         expect(guest.post(f"/api/forums/{FORUM}/posts", json={"title": "x", "body": "x"}, headers=H), 401)
         return "ghi nhiệm vụ / audit / đăng bài khi chưa đăng nhập → 401"
     s.check("security", "khách không ghi được", guest_denied)
+
+    def forums_isolated():
+        out = {}
+        for key in ("sieu-bo-doi", "si-ai-hstdn"):
+            info = expect(guest.get(f"/api/forums/{key}"), 200)
+            r = guest.get(f"/_internal/forum/{key}/")
+            assert r.status_code == 200, f"/_internal/forum/{key}/ → {r.status_code}"
+            posts = guest.get(f"/api/forums/{key}/posts")
+            out[key] = {"page": 200, "posts_guest": posts.status_code, "title": info.get("title"), "public_read": info.get("public_read")}
+        # SI AI • HSTDN chỉ cho thành viên đã duyệt; Siêu Bộ Đôi công khai
+        assert out["sieu-bo-doi"]["posts_guest"] == 200 and out["si-ai-hstdn"]["posts_guest"] in (401, 403), out
+        return out
+    s.check("forum", "hai Diễn Đàn: trang + API riêng, HSTDN chặn khách", forums_isolated)
+
+    if public_only:
+        s.check("worker", "trạng thái (thông tin)", lambda: expect(guest.get("/api/worker/status"), 200))
+        return finish(s, base, tag)
 
     # ---- 2. Đăng nhập
     def accounts():
@@ -264,8 +281,9 @@ if __name__ == "__main__":
     ap.add_argument("--base", required=True)
     ap.add_argument("--out", default="smoke-live.json")
     ap.add_argument("--allow-http", action="store_true", help="chỉ cho server local")
+    ap.add_argument("--public-only", action="store_true", help="chỉ kiểm tra không cần tài khoản (không ghi dữ liệu)")
     a = ap.parse_args()
-    rep = run(a.base, a.allow_http)
+    rep = run(a.base, a.allow_http, a.public_only)
     with open(a.out, "w", encoding="utf-8") as f:
         json.dump(rep, f, ensure_ascii=False, indent=2)
     print(f"SMOKE_LIVE={rep['result']} passed={rep['passed']} failed={rep['failed']} build={rep['build']}")

@@ -1,0 +1,56 @@
+name: Render sandbox smoke (HTTPS thật)
+
+# Gọi URL Render sandbox từ runner GitHub (có internet) — chỉ đọc khi không có secrets tài khoản.
+# Không deploy, không đổi cấu hình Render. Có secrets SMOKE_* (tài khoản sandbox) → chạy luồng đầy đủ
+# login → task → ACK → Start → Diễn Đàn → Evidence → Submit → Review → Closure → audit.
+on:
+  push:
+    branches: ['claude/**']
+    paths:
+      - '.github/workflows/render_sandbox_smoke.yml'
+      - 'tests/forum/smoke_live.py'
+  workflow_dispatch:
+    inputs:
+      base:
+        description: 'URL HTTPS sandbox'
+        default: 'https://cfp-forum-office-sandbox-p0.onrender.com'
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      BASE: ${{ inputs.base || 'https://cfp-forum-office-sandbox-p0.onrender.com' }}
+      SMOKE_GOV_EMAIL: ${{ secrets.SMOKE_GOV_EMAIL }}
+      SMOKE_REVIEWER_EMAIL: ${{ secrets.SMOKE_REVIEWER_EMAIL }}
+      SMOKE_PASSWORD: ${{ secrets.SMOKE_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install httpx==0.28.1
+      - name: Đánh thức instance Free + ghi health thô
+        run: |
+          for i in 1 2 3 4 5 6; do
+            code=$(curl -s -o health.json -w '%{http_code}' --max-time 60 "$BASE/api/health" || echo 000)
+            echo "lần $i: HTTP $code"; [ "$code" = 200 ] && break; sleep 20
+          done
+          cat health.json || true; echo
+          curl -s -o /dev/null -w 'worker/status HTTP %{http_code}\n' --max-time 30 "$BASE/api/worker/status" || true
+      - name: Smoke
+        run: |
+          MODE=--public-only; [ -n "$SMOKE_PASSWORD" ] && MODE=
+          python -m tests.forum.smoke_live --base "$BASE" --out render-smoke.json $MODE | tee render-smoke.log
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: render-sandbox-smoke
+          path: |
+            health.json
+            render-smoke.json
+            render-smoke.log
+          if-no-files-found: warn
