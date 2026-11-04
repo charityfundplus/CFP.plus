@@ -2441,6 +2441,25 @@
      "office"
     ]
    }
+  },
+  "/api/worker/status": {
+   "get": {
+    "operationId": "worker_status_api_worker_status_get",
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     }
+    },
+    "summary": "Worker Status",
+    "tags": [
+     "worker"
+    ]
+   }
   }
  }
 }

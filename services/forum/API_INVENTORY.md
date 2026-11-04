@@ -15,6 +15,7 @@ Sinh tự động bởi `python -m services.forum.inventory --write` • CI ki�
 | Nghiên cứu • kho dữ liệu • giáo trình | **implemented** | `/api/office/topics, /api/office/datasets` |  |
 | HUB 69 • tổng hợp chỉ đọc | **implemented** | `/api/hub` |  |
 | AI Directory • Registry chỉ đọc | **implemented** | `/api/directory` |  |
+| Worker P0 • hàng đợi + lịch chạy (heartbeat, retry, dead-letter, kill switch) | **partial** | `/api/worker/status` | SANDBOX: 1 việc chỉ đọc (registry_integrity). Chưa có runtime cố định → không phải 24/24. |
 | Website • nội dung động và form | **missing** | `—` | Website hiện là nginx tĩnh; chưa có API nội dung/form. |
 | App • API dùng chung | **partial** | `—` | App dùng được các API trên; chưa có client/App riêng trong repo. |
 | Sàn TMTC 8682 • danh mục sản phẩm (sandbox, không thanh toán) | **missing** | `—` | Chưa có API danh mục; thanh toán không thuộc phạm vi. |
@@ -67,6 +68,7 @@ Sinh tự động bởi `python -m services.forum.inventory --write` • CI ki�
 | office | GET | `/api/office/taxonomy` | công khai |  |  | cfp_office |
 | office | POST | `/api/office/topics` | đăng nhập |  | header X-CFP-Forum + Origin | cfp_office |
 | office | GET | `/api/office/topics/{tid}` | công khai (+phiên nếu có) |  |  | cfp_office |
+| worker | GET | `/api/worker/status` | công khai | công khai, chỉ số tổng hợp (không có nội dung lỗi/kết quả chi tiết) |  | cfp_worker (chỉ đọc) |
 
 Ranh giới dữ liệu: mỗi kho là một schema + role riêng (#193 + 002_office.sql); role của kho này không có USAGE trên schema kho khác; `anon`/`authenticated` không có quyền.
 

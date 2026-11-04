@@ -38,6 +38,7 @@ ROLE_RULES = {
     ("GET", "/api/office/forum-links"): "chỉ nhiệm vụ người xem được phép thấy • diễn đàn người xem đọc được",
     ("POST", "/api/office/tasks/{tid}/comments"): "người tham gia / maintainer / governance của đúng nhiệm vụ",
     ("POST", "/api/office/tasks/{tid}/review"): "reviewer được chỉ định",
+    ("GET", "/api/worker/status"): "công khai, chỉ số tổng hợp (không có nội dung lỗi/kết quả chi tiết)",
     ("GET", "/api/office/audit"): "governance • hoặc người tham gia/maintainer của đúng nhiệm vụ",
     ("GET", "/api/office/datasets/{did}"): "access=members → người tạo / governance / người xem được nhiệm vụ dùng tài liệu",
     ("GET", "/api/office/offices/{cid}"): "khách: hồ sơ công khai • nhiệm vụ/evidence/review: người tham gia (assignee/reviewer/người tạo), maintainer, governance",
@@ -56,6 +57,8 @@ def _store(path: str) -> str:
         return "cfp_office (liên kết) + diễn đàn tương ứng (bài, qua đúng quy tắc diễn đàn)"
     if path.startswith("/api/office"):
         return "cfp_office"
+    if path.startswith("/api/worker"):
+        return "cfp_worker (chỉ đọc)"
     if path.startswith(("/api/hub", "/api/directory", "/api/modules")):
         return "Registry (tệp, chỉ đọc) + cfp_office (đọc)"
     return "tất cả (chỉ đọc trạng thái)"

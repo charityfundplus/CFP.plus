@@ -169,8 +169,9 @@ def _engine(url: str) -> Engine:
 
 
 class Stores:
-    def __init__(self, auth_url: str, forum_urls: dict[str, str], office_url: str | None = None):
-        all_urls = [auth_url, *forum_urls.values()] + ([office_url] if office_url else [])
+    def __init__(self, auth_url: str, forum_urls: dict[str, str], office_url: str | None = None,
+                 worker_url: str | None = None):
+        all_urls = [auth_url, *forum_urls.values()] + [u for u in (office_url, worker_url) if u]
         if len(set(all_urls)) != len(all_urls):
             raise RuntimeError("Mỗi diễn đàn, auth và Văn Phòng phải dùng database/role riêng biệt.")
         self.auth = _engine(auth_url)
@@ -191,9 +192,13 @@ class Stores:
             from services.forum.office import md as office_md
             self.office = _engine(office_url)
             office_md.create_all(self.office)
+        self.worker: Engine | None = None
+        if worker_url:  # kho riêng của Worker P0 (004_worker.sql); app chỉ ĐỌC trạng thái
+            from services.forum.worker import engine_for
+            self.worker = engine_for(worker_url)
 
     def dispose(self) -> None:
-        for eng in [self.auth, *self.forums.values(), *([self.office] if self.office is not None else [])]:
+        for eng in [self.auth, *self.forums.values(), *[e for e in (self.office, self.worker) if e is not None]]:
             eng.dispose()
 
     @classmethod
@@ -204,7 +209,7 @@ class Stores:
                    [(f"CFP_FORUM_DB_{_env_key(k)}", v) for k, v in urls.items()] if not v]
         if missing:
             raise RuntimeError("Thiếu biến môi trường: " + ", ".join(missing))
-        return cls(auth, urls, os.environ.get("CFP_OFFICE_DB") or None)
+        return cls(auth, urls, os.environ.get("CFP_OFFICE_DB") or None, os.environ.get("CFP_WORKER_DB") or None)
 
 
 # ---------------------------------------------------------------- auth helpers
@@ -401,6 +406,23 @@ def create_app(stores: Stores | None = None) -> FastAPI:
         else:
             out["office"] = None
         return out
+
+    # ---- Worker P0: trạng thái chỉ đọc (heartbeat, số việc, cảnh báo) — không có thao tác ghi qua HTTP
+    @app.get("/api/worker/status", tags=["worker"])
+    def worker_status():
+        if st.worker is None:
+            return {"mode": "SANDBOX", "configured": False, "alive": False,
+                    "note": "Chưa cấu hình CFP_WORKER_DB: không có worker chạy."}
+        from services.forum.worker import status
+        return {"configured": True, **status(st.worker)}
+
+    if st.worker is not None and os.environ.get("CFP_WORKER_INPROCESS") == "1":
+        # Render Free chỉ có web service: chạy worker trong cùng tiến trình (1 uvicorn worker).
+        # Instance Free ngủ khi không có truy cập → heartbeat sẽ trễ; status báo đúng điều đó.
+        from services.forum.worker import Worker
+        threading.Thread(target=Worker(st.worker).run_forever,
+                         kwargs={"interval": float(os.environ.get("CFP_WORKER_INTERVAL", "30"))},
+                         name="cfp-worker", daemon=True).start()
 
     # ---- auth
     @app.post("/api/auth/register", status_code=201)

@@ -37,11 +37,18 @@ apply 002_office.sql run-after-forum-reapply
 if [ "$WITH_003" = 1 ]; then
   apply 003_office_rls.sql run1; apply 003_office_rls.sql run2
   apply 003_office_rls_down.sql rollback-003; apply 003_office_rls.sql reapply-003
+  # 004 Worker P0 (chưa áp Supabase): độc lập với cfp_office / cfp_forum_*.
+  apply 004_worker.sql run1; apply 004_worker.sql run2
+  apply 004_worker_down.sql rollback-004; apply 004_worker.sql reapply-004
 fi
 
 # Sandbox test: người chạy test đóng vai Human Governance (membership office_governance, SET)
 # và được SET ROLE sang anon/authenticated như SQL Editor Supabase. Bật LOGIN cho office_app.
 psql -v ON_ERROR_STOP=1 -q -U cfp_migrator -d "$DB" -c "ALTER ROLE office_app LOGIN"
+if [ "$WITH_003" = 1 ]; then
+  psql -v ON_ERROR_STOP=1 -q -U cfp_migrator -d "$DB" -c "ALTER ROLE worker_app LOGIN"
+  psql -v ON_ERROR_STOP=1 -q -d "$DB" -c "GRANT worker_governance TO cfp_migrator WITH SET TRUE"
+fi
 psql -v ON_ERROR_STOP=1 -q -d "$DB" -c "GRANT office_governance TO cfp_migrator WITH SET TRUE" \
   -c "GRANT anon, authenticated TO cfp_migrator WITH SET TRUE"
 q() { psql -tA -U cfp_migrator -d "$DB" -c "$1"; }
@@ -50,3 +57,6 @@ q "select 'office_tables=' || count(*) from pg_tables where schemaname = 'cfp_of
 q "select 'office_rls_forced=' || count(*) from pg_class c join pg_namespace n on n.oid=c.relnamespace where c.relkind='r' and n.nspname='cfp_office' and c.relrowsecurity and c.relforcerowsecurity"
 q "select 'rls_user_policies=' || count(*) from pg_policies where schemaname='cfp_office' and policyname like 'rls_%'"
 q "select 'anon_usage=' || count(*) from pg_namespace where nspname in ('cfp_office','cfp_forum_auth','cfp_forum_sbd','cfp_forum_hstdn') and (has_schema_privilege('anon', oid, 'USAGE') or has_schema_privilege('authenticated', oid, 'USAGE'))"
+q "select 'worker_tables=' || count(*) from pg_tables where schemaname = 'cfp_worker'"
+q "select 'worker_rls_forced=' || count(*) from pg_class c join pg_namespace n on n.oid=c.relnamespace where c.relkind='r' and n.nspname='cfp_worker' and c.relrowsecurity and c.relforcerowsecurity"
+q "select 'worker_cross_usage=' || count(*) from pg_namespace where (nspname = 'cfp_worker' and (has_schema_privilege('office_app', oid, 'USAGE') or has_schema_privilege('anon', oid, 'USAGE'))) or (nspname in ('cfp_office','cfp_forum_auth','cfp_forum_sbd','cfp_forum_hstdn') and exists (select 1 from pg_roles where rolname='worker_app') and has_schema_privilege('worker_app', oid, 'USAGE'))"
