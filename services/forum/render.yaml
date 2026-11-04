@@ -27,3 +27,5 @@ services:
         sync: false
       - key: CFP_FORUM_DB_SI_AI_HSTDN
         sync: false
+      - key: CFP_OFFICE_DB          # Văn Phòng SI AI (role office_app, schema cfp_office)
+        sync: false

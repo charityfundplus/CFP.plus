@@ -13,3 +13,8 @@
 .forum-note { padding: .9rem 1rem; border-left: 4px solid var(--accent); background: var(--surface); border-radius: 8px; }
 .forum-form select { width: 100%; padding: .65rem .8rem; border: 1px solid var(--line); border-radius: 12px; font: inherit; }
 .forum-tag { display: inline-block; margin-right: .4rem; padding: .1rem .55rem; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: .85rem; }
+.forum-tags { display: flex; flex-wrap: wrap; gap: .4rem; padding: 0; list-style: none; }
+.forum-tag.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+#detail:empty { display: none; }
+[data-office-root] p, [data-office-root] li, [data-office-root] a, [data-office-root] strong { overflow-wrap: anywhere; word-break: break-word; }
+[data-office-root] ul, [data-office-root] ol { padding-left: 1.1rem; }

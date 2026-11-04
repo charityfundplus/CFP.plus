@@ -151,9 +151,10 @@ def _engine(url: str) -> Engine:
 
 
 class Stores:
-    def __init__(self, auth_url: str, forum_urls: dict[str, str]):
-        if len(set(forum_urls.values())) != len(forum_urls) or auth_url in forum_urls.values():
-            raise RuntimeError("Mỗi diễn đàn và auth phải dùng database riêng biệt.")
+    def __init__(self, auth_url: str, forum_urls: dict[str, str], office_url: str | None = None):
+        all_urls = [auth_url, *forum_urls.values()] + ([office_url] if office_url else [])
+        if len(set(all_urls)) != len(all_urls):
+            raise RuntimeError("Mỗi diễn đàn, auth và Văn Phòng phải dùng database/role riêng biệt.")
         self.auth = _engine(auth_url)
         auth_md.create_all(self.auth)
         self.forums: dict[str, Engine] = {}
@@ -167,6 +168,11 @@ class Stores:
                 elif stamped != [key]:
                     raise RuntimeError(f"Database của '{key}' đã thuộc về diễn đàn {stamped}.")
             self.forums[key] = eng
+        self.office: Engine | None = None
+        if office_url:
+            from services.forum.office import md as office_md
+            self.office = _engine(office_url)
+            office_md.create_all(self.office)
 
     @classmethod
     def from_env(cls) -> "Stores":
@@ -176,7 +182,7 @@ class Stores:
                    [(f"CFP_FORUM_DB_{_env_key(k)}", v) for k, v in urls.items()] if not v]
         if missing:
             raise RuntimeError("Thiếu biến môi trường: " + ", ".join(missing))
-        return cls(auth, urls)
+        return cls(auth, urls, os.environ.get("CFP_OFFICE_DB") or None)
 
 
 # ---------------------------------------------------------------- auth helpers
@@ -486,6 +492,23 @@ def create_app(stores: Stores | None = None) -> FastAPI:
                                                       author_name=user["name"], body=body)
                             .returning(*comments_t.c)).mappings().one()
         return _comment_out(row)
+
+    # ---- Văn Phòng SI AI (kho dữ liệu riêng, tuỳ chọn)
+    if st.office is not None:
+        from services.forum.office import build_router
+        from services.forum.registry import Registry
+        app.include_router(build_router(st.office, Registry(), current_user))
+
+        @app.get("/_internal/office/office.js")
+        def office_js():
+            return FileResponse(WEB_DIR / "office.js", media_type="text/javascript")
+
+        @app.get("/_internal/office/{cid}/")
+        def office_page(cid: str):
+            if not re.fullmatch(r"[0-9]{1,32}", cid):
+                raise HTTPException(404)
+            return FileResponse(WEB_DIR / "office.html", media_type="text/html",
+                                headers={"X-Robots-Tag": "noindex, nofollow"})
 
     # ---- UI tại đường dẫn kỹ thuật nội bộ (không phải public route)
     @app.get("/styles.css")
