@@ -141,3 +141,26 @@ def test_wip_counter_is_global_under_rls(rls, world):
     with rls.connect() as c:
         c.execute(text("select set_config('cfp.user_id', '', false)"))
         assert c.execute(text("select cfp_office.in_progress_count()")).scalar_one() >= 0
+
+
+def test_closure_enforced_at_db_level(rls, world):
+    """ACCEPTED → CLOSED: database chỉ cho governance/người giao việc (không phải người thực thi)."""
+    ids, t = world["ids"], world["out"]["task"]  # nhiệm vụ mẫu đang ACCEPTED, lead vừa giao vừa thực thi
+
+    def try_close(uid):
+        c = rls.connect()
+        tx = c.begin()
+        try:
+            c.execute(text("select set_config('cfp.user_id', :u, true)"), {"u": str(uid)})
+            return c.execute(text("update tasks set status = 'CLOSED' where id = :t and status = 'ACCEPTED'"),
+                             {"t": t}).rowcount
+        finally:
+            tx.rollback()  # không thay đổi dữ liệu mẫu
+            c.close()
+
+    for who in ("lead", "rev"):
+        with pytest.raises(DBAPIError, match="row-level security"):
+            try_close(ids[who])
+    assert try_close(ids["other"]) == 0  # không thấy hàng
+    assert try_close(ids["gov"]) == 1
+    assert count(rls, ids["gov"], "tasks", "id = :t and status = 'ACCEPTED'", t=t) == 1  # đã rollback

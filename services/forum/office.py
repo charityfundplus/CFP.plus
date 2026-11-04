@@ -270,6 +270,10 @@ class TransitionIn(BaseModel):
     note: str = Field(default="", max_length=2000)
 
 
+class CloseIn(BaseModel):
+    note: str = Field(min_length=3, max_length=2000)
+
+
 class CommentIn(BaseModel):
     body: str = Field(min_length=1, max_length=2000)
 
@@ -505,7 +509,9 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
                       for b in brand],
             "pairs": [_row(x) if insider else {"id": x["id"], "canonical_id": x["canonical_id"], "software": x["software"]}
                       for x in pairs],
-            "tasks": [{**_row(t), "evidence": [_row(x) for x in ev if x["task_id"] == t["id"]],
+            "tasks": [{**_row(t), "can_close": bool(p and t["status"] == "ACCEPTED" and p["id"] != t["assignee_id"]
+                                                    and (is_staff(p) or p["id"] == t["created_by"])),
+                       "evidence": [_row(x) for x in ev if x["task_id"] == t["id"]],
                        "reviews": [_row(x) for x in rv if x["task_id"] == t["id"]],
                        "history": [_row(x) for x in hist if x["task_id"] == t["id"]]} for t in tasks],
             "links": links_of(f"office:{cid}", user), "public_link": f"https://cfp.plus/{cid}/",
@@ -688,8 +694,10 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
             audit(c, user["id"], "task.create", f"task:{tid}", data.model_dump())
         return {"id": tid, "status": "QUEUED"}
 
-    def load_task(c: Connection, tid: int) -> dict:
-        t = c.execute(select(tasks_t).where(tasks_t.c.id == tid).with_for_update()).mappings().first()
+    def load_task(c: Connection, tid: int, lock: bool = True) -> dict:
+        # RLS 003: FOR UPDATE còn đòi policy UPDATE → chỉ khoá khi người gọi được cập nhật (người thực thi/reviewer).
+        q = select(tasks_t).where(tasks_t.c.id == tid)
+        t = c.execute(q.with_for_update() if lock else q).mappings().first()
         if not t:
             raise HTTPException(404, "Không có nhiệm vụ.")
         return dict(t)
@@ -766,6 +774,26 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
             move(c, t, user["id"], "ACCEPTED" if data.decision == "ACCEPT" else "CHANGES_REQUESTED", data.notes)
         return {"id": tid, "status": "ACCEPTED" if data.decision == "ACCEPT" else "CHANGES_REQUESTED"}
 
+    @r.post("/tasks/{tid}/close")
+    def close(tid: int, data: CloseIn, user=Depends(require_user)):
+        """Closure sau Independent Review: governance hoặc người giao việc, không phải người thực thi."""
+        with _begin() as c:
+            t = load_task(c, tid, lock=False)  # move() cập nhật có điều kiện trạng thái
+            p = principal(c, user)
+            if not task_visible(c, p, t):
+                raise HTTPException(404, "Không có nhiệm vụ.")
+            if user["id"] == t["assignee_id"] or not (is_staff(p) or user["id"] == t["created_by"]):
+                raise HTTPException(403, "Closure: Governance hoặc người giao việc (không phải người thực thi).")
+            if t["status"] != "ACCEPTED":
+                conflict(f"Chỉ đóng nhiệm vụ đã ACCEPTED (hiện {t['status']}).")
+            accepted = c.execute(select(func.count()).select_from(reviews_t).where(
+                reviews_t.c.task_id == tid, reviews_t.c.reviewer_id == t["reviewer_id"],
+                reviews_t.c.decision == "ACCEPT")).scalar_one()
+            if not accepted:
+                conflict("Thiếu Review ACCEPT của reviewer được chỉ định.")
+            move(c, t, user["id"], "CLOSED", data.note)
+        return {"id": tid, "status": "CLOSED"}
+
     @r.post("/tasks/{tid}/comments", status_code=201)
     def comment(tid: int, data: CommentIn, user=Depends(require_user)):
         """Trao đổi trong nhiệm vụ: ghi vào task_events (to_status=COMMENT), không đổi trạng thái."""
@@ -773,7 +801,7 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
         if not body:
             raise HTTPException(422, "Nội dung trao đổi trống.")
         with _begin() as c:
-            t = load_task(c, tid)
+            t = load_task(c, tid, lock=False)
             if not task_visible(c, principal(c, user), t):
                 raise HTTPException(404, "Không có nhiệm vụ.")  # không lộ sự tồn tại cho người ngoài
             c.execute(insert(task_events_t).values(task_id=tid, actor_id=user["id"], from_status=t["status"],

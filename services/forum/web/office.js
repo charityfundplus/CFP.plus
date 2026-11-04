@@ -163,6 +163,10 @@
       action('Chấp nhận kết quả', 'review', function () { return { decision: 'ACCEPT', notes: notes.value }; });
       action('Yêu cầu sửa', 'review', function () { return { decision: 'CHANGES_REQUESTED', notes: notes.value }; });
     }
+    if (t.can_close) {  // backend tính quyền Closure; UI chỉ hiển thị
+      var closeNote = el('textarea', { 'aria-label': 'Ghi chú Closure' }); box.append(el('label', {}, ['Ghi chú Closure', closeNote]));
+      action('Đóng nhiệm vụ (Closure)', 'close', function () { return { note: closeNote.value }; });
+    }
     var talk = el('textarea', { 'aria-label': 'Trao đổi nhiệm vụ', maxlength: '2000' });
     box.append(el('label', {}, ['Trao đổi', talk]));
     action('Gửi trao đổi', 'comments', function () { return { body: talk.value }; });

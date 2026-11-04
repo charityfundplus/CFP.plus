@@ -56,6 +56,7 @@ Sinh tự động bởi `python -m services.forum.inventory --write` • CI ki�
 | office | GET | `/api/office/search` | công khai (+phiên nếu có) | tài liệu nội bộ chỉ hiện với người được xem |  | cfp_office |
 | office | POST | `/api/office/tasks` | đăng nhập | maintainer/governance • reviewer độc lập có vai trò | header X-CFP-Forum + Origin | cfp_office |
 | office | POST | `/api/office/tasks/{tid}/ack` | đăng nhập | người thực thi | header X-CFP-Forum + Origin | cfp_office |
+| office | POST | `/api/office/tasks/{tid}/close` | đăng nhập | governance hoặc người giao việc • không phải người thực thi • cần ACCEPTED | header X-CFP-Forum + Origin | cfp_office |
 | office | POST | `/api/office/tasks/{tid}/comments` | đăng nhập | người tham gia / maintainer / governance của đúng nhiệm vụ | header X-CFP-Forum + Origin | cfp_office |
 | office | POST | `/api/office/tasks/{tid}/evidence` | đăng nhập | người thực thi | header X-CFP-Forum + Origin | cfp_office |
 | office | POST | `/api/office/tasks/{tid}/review` | đăng nhập | reviewer được chỉ định | header X-CFP-Forum + Origin | cfp_office |

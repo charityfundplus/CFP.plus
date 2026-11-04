@@ -473,6 +473,7 @@ def test_task_comments_participants_only(world):
     t = world["out"]["task"]
     ok(world["lead"].post(f"/api/office/tasks/{t}/comments", json={"body": "Đã cập nhật Evidence, nhờ xem lại."}, headers=H), 201)
     ok(world["rev"].post(f"/api/office/tasks/{t}/comments", json={"body": "Đã nhận, sẽ phản hồi."}, headers=H), 201)
+    ok(world["gov"].post(f"/api/office/tasks/{t}/comments", json={"body": "Governance đã xem."}, headers=H), 201)
     assert world["other"].post(f"/api/office/tasks/{t}/comments", json={"body": "chen ngang"}, headers=H).status_code in (403, 404)
     assert _anon(world).post(f"/api/office/tasks/{t}/comments", json={"body": "khách"}, headers=H).status_code == 401
     assert world["lead"].post(f"/api/office/tasks/{t}/comments", json={"body": "   "}, headers=H).status_code == 422
@@ -480,8 +481,36 @@ def test_task_comments_participants_only(world):
     before = next(x for x in ok(world["gov"].get(f"/api/office/offices/{CID}"), 200)["tasks"] if x["id"] == t)["status"]
     task = next(x for x in ok(world["gov"].get(f"/api/office/offices/{CID}"), 200)["tasks"] if x["id"] == t)
     notes = [h["note"] for h in task["history"] if h["to_status"] == "COMMENT"]
-    assert notes == ["Đã cập nhật Evidence, nhờ xem lại.", "Đã nhận, sẽ phản hồi."]
+    assert notes == ["Đã cập nhật Evidence, nhờ xem lại.", "Đã nhận, sẽ phản hồi.", "Governance đã xem."]
     assert task["status"] == before == "ACCEPTED"  # trao đổi không đổi trạng thái
     assert "chen ngang" not in str(task["history"])
     audit = ok(world["gov"].get(f"/api/office/audit?ref=task:{t}"), 200)
-    assert sum(1 for a in audit["events"] if a["action"] == "task.comment") == 2
+    assert sum(1 for a in audit["events"] if a["action"] == "task.comment") == 3
+
+
+def test_closure_after_independent_review(world):
+    """Closure: chỉ sau ACCEPTED, chỉ governance/người giao việc, người thực thi không tự đóng."""
+    lead, rev, gov, other, ids, o = world["lead"], world["rev"], world["gov"], world["other"], world["ids"], world["out"]
+    t = ok(lead.post("/api/office/tasks", json={"pair_id": o["pair"], "title": "Closure", "acceptance": "abc",
+                                                "reviewer_id": ids["rev"], "idempotency_key": "closure-1"}, headers=H), 201)["id"]
+    close = lambda c: c.post(f"/api/office/tasks/{t}/close", json={"note": "Đóng sau nghiệm thu"}, headers=H)
+    assert close(gov).status_code == 409  # chưa ACCEPTED
+    ok(lead.post(f"/api/office/tasks/{t}/ack", json={}, headers=H), 200)
+    ok(lead.post(f"/api/office/tasks/{t}/start", json={}, headers=H), 200)
+    ok(lead.post(f"/api/office/tasks/{t}/evidence", json={"kind": "url", "url": "https://example.org/closure",
+                                                         "description": "bằng chứng"}, headers=H), 201)
+    ok(lead.post(f"/api/office/tasks/{t}/submit", json={}, headers=H), 200)
+    ok(rev.post(f"/api/office/tasks/{t}/review", json={"decision": "ACCEPT", "notes": "Đạt"}, headers=H), 201)
+    assert close(lead).status_code == 403  # người thực thi (cũng là người giao) không tự đóng
+    assert close(rev).status_code == 403  # reviewer không phải người đóng
+    assert close(other).status_code in (403, 404)
+    assert close(_anon(world)).status_code == 401
+    view = lambda c: next(x for x in ok(c.get(f"/api/office/offices/{CID}"), 200)["tasks"] if x["id"] == t)
+    assert view(gov)["can_close"] is True and view(lead)["can_close"] is False
+    assert ok(close(gov), 200)["status"] == "CLOSED"
+    assert close(gov).status_code == 409  # không đóng hai lần
+    task = view(lead)
+    assert task["status"] == "CLOSED" and task["can_close"] is False
+    assert [h["to_status"] for h in task["history"]][-2:] == ["ACCEPTED", "CLOSED"]
+    ev = ok(gov.get(f"/api/office/audit?ref=task:{t}"), 200)["events"]
+    assert [e["action"] for e in ev if e["action"] == "task.closed"] == ["task.closed"]

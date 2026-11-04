@@ -143,9 +143,13 @@ create policy rls_insert on cfp_office.tasks for insert to office_app
   with check (created_by = cfp_office.actor()
               and (cfp_office.is_governance()
                    or cfp_office.is_maintainer((select canonical_id from cfp_office.super_pairs where id = pair_id))));
+-- Cập nhật: người thực thi/reviewer theo luồng; Closure (ACCEPTED → CLOSED) chỉ governance hoặc người giao việc.
 create policy rls_update on cfp_office.tasks for update to office_app
-  using (cfp_office.actor() in (assignee_id, reviewer_id))
-  with check (cfp_office.actor() in (assignee_id, reviewer_id));
+  using (cfp_office.actor() in (assignee_id, reviewer_id)
+         or (status = 'ACCEPTED' and (cfp_office.actor() = created_by or cfp_office.is_governance())))
+  with check ((cfp_office.actor() in (assignee_id, reviewer_id) and status <> 'CLOSED')
+              or (status = 'CLOSED' and cfp_office.actor() <> assignee_id
+                  and (cfp_office.actor() = created_by or cfp_office.is_governance())));
 
 create policy rls_select on cfp_office.task_events for select to office_app using (cfp_office.can_see_task(task_id));
 create policy rls_insert on cfp_office.task_events for insert to office_app

@@ -33,6 +33,7 @@ ROLE_RULES = {
     ("POST", "/api/office/tasks/{tid}/start"): "người thực thi • tối đa 5 việc song song",
     ("POST", "/api/office/tasks/{tid}/submit"): "người thực thi • cần ≥1 Evidence",
     ("POST", "/api/office/tasks/{tid}/evidence"): "người thực thi",
+    ("POST", "/api/office/tasks/{tid}/close"): "governance hoặc người giao việc • không phải người thực thi • cần ACCEPTED",
     ("POST", "/api/office/tasks/{tid}/comments"): "người tham gia / maintainer / governance của đúng nhiệm vụ",
     ("POST", "/api/office/tasks/{tid}/review"): "reviewer được chỉ định",
     ("GET", "/api/office/audit"): "governance • hoặc người tham gia/maintainer của đúng nhiệm vụ",

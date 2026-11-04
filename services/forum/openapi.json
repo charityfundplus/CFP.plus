@@ -72,6 +72,21 @@
     "title": "BrandIn",
     "type": "object"
    },
+   "CloseIn": {
+    "properties": {
+     "note": {
+      "maxLength": 2000,
+      "minLength": 3,
+      "title": "Note",
+      "type": "string"
+     }
+    },
+    "required": [
+     "note"
+    ],
+    "title": "CloseIn",
+    "type": "object"
+   },
    "DatasetIn": {
     "properties": {
      "access": {
@@ -1875,6 +1890,57 @@
      }
     },
     "summary": "Ack",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/tasks/{tid}/close": {
+   "post": {
+    "description": "Closure sau Independent Review: governance hoặc người giao việc, không phải người thực thi.",
+    "operationId": "close_api_office_tasks__tid__close_post",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "tid",
+      "required": true,
+      "schema": {
+       "title": "Tid",
+       "type": "integer"
+      }
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/CloseIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Close",
     "tags": [
      "office"
     ]
