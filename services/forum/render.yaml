@@ -13,15 +13,19 @@ services:
     branch: claude/gallant-carson-8uogxj
     autoDeploy: false
     buildCommand: pip install -r services/forum/requirements.txt
-    startCommand: uvicorn services.forum.asgi:app --host 0.0.0.0 --port $PORT --proxy-headers --forwarded-allow-ips='*'
+    startCommand: uvicorn services.forum.asgi:app --host 0.0.0.0 --port $PORT --workers 1  # IP client do app tự xử lý (CFP_FORUM_TRUSTED_PROXY_HOPS)
     healthCheckPath: /api/health
     envVars:
       - key: PYTHON_VERSION
         value: "3.12.7"
       - key: CFP_FORUM_TRUST_PROXY
         value: "1"
+      - key: CFP_FORUM_TRUSTED_PROXY_HOPS
+        value: "1"
       - key: CFP_FORUM_COOKIE_SECURE
         value: "1"
+      - key: CFP_FORUM_ALLOWED_ORIGINS   # URL HTTPS sandbox, ví dụ https://cfp-forum-sandbox.onrender.com
+        sync: false
       - key: CFP_FORUM_AUTH_DB
         sync: false
       - key: CFP_FORUM_DB_SIEU_BO_DOI

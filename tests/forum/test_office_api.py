@@ -77,8 +77,7 @@ def test_registry_chain_and_no_invented_ids():
 def test_full_flow_and_reload_after_restart(world, urls):
     st2 = stores(urls)  # engine mới = khởi động lại
     c = client(st2)
-    email = world["lead"].get("/api/auth/me").json()["user"]["email"]
-    ok(c.post("/api/auth/login", json={"email": email, "password": "matkhau-office-p0"}, headers=H), 200)
+    c.cookies = world["lead"].cookies  # người thực thi (maintainer) xem nhiệm vụ; khách không thấy (SEC-01)
     d = ok(c.get(f"/api/office/offices/{CID}"), 200)
     assert [x["id"] for x in d["registry_chain"]] == ["911", "6911", "69112", CID]
     assert d["taxonomy"]["group"]["code"] == "246" and d["taxonomy"]["chapter"]["id"] == "6"
@@ -211,7 +210,7 @@ def test_members_only_dataset(world):
     d = ok(lead.post("/api/office/datasets", json={**SAMPLE["dataset"], "title": "Giáo trình nội bộ", "access": "members",
                                                   "version": "m1", "topic_id": world["out"]["topic"]}, headers=H), 201)["id"]
     anon = TestClient(create_app(world["st"]))
-    assert anon.get(f"/api/office/datasets/{d}").status_code == 404
+    assert anon.get(f"/api/office/datasets/{d}").status_code == 401
     assert not any(r["ref"] == f"dataset:{d}" for r in anon.get("/api/office/search", params={"q": "giáo trình"}).json()["results"])
     assert lead.get(f"/api/office/datasets/{d}").status_code == 200
 
@@ -312,6 +311,145 @@ def test_groups_follow_directive():
     assert sorted(c for g in GROUPS for c in g["chapters"]) == [str(i) for i in range(10)]
 
 
+# ---------- SecuritySI review PR #195 @ de09d85 • ma trận người dùng A/B
+
+def _anon(world):
+    return TestClient(create_app(world["st"]))
+
+
+def test_sec01_office_view_hides_tasks_from_anonymous_and_unrelated(world):
+    o = world["out"]
+    for who, c in (("anonymous", _anon(world)), ("unrelated", world["other"])):
+        d = ok(c.get(f"/api/office/offices/{CID}"), 200)
+        assert d["tasks"] == [], who
+        assert d["maintainers"] is None and d["can_edit"] is False, who
+        assert all(set(p) == {"id", "canonical_id", "software"} for p in d["pairs"]), who
+        assert "created_by" not in d["office"], who
+        refs = {x["ref"] for x in d["links"]["incoming"] + d["links"]["outgoing"]}
+        assert not any(r.startswith("task:") for r in refs), who
+        ent = ok(c.get(f"/api/office/enterprises/{o['enterprise']}"), 200)
+        assert not any(x["ref"].startswith("task:") for x in ent["links"]["incoming"]), who
+        assert ok(c.get(f"/api/office/links?ref=task:{o['task']}"), 200) == {"outgoing": [], "incoming": []}, who
+
+
+def test_sec01_participants_and_staff_see_tasks(world):
+    o = world["out"]
+    for who in ("lead", "rev", "gov"):
+        tasks = ok(world[who].get(f"/api/office/offices/{CID}"), 200)["tasks"]
+        assert any(t["id"] == o["task"] for t in tasks), who
+        t = next(t for t in tasks if t["id"] == o["task"])
+        assert t["evidence"] and t["reviews"] and t["history"], who
+    assert ok(world["gov"].get(f"/api/office/offices/{CID}"), 200)["maintainers"]
+
+
+def test_sec02_idempotency_checked_after_authorization(world, urls):
+    o, ids = world["out"], world["ids"]
+    key = f"office-flow-base-{ids['lead']}"  # khoá thật của nhiệm vụ đã có
+    body = {"pair_id": o["pair"], "title": "Luồng Link Mẫu SI AI xuyên suốt", "acceptance": "API + migration + test PASS; dữ liệu còn sau restart",
+            "refs": [f"enterprise:{o['enterprise']}", f"topic:{o['topic']}", f"dataset:{o['dataset']}", f"registry:{CID}"],
+            "reviewer_id": ids["rev"], "idempotency_key": key}
+    r = world["other"].post("/api/office/tasks", json=body, headers=H)  # người ngoài đoán đúng khoá
+    assert r.status_code == 403 and "id" not in r.json()
+    # Một maintainer khác của cùng Văn Phòng dùng lại khoá → 409, không lộ id/trạng thái.
+    m2 = client(world["st"])
+    m2_id = register(m2, f"m2{uuid.uuid4().hex[:6]}@example.org", "Maintainer 2")
+    ok(world["gov"].post(f"/api/office/offices/{CID}/maintainers/{m2_id}", headers=H), 201)
+    r = m2.post("/api/office/tasks", json=body, headers=H)
+    assert r.status_code == 409 and "id" not in r.json() and "status" not in r.json()
+    r = world["lead"].post("/api/office/tasks", json=body, headers=H)  # chính chủ gửi lại → nhận lại nhiệm vụ cũ
+    assert r.status_code == 201 and r.json()["id"] == o["task"] and r.json()["duplicate"] is True
+
+
+def test_sec04_members_dataset_object_acl(world):
+    lead = world["lead"]
+    d = ok(lead.post("/api/office/datasets", json={**SAMPLE["dataset"], "title": "Tài liệu nội bộ ACL", "access": "members",
+                                                  "version": f"acl-{uuid.uuid4().hex[:6]}"}, headers=H), 201)["id"]
+    # SEC-06: vai trò reviewer không còn quyền xem tài liệu nội bộ không liên quan.
+    for who in ("other", "rev"):
+        assert world[who].get(f"/api/office/datasets/{d}").status_code == 403, who
+        assert not any(x["ref"] == f"dataset:{d}" for x in
+                       world[who].get("/api/office/search", params={"q": "nội bộ acl"}).json()["results"]), who
+    for who in ("lead", "gov"):
+        assert world[who].get(f"/api/office/datasets/{d}").status_code == 200, who
+    assert world["gov"].get("/api/office/search", params={"q": "nội bộ acl"}).json()["results"]
+
+
+def test_sec04_link_creation_requires_ownership(world):
+    o, other, lead = world["out"], world["other"], world["lead"]
+    body = {"from_ref": f"enterprise:{o['enterprise']}", "to_ref": f"topic:{o['topic']}", "relation": "researched_in"}
+    assert other.post("/api/office/links", json=body, headers=H).status_code == 403
+    assert other.post("/api/office/links", json={**body, "from_ref": "registry:911"}, headers=H).status_code == 403
+    assert lead.post("/api/office/links", json=body, headers=H).status_code == 201  # lead tạo doanh nghiệp này
+    own = ok(other.post("/api/office/topics", json={"title": f"Chủ đề riêng {uuid.uuid4().hex[:6]}", "chapter": "6"},
+                        headers=H), 201)["id"]
+    hidden = ok(lead.post("/api/office/datasets", json={**SAMPLE["dataset"], "title": "Ẩn với người ngoài", "access": "members",
+                                                       "version": f"h-{uuid.uuid4().hex[:6]}"}, headers=H), 201)["id"]
+    r = other.post("/api/office/links", json={"from_ref": f"topic:{own}", "to_ref": f"dataset:{hidden}",
+                                              "relation": "uses"}, headers=H)
+    assert r.status_code == 422  # không liên kết tới mục mình không được xem
+    assert other.post("/api/office/links", json={"from_ref": f"topic:{own}", "to_ref": f"enterprise:{o['enterprise']}",
+                                                 "relation": "about"}, headers=H).status_code == 201
+
+
+def test_sec04_task_links_need_participation(world):
+    o = world["out"]
+    body = {"from_ref": f"task:{o['task']}", "to_ref": f"topic:{o['topic']}", "relation": "about"}
+    assert world["other"].post("/api/office/links", json=body, headers=H).status_code == 422  # task không hiển thị
+    assert world["lead"].post("/api/office/links", json=body, headers=H).status_code == 201
+
+
+# ---------- SecuritySI re-review @ 4ed670a: SEC-06 (quyền tối thiểu) + idempotency đồng thời
+
+def test_sec06_reviewer_role_sees_only_assigned_tasks(world):
+    o, ids = world["out"], world["ids"]
+    # Nhiệm vụ mới giao cho reviewer khác (governance) → người có vai trò reviewer không được thấy.
+    t = ok(world["lead"].post("/api/office/tasks", json={"pair_id": o["pair"], "title": "Không giao cho rev",
+                                                        "acceptance": "abc", "reviewer_id": ids["gov"],
+                                                        "idempotency_key": f"sec06-{uuid.uuid4().hex[:8]}"}, headers=H), 201)["id"]
+    seen = {x["id"] for x in ok(world["rev"].get(f"/api/office/offices/{CID}"), 200)["tasks"]}
+    assert o["task"] in seen and t not in seen
+    assert world["rev"].get(f"/api/office/audit?ref=task:{t}").status_code == 403
+    assert world["rev"].get(f"/api/office/audit?ref=task:{o['task']}").status_code == 200   # được chỉ định
+    assert world["rev"].get(f"/api/office/audit?ref=office:{CID}").status_code == 403       # không phải nhiệm vụ
+    assert world["lead"].get(f"/api/office/audit?ref=task:{t}").status_code == 200          # người thực thi
+    assert world["other"].get(f"/api/office/audit?ref=task:{t}").status_code == 403
+    assert world["gov"].get(f"/api/office/audit?ref=office:{CID}").status_code == 200
+
+
+def test_sec06_unrelated_cannot_see_ids_of_participants(world):
+    for who in ("other",):
+        d = ok(world[who].get(f"/api/office/offices/{CID}"), 200)
+        blob = str(d)
+        assert "assignee_id" not in blob and "reviewer_id" not in blob and "lead_user_id" not in blob
+        assert "created_by" not in blob
+
+
+def test_task_refs_must_be_visible(world):
+    hidden = ok(world["other"].post("/api/office/datasets", json={**SAMPLE["dataset"], "title": "Riêng người ngoài",
+                                                                 "access": "members", "version": f"r-{uuid.uuid4().hex[:6]}"},
+                                    headers=H), 201)["id"]
+    r = world["lead"].post("/api/office/tasks", json={"pair_id": world["out"]["pair"], "title": "Tham chiếu ẩn",
+                                                     "acceptance": "abc", "reviewer_id": world["ids"]["rev"],
+                                                     "idempotency_key": f"hid-{uuid.uuid4().hex[:8]}",
+                                                     "refs": [f"dataset:{hidden}"]}, headers=H)
+    assert r.status_code == 422
+
+
+def test_concurrent_same_idempotency_key_never_500(world):
+    from concurrent.futures import ThreadPoolExecutor
+    body = {"pair_id": world["out"]["pair"], "title": "Gửi đồng thời", "acceptance": "abc",
+            "reviewer_id": world["ids"]["rev"], "idempotency_key": f"race-{uuid.uuid4().hex[:10]}"}
+    clients = []
+    for _ in range(4):
+        c = client(world["st"])
+        c.cookies = world["lead"].cookies
+        clients.append(c)
+    with ThreadPoolExecutor(4) as ex:
+        res = list(ex.map(lambda c: c.post("/api/office/tasks", json=body, headers=H), clients))
+    codes = [r.status_code for r in res]
+    assert all(code == 201 for code in codes), codes
+    assert len({r.json()["id"] for r in res}) == 1  # đúng một nhiệm vụ được tạo
+
 def test_task_idempotency_cannot_bypass_office_authorization(world):
     """Replay keys must never reveal task receipts to an unrelated authenticated user."""
     payload = {"pair_id": world["out"]["pair"], "title": "Replay authorization regression",
@@ -327,39 +465,3 @@ def test_task_idempotency_cannot_bypass_office_authorization(world):
                     {"refs": ["registry:691121"]}):
         response = world["lead"].post('/api/office/tasks', json={**payload, **changed}, headers=H)
         assert response.status_code == 409
-
-
-def test_private_office_read_and_link_boundaries(world):
-    anon = client(world['st'])
-    assert anon.get(f'/api/office/offices/{CID}').status_code == 401
-    assert world['other'].get(f'/api/office/offices/{CID}').status_code == 403
-    ref = f"task:{world['out']['task']}"
-    for c in (anon, world['other']):
-        assert c.get('/api/office/links', params={'ref': ref}).status_code == 404
-        enterprise = c.get(f"/api/office/enterprises/{world['out']['enterprise']}").json()
-        assert ref not in str(enterprise['links'])
-    assert world['rev'].get(f'/api/office/offices/{CID}').status_code == 200
-    assert world['other'].post('/api/office/links', json={
-        'from_ref': ref, 'to_ref': 'registry:691121', 'relation': 'uses'}, headers=H).status_code == 403
-
-
-def test_private_dataset_not_disclosed_to_unrelated_session(world):
-    payload = {**SAMPLE['dataset'], 'url': 'https://example.org/private-regression',
-               'title': 'Private regression unique', 'access': 'members'}
-    did = ok(world['lead'].post('/api/office/datasets', json=payload, headers=H), 201)['id']
-    for c in (client(world['st']), world['other']):
-        assert c.get(f'/api/office/datasets/{did}').status_code == 404
-        assert f'dataset:{did}' not in str(c.get('/api/office/search?q=Private%20regression').json())
-    assert world['lead'].get(f'/api/office/datasets/{did}').status_code == 200
-
-
-def test_reviewer_sees_only_assigned_tasks(world):
-    t = ok(world['lead'].post('/api/office/tasks', headers=H, json={
-        'pair_id': world['out']['pair'], 'title': 'Not assigned to reviewer',
-        'acceptance': 'Only assigned reviewer sees this task', 'reviewer_id': world['ids']['gov'],
-        'idempotency_key': 'other-reviewer-task'}), 201)['id']
-    data = world['rev'].get(f'/api/office/offices/{CID}').json()
-    assert t not in [task['id'] for task in data['tasks']]
-    assert world['rev'].get('/api/office/links', params={'ref': f'task:{t}'}).status_code == 404
-    for bad in ('task:abc', 'pair:999999999999999999999', 'dataset:１'):
-        assert world['other'].get('/api/office/links', params={'ref': bad}).status_code == 404

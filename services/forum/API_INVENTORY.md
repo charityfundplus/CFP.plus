@@ -40,20 +40,20 @@ Sinh tự động bởi `python -m services.forum.inventory --write` • CI ki�
 | health | GET | `/api/health` | công khai |  |  | tất cả (chỉ đọc trạng thái) |
 | hub69 | GET | `/api/hub/69` | công khai |  |  | Registry (tệp, chỉ đọc) + cfp_office (đọc) |
 | hub69 | GET | `/api/modules` | công khai |  |  | Registry (tệp, chỉ đọc) + cfp_office (đọc) |
-| office | GET | `/api/office/audit` | đăng nhập | governance/reviewer |  | cfp_office |
+| office | GET | `/api/office/audit` | đăng nhập | governance • hoặc người tham gia/maintainer của đúng nhiệm vụ |  | cfp_office |
 | office | POST | `/api/office/datasets` | đăng nhập |  | header X-CFP-Forum + Origin | cfp_office |
-| office | GET | `/api/office/datasets/{did}` | công khai (+phiên nếu có) | access=members → người tạo/governance |  | cfp_office |
+| office | GET | `/api/office/datasets/{did}` | công khai (+phiên nếu có) | access=members → người tạo / governance / người xem được nhiệm vụ dùng tài liệu |  | cfp_office |
 | office | POST | `/api/office/enterprises` | đăng nhập |  | header X-CFP-Forum + Origin | cfp_office |
 | office | GET | `/api/office/enterprises/{eid}` | công khai (+phiên nếu có) |  |  | cfp_office |
-| office | GET | `/api/office/links` | công khai (+phiên nếu có) | lọc cả hai đầu theo quyền đọc đối tượng |  | cfp_office |
-| office | POST | `/api/office/links` | đăng nhập | có quyền đọc cả hai đối tượng (chưa phải ACL ghi đầy đủ) | header X-CFP-Forum + Origin | cfp_office |
+| office | GET | `/api/office/links` | công khai (+phiên nếu có) | ẩn liên kết tới nhiệm vụ/tài liệu không được xem |  | cfp_office |
+| office | POST | `/api/office/links` | đăng nhập | chủ sở hữu mục nguồn / maintainer / governance • đích phải được xem | header X-CFP-Forum + Origin | cfp_office |
 | office | POST | `/api/office/offices` | đăng nhập | governance • ID phải có trong Registry (type ai) | header X-CFP-Forum + Origin | cfp_office |
-| office | GET | `/api/office/offices/{cid}` | công khai (+phiên nếu có) | maintainer/governance hoặc nhiệm vụ được chỉ định; reviewer chỉ xem nhiệm vụ của mình |  | cfp_office |
+| office | GET | `/api/office/offices/{cid}` | công khai (+phiên nếu có) | khách: hồ sơ công khai • nhiệm vụ/evidence/review: người tham gia (assignee/reviewer/người tạo), maintainer, governance |  | cfp_office |
 | office | POST | `/api/office/offices/{cid}/brand` | đăng nhập | maintainer/governance • nhãn xác nhận/ủy quyền: chỉ governance | header X-CFP-Forum + Origin | cfp_office |
 | office | POST | `/api/office/offices/{cid}/maintainers/{uid}` | đăng nhập | governance | header X-CFP-Forum + Origin | cfp_office |
 | office | POST | `/api/office/pairs` | đăng nhập | maintainer/governance | header X-CFP-Forum + Origin | cfp_office |
 | office | GET | `/api/office/registry/{eid}` | công khai |  |  | cfp_office |
-| office | GET | `/api/office/search` | công khai (+phiên nếu có) |  |  | cfp_office |
+| office | GET | `/api/office/search` | công khai (+phiên nếu có) | tài liệu nội bộ chỉ hiện với người được xem |  | cfp_office |
 | office | POST | `/api/office/tasks` | đăng nhập | maintainer/governance • reviewer độc lập có vai trò | header X-CFP-Forum + Origin | cfp_office |
 | office | POST | `/api/office/tasks/{tid}/ack` | đăng nhập | người thực thi | header X-CFP-Forum + Origin | cfp_office |
 | office | POST | `/api/office/tasks/{tid}/evidence` | đăng nhập | người thực thi | header X-CFP-Forum + Origin | cfp_office |
@@ -64,4 +64,4 @@ Sinh tự động bởi `python -m services.forum.inventory --write` • CI ki�
 | office | POST | `/api/office/topics` | đăng nhập |  | header X-CFP-Forum + Origin | cfp_office |
 | office | GET | `/api/office/topics/{tid}` | công khai (+phiên nếu có) |  |  | cfp_office |
 
-Ranh giới dữ liệu: mỗi kho là một schema + role riêng (#193 + 002_office.sql); role của kho này không có USAGE trên schema kho khác; `anon`/`authenticated` không có quyền. Role office_app được đọc toàn kho; RLS hiện không cách ly tenant/người dùng. ACL ứng dụng là ranh giới hiện tại, cần PostgreSQL review độc lập (SEC-P0-195-03 còn OPEN).
+Ranh giới dữ liệu: mỗi kho là một schema + role riêng (#193 + 002_office.sql); role của kho này không có USAGE trên schema kho khác; `anon`/`authenticated` không có quyền.

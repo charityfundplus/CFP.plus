@@ -281,3 +281,25 @@ def test_tampered_stamp_blocks_startup(urls):
             conn.execute(text("UPDATE forum_meta SET forum_key = 'sieu-bo-doi'"))
         eng.dispose()
     make_client(urls)
+
+
+# ---------- SEC-P0-195-05: header proxy giả mạo
+
+def test_forged_forwarded_for_does_not_bypass_rate_limit(urls, monkeypatch):
+    monkeypatch.setenv("CFP_FORUM_TRUST_PROXY", "1")
+    monkeypatch.setenv("CFP_FORUM_TRUSTED_PROXY_HOPS", "1")
+    monkeypatch.setenv("CFP_FORUM_RL_AUTH_PER_MIN", "3")
+    c = make_client(urls)
+    codes = []
+    for i in range(5):  # client đổi giá trị bên trái; proxy (giả lập) luôn ghi IP thật ở cuối
+        codes.append(c.post("/api/auth/login", json={"email": "x@example.org", "password": "sai"},
+                            headers={**H, "X-Forwarded-For": f"10.0.0.{i}, 203.0.113.7"}).status_code)
+    assert codes == [401, 401, 401, 429, 429], codes
+
+
+def test_forged_forwarded_host_cannot_whitelist_origin(urls, monkeypatch):
+    monkeypatch.setenv("CFP_FORUM_TRUST_PROXY", "1")
+    c = make_client(urls)
+    r = c.post("/api/auth/login", json={"email": "a@b.cd", "password": "x"},
+               headers={**H, "Origin": "https://evil.example", "X-Forwarded-Host": "evil.example"})
+    assert r.status_code == 403

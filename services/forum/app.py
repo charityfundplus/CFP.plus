@@ -152,7 +152,20 @@ def _engine(url: str) -> Engine:
         kw["pool_size"] = int(os.environ.get("CFP_FORUM_POOL_SIZE", "3"))
         kw["max_overflow"] = int(os.environ.get("CFP_FORUM_POOL_OVERFLOW", "2"))
         kw["pool_recycle"] = 300
-    return create_engine(url, **kw)
+    engine = create_engine(url, **kw)
+    if url.startswith("sqlite"):
+        # pysqlite legacy mode otherwise releases an outermost SAVEPOINT before audit/link writes.
+        # Serialize sandbox SQLite transactions so competing retries observe the complete receipt.
+        from sqlalchemy import event
+
+        @event.listens_for(engine, "connect")
+        def sqlite_connect(dbapi_connection, _):
+            dbapi_connection.isolation_level = None
+
+        @event.listens_for(engine, "begin")
+        def sqlite_begin(conn):
+            conn.exec_driver_sql("BEGIN IMMEDIATE")
+    return engine
 
 
 class Stores:
@@ -253,12 +266,17 @@ def create_app(stores: Stores | None = None) -> FastAPI:
     limiter = RateLimiter()
     limits = _limits()
     trust_proxy = os.environ.get("CFP_FORUM_TRUST_PROXY", "0") == "1"
+    # Số proxy tin cậy đứng trước app (Render: 1). Chỉ lấy IP do proxy cuối cùng ghi vào X-Forwarded-For;
+    # các giá trị bên trái do client tự gửi nên không tin (SEC-P0-195-05).
+    proxy_hops = max(1, int(os.environ.get("CFP_FORUM_TRUSTED_PROXY_HOPS", "1")))
     cookie_secure_mode = os.environ.get("CFP_FORUM_COOKIE_SECURE", "1")  # "1" | "0" | "auto"
     allowed_origins = {o.strip().rstrip("/") for o in os.environ.get("CFP_FORUM_ALLOWED_ORIGINS", "").split(",") if o.strip()}
 
     def client_ip(request: Request) -> str:
         if trust_proxy and request.headers.get("x-forwarded-for"):
-            return request.headers["x-forwarded-for"].split(",")[0].strip()
+            hops = [h.strip() for h in request.headers["x-forwarded-for"].split(",") if h.strip()]
+            if len(hops) >= proxy_hops:
+                return hops[-proxy_hops]
         return request.client.host if request.client else "?"
 
     def is_https(request: Request) -> bool:
@@ -273,9 +291,9 @@ def create_app(stores: Stores | None = None) -> FastAPI:
         origin = origin.rstrip("/")
         if origin in allowed_origins:
             return True
-        host = request.headers.get("x-forwarded-host") if trust_proxy else None
-        host = host or request.headers.get("host", "")
-        return origin in {f"https://{host}", f"http://{host}"}
+        # Không dùng X-Forwarded-Host (client có thể giả mạo); chỉ Host + danh sách CFP_FORUM_ALLOWED_ORIGINS.
+        host = request.headers.get("host", "").strip().lower()
+        return origin.lower() in {f"https://{host}", f"http://{host}"}
 
     def deny(status: int, detail: str, headers: dict | None = None):
         return JSONResponse({"detail": detail}, status_code=status, headers={**SECURITY_HEADERS, **(headers or {})})

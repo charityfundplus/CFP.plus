@@ -50,7 +50,7 @@ def main():
                     time.sleep(.1)
                 else: raise RuntimeError('server not ready')
                 with sync_playwright() as pw:
-                    browser_path = os.environ.get('CFP_BROWSER') or ('/usr/bin/chromium' if Path('/usr/bin/chromium').exists() else pw.chromium.executable_path)
+                    browser_path = os.environ.get('CFP_BROWSER') or (pw.chromium.executable_path if Path(pw.chromium.executable_path).exists() else '/usr/bin/chromium')
                     browser = pw.chromium.launch(executable_path=browser_path, args=['--no-sandbox'])
                     checks = []
                     for width in (320, 390, 768):
