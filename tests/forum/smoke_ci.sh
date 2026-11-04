@@ -9,7 +9,11 @@ H=${PGHOST:-localhost}; PP=${PGPORT:-5432}
 case "$H" in /*) U="postgresql+psycopg://%s@/$DB?host=$H&port=$PP";; *) U="postgresql+psycopg://%s@$H:$PP/$DB";; esac
 export CFP_FORUM_AUTH_DB=$(printf "$U" cfp_forum_auth_rw) CFP_FORUM_DB_SIEU_BO_DOI=$(printf "$U" cfp_forum_sbd_rw) \
   CFP_FORUM_DB_SI_AI_HSTDN=$(printf "$U" cfp_forum_hstdn_rw) CFP_OFFICE_DB=$(printf "$U" office_app) \
-  CFP_OFFICE_ADMIN_DB=$(printf "$U" cfp_migrator) CFP_FORUM_COOKIE_SECURE=auto  # http local; HTTPS vẫn Secure
+  CFP_OFFICE_ADMIN_DB=$(printf "$U" cfp_migrator) CFP_FORUM_COOKIE_SECURE=auto \
+  CFP_WORKER_DB=$(printf "$U" worker_app) CFP_WORKER_ADMIN_DB=$(printf "$U" cfp_migrator) \
+  CFP_WORKER_INPROCESS=1 CFP_WORKER_INTERVAL=5
+# http local → cookie không Secure (HTTPS vẫn Secure). Worker chạy trong tiến trình như Render Free;
+# kill switch HTTP dùng cfp_migrator (được SET ROLE worker_governance, xem setup_pg.sh).
 B=http://127.0.0.1:$PORT
 python -m uvicorn services.forum.asgi:app --host 127.0.0.1 --port "$PORT" --workers 1 > smoke-server.log 2>&1 &
 SRV=$!; trap 'kill $SRV 2>/dev/null || true' EXIT
@@ -23,5 +27,6 @@ for e in "$SMOKE_GOV_EMAIL" "$SMOKE_REVIEWER_EMAIL"; do
 done
 python -m services.forum.admin grant-office-role governance "$SMOKE_GOV_EMAIL"
 python -m services.forum.admin grant-office-role reviewer "$SMOKE_REVIEWER_EMAIL"
+python -m services.forum.admin grant-admin si-ai-hstdn "$SMOKE_GOV_EMAIL"   # duyệt thành viên HSTDN
 sleep 61  # tách khỏi cửa sổ rate limit của bước đăng ký (cùng IP)
 python -m tests.forum.smoke_live --base "$B" --allow-http --out "$OUT"

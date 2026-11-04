@@ -88,6 +88,18 @@ def login(c: httpx.Client, email: str, pw: str) -> dict:
     return expect(c.post("/api/auth/login", json={"email": email, "password": pw}, headers=H), 200)
 
 
+def worker_ok(c: httpx.Client) -> dict:
+    """Worker phải chạy thật: đã cấu hình, có heartbeat còn mới, không bị dừng."""
+    w = expect(c.get("/api/worker/status"), 200)
+    assert w.get("configured"), "worker chưa cấu hình (CFP_WORKER_DB / CFP_SANDBOX_EPHEMERAL)"
+    assert w.get("alive"), f"không có heartbeat mới: {w.get('heartbeats')}"
+    assert not w.get("paused"), "worker đang bị dừng (kill switch)"
+    hb = w["heartbeats"][0]
+    return {"worker_id": hb["worker_id"], "age_seconds": hb["age_seconds"], "ticks": hb["ticks"],
+            "jobs": w.get("jobs"), "alerts_24h": w.get("alerts_24h"),
+            "last_done": (w.get("last_done") or {}).get("summary")}
+
+
 def run(base: str, allow_http: bool, public_only: bool = False) -> dict:
     s = Smoke(base)
     gov_email, rev_email = os.environ.get("SMOKE_GOV_EMAIL"), os.environ.get("SMOKE_REVIEWER_EMAIL")
@@ -104,7 +116,7 @@ def run(base: str, allow_http: bool, public_only: bool = False) -> dict:
         if not base.startswith("https://") and not allow_http:
             raise AssertionError("URL không phải HTTPS")
         return base.split("://")[0]
-    s.check("platform", "HTTPS", https)
+    s.check("platform", "URL dạng https:// (TLS được chứng minh khi /api/health trả lời)", https)
 
     def health():
         h = expect(guest.get("/api/health"), 200)
@@ -156,7 +168,7 @@ def run(base: str, allow_http: bool, public_only: bool = False) -> dict:
     s.check("forum", "hai Diễn Đàn: trang + API riêng, HSTDN chặn khách", forums_isolated)
 
     if public_only:
-        s.check("worker", "trạng thái (thông tin)", lambda: expect(guest.get("/api/worker/status"), 200))
+        s.check("worker", "worker chạy thật (heartbeat mới, không bị dừng)", lambda: worker_ok(guest))
         return finish(s, base, tag)
 
     # ---- 2. Đăng nhập
@@ -230,6 +242,42 @@ def run(base: str, allow_http: bool, public_only: bool = False) -> dict:
             return "người tham gia thấy liên kết bài ↔ nhiệm vụ; khách không thấy"
         s.check("forum", "liên kết hai chiều + ẩn với khách", backlinks)
 
+    # ---- 4b. Diễn Đàn SI AI • HSTDN (chỉ thành viên đã duyệt): xin tham gia → admin duyệt → mở thảo luận
+    #      có trường HSTDN → reviewer phản hồi → khách bị chặn, bài không lọt sang Siêu Bộ Đôi
+    HST = "si-ai-hstdn"
+
+    def hstdn_discussion():
+        assert expect(lead.post(f"/api/forums/{HST}/join", headers=H), 200, 201)["status"] == "pending"
+        expect(lead.post(f"/api/office/tasks/{t}/discussions", headers=H, json={
+            "forum": HST, "title": "chưa duyệt", "body": "x", "hstdn": "Anthropic PBC"}), 403)
+        expect(gov.post(f"/api/forums/{HST}/members/{x['lead']}/approve", headers=H), 200)
+        d = expect(lead.post(f"/api/office/tasks/{t}/discussions", headers=H, json={
+            "forum": HST, "title": f"{prefix}HSTDN nhiệm vụ #{t}", "body": "Dữ liệu doanh nghiệp công khai (smoke).",
+            "hstdn": "Anthropic PBC", "country_id": "911"}), 201)
+        x["post_hstdn"] = d["post_id"]
+        return {"forum": d["forum"], "post_id": d["post_id"], "trước khi duyệt": 403}
+    hst_ok = s.check("forum", "HSTDN: xin tham gia → duyệt → mở thảo luận (trước duyệt 403)", hstdn_discussion)
+
+    def hstdn_reply():
+        j = rev.post(f"/api/forums/{HST}/join", headers=H)
+        if j.status_code in (200, 201) and j.json().get("status") == "pending":
+            expect(gov.post(f"/api/forums/{HST}/members/{x['rev']}/approve", headers=H), 200)
+        expect(rev.post(f"/api/forums/{HST}/posts/{x['post_hstdn']}/comments", headers=H,
+                        json={"body": "Reviewer phản hồi trong SI AI • HSTDN (smoke)."}), 201)
+        posts = expect(rev.get(f"/api/forums/{HST}/posts"), 200)
+        posts = posts.get("posts", posts) if isinstance(posts, dict) else posts
+        p = next(p for p in posts if p["id"] == x["post_hstdn"])
+        assert len(p["comments"]) >= 1 and p.get("hstdn") == "Anthropic PBC", p
+        assert guest.get(f"/api/forums/{HST}/posts").status_code in (401, 403), "khách đọc được HSTDN"
+        sbd = expect(guest.get(f"/api/forums/{FORUM}/posts"), 200)
+        sbd = sbd.get("posts", sbd) if isinstance(sbd, dict) else sbd
+        assert not any(q["title"] == f"{prefix}HSTDN nhiệm vụ #{t}" for q in sbd), "bài HSTDN lọt sang Siêu Bộ Đôi"
+        links = expect(lead.get("/api/office/forum-links", params={"forum": HST}), 200)["links"]
+        assert any(l["post_id"] == x["post_hstdn"] and l["task_id"] == t for l in links), links
+        return "phản hồi OK • khách bị chặn • không lọt sang Siêu Bộ Đôi • liên kết nhiệm vụ OK"
+    if hst_ok:
+        s.check("forum", "HSTDN: phản hồi + cách ly hai Diễn Đàn", hstdn_reply)
+
     s.check("office", "trao đổi nhiệm vụ", lambda: expect(lead.post(
         f"/api/office/tasks/{t}/comments", json={"body": "Đã đọc phản hồi diễn đàn, tiếp tục."}, headers=H), 201) and "201")
 
@@ -255,6 +303,7 @@ def run(base: str, allow_http: bool, public_only: bool = False) -> dict:
         acts = [e["action"] for e in ev]
         need = ["task.create", "task.acked", "task.in_progress", "task.comment", "evidence.create",
                 "task.in_review", "task.accepted", "task.closed"] + (["task.discussion"] if disc_ok else [])
+        assert acts.count("task.discussion") == int(disc_ok) + int(hst_ok), acts  # một thảo luận mỗi Diễn Đàn
         missing = [a for a in need if a not in acts]
         assert not missing, f"thiếu {missing}; có {acts}"
         expect(guest.get("/api/office/audit", params={"ref": f"task:{t}"}), 401)
@@ -262,13 +311,10 @@ def run(base: str, allow_http: bool, public_only: bool = False) -> dict:
     s.check("office", "audit đầy đủ + khách bị chặn", audit)
 
     # ---- 6. Worker (chỉ ghi nhận — không tuyên bố 24/24)
-    def worker():
-        return expect(guest.get("/api/worker/status"), 200)
-    s.check("worker", "trạng thái (thông tin)", worker)
+    worker_up = s.check("worker", "worker chạy thật (heartbeat mới, không bị dừng)", lambda: worker_ok(guest))
 
     def kill_switch():
-        if not worker().get("configured"):
-            return "worker chưa cấu hình — bỏ qua"
+        assert worker_up, "worker không chạy → không kiểm được dừng an toàn"
         expect(lead.post("/api/worker/control", json={"paused": True, "reason": "smoke"}, headers=H), 403)
         assert expect(gov.post("/api/worker/control", json={"paused": True, "reason": f"smoke {tag}: dừng an toàn"},
                                headers=H), 200)["paused"] is True
@@ -281,7 +327,7 @@ def run(base: str, allow_http: bool, public_only: bool = False) -> dict:
 
 
 def finish(s: Smoke, base: str, tag: str) -> dict:
-    gating = [r for r in s.results if r["group"] != "worker"]
+    gating = s.results  # worker + kill switch cũng là điều kiện P0
     return {"base": base, "run": tag, "at": datetime.now(timezone.utc).isoformat(),
             "build": s.ctx.get("build"), "storage": s.ctx.get("storage"), "task_id": s.ctx.get("task"), "post_id": s.ctx.get("post"),
             "passed": sum(r["ok"] for r in gating), "failed": sum(not r["ok"] for r in gating),
