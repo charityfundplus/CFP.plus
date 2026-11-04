@@ -520,16 +520,20 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
     @r.post("/tasks", status_code=201)
     def add_task(data: TaskIn, user=Depends(require_user)):
         with engine.begin() as c:
-            prev = c.execute(select(tasks_t).where(tasks_t.c.idempotency_key == data.idempotency_key)).mappings().first()
-            if prev:  # chống tạo trùng khi gửi lại
-                if prev["pair_id"] != data.pair_id or prev["title"] != _clean(data.title):
-                    conflict("idempotency_key đã dùng cho nhiệm vụ khác.")
-                return {"id": prev["id"], "status": prev["status"], "duplicate": True}
             p = c.execute(select(pairs_t).where(pairs_t.c.id == data.pair_id)).mappings().first()
             if not p:
                 raise HTTPException(404, "Không có Siêu Bộ Đôi.")
             if not is_maintainer(c, p["canonical_id"], user["id"]) and "governance" not in roles(c, user["id"]):
                 raise HTTPException(403, "Chỉ người duy trì Văn Phòng hoặc Governance được giao việc.")
+            prev = c.execute(select(tasks_t).where(tasks_t.c.idempotency_key == data.idempotency_key)).mappings().first()
+            if prev:
+                # Authorization must precede receipt lookup; replay must match the entire original request.
+                original = c.execute(select(audit_t.c.data).where(
+                    audit_t.c.ref == f"task:{prev['id']}", audit_t.c.action == "task.create"
+                ).order_by(audit_t.c.id)).scalar()
+                if prev["created_by"] != user["id"] or not original or json.loads(original) != data.model_dump():
+                    conflict("idempotency_key đã dùng cho nhiệm vụ khác.")
+                return {"id": prev["id"], "status": prev["status"], "duplicate": True}
             if data.reviewer_id == p["lead_user_id"]:
                 raise HTTPException(422, "Reviewer phải độc lập với người thực thi.")
             if not roles(c, data.reviewer_id) & {"reviewer", "governance"}:

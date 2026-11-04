@@ -526,6 +526,15 @@ def create_app(stores: Stores | None = None) -> FastAPI:
         def office_js():
             return FileResponse(WEB_DIR / "office.js", media_type="text/javascript")
 
+        @app.get("/_internal/office/directory.js")
+        def directory_js():
+            return FileResponse(WEB_DIR / "directory.js", media_type="text/javascript")
+
+        @app.get("/_internal/office/")
+        def office_directory():
+            return FileResponse(WEB_DIR / "directory.html", media_type="text/html",
+                                headers={"X-Robots-Tag": "noindex, nofollow"})
+
         @app.get("/_internal/office/{cid}/")
         def office_page(cid: str):
             if not re.fullmatch(r"[0-9]{1,32}", cid):

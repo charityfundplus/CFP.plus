@@ -149,7 +149,8 @@ def test_duplicates_rejected(world):
                              headers=H).status_code == 409
     assert world["gov"].post("/api/office/offices", json=SAMPLE["office"], headers=H).status_code == 409
     again = lead.post("/api/office/tasks", json={"pair_id": o["pair"], "title": "Luồng Link Mẫu SI AI xuyên suốt",
-                                                 "acceptance": "x" * 5, "reviewer_id": world["ids"]["rev"],
+                                                 "acceptance": "API + migration + test PASS; dữ liệu còn sau restart", "reviewer_id": world["ids"]["rev"],
+                                                 "refs": [f"enterprise:{o['enterprise']}", f"topic:{o['topic']}", f"dataset:{o['dataset']}", f"registry:{CID}"],
                                                  "idempotency_key": f"office-flow-base-{world['ids']['lead']}"}, headers=H)
     assert again.status_code == 201 and again.json()["duplicate"] is True and again.json()["id"] == o["task"]
 
@@ -307,3 +308,20 @@ def test_groups_follow_directive():
     from services.forum.registry import GROUPS
     assert [g["code"] for g in GROUPS] == ["DV", "000", "135", "246", "789"]
     assert sorted(c for g in GROUPS for c in g["chapters"]) == [str(i) for i in range(10)]
+
+
+def test_task_idempotency_cannot_bypass_office_authorization(world):
+    """Replay keys must never reveal task receipts to an unrelated authenticated user."""
+    payload = {"pair_id": world["out"]["pair"], "title": "Replay authorization regression",
+               "acceptance": "Evidence required", "reviewer_id": world["ids"]["rev"],
+               "idempotency_key": "replay-auth-regression", "refs": []}
+    first = world["lead"].post('/api/office/tasks', json=payload, headers=H)
+    assert first.status_code == 201
+    other = world["other"].post('/api/office/tasks', json=payload, headers=H)
+    assert other.status_code == 403
+    duplicate = world["lead"].post('/api/office/tasks', json=payload, headers=H)
+    assert duplicate.status_code == 201 and duplicate.json()['id'] == first.json()['id']
+    for changed in ({"acceptance": "Different criteria"}, {"description": "Changed work"},
+                    {"refs": ["registry:691121"]}):
+        response = world["lead"].post('/api/office/tasks', json={**payload, **changed}, headers=H)
+        assert response.status_code == 409
