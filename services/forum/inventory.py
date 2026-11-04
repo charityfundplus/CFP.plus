@@ -108,7 +108,10 @@ def render_markdown(app) -> str:
     for r in inventory_rows(app):
         lines.append(f"| {r['module']} | {r['method']} | `{r['path']}` | {r['auth']} | {r['role']} | {r['csrf']} | {r['store']} |")
     lines += ["", "Ranh giới dữ liệu: mỗi kho là một schema + role riêng (#193 + 002_office.sql); "
-              "role của kho này không có USAGE trên schema kho khác; `anon`/`authenticated` không có quyền.", ""]
+              "role của kho này không có USAGE trên schema kho khác; `anon`/`authenticated` không có quyền.",
+              "", "RLS theo người dùng (003_office_rls.sql, **chưa áp Supabase**): backend đặt `cfp.user_id` mỗi giao dịch; "
+              "Postgres tự tính governance/maintainer/người tham gia và ẩn hoặc chặn ghi dữ liệu của người khác "
+              "(nhiệm vụ, evidence, review, lịch sử, tài liệu nội bộ, liên kết, audit). Thiếu danh tính → fail-closed.", ""]
     return "\n".join(lines)
 
 

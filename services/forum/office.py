@@ -9,16 +9,23 @@ from __future__ import annotations
 import json
 import os
 import re
+from contextlib import contextmanager
+from contextvars import ContextVar
 from typing import Literal
 
 from fastapi import APIRouter, Depends, HTTPException, Request
 from pydantic import BaseModel, Field
+from sqlalchemy import text as sql_text
 from sqlalchemy import (Column, DateTime, ForeignKey, Integer, MetaData, String, Table, Text, UniqueConstraint,
                         and_, func, insert, or_, select, update)
 from sqlalchemy.engine import Connection, Engine
 from sqlalchemy.exc import IntegrityError
 
 from services.forum.registry import CHAPTERS, CONNECTIONS, GROUPS, Registry, group_of
+
+# Danh tính người gọi cho RLS theo người dùng (003_office_rls.sql). Middleware của app đặt giá trị này
+# cho mỗi request; mọi giao dịch Văn Phòng gửi nó vào Postgres bằng set_config('cfp.user_id', …, true).
+ACTOR: ContextVar[int | None] = ContextVar("cfp_office_actor", default=None)
 
 md = MetaData()
 roles_t = Table("office_roles", md,
@@ -119,7 +126,8 @@ task_events_t = Table("task_events", md,
                       Column("from_status", String(24)),
                       Column("to_status", String(24), nullable=False),
                       Column("note", Text, nullable=False, default=""),
-                      Column("at", DateTime(timezone=True), nullable=False, server_default=func.now()))
+                      Column("at", DateTime(timezone=True), nullable=False, server_default=func.now()),
+                implicit_returning=False)  # RLS 003: người ghi không nhất thiết được đọc lại
 evidence_t = Table("evidence", md,
                    Column("id", Integer, primary_key=True),
                    Column("task_id", Integer, ForeignKey("tasks.id"), nullable=False),
@@ -144,14 +152,16 @@ links_t = Table("links", md,
                 Column("relation", String(40), nullable=False),
                 Column("created_by", Integer, nullable=False),
                 Column("at", DateTime(timezone=True), nullable=False, server_default=func.now()),
-                UniqueConstraint("from_ref", "to_ref", "relation"))
+                UniqueConstraint("from_ref", "to_ref", "relation"),
+                implicit_returning=False)  # RLS 003: người ghi không nhất thiết được đọc lại
 audit_t = Table("audit_log", md,
                 Column("id", Integer, primary_key=True),
                 Column("actor_id", Integer),
                 Column("action", String(40), nullable=False),
                 Column("ref", String(64), nullable=False),
                 Column("data", Text, nullable=False),
-                Column("at", DateTime(timezone=True), nullable=False, server_default=func.now()))
+                Column("at", DateTime(timezone=True), nullable=False, server_default=func.now()),
+                implicit_returning=False)  # RLS 003: người ghi không nhất thiết được đọc lại
 
 REF_TABLES = {"office": (offices_t, offices_t.c.canonical_id), "brand": (brand_t, brand_t.c.id),
               "enterprise": (enterprises_t, enterprises_t.c.id), "topic": (topics_t, topics_t.c.id),
@@ -270,6 +280,31 @@ class LinkIn(BaseModel):
 
 def build_router(engine: Engine, registry: Registry, current_user, max_wip: int | None = None) -> APIRouter:
     r = APIRouter(prefix="/api/office", tags=["office"])
+    is_pg = engine.dialect.name == "postgresql"
+
+    def _bind_actor(c: Connection) -> None:
+        if is_pg:
+            uid = ACTOR.get()
+            c.execute(sql_text("select set_config('cfp.user_id', :u, true)"), {"u": "" if uid is None else str(uid)})
+
+    @contextmanager
+    def _begin():
+        with engine.begin() as c:
+            _bind_actor(c)
+            yield c
+
+    @contextmanager
+    def _connect():
+        with engine.connect() as c:
+            _bind_actor(c)
+            yield c
+
+    def rls_enabled() -> bool:
+        if not is_pg:
+            return False
+        with engine.connect() as c:
+            return bool(c.execute(sql_text("select to_regprocedure('cfp_office.in_progress_count()') is not null")).scalar())
+
     wip_limit = max_wip if max_wip is not None else int(os.environ.get("CFP_OFFICE_MAX_WIP", "5"))
 
     def require_user(request: Request) -> dict:
@@ -305,7 +340,11 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
         if c.execute(select(links_t.c.id).where(links_t.c.from_ref == a, links_t.c.to_ref == b,
                                                 links_t.c.relation == rel)).first():
             return
-        c.execute(insert(links_t).values(from_ref=a, to_ref=b, relation=rel, created_by=actor))
+        try:  # dưới RLS, một liên kết trùng có thể bị ẩn với người gọi → bỏ qua thay vì lỗi 500
+            with c.begin_nested():
+                c.execute(insert(links_t).values(from_ref=a, to_ref=b, relation=rel, created_by=actor))
+        except IntegrityError:
+            pass
 
     def is_maintainer(c: Connection, cid: str, uid: int) -> bool:
         return bool(c.execute(select(maintainers_t.c.user_id).where(
@@ -395,7 +434,7 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
         e = registry.get(eid)
         if not e:
             raise HTTPException(404, "ID không có trong Registry. API không cấp ID mới.")
-        with engine.connect() as c:
+        with _connect() as c:
             office = c.execute(select(offices_t.c.canonical_id).where(offices_t.c.canonical_id == eid)).first()
         return {"entity": e.public(), "chain": registry.chain(eid),
                 "children": [registry.get(x).public() for x in e.children], "office": bool(office)}
@@ -408,7 +447,7 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
             raise HTTPException(422, "canonical_id không có trong Registry. Không tự cấp ID.")
         if e.type not in {"ai", "registry_record"}:
             raise HTTPException(422, f"ID {e.id} là '{e.type}', không phải SI AI.")
-        with engine.begin() as c:
+        with _begin() as c:
             if "governance" not in roles(c, user["id"]):
                 raise HTTPException(403, "Chỉ Human Governance được mở Văn Phòng (xác minh định danh trước khi ghi).")
             if c.execute(select(offices_t.c.canonical_id).where(offices_t.c.canonical_id == e.id)).first():
@@ -424,7 +463,7 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
 
     @r.post("/offices/{cid}/maintainers/{uid}", status_code=201)
     def add_maintainer(cid: str, uid: int, user=Depends(require_user)):
-        with engine.begin() as c:
+        with _begin() as c:
             if "governance" not in roles(c, user["id"]):
                 raise HTTPException(403, "Chỉ Human Governance cấp quyền Văn Phòng.")
             if not ref_exists(c, f"office:{cid}"):
@@ -436,7 +475,7 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
 
     @r.get("/offices/{cid}")
     def office_view(cid: str, user=Depends(optional_user)):
-        with engine.connect() as c:
+        with _connect() as c:
             o = c.execute(select(offices_t).where(offices_t.c.canonical_id == cid)).mappings().first()
             if not o:
                 raise HTTPException(404, "Không có Văn Phòng cho ID này.")
@@ -472,7 +511,7 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
     # ---- thương hiệu • sản phẩm • dịch vụ của chính SI AI / nhà phát triển
     @r.post("/offices/{cid}/brand", status_code=201)
     def add_brand(cid: str, data: BrandIn, user=Depends(require_user)):
-        with engine.begin() as c:
+        with _begin() as c:
             if not ref_exists(c, f"office:{cid}"):
                 raise HTTPException(404, "Không có Văn Phòng.")
             rs = roles(c, user["id"])
@@ -502,7 +541,7 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
         country = registry.get(data.country_id)
         if not country or country.type != "country":
             raise HTTPException(422, "country_id phải là Country ID đã có trong Registry.")
-        with engine.begin() as c:
+        with _begin() as c:
             try:
                 with c.begin_nested():
                     eid = c.execute(insert(enterprises_t).values(
@@ -519,7 +558,7 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
     # ---- kho nghiên cứu
     @r.post("/topics", status_code=201)
     def add_topic(data: TopicIn, user=Depends(require_user)):
-        with engine.begin() as c:
+        with _begin() as c:
             try:
                 with c.begin_nested():
                     tid = c.execute(insert(topics_t).values(title=_clean(data.title), title_key=_key(data.title),
@@ -532,7 +571,7 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
 
     @r.post("/datasets", status_code=201)
     def add_dataset(data: DatasetIn, user=Depends(require_user)):
-        with engine.begin() as c:
+        with _begin() as c:
             if data.topic_id is not None and not ref_exists(c, f"topic:{data.topic_id}"):
                 raise HTTPException(422, "topic_id không tồn tại.")
             try:
@@ -548,20 +587,20 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
 
     @r.get("/datasets/{did}")
     def get_dataset(did: int, user=Depends(optional_user)):
-        with engine.connect() as c:
+        with _connect() as c:
             d = c.execute(select(datasets_t).where(datasets_t.c.id == did)).mappings().first()
         if not d:
             raise HTTPException(404, "Không có tài liệu.")
         if d["access"] == "members" and not user:
             raise HTTPException(401, "Tài liệu này chỉ dành cho thành viên đã đăng nhập.")
-        with engine.connect() as c:
+        with _connect() as c:
             if not dataset_visible(c, principal(c, user), d):
                 raise HTTPException(403, "Tài liệu nội bộ: chỉ người tạo, người duy trì Văn Phòng hoặc governance/reviewer.")
         return {**_row(d), "links": links_of(f"dataset:{did}", user)}
 
     @r.get("/enterprises/{eid}")
     def get_enterprise(eid: int, user=Depends(optional_user)):
-        with engine.connect() as c:
+        with _connect() as c:
             d = c.execute(select(enterprises_t).where(enterprises_t.c.id == eid)).mappings().first()
         if not d:
             raise HTTPException(404, "Không có doanh nghiệp.")
@@ -569,7 +608,7 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
 
     @r.get("/topics/{tid}")
     def get_topic(tid: int, user=Depends(optional_user)):
-        with engine.connect() as c:
+        with _connect() as c:
             d = c.execute(select(topics_t).where(topics_t.c.id == tid)).mappings().first()
         if not d:
             raise HTTPException(404, "Không có chủ đề.")
@@ -579,7 +618,7 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
     # ---- Siêu Bộ Đôi + nhiệm vụ
     @r.post("/pairs", status_code=201)
     def add_pair(data: PairIn, user=Depends(require_user)):
-        with engine.begin() as c:
+        with _begin() as c:
             if not ref_exists(c, f"office:{data.canonical_id}"):
                 raise HTTPException(404, "Không có Văn Phòng cho SI AI này.")
             if not is_maintainer(c, data.canonical_id, user["id"]) and "governance" not in roles(c, user["id"]):
@@ -597,7 +636,7 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
 
     @r.post("/tasks", status_code=201)
     def add_task(data: TaskIn, user=Depends(require_user)):
-        with engine.begin() as c:
+        with _begin() as c:
             # Kiểm tra quyền TRƯỚC khi tra idempotency_key (SEC-P0-195-02).
             p = c.execute(select(pairs_t).where(pairs_t.c.id == data.pair_id)).mappings().first()
             if not p:
@@ -666,14 +705,17 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
 
     def transition(tid: int, action: str, data: TransitionIn, user: dict):
         src, dst, who = TRANSITIONS[action]
-        with engine.begin() as c:
+        with _begin() as c:
             t = load_task(c, tid)
             if user["id"] != t["assignee_id"]:
                 raise HTTPException(403, "Chỉ người thực thi của Siêu Bộ Đôi được thao tác bước này.")
             if t["status"] not in src:
                 conflict(f"Không thể '{action}' khi nhiệm vụ đang {t['status']}.")
             if action == "start":
-                running = c.execute(select(func.count()).select_from(tasks_t).where(tasks_t.c.status == "IN_PROGRESS")).scalar_one()
+                if rls_enabled():  # 003: RLS thu hẹp theo người dùng → đếm toàn cục qua hàm SECURITY DEFINER
+                    running = c.execute(sql_text("select cfp_office.in_progress_count()")).scalar_one()
+                else:
+                    running = c.execute(select(func.count()).select_from(tasks_t).where(tasks_t.c.status == "IN_PROGRESS")).scalar_one()
                 if running >= wip_limit:
                     conflict(f"Đã đủ {wip_limit} nhiệm vụ đang thực thi song song (giới hạn P0).")
             if action == "submit":
@@ -685,7 +727,7 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
 
     @r.post("/tasks/{tid}/evidence", status_code=201)
     def add_evidence(tid: int, data: EvidenceIn, user=Depends(require_user)):
-        with engine.begin() as c:
+        with _begin() as c:
             t = load_task(c, tid)
             if user["id"] != t["assignee_id"]:
                 raise HTTPException(403, "Chỉ người thực thi được nộp Evidence.")
@@ -703,7 +745,7 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
 
     @r.post("/tasks/{tid}/review", status_code=201)
     def review(tid: int, data: ReviewIn, user=Depends(require_user)):
-        with engine.begin() as c:
+        with _begin() as c:
             t = load_task(c, tid)
             if user["id"] != t["reviewer_id"]:
                 raise HTTPException(403, "Chỉ reviewer được chỉ định mới nghiệm thu.")
@@ -715,7 +757,7 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
 
     # ---- liên kết hai chiều + tìm kiếm + lịch sử
     def links_of(ref: str, user: dict | None) -> dict:
-        with engine.connect() as c:
+        with _connect() as c:
             p = principal(c, user)
             if not ref_visible(c, p, ref):
                 return {"outgoing": [], "incoming": []}
@@ -728,7 +770,7 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
     def add_link(data: LinkIn, user=Depends(require_user)):
         if data.from_ref == data.to_ref:
             raise HTTPException(422, "Không liên kết một mục với chính nó.")
-        with engine.begin() as c:
+        with _begin() as c:
             pr = principal(c, user)
             for ref in (data.from_ref, data.to_ref):
                 if not ref_exists(c, ref) or not ref_visible(c, pr, ref):
@@ -752,7 +794,7 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
             raise HTTPException(422, "Chương phải từ 0 đến 9.")
         like = f"%{q.casefold()}%"
         res = []
-        with engine.connect() as c:
+        with _connect() as c:
             for row in c.execute(select(offices_t.c.canonical_id, offices_t.c.display_name)
                                  .where(func.lower(offices_t.c.display_name).like(like))):
                 if chapter in (None, "6"):
@@ -782,7 +824,7 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
 
     @r.get("/audit")
     def audit_log(ref: str, user=Depends(require_user)):
-        with engine.connect() as c:
+        with _connect() as c:
             pr = principal(c, user)
             kind, _, val = ref.partition(":")
             allowed = is_staff(pr) or (kind == "task" and val.isdigit() and ref_visible(c, pr, ref))

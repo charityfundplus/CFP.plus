@@ -7,7 +7,12 @@ do $$ declare r text; begin
     if exists (select 1 from pg_roles where rolname = r) then
       -- office_app/office_governance không sở hữu object nào (bảng thuộc người chạy migration);
       -- DROP SCHEMA ... CASCADE đã xoá mọi quyền gắn với schema → DROP ROLE trực tiếp.
-      execute format('drop role %I', r);
+      begin
+        execute format('drop role %I', r);
+      exception when dependent_objects_still_exist then
+        -- Role dùng chung toàn cluster: còn quyền ở database khác → giữ role, chỉ gỡ schema ở đây.
+        raise notice 'giữ role % (còn được dùng ở database khác)', r;
+      end;
     end if;
   end loop;
 end $$;

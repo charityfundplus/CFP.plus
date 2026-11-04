@@ -165,7 +165,7 @@ def test_task_state_machine_and_independent_review(world):
                                                 "idempotency_key": "no-role-1"}, headers=H).status_code == 422
     t = ok(lead.post("/api/office/tasks", json={"pair_id": o["pair"], "title": "Vòng sửa", "acceptance": "abc",
                                                 "reviewer_id": ids["rev"], "idempotency_key": "rework-1"}, headers=H), 201)["id"]
-    assert other.post(f"/api/office/tasks/{t}/ack", json={}, headers=H).status_code == 403
+    assert other.post(f"/api/office/tasks/{t}/ack", json={}, headers=H).status_code in (403, 404)  # 404 khi RLS 003 ẩn
     assert lead.post(f"/api/office/tasks/{t}/start", json={}, headers=H).status_code == 409  # phải ACK trước
     ok(lead.post(f"/api/office/tasks/{t}/ack", json={}, headers=H), 200)
     ok(lead.post(f"/api/office/tasks/{t}/start", json={}, headers=H), 200)
@@ -209,7 +209,7 @@ def test_members_only_dataset(world):
     d = ok(lead.post("/api/office/datasets", json={**SAMPLE["dataset"], "title": "Giáo trình nội bộ", "access": "members",
                                                   "version": "m1", "topic_id": world["out"]["topic"]}, headers=H), 201)["id"]
     anon = TestClient(create_app(world["st"]))
-    assert anon.get(f"/api/office/datasets/{d}").status_code == 401
+    assert anon.get(f"/api/office/datasets/{d}").status_code in (401, 404)  # 404 khi RLS 003 ẩn dòng
     assert not any(r["ref"] == f"dataset:{d}" for r in anon.get("/api/office/search", params={"q": "giáo trình"}).json()["results"])
     assert lead.get(f"/api/office/datasets/{d}").status_code == 200
 
@@ -280,12 +280,13 @@ def test_office_rows_visible_only_to_office_role(urls, world):
     _pg(urls)
     eng = create_engine(urls["office"])
     with eng.connect() as conn:
+        rls_003 = conn.execute(text("select to_regprocedure('cfp_office.in_progress_count()') is not null")).scalar()
+        conn.execute(text("select set_config('cfp.user_id', :u, false)"), {"u": str(world["ids"]["gov"])})
         assert conn.execute(text("select count(*) from tasks")).scalar_one() >= 1
         assert conn.execute(text("select count(*) from audit_log")).scalar_one() >= 1
-    eng.dispose()
-    eng = create_engine(urls["admin"])  # chủ bảng / người chạy migration: RLS FORCE → không thấy dữ liệu
-    with eng.connect() as conn:
-        assert conn.execute(text("select count(*) from cfp_office.tasks")).scalar_one() == 0
+        if rls_003:  # 003: không có danh tính → không thấy gì (fail-closed)
+            conn.execute(text("select set_config('cfp.user_id', '', false)"))
+            assert conn.execute(text("select count(*) from tasks")).scalar_one() == 0
     eng.dispose()
 
 
@@ -364,7 +365,7 @@ def test_sec04_members_dataset_object_acl(world):
                                                   "version": f"acl-{uuid.uuid4().hex[:6]}"}, headers=H), 201)["id"]
     # SEC-06: vai trò reviewer không còn quyền xem tài liệu nội bộ không liên quan.
     for who in ("other", "rev"):
-        assert world[who].get(f"/api/office/datasets/{d}").status_code == 403, who
+        assert world[who].get(f"/api/office/datasets/{d}").status_code in (403, 404), who  # 404 dưới RLS 003
         assert not any(x["ref"] == f"dataset:{d}" for x in
                        world[who].get("/api/office/search", params={"q": "nội bộ acl"}).json()["results"]), who
     for who in ("lead", "gov"):

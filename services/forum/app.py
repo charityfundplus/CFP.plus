@@ -288,6 +288,12 @@ def create_app(stores: Stores | None = None) -> FastAPI:
     @app.middleware("http")
     async def guard(request: Request, call_next):
         path = request.url.path
+        if path.startswith("/api/office") and st.office is not None:
+            # Danh tính cho RLS theo người dùng ở Postgres (003). Không có phiên → None (fail-closed).
+            from starlette.concurrency import run_in_threadpool
+            from services.forum.office import ACTOR
+            u = await run_in_threadpool(current_user, request)
+            ACTOR.set(u["id"] if u else None)
         if request.method in {"POST", "PUT", "PATCH", "DELETE"} and path.startswith("/api/"):
             # CSRF: header tuỳ chỉnh (form chéo site không gửi được) + Origin phải khớp.
             if request.headers.get(CSRF_HEADER) != "1":
