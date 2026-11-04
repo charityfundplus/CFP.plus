@@ -282,6 +282,8 @@ def status(eng: Engine, now: datetime | None = None, stale_after: int = 180) -> 
                            .where(logs_t.c.level == "alert", logs_t.c.at >= since)).scalar_one()
         recent = c.execute(select(logs_t.c.at, logs_t.c.level, logs_t.c.event, logs_t.c.job_id)
                            .order_by(logs_t.c.id.desc()).limit(20)).mappings().all()
+        last_by_kind = dict(c.execute(select(jobs_t.c.kind, func.max(jobs_t.c.finished_at))
+                                      .where(jobs_t.c.status == "done").group_by(jobs_t.c.kind)).all())
         last_done = c.execute(select(jobs_t.c.id, jobs_t.c.kind, jobs_t.c.finished_at, jobs_t.c.result)
                               .where(jobs_t.c.status == "done").order_by(jobs_t.c.id.desc()).limit(1)).mappings().first()
     beats = []
@@ -291,7 +293,16 @@ def status(eng: Engine, now: datetime | None = None, stale_after: int = 180) -> 
                       "last_seen": _aware(h["last_seen"]).isoformat(), "age_seconds": round(age), "stale": age > stale_after})
     alive = any(not b["stale"] for b in beats)
     res = json.loads(last_done["result"]) if last_done and last_done["result"] else None
+    schedule = []
+    for kind, every in sorted(SCHEDULE.items()):
+        last = _aware(last_by_kind[kind]) if last_by_kind.get(kind) else None
+        due = (last + timedelta(seconds=every)) if last else None
+        # overdue: đã quá 2 chu kỳ mà chưa có lần chạy xong mới (hoặc chưa từng chạy) — cần kiểm tra worker
+        schedule.append({"kind": kind, "every_seconds": every, "last_done_at": last.isoformat() if last else None,
+                         "next_due_at": due.isoformat() if due else None,
+                         "overdue": last is None or (now - last).total_seconds() > 2 * every})
     return {"mode": "SANDBOX", "alive": alive, "paused": paused, "heartbeats": beats, "jobs": counts,
+            "schedule": schedule,
             "alerts_24h": alerts,
             "last_done": {"id": last_done["id"], "kind": last_done["kind"],
                           "finished_at": _aware(last_done["finished_at"]).isoformat(),

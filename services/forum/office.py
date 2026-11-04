@@ -176,6 +176,9 @@ TRANSITIONS = {
     "start": ({"ACKED", "CHANGES_REQUESTED"}, "IN_PROGRESS", "assignee"),
     "submit": ({"IN_PROGRESS"}, "IN_REVIEW", "assignee"),
 }
+BOARD_BUCKETS = ("QUEUED", "RUNNING", "IN_REVIEW", "BLOCKED", "REVIEWED")
+BOARD_OF_STATUS = {"QUEUED": "QUEUED", "ACKED": "RUNNING", "IN_PROGRESS": "RUNNING", "IN_REVIEW": "IN_REVIEW",
+                   "CHANGES_REQUESTED": "BLOCKED", "ACCEPTED": "REVIEWED", "CLOSED": "REVIEWED"}
 HTTPS = r"^https://[^\s]{3,990}$"
 CH = r"^[0-9]$"
 
@@ -940,6 +943,45 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
             if q.casefold() in e.name.casefold() and chapter in (None, "6", "9"):
                 res.append({"ref": f"registry:{e.id}", "title": e.name, "chapter": "9" if e.type == "country" else "6"})
         return {"results": res[:100]}
+
+    @r.get("/board")
+    def board(user=Depends(optional_user)):
+        """Bảng điều phối theo quyền người xem: RUNNING / IN_REVIEW / BLOCKED / REVIEWED.
+
+        REVIEWED chỉ được tính khi có execution evidence (≥1 Evidence) VÀ Review ACCEPT của đúng
+        reviewer độc lập (≠ người thực thi); thiếu một trong hai → BLOCKED kèm lý do. Khách: rỗng.
+        """
+        with _connect() as c:
+            p = principal(c, user)
+            if not p:
+                return {"viewer": "guest", "counts": {b: 0 for b in BOARD_BUCKETS}, "tasks": []}
+            rows = c.execute(select(tasks_t, pairs_t.c.canonical_id).join(pairs_t, pairs_t.c.id == tasks_t.c.pair_id)
+                             .order_by(tasks_t.c.id)).mappings().all()
+            rows = [t for t in rows if task_visible(c, p, t, t["canonical_id"])]
+            tids = [t["id"] for t in rows]
+            ev = dict(c.execute(select(evidence_t.c.task_id, func.count()).where(evidence_t.c.task_id.in_(tids))
+                                .group_by(evidence_t.c.task_id)).all()) if tids else {}
+            rv = c.execute(select(reviews_t).where(reviews_t.c.task_id.in_(tids))
+                           .order_by(reviews_t.c.id)).mappings().all() if tids else []
+        last_review = {x["task_id"]: x for x in rv}
+        out = []
+        for t in rows:
+            n_ev, lr = ev.get(t["id"], 0), last_review.get(t["id"])
+            bucket, reason = BOARD_OF_STATUS[t["status"]], None
+            if t["status"] == "CHANGES_REQUESTED":
+                reason = "Reviewer yêu cầu chỉnh sửa"
+            if bucket == "REVIEWED":
+                independent = bool(lr and lr["decision"] == "ACCEPT" and lr["reviewer_id"] == t["reviewer_id"]
+                                   and lr["reviewer_id"] != t["assignee_id"])
+                if not n_ev or not independent:
+                    bucket, reason = "BLOCKED", ("Thiếu execution evidence" if not n_ev else "Thiếu Review độc lập hợp lệ")
+            out.append({"id": t["id"], "title": t["title"], "office_id": t["canonical_id"], "status": t["status"],
+                        "bucket": bucket, "reason": reason, "evidence": n_ev,
+                        "review": {"decision": lr["decision"], "at": (lr["at"].isoformat() if hasattr(lr["at"], "isoformat") else lr["at"])} if lr else None,
+                        "updated_at": _row({"u": t["updated_at"]})["u"],
+                        "url": f"/_internal/office/{t['canonical_id']}/#task:{t['id']}"})
+        counts = {b: sum(1 for x in out if x["bucket"] == b) for b in BOARD_BUCKETS}
+        return {"viewer": "governance" if is_staff(p) else "participant", "counts": counts, "tasks": out}
 
     @r.get("/audit")
     def audit_log(ref: str, user=Depends(require_user)):

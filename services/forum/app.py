@@ -603,6 +603,15 @@ def create_app(stores: Stores | None = None) -> FastAPI:
             return FileResponse(WEB_DIR / "office.html", media_type="text/html",
                                 headers={"X-Robots-Tag": "noindex, nofollow"})
 
+        @app.get("/_internal/ops/ops.js")
+        def ops_js():
+            return FileResponse(WEB_DIR / "ops.js", media_type="text/javascript")
+
+        @app.get("/_internal/ops/")
+        def ops_page():  # bảng điều phối chỉ đọc; dữ liệu nhiệm vụ lọc theo quyền ở /api/office/board
+            return FileResponse(WEB_DIR / "ops.html", media_type="text/html",
+                                headers={"X-Robots-Tag": "noindex, nofollow"})
+
     # ---- UI tại đường dẫn kỹ thuật nội bộ (không phải public route)
     @app.get("/styles.css")
     def site_css():  # stylesheet chung của site, chỉ để chạy độc lập trong sandbox

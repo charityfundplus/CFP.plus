@@ -42,6 +42,7 @@ Sinh tự động bởi `python -m services.forum.inventory --write` • CI ki�
 | hub69 | GET | `/api/hub/69` | công khai |  |  | Registry (tệp, chỉ đọc) + cfp_office (đọc) |
 | hub69 | GET | `/api/modules` | công khai |  |  | Registry (tệp, chỉ đọc) + cfp_office (đọc) |
 | office | GET | `/api/office/audit` | đăng nhập | governance • hoặc người tham gia/maintainer của đúng nhiệm vụ |  | cfp_office |
+| office | GET | `/api/office/board` | công khai (+phiên nếu có) | theo quyền người xem (khách: rỗng) • REVIEWED cần Evidence + Review độc lập |  | cfp_office |
 | office | POST | `/api/office/datasets` | đăng nhập |  | header X-CFP-Forum + Origin | cfp_office |
 | office | GET | `/api/office/datasets/{did}` | công khai (+phiên nếu có) | access=members → người tạo / governance / người xem được nhiệm vụ dùng tài liệu |  | cfp_office |
 | office | POST | `/api/office/enterprises` | đăng nhập |  | header X-CFP-Forum + Origin | cfp_office |

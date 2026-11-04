@@ -1312,6 +1312,26 @@
     ]
    }
   },
+  "/api/office/board": {
+   "get": {
+    "description": "Bảng điều phối theo quyền người xem: RUNNING / IN_REVIEW / BLOCKED / REVIEWED.\n\nREVIEWED chỉ được tính khi có execution evidence (≥1 Evidence) VÀ Review ACCEPT của đúng\nreviewer độc lập (≠ người thực thi); thiếu một trong hai → BLOCKED kèm lý do. Khách: rỗng.",
+    "operationId": "board_api_office_board_get",
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     }
+    },
+    "summary": "Board",
+    "tags": [
+     "office"
+    ]
+   }
+  },
   "/api/office/datasets": {
    "post": {
     "operationId": "add_dataset_api_office_datasets_post",

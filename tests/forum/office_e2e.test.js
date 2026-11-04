@@ -174,6 +174,20 @@ const assert = (c, m) => { if (!c) throw new Error(m || 'assertion failed'); };
       else assert([401, 403].includes(r.status()), 'HSTDN phải từ chối người không phải thành viên: ' + r.status());
     }
   });
+  await check('Bảng điều phối: ONLINE thật + nhiệm vụ REVIEWED theo quyền; khách không thấy nhiệm vụ', async () => {
+    const op = await ctx.newPage(); op.on('pageerror', (e) => jsErrors.push('ops: ' + e.message));
+    await op.goto(base + '/_internal/ops/');
+    await op.getByTestId('ops-online').getByText('ONLINE').first().waitFor();
+    const reviewed = op.getByTestId('ops-reviewed').getByTestId('ops-task');
+    await reviewed.first().waitFor();
+    assert((await reviewed.count()) >= 1, 'thiếu nhiệm vụ REVIEWED');
+    assert(await op.getByTestId('ops-scheduled').getByTestId('worker-state').count() === 1, 'thiếu trạng thái worker');
+    await op.close();
+    const anon = await browser.newContext({ ...devices['iPhone 13'] }); const ap = await anon.newPage();
+    await ap.goto(base + '/_internal/ops/'); await ap.getByTestId('ops-reviewed').waitFor();
+    assert(await ap.getByTestId('ops-task').count() === 0, 'khách thấy nhiệm vụ');
+    await anon.close();
+  });
   await check('Không có lỗi JavaScript', async () => { assert(jsErrors.length === 0, jsErrors.join('; ')); });
   await page.screenshot({ path: process.env.CFP_E2E_SCREENSHOT || path.join(require('os').tmpdir(), 'cfp-office-iphone.png') });
   await browser.close(); await stop(server);

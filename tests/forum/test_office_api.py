@@ -565,3 +565,56 @@ def test_task_discussion_in_correct_forum_with_backlinks(world):
                                                 "relation": "discussion"}, headers=H).status_code == 422
     ev = ok(gov.get(f"/api/office/audit?ref=task:{t}"), 200)["events"]
     assert sum(1 for e in ev if e["action"] == "task.discussion") == 2
+
+
+def test_board_buckets_follow_real_state_and_permissions(world, urls):
+    """Bảng điều phối: RUNNING/IN_REVIEW/BLOCKED/REVIEWED theo trạng thái thật, lọc theo quyền người xem."""
+    lead, rev, gov, other, ids, o = world["lead"], world["rev"], world["gov"], world["other"], world["ids"], world["out"]
+    t = ok(lead.post("/api/office/tasks", json={"pair_id": o["pair"], "title": "Board", "acceptance": "abc",
+                                                "reviewer_id": ids["rev"], "idempotency_key": "board-flow-1"}, headers=H), 201)["id"]
+    item = lambda c: next((x for x in ok(c.get("/api/office/board"), 200)["tasks"] if x["id"] == t), None)
+    assert item(lead)["bucket"] == "QUEUED"
+    ok(lead.post(f"/api/office/tasks/{t}/ack", json={}, headers=H), 200)
+    assert item(lead)["bucket"] == "RUNNING"
+    ok(lead.post(f"/api/office/tasks/{t}/start", json={}, headers=H), 200)
+    ok(lead.post(f"/api/office/tasks/{t}/evidence", json={"kind": "url", "url": "https://example.org/board",
+                                                         "description": "bằng chứng"}, headers=H), 201)
+    ok(lead.post(f"/api/office/tasks/{t}/submit", json={}, headers=H), 200)
+    assert item(rev)["bucket"] == "IN_REVIEW"
+    ok(rev.post(f"/api/office/tasks/{t}/review", json={"decision": "CHANGES_REQUESTED", "notes": "Sửa"}, headers=H), 201)
+    b = item(lead)
+    assert b["bucket"] == "BLOCKED" and b["reason"] == "Reviewer yêu cầu chỉnh sửa"
+    ok(lead.post(f"/api/office/tasks/{t}/start", json={}, headers=H), 200)
+    ok(lead.post(f"/api/office/tasks/{t}/submit", json={}, headers=H), 200)
+    ok(rev.post(f"/api/office/tasks/{t}/review", json={"decision": "ACCEPT", "notes": "Đạt"}, headers=H), 201)
+    b = item(gov)
+    assert b["bucket"] == "REVIEWED" and b["evidence"] == 1 and b["review"]["decision"] == "ACCEPT"
+    assert b["url"] == f"/_internal/office/{CID}/#task:{t}"
+    # Quyền: khách rỗng; người ngoài không thấy; reviewer chỉ thấy việc được chỉ định
+    guest = ok(_anon(world).get("/api/office/board"), 200)
+    assert guest["viewer"] == "guest" and guest["tasks"] == [] and set(guest["counts"]) == {
+        "QUEUED", "RUNNING", "IN_REVIEW", "BLOCKED", "REVIEWED"}
+    assert item(other) is None
+    assert ok(gov.get("/api/office/board"), 200)["viewer"] == "governance"
+    board = ok(gov.get("/api/office/board"), 200)
+    assert sum(board["counts"].values()) == len(board["tasks"])
+
+
+def test_board_never_marks_reviewed_without_evidence(world, urls):
+    """ACCEPTED/CLOSED nhưng thiếu Evidence hoặc Review độc lập → BLOCKED, không tính REVIEWED."""
+    if urls["office"].startswith("postgresql"):
+        pytest.skip("Ghi trực tiếp bỏ qua API chỉ làm trên SQLite (Postgres: RLS + quyền chặn ghi thẳng)")
+    from services.forum.office import tasks_t
+    lead, gov, ids, o = world["lead"], world["gov"], world["ids"], world["out"]
+    t = ok(lead.post("/api/office/tasks", json={"pair_id": o["pair"], "title": "Board giả", "acceptance": "abc",
+                                                "reviewer_id": ids["rev"], "idempotency_key": "board-forged"}, headers=H), 201)["id"]
+    with world["st"].office.begin() as c:  # mô phỏng dữ liệu bị đổi trạng thái ngoài luồng
+        c.execute(tasks_t.update().where(tasks_t.c.id == t).values(status="ACCEPTED"))
+    b = next(x for x in ok(gov.get("/api/office/board"), 200)["tasks"] if x["id"] == t)
+    assert b["bucket"] == "BLOCKED" and b["reason"] == "Thiếu execution evidence"
+
+
+def test_ops_page_served_noindex(world):
+    r = world["gov"].get("/_internal/ops/")
+    assert r.status_code == 200 and "noindex" in r.headers.get("x-robots-tag", "")
+    assert world["gov"].get("/_internal/ops/ops.js").status_code == 200

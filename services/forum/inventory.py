@@ -36,6 +36,7 @@ ROLE_RULES = {
     ("POST", "/api/office/tasks/{tid}/close"): "governance hoặc người giao việc • không phải người thực thi • cần ACCEPTED",
     ("POST", "/api/office/tasks/{tid}/discussions"): "người xem được nhiệm vụ • thành viên active của ĐÚNG diễn đàn (diễn đàn tự kiểm)",
     ("GET", "/api/office/forum-links"): "chỉ nhiệm vụ người xem được phép thấy • diễn đàn người xem đọc được",
+    ("GET", "/api/office/board"): "theo quyền người xem (khách: rỗng) • REVIEWED cần Evidence + Review độc lập",
     ("POST", "/api/office/tasks/{tid}/comments"): "người tham gia / maintainer / governance của đúng nhiệm vụ",
     ("POST", "/api/office/tasks/{tid}/review"): "reviewer được chỉ định",
     ("GET", "/api/worker/status"): "công khai, chỉ số tổng hợp (không có nội dung lỗi/kết quả chi tiết)",
