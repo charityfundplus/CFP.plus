@@ -1,6 +1,6 @@
 """Văn Phòng SI AI • unit + integration trên database thật.
 
-Chế độ Postgres (giống Supabase, 001_isolation.sql + 002_office.sql):
+Chế độ Postgres (giống Supabase: schemas_up.sql của #193 + 002_office.sql):
   CFP_FORUM_TEST_AUTH_DB, CFP_FORUM_TEST_DB_SIEU_BO_DOI, CFP_FORUM_TEST_DB_SI_AI_HSTDN,
   CFP_OFFICE_TEST_DB, CFP_FORUM_TEST_ADMIN_DB
 Không có → SQLite tạm (bỏ qua các test quyền DB).
@@ -15,6 +15,7 @@ from sqlalchemy import create_engine, insert, text
 from services.forum.app import Stores, create_app
 from services.forum.office import roles_t
 from services.forum.registry import Registry
+from tests.forum.pgschema import schema_of, truncate_all
 from tests.forum.office_flow import CID, H, SAMPLE, ok, register, run_flow
 
 
@@ -25,13 +26,7 @@ def urls(tmp_path_factory):
            "si-ai-hstdn": os.environ.get("CFP_FORUM_TEST_DB_SI_AI_HSTDN"), "office": os.environ.get("CFP_OFFICE_TEST_DB")}
     admin = os.environ.get("CFP_FORUM_TEST_ADMIN_DB")
     if all(env.values()) and admin:
-        eng = create_engine(admin)
-        with eng.begin() as c:
-            tables = [r[0] for r in c.execute(text("select tablename from pg_tables where schemaname='cfp_office'"))]
-            c.execute(text("TRUNCATE " + ", ".join(f"cfp_office.{t}" for t in tables) + ", forum_auth.sessions, "
-                           "forum_auth.users, forum_sbd.comments, forum_sbd.posts, forum_sbd.members, "
-                           "forum_hstdn.comments, forum_hstdn.posts, forum_hstdn.members RESTART IDENTITY CASCADE"))
-        eng.dispose()
+        truncate_all(admin, list(env.values()))
         env["admin"] = admin
         return env
     d = tmp_path_factory.mktemp("office")
@@ -243,11 +238,12 @@ def _pg(urls):
         pytest.skip("chỉ áp dụng chế độ schema/role")
 
 
-@pytest.mark.parametrize("role_key,table", [("sieu-bo-doi", "cfp_office.tasks"), ("si-ai-hstdn", "cfp_office.audit_log"),
-                                            ("auth", "cfp_office.offices"), ("office", "forum_sbd.posts"),
-                                            ("office", "forum_hstdn.posts"), ("office", "forum_auth.users")])
-def test_office_and_forums_cannot_cross(urls, world, role_key, table):
+@pytest.mark.parametrize("role_key,target", [("sieu-bo-doi", ("office", "tasks")), ("si-ai-hstdn", ("office", "audit_log")),
+                                             ("auth", ("office", "offices")), ("office", ("sieu-bo-doi", "posts")),
+                                             ("office", ("si-ai-hstdn", "posts")), ("office", ("auth", "users"))])
+def test_office_and_forums_cannot_cross(urls, world, role_key, target):
     _pg(urls)
+    table = f"{schema_of(urls[target[0]])}.{target[1]}"
     eng = create_engine(urls[role_key])
     with eng.connect() as conn, pytest.raises(Exception) as ei:
         conn.execute(text(f"SELECT count(*) FROM {table}"))

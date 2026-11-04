@@ -8,8 +8,8 @@ H=${PGHOST:-localhost}; PORT=${PGPORT:-5432}
 case "$H" in /*) U="postgresql+psycopg://%s@/$DB?host=$H&port=$PORT";; *) U="postgresql+psycopg://%s@$H:$PORT/$DB";; esac
 rc=0
 echo "::group::pytest SQLite"; env -u CFP_FORUM_TEST_AUTH_DB python -m pytest tests/forum -q -p no:cacheprovider || rc=1; echo "::endgroup::"
-export CFP_FORUM_TEST_AUTH_DB=$(printf "$U" forum_auth_app) CFP_FORUM_TEST_DB_SIEU_BO_DOI=$(printf "$U" forum_sbd_app) \
-  CFP_FORUM_TEST_DB_SI_AI_HSTDN=$(printf "$U" forum_hstdn_app) CFP_OFFICE_TEST_DB=$(printf "$U" office_app) \
+export CFP_FORUM_TEST_AUTH_DB=$(printf "$U" cfp_forum_auth_rw) CFP_FORUM_TEST_DB_SIEU_BO_DOI=$(printf "$U" cfp_forum_sbd_rw) \
+  CFP_FORUM_TEST_DB_SI_AI_HSTDN=$(printf "$U" cfp_forum_hstdn_rw) CFP_OFFICE_TEST_DB=$(printf "$U" office_app) \
   CFP_FORUM_TEST_ADMIN_DB=$(printf "$U" cfp_migrator)
 echo "::group::pytest Postgres (4 schema/role)"; python -m pytest tests/forum -v -p no:cacheprovider --junitxml=forum-pytest.xml || rc=1; echo "::endgroup::"
 export CFP_FORUM_AUTH_DB=$CFP_FORUM_TEST_AUTH_DB CFP_FORUM_DB_SIEU_BO_DOI=$CFP_FORUM_TEST_DB_SIEU_BO_DOI \

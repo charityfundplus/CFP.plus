@@ -3,7 +3,8 @@
 #   branch claude/gallant-carson-8uogxj, Blueprint path: services/forum/render.yaml
 # Secrets KHÔNG nằm trong repo: 3 URL database nhập tay trong Dashboard (sync: false).
 # Supabase từ Render: dùng Session Pooler (IPv4), user dạng <role>.<project_ref>, ví dụ
-#   postgresql+psycopg://forum_sbd_app.gmnsmggqvbwlgluvscfh:<MẬT_KHẨU>@aws-0-us-west-2.pooler.supabase.com:5432/postgres?sslmode=require
+#   postgresql+psycopg://cfp_forum_sbd_rw.gmnsmggqvbwlgluvscfh:<MẬT_KHẨU>@aws-0-us-west-2.pooler.supabase.com:5432/postgres?sslmode=require
+# 3 URL diễn đàn: services/forum/sql/set_passwords_sandbox.sql • URL Văn Phòng: set_password_office_sandbox.sql
 services:
   - type: web
     name: cfp-forum-sandbox

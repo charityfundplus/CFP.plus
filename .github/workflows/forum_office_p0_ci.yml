@@ -59,11 +59,13 @@ jobs:
           mkdir -p "$RUNNER_TEMP/pw" && cd "$RUNNER_TEMP/pw" && npm init -y >/dev/null && npm install playwright@1.49.1
           npx --prefix "$RUNNER_TEMP/pw" playwright install --with-deps chromium
 
-      - name: Migration 001 + 002 (non-superuser, chạy 2 lần, RLS FORCE)
+      - name: Migration schemas_up (#193) + 002_office (non-superuser, ×2, rollback down→up)
         run: |
           tests/forum/setup_pg.sh cfp_ci | tee migration.log
-          grep -q '^tables=24$' migration.log
-          grep -q '^rls_forced=24$' migration.log
+          grep -q '^forum_schemas=cfp_forum_auth:cfp_forum_auth_rw,cfp_forum_hstdn:cfp_forum_hstdn_rw,cfp_forum_sbd:cfp_forum_sbd_rw$' migration.log
+          grep -q '^office_tables=14$' migration.log
+          grep -q '^office_rls_forced=14$' migration.log
+          grep -q '^anon_usage=0$' migration.log
 
       - name: pytest + Playwright (SQLite, Postgres 4 schema/role, E2E iPhone 13)
         env:

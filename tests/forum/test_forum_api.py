@@ -2,7 +2,7 @@
 
 Cần 3 database riêng (Postgres khuyến nghị) qua biến môi trường:
   CFP_FORUM_TEST_AUTH_DB, CFP_FORUM_TEST_DB_SIEU_BO_DOI, CFP_FORUM_TEST_DB_SI_AI_HSTDN
-Chế độ schema (giống Supabase, services/forum/sql/001_isolation.sql): đặt thêm
+Chế độ schema (giống Supabase, services/forum/sql/schemas_up.sql của #193): đặt thêm
   CFP_FORUM_TEST_ADMIN_DB  (URL quản trị để dọn dữ liệu test và kiểm tra quyền)
 Nếu không có, test dùng 3 file SQLite tạm.
 Chạy: python -m pytest tests/forum/test_forum_api.py -v
@@ -15,6 +15,7 @@ from fastapi.testclient import TestClient
 from sqlalchemy import create_engine, text
 
 from services.forum import admin
+from tests.forum.pgschema import schema_of, truncate_all
 from services.forum.app import Stores, create_app
 
 H = {"X-CFP-Forum": "1"}
@@ -31,12 +32,7 @@ def urls(tmp_path_factory):
     os.environ["CFP_FORUM_RL_WRITE_PER_MIN"] = "1000"
     admin_url = os.environ.get("CFP_FORUM_TEST_ADMIN_DB")
     if all(env.values()) and admin_url:
-        eng = create_engine(admin_url)
-        with eng.begin() as c:  # chỉ dọn dữ liệu test, giữ schema + dấu diễn đàn
-            c.execute(text("TRUNCATE forum_sbd.comments, forum_sbd.posts, forum_sbd.members, "
-                           "forum_hstdn.comments, forum_hstdn.posts, forum_hstdn.members, "
-                           "forum_auth.sessions, forum_auth.users RESTART IDENTITY CASCADE"))
-        eng.dispose()
+        truncate_all(admin_url, list(env.values()))  # chỉ dọn dữ liệu test, giữ schema + dấu diễn đàn
         env["admin"] = admin_url
         return env
     if not all(env.values()):
@@ -235,15 +231,17 @@ def test_default_cookie_is_secure(urls):
 
 
 @pytest.mark.parametrize("role_key,forbidden", [
-    ("sieu-bo-doi", ["forum_hstdn.posts", "forum_auth.users"]),
-    ("si-ai-hstdn", ["forum_sbd.posts", "forum_auth.users"]),
-    ("auth", ["forum_sbd.posts", "forum_hstdn.posts"]),
+    ("sieu-bo-doi", [("si-ai-hstdn", "posts"), ("auth", "users")]),
+    ("si-ai-hstdn", [("sieu-bo-doi", "posts"), ("auth", "users")]),
+    ("auth", [("sieu-bo-doi", "posts"), ("si-ai-hstdn", "posts")]),
 ])
 def test_db_roles_cannot_cross_schemas(urls, role_key, forbidden):
     if "admin" not in urls:
         pytest.skip("chỉ áp dụng chế độ schema/role (Supabase)")
+    make_client(urls)  # app tạo bảng ở cả 3 schema
     eng = create_engine(urls[role_key])
-    for table in forbidden:
+    for other, tbl in forbidden:
+        table = f"{schema_of(urls[other])}.{tbl}"
         with eng.connect() as conn, pytest.raises(Exception) as ei:
             conn.execute(text(f"SELECT count(*) FROM {table}"))
         assert "permission denied" in str(ei.value)
@@ -255,7 +253,10 @@ def test_supabase_api_roles_have_no_access(urls, api_role):
     if "admin" not in urls:
         pytest.skip("chỉ áp dụng chế độ schema/role (Supabase)")
     eng = create_engine(urls["admin"])
-    for table in ("forum_sbd.posts", "forum_hstdn.posts", "forum_auth.users", "forum_auth.sessions"):
+    make_client(urls)
+    tables = [f"{schema_of(urls[k])}.{t}" for k, t in (("sieu-bo-doi", "posts"), ("si-ai-hstdn", "posts"),
+                                                        ("auth", "users"), ("auth", "sessions"))]
+    for table in tables:
         with eng.connect() as conn, pytest.raises(Exception) as ei:
             conn.execute(text(f"SET ROLE {api_role}"))
             conn.execute(text(f"SELECT count(*) FROM {table}"))
@@ -263,11 +264,20 @@ def test_supabase_api_roles_have_no_access(urls, api_role):
     eng.dispose()
 
 
-def test_forum_role_cannot_change_stamp(urls):
+def test_tampered_stamp_blocks_startup(urls):
+    """Nền tảng #193: role diễn đàn là chủ schema nên DB không chặn sửa forum_meta.
+    Bảo đảm ở tầng ứng dụng: dấu sai → service từ chối khởi động (không thể trộn dữ liệu)."""
     if "admin" not in urls:
         pytest.skip("chỉ áp dụng chế độ schema/role (Supabase)")
+    make_client(urls)
     eng = create_engine(urls["sieu-bo-doi"])
-    with eng.connect() as conn, pytest.raises(Exception) as ei:
-        conn.execute(text("UPDATE forum_meta SET forum_key = 'si-ai-hstdn'"))
-    assert "permission denied" in str(ei.value)
-    eng.dispose()
+    try:
+        with eng.begin() as conn:
+            conn.execute(text("UPDATE forum_meta SET forum_key = 'si-ai-hstdn'"))
+        with pytest.raises(RuntimeError, match="đã thuộc về diễn đàn"):
+            make_client(urls)
+    finally:
+        with eng.begin() as conn:
+            conn.execute(text("UPDATE forum_meta SET forum_key = 'sieu-bo-doi'"))
+        eng.dispose()
+    make_client(urls)

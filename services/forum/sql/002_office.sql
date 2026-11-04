@@ -1,5 +1,6 @@
 -- CFP+ • 002 • Văn Phòng SI AI: schema cfp_office + role office_app (sinh từ services/forum/office.py)
--- Không chứa mật khẩu. Idempotent. Áp sau 001_isolation.sql.
+-- Không chứa mật khẩu. Idempotent. Áp SAU schemas_up.sql (#193, đã chạy trên Supabase: cfp_forum_*).
+-- Không đụng tới schema/role của diễn đàn. Khôi phục: 002_office_down.sql.
 begin;
 do $$ begin
   if not exists (select 1 from pg_roles where rolname = 'office_app') then
@@ -270,7 +271,7 @@ drop policy if exists office_governance_roles on cfp_office.office_roles;
 create policy office_governance_roles on cfp_office.office_roles for all to office_governance using (true) with check (true);
 alter role office_app set search_path = cfp_office;
 do $$ declare r text; begin
-  foreach r in array array['anon','authenticated','forum_auth_app','forum_sbd_app','forum_hstdn_app'] loop
+  foreach r in array array['anon','authenticated','service_role','cfp_forum_auth_rw','cfp_forum_sbd_rw','cfp_forum_hstdn_rw'] loop
     if exists (select 1 from pg_roles where rolname = r) then
       execute format('revoke all on schema cfp_office from %I', r);
       execute format('revoke all on all tables in schema cfp_office from %I', r);

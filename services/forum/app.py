@@ -147,6 +147,11 @@ def _engine(url: str) -> Engine:
     kw = {"pool_pre_ping": True}
     if url.startswith("sqlite"):
         kw["connect_args"] = {"check_same_thread": False}
+    else:
+        # Mỗi role diễn đàn trên Supabase có CONNECTION LIMIT 20 (schemas_up.sql #193) → pool nhỏ.
+        kw["pool_size"] = int(os.environ.get("CFP_FORUM_POOL_SIZE", "3"))
+        kw["max_overflow"] = int(os.environ.get("CFP_FORUM_POOL_OVERFLOW", "2"))
+        kw["pool_recycle"] = 300
     return create_engine(url, **kw)
 
 
@@ -173,6 +178,10 @@ class Stores:
             from services.forum.office import md as office_md
             self.office = _engine(office_url)
             office_md.create_all(self.office)
+
+    def dispose(self) -> None:
+        for eng in [self.auth, *self.forums.values(), *([self.office] if self.office is not None else [])]:
+            eng.dispose()
 
     @classmethod
     def from_env(cls) -> "Stores":
