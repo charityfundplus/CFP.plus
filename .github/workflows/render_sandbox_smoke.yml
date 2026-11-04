@@ -56,3 +56,21 @@ jobs:
             render-smoke.json
             render-smoke.log
           if-no-files-found: warn
+
+  # Chỉ đọc: DNS + header hosting thực tế của website chính (để chọn nền tảng dựa trên bằng chứng).
+  site_probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: DNS + hosting cfp.plus (chỉ đọc)
+        run: |
+          for h in cfp.plus www.cfp.plus; do
+            echo "== DNS $h"; dig +short A $h; dig +short AAAA $h; dig +short CNAME $h; dig +short NS cfp.plus | head -4
+          done
+          for p in / /69/ /691121/ /267/ /forum/ /_internal/office/; do
+            echo "== GET https://cfp.plus$p"
+            curl -s -o /dev/null -D - --max-time 30 "https://cfp.plus$p" \
+              | grep -iE '^(HTTP|server|via|location|x-cloud-trace-context|x-github-request-id|x-render|rndr-id|cf-ray|x-goog|x-served-by|x-powered-by|alt-svc)' || echo "(không phản hồi)"
+          done
+          echo "== TLS"; echo | openssl s_client -connect cfp.plus:443 -servername cfp.plus 2>/dev/null | openssl x509 -noout -issuer -subject -dates || true
+
