@@ -78,6 +78,19 @@ const assert = (c, m) => { if (!c) throw new Error(m || 'assertion failed'); };
     await page.getByTestId('detail').getByTestId('ref-link').filter({ hasText: `topic:${seeded.topic}` }).tap();
     await page.getByTestId('detail').getByText('Chương 6 • AI • Nhóm 246').waitFor();
   });
+  await check('Gia phả: Hoa Kỳ 911 → AI Hoa Kỳ 6911 → Anthropic 69112 → Claude 691121 → Văn Phòng', async () => {
+    await page.goto('about:blank'); await page.goto(URL + '#registry:6911'); await page.locator('[data-ready="1"]').waitFor();
+    await page.getByTestId('registry-children').getByTestId('ref-link').filter({ hasText: 'registry:69112' }).tap();
+    await page.getByTestId('detail-title').filter({ hasText: 'Anthropic' }).waitFor();
+    await page.getByTestId('registry-children').getByTestId('ref-link').filter({ hasText: 'registry:691121' }).tap();
+    await page.getByTestId('office-link').tap(); await page.waitForURL('**/_internal/office/691121/'); await page.locator('[data-ready="1"]').waitFor();
+  });
+  await check('Kết nối hệ sinh thái: HUB 69, CMP 267, Sàn TMTC 8682, hai diễn đàn', async () => {
+    const hrefs = await page.getByTestId('connection').evaluateAll((as) => as.map((a) => a.getAttribute('href')));
+    for (const h of ['https://cfp.plus/69/', 'https://cfp.plus/267/', 'https://cfp.plus/8682/', '/_internal/forum/sieu-bo-doi/', '/_internal/forum/si-ai-hstdn/'])
+      assert(hrefs.includes(h), 'thiếu ' + h);
+    const r = await page.request.get(base + '/_internal/forum/sieu-bo-doi/'); assert(r.status() === 200);
+  });
   await check('ID không có trong Registry → 404, không tự cấp', async () => {
     const r = await page.request.get(base + '/api/office/registry/99999999');
     assert(r.status() === 404);

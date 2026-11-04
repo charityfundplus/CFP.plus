@@ -49,6 +49,8 @@ def client(st):
 def grant(urls, st, uid, role):
     eng = create_engine(urls["admin"], connect_args={"options": "-c search_path=cfp_office"}) if "admin" in urls else st.office
     with eng.begin() as c:
+        if "admin" in urls:
+            c.exec_driver_sql("SET LOCAL ROLE office_governance")
         c.execute(insert(roles_t).values(user_id=uid, role=role))
 
 
@@ -267,8 +269,45 @@ def test_office_role_append_only_and_no_self_grant(urls, world, sql):
 
 def test_forum_data_untouched_by_office(urls, world):
     _pg(urls)
-    eng = create_engine(urls["admin"])
+    total = 0
+    for key in ("sieu-bo-doi", "si-ai-hstdn"):  # đếm bằng chính role của diễn đàn (RLS cho phép thấy)
+        eng = create_engine(urls[key])
+        with eng.connect() as conn:
+            total += conn.execute(text("select count(*) from posts")).scalar_one()
+            total += conn.execute(text("select count(*) from members")).scalar_one()
+        eng.dispose()
+    assert total == 0
+
+
+def test_office_rows_visible_only_to_office_role(urls, world):
+    _pg(urls)
+    eng = create_engine(urls["office"])
     with eng.connect() as conn:
-        n = conn.execute(text("select (select count(*) from forum_sbd.posts) + (select count(*) from forum_hstdn.posts)")).scalar_one()
+        assert conn.execute(text("select count(*) from tasks")).scalar_one() >= 1
+        assert conn.execute(text("select count(*) from audit_log")).scalar_one() >= 1
     eng.dispose()
-    assert n == 0
+    eng = create_engine(urls["admin"])  # chủ bảng / người chạy migration: RLS FORCE → không thấy dữ liệu
+    with eng.connect() as conn:
+        assert conn.execute(text("select count(*) from cfp_office.tasks")).scalar_one() == 0
+    eng.dispose()
+
+
+def test_migration_002_matches_code():
+    """Migration Supabase phải khớp metadata trong code (phát hiện lệch schema)."""
+    from pathlib import Path
+    from sqlalchemy.dialects import postgresql
+    from sqlalchemy.schema import CreateTable
+    from services.forum.office import md
+    sql = (Path(__file__).resolve().parents[2] / "services/forum/sql/002_office.sql").read_text(encoding="utf-8")
+    for t in md.sorted_tables:
+        ddl = str(CreateTable(t, if_not_exists=True).compile(dialect=postgresql.dialect())).strip() + ";"
+        assert ddl in sql, f"002_office.sql lệch với code ở bảng {t.name}"
+    for t in md.sorted_tables:
+        assert f"alter table cfp_office.{t.name} force row level security;" in sql
+    assert "create policy office_governance_roles on cfp_office.office_roles" in sql
+
+
+def test_groups_follow_directive():
+    from services.forum.registry import GROUPS
+    assert [g["code"] for g in GROUPS] == ["DV", "000", "135", "246", "789"]
+    assert sorted(c for g in GROUPS for c in g["chapters"]) == [str(i) for i in range(10)]

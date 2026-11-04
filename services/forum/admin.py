@@ -43,6 +43,8 @@ def grant_office_role(role: str, email: str) -> None:
     admin_url = os.environ.get("CFP_OFFICE_ADMIN_DB")
     eng = create_engine(admin_url, connect_args={"options": "-c search_path=cfp_office"}) if admin_url else st.office
     with eng.begin() as c:
+        if admin_url and eng.dialect.name == "postgresql":
+            c.exec_driver_sql("SET LOCAL ROLE office_governance")
         if not c.execute(select(roles_t.c.user_id).where(roles_t.c.user_id == u.id, roles_t.c.role == role)).first():
             c.execute(insert(roles_t).values(user_id=u.id, role=role))
     print(f"OK: {email} có vai trò {role} tại Văn Phòng SI AI")

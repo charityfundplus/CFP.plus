@@ -46,6 +46,9 @@
       var e = d.entity || d;
       var kids = [el('h3', { 'data-testid': 'detail-title', text: (e.name || e.title || ref) }), el('p', { 'class': 'forum-meta', text: ref })];
       if (d.chain) kids.push(el('p', { text: d.chain.map(function (x) { return x.name + ' (' + x.id + ')'; }).join(' → ') }));
+      if (d.children && d.children.length) kids.push(el('h4', { text: 'Nhánh con trong Registry (' + d.children.length + ')' }),
+        el('ul', { 'data-testid': 'registry-children' }, d.children.map(function (x) { return el('li', {}, [refLink('registry:' + x.id), ' ' + x.name + ' • ' + x.type]); })));
+      if (d.office) kids.push(el('p', {}, [el('a', { href: '/_internal/office/' + e.id + '/', 'data-testid': 'office-link', text: 'Mở Văn Phòng ' + e.name })]));
       if (d.chapter_name) kids.push(el('p', { text: 'Chương ' + d.chapter + ' • ' + d.chapter_name + (d.group ? ' • ' + d.group.name : '') }));
       if (d.official_url) kids.push(el('p', {}, ['Trang chính thức: ', ext(d.official_url)]));
       if (d.url) kids.push(el('p', {}, ['Tài liệu: ', ext(d.url)]));
@@ -93,6 +96,10 @@
           el('p', {}, [refLink('task:' + t.id)])]);
       }) : [el('p', { text: 'Chưa có nhiệm vụ.' })]),
       section('Liên kết hai chiều', 'office-links', [linksBlock(d.links)]),
+      section('Kết nối hệ sinh thái', 'connections', [el('ul', {}, tax.connections.map(function (c) {
+        var href = /^https:\/\//.test(c.link) || /^\/_internal\//.test(c.link) ? c.link : null;
+        return el('li', {}, [href ? el('a', { href: href, 'data-testid': 'connection', text: c.name }) : c.name, c.status ? ' • ' + c.status : '']);
+      }))]),
       detail
     ];
     root.replaceChildren.apply(root, kids);

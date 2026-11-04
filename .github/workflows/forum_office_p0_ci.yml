@@ -1,0 +1,83 @@
+name: Forum + Văn Phòng SI AI P0 CI (sandbox)
+
+# Kiểm thử backend hai diễn đàn + Văn Phòng SI AI trên Postgres thật, 4 schema/role,
+# migration chạy bằng role KHÔNG phải superuser (như Supabase). Không deploy, không secrets.
+on:
+  push:
+    branches: ['claude/**']
+    paths:
+      - 'services/forum/**'
+      - 'tests/forum/**'
+      - 'registry/*.json'
+      - '.github/workflows/forum_office_p0_ci.yml'
+  pull_request:
+    paths:
+      - 'services/forum/**'
+      - 'tests/forum/**'
+      - 'registry/*.json'
+      - '.github/workflows/forum_office_p0_ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: forum-office-p0-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_HOST_AUTH_METHOD: trust   # chỉ dùng trong container CI tạm thời
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U postgres" --health-interval 5s --health-timeout 5s --health-retries 12
+    env:
+      PGHOST: localhost
+      PGPORT: '5432'
+      PGUSER: postgres
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Cài dependency
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client >/dev/null
+          python -m pip install --upgrade pip
+          pip install -r services/forum/requirements.txt pytest==8.3.4 httpx==0.28.1
+          mkdir -p "$RUNNER_TEMP/pw" && cd "$RUNNER_TEMP/pw" && npm init -y >/dev/null && npm install playwright@1.49.1
+          npx --prefix "$RUNNER_TEMP/pw" playwright install --with-deps chromium
+
+      - name: Migration 001 + 002 (non-superuser, chạy 2 lần, RLS FORCE)
+        run: |
+          tests/forum/setup_pg.sh cfp_ci | tee migration.log
+          grep -q '^tables=24$' migration.log
+          grep -q '^rls_forced=24$' migration.log
+
+      - name: pytest + Playwright (SQLite, Postgres 4 schema/role, E2E iPhone 13)
+        env:
+          NODE_PATH: ${{ runner.temp }}/pw/node_modules
+          CFP_E2E_SCREENSHOT: ${{ github.workspace }}/office-iphone.png
+        run: tests/forum/run_all.sh cfp_ci
+
+      - name: Lưu kết quả
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: forum-office-p0-results
+          path: |
+            migration.log
+            forum-pytest.xml
+            office-iphone.png
+          if-no-files-found: warn

@@ -66,7 +66,8 @@ def run_flow(gov, lead, reviewer, lead_id: int, reviewer_id: int, prefix: str = 
     """gov/lead/reviewer: client đã đăng nhập (TestClient hoặc httpx.Client). Trả về các id đã tạo."""
     out = {}
     tax = ok(gov.get("/api/office/taxonomy"), 200)
-    assert [g["code"] for g in tax["groups"]] == ["000", "0", "135", "246", "789"]
+    assert [g["code"] for g in tax["groups"]] == ["DV", "000", "135", "246", "789"]
+    assert {c["key"] for c in tax["connections"]} >= {"hub69", "cmp267", "tmtc", "forum-sieu-bo-doi", "forum-si-ai-hstdn"}
     assert len(tax["chapters"]) == 10
     chain = ok(gov.get(f"/api/office/registry/{CID}"), 200)["chain"]
     assert [x["id"] for x in chain] == ["911", "6911", "69112", CID]

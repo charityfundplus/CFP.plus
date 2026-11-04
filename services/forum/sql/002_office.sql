@@ -257,6 +257,17 @@ revoke update, delete on cfp_office.reviews from office_app;
 revoke update, delete on cfp_office.evidence from office_app;
 -- Vai trò governance/reviewer chỉ cấp qua CLI quản trị, app không tự cấp.
 revoke insert, update, delete on cfp_office.office_roles from office_app;
+-- Đường cấp vai trò duy nhất: role office_governance (NOLOGIN). Người vận hành Human Governance
+-- được cấp membership riêng; CLI dùng SET ROLE office_governance. RLS FORCE vẫn chặn mọi role khác.
+do $$ begin
+  if not exists (select 1 from pg_roles where rolname = 'office_governance') then
+    create role office_governance nologin noinherit;
+  end if;
+end $$;
+grant usage on schema cfp_office to office_governance;
+grant select, insert, delete on cfp_office.office_roles to office_governance;
+drop policy if exists office_governance_roles on cfp_office.office_roles;
+create policy office_governance_roles on cfp_office.office_roles for all to office_governance using (true) with check (true);
 alter role office_app set search_path = cfp_office;
 do $$ declare r text; begin
   foreach r in array array['anon','authenticated','forum_auth_app','forum_sbd_app','forum_hstdn_app'] loop

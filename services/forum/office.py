@@ -18,7 +18,7 @@ from sqlalchemy import (Column, DateTime, ForeignKey, Integer, MetaData, String,
 from sqlalchemy.engine import Connection, Engine
 from sqlalchemy.exc import IntegrityError
 
-from services.forum.registry import CHAPTERS, GROUPS, Registry, group_of
+from services.forum.registry import CHAPTERS, CONNECTIONS, GROUPS, Registry, group_of
 
 md = MetaData()
 roles_t = Table("office_roles", md,
@@ -319,7 +319,8 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
     def taxonomy():
         return {"groups": GROUPS, "chapters": [{"id": k, "name": v, "group": group_of(k)["code"] if group_of(k) else None,
                                                 "link": f"https://cfp.plus/{k}/"} for k, v in CHAPTERS.items()],
-                "hub": {"id": "69", "link": "https://cfp.plus/69/"}, "cmp": {"id": "267", "link": "https://cfp.plus/267/"}}
+                "hub": {"id": "69", "link": "https://cfp.plus/69/"}, "cmp": {"id": "267", "link": "https://cfp.plus/267/"},
+                "connections": CONNECTIONS}
 
     @r.get("/registry/{eid}")
     def registry_entity(eid: str):

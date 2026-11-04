@@ -13,10 +13,13 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
-# 5 Nhóm theo HUB 69 hiện hành (https://cfp.plus/69). Mã nhóm giữ nguyên như website.
+# 5 Nhóm theo chỉ đạo Human Governance (04/11/2026): DV • 000 • 135 • 246 • 789.
+# Nhóm không phải Canonical ID (chỉ 10 Chương có route số). HUB 69 hiện hiển thị "Nhóm 0"
+# cho nhóm chứa Chương 0 → giữ alias để đối chiếu, không đổi website/Registry.
 GROUPS = [
+    {"code": "DV", "name": "Nhóm DV", "label": "Chương 0 • Nền Tảng", "chapters": ["0"],
+     "hub69_display_alias": "Nhóm 0", "reconciliation": "PENDING_HUMAN_GOVERNANCE"},
     {"code": "000", "name": "Nhóm 000", "label": "Giới Thiệu • Nền Tảng • Giá Trị CFP+", "chapters": []},
-    {"code": "0", "name": "Nhóm 0", "label": "Chương 0 • Nền Tảng", "chapters": ["0"]},
     {"code": "135", "name": "Nhóm 135", "label": "Sự Sống • Ba Quỹ • Cộng Đồng", "chapters": ["1", "3", "5"]},
     {"code": "246", "name": "Nhóm 246", "label": "Con Người • Tôn Giáo • AI", "chapters": ["2", "4", "6"]},
     {"code": "789", "name": "Nhóm 789", "label": "Doanh Nghiệp • Tổ Chức • Quốc Gia", "chapters": ["7", "8", "9"]},
@@ -26,6 +29,21 @@ CHAPTERS = {
     "4": "Tôn Giáo và Tín Ngưỡng", "5": "Bộ Ngũ và Cộng Đồng", "6": "AI", "7": "Doanh Nghiệp",
     "8": "Các Tổ Chức và Các Quỹ", "9": "Quốc Gia và Vùng Lãnh Thổ",
 }
+
+
+# Kết nối hệ sinh thái: chỉ dùng route số đã có trên website (không tạo ID mới).
+CONNECTIONS = [
+    {"key": "hub69", "name": "HUB 69 • Cổng kết nối thống nhất", "link": "https://cfp.plus/69/"},
+    {"key": "cmp267", "name": "CMP 267 • Điều phối nhiệm vụ và bằng chứng", "link": "https://cfp.plus/267/"},
+    {"key": "chapters", "name": "10 Chương", "link": "https://cfp.plus/0123456789/"},
+    {"key": "tmtc", "name": "Sàn TMTC 8682", "link": "https://cfp.plus/8682/"},
+    {"key": "ctttc", "name": "CTTTC 28882", "link": "https://cfp.plus/28882/"},
+    {"key": "website", "name": "Website CFP+", "link": "https://cfp.plus/"},
+    {"key": "forum-sieu-bo-doi", "name": "Diễn Đàn Siêu Bộ Đôi (sandbox)", "link": "/_internal/forum/sieu-bo-doi/",
+     "status": "SANDBOX • CHƯA CÓ CANONICAL ID"},
+    {"key": "forum-si-ai-hstdn", "name": "Diễn Đàn SI AI • HSTDN (sandbox)", "link": "/_internal/forum/si-ai-hstdn/",
+     "status": "SANDBOX • CHƯA CÓ CANONICAL ID"},
+]
 
 
 def group_of(chapter: str) -> dict | None:
