@@ -92,6 +92,9 @@ jobs:
       - name: Worker P0 chạy thật (tiến trình riêng, heartbeat, kill switch, nhật ký)
         run: DUR=40 tests/forum/worker_runtime.sh cfp_ci | tee worker-check.log && grep -q '^WORKER_RUNTIME=PASS$' worker-check.log
 
+      - name: Smoke Link Mẫu Chung qua HTTP thật (cùng script dùng cho URL HTTPS sandbox)
+        run: tests/forum/smoke_ci.sh cfp_ci | tee smoke-check.log && grep -q '^SMOKE_LIVE=PASS ' smoke-check.log
+
       - name: Tương thích ngược — chỉ 002 (đúng trạng thái Supabase hiện tại), pytest Postgres
         env:
           PGPORT: '5433'
@@ -118,4 +121,7 @@ jobs:
             worker-status.json
             worker-paused.json
             worker-logs.txt
+            smoke-check.log
+            smoke-live.json
+            smoke-server.log
           if-no-files-found: warn
