@@ -77,6 +77,7 @@ def test_registry_chain_and_no_invented_ids():
 def test_full_flow_and_reload_after_restart(world, urls):
     st2 = stores(urls)  # engine mới = khởi động lại
     c = client(st2)
+    c.cookies = world["lead"].cookies  # người thực thi (maintainer) xem nhiệm vụ; khách không thấy (SEC-01)
     d = ok(c.get(f"/api/office/offices/{CID}"), 200)
     assert [x["id"] for x in d["registry_chain"]] == ["911", "6911", "69112", CID]
     assert d["taxonomy"]["group"]["code"] == "246" and d["taxonomy"]["chapter"]["id"] == "6"
@@ -89,7 +90,7 @@ def test_full_flow_and_reload_after_restart(world, urls):
 
 
 def test_bidirectional_links(world):
-    c, o = world["other"], world["out"]
+    c, o = world["lead"], world["out"]
     ent = ok(c.get(f"/api/office/enterprises/{o['enterprise']}"), 200)
     assert {"ref": f"task:{o['task']}", "relation": "uses"} in ent["links"]["incoming"]
     assert {"ref": "registry:911", "relation": "located_in"} in ent["links"]["outgoing"]
@@ -307,3 +308,87 @@ def test_groups_follow_directive():
     from services.forum.registry import GROUPS
     assert [g["code"] for g in GROUPS] == ["DV", "000", "135", "246", "789"]
     assert sorted(c for g in GROUPS for c in g["chapters"]) == [str(i) for i in range(10)]
+
+
+# ---------- SecuritySI review PR #195 @ de09d85 • ma trận người dùng A/B
+
+def _anon(world):
+    return TestClient(create_app(world["st"]))
+
+
+def test_sec01_office_view_hides_tasks_from_anonymous_and_unrelated(world):
+    o = world["out"]
+    for who, c in (("anonymous", _anon(world)), ("unrelated", world["other"])):
+        d = ok(c.get(f"/api/office/offices/{CID}"), 200)
+        assert d["tasks"] == [], who
+        assert d["maintainers"] is None and d["can_edit"] is False, who
+        assert all(set(p) == {"id", "canonical_id", "software"} for p in d["pairs"]), who
+        assert "created_by" not in d["office"], who
+        refs = {x["ref"] for x in d["links"]["incoming"] + d["links"]["outgoing"]}
+        assert not any(r.startswith("task:") for r in refs), who
+        ent = ok(c.get(f"/api/office/enterprises/{o['enterprise']}"), 200)
+        assert not any(x["ref"].startswith("task:") for x in ent["links"]["incoming"]), who
+        assert ok(c.get(f"/api/office/links?ref=task:{o['task']}"), 200) == {"outgoing": [], "incoming": []}, who
+
+
+def test_sec01_participants_and_staff_see_tasks(world):
+    o = world["out"]
+    for who in ("lead", "rev", "gov"):
+        tasks = ok(world[who].get(f"/api/office/offices/{CID}"), 200)["tasks"]
+        assert any(t["id"] == o["task"] for t in tasks), who
+        t = next(t for t in tasks if t["id"] == o["task"])
+        assert t["evidence"] and t["reviews"] and t["history"], who
+    assert ok(world["gov"].get(f"/api/office/offices/{CID}"), 200)["maintainers"]
+
+
+def test_sec02_idempotency_checked_after_authorization(world, urls):
+    o, ids = world["out"], world["ids"]
+    key = f"office-flow-base-{ids['lead']}"  # khoá thật của nhiệm vụ đã có
+    body = {"pair_id": o["pair"], "title": "Luồng Link Mẫu SI AI xuyên suốt", "acceptance": "xxxxx",
+            "reviewer_id": ids["rev"], "idempotency_key": key}
+    r = world["other"].post("/api/office/tasks", json=body, headers=H)  # người ngoài đoán đúng khoá
+    assert r.status_code == 403 and "id" not in r.json()
+    # Một maintainer khác của cùng Văn Phòng dùng lại khoá → 409, không lộ id/trạng thái.
+    m2 = client(world["st"])
+    m2_id = register(m2, f"m2{uuid.uuid4().hex[:6]}@example.org", "Maintainer 2")
+    ok(world["gov"].post(f"/api/office/offices/{CID}/maintainers/{m2_id}", headers=H), 201)
+    r = m2.post("/api/office/tasks", json=body, headers=H)
+    assert r.status_code == 409 and "id" not in r.json() and "status" not in r.json()
+    r = world["lead"].post("/api/office/tasks", json=body, headers=H)  # chính chủ gửi lại → nhận lại nhiệm vụ cũ
+    assert r.status_code == 201 and r.json()["id"] == o["task"] and r.json()["duplicate"] is True
+
+
+def test_sec04_members_dataset_object_acl(world):
+    lead = world["lead"]
+    d = ok(lead.post("/api/office/datasets", json={**SAMPLE["dataset"], "title": "Tài liệu nội bộ ACL", "access": "members",
+                                                  "version": f"acl-{uuid.uuid4().hex[:6]}"}, headers=H), 201)["id"]
+    assert world["other"].get(f"/api/office/datasets/{d}").status_code == 403
+    assert not any(x["ref"] == f"dataset:{d}" for x in
+                   world["other"].get("/api/office/search", params={"q": "nội bộ acl"}).json()["results"])
+    for who in ("lead", "rev", "gov"):
+        assert world[who].get(f"/api/office/datasets/{d}").status_code == 200, who
+    assert world["rev"].get("/api/office/search", params={"q": "nội bộ acl"}).json()["results"]
+
+
+def test_sec04_link_creation_requires_ownership(world):
+    o, other, lead = world["out"], world["other"], world["lead"]
+    body = {"from_ref": f"enterprise:{o['enterprise']}", "to_ref": f"topic:{o['topic']}", "relation": "researched_in"}
+    assert other.post("/api/office/links", json=body, headers=H).status_code == 403
+    assert other.post("/api/office/links", json={**body, "from_ref": "registry:911"}, headers=H).status_code == 403
+    assert lead.post("/api/office/links", json=body, headers=H).status_code == 201  # lead tạo doanh nghiệp này
+    own = ok(other.post("/api/office/topics", json={"title": f"Chủ đề riêng {uuid.uuid4().hex[:6]}", "chapter": "6"},
+                        headers=H), 201)["id"]
+    hidden = ok(lead.post("/api/office/datasets", json={**SAMPLE["dataset"], "title": "Ẩn với người ngoài", "access": "members",
+                                                       "version": f"h-{uuid.uuid4().hex[:6]}"}, headers=H), 201)["id"]
+    r = other.post("/api/office/links", json={"from_ref": f"topic:{own}", "to_ref": f"dataset:{hidden}",
+                                              "relation": "uses"}, headers=H)
+    assert r.status_code == 422  # không liên kết tới mục mình không được xem
+    assert other.post("/api/office/links", json={"from_ref": f"topic:{own}", "to_ref": f"enterprise:{o['enterprise']}",
+                                                 "relation": "about"}, headers=H).status_code == 201
+
+
+def test_sec04_task_links_need_participation(world):
+    o = world["out"]
+    body = {"from_ref": f"task:{o['task']}", "to_ref": f"topic:{o['topic']}", "relation": "about"}
+    assert world["other"].post("/api/office/links", json=body, headers=H).status_code == 422  # task không hiển thị
+    assert world["lead"].post("/api/office/links", json=body, headers=H).status_code == 201

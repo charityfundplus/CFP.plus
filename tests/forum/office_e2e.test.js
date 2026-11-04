@@ -40,6 +40,19 @@ const assert = (c, m) => { if (!c) throw new Error(m || 'assertion failed'); };
   const jsErrors = []; page.on('pageerror', (e) => jsErrors.push(e.message));
   const URL = base + '/_internal/office/691121/';
 
+  await check('Khách (chưa đăng nhập) không thấy nhiệm vụ/Evidence/Review (SEC-P0-195-01)', async () => {
+    const anon = await browser.newContext({ ...devices['iPhone 13'] }); const ap = await anon.newPage();
+    await ap.goto(URL); await ap.locator('[data-ready="1"]').waitFor();
+    assert(await ap.getByTestId('task').count() === 0, 'khách thấy nhiệm vụ');
+    const d = await (await ap.request.get(base + '/api/office/offices/691121')).json();
+    assert(d.tasks.length === 0 && d.maintainers === null, 'API lộ dữ liệu nội bộ cho khách');
+    await anon.close();
+  });
+  await check('Đăng nhập người thực thi (lead) qua API thật', async () => {
+    const r = await page.request.post(base + '/api/auth/login', { headers: { 'X-CFP-Forum': '1' },
+      data: { email: `${prefix}-lead@example.org`, password: 'matkhau-office-p0' } });
+    assert(r.status() === 200, 'login ' + r.status());
+  });
   await check('Văn Phòng Claude 691121 hiển thị sau restart (iPhone 13 viewport)', async () => {
     await page.goto(URL); await page.locator('[data-ready="1"]').waitFor();
     assert((await page.getByTestId('office-title').textContent()).includes('Claude • 691121'));
@@ -107,7 +120,7 @@ const assert = (c, m) => { if (!c) throw new Error(m || 'assertion failed'); };
     for (const k of ['sieu-bo-doi', 'si-ai-hstdn']) {
       const r = await page.request.get(`${base}/api/forums/${k}/posts`);
       if (k === 'sieu-bo-doi') assert((await r.json()).posts.every((p) => !p.title.includes(prefix)));
-      else assert(r.status() === 401);
+      else assert([401, 403].includes(r.status()), 'HSTDN phải từ chối người không phải thành viên: ' + r.status());
     }
   });
   await check('Không có lỗi JavaScript', async () => { assert(jsErrors.length === 0, jsErrors.join('; ')); });

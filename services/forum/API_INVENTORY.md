@@ -42,18 +42,18 @@ Sinh tự động bởi `python -m services.forum.inventory --write` • CI ki�
 | hub69 | GET | `/api/modules` | công khai |  |  | Registry (tệp, chỉ đọc) + cfp_office (đọc) |
 | office | GET | `/api/office/audit` | đăng nhập | governance/reviewer |  | cfp_office |
 | office | POST | `/api/office/datasets` | đăng nhập |  | header X-CFP-Forum + Origin | cfp_office |
-| office | GET | `/api/office/datasets/{did}` | công khai (+phiên nếu có) | access=members → cần đăng nhập |  | cfp_office |
+| office | GET | `/api/office/datasets/{did}` | công khai (+phiên nếu có) | access=members → người tạo / maintainer / governance / reviewer |  | cfp_office |
 | office | POST | `/api/office/enterprises` | đăng nhập |  | header X-CFP-Forum + Origin | cfp_office |
-| office | GET | `/api/office/enterprises/{eid}` | công khai |  |  | cfp_office |
-| office | GET | `/api/office/links` | công khai |  |  | cfp_office |
-| office | POST | `/api/office/links` | đăng nhập |  | header X-CFP-Forum + Origin | cfp_office |
+| office | GET | `/api/office/enterprises/{eid}` | công khai (+phiên nếu có) |  |  | cfp_office |
+| office | GET | `/api/office/links` | công khai (+phiên nếu có) | ẩn liên kết tới nhiệm vụ/tài liệu không được xem |  | cfp_office |
+| office | POST | `/api/office/links` | đăng nhập | chủ sở hữu mục nguồn / maintainer / governance • đích phải được xem | header X-CFP-Forum + Origin | cfp_office |
 | office | POST | `/api/office/offices` | đăng nhập | governance • ID phải có trong Registry (type ai) | header X-CFP-Forum + Origin | cfp_office |
-| office | GET | `/api/office/offices/{cid}` | công khai (+phiên nếu có) |  |  | cfp_office |
+| office | GET | `/api/office/offices/{cid}` | công khai (+phiên nếu có) | khách: hồ sơ công khai • nhiệm vụ/evidence/review: người tham gia, maintainer, governance/reviewer |  | cfp_office |
 | office | POST | `/api/office/offices/{cid}/brand` | đăng nhập | maintainer/governance • nhãn xác nhận/ủy quyền: chỉ governance | header X-CFP-Forum + Origin | cfp_office |
 | office | POST | `/api/office/offices/{cid}/maintainers/{uid}` | đăng nhập | governance | header X-CFP-Forum + Origin | cfp_office |
 | office | POST | `/api/office/pairs` | đăng nhập | maintainer/governance | header X-CFP-Forum + Origin | cfp_office |
 | office | GET | `/api/office/registry/{eid}` | công khai |  |  | cfp_office |
-| office | GET | `/api/office/search` | công khai (+phiên nếu có) |  |  | cfp_office |
+| office | GET | `/api/office/search` | công khai (+phiên nếu có) | tài liệu nội bộ chỉ hiện với người được xem |  | cfp_office |
 | office | POST | `/api/office/tasks` | đăng nhập | maintainer/governance • reviewer độc lập có vai trò | header X-CFP-Forum + Origin | cfp_office |
 | office | POST | `/api/office/tasks/{tid}/ack` | đăng nhập | người thực thi | header X-CFP-Forum + Origin | cfp_office |
 | office | POST | `/api/office/tasks/{tid}/evidence` | đăng nhập | người thực thi | header X-CFP-Forum + Origin | cfp_office |
@@ -62,6 +62,6 @@ Sinh tự động bởi `python -m services.forum.inventory --write` • CI ki�
 | office | POST | `/api/office/tasks/{tid}/submit` | đăng nhập | người thực thi • cần ≥1 Evidence | header X-CFP-Forum + Origin | cfp_office |
 | office | GET | `/api/office/taxonomy` | công khai |  |  | cfp_office |
 | office | POST | `/api/office/topics` | đăng nhập |  | header X-CFP-Forum + Origin | cfp_office |
-| office | GET | `/api/office/topics/{tid}` | công khai |  |  | cfp_office |
+| office | GET | `/api/office/topics/{tid}` | công khai (+phiên nếu có) |  |  | cfp_office |
 
 Ranh giới dữ liệu: mỗi kho là một schema + role riêng (#193 + 002_office.sql); role của kho này không có USAGE trên schema kho khác; `anon`/`authenticated` không có quyền.

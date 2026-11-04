@@ -253,12 +253,17 @@ def create_app(stores: Stores | None = None) -> FastAPI:
     limiter = RateLimiter()
     limits = _limits()
     trust_proxy = os.environ.get("CFP_FORUM_TRUST_PROXY", "0") == "1"
+    # Số proxy tin cậy đứng trước app (Render: 1). Chỉ lấy IP do proxy cuối cùng ghi vào X-Forwarded-For;
+    # các giá trị bên trái do client tự gửi nên không tin (SEC-P0-195-05).
+    proxy_hops = max(1, int(os.environ.get("CFP_FORUM_TRUSTED_PROXY_HOPS", "1")))
     cookie_secure_mode = os.environ.get("CFP_FORUM_COOKIE_SECURE", "1")  # "1" | "0" | "auto"
     allowed_origins = {o.strip().rstrip("/") for o in os.environ.get("CFP_FORUM_ALLOWED_ORIGINS", "").split(",") if o.strip()}
 
     def client_ip(request: Request) -> str:
         if trust_proxy and request.headers.get("x-forwarded-for"):
-            return request.headers["x-forwarded-for"].split(",")[0].strip()
+            hops = [h.strip() for h in request.headers["x-forwarded-for"].split(",") if h.strip()]
+            if len(hops) >= proxy_hops:
+                return hops[-proxy_hops]
         return request.client.host if request.client else "?"
 
     def is_https(request: Request) -> bool:
@@ -273,9 +278,9 @@ def create_app(stores: Stores | None = None) -> FastAPI:
         origin = origin.rstrip("/")
         if origin in allowed_origins:
             return True
-        host = request.headers.get("x-forwarded-host") if trust_proxy else None
-        host = host or request.headers.get("host", "")
-        return origin in {f"https://{host}", f"http://{host}"}
+        # Không dùng X-Forwarded-Host (client có thể giả mạo); chỉ Host + danh sách CFP_FORUM_ALLOWED_ORIGINS.
+        host = request.headers.get("host", "").strip().lower()
+        return origin.lower() in {f"https://{host}", f"http://{host}"}
 
     def deny(status: int, detail: str, headers: dict | None = None):
         return JSONResponse({"detail": detail}, status_code=status, headers={**SECURITY_HEADERS, **(headers or {})})

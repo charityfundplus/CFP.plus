@@ -35,7 +35,11 @@ ROLE_RULES = {
     ("POST", "/api/office/tasks/{tid}/evidence"): "người thực thi",
     ("POST", "/api/office/tasks/{tid}/review"): "reviewer được chỉ định",
     ("GET", "/api/office/audit"): "governance/reviewer",
-    ("GET", "/api/office/datasets/{did}"): "access=members → cần đăng nhập",
+    ("GET", "/api/office/datasets/{did}"): "access=members → người tạo / maintainer / governance / reviewer",
+    ("GET", "/api/office/offices/{cid}"): "khách: hồ sơ công khai • nhiệm vụ/evidence/review: người tham gia, maintainer, governance/reviewer",
+    ("GET", "/api/office/links"): "ẩn liên kết tới nhiệm vụ/tài liệu không được xem",
+    ("POST", "/api/office/links"): "chủ sở hữu mục nguồn / maintainer / governance • đích phải được xem",
+    ("GET", "/api/office/search"): "tài liệu nội bộ chỉ hiện với người được xem",
 }
 
 
