@@ -265,6 +265,18 @@ def run(base: str, allow_http: bool, public_only: bool = False) -> dict:
     def worker():
         return expect(guest.get("/api/worker/status"), 200)
     s.check("worker", "trạng thái (thông tin)", worker)
+
+    def kill_switch():
+        if not worker().get("configured"):
+            return "worker chưa cấu hình — bỏ qua"
+        expect(lead.post("/api/worker/control", json={"paused": True, "reason": "smoke"}, headers=H), 403)
+        assert expect(gov.post("/api/worker/control", json={"paused": True, "reason": f"smoke {tag}: dừng an toàn"},
+                               headers=H), 200)["paused"] is True
+        assert expect(guest.get("/api/worker/status"), 200)["paused"] is True
+        assert expect(gov.post("/api/worker/control", json={"paused": False, "reason": f"smoke {tag}: chạy lại"},
+                               headers=H), 200)["paused"] is False
+        return "người thực thi → 403; governance dừng → paused=true → chạy lại → paused=false"
+    s.check("worker", "kill switch qua HTTP (governance)", kill_switch)
     return finish(s, base, tag)
 
 

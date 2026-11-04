@@ -69,6 +69,7 @@ Sinh tự động bởi `python -m services.forum.inventory --write` • CI ki�
 | office | GET | `/api/office/taxonomy` | công khai |  |  | cfp_office |
 | office | POST | `/api/office/topics` | đăng nhập |  | header X-CFP-Forum + Origin | cfp_office |
 | office | GET | `/api/office/topics/{tid}` | công khai (+phiên nếu có) |  |  | cfp_office |
+| worker | POST | `/api/worker/control` | đăng nhập | governance Văn Phòng • kill switch (dừng/chạy lại) • ghi log kill_switch | header X-CFP-Forum + Origin | cfp_worker.control (qua worker_governance) + logs |
 | worker | GET | `/api/worker/status` | công khai | công khai, chỉ số tổng hợp (không có nội dung lỗi/kết quả chi tiết) |  | cfp_worker (chỉ đọc) |
 
 Ranh giới dữ liệu: mỗi kho là một schema + role riêng (#193 + 002_office.sql); role của kho này không có USAGE trên schema kho khác; `anon`/`authenticated` không có quyền.

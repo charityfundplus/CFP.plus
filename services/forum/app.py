@@ -31,6 +31,7 @@ from pathlib import Path
 from fastapi import Depends, FastAPI, HTTPException, Request, Response
 from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
 from pydantic import BaseModel, Field
+from sqlalchemy import text as sql_text
 from sqlalchemy import (Column, DateTime, ForeignKey, Integer, MetaData, String, Table, Text,
                         create_engine, func, insert, select, update)
 from sqlalchemy.engine import Engine
@@ -311,6 +312,11 @@ class PostIn(BaseModel):
     country_id: str | None = Field(default=None, max_length=32)
 
 
+class KillSwitchIn(BaseModel):
+    paused: bool
+    reason: str = Field(min_length=3, max_length=300)
+
+
 class CommentIn(BaseModel):
     body: str = Field(min_length=1, max_length=5000)
 
@@ -475,6 +481,29 @@ def create_app(stores: Stores | None = None) -> FastAPI:
                     "note": "Chưa cấu hình CFP_WORKER_DB: không có worker chạy."}
         from services.forum.worker import status
         return {"configured": True, **status(st.worker)}
+
+    @app.post("/api/worker/control", tags=["worker"])
+    def worker_control(data: KillSwitchIn, user=Depends(require_user)):
+        """Kill switch qua HTTP (Render Free không có shell): CHỈ governance của Văn Phòng SI AI.
+        Ghi nhật ký append-only của worker (event=kill_switch, danh tính người bấm, lý do).
+        Kho thật (Postgres) cần CFP_WORKER_ADMIN_DB (role được SET ROLE worker_governance)."""
+        if st.worker is None or st.office is None:
+            raise HTTPException(503, "Chưa cấu hình worker/Văn Phòng.")
+        from services.forum.office import roles_t
+        with st.office.begin() as c:
+            if st.office.dialect.name == "postgresql":  # RLS 003: danh tính theo giao dịch
+                c.execute(sql_text("select set_config('cfp.user_id', :u, true)"), {"u": str(user["id"])})
+            gov = c.execute(select(roles_t.c.user_id).where(roles_t.c.user_id == user["id"],
+                                                           roles_t.c.role == "governance")).first()
+        if not gov:
+            raise HTTPException(403, "Chỉ governance được bật/tắt worker.")
+        admin = (st.worker.url.render_as_string(hide_password=False) if st.ephemeral
+                 else os.environ.get("CFP_WORKER_ADMIN_DB"))
+        if not admin:
+            raise HTTPException(503, "Kill switch HTTP chưa cấu hình (CFP_WORKER_ADMIN_DB); dùng CLI quản trị.")
+        from services.forum.worker import set_paused, status
+        set_paused(admin, data.paused, f"user:{user['id']} • {data.reason.strip()}")
+        return {"paused": status(st.worker)["paused"]}
 
     if st.worker is not None and os.environ.get("CFP_WORKER_INPROCESS") == "1":
         # Render Free chỉ có web service: chạy worker trong cùng tiến trình (1 uvicorn worker).

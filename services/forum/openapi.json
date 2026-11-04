@@ -335,6 +335,26 @@
     "title": "HTTPValidationError",
     "type": "object"
    },
+   "KillSwitchIn": {
+    "properties": {
+     "paused": {
+      "title": "Paused",
+      "type": "boolean"
+     },
+     "reason": {
+      "maxLength": 300,
+      "minLength": 3,
+      "title": "Reason",
+      "type": "string"
+     }
+    },
+    "required": [
+     "paused",
+     "reason"
+    ],
+    "title": "KillSwitchIn",
+    "type": "object"
+   },
    "LinkIn": {
     "properties": {
      "from_ref": {
@@ -2459,6 +2479,46 @@
     "summary": "Get Topic",
     "tags": [
      "office"
+    ]
+   }
+  },
+  "/api/worker/control": {
+   "post": {
+    "description": "Kill switch qua HTTP (Render Free không có shell): CHỈ governance của Văn Phòng SI AI.\nGhi nhật ký append-only của worker (event=kill_switch, danh tính người bấm, lý do).\nKho thật (Postgres) cần CFP_WORKER_ADMIN_DB (role được SET ROLE worker_governance).",
+    "operationId": "worker_control_api_worker_control_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/KillSwitchIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Worker Control",
+    "tags": [
+     "worker"
     ]
    }
   },

@@ -312,6 +312,7 @@ def test_ephemeral_sandbox_mode(tmp_path, monkeypatch):
     for n in ("CFP_FORUM_AUTH_DB", "CFP_FORUM_DB_SIEU_BO_DOI", "CFP_FORUM_DB_SI_AI_HSTDN", "CFP_OFFICE_DB", "CFP_WORKER_DB"):
         monkeypatch.delenv(n, raising=False)
     monkeypatch.setenv("CFP_SANDBOX_EPHEMERAL", "1")
+    monkeypatch.setenv("CFP_FORUM_COOKIE_SECURE", "auto")  # TestClient chạy http
     monkeypatch.setenv("CFP_EPHEMERAL_DIR", str(tmp_path))
     monkeypatch.setenv("CFP_BOOTSTRAP_GOV_EMAIL", "gov@example.org")
     monkeypatch.setenv("CFP_BOOTSTRAP_REVIEWER_EMAIL", "rev@example.org")
@@ -350,4 +351,41 @@ def test_ephemeral_bootstrap_needs_strong_password(tmp_path, monkeypatch):
     monkeypatch.setenv("CFP_BOOTSTRAP_PASSWORD", "ngan")
     st = Stores.from_env()
     assert st.bootstrap_ephemeral() == []
+    st.dispose()
+
+
+def test_worker_kill_switch_http_governance_only(tmp_path, monkeypatch):
+    """Kill switch HTTP (sandbox tạm): chỉ governance; ghi log kill_switch; worker thật sự dừng rồi chạy lại."""
+    from fastapi.testclient import TestClient
+    from services.forum.app import Stores, create_app
+    from services.forum.worker import Worker, jobs_t, logs_t
+    from sqlalchemy import select
+    for n in ("CFP_FORUM_AUTH_DB", "CFP_FORUM_DB_SIEU_BO_DOI", "CFP_FORUM_DB_SI_AI_HSTDN", "CFP_OFFICE_DB", "CFP_WORKER_DB"):
+        monkeypatch.delenv(n, raising=False)
+    monkeypatch.setenv("CFP_SANDBOX_EPHEMERAL", "1")
+    monkeypatch.setenv("CFP_FORUM_COOKIE_SECURE", "auto")  # TestClient chạy http
+    monkeypatch.setenv("CFP_EPHEMERAL_DIR", str(tmp_path))
+    monkeypatch.setenv("CFP_BOOTSTRAP_GOV_EMAIL", "gov@example.org")
+    monkeypatch.setenv("CFP_BOOTSTRAP_PASSWORD", "mat-khau-bootstrap-1")
+    st = Stores.from_env()
+    H = {"X-CFP-Forum": "1"}
+    gov, other, anon = (TestClient(create_app(st)) for _ in range(3))
+    gov.post("/api/auth/login", json={"email": "gov@example.org", "password": "mat-khau-bootstrap-1"}, headers=H)
+    other.post("/api/auth/register", json={"email": "x@example.org", "password": "mat-khau-x-123", "name": "Người X"}, headers=H)
+    body = {"paused": True, "reason": "kiểm thử dừng an toàn"}
+    assert anon.post("/api/worker/control", json=body, headers=H).status_code == 401
+    assert other.post("/api/worker/control", json=body, headers=H).status_code == 403
+    assert gov.post("/api/worker/control", json=body).status_code == 403  # thiếu header CSRF
+    assert gov.post("/api/worker/control", json=body, headers=H).json() == {"paused": True}
+    w = Worker(st.worker, "t1")
+    w.tick()
+    with st.worker.connect() as c:
+        assert c.execute(select(jobs_t)).first() is None  # đang dừng → không nhận việc
+        ev = c.execute(select(logs_t.c.event, logs_t.c.worker_id).where(logs_t.c.event == "kill_switch")).all()
+    assert len(ev) == 1 and ev[0].worker_id.startswith("governance:user:")
+    assert gov.get("/api/worker/status").json()["paused"] is True
+    assert gov.post("/api/worker/control", json={"paused": False, "reason": "chạy lại"}, headers=H).json() == {"paused": False}
+    w.tick()
+    with st.worker.connect() as c:
+        assert c.execute(select(jobs_t.c.status)).scalar() == "done"
     st.dispose()
