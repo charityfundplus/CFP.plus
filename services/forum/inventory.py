@@ -19,6 +19,9 @@ INVENTORY_PATH = HERE / "API_INVENTORY.md"
 
 # Ranh giới quyền ngoài mức đăng nhập (kiểm tra trong thân handler; có test riêng trong tests/forum).
 ROLE_RULES = {
+    ("GET", "/api/office/offices/{cid}"): "maintainer/governance hoặc nhiệm vụ được chỉ định; reviewer chỉ xem nhiệm vụ của mình",
+    ("GET", "/api/office/links"): "lọc cả hai đầu theo quyền đọc đối tượng",
+    ("POST", "/api/office/links"): "có quyền đọc cả hai đối tượng (chưa phải ACL ghi đầy đủ)",
     ("GET", "/api/forums/{key}/posts"): "Siêu Bộ Đôi: công khai • SI AI • HSTDN: thành viên đã duyệt",
     ("POST", "/api/forums/{key}/posts"): "thành viên active của đúng diễn đàn",
     ("POST", "/api/forums/{key}/posts/{post_id}/comments"): "thành viên active của đúng diễn đàn",
@@ -35,7 +38,7 @@ ROLE_RULES = {
     ("POST", "/api/office/tasks/{tid}/evidence"): "người thực thi",
     ("POST", "/api/office/tasks/{tid}/review"): "reviewer được chỉ định",
     ("GET", "/api/office/audit"): "governance/reviewer",
-    ("GET", "/api/office/datasets/{did}"): "access=members → cần đăng nhập",
+    ("GET", "/api/office/datasets/{did}"): "access=members → người tạo/governance",
 }
 
 
@@ -104,7 +107,8 @@ def render_markdown(app) -> str:
     for r in inventory_rows(app):
         lines.append(f"| {r['module']} | {r['method']} | `{r['path']}` | {r['auth']} | {r['role']} | {r['csrf']} | {r['store']} |")
     lines += ["", "Ranh giới dữ liệu: mỗi kho là một schema + role riêng (#193 + 002_office.sql); "
-              "role của kho này không có USAGE trên schema kho khác; `anon`/`authenticated` không có quyền.", ""]
+              "role của kho này không có USAGE trên schema kho khác; `anon`/`authenticated` không có quyền. Role office_app được đọc toàn kho; RLS hiện không cách ly tenant/người dùng. "
+              "ACL ứng dụng là ranh giới hiện tại, cần PostgreSQL review độc lập (SEC-P0-195-03 còn OPEN).", ""]
     return "\n".join(lines)
 
 

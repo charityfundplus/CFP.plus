@@ -301,6 +301,35 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
             val = int(val)
         return c.execute(select(col).where(col == val)).first() is not None
 
+    def can_read_ref(c: Connection, ref: str, user: dict | None) -> bool:
+        kind, _, value = ref.partition(":")
+        if kind not in {"office", "pair", "task", "dataset"}:
+            return True
+        if kind != "office" and (not value.isascii() or not value.isdigit() or len(value) > 9):
+            return False
+        uid = user["id"] if user else None
+        if uid is not None and "governance" in roles(c, uid):
+            return True
+        if kind == "dataset":
+            d = c.execute(select(datasets_t).where(datasets_t.c.id == value)).mappings().first()
+            return bool(d and (d["access"] == "public" or uid == d["created_by"]))
+        if uid is None:
+            return False
+        if kind == "office":
+            return is_maintainer(c, value, uid) or bool(c.execute(
+                select(tasks_t.c.id).join(pairs_t, tasks_t.c.pair_id == pairs_t.c.id).where(
+                    pairs_t.c.canonical_id == value,
+                    or_(tasks_t.c.assignee_id == uid, tasks_t.c.reviewer_id == uid)
+                )).first())
+        if kind == "pair":
+            p = c.execute(select(pairs_t).where(pairs_t.c.id == value)).mappings().first()
+            return bool(p and (p["lead_user_id"] == uid or is_maintainer(c, p["canonical_id"], uid)))
+        t = c.execute(select(tasks_t).where(tasks_t.c.id == value)).mappings().first()
+        if not t:
+            return False
+        p = c.execute(select(pairs_t).where(pairs_t.c.id == t["pair_id"])).mappings().first()
+        return uid in {t["assignee_id"], t["reviewer_id"]} or bool(p and is_maintainer(c, p["canonical_id"], uid))
+
     def link(c: Connection, actor: int, a: str, b: str, rel: str) -> None:
         if c.execute(select(links_t.c.id).where(links_t.c.from_ref == a, links_t.c.to_ref == b,
                                                 links_t.c.relation == rel)).first():
@@ -372,10 +401,20 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
             o = c.execute(select(offices_t).where(offices_t.c.canonical_id == cid)).mappings().first()
             if not o:
                 raise HTTPException(404, "Không có Văn Phòng cho ID này.")
+            member = bool(user and (is_maintainer(c, cid, user["id"]) or "governance" in roles(c, user["id"])))
+            assigned = bool(user and c.execute(select(tasks_t.c.id).join(pairs_t, tasks_t.c.pair_id == pairs_t.c.id).where(
+                pairs_t.c.canonical_id == cid,
+                or_(tasks_t.c.assignee_id == user["id"], tasks_t.c.reviewer_id == user["id"])
+            )).first())
+            if not member and not assigned:
+                raise HTTPException(401 if not user else 403, "Văn Phòng yêu cầu quyền truy cập.")
             brand = c.execute(select(brand_t).where(brand_t.c.canonical_id == cid).order_by(brand_t.c.id)).mappings().all()
             pairs = c.execute(select(pairs_t).where(pairs_t.c.canonical_id == cid).order_by(pairs_t.c.id)).mappings().all()
             pair_ids = [p["id"] for p in pairs]
             tasks = c.execute(select(tasks_t).where(tasks_t.c.pair_id.in_(pair_ids)).order_by(tasks_t.c.id)).mappings().all() if pair_ids else []
+            if not member:
+                tasks = [t for t in tasks if user["id"] in {t["assignee_id"], t["reviewer_id"]}]
+                pairs = [p for p in pairs if p["id"] in {t["pair_id"] for t in tasks}]
             tids = [t["id"] for t in tasks]
             ev = c.execute(select(evidence_t).where(evidence_t.c.task_id.in_(tids)).order_by(evidence_t.c.id)).mappings().all() if tids else []
             rv = c.execute(select(reviews_t).where(reviews_t.c.task_id.in_(tids)).order_by(reviews_t.c.id)).mappings().all() if tids else []
@@ -384,13 +423,13 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
         e = registry.get(cid)
         return {
             "office": _row(o), "registry_chain": registry.chain(cid), "taxonomy": {"group": group_of("6"), "chapter": {"id": "6", "name": CHAPTERS["6"]}},
-            "maintainers": maint, "can_edit": bool(user and user["id"] in maint),
+            "maintainers": maint if member else [], "can_edit": bool(user and user["id"] in maint),
             "brand": [{**_row(b), "source_label": SOURCE_LABELS[b["source_type"]]} for b in brand],
             "pairs": [_row(p) for p in pairs],
             "tasks": [{**_row(t), "evidence": [_row(x) for x in ev if x["task_id"] == t["id"]],
                        "reviews": [_row(x) for x in rv if x["task_id"] == t["id"]],
                        "history": [_row(x) for x in hist if x["task_id"] == t["id"]]} for t in tasks],
-            "links": links_of(f"office:{cid}"), "public_link": f"https://cfp.plus/{cid}/",
+            "links": links_of(f"office:{cid}", user), "public_link": f"https://cfp.plus/{cid}/",
             "developer": registry.get(e.parent_id).public() if e and e.parent_id and registry.get(e.parent_id) else None,
         }
 
@@ -477,26 +516,27 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
             d = c.execute(select(datasets_t).where(datasets_t.c.id == did)).mappings().first()
         if not d:
             raise HTTPException(404, "Không có tài liệu.")
-        if d["access"] == "members" and not user:
-            raise HTTPException(401, "Tài liệu này chỉ dành cho thành viên đã đăng nhập.")
-        return {**_row(d), "links": links_of(f"dataset:{did}")}
+        with engine.connect() as c:
+            if not can_read_ref(c, f"dataset:{did}", user):
+                raise HTTPException(404, "Không có tài liệu.")
+        return {**_row(d), "links": links_of(f"dataset:{did}", user)}
 
     @r.get("/enterprises/{eid}")
-    def get_enterprise(eid: int):
+    def get_enterprise(eid: int, user=Depends(optional_user)):
         with engine.connect() as c:
             d = c.execute(select(enterprises_t).where(enterprises_t.c.id == eid)).mappings().first()
         if not d:
             raise HTTPException(404, "Không có doanh nghiệp.")
-        return {**_row(d), "country": registry.get(d["country_id"]).public(), "links": links_of(f"enterprise:{eid}")}
+        return {**_row(d), "country": registry.get(d["country_id"]).public(), "links": links_of(f"enterprise:{eid}", user)}
 
     @r.get("/topics/{tid}")
-    def get_topic(tid: int):
+    def get_topic(tid: int, user=Depends(optional_user)):
         with engine.connect() as c:
             d = c.execute(select(topics_t).where(topics_t.c.id == tid)).mappings().first()
         if not d:
             raise HTTPException(404, "Không có chủ đề.")
         return {**_row(d), "chapter_name": CHAPTERS[d["chapter"]], "group": group_of(d["chapter"]),
-                "links": links_of(f"topic:{tid}")}
+                "links": links_of(f"topic:{tid}", user)}
 
     # ---- Siêu Bộ Đôi + nhiệm vụ
     @r.post("/pairs", status_code=201)
@@ -629,12 +669,14 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
         return {"id": tid, "status": "ACCEPTED" if data.decision == "ACCEPT" else "CHANGES_REQUESTED"}
 
     # ---- liên kết hai chiều + tìm kiếm + lịch sử
-    def links_of(ref: str) -> dict:
+    def links_of(ref: str, user: dict | None = None) -> dict:
         with engine.connect() as c:
+            if not can_read_ref(c, ref, user):
+                raise HTTPException(404, "Không có liên kết.")
             out = c.execute(select(links_t.c.to_ref, links_t.c.relation).where(links_t.c.from_ref == ref)).all()
             inc = c.execute(select(links_t.c.from_ref, links_t.c.relation).where(links_t.c.to_ref == ref)).all()
-        return {"outgoing": [{"ref": a, "relation": b} for a, b in out],
-                "incoming": [{"ref": a, "relation": b} for a, b in inc]}
+            return {"outgoing": [{"ref": a, "relation": b} for a, b in out if can_read_ref(c, a, user)],
+                    "incoming": [{"ref": a, "relation": b} for a, b in inc if can_read_ref(c, a, user)]}
 
     @r.post("/links", status_code=201)
     def add_link(data: LinkIn, user=Depends(require_user)):
@@ -644,13 +686,15 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
             for ref in (data.from_ref, data.to_ref):
                 if not ref_exists(c, ref):
                     raise HTTPException(422, f"Không tồn tại: {ref}")
+            if not all(can_read_ref(c, ref, user) for ref in (data.from_ref, data.to_ref)):
+                raise HTTPException(403, "Không có quyền liên kết các mục này.")
             link(c, user["id"], data.from_ref, data.to_ref, data.relation)
             audit(c, user["id"], "link.create", data.from_ref, data.model_dump())
         return {"ok": True}
 
     @r.get("/links")
-    def get_links(ref: str):
-        return links_of(ref)
+    def get_links(ref: str, user=Depends(optional_user)):
+        return links_of(ref, user)
 
     @r.get("/search")
     def search(q: str = "", chapter: str | None = None, user=Depends(optional_user)):
@@ -680,8 +724,8 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
             cond = func.lower(datasets_t.c.title).like(like)
             if chapter is not None:
                 cond = and_(cond, datasets_t.c.chapter == chapter)
-            if not user:
-                cond = and_(cond, datasets_t.c.access == "public")
+            if not user or "governance" not in roles(c, user["id"]):
+                cond = and_(cond, or_(datasets_t.c.access == "public", datasets_t.c.created_by == user["id"]) if user else datasets_t.c.access == "public")
             for row in c.execute(select(datasets_t.c.id, datasets_t.c.title, datasets_t.c.chapter).where(cond)):
                 res.append({"ref": f"dataset:{row[0]}", "title": row[1], "chapter": row[2]})
         for e in registry.entities.values():
@@ -694,6 +738,8 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
         with engine.connect() as c:
             if not roles(c, user["id"]) & {"governance", "reviewer"}:
                 raise HTTPException(403, "Chỉ governance/reviewer xem nhật ký kiểm toán.")
+            if not can_read_ref(c, ref, user):
+                raise HTTPException(403, "Không có quyền đọc nhật ký của mục này.")
             rows = c.execute(select(audit_t).where(or_(audit_t.c.ref == ref)).order_by(audit_t.c.id)).mappings().all()
         return {"events": [_row(x) for x in rows]}
 

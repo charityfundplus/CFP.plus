@@ -77,6 +77,8 @@ def test_registry_chain_and_no_invented_ids():
 def test_full_flow_and_reload_after_restart(world, urls):
     st2 = stores(urls)  # engine mới = khởi động lại
     c = client(st2)
+    email = world["lead"].get("/api/auth/me").json()["user"]["email"]
+    ok(c.post("/api/auth/login", json={"email": email, "password": "matkhau-office-p0"}, headers=H), 200)
     d = ok(c.get(f"/api/office/offices/{CID}"), 200)
     assert [x["id"] for x in d["registry_chain"]] == ["911", "6911", "69112", CID]
     assert d["taxonomy"]["group"]["code"] == "246" and d["taxonomy"]["chapter"]["id"] == "6"
@@ -89,7 +91,7 @@ def test_full_flow_and_reload_after_restart(world, urls):
 
 
 def test_bidirectional_links(world):
-    c, o = world["other"], world["out"]
+    c, o = world["lead"], world["out"]
     ent = ok(c.get(f"/api/office/enterprises/{o['enterprise']}"), 200)
     assert {"ref": f"task:{o['task']}", "relation": "uses"} in ent["links"]["incoming"]
     assert {"ref": "registry:911", "relation": "located_in"} in ent["links"]["outgoing"]
@@ -209,7 +211,7 @@ def test_members_only_dataset(world):
     d = ok(lead.post("/api/office/datasets", json={**SAMPLE["dataset"], "title": "Giáo trình nội bộ", "access": "members",
                                                   "version": "m1", "topic_id": world["out"]["topic"]}, headers=H), 201)["id"]
     anon = TestClient(create_app(world["st"]))
-    assert anon.get(f"/api/office/datasets/{d}").status_code == 401
+    assert anon.get(f"/api/office/datasets/{d}").status_code == 404
     assert not any(r["ref"] == f"dataset:{d}" for r in anon.get("/api/office/search", params={"q": "giáo trình"}).json()["results"])
     assert lead.get(f"/api/office/datasets/{d}").status_code == 200
 
@@ -325,3 +327,39 @@ def test_task_idempotency_cannot_bypass_office_authorization(world):
                     {"refs": ["registry:691121"]}):
         response = world["lead"].post('/api/office/tasks', json={**payload, **changed}, headers=H)
         assert response.status_code == 409
+
+
+def test_private_office_read_and_link_boundaries(world):
+    anon = client(world['st'])
+    assert anon.get(f'/api/office/offices/{CID}').status_code == 401
+    assert world['other'].get(f'/api/office/offices/{CID}').status_code == 403
+    ref = f"task:{world['out']['task']}"
+    for c in (anon, world['other']):
+        assert c.get('/api/office/links', params={'ref': ref}).status_code == 404
+        enterprise = c.get(f"/api/office/enterprises/{world['out']['enterprise']}").json()
+        assert ref not in str(enterprise['links'])
+    assert world['rev'].get(f'/api/office/offices/{CID}').status_code == 200
+    assert world['other'].post('/api/office/links', json={
+        'from_ref': ref, 'to_ref': 'registry:691121', 'relation': 'uses'}, headers=H).status_code == 403
+
+
+def test_private_dataset_not_disclosed_to_unrelated_session(world):
+    payload = {**SAMPLE['dataset'], 'url': 'https://example.org/private-regression',
+               'title': 'Private regression unique', 'access': 'members'}
+    did = ok(world['lead'].post('/api/office/datasets', json=payload, headers=H), 201)['id']
+    for c in (client(world['st']), world['other']):
+        assert c.get(f'/api/office/datasets/{did}').status_code == 404
+        assert f'dataset:{did}' not in str(c.get('/api/office/search?q=Private%20regression').json())
+    assert world['lead'].get(f'/api/office/datasets/{did}').status_code == 200
+
+
+def test_reviewer_sees_only_assigned_tasks(world):
+    t = ok(world['lead'].post('/api/office/tasks', headers=H, json={
+        'pair_id': world['out']['pair'], 'title': 'Not assigned to reviewer',
+        'acceptance': 'Only assigned reviewer sees this task', 'reviewer_id': world['ids']['gov'],
+        'idempotency_key': 'other-reviewer-task'}), 201)['id']
+    data = world['rev'].get(f'/api/office/offices/{CID}').json()
+    assert t not in [task['id'] for task in data['tasks']]
+    assert world['rev'].get('/api/office/links', params={'ref': f'task:{t}'}).status_code == 404
+    for bad in ('task:abc', 'pair:999999999999999999999', 'dataset:１'):
+        assert world['other'].get('/api/office/links', params={'ref': bad}).status_code == 404

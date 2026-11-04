@@ -36,6 +36,7 @@ const assert = (c, m) => { if (!c) throw new Error(m || 'assertion failed'); };
 
   const browser = await chromium.launch();
   const ctx = await browser.newContext({ ...devices['iPhone 13'] });
+  await ctx.request.post(base + '/api/auth/login', { data: { email: prefix + '-lead@example.org', password: 'matkhau-office-p0' }, headers: { 'X-CFP-Forum': '1' } });
   const page = await ctx.newPage();
   const jsErrors = []; page.on('pageerror', (e) => jsErrors.push(e.message));
   const URL = base + '/_internal/office/691121/';
