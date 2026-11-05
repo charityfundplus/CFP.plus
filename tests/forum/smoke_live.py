@@ -314,15 +314,47 @@ def run(base: str, allow_http: bool, public_only: bool = False) -> dict:
     worker_up = s.check("worker", "worker chạy thật (heartbeat mới, không bị dừng)", lambda: worker_ok(guest))
 
     def kill_switch():
+        """Dừng an toàn có quan sát: giữ trạng thái dừng qua ≥1 nhịp worker, số việc không đổi trong lúc dừng,
+        chạy lại → worker báo running ở nhịp mới. Luôn khôi phục trạng thái ban đầu (finally).
+        (Xử lý đúng một lần sau khi chạy lại: tests/forum/test_forum_api.py::test_worker_kill_switch_http_governance_only.)"""
         assert worker_up, "worker không chạy → không kiểm được dừng an toàn"
+        wait = float(os.environ.get("SMOKE_WORKER_WAIT", "120"))
+
+        def st():
+            return expect(guest.get("/api/worker/status"), 200)
+
+        def until(pred, what):
+            t_end = time.monotonic() + wait
+            while time.monotonic() < t_end:
+                w = st()
+                if pred(w):
+                    return w
+                time.sleep(2)
+            raise AssertionError(f"quá {int(wait)} s chưa thấy: {what}")
+
         expect(lead.post("/api/worker/control", json={"paused": True, "reason": "smoke"}, headers=H), 403)
-        assert expect(gov.post("/api/worker/control", json={"paused": True, "reason": f"smoke {tag}: dừng an toàn"},
-                               headers=H), 200)["paused"] is True
-        assert expect(guest.get("/api/worker/status"), 200)["paused"] is True
-        assert expect(gov.post("/api/worker/control", json={"paused": False, "reason": f"smoke {tag}: chạy lại"},
-                               headers=H), 200)["paused"] is False
-        return "người thực thi → 403; governance dừng → paused=true → chạy lại → paused=false"
-    s.check("worker", "kill switch qua HTTP (governance)", kill_switch)
+        before = st()
+        was_paused = before["paused"]
+        jobs0, ticks0 = before["jobs"], before["heartbeats"][0]["ticks"]
+        paused_set = False
+        try:
+            assert expect(gov.post("/api/worker/control", json={"paused": True, "reason": f"smoke {tag}: dừng an toàn"},
+                                   headers=H), 200)["paused"] is True
+            paused_set = True
+            w = until(lambda w: w["heartbeats"][0]["state"] == "paused" and w["heartbeats"][0]["ticks"] > ticks0,
+                      "worker ghi heartbeat 'paused' ở nhịp mới")
+            t_pause = w["heartbeats"][0]["ticks"]
+            w = until(lambda w: w["heartbeats"][0]["ticks"] > t_pause, "thêm một nhịp khi đang dừng")
+            assert w["heartbeats"][0]["state"] == "paused", w["heartbeats"][0]
+            assert w["jobs"] == jobs0, f"số việc đổi trong lúc dừng: {jobs0} → {w['jobs']}"
+            held = w["heartbeats"][0]["ticks"] - ticks0
+        finally:
+            if paused_set and not was_paused:
+                gov.post("/api/worker/control", json={"paused": False, "reason": f"smoke {tag}: chạy lại"}, headers=H)
+        w = until(lambda w: not w["paused"] and w["heartbeats"][0]["state"] == "running", "worker chạy lại")
+        return {"held_ticks": held, "jobs_during_pause": jobs0, "after_resume": w["heartbeats"][0]["state"],
+                "kill_switch_events": sum(1 for r in w.get("recent", []) if r["event"] == "kill_switch")}
+    s.check("worker", "kill switch: dừng giữ qua ≥2 nhịp, số việc không đổi, chạy lại (governance)", kill_switch)
     return finish(s, base, tag)
 
 
