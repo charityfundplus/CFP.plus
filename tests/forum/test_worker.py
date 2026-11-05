@@ -189,3 +189,41 @@ def test_migration_004_matches_code():
     for t in W.md.sorted_tables:
         assert str(CreateTable(t, if_not_exists=True).compile(dialect=postgresql.dialect())).strip() + ";" in sql, t.name
         assert f"alter table cfp_worker.{t.name} force row level security;" in sql
+
+
+@pytest.mark.parametrize("outcome", ["done", "error"])
+def test_stale_worker_cannot_overwrite_after_lease_lost(env, outcome):
+    """Fencing: A nhận việc rồi treo quá lease → B thu hồi + nhận lại + hoàn tất → A xong muộn không ghi đè được."""
+    def ok(eng, job):
+        return {"by": job["locked_by"], "attempt": job["attempts"]}
+
+    def boom(eng, job):
+        raise RuntimeError("A lỗi muộn")
+    hs = {"slow": ok}
+    a = W.Worker(env["eng"], "worker-A", lease_seconds=60, handlers={"slow": ok if outcome == "done" else boom}, schedule={})
+    b = W.Worker(env["eng"], "worker-B", lease_seconds=60, handlers=hs, schedule={})
+    jid = a.enqueue("slow", "race-1", T0)
+    job_a = a.claim(T0)
+    assert job_a["attempts"] == 1 and job_a["locked_by"] == "worker-A"
+    b.recover_expired(T0 + timedelta(seconds=61))  # A coi như chết
+    job_b = b.claim(T0 + timedelta(seconds=61))
+    assert job_b and job_b["id"] == jid and job_b["attempts"] == 2
+    assert b.execute(job_b, T0 + timedelta(seconds=62)) == "done"
+    assert a.execute(job_a, T0 + timedelta(seconds=63)) == "stale"  # A trả kết quả muộn → bị từ chối
+    j = jobs(env["eng"], id=jid)[0]
+    assert j["status"] == "done" and j["attempts"] == 2 and json.loads(j["result"]) == {"by": "worker-B", "attempt": 2}
+    evs = events(env["eng"])
+    assert ("warn", "stale_commit") in evs and evs.count(("info", "done")) == 1
+    assert ("alert", "dead_letter") not in evs and ("error", "retry") not in evs
+
+
+def test_same_worker_old_attempt_is_fenced(env):
+    """Cùng worker nhận lại việc ở lần thử mới → kết quả của lần thử cũ không được ghi."""
+    w = W.Worker(env["eng"], "w1", lease_seconds=60, handlers={"k": lambda e, j: {"a": j["attempts"]}}, schedule={})
+    jid = w.enqueue("k", "same-1", T0)
+    old = w.claim(T0)
+    w.recover_expired(T0 + timedelta(seconds=61))
+    new = w.claim(T0 + timedelta(seconds=61))
+    assert w.execute(old, T0 + timedelta(seconds=62)) == "stale"
+    assert w.execute(new, T0 + timedelta(seconds=63)) == "done"
+    assert json.loads(jobs(env["eng"], id=jid)[0]["result"]) == {"a": 2}

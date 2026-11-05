@@ -209,9 +209,25 @@ class Worker:
                                   started_at=now)).rowcount
             if n != 1:
                 return None
-            return {**dict(j), "attempts": j["attempts"] + 1}
+            return {**dict(j), "attempts": j["attempts"] + 1, "status": "running", "locked_by": self.id, "started_at": now}
+
+    def _owned(self, job: dict):
+        """Fencing: chỉ ghi kết quả khi việc VẪN thuộc lần nhận này (cùng worker, cùng số lần thử, đang running).
+        Worker đã mất lease (việc bị thu hồi/nhận lại) không thể ghi đè. attempts tăng ở mỗi lần claim = token."""
+        return (jobs_t.c.id == job["id"], jobs_t.c.status == "running", jobs_t.c.locked_by == self.id,
+                jobs_t.c.attempts == job["attempts"])
+
+    def _finish(self, job: dict, now: datetime, values: dict) -> bool:
+        with self.eng.begin() as c:
+            n = c.execute(update(jobs_t).where(*self._owned(job)).values(**values)).rowcount
+        if n != 1:
+            self.log("warn", "stale_commit",
+                     f"bỏ kết quả lần thử {job['attempts']} của {self.id}: việc đã bị thu hồi/nhận lại (fencing)", job["id"])
+        return n == 1
 
     def execute(self, job: dict, now: datetime) -> str:
+        # Lưu ý: fencing chặn ghi trạng thái DB; tác động ra NGOÀI DB (nếu có handler như vậy) phải idempotent
+        # ở phía nhận. Handler P0 (registry_integrity) chỉ đọc.
         fn = self.handlers.get(job["kind"])
         try:
             if fn is None:
@@ -220,22 +236,19 @@ class Worker:
         except Exception as e:  # noqa: BLE001 — mọi lỗi việc đều qua retry/dead-letter
             err = f"{type(e).__name__}: {e}"
             if job["attempts"] >= job["max_attempts"]:
-                with self.eng.begin() as c:
-                    c.execute(update(jobs_t).where(jobs_t.c.id == job["id"])
-                              .values(status="dead", finished_at=now, last_error=err, locked_by=None))
+                if not self._finish(job, now, dict(status="dead", finished_at=now, last_error=err, locked_by=None)):
+                    return "stale"
                 self.log("alert", "dead_letter", f"{job['kind']} thất bại {job['attempts']}/{job['max_attempts']} lần: {err}", job["id"])
                 return "dead"
             delay = min(self.backoff_cap, self.backoff_base * 2 ** (job["attempts"] - 1))
-            with self.eng.begin() as c:
-                c.execute(update(jobs_t).where(jobs_t.c.id == job["id"])
-                          .values(status="queued", next_run_at=now + timedelta(seconds=delay), last_error=err,
-                                  locked_by=None))
+            if not self._finish(job, now, dict(status="queued", next_run_at=now + timedelta(seconds=delay),
+                                               last_error=err, locked_by=None)):
+                return "stale"
             self.log("error", "retry", f"{job['kind']} lần {job['attempts']}: {err} → thử lại sau {delay}s", job["id"])
             return "retry"
-        with self.eng.begin() as c:
-            c.execute(update(jobs_t).where(jobs_t.c.id == job["id"])
-                      .values(status="done", finished_at=now, result=json.dumps(result, ensure_ascii=False),
-                              last_error=None, locked_by=None))
+        if not self._finish(job, now, dict(status="done", finished_at=now, result=json.dumps(result, ensure_ascii=False),
+                                           last_error=None, locked_by=None)):
+            return "stale"
         if result.get("drift") or result.get("problems"):
             self.log("alert", "registry_drift", json.dumps({k: result[k] for k in ("drift", "problems", "digest",
                                                                                   "previous_digest")}, ensure_ascii=False), job["id"])

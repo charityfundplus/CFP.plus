@@ -45,7 +45,13 @@ jobs:
       - name: Smoke
         run: |
           set -o pipefail  # FAIL của smoke phải làm job đỏ (không bị | tee che)
-          MODE=--public-only; [ -n "$SMOKE_PASSWORD" ] && MODE=
+          # Preflight: đủ cả 3 secrets → chế độ đầy đủ; thiếu hết → public-only; thiếu một phần → FAIL rõ ràng.
+          n=0; for v in SMOKE_GOV_EMAIL SMOKE_REVIEWER_EMAIL SMOKE_PASSWORD; do
+            if [ -n "${!v}" ]; then echo "$v: có"; n=$((n+1)); else echo "$v: THIẾU"; fi
+          done
+          if [ "$n" = 3 ]; then MODE=; echo "SMOKE_MODE=full (đăng nhập + ghi)"
+          elif [ "$n" = 0 ]; then MODE=--public-only; echo "SMOKE_MODE=public-only — KHÔNG phải nghiệm thu E2E"
+          else echo "::error::Thiếu một phần secrets SMOKE_* ($n/3) — cấu hình đủ cả 3 hoặc bỏ hết"; exit 1; fi
           python -m tests.forum.smoke_live --base "$BASE" --out render-smoke.json $MODE | tee render-smoke.log
       - if: always()
         uses: actions/upload-artifact@v4
