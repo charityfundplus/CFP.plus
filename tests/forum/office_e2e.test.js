@@ -193,7 +193,7 @@ const assert = (c, m) => { if (!c) throw new Error(m || 'assertion failed'); };
     await cp.goto(base + '/_internal/catalog/');
     await cp.getByTestId('catalog-item').first().waitFor();
     await cp.getByTestId('catalog-q').fill('tmtc');
-    await cp.waitForFunction(() => document.querySelector('[data-testid="catalog-count"]').textContent.includes('tmtc'));
+    await cp.getByTestId('catalog-count').filter({ hasText: 'tmtc' }).waitFor();  // locator: không cần eval (CSP)
     const item = cp.locator('[data-testid="catalog-item"][data-id="8682"]');
     await item.waitFor();
     const sw = await cp.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
