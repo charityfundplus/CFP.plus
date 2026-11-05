@@ -61,6 +61,8 @@ class Entity:
     country_id: str | None = None
     source: str = ""
     children: list[str] = field(default_factory=list)
+    # explicit: Parent khai báo trong JSON nguồn • inferred_prefix: suy từ tiền tố ID của Markdown (CHƯA xác minh)
+    parent_source: str | None = None
 
     def public(self) -> dict:
         return {"id": self.id, "type": self.type, "name": self.name, "parent_id": self.parent_id,
@@ -72,6 +74,7 @@ class Entity:
 class Registry:
     def __init__(self, root: Path = REPO_ROOT):
         self.entities: dict[str, Entity] = {}
+        self.conflicts: list[dict] = []
         reg = root / "registry"
         for c in json.loads((reg / "global-country-ai-index.json").read_text(encoding="utf-8")):
             cid, acid = str(c["country_id"]), str(c["ai_country_id"])
@@ -93,13 +96,19 @@ class Registry:
             first = next((ln for ln in md.read_text(encoding="utf-8").splitlines() if ln.startswith("# ")), md.stem)
             parent = md.stem[:-1] if md.stem[:-1] in self.entities else None
             self._add(Entity(md.stem, "registry_record", first.lstrip("# ").strip()[:200], parent,
-                             source=f"registry/{md.name}"))
+                             source=f"registry/{md.name}", parent_source="inferred_prefix" if parent else None))
         for e in self.entities.values():
             if e.parent_id and e.parent_id in self.entities:
                 self.entities[e.parent_id].children.append(e.id)
 
     def _add(self, e: Entity) -> None:
-        if e.id in self.entities:  # không ghi đè; nguồn đầu tiên thắng
+        if e.parent_id and e.parent_source is None:
+            e.parent_source = "explicit"
+        prev = self.entities.get(e.id)
+        if prev is not None:  # không ghi đè; nguồn đầu tiên giữ nguyên — nhưng xung đột phải được BÁO, không im lặng
+            diff = [f for f in ("type", "name", "parent_id") if getattr(prev, f) != getattr(e, f)]
+            if diff:
+                self.conflicts.append({"id": e.id, "fields": diff, "kept": prev.source, "ignored": e.source})
             return
         self.entities[e.id] = e
 

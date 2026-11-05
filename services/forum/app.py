@@ -762,7 +762,10 @@ def create_app(stores: Stores | None = None) -> FastAPI:
     def catalog_meta():
         return {"modules": [{"n": n, "name": name, "status": st_} for n, name, st_ in LINK_MODULES],
                 "sandbox": [dict(x, classification="INTERNAL") for x in SANDBOX],
-                "pending": [dict(x, status="pending_verification", canonical_id=None) for x in PENDING]}
+                "pending": [dict(x, status="pending_verification", canonical_id=None) for x in PENDING],
+                "registry_conflicts": registry.conflicts,  # cùng ID, khác nguồn: báo, không tự chọn/ghi đè
+                "parent_counts": {s_: sum(1 for i in catalog.items.values() if i["parent_status"] == s_)
+                                  for s_ in ("registry", "inferred_prefix", "pending_verification")}}
 
     @app.get("/api/catalog/{cid}", tags=["catalog"])
     def catalog_item(cid: str):

@@ -113,7 +113,9 @@ def test_catalog_only_verified_pages_and_registry_parents():
     for it in cat.items.values():  # parent chỉ từ Registry; không có → chờ xác minh, không suy từ tiền tố
         e = reg.get(it["canonical_id"])
         assert it["parent_id"] == (e.parent_id if e else None)
-        assert (it["parent_status"] == "registry") == bool(it["parent_id"])
+        want = ("pending_verification" if not it["parent_id"] else
+                "registry" if e.parent_source == "explicit" else "inferred_prefix")
+        assert it["parent_status"] == want
     assert "HUB 69" in cat.items["69"]["title"]
     ids = [r["canonical_id"] for r in cat.search("tmtc")]
     assert "8682" in ids and all("tmtc" in fold(r["title"] + r["description"] + r["canonical_id"]) for r in cat.search("tmtc"))
@@ -136,3 +138,39 @@ def test_catalog_api(client):
     assert all(x["classification"] == "INTERNAL" for x in m["sandbox"])
     page = client.get("/_internal/catalog/")
     assert page.status_code == 200 and "noindex" in page.headers["x-robots-tag"]
+
+
+def _mini_registry(tmp_path, countries, entities, md):
+    import json
+    reg = tmp_path / "registry"
+    reg.mkdir()
+    (reg / "global-country-ai-index.json").write_text(json.dumps(countries), encoding="utf-8")
+    (reg / "ai-entity-registry.json").write_text(json.dumps(entities), encoding="utf-8")
+    for name, text in md.items():
+        (reg / f"{name}.md").write_text(text, encoding="utf-8")
+    return Registry(tmp_path)
+
+
+def test_registry_marks_prefix_inferred_parent(tmp_path):
+    """Tái hiện Codex 6667479276 #1: Markdown 1234 không khai báo Parent → Registry suy 123 từ tiền tố.
+    Giữ nguyên giá trị (không đổi Parent hiện hữu) nhưng đánh dấu inferred_prefix = CHƯA xác minh."""
+    r = _mini_registry(tmp_path, [], {"123": {"id": "123", "type": "developer", "name": "A", "ai_country_id": "12"}},
+                       {"1234": "# 1234 • Bản ghi\n"})
+    assert r.get("1234").parent_id == "123" and r.get("1234").parent_source == "inferred_prefix"
+    assert r.get("123").parent_source == "explicit"
+
+
+def test_registry_reports_conflicting_duplicates(tmp_path):
+    """Tái hiện Codex 6667479276 #2: cùng ID 123 ở hai nguồn với type/name khác → trước đây im lặng giữ nguồn đầu.
+    Nay vẫn giữ nguồn đầu (không ghi đè) nhưng BÁO xung đột kèm nguồn và trường khác nhau."""
+    r = _mini_registry(tmp_path, [{"country_id": "123", "ai_country_id": "6123", "name": "Quốc gia X"}],
+                       {"123": {"id": "123", "type": "developer", "name": "Hãng Y"}}, {})
+    assert r.get("123").type == "country"
+    assert r.conflicts == [{"id": "123", "fields": ["type", "name"], "kept": "global-country-ai-index.json",
+                            "ignored": "ai-entity-registry.json"}]
+
+
+def test_real_registry_has_no_conflicts_and_meta_reports_counts(client):
+    assert Registry().conflicts == []
+    m = client.get("/api/catalog/meta").json()
+    assert m["registry_conflicts"] == [] and sum(m["parent_counts"].values()) == client.get("/api/catalog").json()["total"]

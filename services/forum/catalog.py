@@ -89,7 +89,9 @@ class Catalog:
                 "title": title or d.name,
                 "description": desc[:300],
                 "parent_id": parent,
-                "parent_status": "registry" if parent else "pending_verification",
+                # registry: Parent khai báo trong Registry • inferred_prefix: Registry tự suy từ tiền tố (CHƯA xác minh)
+                "parent_status": ("pending_verification" if not parent else
+                                  "registry" if ent.parent_source == "explicit" else "inferred_prefix"),
                 "registry_type": ent.type if ent else None,
                 "version": "sha256:" + hashlib.sha256(raw).hexdigest()[:16],
                 "source": f"repo:{d.name}/index.html",
