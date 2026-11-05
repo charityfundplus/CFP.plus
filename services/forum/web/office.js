@@ -34,8 +34,16 @@
   }
   function linksBlock(links) {
     if (!links) return null;
-    var items = links.outgoing.map(function (l) { return el('li', {}, ['→ ' + l.relation + ' ', refLink(l.ref)]); })
-      .concat(links.incoming.map(function (l) { return el('li', {}, ['← ' + l.relation + ' ', refLink(l.ref)]); }));
+    function one(arrow, l) {
+      if (l.source) {  // bản gốc Link Mẫu: tiêu đề/version hiện hành, mở trang gốc (link không lưu bản sao)
+        return el('li', { 'data-testid': 'source-link' }, [arrow + ' ' + l.relation + ' ',
+          el('a', { href: '/' + l.source.canonical_id + '/', text: l.source.canonical_id + ' • ' + l.source.title }),
+          el('small', { text: ' • ' + l.source.version })]);
+      }
+      return el('li', {}, [arrow + ' ' + l.relation + ' ', refLink(l.ref)]);
+    }
+    var items = links.outgoing.map(function (l) { return one('→', l); })
+      .concat(links.incoming.map(function (l) { return one('←', l); }));
     return el('ul', { 'data-testid': 'links' }, items.length ? items : [el('li', { text: 'Chưa có liên kết.' })]);
   }
 

@@ -647,3 +647,40 @@ def test_sandbox_website_flag_off(urls, monkeypatch):
     c = client(stores(urls))
     assert c.get("/").status_code == 404 and c.get(f"/{CID}/").status_code == 404
     assert c.get("/api/health").status_code == 200
+
+
+def test_central_update_two_child_links_see_new_version(world, tmp_path):
+    """B • Cập nhật tập trung: nội dung gốc đổi MỘT lần → 2 link con (task refs + liên kết Văn Phòng) thấy version
+    mới; ref/URL/ID không đổi; link không lưu bản sao. ID không có trong nguồn → 422 (không tự cấp)."""
+    import shutil
+    from pathlib import Path
+    lead, gov, ids, o = world["lead"], world["gov"], world["ids"], world["out"]
+    repo = Path(__file__).resolve().parents[2]
+    ref = "catalog:8682"
+    t = ok(lead.post("/api/office/tasks", headers=H, json={
+        "pair_id": o["pair"], "title": "Dùng tài liệu gốc 8682", "acceptance": "đọc bản gốc", "reviewer_id": ids["rev"],
+        "idempotency_key": "catalog-ref-1", "refs": [ref]}), 201)["id"]
+    ok(gov.post("/api/office/links", headers=H, json={"from_ref": f"office:{CID}", "to_ref": ref, "relation": "references"}), 201)
+    bad = lead.post("/api/office/tasks", headers=H, json={
+        "pair_id": o["pair"], "title": "ID bịa", "acceptance": "abc", "reviewer_id": ids["rev"],
+        "idempotency_key": "catalog-ref-bad", "refs": ["catalog:99999999"]})
+    assert bad.status_code == 422
+
+    def children(client):
+        a = next(x for x in ok(client.get(f"/api/office/links?ref=task:{t}"), 200)["outgoing"] if x["ref"] == ref)
+        b = next(x for x in ok(client.get(f"/api/office/offices/{CID}"), 200)["links"]["outgoing"] if x["ref"] == ref)
+        return a["source"], b["source"]
+    v1 = children(gov)
+    assert v1[0] == v1[1] and v1[0]["canonical_url"] == "https://cfp.plus/8682/"
+    # cập nhật nội dung gốc MỘT lần (bản sao repo tạm) rồi dựng lại chỉ mục như một lần deploy
+    root = tmp_path / "repo"
+    (root / "8682").mkdir(parents=True)
+    page = (repo / "8682" / "index.html").read_text(encoding="utf-8")
+    (root / "8682" / "index.html").write_text(page.replace("</title>", " • bản cập nhật</title>", 1), encoding="utf-8")
+    for c in (lead, gov):
+        c.app.state.catalog.reload(root)
+    v2 = children(gov)
+    assert v2[0] == v2[1] and v2[0]["version"] != v1[0]["version"] and v2[0]["title"].endswith("bản cập nhật")
+    assert v2[0]["canonical_url"] == v1[0]["canonical_url"] and v2[0]["canonical_id"] == "8682"
+    for c in (lead, gov):  # trả lại nguồn thật cho các test khác
+        c.app.state.catalog.reload()

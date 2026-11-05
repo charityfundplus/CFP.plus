@@ -298,7 +298,7 @@ class LinkIn(BaseModel):
 # ------------------------------------------------------------- router
 
 def build_router(engine: Engine, registry: Registry, current_user, max_wip: int | None = None,
-                 forums: dict | None = None) -> APIRouter:
+                 forums: dict | None = None, catalog=None) -> APIRouter:
     """forums: cầu nối tới hai Diễn Đàn (kho riêng) — {"keys", "can_read", "create_post"}; None → tắt thảo luận."""
     r = APIRouter(prefix="/api/office", tags=["office"])
     is_pg = engine.dialect.name == "postgresql"
@@ -346,6 +346,8 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
 
     def ref_exists(c: Connection, ref: str) -> bool:
         kind, _, val = ref.partition(":")
+        if kind == "catalog":  # catalog:<ID> — trang ID số đã xuất bản (Link Mẫu); không cấp ID mới
+            return catalog is not None and val in catalog.items
         if kind == "registry":
             return registry.get(val) is not None
         if kind not in REF_TABLES or not val:
@@ -885,8 +887,13 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
                 return {"outgoing": [], "incoming": []}
             out = c.execute(select(links_t.c.to_ref, links_t.c.relation).where(links_t.c.from_ref == ref)).all()
             inc = c.execute(select(links_t.c.from_ref, links_t.c.relation).where(links_t.c.to_ref == ref)).all()
-            return {"outgoing": [{"ref": a, "relation": b} for a, b in out if ref_visible(c, p, a)],
-                    "incoming": [{"ref": a, "relation": b} for a, b in inc if ref_visible(c, p, a)]}
+            return {"outgoing": [resolved({"ref": a, "relation": b}) for a, b in out if ref_visible(c, p, a)],
+                    "incoming": [resolved({"ref": a, "relation": b}) for a, b in inc if ref_visible(c, p, a)]}
+
+    def resolved(x: dict) -> dict:
+        """Tham chiếu tới bản gốc: gắn tiêu đề/version/URL HIỆN HÀNH lúc đọc (link không lưu bản sao)."""
+        cur = catalog.resolve(x["ref"]) if catalog is not None else None
+        return {**x, "source": cur} if cur else x
 
     @r.post("/links", status_code=201)
     def add_link(data: LinkIn, user=Depends(require_user)):

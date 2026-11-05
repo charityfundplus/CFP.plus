@@ -471,6 +471,9 @@ def create_app(stores: Stores | None = None) -> FastAPI:
     # ---- health
     from services.forum.registry import Registry
     registry = Registry()
+    from services.forum.catalog import Catalog
+    catalog = Catalog(registry)
+    app.state.catalog = catalog
 
     @app.get("/api/health")
     def health():
@@ -688,7 +691,7 @@ def create_app(stores: Stores | None = None) -> FastAPI:
 
         bridge = {"keys": tuple(st.forums), "can_read": forum_can_read,
                   "create_post": lambda key, d, user: new_post(key, PostIn(**d), user)}
-        app.include_router(build_router(st.office, registry, current_user, forums=bridge))
+        app.include_router(build_router(st.office, registry, current_user, forums=bridge, catalog=catalog))
 
         @app.get("/_internal/office/office.js")
         def office_js():
@@ -747,8 +750,7 @@ def create_app(stores: Stores | None = None) -> FastAPI:
     app.include_router(build_hub_router(registry, st, FORUMS))
 
     # ---- Link Mẫu • danh mục công trình (chỉ đọc; chỉ trang ID số đã xuất bản + Registry; không cấp ID)
-    from services.forum.catalog import MODULES as LINK_MODULES, PENDING, SANDBOX, Catalog
-    catalog = Catalog(registry)
+    from services.forum.catalog import MODULES as LINK_MODULES, PENDING, SANDBOX
 
     @app.get("/api/catalog", tags=["catalog"])
     def catalog_search(q: str | None = None, limit: int = 50):

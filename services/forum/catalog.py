@@ -60,6 +60,18 @@ def fold(s: str) -> str:
 
 class Catalog:
     def __init__(self, registry, root: Path = REPO_ROOT):
+        self.registry = registry
+        self.reload(root)
+
+    def resolve(self, ref: str) -> dict | None:
+        """Link con chỉ lưu `catalog:<ID>`; nội dung luôn đọc từ bản gốc HIỆN HÀNH (không sao chép)."""
+        kind, _, cid = ref.partition(":")
+        it = self.items.get(cid) if kind == "catalog" else None
+        return {k: it[k] for k in ("canonical_id", "canonical_url", "title", "version")} if it else None
+
+    def reload(self, root: Path = REPO_ROOT) -> None:
+        """Dựng lại chỉ mục từ nguồn (mỗi deploy). Cập nhật nội dung gốc một lần → mọi link con thấy version mới."""
+        registry = self.registry
         self.items: dict[str, dict] = {}
         for d in sorted(p for p in root.iterdir() if p.is_dir() and re.fullmatch(r"[0-9]{1,32}", p.name)):
             f = d / "index.html"
