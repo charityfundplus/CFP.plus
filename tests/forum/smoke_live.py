@@ -167,6 +167,19 @@ def run(base: str, allow_http: bool, public_only: bool = False) -> dict:
         return out
     s.check("forum", "hai Diễn Đàn: trang + API riêng, HSTDN chặn khách", forums_isolated)
 
+    def catalog():
+        j = expect(guest.get("/api/catalog", params={"q": "8682"}), 200)
+        assert j["total"] >= 150 and j["items"][0]["canonical_id"] == "8682", j["items"][:1]
+        it = expect(guest.get("/api/catalog/691121"), 200)
+        assert it["canonical_url"] == "https://cfp.plus/691121/" and it["parent_id"] == "69112", it
+        r = guest.get("/api/catalog/99999999")
+        assert r.status_code == 404, f"ID lạ → {r.status_code}"
+        m = expect(guest.get("/api/catalog/meta"), 200)
+        assert len(m["modules"]) == 10 and all(p["canonical_id"] is None for p in m["pending"])
+        assert guest.get("/_internal/catalog/").status_code == 200
+        return {"total": j["total"], "8682": j["items"][0]["version"], "691121_parent": it["parent_id"], "unknown_id": 404}
+    s.check("catalog", "danh mục Link Mẫu: chỉ ID đã xuất bản, parent từ Registry, ID lạ 404", catalog)
+
     if public_only:
         s.check("worker", "worker chạy thật (heartbeat mới, không bị dừng)", lambda: worker_ok(guest))
         return finish(s, base, tag)
