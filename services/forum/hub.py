@@ -23,6 +23,8 @@ MODULES = [
     {"key": "research", "name": "Nghiên cứu • kho dữ liệu • giáo trình", "status": "implemented", "prefix": "/api/office/topics, /api/office/datasets"},
     {"key": "hub69", "name": "HUB 69 • tổng hợp chỉ đọc", "status": "implemented", "prefix": "/api/hub"},
     {"key": "directory", "name": "AI Directory • Registry chỉ đọc", "status": "implemented", "prefix": "/api/directory"},
+    {"key": "catalog", "name": "Link Mẫu • danh mục công trình (trang ID đã xuất bản + Registry, chỉ đọc)",
+     "status": "implemented", "prefix": "/api/catalog"},
     {"key": "worker", "name": "Worker P0 • hàng đợi + lịch chạy (heartbeat, retry, dead-letter, kill switch)",
      "status": "partial", "prefix": "/api/worker/status",
      "note": "SANDBOX: 1 việc chỉ đọc (registry_integrity). Chưa có runtime cố định → không phải 24/24."},

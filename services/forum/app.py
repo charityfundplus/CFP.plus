@@ -746,6 +746,39 @@ def create_app(stores: Stores | None = None) -> FastAPI:
     from services.forum.hub import build_hub_router
     app.include_router(build_hub_router(registry, st, FORUMS))
 
+    # ---- Link Mẫu • danh mục công trình (chỉ đọc; chỉ trang ID số đã xuất bản + Registry; không cấp ID)
+    from services.forum.catalog import MODULES as LINK_MODULES, PENDING, SANDBOX, Catalog
+    catalog = Catalog(registry)
+
+    @app.get("/api/catalog", tags=["catalog"])
+    def catalog_search(q: str | None = None, limit: int = 50):
+        limit = max(1, min(limit, 200))
+        return {"total": len(catalog.items), "items": catalog.search(q, limit),
+                "source": "repo: trang <ID>/index.html đã xuất bản + Registry (parent)"}
+
+    @app.get("/api/catalog/meta", tags=["catalog"])
+    def catalog_meta():
+        return {"modules": [{"n": n, "name": name, "status": st_} for n, name, st_ in LINK_MODULES],
+                "sandbox": [dict(x, classification="INTERNAL") for x in SANDBOX],
+                "pending": [dict(x, status="pending_verification", canonical_id=None) for x in PENDING]}
+
+    @app.get("/api/catalog/{cid}", tags=["catalog"])
+    def catalog_item(cid: str):
+        item = catalog.items.get(cid)
+        if not item:
+            raise HTTPException(404, "Chưa có trang ID này trong nguồn đã xác minh (không tự cấp ID).")
+        children = [c for c in catalog.items.values() if c["parent_id"] == cid]
+        return {**item, "children": [{"canonical_id": c["canonical_id"], "title": c["title"]} for c in children]}
+
+    @app.get("/_internal/catalog/catalog.js", include_in_schema=False)
+    def catalog_js():
+        return FileResponse(WEB_DIR / "catalog.js", media_type="text/javascript")
+
+    @app.get("/_internal/catalog/", include_in_schema=False)
+    def catalog_page():
+        return FileResponse(WEB_DIR / "catalog.html", media_type="text/html",
+                            headers={"X-Robots-Tag": "noindex, nofollow"})
+
     # ---- Khung website trong SANDBOX (cờ CFP_SANDBOX_WEBSITE, mặc định bật; "0" để tắt).
     # Phục vụ CHỈ ĐỌC các trang tĩnh có sẵn trong repo (/, /{ID số}/) và chèn thanh lối vào
     # Siêu Bộ Đôi • Văn Phòng • Diễn Đàn • Bảng điều phối. Không sửa tệp tĩnh, không tạo route
@@ -761,7 +794,8 @@ def create_app(stores: Stores | None = None) -> FastAPI:
             links = [("/_internal/office/", "HUB 69 • Văn Phòng SI AI"),
                      ("/_internal/forum/sieu-bo-doi/", "Diễn Đàn Siêu Bộ Đôi"),
                      ("/_internal/forum/si-ai-hstdn/", "Diễn Đàn SI AI • HSTDN"),
-                     ("/_internal/ops/", "Bảng điều phối")]
+                     ("/_internal/ops/", "Bảng điều phối"),
+                     ("/_internal/catalog/", "Danh mục Link Mẫu")]
             if cid and office_on and registry.get(cid) is not None:
                 links.insert(0, (f"/_internal/office/{cid}/", f"Văn Phòng {cid}"))
             if not office_on:

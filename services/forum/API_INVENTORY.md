@@ -15,6 +15,7 @@ Sinh tự động bởi `python -m services.forum.inventory --write` • CI ki�
 | Nghiên cứu • kho dữ liệu • giáo trình | **implemented** | `/api/office/topics, /api/office/datasets` |  |
 | HUB 69 • tổng hợp chỉ đọc | **implemented** | `/api/hub` |  |
 | AI Directory • Registry chỉ đọc | **implemented** | `/api/directory` |  |
+| Link Mẫu • danh mục công trình (trang ID đã xuất bản + Registry, chỉ đọc) | **implemented** | `/api/catalog` |  |
 | Worker P0 • hàng đợi + lịch chạy (heartbeat, retry, dead-letter, kill switch) | **partial** | `/api/worker/status` | SANDBOX: 1 việc chỉ đọc (registry_integrity). Chưa có runtime cố định → không phải 24/24. |
 | Website • nội dung động và form | **missing** | `—` | Website hiện là nginx tĩnh; chưa có API nội dung/form. |
 | App • API dùng chung | **partial** | `—` | App dùng được các API trên; chưa có client/App riêng trong repo. |
@@ -29,6 +30,9 @@ Sinh tự động bởi `python -m services.forum.inventory --write` • CI ki�
 | auth | POST | `/api/auth/logout` | công khai |  | header X-CFP-Forum + Origin | auth (cfp_forum_auth) |
 | auth | GET | `/api/auth/me` | công khai (+phiên nếu có) |  |  | auth (cfp_forum_auth) |
 | auth | POST | `/api/auth/register` | công khai |  | header X-CFP-Forum + Origin | auth (cfp_forum_auth) |
+| catalog | GET | `/api/catalog` | công khai |  |  | repo: trang <ID>/index.html đã xuất bản (chỉ đọc) + Registry |
+| catalog | GET | `/api/catalog/meta` | công khai |  |  | repo: trang <ID>/index.html đã xuất bản (chỉ đọc) + Registry |
+| catalog | GET | `/api/catalog/{cid}` | công khai |  |  | repo: trang <ID>/index.html đã xuất bản (chỉ đọc) + Registry |
 | directory | GET | `/api/directory/countries` | công khai |  |  | Registry (tệp, chỉ đọc) + cfp_office (đọc) |
 | directory | GET | `/api/directory/{eid}` | công khai |  |  | Registry (tệp, chỉ đọc) + cfp_office (đọc) |
 | forums | GET | `/api/forums/{key}` | công khai (+phiên nếu có) |  |  | diễn đàn tương ứng (cfp_forum_sbd | cfp_forum_hstdn) |

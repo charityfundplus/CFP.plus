@@ -91,3 +91,48 @@ def test_health_reports_modules(client):
     h = client.get("/api/health").json()
     assert h["status"] == "ok" and h["registry"]["read_only"] is True
     assert set(h["forums"]) == {"sieu-bo-doi", "si-ai-hstdn"} and h["office"]["offices"] == 0
+
+
+def test_catalog_only_verified_pages_and_registry_parents():
+    """Danh mục Link Mẫu: chỉ trang ID số đã xuất bản trong repo; parent chỉ từ Registry; không cấp ID."""
+    import hashlib
+    import re
+    from pathlib import Path
+    from services.forum.catalog import PENDING, Catalog, fold
+    from services.forum.registry import Registry
+    root = Path(__file__).resolve().parents[2]
+    reg = Registry()
+    cat = Catalog(reg)
+    on_disk = {p.name for p in root.iterdir() if p.is_dir() and re.fullmatch(r"[0-9]+", p.name) and (p / "index.html").is_file()}
+    assert set(cat.items) == on_disk and len(on_disk) >= 150
+    for cid in ("69", "267", "28882", "8682", "691121"):
+        it = cat.items[cid]
+        assert it["canonical_url"] == f"https://cfp.plus/{cid}/" and it["classification"] == "PUBLIC"
+        assert it["version"] == "sha256:" + hashlib.sha256((root / cid / "index.html").read_bytes()).hexdigest()[:16]
+    assert cat.items["691121"]["parent_id"] == "69112" and cat.items["691121"]["parent_status"] == "registry"
+    for it in cat.items.values():  # parent chỉ từ Registry; không có → chờ xác minh, không suy từ tiền tố
+        e = reg.get(it["canonical_id"])
+        assert it["parent_id"] == (e.parent_id if e else None)
+        assert (it["parent_status"] == "registry") == bool(it["parent_id"])
+    assert "HUB 69" in cat.items["69"]["title"]
+    ids = [r["canonical_id"] for r in cat.search("tmtc")]
+    assert "8682" in ids and all("tmtc" in fold(r["title"] + r["description"] + r["canonical_id"]) for r in cat.search("tmtc"))
+    assert "31" in [r["canonical_id"] for r in cat.search("quy 1")]  # tìm không dấu
+    assert cat.search("8682")[0]["canonical_id"] == "8682"  # khớp ID đứng đầu
+    assert all("canonical_id" not in p for p in PENDING)
+
+
+def test_catalog_api(client):
+    r = client.get("/api/catalog", params={"q": "HUB 69"})
+    assert r.status_code == 200 and r.json()["total"] >= 150
+    assert any(x["canonical_id"] == "69" for x in r.json()["items"])
+    it = client.get("/api/catalog/8682").json()
+    assert it["canonical_url"] == "https://cfp.plus/8682/" and {c["canonical_id"] for c in it["children"]} <= set(
+        x["canonical_id"] for x in client.get("/api/catalog", params={"limit": 200, "q": "8682"}).json()["items"])
+    assert client.get("/api/catalog/99999999").status_code == 404  # không tự cấp ID
+    m = client.get("/api/catalog/meta").json()
+    assert [x["n"] for x in m["modules"]] == list(range(10))
+    assert all(p["canonical_id"] is None and p["status"] == "pending_verification" for p in m["pending"])
+    assert all(x["classification"] == "INTERNAL" for x in m["sandbox"])
+    page = client.get("/_internal/catalog/")
+    assert page.status_code == 200 and "noindex" in page.headers["x-robots-tag"]

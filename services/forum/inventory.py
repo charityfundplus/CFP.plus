@@ -63,6 +63,8 @@ def _store(path: str) -> str:
         return "cfp_worker.control (qua worker_governance) + logs"
     if path.startswith("/api/worker"):
         return "cfp_worker (chỉ đọc)"
+    if path.startswith("/api/catalog"):
+        return "repo: trang <ID>/index.html đã xuất bản (chỉ đọc) + Registry"
     if path.startswith(("/api/hub", "/api/directory", "/api/modules")):
         return "Registry (tệp, chỉ đọc) + cfp_office (đọc)"
     return "tất cả (chỉ đọc trạng thái)"

@@ -188,6 +188,22 @@ const assert = (c, m) => { if (!c) throw new Error(m || 'assertion failed'); };
     assert(wp.url().split('#')[0].endsWith('/_internal/office/691121/'), wp.url());
     await wp.close();
   });
+  await check('Danh mục Link Mẫu: tìm "tmtc" → 8682 → mở trang gốc (iPhone, không cuộn ngang)', async () => {
+    const cp = await ctx.newPage(); cp.on('pageerror', (e) => jsErrors.push('catalog: ' + e.message));
+    await cp.goto(base + '/_internal/catalog/');
+    await cp.getByTestId('catalog-item').first().waitFor();
+    await cp.getByTestId('catalog-q').fill('tmtc');
+    await cp.waitForFunction(() => document.querySelector('[data-testid="catalog-count"]').textContent.includes('tmtc'));
+    const item = cp.locator('[data-testid="catalog-item"][data-id="8682"]');
+    await item.waitFor();
+    const sw = await cp.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    assert(sw <= 1, 'cuộn ngang ' + sw + 'px');
+    assert(await cp.getByTestId('catalog-pending').count() === 1, 'thiếu mục chờ xác minh');
+    await item.getByRole('link').click();
+    await cp.waitForURL(/\/8682\/$/);
+    await cp.getByTestId('sandbox-entry').waitFor();
+    await cp.close();
+  });
   await check('Bảng điều phối: ONLINE thật + nhiệm vụ REVIEWED theo quyền; khách không thấy nhiệm vụ', async () => {
     const op = await ctx.newPage(); op.on('pageerror', (e) => jsErrors.push('ops: ' + e.message));
     await op.goto(base + '/_internal/ops/');
