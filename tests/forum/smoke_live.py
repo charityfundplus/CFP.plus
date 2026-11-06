@@ -100,11 +100,11 @@ def worker_ok(c: httpx.Client) -> dict:
             "last_done": (w.get("last_done") or {}).get("summary")}
 
 
-def run(base: str, allow_http: bool, public_only: bool = False) -> dict:
+def run(base: str, allow_http: bool, public_only: bool = False, user_only: bool = False) -> dict:
     s = Smoke(base)
     gov_email, rev_email = os.environ.get("SMOKE_GOV_EMAIL"), os.environ.get("SMOKE_REVIEWER_EMAIL")
     pw = os.environ.get("SMOKE_PASSWORD")
-    if not public_only and not (gov_email and rev_email and pw):
+    if not (public_only or user_only) and not (gov_email and rev_email and pw):
         sys.exit("Thiếu SMOKE_GOV_EMAIL / SMOKE_REVIEWER_EMAIL / SMOKE_PASSWORD (hoặc dùng --public-only)")
     tag = datetime.now(timezone.utc).strftime("%Y%m%d%H%M%S")
     prefix = f"[smoke-{tag}] "
@@ -180,8 +180,11 @@ def run(base: str, allow_http: bool, public_only: bool = False) -> dict:
         return {"total": j["total"], "8682": j["items"][0]["version"], "691121_parent": it["parent_id"], "unknown_id": 404}
     s.check("catalog", "danh mục Link Mẫu: chỉ ID đã xuất bản, parent từ Registry, ID lạ 404", catalog)
 
-    if public_only:
+    if public_only or user_only:
         s.check("worker", "worker chạy thật (heartbeat mới, không bị dừng)", lambda: worker_ok(guest))
+    if user_only:
+        user_flow(s, base, tag, guest)
+    if public_only or user_only:
         return finish(s, base, tag)
 
     # ---- 2. Đăng nhập
@@ -371,6 +374,68 @@ def run(base: str, allow_http: bool, public_only: bool = False) -> dict:
     return finish(s, base, tag)
 
 
+def user_flow(s: Smoke, base: str, tag: str, guest: httpx.Client) -> None:
+    """Có đăng nhập, KHÔNG cần secrets: tài khoản thử nghiệm mới (example.org, dữ liệu sandbox tạm).
+    Chứng minh đăng ký/đăng nhập/phiên, ghi+đọc Diễn Đàn, và các ranh giới quyền (403/401) trên HTTPS thật.
+    Luồng giao việc → ACK → Evidence → Review → Closure cần governance/reviewer → vẫn cần SMOKE_* (không giả lập)."""
+    u = s.client()
+    x = s.ctx
+    title = f"[smoke-{tag}] Bài thử nghiệm sandbox"
+
+    def account():
+        r = u.post("/api/auth/register", headers=H, json={
+            "email": f"smoke-{tag}-user@example.org", "password": f"smoke-{tag}-pw-u", "name": f"Smoke User {tag}"})
+        x["user"] = expect(r, 200, 201)["id"]
+        cookie = r.headers.get("set-cookie", "").lower()
+        flags = {f: f in cookie for f in ("httponly", "samesite=strict", "secure")}
+        assert flags["httponly"] and flags["samesite=strict"], flags
+        if base.startswith("https://"):
+            assert flags["secure"], "cookie thiếu Secure trên HTTPS"
+        assert (expect(u.get("/api/auth/me"), 200).get("user") or {}).get("id") == x["user"], "phiên không được giữ"
+        return {"user_id": x["user"], "cookie": flags}
+    if not s.check("auth", "đăng ký tài khoản thử nghiệm → phiên đăng nhập (cookie)", account):
+        return
+
+    def sbd():
+        expect(u.post(f"/api/forums/{FORUM}/join", headers=H), 200, 201)
+        pid = expect(u.post(f"/api/forums/{FORUM}/posts", headers=H, json={"title": title, "body": "Ghi thật qua HTTPS."}), 201)["id"]
+        expect(u.post(f"/api/forums/{FORUM}/posts/{pid}/comments", headers=H, json={"body": "Bình luận thử nghiệm."}), 201)
+        posts = expect(guest.get(f"/api/forums/{FORUM}/posts"), 200)
+        posts = posts.get("posts", posts) if isinstance(posts, dict) else posts
+        p = next(p for p in posts if p["id"] == pid)
+        assert p["title"] == title and len(p["comments"]) >= 1, p
+        return {"post_id": pid, "comments": len(p["comments"]), "đọc lại bởi khách": True}
+    s.check("forum", "Siêu Bộ Đôi: tham gia → đăng bài → bình luận → khách đọc lại", sbd)
+
+    def hstdn():
+        st_ = expect(u.post("/api/forums/si-ai-hstdn/join", headers=H), 200, 201)["status"]
+        assert st_ == "pending", st_
+        r = u.post("/api/forums/si-ai-hstdn/posts", headers=H, json={"title": "x", "body": "x", "hstdn": "x"})
+        assert r.status_code == 403, f"chưa duyệt mà đăng được: {r.status_code}"
+        assert u.get("/api/forums/si-ai-hstdn/posts").status_code == 403
+        return {"join": st_, "đăng khi chưa duyệt": 403, "đọc khi chưa duyệt": 403}
+    s.check("forum", "SI AI • HSTDN: xin tham gia = pending; chưa duyệt không đọc/đăng được", hstdn)
+
+    def least_privilege():
+        expect(u.post("/api/office/tasks", headers=H, json={
+            "pair_id": 1, "title": "không được giao", "acceptance": "abc", "reviewer_id": 1,
+            "idempotency_key": f"smoke-{tag}-deny"}), 403, 404, 422)
+        b = expect(u.get("/api/office/board"), 200)
+        assert b["viewer"] == "participant" and b["tasks"] == [], b
+        expect(u.post("/api/worker/control", headers=H, json={"paused": True, "reason": "smoke"}), 403)
+        expect(u.post(f"/api/forums/{FORUM}/members/{x['user']}/approve", headers=H), 403)
+        return "giao việc bị chặn • board rỗng • kill switch 403 • tự duyệt 403"
+    s.check("security", "người thường: không giao việc, không thấy nhiệm vụ, không kill switch", least_privilege)
+
+    def logout():
+        expect(u.post("/api/auth/logout", headers=H), 200)
+        assert (expect(u.get("/api/auth/me"), 200).get("user")) is None
+        r = u.post(f"/api/forums/{FORUM}/posts", headers=H, json={"title": "x", "body": "x"})
+        assert r.status_code == 401, r.status_code
+        return "đăng xuất → me=null → ghi 401"
+    s.check("auth", "đăng xuất → phiên hết → ghi bị 401", logout)
+
+
 def finish(s: Smoke, base: str, tag: str) -> dict:
     gating = s.results  # worker + kill switch cũng là điều kiện P0
     return {"base": base, "run": tag, "at": datetime.now(timezone.utc).isoformat(),
@@ -386,8 +451,10 @@ if __name__ == "__main__":
     ap.add_argument("--out", default="smoke-live.json")
     ap.add_argument("--allow-http", action="store_true", help="chỉ cho server local")
     ap.add_argument("--public-only", action="store_true", help="chỉ kiểm tra không cần tài khoản (không ghi dữ liệu)")
+    ap.add_argument("--user-only", action="store_true",
+                    help="public + tài khoản thử nghiệm tự đăng ký (không cần secrets; chưa gồm giao việc/review)")
     a = ap.parse_args()
-    rep = run(a.base, a.allow_http, a.public_only)
+    rep = run(a.base, a.allow_http, a.public_only, a.user_only)
     with open(a.out, "w", encoding="utf-8") as f:
         json.dump(rep, f, ensure_ascii=False, indent=2)
     print(f"SMOKE_LIVE={rep['result']} passed={rep['passed']} failed={rep['failed']} build={rep['build']}")

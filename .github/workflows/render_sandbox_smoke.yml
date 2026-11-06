@@ -50,7 +50,7 @@ jobs:
             if [ -n "${!v}" ]; then echo "$v: có"; n=$((n+1)); else echo "$v: THIẾU"; fi
           done
           if [ "$n" = 3 ]; then MODE=; echo "SMOKE_MODE=full (đăng nhập + ghi)"
-          elif [ "$n" = 0 ]; then MODE=--public-only; echo "SMOKE_MODE=public-only — KHÔNG phải nghiệm thu E2E"
+          elif [ "$n" = 0 ]; then MODE=--user-only; echo "SMOKE_MODE=user-only (tài khoản thử nghiệm tự đăng ký; CHƯA gồm giao việc/ACK/Evidence/Review — cần SMOKE_*)"
           else echo "::error::Thiếu một phần secrets SMOKE_* ($n/3) — cấu hình đủ cả 3 hoặc bỏ hết"; exit 1; fi
           python -m tests.forum.smoke_live --base "$BASE" --out render-smoke.json $MODE | tee render-smoke.log
       - if: always()
