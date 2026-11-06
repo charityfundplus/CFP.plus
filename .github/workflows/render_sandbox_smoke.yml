@@ -97,7 +97,11 @@ jobs:
           [ "$code" = 200 ] || { echo "::error::health không trả lời ($code)"; exit 1; }
           jq '{build, storage, data_inventory}' health.json
           if jq -e '.data_inventory == null' health.json >/dev/null; then
-            echo "Không phải chế độ tạm (hoặc bản cũ chưa có kiểm kho) — bỏ qua"; exit 0
+            if jq -e '(.storage // "") | startswith("ephemeral")' health.json >/dev/null; then
+              # Kho tạm nhưng không đếm được → KHÔNG được coi là an toàn (tránh xanh giả).
+              echo "::error::DATA_INVENTORY=UNKNOWN — kho tạm nhưng runtime chưa có kiểm kho; phải rà toàn bộ ghi từ lần khởi động instance trước khi deploy"; exit 1
+            fi
+            echo "DATA_INVENTORY=N/A (không phải chế độ tạm)"; exit 0
           fi
           jq -e '.data_inventory.safe_to_restart == true' health.json >/dev/null \
             || { echo "::error::Có dữ liệu của người thật trong kho tạm — KHÔNG deploy/restart khi chưa sao lưu/đồng ý"; exit 1; }
