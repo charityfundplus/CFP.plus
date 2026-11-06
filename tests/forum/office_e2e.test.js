@@ -216,6 +216,21 @@ const assert = (c, m) => { if (!c) throw new Error(m || 'assertion failed'); };
     await cp.getByTestId('sandbox-entry').waitFor();
     await cp.close();
   });
+  await check('Văn Phòng Agent (TRAINING): Knowledge loại ID HOLD, chạy bộ tình huống, chặn bản nháp sai (iPhone, không cuộn ngang)', async () => {
+    const gp = await ctx.newPage(); gp.on('pageerror', (e) => jsErrors.push('agent: ' + e.message));
+    await gp.goto(base + '/_internal/agent/meta-business-agent/');
+    await gp.getByTestId('agent-knowledge').getByText('loại (ID HOLD)').first().waitFor();
+    assert((await gp.getByTestId('agent-flags').textContent()).includes('AUTO REPLY HOLD'), 'thiếu cờ AUTO REPLY HOLD');
+    await gp.getByTestId('agent-run').click();
+    await gp.getByTestId('agent-run-out').filter({ hasText: 'Evidence URL' }).waitFor();
+    assert(/ 0 FAIL/.test(await gp.getByTestId('agent-run-out').textContent()), 'bộ tình huống có FAIL');
+    await gp.getByTestId('agent-draft').fill('App CFP+ đã hoạt động. https://cfp.plus/69115/');
+    await gp.getByTestId('agent-check').click();
+    await gp.getByTestId('agent-check-out').filter({ hasText: 'block' }).waitFor();
+    const sw = await gp.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    assert(sw <= 1, 'cuộn ngang ' + sw + 'px');
+    await gp.close();
+  });
   await check('Bảng điều phối: ONLINE thật + nhiệm vụ REVIEWED theo quyền; khách không thấy nhiệm vụ', async () => {
     const op = await ctx.newPage(); op.on('pageerror', (e) => jsErrors.push('ops: ' + e.message));
     await op.goto(base + '/_internal/ops/');

@@ -31,3 +31,7 @@ main { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
 
 /* Cảnh báo dữ liệu thử nghiệm (chỉ ở chế độ CFP_SANDBOX_EPHEMERAL). */
 .sandbox-ephemeral { background: #fff4ce; color: #4a3500; border-bottom: 2px solid #c99700; padding: 8px 16px; font-size: 14px; line-height: 1.6; overflow-wrap: anywhere; }
+
+/* Văn Phòng Agent: kết quả kiểm thử/giám sát xuống dòng trong khung, không tràn đè nút bên dưới (iPhone) */
+.agent-out { white-space: pre-wrap; overflow-wrap: anywhere; max-width: 100%; overflow: auto; margin: .5rem 0 1rem; }
+.agent-form textarea, .agent-form input { display: block; width: 100%; box-sizing: border-box; font-size: 16px; }

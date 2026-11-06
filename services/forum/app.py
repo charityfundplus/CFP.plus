@@ -849,6 +849,19 @@ def create_app(stores: Stores | None = None) -> FastAPI:
         return FileResponse(WEB_DIR / "catalog.html", media_type="text/html",
                             headers={"X-Robots-Tag": "noindex, nofollow"})
 
+    if st.office is not None:  # Văn Phòng Agent (đào tạo) • INTERNAL • noindex • không phải link công bố
+        @app.get("/_internal/agent/agent.js", include_in_schema=False)
+        def agent_js():
+            return FileResponse(WEB_DIR / "agent.js", media_type="text/javascript")
+
+        @app.get("/_internal/agent/{slug}/", include_in_schema=False)
+        def agent_page(slug: str):
+            from services.forum.agents import load_agents
+            if slug not in load_agents():
+                raise HTTPException(404)
+            return FileResponse(WEB_DIR / "agent.html", media_type="text/html",
+                                headers={"X-Robots-Tag": "noindex, nofollow"})
+
     # ---- Khung website trong SANDBOX (cờ CFP_SANDBOX_WEBSITE, mặc định bật; "0" để tắt).
     # Phục vụ CHỈ ĐỌC các trang tĩnh có sẵn trong repo (/, /{ID số}/) và chèn thanh lối vào
     # Siêu Bộ Đôi • Văn Phòng • Diễn Đàn • Bảng điều phối. Không sửa tệp tĩnh, không tạo route

@@ -45,6 +45,10 @@ Sinh tự động bởi `python -m services.forum.inventory --write` • CI ki�
 | health | GET | `/api/health` | công khai |  |  | tất cả (chỉ đọc trạng thái) |
 | hub69 | GET | `/api/hub/69` | công khai |  |  | Registry (tệp, chỉ đọc) + cfp_office (đọc) |
 | hub69 | GET | `/api/modules` | công khai |  |  | Registry (tệp, chỉ đọc) + cfp_office (đọc) |
+| office | GET | `/api/office/agents` | công khai | công khai (sandbox) • Agent đang đào tạo, không phải danh sách đã nghiệm thu |  | cfp_office |
+| office | GET | `/api/office/agents/{slug}` | công khai | công khai (sandbox) • cấu hình + Knowledge + kết quả kiểm thử hiện hành |  | cfp_office |
+| office | POST | `/api/office/agents/{slug}/test-runs` | đăng nhập | người đã đăng nhập • chạy bộ tình huống, ghi audit | header X-CFP-Forum + Origin | cfp_office |
+| office | GET | `/api/office/agents/{slug}/test-runs/{sha}` | công khai | công khai • Evidence tính lại; sha cũ → 409 |  | cfp_office |
 | office | POST | `/api/office/answer-check` | đăng nhập | người đã đăng nhập • chỉ kiểm tra bản nháp, auto_reply=HOLD • audit không lưu nội dung | header X-CFP-Forum + Origin | cfp_office |
 | office | GET | `/api/office/audit` | đăng nhập | governance • hoặc người tham gia/maintainer của đúng nhiệm vụ |  | cfp_office |
 | office | GET | `/api/office/board` | công khai (+phiên nếu có) | theo quyền người xem (khách: rỗng) • REVIEWED cần Evidence + Review độc lập |  | cfp_office |

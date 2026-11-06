@@ -1476,6 +1476,157 @@
     ]
    }
   },
+  "/api/office/agents": {
+   "get": {
+    "description": "Agent bên ngoài đang ĐÀO TẠO trong sandbox (không phải danh sách đã nghiệm thu).",
+    "operationId": "agents_list_api_office_agents_get",
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     }
+    },
+    "summary": "Agents List",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/agents/{slug}": {
+   "get": {
+    "operationId": "agent_detail_api_office_agents__slug__get",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "slug",
+      "required": true,
+      "schema": {
+       "title": "Slug",
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Agent Detail",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/agents/{slug}/test-runs": {
+   "post": {
+    "description": "Chạy bộ tình huống tư vấn qua Siêu Phần Mềm giám sát; kết quả dùng làm Evidence (test_report).",
+    "operationId": "agent_test_run_api_office_agents__slug__test_runs_post",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "slug",
+      "required": true,
+      "schema": {
+       "title": "Slug",
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "201": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Agent Test Run",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/agents/{slug}/test-runs/{sha}": {
+   "get": {
+    "description": "Evidence URL: tính lại từ nguồn hiện hành; khác sha → 409 (Evidence đã cũ, cần chạy lại).",
+    "operationId": "agent_test_run_get_api_office_agents__slug__test_runs__sha__get",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "slug",
+      "required": true,
+      "schema": {
+       "title": "Slug",
+       "type": "string"
+      }
+     },
+     {
+      "in": "path",
+      "name": "sha",
+      "required": true,
+      "schema": {
+       "title": "Sha",
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Agent Test Run Get",
+    "tags": [
+     "office"
+    ]
+   }
+  },
   "/api/office/answer-check": {
    "post": {
     "description": "Siêu Phần Mềm giám sát: kiểm tra nguồn/ID, tuyên bố chưa kiểm chứng, cam kết, dữ liệu nhạy cảm.\nLuôn auto_reply=HOLD. Audit chỉ lưu verdict + mã lỗi + sha256 (không lưu nội dung có thể chứa dữ liệu khách).",

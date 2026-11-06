@@ -38,6 +38,8 @@ SANDBOX = (
     {"name": "Diễn Đàn SI AI • HSTDN", "path": "/_internal/forum/si-ai-hstdn/", "module": 3},
     {"name": "HUB 69 • Văn Phòng SI AI (danh bạ)", "path": "/_internal/office/", "module": 2},
     {"name": "Bảng điều phối (task/ACK/Evidence/Review, worker)", "path": "/_internal/ops/", "module": 4},
+    {"name": "Văn Phòng Agent • Meta Business Agent (TRAINING • AUTO REPLY HOLD • chưa nghiệm thu)",
+     "path": "/_internal/agent/meta-business-agent/", "module": 5},
 )
 
 # 10 module chức năng của Link Mẫu (không phải cấp ID số). Trạng thái = thực tế trong sandbox.

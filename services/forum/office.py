@@ -849,6 +849,41 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
             audit(c, user["id"], "task.lesson", f"task:{tid}", {"topic_id": lid, "chapter": data.chapter})
         return {"task_id": tid, "topic_id": lid, "ref": f"topic:{lid}"}
 
+    from services.forum.agents import load_agents, public_view, run_tests
+    agents = load_agents()
+
+    def agent_cfg(slug: str) -> dict:
+        if slug not in agents:
+            raise HTTPException(404, "Chưa có cấu hình Agent này.")
+        return agents[slug]
+
+    @r.get("/agents")
+    def agents_list():
+        """Agent bên ngoài đang ĐÀO TẠO trong sandbox (không phải danh sách đã nghiệm thu)."""
+        return {"agents": [{k: a[k] for k in ("slug", "name", "developer", "canonical_id", "stage", "flags")}
+                           for a in agents.values()]}
+
+    @r.get("/agents/{slug}")
+    def agent_detail(slug: str):
+        return public_view(agent_cfg(slug), catalog)
+
+    @r.post("/agents/{slug}/test-runs", status_code=201)
+    def agent_test_run(slug: str, user=Depends(require_user)):
+        """Chạy bộ tình huống tư vấn qua Siêu Phần Mềm giám sát; kết quả dùng làm Evidence (test_report)."""
+        run = run_tests(agent_cfg(slug), catalog)
+        with _begin() as c:
+            audit(c, user["id"], "agent.test_run", f"agent:{slug}",
+                  {"sha": run["sha"], "passed": run["passed"], "failed": run["failed"], "config": run["config_version"]})
+        return run
+
+    @r.get("/agents/{slug}/test-runs/{sha}")
+    def agent_test_run_get(slug: str, sha: str):
+        """Evidence URL: tính lại từ nguồn hiện hành; khác sha → 409 (Evidence đã cũ, cần chạy lại)."""
+        run = run_tests(agent_cfg(slug), catalog)
+        if run["sha"] != sha:
+            raise HTTPException(409, f"Kết quả {sha} không còn khớp nguồn/cấu hình hiện hành (hiện {run['sha']}) — chạy lại.")
+        return run
+
     @r.post("/answer-check")
     def answer_check(data: AnswerCheckIn, user=Depends(require_user)):
         """Siêu Phần Mềm giám sát: kiểm tra nguồn/ID, tuyên bố chưa kiểm chứng, cam kết, dữ liệu nhạy cảm.
