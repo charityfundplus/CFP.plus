@@ -323,6 +323,18 @@ def run(base: str, allow_http: bool, public_only: bool = False, user_only: bool 
         return expect(gov.post(f"/api/office/tasks/{t}/close", json={"note": "Đóng sau review (smoke)."}, headers=H), 200)["status"]
     s.check("office", "Closure (người thực thi tự đóng → 403)", closure)
 
+    def closed_loop():
+        les = expect(lead.post(f"/api/office/tasks/{t}/lessons", headers=H, json={
+            "title": f"{prefix}Bài học smoke", "chapter": "6", "summary": "Bài học ghi sau nghiệm thu (smoke)."}), 201)
+        nxt = expect(lead.post("/api/office/tasks", headers=H, json={
+            "pair_id": x["pair"], "title": f"{prefix}Nhiệm vụ tiếp theo", "acceptance": "dựa trên bài học",
+            "reviewer_id": x["rev"], "idempotency_key": f"smoke-{tag}-next", "refs": [f"task:{t}", les["ref"]]}), 201)["id"]
+        loop = expect(gov.get(f"/api/office/tasks/{t}/loop"), 200)
+        missing = [st_["key"] for st_ in loop["stages"] if not st_["done"]]
+        assert loop["closed_loop"] and not missing, f"vòng chưa kín: {missing}"
+        return {"stages": len(loop["stages"]), "lesson": les["ref"], "next_task": nxt}
+    s.check("office", "vòng khép kín: bài học → nhiệm vụ tiếp theo → 12/12 bước", closed_loop)
+
     def audit():
         ev = expect(gov.get("/api/office/audit", params={"ref": f"task:{t}"}), 200)["events"]
         acts = [e["action"] for e in ev]

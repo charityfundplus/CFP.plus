@@ -229,6 +229,12 @@ class TopicIn(BaseModel):
     summary: str = Field(default="", max_length=4000)
 
 
+class LessonIn(BaseModel):
+    title: str = Field(min_length=3, max_length=200)
+    chapter: str = Field(pattern=CH)          # 10 Chương 0–9 (không tạo ID số mới)
+    summary: str = Field(min_length=10, max_length=4000)
+
+
 class DatasetIn(BaseModel):
     title: str = Field(min_length=3, max_length=200)
     kind: Literal["document", "curriculum", "dataset", "project"]
@@ -813,6 +819,73 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
                 conflict("Thiếu Review ACCEPT của reviewer được chỉ định.")
             move(c, t, user["id"], "CLOSED", data.note)
         return {"id": tid, "status": "CLOSED"}
+
+    @r.post("/tasks/{tid}/lessons", status_code=201)
+    def add_lesson(tid: int, data: LessonIn, user=Depends(require_user)):
+        """Vòng khép kín: sau nghiệm thu + Closure, người tham gia ghi tri thức/bài học (chủ đề nghiên cứu theo Chương)
+        liên kết với nhiệm vụ; nhiệm vụ tiếp theo tham chiếu task:<id> + topic:<bài học>."""
+        with _begin() as c:
+            t = load_task(c, tid, lock=False)
+            p = principal(c, user)
+            if not task_visible(c, p, t):
+                raise HTTPException(404, "Không có nhiệm vụ.")
+            if t["status"] != "CLOSED":
+                conflict(f"Bài học ghi sau khi nghiệm thu và đóng nhiệm vụ (hiện {t['status']}).")
+            try:
+                with c.begin_nested():
+                    lid = c.execute(insert(topics_t).values(
+                        title=_clean(data.title), title_key=_key(data.title), chapter=data.chapter, field="lesson",
+                        summary=data.summary, created_by=user["id"]).returning(topics_t.c.id)).scalar_one()
+            except IntegrityError:
+                conflict("Bài học/chủ đề này đã có trong cùng Chương.")
+            link(c, user["id"], f"task:{tid}", f"topic:{lid}", "lesson")
+            audit(c, user["id"], "task.lesson", f"task:{tid}", {"topic_id": lid, "chapter": data.chapter})
+        return {"task_id": tid, "topic_id": lid, "ref": f"topic:{lid}"}
+
+    @r.get("/tasks/{tid}/loop")
+    def task_loop(tid: int, user=Depends(require_user)):
+        """Vòng khép kín của MỘT nhiệm vụ, chỉ từ dữ liệu thật: HUB 69 → CMP 267 → Văn Phòng → Diễn Đàn →
+        Siêu Bộ Đôi thực thi → Evidence → Review độc lập → nghiệm thu → Closure → bài học → nhiệm vụ tiếp theo."""
+        with _connect() as c:
+            t = c.execute(select(tasks_t).where(tasks_t.c.id == tid)).mappings().first()
+            p = principal(c, user)
+            if not t or not task_visible(c, p, t):
+                raise HTTPException(404, "Không có nhiệm vụ.")
+            pair = c.execute(select(pairs_t).where(pairs_t.c.id == t["pair_id"])).mappings().first()
+            ev = c.execute(select(task_events_t.c.to_status).where(task_events_t.c.task_id == tid)).scalars().all()
+            n_ev = c.execute(select(func.count()).select_from(evidence_t).where(evidence_t.c.task_id == tid)).scalar_one()
+            rv = c.execute(select(reviews_t).where(reviews_t.c.task_id == tid).order_by(reviews_t.c.id)).mappings().all()
+            lessons = c.execute(select(links_t.c.to_ref).where(links_t.c.from_ref == f"task:{tid}",
+                                                              links_t.c.relation == "lesson")).scalars().all()
+            nxt = c.execute(select(links_t.c.from_ref).where(links_t.c.to_ref == f"task:{tid}",
+                                                            links_t.c.from_ref.like("task:%"))).scalars().all()
+            nxt = [r_ for r_ in nxt if ref_visible(c, p, r_)]
+            disc = discussions_of(c, tid, user)
+        last = rv[-1] if rv else None
+        independent = bool(last and last["decision"] == "ACCEPT" and last["reviewer_id"] == t["reviewer_id"]
+                           and last["reviewer_id"] != t["assignee_id"])
+        office = pair["canonical_id"] if pair else None
+        stages = [
+            ("hub69", "HUB 69", True, {"url": "/69/"}),
+            ("cmp267", "CMP 267 • điều phối", True, {"url": "/267/"}),
+            ("office", "Văn Phòng SI AI", bool(office), {"canonical_id": office, "url": f"/_internal/office/{office}/"}),
+            ("discussion", "Thảo luận Diễn Đàn", bool(disc), {"posts": disc}),
+            ("pair", "Siêu Bộ Đôi (SI AI + Siêu Phần Mềm)", bool(pair),
+             {"pair_id": t["pair_id"], "software": pair["software"] if pair else None}),
+            ("execution", "Nhận việc (ACK) → thực thi", "ACKED" in ev and "IN_PROGRESS" in ev,
+             {"owner_id": t["assignee_id"]}),
+            ("evidence", "Evidence", n_ev > 0, {"count": n_ev}),
+            ("review", "Review độc lập (SecuritySI/ReviewSI)", independent,
+             {"reviewer_id": t["reviewer_id"], "decision": last["decision"] if last else None}),
+            ("acceptance", "Nghiệm thu", t["status"] in ("ACCEPTED", "CLOSED"), {"status": t["status"]}),
+            ("closure", "Closure", t["status"] == "CLOSED", {}),
+            ("lesson", "Tri thức • bài học", bool(lessons), {"refs": lessons}),
+            ("next", "Quay lại Văn Phòng • nhiệm vụ tiếp theo", bool(nxt), {"refs": nxt}),
+        ]
+        out = [{"key": k, "label": lb, "done": d, **({"detail": det} if det else {})} for k, lb, d, det in stages]
+        return {"task_id": tid, "status": t["status"], "owner_id": t["assignee_id"], "reviewer_id": t["reviewer_id"],
+                "stages": out, "closed_loop": all(x["done"] for x in out),
+                "next_stage": next((x["key"] for x in out if not x["done"]), None)}
 
     def discussions_of(c: Connection, tid: int, user: dict | None) -> list[dict]:
         if not forums:

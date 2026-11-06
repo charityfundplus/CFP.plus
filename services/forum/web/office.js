@@ -112,7 +112,7 @@
             return el('li', { 'data-testid': 'task-comment', text: '#' + h.actor_id + ': ' + h.note });
           })),
           el('h4', { text: 'Lịch sử' }), el('p', { 'class': 'forum-meta', text: t.history.filter(function (h) { return h.to_status !== 'COMMENT'; }).map(function (h) { return h.to_status; }).join(' → ') }),
-          el('p', {}, [refLink('task:' + t.id)]), taskControls(t)]);
+          loopBlock(t), el('p', {}, [refLink('task:' + t.id)]), taskControls(t)]);
       }) : [el('p', { text: 'Chưa có nhiệm vụ.' })]),
       section('Liên kết hai chiều', 'office-links', [linksBlock(d.links)]),
       section('Kết nối hệ sinh thái', 'connections', [el('ul', {}, tax.connections.map(function (c) {
@@ -144,6 +144,19 @@
       write('/auth/login', { email: email.value, password: password.value }).then(function (u) { currentUser = u; password.value = ''; return load(); })
         .catch(function (e) { msg.textContent = e.message; }).finally(function () { button.disabled = false; });
     }); box.appendChild(form); return box;
+  }
+  function loopBlock(t) {  // vòng khép kín: dữ liệu thật từ /tasks/{id}/loop (chỉ người xem được nhiệm vụ)
+    var box = el('div', { 'data-testid': 'task-loop' }, [el('h4', { text: 'Vòng khép kín' })]);
+    if (!currentUser) return box;
+    api('/tasks/' + t.id + '/loop').then(function (l) {
+      box.appendChild(el('ol', {}, l.stages.map(function (x) {
+        return el('li', { 'data-testid': 'loop-stage', 'data-key': x.key, 'data-done': x.done ? '1' : '0',
+          text: (x.done ? '✓ ' : '⏳ ') + x.label });
+      })));
+      box.appendChild(el('p', { 'class': 'loop-summary', 'data-testid': 'loop-summary',
+        text: l.closed_loop ? 'Vòng đã khép kín.' : 'Bước tiếp theo: ' + l.next_stage }));
+    }).catch(function () {});
+    return box;
   }
   function taskControls(t) {
     var box = el('div', { 'class': 'forum-form compact' });
@@ -177,6 +190,16 @@
     if (t.can_close) {  // backend tính quyền Closure; UI chỉ hiển thị
       var closeNote = el('textarea', { 'aria-label': 'Ghi chú Closure' }); box.append(el('label', {}, ['Ghi chú Closure', closeNote]));
       action('Đóng nhiệm vụ (Closure)', 'close', function () { return { note: closeNote.value }; });
+    }
+    if (t.status === 'CLOSED') {  // tri thức • bài học (chủ đề theo Chương), rồi nhiệm vụ tiếp theo tham chiếu lại
+      var lTitle = el('input', { 'aria-label': 'Tiêu đề bài học', maxlength: '200' });
+      var lChapter = el('select', { 'aria-label': 'Chương của bài học' }, ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].map(function (n) {
+        return el('option', { value: n, text: 'Chương ' + n });
+      }));
+      var lSummary = el('textarea', { 'aria-label': 'Nội dung bài học', maxlength: '4000' });
+      box.append(el('label', {}, ['Tiêu đề bài học', lTitle]), el('label', {}, ['Chương của bài học', lChapter]),
+        el('label', {}, ['Nội dung bài học', lSummary]));
+      action('Ghi bài học', 'lessons', function () { return { title: lTitle.value, chapter: lChapter.value, summary: lSummary.value }; });
     }
     if (t.status !== 'CLOSED') {
       var forum = el('select', { 'aria-label': 'Mở thảo luận ở' }, [el('option', { value: 'sieu-bo-doi', text: 'Diễn Đàn Siêu Bộ Đôi (công khai)' }),

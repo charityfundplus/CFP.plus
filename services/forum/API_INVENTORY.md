@@ -67,6 +67,8 @@ Sinh tự động bởi `python -m services.forum.inventory --write` • CI ki�
 | office | POST | `/api/office/tasks/{tid}/comments` | đăng nhập | người tham gia / maintainer / governance của đúng nhiệm vụ | header X-CFP-Forum + Origin | cfp_office |
 | office | POST | `/api/office/tasks/{tid}/discussions` | đăng nhập | người xem được nhiệm vụ • thành viên active của ĐÚNG diễn đàn (diễn đàn tự kiểm) | header X-CFP-Forum + Origin | cfp_office (liên kết) + diễn đàn tương ứng (bài, qua đúng quy tắc diễn đàn) |
 | office | POST | `/api/office/tasks/{tid}/evidence` | đăng nhập | người thực thi | header X-CFP-Forum + Origin | cfp_office |
+| office | POST | `/api/office/tasks/{tid}/lessons` | đăng nhập | người xem được nhiệm vụ • chỉ sau Closure • ghi chủ đề theo Chương + liên kết | header X-CFP-Forum + Origin | cfp_office |
+| office | GET | `/api/office/tasks/{tid}/loop` | đăng nhập | người xem được nhiệm vụ (khác → 404) • vòng khép kín từ dữ liệu thật |  | cfp_office |
 | office | POST | `/api/office/tasks/{tid}/review` | đăng nhập | reviewer được chỉ định | header X-CFP-Forum + Origin | cfp_office |
 | office | POST | `/api/office/tasks/{tid}/start` | đăng nhập | người thực thi • tối đa 5 việc song song | header X-CFP-Forum + Origin | cfp_office |
 | office | POST | `/api/office/tasks/{tid}/submit` | đăng nhập | người thực thi • cần ≥1 Evidence | header X-CFP-Forum + Origin | cfp_office |

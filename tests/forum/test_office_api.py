@@ -684,3 +684,53 @@ def test_central_update_two_child_links_see_new_version(world, tmp_path):
     assert v2[0]["canonical_url"] == v1[0]["canonical_url"] and v2[0]["canonical_id"] == "8682"
     for c in (lead, gov):  # trả lại nguồn thật cho các test khác
         c.app.state.catalog.reload()
+
+
+def test_closed_loop_hub_to_lesson_to_next_task(world):
+    """Vòng khép kín (yêu cầu 6685795225), chỉ bằng API thật: HUB 69 → CMP 267 → Văn Phòng → Diễn Đàn →
+    Siêu Bộ Đôi thực thi → Evidence → Review độc lập → nghiệm thu → Closure → bài học → nhiệm vụ tiếp theo."""
+    lead, rev, gov, other, ids, o = world["lead"], world["rev"], world["gov"], world["other"], world["ids"], world["out"]
+    from sqlalchemy.exc import IntegrityError
+    try:
+        _activate(world, "sieu-bo-doi", "lead")
+    except IntegrityError:
+        pass  # đã là thành viên từ test trước (world dùng chung cả module)
+    t = ok(lead.post("/api/office/tasks", headers=H, json={
+        "pair_id": o["pair"], "title": "Vòng khép kín", "acceptance": "đủ 12 bước", "reviewer_id": ids["rev"],
+        "idempotency_key": "closed-loop-1"}), 201)["id"]
+    loop = lambda c: ok(c.get(f"/api/office/tasks/{t}/loop"), 200)  # noqa: E731
+    first = loop(lead)
+    assert first["closed_loop"] is False and first["next_stage"] == "discussion"
+    assert [s["key"] for s in first["stages"]][:3] == ["hub69", "cmp267", "office"]
+    ok(lead.post(f"/api/office/tasks/{t}/discussions", headers=H, json={
+        "forum": "sieu-bo-doi", "title": "Thảo luận vòng khép kín", "body": "Mở từ nhiệm vụ."}), 201)
+    ok(lead.post(f"/api/office/tasks/{t}/ack", json={}, headers=H), 200)
+    ok(lead.post(f"/api/office/tasks/{t}/start", json={}, headers=H), 200)
+    ok(lead.post(f"/api/office/tasks/{t}/evidence", headers=H, json={
+        "kind": "url", "url": "https://example.org/loop", "description": "bằng chứng"}), 201)
+    ok(lead.post(f"/api/office/tasks/{t}/submit", json={}, headers=H), 200)
+    assert lead.post(f"/api/office/tasks/{t}/lessons", headers=H, json={
+        "title": "Bài học sớm", "chapter": "6", "summary": "chưa đóng thì chưa được ghi"}).status_code == 409
+    ok(rev.post(f"/api/office/tasks/{t}/review", json={"decision": "ACCEPT", "notes": "Đạt"}, headers=H), 201)
+    ok(gov.post(f"/api/office/tasks/{t}/close", json={"note": "Đóng"}, headers=H), 200)
+    les = ok(lead.post(f"/api/office/tasks/{t}/lessons", headers=H, json={
+        "title": "Bài học vòng khép kín", "chapter": "6", "summary": "Mở thảo luận trước khi thực thi giúp review nhanh."}), 201)
+    assert loop(lead)["next_stage"] == "next"
+    nxt = ok(lead.post("/api/office/tasks", headers=H, json={
+        "pair_id": o["pair"], "title": "Nhiệm vụ tiếp theo", "acceptance": "dựa trên bài học", "reviewer_id": ids["rev"],
+        "idempotency_key": "closed-loop-2", "refs": [f"task:{t}", les["ref"]]}), 201)["id"]
+    done = loop(gov)
+    assert done["closed_loop"] is True and done["next_stage"] is None, [s for s in done["stages"] if not s["done"]]
+    by = {s["key"]: s for s in done["stages"]}
+    assert by["review"]["detail"]["decision"] == "ACCEPT" and by["evidence"]["detail"]["count"] == 1
+    assert by["lesson"]["detail"]["refs"] == [les["ref"]] and by["next"]["detail"]["refs"] == [f"task:{nxt}"]
+    assert by["discussion"]["detail"]["posts"][0]["forum"] == "sieu-bo-doi"
+    topic = ok(lead.get(f"/api/office/topics/{les['topic_id']}"), 200)
+    assert topic["chapter"] == "6" and topic["field"] == "lesson"
+    # quyền: người ngoài không xem được vòng, khách 401; audit có bước bài học
+    assert other.get(f"/api/office/tasks/{t}/loop").status_code == 404
+    assert _anon(world).get(f"/api/office/tasks/{t}/loop").status_code == 401
+    assert other.post(f"/api/office/tasks/{t}/lessons", headers=H, json={
+        "title": "x bài học", "chapter": "1", "summary": "người ngoài không được ghi"}).status_code == 404
+    acts = [e["action"] for e in ok(gov.get(f"/api/office/audit?ref=task:{t}"), 200)["events"]]
+    assert "task.lesson" in acts and "task.closed" in acts

@@ -355,6 +355,34 @@
     "title": "KillSwitchIn",
     "type": "object"
    },
+   "LessonIn": {
+    "properties": {
+     "chapter": {
+      "pattern": "^[0-9]$",
+      "title": "Chapter",
+      "type": "string"
+     },
+     "summary": {
+      "maxLength": 4000,
+      "minLength": 10,
+      "title": "Summary",
+      "type": "string"
+     },
+     "title": {
+      "maxLength": 200,
+      "minLength": 3,
+      "title": "Title",
+      "type": "string"
+     }
+    },
+    "required": [
+     "title",
+     "chapter",
+     "summary"
+    ],
+    "title": "LessonIn",
+    "type": "object"
+   },
    "LinkIn": {
     "properties": {
      "from_ref": {
@@ -2345,6 +2373,98 @@
      }
     },
     "summary": "Add Evidence",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/tasks/{tid}/lessons": {
+   "post": {
+    "description": "Vòng khép kín: sau nghiệm thu + Closure, người tham gia ghi tri thức/bài học (chủ đề nghiên cứu theo Chương)\nliên kết với nhiệm vụ; nhiệm vụ tiếp theo tham chiếu task:<id> + topic:<bài học>.",
+    "operationId": "add_lesson_api_office_tasks__tid__lessons_post",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "tid",
+      "required": true,
+      "schema": {
+       "title": "Tid",
+       "type": "integer"
+      }
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/LessonIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "201": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Add Lesson",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/tasks/{tid}/loop": {
+   "get": {
+    "description": "Vòng khép kín của MỘT nhiệm vụ, chỉ từ dữ liệu thật: HUB 69 → CMP 267 → Văn Phòng → Diễn Đàn →\nSiêu Bộ Đôi thực thi → Evidence → Review độc lập → nghiệm thu → Closure → bài học → nhiệm vụ tiếp theo.",
+    "operationId": "task_loop_api_office_tasks__tid__loop_get",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "tid",
+      "required": true,
+      "schema": {
+       "title": "Tid",
+       "type": "integer"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Task Loop",
     "tags": [
      "office"
     ]

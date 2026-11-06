@@ -188,6 +188,18 @@ const assert = (c, m) => { if (!c) throw new Error(m || 'assertion failed'); };
     assert(wp.url().split('#')[0].endsWith('/_internal/office/691121/'), wp.url());
     await wp.close();
   });
+  await check('Vòng khép kín hiển thị trên nhiệm vụ (dữ liệu thật: Evidence + Review xong, bước kế tiếp rõ)', async () => {
+    await page.goto(base + '/_internal/office/691121/');
+    const st = page.getByTestId('task').first().getByTestId('loop-stage');
+    await st.first().waitFor();
+    assert(await st.count() === 12, 'số bước ' + await st.count());
+    for (const k of ['hub69', 'office', 'evidence', 'review', 'acceptance']) {
+      const d = await page.getByTestId('task').first().locator(`[data-testid="loop-stage"][data-key="${k}"]`).getAttribute('data-done');
+      assert(d === '1', k + ' chưa xong');
+    }
+    const sum = await page.getByTestId('task').first().getByTestId('loop-summary').textContent();
+    assert(/Bước tiếp theo|khép kín/.test(sum), sum);
+  });
   await check('Danh mục Link Mẫu: tìm "tmtc" → 8682 → mở trang gốc (iPhone, không cuộn ngang)', async () => {
     const cp = await ctx.newPage(); cp.on('pageerror', (e) => jsErrors.push('catalog: ' + e.message));
     await cp.goto(base + '/_internal/catalog/');
