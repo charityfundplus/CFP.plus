@@ -28,3 +28,6 @@
 [data-directory-root] .chapter-card { min-width: 0; }
 main { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+/* Cảnh báo dữ liệu thử nghiệm (chỉ ở chế độ CFP_SANDBOX_EPHEMERAL). */
+.sandbox-ephemeral { background: #fff4ce; color: #4a3500; border-bottom: 2px solid #c99700; padding: 8px 16px; font-size: 14px; line-height: 1.6; overflow-wrap: anywhere; }

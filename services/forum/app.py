@@ -187,6 +187,44 @@ class HeadAsGet:
         return await self.app({**scope, "method": "GET"}, receive, send_no_body)
 
 
+EPHEMERAL_BANNER = (
+    '<div class="sandbox-ephemeral" role="alert" data-testid="ephemeral-banner">'
+    '<strong>⚠️ DỮ LIỆU THỬ NGHIỆM</strong> — Sandbox lưu tạm: dữ liệu có thể <strong>mất khi máy chủ khởi động lại</strong>. '
+    'Không nhập tài liệu, mật khẩu hay thông tin quan trọng. Chưa có lưu trữ bền vững/sao lưu.</div>')
+
+
+class EphemeralBanner:
+    """Chế độ CFP_SANDBOX_EPHEMERAL: chèn cảnh báo dữ liệu thử nghiệm vào MỌI trang HTML (quyết định 06/11)."""
+
+    def __init__(self, app):
+        self.app = app
+
+    async def __call__(self, scope, receive, send):
+        if scope["type"] != "http":
+            return await self.app(scope, receive, send)
+        state = {"html": False, "start": None, "chunks": []}
+
+        async def wrapped(msg):
+            if msg["type"] == "http.response.start":
+                ctype = dict(msg.get("headers") or []).get(b"content-type", b"")
+                if ctype.startswith(b"text/html"):
+                    state["html"], state["start"] = True, msg
+                    return
+                return await send(msg)
+            if msg["type"] == "http.response.body" and state["html"]:
+                state["chunks"].append(msg.get("body", b""))
+                if msg.get("more_body"):
+                    return
+                body = b"".join(state["chunks"])
+                body = re.sub(rb"(<body[^>]*>)", lambda m: m.group(1) + EPHEMERAL_BANNER.encode(), body, count=1)
+                headers = [(k, v) for k, v in state["start"]["headers"] if k != b"content-length"]
+                headers.append((b"content-length", str(len(body)).encode()))
+                await send({**state["start"], "headers": headers})
+                return await send({"type": "http.response.body", "body": body})
+            return await send(msg)
+        return await self.app(scope, receive, wrapped)
+
+
 class Stores:
     def __init__(self, auth_url: str, forum_urls: dict[str, str], office_url: str | None = None,
                  worker_url: str | None = None):
@@ -347,6 +385,8 @@ def create_app(stores: Stores | None = None) -> FastAPI:
                               "SANDBOX • NOT DEPLOYED.")
     st = stores or Stores.from_env()
     app.state.stores = st
+    if st.ephemeral:
+        app.add_middleware(EphemeralBanner)
     app.add_middleware(HeadAsGet)
     if st.ephemeral:
         for line in st.bootstrap_ephemeral():

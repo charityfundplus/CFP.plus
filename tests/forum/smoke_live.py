@@ -138,6 +138,15 @@ def run(base: str, allow_http: bool, public_only: bool = False, user_only: bool 
         return out
     s.check("platform", "website sandbox: lối vào Siêu Bộ Đôi / Văn Phòng", website)
 
+    def ephemeral_label():
+        if not str(x.get("storage", "")).startswith("ephemeral"):
+            return "kho thật — không cần nhãn"
+        for path in ("/_internal/forum/sieu-bo-doi/", "/_internal/forum/si-ai-hstdn/", "/_internal/office/691121/", "/"):
+            r = guest.get(path)
+            assert r.status_code == 200 and 'data-testid="ephemeral-banner"' in r.text, f"{path} thiếu cảnh báo dữ liệu thử nghiệm"
+        return "4 trang có cảnh báo DỮ LIỆU THỬ NGHIỆM"
+    s.check("platform", "chế độ tạm → mọi trang có cảnh báo dữ liệu thử nghiệm", ephemeral_label)
+
     def csrf():
         r = guest.post("/api/auth/login", json={"email": "x@example.org", "password": "x" * 10})
         assert r.status_code == 403, f"thiếu header CSRF → {r.status_code}"

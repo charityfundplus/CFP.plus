@@ -407,3 +407,36 @@ def test_head_requests_answered_without_body(tmp_path, monkeypatch):
     assert c.head("/99999999/").status_code == 404
     assert c.post("/api/auth/login", json={}).status_code == 403  # HEAD không ảnh hưởng chặn CSRF
     st.dispose()
+
+
+def test_ephemeral_banner_on_every_html_page(tmp_path, monkeypatch):
+    """Quyết định 06/11: chế độ tạm → mọi trang HTML có cảnh báo dữ liệu thử nghiệm; JSON không bị đụng."""
+    from fastapi.testclient import TestClient
+    from services.forum.app import Stores, create_app
+    for n in ("CFP_FORUM_AUTH_DB", "CFP_FORUM_DB_SIEU_BO_DOI", "CFP_FORUM_DB_SI_AI_HSTDN", "CFP_OFFICE_DB", "CFP_WORKER_DB"):
+        monkeypatch.delenv(n, raising=False)
+    monkeypatch.setenv("CFP_SANDBOX_EPHEMERAL", "1")
+    monkeypatch.setenv("CFP_EPHEMERAL_DIR", str(tmp_path))
+    st = Stores.from_env()
+    c = TestClient(create_app(st))
+    for path in ("/", "/691121/", "/_internal/forum/sieu-bo-doi/", "/_internal/forum/si-ai-hstdn/",
+                 "/_internal/office/", "/_internal/office/691121/", "/_internal/ops/", "/_internal/catalog/"):
+        r = c.get(path)
+        assert r.status_code == 200 and 'data-testid="ephemeral-banner"' in r.text, path
+        assert int(r.headers["content-length"]) == len(r.content), path
+        assert r.text.count('data-testid="ephemeral-banner"') == 1, path
+    h = c.get("/api/health")
+    assert h.json()["storage"].startswith("ephemeral") and "ephemeral-banner" not in h.text
+    assert c.head("/_internal/forum/sieu-bo-doi/").content == b""
+    st.dispose()
+
+
+def test_no_ephemeral_banner_with_real_storage(tmp_path):
+    """Kho thật (không phải chế độ tạm) → không chèn cảnh báo."""
+    from fastapi.testclient import TestClient
+    from services.forum.app import Stores, create_app
+    u = lambda n: f"sqlite:///{tmp_path / n}.db"  # noqa: E731
+    st = Stores(u("auth"), {"sieu-bo-doi": u("sbd"), "si-ai-hstdn": u("hst")}, u("office"))
+    c = TestClient(create_app(st))
+    assert "ephemeral-banner" not in c.get("/_internal/forum/sieu-bo-doi/").text
+    st.dispose()
