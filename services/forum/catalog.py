@@ -48,6 +48,28 @@ MODULES = (
     (7, "Đa ngôn ngữ • voice", "planned"), (8, "Test • an toàn • giám sát", "partial"), (9, "Kết quả • lịch sử", "partial"),
 )
 
+HOLDING_DIR = "registry/review-holding"
+_HOLD_ROW = re.compile(r"^\|\s*([0-9]{1,32})\s*\|.*\|\s*([^|]*?)\s*\|\s*$")
+_H1_IDS = re.compile(r"\b[0-9]{2,32}\b")
+
+
+def load_holds(root: Path) -> dict[str, dict]:
+    """ID đang bị giữ (HOLD) theo hồ sơ review-holding: chỉ ĐỌC; không sửa Registry, không tự gỡ HOLD."""
+    holds: dict[str, dict] = {}
+    d = root / HOLDING_DIR
+    for f in sorted(d.glob("*.md")) if d.is_dir() else []:
+        lines = f.read_text("utf-8", "replace").splitlines()
+        src = f"repo:{HOLDING_DIR}/{f.name}"
+        h1 = next((ln for ln in lines if ln.startswith("# ")), "")
+        for cid in _H1_IDS.findall(h1.split("•", 1)[-1] if "•" in h1 else ""):
+            holds.setdefault(cid, {"source": src, "finding": "ID error under review"})
+        for ln in lines:
+            m = _HOLD_ROW.match(ln)
+            if m:
+                holds[m.group(1)] = {"source": src, "finding": m.group(2)}
+    return holds
+
+
 _TITLE = re.compile(r"<title>(.*?)</title>", re.S | re.I)
 _DESC = re.compile(r'<meta\s+name="description"\s+content="([^"]*)"', re.I)
 
@@ -72,6 +94,7 @@ class Catalog:
     def reload(self, root: Path = REPO_ROOT) -> None:
         """Dựng lại chỉ mục từ nguồn (mỗi deploy). Cập nhật nội dung gốc một lần → mọi link con thấy version mới."""
         registry = self.registry
+        self.holds = load_holds(root)
         self.items: dict[str, dict] = {}
         for d in sorted(p for p in root.iterdir() if p.is_dir() and re.fullmatch(r"[0-9]{1,32}", p.name)):
             f = d / "index.html"
@@ -90,8 +113,13 @@ class Catalog:
                 "description": desc[:300],
                 "parent_id": parent,
                 # registry: Parent khai báo trong Registry • inferred_prefix: Registry tự suy từ tiền tố (CHƯA xác minh)
-                "parent_status": ("pending_verification" if not parent else
+                # hold_conflict: chính ID đang HOLD • parent_hold: Parent đang HOLD → KHÔNG coi là đã xác minh
+                "parent_status": ("hold_conflict" if d.name in self.holds else
+                                  "pending_verification" if not parent else
+                                  "parent_hold" if parent in self.holds else
                                   "registry" if ent.parent_source == "explicit" else "inferred_prefix"),
+                "hold": self.holds.get(d.name) or (dict(self.holds[parent], parent=parent)
+                                                   if parent in self.holds else None),
                 "registry_type": ent.type if ent else None,
                 "version": "sha256:" + hashlib.sha256(raw).hexdigest()[:16],
                 "source": f"repo:{d.name}/index.html",

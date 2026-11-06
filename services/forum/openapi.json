@@ -1,6 +1,46 @@
 {
  "components": {
   "schemas": {
+   "AnswerCheckIn": {
+    "description": "Bản nháp trả lời khách của một Agent (vd. Meta Business Agent) — chỉ kiểm tra, KHÔNG gửi (AUTO REPLY HOLD).",
+    "properties": {
+     "agent": {
+      "anyOf": [
+       {
+        "maxLength": 80,
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Agent"
+     },
+     "draft": {
+      "maxLength": 8000,
+      "minLength": 1,
+      "title": "Draft",
+      "type": "string"
+     },
+     "question": {
+      "anyOf": [
+       {
+        "maxLength": 4000,
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Question"
+     }
+    },
+    "required": [
+     "draft"
+    ],
+    "title": "AnswerCheckIn",
+    "type": "object"
+   },
    "BrandIn": {
     "properties": {
      "authorization_url": {
@@ -1433,6 +1473,46 @@
     "summary": "Modules",
     "tags": [
      "hub69"
+    ]
+   }
+  },
+  "/api/office/answer-check": {
+   "post": {
+    "description": "Siêu Phần Mềm giám sát: kiểm tra nguồn/ID, tuyên bố chưa kiểm chứng, cam kết, dữ liệu nhạy cảm.\nLuôn auto_reply=HOLD. Audit chỉ lưu verdict + mã lỗi + sha256 (không lưu nội dung có thể chứa dữ liệu khách).",
+    "operationId": "answer_check_api_office_answer_check_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/AnswerCheckIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Answer Check",
+    "tags": [
+     "office"
     ]
    }
   },

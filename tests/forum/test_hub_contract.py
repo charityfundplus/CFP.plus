@@ -109,11 +109,14 @@ def test_catalog_only_verified_pages_and_registry_parents():
         it = cat.items[cid]
         assert it["canonical_url"] == f"https://cfp.plus/{cid}/" and it["classification"] == "PUBLIC"
         assert it["version"] == "sha256:" + hashlib.sha256((root / cid / "index.html").read_bytes()).hexdigest()[:16]
-    assert cat.items["691121"]["parent_id"] == "69112" and cat.items["691121"]["parent_status"] == "registry"
+    # 69112 nằm trong review-holding (US_SYSTEMIC_CONFLICT) → Parent của 691121 KHÔNG được coi là đã xác minh
+    assert cat.items["691121"]["parent_id"] == "69112" and cat.items["691121"]["parent_status"] == "parent_hold"
     for it in cat.items.values():  # parent chỉ từ Registry; không có → chờ xác minh, không suy từ tiền tố
         e = reg.get(it["canonical_id"])
         assert it["parent_id"] == (e.parent_id if e else None)
-        want = ("pending_verification" if not it["parent_id"] else
+        want = ("hold_conflict" if it["canonical_id"] in cat.holds else
+                "pending_verification" if not it["parent_id"] else
+                "parent_hold" if it["parent_id"] in cat.holds else
                 "registry" if e.parent_source == "explicit" else "inferred_prefix")
         assert it["parent_status"] == want
     assert "HUB 69" in cat.items["69"]["title"]

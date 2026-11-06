@@ -229,6 +229,13 @@ class TopicIn(BaseModel):
     summary: str = Field(default="", max_length=4000)
 
 
+class AnswerCheckIn(BaseModel):
+    """Bản nháp trả lời khách của một Agent (vd. Meta Business Agent) — chỉ kiểm tra, KHÔNG gửi (AUTO REPLY HOLD)."""
+    draft: str = Field(min_length=1, max_length=8000)
+    question: str | None = Field(default=None, max_length=4000)
+    agent: str | None = Field(default=None, max_length=80)
+
+
 class LessonIn(BaseModel):
     title: str = Field(min_length=3, max_length=200)
     chapter: str = Field(pattern=CH)          # 10 Chương 0–9 (không tạo ID số mới)
@@ -841,6 +848,18 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
             link(c, user["id"], f"task:{tid}", f"topic:{lid}", "lesson")
             audit(c, user["id"], "task.lesson", f"task:{tid}", {"topic_id": lid, "chapter": data.chapter})
         return {"task_id": tid, "topic_id": lid, "ref": f"topic:{lid}"}
+
+    @r.post("/answer-check")
+    def answer_check(data: AnswerCheckIn, user=Depends(require_user)):
+        """Siêu Phần Mềm giám sát: kiểm tra nguồn/ID, tuyên bố chưa kiểm chứng, cam kết, dữ liệu nhạy cảm.
+        Luôn auto_reply=HOLD. Audit chỉ lưu verdict + mã lỗi + sha256 (không lưu nội dung có thể chứa dữ liệu khách)."""
+        from services.forum.answer_guard import check_answer
+        res = check_answer(data.draft, catalog, data.question)
+        with _begin() as c:
+            audit(c, user["id"], "answer.check", f"agent:{_clean(data.agent or 'unspecified')}",
+                  {"verdict": res["verdict"], "codes": sorted({f["code"] for f in res["findings"]}),
+                   "draft_sha256": res["draft_sha256"], "citations": [x["id"] for x in res["citations"]]})
+        return res
 
     @r.get("/tasks/{tid}/loop")
     def task_loop(tid: int, user=Depends(require_user)):

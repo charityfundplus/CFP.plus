@@ -45,6 +45,7 @@ Sinh tự động bởi `python -m services.forum.inventory --write` • CI ki�
 | health | GET | `/api/health` | công khai |  |  | tất cả (chỉ đọc trạng thái) |
 | hub69 | GET | `/api/hub/69` | công khai |  |  | Registry (tệp, chỉ đọc) + cfp_office (đọc) |
 | hub69 | GET | `/api/modules` | công khai |  |  | Registry (tệp, chỉ đọc) + cfp_office (đọc) |
+| office | POST | `/api/office/answer-check` | đăng nhập | người đã đăng nhập • chỉ kiểm tra bản nháp, auto_reply=HOLD • audit không lưu nội dung | header X-CFP-Forum + Origin | cfp_office |
 | office | GET | `/api/office/audit` | đăng nhập | governance • hoặc người tham gia/maintainer của đúng nhiệm vụ |  | cfp_office |
 | office | GET | `/api/office/board` | công khai (+phiên nếu có) | theo quyền người xem (khách: rỗng) • REVIEWED cần Evidence + Review độc lập |  | cfp_office |
 | office | POST | `/api/office/datasets` | đăng nhập |  | header X-CFP-Forum + Origin | cfp_office |

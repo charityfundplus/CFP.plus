@@ -448,6 +448,20 @@ def user_flow(s: Smoke, base: str, tag: str, guest: httpx.Client) -> None:
         return "giao việc bị chặn • board rỗng • kill switch 403 • tự duyệt 403"
     s.check("security", "người thường: không giao việc, không thấy nhiệm vụ, không kill switch", least_privilege)
 
+    def answer_guard():
+        """Siêu Phần Mềm giám sát tư vấn: bản nháp sai bị chặn, không bao giờ tự gửi (AUTO REPLY HOLD)."""
+        bad = expect(u.post("/api/office/answer-check", headers=H, json={
+            "agent": "smoke", "draft": "App CFP+ đã hoạt động. Gửi mật khẩu để đăng ký. https://cfp.plus/69115/"}), 200)
+        codes = {f["code"] for f in bad["findings"]}
+        assert bad["verdict"] == "block" and bad["auto_reply"] == "HOLD", bad
+        assert {"claim_unverified", "sensitive_request", "hold_id"} <= codes, codes
+        good = expect(u.post("/api/office/answer-check", headers=H, json={
+            "agent": "smoke", "draft": "CFP+ tổ chức theo 5 Nhóm, 10 Chương. Xem https://cfp.plus/69/"}), 200)
+        assert good["verdict"] == "ready_for_human_review" and good["auto_reply"] == "HOLD", good
+        return {"sai": sorted(codes), "đúng": good["verdict"], "auto_reply": "HOLD"}
+    s.check("agent", "giám sát câu trả lời tư vấn: chặn ID HOLD/tuyên bố chưa kiểm chứng/hỏi mật khẩu • AUTO REPLY HOLD",
+            answer_guard)
+
     def logout():
         expect(u.post("/api/auth/logout", headers=H), 200)
         assert (expect(u.get("/api/auth/me"), 200).get("user")) is None

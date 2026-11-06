@@ -17,7 +17,7 @@
   function item(r) {
     return el('li', { 'data-testid': 'catalog-item', 'data-id': r.canonical_id }, [
       el('strong', { text: r.canonical_id }), ' • ', el('a', { href: r.sandbox_url, text: r.title }),
-      el('br'), el('small', { text: 'Gốc: ' + r.canonical_url + ' • Parent: ' + (r.parent_id ? r.parent_id + (r.parent_status === 'inferred_prefix' ? ' (suy từ tiền tố, chưa xác minh)' : '') : 'chưa xác minh') + ' • ' + r.classification + ' • ' + r.version })]);
+      el('br'), el('small', { text: 'Gốc: ' + r.canonical_url + ' • Parent: ' + (r.parent_status === 'hold_conflict' ? (r.parent_id || '') + ' ⛔ ID ĐANG HOLD (xung đột Registry, chờ Human Governance)' : r.parent_id ? r.parent_id + (r.parent_status === 'inferred_prefix' ? ' (suy từ tiền tố, chưa xác minh)' : r.parent_status === 'parent_hold' ? ' ⚠️ Parent đang HOLD — chưa xác minh' : '') : 'chưa xác minh') + ' • ' + r.classification + ' • ' + r.version })]);
   }
   var t = null;
   function load() {
