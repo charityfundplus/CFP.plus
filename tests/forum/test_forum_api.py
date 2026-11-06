@@ -440,3 +440,32 @@ def test_no_ephemeral_banner_with_real_storage(tmp_path):
     c = TestClient(create_app(st))
     assert "ephemeral-banner" not in c.get("/_internal/forum/sieu-bo-doi/").text
     st.dispose()
+
+
+def test_ephemeral_data_inventory_gates_restart(tmp_path, monkeypatch):
+    """Trước deploy (chế độ tạm): health đếm dữ liệu của người thật; chỉ tài khoản thử nghiệm → safe_to_restart."""
+    from fastapi.testclient import TestClient
+    from services.forum.app import Stores, create_app
+    for n in ("CFP_FORUM_AUTH_DB", "CFP_FORUM_DB_SIEU_BO_DOI", "CFP_FORUM_DB_SI_AI_HSTDN", "CFP_OFFICE_DB", "CFP_WORKER_DB"):
+        monkeypatch.delenv(n, raising=False)
+    monkeypatch.setenv("CFP_SANDBOX_EPHEMERAL", "1")
+    monkeypatch.setenv("CFP_FORUM_COOKIE_SECURE", "auto")
+    monkeypatch.setenv("CFP_EPHEMERAL_DIR", str(tmp_path))
+    monkeypatch.setenv("CFP_BOOTSTRAP_GOV_EMAIL", "sandbox-gov@cfp.plus")
+    monkeypatch.setenv("CFP_BOOTSTRAP_PASSWORD", "mat-khau-bootstrap-1")
+    st = Stores.from_env()
+    H = {"X-CFP-Forum": "1"}
+    t, real = TestClient(create_app(st)), TestClient(create_app(st))
+    t.post("/api/auth/register", headers=H, json={"email": "smoke-1@example.org", "password": "mat-khau-x-123", "name": "Smoke"})
+    t.post("/api/forums/sieu-bo-doi/join", headers=H)
+    t.post("/api/forums/sieu-bo-doi/posts", headers=H, json={"title": "thử", "body": "thử"})
+    inv = t.get("/api/health").json()["data_inventory"]
+    assert inv["safe_to_restart"] is True and inv["real_users"] == 0 and inv["test_users"] == 2  # smoke + bootstrap
+    real.post("/api/auth/register", headers=H, json={"email": "nguoi.that@cfp.plus", "password": "mat-khau-y-123", "name": "Người thật"})
+    real.post("/api/forums/sieu-bo-doi/join", headers=H)
+    real.post("/api/forums/sieu-bo-doi/posts", headers=H, json={"title": "bài thật", "body": "nội dung"})
+    inv = t.get("/api/health").json()["data_inventory"]
+    assert inv == {"real_users": 1, "real_posts": 1, "real_comments": 0, "real_tasks": 0, "test_users": 2,
+                   "safe_to_restart": False}
+    assert "nguoi.that" not in t.get("/api/health").text  # chỉ số đếm, không lộ email/nội dung
+    st.dispose()

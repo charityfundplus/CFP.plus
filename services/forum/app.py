@@ -532,7 +532,31 @@ def create_app(stores: Stores | None = None) -> FastAPI:
                                  "offices": c.execute(select(func.count()).select_from(offices_t)).scalar_one()}
         else:
             out["office"] = None
+        if st.ephemeral:
+            out["data_inventory"] = data_inventory()
         return out
+
+    def data_inventory() -> dict:
+        """Chế độ tạm: đếm dữ liệu do NGƯỜI THẬT tạo (khác tài khoản thử nghiệm @example.org và tài khoản bootstrap)
+        — điều kiện an toàn trước mỗi lần deploy/khởi động lại (dữ liệu tạm sẽ mất). Chỉ số đếm, không lộ nội dung."""
+        boot = {os.environ.get(n, "").strip().lower() for n in ("CFP_BOOTSTRAP_GOV_EMAIL", "CFP_BOOTSTRAP_REVIEWER_EMAIL")}
+        with st.auth.connect() as c:
+            users = c.execute(select(users_t.c.id, users_t.c.email)).all()
+        real = {u.id for u in users if not (u.email.endswith("@example.org") or u.email in boot)}
+        posts = comments = 0
+        for eng in st.forums.values():
+            with eng.connect() as c:
+                posts += sum(1 for (a,) in c.execute(select(posts_t.c.author_id)) if a in real)
+                comments += sum(1 for (a,) in c.execute(select(comments_t.c.author_id)) if a in real)
+        tasks = 0
+        if st.office is not None:
+            from services.forum.office import tasks_t as _tasks
+            with st.office.connect() as c:
+                tasks = sum(1 for (a, b, cr) in c.execute(select(_tasks.c.assignee_id, _tasks.c.reviewer_id,
+                                                                   _tasks.c.created_by)) if {a, b, cr} & real)
+        n = len(real) + posts + comments + tasks
+        return {"real_users": len(real), "real_posts": posts, "real_comments": comments, "real_tasks": tasks,
+                "test_users": len(users) - len(real), "safe_to_restart": n == 0}
 
     # ---- Worker P0: trạng thái chỉ đọc (heartbeat, số việc, cảnh báo) — không có thao tác ghi qua HTTP
     @app.get("/api/worker/status", tags=["worker"])

@@ -80,3 +80,26 @@ jobs:
           done
           echo "== TLS"; echo | openssl s_client -connect cfp.plus:443 -servername cfp.plus 2>/dev/null | openssl x509 -noout -issuer -subject -dates || true
 
+  # Trước mỗi deploy/khởi động lại ở chế độ tạm: kho có dữ liệu của NGƯỜI THẬT không? (chỉ số đếm, không nội dung)
+  # FAIL = KHÔNG được deploy/restart cho đến khi người dùng sao lưu hoặc đồng ý.
+  data_inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      BASE: ${{ inputs.base || 'https://cfp-forum-office-sandbox-p0.onrender.com' }}
+    steps:
+      - name: Kiểm kho dữ liệu trước deploy
+        run: |
+          for i in 1 2 3 4; do
+            code=$(curl -s -o health.json -w '%{http_code}' --max-time 60 "$BASE/api/health" || true)
+            [ "$code" = 200 ] && break; sleep 15
+          done
+          [ "$code" = 200 ] || { echo "::error::health không trả lời ($code)"; exit 1; }
+          jq '{build, storage, data_inventory}' health.json
+          if jq -e '.data_inventory == null' health.json >/dev/null; then
+            echo "Không phải chế độ tạm (hoặc bản cũ chưa có kiểm kho) — bỏ qua"; exit 0
+          fi
+          jq -e '.data_inventory.safe_to_restart == true' health.json >/dev/null \
+            || { echo "::error::Có dữ liệu của người thật trong kho tạm — KHÔNG deploy/restart khi chưa sao lưu/đồng ý"; exit 1; }
+          echo "DATA_INVENTORY=SAFE (chỉ dữ liệu thử nghiệm)"
+
