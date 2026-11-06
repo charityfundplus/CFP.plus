@@ -79,6 +79,17 @@ jobs:
               | grep -iE '^(HTTP|server|via|location|x-cloud-trace-context|x-github-request-id|x-render|rndr-id|cf-ray|x-goog|x-served-by|x-powered-by|alt-svc)' || echo "(không phản hồi)"
           done
           echo "== TLS"; echo | openssl s_client -connect cfp.plus:443 -servername cfp.plus 2>/dev/null | openssl x509 -noout -issuer -subject -dates || true
+      - name: Liên kết trang giới thiệu CFP+ (HUB 69 • 10 Chương • CTTTC) phải mở được
+        run: |
+          # Các URL công khai mà bài giới thiệu (Notion 410caac9…, Canva DAHZcr4iJj4) trỏ tới. Không 200 → FAIL.
+          fail=0
+          for p in /69/ /0123456789/ /28882/ /000/ /0/ /1/ /2/ /3/ /4/ /5/ /6/ /7/ /8/ /9/; do
+            out=$(curl -sL -o page.html -w '%{http_code} %{url_effective}' --max-time 30 "https://cfp.plus$p" || echo "000 -")
+            title=$(grep -o '<title>[^<]*' page.html 2>/dev/null | head -1 | sed 's/<title>//')
+            echo "$out • $title"
+            [ "${out%% *}" = 200 ] || { echo "::error::https://cfp.plus$p không mở được (${out%% *})"; fail=1; }
+          done
+          exit $fail
 
   # Trước mỗi deploy/khởi động lại ở chế độ tạm: kho có dữ liệu của NGƯỜI THẬT không? (chỉ số đếm, không nội dung)
   # FAIL = KHÔNG được deploy/restart cho đến khi người dùng sao lưu hoặc đồng ý.
