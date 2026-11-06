@@ -849,6 +849,52 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
             audit(c, user["id"], "task.lesson", f"task:{tid}", {"topic_id": lid, "chapter": data.chapter})
         return {"task_id": tid, "topic_id": lid, "ref": f"topic:{lid}"}
 
+    # ---- Link Mẫu phổ thông (issue #198 • P0.3): một hồ sơ chung cho MỌI ID đã xuất bản, theo quyền.
+    # ID • Parent • Hồ sơ • Vai trò • Nhiệm vụ • Diễn Đàn • Tri thức • Evidence • Review • Trạng thái • Lịch sử.
+    # Chỉ đọc + tái dùng office_view/links_of (cùng quyền task_visible/ref_visible, cùng RLS 003). Không cấp ID.
+    @r.get("/linkmau/{cid}")
+    def linkmau(cid: str, user=Depends(optional_user)):
+        it = catalog.items.get(cid) if catalog is not None else None
+        if not it:
+            raise HTTPException(404, "Chưa có trang ID này trong nguồn đã xác minh (không tự cấp ID).")
+        holds = catalog.holds
+        chain = [dict(x, hold=x["id"] in holds) for x in registry.chain(cid)] if registry.get(cid) else []
+        e = registry.get(cid)
+        with _connect() as c:
+            has_office = c.execute(select(offices_t.c.canonical_id).where(offices_t.c.canonical_id == cid)).first() is not None
+        ov = office_view(cid, user) if has_office else None
+        tasks = ov["tasks"] if ov else []
+        ext = links_of(f"catalog:{cid}", user)
+        refs = [x["ref"] for x in ext["incoming"] + ext["outgoing"]] + (
+            [x["ref"] for x in ov["links"]["incoming"] + ov["links"]["outgoing"]] if ov else [])
+        st = it["parent_status"]
+        status = {"hold_conflict": "HOLD • xung đột Registry — KHÔNG phải ID đã xác minh",
+                  "parent_hold": "Parent đang HOLD — đang xác minh",
+                  "registry": "Parent theo Registry (ứng viên review, chưa Canonical Lock)",
+                  "inferred_prefix": "Parent suy từ tiền tố — chưa xác minh",
+                  "pending_verification": "Chưa có Parent trong Registry — chờ xác minh"}[st]
+        access = ov["visibility"] if ov else ("participant" if user else "public")
+        return {
+            "id": cid, "canonical_url": it["canonical_url"], "version": it["version"], "classification": it["classification"],
+            "profile": {"title": it["title"], "description": it["description"], "source": it["source"]},
+            "parent": {"id": it["parent_id"], "status": st, "verified": False, "hold": it["hold"], "chain": chain},
+            "status": {"code": st, "label": status, "hold": st in ("hold_conflict", "parent_hold")},
+            "role": {"registry_type": e.type if e else None, "name": e.name if e else None,
+                     "registry_status": getattr(e, "status", None) if e else None},
+            "children": [{"id": x["canonical_id"], "title": x["title"], "parent_status": x["parent_status"]}
+                         for x in catalog.items.values() if x["parent_id"] == cid],
+            "office": {"exists": has_office, "path": f"/_internal/office/{cid}/" if has_office else None,
+                       "verification": ov["office"]["verification"] if ov else None},
+            "tasks": [{k: t[k] for k in ("id", "title", "status", "assignee_id", "reviewer_id")} for t in tasks],
+            "forum": [d for t in tasks for d in t["discussions"]],
+            "knowledge": sorted({r for r in refs if r.split(":")[0] in ("topic", "dataset", "catalog")}),
+            "evidence": [{k: x[k] for k in ("task_id", "kind", "url", "sha", "description")} for t in tasks for x in t["evidence"]],
+            "reviews": [{k: x[k] for k in ("task_id", "decision", "notes", "reviewer_id")} for t in tasks for x in t["reviews"]],
+            "history": [{k: x[k] for k in ("task_id", "from_status", "to_status", "at")} for t in tasks for x in t["history"]][-30:],
+            "access": access,
+            "note": "Nhiệm vụ/Evidence/Review/lịch sử chỉ hiện với người có quyền (giao/nhận/review/duy trì/governance).",
+        }
+
     from services.forum.agents import load_agents, public_view, run_tests
     agents = load_agents()
 

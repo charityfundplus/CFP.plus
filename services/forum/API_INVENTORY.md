@@ -35,6 +35,9 @@ Sinh tự động bởi `python -m services.forum.inventory --write` • CI ki�
 | catalog | GET | `/api/catalog/{cid}` | công khai |  |  | repo: trang <ID>/index.html đã xuất bản (chỉ đọc) + Registry |
 | directory | GET | `/api/directory/countries` | công khai |  |  | Registry (tệp, chỉ đọc) + cfp_office (đọc) |
 | directory | GET | `/api/directory/{eid}` | công khai |  |  | Registry (tệp, chỉ đọc) + cfp_office (đọc) |
+| ecosystem | GET | `/api/ecosystem` | công khai | công khai • bản đồ 10 phân hệ, trạng thái chức năng thật |  | tất cả (chỉ đọc trạng thái) |
+| ecosystem | GET | `/api/ecosystem/ctttc/date/{date_id}` | công khai | công khai • kiểm tra Date ID YYYYMMDD |  | tất cả (chỉ đọc trạng thái) |
+| ecosystem | GET | `/api/ecosystem/ctttc/days` | công khai | công khai • 366 vị trí ngày |  | tất cả (chỉ đọc trạng thái) |
 | forums | GET | `/api/forums/{key}` | công khai (+phiên nếu có) |  |  | diễn đàn tương ứng (cfp_forum_sbd | cfp_forum_hstdn) |
 | forums | POST | `/api/forums/{key}/join` | đăng nhập |  | header X-CFP-Forum + Origin | diễn đàn tương ứng (cfp_forum_sbd | cfp_forum_hstdn) |
 | forums | GET | `/api/forums/{key}/members` | đăng nhập | admin của đúng diễn đàn |  | diễn đàn tương ứng (cfp_forum_sbd | cfp_forum_hstdn) |
@@ -57,6 +60,7 @@ Sinh tự động bởi `python -m services.forum.inventory --write` • CI ki�
 | office | POST | `/api/office/enterprises` | đăng nhập |  | header X-CFP-Forum + Origin | cfp_office |
 | office | GET | `/api/office/enterprises/{eid}` | công khai (+phiên nếu có) |  |  | cfp_office |
 | office | GET | `/api/office/forum-links` | công khai (+phiên nếu có) | chỉ nhiệm vụ người xem được phép thấy • diễn đàn người xem đọc được |  | cfp_office (liên kết) + diễn đàn tương ứng (bài, qua đúng quy tắc diễn đàn) |
+| office | GET | `/api/office/linkmau/{cid}` | công khai (+phiên nếu có) | công khai: hồ sơ/Parent/HOLD • nhiệm vụ/Evidence/Review/lịch sử chỉ theo quyền |  | cfp_office |
 | office | GET | `/api/office/links` | công khai (+phiên nếu có) | ẩn liên kết tới nhiệm vụ/tài liệu không được xem |  | cfp_office |
 | office | POST | `/api/office/links` | đăng nhập | chủ sở hữu mục nguồn / maintainer / governance • đích phải được xem | header X-CFP-Forum + Origin | cfp_office |
 | office | POST | `/api/office/offices` | đăng nhập | governance • ID phải có trong Registry (type ai) | header X-CFP-Forum + Origin | cfp_office |

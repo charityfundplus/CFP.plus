@@ -734,3 +734,28 @@ def test_closed_loop_hub_to_lesson_to_next_task(world):
         "title": "x bài học", "chapter": "1", "summary": "người ngoài không được ghi"}).status_code == 404
     acts = [e["action"] for e in ok(gov.get(f"/api/office/audit?ref=task:{t}"), 200)["events"]]
     assert "task.lesson" in acts and "task.closed" in acts
+
+
+# ---------- Link Mẫu phổ thông (issue #198 • P0.3): hồ sơ chung theo quyền, ID HOLD ghi rõ
+
+def test_linkmau_universal_by_permission(world):
+    guest = client(world["st"])
+    g = ok(guest.get(f"/api/office/linkmau/{CID}"), 200)
+    assert g["id"] == CID and g["canonical_url"] == f"https://cfp.plus/{CID}/" and g["office"]["exists"]
+    assert g["status"]["code"] == "parent_hold" and g["status"]["hold"] and g["parent"]["verified"] is False
+    assert [x["id"] for x in g["parent"]["chain"]] == ["911", "6911", "69112", CID]
+    assert {x["id"]: x["hold"] for x in g["parent"]["chain"]}["69112"] is True
+    assert g["tasks"] == [] and g["evidence"] == [] and g["reviews"] == [] and g["history"] == []  # khách: không thấy
+    assert ok(world["other"].get(f"/api/office/linkmau/{CID}"), 200)["tasks"] == []  # người ngoài: không thấy
+    lead = ok(world["lead"].get(f"/api/office/linkmau/{CID}"), 200)
+    tid = world["out"]["task"]
+    assert tid in [t["id"] for t in lead["tasks"]]
+    assert any(e["task_id"] == tid for e in lead["evidence"]) and any(r["decision"] == "ACCEPT" for r in lead["reviews"])
+    assert lead["history"] and lead["access"] in ("insider", "participant")
+    h = ok(guest.get("/api/office/linkmau/69115"), 200)  # 69115 đang HOLD (Meta ↔ Microsoft AI)
+    assert h["status"]["code"] == "hold_conflict" and h["status"]["hold"] and "HOLD" in h["status"]["label"]
+    assert not h["office"]["exists"] and h["tasks"] == []
+    assert guest.get("/api/office/linkmau/99999999").status_code == 404  # không tự cấp ID
+    page = guest.get(f"/_internal/linkmau/{CID}/")
+    assert page.status_code == 200 and "noindex" in page.headers["x-robots-tag"]
+    assert guest.get("/_internal/linkmau/99999999/").status_code == 404

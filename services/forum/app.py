@@ -849,6 +849,42 @@ def create_app(stores: Stores | None = None) -> FastAPI:
         return FileResponse(WEB_DIR / "catalog.html", media_type="text/html",
                             headers={"X-Robots-Tag": "noindex, nofollow"})
 
+    from services.forum.ecosystem import ctttc_date, ctttc_days, ecosystem_map
+
+    @app.get("/api/ecosystem", tags=["ecosystem"])
+    def ecosystem():
+        return ecosystem_map(catalog)
+
+    @app.get("/api/ecosystem/ctttc/days", tags=["ecosystem"])
+    def ctttc_days_api(year: int | None = None):
+        if year is not None and not 1 <= year <= 9999:
+            raise HTTPException(422, "Năm 1–9999.")
+        return ctttc_days(year)
+
+    @app.get("/api/ecosystem/ctttc/date/{date_id}", tags=["ecosystem"])
+    def ctttc_date_api(date_id: str):
+        try:
+            return ctttc_date(date_id)
+        except ValueError as ex:
+            raise HTTPException(422, str(ex)) from None
+
+    for _name in ("map", "linkmau"):
+        def _js(_n=_name):
+            return FileResponse(WEB_DIR / f"{_n}.js", media_type="text/javascript")
+        app.add_api_route(f"/_internal/{_name}/{_name}.js", _js, include_in_schema=False)
+
+    @app.get("/_internal/map/", include_in_schema=False)
+    def map_page():
+        return FileResponse(WEB_DIR / "map.html", media_type="text/html", headers={"X-Robots-Tag": "noindex, nofollow"})
+
+    if st.office is not None:
+        @app.get("/_internal/linkmau/{cid}/", include_in_schema=False)
+        def linkmau_page(cid: str):
+            if cid not in catalog.items:
+                raise HTTPException(404)
+            return FileResponse(WEB_DIR / "linkmau.html", media_type="text/html",
+                                headers={"X-Robots-Tag": "noindex, nofollow"})
+
     if st.office is not None:  # Văn Phòng Agent (đào tạo) • INTERNAL • noindex • không phải link công bố
         @app.get("/_internal/agent/agent.js", include_in_schema=False)
         def agent_js():
@@ -878,7 +914,10 @@ def create_app(stores: Stores | None = None) -> FastAPI:
                      ("/_internal/forum/sieu-bo-doi/", "Diễn Đàn Siêu Bộ Đôi"),
                      ("/_internal/forum/si-ai-hstdn/", "Diễn Đàn SI AI • HSTDN"),
                      ("/_internal/ops/", "Bảng điều phối"),
-                     ("/_internal/catalog/", "Danh mục Link Mẫu")]
+                     ("/_internal/catalog/", "Danh mục Link Mẫu"),
+                     ("/_internal/map/", "Bản đồ hệ sinh thái")]
+            if cid and office_on and cid in catalog.items:
+                links.insert(0, (f"/_internal/linkmau/{cid}/", f"Link Mẫu {cid}"))
             if cid and office_on and registry.get(cid) is not None:
                 links.insert(0, (f"/_internal/office/{cid}/", f"Văn Phòng {cid}"))
             if not office_on:

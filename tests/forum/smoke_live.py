@@ -189,6 +189,28 @@ def run(base: str, allow_http: bool, public_only: bool = False, user_only: bool 
         return {"total": j["total"], "8682": j["items"][0]["version"], "691121_parent": it["parent_id"], "unknown_id": 404}
     s.check("catalog", "danh mục Link Mẫu: chỉ ID đã xuất bản, parent từ Registry, ID lạ 404", catalog)
 
+    def eco_map():
+        m = expect(guest.get("/api/ecosystem"), 200)
+        assert [x["n"] for x in m["components"]] == list(range(1, 11)), m
+        opened = {}
+        for x in m["components"]:
+            if x["function"]["sandbox_path"]:
+                opened[x["key"]] = guest.get(x["function"]["sandbox_path"]).status_code
+        assert all(v == 200 for v in opened.values()), opened
+        assert expect(guest.get("/api/ecosystem/ctttc/days", params={"year": 2026}), 200)["valid_days"] == 365
+        assert guest.get("/api/ecosystem/ctttc/date/20260229").status_code == 422
+        return {"components": 10, "counts": m["counts"], "sandbox_opened": len(opened), "20260229": 422}
+    s.check("map", "bản đồ 10 phân hệ mở được • CTTTC 366 vị trí, 29/02 chỉ năm nhuận", eco_map)
+
+    def linkmau_public():
+        h = expect(guest.get("/api/office/linkmau/69115"), 200)
+        assert h["status"]["code"] == "hold_conflict" and h["status"]["hold"], h["status"]
+        c = expect(guest.get(f"/api/office/linkmau/{CID}"), 200)
+        assert c["status"]["hold"] and c["tasks"] == [] and c["evidence"] == [], "khách thấy nhiệm vụ/Evidence"
+        assert guest.get("/api/office/linkmau/99999999").status_code == 404
+        return {"69115": h["status"]["code"], CID: c["status"]["code"], "khách thấy nhiệm vụ": False, "ID lạ": 404}
+    s.check("linkmau", "Link Mẫu phổ thông: ID HOLD ghi rõ, khách không thấy nhiệm vụ/Evidence, ID lạ 404", linkmau_public)
+
     if public_only or user_only:
         s.check("worker", "worker chạy thật (heartbeat mới, không bị dừng)", lambda: worker_ok(guest))
     if user_only:

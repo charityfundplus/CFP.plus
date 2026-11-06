@@ -231,6 +231,24 @@ const assert = (c, m) => { if (!c) throw new Error(m || 'assertion failed'); };
     assert(sw <= 1, 'cuộn ngang ' + sw + 'px');
     await gp.close();
   });
+  await check('Bản đồ hệ sinh thái: 10 phân hệ, trạng thái thật, mở Link Mẫu 691121 (HOLD ghi rõ, người thực thi thấy nhiệm vụ) (iPhone)', async () => {
+    const mp = await ctx.newPage(); mp.on('pageerror', (e) => jsErrors.push('map: ' + e.message));
+    await mp.goto(base + '/_internal/map/');
+    await mp.getByTestId('map-item').nth(9).waitFor();
+    assert((await mp.getByTestId('map-item').count()) === 10, 'không đủ 10 phân hệ');
+    assert((await mp.locator('[data-key="tmtc"] [data-testid="map-status"]').getAttribute('data-status')) === 'planned', 'Sàn TMTC không được ghi là đã chạy');
+    let sw = await mp.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    assert(sw <= 1, 'map cuộn ngang ' + sw + 'px');
+    await mp.locator('[data-key="linkmau"] [data-testid="map-open"]').click();
+    await mp.waitForURL(/\/_internal\/linkmau\/69\/$/);
+    await mp.goto(base + '/_internal/linkmau/691121/');
+    await mp.getByTestId('lm-status-label').waitFor();
+    assert((await mp.getByTestId('lm-status-label').getAttribute('data-hold')) === 'true', 'HOLD không hiển thị');
+    await mp.getByTestId('lm-tasks').getByText('#').first().waitFor();  // người thực thi (đã đăng nhập) thấy nhiệm vụ
+    sw = await mp.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    assert(sw <= 1, 'linkmau cuộn ngang ' + sw + 'px');
+    await mp.close();
+  });
   await check('Bảng điều phối: ONLINE thật + nhiệm vụ REVIEWED theo quyền; khách không thấy nhiệm vụ', async () => {
     const op = await ctx.newPage(); op.on('pageerror', (e) => jsErrors.push('ops: ' + e.message));
     await op.goto(base + '/_internal/ops/');
