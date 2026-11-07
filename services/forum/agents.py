@@ -52,26 +52,27 @@ def knowledge(cfg: dict, catalog) -> dict:
             "excluded": sum(not r["use"] for r in rows)}
 
 
-def run_tests(cfg: dict, catalog) -> dict:
+def run_tests(cfg: dict, catalog, registry=None) -> dict:
     results = []
     for s in cfg["scenarios"]:
-        res = check_answer(s["draft"], catalog, s.get("question"))
+        res = check_answer(s["draft"], catalog, s.get("question"), registry=registry)
         got = sorted({f["code"] for f in res["findings"]})
         ok = res["verdict"] == s["verdict"] and set(s["codes"]) <= set(got) and res["auto_reply"] == "HOLD"
         results.append({"name": s["name"], "expected": s["verdict"], "got": res["verdict"], "codes": got,
                         "required": s["codes"], "pass": ok})
     kb = knowledge(cfg, catalog)
-    basis = {"config": cfg["config_version"], "sources": [(r["id"], r.get("version")) for r in kb["sources"]],
+    from services.forum.answer_guard import GUARD_VERSION
+    basis = {"config": cfg["config_version"], "guard": GUARD_VERSION, "sources": [(r["id"], r.get("version")) for r in kb["sources"]],
              "results": results}
     sha = hashlib.sha256(json.dumps(basis, ensure_ascii=False, sort_keys=True).encode()).hexdigest()[:16]
-    return {"slug": cfg["slug"], "sha": sha, "config_version": cfg["config_version"],
+    return {"slug": cfg["slug"], "sha": sha, "config_version": cfg["config_version"], "guard_version": GUARD_VERSION,
             "passed": sum(r["pass"] for r in results), "failed": sum(not r["pass"] for r in results),
             "total": len(results), "results": results, "auto_reply": "HOLD", "stage": cfg["stage"],
             "note": "Kết quả kiểm thử trong sandbox — chưa phải nghiệm thu. Nghiệm thu = Evidence + Review độc lập + Human Approval."}
 
 
-def public_view(cfg: dict, catalog) -> dict:
-    run = run_tests(cfg, catalog)
+def public_view(cfg: dict, catalog, registry=None) -> dict:
+    run = run_tests(cfg, catalog, registry)
     return {k: cfg[k] for k in ("slug", "name", "developer", "developer_ref", "canonical_id", "id_status", "pair", "stage",
                                 "pipeline", "flags", "languages", "instructions", "escalate", "contact",
                                 "config_version", "config_source")} | {

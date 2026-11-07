@@ -911,12 +911,12 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
 
     @r.get("/agents/{slug}")
     def agent_detail(slug: str):
-        return public_view(agent_cfg(slug), catalog)
+        return public_view(agent_cfg(slug), catalog, registry)
 
     @r.post("/agents/{slug}/test-runs", status_code=201)
     def agent_test_run(slug: str, user=Depends(require_user)):
         """Chạy bộ tình huống tư vấn qua Siêu Phần Mềm giám sát; kết quả dùng làm Evidence (test_report)."""
-        run = run_tests(agent_cfg(slug), catalog)
+        run = run_tests(agent_cfg(slug), catalog, registry)
         with _begin() as c:
             audit(c, user["id"], "agent.test_run", f"agent:{slug}",
                   {"sha": run["sha"], "passed": run["passed"], "failed": run["failed"], "config": run["config_version"]})
@@ -925,7 +925,7 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
     @r.get("/agents/{slug}/test-runs/{sha}")
     def agent_test_run_get(slug: str, sha: str):
         """Evidence URL: tính lại từ nguồn hiện hành; khác sha → 409 (Evidence đã cũ, cần chạy lại)."""
-        run = run_tests(agent_cfg(slug), catalog)
+        run = run_tests(agent_cfg(slug), catalog, registry)
         if run["sha"] != sha:
             raise HTTPException(409, f"Kết quả {sha} không còn khớp nguồn/cấu hình hiện hành (hiện {run['sha']}) — chạy lại.")
         return run
@@ -935,10 +935,11 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
         """Siêu Phần Mềm giám sát: kiểm tra nguồn/ID, tuyên bố chưa kiểm chứng, cam kết, dữ liệu nhạy cảm.
         Luôn auto_reply=HOLD. Audit chỉ lưu verdict + mã lỗi + sha256 (không lưu nội dung có thể chứa dữ liệu khách)."""
         from services.forum.answer_guard import check_answer
-        res = check_answer(data.draft, catalog, data.question)
+        res = check_answer(data.draft, catalog, data.question, registry=registry)
         with _begin() as c:
             audit(c, user["id"], "answer.check", f"agent:{_clean(data.agent or 'unspecified')}",
                   {"verdict": res["verdict"], "codes": sorted({f["code"] for f in res["findings"]}),
+                   "guard_version": res["guard_version"],
                    "draft_sha256": res["draft_sha256"], "citations": [x["id"] for x in res["citations"]]})
         return res
 

@@ -9,6 +9,8 @@ on:
     paths:
       - '.github/workflows/render_sandbox_smoke.yml'
       - 'tests/forum/smoke_live.py'
+      - 'tests/forum/agent_evidence.py'
+      - 'services/forum/agents/cases/**'
   workflow_dispatch:
     inputs:
       base:
@@ -118,3 +120,29 @@ jobs:
             || { echo "::error::Có dữ liệu của người thật trong kho tạm — KHÔNG deploy/restart khi chưa sao lưu/đồng ý"; exit 1; }
           echo "DATA_INVENTORY=SAFE (chỉ dữ liệu thử nghiệm)"
 
+
+  # Evidence Siêu Phần Mềm giám sát: bộ hỏi đáp App CFP+ (MÔ PHỎNG, chưa kết nối Meta API) qua /api/office/answer-check
+  # trên HTTPS bằng tài khoản thử nghiệm tự đăng ký. Evidence chỉ chứa build • guard_version • sha256 bản nháp •
+  # verdict • reason codes • trạng thái ID — không lưu nội dung. AUTO REPLY HOLD kiểm cho mọi case.
+  agent_evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      BASE: ${{ inputs.base || 'https://cfp-forum-office-sandbox-p0.onrender.com' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install httpx==0.28.1
+      - name: Bộ hỏi đáp App CFP+ qua answer-check (HTTPS)
+        run: |
+          set -o pipefail
+          for i in 1 2 3 4; do curl -sf --max-time 60 "$BASE/api/health" -o /dev/null && break; sleep 15; done
+          python -m tests.forum.agent_evidence --base "$BASE" --out agent-evidence.json | tee agent-evidence.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: agent-evidence
+          path: |
+            agent-evidence.json
+            agent-evidence.log
