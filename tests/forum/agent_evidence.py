@@ -31,6 +31,9 @@ def run(base: str, cases_file: Path, allow_http: bool = False) -> dict:
     for c in doc["cases"]:
         r = expect(u.post("/api/office/answer-check", headers=H, json={
             "draft": c["draft"], "question": c["question"], "agent": "Meta Business Agent (simulated)"}), 200)
+        if "guard_version" not in r or "ids" not in r:
+            raise SystemExit(f"AGENT_EVIDENCE=FAIL runtime build={health.get('build')} chưa có guard 6 nhóm rủi ro "
+                             "(thiếu guard_version/ids) — cần deploy bản mới trước khi lấy Evidence.")
         codes = sorted({f["code"] for f in r["findings"]})
         ids = {x["id"]: x["status"] for x in r["ids"]}
         ok = (r["verdict"] == c["expected_verdict"] and set(c["required_codes"]) <= set(codes)
