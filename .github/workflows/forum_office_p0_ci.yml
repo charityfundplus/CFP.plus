@@ -1,0 +1,129 @@
+name: Forum + Văn Phòng SI AI P0 CI (sandbox)
+
+# Kiểm thử backend hai diễn đàn + Văn Phòng SI AI trên Postgres thật, 4 schema/role,
+# migration chạy bằng role KHÔNG phải superuser (như Supabase). Không deploy, không secrets.
+on:
+  push:
+    branches: ['claude/**']
+    paths:
+      - 'services/forum/**'
+      - 'tests/forum/**'
+      - 'registry/*.json'
+      - '.github/workflows/forum_office_p0_ci.yml'
+  pull_request:
+    paths:
+      - 'services/forum/**'
+      - 'tests/forum/**'
+      - 'registry/*.json'
+      - '.github/workflows/forum_office_p0_ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: forum-office-p0-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_HOST_AUTH_METHOD: trust   # chỉ dùng trong container CI tạm thời
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U postgres" --health-interval 5s --health-timeout 5s --health-retries 12
+      # Cluster riêng cho kiểm tra "chỉ 002" (role Postgres dùng chung toàn cluster; Supabase = 1 cluster/project).
+      postgres002:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports: ['5433:5432']
+        options: >-
+          --health-cmd "pg_isready -U postgres" --health-interval 5s --health-timeout 5s --health-retries 12
+    env:
+      PGHOST: localhost
+      PGPORT: '5432'
+      PGUSER: postgres
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Cài dependency
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client >/dev/null
+          python -m pip install --upgrade pip
+          pip install -r services/forum/requirements.txt pytest==8.3.4 httpx==0.28.1 playwright==1.49.1
+          mkdir -p "$RUNNER_TEMP/pw" && cd "$RUNNER_TEMP/pw" && npm init -y >/dev/null && npm install playwright@1.49.1
+          npx --prefix "$RUNNER_TEMP/pw" playwright install --with-deps chromium
+
+      - name: Migration schemas_up (#193) + 002_office + 003_office_rls + 004_worker (non-superuser, ×2, rollback down→up)
+        run: |
+          tests/forum/setup_pg.sh cfp_ci | tee migration.log
+          grep -q '^forum_schemas=cfp_forum_auth:cfp_forum_auth_rw,cfp_forum_hstdn:cfp_forum_hstdn_rw,cfp_forum_sbd:cfp_forum_sbd_rw$' migration.log
+          grep -q '^office_tables=14$' migration.log
+          grep -q '^office_rls_forced=14$' migration.log
+          grep -q '^anon_usage=0$' migration.log
+          grep -q '^rls_user_policies=27$' migration.log   # 003 (RLS theo người dùng) đã áp
+          grep -q '^office_rls_forced=14$' migration.log
+          grep -q '^worker_tables=4$' migration.log        # 004 Worker P0
+          grep -q '^worker_rls_forced=4$' migration.log
+          grep -q '^worker_cross_usage=0$' migration.log   # worker_app không vào kho khác và ngược lại
+
+      - name: pytest + Playwright (SQLite, Postgres 4 schema/role, E2E iPhone 13)
+        env:
+          NODE_PATH: ${{ runner.temp }}/pw/node_modules
+          CFP_E2E_SCREENSHOT: ${{ github.workspace }}/office-iphone.png
+          CFP_E2E_VPSBD_SCREENSHOT: ${{ github.workspace }}/van-phong-sieu-bo-doi-iphone.png
+        run: |
+          tests/forum/run_all.sh cfp_ci
+          python -m tests.forum.directory_browser
+
+      - name: Worker P0 chạy thật (tiến trình riêng, heartbeat, kill switch, nhật ký)
+        run: DUR=40 tests/forum/worker_runtime.sh cfp_ci | tee worker-check.log && grep -q '^WORKER_RUNTIME=PASS$' worker-check.log
+
+      - name: Smoke Link Mẫu Chung qua HTTP thật (cùng script dùng cho URL HTTPS sandbox)
+        run: tests/forum/smoke_ci.sh cfp_ci | tee smoke-check.log && grep -q '^SMOKE_LIVE=PASS ' smoke-check.log
+
+      - name: Tương thích ngược — chỉ 002 (đúng trạng thái Supabase hiện tại), pytest Postgres
+        env:
+          PGPORT: '5433'
+        run: |
+          tests/forum/setup_pg.sh cfp_ci_002 --no-003 | tee migration-002.log
+          grep -q '^rls_user_policies=0$' migration-002.log
+          U="postgresql+psycopg://%s@localhost:5433/cfp_ci_002"
+          CFP_FORUM_TEST_AUTH_DB=$(printf "$U" cfp_forum_auth_rw) CFP_FORUM_TEST_DB_SIEU_BO_DOI=$(printf "$U" cfp_forum_sbd_rw) \
+          CFP_FORUM_TEST_DB_SI_AI_HSTDN=$(printf "$U" cfp_forum_hstdn_rw) CFP_OFFICE_TEST_DB=$(printf "$U" office_app) \
+          CFP_FORUM_TEST_ADMIN_DB=$(printf "$U" cfp_migrator) CFP_REQUIRE_003=0 python -m pytest tests/forum -q -p no:cacheprovider
+
+      - name: Lưu kết quả
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: forum-office-p0-results
+          path: |
+            migration.log
+            migration-002.log
+            forum-pytest.xml
+            office-iphone.png
+            van-phong-sieu-bo-doi-iphone.png
+            worker-check.log
+            worker-runtime.log
+            worker-status.json
+            worker-paused.json
+            worker-logs.txt
+            smoke-check.log
+            smoke-live.json
+            smoke-server.log
+          if-no-files-found: warn

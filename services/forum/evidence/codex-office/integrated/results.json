@@ -1,0 +1,28 @@
+{
+  "integrates_pr195_sha": "49f4bc12c9236f641bee20662e75c749fefccfdc",
+  "previous_pr196_sha": "d5e0baa58f765718f146d861ec11c9ffca5a5430",
+  "owner": "Codex 2 backend and UI; independent reviewer acceptance still required",
+  "postgres": "72 PASS on dedicated local PostgreSQL17 container, 4 schema-role connections; not Supabase",
+  "migration": "repeat/rollback cycles PASS;14 office tables;14 FORCE RLS;anon schema usage0",
+  "sqlite": "53 PASS;19 DB-specific skips covered by separate Postgres run",
+  "browser": "Postgres forum17 PASS; Postgres office16 PASS; Chromium mobile, not Safari",
+  "fixes": [
+    "Integrate public DTO/object ACL/reviewer least privilege/link ownership and proxy origin/hop fixes from PR195",
+    "Retain exact full-payload idempotency matching, including concurrent conflict path",
+    "Explicit sandbox SQLite transactions keep task/audit/link commit atomic"
+  ],
+  "open": [
+    "SEC-P0-195-03: shared office_app RLS not tenant/user isolation; independent design/review remains",
+    "Response-size pagination still to evaluate separately",
+    "Supabase migration/credentials not reverified",
+    "External HTTPS ingress and physical iPhone Safari unavailable"
+  ],
+  "production": "NO GO; no merge to main/deployment/Registry changes",
+  "sha256": {
+    "services/forum/app.py": "8e7e464038917e2087a1f63c595b7a015df7c98c7af0b68d67d2b0c8418f18e4",
+    "services/forum/office.py": "4fd7577061728412def5e18138db9785b652a3187e246c82c2944ecb6c16ca3d",
+    "services/forum/web/office.js": "42074e537c64452b97c417127c9f899524e90295aea293a8ffc9fb84388250e9",
+    "services/forum/render.yaml": "aa6cd2c3d41080308326b42f5410848b45817f395d8f9479a92251145bff3acf",
+    "tests/forum/directory_browser.py": "0913a991d02d8c94166450e4d3a874866508de3eeb62a2bdd2ba0aca4920a3c8"
+  }
+}

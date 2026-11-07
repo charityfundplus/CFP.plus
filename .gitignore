@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+smoke-server.log
+smoke-live.json
