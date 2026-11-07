@@ -268,6 +268,20 @@ const assert = (c, m) => { if (!c) throw new Error(m || 'assertion failed'); };
     await vp.waitForURL(/\/_internal\/office\/691121\/$/);
     await vp.close();
   });
+  await check('Văn Phòng Siêu Bộ Đôi trên máy tính (1366×900): đủ nút, không cuộn ngang, nút Link Mẫu mở đúng trang', async () => {
+    const dctx = await browser.newContext({ viewport: { width: 1366, height: 900 } });
+    const dp = await dctx.newPage(); dp.on('pageerror', (e) => jsErrors.push('vpsbd-desktop: ' + e.message));
+    await dp.goto(base + '/_internal/van-phong-sieu-bo-doi/');
+    await dp.getByTestId('vpsbd-entry').first().waitFor();
+    const n = await dp.getByTestId('vpsbd-button').count();
+    assert(n >= 18, 'thiếu nút trên máy tính: ' + n);
+    const sw = await dp.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    assert(sw <= 1, 'cuộn ngang ' + sw + 'px');
+    await dp.locator('[data-testid="vpsbd-entry"][data-id="691151"] [data-key="link-mau"]').click();
+    await dp.waitForURL(/\/_internal\/linkmau\/691151\/$/);
+    await dp.getByTestId('lm-status-label').waitFor();
+    await dctx.close();
+  });
   await check('Bảng điều phối: ONLINE thật + nhiệm vụ REVIEWED theo quyền; khách không thấy nhiệm vụ', async () => {
     const op = await ctx.newPage(); op.on('pageerror', (e) => jsErrors.push('ops: ' + e.message));
     await op.goto(base + '/_internal/ops/');
