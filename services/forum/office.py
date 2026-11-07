@@ -895,6 +895,62 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
             "note": "Nhiệm vụ/Evidence/Review/lịch sử chỉ hiện với người có quyền (giao/nhận/review/duy trì/governance).",
         }
 
+    # ---- Văn Phòng Siêu Bộ Đôi (tích hợp cho Canva DAHZcr4iJj4 / DAHZib-GSzU): danh sách + nút điều hướng THẬT.
+    # Danh sách = Siêu Bộ Đôi đã tạo trong Văn Phòng (super_pairs) + AI có trang ID đã xuất bản trong Registry.
+    # Mỗi nút có trạng thái thật: open (mở được) • login (cần đăng nhập) • approval (cần duyệt) •
+    # not_connected (chưa có chức năng). Không tạo dữ liệu/ID; ID HOLD ghi rõ.
+    @r.get("/sieu-bo-doi")
+    def sieu_bo_doi(request: Request):
+        base = str(request.base_url).rstrip("/")
+        common = [
+            {"key": "nhiem-vu", "label": "Nhận Nhiệm Vụ", "path": "/_internal/ops/", "status": "login",
+             "note": "Xem nhiệm vụ cần đăng nhập; giao nhiệm vụ cần quyền governance."},
+            {"key": "dien-dan-chung", "label": "Diễn Đàn Chung", "path": "/_internal/forum/sieu-bo-doi/", "status": "open",
+             "note": "Khách đọc được; đăng bài cần đăng nhập."},
+            {"key": "dien-dan-rieng", "label": "Diễn Đàn Riêng", "path": "/_internal/forum/si-ai-hstdn/", "status": "approval",
+             "note": "SI AI • HSTDN: cần đăng nhập + được duyệt thành viên."},
+            {"key": "kho-tri-thuc", "label": "Kho Tri Thức", "path": "/_internal/catalog/", "status": "open",
+             "note": "Danh mục Link Mẫu: trang ID đã xuất bản, có version."},
+            {"key": "bang-chung", "label": "Báo Cáo Bằng Chứng", "path": "/_internal/ops/", "status": "login",
+             "note": "Evidence nộp trên nhiệm vụ được giao (người thực thi) → Review độc lập."},
+            {"key": "ban-do", "label": "Bản đồ hệ sinh thái", "path": "/_internal/map/", "status": "open", "note": ""},
+        ]
+        nav = [{"label": "5 Nhóm • 10 Chương", "url": "https://cfp.plus/0123456789/"},
+               {"label": "Nhóm 000 • CFP+ Là Gì", "url": "https://cfp.plus/000/"},
+               {"label": "HUB 69", "url": "https://cfp.plus/69/"}] + [
+              {"label": catalog.items[str(i)]["title"].split(" • CFP+")[0], "url": f"https://cfp.plus/{i}/"}
+              for i in range(10) if str(i) in catalog.items]
+        with _connect() as c:
+            offices = {o["canonical_id"]: o for o in c.execute(select(offices_t)).mappings()}
+            pairs = c.execute(select(pairs_t.c.id, pairs_t.c.canonical_id, pairs_t.c.software)).mappings().all()
+        ids = list(dict.fromkeys([p["canonical_id"] for p in pairs] +
+                                 sorted(i for i, e in registry.entities.items() if e.type == "ai" and i in catalog.items)))
+        rows = []
+        for cid in ids:
+            it, e = catalog.items.get(cid), registry.get(cid)
+            if not it:
+                continue
+            has_office = cid in offices
+            rows.append({
+                "id": cid, "name": e.name if e else it["title"], "public_url": it["canonical_url"],
+                "id_status": {"hold_conflict": "HOLD", "parent_hold": "PARENT_HOLD", "registry": "CANDIDATE"}.get(
+                    it["parent_status"], "UNVERIFIED"),
+                "pairs": [{"id": p["id"], "software": p["software"]} for p in pairs if p["canonical_id"] == cid],
+                "buttons": [
+                    {"key": "van-phong", "label": "Vào Văn Phòng",
+                     "path": f"/_internal/office/{cid}/" if has_office else f"/_internal/linkmau/{cid}/",
+                     "status": "open" if has_office else "not_connected",
+                     "note": "" if has_office else "Chưa có Văn Phòng trong sandbox — mở Link Mẫu thay thế."},
+                    {"key": "link-mau", "label": "Link Mẫu riêng", "path": f"/_internal/linkmau/{cid}/", "status": "open", "note": ""},
+                ]})
+        for b in common + [b for r_ in rows for b in r_["buttons"]]:
+            b["url"] = base + b["path"]
+        return {"mode": "SANDBOX PRACTICE GO • HOLD ACTIVATION • PRODUCTION NO GO", "base": base,
+                "ephemeral_note": "Sandbox tạm: dữ liệu mất khi khởi động lại; chỉ dùng cho preview Canva, không xuất bản.",
+                "entries": rows, "common": common, "nav": nav,
+                "counts": {"entries": len(rows), "with_office": sum(r_["buttons"][0]["status"] == "open" for r_ in rows),
+                           "pairs": len(pairs)}}
+
     from services.forum.agents import load_agents, public_view, run_tests
     agents = load_agents()
 

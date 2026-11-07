@@ -211,6 +211,16 @@ def run(base: str, allow_http: bool, public_only: bool = False, user_only: bool 
         return {"69115": h["status"]["code"], CID: c["status"]["code"], "khách thấy nhiệm vụ": False, "ID lạ": 404}
     s.check("linkmau", "Link Mẫu phổ thông: ID HOLD ghi rõ, khách không thấy nhiệm vụ/Evidence, ID lạ 404", linkmau_public)
 
+    def vpsbd():
+        d = expect(guest.get("/api/office/sieu-bo-doi"), 200)
+        btns = d["common"] + [b for e in d["entries"] for b in e["buttons"]]
+        codes = {b["path"]: guest.get(b["path"]).status_code for b in btns}
+        assert all(v == 200 for v in codes.values()), codes
+        assert guest.get("/_internal/van-phong-sieu-bo-doi/").status_code == 200
+        return {"entries": d["counts"]["entries"], "buttons": len(btns), "paths_200": len(codes),
+                "status": sorted({b["status"] for b in btns})}
+    s.check("vpsbd", "Văn Phòng Siêu Bộ Đôi: mọi nút dẫn tới trang có thật (200), trạng thái nút thật", vpsbd)
+
     if public_only or user_only:
         s.check("worker", "worker chạy thật (heartbeat mới, không bị dừng)", lambda: worker_ok(guest))
     if user_only:

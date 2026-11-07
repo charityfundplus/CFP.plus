@@ -249,6 +249,25 @@ const assert = (c, m) => { if (!c) throw new Error(m || 'assertion failed'); };
     assert(sw <= 1, 'linkmau cuộn ngang ' + sw + 'px');
     await mp.close();
   });
+  await check('Văn Phòng Siêu Bộ Đôi: mọi nút dẫn đúng đích (200), Claude 691121 vào Văn Phòng thật, Meta 691151 ghi chưa kết nối (iPhone)', async () => {
+    const vp = await ctx.newPage(); vp.on('pageerror', (e) => jsErrors.push('vpsbd: ' + e.message));
+    await vp.goto(base + '/_internal/van-phong-sieu-bo-doi/');
+    await vp.getByTestId('vpsbd-entry').first().waitFor();
+    const hrefs = await vp.getByTestId('vpsbd-button').evaluateAll((as) => as.map((a) => a.getAttribute('href')));
+    assert(hrefs.length >= 6 + 2 * 6, 'thiếu nút: ' + hrefs.length);
+    for (const h of [...new Set(hrefs)]) {
+      const r = await vp.request.get(base + h);
+      assert(r.status() === 200, h + ' → ' + r.status());
+    }
+    const meta = vp.locator('[data-testid="vpsbd-entry"][data-id="691151"] [data-key="van-phong"]');
+    assert((await meta.getAttribute('data-status')) === 'not_connected', 'Meta không được ghi là đã có Văn Phòng');
+    const sw = await vp.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    assert(sw <= 1, 'cuộn ngang ' + sw + 'px');
+    if (process.env.CFP_E2E_VPSBD_SCREENSHOT) await vp.screenshot({ path: process.env.CFP_E2E_VPSBD_SCREENSHOT, fullPage: true });
+    await vp.locator('[data-testid="vpsbd-entry"][data-id="691121"] [data-key="van-phong"]').click();
+    await vp.waitForURL(/\/_internal\/office\/691121\/$/);
+    await vp.close();
+  });
   await check('Bảng điều phối: ONLINE thật + nhiệm vụ REVIEWED theo quyền; khách không thấy nhiệm vụ', async () => {
     const op = await ctx.newPage(); op.on('pageerror', (e) => jsErrors.push('ops: ' + e.message));
     await op.goto(base + '/_internal/ops/');

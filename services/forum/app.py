@@ -877,6 +877,15 @@ def create_app(stores: Stores | None = None) -> FastAPI:
     def map_page():
         return FileResponse(WEB_DIR / "map.html", media_type="text/html", headers={"X-Robots-Tag": "noindex, nofollow"})
 
+    if st.office is not None:  # Văn Phòng Siêu Bộ Đôi (tích hợp Canva) • INTERNAL • noindex
+        @app.get("/_internal/van-phong-sieu-bo-doi/vpsbd.js", include_in_schema=False)
+        def vpsbd_js():
+            return FileResponse(WEB_DIR / "vpsbd.js", media_type="text/javascript")
+
+        @app.get("/_internal/van-phong-sieu-bo-doi/", include_in_schema=False)
+        def vpsbd_page():
+            return FileResponse(WEB_DIR / "vpsbd.html", media_type="text/html", headers={"X-Robots-Tag": "noindex, nofollow"})
+
     if st.office is not None:
         @app.get("/_internal/linkmau/{cid}/", include_in_schema=False)
         def linkmau_page(cid: str):
@@ -915,7 +924,8 @@ def create_app(stores: Stores | None = None) -> FastAPI:
                      ("/_internal/forum/si-ai-hstdn/", "Diễn Đàn SI AI • HSTDN"),
                      ("/_internal/ops/", "Bảng điều phối"),
                      ("/_internal/catalog/", "Danh mục Link Mẫu"),
-                     ("/_internal/map/", "Bản đồ hệ sinh thái")]
+                     ("/_internal/map/", "Bản đồ hệ sinh thái"),
+                     ("/_internal/van-phong-sieu-bo-doi/", "Văn Phòng Siêu Bộ Đôi")]
             if cid and office_on and cid in catalog.items:
                 links.insert(0, (f"/_internal/linkmau/{cid}/", f"Link Mẫu {cid}"))
             if cid and office_on and registry.get(cid) is not None:

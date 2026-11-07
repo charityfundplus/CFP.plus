@@ -36,6 +36,7 @@ ROLE_RULES = {
     ("POST", "/api/office/tasks/{tid}/close"): "governance hoặc người giao việc • không phải người thực thi • cần ACCEPTED",
     ("POST", "/api/office/tasks/{tid}/lessons"): "người xem được nhiệm vụ • chỉ sau Closure • ghi chủ đề theo Chương + liên kết",
     ("GET", "/api/office/tasks/{tid}/loop"): "người xem được nhiệm vụ (khác → 404) • vòng khép kín từ dữ liệu thật",
+    ("GET", "/api/office/sieu-bo-doi"): "công khai (sandbox) • danh sách Siêu Bộ Đôi + nút điều hướng có trạng thái thật",
     ("GET", "/api/office/linkmau/{cid}"): "công khai: hồ sơ/Parent/HOLD • nhiệm vụ/Evidence/Review/lịch sử chỉ theo quyền",
     ("GET", "/api/ecosystem"): "công khai • bản đồ 10 phân hệ, trạng thái chức năng thật",
     ("GET", "/api/ecosystem/ctttc/days"): "công khai • 366 vị trí ngày",

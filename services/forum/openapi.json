@@ -2463,6 +2463,25 @@
     ]
    }
   },
+  "/api/office/sieu-bo-doi": {
+   "get": {
+    "operationId": "sieu_bo_doi_api_office_sieu_bo_doi_get",
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     }
+    },
+    "summary": "Sieu Bo Doi",
+    "tags": [
+     "office"
+    ]
+   }
+  },
   "/api/office/tasks": {
    "post": {
     "operationId": "add_task_api_office_tasks_post",

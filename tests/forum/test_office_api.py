@@ -759,3 +759,26 @@ def test_linkmau_universal_by_permission(world):
     page = guest.get(f"/_internal/linkmau/{CID}/")
     assert page.status_code == 200 and "noindex" in page.headers["x-robots-tag"]
     assert guest.get("/_internal/linkmau/99999999/").status_code == 404
+
+
+# ---------- Văn Phòng Siêu Bộ Đôi (tích hợp Canva): nút điều hướng dẫn đúng đích, trạng thái thật
+
+def test_van_phong_sieu_bo_doi_buttons_real(world):
+    guest = client(world["st"])
+    d = ok(guest.get("/api/office/sieu-bo-doi"), 200)
+    by = {e["id"]: e for e in d["entries"]}
+    assert {"691121", "691151", "691181", "691191"} <= set(by)  # AI có trang ID trong Registry
+    claude = by[CID]
+    assert claude["pairs"] and claude["buttons"][0]["status"] == "open"  # Văn Phòng + Siêu Phần Mềm đã tạo thật
+    assert claude["buttons"][0]["path"] == f"/_internal/office/{CID}/" and claude["id_status"] == "PARENT_HOLD"
+    meta = by["691151"]
+    assert meta["buttons"][0]["status"] == "not_connected" and meta["pairs"] == []  # không giả lập Văn Phòng
+    assert {b["key"] for b in d["common"]} == {"nhiem-vu", "dien-dan-chung", "dien-dan-rieng", "kho-tri-thuc", "bang-chung", "ban-do"}
+    assert {b["status"] for b in d["common"]} <= {"open", "login", "approval", "not_connected"}
+    for b in d["common"] + [b for e in d["entries"] for b in e["buttons"]]:  # mọi nút dẫn tới trang có thật
+        assert guest.get(b["path"]).status_code == 200, b
+        assert b["url"].endswith(b["path"])
+    assert [n["url"] for n in d["nav"]][:3] == ["https://cfp.plus/0123456789/", "https://cfp.plus/000/", "https://cfp.plus/69/"]
+    assert len(d["nav"]) == 13  # + Chương 0–9 (trang đã xuất bản)
+    page = guest.get("/_internal/van-phong-sieu-bo-doi/")
+    assert page.status_code == 200 and "noindex" in page.headers["x-robots-tag"]

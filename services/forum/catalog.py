@@ -38,6 +38,8 @@ SANDBOX = (
     {"name": "Diễn Đàn SI AI • HSTDN", "path": "/_internal/forum/si-ai-hstdn/", "module": 3},
     {"name": "HUB 69 • Văn Phòng SI AI (danh bạ)", "path": "/_internal/office/", "module": 2},
     {"name": "Bảng điều phối (task/ACK/Evidence/Review, worker)", "path": "/_internal/ops/", "module": 4},
+    {"name": "Văn Phòng Siêu Bộ Đôi (danh sách + nút điều hướng thật, tích hợp Canva)",
+     "path": "/_internal/van-phong-sieu-bo-doi/", "module": 2},
     {"name": "Bản đồ hệ sinh thái (10 phân hệ • trạng thái thật)", "path": "/_internal/map/", "module": 0},
     {"name": "Link Mẫu phổ thông (hồ sơ theo ID, theo quyền)", "path": "/_internal/linkmau/69/", "module": 1},
     {"name": "Văn Phòng Agent • Meta Business Agent (TRAINING • AUTO REPLY HOLD • chưa nghiệm thu)",
