@@ -11,6 +11,7 @@ on:
       - 'tests/forum/smoke_live.py'
       - 'tests/forum/agent_evidence.py'
       - 'scripts/site_link_audit.py'
+      - 'tests/forum/https_mobile.js'
       - 'services/forum/agents/cases/**'
   workflow_dispatch:
     inputs:
@@ -116,6 +117,25 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with: { name: site-links, path: "audit.json\nprod-status.txt" }
+
+  # Giao diện điện thoại trên URL HTTPS thật (Chromium giả lập iPhone 13) + ảnh chụp làm Evidence.
+  https_mobile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      BASE: ${{ inputs.base || 'https://cfp-forum-office-sandbox-p0.onrender.com' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: npm install --no-save playwright@1.49.1 && npx playwright install --with-deps chromium
+      - name: iPhone 13 trên HTTPS
+        run: |
+          for i in 1 2 3 4; do curl -sf --max-time 60 "$BASE/api/health" -o /dev/null && break; sleep 15; done
+          node tests/forum/https_mobile.js "$BASE" https-mobile
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: https-mobile-iphone, path: https-mobile }
 
   # Trước mỗi deploy/khởi động lại ở chế độ tạm: kho có dữ liệu của NGƯỜI THẬT không? (chỉ số đếm, không nội dung)
   # FAIL = KHÔNG được deploy/restart cho đến khi người dùng sao lưu hoặc đồng ý.
