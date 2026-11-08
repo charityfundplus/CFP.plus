@@ -787,6 +787,14 @@ def create_app(stores: Stores | None = None) -> FastAPI:
                                 headers={"X-Robots-Tag": "noindex, nofollow"})
 
     # ---- UI tại đường dẫn kỹ thuật nội bộ (không phải public route)
+    @app.get("/search.js", include_in_schema=False)  # ô tìm ID của website tĩnh (/69/, /0123456789/)
+    def site_search_js():
+        return FileResponse(WEB_DIR.parents[2] / "search.js", media_type="text/javascript")
+
+    @app.get("/search-index.json", include_in_schema=False)  # sinh bởi scripts/build_search_index.py
+    def site_search_index():
+        return FileResponse(WEB_DIR.parents[2] / "search-index.json", media_type="application/json")
+
     @app.get("/styles.css")
     def site_css():  # stylesheet chung của site, chỉ để chạy độc lập trong sandbox
         return FileResponse(WEB_DIR.parents[2] / "styles.css", media_type="text/css")

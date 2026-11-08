@@ -367,6 +367,28 @@ const assert = (c, m) => { if (!c) throw new Error(m || 'assertion failed'); };
       assert(layout.width === 1366 && layout.scrollWidth <= 1366 && layout.columns === 2, 'layout máy tính: ' + JSON.stringify(layout));
     } finally { await hctx.close(); }
   });
+  await check('Website /69/: ô Tìm ID trên iPhone — "tmtc" ra 8682, "quy 1" ra 31, ID lạ không bịa trang, chạm kết quả mở đúng trang', async () => {
+    const sp = await ctx.newPage(); sp.on('pageerror', (e) => jsErrors.push('search: ' + e.message));
+    await sp.goto(base + '/69/');
+    const q = sp.locator('#cfp-q');
+    await sp.locator('[data-cfp-count]').filter({ hasText: 'trang ID đã xuất bản' }).waitFor();
+    assert(await q.evaluate((e) => getComputedStyle(e).fontSize) === '16px', 'font < 16px → Safari tự phóng to');
+    await q.fill('tmtc');
+    await sp.locator('[data-cfp-results] a[href="/8682/"]').waitFor();
+    await q.fill('quy 1');
+    await sp.locator('[data-cfp-results] a[href="/31/"]').waitFor();
+    await q.fill('99999999');
+    await sp.locator('[data-cfp-count]').filter({ hasText: 'không tự cấp ID' }).waitFor();
+    assert((await sp.locator('[data-cfp-results] li').count()) === 0, 'ID lạ vẫn có kết quả');
+    await q.fill('69115');
+    await sp.locator('[data-cfp-results] li').filter({ hasText: 'HOLD' }).first().waitFor();
+    const sw = await sp.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    assert(sw <= 1, 'cuộn ngang ' + sw + 'px');
+    await q.fill('8682');
+    await sp.locator('[data-cfp-results] a[href="/8682/"]').click();
+    await sp.waitForURL(/\/8682\/$/);
+    await sp.close();
+  });
   await check('Bảng điều phối: ONLINE thật + nhiệm vụ REVIEWED theo quyền; khách không thấy nhiệm vụ', async () => {
     const op = await ctx.newPage(); op.on('pageerror', (e) => jsErrors.push('ops: ' + e.message));
     await op.goto(base + '/_internal/ops/');

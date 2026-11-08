@@ -96,3 +96,9 @@ footer p { margin: 0; }
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
   .chapter-card:hover, .chapter-card:focus-visible { transform: none; }
 }
+/* Ô tìm ID (search.js): 16px để Safari iPhone không tự phóng to khi chạm; vùng chạm ≥ 44px */
+[data-cfp-search] input[type="search"] { display: block; width: 100%; min-height: 44px; font-size: 16px; padding: .7rem .9rem; margin: .5rem 0; border: 1px solid var(--line); border-radius: 12px; background: #fff; color: var(--ink); }
+[data-cfp-search] input[type="search"]:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+[data-cfp-search] [data-cfp-results] { list-style: none; padding: 0; margin: 0; }
+[data-cfp-search] [data-cfp-results] li { padding: .55rem 0; border-bottom: 1px solid var(--line); overflow-wrap: anywhere; }
+[data-cfp-search] [data-cfp-results] a { font-weight: 600; }
