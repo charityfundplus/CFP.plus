@@ -221,6 +221,21 @@ def run(base: str, allow_http: bool, public_only: bool = False, user_only: bool 
                 "status": sorted({b["status"] for b in btns})}
     s.check("vpsbd", "Văn Phòng Siêu Bộ Đôi: mọi nút dẫn tới trang có thật (200), trạng thái nút thật", vpsbd)
 
+    def website():
+        hub = guest.get("/69/")
+        assert hub.status_code == 200 and "data-cfp-search" in hub.text, "thiếu ô Tìm ID trên /69/"
+        assert "/_internal/site/all-in-one.js" in hub.text, "thiếu ALL IN ONE trên /69/ (sandbox)"
+        assert "data-cfp-search" in guest.get("/0123456789/").text, "thiếu ô Tìm ID trên /0123456789/"
+        for path in ("/search.js", "/_internal/site/all-in-one.js", "/_internal/site/all-in-one.css", "/styles.css"):
+            assert guest.get(path).status_code == 200, path
+        idx = expect(guest.get("/search-index.json"), 200)["items"]
+        by = {x["id"]: x for x in idx}
+        assert len(idx) >= 150 and "8682" in by and by["69115"]["s"] == "HOLD", len(idx)
+        for cid in ("267", "2676"):
+            assert 'href="/styles.css"' in guest.get(f"/{cid}/").text, f"/{cid}/ chưa dùng /styles.css"
+        return {"search_index": len(idx), "69115": by["69115"]["s"], "all_in_one": True, "267/2676_css": "ok"}
+    s.check("website", "website sandbox: ô Tìm ID (/69/, /0123456789/) + chỉ mục + ALL IN ONE + CSS 267/2676", website)
+
     if public_only or user_only:
         s.check("worker", "worker chạy thật (heartbeat mới, không bị dừng)", lambda: worker_ok(guest))
     if user_only:
