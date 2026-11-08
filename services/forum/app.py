@@ -853,7 +853,7 @@ def create_app(stores: Stores | None = None) -> FastAPI:
 
     @app.get("/api/ecosystem", tags=["ecosystem"])
     def ecosystem():
-        return ecosystem_map(catalog)
+        return ecosystem_map(catalog, office_on=st.office is not None)
 
     @app.get("/api/ecosystem/ctttc/days", tags=["ecosystem"])
     def ctttc_days_api(year: int | None = None):
@@ -937,6 +937,16 @@ def create_app(stores: Stores | None = None) -> FastAPI:
                    + " · ".join(f'<a href="{h}">{html.escape(t)}</a>' for h, t in links)
                    + ' · <span>PRODUCTION NO GO</span></div>')
             page = f.read_text(encoding="utf-8")
+            if cid == "69":
+                # Enrich this sandbox response from the existing catalog. The source HUB page,
+                # Registry, Canonical ID and production website remain the original files.
+                fragment = (WEB_DIR / "all-in-one.html").read_text(encoding="utf-8")
+                if not office_on:
+                    fragment = re.sub(r'<nav class="aio-shortcuts".*?</nav>', '', fragment, count=1, flags=re.S)
+                page = re.sub(r'<section class="hero">.*?</section>', lambda _m: fragment,
+                              page, count=1, flags=re.S)
+                page = page.replace("</head>", '<link rel="stylesheet" href="/_internal/site/all-in-one.css">'
+                                    '<script src="/_internal/site/all-in-one.js" defer></script></head>', 1)
             page = page.replace("</head>", '<link rel="stylesheet" href="/_internal/site/sandbox.css"></head>', 1)
             page = re.sub(r"(<body[^>]*>)", lambda m: m.group(1) + bar, page, count=1)
             return Response(page, media_type="text/html; charset=utf-8",
@@ -945,6 +955,14 @@ def create_app(stores: Stores | None = None) -> FastAPI:
         @app.get("/_internal/site/sandbox.css", include_in_schema=False)
         def site_sandbox_css():
             return FileResponse(WEB_DIR / "sandbox.css", media_type="text/css")
+
+        @app.get("/_internal/site/all-in-one.css", include_in_schema=False)
+        def site_all_in_one_css():
+            return FileResponse(WEB_DIR / "all-in-one.css", media_type="text/css")
+
+        @app.get("/_internal/site/all-in-one.js", include_in_schema=False)
+        def site_all_in_one_js():
+            return FileResponse(WEB_DIR / "all-in-one.js", media_type="text/javascript")
 
         @app.get("/", include_in_schema=False)
         def site_home():

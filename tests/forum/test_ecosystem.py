@@ -3,7 +3,7 @@ import pytest
 from fastapi.testclient import TestClient
 
 from services.forum.app import Stores, create_app
-from services.forum.ecosystem import COMPONENTS, ctttc_date, ctttc_days
+from services.forum.ecosystem import COMPONENTS, all_in_one, ctttc_date, ctttc_days
 
 
 @pytest.fixture(scope="module")
@@ -45,3 +45,102 @@ def test_ctttc_366_positions_and_leap_rule(c):
     assert ctttc_date("21000301")["leap_year"] is False  # 2100 không nhuận
     for bad in ("2026023", "2026-02-2", "20261301", "20260431"):
         assert c.get(f"/api/ecosystem/ctttc/date/{bad}").status_code == 422
+
+
+def test_all_in_one_covers_founder_scope_with_working_local_navigation(c):
+    m = c.get("/api/ecosystem").json()["all_in_one"]
+    assert m["hub"] == {"id": "69", "canonical_url": "https://cfp.plus/69/", "sandbox_url": "/69/"}
+    assert [x["number"] for x in m["categories"]] == list(range(1, 11))
+    assert {g["code"] for g in m["groups"]} == {"DV", "000", "135", "246", "789"}
+    assert {ch["id"] for ch in m["chapters"]} == set("0123456789")
+    assert "HOLD ACTIVATION" in m["governance"]
+    paths = set()
+    for category in m["categories"]:
+        assert category["status"] in m["statuses"]
+        assert category["label"] == m["statuses"][category["status"]]
+        for link in category["links"]:
+            assert link["status"] in m["statuses"] and link["note"] and link["source"]
+            if link["sandbox_url"]:
+                paths.add(link["sandbox_url"])
+            if link["url"]:
+                assert isinstance(link["canonical_id"], str)
+                assert link["url"] == f"https://cfp.plus/{link['canonical_id']}/"
+                assert link["source"] == f"repo:{link['canonical_id']}/index.html"
+                assert link["version"].startswith("sha256:")
+    for path in paths:
+        assert c.get(path).status_code == 200, path
+
+
+def test_all_in_one_missing_funds_and_future_features_do_not_invent_links(c):
+    m = c.get("/api/ecosystem").json()["all_in_one"]
+    by = {x["key"]: x for x in m["categories"]}
+    funds = by["funds"]
+    assert funds["status"] == "incomplete"
+    requested = [x for x in funds["links"] if x["canonical_id"] in {"331", "332", "333"}]
+    assert {x["canonical_id"] for x in requested} == {"331", "332", "333"}
+    assert all(x["url"] is None and x["sandbox_url"] is None and x["status"] == "incomplete" for x in requested)
+    assert not {"31", "32", "33"} & {x["canonical_id"] for x in funds["links"]}
+    app = next(x for x in by["products"]["links"] if x["label"] == "App CFP+")
+    courses = next(x for x in by["education"]["links"] if "khóa học" in x["label"])
+    for item in (app, courses):
+        assert item["status"] == "incomplete"
+        assert item["canonical_id"] is None and item["url"] is None and item["sandbox_url"] is None
+    assert by["research"]["status"] == "research"
+    tmtc = next(x for x in by["products"]["links"] if x["canonical_id"] == "8682")
+    assert "chưa hoàn thành" in tmtc["note"]
+
+
+def test_all_in_one_preserves_source_identity_hold_and_responds_to_missing_source():
+    from types import SimpleNamespace
+    item = {"canonical_id": "6", "canonical_url": "https://cfp.plus/6/", "sandbox_url": "/6/",
+            "title": "Nguồn đang HOLD", "source": "repo:6/index.html", "version": "sha256:source-v2",
+            "parent_status": "hold_conflict"}
+    catalog = SimpleNamespace(items={"6": item})
+    data = all_in_one(catalog)
+    technology = next(x for x in data["categories"] if x["key"] == "technology")
+    source_link = next(x for x in technology["links"] if x["canonical_id"] == "6")
+    assert source_link["label"] == item["title"]
+    assert source_link["version"] == item["version"] and source_link["parent_status"] == "hold_conflict"
+    assert catalog.items == {"6": item}  # không ghi lại Registry hoặc bản ghi nguồn
+    del catalog.items["6"]
+    missing = next(x for x in all_in_one(catalog)["categories"] if x["key"] == "technology")["links"][0]
+    assert missing["canonical_id"] == "6" and missing["url"] is None and missing["sandbox_url"] is None
+    assert missing["status"] == "incomplete"
+
+
+def test_all_in_one_hub_ui_is_sandbox_only_and_keeps_source_page(c):
+    from pathlib import Path
+    source = Path("69/index.html").read_bytes()
+    page = c.get("/69/")
+    assert page.status_code == 200 and "CFP+ ALL IN ONE" in page.text
+    assert 'data-all-in-one' in page.text and page.text.count('<h1') == 1
+    assert "noindex" in page.headers["x-robots-tag"]
+    assert "script-src 'self'" in page.headers["content-security-policy"]
+    assert '<script src="/_internal/site/all-in-one.js" defer>' in page.text
+    assert c.get("/_internal/site/all-in-one.js").status_code == 200
+    assert c.get("/_internal/site/all-in-one.css").status_code == 200
+    assert c.get("/").status_code == 200 and 'data-all-in-one' not in c.get("/").text
+    assert Path("69/index.html").read_bytes() == source
+    assert b'CFP+ ALL IN ONE' not in source
+
+
+def test_all_in_one_hides_office_links_when_office_is_not_configured(tmp_path):
+    st = Stores(f"sqlite:///{tmp_path}/a.db", {
+        "sieu-bo-doi": f"sqlite:///{tmp_path}/s.db", "si-ai-hstdn": f"sqlite:///{tmp_path}/h.db"})
+    with TestClient(create_app(st)) as guest:
+        items = guest.get("/api/ecosystem").json()["all_in_one"]["categories"]
+        for category in items:
+            for item in category["links"]:
+                if item["sandbox_url"]:
+                    assert guest.get(item["sandbox_url"]).status_code == 200, item
+        assert 'aio-shortcuts' not in guest.get("/69/").text
+
+
+def test_all_in_one_ui_respects_disabled_sandbox_website(tmp_path, monkeypatch):
+    monkeypatch.setenv("CFP_SANDBOX_WEBSITE", "0")
+    st = Stores(f"sqlite:///{tmp_path}/a.db", {
+        "sieu-bo-doi": f"sqlite:///{tmp_path}/s.db", "si-ai-hstdn": f"sqlite:///{tmp_path}/h.db"})
+    with TestClient(create_app(st)) as guest:
+        assert guest.get("/69/").status_code == 404
+        assert guest.get("/_internal/site/all-in-one.js").status_code == 404
+        assert guest.get("/api/ecosystem").status_code == 200

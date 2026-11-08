@@ -12,6 +12,8 @@ from __future__ import annotations
 import calendar
 from datetime import date
 
+from services.forum.registry import CHAPTERS, GROUPS
+
 # n, khóa, tên, ID trang công khai (đã có trong repo hay không do Link Mẫu xác định), chức năng sandbox, ghi chú
 COMPONENTS = (
     (1, "hub69", "HUB 69 • điều hướng và điều phối", ["69"], "sandbox", "/_internal/office/",
@@ -36,7 +38,119 @@ COMPONENTS = (
 )
 
 
-def ecosystem_map(catalog) -> dict:
+ALL_IN_ONE_STATUSES = {
+    "active": "Đã hoạt động", "testing": "Đang thử nghiệm",
+    "research": "Đang nghiên cứu", "incomplete": "Chưa hoàn thành",
+}
+
+
+def all_in_one(catalog, office_on: bool = True) -> dict:
+    """Điều hướng P0 từ nguồn hiện hữu; không cấp ID hay nâng trạng thái nghiệp vụ.
+
+    ``active`` chỉ xác nhận trang nội dung có trong snapshot phục vụ sandbox. Các
+    chức năng cần đăng nhập vẫn giữ kiểm quyền ở API đích; API này chỉ chứa link.
+    331/332/333 do Founder nêu trong lệnh P0: thiếu trang thì giữ nguyên ID và
+    không suy ra URL hoặc thay bằng 31/32/33 trong dữ liệu cũ.
+    """
+    def pending(label, note, status="incomplete", cid=None):
+        return {"label": label, "url": None, "sandbox_url": None, "canonical_id": cid,
+                "source": "Founder P0 2026-11-08", "version": None,
+                "parent_status": "pending_verification", "status": status, "note": note}
+
+    def page(cid, note="", label=None):
+        item = catalog.items.get(cid)
+        if not item:
+            return pending(label or cid, note or "Chưa có trang trong nguồn hiện hữu; chờ đối chiếu.", cid=cid)
+        return {"label": label or item["title"], "url": item["canonical_url"],
+                "sandbox_url": item["sandbox_url"], "canonical_id": item["canonical_id"],
+                "source": item["source"], "version": item["version"],
+                "parent_status": item["parent_status"], "status": "active",
+                "note": note or "Trang nội dung hiện hữu; chức năng và Evidence theo phạm vi ghi trong trang."}
+
+    def technical(label, path, note):
+        if not office_on and path.startswith(("/_internal/office/", "/_internal/ops/", "/_internal/van-phong-sieu-bo-doi/")):
+            return pending(label, "Văn Phòng chưa được cấu hình trong runtime này.")
+        return {"label": label, "url": None, "sandbox_url": path, "canonical_id": None,
+                "source": "repo:services/forum/app.py", "version": None,
+                "parent_status": "not_applicable", "status": "testing", "note": note}
+
+    def category(number, key, title, status, note, links):
+        return {"number": number, "key": key, "title": title, "status": status,
+                "label": ALL_IN_ONE_STATUSES[status], "note": note, "links": links}
+
+    categories = [
+        category(1, "products", "Website • App • Sàn TMTC • Diễn Đàn • Văn Phòng Siêu Bộ Đôi", "testing",
+                 "Dùng chung HUB và backend hiện hữu. App và chức năng giao dịch TMTC chưa hoàn thành.", [
+                     technical("Website CFP+ trong sandbox", "/", "Điều hướng các trang nguồn hiện hữu."),
+                     pending("App CFP+", "Chưa có App hoạt động; giao diện web trên điện thoại đang thử nghiệm."),
+                     page("8682", "Trang giới thiệu TMTC; chức năng giao dịch/kết nối cung cầu chưa hoàn thành."),
+                     technical("Diễn Đàn Siêu Bộ Đôi", "/_internal/forum/sieu-bo-doi/", "Đọc công khai; đăng bài cần tài khoản sandbox."),
+                     technical("Diễn Đàn SI AI • HSTDN", "/_internal/forum/si-ai-hstdn/", "Nội dung và quyền thành viên theo API diễn đàn."),
+                     technical("Văn Phòng Siêu Bộ Đôi", "/_internal/van-phong-sieu-bo-doi/", "Danh sách và điều hướng sandbox; kết nối SI AI bên ngoài cần Evidence riêng."),
+                 ]),
+        category(2, "structure", "5 Nhóm • 10 Chương • Hệ thống ID số", "active",
+                 "Điều hướng theo trang và Registry hiện hữu. Nhãn Nhóm DV/Nhóm 0 còn chờ Human Governance đối chiếu.",
+                 [page("0123456789"), page("000")] + [page(cid) for cid in CHAPTERS] + [page("4376")]),
+        category(3, "funds", "Ba Quỹ CFP+ • 331 • 332 • 333", "incomplete",
+                 "331, 332, 333 giữ đúng lệnh Founder. Chưa có trang cho ba ID này trong snapshot; không thay bằng 31, 32, 33.",
+                 [page(cid, "ID do Founder chỉ định; chưa có trang nguồn trong snapshot.", "Quỹ CFP+ " + cid)
+                  for cid in ("331", "332", "333")] + [page("3", "Trang Chương 3 hiện hữu; chưa xác nhận mapping mới 331/332/333.")]),
+        category(4, "ctttc", "CTTTC • 366 Ngày • 28882", "testing",
+                 "Trang giới thiệu và API lịch 366 vị trí đã có; tri thức theo từng ngày chưa hoàn thành.", [
+                     page("28882"),
+                     technical("Lịch CTTTC 366 vị trí", "/api/ecosystem/ctttc/days", "API lịch sandbox; 29/02 chỉ hợp lệ trong năm nhuận."),
+                 ]),
+        category(5, "education", "Giáo dục • Đào tạo • Giáo trình • Khóa học miễn phí", "research",
+                 "Nguồn hiện hữu nêu định hướng giáo dục; chưa có giáo trình hoặc khóa học miễn phí được nghiệm thu trong snapshot.", [
+                     page("2", "Chương Con Người có định hướng Giáo Dục Và Phát Triển."),
+                     page("28882", "Định hướng tri thức và học tập; chưa phải một khóa học hoàn chỉnh."),
+                     pending("Giáo trình và khóa học miễn phí", "Chưa có trang/ID và nội dung khóa học đã xác minh."),
+                 ]),
+        category(6, "research", "Chương trình • Đã nghiên cứu • Đang nghiên cứu • Định hướng tương lai", "research",
+                 "Tra cứu nguồn hiện hữu; chương trình chỉ được ghi hoàn tất khi có Output, Evidence và Review đúng phạm vi.", [
+                     page("28882", "CTTTC kết nối Quá Khứ • Hiện Tại • Tương Lai."),
+                     technical("Danh mục công trình và tri thức", "/_internal/catalog/", "Tra cứu trang nguồn; không suy rộng listing thành chương trình đã hoàn tất."),
+                     pending("Hồ sơ chương trình đã nghiên cứu", "Chưa có danh mục nghiệm thu riêng trong snapshot."),
+                     pending("Chương trình đang nghiên cứu và tương lai", "Chưa có hồ sơ chương trình được xác minh riêng.", "research"),
+                 ]),
+        category(7, "technology", "SI AI • Robot • Siêu Phần Mềm • Công nghệ • Hàng không • Vũ trụ", "testing",
+                 "Danh bạ và Văn Phòng sandbox có sẵn. Robot, hàng không và vũ trụ chưa có trang chuyên biệt được xác minh trong snapshot.", [
+                     page("6"),
+                     technical("Danh bạ SI AI và Văn Phòng", "/_internal/office/", "CFP+ ID khác ID chính thức của nhà cung cấp; trạng thái HOLD giữ nguyên."),
+                     technical("Siêu Bộ Đôi • Siêu Phần Mềm", "/_internal/van-phong-sieu-bo-doi/", "Chức năng sandbox; không tự xác nhận adapter của nền tảng bên ngoài đã kết nối."),
+                     pending("Robot • Hàng không • Vũ trụ", "Chờ hồ sơ nguồn chuyên biệt; không tự tạo ID hay link.", "research"),
+                 ]),
+        category(8, "ecosystems", "HSTDN • Quỹ • Ngân hàng • Sàn tài sản số • Tổ chức • Quốc gia", "research",
+                 "Có các Chương và diễn đàn HSTDN; từng tổ chức, quốc gia và nghiệp vụ cần nguồn/Evidence riêng.", [
+                     page("7"), page("8"), page("9"),
+                     technical("Diễn Đàn SI AI • HSTDN", "/_internal/forum/si-ai-hstdn/", "Nghiên cứu doanh nghiệp theo quyền thành viên sandbox."),
+                     pending("Ngân hàng • Sàn giao dịch tài sản số", "Chưa có danh mục chuyên biệt được xác minh trong snapshot.", "research"),
+                 ]),
+        category(9, "communities", "Tôn giáo • Cộng đồng • Nhà khoa học • Nhà hiền triết", "research",
+                 "Điều hướng các Chương hiện hữu. Hồ sơ cá nhân và hoạt động cụ thể cần được kiểm chứng riêng.", [
+                     page("4"), page("5"), page("2"),
+                     pending("Nhà khoa học • Nhà hiền triết", "Chưa có hồ sơ chuyên biệt được xác minh trong snapshot.", "research"),
+                 ]),
+        category(10, "participation", "Lời mời Con Người toàn cầu • Tìm hiểu • Tham gia • Đóng góp • Đồng hành", "testing",
+                 "Tìm hiểu CFP+ và tham gia thảo luận qua các lối hiện hữu; luồng đề xuất đóng góp → review → giao việc chưa hoàn thành.", [
+                     page("000", "Giới thiệu CFP+ và định hướng phục vụ Con Người toàn cầu."),
+                     page("5", "Định hướng kết nối cộng đồng và đóng góp."),
+                     technical("Tham gia Diễn Đàn Siêu Bộ Đôi", "/_internal/forum/sieu-bo-doi/", "Đăng ký/đăng nhập tài khoản sandbox để thảo luận; không tự cấp vai trò governance."),
+                     pending("Đề xuất đóng góp → Review → Nhiệm vụ", "Chưa có luồng đề xuất và duyệt hoàn chỉnh."),
+                 ]),
+    ]
+    return {
+        "hub": {"id": "69", "canonical_url": catalog.items.get("69", {}).get("canonical_url"),
+                "sandbox_url": catalog.items.get("69", {}).get("sandbox_url")},
+        "categories": categories, "statuses": dict(ALL_IN_ONE_STATUSES),
+        "groups": [dict(g, chapters=list(g["chapters"])) for g in GROUPS],
+        "chapters": [{"id": cid, "name": name} for cid, name in CHAPTERS.items()],
+        "scope": "Đã hoạt động chỉ áp dụng cho trang nội dung và điều hướng trong snapshot sandbox; không xác nhận nghiệp vụ, tích hợp bên ngoài hay production.",
+        "governance": "SANDBOX PRACTICE GO • HOLD ACTIVATION • PRODUCTION NO GO",
+    }
+
+
+def ecosystem_map(catalog, office_on: bool = True) -> dict:
     items = []
     for n, key, name, ids, fn, path, note in COMPONENTS:
         pages = []
@@ -49,7 +163,8 @@ def ecosystem_map(catalog) -> dict:
                       "label": {"sandbox": "ĐANG THỬ NGHIỆM (sandbox)", "partial": "MỘT PHẦN",
                                 "planned": "CHỜ HOÀN THIỆN"}[fn]})
     return {"components": items, "mode": "SANDBOX PRACTICE GO • PRODUCTION NO GO",
-            "counts": {s: sum(1 for i in items if i["function"]["status"] == s) for s in ("sandbox", "partial", "planned")}}
+            "counts": {s: sum(1 for i in items if i["function"]["status"] == s) for s in ("sandbox", "partial", "planned")},
+            "all_in_one": all_in_one(catalog, office_on=office_on)}
 
 
 def is_leap(y: int) -> bool:
