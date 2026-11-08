@@ -282,6 +282,91 @@ const assert = (c, m) => { if (!c) throw new Error(m || 'assertion failed'); };
     await dp.getByTestId('lm-status-label').waitFor();
     await dctx.close();
   });
+  await check('HUB 69 ALL IN ONE (Chromium giả lập iPhone 13): 10 mục, tìm ID/tên, lọc trạng thái, liên thông Website/Diễn Đàn, không cuộn ngang', async () => {
+    // This is Chromium device emulation, not an acceptance test on Safari or a physical iPhone.
+    const hctx = await browser.newContext({ ...devices['iPhone 13'] });
+    try {
+      const hp = await hctx.newPage(); hp.on('pageerror', (e) => jsErrors.push('all-in-one-mobile: ' + e.message));
+      await hp.goto(base + '/69/');
+      await hp.locator('[data-all-in-one][data-ready="1"]').waitFor();
+      const cards = hp.getByTestId('aio-category');
+      assert(await cards.count() === 10, 'không đủ 10 mục ALL IN ONE');
+      const size = await hp.evaluate(() => [innerWidth, document.documentElement.scrollWidth, Math.round(visualViewport.width)]);
+      assert(size[0] === 390 && size[1] <= 390 && size[2] === 390, 'layout iPhone 13: ' + size.join(','));
+      const labels = await hp.locator('.aio-legend span').allTextContents();
+      for (const label of ['Đã hoạt động', 'Đang thử nghiệm', 'Đang nghiên cứu', 'Chưa hoàn thành'])
+        assert(labels.includes(label), 'thiếu trạng thái ' + label);
+      const q = hp.getByLabel('Tìm theo nội dung hoặc ID số', { exact: true });
+      await q.fill('28882');
+      assert(await cards.count() === 3 && await hp.locator('[data-testid="aio-category"][data-key="ctttc"]').count() === 1, 'tìm 28882 sai');
+      await q.fill('331');
+      assert(await cards.count() === 1, '331 phải tìm ra mục Ba Quỹ');
+      const funds = hp.locator('[data-testid="aio-category"][data-key="funds"]');
+      for (const cid of ['331', '332', '333']) {
+        const row = funds.locator('li').filter({ hasText: 'Quỹ CFP+ ' + cid + ' • ID ' + cid });
+        assert(await row.count() === 1 && await row.locator('a').count() === 0, cid + ' bị mất hoặc có link chưa xác minh');
+        assert((await row.innerText()).includes('Chưa hoàn thành'), cid + ' bị nâng trạng thái');
+      }
+      await q.fill('giao duc');
+      assert(await cards.count() === 1 && await hp.locator('[data-testid="aio-category"][data-key="education"]').count() === 1, 'tìm tên không dấu sai');
+      await q.fill('khong-co-ket-qua-' + prefix);
+      assert(await cards.count() === 0, 'tìm không khớp vẫn hiện mục');
+      await hp.getByText('Chưa có kết quả. Thử tên nội dung hoặc ID khác.', { exact: true }).waitFor();
+      await q.fill('');
+      const filter = hp.getByLabel('Trạng thái hạng mục', { exact: true });
+      for (const state of ['active', 'testing', 'research', 'incomplete']) {
+        await filter.selectOption(state);
+        const states = await hp.locator('[data-testid="aio-category"] > .aio-badge').evaluateAll((els) => els.map((e) => e.dataset.status));
+        assert(states.length > 0 && states.every((s) => s === state), 'lọc sai trạng thái ' + state);
+      }
+      await filter.selectOption('');
+      assert(await cards.count() === 10, 'reset lọc không trả lại 10 mục');
+      const sources = await hp.locator('.aio-link-source').evaluateAll((els) => els.map((e) => e.getAttribute('href')));
+      assert(sources.length > 0 && sources.every((h) => /^https:\/\/cfp\.plus\/[0-9]+\/$/.test(h)), 'link nguồn Canonical bị đổi');
+      const website = hp.locator('[data-testid="aio-category"][data-key="products"] li').filter({ hasText: 'Website CFP+ trong sandbox' }).getByRole('link', { name: 'Mở trong sandbox', exact: true });
+      assert(await website.getAttribute('href') === '/', 'thiếu link Website gốc /');
+      await website.click(); await hp.waitForURL(base + '/');
+      await hp.getByRole('link', { name: 'HUB 69', exact: true }).first().click();
+      await hp.waitForURL(base + '/69/'); await hp.locator('[data-all-in-one][data-ready="1"]').waitFor();
+      await hp.locator('.aio-shortcuts').getByRole('link', { name: 'Diễn Đàn', exact: true }).click();
+      await hp.waitForURL(base + '/_internal/forum/sieu-bo-doi/');
+      await hp.getByRole('heading', { name: 'Tài khoản CFP+ Forum', exact: true }).waitFor();
+      await hp.getByRole('link', { name: 'HUB 69', exact: true }).click();
+      await hp.waitForURL(base + '/69/'); await hp.locator('[data-all-in-one][data-ready="1"]').waitFor();
+      assert(await cards.count() === 10, 'HUB không khôi phục sau quay về từ Diễn Đàn');
+      assert(await hp.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'cuộn ngang sau điều hướng');
+      if (process.env.CFP_E2E_ALL_IN_ONE_SCREENSHOT) await hp.screenshot({ path: process.env.CFP_E2E_ALL_IN_ONE_SCREENSHOT, fullPage: true });
+    } finally { await hctx.close(); }
+  });
+  await check('HUB 69 ALL IN ONE: API 503 không hiện trạng thái giả; Thử lại đọc API thật và phục hồi 10 mục (iPhone 13 giả lập)', async () => {
+    const hctx = await browser.newContext({ ...devices['iPhone 13'] });
+    try {
+      const hp = await hctx.newPage(); hp.on('pageerror', (e) => jsErrors.push('all-in-one-retry: ' + e.message));
+      await hp.route('**/api/ecosystem', (route) => route.fulfill({ status: 503, contentType: 'application/json', body: '{}' }));
+      await hp.goto(base + '/69/'); await hp.locator('[data-aio-error]').waitFor({ state: 'visible' });
+      assert(await hp.getByTestId('aio-category').count() === 0, 'API 503 vẫn hiện mục/trạng thái');
+      assert(!await hp.getByLabel('Tìm theo nội dung hoặc ID số', { exact: true }).isEnabled(), 'API lỗi vẫn bật tìm kiếm');
+      assert(!await hp.getByLabel('Trạng thái hạng mục', { exact: true }).isEnabled(), 'API lỗi vẫn bật bộ lọc');
+      assert(await hp.locator('.aio-shortcuts').getByRole('link', { name: 'Diễn Đàn', exact: true }).isVisible(), 'lỗi API làm mất lối vào Diễn Đàn');
+      await hp.unroute('**/api/ecosystem');
+      await hp.getByRole('button', { name: 'Thử lại', exact: true }).click();
+      await hp.locator('[data-all-in-one][data-ready="1"]').waitFor();
+      assert(await hp.getByTestId('aio-category').count() === 10, 'Thử lại không lấy lại 10 mục');
+      assert(!await hp.locator('[data-aio-error]').isVisible(), 'lỗi vẫn hiển thị sau phục hồi');
+      assert(await hp.getByLabel('Tìm theo nội dung hoặc ID số', { exact: true }).isEnabled(), 'chưa bật tìm kiếm sau phục hồi');
+    } finally { await hctx.close(); }
+  });
+  await check('HUB 69 ALL IN ONE trên máy tính (1366×900): 10 mục, hai cột, không cuộn ngang', async () => {
+    const hctx = await browser.newContext({ viewport: { width: 1366, height: 900 } });
+    try {
+      const hp = await hctx.newPage(); hp.on('pageerror', (e) => jsErrors.push('all-in-one-desktop: ' + e.message));
+      await hp.goto(base + '/69/'); await hp.locator('[data-all-in-one][data-ready="1"]').waitFor();
+      assert(await hp.getByTestId('aio-category').count() === 10, 'không đủ 10 mục trên máy tính');
+      const layout = await hp.evaluate(() => ({ width: innerWidth, scrollWidth: document.documentElement.scrollWidth,
+        columns: getComputedStyle(document.querySelector('.aio-grid')).gridTemplateColumns.split(' ').length }));
+      assert(layout.width === 1366 && layout.scrollWidth <= 1366 && layout.columns === 2, 'layout máy tính: ' + JSON.stringify(layout));
+    } finally { await hctx.close(); }
+  });
   await check('Bảng điều phối: ONLINE thật + nhiệm vụ REVIEWED theo quyền; khách không thấy nhiệm vụ', async () => {
     const op = await ctx.newPage(); op.on('pageerror', (e) => jsErrors.push('ops: ' + e.message));
     await op.goto(base + '/_internal/ops/');

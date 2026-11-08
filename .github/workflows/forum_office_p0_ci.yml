@@ -86,6 +86,7 @@ jobs:
           NODE_PATH: ${{ runner.temp }}/pw/node_modules
           CFP_E2E_SCREENSHOT: ${{ github.workspace }}/office-iphone.png
           CFP_E2E_VPSBD_SCREENSHOT: ${{ github.workspace }}/van-phong-sieu-bo-doi-iphone.png
+          CFP_E2E_ALL_IN_ONE_SCREENSHOT: ${{ github.workspace }}/all-in-one-iphone.png
         run: |
           tests/forum/run_all.sh cfp_ci
           python -m tests.forum.directory_browser
@@ -118,6 +119,7 @@ jobs:
             forum-pytest.xml
             office-iphone.png
             van-phong-sieu-bo-doi-iphone.png
+            all-in-one-iphone.png
             worker-check.log
             worker-runtime.log
             worker-status.json
