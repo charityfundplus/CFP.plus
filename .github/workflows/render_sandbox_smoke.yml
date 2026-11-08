@@ -107,6 +107,12 @@ jobs:
           echo "== cfp.plus"; tail -n +2 missing.txt | while read -r u; do
             printf '%s %s\n' "$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 "https://cfp.plus$u")" "$u"; done | tee prod-status.txt
           echo "== tổng hợp"; cut -d' ' -f1 prod-status.txt | sort | uniq -c
+          echo "== tài nguyên dùng chung (trang Quốc Gia tải JSON; trang 267/2676 dùng CSS)"
+          for u in /registry/country-route-map.json /styles.css /assets/style.css; do
+            printf '%s %s\n' "$(curl -s -o /dev/null -w '%{http_code} %{content_type}' --max-time 20 "https://cfp.plus$u")" "$u"; done
+          echo "== cfp.plus phục vụ gì cho ID có link nhưng không có trang trong repo (tiêu đề)"
+          for u in /698431/ /627/ /6911811/; do
+            printf '%s • %s\n' "$u" "$(curl -s --max-time 20 "https://cfp.plus$u" | grep -o '<title>[^<]*' | head -1)"; done
       - uses: actions/upload-artifact@v4
         if: always()
         with: { name: site-links, path: "audit.json\nprod-status.txt" }
