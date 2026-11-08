@@ -10,6 +10,7 @@ on:
       - '.github/workflows/render_sandbox_smoke.yml'
       - 'tests/forum/smoke_live.py'
       - 'tests/forum/agent_evidence.py'
+      - 'scripts/site_link_audit.py'
       - 'services/forum/agents/cases/**'
   workflow_dispatch:
     inputs:
@@ -92,6 +93,23 @@ jobs:
             [ "${out%% *}" = 200 ] || { echo "::error::https://cfp.plus$p không mở được (${out%% *})"; fail=1; }
           done
           exit $fail
+
+  # Website tĩnh: đích link nội bộ KHÔNG có trang trong repo → kiểm trên cfp.plus thật (chỉ đọc) xem người dùng có gặp 404 không.
+  site_links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Link nội bộ thiếu trang trong repo → trạng thái trên cfp.plus
+        run: |
+          python3 scripts/site_link_audit.py > audit.json
+          python3 -c "import json;d=json.load(open('audit.json'));print('pages',d['pages'],'links',d['internal_links'],'missing_in_repo',len(d['broken']));[print(u) for u in d['broken']]" | tee missing.txt
+          echo "== cfp.plus"; tail -n +2 missing.txt | while read -r u; do
+            printf '%s %s\n' "$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 "https://cfp.plus$u")" "$u"; done | tee prod-status.txt
+          echo "== tổng hợp"; cut -d' ' -f1 prod-status.txt | sort | uniq -c
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: site-links, path: "audit.json\nprod-status.txt" }
 
   # Trước mỗi deploy/khởi động lại ở chế độ tạm: kho có dữ liệu của NGƯỜI THẬT không? (chỉ số đếm, không nội dung)
   # FAIL = KHÔNG được deploy/restart cho đến khi người dùng sao lưu hoặc đồng ý.
