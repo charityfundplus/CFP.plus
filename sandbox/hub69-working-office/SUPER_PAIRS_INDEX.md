@@ -45,7 +45,7 @@ Quy tắc: giữ nguyên ID kể cả 0, 00, 000, 003, 005. Không suy diễn Pa
 | `2684` | Bảo Mật Tổng Hợp | [Mở trang](https://app.notion.com/p/3f3caac9a5578121a123dd2cd5cbdb42) | CANDIDATE REVIEW | 246 |
 | `2838` | An Toàn, Điều Tra & Cảnh Báo Rủi Ro | [Mở trang](https://app.notion.com/p/3f3caac9a5578167b698cfc09afb6366) | CANDIDATE REVIEW | 246 |
 | `2863` | Cứu Trợ Nhân Đạo | [Mở trang](https://app.notion.com/p/3f3caac9a5578109b48dfa87f2c09c2e) | CANDIDATE REVIEW | 246 |
-| `2877` | Bảo Vệ Sự Sống | PENDING | PENDING | 246 |
+| `2877` | Bảo Vệ Sự Sống | [Mở trang](https://app.notion.com/p/3f3caac9a557816691eec3f0ac0b75d7) | CANDIDATE REVIEW | 246 |
 | `28882` | Cổng Tri Thức Toàn Cầu • CTTTC | [Mở trang](https://app.notion.com/p/3f3caac9a55781e0bbc5fb3e40ebdeb2) | CANDIDATE REVIEW | 246 |
 
 ## Chương 3 • Ba Quỹ
