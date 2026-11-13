@@ -1,0 +1,43 @@
+[
+  {
+    "method": "POST",
+    "path": "/api/office/tasks",
+    "json": {
+      "title": "Sửa P1 localStorage HUB 69 (PR #203 → #206): không mất dữ liệu sai schema, có test hồi quy",
+      "assignee": "691121",
+      "reviewer": "ReviewSI",
+      "external_ref": "pilot#1"
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/api/office/tasks/{tid:pilot#1}/ack",
+    "json": {
+      "external_ref": "pilot#3"
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/api/office/tasks/{tid:pilot#1}/evidence",
+    "json": {
+      "external_ref": "pilot#4"
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/api/office/tasks/{tid:pilot#1}/review",
+    "json": {
+      "external_ref": "pilot#6"
+    }
+  },
+  {
+    "method": "POST",
+    "path": "/api/office/tasks",
+    "json": {
+      "title": "P0 OpenAI 69118 / ChatGPT 691181: chứng minh Working Link, quyền và luồng nhiệm vụ trên hồ sơ Notion hiện hữu",
+      "assignee": "691181",
+      "reviewer": "SecuritySI",
+      "external_ref": "pilot#2"
+    }
+  }
+]

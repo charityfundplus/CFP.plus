@@ -1,0 +1,34 @@
+[
+  {
+    "key": "828a037dbf53adeb",
+    "kind": "ACK+OUTPUT",
+    "task": "wl#1",
+    "posted": false,
+    "gate": "HOLD ACTIVATION",
+    "body": "<!-- hub69-dispatch key=828a037dbf53adeb -->\n**SI AI / Siêu Bộ Đôi:** Claude (AUTOMATED_TOOL qua Working Link)\n**Link riêng / ID:** 691121\n**Task:** wl#1\n**Trạng thái:** OUTPUT READY\n**Kết quả và Evidence URL:** https://github.com/charityfundplus/CFP.plus/blob/claude/cool-euler-gnwkfm/sandbox/hub69-dispatch/evidence/autopilot-pilot/results/wl-1.json (sha256 `8d9667315ff0f0f7806d0de8e89cd4b168117eb63b2a3ffac021af76b8a20c4b`)\n\n_HUB69 autopilot • SANDBOX • HOLD_"
+  },
+  {
+    "key": "14d822a94ba36c6a",
+    "kind": "NEED_REVIEW",
+    "task": "wl#1",
+    "posted": false,
+    "gate": "HOLD ACTIVATION",
+    "body": "<!-- hub69-dispatch key=14d822a94ba36c6a -->\n**CẦN REVIEW ĐỘC LẬP** • **Task:** wl#1\nReviewer ReviewSI: Văn Phòng #195 task 1 đang IN_REVIEW. Trả lời `**Trạng thái:** REVIEW` + `**Verdict:** PASS|FAIL`.\n\n_HUB69 autopilot • SANDBOX • HOLD_"
+  },
+  {
+    "key": "538171b1c734f98f",
+    "kind": "ACK+OUTPUT",
+    "task": "wl#2",
+    "posted": false,
+    "gate": "HOLD ACTIVATION",
+    "body": "<!-- hub69-dispatch key=538171b1c734f98f -->\n**SI AI / Siêu Bộ Đôi:** Claude (AUTOMATED_TOOL qua Working Link)\n**Link riêng / ID:** 691121\n**Task:** wl#2\n**Trạng thái:** OUTPUT READY\n**Kết quả và Evidence URL:** https://github.com/charityfundplus/CFP.plus/blob/claude/cool-euler-gnwkfm/sandbox/hub69-dispatch/evidence/autopilot-pilot/results/wl-2.json (sha256 `5ca5f4871d134330fd72b4d3ea8c1a6a6cd83a0c368e46265da8d86b0dc90db0`)\n\n_HUB69 autopilot • SANDBOX • HOLD_"
+  },
+  {
+    "key": "57041666a6f1cda1",
+    "kind": "NEED_REVIEW",
+    "task": "wl#2",
+    "posted": false,
+    "gate": "HOLD ACTIVATION",
+    "body": "<!-- hub69-dispatch key=57041666a6f1cda1 -->\n**CẦN REVIEW ĐỘC LẬP** • **Task:** wl#2\nReviewer SecuritySI: Văn Phòng #195 task 2 đang IN_REVIEW. Trả lời `**Trạng thái:** REVIEW` + `**Verdict:** PASS|FAIL`.\n\n_HUB69 autopilot • SANDBOX • HOLD_"
+  }
+]

@@ -1,0 +1,168 @@
+{
+  "task_key": "sbd#2",
+  "office_tid": 1,
+  "office_status": "IN_REVIEW",
+  "assignee": "691121",
+  "reviewer": "ReviewSI",
+  "history": [
+    {
+      "from": null,
+      "to": "QUEUED",
+      "actor_id": 6,
+      "note": ""
+    },
+    {
+      "from": "QUEUED",
+      "to": "ACKED",
+      "actor_id": 5,
+      "note": "AUTO ACK • hub69 autopilot • AUTOMATED_TOOL"
+    },
+    {
+      "from": "ACKED",
+      "to": "IN_PROGRESS",
+      "actor_id": 5,
+      "note": "AUTO start"
+    },
+    {
+      "from": "IN_PROGRESS",
+      "to": "IN_REVIEW",
+      "actor_id": 5,
+      "note": "AUTO submit → independent review"
+    }
+  ],
+  "evidence": [
+    {
+      "kind": "test_report",
+      "url": "https://github.com/charityfundplus/CFP.plus/blob/claude/cool-euler-gnwkfm/sandbox/hub69-dispatch/evidence/canva-e2e/results/sbd-2.json",
+      "sha": "9dd722aed67f72edbcb5fe88152e988a04341de14f813e1c5378261529181d6a"
+    }
+  ],
+  "reviews": [],
+  "reviewer_loop": {
+    "task_id": 1,
+    "status": "IN_REVIEW",
+    "owner_id": 5,
+    "reviewer_id": 2,
+    "stages": [
+      {
+        "key": "hub69",
+        "label": "HUB 69",
+        "done": true,
+        "detail": {
+          "url": "/69/"
+        }
+      },
+      {
+        "key": "cmp267",
+        "label": "CMP 267 • điều phối",
+        "done": true,
+        "detail": {
+          "url": "/267/"
+        }
+      },
+      {
+        "key": "office",
+        "label": "Văn Phòng SI AI",
+        "done": true,
+        "detail": {
+          "canonical_id": "691121",
+          "url": "/_internal/office/691121/"
+        }
+      },
+      {
+        "key": "discussion",
+        "label": "Thảo luận Diễn Đàn",
+        "done": false,
+        "detail": {
+          "posts": []
+        }
+      },
+      {
+        "key": "pair",
+        "label": "Siêu Bộ Đôi (SI AI + Siêu Phần Mềm)",
+        "done": true,
+        "detail": {
+          "pair_id": 1,
+          "software": "HUB69 autopilot executor (691121)"
+        }
+      },
+      {
+        "key": "execution",
+        "label": "Nhận việc (ACK) → thực thi",
+        "done": true,
+        "detail": {
+          "owner_id": 5
+        }
+      },
+      {
+        "key": "evidence",
+        "label": "Evidence",
+        "done": true,
+        "detail": {
+          "count": 1
+        }
+      },
+      {
+        "key": "review",
+        "label": "Review độc lập (SecuritySI/ReviewSI)",
+        "done": false,
+        "detail": {
+          "reviewer_id": 2,
+          "decision": null
+        }
+      },
+      {
+        "key": "acceptance",
+        "label": "Nghiệm thu",
+        "done": false,
+        "detail": {
+          "status": "IN_REVIEW"
+        }
+      },
+      {
+        "key": "closure",
+        "label": "Closure",
+        "done": false
+      },
+      {
+        "key": "lesson",
+        "label": "Tri thức • bài học",
+        "done": false,
+        "detail": {
+          "refs": []
+        }
+      },
+      {
+        "key": "next",
+        "label": "Quay lại Văn Phòng • nhiệm vụ tiếp theo",
+        "done": false,
+        "detail": {
+          "refs": []
+        }
+      }
+    ],
+    "closed_loop": false,
+    "next_stage": "discussion"
+  },
+  "reviewer_board": [
+    {
+      "id": 1,
+      "title": "Kiểm tra toàn vẹn Registry từ Canva 20261113T142125Z",
+      "office_id": "691121",
+      "status": "IN_REVIEW",
+      "bucket": "IN_REVIEW",
+      "reason": null,
+      "evidence": 1,
+      "review": null,
+      "updated_at": "2026-11-13T14:21:31.164242+00:00",
+      "url": "/_internal/office/691121/#task:1"
+    }
+  ],
+  "guest_board_counts": {
+    "QUEUED": 0,
+    "RUNNING": 0,
+    "IN_REVIEW": 0,
+    "BLOCKED": 0,
+    "REVIEWED": 0
+  }
+}
