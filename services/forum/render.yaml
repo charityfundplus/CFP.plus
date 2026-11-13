@@ -55,5 +55,12 @@ services:
         sync: false
       - key: CFP_BOOTSTRAP_PASSWORD    # secret ≥ 12 ký tự
         sync: false
+      # Giao diện Canva (/canva/ và tệp dán Canva Code services/forum/web/canva-code.html): danh sách nguồn được gọi API
+      # bằng token Bearer (không cookie). Ví dụ: "https://*.canva.site,https://*.canva-code.com,null". Trống = tắt.
+      - key: CFP_EMBED_ORIGINS
+        sync: false
+      # Cho phép nhúng trang /canva/ bằng iframe (CSP frame-ancestors). Ví dụ: "https://www.canva.com https://*.canva.site"
+      - key: CFP_EMBED_FRAME_ANCESTORS
+        sync: false
       - key: CFP_SANDBOX_WEBSITE  # khung website chỉ đọc + thanh lối vào Siêu Bộ Đôi; "0" để tắt
         value: "1"

@@ -399,6 +399,36 @@ def create_app(stores: Stores | None = None) -> FastAPI:
     proxy_hops = max(1, int(os.environ.get("CFP_FORUM_TRUSTED_PROXY_HOPS", "1")))
     cookie_secure_mode = os.environ.get("CFP_FORUM_COOKIE_SECURE", "1")  # "1" | "0" | "auto"
     allowed_origins = {o.strip().rstrip("/") for o in os.environ.get("CFP_FORUM_ALLOWED_ORIGINS", "").split(",") if o.strip()}
+    # Chế độ NHÚNG (Canva Code / Canva App / trang Canva đã xuất bản): giao diện chạy trong iframe khác nguồn nên
+    # cookie bên thứ ba bị chặn. Danh sách nguồn được phép: CFP_EMBED_ORIGINS (vd "https://*.canva.site,null").
+    # Nguồn nhúng chỉ dùng token Bearer giữ trong bộ nhớ trang (KHÔNG cookie, KHÔNG Allow-Credentials) → không có
+    # CSRF qua cookie; mọi kiểm quyền vẫn ở máy chủ như cũ. Trống → tắt hoàn toàn (mặc định).
+    embed_rules = [o.strip().rstrip("/").lower() for o in os.environ.get("CFP_EMBED_ORIGINS", "").split(",") if o.strip()]
+    frame_ancestors = os.environ.get("CFP_EMBED_FRAME_ANCESTORS", "").strip()
+
+    def embed_origin(origin: str | None) -> bool:
+        if not origin or not embed_rules:
+            return False
+        o = origin.strip().rstrip("/").lower()
+        for r in embed_rules:
+            if r == o:
+                return True
+            if "://*." in r:
+                scheme, _, suffix = r.partition("://*.")
+                rest = o[len(scheme) + 3:] if o.startswith(scheme + "://") else ""
+                if rest.endswith("." + suffix) and "/" not in rest and ":" not in rest:
+                    return True
+        return False
+
+    def bearer(request: Request) -> str | None:
+        h = request.headers.get("authorization", "")
+        return h[7:].strip() or None if h[:7].lower() == "bearer " else None
+
+    def cors(resp, origin: str):
+        resp.headers["Access-Control-Allow-Origin"] = origin
+        resp.headers["Vary"] = "Origin"
+        resp.headers["Access-Control-Expose-Headers"] = "Retry-After"
+        return resp
 
     def client_ip(request: Request) -> str:
         if trust_proxy and request.headers.get("x-forwarded-for"):
@@ -429,6 +459,14 @@ def create_app(stores: Stores | None = None) -> FastAPI:
     @app.middleware("http")
     async def guard(request: Request, call_next):
         path = request.url.path
+        origin = request.headers.get("origin")
+        embedded = path.startswith("/api/") and embed_origin(origin)
+        if embedded and request.method == "OPTIONS":  # preflight của trang nhúng
+            r = Response(status_code=204, headers={
+                "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+                "Access-Control-Allow-Headers": "authorization, content-type, x-cfp-forum, x-cfp-token",
+                "Access-Control-Max-Age": "600"})
+            return cors(r, origin)
         if path.startswith("/api/office") and st.office is not None:
             # Danh tính cho RLS theo người dùng ở Postgres (003). Không có phiên → None (fail-closed).
             from starlette.concurrency import run_in_threadpool
@@ -439,7 +477,9 @@ def create_app(stores: Stores | None = None) -> FastAPI:
             # CSRF: header tuỳ chỉnh (form chéo site không gửi được) + Origin phải khớp.
             if request.headers.get(CSRF_HEADER) != "1":
                 return deny(403, "Thiếu header chống CSRF.")
-            if not origin_ok(request):
+            # Nguồn nhúng: chỉ chấp nhận khi KHÔNG kèm cookie phiên (cookie là thông tin xác thực tự động gửi).
+            embed_ok = embedded and not request.cookies.get(SESSION_COOKIE)
+            if not origin_ok(request) and not embed_ok:
                 return deny(403, "Origin không được phép.")
             try:
                 if int(request.headers.get("content-length") or 0) > MAX_BODY_BYTES:
@@ -452,14 +492,19 @@ def create_app(stores: Stores | None = None) -> FastAPI:
             if wait:
                 return deny(429, "Quá nhiều yêu cầu, vui lòng thử lại sau.", {"Retry-After": str(int(wait) + 1)})
         resp = await call_next(request)
+        if embedded:
+            cors(resp, origin)
         for k, v in SECURITY_HEADERS.items():
+            if k == "X-Frame-Options" and "frame-ancestors 'none'" not in resp.headers.get(
+                    "content-security-policy", "frame-ancestors 'none'"):
+                continue  # trang cho phép nhúng có chủ đích (CFP_EMBED_FRAME_ANCESTORS) → CSP quyết định
             resp.headers.setdefault(k, v)
         if is_https(request):
             resp.headers.setdefault("Strict-Transport-Security", "max-age=31536000")
         return resp
 
     def current_user(request: Request) -> dict | None:
-        tok = request.cookies.get(SESSION_COOKIE)
+        tok = request.cookies.get(SESSION_COOKIE) or bearer(request)
         if not tok:
             return None
         with st.auth.connect() as c:
@@ -499,7 +544,7 @@ def create_app(stores: Stores | None = None) -> FastAPI:
             raise HTTPException(403, "Bạn chưa là thành viên đang hoạt động của diễn đàn này.")
         return m
 
-    def start_session(request: Request, resp: Response, user_id: int) -> None:
+    def start_session(request: Request, resp: Response, user_id: int) -> str:
         tok = secrets.token_urlsafe(32)
         with st.auth.begin() as c:
             c.execute(insert(sessions_t).values(token_hash=_tok_hash(tok), user_id=user_id,
@@ -507,6 +552,14 @@ def create_app(stores: Stores | None = None) -> FastAPI:
         resp.set_cookie(SESSION_COOKIE, tok, httponly=True, samesite="strict",
                         secure=(is_https(request) if cookie_secure_mode == "auto" else cookie_secure_mode != "0"),
                         max_age=int(SESSION_TTL.total_seconds()), path="/")
+        return tok
+
+    def with_token(request: Request, body: dict, tok: str) -> dict:
+        """Trả token trong thân JSON CHỈ cho trang nhúng hợp lệ có yêu cầu rõ (X-CFP-Token: 1)."""
+        if embed_rules and request.headers.get("x-cfp-token") == "1" and (
+                embed_origin(request.headers.get("origin")) or not request.headers.get("origin")):
+            return {**body, "token": tok}
+        return body
 
     # ---- health
     from services.forum.registry import Registry
@@ -610,8 +663,8 @@ def create_app(stores: Stores | None = None) -> FastAPI:
             uid = c.execute(insert(users_t).values(email=email, name=data.name.strip(),
                                                    pw_hash=hash_password(data.password))
                             .returning(users_t.c.id)).scalar_one()
-        start_session(request, resp, uid)
-        return {"id": uid, "email": email, "name": data.name.strip()}
+        tok = start_session(request, resp, uid)
+        return with_token(request, {"id": uid, "email": email, "name": data.name.strip()}, tok)
 
     @app.post("/api/auth/login")
     def login(data: LoginIn, request: Request, resp: Response):
@@ -621,12 +674,12 @@ def create_app(stores: Stores | None = None) -> FastAPI:
         ok = verify_password(data.password, row["pw_hash"] if row else _DUMMY_HASH)
         if not row or not ok:
             raise HTTPException(401, "Email hoặc mật khẩu không đúng.")
-        start_session(request, resp, row["id"])
-        return {"id": row["id"], "email": row["email"], "name": row["name"]}
+        tok = start_session(request, resp, row["id"])
+        return with_token(request, {"id": row["id"], "email": row["email"], "name": row["name"]}, tok)
 
     @app.post("/api/auth/logout")
     def logout(request: Request, resp: Response):
-        tok = request.cookies.get(SESSION_COOKIE)
+        tok = request.cookies.get(SESSION_COOKIE) or bearer(request)
         if tok:
             with st.auth.begin() as c:
                 c.execute(sessions_t.delete().where(sessions_t.c.token_hash == _tok_hash(tok)))
@@ -756,6 +809,23 @@ def create_app(stores: Stores | None = None) -> FastAPI:
         bridge = {"keys": tuple(st.forums), "can_read": forum_can_read,
                   "create_post": lambda key, d, user: new_post(key, PostIn(**d), user)}
         app.include_router(build_router(st.office, registry, current_user, forums=bridge, catalog=catalog))
+
+        # ---- Giao diện cho Canva (Diễn Đàn + Văn Phòng). Cùng nguồn: cookie. Nhúng: token (CFP_EMBED_ORIGINS).
+        canva_csp = SECURITY_HEADERS["Content-Security-Policy"].replace(
+            "frame-ancestors 'none'", f"frame-ancestors {frame_ancestors or chr(39) + 'none' + chr(39)}")
+
+        @app.get("/canva/")
+        def canva_page():
+            return FileResponse(WEB_DIR / "canva.html", media_type="text/html",
+                                headers={"Content-Security-Policy": canva_csp, "X-Robots-Tag": "noindex, nofollow"})
+
+        @app.get("/canva/canva.js")
+        def canva_js():
+            return FileResponse(WEB_DIR / "canva.js", media_type="text/javascript")
+
+        @app.get("/canva/canva.css")
+        def canva_css():
+            return FileResponse(WEB_DIR / "canva.css", media_type="text/css")
 
         @app.get("/_internal/office/office.js")
         def office_js():

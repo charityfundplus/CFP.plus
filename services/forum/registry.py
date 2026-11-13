@@ -90,7 +90,7 @@ class Registry:
             self._add(Entity(str(e["id"]), e["type"], e["name"], str(parent) if parent else None,
                              e.get("status", ""), e.get("official_source"), str(e.get("country_id") or ""),
                              "ai-entity-registry.json"))
-        for md in reg.glob("*.md"):
+        for md in sorted(reg.glob("*.md")):  # thứ tự cố định: Parent suy ra không phụ thuộc thư mục (PR195-REGISTRY-GLOB-ORDER)
             if not re.fullmatch(r"[0-9]+", md.stem) or md.stem in self.entities:
                 continue
             first = next((ln for ln in md.read_text(encoding="utf-8").splitlines() if ln.startswith("# ")), md.stem)
