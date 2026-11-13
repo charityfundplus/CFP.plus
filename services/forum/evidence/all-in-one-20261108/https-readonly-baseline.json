@@ -1,0 +1,147 @@
+{
+  "checked_at": "2026-11-08T15:40:22.460888+00:00",
+  "base": "https://cfp-forum-office-sandbox-p0.onrender.com",
+  "mode": "GET only; no remote writes",
+  "checks": [
+    {
+      "path": "/69/",
+      "status": 200,
+      "final_url": "https://cfp-forum-office-sandbox-p0.onrender.com/69/",
+      "x_robots_tag": "noindex, nofollow",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/_internal/map/",
+      "status": 200,
+      "final_url": "https://cfp-forum-office-sandbox-p0.onrender.com/_internal/map/",
+      "x_robots_tag": "noindex, nofollow",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/_internal/office/",
+      "status": 200,
+      "final_url": "https://cfp-forum-office-sandbox-p0.onrender.com/_internal/office/",
+      "x_robots_tag": "noindex, nofollow",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/_internal/van-phong-sieu-bo-doi/",
+      "status": 200,
+      "final_url": "https://cfp-forum-office-sandbox-p0.onrender.com/_internal/van-phong-sieu-bo-doi/",
+      "x_robots_tag": "noindex, nofollow",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/_internal/forum/sieu-bo-doi/",
+      "status": 200,
+      "final_url": "https://cfp-forum-office-sandbox-p0.onrender.com/_internal/forum/sieu-bo-doi/",
+      "x_robots_tag": "noindex, nofollow",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/_internal/forum/si-ai-hstdn/",
+      "status": 200,
+      "final_url": "https://cfp-forum-office-sandbox-p0.onrender.com/_internal/forum/si-ai-hstdn/",
+      "x_robots_tag": "noindex, nofollow",
+      "content_type": "text/html; charset=utf-8"
+    },
+    {
+      "path": "/api/ecosystem",
+      "status": 200,
+      "final_url": "https://cfp-forum-office-sandbox-p0.onrender.com/api/ecosystem",
+      "x_robots_tag": null,
+      "content_type": "application/json",
+      "component_count": 10,
+      "counts": {
+        "sandbox": 5,
+        "partial": 2,
+        "planned": 3
+      }
+    },
+    {
+      "path": "/api/ecosystem/ctttc/days?year=2026",
+      "status": 200,
+      "final_url": "https://cfp-forum-office-sandbox-p0.onrender.com/api/ecosystem/ctttc/days?year=2026",
+      "x_robots_tag": null,
+      "content_type": "application/json",
+      "positions": 366,
+      "year": 2026,
+      "valid_days": 365,
+      "leap": false
+    },
+    {
+      "path": "/api/worker/status",
+      "status": 200,
+      "final_url": "https://cfp-forum-office-sandbox-p0.onrender.com/api/worker/status",
+      "x_robots_tag": null,
+      "content_type": "application/json",
+      "worker": {
+        "configured": true,
+        "mode": "SANDBOX",
+        "alive": true,
+        "paused": false,
+        "heartbeats": [
+          {
+            "worker_id": "srv-dblo01nf3r2c73e74jq0-hibernate-6fb964ccc8-rgtbj:39",
+            "state": "running",
+            "version": "0.1.0-p0",
+            "ticks": 7,
+            "last_seen": "2026-11-08T15:39:56.303597+00:00",
+            "age_seconds": 26,
+            "stale": false
+          }
+        ],
+        "jobs": {
+          "done": 1
+        },
+        "schedule": [
+          {
+            "kind": "registry_integrity",
+            "every_seconds": 3600,
+            "last_done_at": "2026-11-08T15:36:55.655216+00:00",
+            "next_due_at": "2026-11-08T16:36:55.655216+00:00",
+            "overdue": false
+          }
+        ],
+        "alerts_24h": 0,
+        "last_done": {
+          "id": 1,
+          "kind": "registry_integrity",
+          "finished_at": "2026-11-08T15:36:55.655216+00:00",
+          "summary": {
+            "entities": 267,
+            "drift": false,
+            "chain_691121": [
+              "911",
+              "6911",
+              "69112",
+              "691121"
+            ],
+            "problems": []
+          }
+        },
+        "recent": [
+          {
+            "at": "2026-11-08T15:36:56+00:00",
+            "level": "info",
+            "event": "done",
+            "job_id": 1
+          },
+          {
+            "at": "2026-11-08T15:36:55+00:00",
+            "level": "info",
+            "event": "enqueued",
+            "job_id": 1
+          },
+          {
+            "at": "2026-11-08T15:36:55+00:00",
+            "level": "info",
+            "event": "start",
+            "job_id": null
+          }
+        ],
+        "note": "Bằng chứng runtime = heartbeat + nhật ký. Không phải cam kết uptime 24/24."
+      }
+    }
+  ]
+}

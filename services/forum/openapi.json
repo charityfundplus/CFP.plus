@@ -1,0 +1,3177 @@
+{
+ "components": {
+  "schemas": {
+   "AnswerCheckIn": {
+    "description": "Bản nháp trả lời khách của một Agent (vd. Meta Business Agent) — chỉ kiểm tra, KHÔNG gửi (AUTO REPLY HOLD).",
+    "properties": {
+     "agent": {
+      "anyOf": [
+       {
+        "maxLength": 80,
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Agent"
+     },
+     "draft": {
+      "maxLength": 8000,
+      "minLength": 1,
+      "title": "Draft",
+      "type": "string"
+     },
+     "question": {
+      "anyOf": [
+       {
+        "maxLength": 4000,
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Question"
+     }
+    },
+    "required": [
+     "draft"
+    ],
+    "title": "AnswerCheckIn",
+    "type": "object"
+   },
+   "BrandIn": {
+    "properties": {
+     "authorization_url": {
+      "anyOf": [
+       {
+        "pattern": "^https://[^\\s]{3,990}$",
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Authorization Url"
+     },
+     "description": {
+      "default": "",
+      "maxLength": 4000,
+      "title": "Description",
+      "type": "string"
+     },
+     "kind": {
+      "enum": [
+       "product",
+       "api",
+       "software",
+       "app",
+       "service",
+       "technology",
+       "training",
+       "research",
+       "program"
+      ],
+      "title": "Kind",
+      "type": "string"
+     },
+     "name": {
+      "maxLength": 160,
+      "minLength": 1,
+      "title": "Name",
+      "type": "string"
+     },
+     "source_type": {
+      "default": "CFP_PUBLIC_SOURCE",
+      "enum": [
+       "CFP_PUBLIC_SOURCE",
+       "BRAND_CONFIRMED",
+       "AUTHORIZED_PROMOTION"
+      ],
+      "title": "Source Type",
+      "type": "string"
+     },
+     "source_url": {
+      "pattern": "^https://[^\\s]{3,990}$",
+      "title": "Source Url",
+      "type": "string"
+     },
+     "url": {
+      "pattern": "^https://[^\\s]{3,990}$",
+      "title": "Url",
+      "type": "string"
+     }
+    },
+    "required": [
+     "kind",
+     "name",
+     "url",
+     "source_url"
+    ],
+    "title": "BrandIn",
+    "type": "object"
+   },
+   "CloseIn": {
+    "properties": {
+     "note": {
+      "maxLength": 2000,
+      "minLength": 3,
+      "title": "Note",
+      "type": "string"
+     }
+    },
+    "required": [
+     "note"
+    ],
+    "title": "CloseIn",
+    "type": "object"
+   },
+   "DatasetIn": {
+    "properties": {
+     "access": {
+      "default": "public",
+      "enum": [
+       "public",
+       "members"
+      ],
+      "title": "Access",
+      "type": "string"
+     },
+     "author": {
+      "maxLength": 200,
+      "minLength": 2,
+      "title": "Author",
+      "type": "string"
+     },
+     "chapter": {
+      "pattern": "^[0-9]$",
+      "title": "Chapter",
+      "type": "string"
+     },
+     "kind": {
+      "enum": [
+       "document",
+       "curriculum",
+       "dataset",
+       "project"
+      ],
+      "title": "Kind",
+      "type": "string"
+     },
+     "source_url": {
+      "pattern": "^https://[^\\s]{3,990}$",
+      "title": "Source Url",
+      "type": "string"
+     },
+     "title": {
+      "maxLength": 200,
+      "minLength": 3,
+      "title": "Title",
+      "type": "string"
+     },
+     "topic_id": {
+      "anyOf": [
+       {
+        "type": "integer"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Topic Id"
+     },
+     "url": {
+      "pattern": "^https://[^\\s]{3,990}$",
+      "title": "Url",
+      "type": "string"
+     },
+     "version": {
+      "maxLength": 64,
+      "minLength": 1,
+      "title": "Version",
+      "type": "string"
+     }
+    },
+    "required": [
+     "title",
+     "kind",
+     "url",
+     "author",
+     "version",
+     "source_url",
+     "chapter"
+    ],
+    "title": "DatasetIn",
+    "type": "object"
+   },
+   "DiscussionIn": {
+    "properties": {
+     "body": {
+      "maxLength": 10000,
+      "minLength": 1,
+      "title": "Body",
+      "type": "string"
+     },
+     "country_id": {
+      "anyOf": [
+       {
+        "maxLength": 32,
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Country Id"
+     },
+     "forum": {
+      "enum": [
+       "sieu-bo-doi",
+       "si-ai-hstdn"
+      ],
+      "title": "Forum",
+      "type": "string"
+     },
+     "hstdn": {
+      "anyOf": [
+       {
+        "maxLength": 200,
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Hstdn"
+     },
+     "title": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
+     }
+    },
+    "required": [
+     "forum",
+     "title",
+     "body"
+    ],
+    "title": "DiscussionIn",
+    "type": "object"
+   },
+   "EnterpriseIn": {
+    "properties": {
+     "capacity": {
+      "default": "",
+      "maxLength": 4000,
+      "title": "Capacity",
+      "type": "string"
+     },
+     "chapter": {
+      "default": "7",
+      "pattern": "^[0-9]$",
+      "title": "Chapter",
+      "type": "string"
+     },
+     "country_id": {
+      "pattern": "^[0-9]{1,32}$",
+      "title": "Country Id",
+      "type": "string"
+     },
+     "name": {
+      "maxLength": 200,
+      "minLength": 2,
+      "title": "Name",
+      "type": "string"
+     },
+     "needs": {
+      "default": "",
+      "maxLength": 4000,
+      "title": "Needs",
+      "type": "string"
+     },
+     "official_url": {
+      "pattern": "^https://[^\\s]{3,990}$",
+      "title": "Official Url",
+      "type": "string"
+     },
+     "products": {
+      "default": "",
+      "maxLength": 4000,
+      "title": "Products",
+      "type": "string"
+     },
+     "source_url": {
+      "pattern": "^https://[^\\s]{3,990}$",
+      "title": "Source Url",
+      "type": "string"
+     }
+    },
+    "required": [
+     "name",
+     "country_id",
+     "official_url",
+     "source_url"
+    ],
+    "title": "EnterpriseIn",
+    "type": "object"
+   },
+   "EvidenceIn": {
+    "properties": {
+     "description": {
+      "maxLength": 4000,
+      "minLength": 3,
+      "title": "Description",
+      "type": "string"
+     },
+     "kind": {
+      "enum": [
+       "url",
+       "commit",
+       "test_report",
+       "pull_request",
+       "document"
+      ],
+      "title": "Kind",
+      "type": "string"
+     },
+     "sha": {
+      "anyOf": [
+       {
+        "pattern": "^[0-9a-fA-F]{7,64}$",
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Sha"
+     },
+     "url": {
+      "pattern": "^https://[^\\s]{3,990}$",
+      "title": "Url",
+      "type": "string"
+     }
+    },
+    "required": [
+     "kind",
+     "url",
+     "description"
+    ],
+    "title": "EvidenceIn",
+    "type": "object"
+   },
+   "HTTPValidationError": {
+    "properties": {
+     "detail": {
+      "items": {
+       "$ref": "#/components/schemas/ValidationError"
+      },
+      "title": "Detail",
+      "type": "array"
+     }
+    },
+    "title": "HTTPValidationError",
+    "type": "object"
+   },
+   "KillSwitchIn": {
+    "properties": {
+     "paused": {
+      "title": "Paused",
+      "type": "boolean"
+     },
+     "reason": {
+      "maxLength": 300,
+      "minLength": 3,
+      "title": "Reason",
+      "type": "string"
+     }
+    },
+    "required": [
+     "paused",
+     "reason"
+    ],
+    "title": "KillSwitchIn",
+    "type": "object"
+   },
+   "LessonIn": {
+    "properties": {
+     "chapter": {
+      "pattern": "^[0-9]$",
+      "title": "Chapter",
+      "type": "string"
+     },
+     "summary": {
+      "maxLength": 4000,
+      "minLength": 10,
+      "title": "Summary",
+      "type": "string"
+     },
+     "title": {
+      "maxLength": 200,
+      "minLength": 3,
+      "title": "Title",
+      "type": "string"
+     }
+    },
+    "required": [
+     "title",
+     "chapter",
+     "summary"
+    ],
+    "title": "LessonIn",
+    "type": "object"
+   },
+   "LinkIn": {
+    "properties": {
+     "from_ref": {
+      "maxLength": 64,
+      "title": "From Ref",
+      "type": "string"
+     },
+     "relation": {
+      "maxLength": 40,
+      "minLength": 2,
+      "pattern": "^[a-z_]+$",
+      "title": "Relation",
+      "type": "string"
+     },
+     "to_ref": {
+      "maxLength": 64,
+      "title": "To Ref",
+      "type": "string"
+     }
+    },
+    "required": [
+     "from_ref",
+     "to_ref",
+     "relation"
+    ],
+    "title": "LinkIn",
+    "type": "object"
+   },
+   "LoginIn": {
+    "properties": {
+     "email": {
+      "maxLength": 254,
+      "title": "Email",
+      "type": "string"
+     },
+     "password": {
+      "maxLength": 200,
+      "title": "Password",
+      "type": "string"
+     }
+    },
+    "required": [
+     "email",
+     "password"
+    ],
+    "title": "LoginIn",
+    "type": "object"
+   },
+   "OfficeIn": {
+    "properties": {
+     "canonical_id": {
+      "pattern": "^[0-9]{1,32}$",
+      "title": "Canonical Id",
+      "type": "string"
+     },
+     "capabilities": {
+      "default": "",
+      "maxLength": 4000,
+      "title": "Capabilities",
+      "type": "string"
+     },
+     "limits": {
+      "default": "",
+      "maxLength": 4000,
+      "title": "Limits",
+      "type": "string"
+     },
+     "platform": {
+      "maxLength": 120,
+      "minLength": 2,
+      "title": "Platform",
+      "type": "string"
+     },
+     "specialties": {
+      "default": "",
+      "maxLength": 2000,
+      "title": "Specialties",
+      "type": "string"
+     }
+    },
+    "required": [
+     "canonical_id",
+     "platform"
+    ],
+    "title": "OfficeIn",
+    "type": "object"
+   },
+   "PairIn": {
+    "properties": {
+     "canonical_id": {
+      "pattern": "^[0-9]{1,32}$",
+      "title": "Canonical Id",
+      "type": "string"
+     },
+     "lead_user_id": {
+      "title": "Lead User Id",
+      "type": "integer"
+     },
+     "software": {
+      "maxLength": 160,
+      "minLength": 2,
+      "title": "Software",
+      "type": "string"
+     }
+    },
+    "required": [
+     "canonical_id",
+     "software",
+     "lead_user_id"
+    ],
+    "title": "PairIn",
+    "type": "object"
+   },
+   "PostIn": {
+    "properties": {
+     "body": {
+      "maxLength": 10000,
+      "minLength": 1,
+      "title": "Body",
+      "type": "string"
+     },
+     "country_id": {
+      "anyOf": [
+       {
+        "maxLength": 32,
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Country Id"
+     },
+     "hstdn": {
+      "anyOf": [
+       {
+        "maxLength": 200,
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Hstdn"
+     },
+     "title": {
+      "maxLength": 200,
+      "minLength": 1,
+      "title": "Title",
+      "type": "string"
+     }
+    },
+    "required": [
+     "title",
+     "body"
+    ],
+    "title": "PostIn",
+    "type": "object"
+   },
+   "RegisterIn": {
+    "properties": {
+     "email": {
+      "maxLength": 254,
+      "title": "Email",
+      "type": "string"
+     },
+     "name": {
+      "maxLength": 60,
+      "minLength": 2,
+      "title": "Name",
+      "type": "string"
+     },
+     "password": {
+      "maxLength": 200,
+      "minLength": 8,
+      "title": "Password",
+      "type": "string"
+     }
+    },
+    "required": [
+     "email",
+     "password",
+     "name"
+    ],
+    "title": "RegisterIn",
+    "type": "object"
+   },
+   "ReviewIn": {
+    "properties": {
+     "decision": {
+      "enum": [
+       "ACCEPT",
+       "CHANGES_REQUESTED"
+      ],
+      "title": "Decision",
+      "type": "string"
+     },
+     "notes": {
+      "maxLength": 4000,
+      "minLength": 3,
+      "title": "Notes",
+      "type": "string"
+     }
+    },
+    "required": [
+     "decision",
+     "notes"
+    ],
+    "title": "ReviewIn",
+    "type": "object"
+   },
+   "TaskIn": {
+    "properties": {
+     "acceptance": {
+      "maxLength": 4000,
+      "minLength": 3,
+      "title": "Acceptance",
+      "type": "string"
+     },
+     "description": {
+      "default": "",
+      "maxLength": 8000,
+      "title": "Description",
+      "type": "string"
+     },
+     "idempotency_key": {
+      "maxLength": 80,
+      "minLength": 8,
+      "pattern": "^[A-Za-z0-9._:-]+$",
+      "title": "Idempotency Key",
+      "type": "string"
+     },
+     "pair_id": {
+      "title": "Pair Id",
+      "type": "integer"
+     },
+     "refs": {
+      "items": {
+       "type": "string"
+      },
+      "maxItems": 20,
+      "title": "Refs",
+      "type": "array"
+     },
+     "reviewer_id": {
+      "title": "Reviewer Id",
+      "type": "integer"
+     },
+     "title": {
+      "maxLength": 200,
+      "minLength": 3,
+      "title": "Title",
+      "type": "string"
+     }
+    },
+    "required": [
+     "pair_id",
+     "title",
+     "acceptance",
+     "reviewer_id",
+     "idempotency_key"
+    ],
+    "title": "TaskIn",
+    "type": "object"
+   },
+   "TopicIn": {
+    "properties": {
+     "chapter": {
+      "pattern": "^[0-9]$",
+      "title": "Chapter",
+      "type": "string"
+     },
+     "field": {
+      "default": "",
+      "maxLength": 120,
+      "title": "Field",
+      "type": "string"
+     },
+     "summary": {
+      "default": "",
+      "maxLength": 4000,
+      "title": "Summary",
+      "type": "string"
+     },
+     "title": {
+      "maxLength": 200,
+      "minLength": 3,
+      "title": "Title",
+      "type": "string"
+     }
+    },
+    "required": [
+     "title",
+     "chapter"
+    ],
+    "title": "TopicIn",
+    "type": "object"
+   },
+   "TransitionIn": {
+    "properties": {
+     "note": {
+      "default": "",
+      "maxLength": 2000,
+      "title": "Note",
+      "type": "string"
+     }
+    },
+    "title": "TransitionIn",
+    "type": "object"
+   },
+   "ValidationError": {
+    "properties": {
+     "ctx": {
+      "title": "Context",
+      "type": "object"
+     },
+     "input": {
+      "title": "Input"
+     },
+     "loc": {
+      "items": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "integer"
+        }
+       ]
+      },
+      "title": "Location",
+      "type": "array"
+     },
+     "msg": {
+      "title": "Message",
+      "type": "string"
+     },
+     "type": {
+      "title": "Error Type",
+      "type": "string"
+     }
+    },
+    "required": [
+     "loc",
+     "msg",
+     "type"
+    ],
+    "title": "ValidationError",
+    "type": "object"
+   },
+   "services__forum__app__CommentIn": {
+    "properties": {
+     "body": {
+      "maxLength": 5000,
+      "minLength": 1,
+      "title": "Body",
+      "type": "string"
+     }
+    },
+    "required": [
+     "body"
+    ],
+    "title": "CommentIn",
+    "type": "object"
+   },
+   "services__forum__office__CommentIn": {
+    "properties": {
+     "body": {
+      "maxLength": 2000,
+      "minLength": 1,
+      "title": "Body",
+      "type": "string"
+     }
+    },
+    "required": [
+     "body"
+    ],
+    "title": "CommentIn",
+    "type": "object"
+   }
+  }
+ },
+ "info": {
+  "description": "API dùng chung: hai diễn đàn, Văn Phòng SI AI, HUB 69, AI Directory (Registry chỉ đọc). SANDBOX • NOT DEPLOYED.",
+  "title": "CFP+ Backend API (sandbox)",
+  "version": "0.2.0-p0"
+ },
+ "openapi": "3.1.0",
+ "paths": {
+  "/api/auth/login": {
+   "post": {
+    "operationId": "login_api_auth_login_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/LoginIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Login",
+    "tags": [
+     "auth"
+    ]
+   }
+  },
+  "/api/auth/logout": {
+   "post": {
+    "operationId": "logout_api_auth_logout_post",
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     }
+    },
+    "summary": "Logout",
+    "tags": [
+     "auth"
+    ]
+   }
+  },
+  "/api/auth/me": {
+   "get": {
+    "operationId": "me_api_auth_me_get",
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     }
+    },
+    "summary": "Me",
+    "tags": [
+     "auth"
+    ]
+   }
+  },
+  "/api/auth/register": {
+   "post": {
+    "operationId": "register_api_auth_register_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/RegisterIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "201": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Register",
+    "tags": [
+     "auth"
+    ]
+   }
+  },
+  "/api/catalog": {
+   "get": {
+    "operationId": "catalog_search_api_catalog_get",
+    "parameters": [
+     {
+      "in": "query",
+      "name": "q",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Q"
+      }
+     },
+     {
+      "in": "query",
+      "name": "limit",
+      "required": false,
+      "schema": {
+       "default": 50,
+       "title": "Limit",
+       "type": "integer"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Catalog Search",
+    "tags": [
+     "catalog"
+    ]
+   }
+  },
+  "/api/catalog/meta": {
+   "get": {
+    "operationId": "catalog_meta_api_catalog_meta_get",
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     }
+    },
+    "summary": "Catalog Meta",
+    "tags": [
+     "catalog"
+    ]
+   }
+  },
+  "/api/catalog/{cid}": {
+   "get": {
+    "operationId": "catalog_item_api_catalog__cid__get",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "cid",
+      "required": true,
+      "schema": {
+       "title": "Cid",
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Catalog Item",
+    "tags": [
+     "catalog"
+    ]
+   }
+  },
+  "/api/directory/countries": {
+   "get": {
+    "operationId": "countries_api_directory_countries_get",
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     }
+    },
+    "summary": "Countries",
+    "tags": [
+     "directory"
+    ]
+   }
+  },
+  "/api/directory/{eid}": {
+   "get": {
+    "operationId": "entity_api_directory__eid__get",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "eid",
+      "required": true,
+      "schema": {
+       "title": "Eid",
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Entity",
+    "tags": [
+     "directory"
+    ]
+   }
+  },
+  "/api/ecosystem": {
+   "get": {
+    "operationId": "ecosystem_api_ecosystem_get",
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     }
+    },
+    "summary": "Ecosystem",
+    "tags": [
+     "ecosystem"
+    ]
+   }
+  },
+  "/api/ecosystem/ctttc/date/{date_id}": {
+   "get": {
+    "operationId": "ctttc_date_api_api_ecosystem_ctttc_date__date_id__get",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "date_id",
+      "required": true,
+      "schema": {
+       "title": "Date Id",
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Ctttc Date Api",
+    "tags": [
+     "ecosystem"
+    ]
+   }
+  },
+  "/api/ecosystem/ctttc/days": {
+   "get": {
+    "operationId": "ctttc_days_api_api_ecosystem_ctttc_days_get",
+    "parameters": [
+     {
+      "in": "query",
+      "name": "year",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "integer"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Year"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Ctttc Days Api",
+    "tags": [
+     "ecosystem"
+    ]
+   }
+  },
+  "/api/forums/{key}": {
+   "get": {
+    "operationId": "forum_info_api_forums__key__get",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "key",
+      "required": true,
+      "schema": {
+       "title": "Key",
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Forum Info",
+    "tags": [
+     "forums"
+    ]
+   }
+  },
+  "/api/forums/{key}/join": {
+   "post": {
+    "operationId": "join_api_forums__key__join_post",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "key",
+      "required": true,
+      "schema": {
+       "title": "Key",
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Join",
+    "tags": [
+     "forums"
+    ]
+   }
+  },
+  "/api/forums/{key}/members": {
+   "get": {
+    "operationId": "list_members_api_forums__key__members_get",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "key",
+      "required": true,
+      "schema": {
+       "title": "Key",
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "List Members",
+    "tags": [
+     "forums"
+    ]
+   }
+  },
+  "/api/forums/{key}/members/{member_id}/approve": {
+   "post": {
+    "operationId": "approve_api_forums__key__members__member_id__approve_post",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "key",
+      "required": true,
+      "schema": {
+       "title": "Key",
+       "type": "string"
+      }
+     },
+     {
+      "in": "path",
+      "name": "member_id",
+      "required": true,
+      "schema": {
+       "title": "Member Id",
+       "type": "integer"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Approve",
+    "tags": [
+     "forums"
+    ]
+   }
+  },
+  "/api/forums/{key}/posts": {
+   "get": {
+    "operationId": "list_posts_api_forums__key__posts_get",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "key",
+      "required": true,
+      "schema": {
+       "title": "Key",
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "List Posts",
+    "tags": [
+     "forums"
+    ]
+   },
+   "post": {
+    "operationId": "create_post_api_forums__key__posts_post",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "key",
+      "required": true,
+      "schema": {
+       "title": "Key",
+       "type": "string"
+      }
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/PostIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "201": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Create Post",
+    "tags": [
+     "forums"
+    ]
+   }
+  },
+  "/api/forums/{key}/posts/{post_id}/comments": {
+   "post": {
+    "operationId": "create_comment_api_forums__key__posts__post_id__comments_post",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "key",
+      "required": true,
+      "schema": {
+       "title": "Key",
+       "type": "string"
+      }
+     },
+     {
+      "in": "path",
+      "name": "post_id",
+      "required": true,
+      "schema": {
+       "title": "Post Id",
+       "type": "integer"
+      }
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/services__forum__app__CommentIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "201": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Create Comment",
+    "tags": [
+     "forums"
+    ]
+   }
+  },
+  "/api/health": {
+   "get": {
+    "operationId": "health_api_health_get",
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     }
+    },
+    "summary": "Health",
+    "tags": [
+     "health"
+    ]
+   }
+  },
+  "/api/hub/69": {
+   "get": {
+    "operationId": "hub69_api_hub_69_get",
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     }
+    },
+    "summary": "Hub69",
+    "tags": [
+     "hub69"
+    ]
+   }
+  },
+  "/api/modules": {
+   "get": {
+    "operationId": "modules_api_modules_get",
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     }
+    },
+    "summary": "Modules",
+    "tags": [
+     "hub69"
+    ]
+   }
+  },
+  "/api/office/agents": {
+   "get": {
+    "description": "Agent bên ngoài đang ĐÀO TẠO trong sandbox (không phải danh sách đã nghiệm thu).",
+    "operationId": "agents_list_api_office_agents_get",
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     }
+    },
+    "summary": "Agents List",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/agents/{slug}": {
+   "get": {
+    "operationId": "agent_detail_api_office_agents__slug__get",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "slug",
+      "required": true,
+      "schema": {
+       "title": "Slug",
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Agent Detail",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/agents/{slug}/test-runs": {
+   "post": {
+    "description": "Chạy bộ tình huống tư vấn qua Siêu Phần Mềm giám sát; kết quả dùng làm Evidence (test_report).",
+    "operationId": "agent_test_run_api_office_agents__slug__test_runs_post",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "slug",
+      "required": true,
+      "schema": {
+       "title": "Slug",
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "201": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Agent Test Run",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/agents/{slug}/test-runs/{sha}": {
+   "get": {
+    "description": "Evidence URL: tính lại từ nguồn hiện hành; khác sha → 409 (Evidence đã cũ, cần chạy lại).",
+    "operationId": "agent_test_run_get_api_office_agents__slug__test_runs__sha__get",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "slug",
+      "required": true,
+      "schema": {
+       "title": "Slug",
+       "type": "string"
+      }
+     },
+     {
+      "in": "path",
+      "name": "sha",
+      "required": true,
+      "schema": {
+       "title": "Sha",
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Agent Test Run Get",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/answer-check": {
+   "post": {
+    "description": "Siêu Phần Mềm giám sát: kiểm tra nguồn/ID, tuyên bố chưa kiểm chứng, cam kết, dữ liệu nhạy cảm.\nLuôn auto_reply=HOLD. Audit chỉ lưu verdict + mã lỗi + sha256 (không lưu nội dung có thể chứa dữ liệu khách).",
+    "operationId": "answer_check_api_office_answer_check_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/AnswerCheckIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Answer Check",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/audit": {
+   "get": {
+    "operationId": "audit_log_api_office_audit_get",
+    "parameters": [
+     {
+      "in": "query",
+      "name": "ref",
+      "required": true,
+      "schema": {
+       "title": "Ref",
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Audit Log",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/board": {
+   "get": {
+    "description": "Bảng điều phối theo quyền người xem: RUNNING / IN_REVIEW / BLOCKED / REVIEWED.\n\nREVIEWED chỉ được tính khi có execution evidence (≥1 Evidence) VÀ Review ACCEPT của đúng\nreviewer độc lập (≠ người thực thi); thiếu một trong hai → BLOCKED kèm lý do. Khách: rỗng.",
+    "operationId": "board_api_office_board_get",
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     }
+    },
+    "summary": "Board",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/datasets": {
+   "post": {
+    "operationId": "add_dataset_api_office_datasets_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/DatasetIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "201": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Add Dataset",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/datasets/{did}": {
+   "get": {
+    "operationId": "get_dataset_api_office_datasets__did__get",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "did",
+      "required": true,
+      "schema": {
+       "title": "Did",
+       "type": "integer"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Get Dataset",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/enterprises": {
+   "post": {
+    "operationId": "add_enterprise_api_office_enterprises_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/EnterpriseIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "201": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Add Enterprise",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/enterprises/{eid}": {
+   "get": {
+    "operationId": "get_enterprise_api_office_enterprises__eid__get",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "eid",
+      "required": true,
+      "schema": {
+       "title": "Eid",
+       "type": "integer"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Get Enterprise",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/forum-links": {
+   "get": {
+    "description": "Liên kết ngược bài diễn đàn → nhiệm vụ; chỉ trả nhiệm vụ người xem được phép thấy.",
+    "operationId": "forum_links_api_office_forum_links_get",
+    "parameters": [
+     {
+      "in": "query",
+      "name": "forum",
+      "required": true,
+      "schema": {
+       "title": "Forum",
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Forum Links",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/linkmau/{cid}": {
+   "get": {
+    "operationId": "linkmau_api_office_linkmau__cid__get",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "cid",
+      "required": true,
+      "schema": {
+       "title": "Cid",
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Linkmau",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/links": {
+   "get": {
+    "operationId": "get_links_api_office_links_get",
+    "parameters": [
+     {
+      "in": "query",
+      "name": "ref",
+      "required": true,
+      "schema": {
+       "title": "Ref",
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Get Links",
+    "tags": [
+     "office"
+    ]
+   },
+   "post": {
+    "operationId": "add_link_api_office_links_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/LinkIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "201": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Add Link",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/offices": {
+   "post": {
+    "operationId": "create_office_api_office_offices_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/OfficeIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "201": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Create Office",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/offices/{cid}": {
+   "get": {
+    "operationId": "office_view_api_office_offices__cid__get",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "cid",
+      "required": true,
+      "schema": {
+       "title": "Cid",
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Office View",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/offices/{cid}/brand": {
+   "post": {
+    "operationId": "add_brand_api_office_offices__cid__brand_post",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "cid",
+      "required": true,
+      "schema": {
+       "title": "Cid",
+       "type": "string"
+      }
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/BrandIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "201": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Add Brand",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/offices/{cid}/maintainers/{uid}": {
+   "post": {
+    "operationId": "add_maintainer_api_office_offices__cid__maintainers__uid__post",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "cid",
+      "required": true,
+      "schema": {
+       "title": "Cid",
+       "type": "string"
+      }
+     },
+     {
+      "in": "path",
+      "name": "uid",
+      "required": true,
+      "schema": {
+       "title": "Uid",
+       "type": "integer"
+      }
+     }
+    ],
+    "responses": {
+     "201": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Add Maintainer",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/pairs": {
+   "post": {
+    "operationId": "add_pair_api_office_pairs_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/PairIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "201": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Add Pair",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/registry/{eid}": {
+   "get": {
+    "operationId": "registry_entity_api_office_registry__eid__get",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "eid",
+      "required": true,
+      "schema": {
+       "title": "Eid",
+       "type": "string"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Registry Entity",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/search": {
+   "get": {
+    "operationId": "search_api_office_search_get",
+    "parameters": [
+     {
+      "in": "query",
+      "name": "q",
+      "required": false,
+      "schema": {
+       "default": "",
+       "title": "Q",
+       "type": "string"
+      }
+     },
+     {
+      "in": "query",
+      "name": "chapter",
+      "required": false,
+      "schema": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "null"
+        }
+       ],
+       "title": "Chapter"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Search",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/sieu-bo-doi": {
+   "get": {
+    "operationId": "sieu_bo_doi_api_office_sieu_bo_doi_get",
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     }
+    },
+    "summary": "Sieu Bo Doi",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/tasks": {
+   "post": {
+    "operationId": "add_task_api_office_tasks_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/TaskIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "201": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Add Task",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/tasks/{tid}/ack": {
+   "post": {
+    "operationId": "ack_api_office_tasks__tid__ack_post",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "tid",
+      "required": true,
+      "schema": {
+       "title": "Tid",
+       "type": "integer"
+      }
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/TransitionIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Ack",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/tasks/{tid}/close": {
+   "post": {
+    "description": "Closure sau Independent Review: governance hoặc người giao việc, không phải người thực thi.",
+    "operationId": "close_api_office_tasks__tid__close_post",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "tid",
+      "required": true,
+      "schema": {
+       "title": "Tid",
+       "type": "integer"
+      }
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/CloseIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Close",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/tasks/{tid}/comments": {
+   "post": {
+    "description": "Trao đổi trong nhiệm vụ: ghi vào task_events (to_status=COMMENT), không đổi trạng thái.",
+    "operationId": "comment_api_office_tasks__tid__comments_post",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "tid",
+      "required": true,
+      "schema": {
+       "title": "Tid",
+       "type": "integer"
+      }
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/services__forum__office__CommentIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "201": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Comment",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/tasks/{tid}/discussions": {
+   "post": {
+    "description": "Mở thảo luận ở đúng Diễn Đàn cho nhiệm vụ: bài tạo theo quy tắc của diễn đàn đó + liên kết hai chiều.",
+    "operationId": "open_discussion_api_office_tasks__tid__discussions_post",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "tid",
+      "required": true,
+      "schema": {
+       "title": "Tid",
+       "type": "integer"
+      }
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/DiscussionIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "201": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Open Discussion",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/tasks/{tid}/evidence": {
+   "post": {
+    "operationId": "add_evidence_api_office_tasks__tid__evidence_post",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "tid",
+      "required": true,
+      "schema": {
+       "title": "Tid",
+       "type": "integer"
+      }
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/EvidenceIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "201": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Add Evidence",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/tasks/{tid}/lessons": {
+   "post": {
+    "description": "Vòng khép kín: sau nghiệm thu + Closure, người tham gia ghi tri thức/bài học (chủ đề nghiên cứu theo Chương)\nliên kết với nhiệm vụ; nhiệm vụ tiếp theo tham chiếu task:<id> + topic:<bài học>.",
+    "operationId": "add_lesson_api_office_tasks__tid__lessons_post",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "tid",
+      "required": true,
+      "schema": {
+       "title": "Tid",
+       "type": "integer"
+      }
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/LessonIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "201": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Add Lesson",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/tasks/{tid}/loop": {
+   "get": {
+    "description": "Vòng khép kín của MỘT nhiệm vụ, chỉ từ dữ liệu thật: HUB 69 → CMP 267 → Văn Phòng → Diễn Đàn →\nSiêu Bộ Đôi thực thi → Evidence → Review độc lập → nghiệm thu → Closure → bài học → nhiệm vụ tiếp theo.",
+    "operationId": "task_loop_api_office_tasks__tid__loop_get",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "tid",
+      "required": true,
+      "schema": {
+       "title": "Tid",
+       "type": "integer"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Task Loop",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/tasks/{tid}/review": {
+   "post": {
+    "operationId": "review_api_office_tasks__tid__review_post",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "tid",
+      "required": true,
+      "schema": {
+       "title": "Tid",
+       "type": "integer"
+      }
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/ReviewIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "201": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Review",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/tasks/{tid}/start": {
+   "post": {
+    "operationId": "start_api_office_tasks__tid__start_post",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "tid",
+      "required": true,
+      "schema": {
+       "title": "Tid",
+       "type": "integer"
+      }
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/TransitionIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Start",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/tasks/{tid}/submit": {
+   "post": {
+    "operationId": "submit_api_office_tasks__tid__submit_post",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "tid",
+      "required": true,
+      "schema": {
+       "title": "Tid",
+       "type": "integer"
+      }
+     }
+    ],
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/TransitionIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Submit",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/taxonomy": {
+   "get": {
+    "operationId": "taxonomy_api_office_taxonomy_get",
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     }
+    },
+    "summary": "Taxonomy",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/topics": {
+   "post": {
+    "operationId": "add_topic_api_office_topics_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/TopicIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "201": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Add Topic",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/topics/{tid}": {
+   "get": {
+    "operationId": "get_topic_api_office_topics__tid__get",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "tid",
+      "required": true,
+      "schema": {
+       "title": "Tid",
+       "type": "integer"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Get Topic",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/worker/control": {
+   "post": {
+    "description": "Kill switch qua HTTP (Render Free không có shell): CHỈ governance của Văn Phòng SI AI.\nGhi nhật ký append-only của worker (event=kill_switch, danh tính người bấm, lý do).\nKho thật (Postgres) cần CFP_WORKER_ADMIN_DB (role được SET ROLE worker_governance).",
+    "operationId": "worker_control_api_worker_control_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/KillSwitchIn"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Worker Control",
+    "tags": [
+     "worker"
+    ]
+   }
+  },
+  "/api/worker/status": {
+   "get": {
+    "operationId": "worker_status_api_worker_status_get",
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     }
+    },
+    "summary": "Worker Status",
+    "tags": [
+     "worker"
+    ]
+   }
+  }
+ }
+}

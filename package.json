@@ -1,0 +1,7 @@
+{
+  "name": "cfp-plus-sandbox",
+  "private": true,
+  "scripts": {
+    "dev": "sh scripts/dev-forum-sandbox.sh"
+  }
+}

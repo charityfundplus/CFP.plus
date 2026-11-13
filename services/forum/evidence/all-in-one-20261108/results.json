@@ -1,0 +1,72 @@
+{
+  "created_at": "2026-11-08T15:48:02.255894+00:00",
+  "source_base_sha": "16d6bd0457bfbe172830d8e138fbf36b68a4229d",
+  "source_files_sha256": {
+    ".gitignore": "a2d54b2011f3aad451f8810ad1df11bd2baf9520be1a0d7c054b59213ee856cf",
+    "package.json": "8ee88f7442b670cfa67002d510c529a5be3f5d41ace2293957ffd2c1a905d2de",
+    "scripts/dev-forum-sandbox.sh": "faeb6219c474c8a5debdba7d1b229c2544c53606d0031793bbe01f94255b3fa9",
+    "services/forum/app.py": "6bfca0f48abccf7801d63c1af3a1d5f9608c463eec2b3ba91d09689324f8e8b9",
+    "services/forum/ecosystem.py": "5a470fcc5aed5c0e6594d944bf78114ca1d5d0f84039b5e62fe25fcacc9b169d",
+    "services/forum/web/all-in-one.html": "f6e756984128f45e9767080d46b2287319b0a476e37175f08163ca2293da9145",
+    "services/forum/web/all-in-one.css": "b88f6318d92d38b1dc7c07f7758585feeda5fe70e5c41e448ba93f78f06ca50d",
+    "services/forum/web/all-in-one.js": "9c61a71e53b75bea93be58643be1c4189153c40d70a0370462aa4c474e61bfd4",
+    "tests/forum/test_ecosystem.py": "d3aa48da6c23805194e9e3a01b6f9a1e997885d1b2c6a5684dc857ea7de382af"
+  },
+  "mode": "SANDBOX PRACTICE GO • HOLD ACTIVATION • PRODUCTION NO GO",
+  "result": "SOURCE_AND_LOCAL_BROWSER_VERIFIED; AWAITING_HUMAN_GOVERNANCE_SANDBOX_DEPLOY",
+  "implementation": {
+    "hub_route": "/69/",
+    "api": "/api/ecosystem",
+    "categories": 10,
+    "statuses": [
+      "active",
+      "testing",
+      "research",
+      "incomplete"
+    ],
+    "source_and_registry_unchanged": true
+  },
+  "pytest": {
+    "command": "python -m pytest tests/forum -q -p no:cacheprovider --junitxml=services/forum/evidence/all-in-one-20261108/pytest.xml",
+    "passed": 133,
+    "skipped": 38,
+    "failed": 0,
+    "scope": "SQLite local; PostgreSQL/RLS tests skipped without PostgreSQL URLs"
+  },
+  "browser": {
+    "artifact": "browser-qa.json",
+    "pass_groups": 10,
+    "blocked_mobile": true,
+    "engine": "Shared Chrome desktop 1363px",
+    "tested_url": "http://127.0.0.1:4173/69/"
+  },
+  "independent_internal_review": {
+    "result": "PASS for sandbox diff",
+    "latest_pytest_passed": 21,
+    "url_safety_cases_passed": 20,
+    "earlier_acl_csrf_passed": 8,
+    "scope": "Separate review agent; source and local SQLite only; not external SecuritySI acceptance"
+  },
+  "https_baseline": {
+    "artifact": "https-readonly-baseline.json",
+    "url": "https://cfp-forum-office-sandbox-p0.onrender.com/69/",
+    "build": "799e2e05f3f477865a6c25e2835595fbb8364447",
+    "get_passed": 9,
+    "new_all_in_one_deployed": false,
+    "storage": "ephemeral-sqlite"
+  },
+  "blockers": [
+    "Human Governance decision required to deploy exact new commit to existing sandbox service; autoDeploy OFF",
+    "Mobile/Safari/iPhone verification blocked by testing environment",
+    "External SecuritySI and ReviewSI acceptance pending",
+    "Canva original DAHZcr4iJj4 readable; Canva Code content not exposed by editing API",
+    "331/332/333 source pages missing in snapshot; IDs preserved without invented URLs"
+  ],
+  "remote_mutations": {
+    "github_coordination_comment": 6723453472,
+    "production_deploy": false,
+    "sandbox_deploy": false,
+    "supabase_migration": false,
+    "dns_iam_or_ids_changed": false
+  }
+}

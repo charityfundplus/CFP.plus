@@ -1,0 +1,37 @@
+.forum-auth { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; padding: 1rem 0; }
+.forum-auth .button { width: auto; }
+.forum-form { display: grid; gap: .75rem; padding: 1.2rem; margin: 1rem 0; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); }
+.forum-form.compact { padding: .75rem; margin: .5rem 0 0; }
+.forum-form label { display: grid; gap: .3rem; font-weight: 700; }
+.forum-form input, .forum-form textarea { width: 100%; padding: .65rem .8rem; border: 1px solid var(--line); border-radius: 12px; font: inherit; background: #fff; color: var(--ink); }
+.forum-msg { min-height: 1.4em; margin: .25rem 0; color: var(--accent); font-weight: 700; }
+.forum-msg.error { color: #b42318; }
+.forum-post { margin-top: 1rem; }
+.forum-meta { margin: 0; color: var(--muted); font-size: .9rem; }
+.forum-body { white-space: pre-wrap; overflow-wrap: anywhere; }
+.forum-comments { margin: 0; padding-left: 1.2rem; display: grid; gap: .5rem; }
+.forum-note { padding: .9rem 1rem; border-left: 4px solid var(--accent); background: var(--surface); border-radius: 8px; }
+.forum-form select { width: 100%; padding: .65rem .8rem; border: 1px solid var(--line); border-radius: 12px; font: inherit; }
+.forum-tag { display: inline-block; margin-right: .4rem; padding: .1rem .55rem; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: .85rem; }
+.forum-tags { display: flex; flex-wrap: wrap; gap: .4rem; padding: 0; list-style: none; }
+.forum-tag.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+#detail:empty { display: none; }
+[data-office-root] p, [data-office-root] li, [data-office-root] a, [data-office-root] strong { overflow-wrap: anywhere; word-break: break-word; }
+[data-office-root] ul, [data-office-root] ol { padding-left: 1.1rem; }
+
+/* Touch targets and safe-area spacing also apply in WebKit, without disabling zoom. */
+.site-header nav { display: flex; flex-wrap: wrap; gap: .75rem; }
+.site-header nav a, [data-directory-root] a, [data-office-root] a { display: inline-block; min-height: 44px; padding-block: .5rem; }
+[data-directory-root] { overflow-wrap: anywhere; }
+[data-directory-root] input { font-size: 16px; min-height: 44px; }
+[data-directory-root] .office-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1rem; padding: 0; list-style: none; }
+[data-directory-root] .chapter-card { min-width: 0; }
+main { padding-bottom: max(1rem, env(safe-area-inset-bottom)); }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+/* Cảnh báo dữ liệu thử nghiệm (chỉ ở chế độ CFP_SANDBOX_EPHEMERAL). */
+.sandbox-ephemeral { background: #fff4ce; color: #4a3500; border-bottom: 2px solid #c99700; padding: 8px 16px; font-size: 14px; line-height: 1.6; overflow-wrap: anywhere; }
+
+/* Văn Phòng Agent: kết quả kiểm thử/giám sát xuống dòng trong khung, không tràn đè nút bên dưới (iPhone) */
+.agent-out { white-space: pre-wrap; overflow-wrap: anywhere; max-width: 100%; overflow: auto; margin: .5rem 0 1rem; }
+.agent-form textarea, .agent-form input { display: block; width: 100%; box-sizing: border-box; font-size: 16px; }

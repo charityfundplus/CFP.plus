@@ -1,0 +1,192 @@
+name: Render sandbox smoke (HTTPS thật)
+
+# Gọi URL Render sandbox từ runner GitHub (có internet) — chỉ đọc khi không có secrets tài khoản.
+# Không deploy, không đổi cấu hình Render. Có secrets SMOKE_* (tài khoản sandbox) → chạy luồng đầy đủ
+# login → task → ACK → Start → Diễn Đàn → Evidence → Submit → Review → Closure → audit.
+on:
+  push:
+    branches: ['claude/**']
+    paths:
+      - '.github/workflows/render_sandbox_smoke.yml'
+      - 'tests/forum/smoke_live.py'
+      - 'tests/forum/agent_evidence.py'
+      - 'scripts/site_link_audit.py'
+      - 'tests/forum/https_mobile.js'
+      - 'services/forum/agents/cases/**'
+  workflow_dispatch:
+    inputs:
+      base:
+        description: 'URL HTTPS sandbox'
+        default: 'https://cfp-forum-office-sandbox-p0.onrender.com'
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      BASE: ${{ inputs.base || 'https://cfp-forum-office-sandbox-p0.onrender.com' }}
+      SMOKE_GOV_EMAIL: ${{ secrets.SMOKE_GOV_EMAIL }}
+      SMOKE_REVIEWER_EMAIL: ${{ secrets.SMOKE_REVIEWER_EMAIL }}
+      SMOKE_PASSWORD: ${{ secrets.SMOKE_PASSWORD }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install httpx==0.28.1
+      - name: Đánh thức instance Free + ghi health thô
+        run: |
+          for i in 1 2 3 4 5 6; do
+            code=$(curl -s -o health.json -w '%{http_code}' --max-time 60 "$BASE/api/health" || true)
+            echo "lần $i: HTTP $code"; [ "$code" = 200 ] && break; sleep 20
+          done
+          cat health.json || true; echo
+          curl -s -o /dev/null -w 'worker/status HTTP %{http_code}\n' --max-time 30 "$BASE/api/worker/status" || true
+          curl -s -o /dev/null -D - --max-time 30 "$BASE/" | grep -i '^\(HTTP\|x-render\|rndr\|server\)' || echo "không có phản hồi HTTP từ /"
+      - name: Smoke
+        run: |
+          set -o pipefail  # FAIL của smoke phải làm job đỏ (không bị | tee che)
+          # Preflight: đủ cả 3 secrets → chế độ đầy đủ; thiếu hết → public-only; thiếu một phần → FAIL rõ ràng.
+          n=0; for v in SMOKE_GOV_EMAIL SMOKE_REVIEWER_EMAIL SMOKE_PASSWORD; do
+            if [ -n "${!v}" ]; then echo "$v: có"; n=$((n+1)); else echo "$v: THIẾU"; fi
+          done
+          if [ "$n" = 3 ]; then MODE=; echo "SMOKE_MODE=full (đăng nhập + ghi)"
+          elif [ "$n" = 0 ]; then MODE=--user-only; echo "SMOKE_MODE=user-only (tài khoản thử nghiệm tự đăng ký; CHƯA gồm giao việc/ACK/Evidence/Review — cần SMOKE_*)"
+          else echo "::error::Thiếu một phần secrets SMOKE_* ($n/3) — cấu hình đủ cả 3 hoặc bỏ hết"; exit 1; fi
+          python -m tests.forum.smoke_live --base "$BASE" --out render-smoke.json $MODE | tee render-smoke.log
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: render-sandbox-smoke
+          path: |
+            health.json
+            render-smoke.json
+            render-smoke.log
+          if-no-files-found: warn
+
+  # Chỉ đọc: DNS + header hosting thực tế của website chính (để chọn nền tảng dựa trên bằng chứng).
+  site_probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: DNS + hosting cfp.plus (chỉ đọc)
+        run: |
+          for h in cfp.plus www.cfp.plus; do
+            echo "== DNS $h"; dig +short A $h; dig +short AAAA $h; dig +short CNAME $h; dig +short NS cfp.plus | head -4
+          done
+          for p in / /69/ /691121/ /267/ /forum/ /_internal/office/; do
+            echo "== GET https://cfp.plus$p"
+            curl -s -o /dev/null -D - --max-time 30 "https://cfp.plus$p" \
+              | grep -iE '^(HTTP|server|via|location|x-cloud-trace-context|x-github-request-id|x-render|rndr-id|cf-ray|x-goog|x-served-by|x-powered-by|alt-svc)' || echo "(không phản hồi)"
+          done
+          echo "== TLS"; echo | openssl s_client -connect cfp.plus:443 -servername cfp.plus 2>/dev/null | openssl x509 -noout -issuer -subject -dates || true
+      - name: Liên kết trang giới thiệu CFP+ (HUB 69 • 10 Chương • CTTTC) phải mở được
+        run: |
+          # Các URL công khai mà bài giới thiệu (Notion 410caac9…, Canva DAHZcr4iJj4) trỏ tới. Không 200 → FAIL.
+          fail=0
+          for p in /69/ /0123456789/ /28882/ /000/ /0/ /1/ /2/ /3/ /4/ /5/ /6/ /7/ /8/ /9/; do
+            out=$(curl -sL -o page.html -w '%{http_code} %{url_effective}' --max-time 30 "https://cfp.plus$p" || echo "000 -")
+            title=$(grep -o '<title>[^<]*' page.html 2>/dev/null | head -1 | sed 's/<title>//')
+            echo "$out • $title"
+            [ "${out%% *}" = 200 ] || { echo "::error::https://cfp.plus$p không mở được (${out%% *})"; fail=1; }
+          done
+          exit $fail
+
+  # Website tĩnh: đích link nội bộ KHÔNG có trang trong repo → kiểm trên cfp.plus thật (chỉ đọc) xem người dùng có gặp 404 không.
+  site_links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Link nội bộ thiếu trang trong repo → trạng thái trên cfp.plus
+        run: |
+          python3 scripts/site_link_audit.py > audit.json
+          python3 -c "import json;d=json.load(open('audit.json'));print('pages',d['pages'],'links',d['internal_links'],'missing_in_repo',len(d['broken']));[print(u) for u in d['broken']]" | tee missing.txt
+          echo "== cfp.plus"; tail -n +2 missing.txt | while read -r u; do
+            printf '%s %s\n' "$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 "https://cfp.plus$u")" "$u"; done | tee prod-status.txt
+          echo "== tổng hợp"; cut -d' ' -f1 prod-status.txt | sort | uniq -c
+          echo "== tài nguyên dùng chung (trang Quốc Gia tải JSON; trang 267/2676 dùng CSS)"
+          for u in /registry/country-route-map.json /styles.css /assets/style.css; do
+            printf '%s %s\n' "$(curl -s -o /dev/null -w '%{http_code} %{content_type}' --max-time 20 "https://cfp.plus$u")" "$u"; done
+          echo "== cfp.plus phục vụ gì cho ID có link nhưng không có trang trong repo (tiêu đề)"
+          for u in /698431/ /627/ /6911811/; do
+            printf '%s • %s\n' "$u" "$(curl -s --max-time 20 "https://cfp.plus$u" | grep -o '<title>[^<]*' | head -1)"; done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: site-links, path: "audit.json\nprod-status.txt" }
+
+  # Giao diện điện thoại trên URL HTTPS thật (Chromium giả lập iPhone 13) + ảnh chụp làm Evidence.
+  https_mobile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      BASE: ${{ inputs.base || 'https://cfp-forum-office-sandbox-p0.onrender.com' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: npm install --no-save playwright@1.49.1 && npx playwright install --with-deps chromium
+      - name: iPhone 13 trên HTTPS
+        run: |
+          for i in 1 2 3 4; do curl -sf --max-time 60 "$BASE/api/health" -o /dev/null && break; sleep 15; done
+          node tests/forum/https_mobile.js "$BASE" https-mobile
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: https-mobile-iphone, path: https-mobile }
+
+  # Trước mỗi deploy/khởi động lại ở chế độ tạm: kho có dữ liệu của NGƯỜI THẬT không? (chỉ số đếm, không nội dung)
+  # FAIL = KHÔNG được deploy/restart cho đến khi người dùng sao lưu hoặc đồng ý.
+  data_inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      BASE: ${{ inputs.base || 'https://cfp-forum-office-sandbox-p0.onrender.com' }}
+    steps:
+      - name: Kiểm kho dữ liệu trước deploy
+        run: |
+          for i in 1 2 3 4; do
+            code=$(curl -s -o health.json -w '%{http_code}' --max-time 60 "$BASE/api/health" || true)
+            [ "$code" = 200 ] && break; sleep 15
+          done
+          [ "$code" = 200 ] || { echo "::error::health không trả lời ($code)"; exit 1; }
+          jq '{build, storage, data_inventory}' health.json
+          if jq -e '.data_inventory == null' health.json >/dev/null; then
+            if jq -e '(.storage // "") | startswith("ephemeral")' health.json >/dev/null; then
+              # Kho tạm nhưng không đếm được → KHÔNG được coi là an toàn (tránh xanh giả).
+              echo "::error::DATA_INVENTORY=UNKNOWN — kho tạm nhưng runtime chưa có kiểm kho; phải rà toàn bộ ghi từ lần khởi động instance trước khi deploy"; exit 1
+            fi
+            echo "DATA_INVENTORY=N/A (không phải chế độ tạm)"; exit 0
+          fi
+          jq -e '.data_inventory.safe_to_restart == true' health.json >/dev/null \
+            || { echo "::error::Có dữ liệu của người thật trong kho tạm — KHÔNG deploy/restart khi chưa sao lưu/đồng ý"; exit 1; }
+          echo "DATA_INVENTORY=SAFE (chỉ dữ liệu thử nghiệm)"
+
+
+  # Evidence Siêu Phần Mềm giám sát: bộ hỏi đáp App CFP+ (MÔ PHỎNG, chưa kết nối Meta API) qua /api/office/answer-check
+  # trên HTTPS bằng tài khoản thử nghiệm tự đăng ký. Evidence chỉ chứa build • guard_version • sha256 bản nháp •
+  # verdict • reason codes • trạng thái ID — không lưu nội dung. AUTO REPLY HOLD kiểm cho mọi case.
+  agent_evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      BASE: ${{ inputs.base || 'https://cfp-forum-office-sandbox-p0.onrender.com' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install httpx==0.28.1
+      - name: Bộ hỏi đáp App CFP+ qua answer-check (HTTPS)
+        run: |
+          set -o pipefail
+          for i in 1 2 3 4; do curl -sf --max-time 60 "$BASE/api/health" -o /dev/null && break; sleep 15; done
+          python -m tests.forum.agent_evidence --base "$BASE" --out agent-evidence.json | tee agent-evidence.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: agent-evidence
+          path: |
+            agent-evidence.json
+            agent-evidence.log
