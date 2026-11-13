@@ -1,0 +1,172 @@
+{
+  "intake": {
+    "author_kind": "SANDBOX_FIXTURE",
+    "channel": "working_link_file",
+    "fixture": "fixtures/autopilot-working-link.json"
+  },
+  "office_backend": {
+    "base": "http://127.0.0.1:<random port>",
+    "mode": "CFP_SANDBOX_EPHEMERAL=1 (local uvicorn, SQLite)",
+    "pr": 195,
+    "sha": "29fb46914f72f74d6434a81a03939d8a02f8813b"
+  },
+  "queue_after_tick_1": [
+    {
+      "assignee": "691121",
+      "capability": "registry_check",
+      "key": "wl#1",
+      "reviewer": "ReviewSI",
+      "routed": "auto",
+      "slot": "shared",
+      "state": "DISPATCHED",
+      "title": "Kiểm tra toàn vẹn Registry trước khi mở autopilot HUB 69"
+    },
+    {
+      "assignee": "691121",
+      "capability": "working_link_audit",
+      "key": "wl#2",
+      "reviewer": "SecuritySI",
+      "routed": "auto",
+      "slot": "shared",
+      "state": "DISPATCHED",
+      "title": "Đối soát Working Link của các SI AI có ID trong agents.json"
+    },
+    {
+      "assignee": "691141",
+      "capability": "content",
+      "key": "wl#3",
+      "reviewer": "ReviewSI",
+      "routed": "auto",
+      "slot": "shared",
+      "state": "DISPATCHED",
+      "title": "Soạn bản tin tuần HUB 69 cho Diễn Đàn"
+    }
+  ],
+  "tasks": [
+    {
+      "assignee": "691121",
+      "attempts": 0,
+      "capability": "registry_check",
+      "dead": 0,
+      "evidence_url": "https://github.com/charityfundplus/CFP.plus/blob/claude/cool-euler-gnwkfm/sandbox/hub69-dispatch/evidence/autopilot-pilot/results/wl-1.json",
+      "key": "wl#1",
+      "office_tid": 1,
+      "result_sha": "bab0c44f0ab394b462f5b336a8b5cb02f46c870dd705071d66cab92673aee543",
+      "reviewer": "ReviewSI",
+      "stage": "HANDED_TO_REVIEWER"
+    },
+    {
+      "assignee": "691121",
+      "attempts": 0,
+      "capability": "working_link_audit",
+      "dead": 0,
+      "evidence_url": "https://github.com/charityfundplus/CFP.plus/blob/claude/cool-euler-gnwkfm/sandbox/hub69-dispatch/evidence/autopilot-pilot/results/wl-2.json",
+      "key": "wl#2",
+      "office_tid": 2,
+      "result_sha": "5ca5f4871d134330fd72b4d3ea8c1a6a6cd83a0c368e46265da8d86b0dc90db0",
+      "reviewer": "SecuritySI",
+      "stage": "HANDED_TO_REVIEWER"
+    },
+    {
+      "assignee": "691141",
+      "attempts": 0,
+      "capability": "content",
+      "dead": 0,
+      "evidence_url": null,
+      "key": "wl#3",
+      "office_tid": null,
+      "result_sha": null,
+      "reviewer": "ReviewSI",
+      "stage": "AWAITING_REAL_AGENT"
+    }
+  ],
+  "ticks": [
+    {
+      "comments": 4,
+      "handled": [
+        {
+          "changed": true,
+          "stage": "HANDED_TO_REVIEWER",
+          "task": "wl#1"
+        },
+        {
+          "changed": true,
+          "stage": "HANDED_TO_REVIEWER",
+          "task": "wl#2"
+        }
+      ],
+      "messages": 4,
+      "now": "2026-11-13T13:05:00+00:00",
+      "rejections": [
+        {
+          "actor": "CMP 267",
+          "kind": "TASK",
+          "reason": "duplicate of open task wl#1",
+          "ref": "wl#4",
+          "task": "wl#4",
+          "url": null
+        }
+      ],
+      "run": "tick-1",
+      "tasks": 3
+    },
+    {
+      "comments": 4,
+      "handled": [
+        {
+          "changed": false,
+          "stage": "HANDED_TO_REVIEWER",
+          "task": "wl#1"
+        },
+        {
+          "changed": false,
+          "stage": "HANDED_TO_REVIEWER",
+          "task": "wl#2"
+        }
+      ],
+      "messages": 4,
+      "now": "2026-11-13T13:06:00+00:00",
+      "rejections": [
+        {
+          "actor": "CMP 267",
+          "kind": "TASK",
+          "reason": "duplicate of open task wl#1",
+          "ref": "wl#4",
+          "task": "wl#4",
+          "url": null
+        }
+      ],
+      "run": "tick-2-dedupe",
+      "tasks": 3
+    },
+    {
+      "comments": 4,
+      "handled": [
+        {
+          "changed": false,
+          "stage": "HANDED_TO_REVIEWER",
+          "task": "wl#1"
+        },
+        {
+          "changed": false,
+          "stage": "HANDED_TO_REVIEWER",
+          "task": "wl#2"
+        }
+      ],
+      "messages": 4,
+      "now": "2026-11-13T13:07:00+00:00",
+      "rejections": [
+        {
+          "actor": "CMP 267",
+          "kind": "TASK",
+          "reason": "duplicate of open task wl#1",
+          "ref": "wl#4",
+          "task": "wl#4",
+          "url": null
+        }
+      ],
+      "run": "tick-3-after-office-restart",
+      "tasks": 3
+    }
+  ]
+}

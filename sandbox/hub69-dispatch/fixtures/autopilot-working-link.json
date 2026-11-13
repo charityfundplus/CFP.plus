@@ -1,0 +1,37 @@
+{
+  "_doc": "Working Link export (HUB 69 Link Mẫu) used as the autopilot intake channel in the sandbox pilot. Every comment is SANDBOX_FIXTURE: written for this test by the operator session, not by any SI AI. wl#4 is a deliberate duplicate of wl#1.",
+  "comments": [
+    {
+      "ref": "wl#1",
+      "body": "**SI AI / Siêu Bộ Đôi:** CMP 267\n**Nhiệm vụ:** Kiểm tra toàn vẹn Registry trước khi mở autopilot HUB 69\n**Năng lực:** registry_check\n**Assignee:** auto\n**Reviewer:** auto\n**Priority:** P1\n**Tiêu chí nghiệm thu:** chuỗi 691121 = 911→6911→69112→691121, không ID phi số, báo orphan; Evidence có sha256\n**Trạng thái:** OPEN",
+      "author_login": "working-link-fixture",
+      "author_kind": "SANDBOX_FIXTURE",
+      "created_at": "2026-11-13T13:00:00Z",
+      "url": null
+    },
+    {
+      "ref": "wl#2",
+      "body": "**SI AI / Siêu Bộ Đôi:** CMP 267\n**Nhiệm vụ:** Đối soát Working Link của các SI AI có ID trong agents.json\n**Năng lực:** working_link_audit\n**Assignee:** auto\n**Reviewer:** SecuritySI\n**Priority:** P2\n**Tiêu chí nghiệm thu:** mỗi ID có trang <ID>/index.html và Parent khớp Registry\n**Trạng thái:** OPEN",
+      "author_login": "working-link-fixture",
+      "author_kind": "SANDBOX_FIXTURE",
+      "created_at": "2026-11-13T13:01:00Z",
+      "url": null
+    },
+    {
+      "ref": "wl#3",
+      "body": "**SI AI / Siêu Bộ Đôi:** CMP 267\n**Nhiệm vụ:** Soạn bản tin tuần HUB 69 cho Diễn Đàn\n**Năng lực:** content\n**Assignee:** auto\n**Reviewer:** auto\n**Priority:** P2\n**Trạng thái:** OPEN",
+      "author_login": "working-link-fixture",
+      "author_kind": "SANDBOX_FIXTURE",
+      "created_at": "2026-11-13T13:02:00Z",
+      "url": null
+    },
+    {
+      "ref": "wl#4",
+      "body": "**SI AI / Siêu Bộ Đôi:** CMP 267\n**Nhiệm vụ:** Kiểm tra toàn vẹn Registry trước khi mở autopilot HUB 69\n**Năng lực:** registry_check\n**Assignee:** auto\n**Reviewer:** auto\n**Priority:** P1\n**Trạng thái:** OPEN",
+      "author_login": "working-link-fixture",
+      "author_kind": "SANDBOX_FIXTURE",
+      "created_at": "2026-11-13T13:03:00Z",
+      "url": null
+    }
+  ]
+}

@@ -63,6 +63,7 @@ LABELS = {
     "verdict": "verdict", "ket luan": "verdict",
     "acceptance": "acceptance", "tieu chi nghiem thu": "acceptance",
     "office": "office", "working link": "office",
+    "nang luc": "capability", "capability": "capability",
 }
 LABEL_LINE = re.compile(r"^\s*(?:[-*•]\s*)?\*\*([^*]+?):?\*\*:?\s*(.*)$")
 PLAIN_LINE = re.compile(r"^\s*([A-Za-zÀ-ỹđĐ /]+?)\s*:\s*(.*)$")

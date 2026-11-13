@@ -33,6 +33,8 @@ class Task:
     opened_at: str
     source_url: str | None
     acceptance: str = ""
+    capability: str = ""
+    routed: str = "named"              # "auto" = chosen by capability + Working Link + load
     state: str = "OFFERED"
     slot: str | None = None            # "shared" | "reserved_p0"
     ack: dict | None = None
@@ -83,6 +85,25 @@ class Queue:
                 return key
         return w
 
+    # ---------- routing ----------
+    def route(self, capability: str, exclude: set | None = None) -> str | None:
+        """Pick an agent for a capability. Deterministic: must hold the capability AND a Working Link
+        (published Link Mẫu page); prefer agents with an automated executor for it (can actually work),
+        then lowest active load, then key. Never returns an excluded agent (maker ≠ checker)."""
+        exclude = exclude or set()
+        load = {}
+        for t in self.tasks.values():
+            if t.state in ACTIVE:
+                load[t.assignee] = load.get(t.assignee, 0) + 1
+        def reachable(a):  # executors need a Working Link; reviewers need an Office account to receive the review
+            return a.get("working_link") or (capability == "review" and a.get("office_account"))
+        cands = [k for k, a in self.agents.items()
+                 if capability in a.get("capabilities", []) and reachable(a) and k not in exclude]
+        if not cands:
+            return None
+        return min(cands, key=lambda k: (0 if capability in self.agents[k].get("executors", {}) else 1,
+                                         load.get(k, 0), k))
+
     # ---------- folding ----------
     def _reject(self, m: Message, reason: str):
         self.rejections.append({"ref": m.source["ref"], "url": m.source.get("url"), "kind": m.kind,
@@ -111,9 +132,17 @@ class Queue:
         title = (f.get("title") or "").strip()
         if not title:
             return self._reject(m, "TASK needs '**Nhiệm vụ:**' (title)")
-        assignee = self.resolve(f.get("assignee") or f.get("actor_id") or m.actor)
-        reviewer = self.resolve(f.get("reviewer") or "")
-        if reviewer in ("", "UNKNOWN"):
+        cap = (f.get("capability") or "").strip().lower()
+        want_auto = (f.get("assignee") or "").strip().lower() in ("", "auto") and cap
+        if want_auto:
+            assignee = self.route(cap)
+            if not assignee:
+                return self._reject(m, f"no agent with capability '{cap}' and a Working Link")
+        else:
+            assignee = self.resolve(f.get("assignee") or f.get("actor_id") or m.actor)
+        rv = (f.get("reviewer") or "").strip()
+        reviewer = self.route("review", exclude={assignee}) if rv.lower() == "auto" else self.resolve(rv)
+        if reviewer in (None, "", "UNKNOWN"):
             return self._reject(m, "TASK needs an independent '**Reviewer:**'")
         if reviewer == assignee:
             return self._reject(m, "reviewer must differ from assignee (maker ≠ checker)")
@@ -123,7 +152,8 @@ class Queue:
                 return self._reject(m, f"duplicate of open task {other.key}")
         t = Task(key=m.task, title=title, priority=_norm_priority(f.get("priority")), assignee=assignee,
                  reviewer=reviewer, opened_by=actor, opened_at=m.source.get("created_at") or "",
-                 source_url=m.source.get("url"), acceptance=f.get("acceptance", ""))
+                 source_url=m.source.get("url"), acceptance=f.get("acceptance", ""), capability=cap,
+                 routed="auto" if want_auto else "named")
         t.history.append({"kind": "TASK", "actor": actor, "at": t.opened_at, "ref": m.source["ref"],
                           "url": t.source_url, "provenance": m.provenance})
         t.last_activity = t.opened_at

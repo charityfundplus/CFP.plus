@@ -1,0 +1,338 @@
+{
+  "wl#1": {
+    "assignee": "691121",
+    "evidence": [
+      {
+        "kind": "test_report",
+        "sha": "bab0c44f0ab394b462f5b336a8b5cb02f46c870dd705071d66cab92673aee543",
+        "url": "https://github.com/charityfundplus/CFP.plus/blob/claude/cool-euler-gnwkfm/sandbox/hub69-dispatch/evidence/autopilot-pilot/results/wl-1.json"
+      }
+    ],
+    "guest_board_counts": {
+      "BLOCKED": 0,
+      "IN_REVIEW": 0,
+      "QUEUED": 0,
+      "REVIEWED": 0,
+      "RUNNING": 0
+    },
+    "history": [
+      {
+        "actor_id": 5,
+        "from": null,
+        "note": "",
+        "to": "QUEUED"
+      },
+      {
+        "actor_id": 4,
+        "from": "QUEUED",
+        "note": "AUTO ACK • hub69 autopilot • AUTOMATED_TOOL",
+        "to": "ACKED"
+      },
+      {
+        "actor_id": 4,
+        "from": "ACKED",
+        "note": "AUTO start",
+        "to": "IN_PROGRESS"
+      },
+      {
+        "actor_id": 4,
+        "from": "IN_PROGRESS",
+        "note": "AUTO submit → independent review",
+        "to": "IN_REVIEW"
+      }
+    ],
+    "office_status": "IN_REVIEW",
+    "office_tid": 1,
+    "reviewer": "ReviewSI",
+    "reviewer_board": [
+      {
+        "bucket": "IN_REVIEW",
+        "evidence": 1,
+        "id": 1,
+        "office_id": "691121",
+        "reason": null,
+        "review": null,
+        "status": "IN_REVIEW",
+        "title": "Kiểm tra toàn vẹn Registry trước khi mở autopilot HUB 69",
+        "updated_at": "2026-11-13T12:43:38",
+        "url": "/_internal/office/691121/#task:1"
+      }
+    ],
+    "reviewer_loop": {
+      "closed_loop": false,
+      "next_stage": "discussion",
+      "owner_id": 4,
+      "reviewer_id": 2,
+      "stages": [
+        {
+          "detail": {
+            "url": "/69/"
+          },
+          "done": true,
+          "key": "hub69",
+          "label": "HUB 69"
+        },
+        {
+          "detail": {
+            "url": "/267/"
+          },
+          "done": true,
+          "key": "cmp267",
+          "label": "CMP 267 • điều phối"
+        },
+        {
+          "detail": {
+            "canonical_id": "691121",
+            "url": "/_internal/office/691121/"
+          },
+          "done": true,
+          "key": "office",
+          "label": "Văn Phòng SI AI"
+        },
+        {
+          "detail": {
+            "posts": []
+          },
+          "done": false,
+          "key": "discussion",
+          "label": "Thảo luận Diễn Đàn"
+        },
+        {
+          "detail": {
+            "pair_id": 1,
+            "software": "HUB69 autopilot executor (691121)"
+          },
+          "done": true,
+          "key": "pair",
+          "label": "Siêu Bộ Đôi (SI AI + Siêu Phần Mềm)"
+        },
+        {
+          "detail": {
+            "owner_id": 4
+          },
+          "done": true,
+          "key": "execution",
+          "label": "Nhận việc (ACK) → thực thi"
+        },
+        {
+          "detail": {
+            "count": 1
+          },
+          "done": true,
+          "key": "evidence",
+          "label": "Evidence"
+        },
+        {
+          "detail": {
+            "decision": null,
+            "reviewer_id": 2
+          },
+          "done": false,
+          "key": "review",
+          "label": "Review độc lập (SecuritySI/ReviewSI)"
+        },
+        {
+          "detail": {
+            "status": "IN_REVIEW"
+          },
+          "done": false,
+          "key": "acceptance",
+          "label": "Nghiệm thu"
+        },
+        {
+          "done": false,
+          "key": "closure",
+          "label": "Closure"
+        },
+        {
+          "detail": {
+            "refs": []
+          },
+          "done": false,
+          "key": "lesson",
+          "label": "Tri thức • bài học"
+        },
+        {
+          "detail": {
+            "refs": []
+          },
+          "done": false,
+          "key": "next",
+          "label": "Quay lại Văn Phòng • nhiệm vụ tiếp theo"
+        }
+      ],
+      "status": "IN_REVIEW",
+      "task_id": 1
+    },
+    "reviews": [],
+    "task_key": "wl#1"
+  },
+  "wl#2": {
+    "assignee": "691121",
+    "evidence": [
+      {
+        "kind": "test_report",
+        "sha": "5ca5f4871d134330fd72b4d3ea8c1a6a6cd83a0c368e46265da8d86b0dc90db0",
+        "url": "https://github.com/charityfundplus/CFP.plus/blob/claude/cool-euler-gnwkfm/sandbox/hub69-dispatch/evidence/autopilot-pilot/results/wl-2.json"
+      }
+    ],
+    "guest_board_counts": {
+      "BLOCKED": 0,
+      "IN_REVIEW": 0,
+      "QUEUED": 0,
+      "REVIEWED": 0,
+      "RUNNING": 0
+    },
+    "history": [
+      {
+        "actor_id": 5,
+        "from": null,
+        "note": "",
+        "to": "QUEUED"
+      },
+      {
+        "actor_id": 4,
+        "from": "QUEUED",
+        "note": "AUTO ACK • hub69 autopilot • AUTOMATED_TOOL",
+        "to": "ACKED"
+      },
+      {
+        "actor_id": 4,
+        "from": "ACKED",
+        "note": "AUTO start",
+        "to": "IN_PROGRESS"
+      },
+      {
+        "actor_id": 4,
+        "from": "IN_PROGRESS",
+        "note": "AUTO submit → independent review",
+        "to": "IN_REVIEW"
+      }
+    ],
+    "office_status": "IN_REVIEW",
+    "office_tid": 2,
+    "reviewer": "SecuritySI",
+    "reviewer_board": [
+      {
+        "bucket": "IN_REVIEW",
+        "evidence": 1,
+        "id": 2,
+        "office_id": "691121",
+        "reason": null,
+        "review": null,
+        "status": "IN_REVIEW",
+        "title": "Đối soát Working Link của các SI AI có ID trong agents.json",
+        "updated_at": "2026-11-13T12:43:38",
+        "url": "/_internal/office/691121/#task:2"
+      }
+    ],
+    "reviewer_loop": {
+      "closed_loop": false,
+      "next_stage": "discussion",
+      "owner_id": 4,
+      "reviewer_id": 3,
+      "stages": [
+        {
+          "detail": {
+            "url": "/69/"
+          },
+          "done": true,
+          "key": "hub69",
+          "label": "HUB 69"
+        },
+        {
+          "detail": {
+            "url": "/267/"
+          },
+          "done": true,
+          "key": "cmp267",
+          "label": "CMP 267 • điều phối"
+        },
+        {
+          "detail": {
+            "canonical_id": "691121",
+            "url": "/_internal/office/691121/"
+          },
+          "done": true,
+          "key": "office",
+          "label": "Văn Phòng SI AI"
+        },
+        {
+          "detail": {
+            "posts": []
+          },
+          "done": false,
+          "key": "discussion",
+          "label": "Thảo luận Diễn Đàn"
+        },
+        {
+          "detail": {
+            "pair_id": 1,
+            "software": "HUB69 autopilot executor (691121)"
+          },
+          "done": true,
+          "key": "pair",
+          "label": "Siêu Bộ Đôi (SI AI + Siêu Phần Mềm)"
+        },
+        {
+          "detail": {
+            "owner_id": 4
+          },
+          "done": true,
+          "key": "execution",
+          "label": "Nhận việc (ACK) → thực thi"
+        },
+        {
+          "detail": {
+            "count": 1
+          },
+          "done": true,
+          "key": "evidence",
+          "label": "Evidence"
+        },
+        {
+          "detail": {
+            "decision": null,
+            "reviewer_id": 3
+          },
+          "done": false,
+          "key": "review",
+          "label": "Review độc lập (SecuritySI/ReviewSI)"
+        },
+        {
+          "detail": {
+            "status": "IN_REVIEW"
+          },
+          "done": false,
+          "key": "acceptance",
+          "label": "Nghiệm thu"
+        },
+        {
+          "done": false,
+          "key": "closure",
+          "label": "Closure"
+        },
+        {
+          "detail": {
+            "refs": []
+          },
+          "done": false,
+          "key": "lesson",
+          "label": "Tri thức • bài học"
+        },
+        {
+          "detail": {
+            "refs": []
+          },
+          "done": false,
+          "key": "next",
+          "label": "Quay lại Văn Phòng • nhiệm vụ tiếp theo"
+        }
+      ],
+      "status": "IN_REVIEW",
+      "task_id": 2
+    },
+    "reviews": [],
+    "task_key": "wl#2"
+  }
+}

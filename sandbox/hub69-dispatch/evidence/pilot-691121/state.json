@@ -44,6 +44,8 @@
       "opened_at": "2026-11-13T11:00:00Z",
       "source_url": null,
       "acceptance": "test Node + trình duyệt PASS trên SHA cụ thể; dữ liệu gốc khôi phục được",
+      "capability": "",
+      "routed": "named",
       "state": "IN_REVIEW",
       "slot": "shared",
       "ack": {
@@ -133,6 +135,8 @@
       "opened_at": "2026-11-13T11:01:00Z",
       "source_url": null,
       "acceptance": "",
+      "capability": "",
+      "routed": "named",
       "state": "DISPATCHED",
       "slot": "reserved_p0",
       "ack": null,

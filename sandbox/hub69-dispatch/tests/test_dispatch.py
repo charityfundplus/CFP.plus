@@ -200,6 +200,42 @@ class SlotTests(unittest.TestCase):
         self.assertTrue(any("no execution slot" in r["reason"] for r in snap["rejections"]))
 
 
+class RoutingTests(unittest.TestCase):
+    def auto(self, th, title, cap, reviewer="auto"):
+        return th.post(f"**SI AI / Siêu Bộ Đôi:** CMP 267\n**Nhiệm vụ:** {title}\n**Năng lực:** {cap}\n"
+                       f"**Assignee:** auto\n**Reviewer:** {reviewer}\n**Priority:** P2\n**Trạng thái:** OPEN")
+
+    def test_capability_routing_prefers_executor_and_independent_reviewer(self):
+        th = Thread()
+        a = self.auto(th, "Registry check", "registry_check")
+        b = self.auto(th, "Bản tin", "content")
+        snap, _ = th.run()
+        t = by_key(snap)
+        self.assertEqual((t[a]["assignee"], t[a]["reviewer"], t[a]["routed"]), ("691121", "ReviewSI", "auto"))
+        self.assertEqual(t[b]["assignee"], "691141")  # capable + Working Link, lowest key; no executor → waits
+        for x in t.values():
+            self.assertNotEqual(x["assignee"], x["reviewer"])
+
+    def test_unknown_capability_is_rejected_not_guessed(self):
+        th = Thread()
+        self.auto(th, "Bay lên mặt trăng", "rocketry")
+        snap, _ = th.run()
+        self.assertEqual(snap["tasks"], [])
+        self.assertIn("no agent with capability 'rocketry'", snap["rejections"][0]["reason"])
+
+    def test_routing_balances_load_among_capable_agents(self):
+        th = Thread()
+        keys = [self.auto(th, f"Nội dung {i}", "content") for i in range(3)]
+        snap, _ = th.run()
+        got = [by_key(snap)[k]["assignee"] for k in keys]
+        self.assertEqual(len(set(got)), 3, got)
+
+    def test_every_routable_agent_has_its_working_link_page(self):
+        for a in AGENTS.values():
+            if a.get("working_link"):
+                self.assertTrue((ROOT / a["working_link"]).is_file(), a["key"])
+
+
 class OutboxAndGateTests(unittest.TestCase):
     def test_outbox_is_idempotent_and_detects_already_posted(self):
         th = Thread()

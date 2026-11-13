@@ -1,0 +1,23 @@
+{
+  "assignee": "691121",
+  "executor": "registry_integrity",
+  "executor_kind": "AUTOMATED_TOOL (deterministic code, not an LLM decision)",
+  "office_tid": 1,
+  "result": {
+    "chain_691121": [
+      "911",
+      "6911",
+      "69112",
+      "691121"
+    ],
+    "check": "registry_integrity",
+    "digest": "82d57c15296f6eb341eb1356490a750558d6a7a2f9b2fa1e0829d7ce18dab2f5",
+    "entities": 267,
+    "implementation": "services.forum.registry.Registry (PR #195) + worker rules",
+    "orphans": [],
+    "problems": [],
+    "verdict_by_tool": "PASS"
+  },
+  "task": "wl#1",
+  "title": "Kiểm tra toàn vẹn Registry trước khi mở autopilot HUB 69"
+}

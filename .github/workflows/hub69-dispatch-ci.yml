@@ -30,8 +30,26 @@ jobs:
           python-version: '3.12'
       - name: P1 localStorage regression (real inline script, Node VM)
         run: node sandbox/hub69-working-office/test-localstorage.cjs
-      - name: Dispatcher unit tests
+      - name: Check out PR #195 Office backend at the pinned SHA (read only)
+        uses: actions/checkout@v4
+        with:
+          ref: 29fb46914f72f74d6434a81a03939d8a02f8813b
+          path: _office195
+          persist-credentials: false
+      - name: Install PR #195 backend requirements
+        run: pip install -r _office195/services/forum/requirements.txt
+      - name: Dispatcher unit + autopilot integration tests (real #195 API, ephemeral SQLite)
+        env:
+          HUB69_OFFICE_SRC: ${{ github.workspace }}/_office195
+          HUB69_REQUIRE_OFFICE: '1'
         run: python -m unittest discover -s sandbox/hub69-dispatch/tests -v
+      - name: Autopilot pilot re-run must reproduce the committed result files (same sha256)
+        env:
+          HUB69_OFFICE_SRC: ${{ github.workspace }}/_office195
+        run: |
+          python sandbox/hub69-dispatch/autopilot_pilot.py --out /tmp/autopilot-pilot
+          diff -r /tmp/autopilot-pilot/results sandbox/hub69-dispatch/evidence/autopilot-pilot/results
+          diff /tmp/autopilot-pilot/forum201_drafts_HOLD.json sandbox/hub69-dispatch/evidence/autopilot-pilot/forum201_drafts_HOLD.json
       - name: Pilot replay (deterministic) must match committed evidence
         run: |
           python sandbox/hub69-dispatch/run.py plan --source file:sandbox/hub69-dispatch/fixtures/pilot-691121.json \

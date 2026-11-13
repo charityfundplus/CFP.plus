@@ -56,7 +56,7 @@ Cũng hỗ trợ dạng gọn: `HUB69 ACK 201#<id>` + `actor: 691121`.
 | GitHub #201 | ĐỌC PASS (REST, 2 bình luận). GHI: **HOLD**, chưa đăng |
 | Working Link (file JSON) | PASS |
 | Notion CMP 267 Office | **NOT_CONNECTED** tại runtime này; chỉ sinh `notion_rows.json` |
-| CMP 267 Office API (PR #195) | **NOT_CONNECTED**: thiếu URL + phiên governance (`SMOKE_*` chờ Human); chỉ sinh `cmp267_plan.json` |
+| CMP 267 Office API (PR #195) | **CONNECTED trong sandbox cục bộ** (uvicorn + SQLite tạm, SHA `29fb469`), autopilot đọc và ghi thật. Instance Render HTTPS: vẫn **NOT_CONNECTED** (chưa có URL hoạt động, chờ Human) |
 | Các SI AI khác | `config/agents.json`: không có agent nào được coi là đã kết nối. ID số đều được test đối chiếu `registry/ai-entity-registry.json`; agent chưa có ID ghi `PENDING` |
 
 ## Thí điểm Siêu Bộ Đôi Claude 691121
@@ -66,6 +66,33 @@ Cũng hỗ trợ dạng gọn: `HUB69 ACK 201#<id>` + `actor: 691121`.
 `evidence/pilot-691121-simulated-review/`: cùng luồng, thêm một REVIEW **SIMULATED** để chứng minh chuyển VERIFIED → HUMAN_DECISION. Đây **không** phải verdict của ReviewSI.
 
 Công việc là thật; kênh truyền là file fixture, chưa phải bình luận thật trên #201.
+
+## Autopilot: tự nhận việc → Văn Phòng #195 → reviewer (không cần Founder chuyển tin)
+
+`hub69_dispatch/autopilot.py` nối hàng đợi này với **backend Office của PR #195**. Không có API hay DB mới: task, ACK, start, Evidence, submit và review đều đi qua `/api/office/*` của #195, với đúng auth, CSRF, quyền, giới hạn 5 việc và `idempotency_key` của #195.
+
+Một `tick`:
+
+1. **Tiếp nhận** từ #201 (GitHub, chỉ đọc) hoặc Working Link (file xuất từ Link Mẫu). Ghi lại ref đã thấy, áp quy tắc của `engine.py`.
+2. **Phân công theo năng lực**. TASK có `**Năng lực:** <cap>` + `**Assignee:** auto` được giao cho agent có năng lực đó và có **Working Link** (trang `<ID>/index.html`). Ưu tiên agent có executor tự động, sau đó agent đang ít việc nhất. `**Reviewer:** auto` chọn reviewer khác người làm. Không agent nào có năng lực đó thì từ chối kèm lý do, không đoán.
+3. **Lưu vào Office**, rồi **thực thi** bằng executor (`registry_integrity`, `working_link_audit`, có tái dùng `services.forum.registry` của #195). Evidence ghi sha256 của file kết quả.
+4. **Chuyển reviewer**: Office ở `IN_REVIEW`, đọc lại bằng tài khoản reviewer, soạn tin NEED_REVIEW cho #201 (HOLD). Autopilot **không bao giờ tự review**.
+
+Vì sao chạy lại an toàn: trước mỗi bước, autopilot đọc lại trạng thái từ Office và chỉ làm bước còn thiếu. Tạo task dùng `idempotency_key` cố định, nên mất DB cục bộ cũng không tạo trùng. Evidence trùng (409) được coi là đã nộp. Có khóa file nên hai tick không chạy chồng nhau.
+
+Xử lý lỗi: lỗi mạng, 5xx, 429 hay Office đã đủ 5 việc thì thử lại với backoff (trong tick và giữa các tick). Sau 5 lần, hoặc gặp lỗi vĩnh viễn (403/404/422), task vào **dead letter** kèm lý do. Sửa xong thì chạy `autopilot requeue --task <key>`.
+
+```bash
+# cần một instance #195 sandbox; credential sandbox chỉ đọc từ env, không commit
+export HUB69_SANDBOX_GOV_EMAIL=… HUB69_SANDBOX_GOV_PASSWORD=… HUB69_SANDBOX_AGENT_PASSWORD=…
+export HUB69_SANDBOX_REVIEWSI=email:pw HUB69_SANDBOX_SECURITYSI=email:pw
+python3 sandbox/hub69-dispatch/run.py autopilot tick --source github:charityfundplus/CFP.plus#201 \
+  --office http://127.0.0.1:8000 --office-src <checkout #195> --state /var/tmp/hub69 --evidence-base https://…/results
+python3 sandbox/hub69-dispatch/run.py autopilot loop --interval 300 …     # chạy liên tục
+python3 sandbox/hub69-dispatch/autopilot_pilot.py --out /tmp/ap           # chu trình thí điểm đầy đủ, tự khởi động #195
+```
+
+Thí điểm và phân loại thật / mô phỏng: `evidence/autopilot-pilot/REPORT.md`. Kiểm thử: `tests/test_autopilot_office.py` gồm 10 test chạy với #195 thật: chuyển reviewer, chống trùng, khởi động lại, crash sau từng bước, mất state cục bộ, Office sập rồi lên lại, lỗi mạng chen giữa, dead letter rồi requeue, giới hạn số lần thử, khóa đồng thời. Kiểm tra đột biến: 5/5 lỗi cố ý cài vào đều bị test bắt.
 
 ## Chưa làm / giới hạn
 

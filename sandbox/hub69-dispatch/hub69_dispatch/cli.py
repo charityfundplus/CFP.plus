@@ -77,7 +77,53 @@ def board_md(snapshot: dict, outbox: list[dict], channels: list[dict], meta: dic
     return "\n".join(lines) + "\n"
 
 
+def autopilot_main(argv) -> int:
+    """autopilot tick|loop|requeue|readback — drives the PR #195 Office API. Never posts to #201."""
+    import time
+    from .autopilot import Autopilot, Busy, secrets_from_env, utcnow
+    ap = argparse.ArgumentParser(prog="hub69-dispatch autopilot")
+    ap.add_argument("cmd", choices=["tick", "loop", "requeue", "readback"])
+    ap.add_argument("--source", help="github:owner/repo#N (read only) or file:working-link.json")
+    ap.add_argument("--office", default=os.environ.get("HUB69_OFFICE_API"), help="PR #195 base URL (sandbox)")
+    ap.add_argument("--office-src", default=os.environ.get("HUB69_OFFICE_SRC"), help="checkout of PR #195 (Registry loader)")
+    ap.add_argument("--state", required=True, help="autopilot state dir (SQLite + results)")
+    ap.add_argument("--evidence-base", required=True, help="https:// URL where results/ will be published")
+    ap.add_argument("--task", help="task key for requeue/readback")
+    ap.add_argument("--interval", type=float, default=300.0)
+    ap.add_argument("--max-ticks", type=int, default=0, help="loop: stop after N ticks (0 = forever)")
+    a = ap.parse_args(argv)
+    if not a.office:
+        print("NOT_CONNECTED: set --office / HUB69_OFFICE_API to a PR #195 sandbox instance")
+        return 2
+    agents_doc, policy = load_config()
+    agents = {x["key"]: x for x in agents_doc["agents"]}
+    pilot = Autopilot(base=a.office, state_dir=Path(a.state), agents=agents, policy=policy,
+                      secrets=secrets_from_env(), evidence_base=a.evidence_base,
+                      office_src=Path(a.office_src) if a.office_src else None)
+    if a.cmd == "requeue":
+        pilot.requeue(a.task, utcnow())
+        return 0
+    if a.cmd == "readback":
+        print(json.dumps(pilot.readback(a.task), ensure_ascii=False, indent=2))
+        return 0
+    src = make_source(a.source)
+    n = 0
+    while True:
+        n += 1
+        try:
+            res = pilot.tick(src, utcnow(), f"tick-{utcnow().strftime('%Y%m%dT%H%M%SZ')}-{n}")
+            print(json.dumps({k: v for k, v in res.items() if k != "snapshot"}, ensure_ascii=False))
+        except Busy as e:
+            print(f"skip: {e}")
+        if a.cmd == "tick" or (a.max_ticks and n >= a.max_ticks):
+            return 0
+        time.sleep(a.interval)
+
+
 def main(argv=None) -> int:
+    argv = list(sys.argv[1:] if argv is None else argv)
+    if argv[:1] == ["autopilot"]:
+        return autopilot_main(argv[1:])
     ap = argparse.ArgumentParser(prog="hub69-dispatch")
     ap.add_argument("cmd", choices=["plan", "post"])
     ap.add_argument("--source", required=True)
