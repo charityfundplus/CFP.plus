@@ -54,7 +54,7 @@
         "review": null,
         "status": "IN_REVIEW",
         "title": "Kiểm tra toàn vẹn Registry trước khi mở autopilot HUB 69",
-        "updated_at": "2026-11-13T12:47:58",
+        "updated_at": "2026-11-13T12:49:18",
         "url": "/_internal/office/691121/#task:1"
       }
     ],
@@ -222,7 +222,7 @@
         "review": null,
         "status": "IN_REVIEW",
         "title": "Đối soát Working Link của các SI AI có ID trong agents.json",
-        "updated_at": "2026-11-13T12:47:58",
+        "updated_at": "2026-11-13T12:49:18",
         "url": "/_internal/office/691121/#task:2"
       }
     ],

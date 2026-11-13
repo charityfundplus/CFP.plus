@@ -80,8 +80,9 @@ def main() -> int:
     finally:
         srv.stop()
 
-    if out.exists():
-        shutil.rmtree(out)
+    for gen in ("results", "run-log.jsonl", "summary.json", "readback.json", "forum201_drafts_HOLD.json"):
+        g = out / gen  # remove only generated files; hand-written REPORT.md stays
+        shutil.rmtree(g) if g.is_dir() else g.unlink(missing_ok=True)
     (out / "results").mkdir(parents=True)
     for f in sorted((state / "results").glob("*.json")):
         shutil.copy(f, out / "results" / f.name)
