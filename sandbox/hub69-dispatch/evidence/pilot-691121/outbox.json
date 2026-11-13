@@ -1,0 +1,26 @@
+[
+  {
+    "key": "37c2d5e3ebfc7a22",
+    "kind": "DISPATCH",
+    "task": "pilot#2",
+    "to": "691181",
+    "body": "<!-- hub69-dispatch key=37c2d5e3ebfc7a22 -->\n**TASK DISPATCHED** • P0 • slot `reserved_p0`\n**Task:** pilot#2\n**Nhiệm vụ:** P0 OpenAI 69118 / ChatGPT 691181: chứng minh Working Link, quyền và luồng nhiệm vụ trên hồ sơ Notion hiện hữu\n**Người thực thi:** ChatGPT (691181) • **Reviewer:** SecuritySI (SecuritySI)\nTrả lời ACK bằng mẫu #201 kèm dòng Task ở trên. Chưa có ACK thật = chưa nhận việc.\n\n_HUB69 dispatch • SANDBOX • HOLD ACTIVATION_",
+    "already_posted": false
+  },
+  {
+    "key": "aaa1f7057d673f95",
+    "kind": "NEED_REVIEW",
+    "task": "pilot#1",
+    "to": "ReviewSI",
+    "body": "<!-- hub69-dispatch key=aaa1f7057d673f95 -->\n**CẦN REVIEW ĐỘC LẬP** • **Task:** pilot#1\nEvidence: https://github.com/charityfundplus/CFP.plus/commit/2150c0c83451a209e7cd62138c4ad937e8140e0f, https://github.com/charityfundplus/CFP.plus/blob/2150c0c83451a209e7cd62138c4ad937e8140e0f/sandbox/hub69-working-office/test-localstorage.cjs, https://github.com/charityfundplus/CFP.plus/blob/2150c0c83451a209e7cd62138c4ad937e8140e0f/sandbox/hub69-working-office/evidence/p1-browser-results.json\nReviewer ReviewSI (ReviewSI): trả lời `**Trạng thái:** REVIEW` + `**Verdict:** PASS|FAIL`.\n\n_HUB69 dispatch • SANDBOX • HOLD ACTIVATION_",
+    "already_posted": false
+  },
+  {
+    "key": "8174c729b1cea324",
+    "kind": "REJECTED",
+    "task": "pilot#1",
+    "to": "691121",
+    "body": "<!-- hub69-dispatch key=8174c729b1cea324 -->\n**KHÔNG GHI NHẬN** REVIEW (pilot#5): self-review rejected (maker ≠ checker)\n\n_HUB69 dispatch • SANDBOX • HOLD ACTIVATION_",
+    "already_posted": false
+  }
+]

@@ -62,7 +62,8 @@ def board_md(snapshot: dict, outbox: list[dict], channels: list[dict], meta: dic
     for t in snapshot["tasks"]:
         ack = (t["ack"] or {}).get("provenance", "—")
         ev = "<br>".join(u for e in t["evidence"] for u in e["urls"]) or "—"
-        lines.append(f"| [{t['key']}]({t['source_url']}) {t['title'][:60]} | {t['priority']} | **{t['state']}** | "
+        ref = f"[{t['key']}]({t['source_url']})" if t['source_url'] else f"`{t['key']}`"
+        lines.append(f"| {ref} {t['title'][:60]} | {t['priority']} | **{t['state']}** | "
                      f"{t['slot'] or '—'} | {t['assignee']} | {t['reviewer']} | {ack} | {ev} |")
     if snapshot["rejections"]:
         lines += ["", "## Không ghi nhận (vi phạm quy tắc)", ""]
