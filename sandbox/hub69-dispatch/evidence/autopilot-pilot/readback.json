@@ -4,7 +4,7 @@
     "evidence": [
       {
         "kind": "test_report",
-        "sha": "bab0c44f0ab394b462f5b336a8b5cb02f46c870dd705071d66cab92673aee543",
+        "sha": "8d9667315ff0f0f7806d0de8e89cd4b168117eb63b2a3ffac021af76b8a20c4b",
         "url": "https://github.com/charityfundplus/CFP.plus/blob/claude/cool-euler-gnwkfm/sandbox/hub69-dispatch/evidence/autopilot-pilot/results/wl-1.json"
       }
     ],
@@ -54,7 +54,7 @@
         "review": null,
         "status": "IN_REVIEW",
         "title": "Kiểm tra toàn vẹn Registry trước khi mở autopilot HUB 69",
-        "updated_at": "2026-11-13T12:43:38",
+        "updated_at": "2026-11-13T12:47:58",
         "url": "/_internal/office/691121/#task:1"
       }
     ],
@@ -222,7 +222,7 @@
         "review": null,
         "status": "IN_REVIEW",
         "title": "Đối soát Working Link của các SI AI có ID trong agents.json",
-        "updated_at": "2026-11-13T12:43:38",
+        "updated_at": "2026-11-13T12:47:58",
         "url": "/_internal/office/691121/#task:2"
       }
     ],

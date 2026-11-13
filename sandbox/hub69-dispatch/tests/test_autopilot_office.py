@@ -225,6 +225,23 @@ class CommittedPilotEvidence(unittest.TestCase):
         self.assertEqual(later, [], "ticks 2/3 must not write")
 
 
+@unittest.skipUnless(SRC or REQUIRED, "PR #195 source not available")
+class ExecutorDeterminism(unittest.TestCase):
+    def test_registry_digest_does_not_depend_on_directory_order(self):
+        from unittest import mock
+        from hub69_dispatch.autopilot import exec_registry_integrity
+        real = Path.glob
+        ctx = {"office_src": SRC, "agents": AGENTS}
+        digests = set()
+        for order in (sorted, lambda xs: sorted(xs, reverse=True)):
+            with mock.patch.object(Path, "glob", lambda self, pat: iter(order(list(real(self, pat))))):
+                out = exec_registry_integrity({}, ctx)
+            digests.add(out["digest"])
+            self.assertEqual(out["problems"], [])
+        self.assertEqual(len(digests), 1)
+        self.assertEqual(out["finding_for_195"]["id"], "PR195-REGISTRY-GLOB-ORDER")
+
+
 class NoPostingTests(unittest.TestCase):
     def test_autopilot_has_no_write_path_to_the_forum(self):
         src = (HERE / "hub69_dispatch" / "autopilot.py").read_text(encoding="utf-8")

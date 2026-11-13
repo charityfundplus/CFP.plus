@@ -92,7 +92,9 @@ python3 sandbox/hub69-dispatch/run.py autopilot loop --interval 300 …     # ch
 python3 sandbox/hub69-dispatch/autopilot_pilot.py --out /tmp/ap           # chu trình thí điểm đầy đủ, tự khởi động #195
 ```
 
-Thí điểm và phân loại thật / mô phỏng: `evidence/autopilot-pilot/REPORT.md`. Kiểm thử: `tests/test_autopilot_office.py` gồm 10 test chạy với #195 thật: chuyển reviewer, chống trùng, khởi động lại, crash sau từng bước, mất state cục bộ, Office sập rồi lên lại, lỗi mạng chen giữa, dead letter rồi requeue, giới hạn số lần thử, khóa đồng thời. Kiểm tra đột biến: 5/5 lỗi cố ý cài vào đều bị test bắt.
+Thí điểm và phân loại thật / mô phỏng: `evidence/autopilot-pilot/REPORT.md`. Kiểm thử: `tests/test_autopilot_office.py` gồm 9 test chạy với #195 thật: chuyển reviewer, chống trùng, khởi động lại, crash sau từng bước, mất state cục bộ, Office sập rồi lên lại, lỗi mạng chen giữa, dead letter rồi requeue, giới hạn số lần thử, khóa đồng thời. Kiểm tra đột biến: 5/5 lỗi cố ý cài vào đều bị test bắt. Thêm một test chứng minh digest Registry không phụ thuộc thứ tự file (xem phát hiện `PR195-REGISTRY-GLOB-ORDER` bên dưới).
+
+**Phát hiện cho #195 (LOW):** `services/forum/registry.py` duyệt `registry/*.md` bằng `glob()` không sắp xếp, nên Parent suy ra của 26 bản ghi `registry_record` phụ thuộc thứ tự thư mục. CI thấy digest khác nhau giữa hai runner, nên job `registry_integrity` của #195 có thể báo drift sai giữa các instance. Cách sửa đề xuất: `sorted(reg.glob('*.md'))`. Executor ở đây đã tự chuẩn hóa, không sửa #195.
 
 ## Chưa làm / giới hạn
 

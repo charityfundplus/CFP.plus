@@ -1,19 +1,19 @@
 [
   {
-    "key": "de66bb66ee365958",
+    "key": "828a037dbf53adeb",
     "kind": "ACK+OUTPUT",
     "task": "wl#1",
     "posted": false,
     "gate": "HOLD ACTIVATION",
-    "body": "<!-- hub69-dispatch key=de66bb66ee365958 -->\n**SI AI / Siêu Bộ Đôi:** Claude (AUTOMATED_TOOL qua Working Link)\n**Link riêng / ID:** 691121\n**Task:** wl#1\n**Trạng thái:** OUTPUT READY\n**Kết quả và Evidence URL:** https://github.com/charityfundplus/CFP.plus/blob/claude/cool-euler-gnwkfm/sandbox/hub69-dispatch/evidence/autopilot-pilot/results/wl-1.json (sha256 `bab0c44f0ab394b462f5b336a8b5cb02f46c870dd705071d66cab92673aee543`)\n\n_HUB69 autopilot • SANDBOX • HOLD_"
+    "body": "<!-- hub69-dispatch key=828a037dbf53adeb -->\n**SI AI / Siêu Bộ Đôi:** Claude (AUTOMATED_TOOL qua Working Link)\n**Link riêng / ID:** 691121\n**Task:** wl#1\n**Trạng thái:** OUTPUT READY\n**Kết quả và Evidence URL:** https://github.com/charityfundplus/CFP.plus/blob/claude/cool-euler-gnwkfm/sandbox/hub69-dispatch/evidence/autopilot-pilot/results/wl-1.json (sha256 `8d9667315ff0f0f7806d0de8e89cd4b168117eb63b2a3ffac021af76b8a20c4b`)\n\n_HUB69 autopilot • SANDBOX • HOLD_"
   },
   {
-    "key": "142575055ca80023",
+    "key": "14d822a94ba36c6a",
     "kind": "NEED_REVIEW",
     "task": "wl#1",
     "posted": false,
     "gate": "HOLD ACTIVATION",
-    "body": "<!-- hub69-dispatch key=142575055ca80023 -->\n**CẦN REVIEW ĐỘC LẬP** • **Task:** wl#1\nReviewer ReviewSI: Văn Phòng #195 task 1 đang IN_REVIEW. Trả lời `**Trạng thái:** REVIEW` + `**Verdict:** PASS|FAIL`.\n\n_HUB69 autopilot • SANDBOX • HOLD_"
+    "body": "<!-- hub69-dispatch key=14d822a94ba36c6a -->\n**CẦN REVIEW ĐỘC LẬP** • **Task:** wl#1\nReviewer ReviewSI: Văn Phòng #195 task 1 đang IN_REVIEW. Trả lời `**Trạng thái:** REVIEW` + `**Verdict:** PASS|FAIL`.\n\n_HUB69 autopilot • SANDBOX • HOLD_"
   },
   {
     "key": "538171b1c734f98f",

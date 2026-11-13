@@ -133,7 +133,18 @@ def exec_registry_integrity(task: dict, ctx: dict) -> dict:
     """Same invariants as #195 worker job `registry_integrity`, run on THIS repo's registry/ (read only)."""
     Registry = _office_registry(ctx.get("office_src"))
     reg = Registry(root=REPO_ROOT)
-    rows = sorted((e.id, e.parent_id or "", e.type) for e in reg.entities.values())
+    # #195 Registry walks registry/*.md with an unsorted glob(); a registry_record's inferred parent then depends
+    # on file-system order (seen in CI: digest differed between two runners). Recompute it order-independently.
+    ids = set(reg.entities)
+    order_dependent = sorted(e.id for e in reg.entities.values()
+                             if e.type == "registry_record" and e.id[:-1] in ids
+                             and reg.entities[e.id[:-1]].type == "registry_record")
+
+    def parent(e):
+        if e.type == "registry_record":
+            return e.id[:-1] if e.id[:-1] in ids else ""
+        return e.parent_id or ""
+    rows = sorted((e.id, parent(e), e.type) for e in reg.entities.values())
     digest = hashlib.sha256(json.dumps(rows, ensure_ascii=False).encode()).hexdigest()
     chain = [x["id"] for x in reg.chain("691121")]
     problems = []
@@ -144,9 +155,15 @@ def exec_registry_integrity(task: dict, ctx: dict) -> dict:
         problems.append(f"non-numeric IDs: {bad[:5]}")
     orphans = sorted(e.id for e in reg.entities.values() if e.parent_id and e.parent_id not in reg.entities
                      and e.type != "registry_record")
+    finding = {"id": "PR195-REGISTRY-GLOB-ORDER", "severity": "LOW",
+               "detail": "services/forum/registry.py: `for md in reg.glob('*.md')` is unsorted, so the inferred "
+                         "parent of these registry_record IDs depends on directory order; worker "
+                         "registry_integrity can report false drift across instances. Fix: sorted(reg.glob('*.md')).",
+               "affected_ids": order_dependent} if order_dependent else None
     return {"check": "registry_integrity", "implementation": "services.forum.registry.Registry (PR #195) + worker rules",
             "entities": len(rows), "digest": digest, "chain_691121": chain, "orphans": orphans,
-            "problems": problems, "verdict_by_tool": "PASS" if not problems else "FAIL"}
+            "problems": problems, "digest_basis": "order-independent parents (see finding)",
+            "finding_for_195": finding, "verdict_by_tool": "PASS" if not problems else "FAIL"}
 
 
 def exec_working_link_audit(task: dict, ctx: dict) -> dict:
