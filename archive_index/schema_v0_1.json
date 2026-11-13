@@ -1,0 +1,33 @@
+{
+  "schema_version": "0.1-review",
+  "description": "CFP+ cross-store asset index; technical asset_key is not a canonical numeric ID",
+  "required": [
+    "asset_key",
+    "title",
+    "chapter",
+    "source_uri",
+    "review_status"
+  ],
+  "properties": {
+    "asset_key": "unique technical key",
+    "canonical_entity_id": "existing verified numeric ID or null",
+    "group": "existing CFP+ group; never inferred from name",
+    "chapter": "integer 0..9",
+    "parent_id": "verified existing parent or null",
+    "title": "asset title",
+    "content_type": "document|code|dataset|media|other",
+    "language": "BCP47 language tag",
+    "source_uri": "authoritative location",
+    "replica_uris": "list of replica URLs",
+    "store": "GitHub|Notion|Google|Cloud|Web|Quantum|other",
+    "provenance": "source attribution",
+    "license": "usage rights",
+    "created_at": "source timestamp",
+    "modified_at": "source timestamp",
+    "content_hash": "sha256 if available",
+    "review_status": "PENDING|REVIEW|VERIFIED|BLOCKED",
+    "evidence_uris": "list of evidence links",
+    "calendar_days": "list of MM-DD for verified dates",
+    "related_ids": "list of verified existing numeric IDs"
+  }
+}
