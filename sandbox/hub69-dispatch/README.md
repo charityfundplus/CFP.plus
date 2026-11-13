@@ -96,6 +96,13 @@ Thí điểm và phân loại thật / mô phỏng: `evidence/autopilot-pilot/RE
 
 **Phát hiện cho #195 (LOW):** `services/forum/registry.py` duyệt `registry/*.md` bằng `glob()` không sắp xếp, nên Parent suy ra của 26 bản ghi `registry_record` phụ thuộc thứ tự thư mục. CI thấy digest khác nhau giữa hai runner, nên job `registry_integrity` của #195 có thể báo drift sai giữa các instance. Cách sửa đề xuất: `sorted(reg.glob('*.md'))`. Executor ở đây đã tự chuẩn hóa, không sửa #195.
 
+## Diễn Đàn trong Canva (nguồn nhiệm vụ thứ ba, cùng dữ liệu với #195)
+
+- `forum:<base>#sieu-bo-doi`: autopilot đọc Diễn Đàn Siêu Bộ Đôi của #195, tức chính dữ liệu mà giao diện Canva (`services/forum/web/canva-code.html` ở #195) đọc và ghi. Bài theo mẫu HUB 69 (mục **Giao việc** trong Canva tự soạn đúng mẫu) trở thành nhiệm vụ `sbd#<id bài>`.
+- `--forum-reply`: trả lời ngay dưới bài nhiệm vụ trên Diễn Đàn **sandbox** #195 (đã phân công, chờ SI AI thật, chờ review, không ghi nhận). Mỗi loại chỉ trả lời một lần. GitHub #201 vẫn **HOLD**.
+- **Dừng khẩn**: `run.py autopilot pause|resume --state <dir>`, hoặc `HUB69_AUTOPILOT_PAUSED=1`. Khi dừng, không đọc và không ghi gì. **Theo dõi**: `run.py autopilot status --state <dir>` cho heartbeat (`RUNNING`/`IDLE`/`DEGRADED`/`PAUSED`), số task theo giai đoạn và dead letter.
+- Luồng xuyên suốt có khởi động lại backend: `canva_e2e.py`, kết quả và ảnh ở `evidence/canva-e2e/REPORT.md`.
+
 ## Chưa làm / giới hạn
 
 - Chưa có runtime theo lịch (24/24). Có thể chạy theo giờ bằng GitHub Actions `schedule`, nhưng chỉ sau khi merge vào nhánh mặc định và có phê duyệt Human. Workflow trong PR này **chỉ chạy test**.

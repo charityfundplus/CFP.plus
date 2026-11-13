@@ -199,6 +199,44 @@ class OfficeIntegration(unittest.TestCase):
         rec = p.store.task("wl#1")
         self.assertEqual((rec["dead"], rec["attempts"]), (1, 5))
 
+    def test_kill_switch_stops_all_writes_and_heartbeat_reports_it(self):
+        src = one_task_fixture(self.tmp)
+        p = self.pilot()
+        p.store.set_paused(True, "test")
+        res = p.tick(src, T0, "paused")
+        self.assertTrue(res["paused"])
+        c = OfficeClient(self.srv.base)
+        c.login(*self.srv.secrets["gov"])
+        self.assertEqual(c.get("/api/office/board")["tasks"], [])  # nothing was written to the Office
+        st = p.store.status()
+        self.assertEqual((st["paused"], st["heartbeat"]["state"]), (True, "PAUSED"))
+        p.store.set_paused(False)
+        p.tick(src, T0 + timedelta(minutes=1), "resumed")
+        self.assertEqual(len(self.office_tasks()), 1)
+        st = p.store.status()
+        self.assertEqual((st["heartbeat"]["state"], st["stages"]), ("IDLE", {"HANDED_TO_REVIEWER": 1}))
+
+    def test_forum_intake_and_reply_in_thread_once(self):
+        from hub69_dispatch.adapters import ForumSource
+        u = OfficeClient(self.srv.base)
+        u.login("member@sandbox.invalid", "matkhau-member-1", register_name="Thành viên")
+        u.post("/api/forums/sieu-bo-doi/join", ok=(200, 201, 409))
+        body = ("**SI AI / Siêu Bộ Đôi:** Thành viên\n**Nhiệm vụ:** Kiểm tra Registry từ Diễn Đàn\n**Năng lực:** registry_check\n"
+                "**Assignee:** auto\n**Reviewer:** auto\n**Priority:** P1\n**Trạng thái:** OPEN")
+        pid = u.post("/api/forums/sieu-bo-doi/posts", {"title": "[NHIỆM VỤ] Registry", "body": body})["id"]
+        u.post("/api/forums/sieu-bo-doi/posts", {"title": "Chào", "body": "Bài thường, không phải nhiệm vụ"})
+        src = ForumSource(f"{self.srv.base}#sieu-bo-doi")
+        p = self.pilot(forum_reply=True)
+        r1 = p.tick(src, T0, "f1")
+        self.assertEqual(r1["handled"], [{"task": f"sbd#{pid}", "stage": "HANDED_TO_REVIEWER", "changed": True}])
+        self.assertEqual([x["kind"] for x in r1["replies"]], ["NEED_REVIEW"])
+        r2 = self.pilot(forum_reply=True).tick(src, T0 + timedelta(minutes=1), "f2")
+        self.assertEqual(r2["replies"], [])
+        posts = OfficeClient(self.srv.base).get("/api/forums/sieu-bo-doi/posts")["posts"]
+        thread = next(x for x in posts if x["id"] == pid)
+        self.assertEqual(sum("CHỜ REVIEW ĐỘC LẬP" in c["body"] for c in thread["comments"]), 1)
+        self.assertEqual(len(self.office_tasks()), 1)
+
     def test_concurrent_tick_is_refused(self):
         p = self.pilot()
         with p.store.lock():

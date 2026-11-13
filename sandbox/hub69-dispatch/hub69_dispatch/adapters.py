@@ -76,8 +76,44 @@ class FileSource:
         raise RuntimeError("file source is read-only")
 
 
+class ForumSource:
+    """Diễn Đàn Siêu Bộ Đôi trên backend PR #195 (cùng dữ liệu mà giao diện Canva đọc/ghi).
+    spec: forum:<https base>#<forum key>. Đọc công khai (forum public_read); mỗi bài và bình luận là một thông điệp.
+    Mã task = 'sbd#<post id>' (tham chiếu gốc, không cấp ID mới)."""
+    channel = "forum_195"
+
+    def __init__(self, spec: str):
+        base, _, key = spec.rpartition("#")
+        self.base, self.key = base.rstrip("/"), key or "sieu-bo-doi"
+        self.prefix = "sbd" if self.key == "sieu-bo-doi" else self.key
+
+    def status(self) -> dict:
+        return {"channel": self.channel, "target": f"{self.base} • {self.key}", "read": "PUBLIC API", "write": "dispatcher account"}
+
+    def fetch(self) -> list[dict]:
+        req = urllib.request.Request(f"{self.base}/api/forums/{self.key}/posts", headers={"Accept": "application/json"})
+        with urllib.request.urlopen(req, timeout=30) as r:  # noqa: S310 (operator-configured sandbox base)
+            posts = json.load(r)["posts"]
+        out = []
+        for p in posts:
+            ref = f"{self.prefix}#{p['id']}"
+            out.append({"ref": ref, "body": f"{p['title']}\n{p['body']}", "author_login": f"forum:{p['author']['id']}",
+                        "author_name": p["author"]["name"], "created_at": p["created_at"], "post_id": p["id"],
+                        "url": f"{self.base}/canva/#post-{p['id']}"})
+            for c in p.get("comments", []):
+                out.append({"ref": f"{ref}/c{c['id']}", "body": c["body"], "author_login": f"forum:{c['author']['id']}",
+                            "author_name": c["author"]["name"], "created_at": c["created_at"], "post_id": p["id"],
+                            "url": f"{self.base}/canva/#post-{p['id']}"})
+        return out
+
+    def post_comment(self, body: str) -> dict:
+        raise RuntimeError("forum replies go through Autopilot.forum_reply (authenticated dispatcher account)")
+
+
 def make_source(spec: str):
     kind, _, rest = spec.partition(":")
+    if kind == "forum":
+        return ForumSource(rest)
     if kind == "github":
         return GitHubIssueSource(rest)
     if kind == "file":

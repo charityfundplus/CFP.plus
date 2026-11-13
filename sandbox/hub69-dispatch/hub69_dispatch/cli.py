@@ -82,16 +82,24 @@ def autopilot_main(argv) -> int:
     import time
     from .autopilot import Autopilot, Busy, secrets_from_env, utcnow
     ap = argparse.ArgumentParser(prog="hub69-dispatch autopilot")
-    ap.add_argument("cmd", choices=["tick", "loop", "requeue", "readback"])
+    ap.add_argument("cmd", choices=["tick", "loop", "requeue", "readback", "status", "pause", "resume"])
+    ap.add_argument("--forum-reply", action="store_true", help="reply inside the SANDBOX #195 forum thread")
     ap.add_argument("--source", help="github:owner/repo#N (read only) or file:working-link.json")
     ap.add_argument("--office", default=os.environ.get("HUB69_OFFICE_API"), help="PR #195 base URL (sandbox)")
     ap.add_argument("--office-src", default=os.environ.get("HUB69_OFFICE_SRC"), help="checkout of PR #195 (Registry loader)")
     ap.add_argument("--state", required=True, help="autopilot state dir (SQLite + results)")
-    ap.add_argument("--evidence-base", required=True, help="https:// URL where results/ will be published")
+    ap.add_argument("--evidence-base", default="https://github.com/charityfundplus/CFP.plus/blob/claude/cool-euler-gnwkfm/sandbox/hub69-dispatch/evidence/autopilot-pilot/results", help="https:// URL where results/ will be published")
     ap.add_argument("--task", help="task key for requeue/readback")
     ap.add_argument("--interval", type=float, default=300.0)
     ap.add_argument("--max-ticks", type=int, default=0, help="loop: stop after N ticks (0 = forever)")
     a = ap.parse_args(argv)
+    if a.cmd in ("status", "pause", "resume"):  # local only: no Office/credentials needed
+        from .autopilot import Store
+        st = Store(Path(a.state))
+        if a.cmd != "status":
+            st.set_paused(a.cmd == "pause", os.environ.get("USER", "operator"))
+        print(json.dumps(st.status(), ensure_ascii=False, indent=2))
+        return 0
     if not a.office:
         print("NOT_CONNECTED: set --office / HUB69_OFFICE_API to a PR #195 sandbox instance")
         return 2
@@ -99,7 +107,7 @@ def autopilot_main(argv) -> int:
     agents = {x["key"]: x for x in agents_doc["agents"]}
     pilot = Autopilot(base=a.office, state_dir=Path(a.state), agents=agents, policy=policy,
                       secrets=secrets_from_env(), evidence_base=a.evidence_base,
-                      office_src=Path(a.office_src) if a.office_src else None)
+                      office_src=Path(a.office_src) if a.office_src else None, forum_reply=a.forum_reply)
     if a.cmd == "requeue":
         pilot.requeue(a.task, utcnow())
         return 0

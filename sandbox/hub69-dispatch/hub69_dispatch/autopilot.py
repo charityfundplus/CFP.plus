@@ -73,6 +73,9 @@ class Store:
                 next_retry text, last_error text, dead integer not null default 0, result_sha text,
                 evidence_url text, updated text);
             create table if not exists accounts(key text primary key, user_id integer, pair_id integer);
+            create table if not exists heartbeat(id integer primary key check (id = 1), at text, run text,
+                state text, handled integer, errors integer, paused integer);
+            create table if not exists replies(key text primary key, task text, kind text, comment_id integer, at text);
             create table if not exists log(id integer primary key autoincrement, at text, run text, task text,
                 step text, outcome text, detail text);
         """)
@@ -90,6 +93,26 @@ class Store:
         finally:
             fcntl.flock(fh, fcntl.LOCK_UN)
             fh.close()
+
+    # ---- kill switch + heartbeat (monitoring)
+    def paused(self) -> bool:
+        return (self.dir / "PAUSED").exists() or os.environ.get("HUB69_AUTOPILOT_PAUSED") == "1"
+
+    def set_paused(self, on: bool, who: str = "operator"):
+        f = self.dir / "PAUSED"
+        f.write_text(f"paused by {who}\n") if on else f.unlink(missing_ok=True)
+
+    def beat(self, at: str, run: str, state: str, handled: int = 0, errors: int = 0):
+        self.db.execute("insert into heartbeat(id, at, run, state, handled, errors, paused) values(1,?,?,?,?,?,?) "
+                        "on conflict(id) do update set at=excluded.at, run=excluded.run, state=excluded.state, "
+                        "handled=excluded.handled, errors=excluded.errors, paused=excluded.paused",
+                        (at, run, state, handled, errors, int(self.paused())))
+
+    def status(self) -> dict:
+        hb = self.db.execute("select * from heartbeat where id=1").fetchone()
+        stages = dict(self.db.execute("select stage, count(*) from tasks group by stage").fetchall())
+        dead = [dict(r) for r in self.db.execute("select key, attempts, last_error from tasks where dead=1")]
+        return {"heartbeat": dict(hb) if hb else None, "paused": self.paused(), "stages": stages, "dead_letter": dead}
 
     def task(self, key: str) -> dict | None:
         r = self.db.execute("select * from tasks where key=?", (key,)).fetchone()
@@ -208,7 +231,7 @@ def _safe(key: str) -> str:
 class Autopilot:
     def __init__(self, *, base: str, state_dir: Path, agents: dict, policy: dict, secrets: dict,
                  evidence_base: str, office_src: Path | None = None, retry: RetryPolicy | None = None,
-                 sleep=None, transport=None, crash_after: str | None = None):
+                 sleep=None, transport=None, crash_after: str | None = None, forum_reply: bool = False):
         self.base, self.agents, self.policy = base, agents, policy
         self.secrets = secrets  # {"gov": (email, pw), "agent_password": pw, "reviewer": {key: (email, pw)}}
         self.store = Store(state_dir)
@@ -221,6 +244,7 @@ class Autopilot:
         self.sleep = sleep
         self.transport = transport
         self.crash_after = crash_after
+        self.forum_reply = forum_reply  # reply inside the SANDBOX #195 forum thread (never GitHub #201)
         self._clients: dict[str, OfficeClient] = {}
         self.run_id = ""
         self.now = ""
@@ -427,6 +451,12 @@ class Autopilot:
     def tick(self, source, now: datetime, run_id: str) -> dict:
         self.run_id, self.now = run_id, now.isoformat()
         with self.store.lock():
+            if self.store.paused():  # kill switch: no intake, no writes
+                self._log(None, "tick", "paused")
+                self.store.beat(self.now, run_id, "PAUSED")
+                return {"run": run_id, "now": self.now, "paused": True, "handled": [], "rejections": [],
+                        "snapshot": {"tasks": [], "rejections": []}}
+            self.store.beat(self.now, run_id, "RUNNING")
             snap, comments, msgs = self.intake(source)
             handled = []
             for t in snap["tasks"]:
@@ -471,9 +501,53 @@ class Autopilot:
                     self._log(key, "process", "dead_letter" if dead else "retry_scheduled", error=str(e),
                               attempts=attempts, next_retry=None if dead else nxt)
                     handled.append({"task": key, "stage": "DEAD_LETTER" if dead else "RETRY", "error": str(e)})
-            return {"run": run_id, "now": self.now, "comments": len(comments), "messages": len(msgs),
+            replies = self.reply_in_forum(source, snap, comments) if self.forum_reply else []
+            errs = sum(1 for h in handled if h["stage"] in ("RETRY", "DEAD_LETTER"))
+            self.store.beat(self.now, run_id, "IDLE" if not errs else "DEGRADED", len(handled), errs)
+            return {"run": run_id, "now": self.now, "comments": len(comments), "messages": len(msgs), "replies": replies,
                     "tasks": len(snap["tasks"]), "rejections": snap["rejections"], "handled": handled,
                     "snapshot": snap}
+
+    # ---------------------------------------------------------------- replies in the #195 forum (sandbox)
+    def reply_in_forum(self, source, snap: dict, comments: list) -> list[dict]:
+        """Post status replies under the TASK's own forum thread so members see them in Canva. Idempotent:
+        a reply key is posted once (local table + marker already present in the thread)."""
+        if getattr(source, "channel", "") != "forum_195":
+            return []
+        present = {line.split("key=")[1].split()[0] for c in comments for line in (c.get("body") or "").splitlines()
+                   if DISPATCH_MARKER in line and "key=" in line}
+        want = []
+        for t in snap["tasks"]:
+            rec = self.store.task(t["key"]) or {}
+            stage, a = rec.get("stage"), self.agents.get(t["assignee"], {})
+            who = f"{a.get('name', t['assignee'])} ({t['assignee']})"
+            if stage == "AWAITING_REAL_AGENT":
+                want.append((t["key"], "WAITING_AGENT", f"**ĐÃ PHÂN CÔNG** cho {who} theo năng lực `{t.get('capability')}`.\n"
+                             f"Chưa có công cụ tự động cho năng lực này: chờ SI AI thật nhận việc (ACK). Reviewer: {t['reviewer']}."))
+            elif stage in ("HANDED_TO_REVIEWER", "REVIEWED"):
+                want.append((t["key"], "NEED_REVIEW", f"**ĐÃ XỬ LÝ, CHỜ REVIEW ĐỘC LẬP**\nNgười thực thi: {who} • công cụ tự động "
+                             f"(AUTOMATED_TOOL, không phải mô hình AI).\nVăn Phòng: nhiệm vụ #{rec['office_tid']} • Evidence sha256 "
+                             f"`{(rec.get('result_sha') or '')[:16]}…`\nReviewer {t['reviewer']}: mở mục Nhiệm vụ để review."))
+        for r in snap["rejections"]:
+            if r["ref"].count("#") == 1 and "/" not in r["ref"]:
+                want.append((r["ref"], "REJECTED", f"**KHÔNG GHI NHẬN**: {r['reason']}"))
+        out = []
+        for task, kind, text in want:
+            if "/" in task or not task.startswith(source.prefix + "#"):
+                continue
+            k = hashlib.sha256(f"forum|{kind}|{task}".encode()).hexdigest()[:16]
+            if k in present or self.store.db.execute("select 1 from replies where key=?", (k,)).fetchone():
+                continue
+            disp = self.client("dispatcher")
+            disp.post(f"/api/forums/{source.key}/join", ok=(200, 201, 409))
+            pid = int(task.split("#", 1)[1])
+            body = f"{DISPATCH_MARKER} key={k} -->\n{text}\n\n_Bộ điều phối HUB 69 • SANDBOX_"
+            res = disp.post(f"/api/forums/{source.key}/posts/{pid}/comments", {"body": body})
+            self.store.db.execute("insert into replies(key, task, kind, comment_id, at) values(?,?,?,?,?)",
+                                  (k, task, kind, res["id"], self.now))
+            self._log(task, "forum_reply", kind.lower(), comment_id=res["id"], forum=source.key)
+            out.append({"task": task, "kind": kind, "comment_id": res["id"]})
+        return out
 
     def requeue(self, key: str, now: datetime):
         self.now = now.isoformat()
