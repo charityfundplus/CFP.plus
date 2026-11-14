@@ -9,7 +9,7 @@ RUN printf 'server {\n\
     port_in_redirect off;\n\
     root /usr/share/nginx/html;\n\
     index index.html;\n\
-    location ~ ^/[0-9]+(?:/[0-9]+)*/?$ {\n\
+    location ~ ^/[0-9]+/?$ {\n\
         try_files $uri/index.html $uri /id/index.html;\n\
     }\n\
     location / {\n\

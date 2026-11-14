@@ -18,11 +18,18 @@ main{max-width:1100px;margin:auto}.idbox,.panel2{border:1px solid rgba(127,127,1
 </main><footer><p>CFP+ • Only Plus+ For Life</p><p><a href="mailto:contact@cfp.plus">contact@cfp.plus</a></p></footer>
 <script>
 (async()=>{
-const id=location.pathname.split('/').filter(Boolean)[0]||'', $=x=>document.getElementById(x), esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
-$('id').textContent=id||'ID';let route={},entities={},global=[];
-try{route=await (await fetch('/registry/country-route-map.json',{cache:'no-store'})).json()}catch(e){}
-try{entities=await (await fetch('/registry/ai-entity-registry.json',{cache:'no-store'})).json()}catch(e){}
-try{global=await (await fetch('/registry/global-country-ai-index.json',{cache:'no-store'})).json()}catch(e){}
+const match=location.pathname.match(/^\/([0-9]+)\/?$/), id=match?match[1]:'', $=x=>document.getElementById(x), esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+$('id').textContent=id||'ID';
+if(!match){$('title').textContent='Đường dẫn ID không hợp lệ';$('identity').textContent='Dùng một ID số trong đường dẫn /{ID}. Không ghép nhiều ID bằng dấu /.';return}
+let route,entities,global;
+try{
+  [route,entities,global]=await Promise.all([
+    '/registry/country-route-map.json',
+    '/registry/ai-entity-registry.json',
+    '/registry/global-country-ai-index.json'
+  ].map(async url=>{const response=await fetch(url,{cache:'no-store'});if(!response.ok)throw new Error('Registry unavailable');return response.json()}));
+  if(!route||typeof route!=='object'||Array.isArray(route)||!entities||typeof entities!=='object'||Array.isArray(entities)||!Array.isArray(global))throw new Error('Invalid registry shape');
+}catch(e){$('title').textContent='Chưa thể xác minh ID';$('identity').textContent='Không đọc được Registry. Vui lòng thử lại; chưa xác nhận danh tính hoặc Parent.';return}
 const countries={};global.forEach(x=>{if(x.ai_country_id)countries[x.ai_country_id]=x});Object.keys(route).filter(k=>/^\d+$/.test(k)).forEach(k=>{countries[k]={...(countries[k]||{}),...route[k],ai_country_id:k}});
 const countryIds=Object.keys(countries).sort((a,b)=>b.length-a.length);
 const gx=countries[id],e=entities[id];
