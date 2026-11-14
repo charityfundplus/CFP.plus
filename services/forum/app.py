@@ -170,6 +170,24 @@ def _engine(url: str) -> Engine:
     return engine
 
 
+def _location(eng: Engine) -> tuple:
+    """Nơi dữ liệu thực sự được ghi: (database, schema) với Postgres, tệp với SQLite.
+
+    Kế thừa từ #193: URL khác chuỗi chưa đủ — hai URL (vd. thêm application_name, đổi thứ tự
+    tham số, cùng role) có thể trỏ cùng một database/schema và trộn dữ liệu giữa các kho.
+    """
+    if eng.dialect.name == "postgresql":
+        with eng.connect() as c:
+            db, schema = c.execute(sql_text("SELECT current_database(), current_schema()")).one()
+        if not schema:
+            raise RuntimeError("Kết nối Postgres không có schema hợp lệ (kiểm tra search_path của role).")
+        return ("postgresql", db, schema)
+    database = eng.url.database
+    if not database or database == ":memory:":
+        return (eng.dialect.name, "memory", id(eng))  # mỗi SQLite trong bộ nhớ là một kho riêng
+    return (eng.dialect.name, str(Path(database).resolve()))
+
+
 class HeadAsGet:
     """HEAD = GET không có body (RFC 9110). Uptime monitor/health check của Render gửi HEAD; trước đây 405."""
 
@@ -231,11 +249,32 @@ class Stores:
         all_urls = [auth_url, *forum_urls.values()] + [u for u in (office_url, worker_url) if u]
         if len(set(all_urls)) != len(all_urls):
             raise RuntimeError("Mỗi diễn đàn, auth và Văn Phòng phải dùng database/role riêng biệt.")
-        self.auth = _engine(auth_url)
+        # Kiểm tra nơi ghi THẬT của từng kho TRƯỚC khi tạo bảng (URL khác chuỗi vẫn có thể cùng schema).
+        engines: dict[str, Engine] = {"auth": _engine(auth_url)}
+        engines.update({key: _engine(url) for key, url in forum_urls.items()})
+        if office_url:
+            engines["office"] = _engine(office_url)
+        if worker_url:
+            from services.forum.worker import engine_for
+            # SQLite: engine_for tạo bảng ngay → dò bằng engine thường; Postgres: cần search_path của engine_for.
+            engines["worker"] = (_engine(worker_url) if worker_url.startswith("sqlite")
+                                 else engine_for(worker_url))
+        try:
+            self.locations = {name: _location(eng) for name, eng in engines.items()}
+        except Exception:
+            for eng in engines.values():
+                eng.dispose()
+            raise
+        if len(set(self.locations.values())) != len(self.locations):
+            for eng in engines.values():
+                eng.dispose()
+            raise RuntimeError("Mỗi diễn đàn, auth và Văn Phòng phải dùng database/schema riêng biệt: "
+                               f"{self.locations}")
+        self.auth = engines["auth"]
         auth_md.create_all(self.auth)
         self.forums: dict[str, Engine] = {}
-        for key, url in forum_urls.items():
-            eng = _engine(url)
+        for key in forum_urls:
+            eng = engines[key]
             forum_md.create_all(eng)
             with eng.begin() as c:
                 stamped = c.execute(select(meta_t.c.forum_key)).scalars().all()
@@ -247,13 +286,16 @@ class Stores:
         self.office: Engine | None = None
         if office_url:
             from services.forum.office import md as office_md
-            self.office = _engine(office_url)
+            self.office = engines["office"]
             office_md.create_all(self.office)
         self.ephemeral = False  # True: SQLite tạm trên đĩa của instance (CFP_SANDBOX_EPHEMERAL=1)
         self.worker: Engine | None = None
         if worker_url:  # kho riêng của Worker P0 (004_worker.sql); app chỉ ĐỌC trạng thái
-            from services.forum.worker import engine_for
-            self.worker = engine_for(worker_url)
+            if worker_url.startswith("sqlite"):
+                engines["worker"].dispose()
+                self.worker = engine_for(worker_url)
+            else:
+                self.worker = engines["worker"]
 
     def dispose(self) -> None:
         for eng in [self.auth, *self.forums.values(), *[e for e in (self.office, self.worker) if e is not None]]:
