@@ -81,6 +81,9 @@ jobs:
           grep -q '^worker_rls_forced=4$' migration.log
           grep -q '^worker_cross_usage=0$' migration.log   # worker_app không vào kho khác và ngược lại
 
+      - name: 005 Supabase advisor (thu hồi EXECUTE rls_auto_enable; event trigger vẫn bật RLS; down/up)
+        run: tests/forum/test_005_supabase_advisor.sh cfp_005 | tee advisor-005.log && grep -q '^ADVISOR_005=PASS$' advisor-005.log
+
       - name: pytest + Playwright (SQLite, Postgres 4 schema/role, E2E iPhone 13)
         env:
           NODE_PATH: ${{ runner.temp }}/pw/node_modules
@@ -116,6 +119,7 @@ jobs:
           path: |
             migration.log
             migration-002.log
+            advisor-005.log
             forum-pytest.xml
             office-iphone.png
             van-phong-sieu-bo-doi-iphone.png
