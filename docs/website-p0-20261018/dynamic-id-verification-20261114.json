@@ -1,0 +1,69 @@
+{
+  "timestamp_utc": "2026-11-14T22:56:44.652686+00:00",
+  "candidate_source_sha": "7b5ae39679c67f3a5ce76aa254a826496a73ca86",
+  "observations": [
+    {
+      "url": "https://cfp.plus/691181",
+      "final_url": "https://cfp.plus/691181",
+      "status": 200,
+      "total_seconds": 0.735,
+      "sha256": "3f710e3f46c87b5499a3984c17e3af07dad290937b7091efab20eef70e285234",
+      "revision_headers": {},
+      "patched_validation_present": false,
+      "matches_candidate_template": false
+    },
+    {
+      "url": "https://cfp.plus/id/",
+      "final_url": "https://cfp.plus/id/",
+      "status": 200,
+      "total_seconds": 0.667,
+      "sha256": "b75e8e629325ad0ef3ec07f9529e87825c9fbdae136f2faabc8bed1c06b2232f",
+      "revision_headers": {},
+      "patched_validation_present": false,
+      "matches_candidate_template": false
+    }
+  ],
+  "production_sha": "UNVERIFIED: no authenticated deployment provenance available; response hashes do not identify a Git commit",
+  "iphone_safari": "UNVERIFIED: no real iPhone Safari runtime or existing private HTTPS staging access supplied",
+  "production": "HOLD; no merge/deploy/activation performed",
+  "original_workspace_commit": "94a9181da92ee5877d3e35fa836878de55002e0e",
+  "sandbox_parent": "f3e2b77413939cd6c4365f8045dea2865f376313",
+  "sandbox_branch": "review/numeric-link-restoration-20261008",
+  "tests": [
+    {
+      "command": "node tests/website/numeric-id.test.cjs",
+      "passed": 4,
+      "scope": "Node VM with DOM/fetch stubs; not a browser or HTTP server"
+    },
+    {
+      "command": "python tests/website/test_numeric_content.py",
+      "passed": 7
+    },
+    {
+      "command": "python tests/website/test_foundation_content.py",
+      "passed": 8
+    },
+    {
+      "command": "python tests/website/test_p0_identity_navigation.py",
+      "passed": 6
+    },
+    {
+      "command": "python tests/website/test_public_routing.py",
+      "passed": 3,
+      "scope": "local Python HTTP and generated content; rerun outside socket-restricted sandbox succeeded"
+    },
+    {
+      "command": "python scripts/check_public_identity.py",
+      "structural_checks": "PASS",
+      "governance_acceptance": "NOT VERIFIED",
+      "existing_findings": "Parent, DID and trailing-slash findings remain; Registry unchanged"
+    }
+  ],
+  "scope_notes": [
+    "Only id/index.html and its regression tests were changed by the code commit. PR110 existing nginx 404 policy and no inferred identity/lineage are preserved.",
+    "Leading zeros already remained strings before this patch; the new test protects that behavior. The earlier report did not establish a pre-existing zero-loss defect.",
+    "Canonical metadata is presentation only, not Canonical Lock or identity approval.",
+    "HTTP 200 and body hashes do not prove source-to-production SHA. The /id/ response lacks the candidate path-validation marker at observation time.",
+    "No independent review or Safari acceptance is claimed. No new issue, PR, schedule, environment, registry, or Notion document created."
+  ]
+}
