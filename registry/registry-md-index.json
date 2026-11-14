@@ -1,0 +1,386 @@
+{
+ "_meta": {
+  "purpose": "Machine index of registry/<ID>.md for the https://cfp.plus/<ID> resolver",
+  "generator": "tools/build_registry_index.py",
+  "rule": "Derived data only. registry/<ID>.md stays the source of record; no ID is created or changed here.",
+  "count": 33,
+  "issues": [
+   {
+    "id": "69110",
+    "issue": "EMPTY_RECORD"
+   },
+   {
+    "id": "69111",
+    "issue": "EMPTY_RECORD"
+   },
+   {
+    "id": "69112",
+    "issue": "EMPTY_RECORD"
+   },
+   {
+    "id": "69113",
+    "issue": "EMPTY_RECORD"
+   },
+   {
+    "id": "69114",
+    "issue": "EMPTY_RECORD"
+   },
+   {
+    "id": "69115",
+    "issue": "EMPTY_RECORD"
+   },
+   {
+    "id": "69116",
+    "issue": "EMPTY_RECORD"
+   },
+   {
+    "id": "69117",
+    "issue": "EMPTY_RECORD"
+   },
+   {
+    "id": "69118",
+    "issue": "EMPTY_RECORD"
+   },
+   {
+    "id": "69119",
+    "issue": "EMPTY_RECORD"
+   },
+   {
+    "id": "691100",
+    "issue": "EMPTY_RECORD"
+   },
+   {
+    "id": "691110",
+    "issue": "EMPTY_RECORD"
+   },
+   {
+    "id": "691120",
+    "issue": "EMPTY_RECORD"
+   },
+   {
+    "id": "691130",
+    "issue": "EMPTY_RECORD"
+   },
+   {
+    "id": "691131",
+    "issue": "EMPTY_RECORD"
+   },
+   {
+    "id": "691140",
+    "issue": "EMPTY_RECORD"
+   },
+   {
+    "id": "691150",
+    "issue": "EMPTY_RECORD"
+   },
+   {
+    "id": "691160",
+    "issue": "EMPTY_RECORD"
+   },
+   {
+    "id": "691170",
+    "issue": "EMPTY_RECORD"
+   }
+  ]
+ },
+ "records": {
+  "6984": {
+   "id": "6984",
+   "name": "Vietnam AI Hub",
+   "entity_type": "Country AI Hub",
+   "parent_id": "698",
+   "status": "Review Candidate",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/6984.md"
+  },
+  "69840": {
+   "id": "69840",
+   "name": "Developer & Platform Directory",
+   "entity_type": "Developer & Platform Directory",
+   "parent_id": "6984",
+   "status": "Canonical Locked",
+   "country": "Vietnam",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/69840.md"
+  },
+  "69841": {
+   "id": "69841",
+   "name": "AIHay",
+   "entity_type": "AI Developer / Organization",
+   "parent_id": "6984",
+   "status": "Canonical Locked",
+   "country": "Vietnam",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/69841.md"
+  },
+  "69842": {
+   "id": "69842",
+   "name": "CMC AI",
+   "entity_type": "AI Developer / Organization",
+   "parent_id": "6984",
+   "status": "Canonical Locked",
+   "country": "Vietnam",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/69842.md"
+  },
+  "69843": {
+   "id": "69843",
+   "name": "FPT AI",
+   "entity_type": "AI Developer / Organization",
+   "parent_id": "6984",
+   "status": "Canonical Locked",
+   "country": "Vietnam",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/69843.md"
+  },
+  "69844": {
+   "id": "69844",
+   "name": "Phenikaa AI",
+   "entity_type": "AI Developer / Organization",
+   "parent_id": "6984",
+   "status": "Canonical Locked",
+   "country": "Vietnam",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/69844.md"
+  },
+  "69845": {
+   "id": "69845",
+   "name": "Viettel AI",
+   "entity_type": "AI Developer / Organization",
+   "parent_id": "6984",
+   "status": "Canonical Locked",
+   "country": "Vietnam",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/69845.md"
+  },
+  "69846": {
+   "id": "69846",
+   "name": "VinAI",
+   "entity_type": "AI Developer / Organization",
+   "parent_id": "6984",
+   "status": "Canonical Locked",
+   "country": "Vietnam",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/69846.md"
+  },
+  "69847": {
+   "id": "69847",
+   "name": "VNPT AI",
+   "entity_type": "AI Developer / Organization",
+   "parent_id": "6984",
+   "status": "Canonical Locked",
+   "country": "Vietnam",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/69847.md"
+  },
+  "69848": {
+   "id": "69848",
+   "name": "Zalo AI",
+   "entity_type": "AI Developer / Organization",
+   "parent_id": "6984",
+   "status": "Canonical Locked",
+   "country": "Vietnam",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/69848.md"
+  },
+  "69849": {
+   "id": "69849",
+   "name": "Reserved",
+   "entity_type": "Reserved Developer Slot",
+   "parent_id": "6984",
+   "status": "Canonical Locked",
+   "country": "Vietnam",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/69849.md"
+  },
+  "691182": {
+   "id": "691182",
+   "name": "GPT 6 Family",
+   "entity_type": "MODEL FAMILY",
+   "parent_id": "69118",
+   "status": "ISSUED • PUBLIC ROUTE VERIFICATION PENDING",
+   "developer": "OpenAI",
+   "country": "United States",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/691182.md"
+  },
+  "691183": {
+   "id": "691183",
+   "name": "Codex",
+   "entity_type": "AI CODING SYSTEM",
+   "parent_id": "69118",
+   "status": "ISSUED • PUBLIC ROUTE VERIFICATION PENDING",
+   "developer": "OpenAI",
+   "country": "United States",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/691183.md"
+  },
+  "691184": {
+   "id": "691184",
+   "name": "GPT Live",
+   "entity_type": "REALTIME VOICE AI FAMILY",
+   "parent_id": "69118",
+   "status": "ISSUED • PUBLIC ROUTE VERIFICATION PENDING",
+   "developer": "OpenAI",
+   "country": "United States",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/691184.md"
+  },
+  "691185": {
+   "id": "691185",
+   "name": "GPT Image Family",
+   "entity_type": "IMAGE AI FAMILY",
+   "parent_id": "69118",
+   "status": "ISSUED • PUBLIC ROUTE VERIFICATION PENDING",
+   "developer": "OpenAI",
+   "country": "United States",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/691185.md"
+  },
+  "691186": {
+   "id": "691186",
+   "name": "Daybreak",
+   "entity_type": "CYBER AI FAMILY",
+   "parent_id": "69118",
+   "status": "ISSUED • PUBLIC ROUTE VERIFICATION PENDING",
+   "developer": "OpenAI",
+   "country": "United States",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/691186.md"
+  },
+  "698401": {
+   "id": "698401",
+   "name": "Viettel AI",
+   "entity_type": "AI Developer / Organization",
+   "parent_id": "69840",
+   "status": "Review Candidate",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/698401.md"
+  },
+  "698402": {
+   "id": "698402",
+   "name": "Viettel Digital",
+   "entity_type": "Digital Technology / AI Ecosystem Organization",
+   "parent_id": "69840",
+   "status": "Review Candidate",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/698402.md"
+  },
+  "698461": {
+   "id": "698461",
+   "name": "VietLinker AI",
+   "parent_id": "69846",
+   "status": "Active",
+   "developer": "VietLinker",
+   "country": "Vietnam",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/698461.md"
+  },
+  "6911513": {
+   "id": "6911513",
+   "name": "GitHub Support",
+   "entity_type": "Technical Support and Repository Operations Function",
+   "parent_id": "69115",
+   "status": "Review Candidate",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/6911513.md"
+  },
+  "6911811": {
+   "id": "6911811",
+   "name": "Data agent in ChatGPT Work",
+   "entity_type": "AGENT",
+   "parent_id": "691181",
+   "status": "ISSUED • PUBLIC ROUTE VERIFICATION PENDING",
+   "developer": "OpenAI",
+   "country": "United States",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/6911811.md"
+  },
+  "6911821": {
+   "id": "6911821",
+   "name": "GPT 6 Astra",
+   "entity_type": "MODEL",
+   "parent_id": "691182",
+   "status": "ISSUED • PUBLIC ROUTE VERIFICATION PENDING",
+   "developer": "OpenAI",
+   "country": "United States",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/6911821.md"
+  },
+  "6911822": {
+   "id": "6911822",
+   "name": "GPT 6 Sol",
+   "entity_type": "MODEL",
+   "parent_id": "691182",
+   "status": "ISSUED • PUBLIC ROUTE VERIFICATION PENDING",
+   "developer": "OpenAI",
+   "country": "United States",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/6911822.md"
+  },
+  "6911823": {
+   "id": "6911823",
+   "name": "GPT 6 Luna",
+   "entity_type": "MODEL",
+   "parent_id": "691182",
+   "status": "ISSUED • PUBLIC ROUTE VERIFICATION PENDING",
+   "developer": "OpenAI",
+   "country": "United States",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/6911823.md"
+  },
+  "6984010": {
+   "id": "6984010",
+   "name": "Viettel AI Platforms Hub",
+   "entity_type": "AI Platform Registry Hub",
+   "parent_id": "698401",
+   "status": "Review Candidate",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/6984010.md"
+  },
+  "6984011": {
+   "id": "6984011",
+   "name": "Viettel AI Natural Language Processing Hub",
+   "entity_type": "AI Service Registry Hub",
+   "parent_id": "698401",
+   "status": "Review Candidate",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/6984011.md"
+  },
+  "6984012": {
+   "id": "6984012",
+   "name": "Viettel AI Image Recognition and Processing Hub",
+   "entity_type": "AI Service Registry Hub",
+   "parent_id": "698401",
+   "status": "Review Candidate",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/6984012.md"
+  },
+  "6984013": {
+   "id": "6984013",
+   "name": "Viettel AI Identification and Authentication Hub",
+   "entity_type": "AI Service Registry Hub",
+   "parent_id": "698401",
+   "status": "Review Candidate",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/6984013.md"
+  },
+  "69840100": {
+   "id": "69840100",
+   "name": "Viettel Cyberbot Platform",
+   "entity_type": "AI Platform",
+   "parent_id": "6984010",
+   "status": "Review Candidate",
+   "developer": "698401 • Viettel AI",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/69840100.md"
+  },
+  "69840101": {
+   "id": "69840101",
+   "name": "Viettel Data Analytics Platform",
+   "entity_type": "AI Platform",
+   "parent_id": "6984010",
+   "status": "Review Candidate",
+   "developer": "698401 • Viettel AI",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/69840101.md"
+  },
+  "69840102": {
+   "id": "69840102",
+   "name": "Viettel AI Platform",
+   "entity_type": "AI Platform",
+   "parent_id": "6984010",
+   "status": "Review Candidate",
+   "developer": "698401 • Viettel AI",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/69840102.md"
+  },
+  "69840103": {
+   "id": "69840103",
+   "name": "Viettel Digital Twin Platform",
+   "entity_type": "AI Platform",
+   "parent_id": "6984010",
+   "status": "Review Candidate",
+   "developer": "698401 • Viettel AI",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/69840103.md"
+  },
+  "69840110": {
+   "id": "69840110",
+   "name": "Viettel Text To Speech",
+   "entity_type": "AI Speech Service",
+   "parent_id": "6984011",
+   "status": "Review Candidate",
+   "developer": "698401 • Viettel AI",
+   "source": "https://github.com/charityfundplus/CFP.plus/blob/main/registry/69840110.md"
+  }
+ }
+}
