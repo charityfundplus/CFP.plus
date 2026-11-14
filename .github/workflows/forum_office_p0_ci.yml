@@ -97,6 +97,27 @@ jobs:
       - name: Smoke Link Mẫu Chung qua HTTP thật (cùng script dùng cho URL HTTPS sandbox)
         run: tests/forum/smoke_ci.sh cfp_ci | tee smoke-check.log && grep -q '^SMOKE_LIVE=PASS ' smoke-check.log
 
+      - name: Sao lưu + diễn tập khôi phục (006 role chỉ đọc, pg_dump 17, khôi phục vào database tạm, so md5)
+        run: |
+          sudo apt-get install -y -qq postgresql-common >/dev/null
+          sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y >/dev/null
+          sudo apt-get install -y -qq postgresql-client-17 >/dev/null
+          S=services/forum/sql
+          for f in 006_backup_role.sql 006_backup_role.sql 006_backup_role_down.sql 006_backup_role.sql; do
+            psql -v ON_ERROR_STOP=1 -q -U cfp_migrator -d cfp_ci -f "$S/$f"; echo "applied $f"
+          done
+          psql -v ON_ERROR_STOP=1 -q -d cfp_ci -c "ALTER ROLE cfp_backup_ro LOGIN"
+          if psql -v ON_ERROR_STOP=1 -q -U cfp_backup_ro -d cfp_ci -c "SET default_transaction_read_only=off" \
+               -c "INSERT INTO cfp_office.audit_log (action, ref, data) VALUES ('x','x','x')" 2>/dev/null; then
+            echo "FAIL: role sao lưu ghi được"; exit 1
+          fi
+          BACKUP_SOURCE_URL="host=localhost port=5432 user=cfp_backup_ro dbname=cfp_ci" \
+          RESTORE_ADMIN_URL="host=localhost port=5432 user=postgres dbname=postgres" \
+          PG_BIN=/usr/lib/postgresql/17/bin OUT_DIR=backup-drill CFP_BACKUP_MIN_ROWS=1 \
+            services/forum/backup/backup_drill.sh | tee backup-drill.log
+          grep -q '^BACKUP_DRILL=PASS$' backup-drill.log
+          rm -f backup-drill/*.dump   # CI chỉ giữ manifest + log, không giữ bản dump
+
       - name: Tương thích ngược — chỉ 002 (đúng trạng thái Supabase hiện tại), pytest Postgres
         env:
           PGPORT: '5433'
@@ -116,6 +137,8 @@ jobs:
           path: |
             migration.log
             migration-002.log
+            backup-drill.log
+            backup-drill/manifest.json
             forum-pytest.xml
             office-iphone.png
             van-phong-sieu-bo-doi-iphone.png

@@ -1,0 +1,99 @@
+name: Sao lưu Supabase sandbox + diễn tập khôi phục (hằng đêm)
+
+# Đọc kho Diễn Đàn / Văn Phòng / Worker trên Supabase bằng role CHỈ ĐỌC cfp_backup_ro (006_backup_role.sql),
+# khôi phục vào Postgres 17 TẠM trong runner, so md5 từng bảng. Chỉ khi diễn tập PASS mới mã hóa bằng KHÓA CÔNG KHAI
+# (runner không bao giờ giữ khóa giải mã) và lưu artifact 30 ngày. Không bao giờ tải lên bản chưa mã hóa.
+#
+# Cần (người có quyền tạo, KHÔNG nằm trong repo):
+#   secret   SUPABASE_BACKUP_DB_URL   postgresql://cfp_backup_ro.<project_ref>:<mật khẩu>@<session pooler>:5432/postgres?sslmode=require
+#   variable BACKUP_GPG_PUBLIC_KEY    khóa công khai OpenPGP (ASCII armor) của người giữ khóa khôi phục
+# Thiếu secret → báo SKIPPED (không phải PASS). Có secret mà thiếu khóa công khai → FAIL.
+# Lưu ý: schedule chỉ chạy khi tệp này nằm trên nhánh mặc định (main).
+on:
+  schedule:
+    - cron: '17 9 * * *'   # 09:17 UTC hằng ngày
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: forum-backup-nightly
+  cancel-in-progress: false
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    services:
+      drill:
+        image: postgres:17
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_HOST_AUTH_METHOD: trust   # chỉ container diễn tập tạm thời
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U postgres" --health-interval 5s --health-timeout 5s --health-retries 12
+    env:
+      HAS_SOURCE: ${{ secrets.SUPABASE_BACKUP_DB_URL != '' }}
+    steps:
+      - name: Kiểm tra cấu hình
+        id: cfg
+        env:
+          PUBKEY: ${{ vars.BACKUP_GPG_PUBLIC_KEY }}
+        run: |
+          if [ "$HAS_SOURCE" != "true" ]; then
+            echo "::warning::Chưa có secret SUPABASE_BACKUP_DB_URL — không sao lưu."
+            echo "BACKUP=SKIPPED" | tee -a "$GITHUB_STEP_SUMMARY"; echo "run=false" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          [ -n "$PUBKEY" ] || { echo "::error::Thiếu variable BACKUP_GPG_PUBLIC_KEY — không được lưu bản chưa mã hóa."; exit 1; }
+          echo "run=true" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v4
+        if: steps.cfg.outputs.run == 'true'
+
+      - name: Cài pg_dump/pg_restore 17
+        if: steps.cfg.outputs.run == 'true'
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-common >/dev/null
+          sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y >/dev/null
+          sudo apt-get install -y -qq postgresql-client-17 >/dev/null
+
+      - name: Sao lưu + diễn tập khôi phục
+        if: steps.cfg.outputs.run == 'true'
+        env:
+          BACKUP_SOURCE_URL: ${{ secrets.SUPABASE_BACKUP_DB_URL }}
+          RESTORE_ADMIN_URL: host=localhost port=5432 user=postgres dbname=postgres
+          PG_BIN: /usr/lib/postgresql/17/bin
+          OUT_DIR: backup-out
+        run: services/forum/backup/backup_drill.sh | tee backup-drill.log && grep -q '^BACKUP_DRILL=PASS$' backup-drill.log
+
+      - name: Mã hóa bằng khóa công khai, xóa bản rõ
+        if: steps.cfg.outputs.run == 'true'
+        env:
+          PUBKEY: ${{ vars.BACKUP_GPG_PUBLIC_KEY }}
+        run: |
+          export GNUPGHOME=$(mktemp -d)
+          printf '%s\n' "$PUBKEY" | gpg --batch --import 2>/dev/null
+          fpr=$(gpg --batch --with-colons --list-keys | awk -F: '$1=="fpr"{print $10; exit}')
+          [ -n "$fpr" ] || { echo "::error::Không đọc được khóa công khai"; exit 1; }
+          for f in backup-out/*.dump; do
+            gpg --batch --yes --trust-model always --recipient "$fpr" --output "$f.gpg" --encrypt "$f"
+            shred -u "$f"
+          done
+          rm -f backup-out/source.snapshot backup-out/restore.snapshot
+          ls backup-out | grep -q '\.dump$' && { echo "::error::Còn bản chưa mã hóa"; exit 1; }
+          (cd backup-out && sha256sum *.gpg > SHA256SUMS)
+          { echo "BACKUP=PASS • recipient $fpr"; echo '```'; cat backup-drill.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        if: steps.cfg.outputs.run == 'true'
+        with:
+          name: cfp-backup-${{ github.run_id }}
+          path: |
+            backup-out/*.gpg
+            backup-out/SHA256SUMS
+            backup-out/manifest.json
+            backup-drill.log
+          retention-days: 30
+          if-no-files-found: error
