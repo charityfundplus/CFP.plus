@@ -1,0 +1,2734 @@
+[
+  {
+    "canonical_url": "https://cfp.plus/0",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": {
+      "url": "https://cfp.plus/0",
+      "checked_at": "2026-10-18T11:28:26.580623+00:00",
+      "http": 200,
+      "final_url": "https://cfp.plus/0",
+      "sha256": "6c58074f2309ad0fbf04de711ccd235b5c620bd94e53d5827ba8293385bf1188",
+      "heading": "Nền Tảng, Số 0, Quản Trị Và Điều Phối",
+      "canonical_declarations": [],
+      "matches_main_file_bytes": true,
+      "client_redirect_present": false,
+      "acceptance": "HTTP OBSERVATION ONLY; no deployment provenance or content approval"
+    },
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/1",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": {
+      "url": "https://cfp.plus/1",
+      "checked_at": "2026-10-18T11:28:26.581133+00:00",
+      "http": 200,
+      "final_url": "https://cfp.plus/1",
+      "sha256": "ac25f42b2ae4a6765222d20bb6faca557a0c126239ffdd985ddad0658c750187",
+      "heading": "Sự Sống",
+      "canonical_declarations": [],
+      "matches_main_file_bytes": true,
+      "client_redirect_present": false,
+      "acceptance": "HTTP OBSERVATION ONLY; no deployment provenance or content approval"
+    },
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/2",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": {
+      "url": "https://cfp.plus/2",
+      "checked_at": "2026-10-18T11:28:26.581587+00:00",
+      "http": 200,
+      "final_url": "https://cfp.plus/2",
+      "sha256": "fe33cab8abce3918c07fdb623113c87ae3b6cb43470723efa72e06fd86b37efd",
+      "heading": "Con Người",
+      "canonical_declarations": [],
+      "matches_main_file_bytes": true,
+      "client_redirect_present": false,
+      "acceptance": "HTTP OBSERVATION ONLY; no deployment provenance or content approval"
+    },
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/3",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": {
+      "url": "https://cfp.plus/3",
+      "checked_at": "2026-10-18T11:28:26.582039+00:00",
+      "http": 200,
+      "final_url": "https://cfp.plus/3",
+      "sha256": "c3146bc21bfc8d84faea4128f7a85cc7263c03d9e39e5044ac8b3328485c8fe2",
+      "heading": "Bộ Tam và Ba Quỹ",
+      "canonical_declarations": [],
+      "matches_main_file_bytes": true,
+      "client_redirect_present": false,
+      "acceptance": "HTTP OBSERVATION ONLY; no deployment provenance or content approval"
+    },
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/4",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": {
+      "url": "https://cfp.plus/4",
+      "checked_at": "2026-10-18T11:28:27.454165+00:00",
+      "http": 200,
+      "final_url": "https://cfp.plus/4",
+      "sha256": "6549dd29d642c0a16c16ecda6e1f384f037928eadd7132771de552f9adc406ce",
+      "heading": "Tôn Giáo và Tín Ngưỡng",
+      "canonical_declarations": [],
+      "matches_main_file_bytes": true,
+      "client_redirect_present": false,
+      "acceptance": "HTTP OBSERVATION ONLY; no deployment provenance or content approval"
+    },
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/5",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": {
+      "url": "https://cfp.plus/5",
+      "checked_at": "2026-10-18T11:28:27.601963+00:00",
+      "http": 200,
+      "final_url": "https://cfp.plus/5",
+      "sha256": "2a5233b50cfb393b78393e144a39e116f125b09de8cab963275beb07730eadbd",
+      "heading": "Bộ Ngũ và Cộng Đồng",
+      "canonical_declarations": [],
+      "matches_main_file_bytes": true,
+      "client_redirect_present": false,
+      "acceptance": "HTTP OBSERVATION ONLY; no deployment provenance or content approval"
+    },
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/6",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": {
+      "url": "https://cfp.plus/6",
+      "checked_at": "2026-10-18T11:28:27.616736+00:00",
+      "http": 200,
+      "final_url": "https://cfp.plus/6",
+      "sha256": "a10a4320a3eb72d720ac26b2d34e59ac49cfca5c3c35bef5f7786b5929ae6eea",
+      "heading": "AI 🤖 Phục Vụ Con Người",
+      "canonical_declarations": [],
+      "matches_main_file_bytes": true,
+      "client_redirect_present": false,
+      "acceptance": "HTTP OBSERVATION ONLY; no deployment provenance or content approval"
+    },
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/7",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": {
+      "url": "https://cfp.plus/7",
+      "checked_at": "2026-10-18T11:28:27.733028+00:00",
+      "http": 200,
+      "final_url": "https://cfp.plus/7",
+      "sha256": "00d6f8b8842da736a4d5770bd332170491b8d38ee7ad3ee1e7b4588cfc7f5eae",
+      "heading": "Doanh Nghiệp",
+      "canonical_declarations": [],
+      "matches_main_file_bytes": true,
+      "client_redirect_present": false,
+      "acceptance": "HTTP OBSERVATION ONLY; no deployment provenance or content approval"
+    },
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/8",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": {
+      "url": "https://cfp.plus/8",
+      "checked_at": "2026-10-18T11:28:28.211925+00:00",
+      "http": 200,
+      "final_url": "https://cfp.plus/8",
+      "sha256": "8079fc40283fe4b1d179e4ffd85090a326e89520988d666f569c30a572f85708",
+      "heading": "Các Tổ Chức và Các Quỹ",
+      "canonical_declarations": [],
+      "matches_main_file_bytes": true,
+      "client_redirect_present": false,
+      "acceptance": "HTTP OBSERVATION ONLY; no deployment provenance or content approval"
+    },
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": {
+      "url": "https://cfp.plus/9",
+      "checked_at": "2026-10-18T11:28:28.269209+00:00",
+      "http": 200,
+      "final_url": "https://cfp.plus/9",
+      "sha256": "5f6975aa7dbdb63203fa19d484a4b9644f8148ae1c5eb50984e53d791c611aa9",
+      "heading": "Quốc Gia và Vùng Lãnh Thổ 🌍",
+      "canonical_declarations": [],
+      "matches_main_file_bytes": true,
+      "client_redirect_present": false,
+      "acceptance": "HTTP OBSERVATION ONLY; no deployment provenance or content approval"
+    },
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/00",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/30",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/31",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/32",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/33",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/34",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/35",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/36",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/37",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/38",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/39",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": {
+      "url": "https://cfp.plus/69",
+      "checked_at": "2026-10-18T11:28:28.275846+00:00",
+      "http": 200,
+      "final_url": "https://cfp.plus/69",
+      "sha256": "1834ff48806b0cedc65791d69687f30406d066bf970787252cb034bdb9339cc4",
+      "heading": "HUB 69 • Cổng Duy Nhất CFP+",
+      "canonical_declarations": [],
+      "matches_main_file_bytes": true,
+      "client_redirect_present": false,
+      "acceptance": "HTTP OBSERVATION ONLY; no deployment provenance or content approval"
+    },
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/90",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/91",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/92",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/93",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/94",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/95",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/96",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/97",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/98",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/99",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/000",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": {
+      "url": "https://cfp.plus/000",
+      "checked_at": "2026-10-18T11:28:28.358884+00:00",
+      "http": 200,
+      "final_url": "https://cfp.plus/000",
+      "sha256": "a9debf46c95af374846bb55102eb26dfa320a812b705d4f821f952c7670a9f41",
+      "heading": "CFP+",
+      "canonical_declarations": [],
+      "matches_main_file_bytes": true,
+      "client_redirect_present": false,
+      "acceptance": "HTTP OBSERVATION ONLY; no deployment provenance or content approval"
+    },
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/135",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": {
+      "url": "https://cfp.plus/135",
+      "checked_at": "2026-10-18T11:28:28.415785+00:00",
+      "http": 200,
+      "final_url": "https://cfp.plus/135",
+      "sha256": "b75e8e629325ad0ef3ec07f9529e87825c9fbdae136f2faabc8bed1c06b2232f",
+      "heading": "CFP+ AI Office",
+      "canonical_declarations": [],
+      "matches_main_file_bytes": false,
+      "client_redirect_present": false,
+      "acceptance": "HTTP OBSERVATION ONLY; no deployment provenance or content approval"
+    },
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/237",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/246",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": {
+      "url": "https://cfp.plus/246",
+      "checked_at": "2026-10-18T11:28:28.460245+00:00",
+      "http": 200,
+      "final_url": "https://cfp.plus/246",
+      "sha256": "b75e8e629325ad0ef3ec07f9529e87825c9fbdae136f2faabc8bed1c06b2232f",
+      "heading": "CFP+ AI Office",
+      "canonical_declarations": [],
+      "matches_main_file_bytes": false,
+      "client_redirect_present": false,
+      "acceptance": "HTTP OBSERVATION ONLY; no deployment provenance or content approval"
+    },
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/267",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": {
+      "url": "https://cfp.plus/267",
+      "checked_at": "2026-10-18T11:28:29.744674+00:00",
+      "http": 200,
+      "final_url": "https://cfp.plus/267",
+      "sha256": "af2dea8bcc93cf9ac97806af88b0a6ba9f046a57c78301c6d25c8e148fe1bed1",
+      "heading": "CMP & MCP • Điều Phối AI Có Evidence",
+      "canonical_declarations": [],
+      "matches_main_file_bytes": true,
+      "client_redirect_present": false,
+      "acceptance": "HTTP OBSERVATION ONLY; no deployment provenance or content approval"
+    },
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/276",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/312",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/343",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/345",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/362",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/365",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/627",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/789",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": {
+      "url": "https://cfp.plus/789",
+      "checked_at": "2026-10-18T11:28:28.805020+00:00",
+      "http": 200,
+      "final_url": "https://cfp.plus/789",
+      "sha256": "b75e8e629325ad0ef3ec07f9529e87825c9fbdae136f2faabc8bed1c06b2232f",
+      "heading": "CFP+ AI Office",
+      "canonical_declarations": [],
+      "matches_main_file_bytes": false,
+      "client_redirect_present": false,
+      "acceptance": "HTTP OBSERVATION ONLY; no deployment provenance or content approval"
+    },
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/910",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/911",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": {
+      "url": "https://cfp.plus/911",
+      "checked_at": "2026-10-18T11:28:28.855559+00:00",
+      "http": 200,
+      "final_url": "https://cfp.plus/911",
+      "sha256": "7090fe5683c8c5bd2d51f88f8c70f46995bcb6fe54a076e5e30adc4ce1c979ee",
+      "heading": null,
+      "canonical_declarations": [],
+      "matches_main_file_bytes": true,
+      "client_redirect_present": true,
+      "acceptance": "HTTP OBSERVATION ONLY; no deployment provenance or content approval"
+    },
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/920",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/927",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/930",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/931",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/932",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/933",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/934",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/949",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/961",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/965",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/981",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/982",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/984",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/986",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/991",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/2374",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/2378",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/2624",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/2633",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/2676",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/3863",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/4376",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/5272",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/5458",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/5824",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/6535",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": {
+      "url": "https://cfp.plus/6535",
+      "checked_at": "2026-10-18T11:28:29.694710+00:00",
+      "http": 200,
+      "final_url": "https://cfp.plus/6535",
+      "sha256": "b75e8e629325ad0ef3ec07f9529e87825c9fbdae136f2faabc8bed1c06b2232f",
+      "heading": "CFP+ AI Office",
+      "canonical_declarations": [],
+      "matches_main_file_bytes": false,
+      "client_redirect_present": false,
+      "acceptance": "HTTP OBSERVATION ONLY; no deployment provenance or content approval"
+    },
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/6735",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/6848",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/6910",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": {
+      "url": "https://cfp.plus/6910",
+      "checked_at": "2026-10-18T11:28:28.956344+00:00",
+      "http": 200,
+      "final_url": "https://cfp.plus/6910",
+      "sha256": "5d93cc5878e7cf17a145dc8911ba5ae2f883ad728bc36823311725d901a8d047",
+      "heading": "AI 🤖 Canada 🇨🇦",
+      "canonical_declarations": [],
+      "matches_main_file_bytes": true,
+      "client_redirect_present": false,
+      "acceptance": "HTTP OBSERVATION ONLY; no deployment provenance or content approval"
+    },
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/6911",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": {
+      "url": "https://cfp.plus/6911",
+      "checked_at": "2026-10-18T11:28:28.909148+00:00",
+      "http": 200,
+      "final_url": "https://cfp.plus/6911",
+      "sha256": "56d41946cccc504e084d59ac28a9f4ba409c9c56309506b1baa64493b4a6dc51",
+      "heading": "AI 🤖 Hoa Kỳ 🇺🇸",
+      "canonical_declarations": [],
+      "matches_main_file_bytes": true,
+      "client_redirect_present": false,
+      "acceptance": "HTTP OBSERVATION ONLY; no deployment provenance or content approval"
+    },
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/6920",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/6927",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/6930",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/6931",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/6932",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/6933",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/6934",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/6949",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/6961",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/6965",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/6969",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/6981",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/6982",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/6984",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": {
+      "url": "https://cfp.plus/6984",
+      "checked_at": "2026-10-18T11:28:28.973192+00:00",
+      "http": 200,
+      "final_url": "https://cfp.plus/6984",
+      "sha256": "ced824f839266890561678d51795f6037bc39b38fddb9774bddd43e0194b6f38",
+      "heading": "AI 🤖 Việt Nam 🇻🇳",
+      "canonical_declarations": [],
+      "matches_main_file_bytes": true,
+      "client_redirect_present": false,
+      "acceptance": "HTTP OBSERVATION ONLY; no deployment provenance or content approval"
+    },
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/6986",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/6991",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/8282",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/8682",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/8882",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": {
+      "url": "https://cfp.plus/8882",
+      "checked_at": "2026-10-18T11:28:29.778894+00:00",
+      "http": 200,
+      "final_url": "https://cfp.plus/8882",
+      "sha256": "b75e8e629325ad0ef3ec07f9529e87825c9fbdae136f2faabc8bed1c06b2232f",
+      "heading": "CFP+ AI Office",
+      "canonical_declarations": [],
+      "matches_main_file_bytes": false,
+      "client_redirect_present": false,
+      "acceptance": "HTTP OBSERVATION ONLY; no deployment provenance or content approval"
+    },
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9120",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9121",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9122",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9123",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9124",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9125",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9126",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9127",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9128",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9129",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9130",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9131",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9132",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9133",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9134",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9135",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9140",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9141",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9142",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9143",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9144",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9150",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9211",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9212",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9213",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9216",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9218",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9220",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9221",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9222",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9223",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9224",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9225",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9226",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9227",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9228",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9229",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9230",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9231",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9232",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9233",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9234",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9235",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9236",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9237",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9238",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9239",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9240",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9241",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9242",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9243",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9244",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9245",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9246",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9247",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9248",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9249",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9250",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9251",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9252",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9253",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9254",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9255",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9256",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9257",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9258",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9260",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9261",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9262",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9263",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9264",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9265",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9266",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9267",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9268",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9269",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9290",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9291",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9297",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9298",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9299",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9350",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9351",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9352",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9353",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9354",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9355",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9356",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9357",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9440",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9624",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9886",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9966",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9971",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/9972",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/00000",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/28882",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69101",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69102",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69103",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69104",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69105",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69106",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69107",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69108",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69109",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69110",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69111",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69112",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69113",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69114",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69115",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69116",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69117",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69118",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": {
+      "url": "https://cfp.plus/69118",
+      "checked_at": "2026-10-18T11:28:29.009089+00:00",
+      "http": 200,
+      "final_url": "https://cfp.plus/69118",
+      "sha256": "3b6b96a19943e8fdd1e151156a15bc32679340769b354aa3004add72ef570eab",
+      "heading": "OpenAI",
+      "canonical_declarations": [],
+      "matches_main_file_bytes": true,
+      "client_redirect_present": false,
+      "acceptance": "HTTP OBSERVATION ONLY; no deployment provenance or content approval"
+    },
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69119",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69120",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69121",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69122",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69123",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69124",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69125",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69126",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69127",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69128",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69129",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69130",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69131",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69132",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69133",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69134",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69135",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69140",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69141",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69142",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69143",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69144",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69150",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69211",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69212",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69213",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69216",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69218",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69220",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69221",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69222",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69223",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69224",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69225",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69226",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69227",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69228",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69229",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69230",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69231",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69232",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69233",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69234",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69235",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69236",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69237",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69238",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69239",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69240",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69241",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69242",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69243",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69244",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69245",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69246",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69247",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69248",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69249",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69250",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69251",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69252",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69253",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69254",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69255",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69256",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69257",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69258",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69260",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69261",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69262",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69263",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69264",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69265",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69266",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69267",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69268",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69269",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69290",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69291",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69297",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69298",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69299",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69350",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69351",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69352",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69353",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69354",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69355",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69356",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69357",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69440",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69841",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69842",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69843",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69844",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69845",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69846",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69847",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69848",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69849",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69886",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69966",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69971",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69972",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/86820",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/86821",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/86822",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/86823",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/86824",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/86825",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/86826",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/86827",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/86828",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/86829",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/91290",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/383236",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/691001",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/691002",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/691109",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/691121",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/691141",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/691142",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/691143",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/691144",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/691151",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/691161",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/691181",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": {
+      "url": "https://cfp.plus/691181",
+      "checked_at": "2026-10-18T11:28:29.228053+00:00",
+      "http": 200,
+      "final_url": "https://cfp.plus/691181",
+      "sha256": "3f710e3f46c87b5499a3984c17e3af07dad290937b7091efab20eef70e285234",
+      "heading": "ChatGPT",
+      "canonical_declarations": [],
+      "matches_main_file_bytes": true,
+      "client_redirect_present": false,
+      "acceptance": "HTTP OBSERVATION ONLY; no deployment provenance or content approval"
+    },
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/691191",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/691290",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/698401",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/698402",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/698403",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/698404",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/6911421",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/6984001",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/69840001",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/698400001",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/0123456789",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": {
+      "url": "https://cfp.plus/0123456789",
+      "checked_at": "2026-10-18T11:28:26.580040+00:00",
+      "http": 200,
+      "final_url": "https://cfp.plus/0123456789",
+      "sha256": "e8186c89365ca86001e5f52e4086e1f6ed4cbcee021af3dc43be9175764ba8f4",
+      "heading": "5 Nhóm • 10 Chương CFP+",
+      "canonical_declarations": [],
+      "matches_main_file_bytes": true,
+      "client_redirect_present": false,
+      "acceptance": "HTTP OBSERVATION ONLY; no deployment provenance or content approval"
+    },
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/6920260821",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  },
+  {
+    "canonical_url": "https://cfp.plus/6984000001",
+    "candidate_http": 200,
+    "candidate_source_readback": "PASS",
+    "production_observation": null,
+    "canonical_governance_acceptance": "NOT VERIFIED"
+  }
+]

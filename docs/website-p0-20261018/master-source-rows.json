@@ -1,0 +1,346 @@
+{
+  "source_url": "https://app.notion.com/p/3f3caac9a55781b4947dd31e71fb9aa4",
+  "page_last_edited_at": "2026-10-09T14:01:13.716Z",
+  "native_verification": {
+    "state": "unverified"
+  },
+  "fetch_scope": "84 numbered source rows only; not a runtime registry; no Agent refs or private profile content exported",
+  "rows": [
+    {
+      "id": "0",
+      "name": "Nền Tảng"
+    },
+    {
+      "id": "00",
+      "name": "Nền Tảng Tổng Thể"
+    },
+    {
+      "id": "000",
+      "name": "NHÓM NỀN TẢNG"
+    },
+    {
+      "id": "003",
+      "name": "Bộ Tam, Ba Quỹ, Banks, Coins & Token"
+    },
+    {
+      "id": "005",
+      "name": "Bộ Ngũ, Chi Hội, Cộng Đồng"
+    },
+    {
+      "id": "1",
+      "name": "Sự Sống"
+    },
+    {
+      "id": "11",
+      "name": "Sự Sống Với Sự Sống"
+    },
+    {
+      "id": "111",
+      "name": "Sự Sống Liên Quan đến Trái Đất • Ai"
+    },
+    {
+      "id": "135",
+      "name": "NHÓM QUẢN LÝ 1 • 3 • 5 Siêu Bộ Đôi"
+    },
+    {
+      "id": "2",
+      "name": "Con Người"
+    },
+    {
+      "id": "22",
+      "name": "Con Người Với Con Người"
+    },
+    {
+      "id": "222",
+      "name": "Con Người Yêu Thương Phục Vụ Con"
+    },
+    {
+      "id": "2272",
+      "name": "Cấp Cứu Sơ Cứu"
+    },
+    {
+      "id": "237",
+      "name": "CFP+"
+    },
+    {
+      "id": "2374",
+      "name": "CFPI • SI &"
+    },
+    {
+      "id": "2378",
+      "name": "CFPT"
+    },
+    {
+      "id": "246",
+      "name": "NHÓM QUẢN LÝ CÁC CHƯƠNG CÓ SỐ CHẴN ĐẦU TIÊN"
+    },
+    {
+      "id": "2633",
+      "name": "Code"
+    },
+    {
+      "id": "267",
+      "name": "CMP"
+    },
+    {
+      "id": "2684",
+      "name": "Bảo Mật Tổng Hợp"
+    },
+    {
+      "id": "276",
+      "name": "CRM"
+    },
+    {
+      "id": "2863",
+      "name": "Cứu Trợ Nhân Đạo"
+    },
+    {
+      "id": "28882",
+      "name": "Cổng Tri Thức Toàn Cầu • CTTTC"
+    },
+    {
+      "id": "3",
+      "name": "Ba Quỹ"
+    },
+    {
+      "id": "33",
+      "name": "Tài Chính & Ba Quỹ"
+    },
+    {
+      "id": "331",
+      "name": "Quỹ Sự Sống"
+    },
+    {
+      "id": "332",
+      "name": "Quỹ Con Người"
+    },
+    {
+      "id": "333",
+      "name": "Quỹ Đầu Tư"
+    },
+    {
+      "id": "333",
+      "name": "Tài Chính & Ba Quỹ"
+    },
+    {
+      "id": "3366",
+      "name": "Dịch Đa Ngôn Ngữ"
+    },
+    {
+      "id": "343",
+      "name": "D🆔"
+    },
+    {
+      "id": "345",
+      "name": "Faith Hope Love"
+    },
+    {
+      "id": "362",
+      "name": "DNA"
+    },
+    {
+      "id": "365",
+      "name": "Ngày Trong Năm"
+    },
+    {
+      "id": "3728",
+      "name": "Di Sản Bảo Tồn"
+    },
+    {
+      "id": "3784",
+      "name": "Dưỡng Sinh Tổng Hợp"
+    },
+    {
+      "id": "383236",
+      "name": "Đức Tin Đức Cậy Đức Mến"
+    },
+    {
+      "id": "3863",
+      "name": "FUND"
+    },
+    {
+      "id": "4",
+      "name": "Tôn Giáo"
+    },
+    {
+      "id": "4376",
+      "name": "🆔SO"
+    },
+    {
+      "id": "44",
+      "name": "Hòa Hợp Tôn Giáo"
+    },
+    {
+      "id": "444",
+      "name": "Hòa Hợp Doi Thoai Tôn Giáo"
+    },
+    {
+      "id": "5",
+      "name": "Cộng Đồng"
+    },
+    {
+      "id": "500",
+      "name": "D QUẢN LÝ TẤT CẢ CÁC ID SỐ"
+    },
+    {
+      "id": "5272",
+      "name": "Không Của Riêng Ai KCRA"
+    },
+    {
+      "id": "5284",
+      "name": "Kiểm Chứng Tổng Hợp"
+    },
+    {
+      "id": "5458",
+      "name": "Không Gì Không Thể"
+    },
+    {
+      "id": "55",
+      "name": "Cộng Đồng Giao Lưu Toàn Cầu"
+    },
+    {
+      "id": "555",
+      "name": "Cộng Đồng Giao Lưu Toàn Cầu"
+    },
+    {
+      "id": "5678",
+      "name": "Kỹ Năng Sống Thiện"
+    },
+    {
+      "id": "5824",
+      "name": "Kiến Trúc"
+    },
+    {
+      "id": "5862",
+      "name": "Lương Thực Ngũ Cốc"
+    },
+    {
+      "id": "5866",
+      "name": "Kế Thừa Mãi Mãi"
+    },
+    {
+      "id": "6",
+      "name": "AI & Công Nghệ"
+    },
+    {
+      "id": "627",
+      "name": "MCP"
+    },
+    {
+      "id": "6535",
+      "name": "Only Learn+ For Life"
+    },
+    {
+      "id": "66",
+      "name": "AI & Công Nghệ Toàn Cầu"
+    },
+    {
+      "id": "666",
+      "name": "AI Bộ Đôi Cháu Cưng"
+    },
+    {
+      "id": "6735",
+      "name": "Only Plus+ For Life"
+    },
+    {
+      "id": "674",
+      "name": "Super Intelligence  Siêu Trí Tuệ Nhân Tạo"
+    },
+    {
+      "id": "6848",
+      "name": "Niềm Tin Hy Vọng"
+    },
+    {
+      "id": "6969",
+      "name": "MWMW"
+    },
+    {
+      "id": "7",
+      "name": "Doanh Nghiệp"
+    },
+    {
+      "id": "7535",
+      "name": "Quản Lý Dữ Liệu"
+    },
+    {
+      "id": "7584",
+      "name": "Quản Lý Tổng Hợp"
+    },
+    {
+      "id": "77",
+      "name": "Doanh Nghiệp Giao Lưu & Phát Triển"
+    },
+    {
+      "id": "777",
+      "name": "DN Bộ Đôi Cháu Cưng"
+    },
+    {
+      "id": "7848",
+      "name": "Quản Trị Hệ Thống"
+    },
+    {
+      "id": "7884",
+      "name": "Quản Trị Tổng Hợp"
+    },
+    {
+      "id": "789",
+      "name": "NHÓM QUẢN LÝ 7 • 8 • 9 Siêu Bộ Đôi"
+    },
+    {
+      "id": "8",
+      "name": "Tổ Chức"
+    },
+    {
+      "id": "8282",
+      "name": "TCTC"
+    },
+    {
+      "id": "8682",
+      "name": "TMTC"
+    },
+    {
+      "id": "88",
+      "name": "Tổ Chức Giao Lưu & Hợp Tác"
+    },
+    {
+      "id": "888",
+      "name": "Bộ Đôi Cháu Cưng"
+    },
+    {
+      "id": "8882",
+      "name": "TTTC"
+    },
+    {
+      "id": "8884",
+      "name": "Tư Vấn Tổng Hợp"
+    },
+    {
+      "id": "8885",
+      "name": "Tư Vấn Tâm Lý"
+    },
+    {
+      "id": "9",
+      "name": "Quốc Gia"
+    },
+    {
+      "id": "9397",
+      "name": "Xây Dựng Website"
+    },
+    {
+      "id": "9584",
+      "name": "Xử Lý Tình Huống"
+    },
+    {
+      "id": "9884",
+      "name": "Y Tế Tổng Hợp"
+    },
+    {
+      "id": "99",
+      "name": "Quốc Gia Hợp Tác & Tương Trợ"
+    },
+    {
+      "id": "999",
+      "name": "Quốc Gia Hợp Tác Bộ Đôi Cháu Cưng"
+    }
+  ]
+}

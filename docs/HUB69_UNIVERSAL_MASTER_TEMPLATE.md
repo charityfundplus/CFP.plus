@@ -13,6 +13,24 @@ Một mẫu chung duy nhất để **Notion • GitHub • Google • Cloud Webs
 
 ## 0 • Canonical Web Link
 
+### Link Mẫu Chuẩn • đề xuất triển khai P0
+
+Chuỗi Canonical ID/Stable ID giữ nguyên số 0 đầu; URL duy nhất là
+`https://cfp.plus/{StableID}` (không dấu `/` cuối, query hoặc fragment).
+DID và Parent chỉ sao chép từ trường nguồn được xác minh; thiếu trường ghi
+`UNKNOWN`, không suy từ prefix, Country context hoặc URL có thể mở được.
+Revision không tự tạo DID mới. Trình kiểm tra read-only:
+`python scripts/check_public_identity.py`.
+
+HSTDN dùng tiếp mẫu Developer trong
+`registry/DEVELOPER_CANONICAL_PROFILE_TEMPLATE.md`: identity, nguồn chính thức,
+sản phẩm/dịch vụ, AI con, lịch sử và review. Pháp nhân, mã đăng ký doanh nghiệp,
+đại diện, quyền hợp tác và kênh liên hệ chưa có Evidence giữ `UNKNOWN`.
+Không dùng tên thương mại hoặc ID Developer để tự xác nhận pháp nhân HSTDN.
+Hồ sơ OpenAI tiếp tục tại PR #142; không nhập hoặc ghi đè hồ sơ đang review
+trong thay đổi điều hướng này. Master Registry/Notion phải được đối chiếu bằng
+stable source reference trước khi phê duyệt cập nhật bất kỳ hồ sơ nào.
+
 1. HUB 69: https://cfp.plus/69
 2. Mọi ID: `https://cfp.plus/{StableID}`
 3. Một Stable ID → một Canonical Web URL.

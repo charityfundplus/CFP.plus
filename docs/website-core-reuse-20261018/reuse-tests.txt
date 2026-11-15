@@ -1,0 +1,7 @@
+test_private_bundle_reuses_exact_client_without_snapshot_or_activation (__main__.ReuseTests.test_private_bundle_reuses_exact_client_without_snapshot_or_activation) ... ok
+test_refuses_public_source_output (__main__.ReuseTests.test_refuses_public_source_output) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.130s
+
+OK

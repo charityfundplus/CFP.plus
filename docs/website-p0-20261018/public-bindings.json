@@ -1,0 +1,2742 @@
+[
+  {
+    "id": "6910",
+    "name": "Canada",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐANG BỔ SUNG/REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "6911",
+    "name": "Hoa Kỳ",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐANG BỔ SUNG/REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69120",
+    "name": "Antigua và Barbuda",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69121",
+    "name": "Bahamas",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69122",
+    "name": "Barbados",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69123",
+    "name": "Dominica",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69124",
+    "name": "Cộng hòa Dominica",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69125",
+    "name": "Grenada",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69126",
+    "name": "Jamaica",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69127",
+    "name": "Saint Kitts và Nevis",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69128",
+    "name": "Saint Lucia",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69129",
+    "name": "Saint Vincent và Grenadines",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "691290",
+    "name": "Trinidad và Tobago",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69130",
+    "name": "Anguilla",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69131",
+    "name": "Bermuda",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69132",
+    "name": "Quần đảo Virgin thuộc Anh",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69133",
+    "name": "Quần đảo Cayman",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69134",
+    "name": "Montserrat",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69135",
+    "name": "Quần đảo Turks và Caicos",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69140",
+    "name": "Puerto Rico",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69141",
+    "name": "Quần đảo Virgin thuộc Hoa Kỳ",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69142",
+    "name": "Guam",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69143",
+    "name": "Quần đảo Bắc Mariana",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69144",
+    "name": "Samoa thuộc Hoa Kỳ",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69150",
+    "name": "Sint Maarten",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "6920",
+    "name": "Ai Cập",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69211",
+    "name": "Nam Sudan",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69212",
+    "name": "Morocco",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐANG BỔ SUNG/REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69213",
+    "name": "Algeria",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐANG BỔ SUNG/REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69216",
+    "name": "Tunisia",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69218",
+    "name": "Libya",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐANG BỔ SUNG/REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69220",
+    "name": "Gambia",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69221",
+    "name": "Senegal",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69222",
+    "name": "Mauritania",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69223",
+    "name": "Mali",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69224",
+    "name": "Guinea",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69225",
+    "name": "Bờ Biển Ngà",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69226",
+    "name": "Burkina Faso",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69227",
+    "name": "Niger",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69228",
+    "name": "Togo",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69229",
+    "name": "Benin",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69230",
+    "name": "Mauritius",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69231",
+    "name": "Liberia",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69232",
+    "name": "Sierra Leone",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69233",
+    "name": "Ghana",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐANG BỔ SUNG/REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69234",
+    "name": "Nigeria",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐANG BỔ SUNG/REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69235",
+    "name": "Chad",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69236",
+    "name": "Cộng hòa Trung Phi",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69237",
+    "name": "Cameroon",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69238",
+    "name": "Cabo Verde",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69239",
+    "name": "São Tomé và Príncipe",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69240",
+    "name": "Guinea Xích Đạo",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69241",
+    "name": "Gabon",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69242",
+    "name": "Cộng hòa Congo",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69243",
+    "name": "Cộng hòa Dân chủ Congo",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69244",
+    "name": "Angola",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69245",
+    "name": "Guinea Bissau",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69246",
+    "name": "Diego Garcia",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69247",
+    "name": "Đảo Ascension",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69248",
+    "name": "Seychelles",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69249",
+    "name": "Sudan",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69250",
+    "name": "Rwanda",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐANG BỔ SUNG/REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69251",
+    "name": "Ethiopia",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69252",
+    "name": "Somalia",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69253",
+    "name": "Djibouti",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69254",
+    "name": "Kenya",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐANG BỔ SUNG/REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69255",
+    "name": "Tanzania",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69256",
+    "name": "Uganda",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69257",
+    "name": "Burundi",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69258",
+    "name": "Mozambique",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69260",
+    "name": "Zambia",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69261",
+    "name": "Madagascar",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69262",
+    "name": "Réunion và Mayotte review group",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69263",
+    "name": "Zimbabwe",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69264",
+    "name": "Namibia",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69265",
+    "name": "Malawi",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69266",
+    "name": "Lesotho",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69267",
+    "name": "Botswana",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69268",
+    "name": "Eswatini",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69269",
+    "name": "Comoros",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "6927",
+    "name": "Nam Phi",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐANG BỔ SUNG/REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69290",
+    "name": "Saint Helena",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69291",
+    "name": "Eritrea",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69297",
+    "name": "Aruba",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69298",
+    "name": "Quần đảo Faroe",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69299",
+    "name": "Greenland",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "6930",
+    "name": "Hy Lạp",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "6931",
+    "name": "Hà Lan",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "6932",
+    "name": "Bỉ",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "6933",
+    "name": "France",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐANG BỔ SUNG/REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "6934",
+    "name": "Tây Ban Nha",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69350",
+    "name": "Gibraltar",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69351",
+    "name": "Bồ Đào Nha",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69352",
+    "name": "Luxembourg",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69353",
+    "name": "Ireland",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69354",
+    "name": "Iceland",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69355",
+    "name": "Albania",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69356",
+    "name": "Malta",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69357",
+    "name": "Cyprus",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "6949",
+    "name": "Germany",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "PENDING / HUMAN REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69440",
+    "name": "United Kingdom",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "PENDING / HUMAN REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "6961",
+    "name": "Australia",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "PENDING / HUMAN REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "6965",
+    "name": "Singapore",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "PENDING / HUMAN REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "6981",
+    "name": "Japan",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "PENDING / HUMAN REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "6982",
+    "name": "South Korea",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "PENDING / HUMAN REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "6984",
+    "name": "Việt Nam",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "ĐANG BỔ SUNG/REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "6986",
+    "name": "China",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "PENDING / HUMAN REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69886",
+    "name": "Taiwan",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "PENDING / HUMAN REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "6991",
+    "name": "India",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "PENDING / HUMAN REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69966",
+    "name": "Saudi Arabia",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "PENDING / HUMAN REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69971",
+    "name": "United Arab Emirates",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "PENDING / HUMAN REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69972",
+    "name": "Israel",
+    "source": "registry/global-country-ai-index.json + registry/country-route-map.json",
+    "status": "PENDING / HUMAN REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "910",
+    "name": "Canada",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐANG BỔ SUNG/REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "911",
+    "name": "Hoa Kỳ",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐANG BỔ SUNG/REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9120",
+    "name": "Antigua và Barbuda",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9121",
+    "name": "Bahamas",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9122",
+    "name": "Barbados",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9123",
+    "name": "Dominica",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9124",
+    "name": "Cộng hòa Dominica",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9125",
+    "name": "Grenada",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9126",
+    "name": "Jamaica",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9127",
+    "name": "Saint Kitts và Nevis",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9128",
+    "name": "Saint Lucia",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9129",
+    "name": "Saint Vincent và Grenadines",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "91290",
+    "name": "Trinidad và Tobago",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9130",
+    "name": "Anguilla",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9131",
+    "name": "Bermuda",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9132",
+    "name": "Quần đảo Virgin thuộc Anh",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9133",
+    "name": "Quần đảo Cayman",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9134",
+    "name": "Montserrat",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9135",
+    "name": "Quần đảo Turks và Caicos",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9140",
+    "name": "Puerto Rico",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9141",
+    "name": "Quần đảo Virgin thuộc Hoa Kỳ",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9142",
+    "name": "Guam",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9143",
+    "name": "Quần đảo Bắc Mariana",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9144",
+    "name": "Samoa thuộc Hoa Kỳ",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9150",
+    "name": "Sint Maarten",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "920",
+    "name": "Ai Cập",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9211",
+    "name": "Nam Sudan",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9212",
+    "name": "Morocco",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐANG BỔ SUNG/REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9213",
+    "name": "Algeria",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐANG BỔ SUNG/REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9216",
+    "name": "Tunisia",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9218",
+    "name": "Libya",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐANG BỔ SUNG/REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9220",
+    "name": "Gambia",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9221",
+    "name": "Senegal",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9222",
+    "name": "Mauritania",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9223",
+    "name": "Mali",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9224",
+    "name": "Guinea",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9225",
+    "name": "Bờ Biển Ngà",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9226",
+    "name": "Burkina Faso",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9227",
+    "name": "Niger",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9228",
+    "name": "Togo",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9229",
+    "name": "Benin",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9230",
+    "name": "Mauritius",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9231",
+    "name": "Liberia",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9232",
+    "name": "Sierra Leone",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9233",
+    "name": "Ghana",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐANG BỔ SUNG/REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9234",
+    "name": "Nigeria",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐANG BỔ SUNG/REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9235",
+    "name": "Chad",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9236",
+    "name": "Cộng hòa Trung Phi",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9237",
+    "name": "Cameroon",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9238",
+    "name": "Cabo Verde",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9239",
+    "name": "São Tomé và Príncipe",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9240",
+    "name": "Guinea Xích Đạo",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9241",
+    "name": "Gabon",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9242",
+    "name": "Cộng hòa Congo",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9243",
+    "name": "Cộng hòa Dân chủ Congo",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9244",
+    "name": "Angola",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9245",
+    "name": "Guinea Bissau",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9246",
+    "name": "Diego Garcia",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9247",
+    "name": "Đảo Ascension",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9248",
+    "name": "Seychelles",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9249",
+    "name": "Sudan",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9250",
+    "name": "Rwanda",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐANG BỔ SUNG/REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9251",
+    "name": "Ethiopia",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9252",
+    "name": "Somalia",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9253",
+    "name": "Djibouti",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9254",
+    "name": "Kenya",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐANG BỔ SUNG/REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9255",
+    "name": "Tanzania",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9256",
+    "name": "Uganda",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9257",
+    "name": "Burundi",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9258",
+    "name": "Mozambique",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9260",
+    "name": "Zambia",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9261",
+    "name": "Madagascar",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9262",
+    "name": "Réunion và Mayotte review group",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9263",
+    "name": "Zimbabwe",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9264",
+    "name": "Namibia",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9265",
+    "name": "Malawi",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9266",
+    "name": "Lesotho",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9267",
+    "name": "Botswana",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9268",
+    "name": "Eswatini",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9269",
+    "name": "Comoros",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "927",
+    "name": "Nam Phi",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐANG BỔ SUNG/REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9290",
+    "name": "Saint Helena",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9291",
+    "name": "Eritrea",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9297",
+    "name": "Aruba",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9298",
+    "name": "Quần đảo Faroe",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9299",
+    "name": "Greenland",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "930",
+    "name": "Hy Lạp",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "931",
+    "name": "Hà Lan",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "932",
+    "name": "Bỉ",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "933",
+    "name": "France",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐANG BỔ SUNG/REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "934",
+    "name": "Tây Ban Nha",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9350",
+    "name": "Gibraltar",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9351",
+    "name": "Bồ Đào Nha",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9352",
+    "name": "Luxembourg",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9353",
+    "name": "Ireland",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9354",
+    "name": "Iceland",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9355",
+    "name": "Albania",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9356",
+    "name": "Malta",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9357",
+    "name": "Cyprus",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐÃ CÓ CẤU TRÚC/ID/LINK",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "949",
+    "name": "Germany",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "PENDING / HUMAN REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9440",
+    "name": "United Kingdom",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "PENDING / HUMAN REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "961",
+    "name": "Australia",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "PENDING / HUMAN REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "965",
+    "name": "Singapore",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "PENDING / HUMAN REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "981",
+    "name": "Japan",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "PENDING / HUMAN REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "982",
+    "name": "South Korea",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "PENDING / HUMAN REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "984",
+    "name": "Việt Nam",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "ĐANG BỔ SUNG/REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "986",
+    "name": "China",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "PENDING / HUMAN REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9886",
+    "name": "Taiwan",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "PENDING / HUMAN REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "991",
+    "name": "India",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "PENDING / HUMAN REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9966",
+    "name": "Saudi Arabia",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "PENDING / HUMAN REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9971",
+    "name": "United Arab Emirates",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "PENDING / HUMAN REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9972",
+    "name": "Israel",
+    "source": "registry/global-country-ai-index.json country_id / country-route-map.json",
+    "status": "PENDING / HUMAN REVIEW",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69101",
+    "name": "Ada",
+    "source": "registry/ai-entity-registry.json",
+    "status": "WORKING ALLOCATION • PUBLIC INVENTORY",
+    "parent": null,
+    "content_status": "SOURCE INTRO AVAILABLE",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69102",
+    "name": "BlueDot",
+    "source": "registry/ai-entity-registry.json",
+    "status": "WORKING ALLOCATION • PUBLIC INVENTORY",
+    "parent": null,
+    "content_status": "SOURCE INTRO AVAILABLE",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69103",
+    "name": "Cohere",
+    "source": "registry/ai-entity-registry.json",
+    "status": "WORKING ALLOCATION • PUBLIC INVENTORY",
+    "parent": null,
+    "content_status": "SOURCE INTRO AVAILABLE",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69104",
+    "name": "Coveo",
+    "source": "registry/ai-entity-registry.json",
+    "status": "WORKING ALLOCATION • PUBLIC INVENTORY",
+    "parent": null,
+    "content_status": "SOURCE INTRO AVAILABLE",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69105",
+    "name": "Deep Genomics",
+    "source": "registry/ai-entity-registry.json",
+    "status": "WORKING ALLOCATION • PUBLIC INVENTORY",
+    "parent": null,
+    "content_status": "SOURCE INTRO AVAILABLE",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69106",
+    "name": "Ideogram",
+    "source": "registry/ai-entity-registry.json",
+    "status": "WORKING ALLOCATION • PUBLIC INVENTORY",
+    "parent": null,
+    "content_status": "SOURCE INTRO AVAILABLE",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69107",
+    "name": "OpenText",
+    "source": "registry/ai-entity-registry.json",
+    "status": "WORKING ALLOCATION • PUBLIC INVENTORY",
+    "parent": null,
+    "content_status": "SOURCE INTRO AVAILABLE",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69108",
+    "name": "Sanctuary AI",
+    "source": "registry/ai-entity-registry.json",
+    "status": "WORKING ALLOCATION • PUBLIC INVENTORY",
+    "parent": null,
+    "content_status": "SOURCE INTRO AVAILABLE",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69109",
+    "name": "Waabi",
+    "source": "registry/ai-entity-registry.json",
+    "status": "WORKING ALLOCATION • PUBLIC INVENTORY",
+    "parent": null,
+    "content_status": "SOURCE INTRO AVAILABLE",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "691001",
+    "name": "AltaML",
+    "source": "registry/ai-entity-registry.json",
+    "status": "WORKING ALLOCATION • PUBLIC INVENTORY",
+    "parent": null,
+    "content_status": "SOURCE INTRO AVAILABLE",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "691002",
+    "name": "Voiceflow",
+    "source": "registry/ai-entity-registry.json",
+    "status": "WORKING ALLOCATION • PUBLIC INVENTORY",
+    "parent": null,
+    "content_status": "SOURCE INTRO AVAILABLE",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69111",
+    "name": "Amazon AI / AWS",
+    "source": "registry/ai-entity-registry.json",
+    "status": "REVIEW CANDIDATE • WORKING ALLOCATION",
+    "parent": null,
+    "content_status": "SOURCE INTRO AVAILABLE",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69112",
+    "name": "Anthropic",
+    "source": "registry/ai-entity-registry.json",
+    "status": "REVIEW CANDIDATE • WORKING ALLOCATION",
+    "parent": null,
+    "content_status": "SOURCE INTRO AVAILABLE",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69113",
+    "name": "Apple",
+    "source": "registry/ai-entity-registry.json",
+    "status": "REVIEW CANDIDATE • WORKING ALLOCATION",
+    "parent": null,
+    "content_status": "SOURCE INTRO AVAILABLE",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69114",
+    "name": "Google DeepMind",
+    "source": "registry/ai-entity-registry.json",
+    "status": "REVIEW CANDIDATE • WORKING ALLOCATION",
+    "parent": null,
+    "content_status": "SOURCE INTRO AVAILABLE",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69115",
+    "name": "Meta AI",
+    "source": "registry/ai-entity-registry.json",
+    "status": "REVIEW CANDIDATE • WORKING ALLOCATION",
+    "parent": null,
+    "content_status": "SOURCE INTRO AVAILABLE",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69116",
+    "name": "Microsoft AI",
+    "source": "registry/ai-entity-registry.json",
+    "status": "REVIEW CANDIDATE • WORKING ALLOCATION",
+    "parent": null,
+    "content_status": "SOURCE INTRO AVAILABLE",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69117",
+    "name": "NVIDIA AI",
+    "source": "registry/ai-entity-registry.json",
+    "status": "REVIEW CANDIDATE • WORKING ALLOCATION",
+    "parent": null,
+    "content_status": "SOURCE INTRO AVAILABLE",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69118",
+    "name": "OpenAI",
+    "source": "registry/ai-entity-registry.json",
+    "status": "HUMAN GOVERNANCE APPLICATION • PRESERVED",
+    "parent": null,
+    "content_status": "SOURCE INTRO AVAILABLE",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "69119",
+    "name": "xAI",
+    "source": "registry/ai-entity-registry.json",
+    "status": "REVIEW CANDIDATE • WORKING ALLOCATION",
+    "parent": null,
+    "content_status": "SOURCE INTRO AVAILABLE",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "691121",
+    "name": "Claude",
+    "source": "registry/ai-entity-registry.json",
+    "status": "REVIEW CANDIDATE • OFFICIAL SOURCE IDENTIFIED",
+    "parent": "69112",
+    "content_status": "SOURCE INTRO AVAILABLE",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "691151",
+    "name": "Meta AI Assistant",
+    "source": "registry/ai-entity-registry.json",
+    "status": "REVIEW CANDIDATE • OFFICIAL SOURCE IDENTIFIED",
+    "parent": "69115",
+    "content_status": "SOURCE INTRO AVAILABLE",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "691161",
+    "name": "Microsoft Copilot",
+    "source": "registry/ai-entity-registry.json",
+    "status": "REVIEW CANDIDATE • OFFICIAL SOURCE IDENTIFIED",
+    "parent": "69116",
+    "content_status": "SOURCE INTRO AVAILABLE",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "691181",
+    "name": "ChatGPT",
+    "source": "registry/ai-entity-registry.json",
+    "status": "HUMAN GOVERNANCE APPLICATION • PRESERVED",
+    "parent": "69118",
+    "content_status": "SOURCE INTRO AVAILABLE",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "691191",
+    "name": "Grok",
+    "source": "registry/ai-entity-registry.json",
+    "status": "REVIEW CANDIDATE • OFFICIAL SOURCE IDENTIFIED",
+    "parent": "69119",
+    "content_status": "SOURCE INTRO AVAILABLE",
+    "assignment_status": "SOURCE REFERENCE — NOT INDEPENDENTLY VERIFIED",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "237",
+    "name": null,
+    "source": "charityfundplus/cfp-gateway@0aacc9a292643c87a530fa701f9e89d43cd93f54:pair-registry.json",
+    "status": "BACKEND SOURCE RECORD / NO PROMOTION",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "HUMAN P0 ID LIST / LOCAL BACKEND SOURCE; NO NEW ASSIGNMENT",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "2374",
+    "name": null,
+    "source": "charityfundplus/cfp-gateway@0aacc9a292643c87a530fa701f9e89d43cd93f54:pair-registry.json",
+    "status": "BACKEND SOURCE RECORD / NO PROMOTION",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "HUMAN P0 ID LIST / LOCAL BACKEND SOURCE; NO NEW ASSIGNMENT",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "2378",
+    "name": null,
+    "source": "charityfundplus/cfp-gateway@0aacc9a292643c87a530fa701f9e89d43cd93f54:pair-registry.json",
+    "status": "BACKEND SOURCE RECORD / NO PROMOTION",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "HUMAN P0 ID LIST / LOCAL BACKEND SOURCE; NO NEW ASSIGNMENT",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "267",
+    "name": null,
+    "source": "charityfundplus/cfp-gateway@0aacc9a292643c87a530fa701f9e89d43cd93f54:pair-registry.json",
+    "status": "BACKEND SOURCE RECORD / NO PROMOTION",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "HUMAN P0 ID LIST / LOCAL BACKEND SOURCE; NO NEW ASSIGNMENT",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "2624",
+    "name": null,
+    "source": "charityfundplus/cfp-gateway@0aacc9a292643c87a530fa701f9e89d43cd93f54:pair-registry.json",
+    "status": "BACKEND SOURCE RECORD / NO PROMOTION",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "HUMAN P0 ID LIST / LOCAL BACKEND SOURCE; NO NEW ASSIGNMENT",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "2633",
+    "name": null,
+    "source": "charityfundplus/cfp-gateway@0aacc9a292643c87a530fa701f9e89d43cd93f54:pair-registry.json",
+    "status": "BACKEND SOURCE RECORD / NO PROMOTION",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "HUMAN P0 ID LIST / LOCAL BACKEND SOURCE; NO NEW ASSIGNMENT",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "276",
+    "name": null,
+    "source": "charityfundplus/cfp-gateway@0aacc9a292643c87a530fa701f9e89d43cd93f54:pair-registry.json",
+    "status": "BACKEND SOURCE RECORD / NO PROMOTION",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "HUMAN P0 ID LIST / LOCAL BACKEND SOURCE; NO NEW ASSIGNMENT",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "343",
+    "name": "343 • Quản Trị Định Danh Số CFP+ • AI",
+    "source": "charityfundplus/cfp-gateway@0aacc9a292643c87a530fa701f9e89d43cd93f54:pair-registry.json",
+    "status": "BACKEND SOURCE RECORD / NO PROMOTION",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "HUMAN P0 ID LIST / LOCAL BACKEND SOURCE; NO NEW ASSIGNMENT",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "345",
+    "name": null,
+    "source": "charityfundplus/cfp-gateway@0aacc9a292643c87a530fa701f9e89d43cd93f54:pair-registry.json",
+    "status": "BACKEND SOURCE RECORD / NO PROMOTION",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "HUMAN P0 ID LIST / LOCAL BACKEND SOURCE; NO NEW ASSIGNMENT",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "365",
+    "name": null,
+    "source": "charityfundplus/cfp-gateway@0aacc9a292643c87a530fa701f9e89d43cd93f54:pair-registry.json",
+    "status": "BACKEND SOURCE RECORD / NO PROMOTION",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "HUMAN P0 ID LIST / LOCAL BACKEND SOURCE; NO NEW ASSIGNMENT",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "383236",
+    "name": null,
+    "source": "charityfundplus/cfp-gateway@0aacc9a292643c87a530fa701f9e89d43cd93f54:pair-registry.json",
+    "status": "BACKEND SOURCE RECORD / NO PROMOTION",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "HUMAN P0 ID LIST / LOCAL BACKEND SOURCE; NO NEW ASSIGNMENT",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "3863",
+    "name": null,
+    "source": "charityfundplus/cfp-gateway@0aacc9a292643c87a530fa701f9e89d43cd93f54:pair-registry.json",
+    "status": "BACKEND SOURCE RECORD / NO PROMOTION",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "HUMAN P0 ID LIST / LOCAL BACKEND SOURCE; NO NEW ASSIGNMENT",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "4376",
+    "name": null,
+    "source": "charityfundplus/cfp-gateway@0aacc9a292643c87a530fa701f9e89d43cd93f54:pair-registry.json",
+    "status": "BACKEND SOURCE RECORD / NO PROMOTION",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "HUMAN P0 ID LIST / LOCAL BACKEND SOURCE; NO NEW ASSIGNMENT",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "5272",
+    "name": null,
+    "source": "charityfundplus/cfp-gateway@0aacc9a292643c87a530fa701f9e89d43cd93f54:pair-registry.json",
+    "status": "BACKEND SOURCE RECORD / NO PROMOTION",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "HUMAN P0 ID LIST / LOCAL BACKEND SOURCE; NO NEW ASSIGNMENT",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "5458",
+    "name": null,
+    "source": "charityfundplus/cfp-gateway@0aacc9a292643c87a530fa701f9e89d43cd93f54:pair-registry.json",
+    "status": "BACKEND SOURCE RECORD / NO PROMOTION",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "HUMAN P0 ID LIST / LOCAL BACKEND SOURCE; NO NEW ASSIGNMENT",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "5824",
+    "name": null,
+    "source": "charityfundplus/cfp-gateway@0aacc9a292643c87a530fa701f9e89d43cd93f54:pair-registry.json",
+    "status": "BACKEND SOURCE RECORD / NO PROMOTION",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "HUMAN P0 ID LIST / LOCAL BACKEND SOURCE; NO NEW ASSIGNMENT",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "627",
+    "name": null,
+    "source": "charityfundplus/cfp-gateway@0aacc9a292643c87a530fa701f9e89d43cd93f54:pair-registry.json",
+    "status": "BACKEND SOURCE RECORD / NO PROMOTION",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "HUMAN P0 ID LIST / LOCAL BACKEND SOURCE; NO NEW ASSIGNMENT",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "6535",
+    "name": null,
+    "source": "charityfundplus/cfp-gateway@0aacc9a292643c87a530fa701f9e89d43cd93f54:pair-registry.json",
+    "status": "BACKEND SOURCE RECORD / NO PROMOTION",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "HUMAN P0 ID LIST / LOCAL BACKEND SOURCE; NO NEW ASSIGNMENT",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "6735",
+    "name": null,
+    "source": "charityfundplus/cfp-gateway@0aacc9a292643c87a530fa701f9e89d43cd93f54:pair-registry.json",
+    "status": "BACKEND SOURCE RECORD / NO PROMOTION",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "HUMAN P0 ID LIST / LOCAL BACKEND SOURCE; NO NEW ASSIGNMENT",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "6848",
+    "name": null,
+    "source": "charityfundplus/cfp-gateway@0aacc9a292643c87a530fa701f9e89d43cd93f54:pair-registry.json",
+    "status": "BACKEND SOURCE RECORD / NO PROMOTION",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "HUMAN P0 ID LIST / LOCAL BACKEND SOURCE; NO NEW ASSIGNMENT",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "6969",
+    "name": null,
+    "source": "charityfundplus/cfp-gateway@0aacc9a292643c87a530fa701f9e89d43cd93f54:pair-registry.json",
+    "status": "BACKEND SOURCE RECORD / NO PROMOTION",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "HUMAN P0 ID LIST / LOCAL BACKEND SOURCE; NO NEW ASSIGNMENT",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "8282",
+    "name": null,
+    "source": "charityfundplus/cfp-gateway@0aacc9a292643c87a530fa701f9e89d43cd93f54:pair-registry.json",
+    "status": "BACKEND SOURCE RECORD / NO PROMOTION",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "HUMAN P0 ID LIST / LOCAL BACKEND SOURCE; NO NEW ASSIGNMENT",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "8682",
+    "name": null,
+    "source": "charityfundplus/cfp-gateway@0aacc9a292643c87a530fa701f9e89d43cd93f54:pair-registry.json",
+    "status": "BACKEND SOURCE RECORD / NO PROMOTION",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "HUMAN P0 ID LIST / LOCAL BACKEND SOURCE; NO NEW ASSIGNMENT",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "8882",
+    "name": null,
+    "source": "charityfundplus/cfp-gateway@0aacc9a292643c87a530fa701f9e89d43cd93f54:pair-registry.json",
+    "status": "BACKEND SOURCE RECORD / NO PROMOTION",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "HUMAN P0 ID LIST / LOCAL BACKEND SOURCE; NO NEW ASSIGNMENT",
+    "acceptance": "PENDING EVIDENCE"
+  },
+  {
+    "id": "9624",
+    "name": null,
+    "source": "charityfundplus/cfp-gateway@0aacc9a292643c87a530fa701f9e89d43cd93f54:pair-registry.json",
+    "status": "BACKEND SOURCE RECORD / NO PROMOTION",
+    "parent": null,
+    "content_status": "INCOMPLETE CONTENT",
+    "assignment_status": "HUMAN P0 ID LIST / LOCAL BACKEND SOURCE; NO NEW ASSIGNMENT",
+    "acceptance": "PENDING EVIDENCE"
+  }
+]

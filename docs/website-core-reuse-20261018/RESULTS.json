@@ -1,0 +1,41 @@
+{
+  "new_tests": {
+    "pass": 2,
+    "fail": 0
+  },
+  "pinned_ui_core_http_tests": {
+    "pass": 6,
+    "fail": 0,
+    "scope": "real loopback HTTP + DOM-stub; not mounted HTTPS/browser"
+  },
+  "uiRevision": "8ca11c26fbe3ba76db75ae1aa62b204744233d85",
+  "coreRevision": "06f386b1ba52358779cec6bc26c2d88f6a33664a",
+  "artifact_count": 11,
+  "status": "UNMOUNTED LOCAL PREPARATION",
+  "cloudflare_origin": "BLOCKED BY ENVIRONMENT ACCESS",
+  "private_https_staging": "BLOCKED BY ENVIRONMENT ACCESS",
+  "safari_iphone": "BLOCKED BY ENVIRONMENT ACCESS",
+  "production_provenance_rollback": "BLOCKED BY ENVIRONMENT ACCESS",
+  "old_source": "SOURCE UNAVAILABLE FROM THIS SESSION",
+  "activationAllowed": false,
+  "published": false,
+  "registryWrites": 0,
+  "claude_receipt": false,
+  "gemini_receipt": false,
+  "source_commit": "8f4a3e76aebdff3119ecd3fa0e948061cda0e811",
+  "base_commit": "0ec8555f06b1dd546b778c2fdc8351f85b82b145",
+  "node_version": "v24.19.0",
+  "identity_regression_tests": {
+    "pass": 6,
+    "fail": 0
+  },
+  "public_output_unchanged_files": 360,
+  "registry_diff": "EMPTY",
+  "yaml_parse": "PASS",
+  "review": "Independent Codex2: 2/2 PASS, no blocking finding; reproducibility suggestions applied",
+  "source_sha256": {
+    "scripts/prepare_core_reuse.py": "21ecd9e1524c736ab9ced0f83efb3196650081a75467bc4dda18eae102dc7041",
+    "tests/website/test_core_reuse.py": "b39934fc179bdba8688fc7c4a88d0bc27fcfaec1be30ec2a2f6f17bd36b8f4ee",
+    ".github/workflows/ctttc_ci.yml": "146b1a5f5585650f6d5bf02298f29ac3adc4c1845a123e502b10d473514cb5e5"
+  }
+}

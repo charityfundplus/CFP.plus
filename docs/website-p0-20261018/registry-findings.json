@@ -1,0 +1,211 @@
+{
+  "structural_checks": "PASS",
+  "governance_acceptance": "NOT VERIFIED",
+  "source": "registry/ai-entity-registry.json",
+  "findings": [
+    {
+      "id": "69101",
+      "finding": "Parent absent; country context is not Parent evidence"
+    },
+    {
+      "id": "69101",
+      "finding": "DID field absent; no DID binding verified"
+    },
+    {
+      "id": "69102",
+      "finding": "Parent absent; country context is not Parent evidence"
+    },
+    {
+      "id": "69102",
+      "finding": "DID field absent; no DID binding verified"
+    },
+    {
+      "id": "69103",
+      "finding": "Parent absent; country context is not Parent evidence"
+    },
+    {
+      "id": "69103",
+      "finding": "DID field absent; no DID binding verified"
+    },
+    {
+      "id": "69104",
+      "finding": "Parent absent; country context is not Parent evidence"
+    },
+    {
+      "id": "69104",
+      "finding": "DID field absent; no DID binding verified"
+    },
+    {
+      "id": "69105",
+      "finding": "Parent absent; country context is not Parent evidence"
+    },
+    {
+      "id": "69105",
+      "finding": "DID field absent; no DID binding verified"
+    },
+    {
+      "id": "69106",
+      "finding": "Parent absent; country context is not Parent evidence"
+    },
+    {
+      "id": "69106",
+      "finding": "DID field absent; no DID binding verified"
+    },
+    {
+      "id": "69107",
+      "finding": "Parent absent; country context is not Parent evidence"
+    },
+    {
+      "id": "69107",
+      "finding": "DID field absent; no DID binding verified"
+    },
+    {
+      "id": "69108",
+      "finding": "Parent absent; country context is not Parent evidence"
+    },
+    {
+      "id": "69108",
+      "finding": "DID field absent; no DID binding verified"
+    },
+    {
+      "id": "69109",
+      "finding": "Parent absent; country context is not Parent evidence"
+    },
+    {
+      "id": "69109",
+      "finding": "DID field absent; no DID binding verified"
+    },
+    {
+      "id": "691001",
+      "finding": "Parent absent; country context is not Parent evidence"
+    },
+    {
+      "id": "691001",
+      "finding": "DID field absent; no DID binding verified"
+    },
+    {
+      "id": "691002",
+      "finding": "Parent absent; country context is not Parent evidence"
+    },
+    {
+      "id": "691002",
+      "finding": "DID field absent; no DID binding verified"
+    },
+    {
+      "id": "69111",
+      "finding": "Parent absent; country context is not Parent evidence"
+    },
+    {
+      "id": "69111",
+      "finding": "DID field absent; no DID binding verified"
+    },
+    {
+      "id": "69112",
+      "finding": "Parent absent; country context is not Parent evidence"
+    },
+    {
+      "id": "69112",
+      "finding": "DID field absent; no DID binding verified"
+    },
+    {
+      "id": "69113",
+      "finding": "Parent absent; country context is not Parent evidence"
+    },
+    {
+      "id": "69113",
+      "finding": "DID field absent; no DID binding verified"
+    },
+    {
+      "id": "69114",
+      "finding": "Parent absent; country context is not Parent evidence"
+    },
+    {
+      "id": "69114",
+      "finding": "DID field absent; no DID binding verified"
+    },
+    {
+      "id": "69115",
+      "finding": "Parent absent; country context is not Parent evidence"
+    },
+    {
+      "id": "69115",
+      "finding": "DID field absent; no DID binding verified"
+    },
+    {
+      "id": "69116",
+      "finding": "Parent absent; country context is not Parent evidence"
+    },
+    {
+      "id": "69116",
+      "finding": "DID field absent; no DID binding verified"
+    },
+    {
+      "id": "69117",
+      "finding": "Parent absent; country context is not Parent evidence"
+    },
+    {
+      "id": "69117",
+      "finding": "DID field absent; no DID binding verified"
+    },
+    {
+      "id": "69118",
+      "finding": "Parent absent; country context is not Parent evidence"
+    },
+    {
+      "id": "69118",
+      "finding": "DID field absent; no DID binding verified"
+    },
+    {
+      "id": "69119",
+      "finding": "Parent absent; country context is not Parent evidence"
+    },
+    {
+      "id": "69119",
+      "finding": "DID field absent; no DID binding verified"
+    },
+    {
+      "id": "691121",
+      "finding": "Legacy trailing slash; canonical presentation is https://cfp.plus/691121"
+    },
+    {
+      "id": "691121",
+      "finding": "DID field absent; no DID binding verified"
+    },
+    {
+      "id": "691141",
+      "finding": "Legacy trailing slash; canonical presentation is https://cfp.plus/691141"
+    },
+    {
+      "id": "691141",
+      "finding": "DID field absent; no DID binding verified"
+    },
+    {
+      "id": "691151",
+      "finding": "Legacy trailing slash; canonical presentation is https://cfp.plus/691151"
+    },
+    {
+      "id": "691151",
+      "finding": "DID field absent; no DID binding verified"
+    },
+    {
+      "id": "691161",
+      "finding": "Legacy trailing slash; canonical presentation is https://cfp.plus/691161"
+    },
+    {
+      "id": "691161",
+      "finding": "DID field absent; no DID binding verified"
+    },
+    {
+      "id": "691181",
+      "finding": "DID field absent; no DID binding verified"
+    },
+    {
+      "id": "691191",
+      "finding": "Legacy trailing slash; canonical presentation is https://cfp.plus/691191"
+    },
+    {
+      "id": "691191",
+      "finding": "DID field absent; no DID binding verified"
+    }
+  ]
+}

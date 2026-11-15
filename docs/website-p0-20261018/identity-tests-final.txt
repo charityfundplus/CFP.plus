@@ -1,0 +1,11 @@
+test_chapter_six_and_template_have_review_boundaries (__main__.P0Tests.test_chapter_six_and_template_have_review_boundaries) ... ok
+test_exact_id_and_leading_zeros (__main__.P0Tests.test_exact_id_and_leading_zeros) ... ok
+test_map_groups_chapters_and_no_empty_links (__main__.P0Tests.test_map_groups_chapters_and_no_empty_links) ... ok
+test_reject_identity_parent_and_did_corruption (__main__.P0Tests.test_reject_identity_parent_and_did_corruption) ... ok
+test_source_identity_is_not_promoted (__main__.P0Tests.test_source_identity_is_not_promoted) ... ok
+test_source_url_must_match_exact_identity (__main__.P0Tests.test_source_url_must_match_exact_identity) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.236s
+
+OK

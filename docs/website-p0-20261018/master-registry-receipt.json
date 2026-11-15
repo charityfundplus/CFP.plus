@@ -1,0 +1,120 @@
+{
+  "source_url": "https://app.notion.com/p/57292852d4b04cd1876e38f09a72f5c6?pvs=204",
+  "page_last_edited_at": "2026-07-09T01:54:20.482Z",
+  "native_verification": {
+    "state": "unverified"
+  },
+  "scope": "Document asset registry; not numeric entity/Parent/DID roster",
+  "rows": [
+    {
+      "asset_id": "CFP-CON-001",
+      "status": "Locked",
+      "version": "1.0",
+      "source_of_truth": "Yes",
+      "supersedes": "-",
+      "superseded_by": "-"
+    },
+    {
+      "asset_id": "CFP-CON-002",
+      "status": "Locked",
+      "version": "1.0",
+      "source_of_truth": "Yes",
+      "supersedes": "-",
+      "superseded_by": "-"
+    },
+    {
+      "asset_id": "CFP-CON-003",
+      "status": "Locked",
+      "version": "1.0",
+      "source_of_truth": "Yes",
+      "supersedes": "-",
+      "superseded_by": "-"
+    },
+    {
+      "asset_id": "CFP-CON-004",
+      "status": "Locked",
+      "version": "1.0",
+      "source_of_truth": "Yes",
+      "supersedes": "-",
+      "superseded_by": "-"
+    },
+    {
+      "asset_id": "CFP-CON-005",
+      "status": "Locked",
+      "version": "1.0",
+      "source_of_truth": "Yes",
+      "supersedes": "-",
+      "superseded_by": "-"
+    },
+    {
+      "asset_id": "CFP-CON-006",
+      "status": "Locked",
+      "version": "1.0",
+      "source_of_truth": "Yes",
+      "supersedes": "-",
+      "superseded_by": "-"
+    },
+    {
+      "asset_id": "CFP-CON-007",
+      "status": "Preserved",
+      "version": "1.0",
+      "source_of_truth": "No",
+      "supersedes": "-",
+      "superseded_by": "-"
+    },
+    {
+      "asset_id": "CFP-REG-001",
+      "status": "Preserved",
+      "version": "1.0",
+      "source_of_truth": "Yes",
+      "supersedes": "-",
+      "superseded_by": "-"
+    },
+    {
+      "asset_id": "CFP-REG-002",
+      "status": "Active",
+      "version": "1.0",
+      "source_of_truth": "Yes",
+      "supersedes": "-",
+      "superseded_by": "-"
+    },
+    {
+      "asset_id": "CFP-GOV-001",
+      "status": "Preserved",
+      "version": "1.0",
+      "source_of_truth": "Yes",
+      "supersedes": "-",
+      "superseded_by": "-"
+    },
+    {
+      "asset_id": "CFP-GOV-003",
+      "status": "Locked",
+      "version": "1.0",
+      "source_of_truth": "Yes",
+      "supersedes": "-",
+      "superseded_by": "-"
+    },
+    {
+      "asset_id": "CFP-REG-010",
+      "status": "Active",
+      "version": "1.0",
+      "source_of_truth": "Yes",
+      "supersedes": "-",
+      "superseded_by": "-"
+    },
+    {
+      "asset_id": "CFP-REG-011",
+      "status": "Preserved",
+      "version": "1.0",
+      "source_of_truth": "Yes",
+      "supersedes": "-",
+      "superseded_by": "-"
+    }
+  ],
+  "findings": [
+    "One Row = One Canonical Asset; versions use Version/Supersedes/Superseded By",
+    "Document IDs CFP-CON/REG/GOV are asset identifiers, not allocated numeric website entity IDs",
+    "No numeric Parent/DID/HSTDN bindings supplied by this source; cannot use document status to approve entity JSON26 or pair Master84",
+    "No source record modified"
+  ]
+}
