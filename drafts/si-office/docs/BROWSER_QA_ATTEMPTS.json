@@ -1,0 +1,23 @@
+[
+  {
+    "attempt": 1,
+    "success": false,
+    "exitCode": 1,
+    "stdout": "QA_BROWSER_REPORT {\"sourceCommit\": \"50d17cc1be8408e4e0fd9981a4ff0e15129e6efa\", \"mode\": \"REMOTE EPHEMERAL LOOPBACK / SYNTHETIC ONLY\", \"checks\": [\"office: 12 modules loaded from actual local Node server\", \"office: VI to EN and module contract\"], \"status\": \"FAIL\", \"verifiedFiles\": 65, \"handlerTests\": \"40/40\", \"nodeVersion\": \"v26.8.2\", \"error\": \"Page.wait_for_function: EvalError: Evaluating a string as JavaScript violates the following Content Security Policy directive because 'unsafe-eval' is not an allowed source of script: script-src 'self'\\\".\\n\\n    at eval (<anonymous>)\\n    at predicate (eval at evaluate (:337:30), <anonymous>:4:64)\\n    at next (eval at evaluate (:337:30), <anonymous>:28:37)\", \"serverStopped\": true}\n",
+    "stderr": "Traceback (most recent call last):\n  File \"/opt/hangar/execution/python.py\", line 80, in <module>\n    result = loop.run_until_complete(execute(request[\"code\"]))\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.11/asyncio/base_events.py\", line 653, in run_until_complete\n    return future.result()\n           ^^^^^^^^^^^^^^^\n  File \"/opt/hangar/execution/python.py\", line 60, in execute\n    await value\n  File \"<browser>\", line 203, in <module>\nAssertionError: Page.wait_for_function: EvalError: Evaluating a string as JavaScript violates the following Content Security Policy directive because 'unsafe-eval' is not an allowed source of script: script-src 'self'\".\n\n    at eval (<anonymous>)\n    at predicate (eval at evaluate (:337:30), <anonymous>:4:64)\n    at next (eval at evaluate (:337:30), <anonymous>:28:37)\n"
+  },
+  {
+    "attempt": 2,
+    "success": false,
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/opt/hangar/execution/python.py\", line 80, in <module>\n    result = loop.run_until_complete(execute(request[\"code\"]))\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/lib/python3.11/asyncio/base_events.py\", line 653, in run_until_complete\n    return future.result()\n           ^^^^^^^^^^^^^^^\n  File \"/opt/hangar/execution/python.py\", line 60, in execute\n    await value\n  File \"<browser>\", line 2, in <module>\nModuleNotFoundError: No module named 'playwright'\n"
+  },
+  {
+    "attempt": 3,
+    "success": true,
+    "exitCode": 0,
+    "stdout": "QA_BROWSER_REPORT {\"sourceCommit\": \"50d17cc1be8408e4e0fd9981a4ff0e15129e6efa\", \"mode\": \"REMOTE EPHEMERAL LOOPBACK / SYNTHETIC ONLY\", \"checks\": [\"office: 12 modules loaded from actual local Node server\", \"office: VI to EN and module contract\", \"office: SI/AI registration and identity evidence intake\", \"office: Country and Developer proposals with local references\", \"office: HSTDN legal claim remains NOT VERIFIED\", \"office: product/service drafts linked to office and HSTDN\", \"office: escaped XSS text and draft/review workflow\", \"office: read-synthetic adapter receipt, no live integration\", \"office: payment denial and viewer write restriction\", \"office: EN to VI; 390px no page overflow\", \"core: supervised task, escaped text and separate demo review\", \"core: synchronized metadata upgrade and rollback\", \"core: config replication, overreach safe stop and reviewer recovery\", \"core: synthetic US HSTDN profile, no verified legal relation\", \"core: audit chain independently recalculated in Python\", \"core: viewer restrictions, VI/EN, 390px and no page errors\"], \"status\": \"PASS\", \"verifiedFiles\": 65, \"handlerTests\": \"40/40\", \"nodeVersion\": \"v26.8.2\", \"pageErrors\": [], \"browserVersion\": \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36\", \"auditCheckpoint\": {\"events\": 22, \"sha256\": \"891178f5a7723a344df64ca12c0f504067a9d276e4841fe4f82ac0289e500822\", \"independentPythonRecalculation\": true}, \"serverStopped\": true}\n",
+    "stderr": ""
+  }
+]

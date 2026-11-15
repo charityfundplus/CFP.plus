@@ -1,0 +1,34 @@
+✔ QA-01 task persists after server/SQLite restart and is read in a fresh independent session (816.639332ms)
+✔ QA-02 idempotency replay survives restart; changed payload returns 409 (698.839958ms)
+✔ QA-03 anonymous, viewer, foreign workspace and ungranted pair cannot mutate another task (671.428475ms)
+✔ QA-04 generated synthetic output hash and task-specific audit survive restart, independent review is required (683.337636ms)
+✔ QA-05 session logout is isolated to the revoked session (449.024992ms)
+✔ QA-06 hostile origin, role/owner injection, oversized body and SQL-like credentials fail closed (558.273712ms)
+✔ QA-07 persisted output modification without matching audit is detected (457.709245ms)
+✔ QA-08 forum route availability probe (404 means unavailable, not functional acceptance) (499.87147ms)
+✖ QA-09 malformed unauthenticated request target must not terminate HTTP server (219.755816ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 8
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5438.918928
+
+✖ failing tests:
+
+test at cfp-forum-qa/independent.test.mjs:91:1
+✖ QA-09 malformed unauthenticated request target must not terminate HTTP server (219.755816ms)
+  AssertionError [ERR_ASSERTION]: Unauthenticated malformed request terminated server; exit=1; see malformed-target-crash.log
+      at TestContext.<anonymous> (file:///workspace/cfp-forum-qa/independent.test.mjs:100:106)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'fail',
+    diff: 'simple'
+  }

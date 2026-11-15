@@ -1,0 +1,43 @@
+{
+  "mode": "SYNTHETIC REHEARSAL / NO REAL MEMBER ACK",
+  "teams": 3,
+  "concurrentServices": 3,
+  "sharedDatabase": false,
+  "pairsPerTeam": 3,
+  "results": [
+    {
+      "workspace": "team-0",
+      "pairs": 3,
+      "reviewedTasks": 3,
+      "foreignTokenDenied": true,
+      "restartVerified": true,
+      "audit": {
+        "sequence": 20,
+        "sha256": "fd8cd806bd5bce8abdcf0198ecc7de4bef5303ce6440bcaa668d96e704ad03e1"
+      }
+    },
+    {
+      "workspace": "team-1",
+      "pairs": 3,
+      "reviewedTasks": 3,
+      "foreignTokenDenied": true,
+      "restartVerified": true,
+      "audit": {
+        "sequence": 20,
+        "sha256": "d25ca25adcc94c0599d7c9282cfd9f013c02dc5eafa84dc335657cb6cd39f60c"
+      }
+    },
+    {
+      "workspace": "team-2",
+      "pairs": 3,
+      "reviewedTasks": 3,
+      "foreignTokenDenied": true,
+      "restartVerified": true,
+      "audit": {
+        "sequence": 20,
+        "sha256": "d44aa5a8c4952610b429fa9617f7e8b544f2660439513f4b65e3f13d36b9687d"
+      }
+    }
+  ],
+  "productionApproved": false
+}

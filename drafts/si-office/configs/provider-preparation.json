@@ -1,0 +1,38 @@
+{
+  "status": "CONDITIONAL APPROVAL • HOLD ACTIVATION • PRODUCTION NO-GO",
+  "currency": "USD",
+  "monthlyTargetCents": 1500,
+  "paidCreationAllowed": false,
+  "checkoutAllowed": false,
+  "dnsChangeAllowed": false,
+  "hostRehearsalApproved": false,
+  "profiles": [
+    {
+      "provider": "digitalocean",
+      "priority": "VERIFY FIRST, NOT PURCHASE",
+      "regionProposed": "sgp1",
+      "host": {"plan": "Basic Regular bundled s-1vcpu-1gb", "vCPU": 1, "ramMiB": 1024, "diskGiB": 25, "monthlyCents": 600, "instances": 1},
+      "storage": {"type": "Spaces Standard", "monthlyCents": 500, "includedGiB": 250, "publicACL": false, "cdn": false, "limitedBucketKeyOnly": true},
+      "backup": {"imagePlan": "percentage-weekly", "monthlyCents": 120, "application": "consistent SQLite + sidecar + account receipt encrypted before private upload", "custodian": "Human Governance", "privateRecoveryKeyOnHost": false, "retentionDays": 7, "restoreVerified": false},
+      "firewall": {"ssh": "OWNER IP/KEY REQUIRED", "publicBackend": false, "http": "ACME/redirect only after authority", "https": "closed until lease approved", "ipv6Covered": "REQUIRES HOST VERIFICATION", "outerClose": "authorized host firewall + Caddy stop + external observer; not poweroff billing stop"},
+      "costControls": {"autoscale": false, "extraResources": false, "globalNICMeter": "prepared, local namespace tested only", "providerAllowance": "accrued cumulative team allowance, not1000GiB at boot", "spacesUsageVerified": false, "hardBillCapVerified": false},
+      "listBaseCents": 1220,
+      "sources": ["https://www.digitalocean.com/pricing/droplets", "https://www.digitalocean.com/pricing/spaces-object-storage", "https://docs.digitalocean.com/products/backups/details/pricing/"],
+      "accountQuote": null, "taxCents": null, "paymentFxFeesCents": null, "pendingOrMeteredCents": null, "grossMonthlyCents": null
+    },
+    {
+      "provider": "render",
+      "priority": "COMPARISON ONLY",
+      "regionProposed": "singapore",
+      "host": {"plan": "paid 0.5 CPU / 512 MB", "vCPU": 0.5, "ramMiB": 512, "monthlyCents": 700, "instances": 1, "autoDeploy": false, "workspace": "Hobby, single member"},
+      "disk": {"path": "/var/data", "GB": 1, "monthlyCents": 25},
+      "storage": {"type": "external Spaces Standard", "monthlyCents": 500, "publicACL": false, "cdn": false},
+      "backup": {"application": "consistent encrypted snapshot; external upload/readback; disk snapshot not DB backup substitute", "custodian": "Human Governance", "privateRecoveryKeyOnHost": false, "retentionDays": 7, "restoreVerified": false},
+      "firewall": {"platformInboundRules": "PLAN/ACCOUNT CAPABILITY UNVERIFIED", "publicBackend": "only platform port after approved activation", "https": "platform TLS, configured exact Origin/Host", "outerClose": "explicit existing target validated, service suspend+GET readback by authorized external controller; currently mock contract only"},
+      "costControls": {"autoscale": false, "extraResources": false, "pipelineSpendLimit": "propose0 additional build spend; account validation required", "publicEgressIncludedGB": 5, "publicEgressOverageCentsPerGB": 15, "sharedWorkspaceUsageVerified": false, "hardBillCapVerified": false},
+      "listBaseCents": 1225,
+      "sources": ["https://render.com/pricing", "https://render.com/docs/disks", "https://render.com/docs/outbound-bandwidth", "https://render.com/docs/build-pipeline"],
+      "accountQuote": null, "taxCents": null, "paymentFxFeesCents": null, "pendingOrMeteredCents": null, "grossMonthlyCents": null
+    }
+  ]
+}

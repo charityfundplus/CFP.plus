@@ -1,0 +1,24 @@
+{
+  "role": "E3 independent reviewer prerequisites",
+  "syntheticFlowReviewer": {
+    "subject": "flow-reviewer",
+    "role": "reviewer",
+    "workspace": "flow-fixture",
+    "pairs": [
+      "hub69-content-demo"
+    ],
+    "authenticatedInDisposableFixture": true,
+    "independentFromTaskOwner": true,
+    "reviewVerdict": "acknowledge-draft",
+    "assessorAuthorityVerified": false
+  },
+  "taskKey": "1266875a-b392-456d-a48e-675fcb585fab",
+  "realAssessor": null,
+  "realGrantScope": null,
+  "assessmentStandardSha256": null,
+  "realReceiptAcknowledgement": null,
+  "assessment": "NOT ASSESSED",
+  "acceptance": "named authenticated assessor, grant/scope/independence, prerequisite evidence and receipt; then rubric decision under pinned standard",
+  "competencyPass": false,
+  "privilegeChange": false
+}

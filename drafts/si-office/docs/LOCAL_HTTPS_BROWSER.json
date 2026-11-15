@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "scope": "New local HTTPS wrapper and template navigation only",
+  "url": "https://localhost:4190/p2",
+  "remotePhoneAccess": false,
+  "certificate": "self-signed local development certificate; exact SPKI pinned for QA",
+  "checks": [
+    "Four template links resolve; touch targets >=44px; no overflow at360/390/768",
+    "Real HTTPS viewer login; profile/HSTDN write controls disabled",
+    "Editor mobile template navigation, course hydration and English journey",
+    "Logout works; no browser page errors; certificate exception scoped to test SPKI"
+  ],
+  "pageErrors": [],
+  "fullHistoricalSuitesRerun": false,
+  "productionDeployment": false
+}

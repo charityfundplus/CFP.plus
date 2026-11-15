@@ -1,0 +1,11 @@
+✔ merges selected-pair exports for one subject without changing evidence or granting authority (2.480996ms)
+✔ missing second-pair export preserves unknown task and incomplete readiness (0.573205ms)
+✔ foreign subject, tampered envelope, duplicate pair and reused exercise mappings are rejected (2.05677ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10.210595

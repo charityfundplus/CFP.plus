@@ -1,0 +1,13 @@
+✔ unknown closure/residual and omitted groups cannot become zero (1.443997ms)
+✔ one gross USD scope and nonoverlapping allocation are required (0.510362ms)
+✔ exact target is arithmetic only, never authority or hard cap (1.82644ms)
+✔ retained resources can push residual exposure above target (0.219403ms)
+✔ negative fractional unsafe and unreferenced amounts fail closed (0.52269ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10.790553

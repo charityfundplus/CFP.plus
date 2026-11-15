@@ -1,0 +1,74 @@
+{
+  "scope": "Group 2 development source integrity; synthetic checks only",
+  "baseRevision": "11bb42464afebcd2962ca0ab94df0822853445c3",
+  "approvedPreviewBaseline": "b75b780eb64430355f0b51a4b58b9e5269e0db43",
+  "tests": {
+    "commands": [
+      "node /workspace/provenance/tests/build-provenance.test.mjs",
+      "node /workspace/provenance/tests/task-execution-provenance.test.mjs"
+    ],
+    "pass": 5,
+    "fail": 0,
+    "exitCode": 0,
+    "scope": "New source integrity and new task-bound persistence/backup/export checks only; repeated task test only after Core safety integration."
+  },
+  "verifiedHeadReadback": {
+    "revision": "11bb42464afebcd2962ca0ab94df0822853445c3",
+    "runtimeFiles": 67,
+    "manifestSha256": "78ea9bbe641785bf9dfacc4cf71cc865f1af9b44e8b3a3785ed098de780ddff3"
+  },
+  "activationAllowed": false,
+  "authorityVerified": false,
+  "competencyPass": false,
+  "files": [
+    {
+      "path": "drafts/si-office/public/p2-office.js",
+      "bytes": 10406,
+      "sha256": "6b8ffd4ccb41e2a49a260fff422c944cfc967ddfb106a6032dc5495ac1b5c68b"
+    },
+    {
+      "path": "drafts/si-office/sandbox/p2-http.mjs",
+      "bytes": 6604,
+      "sha256": "db32b973fbc7b12b93a3b6be9b25f4d012f8cb5661cdb63938af176a77b58342"
+    },
+    {
+      "path": "drafts/si-office/sandbox/p2-service.mjs",
+      "bytes": 14186,
+      "sha256": "786b1a5a5d252c8597ab98be98c30f755c6903bcc01ff4cf1a99941f95723703"
+    },
+    {
+      "path": "drafts/si-office/scripts/build-provenance.mjs",
+      "bytes": 3213,
+      "sha256": "a789577bbe68bacd3214d2f81b6b27b56fab6951362b5743c28443486bc79c82"
+    },
+    {
+      "path": "drafts/si-office/scripts/training-export-worksheet.mjs",
+      "bytes": 7658,
+      "sha256": "593815234f6685e4a6da4bb596ed6a1542a9f6404e05184abafd30d6521b9d49"
+    },
+    {
+      "path": "drafts/si-office/scripts/working-preview.mjs",
+      "bytes": 2629,
+      "sha256": "fe305bccdea929bf6277b25cd0d495a8dcdf80515b083e9747d46bf70f8c895a"
+    },
+    {
+      "path": "drafts/si-office/tests/build-provenance.test.mjs",
+      "bytes": 3996,
+      "sha256": "f6fc457f51f3ce821dbfad063b4b78ea1ae99479153e2f9f7f35dfb645aec312"
+    },
+    {
+      "path": "drafts/si-office/tests/task-execution-provenance.test.mjs",
+      "bytes": 5013,
+      "sha256": "670d805a801210ef467b616418a0f437f7a2a1af5bed4ea802e6f352fac6e91f"
+    }
+  ],
+  "limitations": [
+    "Git object source integrity checks; not signed release or production authority attestation.",
+    "Node/OS/external dependencies, host, loaded memory and Git credentials outside manifest scope.",
+    "No new deployment, account assessment or independent assessor receipt.",
+    "Existing working-preview API rejects caller revision without matching independently verified checkout; historical arbitrary revision tests require scoped update.",
+    "New task receipts bind startup/before/after source plus output; historical missing receipts remain false. A worksheet can independently validate receipts against the same exact checkout; other historical revisions require separate pinned source readback.",
+    "Export SHA and source manifest prove byte linkage; they do not authenticate an arbitrary external export origin.",
+    "taskReceiptBindingsVerified checks structural/source/output linkage only. taskExecutionRevisionVerified remains false without independent authenticated DB readback. Export workspace and owner/subject equality are mandatory for claimed bound receipts."
+  ]
+}

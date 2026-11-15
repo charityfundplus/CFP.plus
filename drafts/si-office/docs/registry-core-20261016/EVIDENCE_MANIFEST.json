@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "scope": "REGISTRY/CORE API DELTA; SANDBOX ONLY",
+  "runtimeRevision": "51e8a39d12615fcfff11a418d78bb81ce44ec591",
+  "runtimeTree": "0677ad17c7a595c22952cefe872d95eaebc0c52e",
+  "runtimeManifestSha256": "7bd10695224f46e2c71ad48c1646abac58d9496f54dc0e57d00573599a47893d",
+  "tests": {
+    "pass": 28,
+    "fail": 0,
+    "skip": 0,
+    "new": 8,
+    "affectedRegression": 20,
+    "runner": "Node v24.19.0",
+    "command": "node --test --test-reporter=tap tests/registry-binding.test.mjs tests/registry-scope-comparison.test.mjs tests/registry-read-model.test.mjs tests/registry-http.test.mjs tests/registry-loopback.test.mjs tests/p2-http.test.mjs tests/review-round1.test.mjs"
+  },
+  "offlineActualSourceChecks": {
+    "pass": 8,
+    "fail": 0,
+    "notNodeTestCount": true
+  },
+  "transport": "ACTUAL LOOPBACK HTTP SOCKET + EXISTING HANDLER; SYNTHETIC ACCOUNTS",
+  "browserVerified": false,
+  "actualIphoneSafari": false,
+  "httpsPreviewURL": null,
+  "independentAcceptance": false,
+  "runtimePairRosterAuthorityVerified": false,
+  "rootRegistryChanged": false,
+  "canonicalParentDIDChanged": false,
+  "realAdaptersEnabled": false,
+  "productionActivated": false,
+  "activationAllowed": false,
+  "files": [
+    {
+      "path": "drafts/si-office/docs/registry-core-20261016/INTEGRATION.md",
+      "bytes": 6499,
+      "sha256": "4606f9f87c6a8eee2c76dba8e95d65f058cce1b93c2000a97297cb9200ce0595"
+    },
+    {
+      "path": "drafts/si-office/docs/registry-core-20261016/HANDOFF_VI.md",
+      "bytes": 4817,
+      "sha256": "1ab83e33ec1f92b4d1c85020b2e37f7157b63ca3c0a22dc85f42624a7022ca79"
+    },
+    {
+      "path": "drafts/si-office/docs/registry-core-20261016/BUILD_MANIFEST.json",
+      "bytes": 13401,
+      "sha256": "70ee7012f9bc6d4ee97500e38573ae7df08cff7f74b24dd711c39684573bc11b"
+    },
+    {
+      "path": "drafts/si-office/docs/registry-core-20261016/REGISTRY_READBACK.json",
+      "bytes": 16428,
+      "sha256": "fd13ab8b03f89425c3c1bb42ac5e9752c7b5c72593dd39b4d68d9006840cfa4b"
+    },
+    {
+      "path": "drafts/si-office/docs/registry-core-20261016/TEST_RESULTS.tap",
+      "bytes": 7442,
+      "sha256": "8dbf8da6327498ef7f46880dfb252c63ec15b44615b48b8fa6f48a62daa33a9a"
+    },
+    {
+      "path": "drafts/si-office/docs/registry-core-20261016/RECONCILIATION_SUMMARY.json",
+      "bytes": 1351,
+      "sha256": "b2985f06c5bd16763a3e6ea9a4c72cb079f8be5f34ea79d760c20dec9b0cb952"
+    }
+  ]
+}

@@ -1,0 +1,547 @@
+{
+  "mode": "REAL HTTP HANDLER + SQLITE / NO SOCKET OR BROWSER",
+  "executionRevision": "b3816488073623041d17b65433dace9b6e22f56a",
+  "buildManifestSha256": "dab59c782ff1dc2a9010762c9d7a509e9b12cba7c6857aa3897917f79417c0df",
+  "taskKey": "1266875a-b392-456d-a48e-675fcb585fab",
+  "outputSha256": "29f91cdc9c2bf9ea786dea3d547ad22abc5d53e1287b6af4ba678a465531b4b6",
+  "owner": "Codex local synthetic test operator",
+  "checks": [
+    {
+      "name": "login flow-editor",
+      "observed": true
+    },
+    {
+      "name": "login flow-reviewer",
+      "observed": true
+    },
+    {
+      "name": "login flow-viewer",
+      "observed": true
+    },
+    {
+      "name": "login flow-outsider",
+      "observed": true
+    },
+    {
+      "name": "source pinned to exact Git runtime bytes",
+      "observed": true
+    },
+    {
+      "name": "profile retains unbound identity",
+      "observed": true
+    },
+    {
+      "name": "identity injection denied",
+      "observed": true
+    },
+    {
+      "name": "HSTDN legal uncertainty retained",
+      "observed": true
+    },
+    {
+      "name": "viewer write denied",
+      "observed": true
+    },
+    {
+      "name": "ungranted pair denied",
+      "observed": true
+    },
+    {
+      "name": "foreign workspace has no profile",
+      "observed": true
+    },
+    {
+      "name": "new execution has bound source receipt",
+      "observed": true
+    },
+    {
+      "name": "editor review denied",
+      "observed": true
+    },
+    {
+      "name": "export-source readback and task bindings",
+      "observed": true
+    },
+    {
+      "name": "execution attestation remains pending",
+      "observed": true
+    },
+    {
+      "name": "one new exercise is not full curriculum completion",
+      "observed": true
+    },
+    {
+      "name": "no study or draft-review competency promotion",
+      "observed": true
+    }
+  ],
+  "trace": [
+    {
+      "route": "/api/session",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/session",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/session",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/session",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/state",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/office-create",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/office-create",
+      "status": 400,
+      "error": "Không được cấp hoặc thay đổi ID / DID / Parent / Canonical."
+    },
+    {
+      "route": "/api/core/office-create",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/learn",
+      "status": 403,
+      "error": "PERMISSION_DENIED"
+    },
+    {
+      "route": "/api/core/office",
+      "status": 403,
+      "error": "PAIR_SCOPE_DENIED"
+    },
+    {
+      "route": "/api/core/office",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/learn",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/learn",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/learn",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/learn",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/learn",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/tasks",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/run",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/feedback",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/review",
+      "status": 403,
+      "error": "PERMISSION_DENIED"
+    },
+    {
+      "route": "/api/core/review",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/state",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/office",
+      "status": 200,
+      "error": null
+    }
+  ],
+  "envelope": {
+    "digestOf": "UTF-8 payloadJSON bytes",
+    "payloadJSON": "{\"format\":\"cfp-training-evidence-v1\",\"workspace\":\"flow-fixture\",\"sourceRevision\":\"b3816488073623041d17b65433dace9b6e22f56a\",\"buildProvenance\":{\"verified\":true,\"verificationScope\":\"EXPORT_PROCESS_SOURCE_BYTES\",\"taskExecutionVerified\":false,\"revision\":\"b3816488073623041d17b65433dace9b6e22f56a\",\"manifest\":{\"schemaVersion\":1,\"algorithm\":\"sha256\",\"scope\":\"tracked runtime source; excludes docs/tests\",\"revision\":\"b3816488073623041d17b65433dace9b6e22f56a\",\"files\":[{\"path\":\"adapters.mjs\",\"bytes\":760,\"sha256\":\"f6db020422dbf067f726a0917a193584056174a4b73ba540f75081c62b332b4b\"},{\"path\":\"ai-entity-registry.json\",\"bytes\":9655,\"sha256\":\"c97681cf7cdd494e4bb4658550c6db76546a00676c9eff8e8c83fb72ca1950f6\"},{\"path\":\"configs/pairs.json\",\"bytes\":3203,\"sha256\":\"e2d79fbe6e3eb7b34fb3c5eef879d08a8414c5376dc12cbedadafad7617243a4\"},{\"path\":\"configs/provider-preparation.json\",\"bytes\":3584,\"sha256\":\"e5529426a28af6b18a4ae203837974983d0afd50d788e6abb853b942fc026135\"},{\"path\":\"configs/training-basic-v1.json\",\"bytes\":25204,\"sha256\":\"528ef09c2a7ac671eca56a6370ff3489657c0d9dfa33c2466f08ded48067f200\"},{\"path\":\"core/common.mjs\",\"bytes\":882,\"sha256\":\"f93f027c200da272aa059a61ea7412e00096f0a50b7258a240629d33343700e0\"},{\"path\":\"core/core-engine.mjs\",\"bytes\":15732,\"sha256\":\"98a2b2d040d532cb97e24ff2dd37972879870a9ef4258e9ac9f93837b42f0997\"},{\"path\":\"core/cross-check-engine.mjs\",\"bytes\":1379,\"sha256\":\"bb8d503d036098f0e7aaa6c8f7bebb28e85cb2cc75588727df0d3d38672759fa\"},{\"path\":\"core/hub69-integration.mjs\",\"bytes\":419,\"sha256\":\"14fb53cf1ba15e1c5889afb022ec1d60a5a49a3a1c5bb2b90c4486b6e88e5bd7\"},{\"path\":\"core/identity-registry.mjs\",\"bytes\":1782,\"sha256\":\"3d47d937d62dffd66a7712608afcf9ac5d52d0143e64348e6a5819e004c43ced\"},{\"path\":\"core/knowledge-evidence.mjs\",\"bytes\":1776,\"sha256\":\"3aa78103ed6225f490a25a95848085a8b0074ce0faeb6cdb98aec22525db3e0a\"},{\"path\":\"core/learning-training.mjs\",\"bytes\":2953,\"sha256\":\"2020ba73424a0c44ae76868ca3ed42361ad3fd32931570c6efc2f95b1c0f7a35\"},{\"path\":\"core/monitoring-recovery.mjs\",\"bytes\":981,\"sha256\":\"d65e654fc08d123fbb91b6699e631b032c716c966110f6093ee13ad36255e754\"},{\"path\":\"core/office-intake.mjs\",\"bytes\":5017,\"sha256\":\"c23812244995d66aa46d20423edc6a4bc16fba8d211c45b9775387a97a484025\"},{\"path\":\"core/security-permission.mjs\",\"bytes\":931,\"sha256\":\"a55e16d3471b986b9f150e000a17c0acdfd3f6b49fd61614e0e31a11d9a01a1e\"},{\"path\":\"core/si-adapter.mjs\",\"bytes\":1216,\"sha256\":\"3aa9235a35bef76615172b662e5ba2537326a2bf85ac792f6abf9d22d15e97b9\"},{\"path\":\"core/supervision-engine.mjs\",\"bytes\":1138,\"sha256\":\"234b61a29dca36653e27e7b424fab4ca606f775a793e698311ee43012d503007\"},{\"path\":\"core/task-engine.mjs\",\"bytes\":3652,\"sha256\":\"ff6896f78ecae79bc6bce0c55029861e76ddf7f1f64aed6b93ecb259446b1d3d\"},{\"path\":\"core/training-assessment.mjs\",\"bytes\":3759,\"sha256\":\"6ea01af6f3a0666204d313a129995c38dc0dd6067fbea3384592ca3b426aec4a\"},{\"path\":\"core/version-upgrade.mjs\",\"bytes\":1558,\"sha256\":\"b8b93d65fea1aae9bb72851d4f5d3034c9a6fc54c614ebefc8ae448db611236e\"},{\"path\":\"country-route-map.json\",\"bytes\":4723,\"sha256\":\"344d373c39a48505f50d6222cc12e03db69df6f0d98f39ce980c9cc5bef9bc5e\"},{\"path\":\"global-country-ai-index.json\",\"bytes\":11934,\"sha256\":\"651fa05c7dc633120c65cbaa0905e5dda0da9b0c3bf41ba1f062b7bdf0ed4679\"},{\"path\":\"model.mjs\",\"bytes\":5168,\"sha256\":\"cd0b4a7a1fffc0eaf6c600d02fbe46ff9221451a9f33b8812eee9cd7e59899a9\"},{\"path\":\"package.json\",\"bytes\":665,\"sha256\":\"03572a5191a6cd11025201ae4ce0b5b63742316c8c29b413359c51ed7c7ca3f9\"},{\"path\":\"public/app.js\",\"bytes\":14453,\"sha256\":\"4fa93f4c9f59975438e933eb30f817b451c8f834d9aeef4e2340f89bd2976c6a\"},{\"path\":\"public/assessment-export.js\",\"bytes\":352,\"sha256\":\"c314975c6909b68f87ea321ee003e8576519d231831822bf8af84e0955dff067\"},{\"path\":\"public/core.html\",\"bytes\":5163,\"sha256\":\"d023346d63415e300ff6dd34226e37f1ef789331a73883eb7219fa43a9ffd85d\"},{\"path\":\"public/core.js\",\"bytes\":12042,\"sha256\":\"cf79255086a929c955c9d05af042b36493c78f1e4bdc2d0fd3e21da03bee54e9\"},{\"path\":\"public/i18n.js\",\"bytes\":8451,\"sha256\":\"8fdab2a4ec9dd51e9fc2f45f0a29ffd4c32404cc3ed1fcd441168a6d74041562\"},{\"path\":\"public/index.html\",\"bytes\":9549,\"sha256\":\"d79d6267c0b1139cbf33a4213b94772cfa7f13635274c0615dcab504f5ee5af9\"},{\"path\":\"public/office-contracts.js\",\"bytes\":3992,\"sha256\":\"aec908e5d5f92132360583a3f7e974a307b2df882038248dcedbf60e1f210ce9\"},{\"path\":\"public/office-intake.js\",\"bytes\":13726,\"sha256\":\"313fda2005163b43a07e52efd27480a0d5bcc01e037f2c170a1fa57005be5a07\"},{\"path\":\"public/p2-office.js\",\"bytes\":10406,\"sha256\":\"6b8ffd4ccb41e2a49a260fff422c944cfc967ddfb106a6032dc5495ac1b5c68b\"},{\"path\":\"public/p2.html\",\"bytes\":10668,\"sha256\":\"1553e4f1549fe20af154de27f363b71842986e7d46e3f76608f778245ad832f6\"},{\"path\":\"public/style.css\",\"bytes\":10924,\"sha256\":\"0b4c4907f9148ed5eb06a9b152d99dbb39728659771fb71f1d5756609d819728\"},{\"path\":\"sandbox/p2-http.mjs\",\"bytes\":6604,\"sha256\":\"db32b973fbc7b12b93a3b6be9b25f4d012f8cb5661cdb63938af176a77b58342\"},{\"path\":\"sandbox/p2-service.mjs\",\"bytes\":14186,\"sha256\":\"786b1a5a5d252c8597ab98be98c30f755c6903bcc01ff4cf1a99941f95723703\"},{\"path\":\"sandbox/pair-coordinator.mjs\",\"bytes\":3306,\"sha256\":\"8fb6d7003bc0eace1daecd7494b1d9f60163a85e82be8aec7a4c22c846664614\"},{\"path\":\"sandbox/release-control.mjs\",\"bytes\":5195,\"sha256\":\"8f4ba3a6773555402e865e068cad0ded5b802a24915a9b71434c1738913532b3\"},{\"path\":\"sandbox/release-health.mjs\",\"bytes\":481,\"sha256\":\"d0f727c78cbabd5392e6a6640d8dbce152988396f185a52fdf8a74003ab5ba19\"},{\"path\":\"scripts/assess-retained-practice.mjs\",\"bytes\":1411,\"sha256\":\"dcdeeab3d166f00ae9d5d4951a00c5cc6eeabc996665c2af1f99dae8b6701ee9\"},{\"path\":\"scripts/assessment-demo.mjs\",\"bytes\":3418,\"sha256\":\"0a1f5089b455c34da704bd2c5cffcc7651249b2b38830566c5fe92cdb66f923f\"},{\"path\":\"scripts/backup-envelope.mjs\",\"bytes\":2054,\"sha256\":\"46c41c81bd14b1218fcd5eae6bf7d22e01ea1c21039aefb77c18c9e1c3bec5eb\"},{\"path\":\"scripts/build-provenance.mjs\",\"bytes\":3213,\"sha256\":\"a789577bbe68bacd3214d2f81b6b27b56fab6951362b5743c28443486bc79c82\"},{\"path\":\"scripts/core-demo.mjs\",\"bytes\":1492,\"sha256\":\"29b9f68ce1ecb5545f382ed401ce6953f8947389fc51d98744b7d21d5f5a5933\"},{\"path\":\"scripts/cost-bound.mjs\",\"bytes\":2724,\"sha256\":\"870ef9a1dfcf4e043f088869021c274fe38ffbf1ea66caa11a2affc8337684a0\"},{\"path\":\"scripts/evidence.mjs\",\"bytes\":2398,\"sha256\":\"f092c627d2773bed109cff45d6258bf66cd47ae081b1b5b32a5eb789936edefe\"},{\"path\":\"scripts/guarded-preview.mjs\",\"bytes\":1617,\"sha256\":\"161f4cc0c77b485cceeb0c0c66f43fe8a9d9bd370e8cc4df536fcb0f8a377e52\"},{\"path\":\"scripts/intake-team-practice.mjs\",\"bytes\":5655,\"sha256\":\"9bd342758f9e16661c6a2b4b25eed7b7108dda109627adc63ba91b0dafd6cf5f\"},{\"path\":\"scripts/kernel-egress-guard.py\",\"bytes\":5459,\"sha256\":\"4aac1fd95a6832acf3bae9dc2dc12068da7f8c589aeecc6b8710d68012b17c9f\"},{\"path\":\"scripts/local-https-preview.mjs\",\"bytes\":2413,\"sha256\":\"4374be39fd391d544188bc5b1710b7011b01e5fe6332053ab5051bce3f2e80bb\"},{\"path\":\"scripts/p2-demo.mjs\",\"bytes\":1499,\"sha256\":\"343612b1f3ac15c52662e080527f1cbb300a6916676d872ec8c425e622fbce2e\"},{\"path\":\"scripts/p2-provision.mjs\",\"bytes\":589,\"sha256\":\"5e0c008d09389f26cfe0d2f0aa5069e7ff464df939804c62b9312d4e349c3350\"},{\"path\":\"scripts/p2-release-serve.mjs\",\"bytes\":932,\"sha256\":\"297dbd8c1d49444928728cba0798c0a3758d2bb8cff1e0d081521eda68549f3d\"},{\"path\":\"scripts/practice-evidence-review.mjs\",\"bytes\":4945,\"sha256\":\"fb5ad65c7d44529abc319aa0b48d41aa9805cd236b9db900f17bc5995460bc0f\"},{\"path\":\"scripts/preview-guard.mjs\",\"bytes\":3254,\"sha256\":\"35ac52181aed780a749ed84907a542cb5ecb53c9ab7acfaf7d0118917e1840db\"},{\"path\":\"scripts/provider-preflight.mjs\",\"bytes\":2054,\"sha256\":\"d3281f806ca9bd9fbe26268aacb440c25aad7cf48e1e3eeb94e00db0f18387f9\"},{\"path\":\"scripts/rehearse-preview-compat.mjs\",\"bytes\":3361,\"sha256\":\"eea71060e9d2d8585953bb097af593ec50a079271d4c7eaa08cbeda0dbdf6012\"},{\"path\":\"scripts/render-suspend.mjs\",\"bytes\":1320,\"sha256\":\"f81fed785ceb683a7ce883172d4613922d0be0a4fc88f15cfcda3b215a647c03\"},{\"path\":\"scripts/run-tests.mjs\",\"bytes\":159,\"sha256\":\"37c63693168d44a1fb0ba6f8762a5c3295b788a474272fe279ad76ff578d1161\"},{\"path\":\"scripts/training-evidence-pack.mjs\",\"bytes\":4457,\"sha256\":\"9085e75f604b5fce01c83402521213df745b4535ef6ad2b0eac1c98776ca8203\"},{\"path\":\"scripts/training-exercises.mjs\",\"bytes\":1037,\"sha256\":\"261de4a9761c6f6ef2748f7a458edbde75a9f491bf99b286759b1a48f74d8bf5\"},{\"path\":\"scripts/training-export-worksheet.mjs\",\"bytes\":7658,\"sha256\":\"593815234f6685e4a6da4bb596ed6a1542a9f6404e05184abafd30d6521b9d49\"},{\"path\":\"scripts/training-teams.mjs\",\"bytes\":4061,\"sha256\":\"a3ec6ec0157097bbf3b3a794080a60835740342f136028044976f7ac01a91cf9\"},{\"path\":\"scripts/verify-evidence.mjs\",\"bytes\":1300,\"sha256\":\"d2e4f155aa6e5fede73a51eb2e8ad837de259341261c9b0a2ff4aae69c7b8e68\"},{\"path\":\"scripts/verify-office-intake.mjs\",\"bytes\":817,\"sha256\":\"8f3f1969809436ba74e1dad8624fe24d9dd30259db4d1a9fca537a77a08072ba\"},{\"path\":\"scripts/working-preview.mjs\",\"bytes\":2629,\"sha256\":\"fe305bccdea929bf6277b25cd0d495a8dcdf80515b083e9747d46bf70f8c895a\"},{\"path\":\"server.mjs\",\"bytes\":9338,\"sha256\":\"e2cb6a2d4ec1a5cd81f1bfc98fa1b3273f4a63b204c139368887f34204871d9f\"}]},\"manifestSha256\":\"dab59c782ff1dc2a9010762c9d7a509e9b12cba7c6857aa3897917f79417c0df\",\"authorityVerified\":false,\"activationAllowed\":false},\"journey\":{\"subject\":\"flow-editor\",\"pairKey\":\"hub69-content-demo\",\"basicDraftReady\":false,\"exercises\":[{\"exercise\":\"office-exercise-1\",\"taskKey\":\"1266875a-b392-456d-a48e-675fcb585fab\"}]},\"tasks\":[{\"key\":\"1266875a-b392-456d-a48e-675fcb585fab\",\"pairKey\":\"hub69-content-demo\",\"kind\":\"training-drill\",\"title\":\"Synthetic exercise 1 • Danh Tính & Lineage\",\"text\":\"Unbound synthetic SI profile + lineage gaps\",\"scenario\":\"normal\",\"resource\":\"website-demo\",\"owner\":\"flow-editor\",\"status\":\"REVIEWED DRAFT\",\"progress\":100,\"attempt\":1,\"retryOf\":null,\"output\":{\"title\":\"Synthetic exercise 1 • Danh Tính & Lineage\",\"text\":\"Unbound synthetic SI profile + lineage gaps\",\"source\":{\"resource\":\"website-demo\",\"sha256\":\"80abc3af7bedeb42fd3ecf12853cbbfb1e000014868bdf7a857796b020a000cd\"},\"synthetic\":true,\"id\":null,\"parent\":null,\"did\":null,\"canonical\":null,\"sourceVerified\":false,\"capabilityVerified\":false,\"legalRelationshipVerified\":false,\"mode\":\"DRAFT ONLY\",\"artifact\":{\"type\":\"TRAINING EXERCISE DRAFT\",\"level\":\"SUPERVISED PRACTICE\",\"promotionAllowed\":false}},\"error\":null,\"checks\":[{\"stage\":\"input\",\"result\":\"PASS\",\"scope\":\"synthetic; bounded task\"},{\"stage\":\"proposal\",\"result\":\"PASS\"},{\"axis\":\"technical\",\"name\":\"bounded-output\",\"round\":\"before-stage\",\"pass\":true},{\"axis\":\"technical\",\"name\":\"task-binding\",\"round\":\"before-stage\",\"pass\":true},{\"axis\":\"security\",\"name\":\"tool-allowlist\",\"round\":\"before-stage\",\"pass\":true},{\"axis\":\"security\",\"name\":\"synthetic-only\",\"round\":\"before-stage\",\"pass\":true},{\"axis\":\"evidence\",\"name\":\"source-binding\",\"round\":\"before-stage\",\"pass\":true},{\"axis\":\"evidence\",\"name\":\"source-integrity\",\"round\":\"before-stage\",\"pass\":true},{\"axis\":\"governance\",\"name\":\"immutable-identity\",\"round\":\"before-stage\",\"pass\":true},{\"axis\":\"governance\",\"name\":\"no-self-verification\",\"round\":\"before-stage\",\"pass\":true},{\"axis\":\"technical\",\"name\":\"bounded-output\",\"round\":\"after-stage\",\"pass\":true},{\"axis\":\"technical\",\"name\":\"task-binding\",\"round\":\"after-stage\",\"pass\":true},{\"axis\":\"security\",\"name\":\"tool-allowlist\",\"round\":\"after-stage\",\"pass\":true},{\"axis\":\"security\",\"name\":\"synthetic-only\",\"round\":\"after-stage\",\"pass\":true},{\"axis\":\"evidence\",\"name\":\"source-binding\",\"round\":\"after-stage\",\"pass\":true},{\"axis\":\"evidence\",\"name\":\"source-integrity\",\"round\":\"after-stage\",\"pass\":true},{\"axis\":\"governance\",\"name\":\"immutable-identity\",\"round\":\"after-stage\",\"pass\":true},{\"axis\":\"governance\",\"name\":\"no-self-verification\",\"round\":\"after-stage\",\"pass\":true}],\"review\":{\"actor\":\"flow-reviewer\",\"verdict\":\"acknowledge-draft\",\"time\":\"2026-10-14T07:50:50.872Z\",\"productionApproved\":false},\"proposalHash\":\"023c995612e4af10c5b29aa2f4bce5ae9b471dbea2b8b944b6e798c4290b0ed7\",\"executionReceipt\":{\"schemaVersion\":1,\"scope\":\"SYNTHETIC TASK EXECUTION SOURCE\",\"taskKey\":\"1266875a-b392-456d-a48e-675fcb585fab\",\"pairKey\":\"hub69-content-demo\",\"subject\":\"flow-editor\",\"workspace\":\"flow-fixture\",\"startedAt\":\"2026-10-14T07:50:50.651Z\",\"completedAt\":\"2026-10-14T07:50:50.856Z\",\"sourceVerified\":true,\"revision\":\"b3816488073623041d17b65433dace9b6e22f56a\",\"manifestSha256\":\"dab59c782ff1dc2a9010762c9d7a509e9b12cba7c6857aa3897917f79417c0df\",\"manifest\":{\"schemaVersion\":1,\"algorithm\":\"sha256\",\"scope\":\"tracked runtime source; excludes docs/tests\",\"revision\":\"b3816488073623041d17b65433dace9b6e22f56a\",\"files\":[{\"path\":\"adapters.mjs\",\"bytes\":760,\"sha256\":\"f6db020422dbf067f726a0917a193584056174a4b73ba540f75081c62b332b4b\"},{\"path\":\"ai-entity-registry.json\",\"bytes\":9655,\"sha256\":\"c97681cf7cdd494e4bb4658550c6db76546a00676c9eff8e8c83fb72ca1950f6\"},{\"path\":\"configs/pairs.json\",\"bytes\":3203,\"sha256\":\"e2d79fbe6e3eb7b34fb3c5eef879d08a8414c5376dc12cbedadafad7617243a4\"},{\"path\":\"configs/provider-preparation.json\",\"bytes\":3584,\"sha256\":\"e5529426a28af6b18a4ae203837974983d0afd50d788e6abb853b942fc026135\"},{\"path\":\"configs/training-basic-v1.json\",\"bytes\":25204,\"sha256\":\"528ef09c2a7ac671eca56a6370ff3489657c0d9dfa33c2466f08ded48067f200\"},{\"path\":\"core/common.mjs\",\"bytes\":882,\"sha256\":\"f93f027c200da272aa059a61ea7412e00096f0a50b7258a240629d33343700e0\"},{\"path\":\"core/core-engine.mjs\",\"bytes\":15732,\"sha256\":\"98a2b2d040d532cb97e24ff2dd37972879870a9ef4258e9ac9f93837b42f0997\"},{\"path\":\"core/cross-check-engine.mjs\",\"bytes\":1379,\"sha256\":\"bb8d503d036098f0e7aaa6c8f7bebb28e85cb2cc75588727df0d3d38672759fa\"},{\"path\":\"core/hub69-integration.mjs\",\"bytes\":419,\"sha256\":\"14fb53cf1ba15e1c5889afb022ec1d60a5a49a3a1c5bb2b90c4486b6e88e5bd7\"},{\"path\":\"core/identity-registry.mjs\",\"bytes\":1782,\"sha256\":\"3d47d937d62dffd66a7712608afcf9ac5d52d0143e64348e6a5819e004c43ced\"},{\"path\":\"core/knowledge-evidence.mjs\",\"bytes\":1776,\"sha256\":\"3aa78103ed6225f490a25a95848085a8b0074ce0faeb6cdb98aec22525db3e0a\"},{\"path\":\"core/learning-training.mjs\",\"bytes\":2953,\"sha256\":\"2020ba73424a0c44ae76868ca3ed42361ad3fd32931570c6efc2f95b1c0f7a35\"},{\"path\":\"core/monitoring-recovery.mjs\",\"bytes\":981,\"sha256\":\"d65e654fc08d123fbb91b6699e631b032c716c966110f6093ee13ad36255e754\"},{\"path\":\"core/office-intake.mjs\",\"bytes\":5017,\"sha256\":\"c23812244995d66aa46d20423edc6a4bc16fba8d211c45b9775387a97a484025\"},{\"path\":\"core/security-permission.mjs\",\"bytes\":931,\"sha256\":\"a55e16d3471b986b9f150e000a17c0acdfd3f6b49fd61614e0e31a11d9a01a1e\"},{\"path\":\"core/si-adapter.mjs\",\"bytes\":1216,\"sha256\":\"3aa9235a35bef76615172b662e5ba2537326a2bf85ac792f6abf9d22d15e97b9\"},{\"path\":\"core/supervision-engine.mjs\",\"bytes\":1138,\"sha256\":\"234b61a29dca36653e27e7b424fab4ca606f775a793e698311ee43012d503007\"},{\"path\":\"core/task-engine.mjs\",\"bytes\":3652,\"sha256\":\"ff6896f78ecae79bc6bce0c55029861e76ddf7f1f64aed6b93ecb259446b1d3d\"},{\"path\":\"core/training-assessment.mjs\",\"bytes\":3759,\"sha256\":\"6ea01af6f3a0666204d313a129995c38dc0dd6067fbea3384592ca3b426aec4a\"},{\"path\":\"core/version-upgrade.mjs\",\"bytes\":1558,\"sha256\":\"b8b93d65fea1aae9bb72851d4f5d3034c9a6fc54c614ebefc8ae448db611236e\"},{\"path\":\"country-route-map.json\",\"bytes\":4723,\"sha256\":\"344d373c39a48505f50d6222cc12e03db69df6f0d98f39ce980c9cc5bef9bc5e\"},{\"path\":\"global-country-ai-index.json\",\"bytes\":11934,\"sha256\":\"651fa05c7dc633120c65cbaa0905e5dda0da9b0c3bf41ba1f062b7bdf0ed4679\"},{\"path\":\"model.mjs\",\"bytes\":5168,\"sha256\":\"cd0b4a7a1fffc0eaf6c600d02fbe46ff9221451a9f33b8812eee9cd7e59899a9\"},{\"path\":\"package.json\",\"bytes\":665,\"sha256\":\"03572a5191a6cd11025201ae4ce0b5b63742316c8c29b413359c51ed7c7ca3f9\"},{\"path\":\"public/app.js\",\"bytes\":14453,\"sha256\":\"4fa93f4c9f59975438e933eb30f817b451c8f834d9aeef4e2340f89bd2976c6a\"},{\"path\":\"public/assessment-export.js\",\"bytes\":352,\"sha256\":\"c314975c6909b68f87ea321ee003e8576519d231831822bf8af84e0955dff067\"},{\"path\":\"public/core.html\",\"bytes\":5163,\"sha256\":\"d023346d63415e300ff6dd34226e37f1ef789331a73883eb7219fa43a9ffd85d\"},{\"path\":\"public/core.js\",\"bytes\":12042,\"sha256\":\"cf79255086a929c955c9d05af042b36493c78f1e4bdc2d0fd3e21da03bee54e9\"},{\"path\":\"public/i18n.js\",\"bytes\":8451,\"sha256\":\"8fdab2a4ec9dd51e9fc2f45f0a29ffd4c32404cc3ed1fcd441168a6d74041562\"},{\"path\":\"public/index.html\",\"bytes\":9549,\"sha256\":\"d79d6267c0b1139cbf33a4213b94772cfa7f13635274c0615dcab504f5ee5af9\"},{\"path\":\"public/office-contracts.js\",\"bytes\":3992,\"sha256\":\"aec908e5d5f92132360583a3f7e974a307b2df882038248dcedbf60e1f210ce9\"},{\"path\":\"public/office-intake.js\",\"bytes\":13726,\"sha256\":\"313fda2005163b43a07e52efd27480a0d5bcc01e037f2c170a1fa57005be5a07\"},{\"path\":\"public/p2-office.js\",\"bytes\":10406,\"sha256\":\"6b8ffd4ccb41e2a49a260fff422c944cfc967ddfb106a6032dc5495ac1b5c68b\"},{\"path\":\"public/p2.html\",\"bytes\":10668,\"sha256\":\"1553e4f1549fe20af154de27f363b71842986e7d46e3f76608f778245ad832f6\"},{\"path\":\"public/style.css\",\"bytes\":10924,\"sha256\":\"0b4c4907f9148ed5eb06a9b152d99dbb39728659771fb71f1d5756609d819728\"},{\"path\":\"sandbox/p2-http.mjs\",\"bytes\":6604,\"sha256\":\"db32b973fbc7b12b93a3b6be9b25f4d012f8cb5661cdb63938af176a77b58342\"},{\"path\":\"sandbox/p2-service.mjs\",\"bytes\":14186,\"sha256\":\"786b1a5a5d252c8597ab98be98c30f755c6903bcc01ff4cf1a99941f95723703\"},{\"path\":\"sandbox/pair-coordinator.mjs\",\"bytes\":3306,\"sha256\":\"8fb6d7003bc0eace1daecd7494b1d9f60163a85e82be8aec7a4c22c846664614\"},{\"path\":\"sandbox/release-control.mjs\",\"bytes\":5195,\"sha256\":\"8f4ba3a6773555402e865e068cad0ded5b802a24915a9b71434c1738913532b3\"},{\"path\":\"sandbox/release-health.mjs\",\"bytes\":481,\"sha256\":\"d0f727c78cbabd5392e6a6640d8dbce152988396f185a52fdf8a74003ab5ba19\"},{\"path\":\"scripts/assess-retained-practice.mjs\",\"bytes\":1411,\"sha256\":\"dcdeeab3d166f00ae9d5d4951a00c5cc6eeabc996665c2af1f99dae8b6701ee9\"},{\"path\":\"scripts/assessment-demo.mjs\",\"bytes\":3418,\"sha256\":\"0a1f5089b455c34da704bd2c5cffcc7651249b2b38830566c5fe92cdb66f923f\"},{\"path\":\"scripts/backup-envelope.mjs\",\"bytes\":2054,\"sha256\":\"46c41c81bd14b1218fcd5eae6bf7d22e01ea1c21039aefb77c18c9e1c3bec5eb\"},{\"path\":\"scripts/build-provenance.mjs\",\"bytes\":3213,\"sha256\":\"a789577bbe68bacd3214d2f81b6b27b56fab6951362b5743c28443486bc79c82\"},{\"path\":\"scripts/core-demo.mjs\",\"bytes\":1492,\"sha256\":\"29b9f68ce1ecb5545f382ed401ce6953f8947389fc51d98744b7d21d5f5a5933\"},{\"path\":\"scripts/cost-bound.mjs\",\"bytes\":2724,\"sha256\":\"870ef9a1dfcf4e043f088869021c274fe38ffbf1ea66caa11a2affc8337684a0\"},{\"path\":\"scripts/evidence.mjs\",\"bytes\":2398,\"sha256\":\"f092c627d2773bed109cff45d6258bf66cd47ae081b1b5b32a5eb789936edefe\"},{\"path\":\"scripts/guarded-preview.mjs\",\"bytes\":1617,\"sha256\":\"161f4cc0c77b485cceeb0c0c66f43fe8a9d9bd370e8cc4df536fcb0f8a377e52\"},{\"path\":\"scripts/intake-team-practice.mjs\",\"bytes\":5655,\"sha256\":\"9bd342758f9e16661c6a2b4b25eed7b7108dda109627adc63ba91b0dafd6cf5f\"},{\"path\":\"scripts/kernel-egress-guard.py\",\"bytes\":5459,\"sha256\":\"4aac1fd95a6832acf3bae9dc2dc12068da7f8c589aeecc6b8710d68012b17c9f\"},{\"path\":\"scripts/local-https-preview.mjs\",\"bytes\":2413,\"sha256\":\"4374be39fd391d544188bc5b1710b7011b01e5fe6332053ab5051bce3f2e80bb\"},{\"path\":\"scripts/p2-demo.mjs\",\"bytes\":1499,\"sha256\":\"343612b1f3ac15c52662e080527f1cbb300a6916676d872ec8c425e622fbce2e\"},{\"path\":\"scripts/p2-provision.mjs\",\"bytes\":589,\"sha256\":\"5e0c008d09389f26cfe0d2f0aa5069e7ff464df939804c62b9312d4e349c3350\"},{\"path\":\"scripts/p2-release-serve.mjs\",\"bytes\":932,\"sha256\":\"297dbd8c1d49444928728cba0798c0a3758d2bb8cff1e0d081521eda68549f3d\"},{\"path\":\"scripts/practice-evidence-review.mjs\",\"bytes\":4945,\"sha256\":\"fb5ad65c7d44529abc319aa0b48d41aa9805cd236b9db900f17bc5995460bc0f\"},{\"path\":\"scripts/preview-guard.mjs\",\"bytes\":3254,\"sha256\":\"35ac52181aed780a749ed84907a542cb5ecb53c9ab7acfaf7d0118917e1840db\"},{\"path\":\"scripts/provider-preflight.mjs\",\"bytes\":2054,\"sha256\":\"d3281f806ca9bd9fbe26268aacb440c25aad7cf48e1e3eeb94e00db0f18387f9\"},{\"path\":\"scripts/rehearse-preview-compat.mjs\",\"bytes\":3361,\"sha256\":\"eea71060e9d2d8585953bb097af593ec50a079271d4c7eaa08cbeda0dbdf6012\"},{\"path\":\"scripts/render-suspend.mjs\",\"bytes\":1320,\"sha256\":\"f81fed785ceb683a7ce883172d4613922d0be0a4fc88f15cfcda3b215a647c03\"},{\"path\":\"scripts/run-tests.mjs\",\"bytes\":159,\"sha256\":\"37c63693168d44a1fb0ba6f8762a5c3295b788a474272fe279ad76ff578d1161\"},{\"path\":\"scripts/training-evidence-pack.mjs\",\"bytes\":4457,\"sha256\":\"9085e75f604b5fce01c83402521213df745b4535ef6ad2b0eac1c98776ca8203\"},{\"path\":\"scripts/training-exercises.mjs\",\"bytes\":1037,\"sha256\":\"261de4a9761c6f6ef2748f7a458edbde75a9f491bf99b286759b1a48f74d8bf5\"},{\"path\":\"scripts/training-export-worksheet.mjs\",\"bytes\":7658,\"sha256\":\"593815234f6685e4a6da4bb596ed6a1542a9f6404e05184abafd30d6521b9d49\"},{\"path\":\"scripts/training-teams.mjs\",\"bytes\":4061,\"sha256\":\"a3ec6ec0157097bbf3b3a794080a60835740342f136028044976f7ac01a91cf9\"},{\"path\":\"scripts/verify-evidence.mjs\",\"bytes\":1300,\"sha256\":\"d2e4f155aa6e5fede73a51eb2e8ad837de259341261c9b0a2ff4aae69c7b8e68\"},{\"path\":\"scripts/verify-office-intake.mjs\",\"bytes\":817,\"sha256\":\"8f3f1969809436ba74e1dad8624fe24d9dd30259db4d1a9fca537a77a08072ba\"},{\"path\":\"scripts/working-preview.mjs\",\"bytes\":2629,\"sha256\":\"fe305bccdea929bf6277b25cd0d495a8dcdf80515b083e9747d46bf70f8c895a\"},{\"path\":\"server.mjs\",\"bytes\":9338,\"sha256\":\"e2cb6a2d4ec1a5cd81f1bfc98fa1b3273f4a63b204c139368887f34204871d9f\"}]},\"outputSha256\":\"29f91cdc9c2bf9ea786dea3d547ad22abc5d53e1287b6af4ba678a465531b4b6\",\"authorityVerified\":false,\"competencyPass\":false,\"activationAllowed\":false}}],\"office\":{\"applications\":[{\"name\":\"Synthetic direct coordination SI\",\"country\":\"6910\",\"developer\":\"69101\",\"source\":\"https://github.com/charityfundplus/CFP.plus/issues/130\",\"identityEvidence\":\"https://github.com/charityfundplus/CFP.plus/issues/130\",\"synthetic\":true,\"parent\":null,\"id\":null,\"did\":null,\"canonical\":null,\"status\":\"REVIEW CANDIDATE\",\"sourceVerification\":\"NOT VERIFIED\",\"capabilityVerification\":\"NOT VERIFIED\",\"legalRelationshipVerification\":\"NOT VERIFIED\",\"key\":\"eff89262-54c1-44e0-8801-fa35843c10f9\"}],\"hstdn\":[{\"name\":\"Synthetic HSTDN\",\"jurisdiction\":\"Research only\",\"members\":[\"eff89262-54c1-44e0-8801-fa35843c10f9\"],\"relation_type\":\"legal-parent-claim\",\"source\":\"https://github.com/charityfundplus/CFP.plus/issues/130\",\"synthetic\":true,\"id\":null,\"parent\":null,\"did\":null,\"canonical\":null,\"status\":\"REVIEW CANDIDATE\",\"sourceVerification\":\"NOT VERIFIED\",\"capabilityVerification\":\"NOT VERIFIED\",\"legalRelationshipVerification\":\"NOT VERIFIED\",\"key\":\"d0c57b18-f85c-4440-a52c-ec6e59cb26ea\"}],\"records\":[{\"key\":\"sample-0\",\"module\":0,\"title\":\"Mẫu • Danh Tính & Lineage\",\"status\":\"DRAFT\",\"evidence\":\"\",\"synthetic\":true},{\"key\":\"sample-1\",\"module\":1,\"title\":\"Mẫu • Giới Thiệu & Năng Lực\",\"status\":\"DRAFT\",\"evidence\":\"\",\"synthetic\":true},{\"key\":\"sample-2\",\"module\":2,\"title\":\"Mẫu • Danh Mục Sản Phẩm\",\"status\":\"DRAFT\",\"evidence\":\"\",\"synthetic\":true},{\"key\":\"sample-3\",\"module\":3,\"title\":\"Mẫu • Danh Mục Dịch Vụ\",\"status\":\"DRAFT\",\"evidence\":\"\",\"synthetic\":true},{\"key\":\"sample-4\",\"module\":4,\"title\":\"Mẫu • Quảng Cáo & Tiếp Thị\",\"status\":\"DRAFT\",\"evidence\":\"\",\"synthetic\":true},{\"key\":\"sample-5\",\"module\":5,\"title\":\"Mẫu • Khách Hàng & CRM\",\"status\":\"DRAFT\",\"evidence\":\"\",\"synthetic\":true},{\"key\":\"sample-6\",\"module\":6,\"title\":\"Mẫu • Thương Mại & Thanh Toán\",\"status\":\"DRAFT\",\"evidence\":\"\",\"synthetic\":true},{\"key\":\"sample-7\",\"module\":7,\"title\":\"Mẫu • HSTDN & Đối Tác\",\"status\":\"DRAFT\",\"evidence\":\"\",\"synthetic\":true},{\"key\":\"sample-8\",\"module\":8,\"title\":\"Mẫu • Văn Phòng & Công Việc\",\"status\":\"DRAFT\",\"evidence\":\"\",\"synthetic\":true},{\"key\":\"sample-9\",\"module\":9,\"title\":\"Mẫu • SI AI • API • MCP\",\"status\":\"DRAFT\",\"evidence\":\"\",\"synthetic\":true},{\"key\":\"sample-10\",\"module\":10,\"title\":\"Mẫu • Quản Trị • Đạo Đức • Bảo Mật\",\"status\":\"DRAFT\",\"evidence\":\"\",\"synthetic\":true},{\"key\":\"sample-11\",\"module\":11,\"title\":\"Mẫu • Báo Cáo • Evidence • KPI\",\"status\":\"DRAFT\",\"evidence\":\"\",\"synthetic\":true}]},\"feedback\":[{\"subject\":\"flow-editor\",\"pairKey\":\"hub69-content-demo\",\"taskKey\":\"1266875a-b392-456d-a48e-675fcb585fab\",\"text\":\"New provenance integration fixture; no competency claim.\",\"time\":\"2026-10-14T07:50:50.862Z\",\"outputHash\":\"023c995612e4af10c5b29aa2f4bce5ae9b471dbea2b8b944b6e798c4290b0ed7\",\"status\":\"SYNTHETIC FEEDBACK\",\"privilegeChange\":false}],\"observations\":[{\"subject\":\"flow-editor\",\"pairKey\":\"hub69-content-demo\",\"lesson\":\"identity-lineage\",\"time\":\"2026-10-14T07:50:50.452Z\",\"status\":\"ACKNOWLEDGED LEARNING; NOT VERIFIED\",\"privilegeChange\":false},{\"subject\":\"flow-editor\",\"pairKey\":\"hub69-content-demo\",\"lesson\":\"ethics-governance\",\"time\":\"2026-10-14T07:50:50.455Z\",\"status\":\"ACKNOWLEDGED LEARNING; NOT VERIFIED\",\"privilegeChange\":false},{\"subject\":\"flow-editor\",\"pairKey\":\"hub69-content-demo\",\"lesson\":\"tool-use\",\"time\":\"2026-10-14T07:50:50.458Z\",\"status\":\"ACKNOWLEDGED LEARNING; NOT VERIFIED\",\"privilegeChange\":false},{\"subject\":\"flow-editor\",\"pairKey\":\"hub69-content-demo\",\"lesson\":\"security\",\"time\":\"2026-10-14T07:50:50.462Z\",\"status\":\"ACKNOWLEDGED LEARNING; NOT VERIFIED\",\"privilegeChange\":false},{\"subject\":\"flow-editor\",\"pairKey\":\"hub69-content-demo\",\"lesson\":\"evidence\",\"time\":\"2026-10-14T07:50:50.464Z\",\"status\":\"ACKNOWLEDGED LEARNING; NOT VERIFIED\",\"privilegeChange\":false}]}",
+    "sha256": "4c51992bdde1fc5c5a3e985ff194d8db71d735dac4766b1dd19e41c855b83d92"
+  },
+  "worksheet": {
+    "schemaVersion": 1,
+    "mode": "READ_ONLY VI/EN WORKSHEET",
+    "approvedPreviewRevision": "b75b780eb64430355f0b51a4b58b9e5269e0db43",
+    "developmentRevision": "b3816488073623041d17b65433dace9b6e22f56a",
+    "sourceRevisionClaim": "b3816488073623041d17b65433dace9b6e22f56a",
+    "sourceRevisionVerified": true,
+    "sourceVerificationScope": "EXPORT_PROCESS_SOURCE_BYTES",
+    "taskExecutionRevisionVerified": false,
+    "taskReceiptBindingsVerified": true,
+    "taskSourceReceipts": [
+      {
+        "taskKey": "1266875a-b392-456d-a48e-675fcb585fab",
+        "verified": true,
+        "revision": "b3816488073623041d17b65433dace9b6e22f56a",
+        "manifestSha256": "dab59c782ff1dc2a9010762c9d7a509e9b12cba7c6857aa3897917f79417c0df",
+        "outputSha256": "29f91cdc9c2bf9ea786dea3d547ad22abc5d53e1287b6af4ba678a465531b4b6",
+        "authorityVerified": false
+      }
+    ],
+    "buildManifestSha256": "dab59c782ff1dc2a9010762c9d7a509e9b12cba7c6857aa3897917f79417c0df",
+    "inputSha256": "4c51992bdde1fc5c5a3e985ff194d8db71d735dac4766b1dd19e41c855b83d92",
+    "subject": "flow-editor",
+    "pairKey": "hub69-content-demo",
+    "lessons": [
+      {
+        "key": "identity-lineage",
+        "title": {
+          "vi": "Danh tính & Lineage",
+          "en": "Identity & lineage"
+        },
+        "acknowledged": true,
+        "meaning": {
+          "vi": "Ghi nhận đã học; chưa chứng nhận năng lực",
+          "en": "Study acknowledgement; not competency certification"
+        }
+      },
+      {
+        "key": "ethics-governance",
+        "title": {
+          "vi": "Đạo đức & Human Governance",
+          "en": "Ethics & Human Governance"
+        },
+        "acknowledged": true,
+        "meaning": {
+          "vi": "Ghi nhận đã học; chưa chứng nhận năng lực",
+          "en": "Study acknowledgement; not competency certification"
+        }
+      },
+      {
+        "key": "tool-use",
+        "title": {
+          "vi": "Sử dụng công cụ & Nhiệm vụ",
+          "en": "Tool use & tasks"
+        },
+        "acknowledged": true,
+        "meaning": {
+          "vi": "Ghi nhận đã học; chưa chứng nhận năng lực",
+          "en": "Study acknowledgement; not competency certification"
+        }
+      },
+      {
+        "key": "security",
+        "title": {
+          "vi": "Bảo mật & Phục hồi",
+          "en": "Security & recovery"
+        },
+        "acknowledged": true,
+        "meaning": {
+          "vi": "Ghi nhận đã học; chưa chứng nhận năng lực",
+          "en": "Study acknowledgement; not competency certification"
+        }
+      },
+      {
+        "key": "evidence",
+        "title": {
+          "vi": "Bằng chứng & Đánh giá",
+          "en": "Evidence & assessment"
+        },
+        "acknowledged": true,
+        "meaning": {
+          "vi": "Ghi nhận đã học; chưa chứng nhận năng lực",
+          "en": "Study acknowledgement; not competency certification"
+        }
+      }
+    ],
+    "exercises": [
+      {
+        "localKey": "office-exercise-1",
+        "module": 0,
+        "taskKey": "1266875a-b392-456d-a48e-675fcb585fab",
+        "outputSha256": "29f91cdc9c2bf9ea786dea3d547ad22abc5d53e1287b6af4ba678a465531b4b6",
+        "checksPass": true,
+        "feedbackBound": true,
+        "separateDraftReview": true,
+        "basicDraftEvidenceReady": true,
+        "assessment": "NOT ASSESSED"
+      },
+      {
+        "localKey": "office-exercise-2",
+        "module": 1,
+        "taskKey": null,
+        "outputSha256": null,
+        "checksPass": false,
+        "feedbackBound": false,
+        "separateDraftReview": false,
+        "basicDraftEvidenceReady": false,
+        "assessment": "NOT ASSESSED"
+      },
+      {
+        "localKey": "office-exercise-3",
+        "module": 2,
+        "taskKey": null,
+        "outputSha256": null,
+        "checksPass": false,
+        "feedbackBound": false,
+        "separateDraftReview": false,
+        "basicDraftEvidenceReady": false,
+        "assessment": "NOT ASSESSED"
+      },
+      {
+        "localKey": "office-exercise-4",
+        "module": 3,
+        "taskKey": null,
+        "outputSha256": null,
+        "checksPass": false,
+        "feedbackBound": false,
+        "separateDraftReview": false,
+        "basicDraftEvidenceReady": false,
+        "assessment": "NOT ASSESSED"
+      },
+      {
+        "localKey": "office-exercise-5",
+        "module": 4,
+        "taskKey": null,
+        "outputSha256": null,
+        "checksPass": false,
+        "feedbackBound": false,
+        "separateDraftReview": false,
+        "basicDraftEvidenceReady": false,
+        "assessment": "NOT ASSESSED"
+      },
+      {
+        "localKey": "office-exercise-6",
+        "module": 5,
+        "taskKey": null,
+        "outputSha256": null,
+        "checksPass": false,
+        "feedbackBound": false,
+        "separateDraftReview": false,
+        "basicDraftEvidenceReady": false,
+        "assessment": "NOT ASSESSED"
+      },
+      {
+        "localKey": "office-exercise-7",
+        "module": 6,
+        "taskKey": null,
+        "outputSha256": null,
+        "checksPass": false,
+        "feedbackBound": false,
+        "separateDraftReview": false,
+        "basicDraftEvidenceReady": false,
+        "assessment": "NOT ASSESSED"
+      },
+      {
+        "localKey": "office-exercise-8",
+        "module": 7,
+        "taskKey": null,
+        "outputSha256": null,
+        "checksPass": false,
+        "feedbackBound": false,
+        "separateDraftReview": false,
+        "basicDraftEvidenceReady": false,
+        "assessment": "NOT ASSESSED"
+      },
+      {
+        "localKey": "office-exercise-9",
+        "module": 8,
+        "taskKey": null,
+        "outputSha256": null,
+        "checksPass": false,
+        "feedbackBound": false,
+        "separateDraftReview": false,
+        "basicDraftEvidenceReady": false,
+        "assessment": "NOT ASSESSED"
+      },
+      {
+        "localKey": "office-exercise-10",
+        "module": 9,
+        "taskKey": null,
+        "outputSha256": null,
+        "checksPass": false,
+        "feedbackBound": false,
+        "separateDraftReview": false,
+        "basicDraftEvidenceReady": false,
+        "assessment": "NOT ASSESSED"
+      },
+      {
+        "localKey": "office-exercise-11",
+        "module": 10,
+        "taskKey": null,
+        "outputSha256": null,
+        "checksPass": false,
+        "feedbackBound": false,
+        "separateDraftReview": false,
+        "basicDraftEvidenceReady": false,
+        "assessment": "NOT ASSESSED"
+      },
+      {
+        "localKey": "office-exercise-12",
+        "module": 11,
+        "taskKey": null,
+        "outputSha256": null,
+        "checksPass": false,
+        "feedbackBound": false,
+        "separateDraftReview": false,
+        "basicDraftEvidenceReady": false,
+        "assessment": "NOT ASSESSED"
+      }
+    ],
+    "advanced": [
+      {
+        "key": "durability",
+        "title": {
+          "vi": "Lưu trữ bền vững",
+          "en": "Durable storage"
+        },
+        "prerequisites": [
+          "Basic draft evidence",
+          "Separate verified reviewer for real assessment",
+          "Existing server grants only"
+        ],
+        "assessment": "NOT ASSESSED",
+        "competencyPass": false
+      },
+      {
+        "key": "access",
+        "title": {
+          "vi": "Quyền & Cô lập",
+          "en": "Authorization & isolation"
+        },
+        "prerequisites": [
+          "Basic draft evidence",
+          "Separate verified reviewer for real assessment",
+          "Existing server grants only"
+        ],
+        "assessment": "NOT ASSESSED",
+        "competencyPass": false
+      },
+      {
+        "key": "recovery",
+        "title": {
+          "vi": "Backup & Phục hồi",
+          "en": "Backup & recovery"
+        },
+        "prerequisites": [
+          "Basic draft evidence",
+          "Separate verified reviewer for real assessment",
+          "Existing server grants only"
+        ],
+        "assessment": "NOT ASSESSED",
+        "competencyPass": false
+      },
+      {
+        "key": "sources",
+        "title": {
+          "vi": "Nguồn & Tuyên bố",
+          "en": "Sources & claims"
+        },
+        "prerequisites": [
+          "Basic draft evidence",
+          "Separate verified reviewer for real assessment",
+          "Existing server grants only"
+        ],
+        "assessment": "NOT ASSESSED",
+        "competencyPass": false
+      },
+      {
+        "key": "interoperability",
+        "title": {
+          "vi": "Giao thức & Adapter",
+          "en": "Protocol & adapters"
+        },
+        "prerequisites": [
+          "Basic draft evidence",
+          "Separate verified reviewer for real assessment",
+          "Existing server grants only"
+        ],
+        "assessment": "NOT ASSESSED",
+        "competencyPass": false
+      },
+      {
+        "key": "website",
+        "title": {
+          "vi": "Website VI/EN & Đồng bộ",
+          "en": "VI/EN website & sync"
+        },
+        "prerequisites": [
+          "Basic draft evidence",
+          "Separate verified reviewer for real assessment",
+          "Existing server grants only"
+        ],
+        "assessment": "NOT ASSESSED",
+        "competencyPass": false
+      }
+    ],
+    "declarations": [
+      {
+        "localRecordKey": "eff89262-54c1-44e0-8801-fa35843c10f9",
+        "findings": [
+          "DECLARANT_SCOPE_MISMATCH"
+        ],
+        "identityStatus": "NOT VERIFIED",
+        "capabilityStatus": "NOT VERIFIED",
+        "legalRelationshipStatus": "NOT VERIFIED"
+      }
+    ],
+    "hstdn": [
+      {
+        "localRecordKey": "d0c57b18-f85c-4440-a52c-ec6e59cb26ea",
+        "findings": [],
+        "legalRelationshipStatus": "NOT VERIFIED"
+      }
+    ],
+    "findings": [
+      "ASSESSOR_AUTHORITY_PENDING"
+    ],
+    "basicDraftEvidenceReady": false,
+    "privilegeChange": false,
+    "activation": "HOLD",
+    "operatorAssignment": "PENDING",
+    "custodianAssignment": "PENDING"
+  },
+  "serviceAuditReadback": {
+    "sequence": 32,
+    "sha256": "e240fdb5e2b4cb2f3156d23e9f4bd908fcdbd05d0fc4922c8c203f6bb9b595d8"
+  },
+  "independentAssessorVerified": false,
+  "actualIphoneSafari": false,
+  "publicHttps": false,
+  "activationAllowed": false,
+  "limitations": [
+    "HTTP handler called directly via existing harness; no TCP/TLS/browser/device test.",
+    "One NEW provenance/retention integration exercise; twelve-exercise cohort not rerun.",
+    "Developer/Parent/Country are source selections, not verified identity or Registry grants.",
+    "Unsigned local execution evidence; OpenSI independent verification remains pending."
+  ]
+}

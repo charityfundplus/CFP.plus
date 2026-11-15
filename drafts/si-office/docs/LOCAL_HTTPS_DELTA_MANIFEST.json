@@ -1,0 +1,20 @@
+{
+  "runtimeBase": "b75b780eb64430355f0b51a4b58b9e5269e0db43",
+  "commitParent": "1ad28eb3da5740bd9e5699e93a8534f62c4914d9",
+  "files": {
+    "drafts/si-office/public/p2.html": "5b1a7cbb375f3329b0895193b12bf1318c07c7c9a08b108733876eafcbe5b8a9",
+    "drafts/si-office/public/style.css": "28a394981f29f8960a74f36b02966fab6e69c0fd9acfad618805b16142a48e41",
+    "drafts/si-office/scripts/local-https-preview.mjs": "4374be39fd391d544188bc5b1710b7011b01e5fe6332053ab5051bce3f2e80bb",
+    "drafts/si-office/tests/local-https-preview.test.mjs": "4dfc2a5cd82a0aefb8de8262148d579cdc43e8df53c7270cd9366bfca4183064",
+    "drafts/si-office/tests/local-https-browser.py": "8456400b451aef38d98f7672fe6ab98cd9cd1bf7140c27b8248612621149094f",
+    "drafts/si-office/docs/LOCAL_HTTPS_BROWSER.json": "e10820d1d3babced859b30326349137df7238bdc8d0eec05a74cb7c1e80eb7f2",
+    "drafts/si-office/docs/LOCAL_HTTPS_TRANSPORT_RESULTS.txt": "c2ce61ecb11d2fa2d1b0481491ff5809b6034d94b40604f17afa27b703a088aa",
+    "drafts/si-office/docs/LOCAL_HTTPS_REVIEW.md": "0f2a9c2f1ba2aaf43a5dbebb83bcf2d9fde434dcbd8709fb82dc205aff0b1931",
+    "drafts/si-office/docs/SYNC_FIVE_STORES_PLAN.json": "123c5977231b6d70cc1f6ecb6a036547adfd4c5902f3f4d88ce94d5029a3570e",
+    "drafts/si-office/docs/LOCAL_HTTPS_GOOGLE_RECEIPT.json": "f8546253286854477ede203337fc9973be992cb58b3569a875ac058e680a0f84"
+  },
+  "localTLSAndUIOnly": true,
+  "coreRegistryAndAuditUnchanged": true,
+  "remotePhoneURLForThisDelta": null,
+  "historicalTestsNotRerun": true
+}

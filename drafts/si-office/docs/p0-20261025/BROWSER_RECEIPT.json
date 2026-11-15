@@ -1,0 +1,174 @@
+{
+  "browser": "Chromium",
+  "mode": "LOCAL LOOPBACK STATIC PREVIEW",
+  "actualIPhoneSafari": "NOT TESTED — physical device/session unavailable",
+  "productionDeployment": false,
+  "checks": [
+    {
+      "viewportWidth": 320,
+      "route": "/69 -> /69/",
+      "status": 200,
+      "rows": 5,
+      "pageOverflow": false,
+      "pageErrors": [],
+      "result": "PASS"
+    },
+    {
+      "viewportWidth": 375,
+      "route": "/69 -> /69/",
+      "status": 200,
+      "rows": 5,
+      "pageOverflow": false,
+      "pageErrors": [],
+      "result": "PASS"
+    },
+    {
+      "viewportWidth": 390,
+      "route": "/69 -> /69/",
+      "status": 200,
+      "rows": 5,
+      "pageOverflow": false,
+      "pageErrors": [],
+      "result": "PASS"
+    },
+    {
+      "viewportWidth": 430,
+      "route": "/69 -> /69/",
+      "status": 200,
+      "rows": 5,
+      "pageOverflow": false,
+      "pageErrors": [],
+      "result": "PASS"
+    },
+    {
+      "viewportWidth": 1280,
+      "route": "/69 -> /69/",
+      "status": 200,
+      "rows": 5,
+      "pageOverflow": false,
+      "pageErrors": [],
+      "result": "PASS"
+    },
+    {
+      "test": "five rows readable with JavaScript disabled",
+      "result": "PASS"
+    },
+    {
+      "route": "/000/",
+      "status": 200,
+      "result": "PASS",
+      "scope": "LOCAL DRAFT SOURCE"
+    },
+    {
+      "route": "/0123456789/",
+      "status": 200,
+      "result": "PASS",
+      "scope": "LOCAL DRAFT SOURCE"
+    },
+    {
+      "route": "/6/",
+      "status": 200,
+      "result": "PASS",
+      "scope": "LOCAL DRAFT SOURCE"
+    },
+    {
+      "route": "/28882/",
+      "status": 200,
+      "result": "PASS",
+      "scope": "LOCAL DRAFT SOURCE"
+    },
+    {
+      "route": "/review/",
+      "status": 200,
+      "result": "PASS",
+      "scope": "LOCAL DRAFT SOURCE"
+    },
+    {
+      "route": "/0/",
+      "status": 200,
+      "result": "PASS",
+      "scope": "LOCAL DRAFT SOURCE"
+    },
+    {
+      "route": "/1/",
+      "status": 200,
+      "result": "PASS",
+      "scope": "LOCAL DRAFT SOURCE"
+    },
+    {
+      "route": "/2/",
+      "status": 200,
+      "result": "PASS",
+      "scope": "LOCAL DRAFT SOURCE"
+    },
+    {
+      "route": "/3/",
+      "status": 200,
+      "result": "PASS",
+      "scope": "LOCAL DRAFT SOURCE"
+    },
+    {
+      "route": "/4/",
+      "status": 200,
+      "result": "PASS",
+      "scope": "LOCAL DRAFT SOURCE"
+    },
+    {
+      "route": "/5/",
+      "status": 200,
+      "result": "PASS",
+      "scope": "LOCAL DRAFT SOURCE"
+    },
+    {
+      "route": "/7/",
+      "status": 200,
+      "result": "PASS",
+      "scope": "LOCAL DRAFT SOURCE"
+    },
+    {
+      "route": "/8/",
+      "status": 200,
+      "result": "PASS",
+      "scope": "LOCAL DRAFT SOURCE"
+    },
+    {
+      "route": "/9/",
+      "status": 200,
+      "result": "PASS",
+      "scope": "LOCAL DRAFT SOURCE"
+    },
+    {
+      "route": "/6984/",
+      "status": 200,
+      "result": "PASS",
+      "scope": "LOCAL DRAFT SOURCE"
+    },
+    {
+      "route": "/6911/",
+      "status": 200,
+      "result": "PASS",
+      "scope": "LOCAL DRAFT SOURCE"
+    },
+    {
+      "route": "/6910/",
+      "status": 200,
+      "result": "PASS",
+      "scope": "LOCAL DRAFT SOURCE"
+    },
+    {
+      "route": "/362/",
+      "status": 200,
+      "result": "PASS",
+      "scope": "LOCAL DRAFT SOURCE"
+    },
+    {
+      "route": "/69/store-status.json",
+      "status": 200,
+      "result": "PASS",
+      "scope": "LOCAL DRAFT SOURCE"
+    }
+  ],
+  "sourceRevision": "599852c304a321abb9f134fb244d69cda4bbef42",
+  "checkedAtUTC": "2026-10-25T23:34:14.304024+00:00",
+  "screenshotNote": "sticky header positioned statically for element capture only"
+}

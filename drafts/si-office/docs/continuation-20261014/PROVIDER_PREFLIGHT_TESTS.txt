@@ -1,0 +1,54 @@
+✔ tests/provider-preflight.test.mjs (86.789524ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 99.259519
+{
+  "status": "CONDITIONAL APPROVAL • HOLD ACTIVATION • PRODUCTION NO-GO",
+  "profiles": [
+    {
+      "provider": "digitalocean",
+      "listBaseCents": 1220,
+      "projectedGrossCents": null,
+      "missing": [
+        "account-specific quote and tax location",
+        "tax, payment/FX fees and pending/metered exposure (unknown is not zero)",
+        "quoted base configuration matches profile",
+        "private backup destination, ACL, custody and restore",
+        "HTTPS outer close and external observer",
+        "global host/Spaces coverage and quota",
+        "residual charges and total-budget control",
+        "separate host/environment rehearsal authority"
+      ],
+      "evidenceProvenance": "CALLER-PROVIDED CHECKLIST; AUTHORITY/QUOTE MUST BE VERIFIED BY HUMAN GOVERNANCE",
+      "readyForHumanReview": false,
+      "activationAllowed": false,
+      "checkoutPerformed": false,
+      "providerCalls": 0
+    },
+    {
+      "provider": "render",
+      "listBaseCents": 1225,
+      "projectedGrossCents": null,
+      "missing": [
+        "account-specific quote and tax location",
+        "tax, payment/FX fees and pending/metered exposure (unknown is not zero)",
+        "quoted base configuration matches profile",
+        "private backup destination, ACL, custody and restore",
+        "HTTPS outer close and external observer",
+        "global host/Spaces coverage and quota",
+        "residual charges and total-budget control",
+        "separate host/environment rehearsal authority"
+      ],
+      "evidenceProvenance": "CALLER-PROVIDED CHECKLIST; AUTHORITY/QUOTE MUST BE VERIFIED BY HUMAN GOVERNANCE",
+      "readyForHumanReview": false,
+      "activationAllowed": false,
+      "checkoutPerformed": false,
+      "providerCalls": 0
+    }
+  ]
+}

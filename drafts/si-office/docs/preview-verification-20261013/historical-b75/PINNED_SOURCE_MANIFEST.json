@@ -1,0 +1,135 @@
+{
+  "revision": "b75b780eb64430355f0b51a4b58b9e5269e0db43",
+  "files": [
+    {
+      "path": "drafts/si-office/model.mjs",
+      "gitBlob": "027788228d4bbd68147be2489ac1f82ca42b1da0",
+      "sha256": "cd0b4a7a1fffc0eaf6c600d02fbe46ff9221451a9f33b8812eee9cd7e59899a9"
+    },
+    {
+      "path": "drafts/si-office/adapters.mjs",
+      "gitBlob": "923193051c5ba59713c038d7e36198cd438f345b",
+      "sha256": "f6db020422dbf067f726a0917a193584056174a4b73ba540f75081c62b332b4b"
+    },
+    {
+      "path": "drafts/si-office/ai-entity-registry.json",
+      "gitBlob": "3afe0cc090d5e9f8d61158ecd520005f8108a1d2",
+      "sha256": "c97681cf7cdd494e4bb4658550c6db76546a00676c9eff8e8c83fb72ca1950f6"
+    },
+    {
+      "path": "drafts/si-office/scripts/working-preview.mjs",
+      "gitBlob": "64ebc40726c6265d3368e573ef1b084acf6f1200",
+      "sha256": "cea26de509135fac578ef20879e8b219a133430c4aaf3c08ca57a2b8de13fd10"
+    },
+    {
+      "path": "drafts/si-office/configs/training-basic-v1.json",
+      "gitBlob": "2964c3f6167241a5281d7952704e50be59c3c79c",
+      "sha256": "e74fb6f9c4b03e6787c992599d8dfce2603f0c16b8de7b488cf43406e6da743b"
+    },
+    {
+      "path": "drafts/si-office/configs/pairs.json",
+      "gitBlob": "db18126068a02d8c7a4f9e7091c225cd46d5b309",
+      "sha256": "e2d79fbe6e3eb7b34fb3c5eef879d08a8414c5376dc12cbedadafad7617243a4"
+    },
+    {
+      "path": "drafts/si-office/public/office-contracts.js",
+      "gitBlob": "90ccea1194f2c41f0aeec709d20578c6b9483fbe",
+      "sha256": "aec908e5d5f92132360583a3f7e974a307b2df882038248dcedbf60e1f210ce9"
+    },
+    {
+      "path": "drafts/si-office/package.json",
+      "gitBlob": "c4c088f2aac8a0bf3e497e6cf986c9052d3b5c4c",
+      "sha256": "03572a5191a6cd11025201ae4ce0b5b63742316c8c29b413359c51ed7c7ca3f9"
+    },
+    {
+      "path": "drafts/si-office/sandbox/release-control.mjs",
+      "gitBlob": "a7e48f1e725f9e42fbec82f14cc046bf6ca06dbd",
+      "sha256": "b7ade2c6a4c339ed954bf6f503d4c7c50e8ab3db8300008bf303d3f24171639d"
+    },
+    {
+      "path": "drafts/si-office/sandbox/release-health.mjs",
+      "gitBlob": "4b9bc5d42cbe5597f9b79269af3fe2637d39cb75",
+      "sha256": "d0f727c78cbabd5392e6a6640d8dbce152988396f185a52fdf8a74003ab5ba19"
+    },
+    {
+      "path": "drafts/si-office/sandbox/p2-service.mjs",
+      "gitBlob": "f5560af909357189e6640d8cb3c7158724587b90",
+      "sha256": "5108b9a6a3dd1c7a784296caf269f6151525a410425ed5dd09b15fe0b379c7e3"
+    },
+    {
+      "path": "drafts/si-office/sandbox/p2-http.mjs",
+      "gitBlob": "473df209b78b58dc88d09831135df7f09345c412",
+      "sha256": "2cdca4c599e3215bc24f167ca066e859e24015d656c5b3120e03efa75d231811"
+    },
+    {
+      "path": "drafts/si-office/core/cross-check-engine.mjs",
+      "gitBlob": "957244be338ad6747ede31212225b6bd11c05451",
+      "sha256": "bb8d503d036098f0e7aaa6c8f7bebb28e85cb2cc75588727df0d3d38672759fa"
+    },
+    {
+      "path": "drafts/si-office/core/version-upgrade.mjs",
+      "gitBlob": "474cad1df42d00f6dd60ff4701a778c0be1cc046",
+      "sha256": "b8b93d65fea1aae9bb72851d4f5d3034c9a6fc54c614ebefc8ae448db611236e"
+    },
+    {
+      "path": "drafts/si-office/core/learning-training.mjs",
+      "gitBlob": "26db39feb602a2d233182278be3c8940b512346c",
+      "sha256": "2364dea62e47dfca0bc8fbffca1639c4126a4bc9ba9c480e39a107b1a38c4825"
+    },
+    {
+      "path": "drafts/si-office/core/supervision-engine.mjs",
+      "gitBlob": "71d70f2fdcf90354e00b190d101dbc9f9b38cd18",
+      "sha256": "234b61a29dca36653e27e7b424fab4ca606f775a793e698311ee43012d503007"
+    },
+    {
+      "path": "drafts/si-office/core/si-adapter.mjs",
+      "gitBlob": "78d8936cff93d2b5fb6ab8627ae1fa3b67fd305a",
+      "sha256": "3aa9235a35bef76615172b662e5ba2537326a2bf85ac792f6abf9d22d15e97b9"
+    },
+    {
+      "path": "drafts/si-office/core/hub69-integration.mjs",
+      "gitBlob": "985029042e00960c39d019eeb4bef046e43f86a1",
+      "sha256": "14fb53cf1ba15e1c5889afb022ec1d60a5a49a3a1c5bb2b90c4486b6e88e5bd7"
+    },
+    {
+      "path": "drafts/si-office/core/common.mjs",
+      "gitBlob": "fa448f948b845978eaee6411cfe3e2bf04e72f29",
+      "sha256": "f93f027c200da272aa059a61ea7412e00096f0a50b7258a240629d33343700e0"
+    },
+    {
+      "path": "drafts/si-office/core/monitoring-recovery.mjs",
+      "gitBlob": "8909a2a0f1f3c5f1fd0e5ed7123b48ce1622a09d",
+      "sha256": "d65e654fc08d123fbb91b6699e631b032c716c966110f6093ee13ad36255e754"
+    },
+    {
+      "path": "drafts/si-office/core/identity-registry.mjs",
+      "gitBlob": "c681432b421c8af939b834d7d601f51ea5a317af",
+      "sha256": "3d47d937d62dffd66a7712608afcf9ac5d52d0143e64348e6a5819e004c43ced"
+    },
+    {
+      "path": "drafts/si-office/core/core-engine.mjs",
+      "gitBlob": "8429be01a6c033fb36abc83dbf7b596320dcd60a",
+      "sha256": "6e43f3049e633666960717eeb1b4e72dddce0d12914ce086e2edd9c869ffdea6"
+    },
+    {
+      "path": "drafts/si-office/core/security-permission.mjs",
+      "gitBlob": "9a04842ae43ef8ae5733990ca293b037d5b1c520",
+      "sha256": "bfa7f4d4704f0368f4bc72eb350e5022097801b3a3b1ab76524266de04370077"
+    },
+    {
+      "path": "drafts/si-office/core/knowledge-evidence.mjs",
+      "gitBlob": "750f67c0bf72ce03cc584bc302065530bbd9d766",
+      "sha256": "3aa78103ed6225f490a25a95848085a8b0074ce0faeb6cdb98aec22525db3e0a"
+    },
+    {
+      "path": "drafts/si-office/core/task-engine.mjs",
+      "gitBlob": "4da290154ea3873d7ae9777e3e8fc1e06c5f14cc",
+      "sha256": "ff6896f78ecae79bc6bce0c55029861e76ddf7f1f64aed6b93ecb259446b1d3d"
+    },
+    {
+      "path": "drafts/si-office/country-route-map.json",
+      "gitBlob": "f2fb0be96548f16a1f30bcdf8c05b2689651de0e",
+      "sha256": "344d373c39a48505f50d6222cc12e03db69df6f0d98f39ce980c9cc5bef9bc5e"
+    }
+  ]
+}

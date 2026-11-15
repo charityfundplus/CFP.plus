@@ -1,0 +1,488 @@
+{
+  "mode": "LOCAL SYNTHETIC INTEGRATED PRACTICE",
+  "sourceRevision": "64b356e0812aae0c1c8f0230697bddd42a24fbbc",
+  "taskKey": "59595434-cf51-49ad-a02b-7184f800d867",
+  "receipt": {
+    "mode": "SYNTHETIC ADVANCED PRACTICE / NOT ASSESSED",
+    "results": [
+      {
+        "workspace": "local-synthetic-roster-sources",
+        "taskEvidence": [
+          {
+            "track": "sources",
+            "taskKey": "59595434-cf51-49ad-a02b-7184f800d867",
+            "task": {
+              "key": "59595434-cf51-49ad-a02b-7184f800d867",
+              "pairKey": "hub69-content-demo",
+              "owner": "synthetic-local-editor",
+              "status": "REVIEWED DRAFT",
+              "output": {
+                "synthetic": true,
+                "id": null,
+                "parent": null,
+                "did": null,
+                "canonical": null,
+                "capabilityVerified": false,
+                "legalRelationshipVerified": false,
+                "artifact": {
+                  "kind": "claim-register",
+                  "mode": "SYNTHETIC LOCAL SOURCES PRACTICE",
+                  "taskKey": "59595434-cf51-49ad-a02b-7184f800d867",
+                  "sourceRevision": "64b356e0812aae0c1c8f0230697bddd42a24fbbc",
+                  "readOnly": true,
+                  "sourceId": "6911513",
+                  "parentId": "69115",
+                  "sources": [
+                    "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/6911513.md",
+                    "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/ai-entity-registry.json"
+                  ],
+                  "claims": [
+                    {
+                      "expected": "Parent label agrees with parent Registry entity",
+                      "observed": "Parent Entity: 69115 • Microsoft AI; Registry parent 69115: Meta AI",
+                      "verdict": "NEEDS HUMAN REVIEW"
+                    }
+                  ],
+                  "sourceFinding": [
+                    "PARENT_LABEL_REVIEW"
+                  ],
+                  "identityVerified": false,
+                  "capabilityVerified": false,
+                  "legalRelationshipVerified": false,
+                  "remedy": "Keep both sources intact; request Human Governance reconciliation, no automatic renumbering"
+                }
+              },
+              "checks": [
+                {
+                  "name": "source-byte-integrity",
+                  "pass": true
+                },
+                {
+                  "name": "retained-source-conflict",
+                  "pass": true
+                },
+                {
+                  "name": "unbound-practice-identity",
+                  "pass": true
+                },
+                {
+                  "name": "no-runtime-promotion",
+                  "pass": true
+                }
+              ],
+              "review": {
+                "actor": "synthetic-local-reviewer",
+                "verdict": "acknowledge-draft",
+                "authority": "MOCK ONLY / NOT AN ASSESSOR"
+              }
+            },
+            "deliverables": [
+              {
+                "kind": "claim-register",
+                "expected": "Parent label agrees with parent Registry entity",
+                "observed": "Parent Entity: 69115 • Microsoft AI; Registry parent 69115: Meta AI",
+                "taskKey": "59595434-cf51-49ad-a02b-7184f800d867",
+                "track": "sources",
+                "sourceRevision": "64b356e0812aae0c1c8f0230697bddd42a24fbbc",
+                "outputSha256": "fab2aa6279a5931e3db4996735fbd61e474090b1ad42b33ca6cc476177e04578",
+                "artifactSha256": "5f323373c8dd049f6ede37fe2e836cea6e54fb28b5735005643dedbe82cc84a9"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "review": {
+    "schemaVersion": 1,
+    "mode": "REVIEW PACKET ONLY",
+    "sourceRevision": "64b356e0812aae0c1c8f0230697bddd42a24fbbc",
+    "approvedPreviewRevision": "b75b780eb64430355f0b51a4b58b9e5269e0db43",
+    "runtimeChanged": false,
+    "activation": "HOLD",
+    "rows": [
+      {
+        "workspace": "local-synthetic-roster-sources",
+        "track": "durability",
+        "taskKey": null,
+        "pairKey": null,
+        "expectedEvidence": "A retained checkpoint and restart evidence; no automatic replay.",
+        "outputSha256": null,
+        "retainedTaskEvidence": false,
+        "executionChecksPass": false,
+        "separateDraftReview": false,
+        "syntheticScope": false,
+        "deliverablesBound": false,
+        "findings": [
+          "MISSING_OR_INVALID_TASK_PAIR_BINDING",
+          "MISSING_OR_FAILED_EXECUTION_CHECKS",
+          "MISSING_SEPARATE_DRAFT_REVIEW",
+          "OUTPUT_MISSING_OR_OUTSIDE_SYNTHETIC_SCOPE",
+          "TRACK_DELIVERABLES_NOT_RETAINED_OR_NOT_BOUND",
+          "GENERIC_REFLECTION_IS_NOT_ADVANCED_COMPETENCY_EVIDENCE",
+          "PREREQUISITE_EVIDENCE_REQUIRES_ASSIGNED_ASSESSOR",
+          "ASSESSOR_AUTHORITY_PENDING_OFFICIAL_ASSIGNMENT"
+        ],
+        "evidenceSha256": "589ef758ff4f095f70f09bb294aae066fa032923a57eae5e363e08f8f6974ddd",
+        "assessment": "NOT ASSESSED",
+        "competencyPass": false,
+        "privilegeChange": false
+      },
+      {
+        "workspace": "local-synthetic-roster-sources",
+        "track": "access",
+        "taskKey": null,
+        "pairKey": null,
+        "expectedEvidence": "Denied cross-scope attempts without leaked data.",
+        "outputSha256": null,
+        "retainedTaskEvidence": false,
+        "executionChecksPass": false,
+        "separateDraftReview": false,
+        "syntheticScope": false,
+        "deliverablesBound": false,
+        "findings": [
+          "MISSING_OR_INVALID_TASK_PAIR_BINDING",
+          "MISSING_OR_FAILED_EXECUTION_CHECKS",
+          "MISSING_SEPARATE_DRAFT_REVIEW",
+          "OUTPUT_MISSING_OR_OUTSIDE_SYNTHETIC_SCOPE",
+          "TRACK_DELIVERABLES_NOT_RETAINED_OR_NOT_BOUND",
+          "GENERIC_REFLECTION_IS_NOT_ADVANCED_COMPETENCY_EVIDENCE",
+          "PREREQUISITE_EVIDENCE_REQUIRES_ASSIGNED_ASSESSOR",
+          "ASSESSOR_AUTHORITY_PENDING_OFFICIAL_ASSIGNMENT"
+        ],
+        "evidenceSha256": "09eeb9dce14d422e3551f540b4e724016ae55d8f6f4e0b9b4ea57a4e3a43d712",
+        "assessment": "NOT ASSESSED",
+        "competencyPass": false,
+        "privilegeChange": false
+      },
+      {
+        "workspace": "local-synthetic-roster-sources",
+        "track": "recovery",
+        "taskKey": null,
+        "pairKey": null,
+        "expectedEvidence": "Separate restore generation and retained previous state.",
+        "outputSha256": null,
+        "retainedTaskEvidence": false,
+        "executionChecksPass": false,
+        "separateDraftReview": false,
+        "syntheticScope": false,
+        "deliverablesBound": false,
+        "findings": [
+          "MISSING_OR_INVALID_TASK_PAIR_BINDING",
+          "MISSING_OR_FAILED_EXECUTION_CHECKS",
+          "MISSING_SEPARATE_DRAFT_REVIEW",
+          "OUTPUT_MISSING_OR_OUTSIDE_SYNTHETIC_SCOPE",
+          "TRACK_DELIVERABLES_NOT_RETAINED_OR_NOT_BOUND",
+          "GENERIC_REFLECTION_IS_NOT_ADVANCED_COMPETENCY_EVIDENCE",
+          "PREREQUISITE_EVIDENCE_REQUIRES_ASSIGNED_ASSESSOR",
+          "ASSESSOR_AUTHORITY_PENDING_OFFICIAL_ASSIGNMENT"
+        ],
+        "evidenceSha256": "cac56a19d9597728dc32c706cc8962f4bece4c6d039a55e6ff5ea8ade4864380",
+        "assessment": "NOT ASSESSED",
+        "competencyPass": false,
+        "privilegeChange": false
+      },
+      {
+        "workspace": "local-synthetic-roster-sources",
+        "track": "sources",
+        "taskKey": "59595434-cf51-49ad-a02b-7184f800d867",
+        "pairKey": "hub69-content-demo",
+        "expectedEvidence": "Traceable claim register with explicit uncertainty.",
+        "outputSha256": "fab2aa6279a5931e3db4996735fbd61e474090b1ad42b33ca6cc476177e04578",
+        "retainedTaskEvidence": true,
+        "executionChecksPass": true,
+        "separateDraftReview": true,
+        "syntheticScope": true,
+        "deliverablesBound": true,
+        "findings": [
+          "PREREQUISITE_EVIDENCE_REQUIRES_ASSIGNED_ASSESSOR",
+          "ASSESSOR_AUTHORITY_PENDING_OFFICIAL_ASSIGNMENT"
+        ],
+        "evidenceSha256": "22cd8a87cd79df07f852f99e346336827416c8d95fb48af2a5e97fb043c7ce5c",
+        "assessment": "NOT ASSESSED",
+        "competencyPass": false,
+        "privilegeChange": false
+      },
+      {
+        "workspace": "local-synthetic-roster-sources",
+        "track": "interoperability",
+        "taskKey": null,
+        "pairKey": null,
+        "expectedEvidence": "Zero live calls and a bounded compatibility decision.",
+        "outputSha256": null,
+        "retainedTaskEvidence": false,
+        "executionChecksPass": false,
+        "separateDraftReview": false,
+        "syntheticScope": false,
+        "deliverablesBound": false,
+        "findings": [
+          "MISSING_OR_INVALID_TASK_PAIR_BINDING",
+          "MISSING_OR_FAILED_EXECUTION_CHECKS",
+          "MISSING_SEPARATE_DRAFT_REVIEW",
+          "OUTPUT_MISSING_OR_OUTSIDE_SYNTHETIC_SCOPE",
+          "TRACK_DELIVERABLES_NOT_RETAINED_OR_NOT_BOUND",
+          "GENERIC_REFLECTION_IS_NOT_ADVANCED_COMPETENCY_EVIDENCE",
+          "PREREQUISITE_EVIDENCE_REQUIRES_ASSIGNED_ASSESSOR",
+          "ASSESSOR_AUTHORITY_PENDING_OFFICIAL_ASSIGNMENT"
+        ],
+        "evidenceSha256": "ea85bc7c259261128d305afe8d2cc5d90a03bab0d19c1c0167fd2e2394f3be46",
+        "assessment": "NOT ASSESSED",
+        "competencyPass": false,
+        "privilegeChange": false
+      },
+      {
+        "workspace": "local-synthetic-roster-sources",
+        "track": "website",
+        "taskKey": null,
+        "pairKey": null,
+        "expectedEvidence": "Pinned UI/link evidence and per-target sync receipts.",
+        "outputSha256": null,
+        "retainedTaskEvidence": false,
+        "executionChecksPass": false,
+        "separateDraftReview": false,
+        "syntheticScope": false,
+        "deliverablesBound": false,
+        "findings": [
+          "MISSING_OR_INVALID_TASK_PAIR_BINDING",
+          "MISSING_OR_FAILED_EXECUTION_CHECKS",
+          "MISSING_SEPARATE_DRAFT_REVIEW",
+          "OUTPUT_MISSING_OR_OUTSIDE_SYNTHETIC_SCOPE",
+          "TRACK_DELIVERABLES_NOT_RETAINED_OR_NOT_BOUND",
+          "GENERIC_REFLECTION_IS_NOT_ADVANCED_COMPETENCY_EVIDENCE",
+          "PREREQUISITE_EVIDENCE_REQUIRES_ASSIGNED_ASSESSOR",
+          "ASSESSOR_AUTHORITY_PENDING_OFFICIAL_ASSIGNMENT"
+        ],
+        "evidenceSha256": "7634575819cd17bde462fa8a581dadd96a420a7ee08e60ad5b7bc0a721c90336",
+        "assessment": "NOT ASSESSED",
+        "competencyPass": false,
+        "privilegeChange": false
+      }
+    ],
+    "taskSlots": 6,
+    "competencyPass": 0,
+    "receiptSha256": "e53d0941468bc820f2d295ef49ff11f483b2449dfebc5788063fd31ef36c12e0",
+    "assessorAssignment": "PENDING",
+    "operatorAssignment": "PENDING",
+    "custodianAssignment": "PENDING"
+  },
+  "curriculum": {
+    "basic": [
+      {
+        "key": "identity-lineage",
+        "title": {
+          "vi": "Danh tính & Lineage",
+          "en": "Identity & lineage"
+        },
+        "completion": "NOT RECORDED IN THIS EXERCISE"
+      },
+      {
+        "key": "ethics-governance",
+        "title": {
+          "vi": "Đạo đức & Human Governance",
+          "en": "Ethics & Human Governance"
+        },
+        "completion": "NOT RECORDED IN THIS EXERCISE"
+      },
+      {
+        "key": "tool-use",
+        "title": {
+          "vi": "Sử dụng công cụ & Nhiệm vụ",
+          "en": "Tool use & tasks"
+        },
+        "completion": "NOT RECORDED IN THIS EXERCISE"
+      },
+      {
+        "key": "security",
+        "title": {
+          "vi": "Bảo mật & Phục hồi",
+          "en": "Security & recovery"
+        },
+        "completion": "NOT RECORDED IN THIS EXERCISE"
+      },
+      {
+        "key": "evidence",
+        "title": {
+          "vi": "Bằng chứng & Đánh giá",
+          "en": "Evidence & assessment"
+        },
+        "completion": "NOT RECORDED IN THIS EXERCISE"
+      }
+    ],
+    "officeExercises": [
+      {
+        "key": "office-exercise-1",
+        "module": 0,
+        "state": "RETAIN EXISTING EVIDENCE / NOT RERUN"
+      },
+      {
+        "key": "office-exercise-2",
+        "module": 1,
+        "state": "RETAIN EXISTING EVIDENCE / NOT RERUN"
+      },
+      {
+        "key": "office-exercise-3",
+        "module": 2,
+        "state": "RETAIN EXISTING EVIDENCE / NOT RERUN"
+      },
+      {
+        "key": "office-exercise-4",
+        "module": 3,
+        "state": "RETAIN EXISTING EVIDENCE / NOT RERUN"
+      },
+      {
+        "key": "office-exercise-5",
+        "module": 4,
+        "state": "RETAIN EXISTING EVIDENCE / NOT RERUN"
+      },
+      {
+        "key": "office-exercise-6",
+        "module": 5,
+        "state": "RETAIN EXISTING EVIDENCE / NOT RERUN"
+      },
+      {
+        "key": "office-exercise-7",
+        "module": 6,
+        "state": "RETAIN EXISTING EVIDENCE / NOT RERUN"
+      },
+      {
+        "key": "office-exercise-8",
+        "module": 7,
+        "state": "RETAIN EXISTING EVIDENCE / NOT RERUN"
+      },
+      {
+        "key": "office-exercise-9",
+        "module": 8,
+        "state": "RETAIN EXISTING EVIDENCE / NOT RERUN"
+      },
+      {
+        "key": "office-exercise-10",
+        "module": 9,
+        "state": "RETAIN EXISTING EVIDENCE / NOT RERUN"
+      },
+      {
+        "key": "office-exercise-11",
+        "module": 10,
+        "state": "RETAIN EXISTING EVIDENCE / NOT RERUN"
+      },
+      {
+        "key": "office-exercise-12",
+        "module": 11,
+        "state": "RETAIN EXISTING EVIDENCE / NOT RERUN"
+      }
+    ],
+    "advanced": [
+      {
+        "key": "durability",
+        "title": {
+          "vi": "Lưu trữ bền vững",
+          "en": "Durable storage"
+        },
+        "prerequisites": [
+          "Basic draft evidence",
+          "Separate verified reviewer for real assessment",
+          "Existing server grants only"
+        ],
+        "state": "NOT EXECUTED IN THIS SCOPE",
+        "assessment": "NOT ASSESSED"
+      },
+      {
+        "key": "access",
+        "title": {
+          "vi": "Quyền & Cô lập",
+          "en": "Authorization & isolation"
+        },
+        "prerequisites": [
+          "Basic draft evidence",
+          "Separate verified reviewer for real assessment",
+          "Existing server grants only"
+        ],
+        "state": "NOT EXECUTED IN THIS SCOPE",
+        "assessment": "NOT ASSESSED"
+      },
+      {
+        "key": "recovery",
+        "title": {
+          "vi": "Backup & Phục hồi",
+          "en": "Backup & recovery"
+        },
+        "prerequisites": [
+          "Basic draft evidence",
+          "Separate verified reviewer for real assessment",
+          "Existing server grants only"
+        ],
+        "state": "NOT EXECUTED IN THIS SCOPE",
+        "assessment": "NOT ASSESSED"
+      },
+      {
+        "key": "sources",
+        "title": {
+          "vi": "Nguồn & Tuyên bố",
+          "en": "Sources & claims"
+        },
+        "prerequisites": [
+          "Basic draft evidence",
+          "Separate verified reviewer for real assessment",
+          "Existing server grants only"
+        ],
+        "state": "NEW SYNTHETIC DRAFT RETAINED",
+        "assessment": "NOT ASSESSED"
+      },
+      {
+        "key": "interoperability",
+        "title": {
+          "vi": "Giao thức & Adapter",
+          "en": "Protocol & adapters"
+        },
+        "prerequisites": [
+          "Basic draft evidence",
+          "Separate verified reviewer for real assessment",
+          "Existing server grants only"
+        ],
+        "state": "NOT EXECUTED IN THIS SCOPE",
+        "assessment": "NOT ASSESSED"
+      },
+      {
+        "key": "website",
+        "title": {
+          "vi": "Website VI/EN & Đồng bộ",
+          "en": "VI/EN website & sync"
+        },
+        "prerequisites": [
+          "Basic draft evidence",
+          "Separate verified reviewer for real assessment",
+          "Existing server grants only"
+        ],
+        "state": "NOT EXECUTED IN THIS SCOPE",
+        "assessment": "NOT ASSESSED"
+      }
+    ]
+  },
+  "feedback": {
+    "taskKey": "59595434-cf51-49ad-a02b-7184f800d867",
+    "outputSha256": "fab2aa6279a5931e3db4996735fbd61e474090b1ad42b33ca6cc476177e04578",
+    "text": {
+      "vi": "Giữ nguyên hai nguồn; xin quyết định HG cho mâu thuẫn. Bài thực hành không chứng nhận SI.",
+      "en": "Preserve both sources; request HG resolution. Practice does not certify SI."
+    }
+  },
+  "execution": {
+    "checks": 4,
+    "checksPass": true,
+    "realMemberAck": false,
+    "assessorVerified": false,
+    "providerCalls": 0
+  },
+  "componentProposal": {
+    "name": "read-only inventory + sources training sidecar",
+    "state": "PROPOSED READY FOR LOCAL SYNTHETIC USE ONLY",
+    "requiresHumanReview": true,
+    "scope": "No server grants, paid resources, runtime adapters, competency or pair activation"
+  },
+  "realPairs": {
+    "ready": 0,
+    "active": 0,
+    "status": "BLOCKED — VERIFIED OPERATOR/ACCESS/BINDING MISSING"
+  },
+  "activationAllowed": false,
+  "privilegeChange": false
+}

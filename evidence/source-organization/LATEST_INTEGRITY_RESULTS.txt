@@ -1,0 +1,1 @@
+VERIFIED 77 file hashes from WORKING_PREVIEW_MANIFEST; integrity only, not capability/legal verification.

@@ -1,0 +1,12 @@
+✔ derives revision and manifest from exact checkout bytes without granting authority (65.015638ms)
+✔ tampered runtime source, untracked runtime and symlinks fail closed (36.545977ms)
+✔ rehashed forged manifest and absent Git cannot become verified (36.776746ms)
+✔ worksheet verifies independent Git bytes and binds export revision, retaining HOLD and unassessed (58.249112ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 202.613371

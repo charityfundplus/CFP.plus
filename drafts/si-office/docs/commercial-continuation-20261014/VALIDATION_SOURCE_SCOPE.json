@@ -1,0 +1,105 @@
+{
+  "baseExecutionSource": "b3816488073623041d17b65433dace9b6e22f56a",
+  "baseEvidenceHead": "310a6b6f0aa413259363fae935a8b46aa931035e",
+  "scope": "newcommercial source validated locally before finalcommit; identicalcode bytes bound below",
+  "tests": [
+    {
+      "path": "tests/commercial-flow.test.mjs",
+      "passed": 3,
+      "scope": "real HTTP handler no socket, P2 SQLite/RBAC/matching/idempotency/reopen/backup/metadata rollback"
+    },
+    {
+      "path": "tests/commercial-retention.test.mjs",
+      "passed": 3,
+      "scope": "actual predecessor refusal/auditrecordloss/ownership/hash/software"
+    },
+    {
+      "path": "tests/commercial-export-validation.test.mjs",
+      "passed": 4,
+      "scope": "actualexportcallbackVM mockedfetch/DOM, notbrowser"
+    },
+    {
+      "path": "tests/assessment-retention.test.mjs",
+      "passed": 3,
+      "scope": "affectedcheckpoint schema/assessment preservation regression"
+    },
+    {
+      "path": "tests/task-execution-provenance.test.mjs",
+      "passed": 1,
+      "scope": "affectedcheckpoint task source receipt regression"
+    }
+  ],
+  "failures": 0,
+  "files": [
+    {
+      "path": "drafts/si-office/core/commercial-intake.mjs",
+      "sha256": "78762134185ce0a67674a4101bc896977bc852eb7fa2b41d7f5ca8afabfb4f4d"
+    },
+    {
+      "path": "drafts/si-office/core/core-engine.mjs",
+      "sha256": "59e8eb0ee1142215b01061f1874456e58f01169c9f881ad3a4a38f50f383122b"
+    },
+    {
+      "path": "drafts/si-office/core/office-intake.mjs",
+      "sha256": "89f6b00c8eec7e9d76808bdaf1db9bb482db4974ac243c0713af9283e890fcc4"
+    },
+    {
+      "path": "drafts/si-office/sandbox/p2-http.mjs",
+      "sha256": "503a565b8634718159bd4145a26ec373fec0dda5b84949b9c5fca956369794b2"
+    },
+    {
+      "path": "drafts/si-office/sandbox/p2-service.mjs",
+      "sha256": "c6afd018e186a7ae00bf9f80ee1920ee5c072880e75c9082b6830c305ec80f21"
+    },
+    {
+      "path": "drafts/si-office/public/p2.html",
+      "sha256": "bcdf3dcdfe67c4560b8fc59e118f46e8b59f5a16821d88eb11fc8ef4ba399e8b"
+    },
+    {
+      "path": "drafts/si-office/public/office-intake.js",
+      "sha256": "a9e6f6effedd8d300259344ba13606786ee31e41279ed285fad5040b908599f4"
+    },
+    {
+      "path": "drafts/si-office/public/p2-office.js",
+      "sha256": "efcb9d8e0cc02b6b370d71ec0a0c258d9202a6ce283c81958bdea314f24feb54"
+    },
+    {
+      "path": "drafts/si-office/public/commercial-office.js",
+      "sha256": "1abe0558a68f3a0dc3f5119f496eab83f42332dc43369c6cb60b3cbfd8812c80"
+    },
+    {
+      "path": "drafts/si-office/public/style.css",
+      "sha256": "4420f47e8c51ce56c694787be5df7fe7b8e70d5584524a9ea9773fc15df08768"
+    },
+    {
+      "path": "drafts/si-office/tests/commercial-flow.test.mjs",
+      "sha256": "88e0ab8a66f7e7bb6c0ecd7158ad18ea0349348ffe3163204860c77e475c32f8"
+    },
+    {
+      "path": "drafts/si-office/tests/commercial-retention.test.mjs",
+      "sha256": "f7708e4e41ba08f8b3541f94ab069fad0f1da55c07c96dda23f2378f9f4fa099"
+    },
+    {
+      "path": "drafts/si-office/tests/commercial-export-validation.test.mjs",
+      "sha256": "fa11e5883c3b7860d76d5a1b8bcac2405140cfa05b90c756ebadb1c4d481421f"
+    },
+    {
+      "path": "drafts/si-office/tests/commercial-evidence-flow.mjs",
+      "sha256": "25db4f449ca7cc39526b919642a8d5ba6991280f8c7b8a251d23a818e858e595"
+    },
+    {
+      "path": "drafts/si-office/tests/link-commercial-render.py",
+      "sha256": "262e67fea91271fab61c29373badb9c8a26941e0146c418d0bb8d59757567ea0"
+    },
+    {
+      "path": "drafts/si-office/tests/fixtures/core-engine-b381.txt",
+      "sha256": "98a2b2d040d532cb97e24ff2dd37972879870a9ef4258e9ac9f93837b42f0997"
+    }
+  ],
+  "browserTest": "BLOCKED Chromium EPERM setsockopt/SIGTRAP; no screenshots",
+  "iphoneSafari": "NOT TESTED",
+  "authorizedPublicHttps": null,
+  "operatorAuthorityVerified": false,
+  "activationAllowed": false,
+  "broadOldPassSuitesRerun": false
+}

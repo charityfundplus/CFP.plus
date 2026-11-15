@@ -1,0 +1,11 @@
+✔ commercial checkpoint refuses actual predecessor, detects retained audit-record loss and preserves old audit (13.714812ms)
+✔ owned enterprise references and matching inputs are source bound, without retrospective owner assignment (3.174091ms)
+✔ software declaration remains unbound and unverified in the existing Office intake (1.048179ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 23.207793

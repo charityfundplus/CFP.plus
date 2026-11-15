@@ -1,0 +1,16 @@
+✔ QA-01 task persists after server/SQLite restart and is read in a fresh independent session (2172.820812ms)
+✔ QA-02 idempotency replay survives restart; changed payload returns 409 (2316.913353ms)
+✔ QA-03 anonymous, viewer, foreign workspace and ungranted pair cannot mutate another task (2404.430339ms)
+✔ QA-04 generated synthetic output hash and task-specific audit survive restart, independent review is required (3694.946275ms)
+✔ QA-05 session logout is isolated to the revoked session (1677.584527ms)
+✔ QA-06 hostile origin, role/owner injection, oversized body and SQL-like credentials fail closed (1430.206205ms)
+✔ QA-07 persisted output modification without matching audit is detected (1364.832891ms)
+✔ QA-09 malformed unauthenticated request target must not terminate HTTP server (815.011312ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 16091.489074

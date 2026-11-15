@@ -1,0 +1,22 @@
+
+> test:p2
+> node tests/p2.test.mjs
+
+✔ P2-A authentication rejects forged/expired/revoked sessions; no plaintext secrets (286.070245ms)
+✔ P2-B server roles, independent subject review and workspace isolation (330.581199ms)
+✔ P2-C durable task/idempotency and audit survive reopen (208.183084ms)
+✔ P2-C audit tampering and state mutation fail closed (417.092686ms)
+✔ P2-D five slots remain disconnected; no live credentials or identity mutation (294.298134ms)
+✔ P2-E backup/restore preserves task history, revokes sessions and rejects corruption (274.775964ms)
+✔ P2-E incompatible storage and metadata upgrade/rollback are bounded (202.479607ms)
+✔ P2-C storage commit failure returns no task and rolls back state (203.812966ms)
+✔ P2-E persisted RUNNING checkpoint recovers interrupted without replay (349.352509ms)
+✔ P2-B reviewer cannot acknowledge own task after restart (200.617065ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2771.919378

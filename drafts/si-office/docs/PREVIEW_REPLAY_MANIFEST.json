@@ -1,0 +1,17 @@
+{
+  "runtimeBase": "8b53169e3353ebc8e798cd8a658aebd5afbd037d",
+  "acceptedReplayRevision": "2814b357d8b31385aff530ca37eb8606674b608e",
+  "runtimeChangedOnly": [
+    "drafts/si-office/public/office-intake.js"
+  ],
+  "historicalSuitesNotRerun": true,
+  "files": {
+    "drafts/si-office/public/office-intake.js": "313fda2005163b43a07e52efd27480a0d5bcc01e037f2c170a1fa57005be5a07",
+    "drafts/si-office/tests/intake-flow-fixture.mjs": "b02aaf58794cc494ef500769d1789341c692ecdf24102bf93d0607be9ac320d6",
+    "drafts/si-office/tests/preview-steps-browser.py": "3268b60ff96d5161ea3e520bd5e3916e6ab1239233daf65e3a6ec8f5bb9679ce",
+    "drafts/si-office/docs/PREVIEW_STEPS_BROWSER.json": "09df216a816544c3d96e1cf70bd13dff05c68791ffe4f6990258f3f83b434365",
+    "drafts/si-office/docs/PREVIEW_REPLAY_HANDOFF.md": "f0bcda63ae3f7ccc29c1e30577cb7b5040ee95fb2a952c6823127411b0e0a4c6",
+    "drafts/si-office/docs/PREVIEW_2814_REPLAY_RECEIPT.json": "a3357f1dec06118b44a80933d6ff488191d5b101e2f62408685365bd8b3b6a9d",
+    "drafts/si-office/docs/PREVIEW_2814_PIN_TEST.json": "ea96d6f83e12e8e11f029ec72b81f9767174e244cb414ee68bc78afd278406a9"
+  }
+}

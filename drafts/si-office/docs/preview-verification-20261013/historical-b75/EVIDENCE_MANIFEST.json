@@ -1,0 +1,43 @@
+{
+  "approvedRevision": "b75b780eb64430355f0b51a4b58b9e5269e0db43",
+  "status": "PAID RESOURCE PENDING",
+  "newTestGroups": 4,
+  "scope": "local synthetic rehearsal, not Render/off-host deployment",
+  "files": [
+    {
+      "file": "CFP-HUB69.md",
+      "sha256": "bc206502903b1678191196d3d545f6c600e8e778572cf93edffdb9d8b141f98a",
+      "bytes": 7076
+    },
+    {
+      "file": "CHECKOUT_BACKUP_GUIDE_VI.md",
+      "sha256": "0fe28ec2cecbcd71d1a2de0f3740e9561aa5e2354e1495f60fe52252711639a3",
+      "bytes": 6971
+    },
+    {
+      "file": "ISSUE130_UPDATE.md",
+      "sha256": "4aac6bfc6dbbf9e82dd0bea0f4208b6ec3e3a570f96c8e282520a857be45f91b",
+      "bytes": 3513
+    },
+    {
+      "file": "PINNED_SOURCE_MANIFEST.json",
+      "sha256": "55479ab33c04a1a6133e5a4a49dd5da8fb060a2286cbbb0d9c7504c150c39e1d",
+      "bytes": 5656
+    },
+    {
+      "file": "TEST_RESULTS.txt",
+      "sha256": "58ffb3513f70530fa621e31747ddc7ef1ba55030c893201b4f7b021c5a54f499",
+      "bytes": 586
+    },
+    {
+      "file": "controls.mjs",
+      "sha256": "b6a859930f322ab38e1135f0c202d04168ca0eee11447406faabf923cf4a6593",
+      "bytes": 3394
+    },
+    {
+      "file": "verification.test.mjs",
+      "sha256": "68cd5bae0f951a444ffe11fed77af1c7b2f2e51796d1c3b9654dee53d3115b05",
+      "bytes": 6226
+    }
+  ]
+}

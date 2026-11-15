@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "testedRuntimeRevision": "62e0e5f3b4156eab44e02f065f0bb62061905518",
+  "testedSourceTree": "a2a83e64211c0bc322ea214993603a3c25fd74da",
+  "testResult": {
+    "pass": 29,
+    "fail": 0,
+    "new": 14,
+    "affectedRegression": 15
+  },
+  "browserStatus": "BLOCKED_EXECUTABLE_UNAVAILABLE",
+  "publicPreviewURL": null,
+  "productionAllowed": false,
+  "files": [
+    {
+      "path": "CORE_API_CONTRACT.md",
+      "bytes": 4532,
+      "sha256": "628c251d627dda4b944130b08d251d467f3015f185940969d8f5f57f1b2670e0"
+    },
+    {
+      "path": "HANDOFF_VI.md",
+      "bytes": 5394,
+      "sha256": "fac5b37d2bf892e280a885b0e7c15bf0df375465cdecdd75d651aa609921789a"
+    },
+    {
+      "path": "api-examples.json",
+      "bytes": 25294,
+      "sha256": "e3eceafc033cb79a02a3ebf71ce56ec11a00bea13560ac7f767cdd367d245328"
+    },
+    {
+      "path": "browser-results.json",
+      "bytes": 582,
+      "sha256": "a9709ae233263ed3f358b67fc656ab1d1632efadb8648b33e5569ee69244741f"
+    },
+    {
+      "path": "chatgpt-project.json",
+      "bytes": 2800,
+      "sha256": "0802157d6ea6c0e20c63299f4ccc42aa6f26cc8808131576324f3034f36d71d0"
+    },
+    {
+      "path": "openai-profile.json",
+      "bytes": 10150,
+      "sha256": "a2ab918ebd9011bb1359482c3417abe55057968cd0ffb04d9120c7988109206d"
+    },
+    {
+      "path": "registry-validation.json",
+      "bytes": 2005,
+      "sha256": "16db060eb96c021a8ab42c4078ddfeada031734f84a1895802bf4f0d93905e67"
+    },
+    {
+      "path": "runtime-provenance.json",
+      "bytes": 12880,
+      "sha256": "44892d0eb07d8f6708062c05dbe073620ae1eb50015c7e2c997f2f8398b0271b"
+    },
+    {
+      "path": "source-file-manifest.json",
+      "bytes": 2113,
+      "sha256": "8f65d852c710ac1866892dd5009733966aaba38d3cfc588fa78ff20eae14e958"
+    },
+    {
+      "path": "tests.tap",
+      "bytes": 7407,
+      "sha256": "01dbb9f27a7996294981714259e9e4033a21b571d57dc206ade1bb53bf1f1df6"
+    }
+  ]
+}

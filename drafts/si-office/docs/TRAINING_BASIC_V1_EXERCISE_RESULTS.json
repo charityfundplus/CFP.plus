@@ -1,0 +1,104 @@
+{
+  "program": "basic-v1",
+  "mode": "SUPERVISED SYNTHETIC DRAFT EXERCISES; NOT 12 COMPLETE PRODUCTION MODULES",
+  "results": [
+    {
+      "exercise": "office-exercise-1",
+      "officeModule": 0,
+      "taskKey": "ece86c85-2e95-40e2-b52d-47fd7518e910",
+      "status": "AWAITING HUMAN REVIEW",
+      "checks": 18,
+      "privilegeChange": false
+    },
+    {
+      "exercise": "office-exercise-2",
+      "officeModule": 1,
+      "taskKey": "cc61f0e7-b3c2-4af9-baf3-15dabc106d95",
+      "status": "AWAITING HUMAN REVIEW",
+      "checks": 18,
+      "privilegeChange": false
+    },
+    {
+      "exercise": "office-exercise-3",
+      "officeModule": 2,
+      "taskKey": "a032c4fb-7abf-4335-9ecf-42c6132f51cb",
+      "status": "AWAITING HUMAN REVIEW",
+      "checks": 18,
+      "privilegeChange": false
+    },
+    {
+      "exercise": "office-exercise-4",
+      "officeModule": 3,
+      "taskKey": "68e1b37a-c614-4c11-ab53-140def0728e6",
+      "status": "AWAITING HUMAN REVIEW",
+      "checks": 18,
+      "privilegeChange": false
+    },
+    {
+      "exercise": "office-exercise-5",
+      "officeModule": 4,
+      "taskKey": "f345d31c-6226-4011-9a44-052f3b404134",
+      "status": "AWAITING HUMAN REVIEW",
+      "checks": 18,
+      "privilegeChange": false
+    },
+    {
+      "exercise": "office-exercise-6",
+      "officeModule": 5,
+      "taskKey": "dc744343-5a60-4396-9ceb-7925203d30d5",
+      "status": "AWAITING HUMAN REVIEW",
+      "checks": 18,
+      "privilegeChange": false
+    },
+    {
+      "exercise": "office-exercise-7",
+      "officeModule": 6,
+      "taskKey": "43f0830b-7c73-4030-9505-450e14985395",
+      "status": "AWAITING HUMAN REVIEW",
+      "checks": 18,
+      "privilegeChange": false
+    },
+    {
+      "exercise": "office-exercise-8",
+      "officeModule": 7,
+      "taskKey": "a8aac4b5-a785-4cb7-8a7a-faa44df46f41",
+      "status": "AWAITING HUMAN REVIEW",
+      "checks": 18,
+      "privilegeChange": false
+    },
+    {
+      "exercise": "office-exercise-9",
+      "officeModule": 8,
+      "taskKey": "c4002c93-2349-473a-8f90-6b41db9d92f4",
+      "status": "AWAITING HUMAN REVIEW",
+      "checks": 18,
+      "privilegeChange": false
+    },
+    {
+      "exercise": "office-exercise-10",
+      "officeModule": 9,
+      "taskKey": "57017914-e212-4c08-8378-5f1aec6e85d9",
+      "status": "AWAITING HUMAN REVIEW",
+      "checks": 18,
+      "privilegeChange": false
+    },
+    {
+      "exercise": "office-exercise-11",
+      "officeModule": 10,
+      "taskKey": "bf7003de-bfeb-43ef-8617-f7b7006f2d19",
+      "status": "AWAITING HUMAN REVIEW",
+      "checks": 18,
+      "privilegeChange": false
+    },
+    {
+      "exercise": "office-exercise-12",
+      "officeModule": 11,
+      "taskKey": "79c1e9ab-97d0-470e-adf9-6a3c2213a5eb",
+      "status": "AWAITING HUMAN REVIEW",
+      "checks": 18,
+      "privilegeChange": false
+    }
+  ],
+  "auditValid": true,
+  "noAutomaticPromotion": true
+}

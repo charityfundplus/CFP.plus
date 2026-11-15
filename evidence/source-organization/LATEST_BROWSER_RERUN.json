@@ -1,0 +1,17 @@
+{
+  "scope": "Changed training UI + standard entry; synthetic local preview only",
+  "checks": [
+    "Unreviewed exercise with feedback does not advance progress",
+    "UI practice → feedback → separate review → basic draft evidence ready",
+    "Downloaded current evidence: SHA-256 verified, 12 scoped tasks, no cookie or certification",
+    "Journey and six advanced guides VI/EN; mobile 390px without overflow",
+    "Shared team learner cannot inherit another subject study or assessments",
+    "Foreign workspace progress stays empty",
+    "Existing HUB69 onboarding VI/EN mobile; hrefs and ten chapters retained",
+    "No browser page errors"
+  ],
+  "pageErrors": [],
+  "status": "PASS",
+  "publicPreview": "NOT DEPLOYED",
+  "servicesStopped": true
+}

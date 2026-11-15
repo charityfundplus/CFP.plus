@@ -1,0 +1,6 @@
+{
+  "scope": "new organization artifacts and changed verifier only",
+  "patterns": "private keys,GitHub tokens,OpenAI project keys,AWS access key IDs",
+  "findings": [],
+  "limitations": "pattern scan, not proof of absent sensitive data; original public repository was not certified"
+}

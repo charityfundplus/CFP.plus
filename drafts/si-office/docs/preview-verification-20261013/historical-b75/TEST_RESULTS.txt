@@ -1,0 +1,12 @@
+✔ Encrypted consistent SQLite recovery, retained audit, sessions revoked, wrong key/tamper denied, seven points (116.623475ms)
+✔ Rollback rehearsal retains current DB and returns separate generation to authenticated encrypted recovery (425.422727ms)
+✔ Request limits and fail-closed policy prevent dispatch; expiry survives a recreated handler (0.535666ms)
+✔ External stop orchestration closes admission before suspend and requires provider readback (0.408624ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 549.055058

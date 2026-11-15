@@ -1,0 +1,11 @@
+✔ new sources draft integrates existing curriculum and reviewer with artifact digests (17.202289ms)
+✔ a pair without source mission or unknown binding cannot run this exercise (0.505326ms)
+✔ changed source bytes fail before practice receipt is produced (0.447951ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 28.170093

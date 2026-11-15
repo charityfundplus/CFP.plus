@@ -1,0 +1,24 @@
+{
+  "scope": "NEW kernel tx-counter and actual loopback HTTPS listener closure only",
+  "command": "python tests/kernel-egress-https.py",
+  "exit_code": 0,
+  "tests": 6,
+  "passed": 6,
+  "elapsed_seconds": 0.759,
+  "visibleNICs": [
+    "docker0",
+    "eth0",
+    "eth1",
+    "lo"
+  ],
+  "ipTrafficObserved": "Actual IPv4/IPv6 UDP bypass plus real TLS1.2+ loopback HTTPS",
+  "quoteAndApproval": "Synthetic fixture only, not account checkout/real approval",
+  "publicHostVerified": false,
+  "providerBillingHardCapVerified": false,
+  "oldSuitesRerun": false,
+  "source_sha256": {
+    "drafts/si-office/scripts/kernel-egress-guard.py": "4aac1fd95a6832acf3bae9dc2dc12068da7f8c589aeecc6b8710d68012b17c9f",
+    "drafts/si-office/tests/kernel-egress-https.py": "a577ae6cc6ff8c831817b23acd703bee02b09dbd7b098e80dd37b0944d423ee7"
+  },
+  "observed_at": "2026-10-13T23:58:36.136587+00:00"
+}

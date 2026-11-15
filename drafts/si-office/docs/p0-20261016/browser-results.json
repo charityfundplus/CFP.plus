@@ -1,0 +1,9 @@
+{
+  "scope": "Loopback Chromium; mobile is emulation, not Safari or real iPhone",
+  "externalServiceRequests": 0,
+  "checks": [],
+  "activationAllowed": false,
+  "pass": false,
+  "blocker": "BROWSER_EXECUTABLE_UNAVAILABLE",
+  "error": "browserType.launch: Executable doesn't exist at /root/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗"
+}

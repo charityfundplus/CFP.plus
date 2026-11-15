@@ -1,0 +1,72 @@
+{
+  "id": "691001",
+  "identity": {
+    "registryName": "AltaML",
+    "pairIdentity": "Siêu Trí Tuệ (SI🤖AI🤖) • Practice for registry 691001",
+    "verification": "SYNTHETIC ONLY",
+    "identityBound": false
+  },
+  "type": "developer",
+  "country": "Canada",
+  "parent": "6910",
+  "chapter": 6,
+  "group": "246",
+  "permanentLink": {
+    "canonical": "https://cfp.plus/691001",
+    "github": "https://gh.cfp.plus/691001",
+    "google": "https://gg.cfp.plus/691001",
+    "notion": "https://nt.cfp.plus/691001",
+    "workspace": "https://cg.cfp.plus/691001",
+    "parent": "https://cfp.plus/6910",
+    "hub69": "https://cfp.plus/69",
+    "childDigitConforms": true,
+    "verified": false
+  },
+  "mainContent": {
+    "office12": [
+      "Danh Tính & Lineage",
+      "Giới Thiệu & Năng Lực",
+      "Danh Mục Sản Phẩm",
+      "Danh Mục Dịch Vụ",
+      "Quảng Cáo & Tiếp Thị",
+      "Khách Hàng & CRM",
+      "Thương Mại & Thanh Toán",
+      "HSTDN & Đối Tác",
+      "Văn Phòng & Công Việc",
+      "SI AI • API • MCP",
+      "Quản Trị • Đạo Đức • Bảo Mật",
+      "Báo Cáo • Evidence • KPI"
+    ],
+    "training": "configs/training-basic-v1.json",
+    "forum": {
+      "foundation": "P2 HTTP loopback intake (tests/forum-foundation-loopback, forum-independent-qa)",
+      "service": "services/forum (Python/PostgreSQL) • origin/claude/forum-schema-location-guard • not bundled",
+      "status": "SANDBOX FOUNDATION ONLY"
+    },
+    "missions": [
+      "registry-audit",
+      "training-drill"
+    ]
+  },
+  "officialSourceEvidence": {
+    "status": "MISSING EVIDENCE",
+    "sources": [
+      "https://cfp.plus/69",
+      "https://cfp.plus/691001"
+    ],
+    "note": "Template links are references, not evidence"
+  },
+  "reviewStatus": "MISSING EVIDENCE",
+  "workOrderReturn": {
+    "pass": true,
+    "runs": [
+      "registry-audit/normal: AWAITING HUMAN REVIEW → REVIEWED DRAFT",
+      "registry-audit/overreach: BLOCKED",
+      "training-drill/normal: AWAITING HUMAN REVIEW → REVIEWED DRAFT",
+      "training-drill/overreach: BLOCKED"
+    ]
+  },
+  "hub69": "https://cfp.plus/69",
+  "activation": "HOLD ACTIVATION • PRODUCTION NO GO",
+  "snapshot": "835616308111f6851c0387fa9f5eda60c9ffa624"
+}

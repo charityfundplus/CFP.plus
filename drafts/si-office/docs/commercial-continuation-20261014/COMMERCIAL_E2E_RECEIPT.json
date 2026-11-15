@@ -1,0 +1,1448 @@
+{
+  "mode": "REAL HTTP HANDLER + SQLITE / NO SOCKET OR BROWSER",
+  "executionRevision": "275c6b11559216404537c752a706e1b2eef1d0b7",
+  "buildManifest": {
+    "schemaVersion": 1,
+    "algorithm": "sha256",
+    "scope": "tracked runtime source; excludes docs/tests",
+    "revision": "275c6b11559216404537c752a706e1b2eef1d0b7",
+    "files": [
+      {
+        "path": "adapters.mjs",
+        "bytes": 760,
+        "sha256": "f6db020422dbf067f726a0917a193584056174a4b73ba540f75081c62b332b4b"
+      },
+      {
+        "path": "ai-entity-registry.json",
+        "bytes": 9655,
+        "sha256": "c97681cf7cdd494e4bb4658550c6db76546a00676c9eff8e8c83fb72ca1950f6"
+      },
+      {
+        "path": "configs/pairs.json",
+        "bytes": 3203,
+        "sha256": "e2d79fbe6e3eb7b34fb3c5eef879d08a8414c5376dc12cbedadafad7617243a4"
+      },
+      {
+        "path": "configs/provider-preparation.json",
+        "bytes": 3584,
+        "sha256": "e5529426a28af6b18a4ae203837974983d0afd50d788e6abb853b942fc026135"
+      },
+      {
+        "path": "configs/training-basic-v1.json",
+        "bytes": 25204,
+        "sha256": "528ef09c2a7ac671eca56a6370ff3489657c0d9dfa33c2466f08ded48067f200"
+      },
+      {
+        "path": "core/commercial-intake.mjs",
+        "bytes": 5080,
+        "sha256": "78762134185ce0a67674a4101bc896977bc852eb7fa2b41d7f5ca8afabfb4f4d"
+      },
+      {
+        "path": "core/common.mjs",
+        "bytes": 882,
+        "sha256": "f93f027c200da272aa059a61ea7412e00096f0a50b7258a240629d33343700e0"
+      },
+      {
+        "path": "core/core-engine.mjs",
+        "bytes": 19080,
+        "sha256": "59e8eb0ee1142215b01061f1874456e58f01169c9f881ad3a4a38f50f383122b"
+      },
+      {
+        "path": "core/cross-check-engine.mjs",
+        "bytes": 1379,
+        "sha256": "bb8d503d036098f0e7aaa6c8f7bebb28e85cb2cc75588727df0d3d38672759fa"
+      },
+      {
+        "path": "core/hub69-integration.mjs",
+        "bytes": 419,
+        "sha256": "14fb53cf1ba15e1c5889afb022ec1d60a5a49a3a1c5bb2b90c4486b6e88e5bd7"
+      },
+      {
+        "path": "core/identity-registry.mjs",
+        "bytes": 1782,
+        "sha256": "3d47d937d62dffd66a7712608afcf9ac5d52d0143e64348e6a5819e004c43ced"
+      },
+      {
+        "path": "core/knowledge-evidence.mjs",
+        "bytes": 1776,
+        "sha256": "3aa78103ed6225f490a25a95848085a8b0074ce0faeb6cdb98aec22525db3e0a"
+      },
+      {
+        "path": "core/learning-training.mjs",
+        "bytes": 2953,
+        "sha256": "2020ba73424a0c44ae76868ca3ed42361ad3fd32931570c6efc2f95b1c0f7a35"
+      },
+      {
+        "path": "core/monitoring-recovery.mjs",
+        "bytes": 981,
+        "sha256": "d65e654fc08d123fbb91b6699e631b032c716c966110f6093ee13ad36255e754"
+      },
+      {
+        "path": "core/office-intake.mjs",
+        "bytes": 5028,
+        "sha256": "89f6b00c8eec7e9d76808bdaf1db9bb482db4974ac243c0713af9283e890fcc4"
+      },
+      {
+        "path": "core/security-permission.mjs",
+        "bytes": 931,
+        "sha256": "a55e16d3471b986b9f150e000a17c0acdfd3f6b49fd61614e0e31a11d9a01a1e"
+      },
+      {
+        "path": "core/si-adapter.mjs",
+        "bytes": 1216,
+        "sha256": "3aa9235a35bef76615172b662e5ba2537326a2bf85ac792f6abf9d22d15e97b9"
+      },
+      {
+        "path": "core/supervision-engine.mjs",
+        "bytes": 1138,
+        "sha256": "234b61a29dca36653e27e7b424fab4ca606f775a793e698311ee43012d503007"
+      },
+      {
+        "path": "core/task-engine.mjs",
+        "bytes": 3652,
+        "sha256": "ff6896f78ecae79bc6bce0c55029861e76ddf7f1f64aed6b93ecb259446b1d3d"
+      },
+      {
+        "path": "core/training-assessment.mjs",
+        "bytes": 3759,
+        "sha256": "6ea01af6f3a0666204d313a129995c38dc0dd6067fbea3384592ca3b426aec4a"
+      },
+      {
+        "path": "core/version-upgrade.mjs",
+        "bytes": 1558,
+        "sha256": "b8b93d65fea1aae9bb72851d4f5d3034c9a6fc54c614ebefc8ae448db611236e"
+      },
+      {
+        "path": "country-route-map.json",
+        "bytes": 4723,
+        "sha256": "344d373c39a48505f50d6222cc12e03db69df6f0d98f39ce980c9cc5bef9bc5e"
+      },
+      {
+        "path": "global-country-ai-index.json",
+        "bytes": 11934,
+        "sha256": "651fa05c7dc633120c65cbaa0905e5dda0da9b0c3bf41ba1f062b7bdf0ed4679"
+      },
+      {
+        "path": "model.mjs",
+        "bytes": 5168,
+        "sha256": "cd0b4a7a1fffc0eaf6c600d02fbe46ff9221451a9f33b8812eee9cd7e59899a9"
+      },
+      {
+        "path": "package.json",
+        "bytes": 665,
+        "sha256": "03572a5191a6cd11025201ae4ce0b5b63742316c8c29b413359c51ed7c7ca3f9"
+      },
+      {
+        "path": "public/app.js",
+        "bytes": 14453,
+        "sha256": "4fa93f4c9f59975438e933eb30f817b451c8f834d9aeef4e2340f89bd2976c6a"
+      },
+      {
+        "path": "public/assessment-export.js",
+        "bytes": 352,
+        "sha256": "c314975c6909b68f87ea321ee003e8576519d231831822bf8af84e0955dff067"
+      },
+      {
+        "path": "public/commercial-office.js",
+        "bytes": 9525,
+        "sha256": "1abe0558a68f3a0dc3f5119f496eab83f42332dc43369c6cb60b3cbfd8812c80"
+      },
+      {
+        "path": "public/core.html",
+        "bytes": 5163,
+        "sha256": "d023346d63415e300ff6dd34226e37f1ef789331a73883eb7219fa43a9ffd85d"
+      },
+      {
+        "path": "public/core.js",
+        "bytes": 12042,
+        "sha256": "cf79255086a929c955c9d05af042b36493c78f1e4bdc2d0fd3e21da03bee54e9"
+      },
+      {
+        "path": "public/i18n.js",
+        "bytes": 8451,
+        "sha256": "8fdab2a4ec9dd51e9fc2f45f0a29ffd4c32404cc3ed1fcd441168a6d74041562"
+      },
+      {
+        "path": "public/index.html",
+        "bytes": 9549,
+        "sha256": "d79d6267c0b1139cbf33a4213b94772cfa7f13635274c0615dcab504f5ee5af9"
+      },
+      {
+        "path": "public/office-contracts.js",
+        "bytes": 3992,
+        "sha256": "aec908e5d5f92132360583a3f7e974a307b2df882038248dcedbf60e1f210ce9"
+      },
+      {
+        "path": "public/office-intake.js",
+        "bytes": 16215,
+        "sha256": "a9e6f6effedd8d300259344ba13606786ee31e41279ed285fad5040b908599f4"
+      },
+      {
+        "path": "public/p2-office.js",
+        "bytes": 12133,
+        "sha256": "efcb9d8e0cc02b6b370d71ec0a0c258d9202a6ce283c81958bdea314f24feb54"
+      },
+      {
+        "path": "public/p2.html",
+        "bytes": 10799,
+        "sha256": "bcdf3dcdfe67c4560b8fc59e118f46e8b59f5a16821d88eb11fc8ef4ba399e8b"
+      },
+      {
+        "path": "public/style.css",
+        "bytes": 11796,
+        "sha256": "4420f47e8c51ce56c694787be5df7fe7b8e70d5584524a9ea9773fc15df08768"
+      },
+      {
+        "path": "sandbox/p2-http.mjs",
+        "bytes": 7255,
+        "sha256": "503a565b8634718159bd4145a26ec373fec0dda5b84949b9c5fca956369794b2"
+      },
+      {
+        "path": "sandbox/p2-service.mjs",
+        "bytes": 14854,
+        "sha256": "c6afd018e186a7ae00bf9f80ee1920ee5c072880e75c9082b6830c305ec80f21"
+      },
+      {
+        "path": "sandbox/pair-coordinator.mjs",
+        "bytes": 3306,
+        "sha256": "8fb6d7003bc0eace1daecd7494b1d9f60163a85e82be8aec7a4c22c846664614"
+      },
+      {
+        "path": "sandbox/release-control.mjs",
+        "bytes": 5195,
+        "sha256": "8f4ba3a6773555402e865e068cad0ded5b802a24915a9b71434c1738913532b3"
+      },
+      {
+        "path": "sandbox/release-health.mjs",
+        "bytes": 481,
+        "sha256": "d0f727c78cbabd5392e6a6640d8dbce152988396f185a52fdf8a74003ab5ba19"
+      },
+      {
+        "path": "scripts/assess-retained-practice.mjs",
+        "bytes": 1411,
+        "sha256": "dcdeeab3d166f00ae9d5d4951a00c5cc6eeabc996665c2af1f99dae8b6701ee9"
+      },
+      {
+        "path": "scripts/assessment-demo.mjs",
+        "bytes": 3418,
+        "sha256": "0a1f5089b455c34da704bd2c5cffcc7651249b2b38830566c5fe92cdb66f923f"
+      },
+      {
+        "path": "scripts/backup-envelope.mjs",
+        "bytes": 2054,
+        "sha256": "46c41c81bd14b1218fcd5eae6bf7d22e01ea1c21039aefb77c18c9e1c3bec5eb"
+      },
+      {
+        "path": "scripts/build-provenance.mjs",
+        "bytes": 3213,
+        "sha256": "a789577bbe68bacd3214d2f81b6b27b56fab6951362b5743c28443486bc79c82"
+      },
+      {
+        "path": "scripts/core-demo.mjs",
+        "bytes": 1492,
+        "sha256": "29b9f68ce1ecb5545f382ed401ce6953f8947389fc51d98744b7d21d5f5a5933"
+      },
+      {
+        "path": "scripts/cost-bound.mjs",
+        "bytes": 2724,
+        "sha256": "870ef9a1dfcf4e043f088869021c274fe38ffbf1ea66caa11a2affc8337684a0"
+      },
+      {
+        "path": "scripts/evidence.mjs",
+        "bytes": 2398,
+        "sha256": "f092c627d2773bed109cff45d6258bf66cd47ae081b1b5b32a5eb789936edefe"
+      },
+      {
+        "path": "scripts/guarded-preview.mjs",
+        "bytes": 1617,
+        "sha256": "161f4cc0c77b485cceeb0c0c66f43fe8a9d9bd370e8cc4df536fcb0f8a377e52"
+      },
+      {
+        "path": "scripts/intake-team-practice.mjs",
+        "bytes": 5655,
+        "sha256": "9bd342758f9e16661c6a2b4b25eed7b7108dda109627adc63ba91b0dafd6cf5f"
+      },
+      {
+        "path": "scripts/kernel-egress-guard.py",
+        "bytes": 5459,
+        "sha256": "4aac1fd95a6832acf3bae9dc2dc12068da7f8c589aeecc6b8710d68012b17c9f"
+      },
+      {
+        "path": "scripts/local-https-preview.mjs",
+        "bytes": 2413,
+        "sha256": "4374be39fd391d544188bc5b1710b7011b01e5fe6332053ab5051bce3f2e80bb"
+      },
+      {
+        "path": "scripts/p2-demo.mjs",
+        "bytes": 1499,
+        "sha256": "343612b1f3ac15c52662e080527f1cbb300a6916676d872ec8c425e622fbce2e"
+      },
+      {
+        "path": "scripts/p2-provision.mjs",
+        "bytes": 589,
+        "sha256": "5e0c008d09389f26cfe0d2f0aa5069e7ff464df939804c62b9312d4e349c3350"
+      },
+      {
+        "path": "scripts/p2-release-serve.mjs",
+        "bytes": 932,
+        "sha256": "297dbd8c1d49444928728cba0798c0a3758d2bb8cff1e0d081521eda68549f3d"
+      },
+      {
+        "path": "scripts/practice-evidence-review.mjs",
+        "bytes": 4945,
+        "sha256": "fb5ad65c7d44529abc319aa0b48d41aa9805cd236b9db900f17bc5995460bc0f"
+      },
+      {
+        "path": "scripts/preview-guard.mjs",
+        "bytes": 3254,
+        "sha256": "35ac52181aed780a749ed84907a542cb5ecb53c9ab7acfaf7d0118917e1840db"
+      },
+      {
+        "path": "scripts/provider-preflight.mjs",
+        "bytes": 2054,
+        "sha256": "d3281f806ca9bd9fbe26268aacb440c25aad7cf48e1e3eeb94e00db0f18387f9"
+      },
+      {
+        "path": "scripts/rehearse-preview-compat.mjs",
+        "bytes": 3361,
+        "sha256": "eea71060e9d2d8585953bb097af593ec50a079271d4c7eaa08cbeda0dbdf6012"
+      },
+      {
+        "path": "scripts/render-suspend.mjs",
+        "bytes": 1320,
+        "sha256": "f81fed785ceb683a7ce883172d4613922d0be0a4fc88f15cfcda3b215a647c03"
+      },
+      {
+        "path": "scripts/run-tests.mjs",
+        "bytes": 159,
+        "sha256": "37c63693168d44a1fb0ba6f8762a5c3295b788a474272fe279ad76ff578d1161"
+      },
+      {
+        "path": "scripts/training-evidence-pack.mjs",
+        "bytes": 4457,
+        "sha256": "9085e75f604b5fce01c83402521213df745b4535ef6ad2b0eac1c98776ca8203"
+      },
+      {
+        "path": "scripts/training-exercises.mjs",
+        "bytes": 1037,
+        "sha256": "261de4a9761c6f6ef2748f7a458edbde75a9f491bf99b286759b1a48f74d8bf5"
+      },
+      {
+        "path": "scripts/training-export-worksheet.mjs",
+        "bytes": 7658,
+        "sha256": "593815234f6685e4a6da4bb596ed6a1542a9f6404e05184abafd30d6521b9d49"
+      },
+      {
+        "path": "scripts/training-teams.mjs",
+        "bytes": 4061,
+        "sha256": "a3ec6ec0157097bbf3b3a794080a60835740342f136028044976f7ac01a91cf9"
+      },
+      {
+        "path": "scripts/verify-evidence.mjs",
+        "bytes": 1300,
+        "sha256": "d2e4f155aa6e5fede73a51eb2e8ad837de259341261c9b0a2ff4aae69c7b8e68"
+      },
+      {
+        "path": "scripts/verify-office-intake.mjs",
+        "bytes": 817,
+        "sha256": "8f3f1969809436ba74e1dad8624fe24d9dd30259db4d1a9fca537a77a08072ba"
+      },
+      {
+        "path": "scripts/working-preview.mjs",
+        "bytes": 2629,
+        "sha256": "fe305bccdea929bf6277b25cd0d495a8dcdf80515b083e9747d46bf70f8c895a"
+      },
+      {
+        "path": "server.mjs",
+        "bytes": 9338,
+        "sha256": "e2cb6a2d4ec1a5cd81f1bfc98fa1b3273f4a63b204c139368887f34204871d9f"
+      }
+    ]
+  },
+  "buildManifestSha256": "4d1fd0b6b8ce54854e67a97ba8b9e5e1a0ddac88454051f2eee8e7cf93473be3",
+  "owner": "Codex local synthetic operator",
+  "seed": {
+    "profile": {
+      "name": "Synthetic solar enterprise",
+      "country": "6910",
+      "developer": "69101",
+      "source": "https://example.org/synthetic/enterprise",
+      "identityEvidence": "https://example.org/synthetic/enterprise",
+      "synthetic": true,
+      "parent": null,
+      "id": null,
+      "did": null,
+      "canonical": null,
+      "status": "REVIEW CANDIDATE",
+      "sourceVerification": "NOT VERIFIED",
+      "capabilityVerification": "NOT VERIFIED",
+      "legalRelationshipVerification": "NOT VERIFIED",
+      "key": "5bf34649-b858-4428-92ad-37cb1e1c555d",
+      "subject": "commerce-owner"
+    },
+    "hstdn": {
+      "name": "Synthetic solar consortium",
+      "jurisdiction": "Synthetic only",
+      "members": [
+        "5bf34649-b858-4428-92ad-37cb1e1c555d"
+      ],
+      "relation_type": "proposed-collaboration",
+      "source": "https://example.org/synthetic/consortium",
+      "synthetic": true,
+      "id": null,
+      "parent": null,
+      "did": null,
+      "canonical": null,
+      "status": "REVIEW CANDIDATE",
+      "sourceVerification": "NOT VERIFIED",
+      "capabilityVerification": "NOT VERIFIED",
+      "legalRelationshipVerification": "NOT VERIFIED",
+      "key": "ebadc1b7-dce5-43ee-8d13-5f4eed97d8e4",
+      "subject": "commerce-owner"
+    },
+    "product": {
+      "name": "Synthetic solar kit",
+      "officeRef": "5bf34649-b858-4428-92ad-37cb1e1c555d",
+      "hstdnRef": "ebadc1b7-dce5-43ee-8d13-5f4eed97d8e4",
+      "source": "https://example.org/synthetic/product",
+      "scope": "Synthetic catalogue only",
+      "maturity": "prototype",
+      "synthetic": true,
+      "kind": "product",
+      "key": "2f30cab5-76db-42c5-a7b6-2dd0c06d5cfa",
+      "status": "DRAFT",
+      "sourceVerification": "NOT VERIFIED",
+      "capabilityVerification": "NOT VERIFIED",
+      "legalRelationshipVerification": "NOT VERIFIED",
+      "subject": "commerce-owner"
+    },
+    "service": {
+      "name": "Synthetic solar training",
+      "officeRef": "5bf34649-b858-4428-92ad-37cb1e1c555d",
+      "hstdnRef": "ebadc1b7-dce5-43ee-8d13-5f4eed97d8e4",
+      "source": "https://example.org/synthetic/service",
+      "scope": "Synthetic catalogue only",
+      "maturity": "concept",
+      "synthetic": true,
+      "kind": "service",
+      "key": "56064b40-c26b-4652-88fb-e4425f292f2d",
+      "status": "DRAFT",
+      "sourceVerification": "NOT VERIFIED",
+      "capabilityVerification": "NOT VERIFIED",
+      "legalRelationshipVerification": "NOT VERIFIED",
+      "subject": "commerce-owner"
+    }
+  },
+  "search": {
+    "results": [
+      {
+        "name": "Synthetic solar enterprise",
+        "country": "6910",
+        "developer": "69101",
+        "source": "https://example.org/synthetic/enterprise",
+        "identityEvidence": "https://example.org/synthetic/enterprise",
+        "synthetic": true,
+        "parent": null,
+        "id": null,
+        "did": null,
+        "canonical": null,
+        "status": "REVIEW CANDIDATE",
+        "sourceVerification": "NOT VERIFIED",
+        "capabilityVerification": "NOT VERIFIED",
+        "legalRelationshipVerification": "NOT VERIFIED",
+        "key": "5bf34649-b858-4428-92ad-37cb1e1c555d",
+        "subject": "commerce-owner",
+        "kind": "profile",
+        "verification": "NOT VERIFIED"
+      },
+      {
+        "name": "Synthetic solar consortium",
+        "jurisdiction": "Synthetic only",
+        "members": [
+          "5bf34649-b858-4428-92ad-37cb1e1c555d"
+        ],
+        "relation_type": "proposed-collaboration",
+        "source": "https://example.org/synthetic/consortium",
+        "synthetic": true,
+        "id": null,
+        "parent": null,
+        "did": null,
+        "canonical": null,
+        "status": "REVIEW CANDIDATE",
+        "sourceVerification": "NOT VERIFIED",
+        "capabilityVerification": "NOT VERIFIED",
+        "legalRelationshipVerification": "NOT VERIFIED",
+        "key": "ebadc1b7-dce5-43ee-8d13-5f4eed97d8e4",
+        "subject": "commerce-owner",
+        "kind": "hstdn",
+        "verification": "NOT VERIFIED"
+      },
+      {
+        "name": "Synthetic solar kit",
+        "officeRef": "5bf34649-b858-4428-92ad-37cb1e1c555d",
+        "hstdnRef": "ebadc1b7-dce5-43ee-8d13-5f4eed97d8e4",
+        "source": "https://example.org/synthetic/product",
+        "scope": "Synthetic catalogue only",
+        "maturity": "prototype",
+        "synthetic": true,
+        "kind": "product",
+        "key": "2f30cab5-76db-42c5-a7b6-2dd0c06d5cfa",
+        "status": "DRAFT",
+        "sourceVerification": "NOT VERIFIED",
+        "capabilityVerification": "NOT VERIFIED",
+        "legalRelationshipVerification": "NOT VERIFIED",
+        "subject": "commerce-owner",
+        "verification": "NOT VERIFIED"
+      },
+      {
+        "name": "Synthetic solar training",
+        "officeRef": "5bf34649-b858-4428-92ad-37cb1e1c555d",
+        "hstdnRef": "ebadc1b7-dce5-43ee-8d13-5f4eed97d8e4",
+        "source": "https://example.org/synthetic/service",
+        "scope": "Synthetic catalogue only",
+        "maturity": "concept",
+        "synthetic": true,
+        "kind": "service",
+        "key": "56064b40-c26b-4652-88fb-e4425f292f2d",
+        "status": "DRAFT",
+        "sourceVerification": "NOT VERIFIED",
+        "capabilityVerification": "NOT VERIFIED",
+        "legalRelationshipVerification": "NOT VERIFIED",
+        "subject": "commerce-owner",
+        "verification": "NOT VERIFIED"
+      }
+    ],
+    "total": 4,
+    "synthetic": true
+  },
+  "inquiry": {
+    "key": "0ad5edd7-2355-4144-b168-7a99784294ad",
+    "subject": "commerce-owner",
+    "intent": "buy",
+    "query": "solar",
+    "officeRef": "5bf34649-b858-4428-92ad-37cb1e1c555d",
+    "status": "DRAFT",
+    "synthetic": true,
+    "externalCalls": 0,
+    "payment": false,
+    "affiliationVerified": false,
+    "auditLink": {
+      "sequence": 10,
+      "sha256": "2c1137391a3aaad16668fdaaaab3b1c3641a6bca67d9ba355fd75450dc00ec30",
+      "recordHash": "3b7cbbdd9c47acf95a86550704a4b74b8c9e05e6e57795d236552402403ba50e"
+    }
+  },
+  "matching": {
+    "inquiryKey": "0ad5edd7-2355-4144-b168-7a99784294ad",
+    "matches": [
+      {
+        "key": "2f30cab5-76db-42c5-a7b6-2dd0c06d5cfa",
+        "kind": "product",
+        "name": "Synthetic solar kit",
+        "score": 100,
+        "reasons": [
+          "Intent buy permits product",
+          "Name matched 1/1 query terms: solar"
+        ],
+        "synthetic": true,
+        "verification": "NOT VERIFIED",
+        "provenance": {
+          "matcherVersion": "DETERMINISTIC SYNTHETIC NAME-TOKEN MATCH v1; NO LIVE AI",
+          "inquirySha256": "3b7cbbdd9c47acf95a86550704a4b74b8c9e05e6e57795d236552402403ba50e",
+          "querySha256": "701dcc4cfa316d2faf4cd20fd5737010631b205561be731e6dffeba734b46bbf",
+          "catalogSha256": "9493c20705a5257ee9bcfb13833480044e8616ad15f489ed1322a4324b906004",
+          "catalogRecords": [
+            {
+              "key": "2f30cab5-76db-42c5-a7b6-2dd0c06d5cfa",
+              "sha256": "1b7c995e5bb0988d70a77dcd1027da00369b89dd0ccd371cad28ca4a6b3eb084"
+            },
+            {
+              "key": "56064b40-c26b-4652-88fb-e4425f292f2d",
+              "sha256": "284d5c78d9c5b27478aaf4bb767e6426af28638326fc6b2a3bfa839fc4abd263"
+            }
+          ],
+          "targetSha256": "1b7c995e5bb0988d70a77dcd1027da00369b89dd0ccd371cad28ca4a6b3eb084",
+          "targetSnapshot": {
+            "name": "Synthetic solar kit",
+            "officeRef": "5bf34649-b858-4428-92ad-37cb1e1c555d",
+            "hstdnRef": "ebadc1b7-dce5-43ee-8d13-5f4eed97d8e4",
+            "source": "https://example.org/synthetic/product",
+            "scope": "Synthetic catalogue only",
+            "maturity": "prototype",
+            "synthetic": true,
+            "kind": "product",
+            "key": "2f30cab5-76db-42c5-a7b6-2dd0c06d5cfa",
+            "status": "DRAFT",
+            "sourceVerification": "NOT VERIFIED",
+            "capabilityVerification": "NOT VERIFIED",
+            "legalRelationshipVerification": "NOT VERIFIED",
+            "subject": "commerce-owner",
+            "verification": "NOT VERIFIED"
+          },
+          "terms": [
+            "solar"
+          ],
+          "matchedTerms": [
+            "solar"
+          ]
+        }
+      },
+      {
+        "key": "56064b40-c26b-4652-88fb-e4425f292f2d",
+        "kind": "service",
+        "name": "Synthetic solar training",
+        "score": 100,
+        "reasons": [
+          "Intent buy permits service",
+          "Name matched 1/1 query terms: solar"
+        ],
+        "synthetic": true,
+        "verification": "NOT VERIFIED",
+        "provenance": {
+          "matcherVersion": "DETERMINISTIC SYNTHETIC NAME-TOKEN MATCH v1; NO LIVE AI",
+          "inquirySha256": "3b7cbbdd9c47acf95a86550704a4b74b8c9e05e6e57795d236552402403ba50e",
+          "querySha256": "701dcc4cfa316d2faf4cd20fd5737010631b205561be731e6dffeba734b46bbf",
+          "catalogSha256": "9493c20705a5257ee9bcfb13833480044e8616ad15f489ed1322a4324b906004",
+          "catalogRecords": [
+            {
+              "key": "2f30cab5-76db-42c5-a7b6-2dd0c06d5cfa",
+              "sha256": "1b7c995e5bb0988d70a77dcd1027da00369b89dd0ccd371cad28ca4a6b3eb084"
+            },
+            {
+              "key": "56064b40-c26b-4652-88fb-e4425f292f2d",
+              "sha256": "284d5c78d9c5b27478aaf4bb767e6426af28638326fc6b2a3bfa839fc4abd263"
+            }
+          ],
+          "targetSha256": "284d5c78d9c5b27478aaf4bb767e6426af28638326fc6b2a3bfa839fc4abd263",
+          "targetSnapshot": {
+            "name": "Synthetic solar training",
+            "officeRef": "5bf34649-b858-4428-92ad-37cb1e1c555d",
+            "hstdnRef": "ebadc1b7-dce5-43ee-8d13-5f4eed97d8e4",
+            "source": "https://example.org/synthetic/service",
+            "scope": "Synthetic catalogue only",
+            "maturity": "concept",
+            "synthetic": true,
+            "kind": "service",
+            "key": "56064b40-c26b-4652-88fb-e4425f292f2d",
+            "status": "DRAFT",
+            "sourceVerification": "NOT VERIFIED",
+            "capabilityVerification": "NOT VERIFIED",
+            "legalRelationshipVerification": "NOT VERIFIED",
+            "subject": "commerce-owner",
+            "verification": "NOT VERIFIED"
+          },
+          "terms": [
+            "solar"
+          ],
+          "matchedTerms": [
+            "solar"
+          ]
+        }
+      }
+    ],
+    "total": 2,
+    "model": "DETERMINISTIC SYNTHETIC NAME-TOKEN MATCH v1; NO LIVE AI",
+    "synthetic": true
+  },
+  "opportunity": {
+    "key": "1c5e35b3-4a94-488b-9b00-63baaece12fa",
+    "subject": "commerce-owner",
+    "inquiryKey": "0ad5edd7-2355-4144-b168-7a99784294ad",
+    "targetKey": "2f30cab5-76db-42c5-a7b6-2dd0c06d5cfa",
+    "targetKind": "product",
+    "score": 100,
+    "reasons": [
+      "Intent buy permits product",
+      "Name matched 1/1 query terms: solar"
+    ],
+    "matchProvenance": {
+      "matcherVersion": "DETERMINISTIC SYNTHETIC NAME-TOKEN MATCH v1; NO LIVE AI",
+      "inquirySha256": "3b7cbbdd9c47acf95a86550704a4b74b8c9e05e6e57795d236552402403ba50e",
+      "querySha256": "701dcc4cfa316d2faf4cd20fd5737010631b205561be731e6dffeba734b46bbf",
+      "catalogSha256": "9493c20705a5257ee9bcfb13833480044e8616ad15f489ed1322a4324b906004",
+      "catalogRecords": [
+        {
+          "key": "2f30cab5-76db-42c5-a7b6-2dd0c06d5cfa",
+          "sha256": "1b7c995e5bb0988d70a77dcd1027da00369b89dd0ccd371cad28ca4a6b3eb084"
+        },
+        {
+          "key": "56064b40-c26b-4652-88fb-e4425f292f2d",
+          "sha256": "284d5c78d9c5b27478aaf4bb767e6426af28638326fc6b2a3bfa839fc4abd263"
+        }
+      ],
+      "targetSha256": "1b7c995e5bb0988d70a77dcd1027da00369b89dd0ccd371cad28ca4a6b3eb084",
+      "targetSnapshot": {
+        "name": "Synthetic solar kit",
+        "officeRef": "5bf34649-b858-4428-92ad-37cb1e1c555d",
+        "hstdnRef": "ebadc1b7-dce5-43ee-8d13-5f4eed97d8e4",
+        "source": "https://example.org/synthetic/product",
+        "scope": "Synthetic catalogue only",
+        "maturity": "prototype",
+        "synthetic": true,
+        "kind": "product",
+        "key": "2f30cab5-76db-42c5-a7b6-2dd0c06d5cfa",
+        "status": "DRAFT",
+        "sourceVerification": "NOT VERIFIED",
+        "capabilityVerification": "NOT VERIFIED",
+        "legalRelationshipVerification": "NOT VERIFIED",
+        "subject": "commerce-owner",
+        "verification": "NOT VERIFIED"
+      },
+      "terms": [
+        "solar"
+      ],
+      "matchedTerms": [
+        "solar"
+      ]
+    },
+    "status": "CLOSED",
+    "synthetic": true,
+    "externalCalls": 0,
+    "payment": false,
+    "affiliationVerified": false,
+    "auditLink": {
+      "sequence": 16,
+      "sha256": "0ab130d92a801cc2ae259549735b9bb60d1374b6e8f9c5940eb1d9f5f3ce6373",
+      "recordHash": "c44526cb57489cfb5ce410271b4062ece24b2abcc2648681e3f372cc3a7a112a"
+    }
+  },
+  "commercial": {
+    "inquiries": [
+      {
+        "key": "0ad5edd7-2355-4144-b168-7a99784294ad",
+        "subject": "commerce-owner",
+        "intent": "buy",
+        "query": "solar",
+        "officeRef": "5bf34649-b858-4428-92ad-37cb1e1c555d",
+        "status": "DRAFT",
+        "synthetic": true,
+        "externalCalls": 0,
+        "payment": false,
+        "affiliationVerified": false,
+        "auditLink": {
+          "sequence": 10,
+          "sha256": "2c1137391a3aaad16668fdaaaab3b1c3641a6bca67d9ba355fd75450dc00ec30",
+          "recordHash": "3b7cbbdd9c47acf95a86550704a4b74b8c9e05e6e57795d236552402403ba50e"
+        }
+      },
+      {
+        "key": "e7389ebb-9542-4676-ae40-a8b9e5669a66",
+        "subject": "commerce-owner",
+        "intent": "buy",
+        "query": "unlisted",
+        "officeRef": "5bf34649-b858-4428-92ad-37cb1e1c555d",
+        "status": "DRAFT",
+        "synthetic": true,
+        "externalCalls": 0,
+        "payment": false,
+        "affiliationVerified": false,
+        "auditLink": {
+          "sequence": 18,
+          "sha256": "8581233c04b46668b569057cf3515bb3971f9203a7dd1e25ccc8fbd151239aaa",
+          "recordHash": "b7415bb00b0fc6f2d20b950073b871105058148af0d37313e3a8c9f5337d8c5a"
+        }
+      }
+    ],
+    "opportunities": [
+      {
+        "key": "1c5e35b3-4a94-488b-9b00-63baaece12fa",
+        "subject": "commerce-owner",
+        "inquiryKey": "0ad5edd7-2355-4144-b168-7a99784294ad",
+        "targetKey": "2f30cab5-76db-42c5-a7b6-2dd0c06d5cfa",
+        "targetKind": "product",
+        "score": 100,
+        "reasons": [
+          "Intent buy permits product",
+          "Name matched 1/1 query terms: solar"
+        ],
+        "matchProvenance": {
+          "matcherVersion": "DETERMINISTIC SYNTHETIC NAME-TOKEN MATCH v1; NO LIVE AI",
+          "inquirySha256": "3b7cbbdd9c47acf95a86550704a4b74b8c9e05e6e57795d236552402403ba50e",
+          "querySha256": "701dcc4cfa316d2faf4cd20fd5737010631b205561be731e6dffeba734b46bbf",
+          "catalogSha256": "9493c20705a5257ee9bcfb13833480044e8616ad15f489ed1322a4324b906004",
+          "catalogRecords": [
+            {
+              "key": "2f30cab5-76db-42c5-a7b6-2dd0c06d5cfa",
+              "sha256": "1b7c995e5bb0988d70a77dcd1027da00369b89dd0ccd371cad28ca4a6b3eb084"
+            },
+            {
+              "key": "56064b40-c26b-4652-88fb-e4425f292f2d",
+              "sha256": "284d5c78d9c5b27478aaf4bb767e6426af28638326fc6b2a3bfa839fc4abd263"
+            }
+          ],
+          "targetSha256": "1b7c995e5bb0988d70a77dcd1027da00369b89dd0ccd371cad28ca4a6b3eb084",
+          "targetSnapshot": {
+            "name": "Synthetic solar kit",
+            "officeRef": "5bf34649-b858-4428-92ad-37cb1e1c555d",
+            "hstdnRef": "ebadc1b7-dce5-43ee-8d13-5f4eed97d8e4",
+            "source": "https://example.org/synthetic/product",
+            "scope": "Synthetic catalogue only",
+            "maturity": "prototype",
+            "synthetic": true,
+            "kind": "product",
+            "key": "2f30cab5-76db-42c5-a7b6-2dd0c06d5cfa",
+            "status": "DRAFT",
+            "sourceVerification": "NOT VERIFIED",
+            "capabilityVerification": "NOT VERIFIED",
+            "legalRelationshipVerification": "NOT VERIFIED",
+            "subject": "commerce-owner",
+            "verification": "NOT VERIFIED"
+          },
+          "terms": [
+            "solar"
+          ],
+          "matchedTerms": [
+            "solar"
+          ]
+        },
+        "status": "CLOSED",
+        "synthetic": true,
+        "externalCalls": 0,
+        "payment": false,
+        "affiliationVerified": false,
+        "auditLink": {
+          "sequence": 16,
+          "sha256": "0ab130d92a801cc2ae259549735b9bb60d1374b6e8f9c5940eb1d9f5f3ce6373",
+          "recordHash": "c44526cb57489cfb5ce410271b4062ece24b2abcc2648681e3f372cc3a7a112a"
+        }
+      }
+    ],
+    "synthetic": true,
+    "model": "DETERMINISTIC SYNTHETIC NAME-TOKEN MATCH v1; NO LIVE AI"
+  },
+  "checks": [
+    {
+      "name": "login commerce-owner",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "login commerce-peer",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "login commerce-viewer",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "login commerce-foreign",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "login commerce-narrow",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "actual runtime source pinned",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "new requester is own unbound synthetic profile",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "enterprise/HSTDN/product/service search",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "zero search does not invent records",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "request idempotency returns same receipt",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "conflicting idempotency denied",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "semantic duplicate denied",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "explainable deterministic matches",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "target and query hashes independently checked",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "opportunity retains matching provenance",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "opportunity idempotency",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "status roundtrip remains synthetic",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "isolated records commerce-peer",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "foreign inquiry denied commerce-peer",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "foreign requester reference denied commerce-peer",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "isolated records commerce-foreign",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "foreign inquiry denied commerce-foreign",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "foreign requester reference denied commerce-foreign",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "viewer write denied",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "ungranted pair denied",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "unauthenticated state denied",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "real contact rejected",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "payment rejected",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "non-synthetic rejected",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "invalid query rejected",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "zero match",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "unmatched opportunity denied",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "payment status denied",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "source stable through actual flow",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "record audit link 0ad5edd7-2355-4144-b168-7a99784294ad",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "record audit link e7389ebb-9542-4676-ae40-a8b9e5669a66",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "record audit link 1c5e35b3-4a94-488b-9b00-63baaece12fa",
+      "expected": true,
+      "observed": true
+    },
+    {
+      "name": "peer audit excludes private commercial identifiers",
+      "expected": true,
+      "observed": true
+    }
+  ],
+  "trace": [
+    {
+      "route": "/api/session",
+      "actor": "commerce-owner",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/session",
+      "actor": "commerce-peer",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/session",
+      "actor": "commerce-viewer",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/session",
+      "actor": "commerce-foreign",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/session",
+      "actor": "commerce-narrow",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/state",
+      "actor": "commerce-owner",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/office-create",
+      "actor": "commerce-owner",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/office-create",
+      "actor": "commerce-owner",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/office-create",
+      "actor": "commerce-owner",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/office-create",
+      "actor": "commerce-owner",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/catalog-search",
+      "actor": "commerce-owner",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/catalog-search",
+      "actor": "commerce-owner",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/inquiry-create",
+      "actor": "commerce-owner",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/inquiry-create",
+      "actor": "commerce-owner",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/inquiry-create",
+      "actor": "commerce-owner",
+      "status": 409,
+      "error": "IDEMPOTENCY_CONFLICT"
+    },
+    {
+      "route": "/api/core/inquiry-create",
+      "actor": "commerce-owner",
+      "status": 400,
+      "error": "INQUIRY_DUPLICATE"
+    },
+    {
+      "route": "/api/core/inquiry-match",
+      "actor": "commerce-owner",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/opportunity-create",
+      "actor": "commerce-owner",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/opportunity-create",
+      "actor": "commerce-owner",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/opportunity-status",
+      "actor": "commerce-owner",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/opportunity-status",
+      "actor": "commerce-owner",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/commerce-state",
+      "actor": "commerce-peer",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/inquiry-match",
+      "actor": "commerce-peer",
+      "status": 400,
+      "error": "INQUIRY_NOT_FOUND"
+    },
+    {
+      "route": "/api/core/inquiry-create",
+      "actor": "commerce-peer",
+      "status": 400,
+      "error": "INQUIRY_REFERENCE_INVALID"
+    },
+    {
+      "route": "/api/core/commerce-state",
+      "actor": "commerce-foreign",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/inquiry-match",
+      "actor": "commerce-foreign",
+      "status": 400,
+      "error": "INQUIRY_NOT_FOUND"
+    },
+    {
+      "route": "/api/core/inquiry-create",
+      "actor": "commerce-foreign",
+      "status": 400,
+      "error": "INQUIRY_REFERENCE_INVALID"
+    },
+    {
+      "route": "/api/core/inquiry-create",
+      "actor": "commerce-viewer",
+      "status": 403,
+      "error": "PERMISSION_DENIED"
+    },
+    {
+      "route": "/api/core/catalog-search",
+      "actor": "commerce-narrow",
+      "status": 403,
+      "error": "PAIR_SCOPE_DENIED"
+    },
+    {
+      "route": "/api/core/commerce-state",
+      "actor": "unauthenticated",
+      "status": 401,
+      "error": "AUTH_DENIED"
+    },
+    {
+      "route": "/api/core/inquiry-create",
+      "actor": "commerce-owner",
+      "status": 400,
+      "error": "SYNTHETIC_COMMERCE_FIELDS_REQUIRED"
+    },
+    {
+      "route": "/api/core/inquiry-create",
+      "actor": "commerce-owner",
+      "status": 400,
+      "error": "SYNTHETIC_COMMERCE_FIELDS_REQUIRED"
+    },
+    {
+      "route": "/api/core/inquiry-create",
+      "actor": "commerce-owner",
+      "status": 400,
+      "error": "SYNTHETIC_COMMERCE_FIELDS_REQUIRED"
+    },
+    {
+      "route": "/api/core/inquiry-create",
+      "actor": "commerce-owner",
+      "status": 400,
+      "error": "COMMERCE_QUERY_INVALID"
+    },
+    {
+      "route": "/api/core/inquiry-create",
+      "actor": "commerce-owner",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/inquiry-match",
+      "actor": "commerce-owner",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/opportunity-create",
+      "actor": "commerce-owner",
+      "status": 400,
+      "error": "OPPORTUNITY_MATCH_REQUIRED"
+    },
+    {
+      "route": "/api/core/opportunity-status",
+      "actor": "commerce-owner",
+      "status": 400,
+      "error": "OPPORTUNITY_TRANSITION_INVALID"
+    },
+    {
+      "route": "/api/core/commerce-state",
+      "actor": "commerce-owner",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/state",
+      "actor": "commerce-owner",
+      "status": 200,
+      "error": null
+    },
+    {
+      "route": "/api/core/state",
+      "actor": "commerce-peer",
+      "status": 200,
+      "error": null
+    }
+  ],
+  "audit": [
+    {
+      "sequence": 1,
+      "time": "2026-10-14T11:43:53.335Z",
+      "actor": {
+        "id": "core-system-synthetic",
+        "role": "system"
+      },
+      "action": "instantiate",
+      "result": "PASS",
+      "details": {
+        "pairKey": "hub69-content-demo",
+        "configHash": "d2a0c1707c4dfd1d32fdd95d36d7af931281f6d70d6698f4fcf0d416cab6f740"
+      },
+      "previousHash": "GENESIS",
+      "sha256": "7001e5d6ce4db0a2a70e969b30b177c62d6d63f26935eef37357708e0262f53e"
+    },
+    {
+      "sequence": 2,
+      "time": "2026-10-14T11:43:53.517Z",
+      "actor": {
+        "id": "commerce-owner",
+        "role": "editor"
+      },
+      "action": "office-record",
+      "result": "DRAFT ONLY",
+      "details": {
+        "pairKey": "hub69-content-demo",
+        "kind": "profile",
+        "recordKey": "5bf34649-b858-4428-92ad-37cb1e1c555d",
+        "recordHash": "945fcd6b57e16b84bb597609455654524d2e46090f1cd947d8e950ef9c10936c"
+      },
+      "previousHash": "7001e5d6ce4db0a2a70e969b30b177c62d6d63f26935eef37357708e0262f53e",
+      "sha256": "0638984b16f74f87b13d9e3f570ae30582aa8424423261d456f477696960d407"
+    },
+    {
+      "sequence": 4,
+      "time": "2026-10-14T11:43:53.520Z",
+      "actor": {
+        "id": "commerce-owner",
+        "role": "editor"
+      },
+      "action": "office-record",
+      "result": "DRAFT ONLY",
+      "details": {
+        "pairKey": "hub69-content-demo",
+        "kind": "hstdn",
+        "recordKey": "ebadc1b7-dce5-43ee-8d13-5f4eed97d8e4",
+        "recordHash": "38c4d9f89c84d30d60fa60165f187202edf388449deef66f234aecc9bd083ee2"
+      },
+      "previousHash": "f50317dd82bde4bd06150b572f9958352946d9bf9e4f05b9371a29c694931d55",
+      "sha256": "f9b2c57c29c3f5c751bcfb0533728648a1e011f7e2af4f34c483ce5a96d260f0"
+    },
+    {
+      "sequence": 6,
+      "time": "2026-10-14T11:43:53.523Z",
+      "actor": {
+        "id": "commerce-owner",
+        "role": "editor"
+      },
+      "action": "office-record",
+      "result": "DRAFT ONLY",
+      "details": {
+        "pairKey": "hub69-content-demo",
+        "kind": "product",
+        "recordKey": "2f30cab5-76db-42c5-a7b6-2dd0c06d5cfa",
+        "recordHash": "f932d8c5f3213da8c54cf1aed32b3cf39ea94bd0bc584b182b9f248533b88912"
+      },
+      "previousHash": "c0221308ec1c8fa8516f7da2770267dc4faa1d9e7a46a1a8798add3d4c8f7fff",
+      "sha256": "bae87608ef58be26f2fca8b56a2969876a58fc5eec5c26bd6efa568999353ed1"
+    },
+    {
+      "sequence": 8,
+      "time": "2026-10-14T11:43:53.525Z",
+      "actor": {
+        "id": "commerce-owner",
+        "role": "editor"
+      },
+      "action": "office-record",
+      "result": "DRAFT ONLY",
+      "details": {
+        "pairKey": "hub69-content-demo",
+        "kind": "service",
+        "recordKey": "56064b40-c26b-4652-88fb-e4425f292f2d",
+        "recordHash": "1903e7321e99037ddce3ab654ecc70b017b049aa51bff328cee99486b76f6f08"
+      },
+      "previousHash": "0d1310a350f61e3c354a7fecbe48c80df9ab158b50ad8f3b5546678a6ea98c0b",
+      "sha256": "b0b2ce7c90704b3fafd2b2b91677302823a636ed192c6c7529d46932a9faebce"
+    },
+    {
+      "sequence": 10,
+      "time": "2026-10-14T11:43:53.535Z",
+      "actor": {
+        "id": "commerce-owner",
+        "role": "editor"
+      },
+      "action": "inquiry-create-evidence",
+      "result": "SYNTHETIC ONLY",
+      "details": {
+        "pairKey": "hub69-content-demo",
+        "subject": "commerce-owner",
+        "recordKey": "0ad5edd7-2355-4144-b168-7a99784294ad",
+        "recordHash": "3b7cbbdd9c47acf95a86550704a4b74b8c9e05e6e57795d236552402403ba50e"
+      },
+      "previousHash": "d89d7946e0911cddd0802801cf67de2d985d72823875cae0f83f73b861bff88d",
+      "sha256": "2c1137391a3aaad16668fdaaaab3b1c3641a6bca67d9ba355fd75450dc00ec30"
+    },
+    {
+      "sequence": 12,
+      "time": "2026-10-14T11:43:53.555Z",
+      "actor": {
+        "id": "commerce-owner",
+        "role": "editor"
+      },
+      "action": "opportunity-create-evidence",
+      "result": "SYNTHETIC ONLY",
+      "details": {
+        "pairKey": "hub69-content-demo",
+        "subject": "commerce-owner",
+        "recordKey": "1c5e35b3-4a94-488b-9b00-63baaece12fa",
+        "recordHash": "1b712478f90a6e85824540792307d3e22058047ab767efd33069c10b16c58d2c"
+      },
+      "previousHash": "3036ae1b519ae23885880c7bfde3913874202773c64778a5172f80a02b9c1599",
+      "sha256": "95719afa9883c27df4b084bed62378e84c45451f497c69da4b1eebf62005c3c9"
+    },
+    {
+      "sequence": 14,
+      "time": "2026-10-14T11:43:53.559Z",
+      "actor": {
+        "id": "commerce-owner",
+        "role": "editor"
+      },
+      "action": "opportunity-status-evidence",
+      "result": "SYNTHETIC ONLY",
+      "details": {
+        "pairKey": "hub69-content-demo",
+        "subject": "commerce-owner",
+        "recordKey": "1c5e35b3-4a94-488b-9b00-63baaece12fa",
+        "recordHash": "0be7c9fd8080fe752fd3a2bba5fff5be4706d8fbc54669b922da0ff7cece553d"
+      },
+      "previousHash": "c5e04303ba5528b80f9af3107b4f9c1f53cd812a12ca575c89bf61e518065e4e",
+      "sha256": "9df6661ad25d1c0e01b44825f607468759d8d0540cd4e54fe7099cc17363c1f9"
+    },
+    {
+      "sequence": 16,
+      "time": "2026-10-14T11:43:53.563Z",
+      "actor": {
+        "id": "commerce-owner",
+        "role": "editor"
+      },
+      "action": "opportunity-status-evidence",
+      "result": "SYNTHETIC ONLY",
+      "details": {
+        "pairKey": "hub69-content-demo",
+        "subject": "commerce-owner",
+        "recordKey": "1c5e35b3-4a94-488b-9b00-63baaece12fa",
+        "recordHash": "c44526cb57489cfb5ce410271b4062ece24b2abcc2648681e3f372cc3a7a112a"
+      },
+      "previousHash": "a7a4eb4e41d109757a10c56cf7df308afbc1ddd242be254b6bd788c99e20c179",
+      "sha256": "0ab130d92a801cc2ae259549735b9bb60d1374b6e8f9c5940eb1d9f5f3ce6373"
+    },
+    {
+      "sequence": 18,
+      "time": "2026-10-14T11:43:53.620Z",
+      "actor": {
+        "id": "commerce-owner",
+        "role": "editor"
+      },
+      "action": "inquiry-create-evidence",
+      "result": "SYNTHETIC ONLY",
+      "details": {
+        "pairKey": "hub69-content-demo",
+        "subject": "commerce-owner",
+        "recordKey": "e7389ebb-9542-4676-ae40-a8b9e5669a66",
+        "recordHash": "b7415bb00b0fc6f2d20b950073b871105058148af0d37313e3a8c9f5337d8c5a"
+      },
+      "previousHash": "ffa11af5303ff3f155d790e1a396e4459074f4dba6774c6462c75ba76c1b3c60",
+      "sha256": "8581233c04b46668b569057cf3515bb3971f9203a7dd1e25ccc8fbd151239aaa"
+    }
+  ],
+  "serviceAuditReadback": {
+    "sequence": 58,
+    "sha256": "74ee96293e121d344f4073e62dfe3d3bbd60e0d0a2f3a1b2117e125fc03504ea"
+  },
+  "independentOpenSIAck": false,
+  "authorityVerified": false,
+  "actualIphoneSafari": false,
+  "publicHttps": false,
+  "activationAllowed": false,
+  "limits": [
+    "Unsigned local trace, not external execution/authority attestation.",
+    "Catalog targets are shared inside granted workspace; private commercial records are subject-scoped.",
+    "Deterministic synthetic matching, no live SI/AI call, no real contact/payment/contract.",
+    "Actual browser/mobile/Safari and approved HTTPS deployment remain BLOCKED."
+  ]
+}

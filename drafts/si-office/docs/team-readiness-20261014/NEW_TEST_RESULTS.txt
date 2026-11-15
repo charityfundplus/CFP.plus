@@ -1,0 +1,13 @@
+✔ actual inventory detects source conflicts without mutating original IDs or statuses (15.583582ms)
+✔ source bytes and revision must be intact (0.751029ms)
+✔ directory ACTIVE and caller claims cannot promote operational status (4.788681ms)
+✔ synthetic identity cannot be silently bound to real Registry IDs (4.059124ms)
+✔ numeric conversion of IDs fails rather than dropping zeros (0.739702ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 31.727129

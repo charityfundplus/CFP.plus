@@ -1,0 +1,1 @@
+{"checks":17,"taskKey":"57d079ec-df81-4392-87c8-b35637348d88","executionRevision":"275c6b11559216404537c752a706e1b2eef1d0b7","manifestSha256":"4d1fd0b6b8ce54854e67a97ba8b9e5e1a0ddac88454051f2eee8e7cf93473be3","evidenceSha256":"6a3caa274be22f0aa725e6ad281dee885bf7d382a7578b965fd9d6a64dae80d3","scope":"REAL HTTP HANDLER + SQLITE / NO SOCKET OR BROWSER"}

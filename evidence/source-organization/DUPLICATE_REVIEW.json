@@ -1,0 +1,132 @@
+[
+  {
+    "sha256": "77dc25b601716fbee02dfddba5b866995cc73705d7a97170755ca9f5fa585779",
+    "paths": [
+      "69120/index.html",
+      "69121/index.html",
+      "69122/index.html",
+      "69123/index.html",
+      "69124/index.html",
+      "69125/index.html",
+      "69126/index.html",
+      "69127/index.html",
+      "69128/index.html",
+      "69129/index.html",
+      "691290/index.html",
+      "69130/index.html",
+      "69131/index.html",
+      "69132/index.html",
+      "69133/index.html",
+      "69134/index.html",
+      "69440/index.html",
+      "6961/index.html",
+      "6965/index.html",
+      "6981/index.html",
+      "6982/index.html",
+      "6986/index.html",
+      "69886/index.html",
+      "6991/index.html",
+      "69966/index.html",
+      "69971/index.html",
+      "69972/index.html"
+    ],
+    "action": "REVIEW ONLY; preserve until dependency/reference and authority review"
+  },
+  {
+    "sha256": "349f546017869b7cccd8ab491dc3d4956d9ee3dfc748daf1180730b35ca42d49",
+    "paths": [
+      "6933/index.html",
+      "6949/index.html"
+    ],
+    "action": "REVIEW ONLY; preserve until dependency/reference and authority review"
+  },
+  {
+    "sha256": "7090fe5683c8c5bd2d51f88f8c70f46995bcb6fe54a076e5e30adc4ce1c979ee",
+    "paths": [
+      "910/index.html",
+      "911/index.html",
+      "9120/index.html",
+      "9121/index.html",
+      "9122/index.html",
+      "9123/index.html",
+      "9124/index.html",
+      "9125/index.html",
+      "9126/index.html",
+      "9127/index.html",
+      "9128/index.html",
+      "9129/index.html",
+      "91290/index.html",
+      "9130/index.html",
+      "9131/index.html",
+      "9132/index.html",
+      "9133/index.html",
+      "9134/index.html",
+      "933/index.html",
+      "9440/index.html",
+      "949/index.html",
+      "961/index.html",
+      "965/index.html",
+      "981/index.html",
+      "982/index.html",
+      "984/index.html",
+      "986/index.html",
+      "9886/index.html",
+      "991/index.html",
+      "9966/index.html",
+      "9971/index.html",
+      "9972/index.html"
+    ],
+    "action": "REVIEW ONLY; preserve until dependency/reference and authority review"
+  },
+  {
+    "sha256": "7db456e8c1ba9554b5036b04cff54cc15c8c27806ac835daa2f2a32743330619",
+    "paths": [
+      "CFP_GLOBAL_AI_UNIVERSAL_WORKING_LINK.md",
+      "website/CFP_GLOBAL_AI_UNIVERSAL_WORKING_LINK.md"
+    ],
+    "action": "REVIEW ONLY; preserve until dependency/reference and authority review"
+  },
+  {
+    "sha256": "98097b95b3c4e22b499f740625bca49ed27c6d22c241ccaee8484ee290b8183d",
+    "paths": [
+      "drafts/si-office/docs/CORE_BROWSER_STATUS.md",
+      "drafts/si-office/docs/STATUS.md"
+    ],
+    "action": "REVIEW ONLY; preserve until dependency/reference and authority review"
+  },
+  {
+    "sha256": "821daa2bf1eef8a78ee4fea4c57f9b06ad24a66f61a4bc2fdaa8267c60b6216a",
+    "paths": [
+      "drafts/si-office/docs/api-p1-handler-test-results.txt",
+      "drafts/si-office/docs/api-test-results.txt"
+    ],
+    "action": "REVIEW ONLY; preserve until dependency/reference and authority review"
+  },
+  {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "paths": [
+      "registry/69110.md",
+      "registry/691100.md",
+      "registry/69111.md",
+      "registry/691110.md",
+      "registry/69112.md",
+      "registry/691120.md",
+      "registry/69113.md",
+      "registry/691130.md",
+      "registry/691131.md",
+      "registry/69114.md",
+      "registry/691140.md",
+      "registry/69115.md",
+      "registry/691150.md",
+      "registry/69116.md",
+      "registry/691160.md",
+      "registry/69117.md",
+      "registry/691170.md",
+      "registry/69118.md",
+      "registry/69119.md",
+      "tests/__init__.py",
+      "tests/ctttc/__init__.py"
+    ],
+    "action": "REVIEW ONLY; preserve until dependency/reference and authority review"
+  }
+]

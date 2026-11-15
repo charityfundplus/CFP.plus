@@ -1,0 +1,16 @@
+node:internal/url:840
+      href = bindingUrl.parse(input, base, true);
+                        ^
+
+TypeError: Invalid URL
+    at new URL (node:internal/url:840:25)
+    at Server.<anonymous> (file:///workspace/cfp-forum-qa/source/drafts/si-office/sandbox/p2-http.mjs:19:20)
+    at Server.emit (node:events:509:28)
+    at parserOnIncoming (node:_http_server:1282:12)
+    at HTTPParser.parserOnHeadersComplete (node:_http_common:125:17) {
+  code: 'ERR_INVALID_URL',
+  input: 'http://[',
+  base: 'http://localhost'
+}
+
+Node.js v24.19.0

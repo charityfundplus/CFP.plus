@@ -1,0 +1,50 @@
+{
+  "collectedAt": "2026-10-14",
+  "owner": "Codex source investigator",
+  "githubRevision": "835616308111f6851c0387fa9f5eda60c9ffa624",
+  "sources": [
+    {
+      "url": "https://github.com/charityfundplus/CFP.plus/blob/835616308111f6851c0387fa9f5eda60c9ffa624/registry/ai-entity-registry.json",
+      "sha256": "a63c5e0b8af157b0938014d51da94ea924b9721acd0a11a9107f5deea3c6f507",
+      "gitBlobVerified": true
+    },
+    {
+      "url": "https://github.com/charityfundplus/CFP.plus/blob/835616308111f6851c0387fa9f5eda60c9ffa624/registry/CFP_GLOBAL_AI_ID_LINK_MASTER_STANDARD.md",
+      "sha256": "c86b7494a6a39dc0cf7038634c5538724fd4b8647cee5e913fb61a52607dc556",
+      "gitBlobVerified": true
+    },
+    {
+      "url": "https://github.com/charityfundplus/CFP.plus/blob/835616308111f6851c0387fa9f5eda60c9ffa624/registry/AI_CANONICAL_ID_REGISTRY.md",
+      "sha256": "310e694ff47cc51b3e85a9816f443af6b0ff7f45303fdf4314b43f3281c225ad",
+      "gitBlobVerified": true
+    },
+    {
+      "url": "https://github.com/charityfundplus/CFP.plus/blob/835616308111f6851c0387fa9f5eda60c9ffa624/registry/SYNC_CURRENT_SYSTEM.md",
+      "sha256": "1f2aaffe2968a5addee0daae94bdb2ded5418fa385bc55ed123655e6e934827e",
+      "gitBlobVerified": true
+    }
+  ],
+  "notionKnowledgeAssetRegistry": {
+    "url": "https://app.notion.com/p/57292852d4b04cd1876e38f09a72f5c6",
+    "version": "1.0",
+    "lastEdited": "2026-07-09T01:54:20.482Z",
+    "nativeVerification": "unverified",
+    "operationalRoster": false,
+    "snapshotSha256": "7c623da853f9d284ad9c455f6876eee9600cedc37ba7b13e2a55332d37ae190b"
+  },
+  "searchScope": [
+    "GitHub accessible default-branch indexed code",
+    "Notion connected Registry/Training/Operational Readiness searches",
+    "Drive connected Registry/Training searches"
+  ],
+  "trainingStandardV02": {
+    "status": "BLOCKED_SOURCE_NOT_LOCATED_IN_SEARCHED_SCOPE",
+    "url": null,
+    "revision": null,
+    "sha256": null
+  },
+  "rosterGrantsVerified": false,
+  "authorityVerified": false,
+  "activationAllowed": false,
+  "privateRawSnapshotsPublished": false
+}

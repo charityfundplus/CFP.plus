@@ -1,0 +1,184 @@
+TAP version 13
+# Subtest: encrypted checkpoint -> second local replica -> isolated restore retains output/audit, revokes sessions and keeps original DB
+ok 1 - encrypted checkpoint -> second local replica -> isolated restore retains output/audit, revokes sessions and keeps original DB
+  ---
+  duration_ms: 1315.28908
+  type: 'test'
+  ...
+# Subtest: full-database backup and recovery point deny a maintainer with limited pair grants and ordinary editors
+ok 2 - full-database backup and recovery point deny a maintainer with limited pair grants and ordinary editors
+  ---
+  duration_ms: 494.204504
+  type: 'test'
+  ...
+# Subtest: tampering and wrong private key fail before restore; corrupt replica cannot be synchronized or overwrite original state
+ok 3 - tampering and wrong private key fail before restore; corrupt replica cannot be synchronized or overwrite original state
+  ---
+  duration_ms: 521.413392
+  type: 'test'
+  ...
+# Subtest: rehashed public receipt cannot forge Registry provenance or activation status outside the authenticated archive
+ok 4 - rehashed public receipt cannot forge Registry provenance or activation status outside the authenticated archive
+  ---
+  duration_ms: 457.370988
+  type: 'test'
+  ...
+# Subtest: P2 HTTP secure headers/cookie and deny anonymous, origin, hostile Host and self-selected role
+ok 5 - P2 HTTP secure headers/cookie and deny anonymous, origin, hostile Host and self-selected role
+  ---
+  duration_ms: 733.863537
+  type: 'test'
+  ...
+# Subtest: P2 HTTP task workflow, cross-workspace denial, viewer restriction and logout
+ok 6 - P2 HTTP task workflow, cross-workspace denial, viewer restriction and logout
+  ---
+  duration_ms: 1762.305268
+  type: 'test'
+  ...
+# Subtest: P2 HTTP pair grants filter snapshots and deny ungranted pair creation
+ok 7 - P2 HTTP pair grants filter snapshots and deny ungranted pair creation
+  ---
+  duration_ms: 875.188728
+  type: 'test'
+  ...
+# Subtest: P2 release executes two verified bundles; rollback restores separate DB and retains current audit
+ok 8 - P2 release executes two verified bundles; rollback restores separate DB and retains current audit
+  ---
+  duration_ms: 1340.532091
+  type: 'test'
+  ...
+# Subtest: P2 maintenance lease denies concurrent work; queued tasks block activation
+ok 9 - P2 maintenance lease denies concurrent work; queued tasks block activation
+  ---
+  duration_ms: 637.672218
+  type: 'test'
+  ...
+# Subtest: P2-A authentication rejects forged/expired/revoked sessions; no plaintext secrets
+ok 10 - P2-A authentication rejects forged/expired/revoked sessions; no plaintext secrets
+  ---
+  duration_ms: 590.915282
+  type: 'test'
+  ...
+# Subtest: P2-B server roles, independent subject review and workspace isolation
+ok 11 - P2-B server roles, independent subject review and workspace isolation
+  ---
+  duration_ms: 1307.371759
+  type: 'test'
+  ...
+# Subtest: P2-C durable task/idempotency and audit survive reopen
+ok 12 - P2-C durable task/idempotency and audit survive reopen
+  ---
+  duration_ms: 701.088487
+  type: 'test'
+  ...
+# Subtest: P2-C audit tampering and state mutation fail closed
+ok 13 - P2-C audit tampering and state mutation fail closed
+  ---
+  duration_ms: 1320.11191
+  type: 'test'
+  ...
+# Subtest: P2-D five slots remain disconnected; no live credentials or identity mutation
+ok 14 - P2-D five slots remain disconnected; no live credentials or identity mutation
+  ---
+  duration_ms: 499.275889
+  type: 'test'
+  ...
+# Subtest: P2-E backup/restore preserves task history, revokes sessions and rejects corruption
+ok 15 - P2-E backup/restore preserves task history, revokes sessions and rejects corruption
+  ---
+  duration_ms: 710.743137
+  type: 'test'
+  ...
+# Subtest: P2-E incompatible storage and metadata upgrade/rollback are bounded
+ok 16 - P2-E incompatible storage and metadata upgrade/rollback are bounded
+  ---
+  duration_ms: 638.968868
+  type: 'test'
+  ...
+# Subtest: P2-C storage commit failure returns no task and rolls back state
+ok 17 - P2-C storage commit failure returns no task and rolls back state
+  ---
+  duration_ms: 409.531689
+  type: 'test'
+  ...
+# Subtest: P2-E persisted RUNNING checkpoint recovers interrupted without replay
+ok 18 - P2-E persisted RUNNING checkpoint recovers interrupted without replay
+  ---
+  duration_ms: 1363.291693
+  type: 'test'
+  ...
+# Subtest: P2-B reviewer cannot acknowledge own task after restart
+ok 19 - P2-B reviewer cannot acknowledge own task after restart
+  ---
+  duration_ms: 1008.623499
+  type: 'test'
+  ...
+# Subtest: registry routes require existing authentication and preserve 401/400/404, strict inputs and source failure 503
+ok 20 - registry routes require existing authentication and preserve 401/400/404, strict inputs and source failure 503
+  ---
+  duration_ms: 1470.385845
+  type: 'test'
+  ...
+# Subtest: OpenAI profile and ChatGPT packet are read-only for viewers; no identity mutation or external project creation
+ok 21 - OpenAI profile and ChatGPT packet are read-only for viewers; no identity mutation or external project creation
+  ---
+  duration_ms: 912.293706
+  type: 'test'
+  ...
+# Subtest: public Registry cannot export private task content; response digest is durably bound to the authenticated workspace
+ok 22 - public Registry cannot export private task content; response digest is durably bound to the authenticated workspace
+  ---
+  duration_ms: 873.875027
+  type: 'test'
+  ...
+# Subtest: actual loopback HTTP: authenticated Registry -> OpenAI -> ChatGPT packet, CSP assets, denied anonymous and revoked session
+ok 23 - actual loopback HTTP: authenticated Registry -> OpenAI -> ChatGPT packet, CSP assets, denied anonymous and revoked session
+  ---
+  duration_ms: 776.036634
+  type: 'test'
+  ...
+# Subtest: actual root Registry: hashes, 26 named bindings, 99 countries, explicit OpenAI chain and governance hold
+ok 24 - actual root Registry: hashes, 26 named bindings, 99 countries, explicit OpenAI chain and governance hold
+  ---
+  duration_ms: 45.320372
+  type: 'test'
+  ...
+# Subtest: numeric IDs stay strings: 0, 000, 003, 0031 and long IDs remain distinct; V is not an ID
+ok 25 - numeric IDs stay strings: 0, 000, 003, 0031 and long IDs remain distinct; V is not an ID
+  ---
+  duration_ms: 2.016581
+  type: 'test'
+  ...
+# Subtest: search supports all entity categories, pagination, same-name records and strict fields
+ok 26 - search supports all entity categories, pagination, same-name records and strict fields
+  ---
+  duration_ms: 0.951931
+  type: 'test'
+  ...
+# Subtest: duplicate, missing Parent, cycles and lineage conflicts are findings, never automatic repairs
+ok 27 - duplicate, missing Parent, cycles and lineage conflicts are findings, never automatic repairs
+  ---
+  duration_ms: 0.647743
+  type: 'test'
+  ...
+# Subtest: ChatGPT action reuses source ID/link, exports public instructions only and never allocates a project ID
+ok 28 - ChatGPT action reuses source ID/link, exports public instructions only and never allocates a project ID
+  ---
+  duration_ms: 0.377938
+  type: 'test'
+  ...
+# Subtest: source adapter rejects modified source bytes, missing source and symlinks without using a fallback Registry
+ok 29 - source adapter rejects modified source bytes, missing source and symlinks without using a fallback Registry
+  ---
+  duration_ms: 100.493054
+  type: 'test'
+  ...
+1..29
+# tests 29
+# suites 0
+# pass 29
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 8688.412694

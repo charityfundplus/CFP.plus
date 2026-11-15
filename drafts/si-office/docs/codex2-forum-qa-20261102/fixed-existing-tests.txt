@@ -1,0 +1,30 @@
+✔ real TCP intake survives restart; versions, isolation, origin and revoked session hold (4496.932663ms)
+✔ universal declarations preserve conflicts, unresolved countries and all locked fields; duplicate normalization (1077.984949ms)
+✔ contact/evidence/consent validation, identity injection and viewer/foreign scope denial (1708.845959ms)
+✔ advanced enrollment, marketing, work intake and HSTDN/catalog persist without execution/publication/authority (2790.331805ms)
+✔ HTTP exposes read-only curriculum and protects application writes and HTTPS origin (2533.040307ms)
+✔ amendments append without altering prior declaration or audit; stale and foreign amendments denied (892.644355ms)
+✔ named reachable-channel declaration can start before country/developer evidence exists (577.84138ms)
+✔ P2 HTTP secure headers/cookie and deny anonymous, origin, hostile Host and self-selected role (2074.058116ms)
+✔ P2 HTTP task workflow, cross-workspace denial, viewer restriction and logout (6319.086749ms)
+✔ P2 HTTP pair grants filter snapshots and deny ungranted pair creation (1504.105073ms)
+✔ P2 release executes two verified bundles; rollback restores separate DB and retains current audit (1896.910847ms)
+✔ P2 maintenance lease denies concurrent work; queued tasks block activation (888.104646ms)
+✔ P2-A authentication rejects forged/expired/revoked sessions; no plaintext secrets (2668.639167ms)
+✔ P2-B server roles, independent subject review and workspace isolation (1846.652823ms)
+✔ P2-C durable task/idempotency and audit survive reopen (1051.214636ms)
+✔ P2-C audit tampering and state mutation fail closed (1847.71831ms)
+✔ P2-D five slots remain disconnected; no live credentials or identity mutation (697.119115ms)
+✔ P2-E backup/restore preserves task history, revokes sessions and rejects corruption (997.511936ms)
+✔ P2-E incompatible storage and metadata upgrade/rollback are bounded (831.835864ms)
+✔ P2-C storage commit failure returns no task and rolls back state (516.864406ms)
+✔ P2-E persisted RUNNING checkpoint recovers interrupted without replay (2460.407099ms)
+✔ P2-B reviewer cannot acknowledge own task after restart (2215.687066ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 20396.947588

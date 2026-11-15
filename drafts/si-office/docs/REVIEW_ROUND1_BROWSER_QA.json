@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "commit": "ad2b0437ef85937cca2f30688bef33352a10eef6",
+  "manifestFiles": 47,
+  "p2Tests": "10/10",
+  "httpReleaseTests": "5/5",
+  "browserChecks": [
+    "Actual HTTP login; HttpOnly cookie inaccessible to JS; scoped editor",
+    "UI create task; hostile title escaped as text",
+    "Authenticated supervised run with actual durable service",
+    "Separate authenticated reviewer; persisted task after logout/login",
+    "Basic lesson -> assigned training -> practice -> feedback/evidence",
+    "12 Office contracts + SI/HSTDN/product/service integrated; no legal verification",
+    "Different workspace sees no alpha tasks",
+    "Viewer UI disables write/upgrade; backend gates covered in HTTP tests",
+    "VI/EN desktop and 390px mobile without overflow",
+    "No browser page errors; CSP retained"
+  ],
+  "pageErrors": [],
+  "serverStopped": true,
+  "scope": "REMOTE EPHEMERAL LOOPBACK / SYNTHETIC ONLY",
+  "round1Tests": "5/5",
+  "reportNote": "Targeted Round1 test script also executed remotely with exit code0; no persistent public preview"
+}

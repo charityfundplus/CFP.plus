@@ -1,0 +1,12 @@
+{
+  "scope": "NEW assessment export module only; HTTP loopback fixture, not remote HTTPS/iPhone QA",
+  "checks": [
+    "VI/mobile390 actual download retains own task-bound dossier and verifies payload SHA256",
+    "EN/mobile390 viewer export excludes other subjects; new module loads without page errors"
+  ],
+  "passed": 2,
+  "pageErrors": [],
+  "unaffectedBrowserSuitesRerun": false,
+  "fixtureStateRemoved": true,
+  "realCompetencyAssessed": false
+}

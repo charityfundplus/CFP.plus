@@ -1,0 +1,52 @@
+
+> test
+> node scripts/run-tests.mjs
+
+✔ unauthenticated access rejected (3.955001ms)
+✔ 12 modules and null identity; no production route (8.859431ms)
+✔ viewer cannot write and editor cannot review (3.356056ms)
+✔ workflow requires submission and HTTPS evidence; reviewer result is demo only (4.991141ms)
+✔ registration validates lineage and refuses identity fields (2.54672ms)
+✔ origin protection and invalid sessions (0.46409ms)
+✔ rejects unsafe URLs and unexpected record fields (1.32083ms)
+✔ all modules accept synthetic drafts (4.046082ms)
+✔ audit hash links recompute, including denied actions (2.004377ms)
+✔ static security headers and traversal rejection (2.820218ms)
+✔ conflicting US registry branch blocked, numeric strings retain zeros (0.433903ms)
+✔ HSTDN validates members, blocks identity fields and keeps legal claims unverified (3.266568ms)
+✔ mock adapters never connect and reject credentials/live writes (83.637926ms)
+✔ 12 bilingual contracts; product maturity/service scope validated (5.460293ms)
+✔ identity evidence, duplicate profiles, hostile Host and denial audit (4.114472ms)
+✔ Country/Developer proposals preserve identity and validate local relationship (2.448468ms)
+✔ 12-module functional matrix: create, submit, review, audit and role denial (27.86038ms)
+✔ catalog relations enforce office membership; adapters deny viewer and live mode (2.028902ms)
+✔ standard core: 12 module versions, one reusable core, three configuration templates (2.120339ms)
+✔ standard core: rejects self-issued identity, live adapter, production mode and privileges (0.661434ms)
+✔ standard core: normal task runs 16 independent checks and requires separate demo review (5.604868ms)
+✔ standard core: viewer cannot create/run/stop/upgrade; editor cannot recover (0.918019ms)
+✔ standard core: out-of-mission and resource requests are denied before execution (0.654911ms)
+✔ standard core: overreach blocked with no output, safe stop and retained evidence (2.400669ms)
+✔ standard core: bad-evidence blocked with no output, safe stop and retained evidence (1.821478ms)
+✔ standard core: false-claim blocked with no output, safe stop and retained evidence (1.447788ms)
+✔ standard core: adapter-error fault halts and requires reviewer recovery/explicit retry (1.948954ms)
+✔ standard core: timeout fault halts and requires reviewer recovery/explicit retry (11.780634ms)
+✔ standard core: stop during running adapter prevents late output; recovery waits for quiescence (1.47623ms)
+✔ standard core: one active task per pair; no replay after draft completion (1.698021ms)
+✔ standard core: changed provider/protocol or title cannot pass independent supervision (2.472239ms)
+✔ standard core: learning evaluates safe denial, never grants rights (1.021492ms)
+✔ standard core: synchronized upgrade/rollback preserves identities and audit (2.126483ms)
+✔ standard core: incompatible/failing release and active tasks prevent partial upgrade (1.427842ms)
+✔ standard core: HSTDN US artifact remains synthetic, no partner/capability/legal claim (0.700588ms)
+✔ standard core: snapshot is detached; configuration cannot mutate policy (2.009415ms)
+✔ standard core: least-privilege source-only config supports registry audit without write tool (0.763543ms)
+✔ standard core: HTTP handler reuses sessions, blocks credential injection and exposes local UI (3.162027ms)
+✔ standard core: read-only registry lookup preserves numeric zero strings; inventory does not verify identity (0.623667ms)
+✔ standard core: omission of adapter tool declarations cannot bypass Core draft.write permission (0.429571ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 40
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 229.252177

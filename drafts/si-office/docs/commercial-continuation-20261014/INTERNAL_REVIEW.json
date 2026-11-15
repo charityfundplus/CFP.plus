@@ -1,0 +1,85 @@
+{
+  "reviewType": "INTERNAL CODE REVIEW ONLY",
+  "independentOpenSIAcknowledgement": false,
+  "sourceFiles": [
+    {
+      "path": "/workspace/commerce-runtime/drafts/si-office/core/commercial-intake.mjs",
+      "sha256": "78762134185ce0a67674a4101bc896977bc852eb7fa2b41d7f5ca8afabfb4f4d"
+    },
+    {
+      "path": "/workspace/commerce-runtime/drafts/si-office/core/core-engine.mjs",
+      "sha256": "59e8eb0ee1142215b01061f1874456e58f01169c9f881ad3a4a38f50f383122b"
+    },
+    {
+      "path": "/workspace/commerce-runtime/drafts/si-office/sandbox/p2-service.mjs",
+      "sha256": "c6afd018e186a7ae00bf9f80ee1920ee5c072880e75c9082b6830c305ec80f21"
+    },
+    {
+      "path": "/workspace/commerce-runtime/drafts/si-office/sandbox/p2-http.mjs",
+      "sha256": "9062dd8020db7d3253fa17f3b0d633865d4c3ebeaf0b60fcc237d55aad9c7c79"
+    },
+    {
+      "path": "/workspace/link-commercial/public/commercial-office.js",
+      "sha256": "1abe0558a68f3a0dc3f5119f496eab83f42332dc43369c6cb60b3cbfd8812c80"
+    },
+    {
+      "path": "/workspace/link-commercial/public/p2-office.js",
+      "sha256": "efcb9d8e0cc02b6b370d71ec0a0c258d9202a6ce283c81958bdea314f24feb54"
+    },
+    {
+      "path": "/workspace/link-commercial/public/office-intake.js",
+      "sha256": "a9e6f6effedd8d300259344ba13606786ee31e41279ed285fad5040b908599f4"
+    },
+    {
+      "path": "/workspace/link-commercial/public/p2.html",
+      "sha256": "bcdf3dcdfe67c4560b8fc59e118f46e8b59f5a16821d88eb11fc8ef4ba399e8b"
+    }
+  ],
+  "closedUiFindings": [
+    "Inquiry/result matching captured against correct inquiry; new inquiry clears stale matches.",
+    "Pair refresh clears old workspace views; async response guards enforce pair/sequence/subject.",
+    "Top-level idempotency key cache covers create-inquiry/create-opportunity retry.",
+    "Export immutable assessment snapshot, final audit readback and record hash links, auth/pair/workspace guards, source-change abort.",
+    "Name-only catalog search and deterministic matcher limitations now explicit."
+  ],
+  "checks": {
+    "commercialExportValidation": {
+      "pass": 4,
+      "fail": 0,
+      "command": "node /workspace/link-commercial/tests/commercial-export-validation.test.mjs",
+      "scope": "VM with mocked transport; no browser/host/assessment attestation"
+    },
+    "crossUserOfficeRefProbe": {
+      "observed": "DENIED AFTER FIX",
+      "expected": "DENIED",
+      "scope": "Independent direct synthetic CoreEngine probe, new application owner stamping, foreign inquiry rejection; no external calls/payment"
+    },
+    "internalClosureProbe": {
+      "result": "PASS",
+      "scope": "Single focused independent module probe; source-bound matcher query/target hashes, retained schema3 checkpoint and missing-commercial rejection; no repeated full suite."
+    }
+  },
+  "openBackendFindings": [],
+  "limitations": [
+    "Internal code review only; no independent OpenSI acknowledgement or human acceptance.",
+    "No current browser PASS; no real contact/payment/publication/assessor authority.",
+    "Matcher is deterministic synthetic name-token scoring only; source hashes do not prove public source truth or business suitability."
+  ],
+  "closedBackendFindings": [
+    {
+      "id": "CR-1",
+      "closure": "New records receive authenticated actor subject; inquiry and product/service origin officeRef must belong to actor. Historical unknown subjects preserved and ineligible."
+    },
+    {
+      "id": "CR-2",
+      "closure": "Matcher descriptor persists version, normalized query/inquiry/catalog/target hashes, catalog key-digest inventory and exact target snapshot; opportunity retains descriptor."
+    },
+    {
+      "id": "CR-3",
+      "closure": "Commercial-bearing checkpoint schema3; predecessors refuse; restore requires each retained record and corresponding latest audit event hash/link. Removed records or arrays fail closed."
+    }
+  ],
+  "adjacentLimitations": [
+    "Existing Office enrollment/marketing/work-request origin officeRef checks still accept authorized workspace profile owned by another subject. Existing HSTDN proposed membership also allows shared profiles. New commercial-owner isolation closure does not certify all Office flows."
+  ]
+}

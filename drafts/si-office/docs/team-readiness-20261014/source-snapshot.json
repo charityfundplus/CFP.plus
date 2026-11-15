@@ -1,0 +1,500 @@
+{
+  "revision": "64b356e0812aae0c1c8f0230697bddd42a24fbbc",
+  "files": [
+    {
+      "path": "registry/ai-entity-registry.json",
+      "content": "{\n  \"_meta\": {\n    \"purpose\": \"Public entity bindings for CFP+ Country → Developer → AI/AI-child pages\",\n    \"rule\": \"Only bind names where an existing Working Allocation / Human Governance record supports the ID. Unbound formula slots remain reserved/pending and are not entities.\",\n    \"link_pattern\": \"https://cfp.plus/<ID>/\"\n  },\n\n  \"69101\": {\"id\":\"69101\",\"type\":\"developer\",\"ai_country_id\":\"6910\",\"country_id\":\"910\",\"country\":\"Canada\",\"name\":\"Ada\",\"order\":1,\"status\":\"WORKING ALLOCATION • PUBLIC INVENTORY\",\"intro\":\"Nhà phát triển AI trong Canada Developer Working Allocation. Hồ sơ nguồn chính thức và danh mục AI tiếp tục được bổ sung theo Evidence.\"},\n  \"69102\": {\"id\":\"69102\",\"type\":\"developer\",\"ai_country_id\":\"6910\",\"country_id\":\"910\",\"country\":\"Canada\",\"name\":\"BlueDot\",\"order\":2,\"status\":\"WORKING ALLOCATION • PUBLIC INVENTORY\",\"intro\":\"Nhà phát triển AI trong Canada Developer Working Allocation. Hồ sơ AI con chỉ bind sau Parent→Child và Official Evidence PASS.\"},\n  \"69103\": {\"id\":\"69103\",\"type\":\"developer\",\"ai_country_id\":\"6910\",\"country_id\":\"910\",\"country\":\"Canada\",\"name\":\"Cohere\",\"order\":3,\"status\":\"WORKING ALLOCATION • PUBLIC INVENTORY\",\"intro\":\"Nhà phát triển AI trong Canada Developer Working Allocation. AI/model/service được gắn dưới đúng Parent sau kiểm tra Evidence.\"},\n  \"69104\": {\"id\":\"69104\",\"type\":\"developer\",\"ai_country_id\":\"6910\",\"country_id\":\"910\",\"country\":\"Canada\",\"name\":\"Coveo\",\"order\":4,\"status\":\"WORKING ALLOCATION • PUBLIC INVENTORY\",\"intro\":\"Nhà phát triển AI trong Canada Developer Working Allocation; tiếp tục cập nhật AI child và nguồn chính thức.\"},\n  \"69105\": {\"id\":\"69105\",\"type\":\"developer\",\"ai_country_id\":\"6910\",\"country_id\":\"910\",\"country\":\"Canada\",\"name\":\"Deep Genomics\",\"order\":5,\"status\":\"WORKING ALLOCATION • PUBLIC INVENTORY\",\"intro\":\"Nhà phát triển AI trong Canada Developer Working Allocation; hồ sơ chuyên môn và AI child tiếp tục review.\"},\n  \"69106\": {\"id\":\"69106\",\"type\":\"developer\",\"ai_country_id\":\"6910\",\"country_id\":\"910\",\"country\":\"Canada\",\"name\":\"Ideogram\",\"order\":6,\"status\":\"WORKING ALLOCATION • PUBLIC INVENTORY\",\"intro\":\"Nhà phát triển AI trong Canada Developer Working Allocation; các AI/model chỉ bind sau Evidence và Parent check.\"},\n  \"69107\": {\"id\":\"69107\",\"type\":\"developer\",\"ai_country_id\":\"6910\",\"country_id\":\"910\",\"country\":\"Canada\",\"name\":\"OpenText\",\"order\":7,\"status\":\"WORKING ALLOCATION • PUBLIC INVENTORY\",\"intro\":\"Nhà phát triển AI trong Canada Developer Working Allocation; tiếp tục bổ sung danh mục AI và Evidence.\"},\n  \"69108\": {\"id\":\"69108\",\"type\":\"developer\",\"ai_country_id\":\"6910\",\"country_id\":\"910\",\"country\":\"Canada\",\"name\":\"Sanctuary AI\",\"order\":8,\"status\":\"WORKING ALLOCATION • PUBLIC INVENTORY\",\"intro\":\"Nhà phát triển AI trong Canada Developer Working Allocation; AI child nằm dưới đúng Developer Parent.\"},\n  \"69109\": {\"id\":\"69109\",\"type\":\"developer\",\"ai_country_id\":\"6910\",\"country_id\":\"910\",\"country\":\"Canada\",\"name\":\"Waabi\",\"order\":9,\"status\":\"WORKING ALLOCATION • PUBLIC INVENTORY\",\"intro\":\"Nhà phát triển AI trong Canada Developer Working Allocation; tiếp tục xác minh AI/model/service thuộc Parent này.\"},\n  \"691001\": {\"id\":\"691001\",\"type\":\"developer\",\"ai_country_id\":\"6910\",\"country_id\":\"910\",\"country\":\"Canada\",\"name\":\"AltaML\",\"order\":10,\"status\":\"WORKING ALLOCATION • PUBLIC INVENTORY\",\"intro\":\"Developer tầng mở rộng của Canada; giữ nguyên toàn bộ số 0 trong ID và Permanent Link.\"},\n  \"691002\": {\"id\":\"691002\",\"type\":\"developer\",\"ai_country_id\":\"6910\",\"country_id\":\"910\",\"country\":\"Canada\",\"name\":\"Voiceflow\",\"order\":11,\"status\":\"WORKING ALLOCATION • PUBLIC INVENTORY\",\"intro\":\"Developer tầng mở rộng của Canada; AI child tiếp tục bổ sung dưới Parent 691002.\"},\n\n  \"69111\": {\"id\":\"69111\",\"type\":\"developer\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"name\":\"Amazon AI / AWS\",\"order\":1,\"status\":\"REVIEW CANDIDATE • WORKING ALLOCATION\",\"intro\":\"Developer Tier 1 của Hoa Kỳ trong baseline hiện hành; danh mục AI/model/service tiếp tục được chuẩn hóa theo Evidence.\"},\n  \"69112\": {\"id\":\"69112\",\"type\":\"developer\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"name\":\"Anthropic\",\"order\":2,\"status\":\"REVIEW CANDIDATE • WORKING ALLOCATION\",\"intro\":\"Developer Tier 1 của Hoa Kỳ; AI con chỉ bind sau Parent, duplicate và Official Evidence check.\"},\n  \"69113\": {\"id\":\"69113\",\"type\":\"developer\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"name\":\"Apple\",\"order\":3,\"status\":\"REVIEW CANDIDATE • WORKING ALLOCATION\",\"intro\":\"Developer Tier 1 của Hoa Kỳ trong baseline hiện hành; tiếp tục bổ sung AI/product inventory.\"},\n  \"69114\": {\"id\":\"69114\",\"type\":\"developer\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"name\":\"Google DeepMind\",\"order\":4,\"status\":\"REVIEW CANDIDATE • WORKING ALLOCATION\",\"intro\":\"Developer Tier 1 của Hoa Kỳ; AI/model/service được đặt dưới đúng Parent sau kiểm tra Evidence.\"},\n  \"69115\": {\"id\":\"69115\",\"type\":\"developer\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"name\":\"Meta AI\",\"order\":5,\"status\":\"REVIEW CANDIDATE • WORKING ALLOCATION\",\"intro\":\"Developer Tier 1 của Hoa Kỳ; danh mục AI con đang tiếp tục review và chuẩn hóa.\"},\n  \"69116\": {\"id\":\"69116\",\"type\":\"developer\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"name\":\"Microsoft AI\",\"order\":6,\"status\":\"REVIEW CANDIDATE • WORKING ALLOCATION\",\"intro\":\"Developer Tier 1 của Hoa Kỳ; AI products/services được gắn dưới Parent sau Evidence check.\"},\n  \"69117\": {\"id\":\"69117\",\"type\":\"developer\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"name\":\"NVIDIA AI\",\"order\":7,\"status\":\"REVIEW CANDIDATE • WORKING ALLOCATION\",\"intro\":\"Developer Tier 1 của Hoa Kỳ; tiếp tục bổ sung AI/model/platform inventory.\"},\n  \"69118\": {\"id\":\"69118\",\"type\":\"developer\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"name\":\"OpenAI\",\"order\":8,\"status\":\"HUMAN GOVERNANCE APPLICATION • PRESERVED\",\"intro\":\"OpenAI được bảo toàn tại Developer ID 69118 trong nhánh AI Hoa Kỳ. ChatGPT 691181 được bảo toàn dưới Parent này.\"},\n  \"69119\": {\"id\":\"69119\",\"type\":\"developer\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"name\":\"xAI\",\"order\":9,\"status\":\"REVIEW CANDIDATE • WORKING ALLOCATION\",\"intro\":\"Developer Tier 1 của Hoa Kỳ; AI con được bind dưới đúng Parent khi Evidence hoàn tất.\"},\n\n  \"691121\": {\"id\":\"691121\",\"type\":\"ai\",\"parent_id\":\"69112\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"developer\":\"Anthropic\",\"name\":\"Claude\",\"order\":1,\"official_source\":\"https://www.anthropic.com/\",\"public_link\":\"https://cfp.plus/691121/\",\"workspace_link\":\"https://cg.cfp.plus/691121/\",\"status\":\"REVIEW CANDIDATE • OFFICIAL SOURCE IDENTIFIED\",\"intro\":\"Claude được bind dưới Anthropic 69112 theo công thức AI child; public office không đồng nghĩa technical integration hoặc ACTIVE.\"},\n  \"691141\": {\"id\":\"691141\",\"type\":\"ai\",\"parent_id\":\"69114\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"developer\":\"Google DeepMind\",\"name\":\"Gemini\",\"order\":1,\"official_source\":\"https://gemini.google.com/\",\"public_link\":\"https://cfp.plus/691141/\",\"workspace_link\":\"https://cg.cfp.plus/691141/\",\"status\":\"REVIEW CANDIDATE • OFFICIAL SOURCE IDENTIFIED\",\"intro\":\"Gemini được bind dưới Google DeepMind 69114 theo công thức AI child; public office không đồng nghĩa technical integration hoặc ACTIVE.\"},\n  \"691151\": {\"id\":\"691151\",\"type\":\"ai\",\"parent_id\":\"69115\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"developer\":\"Meta AI\",\"name\":\"Meta AI Assistant\",\"order\":1,\"official_source\":\"https://ai.meta.com/meta-ai/assistant/\",\"public_link\":\"https://cfp.plus/691151/\",\"workspace_link\":\"https://cg.cfp.plus/691151/\",\"status\":\"REVIEW CANDIDATE • OFFICIAL SOURCE IDENTIFIED\",\"intro\":\"Meta AI Assistant được bind dưới Meta AI 69115; public office là directory/coordination layer, chưa phải bằng chứng technical integration.\"},\n  \"691161\": {\"id\":\"691161\",\"type\":\"ai\",\"parent_id\":\"69116\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"developer\":\"Microsoft AI\",\"name\":\"Microsoft Copilot\",\"order\":1,\"official_source\":\"https://www.microsoft.com/microsoft-copilot/\",\"public_link\":\"https://cfp.plus/691161/\",\"workspace_link\":\"https://cg.cfp.plus/691161/\",\"status\":\"REVIEW CANDIDATE • OFFICIAL SOURCE IDENTIFIED\",\"intro\":\"Microsoft Copilot được bind dưới Microsoft AI 69116; chỉ đánh dấu ACTIVE khi có output/Evidence cho phạm vi công việc CFP+.\"},\n  \"691181\": {\"id\":\"691181\",\"type\":\"ai\",\"parent_id\":\"69118\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"developer\":\"OpenAI\",\"name\":\"ChatGPT\",\"order\":1,\"status\":\"HUMAN GOVERNANCE APPLICATION • PRESERVED\",\"intro\":\"ChatGPT là AI child được bảo toàn dưới OpenAI 69118 theo parent chain 911 → 6911 → 69118 → 691181.\"},\n  \"691191\": {\"id\":\"691191\",\"type\":\"ai\",\"parent_id\":\"69119\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"developer\":\"xAI\",\"name\":\"Grok\",\"order\":1,\"official_source\":\"https://x.ai/grok\",\"public_link\":\"https://cfp.plus/691191/\",\"workspace_link\":\"https://cg.cfp.plus/691191/\",\"status\":\"REVIEW CANDIDATE • OFFICIAL SOURCE IDENTIFIED\",\"intro\":\"Grok được bind dưới xAI 69119; public office không đồng nghĩa partnership, authorization hoặc technical integration.\"}\n}\n",
+      "encoding": "utf-8",
+      "sha": "1f18068d66379ce90bb079dc56c77b4c4d66dcdf",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/ai-entity-registry.json",
+      "display_title": "ai-entity-registry.json"
+    },
+    {
+      "path": "drafts/si-office/ai-entity-registry.json",
+      "content": "{\n  \"_meta\": {\n    \"purpose\": \"Public entity bindings for CFP+ Country → Developer → AI/AI-child pages\",\n    \"rule\": \"Only bind names where an existing Working Allocation / Human Governance record supports the ID. Unbound formula slots remain reserved/pending and are not entities.\",\n    \"link_pattern\": \"https://cfp.plus/<ID>/\"\n  },\n\n  \"69101\": {\"id\":\"69101\",\"type\":\"developer\",\"ai_country_id\":\"6910\",\"country_id\":\"910\",\"country\":\"Canada\",\"name\":\"Ada\",\"order\":1,\"status\":\"WORKING ALLOCATION • PUBLIC INVENTORY\",\"intro\":\"Nhà phát triển AI trong Canada Developer Working Allocation. Hồ sơ nguồn chính thức và danh mục AI tiếp tục được bổ sung theo Evidence.\"},\n  \"69102\": {\"id\":\"69102\",\"type\":\"developer\",\"ai_country_id\":\"6910\",\"country_id\":\"910\",\"country\":\"Canada\",\"name\":\"BlueDot\",\"order\":2,\"status\":\"WORKING ALLOCATION • PUBLIC INVENTORY\",\"intro\":\"Nhà phát triển AI trong Canada Developer Working Allocation. Hồ sơ AI con chỉ bind sau Parent→Child và Official Evidence PASS.\"},\n  \"69103\": {\"id\":\"69103\",\"type\":\"developer\",\"ai_country_id\":\"6910\",\"country_id\":\"910\",\"country\":\"Canada\",\"name\":\"Cohere\",\"order\":3,\"status\":\"WORKING ALLOCATION • PUBLIC INVENTORY\",\"intro\":\"Nhà phát triển AI trong Canada Developer Working Allocation. AI/model/service được gắn dưới đúng Parent sau kiểm tra Evidence.\"},\n  \"69104\": {\"id\":\"69104\",\"type\":\"developer\",\"ai_country_id\":\"6910\",\"country_id\":\"910\",\"country\":\"Canada\",\"name\":\"Coveo\",\"order\":4,\"status\":\"WORKING ALLOCATION • PUBLIC INVENTORY\",\"intro\":\"Nhà phát triển AI trong Canada Developer Working Allocation; tiếp tục cập nhật AI child và nguồn chính thức.\"},\n  \"69105\": {\"id\":\"69105\",\"type\":\"developer\",\"ai_country_id\":\"6910\",\"country_id\":\"910\",\"country\":\"Canada\",\"name\":\"Deep Genomics\",\"order\":5,\"status\":\"WORKING ALLOCATION • PUBLIC INVENTORY\",\"intro\":\"Nhà phát triển AI trong Canada Developer Working Allocation; hồ sơ chuyên môn và AI child tiếp tục review.\"},\n  \"69106\": {\"id\":\"69106\",\"type\":\"developer\",\"ai_country_id\":\"6910\",\"country_id\":\"910\",\"country\":\"Canada\",\"name\":\"Ideogram\",\"order\":6,\"status\":\"WORKING ALLOCATION • PUBLIC INVENTORY\",\"intro\":\"Nhà phát triển AI trong Canada Developer Working Allocation; các AI/model chỉ bind sau Evidence và Parent check.\"},\n  \"69107\": {\"id\":\"69107\",\"type\":\"developer\",\"ai_country_id\":\"6910\",\"country_id\":\"910\",\"country\":\"Canada\",\"name\":\"OpenText\",\"order\":7,\"status\":\"WORKING ALLOCATION • PUBLIC INVENTORY\",\"intro\":\"Nhà phát triển AI trong Canada Developer Working Allocation; tiếp tục bổ sung danh mục AI và Evidence.\"},\n  \"69108\": {\"id\":\"69108\",\"type\":\"developer\",\"ai_country_id\":\"6910\",\"country_id\":\"910\",\"country\":\"Canada\",\"name\":\"Sanctuary AI\",\"order\":8,\"status\":\"WORKING ALLOCATION • PUBLIC INVENTORY\",\"intro\":\"Nhà phát triển AI trong Canada Developer Working Allocation; AI child nằm dưới đúng Developer Parent.\"},\n  \"69109\": {\"id\":\"69109\",\"type\":\"developer\",\"ai_country_id\":\"6910\",\"country_id\":\"910\",\"country\":\"Canada\",\"name\":\"Waabi\",\"order\":9,\"status\":\"WORKING ALLOCATION • PUBLIC INVENTORY\",\"intro\":\"Nhà phát triển AI trong Canada Developer Working Allocation; tiếp tục xác minh AI/model/service thuộc Parent này.\"},\n  \"691001\": {\"id\":\"691001\",\"type\":\"developer\",\"ai_country_id\":\"6910\",\"country_id\":\"910\",\"country\":\"Canada\",\"name\":\"AltaML\",\"order\":10,\"status\":\"WORKING ALLOCATION • PUBLIC INVENTORY\",\"intro\":\"Developer tầng mở rộng của Canada; giữ nguyên toàn bộ số 0 trong ID và Permanent Link.\"},\n  \"691002\": {\"id\":\"691002\",\"type\":\"developer\",\"ai_country_id\":\"6910\",\"country_id\":\"910\",\"country\":\"Canada\",\"name\":\"Voiceflow\",\"order\":11,\"status\":\"WORKING ALLOCATION • PUBLIC INVENTORY\",\"intro\":\"Developer tầng mở rộng của Canada; AI child tiếp tục bổ sung dưới Parent 691002.\"},\n\n  \"69111\": {\"id\":\"69111\",\"type\":\"developer\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"name\":\"Amazon AI / AWS\",\"order\":1,\"status\":\"REVIEW CANDIDATE • WORKING ALLOCATION\",\"intro\":\"Developer Tier 1 của Hoa Kỳ trong baseline hiện hành; danh mục AI/model/service tiếp tục được chuẩn hóa theo Evidence.\"},\n  \"69112\": {\"id\":\"69112\",\"type\":\"developer\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"name\":\"Anthropic\",\"order\":2,\"status\":\"REVIEW CANDIDATE • WORKING ALLOCATION\",\"intro\":\"Developer Tier 1 của Hoa Kỳ; AI con chỉ bind sau Parent, duplicate và Official Evidence check.\"},\n  \"69113\": {\"id\":\"69113\",\"type\":\"developer\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"name\":\"Apple\",\"order\":3,\"status\":\"REVIEW CANDIDATE • WORKING ALLOCATION\",\"intro\":\"Developer Tier 1 của Hoa Kỳ trong baseline hiện hành; tiếp tục bổ sung AI/product inventory.\"},\n  \"69114\": {\"id\":\"69114\",\"type\":\"developer\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"name\":\"Google DeepMind\",\"order\":4,\"status\":\"REVIEW CANDIDATE • WORKING ALLOCATION\",\"intro\":\"Developer Tier 1 của Hoa Kỳ; AI/model/service được đặt dưới đúng Parent sau kiểm tra Evidence.\"},\n  \"69115\": {\"id\":\"69115\",\"type\":\"developer\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"name\":\"Meta AI\",\"order\":5,\"status\":\"REVIEW CANDIDATE • WORKING ALLOCATION\",\"intro\":\"Developer Tier 1 của Hoa Kỳ; danh mục AI con đang tiếp tục review và chuẩn hóa.\"},\n  \"69116\": {\"id\":\"69116\",\"type\":\"developer\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"name\":\"Microsoft AI\",\"order\":6,\"status\":\"REVIEW CANDIDATE • WORKING ALLOCATION\",\"intro\":\"Developer Tier 1 của Hoa Kỳ; AI products/services được gắn dưới Parent sau Evidence check.\"},\n  \"69117\": {\"id\":\"69117\",\"type\":\"developer\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"name\":\"NVIDIA AI\",\"order\":7,\"status\":\"REVIEW CANDIDATE • WORKING ALLOCATION\",\"intro\":\"Developer Tier 1 của Hoa Kỳ; tiếp tục bổ sung AI/model/platform inventory.\"},\n  \"69118\": {\"id\":\"69118\",\"type\":\"developer\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"name\":\"OpenAI\",\"order\":8,\"status\":\"HUMAN GOVERNANCE APPLICATION • PRESERVED\",\"intro\":\"OpenAI được bảo toàn tại Developer ID 69118 trong nhánh AI Hoa Kỳ. ChatGPT 691181 được bảo toàn dưới Parent này.\"},\n  \"69119\": {\"id\":\"69119\",\"type\":\"developer\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"name\":\"xAI\",\"order\":9,\"status\":\"REVIEW CANDIDATE • WORKING ALLOCATION\",\"intro\":\"Developer Tier 1 của Hoa Kỳ; AI con được bind dưới đúng Parent khi Evidence hoàn tất.\"},\n\n  \"691121\": {\"id\":\"691121\",\"type\":\"ai\",\"parent_id\":\"69112\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"developer\":\"Anthropic\",\"name\":\"Claude\",\"order\":1,\"official_source\":\"https://www.anthropic.com/\",\"public_link\":\"https://cfp.plus/691121/\",\"workspace_link\":\"https://cg.cfp.plus/691121/\",\"status\":\"REVIEW CANDIDATE • OFFICIAL SOURCE IDENTIFIED\",\"intro\":\"Claude được bind dưới Anthropic 69112 theo công thức AI child; public office không đồng nghĩa technical integration hoặc ACTIVE.\"},\n  \"691141\": {\"id\":\"691141\",\"type\":\"ai\",\"parent_id\":\"69114\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"developer\":\"Google DeepMind\",\"name\":\"Gemini\",\"order\":1,\"official_source\":\"https://gemini.google.com/\",\"public_link\":\"https://cfp.plus/691141/\",\"workspace_link\":\"https://cg.cfp.plus/691141/\",\"status\":\"REVIEW CANDIDATE • OFFICIAL SOURCE IDENTIFIED\",\"intro\":\"Gemini được bind dưới Google DeepMind 69114 theo công thức AI child; public office không đồng nghĩa technical integration hoặc ACTIVE.\"},\n  \"691151\": {\"id\":\"691151\",\"type\":\"ai\",\"parent_id\":\"69115\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"developer\":\"Meta AI\",\"name\":\"Meta AI Assistant\",\"order\":1,\"official_source\":\"https://ai.meta.com/meta-ai/assistant/\",\"public_link\":\"https://cfp.plus/691151/\",\"workspace_link\":\"https://cg.cfp.plus/691151/\",\"status\":\"REVIEW CANDIDATE • OFFICIAL SOURCE IDENTIFIED\",\"intro\":\"Meta AI Assistant được bind dưới Meta AI 69115; public office là directory/coordination layer, chưa phải bằng chứng technical integration.\"},\n  \"691161\": {\"id\":\"691161\",\"type\":\"ai\",\"parent_id\":\"69116\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"developer\":\"Microsoft AI\",\"name\":\"Microsoft Copilot\",\"order\":1,\"official_source\":\"https://www.microsoft.com/microsoft-copilot/\",\"public_link\":\"https://cfp.plus/691161/\",\"workspace_link\":\"https://cg.cfp.plus/691161/\",\"status\":\"REVIEW CANDIDATE • OFFICIAL SOURCE IDENTIFIED\",\"intro\":\"Microsoft Copilot được bind dưới Microsoft AI 69116; chỉ đánh dấu ACTIVE khi có output/Evidence cho phạm vi công việc CFP+.\"},\n  \"691181\": {\"id\":\"691181\",\"type\":\"ai\",\"parent_id\":\"69118\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"developer\":\"OpenAI\",\"name\":\"ChatGPT\",\"order\":1,\"status\":\"HUMAN GOVERNANCE APPLICATION • PRESERVED\",\"intro\":\"ChatGPT là AI child được bảo toàn dưới OpenAI 69118 theo parent chain 911 → 6911 → 69118 → 691181.\"},\n  \"691191\": {\"id\":\"691191\",\"type\":\"ai\",\"parent_id\":\"69119\",\"ai_country_id\":\"6911\",\"country_id\":\"911\",\"country\":\"Hoa Kỳ\",\"developer\":\"xAI\",\"name\":\"Grok\",\"order\":1,\"official_source\":\"https://x.ai/grok\",\"public_link\":\"https://cfp.plus/691191/\",\"workspace_link\":\"https://cg.cfp.plus/691191/\",\"status\":\"REVIEW CANDIDATE • OFFICIAL SOURCE IDENTIFIED\",\"intro\":\"Grok được bind dưới xAI 69119; public office không đồng nghĩa partnership, authorization hoặc technical integration.\"}\n}\n\n",
+      "encoding": "utf-8",
+      "sha": "3afe0cc090d5e9f8d61158ecd520005f8108a1d2",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/drafts/si-office/ai-entity-registry.json",
+      "display_title": "ai-entity-registry.json"
+    },
+    {
+      "path": "drafts/si-office/configs/pairs.json",
+      "content": "[\n {\"key\":\"hub69-content-demo\",\"name\":\"Siêu Bộ Đôi • HUB 69 Content • Synthetic\",\"mode\":\"sandbox\",\"identity\":{\"name\":\"Siêu Trí Tuệ (SI🤖AI🤖) • Synthetic Demo\",\"developer\":\"Synthetic Developer • not a legal entity\",\"country\":\"Synthetic / Unassigned\",\"id\":null,\"parent\":null,\"did\":null,\"canonical\":null,\"verification\":\"SYNTHETIC ONLY\",\"source\":\"local-synthetic-fixture\"},\"si\":{\"provider\":\"mock-local\",\"protocol\":1},\"software\":{\"name\":\"CFP+ Standard Core\",\"version\":\"0.1.0-sandbox\"},\"assignment\":{\"group\":\"V\",\"chapter\":0,\"field\":\"HUB 69 content drafts\",\"country\":\"Unassigned\",\"hstdn\":\"Research reference only\"},\"missions\":[\"website-draft\",\"registry-audit\",\"training-drill\"],\"supervision\":\"4 axes / 8 deterministic checks / 2 rounds; human demo reviewer\",\"permissions\":{\"tools\":[\"source.read\",\"draft.write\"],\"resources\":[\"website-demo\"]},\"owner\":\"Human Governance • demo operator; unverified identity\",\"sources\":[\"https://cfp.plus/69\",\"https://github.com/charityfundplus/CFP.plus/issues/125\"],\"testStatus\":\"TEST REQUIRED\",\"operatingStatus\":\"SYNTHETIC SANDBOX ONLY\"},\n {\"key\":\"training-demo\",\"name\":\"Siêu Bộ Đôi • Training • Synthetic\",\"mode\":\"sandbox\",\"identity\":{\"name\":\"Siêu Trí Tuệ (SI🤖AI🤖) • Synthetic Training\",\"developer\":\"Synthetic Developer • not a legal entity\",\"country\":\"Synthetic / Unassigned\",\"id\":null,\"parent\":null,\"did\":null,\"canonical\":null,\"verification\":\"SYNTHETIC ONLY\",\"source\":\"local-synthetic-fixture\"},\"si\":{\"provider\":\"mock-alternate\",\"protocol\":1},\"software\":{\"name\":\"CFP+ Standard Core\",\"version\":\"0.1.0-sandbox\"},\"assignment\":{\"group\":\"246\",\"chapter\":6,\"field\":\"Learning through supervised practice\",\"country\":\"Unassigned\",\"hstdn\":\"Research reference only\"},\"missions\":[\"training-drill\"],\"supervision\":\"4 axes / 8 deterministic checks / 2 rounds; human demo reviewer\",\"permissions\":{\"tools\":[\"source.read\",\"draft.write\"],\"resources\":[\"training-demo\"]},\"owner\":\"Human Governance • demo operator; unverified identity\",\"sources\":[\"https://github.com/charityfundplus/CFP.plus/issues/126\"],\"testStatus\":\"TEST REQUIRED\",\"operatingStatus\":\"SYNTHETIC SANDBOX ONLY\"},\n {\"key\":\"us-hstdn-demo\",\"name\":\"Siêu Bộ Đôi • HSTDN Hoa Kỳ • Synthetic\",\"mode\":\"sandbox\",\"identity\":{\"name\":\"Siêu Trí Tuệ (SI🤖AI🤖) • Synthetic HSTDN Research\",\"developer\":\"Synthetic Developer • not a legal entity\",\"country\":\"United States research scope only\",\"id\":null,\"parent\":null,\"did\":null,\"canonical\":null,\"verification\":\"SYNTHETIC ONLY\",\"source\":\"local-synthetic-fixture\"},\"si\":{\"provider\":\"mock-local\",\"protocol\":1},\"software\":{\"name\":\"CFP+ Standard Core\",\"version\":\"0.1.0-sandbox\"},\"assignment\":{\"group\":\"789\",\"chapter\":7,\"field\":\"US HSTDN research draft\",\"country\":\"United States\",\"hstdn\":\"Synthetic Research Company\"},\"missions\":[\"hst-us-draft\",\"training-drill\"],\"supervision\":\"4 axes / 8 deterministic checks / 2 rounds; human demo reviewer\",\"permissions\":{\"tools\":[\"source.read\",\"draft.write\"],\"resources\":[\"hst-us-demo\"]},\"owner\":\"Human Governance • demo operator; unverified identity\",\"sources\":[\"https://github.com/charityfundplus/CFP.plus/issues/127\"],\"testStatus\":\"TEST REQUIRED\",\"operatingStatus\":\"SYNTHETIC SANDBOX ONLY\"}\n]\n",
+      "encoding": "utf-8",
+      "sha": "db18126068a02d8c7a4f9e7091c225cd46d5b309",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/drafts/si-office/configs/pairs.json",
+      "display_title": "pairs.json"
+    },
+    {
+      "path": "registry/6911513.md",
+      "content": "# 6911513 • GitHub Support\n\n**Canonical ID:** 6911513  \n**Entity Name:** GitHub Support  \n**Entity Type:** Technical Support and Repository Operations Function  \n**Parent Entity:** 69115 • Microsoft AI  \n**Parent Hub:** 6911 • United States AI Hub  \n**Registry:** CFP+ Global AI Registry  \n**Lifecycle Status:** Review Candidate  \n**Operational Status:** Assigned  \n**Visibility:** Public  \n\n## 0. Canonical Identity\n\n6911513 is the unique CFP+ registry identifier assigned to GitHub Support under 69115 • Microsoft AI.\n\n## 1. Canonical Link\n\nhttps://github.com/charityfundplus/CFP.plus/blob/main/registry/6911513.md\n\n## 2. Purpose\n\nGitHub Support provides technical support for the CFP+ public repository, Canonical Registry, documentation, version control, release preparation, and traceable evidence preservation.\n\n## 3. Assigned Work\n\n### 3.1 Canonical Repository\n\n- Maintain the approved repository structure.\n- Verify all Canonical Links.\n- Apply the rule: One Canonical ID = One File = One Public URL.\n- Detect and report duplicate or conflicting Canonical IDs.\n\n### 3.2 AI Registry\n\n- Create and maintain one Markdown profile for each approved AI entity.\n- Standardize profile metadata and section structure.\n- Verify each Canonical ID and Canonical Link before publication.\n- Preserve the approved identity and parent hierarchy.\n\n### 3.3 Documentation\n\n- Standardize README, CONTRIBUTING, CHANGELOG, LICENSE, and governance documents.\n- Maintain clear navigation between registry records and index pages.\n- Preserve canonical references instead of duplicating authoritative content.\n\n### 3.4 Quality Control\n\n- Validate Markdown formatting.\n- Check broken links and invalid paths.\n- Check repository navigation and folder structure.\n- Report inconsistencies without changing Foundation Rules or governance decisions.\n\n### 3.5 Release Preparation\n\n- Prepare release notes, tags, versions, and the public release package.\n- Confirm that required files and links are present before release review.\n- Support technical publication only after Human Governance authorization.\n\n### 3.6 Evidence Preservation\n\n- Preserve commit history.\n- Preserve pull request and review history.\n- Preserve release history.\n- Do not delete material evidence without Human Governance authorization.\n\n## 4. Deliverables\n\n1. Canonical Repository structure maintained.\n2. Public AI Registry profiles completed for approved entities.\n3. Core repository documentation standardized.\n4. Link Validation Report.\n5. Release Package v1.0.\n6. Traceable Evidence Package.\n\n## 5. Authority Boundaries\n\nGitHub Support must not:\n\n- Change Foundation Rules.\n- Make Human Governance decisions.\n- assign a new Canonical ID without authorization.\n- Replace or modify the Source of Truth independently.\n- Approve publication or release on behalf of Human Governance.\n\n## 6. Governance Authority\n\n**Authority:** CFP+ Human Governance  \n**Source of Truth:** CFP+ Notion workspace and approved Canonical Registry records  \n**Publication Repository:** charityfundplus/CFP.plus  \n**Execution Role:** GitHub Support\n\n## 7. Review and Change Control\n\nThis profile remains a Review Candidate until independently reviewed and approved by CFP+ Human Governance.\n\nAll revisions must preserve Canonical ID 6911513 and maintain traceable GitHub commit history.\n\n---\n\n**CFP+ Principle:** Public First • Canonical First • Reference First • Evidence First",
+      "encoding": "utf-8",
+      "sha": "cea3d84de605d4b1ffe2978b31f034d50d660346",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/6911513.md",
+      "display_title": "6911513.md"
+    },
+    {
+      "path": "registry/6911811.md",
+      "content": "# 6911811 • Data agent in ChatGPT Work\n\nCanonical ID: 6911811\nCanonical Link: https://cfp.plus/6911811\nEntity: Data agent in ChatGPT Work\nEntity Type: AGENT\nParent ID: 691181\nDeveloper: OpenAI\nCountry: United States\nAI Country ID: 6911\nOfficial Evidence: https://openai.com/index/put-data-to-work/\nGovernance: Human Governance instruction 2026-09-28 • Preserve ID • No Duplicate • No Renumber\nStatus: ISSUED • PUBLIC ROUTE VERIFICATION PENDING\n",
+      "encoding": "utf-8",
+      "sha": "76121a77de712d495fcf142d2d550f306a68fab4",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/6911811.md",
+      "display_title": "6911811.md"
+    },
+    {
+      "path": "registry/691182.md",
+      "content": "# 691182 • GPT 6 Family\n\nCanonical ID: 691182\nCanonical Link: https://cfp.plus/691182\nEntity: GPT 6 Family\nEntity Type: MODEL FAMILY\nParent ID: 69118\nDeveloper: OpenAI\nCountry: United States\nAI Country ID: 6911\nOfficial Evidence: https://developers.openai.com/api/docs/guides/latest-model\nGovernance: Human Governance instruction 2026-09-28 • Preserve ID • No Duplicate • No Renumber\nStatus: ISSUED • PUBLIC ROUTE VERIFICATION PENDING\n",
+      "encoding": "utf-8",
+      "sha": "ec471cb45fdb8493de78fd98eede92e2bffa5bd5",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/691182.md",
+      "display_title": "691182.md"
+    },
+    {
+      "path": "registry/6911821.md",
+      "content": "# 6911821 • GPT 6 Astra\n\nCanonical ID: 6911821\nCanonical Link: https://cfp.plus/6911821\nEntity: GPT 6 Astra\nEntity Type: MODEL\nParent ID: 691182\nDeveloper: OpenAI\nCountry: United States\nAI Country ID: 6911\nOfficial Evidence: https://openai.com/index/gpt-6-astra/\nGovernance: Human Governance instruction 2026-09-28 • Preserve ID • No Duplicate • No Renumber\nStatus: ISSUED • PUBLIC ROUTE VERIFICATION PENDING\n",
+      "encoding": "utf-8",
+      "sha": "153f75712bf6388b799d5dba8dfbc5528866f3cd",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/6911821.md",
+      "display_title": "6911821.md"
+    },
+    {
+      "path": "registry/6911822.md",
+      "content": "# 6911822 • GPT 6 Sol\n\nCanonical ID: 6911822\nCanonical Link: https://cfp.plus/6911822\nEntity: GPT 6 Sol\nEntity Type: MODEL\nParent ID: 691182\nDeveloper: OpenAI\nCountry: United States\nAI Country ID: 6911\nOfficial Evidence: https://developers.openai.com/api/docs/models\nGovernance: Human Governance instruction 2026-09-28 • Preserve ID • No Duplicate • No Renumber\nStatus: ISSUED • PUBLIC ROUTE VERIFICATION PENDING\n",
+      "encoding": "utf-8",
+      "sha": "ef6a97349cc69b7b613de1742dfe115e492feda9",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/6911822.md",
+      "display_title": "6911822.md"
+    },
+    {
+      "path": "registry/6911823.md",
+      "content": "# 6911823 • GPT 6 Luna\n\nCanonical ID: 6911823\nCanonical Link: https://cfp.plus/6911823\nEntity: GPT 6 Luna\nEntity Type: MODEL\nParent ID: 691182\nDeveloper: OpenAI\nCountry: United States\nAI Country ID: 6911\nOfficial Evidence: https://developers.openai.com/api/docs/models\nGovernance: Human Governance instruction 2026-09-28 • Preserve ID • No Duplicate • No Renumber\nStatus: ISSUED • PUBLIC ROUTE VERIFICATION PENDING\n",
+      "encoding": "utf-8",
+      "sha": "a4ee13b4c684271e4224ee6a9cda93f05a33e2f1",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/6911823.md",
+      "display_title": "6911823.md"
+    },
+    {
+      "path": "registry/691183.md",
+      "content": "# 691183 • Codex\n\nCanonical ID: 691183\nCanonical Link: https://cfp.plus/691183\nEntity: Codex\nEntity Type: AI CODING SYSTEM\nParent ID: 69118\nDeveloper: OpenAI\nCountry: United States\nAI Country ID: 6911\nOfficial Evidence: https://openai.com/codex/\nGovernance: Human Governance instruction 2026-09-28 • Preserve ID • No Duplicate • No Renumber\nStatus: ISSUED • PUBLIC ROUTE VERIFICATION PENDING\n",
+      "encoding": "utf-8",
+      "sha": "41da2174054cb2abeb22bb16c75795e5f692b06b",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/691183.md",
+      "display_title": "691183.md"
+    },
+    {
+      "path": "registry/691184.md",
+      "content": "# 691184 • GPT Live\n\nCanonical ID: 691184\nCanonical Link: https://cfp.plus/691184\nEntity: GPT Live\nEntity Type: REALTIME VOICE AI FAMILY\nParent ID: 69118\nDeveloper: OpenAI\nCountry: United States\nAI Country ID: 6911\nOfficial Evidence: https://developers.openai.com/api/docs/guides/live\nGovernance: Human Governance instruction 2026-09-28 • Preserve ID • No Duplicate • No Renumber\nStatus: ISSUED • PUBLIC ROUTE VERIFICATION PENDING\n",
+      "encoding": "utf-8",
+      "sha": "d43d76847ae863c3066797483651e79e0955539d",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/691184.md",
+      "display_title": "691184.md"
+    },
+    {
+      "path": "registry/691185.md",
+      "content": "# 691185 • GPT Image Family\n\nCanonical ID: 691185\nCanonical Link: https://cfp.plus/691185\nEntity: GPT Image Family\nEntity Type: IMAGE AI FAMILY\nParent ID: 69118\nDeveloper: OpenAI\nCountry: United States\nAI Country ID: 6911\nOfficial Evidence: https://developers.openai.com/api/docs/models/all\nGovernance: Human Governance instruction 2026-09-28 • Preserve ID • No Duplicate • No Renumber\nStatus: ISSUED • PUBLIC ROUTE VERIFICATION PENDING\n",
+      "encoding": "utf-8",
+      "sha": "7ad7e333f2671be86fa73aa1d57c07a4b1acaa74",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/691185.md",
+      "display_title": "691185.md"
+    },
+    {
+      "path": "registry/691186.md",
+      "content": "# 691186 • Daybreak\n\nCanonical ID: 691186\nCanonical Link: https://cfp.plus/691186\nEntity: Daybreak\nEntity Type: CYBER AI FAMILY\nParent ID: 69118\nDeveloper: OpenAI\nCountry: United States\nAI Country ID: 6911\nOfficial Evidence: https://developers.openai.com/api/docs/models/all\nGovernance: Human Governance instruction 2026-09-28 • Preserve ID • No Duplicate • No Renumber\nStatus: ISSUED • PUBLIC ROUTE VERIFICATION PENDING\n",
+      "encoding": "utf-8",
+      "sha": "426765559125b74a87a16b4b443bcee9e8ae743b",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/691186.md",
+      "display_title": "691186.md"
+    },
+    {
+      "path": "registry/6984.md",
+      "content": "# 6984 • Vietnam AI Hub\n\n**Canonical ID:** 6984  \n**Entity Name:** Vietnam AI Hub  \n**Entity Type:** Country AI Hub  \n**Parent Hub:** 698 • AI Country Group +8  \n**Registry:** CFP+ Global AI Registry  \n**Lifecycle Status:** Review Candidate  \n**Runtime Status:** Active / Public Registry Node  \n**Visibility:** Public  \n\n## 0. Canonical Identity\n\n6984 is the unique CFP+ registry identifier assigned to the Vietnam AI Hub, derived from country calling code +84 within the CFP+ AI Country Hub architecture.\n\n## 1. Canonical Link\n\nhttps://github.com/charityfundplus/CFP.plus/blob/main/registry/6984.md\n\n## 2. Purpose\n\nThis hub provides one stable public parent identity for AI developers, organizations, systems, and integration nodes associated with Vietnam.\n\n## 3. Child Allocation\n\nChild records use the range 69840–69849 for the first allocation set.\n\n## 4. Registry Rules\n\n- One Canonical ID = One Entity\n- One Canonical ID = One Direct Link\n- Child IDs must reference Parent Hub 6984\n- Canonical IDs must not be reassigned\n- Material identity changes require Human Governance review\n\n## 5. Governance Authority\n\n**Authority:** CFP+ Human Governance  \n**Source of Truth:** CFP+ Canonical Registry  \n**Publication Repository:** charityfundplus/CFP.plus\n\n## 6. Verification Status\n\nThe hub is publicly active as a Review Candidate. Canonical Locked status requires independent review and Human Governance approval.\n\n## 7. Change Control\n\nAll revisions must preserve Canonical ID 6984 and maintain traceable GitHub commit history.\n\n---\n\n**CFP+ Principle:** Public First • Canonical First • Reference First • Evidence First",
+      "encoding": "utf-8",
+      "sha": "987faf39d931410cb5349c94403066d79f83f82c",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/6984.md",
+      "display_title": "6984.md"
+    },
+    {
+      "path": "registry/69840.md",
+      "content": "# 69840 • Developer & Platform Directory\n\n**Canonical ID:** 69840  \n**Entity Name:** Developer & Platform Directory  \n**Entity Type:** Developer & Platform Directory  \n**Country:** Vietnam  \n**Parent:** 6984 • Vietnam AI Branch  \n**Registry:** CFP+ Global AI Registry  \n**Lifecycle Status:** Canonical Locked  \n**Effective Date:** 2026-08-07  \n**Visibility:** Public\n\n## 0. Canonical Identity\n\n69840 is the canonical CFP+ identifier for Developer & Platform Directory under the Vietnam AI branch.\n\n## 1. Canonical Link\n\nhttps://github.com/charityfundplus/CFP.plus/blob/main/registry/69840.md\n\n## 2. Locked Allocation Rule\n\n- x0 = Developer & Platform Directory\n- x1–x9 = major developers ordered alphabetically by official English name\n- Additional developers must use an expanded child tier\n- One developer = one Canonical ID = one Canonical Link\n- Each AI belongs to exactly one developer\n- CMP must not alter locked IDs or links\n\n## 3. Developer Directory\n\n- [69840 • Developer & Platform Directory](https://github.com/charityfundplus/CFP.plus/blob/main/registry/69840.md)\n- [69841 • AIHay](https://github.com/charityfundplus/CFP.plus/blob/main/registry/69841.md)\n- [69842 • CMC AI](https://github.com/charityfundplus/CFP.plus/blob/main/registry/69842.md)\n- [69843 • FPT AI](https://github.com/charityfundplus/CFP.plus/blob/main/registry/69843.md)\n- [69844 • Phenikaa AI](https://github.com/charityfundplus/CFP.plus/blob/main/registry/69844.md)\n- [69845 • Viettel AI](https://github.com/charityfundplus/CFP.plus/blob/main/registry/69845.md)\n- [69846 • VinAI](https://github.com/charityfundplus/CFP.plus/blob/main/registry/69846.md)\n- [69847 • VNPT AI](https://github.com/charityfundplus/CFP.plus/blob/main/registry/69847.md)\n- [69848 • Zalo AI](https://github.com/charityfundplus/CFP.plus/blob/main/registry/69848.md)\n- [69849 • Reserved](https://github.com/charityfundplus/CFP.plus/blob/main/registry/69849.md)\n\n## 4. Migration Record\n\n**Previous assignment at this path:** Viettel AI Ecosystem Hub  \n**Previous status:** Superseded on 2026-08-07  \n**Migration rule:** Historical references remain traceable, but the current canonical identity is the locked allocation shown above.\n\n## 5. Governance Authority\n\n**Authority:** CFP+ Human Governance  \n**Source of Truth:** CFP+ Canonical Registry  \n**Publication Repository:** charityfundplus/CFP.plus\n\n---\n\n**CFP+ Principle:** Country First • Major Developers First • Alphabetical • Expand by Child Tier • One ID • One Link\n",
+      "encoding": "utf-8",
+      "sha": "a8884bf5cfde916e409ffc8807b902aeababae6f",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/69840.md",
+      "display_title": "69840.md"
+    },
+    {
+      "path": "registry/698401.md",
+      "content": "# 698401 • Viettel AI\n\n**Canonical ID:** 698401  \n**Entity Name:** Viettel AI  \n**Entity Type:** AI Developer / Organization  \n**Parent Hub:** [69840 • Viettel AI Ecosystem Hub](https://github.com/charityfundplus/CFP.plus/blob/main/registry/69840.md)  \n**Country Hub:** [6984 • Vietnam AI Hub](https://github.com/charityfundplus/CFP.plus/blob/main/registry/6984.md)  \n**Registry:** CFP+ Master Registry v1.0 — Registry A  \n**Lifecycle Status:** Review Candidate  \n**Runtime Status:** Active / Publicly Referenced  \n**Visibility:** Public  \n\n## 0. Canonical Identity\n\n698401 is the unique CFP+ registry identifier assigned to Viettel AI under the Viettel AI Ecosystem Hub.\n\n## 1. Canonical Link\n\nhttps://github.com/charityfundplus/CFP.plus/blob/main/registry/698401.md\n\n## 2. Registered AI Hubs\n\n- [6984010 • Viettel AI Platforms Hub](https://github.com/charityfundplus/CFP.plus/blob/main/registry/6984010.md)\n- [6984011 • Viettel AI Natural Language Processing Hub](https://github.com/charityfundplus/CFP.plus/blob/main/registry/6984011.md)\n- [6984012 • Viettel AI Image Recognition and Processing Hub](https://github.com/charityfundplus/CFP.plus/blob/main/registry/6984012.md)\n- [6984013 • Viettel AI Identification and Authentication Hub](https://github.com/charityfundplus/CFP.plus/blob/main/registry/6984013.md)\n\n## 3. Registered AI Platforms and Services\n\n### 6984010 • Platforms\n\n- [69840100 • Viettel Cyberbot Platform](https://github.com/charityfundplus/CFP.plus/blob/main/registry/69840100.md)\n- [69840101 • Viettel Data Analytics Platform](https://github.com/charityfundplus/CFP.plus/blob/main/registry/69840101.md)\n- [69840102 • Viettel AI Platform](https://github.com/charityfundplus/CFP.plus/blob/main/registry/69840102.md)\n- [69840103 • Viettel Digital Twin Platform](https://github.com/charityfundplus/CFP.plus/blob/main/registry/69840103.md)\n\n### 6984011 • Natural Language and Speech\n\n- [69840110 • Viettel Text To Speech](https://github.com/charityfundplus/CFP.plus/blob/main/registry/69840110.md)\n- 69840111 • Viettel Speech To Text — Profile pending\n\n### 6984012 • Image Recognition and Processing\n\n- 69840120 • Viettel OCR — Profile pending\n- 69840121 • Viettel Moderation — Profile pending\n- 69840122 • Viettel Automatic Number Plate Recognition — Profile pending\n\n### 6984013 • Identification and Authentication\n\n- 69840130 • Viettel eKYC — Profile pending\n- 69840131 • Viettel IDCheck — Profile pending\n\n## 4. Hierarchical Position\n\n- 69 • Global AI Country Hub\n- 6984 • Vietnam AI Hub\n- 69840 • Viettel AI Ecosystem Hub\n- 698401 • Viettel AI\n\n## 5. Expansion\n\nFuture Viettel AI systems, platforms, models, services, and integrations may be registered beneath 698401 by adding deeper numeric levels while preserving this canonical ID.\n\n## 6. Governance\n\n**Authority:** CFP+ Human Governance  \n**Source of Truth:** CFP+ Master Registry v1.0  \n**Publication Repository:** charityfundplus/CFP.plus\n\n---\n\n**CFP+ Principle:** One Canonical ID • One Entity • One Direct Link • Unlimited Hierarchical Expansion",
+      "encoding": "utf-8",
+      "sha": "43865eefc4e058645f5c73855afffcc6e502a5f1",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/698401.md",
+      "display_title": "698401.md"
+    },
+    {
+      "path": "registry/6984010.md",
+      "content": "# 6984010 • Viettel AI Platforms Hub\n\n**Canonical ID:** 6984010  \n**Entity Name:** Viettel AI Platforms Hub  \n**Entity Type:** AI Platform Registry Hub  \n**Parent:** 698401 • Viettel AI  \n**Country Hub:** 6984 • Vietnam AI Hub  \n**Lifecycle Status:** Review Candidate  \n**Runtime Status:** Active Registry Namespace  \n**Visibility:** Public  \n\n## 0. Canonical Identity\n\n6984010 is the canonical namespace for registered Viettel AI platforms.\n\n## 1. Canonical Link\n\nhttps://github.com/charityfundplus/CFP.plus/blob/main/registry/6984010.md\n\n## 2. Active Child Nodes\n\n- 69840100 • Viettel Cyberbot Platform\n- 69840101 • Viettel Data Analytics Platform\n- 69840102 • Viettel AI Platform\n- 69840103 • Viettel Digital Twin Platform\n\n## 3. Governance\n\n**Authority:** CFP+ Human Governance  \n**Publication Repository:** charityfundplus/CFP.plus\n",
+      "encoding": "utf-8",
+      "sha": "f7aca91d27980b029e4a609664b4a566c02b40ec",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/6984010.md",
+      "display_title": "6984010.md"
+    },
+    {
+      "path": "registry/69840100.md",
+      "content": "# 69840100 • Viettel Cyberbot Platform\n\n**Canonical ID:** 69840100  \n**Entity Name:** Viettel Cyberbot Platform  \n**Entity Type:** AI Platform  \n**Parent:** 6984010 • Viettel AI Platforms Hub  \n**Developer:** 698401 • Viettel AI  \n**Country Hub:** 6984 • Vietnam AI Hub  \n**Lifecycle Status:** Review Candidate  \n**Runtime Status:** Active / Publicly Referenced  \n**Visibility:** Public  \n\n## 0. Canonical Identity\n\n69840100 is the unique CFP+ registry identifier for Viettel Cyberbot Platform.\n\n## 1. Canonical Link\n\nhttps://github.com/charityfundplus/CFP.plus/blob/main/registry/69840100.md\n\n## 2. Official Reference\n\nhttps://viettelai.vn/en/giai-phap/cyberbot\n\n## 3. Governance\n\n**Authority:** CFP+ Human Governance  \n**Publication Repository:** charityfundplus/CFP.plus\n",
+      "encoding": "utf-8",
+      "sha": "13b0706e76092d9534b3d10eb98f5ab012880dfb",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/69840100.md",
+      "display_title": "69840100.md"
+    },
+    {
+      "path": "registry/69840101.md",
+      "content": "# 69840101 • Viettel Data Analytics Platform\n\n**Canonical ID:** 69840101  \n**Entity Name:** Viettel Data Analytics Platform  \n**Entity Type:** AI Platform  \n**Parent:** 6984010 • Viettel AI Platforms Hub  \n**Developer:** 698401 • Viettel AI  \n**Country Hub:** 6984 • Vietnam AI Hub  \n**Lifecycle Status:** Review Candidate  \n**Runtime Status:** Active / Publicly Referenced  \n**Visibility:** Public  \n\n## 0. Canonical Identity\n\n69840101 is the unique CFP+ registry identifier for Viettel Data Analytics Platform.\n\n## 1. Canonical Link\n\nhttps://github.com/charityfundplus/CFP.plus/blob/main/registry/69840101.md\n\n## 2. Official Reference\n\nhttps://viettelai.vn/en\n\n## 3. Governance\n\n**Authority:** CFP+ Human Governance  \n**Publication Repository:** charityfundplus/CFP.plus\n",
+      "encoding": "utf-8",
+      "sha": "216865ce338e4738c59400dcba9086a7c3b7998b",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/69840101.md",
+      "display_title": "69840101.md"
+    },
+    {
+      "path": "registry/69840102.md",
+      "content": "# 69840102 • Viettel AI Platform\n\n**Canonical ID:** 69840102  \n**Entity Name:** Viettel AI Platform  \n**Entity Type:** AI Platform  \n**Parent:** 6984010 • Viettel AI Platforms Hub  \n**Developer:** 698401 • Viettel AI  \n**Country Hub:** 6984 • Vietnam AI Hub  \n**Lifecycle Status:** Review Candidate  \n**Runtime Status:** Active / Publicly Referenced  \n**Visibility:** Public  \n\n## 0. Canonical Identity\n\n69840102 is the unique CFP+ registry identifier for Viettel AI Platform.\n\n## 1. Canonical Link\n\nhttps://github.com/charityfundplus/CFP.plus/blob/main/registry/69840102.md\n\n## 2. Official Reference\n\nhttps://viettelai.vn/en\n\n## 3. Governance\n\n**Authority:** CFP+ Human Governance  \n**Publication Repository:** charityfundplus/CFP.plus\n",
+      "encoding": "utf-8",
+      "sha": "51f1ec52da338688444d670de0664bae39925b6b",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/69840102.md",
+      "display_title": "69840102.md"
+    },
+    {
+      "path": "registry/69840103.md",
+      "content": "# 69840103 • Viettel Digital Twin Platform\n\n**Canonical ID:** 69840103  \n**Entity Name:** Viettel Digital Twin Platform  \n**Entity Type:** AI Platform  \n**Parent:** 6984010 • Viettel AI Platforms Hub  \n**Developer:** 698401 • Viettel AI  \n**Country Hub:** 6984 • Vietnam AI Hub  \n**Lifecycle Status:** Review Candidate  \n**Runtime Status:** Active / Publicly Referenced  \n**Visibility:** Public  \n\n## 0. Canonical Identity\n\n69840103 is the unique CFP+ registry identifier for Viettel Digital Twin Platform.\n\n## 1. Canonical Link\n\nhttps://github.com/charityfundplus/CFP.plus/blob/main/registry/69840103.md\n\n## 2. Official Reference\n\nhttps://viettelai.vn/en/digital\n\n## 3. Governance\n\n**Authority:** CFP+ Human Governance  \n**Publication Repository:** charityfundplus/CFP.plus\n",
+      "encoding": "utf-8",
+      "sha": "bd1f537757a31b48f88210df5966d5359fc963de",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/69840103.md",
+      "display_title": "69840103.md"
+    },
+    {
+      "path": "registry/6984011.md",
+      "content": "# 6984011 • Viettel AI Natural Language Processing Hub\n\n**Canonical ID:** 6984011  \n**Entity Name:** Viettel AI Natural Language Processing Hub  \n**Entity Type:** AI Service Registry Hub  \n**Parent:** 698401 • Viettel AI  \n**Country Hub:** 6984 • Vietnam AI Hub  \n**Lifecycle Status:** Review Candidate  \n**Runtime Status:** Active Registry Namespace  \n**Visibility:** Public  \n\n## 0. Canonical Identity\n\n6984011 is the canonical namespace for registered Viettel AI natural language and speech services.\n\n## 1. Canonical Link\n\nhttps://github.com/charityfundplus/CFP.plus/blob/main/registry/6984011.md\n\n## 2. Active Child Nodes\n\n- 69840110 • Viettel Text To Speech\n- 69840111 • Viettel Speech To Text\n\n## 3. Governance\n\n**Authority:** CFP+ Human Governance  \n**Publication Repository:** charityfundplus/CFP.plus\n",
+      "encoding": "utf-8",
+      "sha": "6185b13404de89ccaf48f3a2d2408b183b5f4b13",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/6984011.md",
+      "display_title": "6984011.md"
+    },
+    {
+      "path": "registry/69840110.md",
+      "content": "# 69840110 • Viettel Text To Speech\n\n**Canonical ID:** 69840110  \n**Entity Name:** Viettel Text To Speech  \n**Entity Type:** AI Speech Service  \n**Parent:** 6984011 • Viettel AI Natural Language Processing Hub  \n**Developer:** 698401 • Viettel AI  \n**Country Hub:** 6984 • Vietnam AI Hub  \n**Lifecycle Status:** Review Candidate  \n**Runtime Status:** Active / Publicly Referenced  \n**Visibility:** Public  \n\n## 0. Canonical Identity\n\n69840110 is the unique CFP+ registry identifier for Viettel Text To Speech.\n\n## 1. Canonical Link\n\nhttps://github.com/charityfundplus/CFP.plus/blob/main/registry/69840110.md\n\n## 2. Official Reference\n\nhttps://viettelai.vn/en\n\n## 3. Governance\n\n**Authority:** CFP+ Human Governance  \n**Publication Repository:** charityfundplus/CFP.plus\n",
+      "encoding": "utf-8",
+      "sha": "a2390612306754d8856f97cdff5dc935219940ec",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/69840110.md",
+      "display_title": "69840110.md"
+    },
+    {
+      "path": "registry/6984012.md",
+      "content": "# 6984012 • Viettel AI Image Recognition and Processing Hub\n\n**Canonical ID:** 6984012  \n**Entity Name:** Viettel AI Image Recognition and Processing Hub  \n**Entity Type:** AI Service Registry Hub  \n**Parent:** 698401 • Viettel AI  \n**Country Hub:** 6984 • Vietnam AI Hub  \n**Lifecycle Status:** Review Candidate  \n**Runtime Status:** Active Registry Namespace  \n**Visibility:** Public  \n\n## 0. Canonical Identity\n\n6984012 is the canonical namespace for registered Viettel AI image recognition and processing services.\n\n## 1. Canonical Link\n\nhttps://github.com/charityfundplus/CFP.plus/blob/main/registry/6984012.md\n\n## 2. Active Child Nodes\n\n- 69840120 • Viettel OCR\n- 69840121 • Viettel Moderation\n- 69840122 • Viettel Automatic Number Plate Recognition\n\n## 3. Governance\n\n**Authority:** CFP+ Human Governance  \n**Publication Repository:** charityfundplus/CFP.plus\n",
+      "encoding": "utf-8",
+      "sha": "601937be295768f55b229501cecb4125e35f3bb4",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/6984012.md",
+      "display_title": "6984012.md"
+    },
+    {
+      "path": "registry/6984013.md",
+      "content": "# 6984013 • Viettel AI Identification and Authentication Hub\n\n**Canonical ID:** 6984013  \n**Entity Name:** Viettel AI Identification and Authentication Hub  \n**Entity Type:** AI Service Registry Hub  \n**Parent:** 698401 • Viettel AI  \n**Country Hub:** 6984 • Vietnam AI Hub  \n**Lifecycle Status:** Review Candidate  \n**Runtime Status:** Active Registry Namespace  \n**Visibility:** Public  \n\n## 0. Canonical Identity\n\n6984013 is the canonical namespace for registered Viettel AI identification and authentication services.\n\n## 1. Canonical Link\n\nhttps://github.com/charityfundplus/CFP.plus/blob/main/registry/6984013.md\n\n## 2. Active Child Nodes\n\n- 69840130 • Viettel eKYC\n- 69840131 • Viettel IDCheck\n\n## 3. Governance\n\n**Authority:** CFP+ Human Governance  \n**Publication Repository:** charityfundplus/CFP.plus\n",
+      "encoding": "utf-8",
+      "sha": "da5c5790b6fb7b4fbaef69412dcebf32f612dfdc",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/6984013.md",
+      "display_title": "6984013.md"
+    },
+    {
+      "path": "registry/698402.md",
+      "content": "# 698402 • Viettel Digital\n\n**Canonical ID:** 698402  \n**Entity Name:** Viettel Digital  \n**Entity Type:** Digital Technology / AI Ecosystem Organization  \n**Parent Hub:** 69840 • Viettel AI Ecosystem Hub  \n**Country Hub:** 6984 • Vietnam AI Hub  \n**Registry:** CFP+ Master Registry v1.0 — Registry A  \n**Lifecycle Status:** Review Candidate  \n**Runtime Status:** Active / Publicly Referenced  \n**Visibility:** Public  \n\n## 0. Canonical Identity\n\n698402 is the unique CFP+ registry identifier assigned to Viettel Digital under the Viettel AI Ecosystem Hub.\n\n## 1. Canonical Link\n\nhttps://github.com/charityfundplus/CFP.plus/blob/main/registry/698402.md\n\n## 2. Hierarchical Position\n\n- 69 • Global AI Country Hub\n- 6984 • Vietnam AI Hub\n- 69840 • Viettel AI Ecosystem Hub\n- 698402 • Viettel Digital\n\n## 3. Expansion\n\nFuture Viettel Digital systems, platforms, services, products, and integrations may be registered beneath 698402 by adding deeper numeric levels while preserving this canonical ID.\n\n## 4. Governance\n\n**Authority:** CFP+ Human Governance  \n**Source of Truth:** CFP+ Master Registry v1.0  \n**Publication Repository:** charityfundplus/CFP.plus\n\n---\n\n**CFP+ Principle:** One Canonical ID • One Entity • One Direct Link • Unlimited Hierarchical Expansion",
+      "encoding": "utf-8",
+      "sha": "826bed525217bb40f1715735d4e248af6b2cc885",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/698402.md",
+      "display_title": "698402.md"
+    },
+    {
+      "path": "registry/69841.md",
+      "content": "# 69841 • AIHay\n\n**Canonical ID:** 69841  \n**Entity Name:** AIHay  \n**Entity Type:** AI Developer / Organization  \n**Country:** Vietnam  \n**Parent:** 6984 • Vietnam AI Branch  \n**Registry:** CFP+ Global AI Registry  \n**Lifecycle Status:** Canonical Locked  \n**Effective Date:** 2026-08-07  \n**Visibility:** Public\n\n## 0. Canonical Identity\n\n69841 is the canonical CFP+ identifier for AIHay under the Vietnam AI branch.\n\n## 1. Canonical Link\n\nhttps://github.com/charityfundplus/CFP.plus/blob/main/registry/69841.md\n\n## 2. Locked Allocation Rule\n\n- x0 = Developer & Platform Directory\n- x1–x9 = major developers ordered alphabetically by official English name\n- Additional developers must use an expanded child tier\n- One developer = one Canonical ID = one Canonical Link\n- Each AI belongs to exactly one developer\n- CMP must not alter locked IDs or links\n\n## 3. AI Directory\n\nConfirmed AI systems must be added at the next child tier after developer verification. Legacy child mappings are not inherited automatically.\n\n## 4. Migration Record\n\n**Previous assignment at this path:** FPT AI  \n**Previous status:** Superseded on 2026-08-07  \n**Migration rule:** Historical references remain traceable, but the current canonical identity is the locked allocation shown above.\n\n## 5. Governance Authority\n\n**Authority:** CFP+ Human Governance  \n**Source of Truth:** CFP+ Canonical Registry  \n**Publication Repository:** charityfundplus/CFP.plus\n\n---\n\n**CFP+ Principle:** Country First • Major Developers First • Alphabetical • Expand by Child Tier • One ID • One Link\n",
+      "encoding": "utf-8",
+      "sha": "e7e023cb655e2e754edb752e2c54bbcdee36e51b",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/69841.md",
+      "display_title": "69841.md"
+    },
+    {
+      "path": "registry/69842.md",
+      "content": "# 69842 • CMC AI\n\n**Canonical ID:** 69842  \n**Entity Name:** CMC AI  \n**Entity Type:** AI Developer / Organization  \n**Country:** Vietnam  \n**Parent:** 6984 • Vietnam AI Branch  \n**Registry:** CFP+ Global AI Registry  \n**Lifecycle Status:** Canonical Locked  \n**Effective Date:** 2026-08-07  \n**Visibility:** Public\n\n## 0. Canonical Identity\n\n69842 is the canonical CFP+ identifier for CMC AI under the Vietnam AI branch.\n\n## 1. Canonical Link\n\nhttps://github.com/charityfundplus/CFP.plus/blob/main/registry/69842.md\n\n## 2. Locked Allocation Rule\n\n- x0 = Developer & Platform Directory\n- x1–x9 = major developers ordered alphabetically by official English name\n- Additional developers must use an expanded child tier\n- One developer = one Canonical ID = one Canonical Link\n- Each AI belongs to exactly one developer\n- CMP must not alter locked IDs or links\n\n## 3. AI Directory\n\nConfirmed AI systems must be added at the next child tier after developer verification. Legacy child mappings are not inherited automatically.\n\n## 4. Migration Record\n\n**Previous assignment at this path:** Vin AI  \n**Previous status:** Superseded on 2026-08-07  \n**Migration rule:** Historical references remain traceable, but the current canonical identity is the locked allocation shown above.\n\n## 5. Governance Authority\n\n**Authority:** CFP+ Human Governance  \n**Source of Truth:** CFP+ Canonical Registry  \n**Publication Repository:** charityfundplus/CFP.plus\n\n---\n\n**CFP+ Principle:** Country First • Major Developers First • Alphabetical • Expand by Child Tier • One ID • One Link\n",
+      "encoding": "utf-8",
+      "sha": "570f110c3b0611b51730160de9a07087cce7e677",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/69842.md",
+      "display_title": "69842.md"
+    },
+    {
+      "path": "registry/69843.md",
+      "content": "# 69843 • FPT AI\n\n**Canonical ID:** 69843  \n**Entity Name:** FPT AI  \n**Entity Type:** AI Developer / Organization  \n**Country:** Vietnam  \n**Parent:** 6984 • Vietnam AI Branch  \n**Registry:** CFP+ Global AI Registry  \n**Lifecycle Status:** Canonical Locked  \n**Effective Date:** 2026-08-07  \n**Visibility:** Public\n\n## 0. Canonical Identity\n\n69843 is the canonical CFP+ identifier for FPT AI under the Vietnam AI branch.\n\n## 1. Canonical Link\n\nhttps://github.com/charityfundplus/CFP.plus/blob/main/registry/69843.md\n\n## 2. Locked Allocation Rule\n\n- x0 = Developer & Platform Directory\n- x1–x9 = major developers ordered alphabetically by official English name\n- Additional developers must use an expanded child tier\n- One developer = one Canonical ID = one Canonical Link\n- Each AI belongs to exactly one developer\n- CMP must not alter locked IDs or links\n\n## 3. AI Directory\n\nConfirmed AI systems must be added at the next child tier after developer verification. Legacy child mappings are not inherited automatically.\n\n## 4. Migration Record\n\n**Previous assignment at this path:** VNPT AI  \n**Previous status:** Superseded on 2026-08-07  \n**Migration rule:** Historical references remain traceable, but the current canonical identity is the locked allocation shown above.\n\n## 5. Governance Authority\n\n**Authority:** CFP+ Human Governance  \n**Source of Truth:** CFP+ Canonical Registry  \n**Publication Repository:** charityfundplus/CFP.plus\n\n---\n\n**CFP+ Principle:** Country First • Major Developers First • Alphabetical • Expand by Child Tier • One ID • One Link\n",
+      "encoding": "utf-8",
+      "sha": "c60ab975a0c916da1dc5a9771a62c1286858eecb",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/69843.md",
+      "display_title": "69843.md"
+    },
+    {
+      "path": "registry/69844.md",
+      "content": "# 69844 • Phenikaa AI\n\n**Canonical ID:** 69844  \n**Entity Name:** Phenikaa AI  \n**Entity Type:** AI Developer / Organization  \n**Country:** Vietnam  \n**Parent:** 6984 • Vietnam AI Branch  \n**Registry:** CFP+ Global AI Registry  \n**Lifecycle Status:** Canonical Locked  \n**Effective Date:** 2026-08-07  \n**Visibility:** Public\n\n## 0. Canonical Identity\n\n69844 is the canonical CFP+ identifier for Phenikaa AI under the Vietnam AI branch.\n\n## 1. Canonical Link\n\nhttps://github.com/charityfundplus/CFP.plus/blob/main/registry/69844.md\n\n## 2. Locked Allocation Rule\n\n- x0 = Developer & Platform Directory\n- x1–x9 = major developers ordered alphabetically by official English name\n- Additional developers must use an expanded child tier\n- One developer = one Canonical ID = one Canonical Link\n- Each AI belongs to exactly one developer\n- CMP must not alter locked IDs or links\n\n## 3. AI Directory\n\nConfirmed AI systems must be added at the next child tier after developer verification. Legacy child mappings are not inherited automatically.\n\n## 4. Migration Record\n\n**Previous assignment at this path:** Zalo AI  \n**Previous status:** Superseded on 2026-08-07  \n**Migration rule:** Historical references remain traceable, but the current canonical identity is the locked allocation shown above.\n\n## 5. Governance Authority\n\n**Authority:** CFP+ Human Governance  \n**Source of Truth:** CFP+ Canonical Registry  \n**Publication Repository:** charityfundplus/CFP.plus\n\n---\n\n**CFP+ Principle:** Country First • Major Developers First • Alphabetical • Expand by Child Tier • One ID • One Link\n",
+      "encoding": "utf-8",
+      "sha": "e0bedf0773aec165e17d1e78dbcf9462c5b115c7",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/69844.md",
+      "display_title": "69844.md"
+    },
+    {
+      "path": "registry/69845.md",
+      "content": "# 69845 • Viettel AI\n\n**Canonical ID:** 69845  \n**Entity Name:** Viettel AI  \n**Entity Type:** AI Developer / Organization  \n**Country:** Vietnam  \n**Parent:** 6984 • Vietnam AI Branch  \n**Registry:** CFP+ Global AI Registry  \n**Lifecycle Status:** Canonical Locked  \n**Effective Date:** 2026-08-07  \n**Visibility:** Public\n\n## 0. Canonical Identity\n\n69845 is the canonical CFP+ identifier for Viettel AI under the Vietnam AI branch.\n\n## 1. Canonical Link\n\nhttps://github.com/charityfundplus/CFP.plus/blob/main/registry/69845.md\n\n## 2. Locked Allocation Rule\n\n- x0 = Developer & Platform Directory\n- x1–x9 = major developers ordered alphabetically by official English name\n- Additional developers must use an expanded child tier\n- One developer = one Canonical ID = one Canonical Link\n- Each AI belongs to exactly one developer\n- CMP must not alter locked IDs or links\n\n## 3. AI Directory\n\nConfirmed AI systems must be added at the next child tier after developer verification. Legacy child mappings are not inherited automatically.\n\n## 4. Migration Record\n\n**Previous assignment at this path:** CMC AI  \n**Previous status:** Superseded on 2026-08-07  \n**Migration rule:** Historical references remain traceable, but the current canonical identity is the locked allocation shown above.\n\n## 5. Governance Authority\n\n**Authority:** CFP+ Human Governance  \n**Source of Truth:** CFP+ Canonical Registry  \n**Publication Repository:** charityfundplus/CFP.plus\n\n---\n\n**CFP+ Principle:** Country First • Major Developers First • Alphabetical • Expand by Child Tier • One ID • One Link\n",
+      "encoding": "utf-8",
+      "sha": "c2936c57508c751b0a86530e74af4a72e1823c98",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/69845.md",
+      "display_title": "69845.md"
+    },
+    {
+      "path": "registry/69846.md",
+      "content": "# 69846 • VinAI\n\n**Canonical ID:** 69846  \n**Entity Name:** VinAI  \n**Entity Type:** AI Developer / Organization  \n**Country:** Vietnam  \n**Parent:** 6984 • Vietnam AI Branch  \n**Registry:** CFP+ Global AI Registry  \n**Lifecycle Status:** Canonical Locked  \n**Effective Date:** 2026-08-07  \n**Visibility:** Public\n\n## 0. Canonical Identity\n\n69846 is the canonical CFP+ identifier for VinAI under the Vietnam AI branch.\n\n## 1. Canonical Link\n\nhttps://github.com/charityfundplus/CFP.plus/blob/main/registry/69846.md\n\n## 2. Locked Allocation Rule\n\n- x0 = Developer & Platform Directory\n- x1–x9 = major developers ordered alphabetically by official English name\n- Additional developers must use an expanded child tier\n- One developer = one Canonical ID = one Canonical Link\n- Each AI belongs to exactly one developer\n- CMP must not alter locked IDs or links\n\n## 3. AI Directory\n\nConfirmed AI systems must be added at the next child tier after developer verification. Legacy child mappings are not inherited automatically.\n\n## 4. Migration Record\n\n**Previous assignment at this path:** Cốc Cốc AI  \n**Previous status:** Superseded on 2026-08-07  \n**Migration rule:** Historical references remain traceable, but the current canonical identity is the locked allocation shown above.\n\n## 5. Governance Authority\n\n**Authority:** CFP+ Human Governance  \n**Source of Truth:** CFP+ Canonical Registry  \n**Publication Repository:** charityfundplus/CFP.plus\n\n---\n\n**CFP+ Principle:** Country First • Major Developers First • Alphabetical • Expand by Child Tier • One ID • One Link\n",
+      "encoding": "utf-8",
+      "sha": "e44c728d7a4279718602cf4b7e85623542e986fb",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/69846.md",
+      "display_title": "69846.md"
+    },
+    {
+      "path": "registry/698461.md",
+      "content": "# VietLinker AI\n\n> Canonical AI Profile • HUB 69\n\n---\n\n# 0. Canonical Identity\n\n**Canonical ID:** 698461  \n**AI Name:** VietLinker AI  \n**Developer:** VietLinker  \n**Country:** Vietnam  \n**Parent Canonical ID:** 69846  \n**Lifecycle Status:** Active  \n**Profile Version:** v0.1  \n**Profile Review Status:** Review Candidate  \n**Visibility:** Public\n\n---\n\n# 1. Mission\n\nThực hiện các nhiệm vụ AI cộng đồng Việt Nam và các nhiệm vụ được giao và các nhiệm vụ do HUB 69 và CMP điều phối.\n\n---\n\n# 2. Current Assignment\n\n## Current Work Order\n\n**Work Order ID:** VLAI-WO-001  \n**Title:** Vietnam and Southeast Asia Coverage Review  \n**Assigned By:** CFP+ Human Governance through HUB 69 and CMP  \n**Assigned Date:** 2026-08-05  \n**Priority:** P0  \n**Status:** Assigned\n\n### Scope\n\nKiểm tra danh sách Việt Nam và Đông Nam Á, bổ sung nhà phát triển và AI còn thiếu, xác minh lineage theo quốc gia.\n\n### Required Output\n\n- Executive Summary\n- Findings\n- Evidence\n- Recommendations\n- Required Changes\n- Missing entities or metadata\n- Closure Criteria result\n- PASS, PASS WITH CHANGES hoặc FAIL\n\n## Assigned Documents and Links\n\n- [HUB 69](../HUB69.md)\n- [Global AI ID Baseline Candidate — 40 countries • 124 developers • 124 AI records](GLOBAL_AI_ID_BASELINE_CANDIDATE.md)\n- [GitHub Review Issue #42](https://github.com/charityfundplus/CFP.plus/issues/42)\n- [AI Canonical ID Registry](AI_CANONICAL_ID_REGISTRY.md)\n- [AI INDEX](../AI_INDEX.md)\n\n## Current Review Candidate\n\n**CFP+ Global AI ID Baseline Candidate — 2026-08-05**\n\n## Current Status\n\n**Assigned**\n\n---\n\n# 3. Review\n\n## Executive Summary\n\n## Findings\n\n## Evidence\n\n## Recommendations\n\n## Required Changes\n\n## Closure Criteria\n\n- [ ] Thông tin định danh đã được xác minh độc lập\n- [ ] Mối quan hệ cha–con đã được xác minh\n- [ ] Canonical Links đã được kiểm tra\n- [ ] Independent AI Review đã hoàn thành\n- [ ] Human Governance Final Decision đã được ghi nhận\n\n---\n\n# 4. Writing\n\n## Draft\n\n## Working Notes\n\n## Final Version\n\n---\n\n# 5. Outputs\n\n- Review Reports\n- Technical Reviews\n- Writing Tasks\n- Specifications\n- Evidence Records\n\n---\n\n# 6. Review History\n\n| Version | Reviewer | Result | Date |\n|---------|----------|--------|------|\n| v0.1 | — | Pending | — |\n\n---\n\n# 7. Canonical Links\n\n- [HUB 69](../HUB69.md)\n- [CMP](../CMP.md)\n- [AI INDEX](../AI_INDEX.md)\n- [AI Canonical ID Registry](AI_CANONICAL_ID_REGISTRY.md)\n- Current Work Order — VLAI-WO-001\n- Current Review Candidate — Global AI ID Baseline Candidate\n\n---\n\n# 8. Governance\n\n- Evidence First\n- Reference First\n- Independent Review\n- One AI • One Canonical ID • One Canonical Link\n- Human Governance Final Decision\n- Không tự ý thay đổi Canonical ID\n- Không sử dụng ID tạm thời\n\n---\n\n# 9. References\n\nCác tài liệu Canonical được HUB 69 giao cho AI phải được ghi tại mục Current Assignment của hồ sơ này.\n\n---\n\n**Only Plus+ For Life**\n",
+      "encoding": "utf-8",
+      "sha": "259ad6553c2cbbab1c3a3561c40fb47ca2b7f157",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/698461.md",
+      "display_title": "698461.md"
+    },
+    {
+      "path": "registry/69847.md",
+      "content": "# 69847 • VNPT AI\n\n**Canonical ID:** 69847  \n**Entity Name:** VNPT AI  \n**Entity Type:** AI Developer / Organization  \n**Country:** Vietnam  \n**Parent:** 6984 • Vietnam AI Branch  \n**Registry:** CFP+ Global AI Registry  \n**Lifecycle Status:** Canonical Locked  \n**Effective Date:** 2026-08-07  \n**Visibility:** Public\n\n## 0. Canonical Identity\n\n69847 is the canonical CFP+ identifier for VNPT AI under the Vietnam AI branch.\n\n## 1. Canonical Link\n\nhttps://github.com/charityfundplus/CFP.plus/blob/main/registry/69847.md\n\n## 2. Locked Allocation Rule\n\n- x0 = Developer & Platform Directory\n- x1–x9 = major developers ordered alphabetically by official English name\n- Additional developers must use an expanded child tier\n- One developer = one Canonical ID = one Canonical Link\n- Each AI belongs to exactly one developer\n- CMP must not alter locked IDs or links\n\n## 3. AI Directory\n\nConfirmed AI systems must be added at the next child tier after developer verification. Legacy child mappings are not inherited automatically.\n\n## 4. Migration Record\n\n**Previous assignment at this path:** Phenikaa AI  \n**Previous status:** Superseded on 2026-08-07  \n**Migration rule:** Historical references remain traceable, but the current canonical identity is the locked allocation shown above.\n\n## 5. Governance Authority\n\n**Authority:** CFP+ Human Governance  \n**Source of Truth:** CFP+ Canonical Registry  \n**Publication Repository:** charityfundplus/CFP.plus\n\n---\n\n**CFP+ Principle:** Country First • Major Developers First • Alphabetical • Expand by Child Tier • One ID • One Link\n",
+      "encoding": "utf-8",
+      "sha": "80dc0e4794dbf083bb0d89f05714efe8d3bb0342",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/69847.md",
+      "display_title": "69847.md"
+    },
+    {
+      "path": "registry/69848.md",
+      "content": "# 69848 • Zalo AI\n\n**Canonical ID:** 69848  \n**Entity Name:** Zalo AI  \n**Entity Type:** AI Developer / Organization  \n**Country:** Vietnam  \n**Parent:** 6984 • Vietnam AI Branch  \n**Registry:** CFP+ Global AI Registry  \n**Lifecycle Status:** Canonical Locked  \n**Effective Date:** 2026-08-07  \n**Visibility:** Public\n\n## 0. Canonical Identity\n\n69848 is the canonical CFP+ identifier for Zalo AI under the Vietnam AI branch.\n\n## 1. Canonical Link\n\nhttps://github.com/charityfundplus/CFP.plus/blob/main/registry/69848.md\n\n## 2. Locked Allocation Rule\n\n- x0 = Developer & Platform Directory\n- x1–x9 = major developers ordered alphabetically by official English name\n- Additional developers must use an expanded child tier\n- One developer = one Canonical ID = one Canonical Link\n- Each AI belongs to exactly one developer\n- CMP must not alter locked IDs or links\n\n## 3. AI Directory\n\nConfirmed AI systems must be added at the next child tier after developer verification. Legacy child mappings are not inherited automatically.\n\n## 4. Migration Record\n\n**Previous assignment at this path:** VAIS  \n**Previous status:** Superseded on 2026-08-07  \n**Migration rule:** Historical references remain traceable, but the current canonical identity is the locked allocation shown above.\n\n## 5. Governance Authority\n\n**Authority:** CFP+ Human Governance  \n**Source of Truth:** CFP+ Canonical Registry  \n**Publication Repository:** charityfundplus/CFP.plus\n\n---\n\n**CFP+ Principle:** Country First • Major Developers First • Alphabetical • Expand by Child Tier • One ID • One Link\n",
+      "encoding": "utf-8",
+      "sha": "7c86d689d006a0c587b5dc968540d11b2343ac5a",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/69848.md",
+      "display_title": "69848.md"
+    },
+    {
+      "path": "registry/69849.md",
+      "content": "# 69849 • Reserved\n\n**Canonical ID:** 69849  \n**Entity Name:** Reserved  \n**Entity Type:** Reserved Developer Slot  \n**Country:** Vietnam  \n**Parent:** 6984 • Vietnam AI Branch  \n**Registry:** CFP+ Global AI Registry  \n**Lifecycle Status:** Canonical Locked  \n**Effective Date:** 2026-08-07  \n**Visibility:** Public\n\n## 0. Canonical Identity\n\n69849 is the canonical CFP+ identifier for Reserved under the Vietnam AI branch.\n\n## 1. Canonical Link\n\nhttps://github.com/charityfundplus/CFP.plus/blob/main/registry/69849.md\n\n## 2. Locked Allocation Rule\n\n- x0 = Developer & Platform Directory\n- x1–x9 = major developers ordered alphabetically by official English name\n- Additional developers must use an expanded child tier\n- One developer = one Canonical ID = one Canonical Link\n- Each AI belongs to exactly one developer\n- CMP must not alter locked IDs or links\n\n## 3. Reservation\n\nThis slot is reserved. It must not be assigned without CFP+ Human Governance approval.\n\n## 4. Migration Record\n\n**Previous assignment at this path:** VietLinker AI  \n**Previous status:** Superseded on 2026-08-07  \n**Migration rule:** Historical references remain traceable, but the current canonical identity is the locked allocation shown above.\n\n## 5. Governance Authority\n\n**Authority:** CFP+ Human Governance  \n**Source of Truth:** CFP+ Canonical Registry  \n**Publication Repository:** charityfundplus/CFP.plus\n\n---\n\n**CFP+ Principle:** Country First • Major Developers First • Alphabetical • Expand by Child Tier • One ID • One Link\n",
+      "encoding": "utf-8",
+      "sha": "c5d763f9f124d63f64eae5519ca5f5b1e1ec0fd0",
+      "display_url": "https://github.com/charityfundplus/CFP.plus/blob/64b356e0812aae0c1c8f0230697bddd42a24fbbc/registry/69849.md",
+      "display_title": "69849.md"
+    }
+  ],
+  "emptyProfiles": [
+    "registry/69110.md",
+    "registry/691100.md",
+    "registry/69111.md",
+    "registry/691110.md",
+    "registry/69112.md",
+    "registry/691120.md",
+    "registry/69113.md",
+    "registry/691130.md",
+    "registry/691131.md",
+    "registry/69114.md",
+    "registry/691140.md",
+    "registry/69115.md",
+    "registry/691150.md",
+    "registry/69116.md",
+    "registry/691160.md",
+    "registry/69117.md",
+    "registry/691170.md",
+    "registry/69118.md",
+    "registry/69119.md"
+  ],
+  "software": [
+    {
+      "path": "drafts/si-office/core/common.mjs",
+      "sha": "fa448f948b845978eaee6411cfe3e2bf04e72f29"
+    },
+    {
+      "path": "drafts/si-office/core/core-engine.mjs",
+      "sha": "fa73ae63d2b1b353efccbccebe8f3eabdda30dcb"
+    },
+    {
+      "path": "drafts/si-office/core/cross-check-engine.mjs",
+      "sha": "957244be338ad6747ede31212225b6bd11c05451"
+    },
+    {
+      "path": "drafts/si-office/core/hub69-integration.mjs",
+      "sha": "985029042e00960c39d019eeb4bef046e43f86a1"
+    },
+    {
+      "path": "drafts/si-office/core/identity-registry.mjs",
+      "sha": "c681432b421c8af939b834d7d601f51ea5a317af"
+    },
+    {
+      "path": "drafts/si-office/core/knowledge-evidence.mjs",
+      "sha": "750f67c0bf72ce03cc584bc302065530bbd9d766"
+    },
+    {
+      "path": "drafts/si-office/core/learning-training.mjs",
+      "sha": "9c347568b3109aac2d4f0662ba77b973204f8930"
+    },
+    {
+      "path": "drafts/si-office/core/monitoring-recovery.mjs",
+      "sha": "8909a2a0f1f3c5f1fd0e5ed7123b48ce1622a09d"
+    },
+    {
+      "path": "drafts/si-office/core/office-intake.mjs",
+      "sha": "a694634df9da43c8ac91559b9946442f12fea6c5"
+    },
+    {
+      "path": "drafts/si-office/core/security-permission.mjs",
+      "sha": "cbeecdc9fecd3ad966d8ee484519ef2c0839205e"
+    },
+    {
+      "path": "drafts/si-office/core/si-adapter.mjs",
+      "sha": "78d8936cff93d2b5fb6ab8627ae1fa3b67fd305a"
+    },
+    {
+      "path": "drafts/si-office/core/supervision-engine.mjs",
+      "sha": "71d70f2fdcf90354e00b190d101dbc9f9b38cd18"
+    },
+    {
+      "path": "drafts/si-office/core/task-engine.mjs",
+      "sha": "4da290154ea3873d7ae9777e3e8fc1e06c5f14cc"
+    },
+    {
+      "path": "drafts/si-office/core/training-assessment.mjs",
+      "sha": "b959371f9c12b78da8ee5b8a613cd452834969f9"
+    },
+    {
+      "path": "drafts/si-office/core/version-upgrade.mjs",
+      "sha": "474cad1df42d00f6dd60ff4701a778c0be1cc046"
+    },
+    {
+      "path": "drafts/si-office/sandbox/p2-http.mjs",
+      "sha": "e66fab1932baf6709877f5fab2c9df51d5ab5d8b"
+    },
+    {
+      "path": "drafts/si-office/sandbox/p2-service.mjs",
+      "sha": "e7f5a047e4166051f6b7773df20710e20b938fd3"
+    },
+    {
+      "path": "drafts/si-office/sandbox/pair-coordinator.mjs",
+      "sha": "16c2ba8555a5aafc4ab31c3ab834569f81560766"
+    },
+    {
+      "path": "drafts/si-office/sandbox/release-control.mjs",
+      "sha": "ba4c4ac004942aef8d27456fba8492e2b1f3ea87"
+    },
+    {
+      "path": "drafts/si-office/sandbox/release-health.mjs",
+      "sha": "4b9bc5d42cbe5597f9b79269af3fe2637d39cb75"
+    },
+    {
+      "path": "drafts/si-office/scripts/assess-retained-practice.mjs",
+      "sha": "7e37eae71d1ed06d425867ca1f0238ad83d7f88c"
+    },
+    {
+      "path": "drafts/si-office/scripts/assessment-demo.mjs",
+      "sha": "b48e2532c73604ac8b90fb6aaff04c383e7a44c5"
+    },
+    {
+      "path": "drafts/si-office/scripts/backup-envelope.mjs",
+      "sha": "d19fa0c487d7c855614677337a9ade5d1100de77"
+    },
+    {
+      "path": "drafts/si-office/scripts/core-demo.mjs",
+      "sha": "b25309dcee89694a2661456f2eccd608589f8911"
+    },
+    {
+      "path": "drafts/si-office/scripts/cost-bound.mjs",
+      "sha": "f72af4f4a8c8c6a2d970de236e3afc094198258d"
+    },
+    {
+      "path": "drafts/si-office/scripts/evidence.mjs",
+      "sha": "f5dea07e08191e63c838ea06ae705aeba2b1609f"
+    },
+    {
+      "path": "drafts/si-office/scripts/guarded-preview.mjs",
+      "sha": "c4cc4f216dacf89fea2e803ffb1728f7f2dfb9e8"
+    },
+    {
+      "path": "drafts/si-office/scripts/intake-team-practice.mjs",
+      "sha": "f3bfea024d1e3da1c475fcc1296e1145ad5b2a79"
+    },
+    {
+      "path": "drafts/si-office/scripts/kernel-egress-guard.py",
+      "sha": "bab85b1268e92a8626a101c578e57ec4b7677b5e"
+    },
+    {
+      "path": "drafts/si-office/scripts/local-https-preview.mjs",
+      "sha": "eacba34ca908cc2fcc25b21e7c99a4cbbcb50edf"
+    },
+    {
+      "path": "drafts/si-office/scripts/p2-demo.mjs",
+      "sha": "b8ec6424731106ed3e12360741840a504ad4eda2"
+    },
+    {
+      "path": "drafts/si-office/scripts/p2-provision.mjs",
+      "sha": "e8b10b9492dfa7bc29664d7536cc3861e4d670ed"
+    },
+    {
+      "path": "drafts/si-office/scripts/p2-release-serve.mjs",
+      "sha": "d78b2ac7fa975ec523d9383798c395820c734914"
+    },
+    {
+      "path": "drafts/si-office/scripts/practice-evidence-review.mjs",
+      "sha": "a403936a2e264405d9456e1060c03e2c25437b58"
+    },
+    {
+      "path": "drafts/si-office/scripts/preview-guard.mjs",
+      "sha": "ed4189605458182f5010927bedfa9e7fe4ea1e55"
+    },
+    {
+      "path": "drafts/si-office/scripts/provider-preflight.mjs",
+      "sha": "17fb0923358d92fae564829b53297516ea203933"
+    },
+    {
+      "path": "drafts/si-office/scripts/rehearse-preview-compat.mjs",
+      "sha": "1cc111103b4d75e3951b20527e34109093276179"
+    },
+    {
+      "path": "drafts/si-office/scripts/render-suspend.mjs",
+      "sha": "de7bc9734ed5a9be79674c4adfc34ef133995dfc"
+    },
+    {
+      "path": "drafts/si-office/scripts/run-tests.mjs",
+      "sha": "70c387fa681e59b2dd4c650ec7ec32a511aa1683"
+    },
+    {
+      "path": "drafts/si-office/scripts/training-evidence-pack.mjs",
+      "sha": "38539c003bd8fe946e97dd500926bc8fdaeb2ddc"
+    },
+    {
+      "path": "drafts/si-office/scripts/training-exercises.mjs",
+      "sha": "8173efc40f0c3e464845fbbc16c2152c38b68fb5"
+    },
+    {
+      "path": "drafts/si-office/scripts/training-export-worksheet.mjs",
+      "sha": "d0f72cc8b2ff0276175eff85d46e25baade73063"
+    },
+    {
+      "path": "drafts/si-office/scripts/training-teams.mjs",
+      "sha": "e99c53e118b6f084f3259f243636bd18330544b1"
+    },
+    {
+      "path": "drafts/si-office/scripts/verify-evidence.mjs",
+      "sha": "b1a8d426c6781e86c380a6f2764a26dc280ee006"
+    },
+    {
+      "path": "drafts/si-office/scripts/verify-office-intake.mjs",
+      "sha": "1975c9df78908c43229cebba0ec341f4c946399f"
+    },
+    {
+      "path": "drafts/si-office/scripts/working-preview.mjs",
+      "sha": "64ebc40726c6265d3368e573ef1b084acf6f1200"
+    }
+  ]
+}

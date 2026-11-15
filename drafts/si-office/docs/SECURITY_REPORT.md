@@ -1,0 +1,15 @@
+# Security / Access / Audit • local draft
+
+VERIFIED in handler tests: viewer mutation denial; editor review denial; unauthorized sessions; payment/connect/bind denial; loopback Host allowlist; same-origin JSON mutation gate; identity field rejection; source URL syntax; duplicate profile/HSTDN checks; local member/catalog reference validation; mock allowlist and credential/live-write denial. All these tests run actual request listener without sockets. UI source uses textContent and static CSP; initial browser XSS-text behavior passed, current revision browser recheck is BLOCKED.
+
+Audit records timestamp, actor role, action, result, sequence, previousHash and hash. Handler denials for Host/Origin/content-type/payload/session are logged without request secrets or payload. Tests recompute the chain and verify module reviews generate audit evidence. Role here is self-selected demo role, not verified identity. Session tokens are memory-only and not exported. No production grant exists.
+
+PARTIAL: in-memory state/logs reset on restart, shared demo state, no durable WORM or tenant isolation, no real identity provider/consent/PII detection/rate limit. URL validity is not source or domain-ownership proof. Synthetic declaration is a guardrail, not an automatic PII guarantee. Do not expose the local server publicly or enter real data. Reusing commercial names does not prove identity; new proposals always remain NOT VERIFIED.
+
+Third-party logos/assets were not imported. Public-source technology claims remain attributed research, not commercial promises. No production credential, live adapter call, payment charge, storage creation, reverse write or cascade delete is implemented. Human Governance gates real authentication, legal claims, real customers/payments, integration scopes and deployment.
+
+## Standard Core extension
+
+Core-owned required action permissions are checked before invoking adapter, independent of its declared tools, then checked again by cross-checker. Independent review found the omission bypass and regression now confirms adapter is not called and output is null under source-only policy for a write mission. Input/provider/protocol/source/title/claim/identity checks precede committing draft. Safe stop epoch prevents late output; timeout and active-task serialization are tested. Reviewer recovery requires quiescence. Never promote training scores to privileges. In-process demo code is not secure isolation for arbitrary third-party executable adapters; only mock allowlisted adapters are exposed through HTTP. Same-role/different-session checks do not prove different real people.
+
+Core audit preserves history in process and reports hashes of accepted outputs/config/proposals. It is not durable/WORM. Config cannot contain production identity or credentials; live requests/grants/tools denied. Real adapter secrets, process isolation, durable auth/tenant/data/audit controls remain separate Human Governance work. Current browser and semantic-free-text verification are not claimed.

@@ -1,0 +1,11 @@
+{
+  "baselineRevision": "b75b780eb64430355f0b51a4b58b9e5269e0db43",
+  "scope": "baseline SQLite -> latest restore/intake; changed launcher packaging/pointer rollback, not provider deploy",
+  "schemaCompatibility": true,
+  "newGenerationAndSessionRevocation": true,
+  "intakePreserved": true,
+  "launcherIncludedInRelease": true,
+  "differentLauncherRollback": true,
+  "originalDBRetained": true,
+  "providerRollbackExecuted": false
+}

@@ -1,0 +1,1 @@
+Current browser PASS: 16/16 check groups. See BROWSER_QA_REPORT.json. Pinned application 50d17cc1be8408e4e0fd9981a4ff0e15129e6efa. Historical EPERM preserved in CORE_BROWSER_STATUS_HISTORICAL.md. Synthetic ephemeral loopback only; server stopped.

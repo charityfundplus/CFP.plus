@@ -1,0 +1,11 @@
+✔ real task binding is preserved but reflections/self-declared authority cannot grant competency (1.52329ms)
+✔ missing history is not filled and wrong pair/self-review/failed checks are findings (0.367382ms)
+✔ duplicate tasks/tracks/workspaces and unknown track fail closed (0.710107ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8.371444

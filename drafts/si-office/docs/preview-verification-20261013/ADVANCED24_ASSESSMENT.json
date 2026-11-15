@@ -1,0 +1,368 @@
+{
+  "scope": "EVIDENCE SUFFICIENCY REVIEW, NOT COMPETENCY CERTIFICATION",
+  "taskSlots": 24,
+  "competencyPass": 0,
+  "notAssessed": 24,
+  "rows": [
+    {
+      "workspace": "practice-0",
+      "track": "durability",
+      "taskKey": null,
+      "expectedEvidence": "A retained checkpoint and restart evidence; no automatic replay.",
+      "retainedTaskEvidence": false,
+      "workflow": "REPORTED REVIEWED DRAFT",
+      "assessment": "NOT ASSESSED",
+      "competencyPass": false,
+      "findings": [
+        "Historical per-task output/taskKey not retained",
+        "Reflection draft does not execute all curriculum steps",
+        "Prerequisites and assessor authority unverified"
+      ]
+    },
+    {
+      "workspace": "practice-0",
+      "track": "access",
+      "taskKey": null,
+      "expectedEvidence": "Denied cross-scope attempts without leaked data.",
+      "retainedTaskEvidence": false,
+      "workflow": "REPORTED REVIEWED DRAFT",
+      "assessment": "NOT ASSESSED",
+      "competencyPass": false,
+      "findings": [
+        "Historical per-task output/taskKey not retained",
+        "Reflection draft does not execute all curriculum steps",
+        "Prerequisites and assessor authority unverified"
+      ]
+    },
+    {
+      "workspace": "practice-0",
+      "track": "recovery",
+      "taskKey": null,
+      "expectedEvidence": "Separate restore generation and retained previous state.",
+      "retainedTaskEvidence": false,
+      "workflow": "REPORTED REVIEWED DRAFT",
+      "assessment": "NOT ASSESSED",
+      "competencyPass": false,
+      "findings": [
+        "Historical per-task output/taskKey not retained",
+        "Reflection draft does not execute all curriculum steps",
+        "Prerequisites and assessor authority unverified"
+      ]
+    },
+    {
+      "workspace": "practice-0",
+      "track": "sources",
+      "taskKey": null,
+      "expectedEvidence": "Traceable claim register with explicit uncertainty.",
+      "retainedTaskEvidence": false,
+      "workflow": "REPORTED REVIEWED DRAFT",
+      "assessment": "NOT ASSESSED",
+      "competencyPass": false,
+      "findings": [
+        "Historical per-task output/taskKey not retained",
+        "Reflection draft does not execute all curriculum steps",
+        "Prerequisites and assessor authority unverified"
+      ]
+    },
+    {
+      "workspace": "practice-0",
+      "track": "interoperability",
+      "taskKey": null,
+      "expectedEvidence": "Zero live calls and a bounded compatibility decision.",
+      "retainedTaskEvidence": false,
+      "workflow": "REPORTED REVIEWED DRAFT",
+      "assessment": "NOT ASSESSED",
+      "competencyPass": false,
+      "findings": [
+        "Historical per-task output/taskKey not retained",
+        "Reflection draft does not execute all curriculum steps",
+        "Prerequisites and assessor authority unverified"
+      ]
+    },
+    {
+      "workspace": "practice-0",
+      "track": "website",
+      "taskKey": null,
+      "expectedEvidence": "Pinned UI/link evidence and per-target sync receipts.",
+      "retainedTaskEvidence": false,
+      "workflow": "REPORTED REVIEWED DRAFT",
+      "assessment": "NOT ASSESSED",
+      "competencyPass": false,
+      "findings": [
+        "Historical per-task output/taskKey not retained",
+        "Reflection draft does not execute all curriculum steps",
+        "Prerequisites and assessor authority unverified"
+      ]
+    },
+    {
+      "workspace": "practice-1",
+      "track": "durability",
+      "taskKey": null,
+      "expectedEvidence": "A retained checkpoint and restart evidence; no automatic replay.",
+      "retainedTaskEvidence": false,
+      "workflow": "REPORTED REVIEWED DRAFT",
+      "assessment": "NOT ASSESSED",
+      "competencyPass": false,
+      "findings": [
+        "Historical per-task output/taskKey not retained",
+        "Reflection draft does not execute all curriculum steps",
+        "Prerequisites and assessor authority unverified"
+      ]
+    },
+    {
+      "workspace": "practice-1",
+      "track": "access",
+      "taskKey": null,
+      "expectedEvidence": "Denied cross-scope attempts without leaked data.",
+      "retainedTaskEvidence": false,
+      "workflow": "REPORTED REVIEWED DRAFT",
+      "assessment": "NOT ASSESSED",
+      "competencyPass": false,
+      "findings": [
+        "Historical per-task output/taskKey not retained",
+        "Reflection draft does not execute all curriculum steps",
+        "Prerequisites and assessor authority unverified"
+      ]
+    },
+    {
+      "workspace": "practice-1",
+      "track": "recovery",
+      "taskKey": null,
+      "expectedEvidence": "Separate restore generation and retained previous state.",
+      "retainedTaskEvidence": false,
+      "workflow": "REPORTED REVIEWED DRAFT",
+      "assessment": "NOT ASSESSED",
+      "competencyPass": false,
+      "findings": [
+        "Historical per-task output/taskKey not retained",
+        "Reflection draft does not execute all curriculum steps",
+        "Prerequisites and assessor authority unverified"
+      ]
+    },
+    {
+      "workspace": "practice-1",
+      "track": "sources",
+      "taskKey": null,
+      "expectedEvidence": "Traceable claim register with explicit uncertainty.",
+      "retainedTaskEvidence": false,
+      "workflow": "REPORTED REVIEWED DRAFT",
+      "assessment": "NOT ASSESSED",
+      "competencyPass": false,
+      "findings": [
+        "Historical per-task output/taskKey not retained",
+        "Reflection draft does not execute all curriculum steps",
+        "Prerequisites and assessor authority unverified"
+      ]
+    },
+    {
+      "workspace": "practice-1",
+      "track": "interoperability",
+      "taskKey": null,
+      "expectedEvidence": "Zero live calls and a bounded compatibility decision.",
+      "retainedTaskEvidence": false,
+      "workflow": "REPORTED REVIEWED DRAFT",
+      "assessment": "NOT ASSESSED",
+      "competencyPass": false,
+      "findings": [
+        "Historical per-task output/taskKey not retained",
+        "Reflection draft does not execute all curriculum steps",
+        "Prerequisites and assessor authority unverified"
+      ]
+    },
+    {
+      "workspace": "practice-1",
+      "track": "website",
+      "taskKey": null,
+      "expectedEvidence": "Pinned UI/link evidence and per-target sync receipts.",
+      "retainedTaskEvidence": false,
+      "workflow": "REPORTED REVIEWED DRAFT",
+      "assessment": "NOT ASSESSED",
+      "competencyPass": false,
+      "findings": [
+        "Historical per-task output/taskKey not retained",
+        "Reflection draft does not execute all curriculum steps",
+        "Prerequisites and assessor authority unverified"
+      ]
+    },
+    {
+      "workspace": "practice-2",
+      "track": "durability",
+      "taskKey": null,
+      "expectedEvidence": "A retained checkpoint and restart evidence; no automatic replay.",
+      "retainedTaskEvidence": false,
+      "workflow": "REPORTED REVIEWED DRAFT",
+      "assessment": "NOT ASSESSED",
+      "competencyPass": false,
+      "findings": [
+        "Historical per-task output/taskKey not retained",
+        "Reflection draft does not execute all curriculum steps",
+        "Prerequisites and assessor authority unverified"
+      ]
+    },
+    {
+      "workspace": "practice-2",
+      "track": "access",
+      "taskKey": null,
+      "expectedEvidence": "Denied cross-scope attempts without leaked data.",
+      "retainedTaskEvidence": false,
+      "workflow": "REPORTED REVIEWED DRAFT",
+      "assessment": "NOT ASSESSED",
+      "competencyPass": false,
+      "findings": [
+        "Historical per-task output/taskKey not retained",
+        "Reflection draft does not execute all curriculum steps",
+        "Prerequisites and assessor authority unverified"
+      ]
+    },
+    {
+      "workspace": "practice-2",
+      "track": "recovery",
+      "taskKey": null,
+      "expectedEvidence": "Separate restore generation and retained previous state.",
+      "retainedTaskEvidence": false,
+      "workflow": "REPORTED REVIEWED DRAFT",
+      "assessment": "NOT ASSESSED",
+      "competencyPass": false,
+      "findings": [
+        "Historical per-task output/taskKey not retained",
+        "Reflection draft does not execute all curriculum steps",
+        "Prerequisites and assessor authority unverified"
+      ]
+    },
+    {
+      "workspace": "practice-2",
+      "track": "sources",
+      "taskKey": null,
+      "expectedEvidence": "Traceable claim register with explicit uncertainty.",
+      "retainedTaskEvidence": false,
+      "workflow": "REPORTED REVIEWED DRAFT",
+      "assessment": "NOT ASSESSED",
+      "competencyPass": false,
+      "findings": [
+        "Historical per-task output/taskKey not retained",
+        "Reflection draft does not execute all curriculum steps",
+        "Prerequisites and assessor authority unverified"
+      ]
+    },
+    {
+      "workspace": "practice-2",
+      "track": "interoperability",
+      "taskKey": null,
+      "expectedEvidence": "Zero live calls and a bounded compatibility decision.",
+      "retainedTaskEvidence": false,
+      "workflow": "REPORTED REVIEWED DRAFT",
+      "assessment": "NOT ASSESSED",
+      "competencyPass": false,
+      "findings": [
+        "Historical per-task output/taskKey not retained",
+        "Reflection draft does not execute all curriculum steps",
+        "Prerequisites and assessor authority unverified"
+      ]
+    },
+    {
+      "workspace": "practice-2",
+      "track": "website",
+      "taskKey": null,
+      "expectedEvidence": "Pinned UI/link evidence and per-target sync receipts.",
+      "retainedTaskEvidence": false,
+      "workflow": "REPORTED REVIEWED DRAFT",
+      "assessment": "NOT ASSESSED",
+      "competencyPass": false,
+      "findings": [
+        "Historical per-task output/taskKey not retained",
+        "Reflection draft does not execute all curriculum steps",
+        "Prerequisites and assessor authority unverified"
+      ]
+    },
+    {
+      "workspace": "practice-3",
+      "track": "durability",
+      "taskKey": null,
+      "expectedEvidence": "A retained checkpoint and restart evidence; no automatic replay.",
+      "retainedTaskEvidence": false,
+      "workflow": "REPORTED REVIEWED DRAFT",
+      "assessment": "NOT ASSESSED",
+      "competencyPass": false,
+      "findings": [
+        "Historical per-task output/taskKey not retained",
+        "Reflection draft does not execute all curriculum steps",
+        "Prerequisites and assessor authority unverified"
+      ]
+    },
+    {
+      "workspace": "practice-3",
+      "track": "access",
+      "taskKey": null,
+      "expectedEvidence": "Denied cross-scope attempts without leaked data.",
+      "retainedTaskEvidence": false,
+      "workflow": "REPORTED REVIEWED DRAFT",
+      "assessment": "NOT ASSESSED",
+      "competencyPass": false,
+      "findings": [
+        "Historical per-task output/taskKey not retained",
+        "Reflection draft does not execute all curriculum steps",
+        "Prerequisites and assessor authority unverified"
+      ]
+    },
+    {
+      "workspace": "practice-3",
+      "track": "recovery",
+      "taskKey": null,
+      "expectedEvidence": "Separate restore generation and retained previous state.",
+      "retainedTaskEvidence": false,
+      "workflow": "REPORTED REVIEWED DRAFT",
+      "assessment": "NOT ASSESSED",
+      "competencyPass": false,
+      "findings": [
+        "Historical per-task output/taskKey not retained",
+        "Reflection draft does not execute all curriculum steps",
+        "Prerequisites and assessor authority unverified"
+      ]
+    },
+    {
+      "workspace": "practice-3",
+      "track": "sources",
+      "taskKey": null,
+      "expectedEvidence": "Traceable claim register with explicit uncertainty.",
+      "retainedTaskEvidence": false,
+      "workflow": "REPORTED REVIEWED DRAFT",
+      "assessment": "NOT ASSESSED",
+      "competencyPass": false,
+      "findings": [
+        "Historical per-task output/taskKey not retained",
+        "Reflection draft does not execute all curriculum steps",
+        "Prerequisites and assessor authority unverified"
+      ]
+    },
+    {
+      "workspace": "practice-3",
+      "track": "interoperability",
+      "taskKey": null,
+      "expectedEvidence": "Zero live calls and a bounded compatibility decision.",
+      "retainedTaskEvidence": false,
+      "workflow": "REPORTED REVIEWED DRAFT",
+      "assessment": "NOT ASSESSED",
+      "competencyPass": false,
+      "findings": [
+        "Historical per-task output/taskKey not retained",
+        "Reflection draft does not execute all curriculum steps",
+        "Prerequisites and assessor authority unverified"
+      ]
+    },
+    {
+      "workspace": "practice-3",
+      "track": "website",
+      "taskKey": null,
+      "expectedEvidence": "Pinned UI/link evidence and per-target sync receipts.",
+      "retainedTaskEvidence": false,
+      "workflow": "REPORTED REVIEWED DRAFT",
+      "assessment": "NOT ASSESSED",
+      "competencyPass": false,
+      "findings": [
+        "Historical per-task output/taskKey not retained",
+        "Reflection draft does not execute all curriculum steps",
+        "Prerequisites and assessor authority unverified"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "baseRevision": "340e4206c1ad676bb8532587cf30821bf48d200f",
+  "scope": "Changed files only; additive continuation evidence; prior manifests preserved",
+  "files": [
+    {
+      "path": "69/index.html",
+      "bytes": 13827,
+      "sha256": "1bd6327c4c7c809438f8a4cf09430fb776527e5cf88ae2ff6abc468a82b6f7a1"
+    },
+    {
+      "path": "drafts/si-office/configs/training-basic-v1.json",
+      "bytes": 18160,
+      "sha256": "509119113cc63be152b3c831419353485b9555299bacb559e5e5f97be8ac9cd3"
+    },
+    {
+      "path": "drafts/si-office/public/p2.html",
+      "bytes": 9240,
+      "sha256": "acdd07c7dbe5387387031ad11d8f66b06880d384f9b3f85a8face89b558423bc"
+    },
+    {
+      "path": "drafts/si-office/public/p2-office.js",
+      "bytes": 9897,
+      "sha256": "938fcd15e2bdf4e24b620206ce818d4c3040930d84f9d79af0d4e2e72b2d2129"
+    },
+    {
+      "path": "drafts/si-office/public/style.css",
+      "bytes": 9857,
+      "sha256": "00537c1f3b913287df420601f439b4e078dade5c760a3a421a8e594867c7e438"
+    },
+    {
+      "path": "drafts/si-office/scripts/training-teams.mjs",
+      "bytes": 4061,
+      "sha256": "a3ec6ec0157097bbf3b3a794080a60835740342f136028044976f7ac01a91cf9"
+    },
+    {
+      "path": "drafts/si-office/tests/training-continuation-fixture.mjs",
+      "bytes": 1232,
+      "sha256": "57860fa09db0e3456e3733dff71dfbafe0d6b00f919d5f06ba96e9442c1285ef"
+    },
+    {
+      "path": "drafts/si-office/tests/training-continuation-browser.py",
+      "bytes": 5593,
+      "sha256": "6ee1073d08295aa0fff6f966714e1ed03a5481827da00008c166d24b0e0fe066"
+    },
+    {
+      "path": "drafts/si-office/docs/TRAINING_CONTINUATION.md",
+      "bytes": 6987,
+      "sha256": "cf7db2e6c27c3fa215a6e01a63465400e273299c81b25066e26023f66b528841"
+    },
+    {
+      "path": "drafts/si-office/docs/TRAINING_TEAMS_RESULTS.json",
+      "bytes": 1051,
+      "sha256": "ecf1214d1cd79523ade492dec6887f3721fbd33c397210d4fe033a9bf7ff1f65"
+    },
+    {
+      "path": "drafts/si-office/docs/TRAINING_CONTINUATION_RESULTS.txt",
+      "bytes": 872,
+      "sha256": "3b04165163eac5046b23cd85ff84da7d23a9866002a5059b7342f84815a92612"
+    },
+    {
+      "path": "drafts/si-office/docs/TRAINING_CONTINUATION_BROWSER.json",
+      "bytes": 762,
+      "sha256": "a0330c5b44e9364c2990b0e9b6d4eb15e840800207328f35451777ab12fcda95"
+    }
+  ]
+}

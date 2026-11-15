@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-13",
+  "acceptedOrganizationRevision": "1ad28eb3da5740bd9e5699e93a8534f62c4914d9",
+  "currentTemplateRevision": "2814b357d8b31385aff530ca37eb8606674b608e",
+  "organization": "ACCEPTED RELATIVE CLOSE; artifact-only SYNC VERIFIED",
+  "currentTemplate": "Existing concurrent navigation/localHTTPS preserved; no duplicate added",
+  "remoteHTTPS": "BLOCKED; persistent host/forwarder unavailable; historical endpoint current reachability UNKNOWN due proxyCONNECT403",
+  "OpenSI": "User-designated independent reviewer; actual ACK/findings PENDING",
+  "round1": "OPEN",
+  "repeatAcceptedSuites": false,
+  "preservedPaths": 658,
+  "duplicateFilesPreserved": 88,
+  "production": "NO-GO",
+  "candidate": "ebae8f2 detached/superseded; Drive delta preserved as candidate evidence"
+}

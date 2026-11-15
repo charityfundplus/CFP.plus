@@ -1,0 +1,31 @@
+{
+  "sourceRevision": "64b356e0812aae0c1c8f0230697bddd42a24fbbc",
+  "baseline": "b75b780eb64430355f0b51a4b58b9e5269e0db43",
+  "scope": "additive read-only team inventory; 5 new tests only",
+  "files": [
+    {
+      "path": "NEW_TEST_RESULTS.txt",
+      "sha256": "0f44195746e13456e9e060333dfdc310056f867406a45a2071b1a9f27f8e9aad"
+    },
+    {
+      "path": "TEAM_READINESS.json",
+      "sha256": "de63b99227b6ce5eadda0bc04888f8ba16c694dd03f9ae1b3679adedfae13fe1"
+    },
+    {
+      "path": "TEAM_WORKBOARD_VI.md",
+      "sha256": "8c125863f4c14730dd3993b3c7a625209553ad76a76a2d68cc35739e085bbaa2"
+    },
+    {
+      "path": "source-snapshot.json",
+      "sha256": "5a41fdd0ec7075c77f2d87f12522ee15325c092a4b6e9fd5e77f965e2c12c468"
+    },
+    {
+      "path": "team-readiness.mjs",
+      "sha256": "9dab98ec1171c950f7356051cb8a74949b438065d08208bae87341cc5c74e39f"
+    },
+    {
+      "path": "team-readiness.test.mjs",
+      "sha256": "b6a1e881a084366b82ff2ef78d18df6cbc91b54dbe7dfeb5e18cfa7fe4d9317b"
+    }
+  ]
+}

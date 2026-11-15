@@ -1,0 +1,5 @@
+Current source:656/656 SHA-256 + Git blob hashes PASS at b75b780
+Existing Node verifier:77/77 WORKING_PREVIEW_MANIFEST PASS
+Drive downloaded ZIP:150/150 source entry hashes PASS
+Earlier default mismatch at3a8836 resolved by concurrent verifier update; historical manifests unchanged
+Current verifier training-config tamper rejection PASS; restored bytes reinstated

@@ -1,0 +1,12 @@
+.store-table-scroll {max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.store-table-scroll:focus {outline:3px solid currentColor;outline-offset:3px;}
+.store-table {width:100%;border-collapse:collapse;min-width:760px;text-align:left;}
+.store-table th,.store-table td {padding:.75rem;border:1px solid #62718c;vertical-align:top;overflow-wrap:anywhere;}
+.store-table caption {text-align:left;padding:.75rem 0;font-weight:600;}
+.store-table a {text-decoration:underline;}
+.store-table th:first-child {min-width:5rem;white-space:nowrap;}
+.store-table th:nth-child(2),.store-table td:nth-child(2),.store-table th:nth-child(3),.store-table td:nth-child(3) {min-width:10rem;}
+.store-table th:nth-child(4),.store-table td:nth-child(4) {min-width:15rem;}
+.store-table th:nth-child(5),.store-table td:nth-child(5),.store-table th:nth-child(7),.store-table td:nth-child(7) {min-width:9rem;}
+.store-table th:nth-child(6),.store-table td:nth-child(6) {min-width:12rem;}
+@media(max-width:480px){#five-store-status {min-width:0;} .store-table th,.store-table td {padding:.55rem;} }

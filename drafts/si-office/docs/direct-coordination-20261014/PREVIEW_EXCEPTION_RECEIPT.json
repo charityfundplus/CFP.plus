@@ -1,0 +1,34 @@
+{
+  "owner": "Codex technical; approved Preview operator not authenticated",
+  "observedDraftBase": "11bb42464afebcd2962ca0ab94df0822853445c3",
+  "assessmentBaseline": "b75b780eb64430355f0b51a4b58b9e5269e0db43",
+  "directive": "https://github.com/charityfundplus/CFP.plus/issues/130#issuecomment-6161460024",
+  "authorizedCurrentHttpsUrl": null,
+  "deployedRevision": null,
+  "buildReceipt": null,
+  "actualIphoneSafariRun": null,
+  "status": "BLOCKED",
+  "socketProbe": {
+    "command": "Node HTTP server listen(0,127.0.0.1), close without serving",
+    "observed": "EPERM",
+    "scope": "tool executor default sandbox",
+    "additionalPermissionProbe": "NOT COMPLETED; user aborted approval tool call; no permission inferred"
+  },
+  "environmentReadiness": {
+    "observationsCurrent": true,
+    "networkHttpPolicy": "unrestricted/enforced",
+    "configuredSecrets": 0,
+    "configuredCapabilities": 0,
+    "outboundIdentities": 0
+  },
+  "closureRequires": [
+    "existing approved HTTPS URL + exact authorized deployment SHA + operator/scope/lease",
+    "build receipt and independently read-back source manifest",
+    "actual iPhone model/iOS/Safari versions and TLS/login/intake/HSTDN/training/task/export receipts"
+  ],
+  "historicalPreviewNotRevalidated": true,
+  "newTunnelCreated": false,
+  "providerCalls": 0,
+  "activationAllowed": false,
+  "production": "NO-GO"
+}

@@ -1,0 +1,470 @@
+{
+  "remoteRevision": "06f386b1ba52358779cec6bc26c2d88f6a33664a",
+  "files": [
+    {
+      "path": "69/hub-language.js",
+      "gitBlobSHA": "8d70357f32bfc9540e7fc52feb04aa6e0bb9701c",
+      "sha256": "feab87389aed50693c2026ad07f780375e1bde5a47c3a475ae18206a8879c9e6"
+    },
+    {
+      "path": "69/index.html",
+      "gitBlobSHA": "0c8143a31441371b251c47b4026eb81f1b5e8322",
+      "sha256": "87dc9aca20cd9825633373f5412bdccd87c98923b0d168ffd52e7c4f57b4f7c9"
+    },
+    {
+      "path": "drafts/si-office/adapters.mjs",
+      "gitBlobSHA": "923193051c5ba59713c038d7e36198cd438f345b",
+      "sha256": "f6db020422dbf067f726a0917a193584056174a4b73ba540f75081c62b332b4b"
+    },
+    {
+      "path": "drafts/si-office/ai-entity-registry.json",
+      "gitBlobSHA": "3afe0cc090d5e9f8d61158ecd520005f8108a1d2",
+      "sha256": "c97681cf7cdd494e4bb4658550c6db76546a00676c9eff8e8c83fb72ca1950f6"
+    },
+    {
+      "path": "drafts/si-office/configs/pairs.json",
+      "gitBlobSHA": "db18126068a02d8c7a4f9e7091c225cd46d5b309",
+      "sha256": "e2d79fbe6e3eb7b34fb3c5eef879d08a8414c5376dc12cbedadafad7617243a4"
+    },
+    {
+      "path": "drafts/si-office/configs/provider-preparation.json",
+      "gitBlobSHA": "2040c561071a35023918bac2a1cc6b1789c4b5f7",
+      "sha256": "e5529426a28af6b18a4ae203837974983d0afd50d788e6abb853b942fc026135"
+    },
+    {
+      "path": "drafts/si-office/configs/training-basic-v1.json",
+      "gitBlobSHA": "e8c49eee3b669558a264b2102ee491ea1a639eb0",
+      "sha256": "528ef09c2a7ac671eca56a6370ff3489657c0d9dfa33c2466f08ded48067f200"
+    },
+    {
+      "path": "drafts/si-office/core/commercial-intake.mjs",
+      "gitBlobSHA": "2051970e8dc4b7df4a0392992248d7af1e91a708",
+      "sha256": "78762134185ce0a67674a4101bc896977bc852eb7fa2b41d7f5ca8afabfb4f4d"
+    },
+    {
+      "path": "drafts/si-office/core/common.mjs",
+      "gitBlobSHA": "fa448f948b845978eaee6411cfe3e2bf04e72f29",
+      "sha256": "f93f027c200da272aa059a61ea7412e00096f0a50b7258a240629d33343700e0"
+    },
+    {
+      "path": "drafts/si-office/core/core-engine.mjs",
+      "gitBlobSHA": "4032323ee95a70a7461c9dd8d79742d0a46d5314",
+      "sha256": "59e8eb0ee1142215b01061f1874456e58f01169c9f881ad3a4a38f50f383122b"
+    },
+    {
+      "path": "drafts/si-office/core/cross-check-engine.mjs",
+      "gitBlobSHA": "957244be338ad6747ede31212225b6bd11c05451",
+      "sha256": "bb8d503d036098f0e7aaa6c8f7bebb28e85cb2cc75588727df0d3d38672759fa"
+    },
+    {
+      "path": "drafts/si-office/core/hub69-integration.mjs",
+      "gitBlobSHA": "985029042e00960c39d019eeb4bef046e43f86a1",
+      "sha256": "14fb53cf1ba15e1c5889afb022ec1d60a5a49a3a1c5bb2b90c4486b6e88e5bd7"
+    },
+    {
+      "path": "drafts/si-office/core/identity-registry.mjs",
+      "gitBlobSHA": "c681432b421c8af939b834d7d601f51ea5a317af",
+      "sha256": "3d47d937d62dffd66a7712608afcf9ac5d52d0143e64348e6a5819e004c43ced"
+    },
+    {
+      "path": "drafts/si-office/core/knowledge-evidence.mjs",
+      "gitBlobSHA": "750f67c0bf72ce03cc584bc302065530bbd9d766",
+      "sha256": "3aa78103ed6225f490a25a95848085a8b0074ce0faeb6cdb98aec22525db3e0a"
+    },
+    {
+      "path": "drafts/si-office/core/learning-training.mjs",
+      "gitBlobSHA": "9c347568b3109aac2d4f0662ba77b973204f8930",
+      "sha256": "2020ba73424a0c44ae76868ca3ed42361ad3fd32931570c6efc2f95b1c0f7a35"
+    },
+    {
+      "path": "drafts/si-office/core/monitoring-recovery.mjs",
+      "gitBlobSHA": "8909a2a0f1f3c5f1fd0e5ed7123b48ce1622a09d",
+      "sha256": "d65e654fc08d123fbb91b6699e631b032c716c966110f6093ee13ad36255e754"
+    },
+    {
+      "path": "drafts/si-office/core/office-intake.mjs",
+      "gitBlobSHA": "d5b4653a38cfc29dc40ae67c141e3ba3ee2c1080",
+      "sha256": "89f6b00c8eec7e9d76808bdaf1db9bb482db4974ac243c0713af9283e890fcc4"
+    },
+    {
+      "path": "drafts/si-office/core/openai-reference.mjs",
+      "gitBlobSHA": "3eb6e4195665ba67c2bf22a485b0028218dece8f",
+      "sha256": "f2060fe16a0afa3e459dd13b8173edcc4c298f55f9e5d17f04520d3ecd9e2042"
+    },
+    {
+      "path": "drafts/si-office/core/registry-read-model.mjs",
+      "gitBlobSHA": "545a129814202401bd4cf2c9b560a76dbb79f59d",
+      "sha256": "f6ef7f9826d4ab540034a9b9de5d926da0e3ff13d431582fe01c9d14b2ca4188"
+    },
+    {
+      "path": "drafts/si-office/core/security-permission.mjs",
+      "gitBlobSHA": "cbeecdc9fecd3ad966d8ee484519ef2c0839205e",
+      "sha256": "a55e16d3471b986b9f150e000a17c0acdfd3f6b49fd61614e0e31a11d9a01a1e"
+    },
+    {
+      "path": "drafts/si-office/core/si-adapter.mjs",
+      "gitBlobSHA": "78d8936cff93d2b5fb6ab8627ae1fa3b67fd305a",
+      "sha256": "3aa9235a35bef76615172b662e5ba2537326a2bf85ac792f6abf9d22d15e97b9"
+    },
+    {
+      "path": "drafts/si-office/core/supervision-engine.mjs",
+      "gitBlobSHA": "71d70f2fdcf90354e00b190d101dbc9f9b38cd18",
+      "sha256": "234b61a29dca36653e27e7b424fab4ca606f775a793e698311ee43012d503007"
+    },
+    {
+      "path": "drafts/si-office/core/task-engine.mjs",
+      "gitBlobSHA": "4da290154ea3873d7ae9777e3e8fc1e06c5f14cc",
+      "sha256": "ff6896f78ecae79bc6bce0c55029861e76ddf7f1f64aed6b93ecb259446b1d3d"
+    },
+    {
+      "path": "drafts/si-office/core/training-assessment.mjs",
+      "gitBlobSHA": "b959371f9c12b78da8ee5b8a613cd452834969f9",
+      "sha256": "6ea01af6f3a0666204d313a129995c38dc0dd6067fbea3384592ca3b426aec4a"
+    },
+    {
+      "path": "drafts/si-office/core/version-upgrade.mjs",
+      "gitBlobSHA": "474cad1df42d00f6dd60ff4701a778c0be1cc046",
+      "sha256": "b8b93d65fea1aae9bb72851d4f5d3034c9a6fc54c614ebefc8ae448db611236e"
+    },
+    {
+      "path": "drafts/si-office/country-route-map.json",
+      "gitBlobSHA": "f2fb0be96548f16a1f30bcdf8c05b2689651de0e",
+      "sha256": "344d373c39a48505f50d6222cc12e03db69df6f0d98f39ce980c9cc5bef9bc5e"
+    },
+    {
+      "path": "drafts/si-office/docs/OFFICE_FIVE_VAULT_PLAN.json",
+      "gitBlobSHA": "d95f09d23200fab2d7863be8c72c5402f351d304",
+      "sha256": "5190569743666979871ca0c9cd9967fc294813b7e36d5a4def7c6aeea4098205"
+    },
+    {
+      "path": "drafts/si-office/docs/SYNC_FIVE_STORES_PLAN.json",
+      "gitBlobSHA": "13fb89216331c83565cd2a25f3f18503984d3019",
+      "sha256": "123c5977231b6d70cc1f6ecb6a036547adfd4c5902f3f4d88ce94d5029a3570e"
+    },
+    {
+      "path": "drafts/si-office/global-country-ai-index.json",
+      "gitBlobSHA": "bbfde3827a6a7896245a54e9b72e67ec975e8f07",
+      "sha256": "651fa05c7dc633120c65cbaa0905e5dda0da9b0c3bf41ba1f062b7bdf0ed4679"
+    },
+    {
+      "path": "drafts/si-office/model.mjs",
+      "gitBlobSHA": "027788228d4bbd68147be2489ac1f82ca42b1da0",
+      "sha256": "cd0b4a7a1fffc0eaf6c600d02fbe46ff9221451a9f33b8812eee9cd7e59899a9"
+    },
+    {
+      "path": "drafts/si-office/package.json",
+      "gitBlobSHA": "c4c088f2aac8a0bf3e497e6cf986c9052d3b5c4c",
+      "sha256": "03572a5191a6cd11025201ae4ce0b5b63742316c8c29b413359c51ed7c7ca3f9"
+    },
+    {
+      "path": "drafts/si-office/public/app.js",
+      "gitBlobSHA": "a8343cb6d2e67a6fbd5a490ac5edbae5e6dca2f3",
+      "sha256": "4fa93f4c9f59975438e933eb30f817b451c8f834d9aeef4e2340f89bd2976c6a"
+    },
+    {
+      "path": "drafts/si-office/public/assessment-export.js",
+      "gitBlobSHA": "31e753d1e07003e469e137c652f4ce92f994a723",
+      "sha256": "c314975c6909b68f87ea321ee003e8576519d231831822bf8af84e0955dff067"
+    },
+    {
+      "path": "drafts/si-office/public/commercial-office.js",
+      "gitBlobSHA": "250f5c9192e98cc50d4f9c306ab212b4df03b45e",
+      "sha256": "1abe0558a68f3a0dc3f5119f496eab83f42332dc43369c6cb60b3cbfd8812c80"
+    },
+    {
+      "path": "drafts/si-office/public/core.html",
+      "gitBlobSHA": "b0203240382deb005da72d361ae92667d14358cb",
+      "sha256": "d023346d63415e300ff6dd34226e37f1ef789331a73883eb7219fa43a9ffd85d"
+    },
+    {
+      "path": "drafts/si-office/public/core.js",
+      "gitBlobSHA": "c4314577acfefae244ae3a20d46d39c6c6c2229d",
+      "sha256": "cf79255086a929c955c9d05af042b36493c78f1e4bdc2d0fd3e21da03bee54e9"
+    },
+    {
+      "path": "drafts/si-office/public/i18n.js",
+      "gitBlobSHA": "9baec40a81c27196df69b4725fe83cd1a5139809",
+      "sha256": "8fdab2a4ec9dd51e9fc2f45f0a29ffd4c32404cc3ed1fcd441168a6d74041562"
+    },
+    {
+      "path": "drafts/si-office/public/index.html",
+      "gitBlobSHA": "24cd7a5cee9e0b63f807561d567a0fd94649b576",
+      "sha256": "d79d6267c0b1139cbf33a4213b94772cfa7f13635274c0615dcab504f5ee5af9"
+    },
+    {
+      "path": "drafts/si-office/public/office-contracts.js",
+      "gitBlobSHA": "90ccea1194f2c41f0aeec709d20578c6b9483fbe",
+      "sha256": "aec908e5d5f92132360583a3f7e974a307b2df882038248dcedbf60e1f210ce9"
+    },
+    {
+      "path": "drafts/si-office/public/office-intake.js",
+      "gitBlobSHA": "945b8bc69e8e3eb40be164cdc37f683008f918a0",
+      "sha256": "a9e6f6effedd8d300259344ba13606786ee31e41279ed285fad5040b908599f4"
+    },
+    {
+      "path": "drafts/si-office/public/p2-office.js",
+      "gitBlobSHA": "c9b731015b3924311854f9e523734f9d1ffcddad",
+      "sha256": "efcb9d8e0cc02b6b370d71ec0a0c258d9202a6ce283c81958bdea314f24feb54"
+    },
+    {
+      "path": "drafts/si-office/public/p2.html",
+      "gitBlobSHA": "2d24982d7196e1f9f81a0c8c138b5843e8008a39",
+      "sha256": "4c0b8fc5b291e5f0f70e8b877a0628eabafb03080ae06886745d57443c4421a4"
+    },
+    {
+      "path": "drafts/si-office/public/registry-client.js",
+      "gitBlobSHA": "ec8f432a618c1efec7586cd2d710caf98f6518e9",
+      "sha256": "e3e3f5bf5a6a6cca23dbc3aa690e2e591e4fc7f466e23eaa4688f3277ce3e151"
+    },
+    {
+      "path": "drafts/si-office/public/registry-office.js",
+      "gitBlobSHA": "e081c6d1b2647d42fa1dfd48803d5d8198a78742",
+      "sha256": "f649a1fc6a77dad9faef85aa795d95929c94ec26bb3c390687e3c05f2db0a593"
+    },
+    {
+      "path": "drafts/si-office/public/style.css",
+      "gitBlobSHA": "680da05534fa71c990a3bbe0624419b18cc9f6c3",
+      "sha256": "4420f47e8c51ce56c694787be5df7fe7b8e70d5584524a9ea9773fc15df08768"
+    },
+    {
+      "path": "drafts/si-office/sandbox/p2-http.mjs",
+      "gitBlobSHA": "19fb07170d43b468799a5bf7c8e769f0a6236041",
+      "sha256": "a5d6869338c56f46961c5e083ede3d7f2cf2fa1e7f6a9bcfd65e8cc89028b87c"
+    },
+    {
+      "path": "drafts/si-office/sandbox/p2-service.mjs",
+      "gitBlobSHA": "b5084ada8eb70d8ba792698caa35727c07f6e82a",
+      "sha256": "68265b1eebb00290ee6c2f5cd612c54b7cbb8bafd93915adbb668f8218c7c0a9"
+    },
+    {
+      "path": "drafts/si-office/sandbox/pair-coordinator.mjs",
+      "gitBlobSHA": "16c2ba8555a5aafc4ab31c3ab834569f81560766",
+      "sha256": "8fb6d7003bc0eace1daecd7494b1d9f60163a85e82be8aec7a4c22c846664614"
+    },
+    {
+      "path": "drafts/si-office/sandbox/release-control.mjs",
+      "gitBlobSHA": "ba4c4ac004942aef8d27456fba8492e2b1f3ea87",
+      "sha256": "8f4ba3a6773555402e865e068cad0ded5b802a24915a9b71434c1738913532b3"
+    },
+    {
+      "path": "drafts/si-office/sandbox/release-health.mjs",
+      "gitBlobSHA": "4b9bc5d42cbe5597f9b79269af3fe2637d39cb75",
+      "sha256": "d0f727c78cbabd5392e6a6640d8dbce152988396f185a52fdf8a74003ab5ba19"
+    },
+    {
+      "path": "drafts/si-office/scripts/assess-retained-practice.mjs",
+      "gitBlobSHA": "7e37eae71d1ed06d425867ca1f0238ad83d7f88c",
+      "sha256": "dcdeeab3d166f00ae9d5d4951a00c5cc6eeabc996665c2af1f99dae8b6701ee9"
+    },
+    {
+      "path": "drafts/si-office/scripts/assessment-demo.mjs",
+      "gitBlobSHA": "b48e2532c73604ac8b90fb6aaff04c383e7a44c5",
+      "sha256": "0a1f5089b455c34da704bd2c5cffcc7651249b2b38830566c5fe92cdb66f923f"
+    },
+    {
+      "path": "drafts/si-office/scripts/backup-envelope.mjs",
+      "gitBlobSHA": "d19fa0c487d7c855614677337a9ade5d1100de77",
+      "sha256": "46c41c81bd14b1218fcd5eae6bf7d22e01ea1c21039aefb77c18c9e1c3bec5eb"
+    },
+    {
+      "path": "drafts/si-office/scripts/build-provenance.mjs",
+      "gitBlobSHA": "526d95bce5b8810d8262e3e07ccef6389c48ea7c",
+      "sha256": "a789577bbe68bacd3214d2f81b6b27b56fab6951362b5743c28443486bc79c82"
+    },
+    {
+      "path": "drafts/si-office/scripts/compare-registry-scopes.mjs",
+      "gitBlobSHA": "00a9e88bed62636ad8f2d5c9e9befbe86ab6568e",
+      "sha256": "efec93379f0780d4f0b5bd91b5ca9dc9c9c847ca6b617e7ab3e179da8f7ff90e"
+    },
+    {
+      "path": "drafts/si-office/scripts/core-demo.mjs",
+      "gitBlobSHA": "b25309dcee89694a2661456f2eccd608589f8911",
+      "sha256": "29b9f68ce1ecb5545f382ed401ce6953f8947389fc51d98744b7d21d5f5a5933"
+    },
+    {
+      "path": "drafts/si-office/scripts/cost-bound.mjs",
+      "gitBlobSHA": "f72af4f4a8c8c6a2d970de236e3afc094198258d",
+      "sha256": "870ef9a1dfcf4e043f088869021c274fe38ffbf1ea66caa11a2affc8337684a0"
+    },
+    {
+      "path": "drafts/si-office/scripts/evidence.mjs",
+      "gitBlobSHA": "f5dea07e08191e63c838ea06ae705aeba2b1609f",
+      "sha256": "f092c627d2773bed109cff45d6258bf66cd47ae081b1b5b32a5eb789936edefe"
+    },
+    {
+      "path": "drafts/si-office/scripts/guarded-preview.mjs",
+      "gitBlobSHA": "c4cc4f216dacf89fea2e803ffb1728f7f2dfb9e8",
+      "sha256": "161f4cc0c77b485cceeb0c0c66f43fe8a9d9bd370e8cc4df536fcb0f8a377e52"
+    },
+    {
+      "path": "drafts/si-office/scripts/hub69-data.mjs",
+      "gitBlobSHA": "42bd478245c34890defe24ed0dd3cc7970d7ebf1",
+      "sha256": "0a209f7fc1e17ec11ca50393441005e740f44367bdfe62383d0fa2608bf591e0"
+    },
+    {
+      "path": "drafts/si-office/scripts/intake-team-practice.mjs",
+      "gitBlobSHA": "f3bfea024d1e3da1c475fcc1296e1145ad5b2a79",
+      "sha256": "9bd342758f9e16661c6a2b4b25eed7b7108dda109627adc63ba91b0dafd6cf5f"
+    },
+    {
+      "path": "drafts/si-office/scripts/kernel-egress-guard.py",
+      "gitBlobSHA": "bab85b1268e92a8626a101c578e57ec4b7677b5e",
+      "sha256": "4aac1fd95a6832acf3bae9dc2dc12068da7f8c589aeecc6b8710d68012b17c9f"
+    },
+    {
+      "path": "drafts/si-office/scripts/local-https-preview.mjs",
+      "gitBlobSHA": "eacba34ca908cc2fcc25b21e7c99a4cbbcb50edf",
+      "sha256": "4374be39fd391d544188bc5b1710b7011b01e5fe6332053ab5051bce3f2e80bb"
+    },
+    {
+      "path": "drafts/si-office/scripts/p2-demo.mjs",
+      "gitBlobSHA": "b8ec6424731106ed3e12360741840a504ad4eda2",
+      "sha256": "343612b1f3ac15c52662e080527f1cbb300a6916676d872ec8c425e622fbce2e"
+    },
+    {
+      "path": "drafts/si-office/scripts/p2-provision.mjs",
+      "gitBlobSHA": "e8b10b9492dfa7bc29664d7536cc3861e4d670ed",
+      "sha256": "5e0c008d09389f26cfe0d2f0aa5069e7ff464df939804c62b9312d4e349c3350"
+    },
+    {
+      "path": "drafts/si-office/scripts/p2-release-serve.mjs",
+      "gitBlobSHA": "95a2276eb7903a23a9d11b84b1bbbe1830827342",
+      "sha256": "8d151f72366b14e4bc07ddd9a9b336a0321220cc14de8cd24b6019591ff32f09"
+    },
+    {
+      "path": "drafts/si-office/scripts/practice-evidence-review.mjs",
+      "gitBlobSHA": "a403936a2e264405d9456e1060c03e2c25437b58",
+      "sha256": "fb5ad65c7d44529abc319aa0b48d41aa9805cd236b9db900f17bc5995460bc0f"
+    },
+    {
+      "path": "drafts/si-office/scripts/preview-guard.mjs",
+      "gitBlobSHA": "ed4189605458182f5010927bedfa9e7fe4ea1e55",
+      "sha256": "35ac52181aed780a749ed84907a542cb5ecb53c9ab7acfaf7d0118917e1840db"
+    },
+    {
+      "path": "drafts/si-office/scripts/provider-preflight.mjs",
+      "gitBlobSHA": "17fb0923358d92fae564829b53297516ea203933",
+      "sha256": "d3281f806ca9bd9fbe26268aacb440c25aad7cf48e1e3eeb94e00db0f18387f9"
+    },
+    {
+      "path": "drafts/si-office/scripts/rehearse-preview-compat.mjs",
+      "gitBlobSHA": "1cc111103b4d75e3951b20527e34109093276179",
+      "sha256": "eea71060e9d2d8585953bb097af593ec50a079271d4c7eaa08cbeda0dbdf6012"
+    },
+    {
+      "path": "drafts/si-office/scripts/render-suspend.mjs",
+      "gitBlobSHA": "de7bc9734ed5a9be79674c4adfc34ef133995dfc",
+      "sha256": "f81fed785ceb683a7ce883172d4613922d0be0a4fc88f15cfcda3b215a647c03"
+    },
+    {
+      "path": "drafts/si-office/scripts/run-tests.mjs",
+      "gitBlobSHA": "70c387fa681e59b2dd4c650ec7ec32a511aa1683",
+      "sha256": "37c63693168d44a1fb0ba6f8762a5c3295b788a474272fe279ad76ff578d1161"
+    },
+    {
+      "path": "drafts/si-office/scripts/training-evidence-pack.mjs",
+      "gitBlobSHA": "38539c003bd8fe946e97dd500926bc8fdaeb2ddc",
+      "sha256": "9085e75f604b5fce01c83402521213df745b4535ef6ad2b0eac1c98776ca8203"
+    },
+    {
+      "path": "drafts/si-office/scripts/training-exercises.mjs",
+      "gitBlobSHA": "8173efc40f0c3e464845fbbc16c2152c38b68fb5",
+      "sha256": "261de4a9761c6f6ef2748f7a458edbde75a9f491bf99b286759b1a48f74d8bf5"
+    },
+    {
+      "path": "drafts/si-office/scripts/training-export-worksheet.mjs",
+      "gitBlobSHA": "90b3e9a559e09005371ad7aa4ac493853d3369b1",
+      "sha256": "593815234f6685e4a6da4bb596ed6a1542a9f6404e05184abafd30d6521b9d49"
+    },
+    {
+      "path": "drafts/si-office/scripts/training-teams.mjs",
+      "gitBlobSHA": "e99c53e118b6f084f3259f243636bd18330544b1",
+      "sha256": "a3ec6ec0157097bbf3b3a794080a60835740342f136028044976f7ac01a91cf9"
+    },
+    {
+      "path": "drafts/si-office/scripts/verify-evidence.mjs",
+      "gitBlobSHA": "b1a8d426c6781e86c380a6f2764a26dc280ee006",
+      "sha256": "d2e4f155aa6e5fede73a51eb2e8ad837de259341261c9b0a2ff4aae69c7b8e68"
+    },
+    {
+      "path": "drafts/si-office/scripts/verify-office-intake.mjs",
+      "gitBlobSHA": "1975c9df78908c43229cebba0ec341f4c946399f",
+      "sha256": "8f3f1969809436ba74e1dad8624fe24d9dd30259db4d1a9fca537a77a08072ba"
+    },
+    {
+      "path": "drafts/si-office/scripts/working-preview.mjs",
+      "gitBlobSHA": "318aba7110425f5224e1f043936d963330b87cbb",
+      "sha256": "fe305bccdea929bf6277b25cd0d495a8dcdf80515b083e9747d46bf70f8c895a"
+    },
+    {
+      "path": "drafts/si-office/server.mjs",
+      "gitBlobSHA": "1a1247389af3908df99e731d2d22cc835c0e2d35",
+      "sha256": "e2cb6a2d4ec1a5cd81f1bfc98fa1b3273f4a63b204c139368887f34204871d9f"
+    },
+    {
+      "path": "drafts/si-office/tests/harness.mjs",
+      "gitBlobSHA": "a467aea54a20eb770146a3e8c4376a6adae2207d",
+      "sha256": "9ca603fc57b2a7d7169be4907cac85fd851c88639333bfc078d103e83990f2d4"
+    },
+    {
+      "path": "drafts/si-office/tests/hub69-data.test.mjs",
+      "gitBlobSHA": "332bb035c30f7fa6e0f49a1380153f855b124af1",
+      "sha256": "66da0887fe2ed323783c3b81db3af302526fd36dead3562f29250931b9fd6010"
+    },
+    {
+      "path": "drafts/si-office/tests/office-intake.test.mjs",
+      "gitBlobSHA": "67bc9d5bc74fd531e54c6355602174a358421d3f",
+      "sha256": "9dc6bbb46fb732a9f4ea1594ab00122558eed812a23447c50349f175fc313281"
+    },
+    {
+      "path": "drafts/si-office/tests/practice-evidence-review.test.mjs",
+      "gitBlobSHA": "2ff0146fd08792f6b1c7736a92cb4b736587e522",
+      "sha256": "481a49988d15aaf815efdada9265d79fd33e434edd1d667679417918bdc1bf48"
+    },
+    {
+      "path": "drafts/si-office/tests/task-execution-provenance.test.mjs",
+      "gitBlobSHA": "6abb20a248afe695aca67ff15fdee57e676faaf4",
+      "sha256": "670d805a801210ef467b616418a0f437f7a2a1af5bed4ea802e6f352fac6e91f"
+    },
+    {
+      "path": "drafts/si-office/tests/training-evidence-pack.test.mjs",
+      "gitBlobSHA": "a80eb76b291ebbd123af3f10387d246cc0b9f906",
+      "sha256": "069314f45d8fd1528882bdb064f8aa768a90a4b9dd35a5abee662a8c910c8979"
+    },
+    {
+      "path": "registry/AI_CANONICAL_ID_REGISTRY.md",
+      "gitBlobSHA": "ac687cdc6222d47c63454dce1ee81ff53affd482",
+      "sha256": "310e694ff47cc51b3e85a9816f443af6b0ff7f45303fdf4314b43f3281c225ad"
+    },
+    {
+      "path": "registry/CFP_GLOBAL_AI_ID_LINK_MASTER_STANDARD.md",
+      "gitBlobSHA": "d82c7c11f436327fa1e834c69e91078e308eda7a",
+      "sha256": "c86b7494a6a39dc0cf7038634c5538724fd4b8647cee5e913fb61a52607dc556"
+    },
+    {
+      "path": "registry/SYNC_CURRENT_SYSTEM.md",
+      "gitBlobSHA": "90edbcc11422e7a3b80b855025d450f30a6e1dff",
+      "sha256": "1f2aaffe2968a5addee0daae94bdb2ded5418fa385bc55ed123655e6e934827e"
+    },
+    {
+      "path": "registry/ai-entity-registry.json",
+      "gitBlobSHA": "1f18068d66379ce90bb079dc56c77b4c4d66dcdf",
+      "sha256": "a63c5e0b8af157b0938014d51da94ea924b9721acd0a11a9107f5deea3c6f507"
+    },
+    {
+      "path": "registry/country-route-map.json",
+      "gitBlobSHA": "df852ca8a28493af21669ce709f47d044cd88511",
+      "sha256": "ce048e97a5e4c5cf902b33bb1b3755d05acfc7f93ea4bd72d0a093115d65e3c2"
+    },
+    {
+      "path": "registry/global-country-ai-index.json",
+      "gitBlobSHA": "f8372e5ca64dac109b7e1e360594552213cb8dfd",
+      "sha256": "21c870aba50dafac45675172687dec01d4facf1d679f63d27e21ba8777648764"
+    },
+    {
+      "path": "styles.css",
+      "gitBlobSHA": "4bcbf3a7917317690d14300693f7a74672a207d1",
+      "sha256": "7196d88b14baab5f77a254d759f97c3345b3be0b2207a4c9cc269fdd8d2edcb1"
+    }
+  ]
+}

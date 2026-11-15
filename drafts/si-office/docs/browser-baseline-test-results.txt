@@ -1,0 +1,1 @@
+Browser PASS: 12 modules, registration, draft/review, role restrictions, XSS text, NO-GO, 390px overflow, keyboard dialog.

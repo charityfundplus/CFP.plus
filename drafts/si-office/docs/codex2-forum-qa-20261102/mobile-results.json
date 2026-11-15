@@ -1,0 +1,27 @@
+{
+  "scope": "Local synthetic sandbox; Chromium mobile emulation, not a physical phone or Canva deployment",
+  "status": "PASS",
+  "checks": [
+    "Create task through UI; HTML-like title rendered as text without execution",
+    "Synthetic supervised execution produces task-bound output and audit",
+    "Task survives page reload and reauthentication",
+    "Separate browser context/reviewer can independently read and review draft",
+    "Viewer task creation disabled",
+    "Foreign workspace has no task cards"
+  ],
+  "layout": [
+    {
+      "width": 390,
+      "horizontalOverflow": false
+    },
+    {
+      "width": 320,
+      "horizontalOverflow": false
+    }
+  ],
+  "pageErrors": [],
+  "taskKey": "a242584c-b3b5-46cb-8e4b-e03ed79028e0",
+  "outputSha256": "e590f62d5754e20d079ed23abd7c4d33afe0b4a5861eb7dc6b504bfdc5d64ba2",
+  "recipientACK": "UNAVAILABLE: draft review is not recipient ACK",
+  "evidenceUpload": "UNAVAILABLE: generated synthetic output is not file upload"
+}

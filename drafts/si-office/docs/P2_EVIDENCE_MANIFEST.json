@@ -1,0 +1,122 @@
+{
+  "version": 1,
+  "mode": "P2 SYNTHETIC PARTIAL / HUMAN REVIEW / PRODUCTION NO-GO",
+  "baseline": "497eed8ad33ceb9fbdc0529887be88866d852820",
+  "tests": {
+    "p2": 10,
+    "sharedRegression": 40,
+    "browser": "P1 historical 16; P2 not run"
+  },
+  "files": [
+    {
+      "path": "core/common.mjs",
+      "bytes": 882,
+      "sha256": "f93f027c200da272aa059a61ea7412e00096f0a50b7258a240629d33343700e0"
+    },
+    {
+      "path": "core/core-engine.mjs",
+      "bytes": 11870,
+      "sha256": "aaa2383f17410fcdfa78af902152ce51e2ae3498662b968f557d3d2f0a91e598"
+    },
+    {
+      "path": "core/cross-check-engine.mjs",
+      "bytes": 1379,
+      "sha256": "bb8d503d036098f0e7aaa6c8f7bebb28e85cb2cc75588727df0d3d38672759fa"
+    },
+    {
+      "path": "core/hub69-integration.mjs",
+      "bytes": 419,
+      "sha256": "14fb53cf1ba15e1c5889afb022ec1d60a5a49a3a1c5bb2b90c4486b6e88e5bd7"
+    },
+    {
+      "path": "core/identity-registry.mjs",
+      "bytes": 1782,
+      "sha256": "3d47d937d62dffd66a7712608afcf9ac5d52d0143e64348e6a5819e004c43ced"
+    },
+    {
+      "path": "core/knowledge-evidence.mjs",
+      "bytes": 1776,
+      "sha256": "3aa78103ed6225f490a25a95848085a8b0074ce0faeb6cdb98aec22525db3e0a"
+    },
+    {
+      "path": "core/learning-training.mjs",
+      "bytes": 982,
+      "sha256": "0f9124475d0dffc33596f2694325889dd82c5b4997d2a3a42effed860df7a33a"
+    },
+    {
+      "path": "core/monitoring-recovery.mjs",
+      "bytes": 981,
+      "sha256": "d65e654fc08d123fbb91b6699e631b032c716c966110f6093ee13ad36255e754"
+    },
+    {
+      "path": "core/security-permission.mjs",
+      "bytes": 911,
+      "sha256": "bfa7f4d4704f0368f4bc72eb350e5022097801b3a3b1ab76524266de04370077"
+    },
+    {
+      "path": "core/si-adapter.mjs",
+      "bytes": 1216,
+      "sha256": "3aa9235a35bef76615172b662e5ba2537326a2bf85ac792f6abf9d22d15e97b9"
+    },
+    {
+      "path": "core/supervision-engine.mjs",
+      "bytes": 1138,
+      "sha256": "234b61a29dca36653e27e7b424fab4ca606f775a793e698311ee43012d503007"
+    },
+    {
+      "path": "core/task-engine.mjs",
+      "bytes": 3652,
+      "sha256": "ff6896f78ecae79bc6bce0c55029861e76ddf7f1f64aed6b93ecb259446b1d3d"
+    },
+    {
+      "path": "core/version-upgrade.mjs",
+      "bytes": 1558,
+      "sha256": "b8b93d65fea1aae9bb72851d4f5d3034c9a6fc54c614ebefc8ae448db611236e"
+    },
+    {
+      "path": "docs/P2_CORE_REGRESSION_RESULTS.txt",
+      "bytes": 3767,
+      "sha256": "2a8b23fe534ed562eb12474d331e469e072b12cd49d52f61530f67be43e79247"
+    },
+    {
+      "path": "docs/P2_DEMO_RESULTS.txt",
+      "bytes": 1959,
+      "sha256": "2969722f72d6b020a3ce264eaac7abd70e6c944fa394f3969320a841bcbdfe69"
+    },
+    {
+      "path": "docs/P2_RUNBOOK.md",
+      "bytes": 2662,
+      "sha256": "06b3f2809726f58fa77b090a57d77859c3f6224c5ea14ba193069ddc289f9185"
+    },
+    {
+      "path": "docs/P2_STATUS.md",
+      "bytes": 2836,
+      "sha256": "17f86989b83a74e461185ec3674b4b023569a242694f941ac0ccf692b9e26f3c"
+    },
+    {
+      "path": "docs/P2_TEST_RESULTS.txt",
+      "bytes": 987,
+      "sha256": "cecddb61d11450763acbd5f8d03e31c13d650329fb17087f5eeab988cb77b807"
+    },
+    {
+      "path": "package.json",
+      "bytes": 338,
+      "sha256": "4dad8fb76fca9fbc9f8eaf21929a0df657cb21af976fa63bd405e92d8db618fc"
+    },
+    {
+      "path": "sandbox/p2-service.mjs",
+      "bytes": 9060,
+      "sha256": "d89fd27a01f26a407bb389bfd28908a911983be4f1e8c465ecf372c599761cb3"
+    },
+    {
+      "path": "scripts/p2-demo.mjs",
+      "bytes": 1499,
+      "sha256": "343612b1f3ac15c52662e080527f1cbb300a6916676d872ec8c425e622fbce2e"
+    },
+    {
+      "path": "tests/p2.test.mjs",
+      "bytes": 7955,
+      "sha256": "40074f518f2336bd5c36bfe5a2cb8d693dbef6df9bbea9a89fa2b648e784d269"
+    }
+  ]
+}

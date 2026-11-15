@@ -1,0 +1,12 @@
+{
+  "revision": "2814b357d8b31385aff530ca37eb8606674b608e",
+  "filesVerified": 64,
+  "manifestSHA256": "2f9f59cd4d698cba6f362fc20e1215643858e73548280d9ee8e856a66feefcf1",
+  "tamperRejected": true,
+  "actualLocalURL": "https://localhost:4214/p2",
+  "GET": 200,
+  "headerRevisionMatches": true,
+  "certificate": "Temporary local self-signed; curl explicitly trusts only supplied certificate",
+  "remotePhoneAccess": false,
+  "fullUnaffectedTestsRerun": false
+}

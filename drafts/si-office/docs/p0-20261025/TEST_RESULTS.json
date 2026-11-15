@@ -1,0 +1,29 @@
+{
+  "runtimeRevision": "1958a3ff04c17dfa6c61d5dbde9dd51b46f98640",
+  "newStatusTests": {
+    "command": "node drafts/si-office/tests/store-status.test.mjs",
+    "pass": 2,
+    "fail": 0
+  },
+  "affectedRegressions": [
+    {
+      "command": "node drafts/si-office/tests/p2.test.mjs",
+      "pass": 10,
+      "fail": 0
+    },
+    {
+      "command": "node drafts/si-office/tests/p2-http.test.mjs",
+      "pass": 5,
+      "fail": 0
+    },
+    {
+      "command": "node drafts/si-office/tests/office-intake.test.mjs",
+      "pass": 6,
+      "fail": 0
+    }
+  ],
+  "integrationChecks": 44,
+  "browserChecks": 25,
+  "actualIPhoneSafari": "NOT TESTED",
+  "scope": "Actual command results observed in this session; not copied historical PASS"
+}

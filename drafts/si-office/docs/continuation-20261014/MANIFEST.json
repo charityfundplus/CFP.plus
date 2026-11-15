@@ -1,0 +1,126 @@
+{
+  "base": "690b711316fd1dc41d7bee328609d471f1ddafb9",
+  "scope": "New draft source/docs/evidence only; source SHA recorded after GitHub commit; no activation",
+  "files": [
+    {
+      "path": "drafts/si-office/configs/provider-preparation.json",
+      "bytes": 3584,
+      "sha256": "e5529426a28af6b18a4ae203837974983d0afd50d788e6abb853b942fc026135"
+    },
+    {
+      "path": "drafts/si-office/core/core-engine.mjs",
+      "bytes": 14985,
+      "sha256": "e36e30f4b8f0813c357d001aa4f38ac0bfbd7ab2f24ac314d3ffbd19bcee851b"
+    },
+    {
+      "path": "drafts/si-office/core/learning-training.mjs",
+      "bytes": 2953,
+      "sha256": "2020ba73424a0c44ae76868ca3ed42361ad3fd32931570c6efc2f95b1c0f7a35"
+    },
+    {
+      "path": "drafts/si-office/core/security-permission.mjs",
+      "bytes": 931,
+      "sha256": "a55e16d3471b986b9f150e000a17c0acdfd3f6b49fd61614e0e31a11d9a01a1e"
+    },
+    {
+      "path": "drafts/si-office/core/training-assessment.mjs",
+      "bytes": 3759,
+      "sha256": "6ea01af6f3a0666204d313a129995c38dc0dd6067fbea3384592ca3b426aec4a"
+    },
+    {
+      "path": "drafts/si-office/docs/CONTINUATION_20261014_VI.md",
+      "bytes": 5949,
+      "sha256": "d700a33eed1892974c4672d6f8688d5c25f964200b44ed0a45b0e520e2635d57"
+    },
+    {
+      "path": "drafts/si-office/docs/HOST_REHEARSAL_PREFLIGHT_VI.md",
+      "bytes": 3462,
+      "sha256": "da685c0f0f7b73a8c4927cdfb30562823d9deb7fe4d84542cf33166d7768b059"
+    },
+    {
+      "path": "drafts/si-office/docs/continuation-20261014/AFFECTED_CHECKPOINT_SCOPE_REGRESSION.txt",
+      "bytes": 196,
+      "sha256": "092909fc0fddb89938d194a208e6cabf611745569f5f44e255af406462177d6c"
+    },
+    {
+      "path": "drafts/si-office/docs/continuation-20261014/ASSESSMENT_COORDINATION_TESTS.txt",
+      "bytes": 915,
+      "sha256": "a893113c27add122784cd78c78960a5d0f4fd1f3a978477a0a49b8b8132c9120"
+    },
+    {
+      "path": "drafts/si-office/docs/continuation-20261014/ASSESSMENT_EXPORT_BROWSER.json",
+      "bytes": 453,
+      "sha256": "de916838c6eef3dbd1321982ddceb504a9be67f0d7a4fecbbe5d33655308948b"
+    },
+    {
+      "path": "drafts/si-office/docs/continuation-20261014/PROVIDER_PREFLIGHT_REPORT.json",
+      "bytes": 1772,
+      "sha256": "aff0e577c64e483e615280f09bd95f72aa1801ed8293160999ebac81b1abe139"
+    },
+    {
+      "path": "drafts/si-office/docs/continuation-20261014/PROVIDER_PREFLIGHT_TESTS.txt",
+      "bytes": 1938,
+      "sha256": "7f755cac3224616008c2aa47b75effe89b208714628befe70dd675bcaec04eeb"
+    },
+    {
+      "path": "drafts/si-office/docs/continuation-20261014/TEST_SCOPE_RECEIPT.json",
+      "bytes": 823,
+      "sha256": "fe8fb5c7afeb5766dc86edb704246b71d9af5f4abebd4766407ec28853093da5"
+    },
+    {
+      "path": "drafts/si-office/public/assessment-export.js",
+      "bytes": 352,
+      "sha256": "c314975c6909b68f87ea321ee003e8576519d231831822bf8af84e0955dff067"
+    },
+    {
+      "path": "drafts/si-office/public/p2-office.js",
+      "bytes": 10263,
+      "sha256": "119fd14a76304af6c2d9cfce5a34ed2ecb35a07b0eb119219cbdf487d40958a1"
+    },
+    {
+      "path": "drafts/si-office/sandbox/p2-http.mjs",
+      "bytes": 6047,
+      "sha256": "1c47a3050b08c8875349337b4fd5b586b6d5bec3444431663eb30e0522b72fd6"
+    },
+    {
+      "path": "drafts/si-office/sandbox/p2-service.mjs",
+      "bytes": 12641,
+      "sha256": "ec0bc39208d1bf45e2dcfe4ed8833a5de532f0955d8cfefe84fbb4430f9d6ed4"
+    },
+    {
+      "path": "drafts/si-office/sandbox/pair-coordinator.mjs",
+      "bytes": 3306,
+      "sha256": "8fb6d7003bc0eace1daecd7494b1d9f60163a85e82be8aec7a4c22c846664614"
+    },
+    {
+      "path": "drafts/si-office/scripts/assessment-demo.mjs",
+      "bytes": 3418,
+      "sha256": "0a1f5089b455c34da704bd2c5cffcc7651249b2b38830566c5fe92cdb66f923f"
+    },
+    {
+      "path": "drafts/si-office/scripts/provider-preflight.mjs",
+      "bytes": 2054,
+      "sha256": "d3281f806ca9bd9fbe26268aacb440c25aad7cf48e1e3eeb94e00db0f18387f9"
+    },
+    {
+      "path": "drafts/si-office/tests/assessment-coordination.test.mjs",
+      "bytes": 11790,
+      "sha256": "98912a0ef03f4a0f19ec82261dc23fffeeab15eed600148a1e58dcc2a9c96bf7"
+    },
+    {
+      "path": "drafts/si-office/tests/assessment-export-browser.py",
+      "bytes": 3178,
+      "sha256": "5cd6e159b541b97330610d182b0b389fac9f44a41639b16e5911eaf90692028c"
+    },
+    {
+      "path": "drafts/si-office/tests/assessment-export-fixture.mjs",
+      "bytes": 2539,
+      "sha256": "be89458b0d106cf6c598142975651cf44e045bc439597d8c339502f1c965ddef"
+    },
+    {
+      "path": "drafts/si-office/tests/provider-preflight.test.mjs",
+      "bytes": 1279,
+      "sha256": "c0a71fe86f68a65b17cb21066aeccf4560ae71fa408d689aaa5505316b5a5518"
+    }
+  ]
+}
