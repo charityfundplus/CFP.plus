@@ -187,8 +187,20 @@ grant update (status, updated_at) on cfp_office.tasks to office_app;
 
 -- (1b) Vòng duyệt: mỗi lần vào IN_REVIEW, trigger tăng tasks.review_round; mỗi Review được đóng dấu vòng hiện tại
 -- (trigger, app không tự đặt được). Quyết định chỉ có hiệu lực cho đúng vòng → Review cũ không dùng lại được.
--- Dữ liệu đã có: vòng 0 (Review cũ vẫn khớp nhiệm vụ đang ở vòng 0). App không đọc/ghi 2 cột này.
-alter table cfp_office.tasks add column if not exists review_round integer not null default 0;
+-- App không đọc/ghi 2 cột này.
+-- Khởi tạo (CHỈ lần đầu thêm cột — chạy lại 003 không đánh số lại):
+--   • Review đã có → vòng 0 (lịch sử trước migration, không gán được vào vòng nào).
+--   • Nhiệm vụ đang IN_REVIEW → vòng 1: reviewer phải ghi quyết định MỚI sau migration; Review cũ (vòng 0)
+--     không dùng lại được. An toàn vì app ghi Review và chuyển trạng thái trong CÙNG giao dịch (office.py
+--     review()), nên không có quyết định nào của vòng đang mở mà chưa được áp.
+--   • Nhiệm vụ ở trạng thái khác → vòng 0; lần vào IN_REVIEW kế tiếp mở vòng 1.
+do $$ begin
+  if not exists (select 1 from information_schema.columns
+                 where table_schema = 'cfp_office' and table_name = 'tasks' and column_name = 'review_round') then
+    alter table cfp_office.tasks add column review_round integer not null default 0;
+    update cfp_office.tasks set review_round = 1 where status = 'IN_REVIEW';
+  end if;
+end $$;
 alter table cfp_office.reviews add column if not exists review_round integer not null default 0;
 
 create or replace function cfp_office.stamp_review_round() returns trigger

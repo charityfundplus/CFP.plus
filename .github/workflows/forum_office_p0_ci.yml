@@ -102,6 +102,13 @@ jobs:
       - name: Smoke Link Mẫu Chung qua HTTP thật (cùng script dùng cho URL HTTPS sandbox)
         run: tests/forum/smoke_ci.sh cfp_ci | tee smoke-check.log && grep -q '^SMOKE_LIVE=PASS ' smoke-check.log
 
+      - name: SEC-195-03b • nâng cấp 002 → 003 khi có nhiệm vụ đang IN_REVIEW (cluster riêng, database tạm bị xoá)
+        env:
+          PGPORT: '5433'
+        run: |
+          tests/forum/rls_upgrade_check.sh cfp_upgrade | tee rls-upgrade.log
+          grep -qx 'SEC195_03B_UPGRADE pass=23 fail=0' rls-upgrade.log
+
       - name: Tương thích ngược — chỉ 002 (đúng trạng thái Supabase hiện tại), pytest Postgres
         env:
           PGPORT: '5433'
@@ -121,6 +128,7 @@ jobs:
           path: |
             migration.log
             rls-transitions.log
+            rls-upgrade.log
             migration-002.log
             forum-pytest.xml
             office-iphone.png
