@@ -19,7 +19,7 @@ export async function diagnose({port=4173}={}){
  let tempWritable=false;try{const d=mkdtempSync(join(tmpdir(),'cfp-doctor-'));writeFileSync(join(d,'probe'),'ok');rmSync(d,{recursive:true,force:true});tempWritable=true;}catch{}
  const git=probe('git');
  const autocrlf=git.found?(spawnSync('git',['config','--get','core.autocrlf'],{encoding:'utf8',windowsHide:true}).stdout||'').trim()||'unset':'n/a';
- const python=probe(platform()==='win32'?'python':'python3');
+ const python=[['python3'],['python'],['py',['-3','--version']]].map(([c,a])=>probe(c,a)).find(p=>p.found)||{found:false};
  const chromiumCandidates=[process.env.CHROMIUM_PATH,'/usr/bin/chromium','/usr/bin/chromium-browser','C:/Program Files/Google/Chrome/Application/chrome.exe','C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe','C:/Program Files/Microsoft/Edge/Application/msedge.exe'].filter(Boolean);
  const browser=chromiumCandidates.find(p=>existsSync(p))||null;
  const required=[

@@ -5,7 +5,7 @@ import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {createHash} from 'node:crypto';
 import {registry} from '../model.mjs';
-import {classifyRecord,buildPairConfig,batchBuild} from '../core/superpair-factory.mjs';
+import {classifyRecord,buildPairConfig,batchBuild,chapterOf,linkTemplate} from '../core/superpair-factory.mjs';
 import {validateConfig} from '../core/core-engine.mjs';
 import {run} from '../scripts/superpair-init.mjs';
 import {diagnose} from '../scripts/env-doctor.mjs';
@@ -59,6 +59,43 @@ test('sample then batch practice: normal → human review, overreach → blocked
   assert.equal(held.evidence.pass,false);
   assert.equal(held.evidence.built,0);
  }finally{rmSync(out,{recursive:true,force:true});}
+});
+
+test('chapter/group follow the documented 10-chapter rule; V/D are never groups',()=>{
+ assert.deepEqual(chapterOf('69103'),{chapter:6,group:'246'});
+ assert.deepEqual(chapterOf('0'),{chapter:0,group:'000'});
+ assert.deepEqual(chapterOf('312'),{chapter:3,group:'135'});
+ assert.deepEqual(chapterOf('91'),{chapter:9,group:'789'});
+ assert.throws(()=>chapterOf('V1'),/NUMERIC_ID_STRING_REQUIRED/);
+ for(const {config} of batchBuild().built)assert.ok(['000','135','246','789'].includes(config.assignment.group));
+});
+
+test('Link Mẫu: numeric-only paths, 3 stores + workspace, never verified',()=>{
+ const l=linkTemplate('69103','6910');
+ assert.equal(l.canonical,'https://cfp.plus/69103');
+ assert.equal(l.github,'https://gh.cfp.plus/69103');assert.equal(l.google,'https://gg.cfp.plus/69103');assert.equal(l.notion,'https://nt.cfp.plus/69103');
+ assert.equal(l.workspace,'https://cg.cfp.plus/69103');assert.equal(l.parent,'https://cfp.plus/6910');
+ assert.equal(l.verified,false);assert.equal(l.childDigitConforms,true);
+ assert.equal(linkTemplate('691001','6910').childDigitConforms,true,'0-prefixed namespace extension');
+ assert.equal(linkTemplate('69100','6910').childDigitConforms,false,'0 is never a final child digit');
+ assert.equal(linkTemplate('69103','6984').childDigitConforms,false,'wrong parent');
+ for(const v of Object.values(l))if(typeof v==='string')assert.match(v,/^https:\/\/[a-z.]+\/\d+$/);
+});
+
+test('CLI: --list covers the snapshot, --ids limits the batch, profiles follow the one-page ID standard',async()=>{
+ const {list}=await run(['--list']);
+ assert.equal(list.length,registry.entities.length);
+ const out=mkdtempSync(join(tmpdir(),'cfp-sp-cli-'));
+ try{
+  const b=await run(['--batch','--ids','69103,69101,691181','--out',out]);
+  assert.equal(b.evidence.built,2);assert.deepEqual(b.evidence.held.map(h=>h.id),['691181']);
+  const prof=JSON.parse(readFileSync(join(out,'profiles','69103.profile.json'),'utf8'));
+  for(const k of ['id','identity','type','country','parent','permanentLink','mainContent','officialSourceEvidence','reviewStatus','workOrderReturn','hub69'])assert.ok(k in prof,k);
+  assert.equal(prof.mainContent.office12.length,12);
+  assert.equal(prof.identity.identityBound,false);
+  assert.equal(prof.workOrderReturn.pass,true);
+ }finally{rmSync(out,{recursive:true,force:true});}
+ assert.match((await run(['--help'])).help,/no ID issued/);
 });
 
 test('environment doctor is read-only and reports required checks',async()=>{

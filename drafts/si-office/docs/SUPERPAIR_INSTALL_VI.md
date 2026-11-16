@@ -13,7 +13,7 @@ Hoặc `npm run superpair:install`. Yêu cầu Node.js ≥ 22 (có `node:sqlite`
 | Bước | Script | Dừng nếu FAIL |
 |---|---|---|
 | 1. Kiểm tra môi trường (chỉ đọc) | `scripts/env-doctor.mjs` | Node ≥ 22, `node:sqlite`, thư mục tạm, cổng 4173 |
-| 2. Toàn bộ bộ test | 6 bộ: core 40, P2 10, P2 HTTP 5, Review Round 1 5, Training 2, Siêu Bộ Đôi 6 | có |
+| 2. Toàn bộ bộ test | 6 bộ: core 40, P2 10, P2 HTTP 5, Review Round 1 5, Training 2, Siêu Bộ Đôi 9 | có |
 | 3. Siêu Bộ Đôi mẫu | `superpair-init.mjs --sample <ID>` | có |
 | 4. Khởi tạo hàng loạt | `superpair-init.mjs --batch` | có |
 | 5. Evidence | `install-report.json` + `.sha256` cho từng file | — |
@@ -29,3 +29,10 @@ Hoặc `npm run superpair:install`. Yêu cầu Node.js ≥ 22 (có `node:sqlite`
 ## Chưa tích hợp
 
 Diễn Đàn (nằm ở nhánh riêng), xác minh Permanent Link thật, danh tính thật, kích hoạt SI AI bên ngoài — đều cần Human Governance.
+
+## Chương / Nhóm / Link Mẫu
+
+- Chương = chữ số đầu của ID (chuẩn 10 Chương); Nhóm số: 0→000, 1/3/5→135, 2/4/6→246, 7/8/9→789. V/D là namespace nội bộ, không phải nhóm.
+- Link Mẫu: `cfp.plus/<ID>`, `gh.`/`gg.`/`nt.cfp.plus/<ID>`, workspace `cg.cfp.plus/<ID>`; luôn `verified:false`.
+- Hồ sơ một trang ID (chuẩn AI_INDEX) xuất ra `<out>/profiles/<ID>.profile.json`.
+- CLI: `--list`, `--sample <ID>`, `--batch [--ids a,b]`, `--help`.
