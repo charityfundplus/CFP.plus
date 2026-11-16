@@ -1,0 +1,174 @@
+{
+  "tool": "cfp-superpair-install",
+  "time": "2026-11-16T08:27:05.139Z",
+  "out": "C:\\Users\\ai69\\AppData\\Local\\Temp\\claude\\43c20c1c2ea1299b\\d8135b91-4ad2-4202-ab6d-efe62b639299\\scratchpad\\superpair-evidence",
+  "gates": [
+    {
+      "name": "environment",
+      "ok": true,
+      "detail": {
+        "missingRequired": [],
+        "missingOptional": [
+          "git core.autocrlf",
+          "python",
+          "docker"
+        ],
+        "host": {
+          "platform": "win32",
+          "release": "10.0.26300",
+          "arch": "x64",
+          "cpus": 12,
+          "memoryGB": 15
+        }
+      }
+    },
+    {
+      "name": "test-suites",
+      "ok": true,
+      "detail": [
+        "scripts/run-tests.mjs 40/40",
+        "tests/p2.test.mjs 10/10",
+        "tests/p2-http.test.mjs 5/5",
+        "tests/review-round1.test.mjs 5/5",
+        "tests/training-basic-v1.test.mjs 2/2",
+        "tests/superpair-factory.test.mjs 9/9"
+      ]
+    },
+    {
+      "name": "sample-pair-69103",
+      "ok": true,
+      "detail": {
+        "file": "C:\\Users\\ai69\\AppData\\Local\\Temp\\claude\\43c20c1c2ea1299b\\d8135b91-4ad2-4202-ab6d-efe62b639299\\scratchpad\\superpair-evidence\\superpair-sample-evidence.json",
+        "held": []
+      }
+    },
+    {
+      "name": "batch-pairs",
+      "ok": true,
+      "detail": {
+        "file": "C:\\Users\\ai69\\AppData\\Local\\Temp\\claude\\43c20c1c2ea1299b\\d8135b91-4ad2-4202-ab6d-efe62b639299\\scratchpad\\superpair-evidence\\superpair-batch-evidence.json",
+        "built": 11,
+        "held": 15
+      }
+    }
+  ],
+  "environment": {
+    "tool": "cfp-env-doctor",
+    "time": "2026-11-16T08:27:05.461Z",
+    "host": {
+      "platform": "win32",
+      "release": "10.0.26300",
+      "arch": "x64",
+      "cpus": 12,
+      "memoryGB": 15
+    },
+    "required": [
+      {
+        "name": "node>=22",
+        "ok": true,
+        "detail": "v22.20.0"
+      },
+      {
+        "name": "node:sqlite",
+        "ok": true,
+        "detail": "available (experimental in Node 22)"
+      },
+      {
+        "name": "temp-writable",
+        "ok": true,
+        "detail": "C:\\Users\\ai69\\AppData\\Local\\Temp"
+      },
+      {
+        "name": "port-4173-free",
+        "ok": true,
+        "detail": "loopback preview port"
+      }
+    ],
+    "optional": [
+      {
+        "name": "git",
+        "ok": true,
+        "detail": "git version 2.56.0.windows.4"
+      },
+      {
+        "name": "git core.autocrlf",
+        "ok": false,
+        "detail": "true: CRLF checkout breaks byte-exact website tests; use PYTHONUTF8=1 and LF checkout for parity with CI"
+      },
+      {
+        "name": "python",
+        "ok": false,
+        "detail": "missing: website/CTTTC Python tests unavailable"
+      },
+      {
+        "name": "docker",
+        "ok": false,
+        "detail": "missing: nginx container gate runs only on CI"
+      },
+      {
+        "name": "chromium/edge",
+        "ok": true,
+        "detail": "C:/Program Files/Google/Chrome/Application/chrome.exe"
+      }
+    ],
+    "ready": true,
+    "missing": [
+      "git core.autocrlf",
+      "python",
+      "docker"
+    ],
+    "scope": "Read-only probe. No credentials, accounts or network writes."
+  },
+  "suites": [
+    {
+      "suite": "scripts/run-tests.mjs",
+      "exit": 0,
+      "tests": 40,
+      "pass": 40,
+      "fail": 0,
+      "ok": true
+    },
+    {
+      "suite": "tests/p2.test.mjs",
+      "exit": 0,
+      "tests": 10,
+      "pass": 10,
+      "fail": 0,
+      "ok": true
+    },
+    {
+      "suite": "tests/p2-http.test.mjs",
+      "exit": 0,
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "ok": true
+    },
+    {
+      "suite": "tests/review-round1.test.mjs",
+      "exit": 0,
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "ok": true
+    },
+    {
+      "suite": "tests/training-basic-v1.test.mjs",
+      "exit": 0,
+      "tests": 2,
+      "pass": 2,
+      "fail": 0,
+      "ok": true
+    },
+    {
+      "suite": "tests/superpair-factory.test.mjs",
+      "exit": 0,
+      "tests": 9,
+      "pass": 9,
+      "fail": 0,
+      "ok": true
+    }
+  ],
+  "pass": true,
+  "governance": "SANDBOX PRACTICE GO • HOLD ACTIVATION • PRODUCTION NO GO"
+}

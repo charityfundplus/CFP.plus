@@ -1,0 +1,115 @@
+{
+  "tool": "cfp-superpair-init",
+  "mode": "sample",
+  "time": "2026-11-16T08:27:21.932Z",
+  "node": "v22.20.0",
+  "platform": "win32",
+  "snapshot": "835616308111f6851c0387fa9f5eda60c9ffa624",
+  "built": 1,
+  "held": [],
+  "practice": {
+    "results": [
+      {
+        "pair": "reg-69103-practice",
+        "registryRef": {
+          "id": "69103",
+          "type": "developer",
+          "name": "Cohere",
+          "parentId": "6910",
+          "aiCountryId": "6910",
+          "snapshot": "835616308111f6851c0387fa9f5eda60c9ffa624",
+          "recordStatus": "MISSING EVIDENCE",
+          "lineageConsistent": true,
+          "hub69": "https://cfp.plus/69",
+          "permanentLinkReference": "https://cfp.plus/69103",
+          "permanentLinkVerified": false,
+          "chapter": 6,
+          "group": "246",
+          "links": {
+            "canonical": "https://cfp.plus/69103",
+            "github": "https://gh.cfp.plus/69103",
+            "google": "https://gg.cfp.plus/69103",
+            "notion": "https://nt.cfp.plus/69103",
+            "workspace": "https://cg.cfp.plus/69103",
+            "parent": "https://cfp.plus/6910",
+            "hub69": "https://cfp.plus/69",
+            "childDigitConforms": true,
+            "verified": false
+          },
+          "office": {
+            "modules": [
+              "Danh Tính & Lineage",
+              "Giới Thiệu & Năng Lực",
+              "Danh Mục Sản Phẩm",
+              "Danh Mục Dịch Vụ",
+              "Quảng Cáo & Tiếp Thị",
+              "Khách Hàng & CRM",
+              "Thương Mại & Thanh Toán",
+              "HSTDN & Đối Tác",
+              "Văn Phòng & Công Việc",
+              "SI AI • API • MCP",
+              "Quản Trị • Đạo Đức • Bảo Mật",
+              "Báo Cáo • Evidence • KPI"
+            ],
+            "count": 12
+          },
+          "training": "configs/training-basic-v1.json",
+          "forum": "NOT INTEGRATED • forum package lives on a separate branch",
+          "identityBound": false,
+          "activation": "HOLD ACTIVATION • PRODUCTION NO GO"
+        },
+        "runs": [
+          {
+            "kind": "registry-audit",
+            "scenario": "normal",
+            "expected": "AWAITING HUMAN REVIEW",
+            "actual": "AWAITING HUMAN REVIEW",
+            "review": "REVIEWED DRAFT",
+            "pass": true
+          },
+          {
+            "kind": "registry-audit",
+            "scenario": "overreach",
+            "expected": "BLOCKED",
+            "actual": "BLOCKED",
+            "review": null,
+            "pass": true
+          },
+          {
+            "kind": "training-drill",
+            "scenario": "normal",
+            "expected": "AWAITING HUMAN REVIEW",
+            "actual": "AWAITING HUMAN REVIEW",
+            "review": "REVIEWED DRAFT",
+            "pass": true
+          },
+          {
+            "kind": "training-drill",
+            "scenario": "overreach",
+            "expected": "BLOCKED",
+            "actual": "BLOCKED",
+            "review": null,
+            "pass": true
+          }
+        ],
+        "pass": true
+      }
+    ],
+    "auditValid": true,
+    "auditEvents": 23,
+    "pairStatus": [
+      {
+        "key": "reg-69103-practice",
+        "status": "READY"
+      }
+    ]
+  },
+  "pass": true,
+  "governance": {
+    "activation": "HOLD ACTIVATION • PRODUCTION NO GO",
+    "idsIssued": 0,
+    "identityBound": false,
+    "liveAdapters": false,
+    "configsPairsJsonModified": false
+  }
+}

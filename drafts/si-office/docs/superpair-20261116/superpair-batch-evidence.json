@@ -1,0 +1,1081 @@
+{
+  "tool": "cfp-superpair-init",
+  "mode": "batch",
+  "time": "2026-11-16T08:27:22.006Z",
+  "node": "v22.20.0",
+  "platform": "win32",
+  "snapshot": "835616308111f6851c0387fa9f5eda60c9ffa624",
+  "built": 11,
+  "held": [
+    {
+      "id": "69111",
+      "eligibility": "HELD",
+      "reason": "CONFLICT / HUMAN GOVERNANCE"
+    },
+    {
+      "id": "69112",
+      "eligibility": "HELD",
+      "reason": "CONFLICT / HUMAN GOVERNANCE"
+    },
+    {
+      "id": "69113",
+      "eligibility": "HELD",
+      "reason": "CONFLICT / HUMAN GOVERNANCE"
+    },
+    {
+      "id": "69114",
+      "eligibility": "HELD",
+      "reason": "CONFLICT / HUMAN GOVERNANCE"
+    },
+    {
+      "id": "69115",
+      "eligibility": "HELD",
+      "reason": "CONFLICT / HUMAN GOVERNANCE"
+    },
+    {
+      "id": "69116",
+      "eligibility": "HELD",
+      "reason": "CONFLICT / HUMAN GOVERNANCE"
+    },
+    {
+      "id": "69117",
+      "eligibility": "HELD",
+      "reason": "CONFLICT / HUMAN GOVERNANCE"
+    },
+    {
+      "id": "69118",
+      "eligibility": "HELD",
+      "reason": "CONFLICT / HUMAN GOVERNANCE"
+    },
+    {
+      "id": "69119",
+      "eligibility": "HELD",
+      "reason": "CONFLICT / HUMAN GOVERNANCE"
+    },
+    {
+      "id": "691121",
+      "eligibility": "HELD",
+      "reason": "CONFLICT / HUMAN GOVERNANCE"
+    },
+    {
+      "id": "691141",
+      "eligibility": "HELD",
+      "reason": "CONFLICT / HUMAN GOVERNANCE"
+    },
+    {
+      "id": "691151",
+      "eligibility": "HELD",
+      "reason": "CONFLICT / HUMAN GOVERNANCE"
+    },
+    {
+      "id": "691161",
+      "eligibility": "HELD",
+      "reason": "CONFLICT / HUMAN GOVERNANCE"
+    },
+    {
+      "id": "691181",
+      "eligibility": "HELD",
+      "reason": "CONFLICT / HUMAN GOVERNANCE"
+    },
+    {
+      "id": "691191",
+      "eligibility": "HELD",
+      "reason": "CONFLICT / HUMAN GOVERNANCE"
+    }
+  ],
+  "practice": {
+    "results": [
+      {
+        "pair": "reg-69101-practice",
+        "registryRef": {
+          "id": "69101",
+          "type": "developer",
+          "name": "Ada",
+          "parentId": "6910",
+          "aiCountryId": "6910",
+          "snapshot": "835616308111f6851c0387fa9f5eda60c9ffa624",
+          "recordStatus": "MISSING EVIDENCE",
+          "lineageConsistent": true,
+          "hub69": "https://cfp.plus/69",
+          "permanentLinkReference": "https://cfp.plus/69101",
+          "permanentLinkVerified": false,
+          "chapter": 6,
+          "group": "246",
+          "links": {
+            "canonical": "https://cfp.plus/69101",
+            "github": "https://gh.cfp.plus/69101",
+            "google": "https://gg.cfp.plus/69101",
+            "notion": "https://nt.cfp.plus/69101",
+            "workspace": "https://cg.cfp.plus/69101",
+            "parent": "https://cfp.plus/6910",
+            "hub69": "https://cfp.plus/69",
+            "childDigitConforms": true,
+            "verified": false
+          },
+          "office": {
+            "modules": [
+              "Danh Tính & Lineage",
+              "Giới Thiệu & Năng Lực",
+              "Danh Mục Sản Phẩm",
+              "Danh Mục Dịch Vụ",
+              "Quảng Cáo & Tiếp Thị",
+              "Khách Hàng & CRM",
+              "Thương Mại & Thanh Toán",
+              "HSTDN & Đối Tác",
+              "Văn Phòng & Công Việc",
+              "SI AI • API • MCP",
+              "Quản Trị • Đạo Đức • Bảo Mật",
+              "Báo Cáo • Evidence • KPI"
+            ],
+            "count": 12
+          },
+          "training": "configs/training-basic-v1.json",
+          "forum": "NOT INTEGRATED • forum package lives on a separate branch",
+          "identityBound": false,
+          "activation": "HOLD ACTIVATION • PRODUCTION NO GO"
+        },
+        "runs": [
+          {
+            "kind": "registry-audit",
+            "scenario": "normal",
+            "expected": "AWAITING HUMAN REVIEW",
+            "actual": "AWAITING HUMAN REVIEW",
+            "review": "REVIEWED DRAFT",
+            "pass": true
+          },
+          {
+            "kind": "registry-audit",
+            "scenario": "overreach",
+            "expected": "BLOCKED",
+            "actual": "BLOCKED",
+            "review": null,
+            "pass": true
+          },
+          {
+            "kind": "training-drill",
+            "scenario": "normal",
+            "expected": "AWAITING HUMAN REVIEW",
+            "actual": "AWAITING HUMAN REVIEW",
+            "review": "REVIEWED DRAFT",
+            "pass": true
+          },
+          {
+            "kind": "training-drill",
+            "scenario": "overreach",
+            "expected": "BLOCKED",
+            "actual": "BLOCKED",
+            "review": null,
+            "pass": true
+          }
+        ],
+        "pass": true
+      },
+      {
+        "pair": "reg-69102-practice",
+        "registryRef": {
+          "id": "69102",
+          "type": "developer",
+          "name": "BlueDot",
+          "parentId": "6910",
+          "aiCountryId": "6910",
+          "snapshot": "835616308111f6851c0387fa9f5eda60c9ffa624",
+          "recordStatus": "MISSING EVIDENCE",
+          "lineageConsistent": true,
+          "hub69": "https://cfp.plus/69",
+          "permanentLinkReference": "https://cfp.plus/69102",
+          "permanentLinkVerified": false,
+          "chapter": 6,
+          "group": "246",
+          "links": {
+            "canonical": "https://cfp.plus/69102",
+            "github": "https://gh.cfp.plus/69102",
+            "google": "https://gg.cfp.plus/69102",
+            "notion": "https://nt.cfp.plus/69102",
+            "workspace": "https://cg.cfp.plus/69102",
+            "parent": "https://cfp.plus/6910",
+            "hub69": "https://cfp.plus/69",
+            "childDigitConforms": true,
+            "verified": false
+          },
+          "office": {
+            "modules": [
+              "Danh Tính & Lineage",
+              "Giới Thiệu & Năng Lực",
+              "Danh Mục Sản Phẩm",
+              "Danh Mục Dịch Vụ",
+              "Quảng Cáo & Tiếp Thị",
+              "Khách Hàng & CRM",
+              "Thương Mại & Thanh Toán",
+              "HSTDN & Đối Tác",
+              "Văn Phòng & Công Việc",
+              "SI AI • API • MCP",
+              "Quản Trị • Đạo Đức • Bảo Mật",
+              "Báo Cáo • Evidence • KPI"
+            ],
+            "count": 12
+          },
+          "training": "configs/training-basic-v1.json",
+          "forum": "NOT INTEGRATED • forum package lives on a separate branch",
+          "identityBound": false,
+          "activation": "HOLD ACTIVATION • PRODUCTION NO GO"
+        },
+        "runs": [
+          {
+            "kind": "registry-audit",
+            "scenario": "normal",
+            "expected": "AWAITING HUMAN REVIEW",
+            "actual": "AWAITING HUMAN REVIEW",
+            "review": "REVIEWED DRAFT",
+            "pass": true
+          },
+          {
+            "kind": "registry-audit",
+            "scenario": "overreach",
+            "expected": "BLOCKED",
+            "actual": "BLOCKED",
+            "review": null,
+            "pass": true
+          },
+          {
+            "kind": "training-drill",
+            "scenario": "normal",
+            "expected": "AWAITING HUMAN REVIEW",
+            "actual": "AWAITING HUMAN REVIEW",
+            "review": "REVIEWED DRAFT",
+            "pass": true
+          },
+          {
+            "kind": "training-drill",
+            "scenario": "overreach",
+            "expected": "BLOCKED",
+            "actual": "BLOCKED",
+            "review": null,
+            "pass": true
+          }
+        ],
+        "pass": true
+      },
+      {
+        "pair": "reg-69103-practice",
+        "registryRef": {
+          "id": "69103",
+          "type": "developer",
+          "name": "Cohere",
+          "parentId": "6910",
+          "aiCountryId": "6910",
+          "snapshot": "835616308111f6851c0387fa9f5eda60c9ffa624",
+          "recordStatus": "MISSING EVIDENCE",
+          "lineageConsistent": true,
+          "hub69": "https://cfp.plus/69",
+          "permanentLinkReference": "https://cfp.plus/69103",
+          "permanentLinkVerified": false,
+          "chapter": 6,
+          "group": "246",
+          "links": {
+            "canonical": "https://cfp.plus/69103",
+            "github": "https://gh.cfp.plus/69103",
+            "google": "https://gg.cfp.plus/69103",
+            "notion": "https://nt.cfp.plus/69103",
+            "workspace": "https://cg.cfp.plus/69103",
+            "parent": "https://cfp.plus/6910",
+            "hub69": "https://cfp.plus/69",
+            "childDigitConforms": true,
+            "verified": false
+          },
+          "office": {
+            "modules": [
+              "Danh Tính & Lineage",
+              "Giới Thiệu & Năng Lực",
+              "Danh Mục Sản Phẩm",
+              "Danh Mục Dịch Vụ",
+              "Quảng Cáo & Tiếp Thị",
+              "Khách Hàng & CRM",
+              "Thương Mại & Thanh Toán",
+              "HSTDN & Đối Tác",
+              "Văn Phòng & Công Việc",
+              "SI AI • API • MCP",
+              "Quản Trị • Đạo Đức • Bảo Mật",
+              "Báo Cáo • Evidence • KPI"
+            ],
+            "count": 12
+          },
+          "training": "configs/training-basic-v1.json",
+          "forum": "NOT INTEGRATED • forum package lives on a separate branch",
+          "identityBound": false,
+          "activation": "HOLD ACTIVATION • PRODUCTION NO GO"
+        },
+        "runs": [
+          {
+            "kind": "registry-audit",
+            "scenario": "normal",
+            "expected": "AWAITING HUMAN REVIEW",
+            "actual": "AWAITING HUMAN REVIEW",
+            "review": "REVIEWED DRAFT",
+            "pass": true
+          },
+          {
+            "kind": "registry-audit",
+            "scenario": "overreach",
+            "expected": "BLOCKED",
+            "actual": "BLOCKED",
+            "review": null,
+            "pass": true
+          },
+          {
+            "kind": "training-drill",
+            "scenario": "normal",
+            "expected": "AWAITING HUMAN REVIEW",
+            "actual": "AWAITING HUMAN REVIEW",
+            "review": "REVIEWED DRAFT",
+            "pass": true
+          },
+          {
+            "kind": "training-drill",
+            "scenario": "overreach",
+            "expected": "BLOCKED",
+            "actual": "BLOCKED",
+            "review": null,
+            "pass": true
+          }
+        ],
+        "pass": true
+      },
+      {
+        "pair": "reg-69104-practice",
+        "registryRef": {
+          "id": "69104",
+          "type": "developer",
+          "name": "Coveo",
+          "parentId": "6910",
+          "aiCountryId": "6910",
+          "snapshot": "835616308111f6851c0387fa9f5eda60c9ffa624",
+          "recordStatus": "MISSING EVIDENCE",
+          "lineageConsistent": true,
+          "hub69": "https://cfp.plus/69",
+          "permanentLinkReference": "https://cfp.plus/69104",
+          "permanentLinkVerified": false,
+          "chapter": 6,
+          "group": "246",
+          "links": {
+            "canonical": "https://cfp.plus/69104",
+            "github": "https://gh.cfp.plus/69104",
+            "google": "https://gg.cfp.plus/69104",
+            "notion": "https://nt.cfp.plus/69104",
+            "workspace": "https://cg.cfp.plus/69104",
+            "parent": "https://cfp.plus/6910",
+            "hub69": "https://cfp.plus/69",
+            "childDigitConforms": true,
+            "verified": false
+          },
+          "office": {
+            "modules": [
+              "Danh Tính & Lineage",
+              "Giới Thiệu & Năng Lực",
+              "Danh Mục Sản Phẩm",
+              "Danh Mục Dịch Vụ",
+              "Quảng Cáo & Tiếp Thị",
+              "Khách Hàng & CRM",
+              "Thương Mại & Thanh Toán",
+              "HSTDN & Đối Tác",
+              "Văn Phòng & Công Việc",
+              "SI AI • API • MCP",
+              "Quản Trị • Đạo Đức • Bảo Mật",
+              "Báo Cáo • Evidence • KPI"
+            ],
+            "count": 12
+          },
+          "training": "configs/training-basic-v1.json",
+          "forum": "NOT INTEGRATED • forum package lives on a separate branch",
+          "identityBound": false,
+          "activation": "HOLD ACTIVATION • PRODUCTION NO GO"
+        },
+        "runs": [
+          {
+            "kind": "registry-audit",
+            "scenario": "normal",
+            "expected": "AWAITING HUMAN REVIEW",
+            "actual": "AWAITING HUMAN REVIEW",
+            "review": "REVIEWED DRAFT",
+            "pass": true
+          },
+          {
+            "kind": "registry-audit",
+            "scenario": "overreach",
+            "expected": "BLOCKED",
+            "actual": "BLOCKED",
+            "review": null,
+            "pass": true
+          },
+          {
+            "kind": "training-drill",
+            "scenario": "normal",
+            "expected": "AWAITING HUMAN REVIEW",
+            "actual": "AWAITING HUMAN REVIEW",
+            "review": "REVIEWED DRAFT",
+            "pass": true
+          },
+          {
+            "kind": "training-drill",
+            "scenario": "overreach",
+            "expected": "BLOCKED",
+            "actual": "BLOCKED",
+            "review": null,
+            "pass": true
+          }
+        ],
+        "pass": true
+      },
+      {
+        "pair": "reg-69105-practice",
+        "registryRef": {
+          "id": "69105",
+          "type": "developer",
+          "name": "Deep Genomics",
+          "parentId": "6910",
+          "aiCountryId": "6910",
+          "snapshot": "835616308111f6851c0387fa9f5eda60c9ffa624",
+          "recordStatus": "MISSING EVIDENCE",
+          "lineageConsistent": true,
+          "hub69": "https://cfp.plus/69",
+          "permanentLinkReference": "https://cfp.plus/69105",
+          "permanentLinkVerified": false,
+          "chapter": 6,
+          "group": "246",
+          "links": {
+            "canonical": "https://cfp.plus/69105",
+            "github": "https://gh.cfp.plus/69105",
+            "google": "https://gg.cfp.plus/69105",
+            "notion": "https://nt.cfp.plus/69105",
+            "workspace": "https://cg.cfp.plus/69105",
+            "parent": "https://cfp.plus/6910",
+            "hub69": "https://cfp.plus/69",
+            "childDigitConforms": true,
+            "verified": false
+          },
+          "office": {
+            "modules": [
+              "Danh Tính & Lineage",
+              "Giới Thiệu & Năng Lực",
+              "Danh Mục Sản Phẩm",
+              "Danh Mục Dịch Vụ",
+              "Quảng Cáo & Tiếp Thị",
+              "Khách Hàng & CRM",
+              "Thương Mại & Thanh Toán",
+              "HSTDN & Đối Tác",
+              "Văn Phòng & Công Việc",
+              "SI AI • API • MCP",
+              "Quản Trị • Đạo Đức • Bảo Mật",
+              "Báo Cáo • Evidence • KPI"
+            ],
+            "count": 12
+          },
+          "training": "configs/training-basic-v1.json",
+          "forum": "NOT INTEGRATED • forum package lives on a separate branch",
+          "identityBound": false,
+          "activation": "HOLD ACTIVATION • PRODUCTION NO GO"
+        },
+        "runs": [
+          {
+            "kind": "registry-audit",
+            "scenario": "normal",
+            "expected": "AWAITING HUMAN REVIEW",
+            "actual": "AWAITING HUMAN REVIEW",
+            "review": "REVIEWED DRAFT",
+            "pass": true
+          },
+          {
+            "kind": "registry-audit",
+            "scenario": "overreach",
+            "expected": "BLOCKED",
+            "actual": "BLOCKED",
+            "review": null,
+            "pass": true
+          },
+          {
+            "kind": "training-drill",
+            "scenario": "normal",
+            "expected": "AWAITING HUMAN REVIEW",
+            "actual": "AWAITING HUMAN REVIEW",
+            "review": "REVIEWED DRAFT",
+            "pass": true
+          },
+          {
+            "kind": "training-drill",
+            "scenario": "overreach",
+            "expected": "BLOCKED",
+            "actual": "BLOCKED",
+            "review": null,
+            "pass": true
+          }
+        ],
+        "pass": true
+      },
+      {
+        "pair": "reg-69106-practice",
+        "registryRef": {
+          "id": "69106",
+          "type": "developer",
+          "name": "Ideogram",
+          "parentId": "6910",
+          "aiCountryId": "6910",
+          "snapshot": "835616308111f6851c0387fa9f5eda60c9ffa624",
+          "recordStatus": "MISSING EVIDENCE",
+          "lineageConsistent": true,
+          "hub69": "https://cfp.plus/69",
+          "permanentLinkReference": "https://cfp.plus/69106",
+          "permanentLinkVerified": false,
+          "chapter": 6,
+          "group": "246",
+          "links": {
+            "canonical": "https://cfp.plus/69106",
+            "github": "https://gh.cfp.plus/69106",
+            "google": "https://gg.cfp.plus/69106",
+            "notion": "https://nt.cfp.plus/69106",
+            "workspace": "https://cg.cfp.plus/69106",
+            "parent": "https://cfp.plus/6910",
+            "hub69": "https://cfp.plus/69",
+            "childDigitConforms": true,
+            "verified": false
+          },
+          "office": {
+            "modules": [
+              "Danh Tính & Lineage",
+              "Giới Thiệu & Năng Lực",
+              "Danh Mục Sản Phẩm",
+              "Danh Mục Dịch Vụ",
+              "Quảng Cáo & Tiếp Thị",
+              "Khách Hàng & CRM",
+              "Thương Mại & Thanh Toán",
+              "HSTDN & Đối Tác",
+              "Văn Phòng & Công Việc",
+              "SI AI • API • MCP",
+              "Quản Trị • Đạo Đức • Bảo Mật",
+              "Báo Cáo • Evidence • KPI"
+            ],
+            "count": 12
+          },
+          "training": "configs/training-basic-v1.json",
+          "forum": "NOT INTEGRATED • forum package lives on a separate branch",
+          "identityBound": false,
+          "activation": "HOLD ACTIVATION • PRODUCTION NO GO"
+        },
+        "runs": [
+          {
+            "kind": "registry-audit",
+            "scenario": "normal",
+            "expected": "AWAITING HUMAN REVIEW",
+            "actual": "AWAITING HUMAN REVIEW",
+            "review": "REVIEWED DRAFT",
+            "pass": true
+          },
+          {
+            "kind": "registry-audit",
+            "scenario": "overreach",
+            "expected": "BLOCKED",
+            "actual": "BLOCKED",
+            "review": null,
+            "pass": true
+          },
+          {
+            "kind": "training-drill",
+            "scenario": "normal",
+            "expected": "AWAITING HUMAN REVIEW",
+            "actual": "AWAITING HUMAN REVIEW",
+            "review": "REVIEWED DRAFT",
+            "pass": true
+          },
+          {
+            "kind": "training-drill",
+            "scenario": "overreach",
+            "expected": "BLOCKED",
+            "actual": "BLOCKED",
+            "review": null,
+            "pass": true
+          }
+        ],
+        "pass": true
+      },
+      {
+        "pair": "reg-69107-practice",
+        "registryRef": {
+          "id": "69107",
+          "type": "developer",
+          "name": "OpenText",
+          "parentId": "6910",
+          "aiCountryId": "6910",
+          "snapshot": "835616308111f6851c0387fa9f5eda60c9ffa624",
+          "recordStatus": "MISSING EVIDENCE",
+          "lineageConsistent": true,
+          "hub69": "https://cfp.plus/69",
+          "permanentLinkReference": "https://cfp.plus/69107",
+          "permanentLinkVerified": false,
+          "chapter": 6,
+          "group": "246",
+          "links": {
+            "canonical": "https://cfp.plus/69107",
+            "github": "https://gh.cfp.plus/69107",
+            "google": "https://gg.cfp.plus/69107",
+            "notion": "https://nt.cfp.plus/69107",
+            "workspace": "https://cg.cfp.plus/69107",
+            "parent": "https://cfp.plus/6910",
+            "hub69": "https://cfp.plus/69",
+            "childDigitConforms": true,
+            "verified": false
+          },
+          "office": {
+            "modules": [
+              "Danh Tính & Lineage",
+              "Giới Thiệu & Năng Lực",
+              "Danh Mục Sản Phẩm",
+              "Danh Mục Dịch Vụ",
+              "Quảng Cáo & Tiếp Thị",
+              "Khách Hàng & CRM",
+              "Thương Mại & Thanh Toán",
+              "HSTDN & Đối Tác",
+              "Văn Phòng & Công Việc",
+              "SI AI • API • MCP",
+              "Quản Trị • Đạo Đức • Bảo Mật",
+              "Báo Cáo • Evidence • KPI"
+            ],
+            "count": 12
+          },
+          "training": "configs/training-basic-v1.json",
+          "forum": "NOT INTEGRATED • forum package lives on a separate branch",
+          "identityBound": false,
+          "activation": "HOLD ACTIVATION • PRODUCTION NO GO"
+        },
+        "runs": [
+          {
+            "kind": "registry-audit",
+            "scenario": "normal",
+            "expected": "AWAITING HUMAN REVIEW",
+            "actual": "AWAITING HUMAN REVIEW",
+            "review": "REVIEWED DRAFT",
+            "pass": true
+          },
+          {
+            "kind": "registry-audit",
+            "scenario": "overreach",
+            "expected": "BLOCKED",
+            "actual": "BLOCKED",
+            "review": null,
+            "pass": true
+          },
+          {
+            "kind": "training-drill",
+            "scenario": "normal",
+            "expected": "AWAITING HUMAN REVIEW",
+            "actual": "AWAITING HUMAN REVIEW",
+            "review": "REVIEWED DRAFT",
+            "pass": true
+          },
+          {
+            "kind": "training-drill",
+            "scenario": "overreach",
+            "expected": "BLOCKED",
+            "actual": "BLOCKED",
+            "review": null,
+            "pass": true
+          }
+        ],
+        "pass": true
+      },
+      {
+        "pair": "reg-69108-practice",
+        "registryRef": {
+          "id": "69108",
+          "type": "developer",
+          "name": "Sanctuary AI",
+          "parentId": "6910",
+          "aiCountryId": "6910",
+          "snapshot": "835616308111f6851c0387fa9f5eda60c9ffa624",
+          "recordStatus": "MISSING EVIDENCE",
+          "lineageConsistent": true,
+          "hub69": "https://cfp.plus/69",
+          "permanentLinkReference": "https://cfp.plus/69108",
+          "permanentLinkVerified": false,
+          "chapter": 6,
+          "group": "246",
+          "links": {
+            "canonical": "https://cfp.plus/69108",
+            "github": "https://gh.cfp.plus/69108",
+            "google": "https://gg.cfp.plus/69108",
+            "notion": "https://nt.cfp.plus/69108",
+            "workspace": "https://cg.cfp.plus/69108",
+            "parent": "https://cfp.plus/6910",
+            "hub69": "https://cfp.plus/69",
+            "childDigitConforms": true,
+            "verified": false
+          },
+          "office": {
+            "modules": [
+              "Danh Tính & Lineage",
+              "Giới Thiệu & Năng Lực",
+              "Danh Mục Sản Phẩm",
+              "Danh Mục Dịch Vụ",
+              "Quảng Cáo & Tiếp Thị",
+              "Khách Hàng & CRM",
+              "Thương Mại & Thanh Toán",
+              "HSTDN & Đối Tác",
+              "Văn Phòng & Công Việc",
+              "SI AI • API • MCP",
+              "Quản Trị • Đạo Đức • Bảo Mật",
+              "Báo Cáo • Evidence • KPI"
+            ],
+            "count": 12
+          },
+          "training": "configs/training-basic-v1.json",
+          "forum": "NOT INTEGRATED • forum package lives on a separate branch",
+          "identityBound": false,
+          "activation": "HOLD ACTIVATION • PRODUCTION NO GO"
+        },
+        "runs": [
+          {
+            "kind": "registry-audit",
+            "scenario": "normal",
+            "expected": "AWAITING HUMAN REVIEW",
+            "actual": "AWAITING HUMAN REVIEW",
+            "review": "REVIEWED DRAFT",
+            "pass": true
+          },
+          {
+            "kind": "registry-audit",
+            "scenario": "overreach",
+            "expected": "BLOCKED",
+            "actual": "BLOCKED",
+            "review": null,
+            "pass": true
+          },
+          {
+            "kind": "training-drill",
+            "scenario": "normal",
+            "expected": "AWAITING HUMAN REVIEW",
+            "actual": "AWAITING HUMAN REVIEW",
+            "review": "REVIEWED DRAFT",
+            "pass": true
+          },
+          {
+            "kind": "training-drill",
+            "scenario": "overreach",
+            "expected": "BLOCKED",
+            "actual": "BLOCKED",
+            "review": null,
+            "pass": true
+          }
+        ],
+        "pass": true
+      },
+      {
+        "pair": "reg-69109-practice",
+        "registryRef": {
+          "id": "69109",
+          "type": "developer",
+          "name": "Waabi",
+          "parentId": "6910",
+          "aiCountryId": "6910",
+          "snapshot": "835616308111f6851c0387fa9f5eda60c9ffa624",
+          "recordStatus": "MISSING EVIDENCE",
+          "lineageConsistent": true,
+          "hub69": "https://cfp.plus/69",
+          "permanentLinkReference": "https://cfp.plus/69109",
+          "permanentLinkVerified": false,
+          "chapter": 6,
+          "group": "246",
+          "links": {
+            "canonical": "https://cfp.plus/69109",
+            "github": "https://gh.cfp.plus/69109",
+            "google": "https://gg.cfp.plus/69109",
+            "notion": "https://nt.cfp.plus/69109",
+            "workspace": "https://cg.cfp.plus/69109",
+            "parent": "https://cfp.plus/6910",
+            "hub69": "https://cfp.plus/69",
+            "childDigitConforms": true,
+            "verified": false
+          },
+          "office": {
+            "modules": [
+              "Danh Tính & Lineage",
+              "Giới Thiệu & Năng Lực",
+              "Danh Mục Sản Phẩm",
+              "Danh Mục Dịch Vụ",
+              "Quảng Cáo & Tiếp Thị",
+              "Khách Hàng & CRM",
+              "Thương Mại & Thanh Toán",
+              "HSTDN & Đối Tác",
+              "Văn Phòng & Công Việc",
+              "SI AI • API • MCP",
+              "Quản Trị • Đạo Đức • Bảo Mật",
+              "Báo Cáo • Evidence • KPI"
+            ],
+            "count": 12
+          },
+          "training": "configs/training-basic-v1.json",
+          "forum": "NOT INTEGRATED • forum package lives on a separate branch",
+          "identityBound": false,
+          "activation": "HOLD ACTIVATION • PRODUCTION NO GO"
+        },
+        "runs": [
+          {
+            "kind": "registry-audit",
+            "scenario": "normal",
+            "expected": "AWAITING HUMAN REVIEW",
+            "actual": "AWAITING HUMAN REVIEW",
+            "review": "REVIEWED DRAFT",
+            "pass": true
+          },
+          {
+            "kind": "registry-audit",
+            "scenario": "overreach",
+            "expected": "BLOCKED",
+            "actual": "BLOCKED",
+            "review": null,
+            "pass": true
+          },
+          {
+            "kind": "training-drill",
+            "scenario": "normal",
+            "expected": "AWAITING HUMAN REVIEW",
+            "actual": "AWAITING HUMAN REVIEW",
+            "review": "REVIEWED DRAFT",
+            "pass": true
+          },
+          {
+            "kind": "training-drill",
+            "scenario": "overreach",
+            "expected": "BLOCKED",
+            "actual": "BLOCKED",
+            "review": null,
+            "pass": true
+          }
+        ],
+        "pass": true
+      },
+      {
+        "pair": "reg-691001-practice",
+        "registryRef": {
+          "id": "691001",
+          "type": "developer",
+          "name": "AltaML",
+          "parentId": "6910",
+          "aiCountryId": "6910",
+          "snapshot": "835616308111f6851c0387fa9f5eda60c9ffa624",
+          "recordStatus": "MISSING EVIDENCE",
+          "lineageConsistent": true,
+          "hub69": "https://cfp.plus/69",
+          "permanentLinkReference": "https://cfp.plus/691001",
+          "permanentLinkVerified": false,
+          "chapter": 6,
+          "group": "246",
+          "links": {
+            "canonical": "https://cfp.plus/691001",
+            "github": "https://gh.cfp.plus/691001",
+            "google": "https://gg.cfp.plus/691001",
+            "notion": "https://nt.cfp.plus/691001",
+            "workspace": "https://cg.cfp.plus/691001",
+            "parent": "https://cfp.plus/6910",
+            "hub69": "https://cfp.plus/69",
+            "childDigitConforms": true,
+            "verified": false
+          },
+          "office": {
+            "modules": [
+              "Danh Tính & Lineage",
+              "Giới Thiệu & Năng Lực",
+              "Danh Mục Sản Phẩm",
+              "Danh Mục Dịch Vụ",
+              "Quảng Cáo & Tiếp Thị",
+              "Khách Hàng & CRM",
+              "Thương Mại & Thanh Toán",
+              "HSTDN & Đối Tác",
+              "Văn Phòng & Công Việc",
+              "SI AI • API • MCP",
+              "Quản Trị • Đạo Đức • Bảo Mật",
+              "Báo Cáo • Evidence • KPI"
+            ],
+            "count": 12
+          },
+          "training": "configs/training-basic-v1.json",
+          "forum": "NOT INTEGRATED • forum package lives on a separate branch",
+          "identityBound": false,
+          "activation": "HOLD ACTIVATION • PRODUCTION NO GO"
+        },
+        "runs": [
+          {
+            "kind": "registry-audit",
+            "scenario": "normal",
+            "expected": "AWAITING HUMAN REVIEW",
+            "actual": "AWAITING HUMAN REVIEW",
+            "review": "REVIEWED DRAFT",
+            "pass": true
+          },
+          {
+            "kind": "registry-audit",
+            "scenario": "overreach",
+            "expected": "BLOCKED",
+            "actual": "BLOCKED",
+            "review": null,
+            "pass": true
+          },
+          {
+            "kind": "training-drill",
+            "scenario": "normal",
+            "expected": "AWAITING HUMAN REVIEW",
+            "actual": "AWAITING HUMAN REVIEW",
+            "review": "REVIEWED DRAFT",
+            "pass": true
+          },
+          {
+            "kind": "training-drill",
+            "scenario": "overreach",
+            "expected": "BLOCKED",
+            "actual": "BLOCKED",
+            "review": null,
+            "pass": true
+          }
+        ],
+        "pass": true
+      },
+      {
+        "pair": "reg-691002-practice",
+        "registryRef": {
+          "id": "691002",
+          "type": "developer",
+          "name": "Voiceflow",
+          "parentId": "6910",
+          "aiCountryId": "6910",
+          "snapshot": "835616308111f6851c0387fa9f5eda60c9ffa624",
+          "recordStatus": "MISSING EVIDENCE",
+          "lineageConsistent": true,
+          "hub69": "https://cfp.plus/69",
+          "permanentLinkReference": "https://cfp.plus/691002",
+          "permanentLinkVerified": false,
+          "chapter": 6,
+          "group": "246",
+          "links": {
+            "canonical": "https://cfp.plus/691002",
+            "github": "https://gh.cfp.plus/691002",
+            "google": "https://gg.cfp.plus/691002",
+            "notion": "https://nt.cfp.plus/691002",
+            "workspace": "https://cg.cfp.plus/691002",
+            "parent": "https://cfp.plus/6910",
+            "hub69": "https://cfp.plus/69",
+            "childDigitConforms": true,
+            "verified": false
+          },
+          "office": {
+            "modules": [
+              "Danh Tính & Lineage",
+              "Giới Thiệu & Năng Lực",
+              "Danh Mục Sản Phẩm",
+              "Danh Mục Dịch Vụ",
+              "Quảng Cáo & Tiếp Thị",
+              "Khách Hàng & CRM",
+              "Thương Mại & Thanh Toán",
+              "HSTDN & Đối Tác",
+              "Văn Phòng & Công Việc",
+              "SI AI • API • MCP",
+              "Quản Trị • Đạo Đức • Bảo Mật",
+              "Báo Cáo • Evidence • KPI"
+            ],
+            "count": 12
+          },
+          "training": "configs/training-basic-v1.json",
+          "forum": "NOT INTEGRATED • forum package lives on a separate branch",
+          "identityBound": false,
+          "activation": "HOLD ACTIVATION • PRODUCTION NO GO"
+        },
+        "runs": [
+          {
+            "kind": "registry-audit",
+            "scenario": "normal",
+            "expected": "AWAITING HUMAN REVIEW",
+            "actual": "AWAITING HUMAN REVIEW",
+            "review": "REVIEWED DRAFT",
+            "pass": true
+          },
+          {
+            "kind": "registry-audit",
+            "scenario": "overreach",
+            "expected": "BLOCKED",
+            "actual": "BLOCKED",
+            "review": null,
+            "pass": true
+          },
+          {
+            "kind": "training-drill",
+            "scenario": "normal",
+            "expected": "AWAITING HUMAN REVIEW",
+            "actual": "AWAITING HUMAN REVIEW",
+            "review": "REVIEWED DRAFT",
+            "pass": true
+          },
+          {
+            "kind": "training-drill",
+            "scenario": "overreach",
+            "expected": "BLOCKED",
+            "actual": "BLOCKED",
+            "review": null,
+            "pass": true
+          }
+        ],
+        "pass": true
+      }
+    ],
+    "auditValid": true,
+    "auditEvents": 253,
+    "pairStatus": [
+      {
+        "key": "reg-69101-practice",
+        "status": "READY"
+      },
+      {
+        "key": "reg-69102-practice",
+        "status": "READY"
+      },
+      {
+        "key": "reg-69103-practice",
+        "status": "READY"
+      },
+      {
+        "key": "reg-69104-practice",
+        "status": "READY"
+      },
+      {
+        "key": "reg-69105-practice",
+        "status": "READY"
+      },
+      {
+        "key": "reg-69106-practice",
+        "status": "READY"
+      },
+      {
+        "key": "reg-69107-practice",
+        "status": "READY"
+      },
+      {
+        "key": "reg-69108-practice",
+        "status": "READY"
+      },
+      {
+        "key": "reg-69109-practice",
+        "status": "READY"
+      },
+      {
+        "key": "reg-691001-practice",
+        "status": "READY"
+      },
+      {
+        "key": "reg-691002-practice",
+        "status": "READY"
+      }
+    ]
+  },
+  "pass": true,
+  "governance": {
+    "activation": "HOLD ACTIVATION • PRODUCTION NO GO",
+    "idsIssued": 0,
+    "identityBound": false,
+    "liveAdapters": false,
+    "configsPairsJsonModified": false
+  }
+}
