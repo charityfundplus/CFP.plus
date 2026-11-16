@@ -13,7 +13,7 @@ Hoặc `npm run superpair:install`. Yêu cầu Node.js ≥ 22 (có `node:sqlite`
 | Bước | Script | Dừng nếu FAIL |
 |---|---|---|
 | 1. Kiểm tra môi trường (chỉ đọc) | `scripts/env-doctor.mjs` | Node ≥ 22, `node:sqlite`, thư mục tạm, cổng 4173 |
-| 2. Toàn bộ bộ test | 6 bộ: core 40, P2 10, P2 HTTP 5, Review Round 1 5, Training 2, Siêu Bộ Đôi 9 | có |
+| 2. Toàn bộ bộ test | 6 bộ: core 40, P2 10, P2 HTTP 5, Review Round 1 5, Training 2, Diễn Đàn foundation 1, Diễn Đàn QA 8, Siêu Bộ Đôi 9 | có |
 | 3. Siêu Bộ Đôi mẫu | `superpair-init.mjs --sample <ID>` | có |
 | 4. Khởi tạo hàng loạt | `superpair-init.mjs --batch` | có |
 | 5. Evidence | `install-report.json` + `.sha256` cho từng file | — |
@@ -28,7 +28,7 @@ Hoặc `npm run superpair:install`. Yêu cầu Node.js ≥ 22 (có `node:sqlite`
 
 ## Chưa tích hợp
 
-Diễn Đàn (nằm ở nhánh riêng), xác minh Permanent Link thật, danh tính thật, kích hoạt SI AI bên ngoài — đều cần Human Governance.
+Dịch vụ Diễn Đàn Python/PostgreSQL (`services/forum`, nhánh `claude/forum-schema-location-guard`) — installer chỉ báo READY/BLOCKED, không chạy. Xác minh Permanent Link thật, danh tính thật, kích hoạt SI AI bên ngoài — đều cần Human Governance.
 
 ## Chương / Nhóm / Link Mẫu
 

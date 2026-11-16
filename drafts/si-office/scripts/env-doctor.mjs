@@ -32,6 +32,7 @@ export async function diagnose({port=4173}={}){
   {name:'git',ok:git.found,detail:git.version||'missing'},
   {name:'git core.autocrlf',ok:autocrlf!=='true',detail:autocrlf==='true'?'true: CRLF checkout breaks byte-exact website tests; use PYTHONUTF8=1 and LF checkout for parity with CI':autocrlf},
   {name:'python',ok:python.found,detail:python.version||'missing: website/CTTTC Python tests unavailable'},
+  {name:'postgresql (forum service)',ok:probe('psql').found,detail:probe('psql').version||'missing: Python/PostgreSQL forum service cannot run locally'},
   {name:'docker',ok:probe('docker').found,detail:probe('docker').version||'missing: nginx container gate runs only on CI'},
   {name:'chromium/edge',ok:!!browser,detail:browser||'missing: browser QA unavailable (set CHROMIUM_PATH)'}
  ];

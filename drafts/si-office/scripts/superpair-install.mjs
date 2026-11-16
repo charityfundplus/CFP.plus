@@ -12,7 +12,7 @@ import {diagnose} from './env-doctor.mjs';
 import {run} from './superpair-init.mjs';
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
-const SUITES=['scripts/run-tests.mjs','tests/p2.test.mjs','tests/p2-http.test.mjs','tests/review-round1.test.mjs','tests/training-basic-v1.test.mjs','tests/superpair-factory.test.mjs'];
+const SUITES=['scripts/run-tests.mjs','tests/p2.test.mjs','tests/p2-http.test.mjs','tests/review-round1.test.mjs','tests/training-basic-v1.test.mjs','tests/forum-foundation-loopback.test.mjs','tests/forum-independent-qa.test.mjs','tests/superpair-factory.test.mjs'];
 const sha=s=>createHash('sha256').update(s).digest('hex');
 
 function suite(file){
@@ -33,6 +33,10 @@ report.environment=env;
 if(ok){const suites=SUITES.map(suite);report.suites=suites;ok=gate('test-suites',suites.every(s=>s.ok),suites.map(s=>`${s.suite} ${s.pass}/${s.tests}`));}
 if(ok){const s=await run(['--sample',sampleId,'--out',out]);ok=gate(`sample-pair-${sampleId}`,s.evidence.pass,{file:s.file,held:s.evidence.held});}
 if(ok){const b=await run(['--batch','--out',out]);ok=gate('batch-pairs',b.evidence.pass,{file:b.file,built:b.evidence.built,held:b.evidence.held.length});}
+// Forum service (Python/PostgreSQL) is advisory: reported, never silently passed.
+const pyOk=env.optional.find(c=>c.name==='python')?.ok,pgOk=env.optional.find(c=>c.name.startsWith('postgresql'))?.ok;
+report.forumService={status:pyOk&&pgOk?'READY TO RUN (not executed by installer)':'BLOCKED',needs:[!pyOk&&'python',!pgOk&&'postgresql'].filter(Boolean),source:'origin/claude/forum-schema-location-guard:services/forum'};
+console.log(`INFO  forum-service: ${report.forumService.status}${report.forumService.needs.length?' (missing '+report.forumService.needs.join(', ')+')':''}`);
 report.pass=ok&&report.gates.every(g=>g.ok);
 report.governance='SANDBOX PRACTICE GO • HOLD ACTIVATION • PRODUCTION NO GO';
 const body=JSON.stringify(report,null,2);writeFileSync(join(out,'install-report.json'),body);writeFileSync(join(out,'install-report.json.sha256'),sha(body)+'  install-report.json\n');

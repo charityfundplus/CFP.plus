@@ -63,7 +63,7 @@ export function buildPairConfig(id){
   ...chapterOf(r.id),links:linkTemplate(r.id,r.parent_id??r.ai_country_id),
   office:{modules:clone(OFFICE_MODULES),count:OFFICE_MODULES.length},
   training:'configs/training-basic-v1.json',
-  forum:'NOT INTEGRATED • forum package lives on a separate branch',
+  forum:{foundation:'P2 HTTP loopback intake (tests/forum-foundation-loopback, forum-independent-qa)',service:'services/forum (Python/PostgreSQL) • origin/claude/forum-schema-location-guard • not bundled',status:'SANDBOX FOUNDATION ONLY'},
   identityBound:false,activation:ACTIVATION
  };
  return {config,registryRef};

@@ -1,7 +1,7 @@
 {
   "tool": "cfp-superpair-init",
   "mode": "batch",
-  "time": "2026-11-16T08:27:22.006Z",
+  "time": "2026-11-16T08:34:57.837Z",
   "node": "v22.20.0",
   "platform": "win32",
   "snapshot": "835616308111f6851c0387fa9f5eda60c9ffa624",
@@ -130,7 +130,11 @@
             "count": 12
           },
           "training": "configs/training-basic-v1.json",
-          "forum": "NOT INTEGRATED • forum package lives on a separate branch",
+          "forum": {
+            "foundation": "P2 HTTP loopback intake (tests/forum-foundation-loopback, forum-independent-qa)",
+            "service": "services/forum (Python/PostgreSQL) • origin/claude/forum-schema-location-guard • not bundled",
+            "status": "SANDBOX FOUNDATION ONLY"
+          },
           "identityBound": false,
           "activation": "HOLD ACTIVATION • PRODUCTION NO GO"
         },
@@ -215,7 +219,11 @@
             "count": 12
           },
           "training": "configs/training-basic-v1.json",
-          "forum": "NOT INTEGRATED • forum package lives on a separate branch",
+          "forum": {
+            "foundation": "P2 HTTP loopback intake (tests/forum-foundation-loopback, forum-independent-qa)",
+            "service": "services/forum (Python/PostgreSQL) • origin/claude/forum-schema-location-guard • not bundled",
+            "status": "SANDBOX FOUNDATION ONLY"
+          },
           "identityBound": false,
           "activation": "HOLD ACTIVATION • PRODUCTION NO GO"
         },
@@ -300,7 +308,11 @@
             "count": 12
           },
           "training": "configs/training-basic-v1.json",
-          "forum": "NOT INTEGRATED • forum package lives on a separate branch",
+          "forum": {
+            "foundation": "P2 HTTP loopback intake (tests/forum-foundation-loopback, forum-independent-qa)",
+            "service": "services/forum (Python/PostgreSQL) • origin/claude/forum-schema-location-guard • not bundled",
+            "status": "SANDBOX FOUNDATION ONLY"
+          },
           "identityBound": false,
           "activation": "HOLD ACTIVATION • PRODUCTION NO GO"
         },
@@ -385,7 +397,11 @@
             "count": 12
           },
           "training": "configs/training-basic-v1.json",
-          "forum": "NOT INTEGRATED • forum package lives on a separate branch",
+          "forum": {
+            "foundation": "P2 HTTP loopback intake (tests/forum-foundation-loopback, forum-independent-qa)",
+            "service": "services/forum (Python/PostgreSQL) • origin/claude/forum-schema-location-guard • not bundled",
+            "status": "SANDBOX FOUNDATION ONLY"
+          },
           "identityBound": false,
           "activation": "HOLD ACTIVATION • PRODUCTION NO GO"
         },
@@ -470,7 +486,11 @@
             "count": 12
           },
           "training": "configs/training-basic-v1.json",
-          "forum": "NOT INTEGRATED • forum package lives on a separate branch",
+          "forum": {
+            "foundation": "P2 HTTP loopback intake (tests/forum-foundation-loopback, forum-independent-qa)",
+            "service": "services/forum (Python/PostgreSQL) • origin/claude/forum-schema-location-guard • not bundled",
+            "status": "SANDBOX FOUNDATION ONLY"
+          },
           "identityBound": false,
           "activation": "HOLD ACTIVATION • PRODUCTION NO GO"
         },
@@ -555,7 +575,11 @@
             "count": 12
           },
           "training": "configs/training-basic-v1.json",
-          "forum": "NOT INTEGRATED • forum package lives on a separate branch",
+          "forum": {
+            "foundation": "P2 HTTP loopback intake (tests/forum-foundation-loopback, forum-independent-qa)",
+            "service": "services/forum (Python/PostgreSQL) • origin/claude/forum-schema-location-guard • not bundled",
+            "status": "SANDBOX FOUNDATION ONLY"
+          },
           "identityBound": false,
           "activation": "HOLD ACTIVATION • PRODUCTION NO GO"
         },
@@ -640,7 +664,11 @@
             "count": 12
           },
           "training": "configs/training-basic-v1.json",
-          "forum": "NOT INTEGRATED • forum package lives on a separate branch",
+          "forum": {
+            "foundation": "P2 HTTP loopback intake (tests/forum-foundation-loopback, forum-independent-qa)",
+            "service": "services/forum (Python/PostgreSQL) • origin/claude/forum-schema-location-guard • not bundled",
+            "status": "SANDBOX FOUNDATION ONLY"
+          },
           "identityBound": false,
           "activation": "HOLD ACTIVATION • PRODUCTION NO GO"
         },
@@ -725,7 +753,11 @@
             "count": 12
           },
           "training": "configs/training-basic-v1.json",
-          "forum": "NOT INTEGRATED • forum package lives on a separate branch",
+          "forum": {
+            "foundation": "P2 HTTP loopback intake (tests/forum-foundation-loopback, forum-independent-qa)",
+            "service": "services/forum (Python/PostgreSQL) • origin/claude/forum-schema-location-guard • not bundled",
+            "status": "SANDBOX FOUNDATION ONLY"
+          },
           "identityBound": false,
           "activation": "HOLD ACTIVATION • PRODUCTION NO GO"
         },
@@ -810,7 +842,11 @@
             "count": 12
           },
           "training": "configs/training-basic-v1.json",
-          "forum": "NOT INTEGRATED • forum package lives on a separate branch",
+          "forum": {
+            "foundation": "P2 HTTP loopback intake (tests/forum-foundation-loopback, forum-independent-qa)",
+            "service": "services/forum (Python/PostgreSQL) • origin/claude/forum-schema-location-guard • not bundled",
+            "status": "SANDBOX FOUNDATION ONLY"
+          },
           "identityBound": false,
           "activation": "HOLD ACTIVATION • PRODUCTION NO GO"
         },
@@ -895,7 +931,11 @@
             "count": 12
           },
           "training": "configs/training-basic-v1.json",
-          "forum": "NOT INTEGRATED • forum package lives on a separate branch",
+          "forum": {
+            "foundation": "P2 HTTP loopback intake (tests/forum-foundation-loopback, forum-independent-qa)",
+            "service": "services/forum (Python/PostgreSQL) • origin/claude/forum-schema-location-guard • not bundled",
+            "status": "SANDBOX FOUNDATION ONLY"
+          },
           "identityBound": false,
           "activation": "HOLD ACTIVATION • PRODUCTION NO GO"
         },
@@ -980,7 +1020,11 @@
             "count": 12
           },
           "training": "configs/training-basic-v1.json",
-          "forum": "NOT INTEGRATED • forum package lives on a separate branch",
+          "forum": {
+            "foundation": "P2 HTTP loopback intake (tests/forum-foundation-loopback, forum-independent-qa)",
+            "service": "services/forum (Python/PostgreSQL) • origin/claude/forum-schema-location-guard • not bundled",
+            "status": "SANDBOX FOUNDATION ONLY"
+          },
           "identityBound": false,
           "activation": "HOLD ACTIVATION • PRODUCTION NO GO"
         },

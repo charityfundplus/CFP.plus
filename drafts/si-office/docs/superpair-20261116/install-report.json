@@ -1,6 +1,6 @@
 {
   "tool": "cfp-superpair-install",
-  "time": "2026-11-16T08:27:05.139Z",
+  "time": "2026-11-16T08:34:31.888Z",
   "out": "C:\\Users\\ai69\\AppData\\Local\\Temp\\claude\\43c20c1c2ea1299b\\d8135b91-4ad2-4202-ab6d-efe62b639299\\scratchpad\\superpair-evidence",
   "gates": [
     {
@@ -11,6 +11,7 @@
         "missingOptional": [
           "git core.autocrlf",
           "python",
+          "postgresql (forum service)",
           "docker"
         ],
         "host": {
@@ -31,6 +32,8 @@
         "tests/p2-http.test.mjs 5/5",
         "tests/review-round1.test.mjs 5/5",
         "tests/training-basic-v1.test.mjs 2/2",
+        "tests/forum-foundation-loopback.test.mjs 1/1",
+        "tests/forum-independent-qa.test.mjs 8/8",
         "tests/superpair-factory.test.mjs 9/9"
       ]
     },
@@ -54,7 +57,7 @@
   ],
   "environment": {
     "tool": "cfp-env-doctor",
-    "time": "2026-11-16T08:27:05.461Z",
+    "time": "2026-11-16T08:34:32.222Z",
     "host": {
       "platform": "win32",
       "release": "10.0.26300",
@@ -101,6 +104,11 @@
         "detail": "missing: website/CTTTC Python tests unavailable"
       },
       {
+        "name": "postgresql (forum service)",
+        "ok": false,
+        "detail": "missing: Python/PostgreSQL forum service cannot run locally"
+      },
+      {
         "name": "docker",
         "ok": false,
         "detail": "missing: nginx container gate runs only on CI"
@@ -115,6 +123,7 @@
     "missing": [
       "git core.autocrlf",
       "python",
+      "postgresql (forum service)",
       "docker"
     ],
     "scope": "Read-only probe. No credentials, accounts or network writes."
@@ -161,6 +170,22 @@
       "ok": true
     },
     {
+      "suite": "tests/forum-foundation-loopback.test.mjs",
+      "exit": 0,
+      "tests": 1,
+      "pass": 1,
+      "fail": 0,
+      "ok": true
+    },
+    {
+      "suite": "tests/forum-independent-qa.test.mjs",
+      "exit": 0,
+      "tests": 8,
+      "pass": 8,
+      "fail": 0,
+      "ok": true
+    },
+    {
       "suite": "tests/superpair-factory.test.mjs",
       "exit": 0,
       "tests": 9,
@@ -169,6 +194,14 @@
       "ok": true
     }
   ],
+  "forumService": {
+    "status": "BLOCKED",
+    "needs": [
+      "python",
+      "postgresql"
+    ],
+    "source": "origin/claude/forum-schema-location-guard:services/forum"
+  },
   "pass": true,
   "governance": "SANDBOX PRACTICE GO • HOLD ACTIVATION • PRODUCTION NO GO"
 }

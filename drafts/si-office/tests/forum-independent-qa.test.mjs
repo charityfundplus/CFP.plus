@@ -6,6 +6,7 @@ import {join} from 'node:path';
 import {once} from 'node:events';
 import {spawn} from 'node:child_process';
 import net from 'node:net';
+import {fileURLToPath} from 'node:url';
 import {DatabaseSync} from 'node:sqlite';
 import {P2Sandbox} from '../sandbox/p2-service.mjs';
 import {createP2HTTP} from '../sandbox/p2-http.mjs';
@@ -84,7 +85,7 @@ test('QA-07 persisted output modification without matching audit is detected',as
  }finally{await x.clean();}
 });
 test('QA-09 malformed unauthenticated request target must not terminate HTTP server',async()=>{
- const child=spawn(process.execPath,[new URL('./forum-http-crash-fixture.mjs',import.meta.url).pathname],{stdio:['ignore','pipe','pipe']});
+ const child=spawn(process.execPath,[fileURLToPath(new URL('./forum-http-crash-fixture.mjs',import.meta.url))],{stdio:['ignore','pipe','pipe']});
  let stderr='';child.stderr.on('data',b=>stderr+=b);
  try{
   const [line]=await once(child.stdout,'data');const port=Number(String(line).trim());assert(port>0);

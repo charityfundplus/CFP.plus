@@ -1,4 +1,4 @@
-import {pathToFileURL} from 'node:url';import {join,resolve} from 'node:path';
+import {pathToFileURL,fileURLToPath} from 'node:url';import {join,resolve} from 'node:path';
 import {mkdtempSync,rmSync,readFileSync,writeFileSync,existsSync} from 'node:fs';import {tmpdir} from 'node:os';import {randomBytes} from 'node:crypto';import assert from 'node:assert/strict';
 import {P2Sandbox} from '../sandbox/p2-service.mjs';
 import {SandboxReleaseControl,packRelease,verifyRelease} from '../sandbox/release-control.mjs';
@@ -8,7 +8,7 @@ export async function rehearseCompatibility(baselineRoot){
  const password=randomBytes(24).toString('hex');old=new Baseline(join(dir,'baseline.db'));old.provision({id:'synthetic-owner',password,role:'editor',workspace:'synthetic-space',maintainer:true});let token=old.login('synthetic-owner',password);await old.execute(token,'snapshot');const checkpoint=old.verify();const snapshot=join(dir,'baseline-copy.db');old.backup(token,snapshot);
  current=P2Sandbox.restore(snapshot,join(dir,'current.db'));assert.equal(current.verify().sequence,checkpoint.sequence+1);assert.throws(()=>current.context(token),/AUTH_DENIED/);token=current.login('synthetic-owner',password);
  const p=await current.execute(token,'officeCreate',{pairKey:'hub69-content-demo',kind:'application',input:{name:'Synthetic compatibility declaration',entityType:'existing-ai',contact:'https://example.org',relationships:[],synthetic:true,commitment:true}});assert.equal(p.id,null);assert.equal(p.status,'EVIDENCE_PENDING');
- const source=new URL('..',import.meta.url).pathname,a=join(dir,'release-a'),b=join(dir,'release-b'),da=packRelease(source,a);
+ const source=fileURLToPath(new URL('..',import.meta.url)),a=join(dir,'release-a'),b=join(dir,'release-b'),da=packRelease(source,a);
  assert(verifyRelease(a,da).files.some(f=>f.path==='scripts/guarded-preview.mjs'));
  const candidate=join(dir,'candidate-source');packRelease(source,candidate);const launcher=join(candidate,'scripts/guarded-preview.mjs');writeFileSync(launcher,readFileSync(launcher,'utf8')+'\n// Synthetic changed-launcher rollback fixture\n');const db=packRelease(candidate,b);assert.notEqual(da,db);
  const c=new SandboxReleaseControl(join(dir,'control'));await c.activate({service:current,token,release:a,digest:da});await c.activate({service:current,token,release:b,digest:db});const prior=current.verify();const rollback=await c.rollback({service:current,token});assert.equal(c.current().digest,da);assert(existsSync(rollback.retainedCurrentDatabase));assert.deepEqual(current.verify(),prior);
