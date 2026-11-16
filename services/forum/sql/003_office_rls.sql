@@ -158,12 +158,16 @@ create policy rls_insert on cfp_office.task_events for insert to office_app
 create policy rls_select on cfp_office.evidence for select to office_app using (cfp_office.can_see_task(task_id));
 create policy rls_insert on cfp_office.evidence for insert to office_app
   with check (submitted_by = cfp_office.actor()
-              and submitted_by = (select assignee_id from cfp_office.tasks where id = task_id));
+              and exists (select 1 from cfp_office.tasks t where t.id = task_id
+                          and t.assignee_id = submitted_by and t.status in ('ACKED', 'IN_PROGRESS')));
 
 create policy rls_select on cfp_office.reviews for select to office_app using (cfp_office.can_see_task(task_id));
 create policy rls_insert on cfp_office.reviews for insert to office_app
   with check (reviewer_id = cfp_office.actor()
-              and reviewer_id = (select t.reviewer_id from cfp_office.tasks t where t.id = task_id));
+              and decision in ('ACCEPT', 'CHANGES_REQUESTED')
+              and exists (select 1 from cfp_office.tasks t where t.id = task_id
+                          and t.reviewer_id = reviews.reviewer_id and t.assignee_id <> reviews.reviewer_id
+                          and t.status = 'IN_REVIEW'));
 
 create policy rls_select on cfp_office.links for select to office_app
   using (cfp_office.ref_visible(from_ref) and cfp_office.ref_visible(to_ref));
@@ -174,5 +178,93 @@ create policy rls_select on cfp_office.audit_log for select to office_app
   using (cfp_office.is_governance() or (ref ~ '^task:[0-9]+$' and cfp_office.ref_visible(ref)));
 create policy rls_insert on cfp_office.audit_log for insert to office_app
   with check (actor_id = cfp_office.actor());
+
+-- ---------- SEC-P0-195-03b: máy trạng thái nhiệm vụ ở tầng database
+-- RLS chỉ lọc HÀNG; không chặn được người thực thi tự đổi reviewer_id/assignee_id hay nhảy thẳng sang ACCEPTED.
+-- (1) Quyền theo cột: office_app chỉ được UPDATE status, updated_at (app chỉ cập nhật đúng 2 cột này, office.py move()).
+revoke update on cfp_office.tasks from office_app;
+grant update (status, updated_at) on cfp_office.tasks to office_app;
+
+-- (1b) Vòng duyệt: mỗi lần vào IN_REVIEW, trigger tăng tasks.review_round; mỗi Review được đóng dấu vòng hiện tại
+-- (trigger, app không tự đặt được). Quyết định chỉ có hiệu lực cho đúng vòng → Review cũ không dùng lại được.
+-- Dữ liệu đã có: vòng 0 (Review cũ vẫn khớp nhiệm vụ đang ở vòng 0). App không đọc/ghi 2 cột này.
+alter table cfp_office.tasks add column if not exists review_round integer not null default 0;
+alter table cfp_office.reviews add column if not exists review_round integer not null default 0;
+
+create or replace function cfp_office.stamp_review_round() returns trigger
+language plpgsql security definer set search_path = cfp_office, pg_temp as $$
+begin  -- DEFINER: đọc tasks không phụ thuộc RLS; chỉ đặt giá trị, không cấp thêm quyền ghi
+  new.review_round := coalesce((select review_round from tasks where id = new.task_id), 0);
+  return new;
+end $$;
+revoke all on function cfp_office.stamp_review_round() from public;
+drop trigger if exists stamp_review_round on cfp_office.reviews;
+create trigger stamp_review_round before insert on cfp_office.reviews
+  for each row execute function cfp_office.stamp_review_round();
+
+-- (2) Trigger: mỗi bước chuyển phải đúng nguồn → đích, đúng người, đủ điều kiện — giống TRANSITIONS/review/close
+-- trong office.py. Kiểm tra áp cho mọi role không có BYPASSRLS (người chạy migration/sửa khẩn cấp vẫn làm được);
+-- đánh số vòng duyệt áp cho MỌI role để review_round luôn nhất quán.
+-- SQLSTATE: 42501 = sai người (không có thẩm quyền) • 23514 = sai trạng thái / thiếu điều kiện (Evidence, Review đúng vòng).
+create or replace function cfp_office.enforce_task_transition() returns trigger
+-- SECURITY INVOKER (cố ý): current_user phải là role gọi thật (office_app) để phân biệt với role BYPASSRLS.
+language plpgsql security invoker set search_path = cfp_office, pg_temp as $$
+declare
+  a integer := cfp_office.actor();
+  round_decision varchar;
+begin
+  if not (select rolbypassrls from pg_roles where rolname = current_user) then
+    if (new.id, new.pair_id, new.title, new.description, new.acceptance, new.assignee_id, new.reviewer_id,
+        new.idempotency_key, new.created_by, new.created_at, new.review_round)
+       is distinct from
+       (old.id, old.pair_id, old.title, old.description, old.acceptance, old.assignee_id, old.reviewer_id,
+        old.idempotency_key, old.created_by, old.created_at, old.review_round) then
+      raise exception 'SEC-195-03b: chỉ được đổi trạng thái nhiệm vụ' using errcode = '42501';
+    end if;
+    if new.status is distinct from old.status then
+      if a is null then
+        raise exception 'SEC-195-03b: thiếu danh tính' using errcode = '42501';
+      end if;
+      if (old.status, new.status) in (('QUEUED', 'ACKED'), ('ACKED', 'IN_PROGRESS'),
+                                      ('CHANGES_REQUESTED', 'IN_PROGRESS'), ('IN_PROGRESS', 'IN_REVIEW')) then
+        if a <> old.assignee_id then
+          raise exception 'SEC-195-03b: chỉ người thực thi được % → %', old.status, new.status using errcode = '42501';
+        end if;
+        if new.status = 'IN_REVIEW' and not exists (select 1 from evidence where task_id = old.id) then
+          raise exception 'SEC-195-03b: cần Evidence trước khi chuyển Review' using errcode = '23514';
+        end if;
+      elsif old.status = 'IN_REVIEW' and new.status in ('ACCEPTED', 'CHANGES_REQUESTED') then
+        if a <> old.reviewer_id or a = old.assignee_id then
+          raise exception 'SEC-195-03b: chỉ reviewer được chỉ định (khác người thực thi) được nghiệm thu'
+            using errcode = '42501';
+        end if;
+        -- Quyết định mới nhất của reviewer được chỉ định TRONG ĐÚNG vòng hiện tại.
+        select decision into round_decision from reviews
+          where task_id = old.id and reviewer_id = old.reviewer_id and review_round = old.review_round
+          order by id desc limit 1;
+        if round_decision is distinct from
+           (case new.status when 'ACCEPTED' then 'ACCEPT' else 'CHANGES_REQUESTED' end) then
+          raise exception 'SEC-195-03b: thiếu Review % của vòng % (có: %)', new.status, old.review_round,
+            coalesce(round_decision, 'không có') using errcode = '23514';
+        end if;
+      elsif old.status = 'ACCEPTED' and new.status = 'CLOSED' then
+        if a = old.assignee_id or not (a = old.created_by or cfp_office.is_governance()) then
+          raise exception 'SEC-195-03b: Closure chỉ governance hoặc người giao việc' using errcode = '42501';
+        end if;
+      else
+        raise exception 'SEC-195-03b: không cho phép % → %', old.status, new.status using errcode = '23514';
+      end if;
+    end if;
+  end if;
+  if new.status = 'IN_REVIEW' and old.status is distinct from 'IN_REVIEW' then
+    new.review_round := old.review_round + 1;  -- mở vòng duyệt mới
+  end if;
+  return new;
+end $$;
+revoke all on function cfp_office.enforce_task_transition() from public;
+
+drop trigger if exists enforce_task_transition on cfp_office.tasks;
+create trigger enforce_task_transition before update on cfp_office.tasks
+  for each row execute function cfp_office.enforce_task_transition();
 
 commit;

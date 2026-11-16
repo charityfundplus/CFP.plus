@@ -158,8 +158,8 @@ def test_closure_enforced_at_db_level(rls, world):
             tx.rollback()  # không thay đổi dữ liệu mẫu
             c.close()
 
-    for who in ("lead", "rev"):
-        with pytest.raises(DBAPIError, match="row-level security"):
+    for who in ("lead", "rev"):  # trigger 003b (BEFORE UPDATE) chặn trước WITH CHECK của RLS
+        with pytest.raises(DBAPIError, match="row-level security|SEC-195-03b"):
             try_close(ids[who])
     assert try_close(ids["other"]) == 0  # không thấy hàng
     assert try_close(ids["gov"]) == 1
