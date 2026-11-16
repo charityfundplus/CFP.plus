@@ -13,7 +13,12 @@
     "test:p2:http": "node tests/p2-http.test.mjs",
     "test:review1": "node tests/review-round1.test.mjs",
     "test:training": "node tests/training-basic-v1.test.mjs",
-    "demo:training": "node scripts/training-exercises.mjs"
+    "demo:training": "node scripts/training-exercises.mjs",
+    "doctor": "node scripts/env-doctor.mjs",
+    "superpair:sample": "node scripts/superpair-init.mjs --sample 69103",
+    "superpair:batch": "node scripts/superpair-init.mjs --batch",
+    "superpair:install": "node scripts/superpair-install.mjs",
+    "test:superpair": "node tests/superpair-factory.test.mjs"
   },
   "engines": {
     "node": ">=22"
