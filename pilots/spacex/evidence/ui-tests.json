@@ -1,0 +1,222 @@
+[
+  {
+    "width": 390,
+    "name": "adapter export renders",
+    "status": "PASS"
+  },
+  {
+    "width": 390,
+    "name": "no horizontal overflow",
+    "status": "PASS"
+  },
+  {
+    "width": 390,
+    "name": "search no results",
+    "status": "PASS"
+  },
+  {
+    "width": 390,
+    "name": "search matching record",
+    "status": "PASS"
+  },
+  {
+    "width": 390,
+    "name": "reverse button feedback",
+    "status": "PASS"
+  },
+  {
+    "width": 390,
+    "name": "no page errors",
+    "status": "PASS"
+  },
+  {
+    "width": 390,
+    "name": "section navigation",
+    "status": "PASS"
+  },
+  {
+    "width": 390,
+    "name": "required surface home",
+    "status": "PASS"
+  },
+  {
+    "width": 390,
+    "name": "required surface directory",
+    "status": "PASS"
+  },
+  {
+    "width": 390,
+    "name": "required surface discussion",
+    "status": "PASS"
+  },
+  {
+    "width": 390,
+    "name": "required surface tasks",
+    "status": "PASS"
+  },
+  {
+    "width": 390,
+    "name": "required surface evidence",
+    "status": "PASS"
+  },
+  {
+    "width": 390,
+    "name": "required surface governance",
+    "status": "PASS"
+  },
+  {
+    "width": 390,
+    "name": "demo content treated as text",
+    "status": "PASS"
+  },
+  {
+    "width": 390,
+    "name": "discussion demo added",
+    "status": "PASS"
+  },
+  {
+    "width": 390,
+    "name": "demo ACK labelled",
+    "status": "PASS"
+  },
+  {
+    "width": 390,
+    "name": "demo DECLINE labelled",
+    "status": "PASS"
+  },
+  {
+    "width": 390,
+    "name": "activation disabled",
+    "status": "PASS"
+  },
+  {
+    "width": 390,
+    "name": "discussion not persisted",
+    "status": "PASS"
+  },
+  {
+    "width": 390,
+    "name": "demo ACK not persisted",
+    "status": "PASS"
+  },
+  {
+    "width": 390,
+    "name": "final no horizontal overflow",
+    "status": "PASS"
+  },
+  {
+    "width": 390,
+    "name": "final no page errors",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "adapter export renders",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "no horizontal overflow",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "search no results",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "search matching record",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "reverse button feedback",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "no page errors",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "section navigation",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "required surface home",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "required surface directory",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "required surface discussion",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "required surface tasks",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "required surface evidence",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "required surface governance",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "demo content treated as text",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "discussion demo added",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "demo ACK labelled",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "demo DECLINE labelled",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "activation disabled",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "discussion not persisted",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "demo ACK not persisted",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "final no horizontal overflow",
+    "status": "PASS"
+  },
+  {
+    "width": 1440,
+    "name": "final no page errors",
+    "status": "PASS"
+  }
+]

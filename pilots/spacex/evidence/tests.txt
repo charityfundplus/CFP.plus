@@ -1,0 +1,17 @@
+test_audit_failure_rolls_back_import (test_pilot.PilotTests.test_audit_failure_rolls_back_import) ... ok
+test_audit_idempotency (test_pilot.PilotTests.test_audit_idempotency) ... ok
+test_duplicate (test_pilot.PilotTests.test_duplicate) ... ok
+test_idempotency (test_pilot.PilotTests.test_idempotency) ... ok
+test_import_readback_ui_and_source_unchanged (test_pilot.PilotTests.test_import_readback_ui_and_source_unchanged) ... ok
+test_kill_switch_before_io (test_pilot.PilotTests.test_kill_switch_before_io) ... ok
+test_missing_identifier (test_pilot.PilotTests.test_missing_identifier) ... ok
+test_schema_version_rejected_before_io (test_pilot.PilotTests.test_schema_version_rejected_before_io) ... ok
+test_source_tampering (test_pilot.PilotTests.test_source_tampering) ... ok
+test_symlink (test_pilot.PilotTests.test_symlink) ... ok
+test_validation (test_pilot.PilotTests.test_validation) ... ok
+test_writeback_before_io (test_pilot.PilotTests.test_writeback_before_io) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.005s
+
+OK
