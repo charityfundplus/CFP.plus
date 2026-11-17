@@ -1,0 +1,20 @@
+UTC: 2026-10-28T22:03:30.984436+00:00
+Command: node test.mjs
+Exit: 0
+✔ approval defaults to deny; registry statuses are preserved (1.758795ms)
+✔ approved test fixture imports once; retry is idempotent; copies cannot mutate state (0.747849ms)
+✔ reverse direction blocked and original source bytes unchanged (3.715349ms)
+✔ unknown fields, parent changes, unapproved IDs, missing provenance fail atomically (0.865007ms)
+✔ mismatch, duplicate batch and kill switch denied (0.932188ms)
+﹣ HTTP preview serves allowlisted assets and rejects every write method (0.097818ms) # NOT RUN: set PILOT_SOCKET_TEST=1 in a sandbox allowing loopback sockets
+✔ missing ID, wrong parent and wrong source version rejected individually (0.411602ms)
+✔ read-only request handler rejects writes and traversal without opening a socket (1.839087ms)
+✔ fixture is an exact versioned source copy, not an authoritative runtime registry (0.79476ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 8
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 1
+ℹ todo 0
+ℹ duration_ms 16.333973

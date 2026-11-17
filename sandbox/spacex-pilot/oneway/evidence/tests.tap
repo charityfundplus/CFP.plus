@@ -1,0 +1,65 @@
+PRE_POST_SOURCE_SHA256 3279a12e2fc39c73b990fae8886b13622e0887a7316530bec9da8e548d0e2adb
+TAP version 13
+# Subtest: E1 missing/extra/wrong-type fields rejected without records
+ok 1 - E1 missing/extra/wrong-type fields rejected without records
+  ---
+  duration_ms: 2.170578
+  type: 'test'
+  ...
+# Subtest: E2 incorrect hash rejected
+ok 2 - E2 incorrect hash rejected
+  ---
+  duration_ms: 0.612306
+  type: 'test'
+  ...
+# Subtest: E3 reverse denied; permission-probe receipt and source match
+ok 3 - E3 reverse denied; permission-probe receipt and source match
+  ---
+  duration_ms: 1.034108
+  type: 'test'
+  ...
+# Subtest: E4 UTC format, impossible date and >300s skew rejected; exact boundary allowed
+ok 4 - E4 UTC format, impossible date and >300s skew rejected; exact boundary allowed
+  ---
+  duration_ms: 1.404782
+  type: 'test'
+  ...
+# Subtest: E5 same ID+hash idempotent; different hash conflict with no overwrite
+ok 5 - E5 same ID+hash idempotent; different hash conflict with no overwrite
+  ---
+  duration_ms: 1.020297
+  type: 'test'
+  ...
+# Subtest: fixed canonical bytes and independent SHA256 known answer
+ok 6 - fixed canonical bytes and independent SHA256 known answer
+  ---
+  duration_ms: 0.439758
+  type: 'test'
+  ...
+# Subtest: failure rolls transaction back; retry survives reopen; rollback retains audit
+ok 7 - failure rolls transaction back; retry survives reopen; rollback retains audit
+  ---
+  duration_ms: 1.151533
+  type: 'test'
+  ...
+# Subtest: UI exported record and audit exactly match persisted database
+ok 8 - UI exported record and audit exactly match persisted database
+  ---
+  duration_ms: 0.468381
+  type: 'test'
+  ...
+# Subtest: read-only preview handler denies writes and serves matching audit
+ok 9 - read-only preview handler denies writes and serves matching audit
+  ---
+  duration_ms: 13.295774
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 27.196303
