@@ -2,7 +2,7 @@ import {createHash} from 'node:crypto';
 import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {Importer} from './adapter.mjs';
+import {Importer,verifySnapshot} from './adapter.mjs';
 import {server,handler} from './server.mjs';
 const registry = JSON.parse(await readFile(new URL('./registry.json',import.meta.url)));
 const sourceSha = '835616308111f6851c0387fa9f5eda60c9ffa624';
@@ -80,4 +80,14 @@ test('fixture is an exact versioned source copy, not an authoritative runtime re
  const bytes=await readFile(new URL('./registry.json',import.meta.url));
  const gitBlob=createHash('sha1').update(Buffer.from(`blob ${bytes.length}\0`)).update(bytes).digest('hex');
  assert.equal(gitBlob,'1f18068d66379ce90bb079dc56c77b4c4d66dcdf');
+});
+
+test('reviewed snapshot pin rejects tampering before import and preserves fixture chain',async()=>{
+ const bytes=await readFile(new URL('./registry.json',import.meta.url));
+ assert.equal(verifySnapshot(bytes)['691181'].parent_id,'69118');
+ assert.throws(()=>Importer.fromSnapshot(Buffer.concat([bytes,Buffer.from(' ')]),[sample.id]),/SNAPSHOT_INTEGRITY/);
+ const importer=Importer.fromSnapshot(bytes,[sample.id]);
+ assert.equal(importer.import([sample],options).changed,1);
+ assert.throws(()=>importer.import([sample],{...options,direction:'SPACEX_TO_CFP'}),/WRITEBACK_BLOCKED/);
+ assert.deepEqual(await readFile(new URL('./registry.json',import.meta.url)),bytes);
 });

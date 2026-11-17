@@ -6,7 +6,19 @@ const digest = value => createHash('sha256').update(JSON.stringify(value)).diges
 export const SOURCE_SHA = '835616308111f6851c0387fa9f5eda60c9ffa624';
 const numeric = value => typeof value === 'string' && /^\d+$/.test(value);
 
+// Reuses #183's reviewed byte pin. Local fixture integrity, not live-source authentication.
+export const SNAPSHOT_SHA256 = 'a63c5e0b8af157b0938014d51da94ea924b9721acd0a11a9107f5deea3c6f507';
+export function verifySnapshot(bytes) {
+  if (createHash('sha256').update(bytes).digest('hex') !== SNAPSHOT_SHA256) throw Error('SNAPSHOT_INTEGRITY');
+  const registry = JSON.parse(bytes.toString());
+  // Fixture contains AI/developer rows only; country ancestors are references, not loaded entities.
+  const child=registry['691181'],parent=registry['69118'];
+  if(child?.parent_id!=='69118' || parent?.type!=='developer' || child.ai_country_id!=='6911' || parent.ai_country_id!=='6911' || child.country_id!=='911' || parent.country_id!=='911') throw Error('SNAPSHOT_PARENT_CHAIN');
+  return registry;
+}
 export class Importer {
+  static fromSnapshot(bytes, approvedIds=[]) {return new Importer(verifySnapshot(bytes),approvedIds);}
+
   #registry; #approved; #rows = new Map(); #events = []; #enabled = true;
   constructor(registry, approvedIds = []) {
     this.#registry = structuredClone(registry);

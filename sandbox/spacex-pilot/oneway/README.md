@@ -2,27 +2,33 @@
 
 Continues existing sandbox/spacex-pilot and Draft PR #184. No Registry data or production files are changed. No real SpaceX API/account/affiliation. No REA installation or Clean Room independence claim: this is direct implementation of the supplied draft.
 
-Node 24 with node:sqlite, standard library only. From this directory:
+Node 24 with node:sqlite, standard library only. Tests are self-contained and need no demo, checked-in SQLite or prior permission receipt:
 
 ```sh
-mkdir -p evidence
-node demo.mjs evidence > evidence/demo.json
-# Run from repository root, adapting absolute paths if checkout differs:
-node --permission --allow-fs-read="$PWD/permission-probe.mjs" --allow-fs-read="$PWD/evidence/synthetic-input.json" permission-probe.mjs "$PWD/evidence/synthetic-input.json" > evidence/isolation.json
-node --test-reporter=tap test.mjs > evidence/tests.tap 2>&1
-node server.mjs
-# On the same machine: http://127.0.0.1:4173 (NOT a deployed preview)
+node --test --test-isolation=none --test-reporter=tap test.mjs
 ```
 
-The permission command assumes current directory is this one, as does $PWD. Create an empty separate state directory, then run the stronger complete adapter probe:
+Each test run generates fixtures and SQLite in unique OS temporary directories, cleans them up, and leaves the historical evidence/ directory untouched. The loopback HTTP test needs permission to listen on 127.0.0.1; denial is a failure, not a silent pass. --test-isolation=none also works on executors that restrict child test processes. The former E3 receipt dependency is replaced by a fresh source/no-writeback test. A separate Node filesystem permission probe remains an independent command, not something inferred from old evidence.
+
+For a manual demo, choose a fresh output directory outside the historical evidence/ directory:
 
 ```sh
-mkdir -p /tmp/cfp-oneway-state
-node --permission --allow-fs-read="$PWD" --allow-fs-read=/tmp/cfp-oneway-state --allow-fs-write=/tmp/cfp-oneway-state isolated-run.mjs "$PWD/evidence/synthetic-input.json" /tmp/cfp-oneway-state > evidence/isolated-run.json
+run_dir=$(mktemp -d /tmp/cfp-oneway-demo.XXXXXX)
+node demo.mjs "$run_dir" > "$run_dir/demo.json"
+node --permission --allow-fs-read="$PWD/permission-probe.mjs" --allow-fs-read="$run_dir/synthetic-input.json" permission-probe.mjs "$run_dir/synthetic-input.json" > "$run_dir/isolation.json"
 ```
 
-Use a fresh state directory for a new run (otherwise accepted becomes IDEMPOTENT). isolated-run uses the input UTC as a simulated clock, explicitly to replay old fixtures. Normal demo uses current OS UTC. Synthetic fixture dates and IDs are not real event identities. Demo can safely be repeated: persistent duplicate conflicts are explicit, not silent overwrites. For a completely fresh demo choose a new evidence directory; tests currently inspect this directory's evidence.
+The demo function accepts an injected clock for deterministic tests; CLI uses current UTC. Synthetic fixture dates and IDs are not real event identities. makeHandler(outputDirectory) serves a chosen generated export; CLI server.mjs still serves historical evidence/ by default, LOCAL ONLY. No public preview or live CFP+ feed is implied.
 
-Evidence is retained with source in this sandbox branch for review; no automated retention/deletion process. SQLite binary is generated, not included in source delivery; rerun demo to recreate it before tests. Tests read prior probe receipt, so run the probe command first; the standalone command really attempts a forbidden write. Child subprocess tests were replaced with explicit shell-run probes because this executor returned EPERM for nested spawnSync.
+Run both integrated suites from repository root:
+
+```sh
+PILOT_SOCKET_TEST=1 node --test --test-isolation=none --test-reporter=tap sandbox/spacex-pilot/test.mjs sandbox/spacex-pilot/oneway/test.mjs
+node sandbox/spacex-pilot/check-ui.cjs
+```
+
+The optional UI check requires Playwright and Chromium. It creates a fresh output directory, checks pilot and HUB 69 at 375/390/1440 px, and saves screenshots and results there. This is Chromium viewport testing, not physical iPhone Safari.
+
+The offline Registry importer now exposes Importer.fromSnapshot(bytes, approvedIds), which verifies the reviewed snapshot SHA-256 before construction; the read-only preview also verifies bytes before serving registry.json. This reuses #183's byte-integrity approach. The fixture contains ChatGPT/OpenAI and ancestor references, not loaded country ancestors, a SpaceX allocation or approved live-feed authentication. The persistent synthetic status adapter remains separate from the Registry projection; these are experiments within #184, not a production synchronization service.
 
 See SPEC.md for chosen semantics and E1–E5. REPORT.md records actual execution and missing evidence. ReviewSI/SecuritySI acceptance is PENDING; do not merge or deploy.

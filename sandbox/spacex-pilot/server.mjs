@@ -1,6 +1,7 @@
 import {createServer} from 'node:http';
 import {readFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
+import {verifySnapshot} from './adapter.mjs';
 const root = new URL('./', import.meta.url);
 // Explicit asset allowlist; no proxy, upload, import endpoint or arbitrary filesystem path.
 const assets = new Map([['/',['index.html','text/html; charset=utf-8']],['/registry.json',['registry.json','application/json']]]);
@@ -11,7 +12,7 @@ export async function handler(req,res) {
     if (!['GET','HEAD'].includes(req.method)) { res.writeHead(405,{Allow:'GET, HEAD'}); return res.end('READ_ONLY'); }
     const asset = assets.get(req.url);
     if (!asset) { res.writeHead(404); return res.end('NOT_FOUND'); }
-    try { const data = await readFile(new URL(asset[0],root)); res.writeHead(200,{'Content-Type':asset[1]}); res.end(req.method === 'HEAD' ? undefined : data); }
+    try { const data = await readFile(new URL(asset[0],root)); if(asset[0]==='registry.json') verifySnapshot(data); res.writeHead(200,{'Content-Type':asset[1]}); res.end(req.method === 'HEAD' ? undefined : data); }
     catch {res.writeHead(500);res.end('ASSET_UNAVAILABLE');}
 }
 export function server() { return createServer(handler); }

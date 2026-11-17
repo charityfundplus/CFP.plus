@@ -1,0 +1,1 @@
+{"result":"DENIED","code":"ERR_ACCESS_DENIED","permission":"FileSystemWrite","source":"{\n  \"record_id\": \"SIM-20261029-001\",\n  \"source\": \"CFP+_SANDBOX\",\n  \"status\": \"sandbox_practice\",\n  \"timestamp_utc\": \"2026-11-17T01:17:43Z\",\n  \"version\": \"0.1\",\n  \"content_hash\": \"2a58c4ef495f870fb048b4987032d5c303934336f837a1123bd60c1d16f3e640\"\n}"}

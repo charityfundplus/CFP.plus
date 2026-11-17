@@ -1,0 +1,11 @@
+{
+  "69/index.html": "a55ce71698bbd929dc3a81a698d3b6bbb9379e44e367069bddacd72dd47c12b9",
+  "sandbox/spacex-pilot/adapter.mjs": "da3607a7da6931b479ef068e72e8670faf0eaddfc06720ca3cb53a8a178cd883",
+  "sandbox/spacex-pilot/server.mjs": "aab025564b98d08f44451ee31de0bcacb2a0e80caef8db0d06dca4c679878aa2",
+  "sandbox/spacex-pilot/test.mjs": "c41846c2b9ac850c09ce46ac1120c99423d228a288d332a504ce9af4f3fc9ff9",
+  "sandbox/spacex-pilot/check-ui.cjs": "5f1584c32b6b1459d690f8312cfa13f3322e4166a677b97db05e59b258570731",
+  "sandbox/spacex-pilot/oneway/demo.mjs": "8d90ba33b6b98f6c05efec8ec5c1476d9444293dba6a64a612220ee304f0d784",
+  "sandbox/spacex-pilot/oneway/server.mjs": "cc2af39f8fb859dc4f1202f2baa115d4e7d4570c61d706cb8c96adc4d3f52fb0",
+  "sandbox/spacex-pilot/oneway/test.mjs": "3841c78ff7c3d41a44c1be2d1b2278d71459d46d3df1db921e9e0b42b8b2b1ea",
+  "sandbox/spacex-pilot/oneway/README.md": "37a37e6f2c43ea51434c595df3460108a2e45fb2b2a225aa31cda83495e8daaa"
+}
