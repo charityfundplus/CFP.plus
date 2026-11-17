@@ -1,12 +1,24 @@
-import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
+import {writeFileSync,mkdirSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {pathToFileURL} from 'node:url';
 import {Adapter,sign} from './core.mjs';
-const dir=process.argv[2];mkdirSync(dir,{recursive:true});
-const input=sign({record_id:'SIM-20261029-001',source:'CFP+_SANDBOX',status:'sandbox_practice',timestamp_utc:new Date().toISOString().replace(/\.\d{3}Z$/,'Z'),version:'0.1'});
+// build() writes only into `dir`; tests call it with a fresh temporary directory so committed evidence is never overwritten.
+export function build(dir, now=()=>new Date(), {enabled=false}={}){
+mkdirSync(dir,{recursive:true});
+const input=sign({record_id:'SIM-20261029-001',source:'CFP+_SANDBOX',status:'sandbox_practice',timestamp_utc:now().toISOString().replace(/\.\d{3}Z$/,'Z'),version:'0.1'});
+const a=new Adapter(`${dir}/sandbox.sqlite`,now,{enabled});
 writeFileSync(`${dir}/synthetic-input.json`,JSON.stringify(input,null,2));
-const a=new Adapter(`${dir}/sandbox.sqlite`);a.ingest(input);a.ingest(input);a.ingest(input,'SANDBOX_TO_CFP');
+a.ingest(input);a.ingest(input);a.ingest(input,'SANDBOX_TO_CFP');
 const snapshot=a.snapshot();a.close();
 writeFileSync(`${dir}/audit.json`,JSON.stringify(snapshot,null,2));
 const escaped=JSON.stringify(snapshot).replaceAll('<','\\u003c');
 const html=`<!doctype html><html lang="vi"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HUB 69 • Sandbox Evidence</title><style>body{background:#101827;color:#e5edf7;font:16px system-ui;margin:0;padding:clamp(16px,4vw,56px)}main{max-width:1100px;margin:auto}small{color:#a7bfd8}.badge{color:#7ce7be}article{background:#1c2b40;padding:24px;border-radius:16px;margin:20px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere}table{width:100%;border-collapse:collapse}td,th{text-align:left;padding:12px 6px;border-bottom:1px solid #425269}h1{font-size:clamp(26px,5vw,44px)}.scroll{overflow:auto}</style><main><small>CFP+ • SYNTHETIC DATA ONLY</small><h1>HUB 69 SpaceX Sandbox</h1><p class="badge">SANDBOX PRACTICE GO • PRODUCTION NO-GO</p><p>Môi trường nghiên cứu CFP+. Không thể hiện hợp tác hoặc tích hợp chính thức với SpaceX.</p><article><h2>Bản ghi đã nhập</h2><pre id="record"></pre></article><article><h2>Lịch sử xử lý</h2><div class="scroll"><table><thead><tr><th>UTC</th><th>Kết quả</th></tr></thead><tbody id="history"></tbody></table></div></article><p>Evidence: thực thi local. Review độc lập và Safari iPhone: PENDING.</p></main><script type="application/json" id="data">${escaped}</script><script>const d=JSON.parse(document.getElementById('data').textContent);document.getElementById('record').textContent=JSON.stringify(d.records[0],null,2);for(const a of d.audit){const tr=document.createElement('tr');for(const v of [a.utc,a.result]){const td=document.createElement('td');td.textContent=v;tr.append(td)}document.getElementById('history').append(tr)}</script></html>`;
 writeFileSync(`${dir}/preview.html`,html);
-console.log(JSON.stringify({utc:new Date().toISOString(),input_hash:input.content_hash,...snapshot},null,2));
+return {input,snapshot};
+}
+if(process.argv[1] && import.meta.url===pathToFileURL(resolve(process.argv[1])).href){
+ const [dir,flag]=process.argv.slice(2);
+ if(!dir) {console.error('usage: node demo.mjs <new-output-dir> --enable');process.exit(2);}
+ const {input,snapshot}=build(dir,()=>new Date(),{enabled:flag==='--enable'});
+ console.log(JSON.stringify({utc:new Date().toISOString(),input_hash:input.content_hash,...snapshot},null,2));
+}

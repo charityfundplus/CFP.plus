@@ -1,0 +1,60 @@
+[
+ {
+  "page": "hub69",
+  "viewport": "iphone13",
+  "status": 200,
+  "no_horizontal_overflow": true,
+  "scrollWidth": 390,
+  "clientWidth": 390,
+  "page_errors": [],
+  "section_visible": true,
+  "says_not_official_partner": true,
+  "says_no_id": true,
+  "links": [
+   "https://www.spacex.com/",
+   "https://github.com/charityfundplus/CFP.plus/issues/174",
+   "https://github.com/charityfundplus/CFP.plus/pull/184"
+  ],
+  "no_numeric_id_link": true
+ },
+ {
+  "page": "hub69",
+  "viewport": "desktop1440",
+  "status": 200,
+  "no_horizontal_overflow": true,
+  "scrollWidth": 1440,
+  "clientWidth": 1440,
+  "page_errors": [],
+  "section_visible": true,
+  "says_not_official_partner": true,
+  "says_no_id": true,
+  "links": [
+   "https://www.spacex.com/",
+   "https://github.com/charityfundplus/CFP.plus/issues/174",
+   "https://github.com/charityfundplus/CFP.plus/pull/184"
+  ],
+  "no_numeric_id_link": true
+ },
+ {
+  "page": "sandbox-preview",
+  "viewport": "iphone13",
+  "status": 200,
+  "no_horizontal_overflow": true,
+  "scrollWidth": 390,
+  "clientWidth": 390,
+  "page_errors": [],
+  "no_go": true,
+  "rows": 3
+ },
+ {
+  "page": "sandbox-preview",
+  "viewport": "desktop1440",
+  "status": 200,
+  "no_horizontal_overflow": true,
+  "scrollWidth": 1440,
+  "clientWidth": 1440,
+  "page_errors": [],
+  "no_go": true,
+  "rows": 3
+ }
+]

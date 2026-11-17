@@ -1,6 +1,8 @@
 import {createHash} from 'node:crypto';
 import {DatabaseSync} from 'node:sqlite';
+import {lstatSync,readFileSync} from 'node:fs';
 export const fields=['record_id','source','status','timestamp_utc','version'];
+export const DIRECTION='CFP_TO_SANDBOX';
 export const hash = value => createHash('sha256').update(value,'utf8').digest('hex');
 export function normalize(p) {
  if(!p || Array.isArray(p) || typeof p!=='object' || Object.keys(p).length!==6 || ![...fields,'content_hash'].every(k=>typeof p[k]==='string')) throw Error('INVALID_PAYLOAD');
@@ -11,8 +13,26 @@ export function normalize(p) {
 // Fixed, alphabetically sorted flat string fields; not a general RFC 8785 implementation.
 export const canonical = n => JSON.stringify(Object.fromEntries([...fields].sort().map(k=>[k,n[k]])));
 export const sign = n => ({...n,content_hash:hash(canonical(n))});
+
+// Ported from PR #183: reverse direction is refused before any destination I/O.
+export function guardDirection(direction) {
+ if(direction!==DIRECTION) throw Error('WRITEBACK_BLOCKED');
+}
+// Ported from PR #183: source snapshot pin. Bytes must match the reviewed SHA-256 before parsing.
+export function loadPinned(path, expectedSha256) {
+ if(!/^[0-9a-f]{64}$/.test(expectedSha256??'')) throw Error('SOURCE_PIN_REQUIRED');
+ const raw=readFileSync(path);
+ if(hash(raw)!==expectedSha256) throw Error('SOURCE_SNAPSHOT_UNVERIFIED');
+ return {raw,input:JSON.parse(raw)};
+}
+
 export class Adapter {
- constructor(path, now=()=>new Date()) {
+ // Ported from PR #183: kill switch defaults OFF and is checked before the destination is created;
+ // a symlinked destination database is rejected.
+ constructor(path, now=()=>new Date(), {enabled=false}={}) {
+  if(enabled!==true) throw Error('KILL_SWITCH_OFF');
+  let st; try{st=lstatSync(path);}catch(e){if(e.code!=='ENOENT')throw e;}
+  if(st?.isSymbolicLink()) throw Error('SYMLINK_DESTINATION_REJECTED');
   this.now=now; this.db=new DatabaseSync(path);
   this.db.exec(`PRAGMA journal_mode=DELETE; PRAGMA synchronous=FULL;
    CREATE TABLE IF NOT EXISTS records(id TEXT PRIMARY KEY,payload TEXT NOT NULL);
@@ -20,12 +40,14 @@ export class Adapter {
    CREATE TRIGGER IF NOT EXISTS audit_no_update BEFORE UPDATE ON audit BEGIN SELECT RAISE(ABORT,'APPEND_ONLY'); END;
    CREATE TRIGGER IF NOT EXISTS audit_no_delete BEFORE DELETE ON audit BEGIN SELECT RAISE(ABORT,'APPEND_ONLY'); END;`);
  }
+ static open(path, now, options) {return new Adapter(path, now, options);}
  audit(n,result) {this.db.prepare('INSERT INTO audit(utc,source,version,hash,result,record_id) VALUES(?,?,?,?,?,?)').run(this.now().toISOString(),n?.source??null,n?.version??null,n?.content_hash??null,result,n?.record_id??null);}
- ingest(p, direction='CFP_TO_SANDBOX', fault=false) {
+ ingest(p, direction=DIRECTION, fault=false) {
+  // Reverse requests never open a transaction or read/write records; only the refusal is audited.
+  try{guardDirection(direction);}catch(e){this.audit(null,e.message);return {result:e.message};}
   let n;
   this.db.exec('BEGIN IMMEDIATE');
   try {
-   if(direction!=='CFP_TO_SANDBOX') throw Error('WRITEBACK_BLOCKED');
    n=normalize(p);
    const t=Date.parse(n.timestamp_utc);
    if(!Number.isFinite(t) || new Date(t).toISOString().replace('.000Z','Z')!==n.timestamp_utc || Math.abs(this.now().getTime()-t)>300000) throw Error('INVALID_TIMESTAMP');

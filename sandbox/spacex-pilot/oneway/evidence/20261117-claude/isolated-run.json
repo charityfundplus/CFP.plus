@@ -1,0 +1,44 @@
+{
+  "utc": "2026-11-17T01:16:02.093Z",
+  "accepted": "IMPORTED",
+  "reverse": "WRITEBACK_BLOCKED",
+  "direct_write": {
+    "code": "ERR_ACCESS_DENIED",
+    "permission": "FileSystemWrite"
+  },
+  "source_pinned_sha256": "42b399c64aed9a253b20a22b20eb6f6c17a7d524c32182258c8777161623c82a",
+  "source_before_sha256": "42b399c64aed9a253b20a22b20eb6f6c17a7d524c32182258c8777161623c82a",
+  "source_after_sha256": "42b399c64aed9a253b20a22b20eb6f6c17a7d524c32182258c8777161623c82a",
+  "snapshot": {
+    "records": [
+      {
+        "record_id": "SIM-20261029-001",
+        "source": "CFP+_SANDBOX",
+        "status": "sandbox_practice",
+        "timestamp_utc": "2026-11-17T01:15:44Z",
+        "version": "0.1",
+        "content_hash": "20d9570ea2cad6a024b38c50faeb83b35a2e3f231bb3297919d20dbea14ca722"
+      }
+    ],
+    "audit": [
+      {
+        "seq": 1,
+        "utc": "2026-11-17T01:15:44.000Z",
+        "source": "CFP+_SANDBOX",
+        "version": "0.1",
+        "hash": "20d9570ea2cad6a024b38c50faeb83b35a2e3f231bb3297919d20dbea14ca722",
+        "result": "IMPORTED",
+        "record_id": "SIM-20261029-001"
+      },
+      {
+        "seq": 2,
+        "utc": "2026-11-17T01:15:44.000Z",
+        "source": null,
+        "version": null,
+        "hash": null,
+        "result": "WRITEBACK_BLOCKED",
+        "record_id": null
+      }
+    ]
+  }
+}
