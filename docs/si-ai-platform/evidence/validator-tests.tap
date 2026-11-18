@@ -2,67 +2,67 @@ TAP version 13
 # Subtest: shipped plan: 10 tier-1 slots, valid, no IDs allocated
 ok 1 - shipped plan: 10 tier-1 slots, valid, no IDs allocated
   ---
-  duration_ms: 4.701882
+  duration_ms: 4.552654
   type: 'test'
   ...
 # Subtest: capacity: mode A = 1.110, mode B = 910, recursion unbounded
 ok 2 - capacity: mode A = 1.110, mode B = 910, recursion unbounded
   ---
-  duration_ms: 0.318438
+  duration_ms: 0.314412
   type: 'test'
   ...
 # Subtest: deep recursion (tier 7) validates without depth limit
 ok 3 - deep recursion (tier 7) validates without depth limit
   ---
-  duration_ms: 0.250407
+  duration_ms: 0.215466
   type: 'test'
   ...
 # Subtest: rejects duplicate positions, orphans, wrong parent and tier
 ok 4 - rejects duplicate positions, orphans, wrong parent and tier
   ---
-  duration_ms: 0.211121
+  duration_ms: 0.227741
   type: 'test'
   ...
 # Subtest: zero mode B reserves segment 0; mode A allows it
 ok 5 - zero mode B reserves segment 0; mode A allows it
   ---
-  duration_ms: 0.149188
+  duration_ms: 0.160861
   type: 'test'
   ...
 # Subtest: no self-allocated IDs: unknown ID, missing decision, duplicates rejected
 ok 6 - no self-allocated IDs: unknown ID, missing decision, duplicates rejected
   ---
-  duration_ms: 0.141045
+  duration_ms: 0.20211
   type: 'test'
   ...
 # Subtest: status gates: BOUND/ACTIVE need ID; ACTIVE needs evidence and both components
 ok 7 - status gates: BOUND/ACTIVE need ID; ACTIVE needs evidence and both components
   ---
-  duration_ms: 0.149236
+  duration_ms: 0.163468
   type: 'test'
   ...
 # Subtest: permissions never inherit; grants need a decision
 ok 8 - permissions never inherit; grants need a decision
   ---
-  duration_ms: 0.1276
+  duration_ms: 0.107595
   type: 'test'
   ...
 # Subtest: child cannot drop a parent standard but may add stricter ones
 ok 9 - child cannot drop a parent standard but may add stricter ones
   ---
-  duration_ms: 0.253101
+  duration_ms: 0.266235
   type: 'test'
   ...
 # Subtest: unknown fields rejected (schema additionalProperties=false parity)
 ok 10 - unknown fields rejected (schema additionalProperties=false parity)
   ---
-  duration_ms: 0.241313
+  duration_ms: 0.253887
   type: 'test'
   ...
 # Subtest: known IDs include existing route folders and registry keys
 ok 11 - known IDs include existing route folders and registry keys
   ---
-  duration_ms: 0.935906
+  duration_ms: 0.850277
   type: 'test'
   ...
 1..11
@@ -73,4 +73,4 @@ ok 11 - known IDs include existing route folders and registry keys
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 65.721504
+# duration_ms 96.903203

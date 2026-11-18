@@ -15,6 +15,9 @@
 | D6 | Kiểm tra link thật 91 ID | ✅ | T13 |
 | D7 | Danh Bạ 91 Siêu Bộ Đôi (tìm, lọc, link Notion, trạng thái live, VI/EN) | ✅ sandbox | T14 |
 | D8 | Mẫu Diễn Đàn, Văn Phòng; mục trang chủ | Mẫu tĩnh | T6, T15 |
+| D9 | Kiểm kê thật 6 Kho | ✅ thăm dò chỉ đọc | `08` §2 |
+| D10 | Mô-đun làm việc (GitHub audit, Notion cross-check, phân loại) | ✅ | T17 |
+| D11 | **Thí điểm 3 nhiệm vụ qua Core PR #124** (tạo → ACK/chạy → review độc lập → audit) | ✅ 3/3 REVIEWED DRAFT | T18, `evidence/pilot/` |
 
 ## 2 • Danh sách kiểm tra trước khi merge
 

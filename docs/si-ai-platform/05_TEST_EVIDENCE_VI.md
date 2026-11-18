@@ -90,3 +90,13 @@ Mã băm SHA-256 của các file đã kiểm thử: [evidence/SHA256SUMS.txt](ev
 **CI trên PR #232:** không có check run nào. Workflow của repo (`ctttc_ci.yml`) chỉ chạy khi `schemas/` hoặc `tests/ctttc/` thay đổi. **Review:** 0 bình luận, 0 review tại 2026-11-18T23:04Z.
 
 **Chưa kiểm thử:** Safari trên iPhone thật; route HTTP `/api/core/super-pairs` trên server P2 của PR #124 (chưa thêm, vì không sửa nhánh PR #124); kết nối SI AI thật.
+
+---
+
+## 7 • Lượt 3 • 2026-11-18T23:16Z • 6 Kho + thí điểm
+
+| # | Kiểm thử | Kết quả | Evidence |
+|---|---|---|---|
+| T17 | Mô-đun làm việc: tất định, phát hiện đúng các xung đột đã biết | ✅ **4/4 PASS** | `tools/work-modules.test.mjs` |
+| T18 | **Thí điểm qua PR #124 P2Sandbox**: 3 task, review độc lập, 4 lần từ chối, audit hợp lệ | ✅ **1/1 PASS** (cùng file test, cần `CFP_PR124_ROOT`) • receipt: 3/3 REVIEWED DRAFT, audit 23 sự kiện | [evidence/pilot/pilot-run.json](evidence/pilot/pilot-run.json) |
+| T19 | Thăm dò 6 Kho (chỉ đọc) | 2 CONNECTED • 2 PARTIAL • 2 PENDING | [data/six-stores-inventory.json](data/six-stores-inventory.json) |

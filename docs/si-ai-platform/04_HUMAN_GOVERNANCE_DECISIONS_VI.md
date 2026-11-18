@@ -22,3 +22,5 @@ Mỗi mục có một phương án đề xuất để tiết kiệm thời gian.
 | **HG-14** (C10, C11, C13) | Hồ sơ 333 trùng; 2273, 2588 chưa có link; 2624 so với 2684 | Registry custodian đối chiếu | Danh Bạ ghi chú cảnh báo |
 | **HG-15** | Chọn một PR Diễn Đàn chính và một PR Core; đóng hoặc gộp các PR sandbox trùng (xem 06 mục 5) | Core: #124. Diễn Đàn: #195 hoặc #219 | Công sức bị phân tán qua hơn 10 PR Draft |
 | **HG-16** (C12) | Mã Nhóm (000, 135, 246, 789, 500) cũng là ID Siêu Bộ Đôi | Ghi rõ hai loại quan hệ (phả hệ và điều phối) trong Registry | — |
+| **HG-17** | Cho phép PR #124 bổ sung lệnh ACK riêng và một adapter **đọc thật, chỉ đọc** (GitHub/Notion) thay cho mock? | Chỉ sau khi chọn Core (HG-15); adapter giữ `externalRequests` được kiểm soát, không ghi | Công việc thật vẫn chạy ngoài Core, gắn bằng SHA-256 |
+| **HG-18** | Cấp quyền đọc Google Drive cho tài liệu CFP+ (tài khoản hiện tại thấy 0 file) và mở thêm host Web cần nghiên cứu | Chia sẻ thư mục Drive cho tài khoản connector; liệt kê host cụ thể | Kho Google và Web chỉ ở mức PENDING/PARTIAL |

@@ -1,0 +1,232 @@
+{
+  "scope": "PILOT • SANDBOX • READ ONLY • PRODUCTION NO-GO",
+  "core": {
+    "pr": 124,
+    "pinnedSha": "e994ea884fdf7a06ca5efe20674b96a0d51e24f8",
+    "service": "P2Sandbox + CoreEngine",
+    "modified": false
+  },
+  "roles": {
+    "executor": {
+      "account": "sbd-4376-idso",
+      "superPair": "4376 • ID Số",
+      "role": "editor",
+      "duty": "Thực hiện kiểm kê ID và đối chiếu"
+    },
+    "reviewer": {
+      "account": "sbd-5284-kiemchung",
+      "superPair": "5284 • Kiểm Chứng Tổng Hợp",
+      "role": "reviewer",
+      "duty": "Kiểm chứng độc lập, chạy lại và so mã băm"
+    },
+    "observer": {
+      "account": "cmp-267-dieuphoi",
+      "superPair": "267 • CMP",
+      "role": "viewer",
+      "duty": "Điều phối, chỉ đọc (kiểm tra quyền tối thiểu)"
+    }
+  },
+  "tasks": [
+    {
+      "key": "T1",
+      "title": "GitHub • Kiểm kê Registry AI và trang route",
+      "module": "github-registry-audit",
+      "taskKey": "43604d73-fa63-482c-be63-6f36cfa54880",
+      "finalStatus": "REVIEWED DRAFT",
+      "reportSha256": "412205bc6dc6a2d3f3a45133df190ef1e3999d84f5d25b8c902a596d6a154b01",
+      "recheckSha256": "412205bc6dc6a2d3f3a45133df190ef1e3999d84f5d25b8c902a596d6a154b01",
+      "counts": {
+        "registryEntities": 26,
+        "findings": 22
+      }
+    },
+    {
+      "key": "T2",
+      "title": "Notion • Đối chiếu 3 danh sách Siêu Bộ Đôi",
+      "module": "notion-cross-check",
+      "taskKey": "59ce0297-d5c4-4698-8872-7251e0d6a32e",
+      "finalStatus": "REVIEWED DRAFT",
+      "reportSha256": "3ef54639c34a0213156ae8c02fd6ff04c86f1a7687d3b12be5c9d98e49dc9434",
+      "recheckSha256": "3ef54639c34a0213156ae8c02fd6ff04c86f1a7687d3b12be5c9d98e49dc9434",
+      "counts": {
+        "list91": 91,
+        "danhMuc": 33,
+        "banDo": 84,
+        "banDoUniqueIds": 83,
+        "findings": 50
+      }
+    },
+    {
+      "key": "T3",
+      "title": "Phân loại 91 Siêu Bộ Đôi theo 5 Nhóm, 10 Chương + Web",
+      "module": "classify-and-join",
+      "taskKey": "36bb0579-5d68-4880-8df3-b75fff4d5049",
+      "finalStatus": "REVIEWED DRAFT",
+      "reportSha256": "15fb3ef0b4b01e44e3d48ef3f52ba04cea9a71ef6ea3bfa18a671ca49c694084",
+      "recheckSha256": "15fb3ef0b4b01e44e3d48ef3f52ba04cea9a71ef6ea3bfa18a671ca49c694084",
+      "counts": {
+        "rows": 91,
+        "byGroup": {
+          "135": 31,
+          "246": 33,
+          "789": 22,
+          "000": 5
+        },
+        "byAction": {
+          "KEEP • REVIEW CONTENT": 19,
+          "PROPOSE_ROUTE_PAGE (needs HG; no ID change)": 70,
+          "CREATE_OR_LINK_NOTION_PROFILE (HG)": 2
+        }
+      }
+    }
+  ],
+  "tasksCompleted": 3,
+  "coreTaskStatuses": [
+    {
+      "key": "43604d73-fa63-482c-be63-6f36cfa54880",
+      "kind": "registry-audit",
+      "owner": "sbd-4376-idso",
+      "status": "REVIEWED DRAFT",
+      "reviewer": "sbd-5284-kiemchung",
+      "productionApproved": false
+    },
+    {
+      "key": "59ce0297-d5c4-4698-8872-7251e0d6a32e",
+      "kind": "registry-audit",
+      "owner": "sbd-4376-idso",
+      "status": "REVIEWED DRAFT",
+      "reviewer": "sbd-5284-kiemchung",
+      "productionApproved": false
+    },
+    {
+      "key": "36bb0579-5d68-4880-8df3-b75fff4d5049",
+      "kind": "registry-audit",
+      "owner": "sbd-4376-idso",
+      "status": "REVIEWED DRAFT",
+      "reviewer": "sbd-5284-kiemchung",
+      "productionApproved": false
+    }
+  ],
+  "lifecycle": [
+    {
+      "time": "2026-11-18T23:16:54.623Z",
+      "task": "-",
+      "actor": "cmp-267-dieuphoi",
+      "action": "createTask",
+      "result": "DENIED",
+      "reason": "PERMISSION_DENIED"
+    },
+    {
+      "time": "2026-11-18T23:16:54.628Z",
+      "task": "T1",
+      "actor": "sbd-4376-idso",
+      "action": "createTask",
+      "result": "QUEUED",
+      "taskKey": "43604d73-fa63-482c-be63-6f36cfa54880"
+    },
+    {
+      "time": "2026-11-18T23:16:55.266Z",
+      "task": "T1",
+      "actor": "sbd-4376-idso",
+      "action": "runTask (ACK + run)",
+      "result": "AWAITING HUMAN REVIEW",
+      "checks": 18,
+      "outputBindsReportSha": true
+    },
+    {
+      "time": "2026-11-18T23:16:55.269Z",
+      "task": "T1",
+      "actor": "sbd-4376-idso",
+      "action": "self-review",
+      "result": "DENIED",
+      "reason": "PERMISSION_DENIED"
+    },
+    {
+      "time": "2026-11-18T23:16:55.274Z",
+      "task": "T1",
+      "actor": "sbd-5284-kiemchung",
+      "action": "reviewTask",
+      "result": "REVIEWED DRAFT",
+      "recheckSha": "412205bc6dc6a2d3f3a45133df190ef1e3999d84f5d25b8c902a596d6a154b01",
+      "match": true
+    },
+    {
+      "time": "2026-11-18T23:16:55.281Z",
+      "task": "T2",
+      "actor": "sbd-4376-idso",
+      "action": "createTask",
+      "result": "QUEUED",
+      "taskKey": "59ce0297-d5c4-4698-8872-7251e0d6a32e"
+    },
+    {
+      "time": "2026-11-18T23:16:55.933Z",
+      "task": "T2",
+      "actor": "sbd-4376-idso",
+      "action": "runTask (ACK + run)",
+      "result": "AWAITING HUMAN REVIEW",
+      "checks": 18,
+      "outputBindsReportSha": true
+    },
+    {
+      "time": "2026-11-18T23:16:55.936Z",
+      "task": "T2",
+      "actor": "sbd-4376-idso",
+      "action": "self-review",
+      "result": "DENIED",
+      "reason": "PERMISSION_DENIED"
+    },
+    {
+      "time": "2026-11-18T23:16:55.941Z",
+      "task": "T2",
+      "actor": "sbd-5284-kiemchung",
+      "action": "reviewTask",
+      "result": "REVIEWED DRAFT",
+      "recheckSha": "3ef54639c34a0213156ae8c02fd6ff04c86f1a7687d3b12be5c9d98e49dc9434",
+      "match": true
+    },
+    {
+      "time": "2026-11-18T23:16:55.947Z",
+      "task": "T3",
+      "actor": "sbd-4376-idso",
+      "action": "createTask",
+      "result": "QUEUED",
+      "taskKey": "36bb0579-5d68-4880-8df3-b75fff4d5049"
+    },
+    {
+      "time": "2026-11-18T23:16:56.613Z",
+      "task": "T3",
+      "actor": "sbd-4376-idso",
+      "action": "runTask (ACK + run)",
+      "result": "AWAITING HUMAN REVIEW",
+      "checks": 18,
+      "outputBindsReportSha": true
+    },
+    {
+      "time": "2026-11-18T23:16:56.616Z",
+      "task": "T3",
+      "actor": "sbd-4376-idso",
+      "action": "self-review",
+      "result": "DENIED",
+      "reason": "PERMISSION_DENIED"
+    },
+    {
+      "time": "2026-11-18T23:16:56.622Z",
+      "task": "T3",
+      "actor": "sbd-5284-kiemchung",
+      "action": "reviewTask",
+      "result": "REVIEWED DRAFT",
+      "recheckSha": "15fb3ef0b4b01e44e3d48ef3f52ba04cea9a71ef6ea3bfa18a671ca49c694084",
+      "match": true
+    }
+  ],
+  "auditCheckpoint": {
+    "sequence": 23,
+    "sha256": "811ed13eb5cd08110808a52ce6f83e681472301d86e725a5810faa6bb9a7e521"
+  },
+  "limits": [
+    "PR #124 SI adapter is mock-only by design; the real module runs outside the Core and is bound by SHA-256.",
+    "PR #124 has no dedicated ACK command; ACK = executor run-intent event in the audit chain.",
+    "Accounts are sandbox role labels for super-pairs; no external SI AI runtime is connected; ACTIVE = 0.",
+    "Temporary database is deleted after the run; only this receipt and the reports are kept."
+  ]
+}

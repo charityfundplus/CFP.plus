@@ -1,0 +1,519 @@
+{
+ "_meta": {
+  "status": "SNAPSHOT • READ ONLY • copied verbatim from Notion on 2026-11-18",
+  "note": "Names and IDs copied from the pages; no edits."
+ },
+ "danh_muc": {
+  "page": "https://app.notion.com/p/3f2caac9a55781fd97afe7ecd489c3fc",
+  "last_edited": "2026-11-11T23:29:25Z",
+  "rows": [
+   {
+    "id": "237",
+    "name": "CFP+",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781f1b0fbe94f0777e633"
+   },
+   {
+    "id": "2374",
+    "name": "CFPI • NAME REVIEW REQUIRED",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781799dd7db43b5f70755"
+   },
+   {
+    "id": "2378",
+    "name": "CFPT • NAME REVIEW REQUIRED",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781fc8f25ea32651fc32d"
+   },
+   {
+    "id": "2624",
+    "name": "Bảo Mật",
+    "notion_url": "https://app.notion.com/p/3f2caac9a5578148aa18e8034bce08b0"
+   },
+   {
+    "id": "2633",
+    "name": "Code",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781f39cffee38c917471e"
+   },
+   {
+    "id": "267",
+    "name": "CFP+ Collaboration Management Platform • CMP",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781289528fc2754412c1f"
+   },
+   {
+    "id": "276",
+    "name": "CRM • NAME REVIEW REQUIRED",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781c8a1a8c4c636bce97c"
+   },
+   {
+    "id": "343",
+    "name": "DID",
+    "notion_url": "https://app.notion.com/p/3f2caac9a557813bba56f9be01a48b34"
+   },
+   {
+    "id": "345",
+    "name": "Faith Hope Love",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781a1b1e1d0ff69c5f887"
+   },
+   {
+    "id": "362",
+    "name": "DNA • Hiến Pháp • Hiến Chương",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781d08a0fc05d9f5764ff"
+   },
+   {
+    "id": "365",
+    "name": "Ngày Trong Năm",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781d7bb70c462dcd81669"
+   },
+   {
+    "id": "383236",
+    "name": "Đức Tin Đức Cậy Đức Mến",
+    "notion_url": "https://app.notion.com/p/3f2caac9a5578169b6f6d0c4ffaeb10b"
+   },
+   {
+    "id": "3863",
+    "name": "FUND • NAME REVIEW REQUIRED",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781e8832af58958da444e"
+   },
+   {
+    "id": "4376",
+    "name": "ID Số",
+    "notion_url": "https://app.notion.com/p/3f2caac9a557819c8fc4cba6c5f7af26"
+   },
+   {
+    "id": "5272",
+    "name": "Không Của Riêng Ai",
+    "notion_url": "https://app.notion.com/p/3f2caac9a5578166bc42d38ac9986e4b"
+   },
+   {
+    "id": "5458",
+    "name": "Không Gì Không Thể",
+    "notion_url": "https://app.notion.com/p/3f2caac9a557819cb589d31c86093e70"
+   },
+   {
+    "id": "5678",
+    "name": "Kỹ Năng Sống Thiện",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781f98430e43c44fadcc8"
+   },
+   {
+    "id": "5824",
+    "name": "Kiến Trúc",
+    "notion_url": "https://app.notion.com/p/3f2caac9a5578110a800d602feae70aa"
+   },
+   {
+    "id": "627",
+    "name": "MCP • NAME REVIEW REQUIRED",
+    "notion_url": "https://app.notion.com/p/3f2caac9a5578119a1acedf6c5a61e76"
+   },
+   {
+    "id": "6535",
+    "name": "Only Learn+ For Life",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781c79220d0d7c52c196a"
+   },
+   {
+    "id": "6735",
+    "name": "Only Plus+ For Life",
+    "notion_url": "https://app.notion.com/p/3f2caac9a557811b8dc9fe2301d7ca38"
+   },
+   {
+    "id": "674",
+    "name": "Super Intelligence",
+    "notion_url": "https://app.notion.com/p/3f2caac9a5578145a529eb3825b5b69e"
+   },
+   {
+    "id": "6848",
+    "name": "Niềm Tin Hy Vọng",
+    "notion_url": "https://app.notion.com/p/3f2caac9a5578187b577c678c59990ca"
+   },
+   {
+    "id": "6969",
+    "name": "Multi We • Multi Worlds",
+    "notion_url": "https://app.notion.com/p/3f2caac9a5578116a400cf47e59188bd"
+   },
+   {
+    "id": "7535",
+    "name": "Quản Lý Dữ Liệu",
+    "notion_url": "https://app.notion.com/p/3f2caac9a557812bb01df2c13e41a6fe"
+   },
+   {
+    "id": "7584",
+    "name": "Quản Lý Tổng Hợp",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781bbba8de2304682e4a7"
+   },
+   {
+    "id": "7848",
+    "name": "Quản Trị Hệ Thống",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781e9855eccf40a376b02"
+   },
+   {
+    "id": "8282",
+    "name": "Tài Chính Toàn Cầu",
+    "notion_url": "https://app.notion.com/p/3f2caac9a557812e8302e7d4ec92af4f"
+   },
+   {
+    "id": "8682",
+    "name": "Thương Mại Toàn Cầu",
+    "notion_url": "https://app.notion.com/p/3f2caac9a557818fb4cddfe0e0556b8c"
+   },
+   {
+    "id": "8882",
+    "name": "Tri Thức Toàn Cầu",
+    "notion_url": "https://app.notion.com/p/3f2caac9a557814eb4a2ecca072e6b2d"
+   },
+   {
+    "id": "8884",
+    "name": "Tư Vấn Tổng Hợp",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781088e6fe65aeb5921d6"
+   },
+   {
+    "id": "8885",
+    "name": "Tư Vấn Tâm Lý",
+    "notion_url": "https://app.notion.com/p/3f2caac9a5578121af61f2e124034f15"
+   },
+   {
+    "id": "9584",
+    "name": "Xử Lý Tình Huống",
+    "notion_url": "https://app.notion.com/p/3f2caac9a557814a9590cb0ac6231f7f"
+   }
+  ]
+ },
+ "ban_do_link_goc": {
+  "page": "https://app.notion.com/p/c49caac9a557821da26a81752cc1daca",
+  "last_edited": "2026-10-20T03:36:34Z",
+  "rows": [
+   {
+    "id": "0",
+    "name": "Nền Tảng"
+   },
+   {
+    "id": "00",
+    "name": "Nền Tảng Tổng Thể"
+   },
+   {
+    "id": "000",
+    "name": "NHÓM NỀN TẢNG"
+   },
+   {
+    "id": "003",
+    "name": "Bộ Tam, Ba Quỹ, Banks, Coins & Token"
+   },
+   {
+    "id": "005",
+    "name": "Bộ Ngũ, Chi Hội, Cộng Đồng"
+   },
+   {
+    "id": "1",
+    "name": "Sự Sống"
+   },
+   {
+    "id": "11",
+    "name": "Sự Sống Với Sự Sống"
+   },
+   {
+    "id": "111",
+    "name": "Sự Sống Liên Quan đến Trái Đất • Ai"
+   },
+   {
+    "id": "135",
+    "name": "NHÓM QUẢN LÝ 1 • 3 • 5 Siêu Bộ Đôi"
+   },
+   {
+    "id": "2",
+    "name": "Con Người"
+   },
+   {
+    "id": "22",
+    "name": "Con Người Với Con Người"
+   },
+   {
+    "id": "222",
+    "name": "Con Người Yêu Thương Phục Vụ Con"
+   },
+   {
+    "id": "2272",
+    "name": "Cấp Cứu Sơ Cứu"
+   },
+   {
+    "id": "237",
+    "name": "CFP+"
+   },
+   {
+    "id": "2374",
+    "name": "CFPI • SI &"
+   },
+   {
+    "id": "2378",
+    "name": "CFPT"
+   },
+   {
+    "id": "246",
+    "name": "NHÓM QUẢN LÝ CÁC CHƯƠNG CÓ SỐ CHẴN ĐẦU TIÊN"
+   },
+   {
+    "id": "2633",
+    "name": "Code"
+   },
+   {
+    "id": "267",
+    "name": "CMP"
+   },
+   {
+    "id": "2684",
+    "name": "Bảo Mật Tổng Hợp"
+   },
+   {
+    "id": "276",
+    "name": "CRM"
+   },
+   {
+    "id": "2863",
+    "name": "Cứu Trợ Nhân Đạo"
+   },
+   {
+    "id": "28882",
+    "name": "Cổng Tri Thức Toàn Cầu • CTTTC"
+   },
+   {
+    "id": "3",
+    "name": "Ba Quỹ"
+   },
+   {
+    "id": "33",
+    "name": "Tài Chính & Ba Quỹ"
+   },
+   {
+    "id": "331",
+    "name": "Quỹ Sự Sống"
+   },
+   {
+    "id": "332",
+    "name": "Quỹ Con Người"
+   },
+   {
+    "id": "333",
+    "name": "Quỹ Đầu Tư"
+   },
+   {
+    "id": "333",
+    "name": "Tài Chính & Ba Quỹ"
+   },
+   {
+    "id": "3366",
+    "name": "Dịch Đa Ngôn Ngữ"
+   },
+   {
+    "id": "343",
+    "name": "D🆔"
+   },
+   {
+    "id": "345",
+    "name": "Faith Hope Love"
+   },
+   {
+    "id": "362",
+    "name": "DNA"
+   },
+   {
+    "id": "365",
+    "name": "Ngày Trong Năm"
+   },
+   {
+    "id": "3728",
+    "name": "Di Sản Bảo Tồn"
+   },
+   {
+    "id": "3784",
+    "name": "Dưỡng Sinh Tổng Hợp"
+   },
+   {
+    "id": "383236",
+    "name": "Đức Tin Đức Cậy Đức Mến"
+   },
+   {
+    "id": "3863",
+    "name": "FUND"
+   },
+   {
+    "id": "4",
+    "name": "Tôn Giáo"
+   },
+   {
+    "id": "4376",
+    "name": "🆔SO"
+   },
+   {
+    "id": "44",
+    "name": "Hòa Hợp Tôn Giáo"
+   },
+   {
+    "id": "444",
+    "name": "Hòa Hợp Doi Thoai Tôn Giáo"
+   },
+   {
+    "id": "5",
+    "name": "Cộng Đồng"
+   },
+   {
+    "id": "500",
+    "name": "D QUẢN LÝ TẤT CẢ CÁC ID SỐ"
+   },
+   {
+    "id": "5272",
+    "name": "Không Của Riêng Ai KCRA"
+   },
+   {
+    "id": "5284",
+    "name": "Kiểm Chứng Tổng Hợp"
+   },
+   {
+    "id": "5458",
+    "name": "Không Gì Không Thể"
+   },
+   {
+    "id": "55",
+    "name": "Cộng Đồng Giao Lưu Toàn Cầu"
+   },
+   {
+    "id": "555",
+    "name": "Cộng Đồng Giao Lưu Toàn Cầu"
+   },
+   {
+    "id": "5678",
+    "name": "Kỹ Năng Sống Thiện"
+   },
+   {
+    "id": "5824",
+    "name": "Kiến Trúc"
+   },
+   {
+    "id": "5862",
+    "name": "Lương Thực Ngũ Cốc"
+   },
+   {
+    "id": "5866",
+    "name": "Kế Thừa Mãi Mãi"
+   },
+   {
+    "id": "6",
+    "name": "AI & Công Nghệ"
+   },
+   {
+    "id": "627",
+    "name": "MCP"
+   },
+   {
+    "id": "6535",
+    "name": "Only Learn+ For Life"
+   },
+   {
+    "id": "66",
+    "name": "AI & Công Nghệ Toàn Cầu"
+   },
+   {
+    "id": "666",
+    "name": "AI Bộ Đôi Cháu Cưng"
+   },
+   {
+    "id": "6735",
+    "name": "Only Plus+ For Life"
+   },
+   {
+    "id": "674",
+    "name": "Super Intelligence  Siêu Trí Tuệ Nhân Tạo"
+   },
+   {
+    "id": "6848",
+    "name": "Niềm Tin Hy Vọng"
+   },
+   {
+    "id": "6969",
+    "name": "MWMW"
+   },
+   {
+    "id": "7",
+    "name": "Doanh Nghiệp"
+   },
+   {
+    "id": "7535",
+    "name": "Quản Lý Dữ Liệu"
+   },
+   {
+    "id": "7584",
+    "name": "Quản Lý Tổng Hợp"
+   },
+   {
+    "id": "77",
+    "name": "Doanh Nghiệp Giao Lưu & Phát Triển"
+   },
+   {
+    "id": "777",
+    "name": "DN Bộ Đôi Cháu Cưng"
+   },
+   {
+    "id": "7848",
+    "name": "Quản Trị Hệ Thống"
+   },
+   {
+    "id": "7884",
+    "name": "Quản Trị Tổng Hợp"
+   },
+   {
+    "id": "789",
+    "name": "NHÓM QUẢN LÝ 7 • 8 • 9 Siêu Bộ Đôi"
+   },
+   {
+    "id": "8",
+    "name": "Tổ Chức"
+   },
+   {
+    "id": "8282",
+    "name": "TCTC"
+   },
+   {
+    "id": "8682",
+    "name": "TMTC"
+   },
+   {
+    "id": "88",
+    "name": "Tổ Chức Giao Lưu & Hợp Tác"
+   },
+   {
+    "id": "888",
+    "name": "Bộ Đôi Cháu Cưng"
+   },
+   {
+    "id": "8882",
+    "name": "TTTC"
+   },
+   {
+    "id": "8884",
+    "name": "Tư Vấn Tổng Hợp"
+   },
+   {
+    "id": "8885",
+    "name": "Tư Vấn Tâm Lý"
+   },
+   {
+    "id": "9",
+    "name": "Quốc Gia"
+   },
+   {
+    "id": "9397",
+    "name": "Xây Dựng Website"
+   },
+   {
+    "id": "9584",
+    "name": "Xử Lý Tình Huống"
+   },
+   {
+    "id": "9884",
+    "name": "Y Tế Tổng Hợp"
+   },
+   {
+    "id": "99",
+    "name": "Quốc Gia Hợp Tác & Tương Trợ"
+   },
+   {
+    "id": "999",
+    "name": "Quốc Gia Hợp Tác"
+   }
+  ]
+ }
+}

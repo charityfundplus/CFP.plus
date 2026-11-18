@@ -1,0 +1,940 @@
+{
+  "module": "classify-and-join",
+  "readOnly": true,
+  "inputs": [
+    {
+      "path": "docs/si-ai-platform/data/super-pair-source-inventory.json",
+      "sha256": "5be96d99e6d8ebbf015c6a65a53192c5760eb94dfcfb7cd0f776bf173f91b5fc"
+    },
+    {
+      "path": "docs/si-ai-platform/evidence/link-audit.json",
+      "sha256": "cb9d64b9ed3a23cb64b7e2d037def0fd825d3b0a4e7dd3d71d3f04f69711be4f"
+    }
+  ],
+  "counts": {
+    "rows": 91,
+    "byGroup": {
+      "135": 31,
+      "246": 33,
+      "789": 22,
+      "000": 5
+    },
+    "byAction": {
+      "KEEP • REVIEW CONTENT": 19,
+      "PROPOSE_ROUTE_PAGE (needs HG; no ID change)": 70,
+      "CREATE_OR_LINK_NOTION_PROFILE (HG)": 2
+    }
+  },
+  "rows": [
+    {
+      "id": "0",
+      "name": "Nền Tảng",
+      "chapter": "0",
+      "group": "000",
+      "notion": true,
+      "github": true,
+      "web": "OWN_PAGE",
+      "proposedAction": "KEEP • REVIEW CONTENT"
+    },
+    {
+      "id": "00",
+      "name": "Nền Tảng Tổng Thể",
+      "chapter": "0",
+      "group": "000",
+      "notion": true,
+      "github": true,
+      "web": "OWN_PAGE",
+      "proposedAction": "KEEP • REVIEW CONTENT"
+    },
+    {
+      "id": "000",
+      "name": "Nhóm Nền Tảng",
+      "chapter": "0",
+      "group": "000",
+      "notion": true,
+      "github": true,
+      "web": "OWN_PAGE",
+      "proposedAction": "KEEP • REVIEW CONTENT"
+    },
+    {
+      "id": "003",
+      "name": "Bộ Tam, Ba Quỹ, Banks, Coins & Token",
+      "chapter": "0",
+      "group": "000",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "005",
+      "name": "Bộ Ngũ, Chi Hội, Cộng Đồng",
+      "chapter": "0",
+      "group": "000",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "1",
+      "name": "Sự Sống",
+      "chapter": "1",
+      "group": "135",
+      "notion": true,
+      "github": true,
+      "web": "OWN_PAGE",
+      "proposedAction": "KEEP • REVIEW CONTENT"
+    },
+    {
+      "id": "11",
+      "name": "Sự Sống Với Sự Sống",
+      "chapter": "1",
+      "group": "135",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "111",
+      "name": "Sự Sống Liên Quan đến Trái Đất • Ai",
+      "chapter": "1",
+      "group": "135",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "135",
+      "name": "NHÓM QUẢN LÝ 1 • 3 • 5 Siêu Bộ Đôi",
+      "chapter": "1",
+      "group": "135",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "2",
+      "name": "Con Người",
+      "chapter": "2",
+      "group": "246",
+      "notion": true,
+      "github": true,
+      "web": "OWN_PAGE",
+      "proposedAction": "KEEP • REVIEW CONTENT"
+    },
+    {
+      "id": "22",
+      "name": "Con Người Với Con Người",
+      "chapter": "2",
+      "group": "246",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "222",
+      "name": "Con Người Yêu Thương Phục Vụ Con",
+      "chapter": "2",
+      "group": "246",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "237",
+      "name": "CFP+",
+      "chapter": "2",
+      "group": "246",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "246",
+      "name": "NHÓM QUẢN LÝ CÁC CHƯƠNG CÓ SỐ CHẴN ĐẦU TIÊN",
+      "chapter": "2",
+      "group": "246",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "267",
+      "name": "CMP",
+      "chapter": "2",
+      "group": "246",
+      "notion": true,
+      "github": true,
+      "web": "OWN_PAGE",
+      "proposedAction": "KEEP • REVIEW CONTENT"
+    },
+    {
+      "id": "276",
+      "name": "CRM",
+      "chapter": "2",
+      "group": "246",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "2272",
+      "name": "Cấp Cứu Sơ Cứu",
+      "chapter": "2",
+      "group": "246",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "2273",
+      "name": "Cấp Cứu Sơ Cứu",
+      "chapter": "2",
+      "group": "246",
+      "notion": false,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "CREATE_OR_LINK_NOTION_PROFILE (HG)"
+    },
+    {
+      "id": "2374",
+      "name": "CFPI • SI &",
+      "chapter": "2",
+      "group": "246",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "2378",
+      "name": "CFPT",
+      "chapter": "2",
+      "group": "246",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "2588",
+      "name": "Bách Khoa Toàn Thư",
+      "chapter": "2",
+      "group": "246",
+      "notion": false,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "CREATE_OR_LINK_NOTION_PROFILE (HG)"
+    },
+    {
+      "id": "2633",
+      "name": "Code",
+      "chapter": "2",
+      "group": "246",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "2684",
+      "name": "Bảo Mật Tổng Hợp",
+      "chapter": "2",
+      "group": "246",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "2838",
+      "name": "An Toàn, Điều Tra & Cảnh Báo Rủi Ro",
+      "chapter": "2",
+      "group": "246",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "2863",
+      "name": "Cứu Trợ Nhân Đạo",
+      "chapter": "2",
+      "group": "246",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "2877",
+      "name": "Bảo Vệ Sự Sống",
+      "chapter": "2",
+      "group": "246",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "28882",
+      "name": "Cổng Tri Thức Toàn Cầu • CTTTC",
+      "chapter": "2",
+      "group": "246",
+      "notion": true,
+      "github": true,
+      "web": "OWN_PAGE",
+      "proposedAction": "KEEP • REVIEW CONTENT"
+    },
+    {
+      "id": "3",
+      "name": "Ba Quỹ",
+      "chapter": "3",
+      "group": "135",
+      "notion": true,
+      "github": true,
+      "web": "OWN_PAGE",
+      "proposedAction": "KEEP • REVIEW CONTENT"
+    },
+    {
+      "id": "33",
+      "name": "Tài Chính & Ba Quỹ",
+      "chapter": "3",
+      "group": "135",
+      "notion": true,
+      "github": true,
+      "web": "OWN_PAGE",
+      "proposedAction": "KEEP • REVIEW CONTENT"
+    },
+    {
+      "id": "330",
+      "name": "Tổng Quan Các Quỹ Toàn Cầu",
+      "chapter": "3",
+      "group": "135",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "331",
+      "name": "Quỹ Sự Sống",
+      "chapter": "3",
+      "group": "135",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "332",
+      "name": "Quỹ Con Người",
+      "chapter": "3",
+      "group": "135",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "333",
+      "name": "Quỹ Đầu Tư",
+      "chapter": "3",
+      "group": "135",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "343",
+      "name": "D🆔",
+      "chapter": "3",
+      "group": "135",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "345",
+      "name": "Faith Hope Love",
+      "chapter": "3",
+      "group": "135",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "362",
+      "name": "DNA",
+      "chapter": "3",
+      "group": "135",
+      "notion": true,
+      "github": true,
+      "web": "OWN_PAGE",
+      "proposedAction": "KEEP • REVIEW CONTENT"
+    },
+    {
+      "id": "365",
+      "name": "365 Ngày Trong Năm",
+      "chapter": "3",
+      "group": "135",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "3366",
+      "name": "Dịch Đa Ngôn Ngữ",
+      "chapter": "3",
+      "group": "135",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "3728",
+      "name": "Di Sản Bảo Tồn",
+      "chapter": "3",
+      "group": "135",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "3784",
+      "name": "Dưỡng Sinh Tổng Hợp",
+      "chapter": "3",
+      "group": "135",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "3863",
+      "name": "FUND",
+      "chapter": "3",
+      "group": "135",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "383236",
+      "name": "Đức Tin Đức Cậy Đức Mến",
+      "chapter": "3",
+      "group": "135",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "4",
+      "name": "Tôn Giáo",
+      "chapter": "4",
+      "group": "246",
+      "notion": true,
+      "github": true,
+      "web": "OWN_PAGE",
+      "proposedAction": "KEEP • REVIEW CONTENT"
+    },
+    {
+      "id": "44",
+      "name": "Hòa Hợp Tôn Giáo",
+      "chapter": "4",
+      "group": "246",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "444",
+      "name": "Hòa Hợp Doi Thoai Tôn Giáo",
+      "chapter": "4",
+      "group": "246",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "4347",
+      "name": "Gia Đình & Gia Phả Toàn Cầu",
+      "chapter": "4",
+      "group": "246",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "4376",
+      "name": "🆔SO",
+      "chapter": "4",
+      "group": "246",
+      "notion": true,
+      "github": true,
+      "web": "OWN_PAGE",
+      "proposedAction": "KEEP • REVIEW CONTENT"
+    },
+    {
+      "id": "4742",
+      "name": "Hiến Pháp, Hiến Chương, DNA, Công Thức, Quy Tắc & Luật Thép",
+      "chapter": "4",
+      "group": "246",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "5",
+      "name": "Cộng Đồng",
+      "chapter": "5",
+      "group": "135",
+      "notion": true,
+      "github": true,
+      "web": "OWN_PAGE",
+      "proposedAction": "KEEP • REVIEW CONTENT"
+    },
+    {
+      "id": "55",
+      "name": "Cộng Đồng Giao Lưu Toàn Cầu",
+      "chapter": "5",
+      "group": "135",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "500",
+      "name": "D QUẢN LÝ TẤT CẢ CÁC ID SỐ",
+      "chapter": "5",
+      "group": "135",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "555",
+      "name": "Cộng Đồng Giao Lưu Toàn Cầu",
+      "chapter": "5",
+      "group": "135",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "5272",
+      "name": "Không Của Riêng Ai KCRA",
+      "chapter": "5",
+      "group": "135",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "5284",
+      "name": "Kiểm Chứng Tổng Hợp",
+      "chapter": "5",
+      "group": "135",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "5458",
+      "name": "Không Gì Không Thể",
+      "chapter": "5",
+      "group": "135",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "5678",
+      "name": "Kỹ Năng Sống Thiện",
+      "chapter": "5",
+      "group": "135",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "5824",
+      "name": "Kiến Trúc",
+      "chapter": "5",
+      "group": "135",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "5835",
+      "name": "Kiểm Toán Độc Lập & Minh Bạch",
+      "chapter": "5",
+      "group": "135",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "5862",
+      "name": "Lương Thực Ngũ Cốc",
+      "chapter": "5",
+      "group": "135",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "5866",
+      "name": "Kế Thừa Mãi Mãi",
+      "chapter": "5",
+      "group": "135",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "6",
+      "name": "AI & Công Nghệ",
+      "chapter": "6",
+      "group": "246",
+      "notion": true,
+      "github": true,
+      "web": "OWN_PAGE",
+      "proposedAction": "KEEP • REVIEW CONTENT"
+    },
+    {
+      "id": "66",
+      "name": "AI & Công Nghệ Toàn Cầu",
+      "chapter": "6",
+      "group": "246",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "627",
+      "name": "MCP",
+      "chapter": "6",
+      "group": "246",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "666",
+      "name": "AI Bộ Đôi Cháu Cưng",
+      "chapter": "6",
+      "group": "246",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "674",
+      "name": "Super Intelligence Siêu Trí Tuệ Nhân Tạo",
+      "chapter": "6",
+      "group": "246",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "6535",
+      "name": "Only Learn+ For Life",
+      "chapter": "6",
+      "group": "246",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "6735",
+      "name": "Only Plus+ For Life",
+      "chapter": "6",
+      "group": "246",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "6848",
+      "name": "Niềm Tin Hy Vọng",
+      "chapter": "6",
+      "group": "246",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "6969",
+      "name": "MWMW",
+      "chapter": "6",
+      "group": "246",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "7",
+      "name": "Doanh Nghiệp",
+      "chapter": "7",
+      "group": "789",
+      "notion": true,
+      "github": true,
+      "web": "OWN_PAGE",
+      "proposedAction": "KEEP • REVIEW CONTENT"
+    },
+    {
+      "id": "77",
+      "name": "Doanh Nghiệp Giao Lưu & Phát Triển",
+      "chapter": "7",
+      "group": "789",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "777",
+      "name": "DN Bộ Đôi Cháu Cưng",
+      "chapter": "7",
+      "group": "789",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "789",
+      "name": "NHÓM QUẢN LÝ 7 • 8 • 9 Siêu Bộ Đôi",
+      "chapter": "7",
+      "group": "789",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "7535",
+      "name": "Quản Lý Dữ Liệu",
+      "chapter": "7",
+      "group": "789",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "7584",
+      "name": "Quản Lý Tổng Hợp",
+      "chapter": "7",
+      "group": "789",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "7848",
+      "name": "Quản Trị Hệ Thống",
+      "chapter": "7",
+      "group": "789",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "7884",
+      "name": "Quản Trị Tổng Hợp",
+      "chapter": "7",
+      "group": "789",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "8",
+      "name": "Tổ Chức",
+      "chapter": "8",
+      "group": "789",
+      "notion": true,
+      "github": true,
+      "web": "OWN_PAGE",
+      "proposedAction": "KEEP • REVIEW CONTENT"
+    },
+    {
+      "id": "88",
+      "name": "Tổ Chức Giao Lưu & Hợp Tác",
+      "chapter": "8",
+      "group": "789",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "888",
+      "name": "Bộ Đôi Cháu Cưng",
+      "chapter": "8",
+      "group": "789",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "8282",
+      "name": "TCTC",
+      "chapter": "8",
+      "group": "789",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "8682",
+      "name": "TMTC",
+      "chapter": "8",
+      "group": "789",
+      "notion": true,
+      "github": true,
+      "web": "OWN_PAGE",
+      "proposedAction": "KEEP • REVIEW CONTENT"
+    },
+    {
+      "id": "8882",
+      "name": "TTTC",
+      "chapter": "8",
+      "group": "789",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "8884",
+      "name": "Tư Vấn Tổng Hợp",
+      "chapter": "8",
+      "group": "789",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "8885",
+      "name": "Tư Vấn Tâm Lý",
+      "chapter": "8",
+      "group": "789",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "9",
+      "name": "Quốc Gia",
+      "chapter": "9",
+      "group": "789",
+      "notion": true,
+      "github": true,
+      "web": "OWN_PAGE",
+      "proposedAction": "KEEP • REVIEW CONTENT"
+    },
+    {
+      "id": "99",
+      "name": "Quốc Gia Hợp Tác & Tương Trợ",
+      "chapter": "9",
+      "group": "789",
+      "notion": true,
+      "github": true,
+      "web": "OWN_PAGE",
+      "proposedAction": "KEEP • REVIEW CONTENT"
+    },
+    {
+      "id": "999",
+      "name": "Quốc Gia Hợp Tác Bộ Đôi Cháu Cưng",
+      "chapter": "9",
+      "group": "789",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "9397",
+      "name": "Xây Dựng Website",
+      "chapter": "9",
+      "group": "789",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "9584",
+      "name": "Xử Lý Tình Huống",
+      "chapter": "9",
+      "group": "789",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    },
+    {
+      "id": "9884",
+      "name": "Y Tế Tổng Hợp",
+      "chapter": "9",
+      "group": "789",
+      "notion": true,
+      "github": false,
+      "web": "ID_FALLBACK",
+      "proposedAction": "PROPOSE_ROUTE_PAGE (needs HG; no ID change)"
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+{
+  "module": "github-registry-audit",
+  "readOnly": true,
+  "inputs": [
+    {
+      "path": "registry/ai-entity-registry.json",
+      "sha256": "a63c5e0b8af157b0938014d51da94ea924b9721acd0a11a9107f5deea3c6f507"
+    }
+  ],
+  "counts": {
+    "registryEntities": 26,
+    "findings": 22
+  },
+  "findings": [
+    {
+      "code": "ENTITY_WITHOUT_ROUTE_PAGE",
+      "id": "69101",
+      "name": "Ada",
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "ENTITY_WITHOUT_ROUTE_PAGE",
+      "id": "69102",
+      "name": "BlueDot",
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "ENTITY_WITHOUT_ROUTE_PAGE",
+      "id": "69103",
+      "name": "Cohere",
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "ENTITY_WITHOUT_ROUTE_PAGE",
+      "id": "69104",
+      "name": "Coveo",
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "ENTITY_WITHOUT_ROUTE_PAGE",
+      "id": "69105",
+      "name": "Deep Genomics",
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "ENTITY_WITHOUT_ROUTE_PAGE",
+      "id": "69106",
+      "name": "Ideogram",
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "ENTITY_WITHOUT_ROUTE_PAGE",
+      "id": "69107",
+      "name": "OpenText",
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "ENTITY_WITHOUT_ROUTE_PAGE",
+      "id": "69108",
+      "name": "Sanctuary AI",
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "ENTITY_WITHOUT_ROUTE_PAGE",
+      "id": "69109",
+      "name": "Waabi",
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "REGISTRY_NAME_VS_PAGE_TITLE",
+      "id": "69111",
+      "registryName": "Amazon AI / AWS",
+      "pageTitle": "69111 • Amazon • CFP+",
+      "severity": "HIGH"
+    },
+    {
+      "code": "REGISTRY_NAME_VS_PAGE_TITLE",
+      "id": "69114",
+      "registryName": "Google DeepMind",
+      "pageTitle": "69114 • Google AI Ecosystem • CFP+",
+      "severity": "HIGH"
+    },
+    {
+      "code": "REGISTRY_NAME_VS_PAGE_TITLE",
+      "id": "69115",
+      "registryName": "Meta AI",
+      "pageTitle": "69115 • Meta • CFP+",
+      "severity": "HIGH"
+    },
+    {
+      "code": "REGISTRY_NAME_VS_PAGE_TITLE",
+      "id": "69116",
+      "registryName": "Microsoft AI",
+      "pageTitle": "69116 • Microsoft • CFP+",
+      "severity": "HIGH"
+    },
+    {
+      "code": "REGISTRY_NAME_VS_PAGE_TITLE",
+      "id": "69117",
+      "registryName": "NVIDIA AI",
+      "pageTitle": "69117 • NVIDIA • CFP+",
+      "severity": "HIGH"
+    },
+    {
+      "code": "ENTITY_WITHOUT_ROUTE_PAGE",
+      "id": "691001",
+      "name": "AltaML",
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "ENTITY_WITHOUT_ROUTE_PAGE",
+      "id": "691002",
+      "name": "Voiceflow",
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "REGISTRY_NAME_VS_PAGE_TITLE",
+      "id": "691141",
+      "registryName": "Gemini",
+      "pageTitle": "691141 • Google Cloud AI • CFP+",
+      "severity": "HIGH"
+    },
+    {
+      "code": "REGISTRY_NAME_VS_PAGE_TITLE",
+      "id": "691151",
+      "registryName": "Meta AI Assistant",
+      "pageTitle": "691151 • Meta AI • CFP+",
+      "severity": "HIGH"
+    },
+    {
+      "code": "SAME_NAME_MULTIPLE_IDS",
+      "name": "google deepmind",
+      "ids": [
+        "69114",
+        "691142"
+      ],
+      "refs": [
+        {
+          "id": "69114",
+          "where": "registry"
+        },
+        {
+          "id": "691142",
+          "where": "page-title"
+        }
+      ],
+      "severity": "HIGH"
+    },
+    {
+      "code": "SAME_NAME_MULTIPLE_IDS",
+      "name": "meta ai",
+      "ids": [
+        "69115",
+        "691151"
+      ],
+      "refs": [
+        {
+          "id": "69115",
+          "where": "registry"
+        },
+        {
+          "id": "691151",
+          "where": "page-title"
+        }
+      ],
+      "severity": "HIGH"
+    },
+    {
+      "code": "SAME_NAME_MULTIPLE_IDS",
+      "name": "gemini",
+      "ids": [
+        "691141",
+        "6911421"
+      ],
+      "refs": [
+        {
+          "id": "691141",
+          "where": "registry"
+        },
+        {
+          "id": "6911421",
+          "where": "page-title"
+        }
+      ],
+      "severity": "HIGH"
+    },
+    {
+      "code": "SAME_NAME_MULTIPLE_IDS",
+      "name": "developer ai việt nam",
+      "ids": [
+        "698402",
+        "698403",
+        "698404"
+      ],
+      "refs": [
+        {
+          "id": "698402",
+          "where": "page-title"
+        },
+        {
+          "id": "698403",
+          "where": "page-title"
+        },
+        {
+          "id": "698404",
+          "where": "page-title"
+        }
+      ],
+      "severity": "HIGH"
+    }
+  ]
+}
