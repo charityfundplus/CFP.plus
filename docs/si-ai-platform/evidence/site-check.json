@@ -1,0 +1,34 @@
+{
+  "root": "/home/user/CFP.plus",
+  "strict": {
+    "files": 3,
+    "failures": [],
+    "fallbacks": []
+  },
+  "bilingual": [
+    {
+      "file": "docs/si-ai-platform/mockups/forum.html",
+      "vi": 59,
+      "en": 59,
+      "balanced": true
+    },
+    {
+      "file": "docs/si-ai-platform/mockups/office.html",
+      "vi": 31,
+      "en": 31,
+      "balanced": true
+    }
+  ],
+  "baseline": {
+    "htmlFiles": 160,
+    "issueCounts": {
+      "BROKEN_INTERNAL": 2,
+      "NUMERIC_FALLBACK": 52
+    },
+    "brokenInternal": [
+      "267/index.html -> /assets/style.css",
+      "2676/index.html -> /assets/style.css"
+    ],
+    "blankWithoutNoopener": []
+  }
+}

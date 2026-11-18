@@ -1,0 +1,76 @@
+TAP version 13
+# Subtest: shipped plan: 10 tier-1 slots, valid, no IDs allocated
+ok 1 - shipped plan: 10 tier-1 slots, valid, no IDs allocated
+  ---
+  duration_ms: 3.506673
+  type: 'test'
+  ...
+# Subtest: capacity: mode A = 1.110, mode B = 910, recursion unbounded
+ok 2 - capacity: mode A = 1.110, mode B = 910, recursion unbounded
+  ---
+  duration_ms: 0.35927
+  type: 'test'
+  ...
+# Subtest: deep recursion (tier 7) validates without depth limit
+ok 3 - deep recursion (tier 7) validates without depth limit
+  ---
+  duration_ms: 0.20328
+  type: 'test'
+  ...
+# Subtest: rejects duplicate positions, orphans, wrong parent and tier
+ok 4 - rejects duplicate positions, orphans, wrong parent and tier
+  ---
+  duration_ms: 0.240708
+  type: 'test'
+  ...
+# Subtest: zero mode B reserves segment 0; mode A allows it
+ok 5 - zero mode B reserves segment 0; mode A allows it
+  ---
+  duration_ms: 0.172199
+  type: 'test'
+  ...
+# Subtest: no self-allocated IDs: unknown ID, missing decision, duplicates rejected
+ok 6 - no self-allocated IDs: unknown ID, missing decision, duplicates rejected
+  ---
+  duration_ms: 0.144856
+  type: 'test'
+  ...
+# Subtest: status gates: BOUND/ACTIVE need ID; ACTIVE needs evidence and both components
+ok 7 - status gates: BOUND/ACTIVE need ID; ACTIVE needs evidence and both components
+  ---
+  duration_ms: 0.149378
+  type: 'test'
+  ...
+# Subtest: permissions never inherit; grants need a decision
+ok 8 - permissions never inherit; grants need a decision
+  ---
+  duration_ms: 0.080367
+  type: 'test'
+  ...
+# Subtest: child cannot drop a parent standard but may add stricter ones
+ok 9 - child cannot drop a parent standard but may add stricter ones
+  ---
+  duration_ms: 0.265455
+  type: 'test'
+  ...
+# Subtest: unknown fields rejected (schema additionalProperties=false parity)
+ok 10 - unknown fields rejected (schema additionalProperties=false parity)
+  ---
+  duration_ms: 0.250606
+  type: 'test'
+  ...
+# Subtest: known IDs include existing route folders and registry keys
+ok 11 - known IDs include existing route folders and registry keys
+  ---
+  duration_ms: 0.858232
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 59.614918

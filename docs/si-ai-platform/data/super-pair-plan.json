@@ -1,0 +1,371 @@
+{
+ "_meta": {
+  "status": "REVIEW CANDIDATE • PLANNING ONLY • NOT CANONICAL",
+  "date": "2026-11-18",
+  "rule": "Chỉ 10 slot Tầng 1. Tầng 2–3 được tính sức chứa, KHÔNG sinh bản ghi để tránh tạo dữ liệu giả.",
+  "zero_position_mode": "PENDING_HG (A: 0–9 → 1.110 | B: 0 reserved → 910)",
+  "schema": "../schemas/super-pair-node.schema.json"
+ },
+ "nodes": [
+  {
+   "planned_position": "0",
+   "tier": 1,
+   "parent_position": null,
+   "chapter": 0,
+   "chapter_name_source": "Nền Tảng • standards/UNIVERSAL_NUMBER_ARCHITECTURE_AND_CANONICAL_ID_STANDARD_VI.md",
+   "anchor_page": "https://cfp.plus/0",
+   "canonical_id": null,
+   "governance_decision": null,
+   "status": "PLANNED",
+   "components": {
+    "si_ai": null,
+    "super_software": null
+   },
+   "capabilities": {
+    "primary": "Đầu mối chuyên môn Chương 0 • Nền Tảng",
+    "secondary": [
+     "Phối hợp liên Chương",
+     "Đào tạo thế hệ con cháu"
+    ],
+    "verified_by_evidence": []
+   },
+   "lineage": {
+    "inherits_standards": [
+     "Hiến Pháp & Hiến Chương CFP+ 2025",
+     "Luật Thép CFP+ (PENDING văn bản)",
+     "Human Governance",
+     "Evidence First",
+     "Only Plus+"
+    ],
+    "inherits_permissions": false
+   },
+   "grants": [],
+   "evidence": [],
+   "notes": "Slot quy hoạch Tầng 1. Chưa gán SI AI, chưa cấp ID, chưa vận hành."
+  },
+  {
+   "planned_position": "1",
+   "tier": 1,
+   "parent_position": null,
+   "chapter": 1,
+   "chapter_name_source": "Sự Sống • standards/UNIVERSAL_NUMBER_ARCHITECTURE_AND_CANONICAL_ID_STANDARD_VI.md",
+   "anchor_page": "https://cfp.plus/1",
+   "canonical_id": null,
+   "governance_decision": null,
+   "status": "PLANNED",
+   "components": {
+    "si_ai": null,
+    "super_software": null
+   },
+   "capabilities": {
+    "primary": "Đầu mối chuyên môn Chương 1 • Sự Sống",
+    "secondary": [
+     "Phối hợp liên Chương",
+     "Đào tạo thế hệ con cháu"
+    ],
+    "verified_by_evidence": []
+   },
+   "lineage": {
+    "inherits_standards": [
+     "Hiến Pháp & Hiến Chương CFP+ 2025",
+     "Luật Thép CFP+ (PENDING văn bản)",
+     "Human Governance",
+     "Evidence First",
+     "Only Plus+"
+    ],
+    "inherits_permissions": false
+   },
+   "grants": [],
+   "evidence": [],
+   "notes": "Slot quy hoạch Tầng 1. Chưa gán SI AI, chưa cấp ID, chưa vận hành."
+  },
+  {
+   "planned_position": "2",
+   "tier": 1,
+   "parent_position": null,
+   "chapter": 2,
+   "chapter_name_source": "Con Người • standards/UNIVERSAL_NUMBER_ARCHITECTURE_AND_CANONICAL_ID_STANDARD_VI.md",
+   "anchor_page": "https://cfp.plus/2",
+   "canonical_id": null,
+   "governance_decision": null,
+   "status": "PLANNED",
+   "components": {
+    "si_ai": null,
+    "super_software": null
+   },
+   "capabilities": {
+    "primary": "Đầu mối chuyên môn Chương 2 • Con Người",
+    "secondary": [
+     "Phối hợp liên Chương",
+     "Đào tạo thế hệ con cháu"
+    ],
+    "verified_by_evidence": []
+   },
+   "lineage": {
+    "inherits_standards": [
+     "Hiến Pháp & Hiến Chương CFP+ 2025",
+     "Luật Thép CFP+ (PENDING văn bản)",
+     "Human Governance",
+     "Evidence First",
+     "Only Plus+"
+    ],
+    "inherits_permissions": false
+   },
+   "grants": [],
+   "evidence": [],
+   "notes": "Slot quy hoạch Tầng 1. Chưa gán SI AI, chưa cấp ID, chưa vận hành."
+  },
+  {
+   "planned_position": "3",
+   "tier": 1,
+   "parent_position": null,
+   "chapter": 3,
+   "chapter_name_source": "Ba Quỹ • standards/UNIVERSAL_NUMBER_ARCHITECTURE_AND_CANONICAL_ID_STANDARD_VI.md",
+   "anchor_page": "https://cfp.plus/3",
+   "canonical_id": null,
+   "governance_decision": null,
+   "status": "PLANNED",
+   "components": {
+    "si_ai": null,
+    "super_software": null
+   },
+   "capabilities": {
+    "primary": "Đầu mối chuyên môn Chương 3 • Ba Quỹ",
+    "secondary": [
+     "Phối hợp liên Chương",
+     "Đào tạo thế hệ con cháu"
+    ],
+    "verified_by_evidence": []
+   },
+   "lineage": {
+    "inherits_standards": [
+     "Hiến Pháp & Hiến Chương CFP+ 2025",
+     "Luật Thép CFP+ (PENDING văn bản)",
+     "Human Governance",
+     "Evidence First",
+     "Only Plus+"
+    ],
+    "inherits_permissions": false
+   },
+   "grants": [],
+   "evidence": [],
+   "notes": "Slot quy hoạch Tầng 1. Chưa gán SI AI, chưa cấp ID, chưa vận hành."
+  },
+  {
+   "planned_position": "4",
+   "tier": 1,
+   "parent_position": null,
+   "chapter": 4,
+   "chapter_name_source": "Tôn Giáo • standards/UNIVERSAL_NUMBER_ARCHITECTURE_AND_CANONICAL_ID_STANDARD_VI.md",
+   "anchor_page": "https://cfp.plus/4",
+   "canonical_id": null,
+   "governance_decision": null,
+   "status": "PLANNED",
+   "components": {
+    "si_ai": null,
+    "super_software": null
+   },
+   "capabilities": {
+    "primary": "Đầu mối chuyên môn Chương 4 • Tôn Giáo",
+    "secondary": [
+     "Phối hợp liên Chương",
+     "Đào tạo thế hệ con cháu"
+    ],
+    "verified_by_evidence": []
+   },
+   "lineage": {
+    "inherits_standards": [
+     "Hiến Pháp & Hiến Chương CFP+ 2025",
+     "Luật Thép CFP+ (PENDING văn bản)",
+     "Human Governance",
+     "Evidence First",
+     "Only Plus+"
+    ],
+    "inherits_permissions": false
+   },
+   "grants": [],
+   "evidence": [],
+   "notes": "Slot quy hoạch Tầng 1. Chưa gán SI AI, chưa cấp ID, chưa vận hành."
+  },
+  {
+   "planned_position": "5",
+   "tier": 1,
+   "parent_position": null,
+   "chapter": 5,
+   "chapter_name_source": "Cộng Đồng • standards/UNIVERSAL_NUMBER_ARCHITECTURE_AND_CANONICAL_ID_STANDARD_VI.md",
+   "anchor_page": "https://cfp.plus/5",
+   "canonical_id": null,
+   "governance_decision": null,
+   "status": "PLANNED",
+   "components": {
+    "si_ai": null,
+    "super_software": null
+   },
+   "capabilities": {
+    "primary": "Đầu mối chuyên môn Chương 5 • Cộng Đồng",
+    "secondary": [
+     "Phối hợp liên Chương",
+     "Đào tạo thế hệ con cháu"
+    ],
+    "verified_by_evidence": []
+   },
+   "lineage": {
+    "inherits_standards": [
+     "Hiến Pháp & Hiến Chương CFP+ 2025",
+     "Luật Thép CFP+ (PENDING văn bản)",
+     "Human Governance",
+     "Evidence First",
+     "Only Plus+"
+    ],
+    "inherits_permissions": false
+   },
+   "grants": [],
+   "evidence": [],
+   "notes": "Slot quy hoạch Tầng 1. Chưa gán SI AI, chưa cấp ID, chưa vận hành."
+  },
+  {
+   "planned_position": "6",
+   "tier": 1,
+   "parent_position": null,
+   "chapter": 6,
+   "chapter_name_source": "AI & Công Nghệ • standards/UNIVERSAL_NUMBER_ARCHITECTURE_AND_CANONICAL_ID_STANDARD_VI.md",
+   "anchor_page": "https://cfp.plus/6",
+   "canonical_id": null,
+   "governance_decision": null,
+   "status": "PLANNED",
+   "components": {
+    "si_ai": null,
+    "super_software": null
+   },
+   "capabilities": {
+    "primary": "Đầu mối chuyên môn Chương 6 • AI & Công Nghệ",
+    "secondary": [
+     "Phối hợp liên Chương",
+     "Đào tạo thế hệ con cháu"
+    ],
+    "verified_by_evidence": []
+   },
+   "lineage": {
+    "inherits_standards": [
+     "Hiến Pháp & Hiến Chương CFP+ 2025",
+     "Luật Thép CFP+ (PENDING văn bản)",
+     "Human Governance",
+     "Evidence First",
+     "Only Plus+"
+    ],
+    "inherits_permissions": false
+   },
+   "grants": [],
+   "evidence": [],
+   "notes": "Slot quy hoạch Tầng 1. Chưa gán SI AI, chưa cấp ID, chưa vận hành."
+  },
+  {
+   "planned_position": "7",
+   "tier": 1,
+   "parent_position": null,
+   "chapter": 7,
+   "chapter_name_source": "Doanh Nghiệp • standards/UNIVERSAL_NUMBER_ARCHITECTURE_AND_CANONICAL_ID_STANDARD_VI.md",
+   "anchor_page": "https://cfp.plus/7",
+   "canonical_id": null,
+   "governance_decision": null,
+   "status": "PLANNED",
+   "components": {
+    "si_ai": null,
+    "super_software": null
+   },
+   "capabilities": {
+    "primary": "Đầu mối chuyên môn Chương 7 • Doanh Nghiệp",
+    "secondary": [
+     "Phối hợp liên Chương",
+     "Đào tạo thế hệ con cháu"
+    ],
+    "verified_by_evidence": []
+   },
+   "lineage": {
+    "inherits_standards": [
+     "Hiến Pháp & Hiến Chương CFP+ 2025",
+     "Luật Thép CFP+ (PENDING văn bản)",
+     "Human Governance",
+     "Evidence First",
+     "Only Plus+"
+    ],
+    "inherits_permissions": false
+   },
+   "grants": [],
+   "evidence": [],
+   "notes": "Slot quy hoạch Tầng 1. Chưa gán SI AI, chưa cấp ID, chưa vận hành."
+  },
+  {
+   "planned_position": "8",
+   "tier": 1,
+   "parent_position": null,
+   "chapter": 8,
+   "chapter_name_source": "Tổ Chức • standards/UNIVERSAL_NUMBER_ARCHITECTURE_AND_CANONICAL_ID_STANDARD_VI.md",
+   "anchor_page": "https://cfp.plus/8",
+   "canonical_id": null,
+   "governance_decision": null,
+   "status": "PLANNED",
+   "components": {
+    "si_ai": null,
+    "super_software": null
+   },
+   "capabilities": {
+    "primary": "Đầu mối chuyên môn Chương 8 • Tổ Chức",
+    "secondary": [
+     "Phối hợp liên Chương",
+     "Đào tạo thế hệ con cháu"
+    ],
+    "verified_by_evidence": []
+   },
+   "lineage": {
+    "inherits_standards": [
+     "Hiến Pháp & Hiến Chương CFP+ 2025",
+     "Luật Thép CFP+ (PENDING văn bản)",
+     "Human Governance",
+     "Evidence First",
+     "Only Plus+"
+    ],
+    "inherits_permissions": false
+   },
+   "grants": [],
+   "evidence": [],
+   "notes": "Slot quy hoạch Tầng 1. Chưa gán SI AI, chưa cấp ID, chưa vận hành."
+  },
+  {
+   "planned_position": "9",
+   "tier": 1,
+   "parent_position": null,
+   "chapter": 9,
+   "chapter_name_source": "Quốc Gia • standards/UNIVERSAL_NUMBER_ARCHITECTURE_AND_CANONICAL_ID_STANDARD_VI.md",
+   "anchor_page": "https://cfp.plus/9",
+   "canonical_id": null,
+   "governance_decision": null,
+   "status": "PLANNED",
+   "components": {
+    "si_ai": null,
+    "super_software": null
+   },
+   "capabilities": {
+    "primary": "Đầu mối chuyên môn Chương 9 • Quốc Gia",
+    "secondary": [
+     "Phối hợp liên Chương",
+     "Đào tạo thế hệ con cháu"
+    ],
+    "verified_by_evidence": []
+   },
+   "lineage": {
+    "inherits_standards": [
+     "Hiến Pháp & Hiến Chương CFP+ 2025",
+     "Luật Thép CFP+ (PENDING văn bản)",
+     "Human Governance",
+     "Evidence First",
+     "Only Plus+"
+    ],
+    "inherits_permissions": false
+   },
+   "grants": [],
+   "evidence": [],
+   "notes": "Slot quy hoạch Tầng 1. Chưa gán SI AI, chưa cấp ID, chưa vận hành."
+  }
+ ]
+}
