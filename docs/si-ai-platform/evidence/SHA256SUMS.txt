@@ -13,7 +13,7 @@ f881f6c5a11d6102cc2b39e06406467cad005968f2492bca6c3cb984d53fc328 docs/si-ai-plat
 bc3c928d567fbd1b7b98ba8bb2859c766326a4a8b1c83de14f84ee9aed00f798 docs/si-ai-platform/tools/link-audit.mjs
 9b5be4e562693f41ad2e98e624385108b88af2d96b148eb3030f1092f155d332 docs/si-ai-platform/tools/link-audit.test.mjs
 8290e0723524660ca08037cc8532b9e65fc1b7a047c51218bb6b8271eddfa007 docs/si-ai-platform/tools/mobile-check.mjs
-818f9339e93ef56016309946733fc08b2c111fac79f7b0be7d26affa645afa8e docs/si-ai-platform/tools/pilot-run.mjs
+1aa743bc78cb71f8fb5cbd0d6abfeb7501863b465d3dfc5a6803ab9f4126f1f9 docs/si-ai-platform/tools/pilot-run.mjs
 b0a9f319d4dd674bd9622e99dca60857875b5c7b642a99616f43f870b8b1c803 docs/si-ai-platform/tools/pr124-integration.test.mjs
 19b4773fdc1b2f701e5d25e356da6955daf152976dc148ec3b0f4a669928718e docs/si-ai-platform/tools/pr124-super-pair-adapter.mjs
 b2961438b6d56a0c53673bbcdd303541ca500d05cd21c72d79a4987583b52772 docs/si-ai-platform/tools/security-check.mjs
@@ -27,7 +27,7 @@ e22659884d5efd7a065c4d8194c5aa48b88fc2c348bc6a39c75785ad249b9ae3 docs/si-ai-plat
 412205bc6dc6a2d3f3a45133df190ef1e3999d84f5d25b8c902a596d6a154b01 docs/si-ai-platform/evidence/pilot/T1-github-registry-audit.json
 5ff5c61632f0a0b2fb640a46e177670d5cf0c513cc67a9c460fa06cbeb98fc9e docs/si-ai-platform/evidence/pilot/T2-notion-cross-check.json
 15fb3ef0b4b01e44e3d48ef3f52ba04cea9a71ef6ea3bfa18a671ca49c694084 docs/si-ai-platform/evidence/pilot/T3-classify-and-join.json
-a3cec3255fb74236061220aba9d7f1ba2defb92a798f7b7801d69560c7c79880 docs/si-ai-platform/evidence/pilot/lifecycle-report.json
-97a2c6b4e66eab2a39ee8f1637769be298226a91624dbe97ca8452a74d4011ac docs/si-ai-platform/evidence/pilot/pilot-run.json
+50bd217974d0d5c7c216eefe3612583de6d0203d90b3f7ea7eef99c2ab6e940c docs/si-ai-platform/evidence/pilot/lifecycle-report.json
+1602499edbfb9bfa21bbe4f1e143482640eb04a556e1179e7fb6e335816aec50 docs/si-ai-platform/evidence/pilot/pilot-run.json
 49ea3293408fa3b51c0d8ece8450f1595a84ba7b73db56ce43c0f7349b567e3a docs/si-ai-platform/patches/pr124-ack-readonly.patch
 c7c9f55b5c0af9d5d63a0e6d5bad87b8a334742ea3a61ac7050f09c0f6798cc2 .github/workflows/si-ai-platform-ci.yml

@@ -28,7 +28,8 @@ const { P2Sandbox } = await import(pathToFileURL(join(pr124, 'drafts/si-office/s
 // Super-pair roles for this pilot (role labels from the Notion ACK matrix; IDs from the 91 source list).
 const ROLES = {
   executor: { account: 'sbd-4376-idso', superPair: '4376 • ID Số', role: 'editor', duty: 'Thực hiện kiểm kê ID và đối chiếu' },
-  reviewer: { account: 'sbd-5284-kiemchung', superPair: '5284 • Kiểm Chứng Tổng Hợp', role: 'reviewer', duty: 'Kiểm chứng độc lập, chạy lại và so mã băm' },
+  // HG-19: 5284 is held for role verification (its Notion page was retitled), so it is NOT used as reviewer.
+  reviewer: { account: 'review-independent', superPair: 'UNASSIGNED • reviewer role pending HG (5284 held, HG-19)', role: 'reviewer', duty: 'Kiểm chứng độc lập, chạy lại và so mã băm (không mang ID Siêu Bộ Đôi)' },
   observer: { account: 'cmp-267-dieuphoi', superPair: '267 • CMP', role: 'viewer', duty: 'Điều phối, chỉ đọc (kiểm tra quyền tối thiểu)' },
 };
 const MODULES = [
@@ -91,7 +92,7 @@ try {
   const snapshot = await s.execute(tok.reviewer, 'snapshot');
   const audit = s.verify();
   // Lifecycle for all 91 super-pairs. Only the three pilot roles are bound to a Core pair/account.
-  const bindings = { '4376': { pairKey: 'hub69-content-demo', account: ROLES.executor.account }, '5284': { pairKey: 'hub69-content-demo', account: ROLES.reviewer.account }, '267': { pairKey: 'hub69-content-demo', account: ROLES.observer.account } };
+  const bindings = { '4376': { pairKey: 'hub69-content-demo', account: ROLES.executor.account }, '267': { pairKey: 'hub69-content-demo', account: ROLES.observer.account } };
   const lifecycle = lifecycleReport(loadInventory().rows, bindings, snapshot, {});
   writeFileSync(join(out, 'lifecycle-report.json'), JSON.stringify({ scope: 'READ MODEL • NO PROMOTION', bindings, ...lifecycle }, null, 2) + '\n');
   const pilot = {

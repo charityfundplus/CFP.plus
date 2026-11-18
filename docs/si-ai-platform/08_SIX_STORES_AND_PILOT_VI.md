@@ -49,7 +49,7 @@ Luồng: **HUB 69 → (Diễn Đàn: chưa có backend chọn) → Văn Phòng `
 | Vai trò | Siêu Bộ Đôi (ID nguồn Notion) | Tài khoản sandbox | Quyền |
 |---|---|---|---|
 | Thực hiện | 4376 • ID Số | `sbd-4376-idso` | editor, chỉ pair `hub69-content-demo` |
-| Kiểm chứng độc lập | 5284 • Kiểm Chứng Tổng Hợp | `sbd-5284-kiemchung` | reviewer |
+| Kiểm chứng độc lập | ~~5284 • Kiểm Chứng Tổng Hợp~~ → **chưa gán ID** (HG-19: 5284 đang chờ xác minh vai trò) | `review-independent` (lượt 3 dùng `sbd-5284-kiemchung`) | reviewer |
 | Điều phối | 267 • CMP | `cmp-267-dieuphoi` | viewer (thử quyền tối thiểu) |
 
 > Ai thực sự chạy? Phần trí tuệ (SI AI) trong thí điểm là **Claude Code trong phiên này**; phần Siêu Phần Mềm là các mô-đun trong `tools/`. Các ID 4376/5284/267 là **vai trò được gán**, không phải tác nhân độc lập đang chạy 24/24. **ACTIVE = 0.**

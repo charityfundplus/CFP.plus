@@ -8,16 +8,12 @@
     "4376": {
       "pairKey": "hub69-content-demo",
       "account": "sbd-4376-idso"
-    },
-    "5284": {
-      "pairKey": "hub69-content-demo",
-      "account": "sbd-5284-kiemchung"
     }
   },
   "readOnly": true,
   "counts": {
-    "REGISTERED": 88,
-    "READY": 2,
+    "REGISTERED": 89,
+    "READY": 1,
     "ASSIGNED": 0,
     "EXECUTING": 0,
     "REVIEWED": 1,
@@ -909,7 +905,7 @@
         "registered:4376",
         "pair:hub69-content-demo:READY",
         "account:sbd-4376-idso",
-        "task:d261e23b-f749-4cef-910a-13fe96f8265e:REVIEWED DRAFT"
+        "task:8129d7c4-3234-408c-b272-e8ac7d98030c:REVIEWED DRAFT"
       ],
       "active": {
         "ok": false,
@@ -1039,11 +1035,9 @@
     },
     {
       "id": "5284",
-      "stage": "READY",
+      "stage": "REGISTERED",
       "evidence": [
-        "registered:5284",
-        "pair:hub69-content-demo:READY",
-        "account:sbd-5284-kiemchung"
+        "registered:5284"
       ],
       "active": {
         "ok": false,

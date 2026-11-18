@@ -26,3 +26,14 @@ Mỗi mục có một phương án đề xuất để tiết kiệm thời gian.
 | **HG-18** | Cấp quyền đọc Google Drive cho tài liệu CFP+ (tài khoản hiện tại thấy 0 file) và mở thêm host Web cần nghiên cứu | Chia sẻ thư mục Drive cho tài khoản connector; liệt kê host cụ thể | Kho Google và Web chỉ ở mức PENDING/PARTIAL |
 | **HG-19** | Trang Notion gắn cho **5284** nay là "Tài Liệu Tham Chiếu Lịch Sử • Đối Chiếu Link Gốc", không còn "Kiểm Chứng Tổng Hợp". 5284 có còn là Siêu Bộ Đôi kiểm chứng không? | Xác nhận tên/vai trò của 5284 trước khi dùng tiếp trong thí điểm | Vai trò kiểm chứng của thí điểm cần được xác nhận lại |
 | **HG-20** | Chủ PR #124 có áp `patches/pr124-ack-readonly.patch` (ACK + adapter READ ONLY tắt mặc định) không? | Áp sau review độc lập. Bật `requireAck` cho thí điểm; adapter chờ HG-17 | Không có ACK riêng trong Core chính thức |
+
+## Ghi nhận quyết định • 2026-11-18 (bình luận trên PR #232 từ tài khoản chủ repo)
+
+Nguồn: [PR #232, bình luận 6994941355](https://github.com/charityfundplus/CFP.plus/pull/232#issuecomment-6994941355). Ghi lại nguyên ý; **không phải** phê duyệt production hay cấp quyền dữ liệu mới.
+
+| Mã | Quyết định ghi nhận | Áp dụng trong PR #232 |
+|---|---|---|
+| HG-15 | PR #124 (Node + SQLite) là **Core tham chiếu cho thí điểm tiếp theo**. Giữ nguyên PR #195/#193; Core production cần nghiệm thu riêng | Thí điểm tiếp tục chỉ dùng PR #124. Không đụng tới #195/#193, Supabase hay Render |
+| HG-17 | Cho phép **chuẩn bị và kiểm thử** adapter READ ONLY ở trạng thái **mặc định tắt**. Kích hoạt đọc thật cần hồ sơ quyền riêng (allowlist, chủ sở hữu, phạm vi tối thiểu, thời hạn, người kiểm chứng) và phê duyệt HG riêng | Adapter vẫn tắt; test chỉ dùng file tạm |
+| HG-19 | **5284** giữ ở trạng thái cần xác minh vai trò; không dùng làm reviewer có thẩm quyền | Thí điểm đổi reviewer sang `review-independent` (không gắn ID Siêu Bộ Đôi); bỏ binding 5284 khỏi tiến trình |
+| HG-20 | Đề nghị **chủ PR #124 và Codex review** bản vá trước khi áp; không phải quyền tự merge hay triển khai | **BLOCKED** cho PR #232: cần chủ PR #124/Codex review trên chính PR #124. PR #232 không push vào nhánh đó |

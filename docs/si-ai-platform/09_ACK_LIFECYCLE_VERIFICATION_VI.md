@@ -77,7 +77,9 @@ Mô-đun này chỉ **suy ra** trạng thái từ Evidence, không tự nâng tr
 
 | REGISTERED | READY | ASSIGNED | EXECUTING | REVIEWED | **ACTIVE** | BLOCKED | REVOKED |
 |---|---|---|---|---|---|---|---|
-| 88 | 2 (5284, 267) | 0 | 0 | 1 (4376) | **0** | 0 | 0 |
+| 89 | 1 (267) | 0 | 0 | 1 (4376) | **0** | 0 | 0 |
+
+> Cập nhật sau quyết định HG-19: 5284 không còn được dùng làm reviewer và không gắn với Core. Reviewer thí điểm là `review-independent`, một tài khoản không mang ID Siêu Bộ Đôi.
 
 ## 5 • Thí điểm chạy lại với ACK riêng
 

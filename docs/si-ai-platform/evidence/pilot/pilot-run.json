@@ -18,10 +18,10 @@
       "duty": "Thực hiện kiểm kê ID và đối chiếu"
     },
     "reviewer": {
-      "account": "sbd-5284-kiemchung",
-      "superPair": "5284 • Kiểm Chứng Tổng Hợp",
+      "account": "review-independent",
+      "superPair": "UNASSIGNED • reviewer role pending HG (5284 held, HG-19)",
       "role": "reviewer",
-      "duty": "Kiểm chứng độc lập, chạy lại và so mã băm"
+      "duty": "Kiểm chứng độc lập, chạy lại và so mã băm (không mang ID Siêu Bộ Đôi)"
     },
     "observer": {
       "account": "cmp-267-dieuphoi",
@@ -35,7 +35,7 @@
       "key": "T1",
       "title": "GitHub • Kiểm kê Registry AI và trang route",
       "module": "github-registry-audit",
-      "taskKey": "defc140e-cceb-43f5-b2ff-026521d0179e",
+      "taskKey": "20b3af03-051b-4f14-90e7-c18c6cc87174",
       "finalStatus": "REVIEWED DRAFT",
       "reportSha256": "412205bc6dc6a2d3f3a45133df190ef1e3999d84f5d25b8c902a596d6a154b01",
       "recheckSha256": "412205bc6dc6a2d3f3a45133df190ef1e3999d84f5d25b8c902a596d6a154b01",
@@ -48,7 +48,7 @@
       "key": "T2",
       "title": "Notion • Đối chiếu 3 danh sách Siêu Bộ Đôi",
       "module": "notion-cross-check",
-      "taskKey": "b4727d5c-6dae-435c-9321-037e15a3074b",
+      "taskKey": "aeda3bee-2f34-4ac2-bf75-93e65ebd38cf",
       "finalStatus": "REVIEWED DRAFT",
       "reportSha256": "5ff5c61632f0a0b2fb640a46e177670d5cf0c513cc67a9c460fa06cbeb98fc9e",
       "recheckSha256": "5ff5c61632f0a0b2fb640a46e177670d5cf0c513cc67a9c460fa06cbeb98fc9e",
@@ -65,7 +65,7 @@
       "key": "T3",
       "title": "Phân loại 91 Siêu Bộ Đôi theo 5 Nhóm, 10 Chương + Web",
       "module": "classify-and-join",
-      "taskKey": "d261e23b-f749-4cef-910a-13fe96f8265e",
+      "taskKey": "8129d7c4-3234-408c-b272-e8ac7d98030c",
       "finalStatus": "REVIEWED DRAFT",
       "reportSha256": "15fb3ef0b4b01e44e3d48ef3f52ba04cea9a71ef6ea3bfa18a671ca49c694084",
       "recheckSha256": "15fb3ef0b4b01e44e3d48ef3f52ba04cea9a71ef6ea3bfa18a671ca49c694084",
@@ -88,8 +88,8 @@
   "tasksCompleted": 3,
   "ackMode": "ackTask (explicit, strict requireAck)",
   "lifecycleCounts": {
-    "REGISTERED": 88,
-    "READY": 2,
+    "REGISTERED": 89,
+    "READY": 1,
     "ASSIGNED": 0,
     "EXECUTING": 0,
     "REVIEWED": 1,
@@ -99,33 +99,33 @@
   },
   "coreTaskStatuses": [
     {
-      "key": "defc140e-cceb-43f5-b2ff-026521d0179e",
+      "key": "20b3af03-051b-4f14-90e7-c18c6cc87174",
       "kind": "registry-audit",
       "owner": "sbd-4376-idso",
       "status": "REVIEWED DRAFT",
-      "reviewer": "sbd-5284-kiemchung",
+      "reviewer": "review-independent",
       "productionApproved": false
     },
     {
-      "key": "b4727d5c-6dae-435c-9321-037e15a3074b",
+      "key": "aeda3bee-2f34-4ac2-bf75-93e65ebd38cf",
       "kind": "registry-audit",
       "owner": "sbd-4376-idso",
       "status": "REVIEWED DRAFT",
-      "reviewer": "sbd-5284-kiemchung",
+      "reviewer": "review-independent",
       "productionApproved": false
     },
     {
-      "key": "d261e23b-f749-4cef-910a-13fe96f8265e",
+      "key": "8129d7c4-3234-408c-b272-e8ac7d98030c",
       "kind": "registry-audit",
       "owner": "sbd-4376-idso",
       "status": "REVIEWED DRAFT",
-      "reviewer": "sbd-5284-kiemchung",
+      "reviewer": "review-independent",
       "productionApproved": false
     }
   ],
   "lifecycle": [
     {
-      "time": "2026-11-18T23:31:43.562Z",
+      "time": "2026-11-18T23:42:11.625Z",
       "task": "-",
       "actor": "cmp-267-dieuphoi",
       "action": "createTask",
@@ -133,23 +133,23 @@
       "reason": "PERMISSION_DENIED"
     },
     {
-      "time": "2026-11-18T23:31:43.567Z",
+      "time": "2026-11-18T23:42:11.638Z",
       "task": "T1",
       "actor": "sbd-4376-idso",
       "action": "createTask",
       "result": "QUEUED",
-      "taskKey": "defc140e-cceb-43f5-b2ff-026521d0179e"
+      "taskKey": "20b3af03-051b-4f14-90e7-c18c6cc87174"
     },
     {
-      "time": "2026-11-18T23:31:43.571Z",
+      "time": "2026-11-18T23:42:11.642Z",
       "task": "T1",
       "actor": "sbd-4376-idso",
       "action": "ackTask",
       "result": "ACKNOWLEDGED",
-      "taskDigest": "1854f18ea075abc1eaad4a2719cc94952c6f2ad1918ce64f5e1bf1c83007ea25"
+      "taskDigest": "f33fdebc9043c155ddf0899e6dbde00671883bbdfafb7acfa4fae44d531e3b95"
     },
     {
-      "time": "2026-11-18T23:31:43.701Z",
+      "time": "2026-11-18T23:42:11.692Z",
       "task": "T1",
       "actor": "sbd-4376-idso",
       "action": "runTask",
@@ -158,7 +158,7 @@
       "outputBindsReportSha": true
     },
     {
-      "time": "2026-11-18T23:31:43.704Z",
+      "time": "2026-11-18T23:42:11.695Z",
       "task": "T1",
       "actor": "sbd-4376-idso",
       "action": "self-review",
@@ -166,32 +166,32 @@
       "reason": "PERMISSION_DENIED"
     },
     {
-      "time": "2026-11-18T23:31:43.711Z",
+      "time": "2026-11-18T23:42:11.701Z",
       "task": "T1",
-      "actor": "sbd-5284-kiemchung",
+      "actor": "review-independent",
       "action": "reviewTask",
       "result": "REVIEWED DRAFT",
       "recheckSha": "412205bc6dc6a2d3f3a45133df190ef1e3999d84f5d25b8c902a596d6a154b01",
       "match": true
     },
     {
-      "time": "2026-11-18T23:31:43.722Z",
+      "time": "2026-11-18T23:42:11.710Z",
       "task": "T2",
       "actor": "sbd-4376-idso",
       "action": "createTask",
       "result": "QUEUED",
-      "taskKey": "b4727d5c-6dae-435c-9321-037e15a3074b"
+      "taskKey": "aeda3bee-2f34-4ac2-bf75-93e65ebd38cf"
     },
     {
-      "time": "2026-11-18T23:31:43.726Z",
+      "time": "2026-11-18T23:42:11.715Z",
       "task": "T2",
       "actor": "sbd-4376-idso",
       "action": "ackTask",
       "result": "ACKNOWLEDGED",
-      "taskDigest": "e55874e04ef7f1272661b678b8dd1845fb41ddadcaff28d4c3a624e91cce9ce8"
+      "taskDigest": "43f1c506e140638fb5681210dd5d30b588a2f932e2c1d398cab99e065d54cbd2"
     },
     {
-      "time": "2026-11-18T23:31:43.857Z",
+      "time": "2026-11-18T23:42:11.755Z",
       "task": "T2",
       "actor": "sbd-4376-idso",
       "action": "runTask",
@@ -200,7 +200,7 @@
       "outputBindsReportSha": true
     },
     {
-      "time": "2026-11-18T23:31:43.860Z",
+      "time": "2026-11-18T23:42:11.757Z",
       "task": "T2",
       "actor": "sbd-4376-idso",
       "action": "self-review",
@@ -208,32 +208,32 @@
       "reason": "PERMISSION_DENIED"
     },
     {
-      "time": "2026-11-18T23:31:43.866Z",
+      "time": "2026-11-18T23:42:11.763Z",
       "task": "T2",
-      "actor": "sbd-5284-kiemchung",
+      "actor": "review-independent",
       "action": "reviewTask",
       "result": "REVIEWED DRAFT",
       "recheckSha": "5ff5c61632f0a0b2fb640a46e177670d5cf0c513cc67a9c460fa06cbeb98fc9e",
       "match": true
     },
     {
-      "time": "2026-11-18T23:31:43.871Z",
+      "time": "2026-11-18T23:42:11.767Z",
       "task": "T3",
       "actor": "sbd-4376-idso",
       "action": "createTask",
       "result": "QUEUED",
-      "taskKey": "d261e23b-f749-4cef-910a-13fe96f8265e"
+      "taskKey": "8129d7c4-3234-408c-b272-e8ac7d98030c"
     },
     {
-      "time": "2026-11-18T23:31:43.875Z",
+      "time": "2026-11-18T23:42:11.771Z",
       "task": "T3",
       "actor": "sbd-4376-idso",
       "action": "ackTask",
       "result": "ACKNOWLEDGED",
-      "taskDigest": "8d9d5401305e4ff74359864701feeda3b3f04d70245e622501fd9918012c7f8d"
+      "taskDigest": "57c505fd6bb79423d28c104a96ba3fa291db8a0358b47c6ce7781b3f8176ef6a"
     },
     {
-      "time": "2026-11-18T23:31:44.004Z",
+      "time": "2026-11-18T23:42:11.809Z",
       "task": "T3",
       "actor": "sbd-4376-idso",
       "action": "runTask",
@@ -242,7 +242,7 @@
       "outputBindsReportSha": true
     },
     {
-      "time": "2026-11-18T23:31:44.006Z",
+      "time": "2026-11-18T23:42:11.812Z",
       "task": "T3",
       "actor": "sbd-4376-idso",
       "action": "self-review",
@@ -250,9 +250,9 @@
       "reason": "PERMISSION_DENIED"
     },
     {
-      "time": "2026-11-18T23:31:44.010Z",
+      "time": "2026-11-18T23:42:11.818Z",
       "task": "T3",
-      "actor": "sbd-5284-kiemchung",
+      "actor": "review-independent",
       "action": "reviewTask",
       "result": "REVIEWED DRAFT",
       "recheckSha": "15fb3ef0b4b01e44e3d48ef3f52ba04cea9a71ef6ea3bfa18a671ca49c694084",
@@ -261,7 +261,7 @@
   ],
   "auditCheckpoint": {
     "sequence": 26,
-    "sha256": "ad652ad4e6440efe7e0feaf6994af68ad8ff9ab740cb40b01d38afc61c3f1e3a"
+    "sha256": "733d399207bd5ccf1bf60e9587a329d527822ac3bb1b35760355e68d50d223dd"
   },
   "limits": [
     "PR #124 SI adapter is mock-only by design; the real module runs outside the Core and is bound by SHA-256.",
