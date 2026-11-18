@@ -15,6 +15,8 @@ Bộ tài liệu, công cụ và mẫu giao diện cho Website, Diễn Đàn SI 
 | [06_NOTION_RECONCILIATION_VI.md](06_NOTION_RECONCILIATION_VI.md) | Đối chiếu 18 trang Notion với GitHub, Website, Registry; xung đột C1–C14; PR trùng lặp |
 | [07_ACCEPTANCE_DOSSIER_VI.md](07_ACCEPTANCE_DOSSIER_VI.md) | Hồ sơ nghiệm thu cho Human Governance |
 | [08_SIX_STORES_AND_PILOT_VI.md](08_SIX_STORES_AND_PILOT_VI.md) | Trạng thái thật 6 Kho • mô-đun làm việc 10 bước • thí điểm 3 nhiệm vụ qua Core PR #124 |
+| [09_ACK_LIFECYCLE_VERIFICATION_VI.md](09_ACK_LIFECYCLE_VERIFICATION_VI.md) | ACK riêng, adapter READ ONLY (chưa kích hoạt), tiến trình REGISTERED→REVIEWED→ACTIVE, kiểm chứng độc lập |
+| [patches/pr124-ack-readonly.patch](patches/pr124-ack-readonly.patch) | Bản vá đề xuất cho PR #124 (áp được lên `e994ea8`) |
 | [evidence/pilot/](evidence/pilot/) | Báo cáo T1–T3 + receipt vòng đời và audit checkpoint |
 | [data/super-pair-source-inventory.json](data/super-pair-source-inventory.json) | 91 Siêu Bộ Đôi từ 10 trang Chương Notion (nguồn, không phải Registry) |
 | [mockups/super-pairs.html](mockups/super-pairs.html) | Danh Bạ 91 Siêu Bộ Đôi chạy được: tìm, lọc, link Notion, trạng thái live |

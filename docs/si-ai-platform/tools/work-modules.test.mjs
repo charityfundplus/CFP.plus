@@ -26,7 +26,7 @@ test('GitHub audit finds the known Gemini / Meta / DeepMind ID conflicts', () =>
   assert.ok(r.findings.some((f) => f.code === 'REGISTRY_NAME_VS_PAGE_TITLE' && f.id === '691141' && /Google Cloud AI/.test(f.pageTitle)));
 });
 
-test('Notion cross-check finds 333 duplicate, 2624 outlier, 2 missing links, 8 additions', () => {
+test('Notion cross-check finds 333 duplicate, 2624 outlier, 2 missing links, 8 additions, new-table title drift', () => {
   const r = notionCrossCheck();
   const by = (c) => r.findings.filter((f) => f.code === c);
   assert.deepEqual(by('DUPLICATE_SOURCE_PROFILE').map((f) => f.id), ['333']);
@@ -35,6 +35,9 @@ test('Notion cross-check finds 333 duplicate, 2624 outlier, 2 missing links, 8 a
   assert.deepEqual(by('IN_91_NOT_IN_BAN_DO').map((f) => f.id).sort(), ['2273', '2588', '2838', '2877', '330', '4347', '4742', '5835']);
   assert.equal(r.counts.banDo, 84);
   assert.equal(r.counts.banDoUniqueIds, 83);
+  assert.equal(r.counts.bangLink91, 91);
+  assert.deepEqual(by('BANG_LINK_URL_DIFFERS'), []);
+  assert.deepEqual(by('LINKED_PAGE_TITLE_DIFFERS_FROM_NAME').map((f) => f.id), ['333', '4742', '5284']);
 });
 
 test('classification covers all 91 and uses PR #124 group display rule', () => {
@@ -60,6 +63,10 @@ test('pilot: create → ACK/run → independent review → audit, with denials',
     assert.equal(p.lifecycle.filter((l) => l.result === 'UNEXPECTED_ALLOW').length, 0);
     assert.ok(p.lifecycle.filter((l) => l.action.startsWith('runTask')).every((l) => l.outputBindsReportSha === true));
     assert.ok(Number.isInteger(p.auditCheckpoint.sequence) && /^[0-9a-f]{64}$/.test(p.auditCheckpoint.sha256));
-    assert.equal(p.core.modified, false);
+    assert.equal(p.core.pr124BranchModified, false);
+    if (p.ackMode.startsWith('ackTask')) assert.match(p.core.localPatch.sha256, /^[0-9a-f]{64}$/);
+    assert.equal(p.lifecycleCounts.ACTIVE, 0);
+    assert.equal(p.lifecycleCounts.REVIEWED + p.lifecycleCounts.READY + p.lifecycleCounts.REGISTERED, 91);
+    if (p.ackMode.startsWith('ackTask')) assert.equal(p.lifecycle.filter((l) => l.action === 'ackTask' && l.result === 'ACKNOWLEDGED').length, 3);
   } finally { rmSync(out, { recursive: true, force: true }); }
 });

@@ -1,5 +1,5 @@
 {
-  "root": "/home/user/CFP.plus",
+  "root": ".",
   "strict": {
     "files": 4,
     "failures": [],

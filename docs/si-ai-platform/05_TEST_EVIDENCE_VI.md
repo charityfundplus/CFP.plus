@@ -9,7 +9,7 @@
 
 | # | Kiểm thử | Lệnh | Kết quả | Evidence |
 |---|---|---|---|---|
-| T1 | Validator cây Siêu Bộ Đôi (11 ca) | `node --test docs/si-ai-platform/tools/validate-super-pairs.test.mjs` | ✅ **11/11 PASS** | [evidence/validator-tests.tap](evidence/validator-tests.tap) |
+| T1 | Validator cây Siêu Bộ Đôi (11 ca) | `node --test docs/si-ai-platform/tools/validate-super-pairs.test.mjs` | ✅ **11/11 PASS** | [evidence/validate-super-pairs.tap](evidence/validate-super-pairs.tap) |
 | T2 | Dữ liệu quy hoạch 10 slot gốc | `node docs/si-ai-platform/tools/validate-super-pairs.mjs` | ✅ 0 lỗi • 10 node Tầng 1 • 0 ID được cấp | [evidence/validator-report.json](evidence/validator-report.json) |
 | T3 | JSON Schema hợp lệ (Draft 2020-12) + 10 node đạt schema | `jsonschema` (Python) | ✅ 0 lỗi | Chạy tay, ghi tại đây |
 | T4 | Liên kết, bảo mật, viewport trên 3 file thay đổi | `node docs/si-ai-platform/tools/site-check.mjs` (xem mục 2) | ✅ **0 lỗi** | [evidence/site-check.json](evidence/site-check.json) |
@@ -85,7 +85,7 @@ Mã băm SHA-256 của các file đã kiểm thử: [evidence/SHA256SUMS.txt](ev
 | T13 | Kiểm tra thật 91 link `cfp.plus/<ID>/` | `node tools/link-audit.mjs` | 19 OWN_PAGE • 72 ID_FALLBACK • 0 lỗi HTTP | [evidence/link-audit.json](evidence/link-audit.json) |
 | T14 | Danh Bạ trên điện thoại 360/390 px: hiển thị đủ 91 dòng, lọc Chương 6 = 9, tìm "luat thep" (không dấu) → 4742, VI/EN | `tools/mobile-check.mjs` | ✅ **8/8 PASS** (4 trang × 2 độ rộng) | [evidence/mobile/mobile-check.json](evidence/mobile/mobile-check.json) |
 | T15 | Liên kết, bảo mật, song ngữ (4 file, có thêm `super-pairs.html`) | `tools/site-check.mjs` | ✅ 0 lỗi • VI/EN 65/65, 32/32, 19/19 | [evidence/site-check.json](evidence/site-check.json) |
-| T16 | Validator cây + hồi quy CTTTC | như lượt 1 | ✅ 11/11 • 204/204 | [evidence/validator-tests.tap](evidence/validator-tests.tap) |
+| T16 | Validator cây + hồi quy CTTTC | như lượt 1 | ✅ 11/11 • 204/204 | [evidence/validate-super-pairs.tap](evidence/validate-super-pairs.tap) |
 
 **CI trên PR #232:** không có check run nào. Workflow của repo (`ctttc_ci.yml`) chỉ chạy khi `schemas/` hoặc `tests/ctttc/` thay đổi. **Review:** 0 bình luận, 0 review tại 2026-11-18T23:04Z.
 
@@ -100,3 +100,18 @@ Mã băm SHA-256 của các file đã kiểm thử: [evidence/SHA256SUMS.txt](ev
 | T17 | Mô-đun làm việc: tất định, phát hiện đúng các xung đột đã biết | ✅ **4/4 PASS** | `tools/work-modules.test.mjs` |
 | T18 | **Thí điểm qua PR #124 P2Sandbox**: 3 task, review độc lập, 4 lần từ chối, audit hợp lệ | ✅ **1/1 PASS** (cùng file test, cần `CFP_PR124_ROOT`) • receipt: 3/3 REVIEWED DRAFT, audit 23 sự kiện | [evidence/pilot/pilot-run.json](evidence/pilot/pilot-run.json) |
 | T19 | Thăm dò 6 Kho (chỉ đọc) | 2 CONNECTED • 2 PARTIAL • 2 PENDING | [data/six-stores-inventory.json](data/six-stores-inventory.json) |
+
+---
+
+## 8 • Lượt 4 • 2026-11-18 • ACK, adapter READ ONLY, tiến trình, kiểm chứng độc lập
+
+| # | Kiểm thử | Kết quả | Evidence |
+|---|---|---|---|
+| T20 | Test mới cho ACK + adapter READ ONLY (trong PR #124 đã vá) | ✅ **9/9 PASS** | [evidence/pr124-ack-readonly.tap](evidence/pr124-ack-readonly.tap) |
+| T21 | Hồi quy PR #124: 10 file test **trước** và **sau** khi vá | ✅ **79/79 → 79/79** (+9 mới); `npm test` 40 → 49 | [evidence/pr124-patch-regression.txt](evidence/pr124-patch-regression.txt) |
+| T22 | Bản vá áp sạch lên checkout PR #124 mới (mô phỏng CI) | ✅ `git apply --check` đạt; 49/49 | — |
+| T23 | Tiến trình Siêu Bộ Đôi + cổng ACTIVE | ✅ **5/5 PASS** | [evidence/super-pair-lifecycle.tap](evidence/super-pair-lifecycle.tap) |
+| T24 | Thí điểm với `ackTask` ở chế độ bắt buộc | ✅ 3/3 REVIEWED; 3 ACK; 4 lần từ chối; ACTIVE 0 | [evidence/pilot/pilot-run.json](evidence/pilot/pilot-run.json) |
+| T25 | `security-check.mjs` | ✅ 0 lỗi / 55 file. Lượt đầu bắt 1 lỗi thật (đường dẫn tuyệt đối trong Evidence), đã sửa | — |
+| T26 | Mô-đun làm việc (có đối chiếu bảng 91 mới), tích hợp, validator, CTTTC | ✅ 5/5 • 8/8 • 11/11 • 204/204 | `evidence/*.tap` |
+| T27 | CI độc lập trên GitHub + CodeQL + Copilot review | Ghi trong PR #232 sau khi chạy | `.github/workflows/si-ai-platform-ci.yml` |

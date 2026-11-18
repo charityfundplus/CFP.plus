@@ -17,6 +17,9 @@
 | D8 | Mẫu Diễn Đàn, Văn Phòng; mục trang chủ | Mẫu tĩnh | T6, T15 |
 | D9 | Kiểm kê thật 6 Kho | ✅ thăm dò chỉ đọc | `08` §2 |
 | D10 | Mô-đun làm việc (GitHub audit, Notion cross-check, phân loại) | ✅ | T17 |
+| D12 | ACK riêng + adapter READ ONLY (bản vá PR #124, adapter tắt) | ✅ 9/9 test mới; hồi quy 79/79 | `09` §2–3 |
+| D13 | Tiến trình REGISTERED → REVIEWED + cổng ACTIVE | ✅ 5/5 test; ACTIVE = 0 | `09` §4 |
+| D14 | Kiểm chứng độc lập: CI, CodeQL, Copilot, security-check | Xem PR #232 | `09` §6 |
 | D11 | **Thí điểm 3 nhiệm vụ qua Core PR #124** (tạo → ACK/chạy → review độc lập → audit) | ✅ 3/3 REVIEWED DRAFT | T18, `evidence/pilot/` |
 
 ## 2 • Danh sách kiểm tra trước khi merge

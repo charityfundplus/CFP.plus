@@ -1,0 +1,23 @@
+# PR #124 e994ea8 • 10 test files • BEFORE patch
+core: # pass 18 # fail 0 
+standard-core: # pass 22 # fail 0 
+p2: # pass 10 # fail 0 
+p2-http: # pass 5 # fail 0 
+task-execution-provenance: # pass 1 # fail 0 
+registry-read-model: # pass 6 # fail 0 
+review-round1: # pass 5 # fail 0 
+training-basic-v1: # pass 2 # fail 0 
+office-intake: # pass 6 # fail 0 
+hub69-data: # pass 4 # fail 0 
+# AFTER patches/pr124-ack-readonly.patch (+ack-readonly)
+core: # pass 18 # fail 0 
+standard-core: # pass 22 # fail 0 
+p2: # pass 10 # fail 0 
+p2-http: # pass 5 # fail 0 
+task-execution-provenance: # pass 1 # fail 0 
+registry-read-model: # pass 6 # fail 0 
+review-round1: # pass 5 # fail 0 
+training-basic-v1: # pass 2 # fail 0 
+office-intake: # pass 6 # fail 0 
+hub69-data: # pass 4 # fail 0 
+ack-readonly: # pass 9 # fail 0 

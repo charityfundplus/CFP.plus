@@ -88,7 +88,7 @@ function main() {
     return counts;
   };
   const report = {
-    root: ROOT,
+    root: '.',
     strict: { files: strict.length, failures: strictFail, fallbacks: strict.flatMap((r) => r.issues.filter((i) => i.code === 'NUMERIC_FALLBACK').map((i) => ({ file: r.file, url: i.url }))) },
     bilingual,
     baseline: {

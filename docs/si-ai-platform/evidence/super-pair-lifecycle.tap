@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: L1 transitions: forward order only; BLOCKED/REVOKED from anywhere; REVOKED terminal
+ok 1 - L1 transitions: forward order only; BLOCKED/REVOKED from anywhere; REVOKED terminal
+  ---
+  duration_ms: 1.607111
+  type: 'test'
+  ...
+# Subtest: L2 stage derived from Core evidence
+ok 2 - L2 stage derived from Core evidence
+  ---
+  duration_ms: 0.604086
+  type: 'test'
+  ...
+# Subtest: L3 self-review never counts as REVIEWED
+ok 3 - L3 self-review never counts as REVIEWED
+  ---
+  duration_ms: 0.117106
+  type: 'test'
+  ...
+# Subtest: L4 ACTIVE gate: all conditions required; mock runtime never qualifies
+ok 4 - L4 ACTIVE gate: all conditions required; mock runtime never qualifies
+  ---
+  duration_ms: 0.308532
+  type: 'test'
+  ...
+# Subtest: L5 report over the 91 inventory without evidence: all REGISTERED, ACTIVE 0
+ok 5 - L5 report over the 91 inventory without evidence: all REGISTERED, ACTIVE 0
+  ---
+  duration_ms: 0.652933
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 52.218531

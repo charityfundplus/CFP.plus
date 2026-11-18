@@ -8,13 +8,16 @@
     },
     {
       "path": "docs/si-ai-platform/data/notion-snapshots.json",
-      "sha256": "0dc9bcb5953764c5933a627a128d35028947d45e81054a3035ba2472ba4dfd48"
+      "sha256": "f881f6c5a11d6102cc2b39e06406467cad005968f2492bca6c3cb984d53fc328"
     },
     {
       "url": "https://app.notion.com/p/3f2caac9a55781fd97afe7ecd489c3fc"
     },
     {
       "url": "https://app.notion.com/p/c49caac9a557821da26a81752cc1daca"
+    },
+    {
+      "url": "https://app.notion.com/p/41ccaac9a55781e1a586e849a147641a"
     }
   ],
   "counts": {
@@ -22,7 +25,8 @@
     "danhMuc": 33,
     "banDo": 84,
     "banDoUniqueIds": 83,
-    "findings": 50
+    "bangLink91": 91,
+    "findings": 53
   },
   "findings": [
     {
@@ -442,6 +446,27 @@
         "tri thức toàn cầu"
       ],
       "severity": "MEDIUM"
+    },
+    {
+      "code": "LINKED_PAGE_TITLE_DIFFERS_FROM_NAME",
+      "id": "333",
+      "name": "Quỹ Đầu Tư",
+      "linkedTitle": "333 • Tài Chính & Ba Quỹ • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi",
+      "severity": "HIGH"
+    },
+    {
+      "code": "LINKED_PAGE_TITLE_DIFFERS_FROM_NAME",
+      "id": "4742",
+      "name": "Hiến Pháp, Hiến Chương, DNA, Công Thức, Quy Tắc & Luật Thép",
+      "linkedTitle": "4742 • Hiến Pháp, Hiến Chương & Luật Thép • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi",
+      "severity": "HIGH"
+    },
+    {
+      "code": "LINKED_PAGE_TITLE_DIFFERS_FROM_NAME",
+      "id": "5284",
+      "name": "Kiểm Chứng Tổng Hợp",
+      "linkedTitle": "5284 • Tài Liệu Tham Chiếu Lịch Sử • Đối Chiếu Link Gốc • REVIEW",
+      "severity": "HIGH"
     }
   ]
 }

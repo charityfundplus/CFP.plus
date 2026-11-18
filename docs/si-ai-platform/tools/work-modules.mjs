@@ -95,10 +95,24 @@ export function notionCrossCheck() {
     const contained = list.every((a) => list.some((b) => b !== a && (b.includes(a) || a.includes(b))) || list.length === 1);
     if (list.length > 1 && !contained) findings.push({ code: 'NAME_DIFFERS_ACROSS_NOTION_LISTS', id: r.id, names: list, severity: 'MEDIUM' });
   }
+  // New standardised 91-row table (Notion, 2026-11-18): must match the inventory 1:1; linked page title must match the name.
+  const bang = snap.bang_link_91?.rows ?? [];
+  const bangById = new Map(bang.map((r) => [r.id, r]));
+  for (const r of inv) {
+    const b = bangById.get(r.id);
+    if (!b) { findings.push({ code: 'MISSING_IN_BANG_LINK_91', id: r.id, severity: 'HIGH' }); continue; }
+    if (b.notion_url !== r.notion_url) findings.push({ code: 'BANG_LINK_URL_DIFFERS', id: r.id, inventory: r.notion_url, table: b.notion_url, severity: 'HIGH' });
+    if (b.linked_title) {
+      const t = clean(b.linked_title.split(' • Link Học Hỏi')[0].replace(/^\S+\s*•\s*/, ''));
+      const n = clean(r.name);
+      if (!(t.includes(n) || n.includes(t))) findings.push({ code: 'LINKED_PAGE_TITLE_DIFFERS_FROM_NAME', id: r.id, name: r.name, linkedTitle: b.linked_title, severity: 'HIGH' });
+    }
+  }
+  for (const b of bang) if (!ids91.has(b.id)) findings.push({ code: 'EXTRA_IN_BANG_LINK_91', id: b.id, severity: 'HIGH' });
   return {
     module: 'notion-cross-check', readOnly: true,
-    inputs: [input(invPath), input(snapPath), { url: snap.danh_muc.page }, { url: snap.ban_do_link_goc.page }],
-    counts: { list91: inv.length, danhMuc: danh.length, banDo: bando.length, banDoUniqueIds: bandoIds.size, findings: findings.length },
+    inputs: [input(invPath), input(snapPath), { url: snap.danh_muc.page }, { url: snap.ban_do_link_goc.page }, ...(snap.bang_link_91 ? [{ url: snap.bang_link_91.page }] : [])],
+    counts: { list91: inv.length, danhMuc: danh.length, banDo: bando.length, banDoUniqueIds: bandoIds.size, bangLink91: bang.length, findings: findings.length },
     findings,
   };
 }

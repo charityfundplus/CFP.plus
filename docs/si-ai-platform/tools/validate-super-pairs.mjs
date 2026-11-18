@@ -4,7 +4,7 @@
 // Read-only: never writes Registry data, never allocates IDs.
 
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
-import { join, dirname, resolve } from 'node:path';
+import { join, dirname, resolve, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 export const STATUSES = ['PLANNED', 'RESERVED', 'PROPOSED', 'BOUND', 'ACTIVE'];
@@ -112,7 +112,7 @@ function main() {
   const doc = JSON.parse(readFileSync(file, 'utf8'));
   const knownIds = collectKnownIds(repoRoot);
   const report = {
-    file,
+    file: relative(repoRoot, resolve(file)),
     knownRegistryIds: knownIds.size,
     validation: validateNodes(doc.nodes, { zeroMode: null, knownIds }),
     capacity3Tiers: { A: capacity(3, 'A'), B: capacity(3, 'B') },

@@ -1,0 +1,109 @@
+name: SI AI Platform • Independent Verification
+
+# Independent of the sandbox roles: runs on GitHub-hosted runners, checks out PR #124 at the pinned SHA,
+# applies the proposed ACK/read-only patch, and runs PR #124's own suites plus the PR #232 suites and
+# security checks. Read-only token. No deploy, no secrets, no network calls beyond the checkout.
+on:
+  pull_request:
+    paths:
+      - 'docs/si-ai-platform/**'
+      - 'index.html'
+      - '.github/workflows/si-ai-platform-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: si-ai-platform-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PR124_SHA: e994ea884fdf7a06ca5efe20674b96a0d51e24f8
+    steps:
+      - name: Checkout PR #232
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Checkout PR #124 at pinned SHA (read only)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.PR124_SHA }}
+          path: pr124
+          persist-credentials: false
+
+      - name: Set up Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Verify pinned SHA
+        run: test "$(git -C pr124 rev-parse HEAD)" = "$PR124_SHA"
+
+      - name: PR #124 baseline (unpatched) • npm test
+        working-directory: pr124/drafts/si-office
+        run: npm test
+
+      - name: Apply ACK + read-only adapter patch
+        run: |
+          git -C pr124 apply --check ../docs/si-ai-platform/patches/pr124-ack-readonly.patch
+          git -C pr124 apply ../docs/si-ai-platform/patches/pr124-ack-readonly.patch
+          git -C pr124 diff --stat
+
+      - name: PR #124 regression (patched)
+        working-directory: pr124/drafts/si-office
+        run: |
+          npm test
+          for t in p2 p2-http task-execution-provenance registry-read-model review-round1 training-basic-v1 office-intake hub69-data ack-readonly; do
+            echo "::group::$t"; node --test "tests/$t.test.mjs"; echo "::endgroup::"
+          done
+
+      - name: PR #232 suites (with patched PR #124)
+        env:
+          CFP_PR124_ROOT: ${{ github.workspace }}/pr124
+        run: |
+          node --test docs/si-ai-platform/tools/validate-super-pairs.test.mjs
+          node --test docs/si-ai-platform/tools/pr124-integration.test.mjs
+          node --test docs/si-ai-platform/tools/super-pair-lifecycle.test.mjs
+          node --test docs/si-ai-platform/tools/work-modules.test.mjs
+
+      - name: Pilot reproduces report hashes
+        env:
+          CFP_PR124_ROOT: ${{ github.workspace }}/pr124
+        run: |
+          node docs/si-ai-platform/tools/pilot-run.mjs "$RUNNER_TEMP/pilot"
+          for f in T1-github-registry-audit T2-notion-cross-check T3-classify-and-join; do
+            a=$(sha256sum "$RUNNER_TEMP/pilot/$f.json" | cut -d' ' -f1)
+            b=$(sha256sum "docs/si-ai-platform/evidence/pilot/$f.json" | cut -d' ' -f1)
+            echo "$f ci=$a committed=$b"; test "$a" = "$b"
+          done
+
+      - name: Security and site checks
+        run: |
+          node docs/si-ai-platform/tools/security-check.mjs
+          node docs/si-ai-platform/tools/site-check.mjs
+          for f in docs/si-ai-platform/tools/*.mjs; do node --check "$f"; done
+
+  codeql:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: github/codeql-action/init@v3
+        with:
+          languages: javascript-typescript
+          queries: security-extended
+          config: |
+            paths:
+              - docs/si-ai-platform
+      - uses: github/codeql-action/analyze@v3
