@@ -1,0 +1,28 @@
+# (node:10201) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: ACK-1 owner ACK moves QUEUED → ACKNOWLEDGED with a task digest; audited
+ok 1 - ACK-1 owner ACK moves QUEUED → ACKNOWLEDGED with a task digest; audited
+# Subtest: ACK-2 only the owner may ACK, only once, never by viewer
+ok 2 - ACK-2 only the owner may ACK, only once, never by viewer
+# Subtest: ACK-3 strict mode (requireAck) refuses run without ACK; legacy mode unchanged
+ok 3 - ACK-3 strict mode (requireAck) refuses run without ACK; legacy mode unchanged
+# Subtest: ACK-4 ACKNOWLEDGED task is interrupted on safe stop
+ok 4 - ACK-4 ACKNOWLEDGED task is interrupted on safe stop
+# Subtest: RO-1 adapter refuses to exist without a valid Human Governance approval (fail closed)
+ok 5 - RO-1 adapter refuses to exist without a valid Human Governance approval (fail closed)
+# Subtest: RO-2 path traversal, absolute paths, symlinks and large files are denied
+ok 6 - RO-2 path traversal, absolute paths, symlinks and large files are denied
+# Subtest: RO-3 approval expiry is re-checked at every call
+ok 7 - RO-3 approval expiry is re-checked at every call
+# Subtest: RO-4 with test approval the adapter passes all Core checks, reads a real file, makes 0 external requests
+ok 8 - RO-4 with test approval the adapter passes all Core checks, reads a real file, makes 0 external requests
+# Subtest: RO-5 default wiring stays mock: P2Sandbox without adapterFactory never uses the read-only adapter
+ok 9 - RO-5 default wiring stays mock: P2Sandbox without adapterFactory never uses the read-only adapter
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2106.17809

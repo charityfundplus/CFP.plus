@@ -1,0 +1,1072 @@
+{
+ "_meta": {
+  "status": "SNAPSHOT • READ ONLY • copied verbatim from Notion on 2026-11-18",
+  "note": "Names and IDs copied from the pages; no edits."
+ },
+ "danh_muc": {
+  "page": "https://app.notion.com/p/3f2caac9a55781fd97afe7ecd489c3fc",
+  "last_edited": "2026-11-11T23:29:25Z",
+  "rows": [
+   {
+    "id": "237",
+    "name": "CFP+",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781f1b0fbe94f0777e633"
+   },
+   {
+    "id": "2374",
+    "name": "CFPI • NAME REVIEW REQUIRED",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781799dd7db43b5f70755"
+   },
+   {
+    "id": "2378",
+    "name": "CFPT • NAME REVIEW REQUIRED",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781fc8f25ea32651fc32d"
+   },
+   {
+    "id": "2624",
+    "name": "Bảo Mật",
+    "notion_url": "https://app.notion.com/p/3f2caac9a5578148aa18e8034bce08b0"
+   },
+   {
+    "id": "2633",
+    "name": "Code",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781f39cffee38c917471e"
+   },
+   {
+    "id": "267",
+    "name": "CFP+ Collaboration Management Platform • CMP",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781289528fc2754412c1f"
+   },
+   {
+    "id": "276",
+    "name": "CRM • NAME REVIEW REQUIRED",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781c8a1a8c4c636bce97c"
+   },
+   {
+    "id": "343",
+    "name": "DID",
+    "notion_url": "https://app.notion.com/p/3f2caac9a557813bba56f9be01a48b34"
+   },
+   {
+    "id": "345",
+    "name": "Faith Hope Love",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781a1b1e1d0ff69c5f887"
+   },
+   {
+    "id": "362",
+    "name": "DNA • Hiến Pháp • Hiến Chương",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781d08a0fc05d9f5764ff"
+   },
+   {
+    "id": "365",
+    "name": "Ngày Trong Năm",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781d7bb70c462dcd81669"
+   },
+   {
+    "id": "383236",
+    "name": "Đức Tin Đức Cậy Đức Mến",
+    "notion_url": "https://app.notion.com/p/3f2caac9a5578169b6f6d0c4ffaeb10b"
+   },
+   {
+    "id": "3863",
+    "name": "FUND • NAME REVIEW REQUIRED",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781e8832af58958da444e"
+   },
+   {
+    "id": "4376",
+    "name": "ID Số",
+    "notion_url": "https://app.notion.com/p/3f2caac9a557819c8fc4cba6c5f7af26"
+   },
+   {
+    "id": "5272",
+    "name": "Không Của Riêng Ai",
+    "notion_url": "https://app.notion.com/p/3f2caac9a5578166bc42d38ac9986e4b"
+   },
+   {
+    "id": "5458",
+    "name": "Không Gì Không Thể",
+    "notion_url": "https://app.notion.com/p/3f2caac9a557819cb589d31c86093e70"
+   },
+   {
+    "id": "5678",
+    "name": "Kỹ Năng Sống Thiện",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781f98430e43c44fadcc8"
+   },
+   {
+    "id": "5824",
+    "name": "Kiến Trúc",
+    "notion_url": "https://app.notion.com/p/3f2caac9a5578110a800d602feae70aa"
+   },
+   {
+    "id": "627",
+    "name": "MCP • NAME REVIEW REQUIRED",
+    "notion_url": "https://app.notion.com/p/3f2caac9a5578119a1acedf6c5a61e76"
+   },
+   {
+    "id": "6535",
+    "name": "Only Learn+ For Life",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781c79220d0d7c52c196a"
+   },
+   {
+    "id": "6735",
+    "name": "Only Plus+ For Life",
+    "notion_url": "https://app.notion.com/p/3f2caac9a557811b8dc9fe2301d7ca38"
+   },
+   {
+    "id": "674",
+    "name": "Super Intelligence",
+    "notion_url": "https://app.notion.com/p/3f2caac9a5578145a529eb3825b5b69e"
+   },
+   {
+    "id": "6848",
+    "name": "Niềm Tin Hy Vọng",
+    "notion_url": "https://app.notion.com/p/3f2caac9a5578187b577c678c59990ca"
+   },
+   {
+    "id": "6969",
+    "name": "Multi We • Multi Worlds",
+    "notion_url": "https://app.notion.com/p/3f2caac9a5578116a400cf47e59188bd"
+   },
+   {
+    "id": "7535",
+    "name": "Quản Lý Dữ Liệu",
+    "notion_url": "https://app.notion.com/p/3f2caac9a557812bb01df2c13e41a6fe"
+   },
+   {
+    "id": "7584",
+    "name": "Quản Lý Tổng Hợp",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781bbba8de2304682e4a7"
+   },
+   {
+    "id": "7848",
+    "name": "Quản Trị Hệ Thống",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781e9855eccf40a376b02"
+   },
+   {
+    "id": "8282",
+    "name": "Tài Chính Toàn Cầu",
+    "notion_url": "https://app.notion.com/p/3f2caac9a557812e8302e7d4ec92af4f"
+   },
+   {
+    "id": "8682",
+    "name": "Thương Mại Toàn Cầu",
+    "notion_url": "https://app.notion.com/p/3f2caac9a557818fb4cddfe0e0556b8c"
+   },
+   {
+    "id": "8882",
+    "name": "Tri Thức Toàn Cầu",
+    "notion_url": "https://app.notion.com/p/3f2caac9a557814eb4a2ecca072e6b2d"
+   },
+   {
+    "id": "8884",
+    "name": "Tư Vấn Tổng Hợp",
+    "notion_url": "https://app.notion.com/p/3f2caac9a55781088e6fe65aeb5921d6"
+   },
+   {
+    "id": "8885",
+    "name": "Tư Vấn Tâm Lý",
+    "notion_url": "https://app.notion.com/p/3f2caac9a5578121af61f2e124034f15"
+   },
+   {
+    "id": "9584",
+    "name": "Xử Lý Tình Huống",
+    "notion_url": "https://app.notion.com/p/3f2caac9a557814a9590cb0ac6231f7f"
+   }
+  ]
+ },
+ "ban_do_link_goc": {
+  "page": "https://app.notion.com/p/c49caac9a557821da26a81752cc1daca",
+  "last_edited": "2026-10-20T03:36:34Z",
+  "rows": [
+   {
+    "id": "0",
+    "name": "Nền Tảng"
+   },
+   {
+    "id": "00",
+    "name": "Nền Tảng Tổng Thể"
+   },
+   {
+    "id": "000",
+    "name": "NHÓM NỀN TẢNG"
+   },
+   {
+    "id": "003",
+    "name": "Bộ Tam, Ba Quỹ, Banks, Coins & Token"
+   },
+   {
+    "id": "005",
+    "name": "Bộ Ngũ, Chi Hội, Cộng Đồng"
+   },
+   {
+    "id": "1",
+    "name": "Sự Sống"
+   },
+   {
+    "id": "11",
+    "name": "Sự Sống Với Sự Sống"
+   },
+   {
+    "id": "111",
+    "name": "Sự Sống Liên Quan đến Trái Đất • Ai"
+   },
+   {
+    "id": "135",
+    "name": "NHÓM QUẢN LÝ 1 • 3 • 5 Siêu Bộ Đôi"
+   },
+   {
+    "id": "2",
+    "name": "Con Người"
+   },
+   {
+    "id": "22",
+    "name": "Con Người Với Con Người"
+   },
+   {
+    "id": "222",
+    "name": "Con Người Yêu Thương Phục Vụ Con"
+   },
+   {
+    "id": "2272",
+    "name": "Cấp Cứu Sơ Cứu"
+   },
+   {
+    "id": "237",
+    "name": "CFP+"
+   },
+   {
+    "id": "2374",
+    "name": "CFPI • SI &"
+   },
+   {
+    "id": "2378",
+    "name": "CFPT"
+   },
+   {
+    "id": "246",
+    "name": "NHÓM QUẢN LÝ CÁC CHƯƠNG CÓ SỐ CHẴN ĐẦU TIÊN"
+   },
+   {
+    "id": "2633",
+    "name": "Code"
+   },
+   {
+    "id": "267",
+    "name": "CMP"
+   },
+   {
+    "id": "2684",
+    "name": "Bảo Mật Tổng Hợp"
+   },
+   {
+    "id": "276",
+    "name": "CRM"
+   },
+   {
+    "id": "2863",
+    "name": "Cứu Trợ Nhân Đạo"
+   },
+   {
+    "id": "28882",
+    "name": "Cổng Tri Thức Toàn Cầu • CTTTC"
+   },
+   {
+    "id": "3",
+    "name": "Ba Quỹ"
+   },
+   {
+    "id": "33",
+    "name": "Tài Chính & Ba Quỹ"
+   },
+   {
+    "id": "331",
+    "name": "Quỹ Sự Sống"
+   },
+   {
+    "id": "332",
+    "name": "Quỹ Con Người"
+   },
+   {
+    "id": "333",
+    "name": "Quỹ Đầu Tư"
+   },
+   {
+    "id": "333",
+    "name": "Tài Chính & Ba Quỹ"
+   },
+   {
+    "id": "3366",
+    "name": "Dịch Đa Ngôn Ngữ"
+   },
+   {
+    "id": "343",
+    "name": "D🆔"
+   },
+   {
+    "id": "345",
+    "name": "Faith Hope Love"
+   },
+   {
+    "id": "362",
+    "name": "DNA"
+   },
+   {
+    "id": "365",
+    "name": "Ngày Trong Năm"
+   },
+   {
+    "id": "3728",
+    "name": "Di Sản Bảo Tồn"
+   },
+   {
+    "id": "3784",
+    "name": "Dưỡng Sinh Tổng Hợp"
+   },
+   {
+    "id": "383236",
+    "name": "Đức Tin Đức Cậy Đức Mến"
+   },
+   {
+    "id": "3863",
+    "name": "FUND"
+   },
+   {
+    "id": "4",
+    "name": "Tôn Giáo"
+   },
+   {
+    "id": "4376",
+    "name": "🆔SO"
+   },
+   {
+    "id": "44",
+    "name": "Hòa Hợp Tôn Giáo"
+   },
+   {
+    "id": "444",
+    "name": "Hòa Hợp Doi Thoai Tôn Giáo"
+   },
+   {
+    "id": "5",
+    "name": "Cộng Đồng"
+   },
+   {
+    "id": "500",
+    "name": "D QUẢN LÝ TẤT CẢ CÁC ID SỐ"
+   },
+   {
+    "id": "5272",
+    "name": "Không Của Riêng Ai KCRA"
+   },
+   {
+    "id": "5284",
+    "name": "Kiểm Chứng Tổng Hợp"
+   },
+   {
+    "id": "5458",
+    "name": "Không Gì Không Thể"
+   },
+   {
+    "id": "55",
+    "name": "Cộng Đồng Giao Lưu Toàn Cầu"
+   },
+   {
+    "id": "555",
+    "name": "Cộng Đồng Giao Lưu Toàn Cầu"
+   },
+   {
+    "id": "5678",
+    "name": "Kỹ Năng Sống Thiện"
+   },
+   {
+    "id": "5824",
+    "name": "Kiến Trúc"
+   },
+   {
+    "id": "5862",
+    "name": "Lương Thực Ngũ Cốc"
+   },
+   {
+    "id": "5866",
+    "name": "Kế Thừa Mãi Mãi"
+   },
+   {
+    "id": "6",
+    "name": "AI & Công Nghệ"
+   },
+   {
+    "id": "627",
+    "name": "MCP"
+   },
+   {
+    "id": "6535",
+    "name": "Only Learn+ For Life"
+   },
+   {
+    "id": "66",
+    "name": "AI & Công Nghệ Toàn Cầu"
+   },
+   {
+    "id": "666",
+    "name": "AI Bộ Đôi Cháu Cưng"
+   },
+   {
+    "id": "6735",
+    "name": "Only Plus+ For Life"
+   },
+   {
+    "id": "674",
+    "name": "Super Intelligence  Siêu Trí Tuệ Nhân Tạo"
+   },
+   {
+    "id": "6848",
+    "name": "Niềm Tin Hy Vọng"
+   },
+   {
+    "id": "6969",
+    "name": "MWMW"
+   },
+   {
+    "id": "7",
+    "name": "Doanh Nghiệp"
+   },
+   {
+    "id": "7535",
+    "name": "Quản Lý Dữ Liệu"
+   },
+   {
+    "id": "7584",
+    "name": "Quản Lý Tổng Hợp"
+   },
+   {
+    "id": "77",
+    "name": "Doanh Nghiệp Giao Lưu & Phát Triển"
+   },
+   {
+    "id": "777",
+    "name": "DN Bộ Đôi Cháu Cưng"
+   },
+   {
+    "id": "7848",
+    "name": "Quản Trị Hệ Thống"
+   },
+   {
+    "id": "7884",
+    "name": "Quản Trị Tổng Hợp"
+   },
+   {
+    "id": "789",
+    "name": "NHÓM QUẢN LÝ 7 • 8 • 9 Siêu Bộ Đôi"
+   },
+   {
+    "id": "8",
+    "name": "Tổ Chức"
+   },
+   {
+    "id": "8282",
+    "name": "TCTC"
+   },
+   {
+    "id": "8682",
+    "name": "TMTC"
+   },
+   {
+    "id": "88",
+    "name": "Tổ Chức Giao Lưu & Hợp Tác"
+   },
+   {
+    "id": "888",
+    "name": "Bộ Đôi Cháu Cưng"
+   },
+   {
+    "id": "8882",
+    "name": "TTTC"
+   },
+   {
+    "id": "8884",
+    "name": "Tư Vấn Tổng Hợp"
+   },
+   {
+    "id": "8885",
+    "name": "Tư Vấn Tâm Lý"
+   },
+   {
+    "id": "9",
+    "name": "Quốc Gia"
+   },
+   {
+    "id": "9397",
+    "name": "Xây Dựng Website"
+   },
+   {
+    "id": "9584",
+    "name": "Xử Lý Tình Huống"
+   },
+   {
+    "id": "9884",
+    "name": "Y Tế Tổng Hợp"
+   },
+   {
+    "id": "99",
+    "name": "Quốc Gia Hợp Tác & Tương Trợ"
+   },
+   {
+    "id": "999",
+    "name": "Quốc Gia Hợp Tác"
+   }
+  ]
+ },
+ "bang_link_91": {
+  "page": "https://app.notion.com/p/41ccaac9a55781e1a586e849a147641a",
+  "last_edited": "2026-11-18T23:22:12Z",
+  "status": "REVIEW CANDIDATE",
+  "rows": [
+   {
+    "id": "0",
+    "name": "Nền Tảng",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781efac11cf4fd0f6fd64",
+    "linked_title": "0 • Nền Tảng • Siêu Bộ Đôi • Siêu Trí Tuệ SI🤖AI🤖+ Siêu Phần Mềm"
+   },
+   {
+    "id": "00",
+    "name": "Nền Tảng Tổng Thể",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557813098b6fbb9f4e10191",
+    "linked_title": "00 • Nền Tảng Tổng Thể • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "000",
+    "name": "Nhóm Nền Tảng",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781c9b487e916578b2578",
+    "linked_title": "000 • NHÓM NỀN TẢNG • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "003",
+    "name": "Bộ Tam, Ba Quỹ, Banks, Coins & Token",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781b48585e56921c88e49",
+    "linked_title": "003 • Bộ Tam, Ba Quỹ, Banks, Coins & Token • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "005",
+    "name": "Bộ Ngũ, Chi Hội, Cộng Đồng",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781b69413cc87a2d6debe",
+    "linked_title": "005 • Bộ Ngũ, Chi Hội, Cộng Đồng • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "1",
+    "name": "Sự Sống",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781899e5fe815b1d05455",
+    "linked_title": "1 • Sự Sống • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "11",
+    "name": "Sự Sống Với Sự Sống",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557810c93a8d4981ff17515",
+    "linked_title": "11 • Sự Sống Với Sự Sống • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "111",
+    "name": "Sự Sống Liên Quan đến Trái Đất • Ai",
+    "notion_url": "https://app.notion.com/p/3f3caac9a5578119b3dec8708b3bcb75",
+    "linked_title": "111 • Sự Sống Liên Quan đến Trái Đất • Ai • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "135",
+    "name": "NHÓM QUẢN LÝ 1 • 3 • 5 Siêu Bộ Đôi",
+    "notion_url": "https://app.notion.com/p/3f3caac9a5578199b3b7edfbb2b2ee13",
+    "linked_title": "135 • NHÓM QUẢN LÝ 1 • 3 • 5 Siêu Bộ Đôi • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "2",
+    "name": "Con Người",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781c1b8c3d7ee7b1834a3",
+    "linked_title": "2 • Con Người • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "22",
+    "name": "Con Người Với Con Người",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781d9b4c2f3629cdbe8d3",
+    "linked_title": "22 • Con Người Với Con Người • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "222",
+    "name": "Con Người Yêu Thương Phục Vụ Con",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781aca57bd2f427c2f6be",
+    "linked_title": "222 • Con Người Yêu Thương Phục Vụ Con • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "237",
+    "name": "CFP+",
+    "notion_url": "https://app.notion.com/p/3f3caac9a5578177a0aaf6a14400d5a7",
+    "linked_title": "237 • CFP+ • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "246",
+    "name": "NHÓM QUẢN LÝ CÁC CHƯƠNG CÓ SỐ CHẴN ĐẦU TIÊN",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781e7b27ce41e9eb7abf5",
+    "linked_title": "246 • NHÓM QUẢN LÝ CÁC CHƯƠNG CÓ SỐ CHẴN ĐẦU TIÊN • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "267",
+    "name": "CMP",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781a0b0afca885403e71b",
+    "linked_title": "267 • CMP • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "276",
+    "name": "CRM",
+    "notion_url": "https://app.notion.com/p/3f3caac9a5578179ac21e67eaf8c2537",
+    "linked_title": "276 • CRM • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "2272",
+    "name": "Cấp Cứu Sơ Cứu",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557813b86d0f4ea13d26bee",
+    "linked_title": "2272 • Cấp Cứu Sơ Cứu • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "2273",
+    "name": "Cấp Cứu Sơ Cứu",
+    "notion_url": null,
+    "linked_title": null
+   },
+   {
+    "id": "2374",
+    "name": "CFPI • SI &",
+    "notion_url": "https://app.notion.com/p/3f3caac9a5578199825dd8d4c280f1bb",
+    "linked_title": "2374 • CFPI • SI & • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "2378",
+    "name": "CFPT",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781e3b008e503e7ae0753",
+    "linked_title": "2378 • CFPT • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "2588",
+    "name": "Bách Khoa Toàn Thư",
+    "notion_url": null,
+    "linked_title": null
+   },
+   {
+    "id": "2633",
+    "name": "Code",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781c5ac0bceb18159cf0a",
+    "linked_title": "2633 • Code • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "2684",
+    "name": "Bảo Mật Tổng Hợp",
+    "notion_url": "https://app.notion.com/p/3f3caac9a5578121a123dd2cd5cbdb42",
+    "linked_title": "2684 • Bảo Mật Tổng Hợp • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "2838",
+    "name": "An Toàn, Điều Tra & Cảnh Báo Rủi Ro",
+    "notion_url": "https://app.notion.com/p/3f3caac9a5578167b698cfc09afb6366",
+    "linked_title": "2838 • An Toàn, Điều Tra & Cảnh Báo Rủi Ro • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "2863",
+    "name": "Cứu Trợ Nhân Đạo",
+    "notion_url": "https://app.notion.com/p/3f3caac9a5578109b48dfa87f2c09c2e",
+    "linked_title": "2863 • Cứu Trợ Nhân Đạo • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "2877",
+    "name": "Bảo Vệ Sự Sống",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557816691eec3f0ac0b75d7",
+    "linked_title": "2877 • Bảo Vệ Sự Sống • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "28882",
+    "name": "Cổng Tri Thức Toàn Cầu • CTTTC",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781e0bbc5fb3e40ebdeb2",
+    "linked_title": "28882 • Cổng Tri Thức Toàn Cầu • CTTTC • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "3",
+    "name": "Ba Quỹ",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557810897c4c7d94f975fe1",
+    "linked_title": "3 • Ba Quỹ • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "33",
+    "name": "Tài Chính & Ba Quỹ",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557815cbfc6f4e65e8ece92",
+    "linked_title": "33 • Tài Chính & Ba Quỹ • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "330",
+    "name": "Tổng Quan Các Quỹ Toàn Cầu",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557811d872ffa043f2a862d",
+    "linked_title": "330 • Tổng Quan Các Quỹ Toàn Cầu • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "331",
+    "name": "Quỹ Sự Sống",
+    "notion_url": "https://app.notion.com/p/3f3caac9a5578159930dca0973bb6e58",
+    "linked_title": "331 • Quỹ Sự Sống • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "332",
+    "name": "Quỹ Con Người",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557818780aefd03605e1cff",
+    "linked_title": "332 • Quỹ Con Người • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "333",
+    "name": "Quỹ Đầu Tư",
+    "notion_url": "https://app.notion.com/p/3f3caac9a5578165b166c7d2bf031907",
+    "linked_title": "333 • Tài Chính & Ba Quỹ • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "343",
+    "name": "D🆔",
+    "notion_url": "https://app.notion.com/p/3f3caac9a5578137b5aef207b9cf2dd0",
+    "linked_title": "343 • D🆔 • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "345",
+    "name": "Faith Hope Love",
+    "notion_url": "https://app.notion.com/p/3f3caac9a5578171a212e3c92b5e4b43",
+    "linked_title": "345 • Faith Hope Love • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "362",
+    "name": "DNA",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781899849e595e1e42605",
+    "linked_title": "362 • DNA • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "365",
+    "name": "365 Ngày Trong Năm",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557814cbe1ece39593211b6",
+    "linked_title": "365 • Ngày Trong Năm • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "3366",
+    "name": "Dịch Đa Ngôn Ngữ",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557812dbec8fd19eb08fd3a",
+    "linked_title": "3366 • Dịch Đa Ngôn Ngữ • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "3728",
+    "name": "Di Sản Bảo Tồn",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781279e4ade86c8a5c4d4",
+    "linked_title": "3728 • Di Sản Bảo Tồn • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "3784",
+    "name": "Dưỡng Sinh Tổng Hợp",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781ab8bebc3eeecc9da88",
+    "linked_title": "3784 • Dưỡng Sinh Tổng Hợp • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "3863",
+    "name": "FUND",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781aab335d2c10c524a44",
+    "linked_title": "3863 • FUND • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "383236",
+    "name": "Đức Tin Đức Cậy Đức Mến",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557817c8ba7fb5e0b502cdd",
+    "linked_title": "383236 • Đức Tin Đức Cậy Đức Mến • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "4",
+    "name": "Tôn Giáo",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557819c8574d1f752f4ea0c",
+    "linked_title": "4 • Tôn Giáo • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "44",
+    "name": "Hòa Hợp Tôn Giáo",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557817fa7d5e128a5a4fa6e",
+    "linked_title": "44 • Hòa Hợp Tôn Giáo • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "444",
+    "name": "Hòa Hợp Doi Thoai Tôn Giáo",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557810a9178f93ab08e9a54",
+    "linked_title": "444 • Hòa Hợp Doi Thoai Tôn Giáo • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "4347",
+    "name": "Gia Đình & Gia Phả Toàn Cầu",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781b5b6e3f27774b1cd5b",
+    "linked_title": "4347 • Gia Đình & Gia Phả Toàn Cầu • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "4376",
+    "name": "🆔SO",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781739ee4fb2897f66fd5",
+    "linked_title": "4376 • 🆔SO • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "4742",
+    "name": "Hiến Pháp, Hiến Chương, DNA, Công Thức, Quy Tắc & Luật Thép",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557810195ddd8c1e3e6f8ce",
+    "linked_title": "4742 • Hiến Pháp, Hiến Chương & Luật Thép • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "5",
+    "name": "Cộng Đồng",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781618112cded9eaa3d7e",
+    "linked_title": "5 • Cộng Đồng • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "55",
+    "name": "Cộng Đồng Giao Lưu Toàn Cầu",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781a29fc7e867d8d7b9eb",
+    "linked_title": "55 • Cộng Đồng Giao Lưu Toàn Cầu • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "500",
+    "name": "D QUẢN LÝ TẤT CẢ CÁC ID SỐ",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781deb89ae575fe269865",
+    "linked_title": "500 • D QUẢN LÝ TẤT CẢ CÁC ID SỐ • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "555",
+    "name": "Cộng Đồng Giao Lưu Toàn Cầu",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781ebae24e6434c70c439",
+    "linked_title": "555 • Cộng Đồng Giao Lưu Toàn Cầu • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "5272",
+    "name": "Không Của Riêng Ai KCRA",
+    "notion_url": "https://app.notion.com/p/3f3caac9a5578157a5aad2de6c44ae72",
+    "linked_title": "5272 • Không Của Riêng Ai KCRA • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "5284",
+    "name": "Kiểm Chứng Tổng Hợp",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557817e83fbc7c3683398a8",
+    "linked_title": "5284 • Tài Liệu Tham Chiếu Lịch Sử • Đối Chiếu Link Gốc • REVIEW"
+   },
+   {
+    "id": "5458",
+    "name": "Không Gì Không Thể",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557817d96cfe7e593c2eea8",
+    "linked_title": "5458 • Không Gì Không Thể • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "5678",
+    "name": "Kỹ Năng Sống Thiện",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781668a01f0130c9bdde6",
+    "linked_title": "5678 • Kỹ Năng Sống Thiện • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "5824",
+    "name": "Kiến Trúc",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557815aa63bd9e5b5dbdf82",
+    "linked_title": "5824 • Kiến Trúc • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "5835",
+    "name": "Kiểm Toán Độc Lập & Minh Bạch",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557819182a4d828ae540b62",
+    "linked_title": "5835 • Kiểm Toán Độc Lập & Minh Bạch • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "5862",
+    "name": "Lương Thực Ngũ Cốc",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557813ca584d88152d820a9",
+    "linked_title": "5862 • Lương Thực Ngũ Cốc • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "5866",
+    "name": "Kế Thừa Mãi Mãi",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557819cade9c99f968419d0",
+    "linked_title": "5866 • Kế Thừa Mãi Mãi • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "6",
+    "name": "AI & Công Nghệ",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557813d997cc936db93aafe",
+    "linked_title": "6 • AI & Công Nghệ • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "66",
+    "name": "AI & Công Nghệ Toàn Cầu",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781c3a1a0f4005774889d",
+    "linked_title": "66 • AI & Công Nghệ Toàn Cầu • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "627",
+    "name": "MCP",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557812aaf6bc725e8cd1de0",
+    "linked_title": "627 • MCP • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "666",
+    "name": "AI Bộ Đôi Cháu Cưng",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781d4ad93c4b12fdfa4cf",
+    "linked_title": "666 • AI Bộ Đôi Cháu Cưng • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "674",
+    "name": "Super Intelligence Siêu Trí Tuệ Nhân Tạo",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781ee8facc019a04ab88e",
+    "linked_title": "674 • Super Intelligence  Siêu Trí Tuệ Nhân Tạo • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "6535",
+    "name": "Only Learn+ For Life",
+    "notion_url": "https://app.notion.com/p/3f3caac9a5578187b3e5e36b35c8fdda",
+    "linked_title": "6535 • Only Learn+ For Life • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "6735",
+    "name": "Only Plus+ For Life",
+    "notion_url": "https://app.notion.com/p/3f3caac9a5578100a6aef303fe8bf9b7",
+    "linked_title": "6735 • Only Plus+ For Life • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "6848",
+    "name": "Niềm Tin Hy Vọng",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557819ca173cf6a87aaa928",
+    "linked_title": "6848 • Niềm Tin Hy Vọng • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "6969",
+    "name": "MWMW",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781a9bce7ed60d43b0a35",
+    "linked_title": "6969 • MWMW • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi • Siêu Trí Tuệ • SI 🤖 AI 🤖 + Siêu Phần Mềm"
+   },
+   {
+    "id": "7",
+    "name": "Doanh Nghiệp",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781cfae2acf7eb99011ce",
+    "linked_title": "7 • Doanh Nghiệp • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "77",
+    "name": "Doanh Nghiệp Giao Lưu & Phát Triển",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781b1bbc2c82dca73d53d",
+    "linked_title": "77 • Doanh Nghiệp Giao Lưu & Phát Triển • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "777",
+    "name": "DN Bộ Đôi Cháu Cưng",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781d4b8b6d2c07cc9534e",
+    "linked_title": "777 • DN Bộ Đôi Cháu Cưng • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "789",
+    "name": "NHÓM QUẢN LÝ 7 • 8 • 9 Siêu Bộ Đôi",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781e48318d483832ee485",
+    "linked_title": "789 • NHÓM QUẢN LÝ 7 • 8 • 9 Siêu Bộ Đôi • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "7535",
+    "name": "Quản Lý Dữ Liệu",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557816abff8e7b93eb0c460",
+    "linked_title": "7535 • Quản Lý Dữ Liệu • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "7584",
+    "name": "Quản Lý Tổng Hợp",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781de8a73df91dd719963",
+    "linked_title": "7584 • Quản Lý Tổng Hợp • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "7848",
+    "name": "Quản Trị Hệ Thống",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781349b4cfe28ea49956f",
+    "linked_title": "7848 • Quản Trị Hệ Thống • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "7884",
+    "name": "Quản Trị Tổng Hợp",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557810ea543c4c822bf7713",
+    "linked_title": "7884 • Quản Trị Tổng Hợp • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "8",
+    "name": "Tổ Chức",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781b3922af1dc128efed0",
+    "linked_title": "8 • Tổ Chức • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "88",
+    "name": "Tổ Chức Giao Lưu & Hợp Tác",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781b5a317f1dab67890aa",
+    "linked_title": "88 • Tổ Chức Giao Lưu & Hợp Tác • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "888",
+    "name": "Bộ Đôi Cháu Cưng",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781babac8d0f0205b2fd6",
+    "linked_title": "888 • Bộ Đôi Cháu Cưng • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "8282",
+    "name": "TCTC",
+    "notion_url": "https://app.notion.com/p/3f3caac9a5578121858bda48c9630368",
+    "linked_title": "8282 • TCTC • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "8682",
+    "name": "TMTC",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781c7a6c2d4004f0e62e6",
+    "linked_title": "8682 • TMTC • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "8882",
+    "name": "TTTC",
+    "notion_url": "https://app.notion.com/p/3f3caac9a5578129b3a7c691d6b41325",
+    "linked_title": "8882 • TTTC • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "8884",
+    "name": "Tư Vấn Tổng Hợp",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557812ca685ec75375b62e4",
+    "linked_title": "8884 • Tư Vấn Tổng Hợp • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "8885",
+    "name": "Tư Vấn Tâm Lý",
+    "notion_url": "https://app.notion.com/p/3f3caac9a5578152a94fc3d2ed5054ed",
+    "linked_title": "8885 • Tư Vấn Tâm Lý • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "9",
+    "name": "Quốc Gia",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781a09c68d56181d17c3e",
+    "linked_title": "9 • Quốc Gia • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "99",
+    "name": "Quốc Gia Hợp Tác & Tương Trợ",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781ae91c6e4df021cd00c",
+    "linked_title": "99 • Quốc Gia Hợp Tác & Tương Trợ • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "999",
+    "name": "Quốc Gia Hợp Tác Bộ Đôi Cháu Cưng",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557813bbee2fe45017ff9ca",
+    "linked_title": "999 • Quốc Gia Hợp Tác Bộ Đôi Cháu Cưng • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "9397",
+    "name": "Xây Dựng Website",
+    "notion_url": "https://app.notion.com/p/3f3caac9a55781f19153ed0dc38aa129",
+    "linked_title": "9397 • Xây Dựng Website • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "9584",
+    "name": "Xử Lý Tình Huống",
+    "notion_url": "https://app.notion.com/p/3f3caac9a557818f89f0e7ad31b61c9a",
+    "linked_title": "9584 • Xử Lý Tình Huống • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   },
+   {
+    "id": "9884",
+    "name": "Y Tế Tổng Hợp",
+    "notion_url": "https://app.notion.com/p/3f3caac9a5578110a1d1d3f076539917",
+    "linked_title": "9884 • Y Tế Tổng Hợp • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi"
+   }
+  ]
+ }
+}

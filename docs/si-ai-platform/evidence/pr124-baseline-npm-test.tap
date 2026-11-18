@@ -1,0 +1,88 @@
+# Subtest: unauthenticated access rejected
+ok 1 - unauthenticated access rejected
+# Subtest: 12 modules and null identity; no production route
+ok 2 - 12 modules and null identity; no production route
+# Subtest: viewer cannot write and editor cannot review
+ok 3 - viewer cannot write and editor cannot review
+# Subtest: workflow requires submission and HTTPS evidence; reviewer result is demo only
+ok 4 - workflow requires submission and HTTPS evidence; reviewer result is demo only
+# Subtest: registration validates lineage and refuses identity fields
+ok 5 - registration validates lineage and refuses identity fields
+# Subtest: origin protection and invalid sessions
+ok 6 - origin protection and invalid sessions
+# Subtest: rejects unsafe URLs and unexpected record fields
+ok 7 - rejects unsafe URLs and unexpected record fields
+# Subtest: all modules accept synthetic drafts
+ok 8 - all modules accept synthetic drafts
+# Subtest: audit hash links recompute, including denied actions
+ok 9 - audit hash links recompute, including denied actions
+# Subtest: static security headers and traversal rejection
+ok 10 - static security headers and traversal rejection
+# Subtest: conflicting US registry branch blocked, numeric strings retain zeros
+ok 11 - conflicting US registry branch blocked, numeric strings retain zeros
+# Subtest: HSTDN validates members, blocks identity fields and keeps legal claims unverified
+ok 12 - HSTDN validates members, blocks identity fields and keeps legal claims unverified
+# Subtest: mock adapters never connect and reject credentials/live writes
+ok 13 - mock adapters never connect and reject credentials/live writes
+# Subtest: 12 bilingual contracts; product maturity/service scope validated
+ok 14 - 12 bilingual contracts; product maturity/service scope validated
+# Subtest: identity evidence, duplicate profiles, hostile Host and denial audit
+ok 15 - identity evidence, duplicate profiles, hostile Host and denial audit
+# Subtest: Country/Developer proposals preserve identity and validate local relationship
+ok 16 - Country/Developer proposals preserve identity and validate local relationship
+# Subtest: 12-module functional matrix: create, submit, review, audit and role denial
+ok 17 - 12-module functional matrix: create, submit, review, audit and role denial
+# Subtest: catalog relations enforce office membership; adapters deny viewer and live mode
+ok 18 - catalog relations enforce office membership; adapters deny viewer and live mode
+# Subtest: standard core: 12 module versions, one reusable core, three configuration templates
+ok 19 - standard core: 12 module versions, one reusable core, three configuration templates
+# Subtest: standard core: rejects self-issued identity, live adapter, production mode and privileges
+ok 20 - standard core: rejects self-issued identity, live adapter, production mode and privileges
+# Subtest: standard core: normal task runs 16 independent checks and requires separate demo review
+ok 21 - standard core: normal task runs 16 independent checks and requires separate demo review
+# Subtest: standard core: viewer cannot create/run/stop/upgrade; editor cannot recover
+ok 22 - standard core: viewer cannot create/run/stop/upgrade; editor cannot recover
+# Subtest: standard core: out-of-mission and resource requests are denied before execution
+ok 23 - standard core: out-of-mission and resource requests are denied before execution
+# Subtest: standard core: overreach blocked with no output, safe stop and retained evidence
+ok 24 - standard core: overreach blocked with no output, safe stop and retained evidence
+# Subtest: standard core: bad-evidence blocked with no output, safe stop and retained evidence
+ok 25 - standard core: bad-evidence blocked with no output, safe stop and retained evidence
+# Subtest: standard core: false-claim blocked with no output, safe stop and retained evidence
+ok 26 - standard core: false-claim blocked with no output, safe stop and retained evidence
+# Subtest: standard core: adapter-error fault halts and requires reviewer recovery/explicit retry
+ok 27 - standard core: adapter-error fault halts and requires reviewer recovery/explicit retry
+# Subtest: standard core: timeout fault halts and requires reviewer recovery/explicit retry
+ok 28 - standard core: timeout fault halts and requires reviewer recovery/explicit retry
+# Subtest: standard core: stop during running adapter prevents late output; recovery waits for quiescence
+ok 29 - standard core: stop during running adapter prevents late output; recovery waits for quiescence
+# Subtest: standard core: one active task per pair; no replay after draft completion
+ok 30 - standard core: one active task per pair; no replay after draft completion
+# Subtest: standard core: changed provider/protocol or title cannot pass independent supervision
+ok 31 - standard core: changed provider/protocol or title cannot pass independent supervision
+# Subtest: standard core: learning evaluates safe denial, never grants rights
+ok 32 - standard core: learning evaluates safe denial, never grants rights
+# Subtest: standard core: synchronized upgrade/rollback preserves identities and audit
+ok 33 - standard core: synchronized upgrade/rollback preserves identities and audit
+# Subtest: standard core: incompatible/failing release and active tasks prevent partial upgrade
+ok 34 - standard core: incompatible/failing release and active tasks prevent partial upgrade
+# Subtest: standard core: HSTDN US artifact remains synthetic, no partner/capability/legal claim
+ok 35 - standard core: HSTDN US artifact remains synthetic, no partner/capability/legal claim
+# Subtest: standard core: snapshot is detached; configuration cannot mutate policy
+ok 36 - standard core: snapshot is detached; configuration cannot mutate policy
+# Subtest: standard core: least-privilege source-only config supports registry audit without write tool
+ok 37 - standard core: least-privilege source-only config supports registry audit without write tool
+# Subtest: standard core: HTTP handler reuses sessions, blocks credential injection and exposes local UI
+ok 38 - standard core: HTTP handler reuses sessions, blocks credential injection and exposes local UI
+# Subtest: standard core: read-only registry lookup preserves numeric zero strings; inventory does not verify identity
+ok 39 - standard core: read-only registry lookup preserves numeric zero strings; inventory does not verify identity
+# Subtest: standard core: omission of adapter tool declarations cannot bypass Core draft.write permission
+ok 40 - standard core: omission of adapter tool declarations cannot bypass Core draft.write permission
+# tests 40
+# suites 0
+# pass 40
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 85.592263

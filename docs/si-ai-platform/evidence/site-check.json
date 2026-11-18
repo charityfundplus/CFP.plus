@@ -1,0 +1,40 @@
+{
+  "root": ".",
+  "strict": {
+    "files": 4,
+    "failures": [],
+    "fallbacks": []
+  },
+  "bilingual": [
+    {
+      "file": "docs/si-ai-platform/mockups/forum.html",
+      "vi": 65,
+      "en": 65,
+      "balanced": true
+    },
+    {
+      "file": "docs/si-ai-platform/mockups/office.html",
+      "vi": 32,
+      "en": 32,
+      "balanced": true
+    },
+    {
+      "file": "docs/si-ai-platform/mockups/super-pairs.html",
+      "vi": 19,
+      "en": 19,
+      "balanced": true
+    }
+  ],
+  "baseline": {
+    "htmlFiles": 161,
+    "issueCounts": {
+      "BROKEN_INTERNAL": 2,
+      "NUMERIC_FALLBACK": 52
+    },
+    "brokenInternal": [
+      "267/index.html -> /assets/style.css",
+      "2676/index.html -> /assets/style.css"
+    ],
+    "blankWithoutNoopener": []
+  }
+}

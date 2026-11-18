@@ -1,0 +1,472 @@
+{
+  "module": "notion-cross-check",
+  "readOnly": true,
+  "inputs": [
+    {
+      "path": "docs/si-ai-platform/data/super-pair-source-inventory.json",
+      "sha256": "5be96d99e6d8ebbf015c6a65a53192c5760eb94dfcfb7cd0f776bf173f91b5fc"
+    },
+    {
+      "path": "docs/si-ai-platform/data/notion-snapshots.json",
+      "sha256": "f881f6c5a11d6102cc2b39e06406467cad005968f2492bca6c3cb984d53fc328"
+    },
+    {
+      "url": "https://app.notion.com/p/3f2caac9a55781fd97afe7ecd489c3fc"
+    },
+    {
+      "url": "https://app.notion.com/p/c49caac9a557821da26a81752cc1daca"
+    },
+    {
+      "url": "https://app.notion.com/p/41ccaac9a55781e1a586e849a147641a"
+    }
+  ],
+  "counts": {
+    "list91": 91,
+    "danhMuc": 33,
+    "banDo": 84,
+    "banDoUniqueIds": 83,
+    "bangLink91": 91,
+    "findings": 53
+  },
+  "findings": [
+    {
+      "code": "DUPLICATE_SOURCE_PROFILE",
+      "id": "333",
+      "names": [
+        "Quỹ Đầu Tư",
+        "Tài Chính & Ba Quỹ"
+      ],
+      "source": "ban_do_link_goc",
+      "severity": "HIGH"
+    },
+    {
+      "code": "IN_DANH_MUC_NOT_IN_91",
+      "id": "2624",
+      "name": "Bảo Mật",
+      "severity": "HIGH"
+    },
+    {
+      "code": "IN_91_NOT_IN_BAN_DO",
+      "id": "2273",
+      "name": "Cấp Cứu Sơ Cứu",
+      "severity": "LOW"
+    },
+    {
+      "code": "IN_91_NOT_IN_BAN_DO",
+      "id": "2588",
+      "name": "Bách Khoa Toàn Thư",
+      "severity": "LOW"
+    },
+    {
+      "code": "IN_91_NOT_IN_BAN_DO",
+      "id": "2838",
+      "name": "An Toàn, Điều Tra & Cảnh Báo Rủi Ro",
+      "severity": "LOW"
+    },
+    {
+      "code": "IN_91_NOT_IN_BAN_DO",
+      "id": "2877",
+      "name": "Bảo Vệ Sự Sống",
+      "severity": "LOW"
+    },
+    {
+      "code": "IN_91_NOT_IN_BAN_DO",
+      "id": "330",
+      "name": "Tổng Quan Các Quỹ Toàn Cầu",
+      "severity": "LOW"
+    },
+    {
+      "code": "IN_91_NOT_IN_BAN_DO",
+      "id": "4347",
+      "name": "Gia Đình & Gia Phả Toàn Cầu",
+      "severity": "LOW"
+    },
+    {
+      "code": "IN_91_NOT_IN_BAN_DO",
+      "id": "4742",
+      "name": "Hiến Pháp, Hiến Chương, DNA, Công Thức, Quy Tắc & Luật Thép",
+      "severity": "LOW"
+    },
+    {
+      "code": "IN_91_NOT_IN_BAN_DO",
+      "id": "5835",
+      "name": "Kiểm Toán Độc Lập & Minh Bạch",
+      "severity": "LOW"
+    },
+    {
+      "code": "NOTION_LINK_MISSING",
+      "id": "2273",
+      "name": "Cấp Cứu Sơ Cứu",
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "NOTION_LINK_MISSING",
+      "id": "2588",
+      "name": "Bách Khoa Toàn Thư",
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "237",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a55781f1b0fbe94f0777e633",
+        "https://app.notion.com/p/3f3caac9a5578177a0aaf6a14400d5a7"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "2374",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a55781799dd7db43b5f70755",
+        "https://app.notion.com/p/3f3caac9a5578199825dd8d4c280f1bb"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "2378",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a55781fc8f25ea32651fc32d",
+        "https://app.notion.com/p/3f3caac9a55781e3b008e503e7ae0753"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "2633",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a55781f39cffee38c917471e",
+        "https://app.notion.com/p/3f3caac9a55781c5ac0bceb18159cf0a"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "267",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a55781289528fc2754412c1f",
+        "https://app.notion.com/p/3f3caac9a55781a0b0afca885403e71b"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "276",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a55781c8a1a8c4c636bce97c",
+        "https://app.notion.com/p/3f3caac9a5578179ac21e67eaf8c2537"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "343",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a557813bba56f9be01a48b34",
+        "https://app.notion.com/p/3f3caac9a5578137b5aef207b9cf2dd0"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "345",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a55781a1b1e1d0ff69c5f887",
+        "https://app.notion.com/p/3f3caac9a5578171a212e3c92b5e4b43"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "362",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a55781d08a0fc05d9f5764ff",
+        "https://app.notion.com/p/3f3caac9a55781899849e595e1e42605"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "365",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a55781d7bb70c462dcd81669",
+        "https://app.notion.com/p/3f3caac9a557814cbe1ece39593211b6"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "383236",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a5578169b6f6d0c4ffaeb10b",
+        "https://app.notion.com/p/3f3caac9a557817c8ba7fb5e0b502cdd"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "3863",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a55781e8832af58958da444e",
+        "https://app.notion.com/p/3f3caac9a55781aab335d2c10c524a44"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "4376",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a557819c8fc4cba6c5f7af26",
+        "https://app.notion.com/p/3f3caac9a55781739ee4fb2897f66fd5"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "5272",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a5578166bc42d38ac9986e4b",
+        "https://app.notion.com/p/3f3caac9a5578157a5aad2de6c44ae72"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "5458",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a557819cb589d31c86093e70",
+        "https://app.notion.com/p/3f3caac9a557817d96cfe7e593c2eea8"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "5678",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a55781f98430e43c44fadcc8",
+        "https://app.notion.com/p/3f3caac9a55781668a01f0130c9bdde6"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "5824",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a5578110a800d602feae70aa",
+        "https://app.notion.com/p/3f3caac9a557815aa63bd9e5b5dbdf82"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "627",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a5578119a1acedf6c5a61e76",
+        "https://app.notion.com/p/3f3caac9a557812aaf6bc725e8cd1de0"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "6535",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a55781c79220d0d7c52c196a",
+        "https://app.notion.com/p/3f3caac9a5578187b3e5e36b35c8fdda"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "6735",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a557811b8dc9fe2301d7ca38",
+        "https://app.notion.com/p/3f3caac9a5578100a6aef303fe8bf9b7"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "674",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a5578145a529eb3825b5b69e",
+        "https://app.notion.com/p/3f3caac9a55781ee8facc019a04ab88e"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "6848",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a5578187b577c678c59990ca",
+        "https://app.notion.com/p/3f3caac9a557819ca173cf6a87aaa928"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "6969",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a5578116a400cf47e59188bd",
+        "https://app.notion.com/p/3f3caac9a55781a9bce7ed60d43b0a35"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "7535",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a557812bb01df2c13e41a6fe",
+        "https://app.notion.com/p/3f3caac9a557816abff8e7b93eb0c460"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "7584",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a55781bbba8de2304682e4a7",
+        "https://app.notion.com/p/3f3caac9a55781de8a73df91dd719963"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "7848",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a55781e9855eccf40a376b02",
+        "https://app.notion.com/p/3f3caac9a55781349b4cfe28ea49956f"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "8282",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a557812e8302e7d4ec92af4f",
+        "https://app.notion.com/p/3f3caac9a5578121858bda48c9630368"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "8682",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a557818fb4cddfe0e0556b8c",
+        "https://app.notion.com/p/3f3caac9a55781c7a6c2d4004f0e62e6"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "8882",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a557814eb4a2ecca072e6b2d",
+        "https://app.notion.com/p/3f3caac9a5578129b3a7c691d6b41325"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "8884",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a55781088e6fe65aeb5921d6",
+        "https://app.notion.com/p/3f3caac9a557812ca685ec75375b62e4"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "8885",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a5578121af61f2e124034f15",
+        "https://app.notion.com/p/3f3caac9a5578152a94fc3d2ed5054ed"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "TWO_NOTION_PAGES_SAME_ID",
+      "id": "9584",
+      "pages": [
+        "https://app.notion.com/p/3f2caac9a557814a9590cb0ac6231f7f",
+        "https://app.notion.com/p/3f3caac9a557818f89f0e7ad31b61c9a"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "NAME_DIFFERS_ACROSS_NOTION_LISTS",
+      "id": "333",
+      "names": [
+        "quỹ đầu tư",
+        "tài chính & ba quỹ"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "NAME_DIFFERS_ACROSS_NOTION_LISTS",
+      "id": "4376",
+      "names": [
+        "so",
+        "id số"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "NAME_DIFFERS_ACROSS_NOTION_LISTS",
+      "id": "6969",
+      "names": [
+        "mwmw",
+        "multi we multi worlds"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "NAME_DIFFERS_ACROSS_NOTION_LISTS",
+      "id": "8282",
+      "names": [
+        "tctc",
+        "tài chính toàn cầu"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "NAME_DIFFERS_ACROSS_NOTION_LISTS",
+      "id": "8682",
+      "names": [
+        "tmtc",
+        "thương mại toàn cầu"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "NAME_DIFFERS_ACROSS_NOTION_LISTS",
+      "id": "8882",
+      "names": [
+        "tttc",
+        "tri thức toàn cầu"
+      ],
+      "severity": "MEDIUM"
+    },
+    {
+      "code": "LINKED_PAGE_TITLE_DIFFERS_FROM_NAME",
+      "id": "333",
+      "name": "Quỹ Đầu Tư",
+      "linkedTitle": "333 • Tài Chính & Ba Quỹ • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi",
+      "severity": "HIGH"
+    },
+    {
+      "code": "LINKED_PAGE_TITLE_DIFFERS_FROM_NAME",
+      "id": "4742",
+      "name": "Hiến Pháp, Hiến Chương, DNA, Công Thức, Quy Tắc & Luật Thép",
+      "linkedTitle": "4742 • Hiến Pháp, Hiến Chương & Luật Thép • Link Học Hỏi & Áp Dụng • Siêu Bộ Đôi",
+      "severity": "HIGH"
+    },
+    {
+      "code": "LINKED_PAGE_TITLE_DIFFERS_FROM_NAME",
+      "id": "5284",
+      "name": "Kiểm Chứng Tổng Hợp",
+      "linkedTitle": "5284 • Tài Liệu Tham Chiếu Lịch Sử • Đối Chiếu Link Gốc • REVIEW",
+      "severity": "HIGH"
+    }
+  ]
+}

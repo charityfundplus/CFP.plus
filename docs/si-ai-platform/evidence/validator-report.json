@@ -1,0 +1,39 @@
+{
+  "file": "docs/si-ai-platform/data/super-pair-plan.json",
+  "knownRegistryIds": 166,
+  "validation": {
+    "ok": true,
+    "errors": [],
+    "counts": {
+      "nodes": 10,
+      "perTier": {
+        "1": 10
+      },
+      "status": {
+        "PLANNED": 10
+      }
+    }
+  },
+  "capacity3Tiers": {
+    "A": {
+      "mode": "A",
+      "perTier": [
+        10,
+        100,
+        1000
+      ],
+      "total": 1110
+    },
+    "B": {
+      "mode": "B",
+      "perTier": [
+        10,
+        90,
+        810
+      ],
+      "total": 910
+    }
+  },
+  "readOnly": true,
+  "idsAllocated": 0
+}

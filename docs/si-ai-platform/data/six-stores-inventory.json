@@ -1,0 +1,57 @@
+{
+ "_meta": {
+  "checkedAtUTC": "2026-11-18T23:10Z",
+  "scope": "READ-ONLY PROBES",
+  "note": "Không ghi vào bất kỳ kho nào. Không lưu email, ID hạ tầng, hostname."
+ },
+ "stores": [
+  {
+   "store": "GitHub",
+   "role": "Mã nguồn, kiểm thử, tài liệu kỹ thuật, Evidence",
+   "probe": "git ls-remote + GitHub MCP get_me + search API",
+   "result": "READ OK • WRITE OK (chỉ nhánh claude/gracious-cray-9d8av1)",
+   "status": "CONNECTED (read/write trong phạm vi nhánh)",
+   "evidence": "main HEAD 8356163; PR #232 đã push được"
+  },
+  {
+   "store": "Notion",
+   "role": "Tri thức, nghiên cứu, giáo trình, hồ sơ Siêu Bộ Đôi",
+   "probe": "Notion MCP fetch/search",
+   "result": "READ OK: 18/18 trang chỉ định + tìm kiếm workspace",
+   "status": "CONNECTED (READ). WRITE: chưa thử, chưa được phép",
+   "evidence": "06_NOTION_RECONCILIATION_VI.md; data/notion-snapshots.json"
+  },
+  {
+   "store": "Google",
+   "role": "Tài liệu, bảng dữ liệu, nguồn được cấp quyền",
+   "probe": "Google Drive MCP search_files, get_file_metadata",
+   "result": "Connector trả lời nhưng 0 file khớp \"HUB 69\"/\"CFP\"; tài liệu Drive mà Notion trỏ tới (HUB 69 Review & Collaboration Index) trả \"not found\" với tài khoản này",
+   "status": "PENDING • tài khoản kết nối không thấy tài liệu CFP+",
+   "evidence": "Kết quả probe ghi tại đây"
+  },
+  {
+   "store": "Web",
+   "role": "Thu thập thông tin công khai, kiểm tra nguồn",
+   "probe": "curl qua proxy",
+   "result": "cfp.plus: 200 (91 ID đã kiểm). wikipedia.org, arxiv.org, notion.so, docs.google.com: bị proxy từ chối",
+   "status": "PARTIAL • chỉ cfp.plus được phép",
+   "evidence": "evidence/link-audit.json"
+  },
+  {
+   "store": "Cloud",
+   "role": "Lưu trữ, xử lý, hạ tầng",
+   "probe": "Supabase list_projects/list_tables; Render list_workspaces/list_services; Cloudflare workers_list; BigQuery",
+   "result": "Supabase: 1 project sandbox ACTIVE_HEALTHY, schema cfp_office có 13 bảng (super_pairs, tasks, evidence, reviews, task_events…) đều 0 dòng. Render: 1 web service sandbox (Python forum, free plan, auto-deploy tắt). Cloudflare: 0 Worker. BigQuery: chưa có project ID",
+   "status": "READ OK (metadata) • KHÔNG ghi • hạ tầng thuộc PR #195/#193, không phải Core PR #124",
+   "evidence": "Kết quả probe ghi tại đây; không lưu ID/hostname/email"
+  },
+  {
+   "store": "Lượng Tử",
+   "role": "Nghiên cứu công nghệ lượng tử",
+   "probe": "Notion search \"Kho Lượng Tử\"",
+   "result": "Có trang nghiên cứu Notion (Thiết Kế Nghiên Cứu v0.1; 5878 • Lượng Tử Quantum • Siêu Bộ Đôi). Không có hạ tầng tính toán lượng tử nào",
+   "status": "PENDING • chỉ có tài liệu nghiên cứu",
+   "evidence": "Notion: https://app.notion.com/p/803caac9a55782dc8050011091dcca5c"
+  }
+ ]
+}

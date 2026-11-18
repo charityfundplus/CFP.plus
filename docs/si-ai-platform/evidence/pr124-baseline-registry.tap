@@ -1,0 +1,58 @@
+# Subtest: actual root Registry: hashes, 26 named bindings, 99 countries, explicit OpenAI chain and governance hold
+ok 1 - actual root Registry: hashes, 26 named bindings, 99 countries, explicit OpenAI chain and governance hold
+# Subtest: numeric IDs stay strings: 0, 000, 003, 0031 and long IDs remain distinct; V is not an ID
+ok 2 - numeric IDs stay strings: 0, 000, 003, 0031 and long IDs remain distinct; V is not an ID
+# Subtest: search supports all entity categories, pagination, same-name records and strict fields
+ok 3 - search supports all entity categories, pagination, same-name records and strict fields
+# Subtest: duplicate, missing Parent, cycles and lineage conflicts are findings, never automatic repairs
+ok 4 - duplicate, missing Parent, cycles and lineage conflicts are findings, never automatic repairs
+# Subtest: ChatGPT action reuses source ID/link, exports public instructions only and never allocates a project ID
+ok 5 - ChatGPT action reuses source ID/link, exports public instructions only and never allocates a project ID
+# Subtest: source adapter rejects modified source bytes, missing source and symlinks without using a fallback Registry
+ok 6 - source adapter rejects modified source bytes, missing source and symlinks without using a fallback Registry
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 339.505927
+# (node:3385) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: explicit source binding requires absolute path and exact revision; no authority or identity writes
+ok 1 - explicit source binding requires absolute path and exact revision; no authority or identity writes
+# Subtest: binding rejects modified bytes, moved HEAD, nested root and missing source without fallback
+ok 2 - binding rejects modified bytes, moved HEAD, nested root and missing source without fallback
+# Subtest: real packaged launcher -> pinned Registry -> UI client: auth, 224 references, OpenAI data, assets and session revocation
+ok 3 - real packaged launcher -> pinned Registry -> UI client: auth, 224 references, OpenAI data, assets and session revocation
+# Subtest: unbound release returns 503 instead of using its historical duplicate JSON
+ok 4 - unbound release returns 503 instead of using its historical duplicate JSON
+# Subtest: Core client rejects 503, unverifiable metadata and changed revision during pagination
+ok 5 - Core client rejects 503, unverifiable metadata and changed revision during pagination
+# Subtest: UI projection preserves 0/000/003, explicit Parent and source hash; refuses long IDs without truncation
+ok 6 - UI projection preserves 0/000/003, explicit Parent and source hash; refuses long IDs without truncation
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2031.060692
+# (node:3784) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: registry routes require existing authentication and preserve 401/400/404, strict inputs and source failure 503
+ok 1 - registry routes require existing authentication and preserve 401/400/404, strict inputs and source failure 503
+# Subtest: OpenAI profile and ChatGPT packet are read-only for viewers; no identity mutation or external project creation
+ok 2 - OpenAI profile and ChatGPT packet are read-only for viewers; no identity mutation or external project creation
+# Subtest: public Registry cannot export private task content; response digest is durably bound to the authenticated workspace
+ok 3 - public Registry cannot export private task content; response digest is durably bound to the authenticated workspace
+# tests 3
+# suites 0
+# pass 3
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4528.542796

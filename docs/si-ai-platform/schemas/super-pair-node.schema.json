@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/charityfundplus/CFP.plus/docs/si-ai-platform/schemas/super-pair-node.schema.json",
+  "title": "CFP+ Siêu Bộ Đôi • Planning Node",
+  "description": "REVIEW CANDIDATE. Một node trong cây Siêu Bộ Đôi (SI AI + Siêu Phần Mềm). planned_position KHÔNG phải Canonical ID. Bổ sung cho bản ghi pairs.json của PR #124, không thay thế.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["planned_position", "tier", "parent_position", "chapter", "canonical_id", "status", "components", "capabilities", "lineage", "grants", "evidence"],
+  "properties": {
+    "planned_position": {"type": "string", "pattern": "^[0-9](\\.[0-9])*$", "description": "Vị trí quy hoạch, ví dụ 6.1.2. Không dùng làm URL."},
+    "tier": {"type": "integer", "minimum": 1, "description": "Bằng số đoạn của planned_position. Không giới hạn độ sâu."},
+    "parent_position": {"type": ["string", "null"], "pattern": "^[0-9](\\.[0-9])*$"},
+    "chapter": {"type": "integer", "minimum": 0, "maximum": 9},
+    "chapter_name_source": {"type": "string"},
+    "anchor_page": {"type": ["string", "null"], "format": "uri", "description": "Trang hiện hữu làm đầu mối, ví dụ https://cfp.plus/6"},
+    "canonical_id": {"type": ["string", "null"], "pattern": "^[0-9]+$", "description": "null cho đến khi Human Governance cấp. Nếu có giá trị phải tồn tại trong Registry."},
+    "governance_decision": {"type": ["string", "null"], "description": "Tham chiếu quyết định Human Governance khi canonical_id hoặc grants khác rỗng."},
+    "status": {"enum": ["PLANNED", "RESERVED", "PROPOSED", "BOUND", "ACTIVE"]},
+    "components": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["si_ai", "super_software"],
+      "properties": {
+        "si_ai": {"type": ["string", "null"], "description": "Khóa SI AI đã xác minh trong Registry; null nếu chưa gán."},
+        "super_software": {"type": ["string", "null"], "description": "Tên/phiên bản Siêu Phần Mềm, ví dụ CFP+ Standard Core."}
+      }
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary", "secondary"],
+      "properties": {
+        "primary": {"type": "string"},
+        "secondary": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "verified_by_evidence": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "lineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["inherits_standards", "inherits_permissions"],
+      "properties": {
+        "inherits_standards": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "inherits_permissions": {"const": false, "description": "Luôn false: quyền không tự kế thừa."}
+      }
+    },
+    "grants": {"type": "array", "items": {"type": "object"}, "description": "Phải rỗng nếu không có governance_decision."},
+    "evidence": {"type": "array", "items": {"type": "string"}},
+    "notes": {"type": "string"}
+  }
+}

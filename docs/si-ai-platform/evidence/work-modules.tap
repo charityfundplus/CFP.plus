@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: modules are deterministic (same input → same SHA-256)
+ok 1 - modules are deterministic (same input → same SHA-256)
+  ---
+  duration_ms: 14.365641
+  type: 'test'
+  ...
+# Subtest: GitHub audit finds the known Gemini / Meta / DeepMind ID conflicts
+ok 2 - GitHub audit finds the known Gemini / Meta / DeepMind ID conflicts
+  ---
+  duration_ms: 1.910765
+  type: 'test'
+  ...
+# Subtest: Notion cross-check finds 333 duplicate, 2624 outlier, 2 missing links, 8 additions, new-table title drift
+ok 3 - Notion cross-check finds 333 duplicate, 2624 outlier, 2 missing links, 8 additions, new-table title drift
+  ---
+  duration_ms: 2.196098
+  type: 'test'
+  ...
+# Subtest: classification covers all 91 and uses PR \#124 group display rule
+ok 4 - classification covers all 91 and uses PR \#124 group display rule
+  ---
+  duration_ms: 0.921259
+  type: 'test'
+  ...
+# Subtest: pilot: create → ACK/run → independent review → audit, with denials
+ok 5 - pilot: create → ACK/run → independent review → audit, with denials
+  ---
+  duration_ms: 690.608055
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 760.799005

@@ -1,0 +1,338 @@
+diff --git a/drafts/si-office/core/core-engine.mjs b/drafts/si-office/core/core-engine.mjs
+index 4032323..52ced0a 100644
+--- a/drafts/si-office/core/core-engine.mjs
++++ b/drafts/si-office/core/core-engine.mjs
+@@ -27,8 +27,8 @@ export function validateConfig(config){
+  return freeze(clone(config));
+ }
+ export class CoreEngine {
+- #office=new Map();#pairs=new Map();#tasks=new TaskEngine();#knowledge=new KnowledgeEvidence();#learning=new LearningTraining();#monitor=new MonitoringRecovery();#upgrades=new VersionUpgrade();#templates;#adapterFactory;#timeout;#checkpointWriter;
+- constructor({configs=templates,adapterFactory=provider=>new MockSIAdapter(provider),timeoutMs=150,checkpoint=null,checkpointWriter=null}={}){
++ #requireAck=false;#office=new Map();#pairs=new Map();#tasks=new TaskEngine();#knowledge=new KnowledgeEvidence();#learning=new LearningTraining();#monitor=new MonitoringRecovery();#upgrades=new VersionUpgrade();#templates;#adapterFactory;#timeout;#checkpointWriter;
++ constructor({configs=templates,adapterFactory=provider=>new MockSIAdapter(provider),timeoutMs=150,checkpoint=null,checkpointWriter=null,requireAck=false}={}){this.#requireAck=requireAck===true;
+   if(!Array.isArray(configs)||!configs.length)throw Error('CONFIG_REQUIRED');this.#templates=configs.map(validateConfig);if(new Set(this.#templates.map(c=>c.key)).size!==this.#templates.length)throw Error('DUPLICATE_PAIR_CONFIG');
+   this.#checkpointWriter=checkpointWriter;this.#adapterFactory=adapterFactory;this.#timeout=timeoutMs;
+   if(checkpoint)this.#restore(checkpoint);else this.instantiate(system,this.#templates[0].key,true);
+@@ -88,9 +88,11 @@ export class CoreEngine {
+  prepareAssessment(actor,taskKey,input){return this.#act(actor,'assessment-submit',()=>{const row=this.#learning.prepareAssessment(actor,this.#tasks.get(taskKey),input);this.#knowledge.append(actor,'assessment-evidence','SYNTHETIC ONLY',{pairKey:row.pairKey,taskKey,assessmentKey:row.key,artifactSetDigest:row.artifactSetDigest});return row;});}
+  reviewAssessment(actor,assessmentKey,input){return this.#act(actor,'assessment-review',()=>{const row=this.#learning.reviewAssessment(actor,assessmentKey,input);this.#knowledge.append(actor,'assessment-rubric','NOT CERTIFIED',{pairKey:row.pairKey,taskKey:row.taskKey,assessmentKey,artifactSetDigest:row.artifactSetDigest});return row;});}
+  createTask(actor,pairKey,input){return this.#act(actor,'create-task',()=>{const p=this.#pair(pairKey);if(p.status!=='READY')throw Error('PAIR_STOPPED');return this.#tasks.create(p.config,actor,input);});}
++ // Explicit ACK: only the task owner, only once, only from QUEUED. Binds a digest of the task definition.
++ ackTask(actor,taskKey){return this.#act(actor,'ack-task',()=>{const t=this.#tasks.get(taskKey),p=this.#pair(t.pairKey);if(t.status!=='QUEUED')throw Error('ACK_STATE_INVALID');if(t.owner!==actor.id)throw Error('ACK_OWNER_REQUIRED');if(p.status!=='READY')throw Error('PAIR_STOPPED');t.ack={actor:actor.id,time:new Date().toISOString(),taskDigest:hash({key:t.key,pairKey:t.pairKey,kind:t.kind,title:t.title,text:t.text,resource:t.resource,scenario:t.scenario})};t.status='ACKNOWLEDGED';return t;});}
+  async runTask(actor,taskKey){
+   this.#authorize(actor,'run-task');const t=this.#tasks.get(taskKey),p=this.#pair(t.pairKey);
+-  if(p.status!=='READY'||p.busy||t.status!=='QUEUED'){this.#knowledge.append(actor,'run-task','DENIED',{taskKey,reason:'TASK_OR_PAIR_NOT_READY'});throw Error('TASK_OR_PAIR_NOT_READY');}
++  if(p.status!=='READY'||p.busy||!(t.status==='ACKNOWLEDGED'||!this.#requireAck&&t.status==='QUEUED')){this.#knowledge.append(actor,'run-task','DENIED',{taskKey,reason:'TASK_OR_PAIR_NOT_READY'});throw Error('TASK_OR_PAIR_NOT_READY');}
+   const epoch=p.epoch,controller=new AbortController();p.busy=true;this.#monitor.attach(p.config.key,controller);t.status='RUNNING';t.progress=10;
+   this.#knowledge.append(actor,'task-start','PASS',{taskKey});let timer;
+   if(this.#checkpointWriter){try{this.#checkpointWriter(this.checkpoint());}catch(e){controller.abort();p.busy=false;this.#monitor.detach(p.config.key);throw e;}}
+diff --git a/drafts/si-office/core/readonly-source-adapter.mjs b/drafts/si-office/core/readonly-source-adapter.mjs
+new file mode 100644
+index 0000000..aa7a474
+--- /dev/null
++++ b/drafts/si-office/core/readonly-source-adapter.mjs
+@@ -0,0 +1,88 @@
++// READ ONLY source adapter • PROPOSAL (PR #232 → PR #124) • NOT ACTIVATED.
++// Same untrusted-adapter contract as MockSIAdapter: it only *proposes* {tools, output}; the Core still
++// checks tools, permissions, cross-checks and requires independent review.
++// Hard limits:
++//  - Disabled unless a Human Governance approval record is supplied (decisionRef, approver, scope, expiry).
++//  - Reads only allow-listed files under one root directory; no '..', no absolute paths, no symlinks,
++//    size-capped, UTF-8 text only. No network: externalRequests is always 0 and no fetch/http is imported.
++//  - Never writes. Output stays a DRAFT with every identity/verification claim false/null (Core contract).
++// No caller in PR #124 wires this adapter by default; P2Sandbox keeps the mock unless an operator passes
++// `adapterFactory: createReadOnlyAdapterFactory({...})` after approval.
++import { readFileSync, lstatSync, realpathSync } from 'node:fs';
++import { resolve, sep, isAbsolute } from 'node:path';
++import { hash } from './common.mjs';
++
++const MAX_BYTES = 256 * 1024;
++const DECISION = /^HG-[0-9]{1,4}(-[A-Z0-9]{1,12})?$/;
++
++export function validateApproval(approval, now = Date.now()) {
++  if (!approval || typeof approval !== 'object' || Array.isArray(approval)) throw Error('READ_ONLY_ADAPTER_NOT_APPROVED');
++  const keys = ['decisionRef', 'approvedBy', 'scope', 'expiresAt', 'resources'];
++  if (Object.keys(approval).some((k) => !keys.includes(k)) || keys.some((k) => !(k in approval))) throw Error('READ_ONLY_APPROVAL_INVALID');
++  if (!DECISION.test(approval.decisionRef) || typeof approval.approvedBy !== 'string' || !approval.approvedBy.trim() || approval.approvedBy.length > 100) throw Error('READ_ONLY_APPROVAL_INVALID');
++  if (approval.scope !== 'read-only') throw Error('READ_ONLY_SCOPE_REQUIRED');
++  const exp = Date.parse(approval.expiresAt);
++  if (!Number.isFinite(exp) || exp <= now) throw Error('READ_ONLY_APPROVAL_EXPIRED');
++  if (!Array.isArray(approval.resources) || !approval.resources.length || approval.resources.length > 20) throw Error('READ_ONLY_APPROVAL_INVALID');
++  return true;
++}
++
++function safePath(root, rel) {
++  if (typeof rel !== 'string' || !rel || rel.length > 300 || isAbsolute(rel) || rel.includes('\0') || rel.split(/[\\/]/).includes('..')) throw Error('READ_ONLY_PATH_DENIED');
++  const base = realpathSync(root);
++  const full = resolve(base, rel);
++  if (!full.startsWith(base + sep)) throw Error('READ_ONLY_PATH_DENIED');
++  const st = lstatSync(full);
++  if (st.isSymbolicLink() || !st.isFile()) throw Error('READ_ONLY_PATH_DENIED');
++  if (realpathSync(full) !== full) throw Error('READ_ONLY_PATH_DENIED');
++  if (st.size > MAX_BYTES) throw Error('READ_ONLY_FILE_TOO_LARGE');
++  return full;
++}
++
++export class ReadOnlySourceAdapter {
++  #root; #sources; #provider; #approval; #clock;
++  /**
++   * @param {{provider:string, root:string, sources:Record<string,string>, approval:object, clock?:()=>number}} opts
++   * sources maps a Core resource key (e.g. 'website-demo') to a file path relative to root.
++   */
++  constructor({ provider, root, sources, approval, clock = () => Date.now() } = {}) {
++    validateApproval(approval, clock());
++    if (typeof provider !== 'string' || !provider) throw Error('READ_ONLY_PROVIDER_REQUIRED');
++    if (!sources || typeof sources !== 'object' || !Object.keys(sources).length) throw Error('READ_ONLY_SOURCES_REQUIRED');
++    for (const r of Object.keys(sources)) if (!approval.resources.includes(r)) throw Error('READ_ONLY_RESOURCE_NOT_APPROVED');
++    this.#root = root; this.#sources = { ...sources }; this.#provider = provider; this.#approval = structuredClone(approval); this.#clock = clock;
++  }
++  async propose({ task, source, signal }) {
++    validateApproval(this.#approval, this.#clock()); // expiry is re-checked on every call
++    if (signal?.aborted) throw Error('ADAPTER_ABORTED');
++    const rel = this.#sources[task.resource];
++    if (!rel) throw Error('READ_ONLY_RESOURCE_NOT_APPROVED');
++    const bytes = readFileSync(safePath(this.#root, rel));
++    const text = bytes.toString('utf8');
++    if (Buffer.from(text, 'utf8').length !== bytes.length) throw Error('READ_ONLY_NOT_UTF8');
++    const lines = text.split('\n').length;
++    const fileSha = hash(text);
++    const summary = [
++      `${task.title}`,
++      `READ ONLY • ${this.#approval.decisionRef} • ${rel}`,
++      `sha256:${fileSha} • bytes:${bytes.length} • lines:${lines}`,
++      `Excerpt: ${text.slice(0, 600).replace(/\s+/g, ' ').trim()}`,
++    ].join('\n').slice(0, 3000);
++    return {
++      adapter: this.#provider, protocol: 1, externalRequests: 0,
++      tools: [{ tool: 'source.read', resource: task.resource }],
++      output: {
++        title: task.title.slice(0, 200), text: summary,
++        source: { resource: source.resource, sha256: source.sha256 },
++        synthetic: true, id: null, parent: null, did: null, canonical: null,
++        sourceVerified: false, capabilityVerified: false, legalRelationshipVerified: false, mode: 'DRAFT ONLY',
++      },
++    };
++  }
++}
++
++/** Factory for P2Sandbox/CoreEngine `adapterFactory`. Throws (fail closed) without a valid approval. */
++export function createReadOnlyAdapterFactory({ root, sources, approval, clock } = {}) {
++  validateApproval(approval, (clock ?? Date.now)());
++  return (provider) => new ReadOnlySourceAdapter({ provider, root, sources, approval, clock });
++}
+diff --git a/drafts/si-office/core/task-engine.mjs b/drafts/si-office/core/task-engine.mjs
+index 4da2901..06e40f5 100644
+--- a/drafts/si-office/core/task-engine.mjs
++++ b/drafts/si-office/core/task-engine.mjs
+@@ -11,8 +11,8 @@ export class TaskEngine {
+  get(id){const t=this.#tasks.find(x=>x.key===id);if(!t)throw Error('TASK_NOT_FOUND');return t;}
+  restore(tasks){this.#tasks=clone(tasks);}
+  all(){return clone(this.#tasks);}
+- pending(pairKey){return this.#tasks.some(t=>t.pairKey===pairKey&&['RUNNING','QUEUED','AWAITING HUMAN REVIEW'].includes(t.status));}
+- interrupt(pairKey){for(const t of this.#tasks)if(t.pairKey===pairKey&&['QUEUED','RUNNING'].includes(t.status)){t.status='INTERRUPTED';t.error='SAFE_STOP';}}
++ pending(pairKey){return this.#tasks.some(t=>t.pairKey===pairKey&&['RUNNING','QUEUED','ACKNOWLEDGED','AWAITING HUMAN REVIEW'].includes(t.status));}
++ interrupt(pairKey){for(const t of this.#tasks)if(t.pairKey===pairKey&&['QUEUED','ACKNOWLEDGED','RUNNING'].includes(t.status)){t.status='INTERRUPTED';t.error='SAFE_STOP';}}
+ }
+ // Trusted draft renderers; all identities remain unassigned, labels are display-only.
+ export function buildDraftArtifact(kind,output){
+diff --git a/drafts/si-office/sandbox/p2-http.mjs b/drafts/si-office/sandbox/p2-http.mjs
+index 19fb071..7737bac 100644
+--- a/drafts/si-office/sandbox/p2-http.mjs
++++ b/drafts/si-office/sandbox/p2-http.mjs
+@@ -5,8 +5,8 @@ import {P2Sandbox} from './p2-service.mjs';
+ import {executionProvenance} from '../scripts/build-provenance.mjs';
+ import {registrySourceFromEnvironment} from '../core/registry-read-model.mjs';
+ const sourceRoot=fileURLToPath(new URL('../',import.meta.url));
+-const commands={'catalog-search':'catalogSearch','commerce-state':'commerceState','inquiry-create':'inquiryCreate','inquiry-match':'inquiryMatch','opportunity-create':'opportunityCreate','opportunity-status':'opportunityStatus',pairs:'instantiate',tasks:'createTask',run:'runTask',review:'reviewTask',stop:'stop',recover:'recover',retry:'retry',upgrade:'upgrade',rollback:'rollback',learn:'learn',feedback:'feedback',office:'officeSnapshot','office-create':'officeCreate','assessment-submit':'prepareAssessment','assessment-review':'reviewAssessment'};
+-const fields={'catalog-search':['pairKey','input'],'commerce-state':['pairKey'],'inquiry-create':['pairKey','input','idempotencyKey'],'inquiry-match':['pairKey','input'],'opportunity-create':['pairKey','input','idempotencyKey'],'opportunity-status':['pairKey','input'],pairs:['templateKey'],tasks:['pairKey','kind','title','text','scenario','resource','idempotencyKey'],run:['taskKey'],review:['taskKey','verdict'],stop:['pairKey'],recover:['pairKey'],retry:['taskKey'],upgrade:['target'],rollback:[],learn:['pairKey','lesson'],feedback:['taskKey','feedback'],office:['pairKey'],'office-create':['pairKey','kind','input'],'assessment-submit':['taskKey','input'],'assessment-review':['assessmentKey','input']};
++const commands={'catalog-search':'catalogSearch','commerce-state':'commerceState','inquiry-create':'inquiryCreate','inquiry-match':'inquiryMatch','opportunity-create':'opportunityCreate','opportunity-status':'opportunityStatus',pairs:'instantiate',tasks:'createTask',ack:'ackTask',run:'runTask',review:'reviewTask',stop:'stop',recover:'recover',retry:'retry',upgrade:'upgrade',rollback:'rollback',learn:'learn',feedback:'feedback',office:'officeSnapshot','office-create':'officeCreate','assessment-submit':'prepareAssessment','assessment-review':'reviewAssessment'};
++const fields={'catalog-search':['pairKey','input'],'commerce-state':['pairKey'],'inquiry-create':['pairKey','input','idempotencyKey'],'inquiry-match':['pairKey','input'],'opportunity-create':['pairKey','input','idempotencyKey'],'opportunity-status':['pairKey','input'],pairs:['templateKey'],tasks:['pairKey','kind','title','text','scenario','resource','idempotencyKey'],ack:['taskKey'],run:['taskKey'],review:['taskKey','verdict'],stop:['pairKey'],recover:['pairKey'],retry:['taskKey'],upgrade:['target'],rollback:[],learn:['pairKey','lesson'],feedback:['taskKey','feedback'],office:['pairKey'],'office-create':['pairKey','kind','input'],'assessment-submit':['taskKey','input'],'assessment-review':['assessmentKey','input']};
+ export function createP2HTTP({service,previewOrigin=null}){
+  let preview=null;if(previewOrigin){preview=new URL(previewOrigin);if(preview.protocol!=='https:'||preview.username||preview.password||preview.pathname!=='/'||preview.search||preview.hash)throw Error('PREVIEW_ORIGIN_INVALID');}
+  const startupProvenance=executionProvenance(sourceRoot);
+diff --git a/drafts/si-office/sandbox/p2-service.mjs b/drafts/si-office/sandbox/p2-service.mjs
+index 85721c8..45d2cb9 100644
+--- a/drafts/si-office/sandbox/p2-service.mjs
++++ b/drafts/si-office/sandbox/p2-service.mjs
+@@ -11,8 +11,8 @@ import {fiveStoreStatus} from '../core/store-status.mjs';
+ const digest=s=>createHash('sha256').update(s).digest('hex');
+ const compat={schema:1,core:'0.1.0-sandbox',config:1,adapter:1};
+ export class P2Sandbox {
+- #db;#source;#coordinationKey;#busy=false;#closed=false;#maintenance=false;#adminCall=false;#clock;#factory;#registryFactory;
+- constructor(path,{clock=()=>Date.now(),adapterFactory,registryFactory,registrySource}={}){
++ #db;#requireAck=false;#source;#coordinationKey;#busy=false;#closed=false;#maintenance=false;#adminCall=false;#clock;#factory;#registryFactory;
++ constructor(path,{clock=()=>Date.now(),adapterFactory,registryFactory,registrySource,requireAck=false}={}){this.#requireAck=requireAck===true;
+   if(registryFactory&&registrySource)throw Error('REGISTRY_BINDING_CONFLICT');
+   this.#source=executionProvenance(sourceRoot);this.#clock=clock;this.#factory=adapterFactory;this.#registryFactory=registryFactory||(registrySource?bindRegistrySource(registrySource):loadRegistryReadModel);this.#db=new DatabaseSync(path);this.#coordinationKey=path===':memory:'?randomBytes(16).toString('hex'):digest(realpathSync(path));if(path!==':memory:')chmodSync(path,0o600);
+   this.#db.exec('PRAGMA foreign_keys=ON; PRAGMA journal_mode=WAL; PRAGMA synchronous=FULL; PRAGMA busy_timeout=1000; CREATE TABLE IF NOT EXISTS meta(k TEXT PRIMARY KEY,v TEXT NOT NULL); CREATE TABLE IF NOT EXISTS users(id TEXT PRIMARY KEY,salt TEXT,secret TEXT,role TEXT,workspace TEXT,maintainer INTEGER); CREATE TABLE IF NOT EXISTS sessions(token TEXT PRIMARY KEY,subject TEXT REFERENCES users(id),expires INTEGER); CREATE TABLE IF NOT EXISTS states(workspace TEXT PRIMARY KEY,value TEXT NOT NULL); CREATE TABLE IF NOT EXISTS events(seq INTEGER PRIMARY KEY,value TEXT NOT NULL,sha TEXT NOT NULL); CREATE TABLE IF NOT EXISTS attempts(id TEXT PRIMARY KEY,n INTEGER,until INTEGER); CREATE TABLE IF NOT EXISTS grants(subject TEXT PRIMARY KEY REFERENCES users(id),pairs TEXT NOT NULL); CREATE TABLE IF NOT EXISTS requests(workspace TEXT,key TEXT,digest TEXT,result TEXT,PRIMARY KEY(workspace,key));');
+@@ -38,7 +38,7 @@ export class P2Sandbox {
+    if(!args||typeof args!=='object'||Array.isArray(args)||Object.keys(args).some(k=>!['pairKey','taskKey','input','verdict','target','templateKey','lesson','feedback','kind','assessmentKey'].includes(k))||Object.keys(options).some(k=>k!=='idempotencyKey'))throw Error('INVALID_FIELDS');
+    if(['upgrade','rollback'].includes(command)&&!a.maintainer)throw Error('MAINTAINER_REQUIRED');
+    const raw=this.#db.prepare('SELECT value FROM states WHERE workspace=?').get(a.workspace)?.value;
+-   engine=new CoreEngine({checkpoint:raw?JSON.parse(raw):null,adapterFactory:this.#factory,checkpointWriter:c=>this.#save(a,bindReceipt(c),'run-intent','RUNNING')});
++   engine=new CoreEngine({checkpoint:raw?JSON.parse(raw):null,adapterFactory:this.#factory,requireAck:this.#requireAck,checkpointWriter:c=>this.#save(a,bindReceipt(c),'run-intent','RUNNING')});
+    const allowed=k=>a.pairs.includes('*')||a.pairs.includes(k);
+    if(args.pairKey&&!allowed(args.pairKey)||args.templateKey&&!allowed(args.templateKey)||args.taskKey&&!allowed(engine.snapshot(a).tasks.find(t=>t.key===args.taskKey)?.pairKey))throw Error('PAIR_SCOPE_DENIED');
+    if(args.assessmentKey&&!allowed(engine.snapshot(a).learning.assessments.find(r=>r.key===args.assessmentKey)?.pairKey))throw Error('PAIR_SCOPE_DENIED');
+@@ -49,7 +49,7 @@ export class P2Sandbox {
+     runReceipt={schemaVersion:1,scope:'SYNTHETIC TASK EXECUTION SOURCE',taskKey:args.taskKey,pairKey:task?.pairKey||null,subject:a.id,workspace:a.workspace,startedAt:new Date(this.#clock()).toISOString(),completedAt:null,sourceVerified:bound,revision:bound?before.revision:null,manifestSha256:bound?before.manifestSha256:null,manifest:bound?before.manifest:null,outputSha256:null,authorityVerified:false,competencyPass:false,activationAllowed:false};
+     result=await engine.runTask(a,args.taskKey);const after=executionProvenance(sourceRoot);
+     if(!bound||!after.verified||after.manifestSha256!==before.manifestSha256){runReceipt.sourceVerified=false;runReceipt.finding='EXECUTION_SOURCE_UNVERIFIED_OR_CHANGED';}
+-    runReceipt.completedAt=new Date(this.#clock()).toISOString();runReceipt.outputSha256=result.output?hash(result.output):null;result.executionReceipt=structuredClone(runReceipt);break;}case 'reviewTask':result=engine.reviewTask(a,args.taskKey,args.verdict);break;case 'stop':result=engine.stop(a,args.pairKey);break;case 'recover':result=engine.recover(a,args.pairKey);break;case 'retry':result=engine.retry(a,args.taskKey);break;case 'upgrade':result=engine.upgrade(a,args.target);break;case 'rollback':result=engine.rollback(a);break;default:throw Error('COMMAND_DENIED');}
++    runReceipt.completedAt=new Date(this.#clock()).toISOString();runReceipt.outputSha256=result.output?hash(result.output):null;result.executionReceipt=structuredClone(runReceipt);break;}case 'ackTask':result=engine.ackTask(a,args.taskKey);break;case 'reviewTask':result=engine.reviewTask(a,args.taskKey,args.verdict);break;case 'stop':result=engine.stop(a,args.pairKey);break;case 'recover':result=engine.recover(a,args.pairKey);break;case 'retry':result=engine.retry(a,args.taskKey);break;case 'upgrade':result=engine.upgrade(a,args.target);break;case 'rollback':result=engine.rollback(a);break;default:throw Error('COMMAND_DENIED');}
+    this.#actor(token);if(req)req.result=result;this.#save(a,bindReceipt(engine.checkpoint()),command,'PASS',req);return result;
+   }catch(e){try{this.#tx(()=>this.#event(a.id,a.workspace,'command','DENIED'));}catch{this.close();}throw e;}finally{this.#busy=false;}
+  }
+@@ -67,7 +67,7 @@ export class P2Sandbox {
+  }
+  adapters(token){this.#guard();this.#actor(token);return fiveStoreStatus().stores;}
+  maintenanceLease(token){this.requireQuiescent(token);const auth=this.context(token);this.#maintenance=true;let released=false;return {auth,backup:(path)=>{if(released)throw Error('LEASE_RELEASED');this.#adminCall=true;try{return this.backup(token,path);}finally{this.#adminCall=false;}},release:()=>{released=true;this.#maintenance=false;}};}
+- requireQuiescent(token){this.#guard();const a=this.#actor(token);if(!a.maintainer||!a.pairs.includes('*'))throw Error('MAINTAINER_REQUIRED');for(const row of this.#db.prepare('SELECT value FROM states').all()){const c=JSON.parse(row.value);if(c.tasks.some(t=>['RUNNING','QUEUED','AWAITING HUMAN REVIEW'].includes(t.status)))throw Error('QUIESCENCE_REQUIRED');}return true;}
++ requireQuiescent(token){this.#guard();const a=this.#actor(token);if(!a.maintainer||!a.pairs.includes('*'))throw Error('MAINTAINER_REQUIRED');for(const row of this.#db.prepare('SELECT value FROM states').all()){const c=JSON.parse(row.value);if(c.tasks.some(t=>['RUNNING','QUEUED','ACKNOWLEDGED','AWAITING HUMAN REVIEW'].includes(t.status)))throw Error('QUIESCENCE_REQUIRED');}return true;}
+  httpDenial(code){this.#guard();this.#tx(()=>this.#event('http-transport','unknown','http-policy',code));}
+  backup(token,path){this.#guard();const a=this.#actor(token);if(!a.maintainer||!a.pairs.includes('*'))throw Error('MAINTAINER_REQUIRED');if(existsSync(path)||existsSync(path+'.json'))throw Error('BACKUP_EXISTS');const quoted="'"+path.replaceAll("'","''")+"'";this.#db.exec('VACUUM INTO '+quoted);chmodSync(path,0o600);const manifest={compat,checkpoint:this.verify(),sha256:digest(readFileSync(path)),synthetic:true};writeFileSync(path+'.json',JSON.stringify(manifest),{mode:0o600,flag:'wx'});return manifest;}
+  static restore(backup,destination){if(existsSync(destination))throw Error('DESTINATION_EXISTS');const m=JSON.parse(readFileSync(backup+'.json','utf8'));if(JSON.stringify(m.compat)!==JSON.stringify(compat)||m.sha256!==digest(readFileSync(backup)))throw Error('BACKUP_INVALID');writeFileSync(destination,readFileSync(backup),{mode:0o600,flag:'wx'});const s=new P2Sandbox(destination);if(JSON.stringify(s.verify())!==JSON.stringify(m.checkpoint)){s.close();throw Error('CHECKPOINT_MISMATCH');}s.#tx(()=>{s.#db.exec('DELETE FROM sessions');s.#event('local-restorer','system','restore','NEW GENERATION');});return s;}
+diff --git a/drafts/si-office/scripts/run-tests.mjs b/drafts/si-office/scripts/run-tests.mjs
+index 70c387f..978d20c 100644
+--- a/drafts/si-office/scripts/run-tests.mjs
++++ b/drafts/si-office/scripts/run-tests.mjs
+@@ -1,3 +1,4 @@
+ // In-process runner avoids sandbox child-process/socket limitations.
+ await import('../tests/core.test.mjs');
+ await import('../tests/standard-core.test.mjs');
++await import('../tests/ack-readonly.test.mjs');
+diff --git a/drafts/si-office/tests/ack-readonly.test.mjs b/drafts/si-office/tests/ack-readonly.test.mjs
+new file mode 100644
+index 0000000..1063238
+--- /dev/null
++++ b/drafts/si-office/tests/ack-readonly.test.mjs
+@@ -0,0 +1,129 @@
++// PR #232 proposal for PR #124: explicit ACK + READ ONLY source adapter (not activated by default).
++import { test } from 'node:test';
++import assert from 'node:assert/strict';
++import { mkdtempSync, rmSync, writeFileSync, symlinkSync, mkdirSync, readFileSync } from 'node:fs';
++import { tmpdir } from 'node:os';
++import { join } from 'node:path';
++import { P2Sandbox } from '../sandbox/p2-service.mjs';
++import { CoreEngine } from '../core/core-engine.mjs';
++import { ReadOnlySourceAdapter, createReadOnlyAdapterFactory, validateApproval } from '../core/readonly-source-adapter.mjs';
++
++const PW = 'Synthetic-test-password!';
++const input = { kind: 'registry-audit', title: 'ACK test', text: 'sandbox', scenario: 'normal', resource: 'website-demo' };
++const future = new Date(Date.now() + 3600e3).toISOString();
++const approval = (over = {}) => ({ decisionRef: 'HG-17', approvedBy: 'Human Governance (test fixture)', scope: 'read-only', expiresAt: future, resources: ['website-demo'], ...over });
++function setup(opts = {}) {
++  const dir = mkdtempSync(join(tmpdir(), 'cfp-ack-')), s = new P2Sandbox(join(dir, 'state.db'), opts);
++  for (const [id, role] of [['editor', 'editor'], ['editor2', 'editor'], ['reviewer', 'reviewer'], ['viewer', 'viewer']]) s.provision({ id, password: PW, role, workspace: 'alpha', maintainer: false });
++  return { s, dir, tok: (id) => s.login(id, PW), clean: () => { s.close(); rmSync(dir, { recursive: true, force: true }); } };
++}
++const create = (x, t, key) => x.s.execute(t, 'createTask', { pairKey: 'hub69-content-demo', input }, { idempotencyKey: key });
++
++test('ACK-1 owner ACK moves QUEUED → ACKNOWLEDGED with a task digest; audited', async () => {
++  const x = setup(); try {
++    const e = x.tok('editor'); const t = await create(x, e, 'a1');
++    const acked = await x.s.execute(e, 'ackTask', { taskKey: t.key });
++    assert.equal(acked.status, 'ACKNOWLEDGED');
++    assert.equal(acked.ack.actor, 'editor');
++    assert.match(acked.ack.taskDigest, /^[0-9a-f]{64}$/);
++    const before = x.s.verify().sequence;
++    const run = await x.s.execute(e, 'runTask', { taskKey: t.key });
++    assert.equal(run.status, 'AWAITING HUMAN REVIEW');
++    assert.ok(x.s.verify().sequence > before);
++  } finally { x.clean(); }
++});
++
++test('ACK-2 only the owner may ACK, only once, never by viewer', async () => {
++  const x = setup(); try {
++    const t = await create(x, x.tok('editor'), 'a2');
++    await assert.rejects(x.s.execute(x.tok('editor2'), 'ackTask', { taskKey: t.key }), /ACK_OWNER_REQUIRED/);
++    await assert.rejects(x.s.execute(x.tok('reviewer'), 'ackTask', { taskKey: t.key }), /ACK_OWNER_REQUIRED/);
++    await assert.rejects(x.s.execute(x.tok('viewer'), 'ackTask', { taskKey: t.key }), /PERMISSION_DENIED/);
++    await x.s.execute(x.tok('editor'), 'ackTask', { taskKey: t.key });
++    await assert.rejects(x.s.execute(x.tok('editor'), 'ackTask', { taskKey: t.key }), /ACK_STATE_INVALID/);
++  } finally { x.clean(); }
++});
++
++test('ACK-3 strict mode (requireAck) refuses run without ACK; legacy mode unchanged', async () => {
++  const strict = setup({ requireAck: true }); try {
++    const e = strict.tok('editor'); const t = await create(strict, e, 'a3');
++    await assert.rejects(strict.s.execute(e, 'runTask', { taskKey: t.key }), /TASK_OR_PAIR_NOT_READY/);
++    await strict.s.execute(e, 'ackTask', { taskKey: t.key });
++    assert.equal((await strict.s.execute(e, 'runTask', { taskKey: t.key })).status, 'AWAITING HUMAN REVIEW');
++  } finally { strict.clean(); }
++  const legacy = setup(); try {
++    const e = legacy.tok('editor'); const t = await create(legacy, e, 'a4');
++    assert.equal((await legacy.s.execute(e, 'runTask', { taskKey: t.key })).status, 'AWAITING HUMAN REVIEW');
++  } finally { legacy.clean(); }
++});
++
++test('ACK-4 ACKNOWLEDGED task is interrupted on safe stop', async () => {
++  const x = setup(); try {
++    const e = x.tok('editor'), r = x.tok('reviewer'); const t = await create(x, e, 'a5');
++    await x.s.execute(e, 'ackTask', { taskKey: t.key });
++    await x.s.execute(r, 'stop', { pairKey: 'hub69-content-demo' });
++    const snap = await x.s.execute(r, 'snapshot');
++    assert.equal(snap.tasks.find((k) => k.key === t.key).status, 'INTERRUPTED');
++  } finally { x.clean(); }
++});
++
++test('RO-1 adapter refuses to exist without a valid Human Governance approval (fail closed)', () => {
++  assert.throws(() => new ReadOnlySourceAdapter({ provider: 'mock-local', root: '.', sources: { 'website-demo': 'x' } }), /NOT_APPROVED/);
++  assert.throws(() => validateApproval(approval({ decisionRef: 'yes' })), /APPROVAL_INVALID/);
++  assert.throws(() => validateApproval(approval({ scope: 'read-write' })), /SCOPE_REQUIRED/);
++  assert.throws(() => validateApproval(approval({ expiresAt: '2000-01-01T00:00:00Z' })), /EXPIRED/);
++  assert.throws(() => validateApproval({ ...approval(), extra: 1 }), /APPROVAL_INVALID/);
++  assert.throws(() => createReadOnlyAdapterFactory({ root: '.', sources: { 'website-demo': 'x' }, approval: approval({ resources: ['other'] }) })('mock-local'), /RESOURCE_NOT_APPROVED/);
++});
++
++test('RO-2 path traversal, absolute paths, symlinks and large files are denied', async () => {
++  const dir = mkdtempSync(join(tmpdir(), 'cfp-ro-')); try {
++    mkdirSync(join(dir, 'root')); writeFileSync(join(dir, 'secret.txt'), 'outside');
++    writeFileSync(join(dir, 'root', 'big.txt'), 'x'.repeat(300 * 1024));
++    symlinkSync(join(dir, 'secret.txt'), join(dir, 'root', 'link.txt'));
++    const task = { title: 't', resource: 'website-demo' }, source = { resource: 'website-demo', sha256: 'a' };
++    for (const rel of ['../secret.txt', join(dir, 'secret.txt'), 'link.txt', 'big.txt', 'missing.txt']) {
++      const a = new ReadOnlySourceAdapter({ provider: 'mock-local', root: join(dir, 'root'), sources: { 'website-demo': rel }, approval: approval() });
++      await assert.rejects(a.propose({ task, source }), /READ_ONLY_PATH_DENIED|READ_ONLY_FILE_TOO_LARGE|ENOENT/);
++    }
++  } finally { rmSync(dir, { recursive: true, force: true }); }
++});
++
++test('RO-3 approval expiry is re-checked at every call', async () => {
++  let now = Date.now(); const dir = mkdtempSync(join(tmpdir(), 'cfp-ro-')); try {
++    writeFileSync(join(dir, 'a.md'), '# ok');
++    const a = new ReadOnlySourceAdapter({ provider: 'mock-local', root: dir, sources: { 'website-demo': 'a.md' }, approval: approval(), clock: () => now });
++    await a.propose({ task: { title: 't', resource: 'website-demo' }, source: { resource: 'website-demo', sha256: 'a' } });
++    now += 7200e3;
++    await assert.rejects(a.propose({ task: { title: 't', resource: 'website-demo' }, source: { resource: 'website-demo', sha256: 'a' } }), /EXPIRED/);
++  } finally { rmSync(dir, { recursive: true, force: true }); }
++});
++
++test('RO-4 with test approval the adapter passes all Core checks, reads a real file, makes 0 external requests', async () => {
++  const dir = mkdtempSync(join(tmpdir(), 'cfp-ro-')); try {
++    writeFileSync(join(dir, 'README.md'), '# CFP+\nHUB 69 • 5 Nhóm • 10 Chương\n');
++    const factory = createReadOnlyAdapterFactory({ root: dir, sources: { 'website-demo': 'README.md' }, approval: approval() });
++    const reviewer = { id: 'r', role: 'reviewer' }, editor = { id: 'e', role: 'editor' };
++    const engine = new CoreEngine({ adapterFactory: factory, requireAck: true });
++    const t = engine.createTask(editor, 'hub69-content-demo', input);
++    engine.ackTask(editor, t.key);
++    const out = await engine.runTask(editor, t.key);
++    assert.equal(out.status, 'AWAITING HUMAN REVIEW');
++    assert.match(out.output.text, /READ ONLY • HG-17 • README\.md/);
++    assert.match(out.output.text, /sha256:[0-9a-f]{64}/);
++    assert.equal(out.output.mode, 'DRAFT ONLY');
++    assert.equal(engine.reviewTask(reviewer, t.key, 'acknowledge-draft').status, 'REVIEWED DRAFT');
++    const src = readFileSync(new URL('../core/readonly-source-adapter.mjs', import.meta.url), 'utf8');
++    assert.ok(!/\bfrom\s+['"]node:(http|https|net|tls|dgram)['"]|\bfetch\(/.test(src), 'adapter must not import network modules');
++    assert.ok(!/writeFile|appendFile|unlink|rmSync|mkdir/.test(src), 'adapter must not write');
++  } finally { rmSync(dir, { recursive: true, force: true }); }
++});
++
++test('RO-5 default wiring stays mock: P2Sandbox without adapterFactory never uses the read-only adapter', async () => {
++  const x = setup(); try {
++    const e = x.tok('editor'); const t = await create(x, e, 'ro5');
++    const run = await x.s.execute(e, 'runTask', { taskKey: t.key });
++    assert.equal(run.output.synthetic, true);
++    assert.ok(!/READ ONLY • HG-/.test(run.output.text));
++  } finally { x.clean(); }
++});

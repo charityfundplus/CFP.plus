@@ -8,6 +8,12 @@
 
 HUB 69 là HUB duy nhất của CFP+. Đây là điểm kết nối, định vị và điều hướng toàn bộ hệ thống CFP+, bao gồm các AI đang cộng tác và đồng hành.
 
+## Thông báo mới
+
+[Website & Diễn Đàn SI AI CFP+ • Review Candidate](docs/ANNOUNCEMENT_SI_AI_FORUM_REVIEW_CANDIDATE_VI.md) • [Review nhất quán](docs/ANNOUNCEMENT_SI_AI_FORUM_CONSISTENCY_REVIEW_VI.md)
+
+[SI AI Platform • Kiến trúc, Siêu Bộ Đôi, Evidence • Review Candidate](docs/si-ai-platform/README.md)
+
 ## Điểm truy cập GitHub
 
 [CFP+ GitHub Entry Point](GITHUB_HUB.md)

@@ -1,0 +1,1759 @@
+{
+  "scope": "READ MODEL • NO PROMOTION",
+  "bindings": {
+    "267": {
+      "pairKey": "hub69-content-demo",
+      "account": "cmp-267-dieuphoi"
+    },
+    "4376": {
+      "pairKey": "hub69-content-demo",
+      "account": "sbd-4376-idso"
+    }
+  },
+  "readOnly": true,
+  "counts": {
+    "REGISTERED": 89,
+    "READY": 1,
+    "ASSIGNED": 0,
+    "EXECUTING": 0,
+    "REVIEWED": 1,
+    "ACTIVE": 0,
+    "BLOCKED": 0,
+    "REVOKED": 0
+  },
+  "rows": [
+    {
+      "id": "0",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:0"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "00",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:00"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "000",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:000"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "003",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:003"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "005",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:005"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "1",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:1"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "11",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:11"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "111",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:111"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "135",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:135"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "2",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:2"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "22",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:22"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "222",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:222"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "237",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:237"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "246",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:246"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "267",
+      "stage": "READY",
+      "evidence": [
+        "registered:267",
+        "pair:hub69-content-demo:READY",
+        "account:cmp-267-dieuphoi"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "276",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:276"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "2272",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:2272"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "2273",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:2273"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "2374",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:2374"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "2378",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:2378"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "2588",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:2588"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "2633",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:2633"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "2684",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:2684"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "2838",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:2838"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "2863",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:2863"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "2877",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:2877"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "28882",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:28882"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "3",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:3"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "33",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:33"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "330",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:330"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "331",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:331"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "332",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:332"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "333",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:333"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "343",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:343"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "345",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:345"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "362",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:362"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "365",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:365"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "3366",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:3366"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "3728",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:3728"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "3784",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:3784"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "3863",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:3863"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "383236",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:383236"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "4",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:4"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "44",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:44"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "444",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:444"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "4347",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:4347"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "4376",
+      "stage": "REVIEWED",
+      "evidence": [
+        "registered:4376",
+        "pair:hub69-content-demo:READY",
+        "account:sbd-4376-idso",
+        "task:8129d7c4-3234-408c-b272-e8ac7d98030c:REVIEWED DRAFT"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "4742",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:4742"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "5",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:5"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "55",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:55"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "500",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:500"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "555",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:555"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "5272",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:5272"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "5284",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:5284"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "5458",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:5458"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "5678",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:5678"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "5824",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:5824"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "5835",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:5835"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "5862",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:5862"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "5866",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:5866"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "6",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:6"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "66",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:66"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "627",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:627"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "666",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:666"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "674",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:674"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "6535",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:6535"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "6735",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:6735"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "6848",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:6848"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "6969",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:6969"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "7",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:7"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "77",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:77"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "777",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:777"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "789",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:789"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "7535",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:7535"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "7584",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:7584"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "7848",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:7848"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "7884",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:7884"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "8",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:8"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "88",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:88"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "888",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:888"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "8282",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:8282"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "8682",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:8682"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "8882",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:8882"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "8884",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:8884"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "8885",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:8885"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "9",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:9"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "99",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:99"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "999",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:999"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "9397",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:9397"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "9584",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:9584"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    },
+    {
+      "id": "9884",
+      "stage": "REGISTERED",
+      "evidence": [
+        "registered:9884"
+      ],
+      "active": {
+        "ok": false,
+        "missing": [
+          "NOT_REVIEWED",
+          "RUNTIME_NOT_VERIFIED",
+          "RUNTIME_IS_MOCK_OR_UNKNOWN",
+          "RUNTIME_RECEIPT_MISSING",
+          "ACCESS_NOT_VERIFIED",
+          "HG_DECISION_MISSING",
+          "DECISION_EXPIRED_OR_MISSING"
+        ]
+      }
+    }
+  ]
+}

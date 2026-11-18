@@ -1,0 +1,272 @@
+{
+  "scope": "PILOT • SANDBOX • READ ONLY • PRODUCTION NO-GO",
+  "core": {
+    "pr": 124,
+    "pinnedSha": "e994ea884fdf7a06ca5efe20674b96a0d51e24f8",
+    "service": "P2Sandbox + CoreEngine",
+    "pr124BranchModified": false,
+    "localPatch": {
+      "file": "docs/si-ai-platform/patches/pr124-ack-readonly.patch",
+      "sha256": "49ea3293408fa3b51c0d8ece8450f1595a84ba7b73db56ce43c0f7349b567e3a"
+    }
+  },
+  "roles": {
+    "executor": {
+      "account": "sbd-4376-idso",
+      "superPair": "4376 • ID Số",
+      "role": "editor",
+      "duty": "Thực hiện kiểm kê ID và đối chiếu"
+    },
+    "reviewer": {
+      "account": "review-independent",
+      "superPair": "UNASSIGNED • reviewer role pending HG (5284 held, HG-19)",
+      "role": "reviewer",
+      "duty": "Kiểm chứng độc lập, chạy lại và so mã băm (không mang ID Siêu Bộ Đôi)"
+    },
+    "observer": {
+      "account": "cmp-267-dieuphoi",
+      "superPair": "267 • CMP",
+      "role": "viewer",
+      "duty": "Điều phối, chỉ đọc (kiểm tra quyền tối thiểu)"
+    }
+  },
+  "tasks": [
+    {
+      "key": "T1",
+      "title": "GitHub • Kiểm kê Registry AI và trang route",
+      "module": "github-registry-audit",
+      "taskKey": "20b3af03-051b-4f14-90e7-c18c6cc87174",
+      "finalStatus": "REVIEWED DRAFT",
+      "reportSha256": "412205bc6dc6a2d3f3a45133df190ef1e3999d84f5d25b8c902a596d6a154b01",
+      "recheckSha256": "412205bc6dc6a2d3f3a45133df190ef1e3999d84f5d25b8c902a596d6a154b01",
+      "counts": {
+        "registryEntities": 26,
+        "findings": 22
+      }
+    },
+    {
+      "key": "T2",
+      "title": "Notion • Đối chiếu 3 danh sách Siêu Bộ Đôi",
+      "module": "notion-cross-check",
+      "taskKey": "aeda3bee-2f34-4ac2-bf75-93e65ebd38cf",
+      "finalStatus": "REVIEWED DRAFT",
+      "reportSha256": "5ff5c61632f0a0b2fb640a46e177670d5cf0c513cc67a9c460fa06cbeb98fc9e",
+      "recheckSha256": "5ff5c61632f0a0b2fb640a46e177670d5cf0c513cc67a9c460fa06cbeb98fc9e",
+      "counts": {
+        "list91": 91,
+        "danhMuc": 33,
+        "banDo": 84,
+        "banDoUniqueIds": 83,
+        "bangLink91": 91,
+        "findings": 53
+      }
+    },
+    {
+      "key": "T3",
+      "title": "Phân loại 91 Siêu Bộ Đôi theo 5 Nhóm, 10 Chương + Web",
+      "module": "classify-and-join",
+      "taskKey": "8129d7c4-3234-408c-b272-e8ac7d98030c",
+      "finalStatus": "REVIEWED DRAFT",
+      "reportSha256": "15fb3ef0b4b01e44e3d48ef3f52ba04cea9a71ef6ea3bfa18a671ca49c694084",
+      "recheckSha256": "15fb3ef0b4b01e44e3d48ef3f52ba04cea9a71ef6ea3bfa18a671ca49c694084",
+      "counts": {
+        "rows": 91,
+        "byGroup": {
+          "135": 31,
+          "246": 33,
+          "789": 22,
+          "000": 5
+        },
+        "byAction": {
+          "KEEP • REVIEW CONTENT": 19,
+          "PROPOSE_ROUTE_PAGE (needs HG; no ID change)": 70,
+          "CREATE_OR_LINK_NOTION_PROFILE (HG)": 2
+        }
+      }
+    }
+  ],
+  "tasksCompleted": 3,
+  "ackMode": "ackTask (explicit, strict requireAck)",
+  "lifecycleCounts": {
+    "REGISTERED": 89,
+    "READY": 1,
+    "ASSIGNED": 0,
+    "EXECUTING": 0,
+    "REVIEWED": 1,
+    "ACTIVE": 0,
+    "BLOCKED": 0,
+    "REVOKED": 0
+  },
+  "coreTaskStatuses": [
+    {
+      "key": "20b3af03-051b-4f14-90e7-c18c6cc87174",
+      "kind": "registry-audit",
+      "owner": "sbd-4376-idso",
+      "status": "REVIEWED DRAFT",
+      "reviewer": "review-independent",
+      "productionApproved": false
+    },
+    {
+      "key": "aeda3bee-2f34-4ac2-bf75-93e65ebd38cf",
+      "kind": "registry-audit",
+      "owner": "sbd-4376-idso",
+      "status": "REVIEWED DRAFT",
+      "reviewer": "review-independent",
+      "productionApproved": false
+    },
+    {
+      "key": "8129d7c4-3234-408c-b272-e8ac7d98030c",
+      "kind": "registry-audit",
+      "owner": "sbd-4376-idso",
+      "status": "REVIEWED DRAFT",
+      "reviewer": "review-independent",
+      "productionApproved": false
+    }
+  ],
+  "lifecycle": [
+    {
+      "time": "2026-11-18T23:42:11.625Z",
+      "task": "-",
+      "actor": "cmp-267-dieuphoi",
+      "action": "createTask",
+      "result": "DENIED",
+      "reason": "PERMISSION_DENIED"
+    },
+    {
+      "time": "2026-11-18T23:42:11.638Z",
+      "task": "T1",
+      "actor": "sbd-4376-idso",
+      "action": "createTask",
+      "result": "QUEUED",
+      "taskKey": "20b3af03-051b-4f14-90e7-c18c6cc87174"
+    },
+    {
+      "time": "2026-11-18T23:42:11.642Z",
+      "task": "T1",
+      "actor": "sbd-4376-idso",
+      "action": "ackTask",
+      "result": "ACKNOWLEDGED",
+      "taskDigest": "f33fdebc9043c155ddf0899e6dbde00671883bbdfafb7acfa4fae44d531e3b95"
+    },
+    {
+      "time": "2026-11-18T23:42:11.692Z",
+      "task": "T1",
+      "actor": "sbd-4376-idso",
+      "action": "runTask",
+      "result": "AWAITING HUMAN REVIEW",
+      "checks": 18,
+      "outputBindsReportSha": true
+    },
+    {
+      "time": "2026-11-18T23:42:11.695Z",
+      "task": "T1",
+      "actor": "sbd-4376-idso",
+      "action": "self-review",
+      "result": "DENIED",
+      "reason": "PERMISSION_DENIED"
+    },
+    {
+      "time": "2026-11-18T23:42:11.701Z",
+      "task": "T1",
+      "actor": "review-independent",
+      "action": "reviewTask",
+      "result": "REVIEWED DRAFT",
+      "recheckSha": "412205bc6dc6a2d3f3a45133df190ef1e3999d84f5d25b8c902a596d6a154b01",
+      "match": true
+    },
+    {
+      "time": "2026-11-18T23:42:11.710Z",
+      "task": "T2",
+      "actor": "sbd-4376-idso",
+      "action": "createTask",
+      "result": "QUEUED",
+      "taskKey": "aeda3bee-2f34-4ac2-bf75-93e65ebd38cf"
+    },
+    {
+      "time": "2026-11-18T23:42:11.715Z",
+      "task": "T2",
+      "actor": "sbd-4376-idso",
+      "action": "ackTask",
+      "result": "ACKNOWLEDGED",
+      "taskDigest": "43f1c506e140638fb5681210dd5d30b588a2f932e2c1d398cab99e065d54cbd2"
+    },
+    {
+      "time": "2026-11-18T23:42:11.755Z",
+      "task": "T2",
+      "actor": "sbd-4376-idso",
+      "action": "runTask",
+      "result": "AWAITING HUMAN REVIEW",
+      "checks": 18,
+      "outputBindsReportSha": true
+    },
+    {
+      "time": "2026-11-18T23:42:11.757Z",
+      "task": "T2",
+      "actor": "sbd-4376-idso",
+      "action": "self-review",
+      "result": "DENIED",
+      "reason": "PERMISSION_DENIED"
+    },
+    {
+      "time": "2026-11-18T23:42:11.763Z",
+      "task": "T2",
+      "actor": "review-independent",
+      "action": "reviewTask",
+      "result": "REVIEWED DRAFT",
+      "recheckSha": "5ff5c61632f0a0b2fb640a46e177670d5cf0c513cc67a9c460fa06cbeb98fc9e",
+      "match": true
+    },
+    {
+      "time": "2026-11-18T23:42:11.767Z",
+      "task": "T3",
+      "actor": "sbd-4376-idso",
+      "action": "createTask",
+      "result": "QUEUED",
+      "taskKey": "8129d7c4-3234-408c-b272-e8ac7d98030c"
+    },
+    {
+      "time": "2026-11-18T23:42:11.771Z",
+      "task": "T3",
+      "actor": "sbd-4376-idso",
+      "action": "ackTask",
+      "result": "ACKNOWLEDGED",
+      "taskDigest": "57c505fd6bb79423d28c104a96ba3fa291db8a0358b47c6ce7781b3f8176ef6a"
+    },
+    {
+      "time": "2026-11-18T23:42:11.809Z",
+      "task": "T3",
+      "actor": "sbd-4376-idso",
+      "action": "runTask",
+      "result": "AWAITING HUMAN REVIEW",
+      "checks": 18,
+      "outputBindsReportSha": true
+    },
+    {
+      "time": "2026-11-18T23:42:11.812Z",
+      "task": "T3",
+      "actor": "sbd-4376-idso",
+      "action": "self-review",
+      "result": "DENIED",
+      "reason": "PERMISSION_DENIED"
+    },
+    {
+      "time": "2026-11-18T23:42:11.818Z",
+      "task": "T3",
+      "actor": "review-independent",
+      "action": "reviewTask",
+      "result": "REVIEWED DRAFT",
+      "recheckSha": "15fb3ef0b4b01e44e3d48ef3f52ba04cea9a71ef6ea3bfa18a671ca49c694084",
+      "match": true
+    }
+  ],
+  "auditCheckpoint": {
+    "sequence": 26,
+    "sha256": "733d399207bd5ccf1bf60e9587a329d527822ac3bb1b35760355e68d50d223dd"
+  },
+  "limits": [
+    "PR #124 SI adapter is mock-only by design; the real module runs outside the Core and is bound by SHA-256.",
+    "ACK uses the explicit ackTask command only when the Core carries patches/pr124-ack-readonly.patch (see ackMode).",
+    "Accounts are sandbox role labels for super-pairs; no external SI AI runtime is connected; ACTIVE = 0.",
+    "Temporary database is deleted after the run; only this receipt and the reports are kept."
+  ]
+}

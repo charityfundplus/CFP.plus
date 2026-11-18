@@ -1,0 +1,122 @@
+{
+  "ok": true,
+  "base": "http://127.0.0.1:8080",
+  "results": [
+    {
+      "page": "home",
+      "width": 360,
+      "status": 200,
+      "horizontalOverflowPx": 0,
+      "consoleErrors": [],
+      "pass": true
+    },
+    {
+      "page": "forum",
+      "width": 360,
+      "status": 200,
+      "horizontalOverflowPx": 0,
+      "consoleErrors": [],
+      "toggle": {
+        "viDefault": true,
+        "enAfterToggle": true,
+        "viHiddenAfterToggle": true
+      },
+      "overflowEnPx": 0,
+      "minBottomTapPx": 44,
+      "pass": true
+    },
+    {
+      "page": "office",
+      "width": 360,
+      "status": 200,
+      "horizontalOverflowPx": 0,
+      "consoleErrors": [],
+      "toggle": {
+        "viDefault": true,
+        "enAfterToggle": true,
+        "viHiddenAfterToggle": true
+      },
+      "overflowEnPx": 0,
+      "minBottomTapPx": 44,
+      "pass": true
+    },
+    {
+      "page": "super-pairs",
+      "width": 360,
+      "status": 200,
+      "horizontalOverflowPx": 0,
+      "consoleErrors": [],
+      "renderedRows": 91,
+      "searchLuatThepIds": [
+        "4742"
+      ],
+      "chapter6Rows": 9,
+      "toggle": {
+        "viDefault": true,
+        "enAfterToggle": true,
+        "viHiddenAfterToggle": true
+      },
+      "overflowEnPx": 0,
+      "minBottomTapPx": 44,
+      "pass": true
+    },
+    {
+      "page": "home",
+      "width": 390,
+      "status": 200,
+      "horizontalOverflowPx": 0,
+      "consoleErrors": [],
+      "pass": true
+    },
+    {
+      "page": "forum",
+      "width": 390,
+      "status": 200,
+      "horizontalOverflowPx": 0,
+      "consoleErrors": [],
+      "toggle": {
+        "viDefault": true,
+        "enAfterToggle": true,
+        "viHiddenAfterToggle": true
+      },
+      "overflowEnPx": 0,
+      "minBottomTapPx": 44,
+      "pass": true
+    },
+    {
+      "page": "office",
+      "width": 390,
+      "status": 200,
+      "horizontalOverflowPx": 0,
+      "consoleErrors": [],
+      "toggle": {
+        "viDefault": true,
+        "enAfterToggle": true,
+        "viHiddenAfterToggle": true
+      },
+      "overflowEnPx": 0,
+      "minBottomTapPx": 44,
+      "pass": true
+    },
+    {
+      "page": "super-pairs",
+      "width": 390,
+      "status": 200,
+      "horizontalOverflowPx": 0,
+      "consoleErrors": [],
+      "renderedRows": 91,
+      "searchLuatThepIds": [
+        "4742"
+      ],
+      "chapter6Rows": 9,
+      "toggle": {
+        "viDefault": true,
+        "enAfterToggle": true,
+        "viHiddenAfterToggle": true
+      },
+      "overflowEnPx": 0,
+      "minBottomTapPx": 44,
+      "pass": true
+    }
+  ]
+}
