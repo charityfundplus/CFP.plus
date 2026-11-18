@@ -20,7 +20,19 @@ export function loadInventory(file = join(here, '..', 'data', 'super-pair-source
   return JSON.parse(readFileSync(file, 'utf8'));
 }
 
+// IDs come from a committed data file; they are still validated before any path or URL is built.
+export const ID_RE = /^[0-9]{1,32}$/;
+export function requireNumericId(id) {
+  if (typeof id !== 'string' || !ID_RE.test(id)) throw Error('NUMERIC_ID_REQUIRED');
+  return id;
+}
+/** The only URL shape this tool may request: https://cfp.plus/<digits>/ */
+export function auditUrl(id) {
+  return `https://cfp.plus/${requireNumericId(id)}/`;
+}
+
 export function repoPresence(id, root = ROOT) {
+  requireNumericId(id);
   return {
     routeFolder: existsSync(join(root, id, 'index.html')),
     registryDoc: existsSync(join(root, 'registry', `${id}.md`)),
@@ -29,8 +41,9 @@ export function repoPresence(id, root = ROOT) {
 }
 
 function get(url) {
+  if (!/^https:\/\/cfp\.plus\/[0-9]{1,32}\/$/.test(url)) throw Error('URL_NOT_ALLOWED');
   try {
-    const out = execFileSync('curl', ['-s', '-m', '25', '-w', '\n%{http_code}', url], { maxBuffer: 8 << 20 });
+    const out = execFileSync('curl', ['-s', '-m', '25', '--proto', '=https', '--max-redirs', '0', '-w', '\n%{http_code}', '--', url], { maxBuffer: 8 << 20 });
     const text = out.toString('utf8');
     const cut = text.lastIndexOf('\n');
     return { status: Number(text.slice(cut + 1)), body: text.slice(0, cut) };
@@ -52,13 +65,13 @@ function main() {
   let fallbackHash = null;
   if (!offline) {
     // A numeric route that certainly has no folder: the response is the /id/ fallback page.
-    const probe = get('https://cfp.plus/909090909/');
+    const probe = get(auditUrl('909090909'));
     fallbackHash = probe.status === 200 ? sha(probe.body) : null;
   }
   const rows = inv.rows.map((r) => {
     const out = { id: r.id, name: r.name, chapter: r.chapter, notion: r.notion_url ? 'LINK_PRESENT' : 'LINK_PENDING', repo: repoPresence(r.id) };
     if (!offline) {
-      const resp = get(`https://cfp.plus/${r.id}/`);
+      const resp = get(auditUrl(r.id));
       out.live = fallbackHash ? classify(resp, fallbackHash) : 'FALLBACK_PROBE_FAILED';
       out.liveTitle = (resp.body.match(/<title>([^<]*)<\/title>/i) || [])[1] ?? null;
     }

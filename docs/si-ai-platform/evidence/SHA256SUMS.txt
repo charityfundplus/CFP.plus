@@ -10,7 +10,8 @@ f881f6c5a11d6102cc2b39e06406467cad005968f2492bca6c3cb984d53fc328 docs/si-ai-plat
 2038ee230d407c3ad1d68aa1f71247a9f840b52f6b7b440f2133fd4c1b984aa8 docs/si-ai-platform/data/six-stores-inventory.json
 486828cd99093d9716c2163cec93f3c1e74ef8a96ddde93df6d5257fe0d1f1e6 docs/si-ai-platform/data/super-pair-plan.json
 5be96d99e6d8ebbf015c6a65a53192c5760eb94dfcfb7cd0f776bf173f91b5fc docs/si-ai-platform/data/super-pair-source-inventory.json
-8f51b809664413d71076051f34f9e007e8ac27613f128449c61ee36d444d5d6d docs/si-ai-platform/tools/link-audit.mjs
+bc3c928d567fbd1b7b98ba8bb2859c766326a4a8b1c83de14f84ee9aed00f798 docs/si-ai-platform/tools/link-audit.mjs
+9b5be4e562693f41ad2e98e624385108b88af2d96b148eb3030f1092f155d332 docs/si-ai-platform/tools/link-audit.test.mjs
 8290e0723524660ca08037cc8532b9e65fc1b7a047c51218bb6b8271eddfa007 docs/si-ai-platform/tools/mobile-check.mjs
 818f9339e93ef56016309946733fc08b2c111fac79f7b0be7d26affa645afa8e docs/si-ai-platform/tools/pilot-run.mjs
 b0a9f319d4dd674bd9622e99dca60857875b5c7b642a99616f43f870b8b1c803 docs/si-ai-platform/tools/pr124-integration.test.mjs
@@ -29,4 +30,4 @@ e22659884d5efd7a065c4d8194c5aa48b88fc2c348bc6a39c75785ad249b9ae3 docs/si-ai-plat
 a3cec3255fb74236061220aba9d7f1ba2defb92a798f7b7801d69560c7c79880 docs/si-ai-platform/evidence/pilot/lifecycle-report.json
 97a2c6b4e66eab2a39ee8f1637769be298226a91624dbe97ca8452a74d4011ac docs/si-ai-platform/evidence/pilot/pilot-run.json
 49ea3293408fa3b51c0d8ece8450f1595a84ba7b73db56ce43c0f7349b567e3a docs/si-ai-platform/patches/pr124-ack-readonly.patch
-e25637fa14f8ca61b54b1e41e345c32baeae663e9581d83c110fd866e766fdf7 .github/workflows/si-ai-platform-ci.yml
+c7c9f55b5c0af9d5d63a0e6d5bad87b8a334742ea3a61ac7050f09c0f6798cc2 .github/workflows/si-ai-platform-ci.yml

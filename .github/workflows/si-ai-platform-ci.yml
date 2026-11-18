@@ -26,19 +26,19 @@ jobs:
       PR124_SHA: e994ea884fdf7a06ca5efe20674b96a0d51e24f8
     steps:
       - name: Checkout PR #232
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           persist-credentials: false
 
       - name: Checkout PR #124 at pinned SHA (read only)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: ${{ env.PR124_SHA }}
           path: pr124
           persist-credentials: false
 
       - name: Set up Node.js 22
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '22'
 
@@ -71,6 +71,7 @@ jobs:
           node --test docs/si-ai-platform/tools/pr124-integration.test.mjs
           node --test docs/si-ai-platform/tools/super-pair-lifecycle.test.mjs
           node --test docs/si-ai-platform/tools/work-modules.test.mjs
+          node --test docs/si-ai-platform/tools/link-audit.test.mjs
 
       - name: Pilot reproduces report hashes
         env:
@@ -96,7 +97,7 @@ jobs:
       contents: read
       security-events: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           persist-credentials: false
       - uses: github/codeql-action/init@v3
