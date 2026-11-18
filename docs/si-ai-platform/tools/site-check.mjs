@@ -10,7 +10,7 @@ import { fileURLToPath } from 'node:url';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(here, '..', '..', '..');
-export const STRICT = ['index.html', 'docs/si-ai-platform/mockups/forum.html', 'docs/si-ai-platform/mockups/office.html'];
+export const STRICT = ['index.html', 'docs/si-ai-platform/mockups/forum.html', 'docs/si-ai-platform/mockups/office.html', 'docs/si-ai-platform/mockups/super-pairs.html'];
 const SECRET_RE = /(AKIA[0-9A-Z]{16}|ghp_[A-Za-z0-9]{30,}|sk-[A-Za-z0-9]{20,}|-----BEGIN [A-Z ]*PRIVATE KEY-----|xox[bp]-[A-Za-z0-9-]{10,})/;
 
 function walk(dir, out = []) {

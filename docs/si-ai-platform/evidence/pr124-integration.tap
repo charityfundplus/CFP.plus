@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: inventory: 91 source rows, chapter counts match Notion chapter pages
+ok 1 - inventory: 91 source rows, chapter counts match Notion chapter pages
+  ---
+  duration_ms: 1.365358
+  type: 'test'
+  ...
+# Subtest: adapter rows use PR \#124 shape and never infer Parent
+ok 2 - adapter rows use PR \#124 shape and never infer Parent
+  ---
+  duration_ms: 0.373855
+  type: 'test'
+  ...
+# Subtest: pinned PR \#124 checkout is at the expected SHA
+ok 3 - pinned PR \#124 checkout is at the expected SHA
+  ---
+  duration_ms: 5.441454
+  type: 'test'
+  ...
+# Subtest: PR \#124 read model accepts all 91 super-pair rows with 0 findings
+ok 4 - PR \#124 read model accepts all 91 super-pair rows with 0 findings
+  ---
+  duration_ms: 5.187795
+  type: 'test'
+  ...
+# Subtest: search by chapter and type returns Notion chapter counts
+ok 5 - search by chapter and type returns Notion chapter counts
+  ---
+  duration_ms: 2.623051
+  type: 'test'
+  ...
+# Subtest: detail keeps every record unverified and preserves leading zeros
+ok 6 - detail keeps every record unverified and preserves leading zeros
+  ---
+  duration_ms: 1.66471
+  type: 'test'
+  ...
+# Subtest: group display follows PR \#124 (000/135/246/789); V/D not emitted as numeric IDs
+ok 7 - group display follows PR \#124 (000/135/246/789); V/D not emitted as numeric IDs
+  ---
+  duration_ms: 2.153516
+  type: 'test'
+  ...
+# Subtest: IDs shared with existing repository entities are reported, not re-allocated
+ok 8 - IDs shared with existing repository entities are reported, not re-allocated
+  ---
+  duration_ms: 1.996894
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 76.553729

@@ -56,3 +56,9 @@ footer{max-width:var(--max);margin:0 auto;padding:1rem 16px;color:var(--muted);f
 html[data-ui-lang="en"] [lang="vi"]:not(html){display:none}
 html[data-ui-lang="en"] [lang="en"]{display:revert}
 td .chip{white-space:normal}
+.filters{display:grid;grid-template-columns:1fr;gap:.6rem}
+@media (min-width:640px){.filters{grid-template-columns:2fr 1fr 1fr}}
+.filters label{display:flex;flex-direction:column;font-size:.85rem;font-weight:700;gap:.25rem}
+.filters input,.filters select{font:inherit;font-weight:400;min-height:44px;padding:.4rem .6rem;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);width:100%}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.note{display:block;color:var(--warn-ink);font-size:.78rem}

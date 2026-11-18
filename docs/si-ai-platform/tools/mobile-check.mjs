@@ -17,6 +17,7 @@ const pages = [
   { name: 'home', path: '/' },
   { name: 'forum', path: '/docs/si-ai-platform/mockups/forum.html', bilingual: true },
   { name: 'office', path: '/docs/si-ai-platform/mockups/office.html', bilingual: true },
+  { name: 'super-pairs', path: '/docs/si-ai-platform/mockups/super-pairs.html', bilingual: true, waitFor: '#list table' },
 ];
 const widths = [360, 390];
 const results = [];
@@ -30,8 +31,18 @@ try {
       page.on('console', (m) => { if (m.type() === 'error') consoleErrors.push(m.text()); });
       page.on('pageerror', (e) => consoleErrors.push(String(e)));
       const resp = await page.goto(base + p.path, { waitUntil: 'load' });
+      if (p.waitFor) await page.waitForSelector(p.waitFor, { timeout: 10000 });
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       const r = { page: p.name, width, status: resp.status(), horizontalOverflowPx: overflow, consoleErrors };
+      if (p.waitFor) {
+        r.renderedRows = await page.locator('#list tbody tr').count();
+        await page.fill('#q', 'luat thep');
+        r.searchLuatThepIds = await page.locator('#list tbody tr td:first-child').allTextContents();
+        await page.fill('#q', '');
+        await page.selectOption('#ch', '6');
+        r.chapter6Rows = await page.locator('#list tbody tr').count();
+        await page.selectOption('#ch', '');
+      }
       if (p.bilingual) {
         const visVi = await page.locator('h1 [lang="vi"]').isVisible();
         await page.click('.lang button[data-lang="en"]');
@@ -46,7 +57,8 @@ try {
       if (width === 390) await page.screenshot({ path: join(outDir, `${p.name}-vi-${width}.png`), fullPage: true });
       r.pass = r.status === 200 && overflow <= 0 && (r.overflowEnPx ?? 0) <= 0 && consoleErrors.length === 0 &&
         (!r.toggle || (r.toggle.viDefault && r.toggle.enAfterToggle && r.toggle.viHiddenAfterToggle)) &&
-        (r.minBottomTapPx === undefined || r.minBottomTapPx >= 44);
+        (r.minBottomTapPx === undefined || r.minBottomTapPx >= 44) &&
+        (r.renderedRows === undefined || (r.renderedRows === 91 && r.chapter6Rows === 9 && r.searchLuatThepIds.join() === '4742'));
       results.push(r);
       await page.close();
     }

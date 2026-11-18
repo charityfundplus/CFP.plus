@@ -70,3 +70,7 @@ Ghi chú: repository trong môi trường này là bản clone nông, nên mọi
 | https://cfp.plus/8882 | **không có thư mục** `8882/` | Xem xung đột C3 |
 | https://cfp.plus/8682 | `8682/` (Thương Mại Toàn Cầu) | như trên |
 | https://cfp.plus/267 | `267/` (CMP) | như trên |
+
+## F • Notion (bổ sung 2026-11-18)
+
+18 trang Notion do CFP+ cung cấp đã được đọc. Danh sách, mức độ đọc và trạng thái từng trang: xem [06_NOTION_RECONCILIATION_VI.md](06_NOTION_RECONCILIATION_VI.md) mục 1.

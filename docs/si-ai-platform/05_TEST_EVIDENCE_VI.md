@@ -72,3 +72,21 @@ python3 run_ctttc_v066_tests.py
 ```
 
 Mã băm SHA-256 của các file đã kiểm thử: [evidence/SHA256SUMS.txt](evidence/SHA256SUMS.txt).
+
+---
+
+## 6 • Lượt 2 • 2026-11-18T23:04Z • Notion + PR #124 + Danh Bạ
+
+| # | Kiểm thử | Lệnh | Kết quả | Evidence |
+|---|---|---|---|---|
+| T10 | **Core PR #124 chạy trong sandbox**, ghim SHA `e994ea8` | `npm test` trong `drafts/si-office` | ✅ **40/40 PASS** | [evidence/pr124-baseline-npm-test.tap](evidence/pr124-baseline-npm-test.tap) |
+| T11 | Bộ test Registry của PR #124 (read-model, binding, http) | `node --test tests/registry-*.test.mjs` | ✅ **15/15 PASS** (6 + 6 + 3) | [evidence/pr124-baseline-registry.tap](evidence/pr124-baseline-registry.tap) |
+| T12 | **91 Siêu Bộ Đôi Notion chạy trong `createRegistryReadModel` của PR #124** | `CFP_PR124_ROOT=… node --test tools/pr124-integration.test.mjs` | ✅ **8/8 PASS**: 91 bản ghi, 0 finding, `registryWrites=0`, `activationAllowed=false`, giữ số 0 đầu (`003`), không suy Parent | [evidence/pr124-integration.tap](evidence/pr124-integration.tap) |
+| T13 | Kiểm tra thật 91 link `cfp.plus/<ID>/` | `node tools/link-audit.mjs` | 19 OWN_PAGE • 72 ID_FALLBACK • 0 lỗi HTTP | [evidence/link-audit.json](evidence/link-audit.json) |
+| T14 | Danh Bạ trên điện thoại 360/390 px: hiển thị đủ 91 dòng, lọc Chương 6 = 9, tìm "luat thep" (không dấu) → 4742, VI/EN | `tools/mobile-check.mjs` | ✅ **8/8 PASS** (4 trang × 2 độ rộng) | [evidence/mobile/mobile-check.json](evidence/mobile/mobile-check.json) |
+| T15 | Liên kết, bảo mật, song ngữ (4 file, có thêm `super-pairs.html`) | `tools/site-check.mjs` | ✅ 0 lỗi • VI/EN 65/65, 32/32, 19/19 | [evidence/site-check.json](evidence/site-check.json) |
+| T16 | Validator cây + hồi quy CTTTC | như lượt 1 | ✅ 11/11 • 204/204 | [evidence/validator-tests.tap](evidence/validator-tests.tap) |
+
+**CI trên PR #232:** không có check run nào. Workflow của repo (`ctttc_ci.yml`) chỉ chạy khi `schemas/` hoặc `tests/ctttc/` thay đổi. **Review:** 0 bình luận, 0 review tại 2026-11-18T23:04Z.
+
+**Chưa kiểm thử:** Safari trên iPhone thật; route HTTP `/api/core/super-pairs` trên server P2 của PR #124 (chưa thêm, vì không sửa nhánh PR #124); kết nối SI AI thật.

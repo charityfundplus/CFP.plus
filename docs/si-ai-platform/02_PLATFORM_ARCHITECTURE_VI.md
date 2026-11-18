@@ -109,7 +109,33 @@ Quy tắc kế thừa quyền giữa các tầng:
 |---|---|---|
 | P0 | Tổng hợp tài liệu chuẩn | ✅ `00_SOURCE_INDEX_VI.md` |
 | P1 | Bản đồ 5 Nhóm, 10 Chương, 3 tầng | ✅ `01_STRUCTURE_MAP_VI.md` (chờ HG quyết định C1–C7) |
-| P2 | Registry, schema, validator | ⚠️ Một phần: schema + validator + test. Route API mới chưa code vào Core vì PR #124 chưa merge |
-| P3 | Tích hợp Website, Diễn Đàn, Văn Phòng | ⚠️ Một phần: mẫu giao diện tĩnh + mục trên trang chủ |
+| P2 | Registry, schema, validator | ✅ Dữ liệu 91 Siêu Bộ Đôi chạy trong `createRegistryReadModel` của PR #124 (8/8 test). Chưa thêm route HTTP vì không được sửa nhánh PR #124 |
+| P3 | Tích hợp Website, Diễn Đàn, Văn Phòng | ⚠️ Danh Bạ 91 Siêu Bộ Đôi chạy được (tìm, lọc, link Notion, trạng thái live). Diễn Đàn nhiều người: dùng PR #195/#219 hiện hữu |
 | P4 | Kiểm thử, Evidence | ✅ `05_TEST_EVIDENCE_VI.md` |
 | P5 | Pull Request, review, trình HG | ✅ Draft PR. Chưa merge, chưa deploy |
+
+## 7 • Kế thừa PR #124 đã chạy thật (cập nhật sau đối chiếu Notion)
+
+```mermaid
+flowchart LR
+  N["Notion • 10 trang Chương<br/>91 Siêu Bộ Đôi"] --> INV["data/super-pair-source-inventory.json<br/>(nguồn, không phải Registry)"]
+  INV --> AD["tools/pr124-super-pair-adapter.mjs<br/>toRegistryRows(): type=super-pair, parent=null"]
+  AD --> RM["PR #124 • core/registry-read-model.mjs<br/>createRegistryReadModel() • ghim e994ea8"]
+  RM --> Q["search • detail • validation<br/>readOnly • registryWrites=0 • activationAllowed=false"]
+  INV --> UI["mockups/super-pairs.html<br/>Danh Bạ tĩnh"]
+  LA["tools/link-audit.mjs<br/>curl cfp.plus/&lt;ID&gt;"] --> UI
+```
+
+- Không viết Registry thứ hai: adapter chỉ tạo **row** đúng định dạng mà PR #124 đã hỗ trợ cho loại `super-pair` (đã khai báo trong `types` của PR #124 nhưng chưa có dữ liệu).
+- Route HTTP đề xuất cho PR #124 (`sandbox/p2-http.mjs`): thêm `'/api/core/super-pairs'` vào nhánh GET hiện có và gọi `readRegistry(token,'search',{type:'super-pair',…})`. Việc này do chủ PR #124 (Codex 1) thực hiện. PR #232 không sửa nhánh đó.
+
+### Mô hình năng lực theo Mẫu Chung Notion
+
+| Nguyên tắc (Mẫu Chung) | Cách áp dụng trong schema/validator |
+|---|---|
+| Assignment ≠ Capability ≠ Authority | `capabilities` (primary + secondary[], `verified_by_evidence`) tách khỏi `grants` |
+| SI AI: học hỏi, phân tích, phản biện, kiểm chứng, đề xuất | `components.si_ai` |
+| Siêu Phần Mềm: workflow, dữ liệu, log, Evidence, automation, readback | `components.super_software` |
+| Shared Learning ≠ Shared Authority | `lineage.inherits_standards` kế thừa; `lineage.inherits_permissions` luôn `false` |
+| ID ≠ Active • Link ≠ Connected • PASS ≠ Canonical Lock | Validator: ACTIVE cần ID + Evidence + đủ hai thành phần; trang Danh Bạ hiển thị VERIFIED 0 |
+| Trạng thái nền tảng: NOT ASSESSED → LINK READY → CONNECTED → AUTHORIZED → TEST PASS → ACTIVE VERIFIED / BLOCKED / REVOKED | Đề xuất bổ sung vào bản ghi `pairs.json` của PR #124 dưới dạng mảng `platforms[]` (chưa áp dụng) |
