@@ -6,6 +6,7 @@ drop function if exists cfp_office.enforce_task_transition();
 drop trigger if exists stamp_review_round on cfp_office.reviews;
 drop function if exists cfp_office.stamp_review_round();
 -- Số vòng duyệt chỉ là dữ liệu dẫn xuất của 003b (Review, Evidence, nhật ký vẫn giữ nguyên).
+drop policy if exists rls_insert on cfp_office.tasks;  -- 03c: policy này tham chiếu tasks.review_round
 alter table cfp_office.reviews drop column if exists review_round;
 alter table cfp_office.tasks drop column if exists review_round;
 revoke update (status, updated_at) on cfp_office.tasks from office_app;
@@ -20,6 +21,10 @@ do $$ declare t text; begin
     execute format('create policy office_app_all on cfp_office.%I for all to office_app using (true) with check (true)', t);
   end loop;
 end $$;
+drop function if exists cfp_office.task_event_ok(integer, varchar, varchar);
+drop function if exists cfp_office.can_link_from(varchar);
+drop function if exists cfp_office.pair_lead(integer);
+drop function if exists cfp_office.has_review_role(integer);
 drop function if exists cfp_office.in_progress_count();
 drop function if exists cfp_office.ref_visible(varchar);
 drop function if exists cfp_office.can_see_dataset_row(integer, varchar, integer);
