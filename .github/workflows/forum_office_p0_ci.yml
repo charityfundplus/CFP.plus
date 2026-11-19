@@ -72,11 +72,11 @@ jobs:
         run: |
           tests/forum/setup_pg.sh cfp_ci | tee migration.log
           grep -q '^forum_schemas=cfp_forum_auth:cfp_forum_auth_rw,cfp_forum_hstdn:cfp_forum_hstdn_rw,cfp_forum_sbd:cfp_forum_sbd_rw$' migration.log
-          grep -q '^office_tables=14$' migration.log
-          grep -q '^office_rls_forced=14$' migration.log
+          grep -q '^office_tables=15$' migration.log       # 14 bảng 002 + task_transition_tokens (003d)
+          grep -q '^office_rls_forced=15$' migration.log
           grep -q '^anon_usage=0$' migration.log
           grep -q '^rls_user_policies=27$' migration.log   # 003 (RLS theo người dùng) đã áp
-          grep -q '^office_rls_forced=14$' migration.log
+          grep -q '^office_rls_forced=15$' migration.log
           grep -q '^worker_tables=4$' migration.log        # 004 Worker P0
           grep -q '^worker_rls_forced=4$' migration.log
           grep -q '^worker_cross_usage=0$' migration.log   # worker_app không vào kho khác và ngược lại
@@ -86,10 +86,10 @@ jobs:
           psql -v ON_ERROR_STOP=1 -d cfp_ci -f tests/forum/rls_task_transitions.sql | tee rls-transitions.log
           grep -qx 'SEC195_03B pass=56 fail=0 rollback_clean=t' rls-transitions.log
 
-      - name: SEC-195-03c • bất biến GHI links / tasks / task_events / Closure ở tầng Postgres (C1, C1b, C2, G3, G4, G5)
+      - name: SEC-195-03c/03d • bất biến GHI links / tasks / task_events / Closure + chống ghi trùng task_events (C1, C1b, C2, G3, G4, G5)
         run: |
           psql -v ON_ERROR_STOP=1 -d cfp_ci -f tests/forum/rls_write_invariants.sql | tee rls-write-invariants.log
-          grep -qx 'SEC195_03C pass=41 fail=0 rollback_clean=t' rls-write-invariants.log
+          grep -qx 'SEC195_03C pass=49 fail=0 rollback_clean=t' rls-write-invariants.log
 
       - name: pytest + Playwright (SQLite, Postgres 4 schema/role, E2E iPhone 13)
         env:
@@ -120,6 +120,7 @@ jobs:
         run: |
           tests/forum/setup_pg.sh cfp_ci_002 --no-003 | tee migration-002.log
           grep -q '^rls_user_policies=0$' migration-002.log
+          grep -q '^office_tables=14$' migration-002.log   # chỉ 002: chưa có bảng token 003d
           U="postgresql+psycopg://%s@localhost:5433/cfp_ci_002"
           CFP_FORUM_TEST_AUTH_DB=$(printf "$U" cfp_forum_auth_rw) CFP_FORUM_TEST_DB_SIEU_BO_DOI=$(printf "$U" cfp_forum_sbd_rw) \
           CFP_FORUM_TEST_DB_SI_AI_HSTDN=$(printf "$U" cfp_forum_hstdn_rw) CFP_OFFICE_TEST_DB=$(printf "$U" office_app) \

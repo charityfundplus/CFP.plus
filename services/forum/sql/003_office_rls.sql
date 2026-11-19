@@ -344,6 +344,90 @@ drop trigger if exists enforce_task_transition on cfp_office.tasks;
 create trigger enforce_task_transition before update on cfp_office.tasks
   for each row execute function cfp_office.enforce_task_transition();
 
+-- ---------- SEC-P0-195-03d: task_events chỉ ghi được khi có bước chuyển THẬT, mỗi bước đúng MỘT lần
+-- task_event_ok (policy) kiểm sự kiện khớp trạng thái hiện tại, nhưng không chặn ghi lặp cùng một bước.
+-- Cơ chế nội bộ: mỗi lần tạo nhiệm vụ / đổi trạng thái thật, trigger SECURITY DEFINER phát một token vào
+-- bảng nội bộ (office_app không có quyền nào trên bảng). Mỗi INSERT task_events không phải COMMENT phải tiêu
+-- thụ đúng một token của CÙNG giao dịch, cùng nhiệm vụ, cùng nguồn → đích, cùng người → ghi trùng hoặc ghi
+-- sự kiện không có bước chuyển thật bị từ chối (23514). Không cần sửa app: move() và create_task đã ghi
+-- sự kiện trong cùng giao dịch với bước chuyển. Bình luận (COMMENT) không dùng token.
+-- Token của giao dịch đã kết thúc không bao giờ khớp lại (xid8 không tái dùng) và được dọn khi phát token mới.
+create table if not exists cfp_office.task_transition_tokens (
+  xid xid8 not null default pg_current_xact_id(),
+  task_id integer not null,
+  from_status varchar(24),
+  to_status varchar(24) not null,
+  actor_id integer
+);
+revoke all on cfp_office.task_transition_tokens from public;
+do $$ begin  -- Supabase: chặn anon/authenticated; role không có trên Postgres thường thì bỏ qua
+  if exists (select 1 from pg_roles where rolname = 'anon') then
+    execute 'revoke all on cfp_office.task_transition_tokens from anon'; end if;
+  if exists (select 1 from pg_roles where rolname = 'authenticated') then
+    execute 'revoke all on cfp_office.task_transition_tokens from authenticated'; end if;
+end $$;
+revoke all on cfp_office.task_transition_tokens from office_app;
+alter table cfp_office.task_transition_tokens enable row level security;
+alter table cfp_office.task_transition_tokens force row level security;  -- không policy: chỉ role BYPASSRLS
+
+-- Phát token. Hàm trigger không gọi trực tiếp được → office_app không tự tạo token.
+create or replace function cfp_office.issue_transition_token() returns trigger
+language plpgsql security definer set search_path = cfp_office, pg_temp as $$
+begin
+  delete from task_transition_tokens where xid < pg_snapshot_xmin(pg_current_snapshot());  -- giao dịch đã xong
+  if tg_op = 'INSERT' then
+    insert into task_transition_tokens (task_id, from_status, to_status, actor_id)
+    values (new.id, null, new.status, new.created_by);
+  elsif new.status is distinct from old.status then
+    insert into task_transition_tokens (task_id, from_status, to_status, actor_id)
+    values (new.id, old.status, new.status, cfp_office.actor());
+  end if;
+  return null;
+end $$;
+revoke all on function cfp_office.issue_transition_token() from public;
+drop trigger if exists issue_transition_token_ins on cfp_office.tasks;
+create trigger issue_transition_token_ins after insert on cfp_office.tasks
+  for each row execute function cfp_office.issue_transition_token();
+drop trigger if exists issue_transition_token_upd on cfp_office.tasks;
+create trigger issue_transition_token_upd after update of status on cfp_office.tasks
+  for each row execute function cfp_office.issue_transition_token();
+
+-- Tiêu thụ đúng một token khớp. Gọi trực tiếp chỉ XOÁ được token (không tạo) → không mở thêm quyền ghi.
+create or replace function cfp_office.consume_transition_token(p_task integer, p_from varchar, p_to varchar,
+                                                               p_actor integer) returns boolean
+language plpgsql security definer set search_path = cfp_office, pg_temp as $$
+declare n integer;
+begin
+  delete from task_transition_tokens where ctid = (
+    select ctid from task_transition_tokens
+    where xid = pg_current_xact_id() and task_id = p_task and from_status is not distinct from p_from
+      and to_status = p_to and actor_id is not distinct from p_actor
+    limit 1);
+  get diagnostics n = row_count;
+  return n = 1;
+end $$;
+revoke all on function cfp_office.consume_transition_token(integer, varchar, varchar, integer) from public;
+grant execute on function cfp_office.consume_transition_token(integer, varchar, varchar, integer) to office_app;
+
+-- SECURITY INVOKER (cố ý, như enforce_task_transition): current_user là role gọi thật để miễn cho role BYPASSRLS.
+create or replace function cfp_office.guard_task_event() returns trigger
+language plpgsql security invoker set search_path = cfp_office, pg_temp as $$
+begin
+  if new.to_status <> 'COMMENT'
+     and not (select rolbypassrls from pg_roles where rolname = current_user)
+     and not cfp_office.consume_transition_token(new.task_id, new.from_status, new.to_status, new.actor_id) then
+    raise exception 'SEC-195-03d: sự kiện % → % không khớp bước chuyển chưa ghi nào trong giao dịch này',
+      coalesce(new.from_status, '∅'), new.to_status using errcode = '23514';
+  end if;
+  return null;
+end $$;
+revoke all on function cfp_office.guard_task_event() from public;
+drop trigger if exists guard_task_event on cfp_office.task_events;
+-- AFTER (không phải BEFORE): WITH CHECK của policy chạy trước (lỗi RLS giữ nguyên), token kiểm sau cùng;
+-- raise trong AFTER ROW vẫn huỷ toàn bộ câu lệnh.
+create trigger guard_task_event after insert on cfp_office.task_events
+  for each row execute function cfp_office.guard_task_event();
+
 -- ---------- SEC-P0-195-03c: tasks INSERT đúng bất biến của create_task (C2 nhánh tạo, G3, G5)
 -- QUEUED • giao cho lead của Siêu Bộ Đôi • reviewer khác người thực thi và có vai trò reviewer/governance •
 -- review_round bắt đầu từ 0 (chỉ trigger được tăng).

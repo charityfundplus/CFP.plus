@@ -1,0 +1,56 @@
+# TRƯỚC VÁ: 003_office_rls.sql @ a801627 (head PR #195) • PostgreSQL 16.15 • 2026-11-19T22:36:54Z • 003 sha256=00c0f6340fb2d12f
+ n  |  kq  |                                  label                                  |   want    |     got     | sqlstate |                               detail                               
+----+------+-------------------------------------------------------------------------+-----------+-------------+----------+--------------------------------------------------------------------
+  1 | FAIL | C1 người thực thi gắn tài liệu members của người khác vào nhiệm vụ mình | rls       | ok          |          | 
+  2 | PASS | C1 hệ quả: người thực thi vẫn không đọc được tài liệu đó                | zero_rows | zero_rows   |          | 
+  3 | FAIL | C1b người ngoài cài tài liệu vào nhiệm vụ không thấy                    | rls       | ok          |          | 
+  4 | FAIL | C1c người ngoài nối tài liệu mình tới nhiệm vụ không thấy               | rls       | ok          |          | 
+  5 | FAIL | C1d người ngoài tạo link từ Siêu Bộ Đôi không duy trì                   | rls       | ok          |          | 
+  6 | FAIL | C1e tạo link từ tài liệu của người khác                                 | rls       | ok          |          | 
+  7 | FAIL | C2a tạo thẳng ACCEPTED, reviewer = người thực thi                       | rls       | ok          |          | 
+  8 | FAIL | C2b tạo thẳng ACCEPTED (reviewer hợp lệ)                                | rls       | ok          |          | 
+  9 | FAIL | C2c tạo QUEUED với reviewer = người thực thi                            | rls       | ok          |          | 
+ 10 | FAIL | C2d Closure khi không có Review ACCEPT                                  | state     | ok          |          | 
+ 11 | FAIL | C2e Closure khi reviewer = người thực thi                               | state     | ok          |          | 
+ 12 | FAIL | C2f Closure chỉ có Review ACCEPT của vòng cũ                            | state     | ok          |          | 
+ 13 | FAIL | G3 giao cho người không phải lead của Siêu Bộ Đôi                       | rls       | ok          |          | 
+ 14 | FAIL | G3b reviewer không có vai trò reviewer/governance                       | rls       | ok          |          | 
+ 15 | FAIL | G5 tự đặt review_round khi tạo                                          | rls       | ok          |          | 
+ 16 | PASS | G3c người ngoài giao việc                                               | rls       | rls         | 42501    | new row violates row-level security policy for table "tasks"
+ 17 | FAIL | G4 lịch sử giả IN_REVIEW → ACCEPTED khi đang IN_PROGRESS                | rls       | ok          |          | 
+ 18 | FAIL | G4b sự kiện chuyển chưa xảy ra                                          | rls       | ok          |          | 
+ 19 | FAIL | G4c reviewer ghi bước của người thực thi                                | rls       | ok          |          | 
+ 20 | FAIL | G4d bình luận với trạng thái sai                                        | rls       | ok          |          | 
+ 21 | PASS | G4e người ngoài bình luận                                               | rls       | rls         | 42501    | new row violates row-level security policy for table "task_events"
+ 22 | FAIL | G4f sự kiện tạo giả khi nhiệm vụ không ở QUEUED                         | rls       | ok          |          | 
+ 23 | PASS | K1 maintainer tạo nhiệm vụ đúng chuẩn                                   | ok        | ok          |          | 
+ 24 | PASS | K1b sự kiện tạo QUEUED                                                  | ok        | ok          |          | 
+ 25 | FAIL | D1 ghi trùng sự kiện tạo QUEUED                                         | state     | ok          |          | 
+ 26 | PASS | K1c link task → pair (assigned_to)                                      | ok        | ok          |          | 
+ 27 | PASS | K1d governance giao việc, reviewer governance                           | ok        | ok          |          | 
+ 28 | PASS | K2 gắn tài liệu của chính mình                                          | ok        | ok          |          | 
+ 29 | PASS | K2b gắn tài liệu công khai                                              | ok        | ok          |          | 
+ 30 | PASS | K2c governance gắn tài liệu members                                     | ok        | ok          |          | 
+ 31 | PASS | K2d maintainer link pair → office                                       | ok        | ok          |          | 
+ 32 | PASS | K3 người thực thi bình luận                                             | ok        | ok          |          | 
+ 33 | PASS | K3b reviewer bình luận                                                  | ok        | ok          |          | 
+ 34 | PASS | K4 ACK                                                                  | ok        | ok          |          | 
+ 35 | PASS | K5 sự kiện QUEUED → ACKED khớp thực tế                                  | ok        | ok          |          | 
+ 36 | FAIL | D2 ghi trùng sự kiện QUEUED → ACKED                                     | state     | ok          |          | 
+ 37 | PASS | K6a reviewer ghi Review ACCEPT                                          | ok        | ok          |          | 
+ 38 | PASS | K6b reviewer chuyển ACCEPTED                                            | ok        | ok          |          | 
+ 39 | PASS | K6c sự kiện IN_REVIEW → ACCEPTED                                        | ok        | ok          |          | 
+ 40 | FAIL | D3 ghi trùng sự kiện nghiệm thu                                         | state     | ok          |          | 
+ 41 | PASS | K6d người giao việc Closure sau Review ACCEPT                           | ok        | ok          |          | 
+ 42 | PASS | K6e sự kiện ACCEPTED → CLOSED                                           | ok        | ok          |          | 
+ 43 | FAIL | D4 ghi trùng sự kiện Closure                                            | state     | ok          |          | 
+ 44 | FAIL | D5 office_app tự phát token (gọi hàm trigger)                           | priv      | other:42883 | 42883    | function cfp_office.issue_transition_token() does not exist
+ 45 | FAIL | D6 office_app ghi thẳng bảng token                                      | priv      | other:42P01 | 42P01    | relation "cfp_office.task_transition_tokens" does not exist
+ 46 | FAIL | D7 office_app đọc bảng token                                            | priv      | other:42P01 | 42P01    | relation "cfp_office.task_transition_tokens" does not exist
+ 47 | PASS | K3c bình luận lặp vẫn được (COMMENT không dùng token)                   | ok        | ok          |          | 
+ 48 | PASS | K7 reviewer ghi bài học (task → topic)                                  | ok        | ok          |          | 
+ 49 | PASS | K8 người thực thi đọc tài liệu của mình                                 | ok        | ok          |          | 
+
+SEC195_03C pass=23 fail=26 rollback_clean=t
+psql:tests/forum/rls_write_invariants.sql:174: ERROR:  SEC-195-03c: 26 ca FAIL
+CONTEXT:  PL/pgSQL function inline_code_block line 3 at RAISE

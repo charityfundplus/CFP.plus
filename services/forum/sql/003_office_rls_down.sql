@@ -1,6 +1,13 @@
 -- CFP+ • 003 • Khôi phục: bỏ RLS theo người dùng, trả về đúng policy của 002_office.sql.
 -- Không xoá dữ liệu nghiệp vụ (chỉ bỏ cột dẫn xuất review_round của 003b). Idempotent.
 begin;
+drop trigger if exists guard_task_event on cfp_office.task_events;
+drop function if exists cfp_office.guard_task_event();
+drop function if exists cfp_office.consume_transition_token(integer, varchar, varchar, integer);
+drop trigger if exists issue_transition_token_ins on cfp_office.tasks;
+drop trigger if exists issue_transition_token_upd on cfp_office.tasks;
+drop function if exists cfp_office.issue_transition_token();
+drop table if exists cfp_office.task_transition_tokens;  -- chỉ chứa token tạm, không phải dữ liệu nghiệp vụ
 drop trigger if exists enforce_task_transition on cfp_office.tasks;
 drop function if exists cfp_office.enforce_task_transition();
 drop trigger if exists stamp_review_round on cfp_office.reviews;

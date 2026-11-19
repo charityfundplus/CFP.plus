@@ -14,8 +14,8 @@ create function cfp_test.classify(st text, msg text) returns text language sql i
   select case
     when st = '42501' and msg like 'permission denied%' then 'priv'
     when st = '42501' and msg like '%row-level security policy%' then 'rls'
-    when st = '42501' and msg like 'SEC-195-03b:%' then 'actor'
-    when st = '23514' and msg like 'SEC-195-03b:%' then 'state'
+    when st = '42501' and msg like 'SEC-195-03_:%' then 'actor'
+    when st = '23514' and msg like 'SEC-195-03_:%' then 'state'
     else 'other:' || st end
 $$;
 

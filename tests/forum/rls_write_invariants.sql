@@ -16,7 +16,9 @@
 -- Mọi kết quả khác ghi là other:<SQLSTATE> hoặc ok:<số hàng> và tính FAIL.
 --
 -- Người dùng: 1 governance • 2 người giao việc (maintainer T9) • 3 lead/người thực thi • 4 reviewer • 6 người ngoài
--- Tái hiện phát hiện C1, C1b, C2, G3, G4, G5 (phản biện RLS 003 @ a801627, PR #195) + đối chứng hợp lệ K1–K8.
+-- Tái hiện phát hiện C1, C1b, C2, G3, G4, G5 (phản biện RLS 003 @ a801627, PR #195) + đối chứng hợp lệ K1–K8
+-- + D1–D7: task_events chỉ ghi khi có bước chuyển thật, mỗi bước đúng một lần (SEC-195-03d, token nội bộ).
+-- Thứ tự: WITH CHECK của policy (task_event_ok) chạy trước → sự kiện giả báo 'rls'; token (AFTER INSERT) bắt ghi trùng → 'state'.
 \set QUIET 1
 \pset footer off
 set client_min_messages = warning;
@@ -110,6 +112,7 @@ select cfp_test.expect(3, $q$insert into cfp_office.task_events (task_id, actor_
 -- ---------- đối chứng hợp lệ: các luồng app thật phải giữ nguyên
 select cfp_test.expect(2, $q$insert into cfp_office.tasks (id, pair_id, title, description, acceptance, assignee_id, reviewer_id, status, idempotency_key, created_by) values (9915, 9901, 'K1', '', 'x', 3, 4, 'QUEUED', 'c3-k1', 2)$q$, 'ok', 'K1 maintainer tạo nhiệm vụ đúng chuẩn');
 select cfp_test.expect(2, $q$insert into cfp_office.task_events (task_id, actor_id, from_status, to_status, note) values (9915, 2, null, 'QUEUED', '')$q$, 'ok', 'K1b sự kiện tạo QUEUED');
+select cfp_test.expect(2, $q$insert into cfp_office.task_events (task_id, actor_id, from_status, to_status, note) values (9915, 2, null, 'QUEUED', '')$q$, 'state', 'D1 ghi trùng sự kiện tạo QUEUED');
 select cfp_test.expect(2, $q$insert into cfp_office.links (from_ref, to_ref, relation, created_by) values ('task:9915', 'pair:9901', 'assigned_to', 2)$q$, 'ok', 'K1c link task → pair (assigned_to)');
 select cfp_test.expect(1, $q$insert into cfp_office.tasks (pair_id, title, description, acceptance, assignee_id, reviewer_id, status, idempotency_key, created_by) values (9901, 'K1d', '', 'x', 3, 1, 'QUEUED', 'c3-k1d', 1)$q$, 'ok', 'K1d governance giao việc, reviewer governance');
 select cfp_test.expect(3, $q$insert into cfp_office.links (from_ref, to_ref, relation, created_by) values ('task:9911', 'dataset:9922', 'uses', 3)$q$, 'ok', 'K2 gắn tài liệu của chính mình');
@@ -120,11 +123,18 @@ select cfp_test.expect(3, $q$insert into cfp_office.task_events (task_id, actor_
 select cfp_test.expect(4, $q$insert into cfp_office.task_events (task_id, actor_id, from_status, to_status, note) values (9911, 4, 'IN_PROGRESS', 'COMMENT', 'x')$q$, 'ok', 'K3b reviewer bình luận');
 select cfp_test.expect(3, $q$update cfp_office.tasks set status = 'ACKED' where id = 9915$q$, 'ok', 'K4 ACK');
 select cfp_test.expect(3, $q$insert into cfp_office.task_events (task_id, actor_id, from_status, to_status, note) values (9915, 3, 'QUEUED', 'ACKED', '')$q$, 'ok', 'K5 sự kiện QUEUED → ACKED khớp thực tế');
+select cfp_test.expect(3, $q$insert into cfp_office.task_events (task_id, actor_id, from_status, to_status, note) values (9915, 3, 'QUEUED', 'ACKED', '')$q$, 'state', 'D2 ghi trùng sự kiện QUEUED → ACKED');
 select cfp_test.expect(4, $q$insert into cfp_office.reviews (task_id, reviewer_id, decision, notes) values (9916, 4, 'ACCEPT', 'ok')$q$, 'ok', 'K6a reviewer ghi Review ACCEPT');
 select cfp_test.expect(4, $q$update cfp_office.tasks set status = 'ACCEPTED' where id = 9916$q$, 'ok', 'K6b reviewer chuyển ACCEPTED');
 select cfp_test.expect(4, $q$insert into cfp_office.task_events (task_id, actor_id, from_status, to_status, note) values (9916, 4, 'IN_REVIEW', 'ACCEPTED', '')$q$, 'ok', 'K6c sự kiện IN_REVIEW → ACCEPTED');
+select cfp_test.expect(4, $q$insert into cfp_office.task_events (task_id, actor_id, from_status, to_status, note) values (9916, 4, 'IN_REVIEW', 'ACCEPTED', '')$q$, 'state', 'D3 ghi trùng sự kiện nghiệm thu');
 select cfp_test.expect(2, $q$update cfp_office.tasks set status = 'CLOSED' where id = 9916$q$, 'ok', 'K6d người giao việc Closure sau Review ACCEPT');
 select cfp_test.expect(2, $q$insert into cfp_office.task_events (task_id, actor_id, from_status, to_status, note) values (9916, 2, 'ACCEPTED', 'CLOSED', '')$q$, 'ok', 'K6e sự kiện ACCEPTED → CLOSED');
+select cfp_test.expect(2, $q$insert into cfp_office.task_events (task_id, actor_id, from_status, to_status, note) values (9916, 2, 'ACCEPTED', 'CLOSED', '')$q$, 'state', 'D4 ghi trùng sự kiện Closure');
+select cfp_test.expect(3, $q$select cfp_office.issue_transition_token()$q$, 'priv', 'D5 office_app tự phát token (gọi hàm trigger)');
+select cfp_test.expect(3, $q$insert into cfp_office.task_transition_tokens (task_id, from_status, to_status, actor_id) values (9911, 'IN_PROGRESS', 'IN_REVIEW', 3)$q$, 'priv', 'D6 office_app ghi thẳng bảng token');
+select cfp_test.expect(3, $q$select 1 from cfp_office.task_transition_tokens limit 1$q$, 'priv', 'D7 office_app đọc bảng token');
+select cfp_test.expect(3, $q$insert into cfp_office.task_events (task_id, actor_id, from_status, to_status, note) values (9911, 3, 'IN_PROGRESS', 'COMMENT', 'lần 2')$q$, 'ok', 'K3c bình luận lặp vẫn được (COMMENT không dùng token)');
 select cfp_test.expect(4, $q$insert into cfp_office.links (from_ref, to_ref, relation, created_by) values ('task:9916', 'topic:9931', 'lesson', 4)$q$, 'ok', 'K7 reviewer ghi bài học (task → topic)');
 select cfp_test.expect(3, $q$select 1 from cfp_office.datasets where id = 9922$q$, 'ok', 'K8 người thực thi đọc tài liệu của mình');
 reset role;
