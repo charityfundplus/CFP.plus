@@ -17,6 +17,8 @@ Trạng thái: **SANDBOX • REVIEW CANDIDATE • KHÔNG MERGE / KHÔNG DEPLOY k
 | E4 | PR đang mở | 31 PR, gần như tất cả Draft/HOLD/“KHÔNG MERGE”; nhiều PR xếp chồng lên nhánh sandbox khác (#195 → #234, #214, #215, #216; #203 → #206 → #207) |
 | E5 | Cách tạo trang | 158 file `index.html` viết tay; 75/158 trang không dùng header chung; thanh điều hướng khác nhau giữa các trang; không có template hay bước build |
 | E6 | `website/*.md` trên live | Trả về `application/octet-stream`, nên iPhone tải file xuống thay vì hiển thị; nội dung Markdown không trở thành trang web |
+| E8 | **SHA production (đã xác minh 20/11/2026)**: `https://cfp.plus/.git/FETCH_HEAD`, `/.git/refs/heads/master`, `/.git/logs/HEAD` | Đều là `835616308111f6851c0387fa9f5eda60c9ffa624` = HEAD `main`. Clone lúc `1790600519` = **2026-09-28 13:01:59 UTC**, khớp `last-modified`. File chỉ có trong commit đó (`registry/691186.md`) live giống hệt `main` |
+| E9 | Build lịch sử 28/09 “deploy FAILED” (ảnh Console do Human Governance cung cấp, #235) | **Không phải lỗi hiện tại.** Revision đang phục vụ chạy đúng HEAD `main` (E8). 9 commit được push trong 20 giây (13:01:31 đến 13:01:51), có thể kích hoạt 9 build chồng nhau. *Giả thuyết, chưa chứng minh*: một deploy cũ bị thay thế hoặc xung đột. Cần log Cloud Build để xác nhận (workflow `gcp_readonly_evidence.yml`) |
 | E7 | **Bảo mật** `https://cfp.plus/.git/config` | **200**, lộ cấu hình git. Nguyên nhân: Dockerfile `COPY .` không có `.dockerignore`. Cùng lý do, `/Dockerfile`, `/.github/workflows/*` và `/tests/*` cũng công khai |
 
 ## 3. Nguyên nhân gốc (Root Cause)
