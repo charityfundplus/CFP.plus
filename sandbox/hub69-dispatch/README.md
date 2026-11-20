@@ -56,7 +56,7 @@ Cũng hỗ trợ dạng gọn: `HUB69 ACK 201#<id>` + `actor: 691121`.
 | GitHub #201 | ĐỌC PASS (REST, 2 bình luận). GHI: **HOLD**, chưa đăng |
 | Working Link (file JSON) | PASS |
 | Notion CMP 267 Office | **NOT_CONNECTED** tại runtime này; chỉ sinh `notion_rows.json` |
-| CMP 267 Office API (PR #195) | **CONNECTED trong sandbox cục bộ** (uvicorn + SQLite tạm, SHA `29fb469`), autopilot đọc và ghi thật. Instance Render HTTPS: vẫn **NOT_CONNECTED** (chưa có URL hoạt động, chờ Human) |
+| CMP 267 Office API (PR #195) | **CONNECTED trong sandbox cục bộ** (uvicorn + SQLite tạm, SHA `287ce64`; luồng Canva E2E thêm Postgres 002 và 003), autopilot đọc và ghi thật. Instance Render HTTPS: vẫn **NOT_CONNECTED** (chưa có URL hoạt động, chờ Human) |
 | Các SI AI khác | `config/agents.json`: không có agent nào được coi là đã kết nối. ID số đều được test đối chiếu `registry/ai-entity-registry.json`; agent chưa có ID ghi `PENDING` |
 
 ## Thí điểm Siêu Bộ Đôi Claude 691121

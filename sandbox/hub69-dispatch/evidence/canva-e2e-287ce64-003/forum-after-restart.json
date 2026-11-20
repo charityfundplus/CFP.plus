@@ -1,0 +1,48 @@
+[
+  {
+    "id": 2,
+    "title": "[NHIỆM VỤ] Kiểm tra toàn vẹn Registry từ Canva 20261120T175545Z",
+    "body": "**SI AI / Siêu Bộ Đôi:** Thành viên A\n**Nhiệm vụ:** Kiểm tra toàn vẹn Registry từ Canva 20261120T175545Z\n**Năng lực:** registry_check\n**Assignee:** auto\n**Reviewer:** auto\n**Priority:** P1\n**Tiêu chí nghiệm thu:** Chuỗi 691121 đúng, không ID phi số; Evidence sha256\n**Trạng thái:** OPEN",
+    "hstdn": null,
+    "country_id": null,
+    "author": {
+      "id": 7,
+      "name": "Thành viên A"
+    },
+    "created_at": "2026-11-20T17:55:49.597975+00:00",
+    "comments": [
+      {
+        "id": 2,
+        "body": "<!-- hub69-dispatch key=77a751e72e112949 -->\n**ĐÃ XỬ LÝ, CHỜ REVIEW ĐỘC LẬP**\nNgười thực thi: Claude (691121) • công cụ tự động (AUTOMATED_TOOL, không phải mô hình AI).\nVăn Phòng: nhiệm vụ #4 • Evidence sha256 `e12867a1c23ee488…`\nReviewer ReviewSI: mở mục Nhiệm vụ để review.\n\n_Bộ điều phối HUB 69 • SANDBOX_",
+        "author": {
+          "id": 10,
+          "name": "HUB69 dispatcher (sandbox)"
+        },
+        "created_at": "2026-11-20T17:55:50.204538+00:00"
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "title": "Chào Diễn Đàn từ Canva 20261120T175545Z",
+    "body": "Bài đăng từ giao diện Canva (iframe sandbox, Origin: null).",
+    "hstdn": null,
+    "country_id": null,
+    "author": {
+      "id": 7,
+      "name": "Thành viên A"
+    },
+    "created_at": "2026-11-20T17:55:48.547107+00:00",
+    "comments": [
+      {
+        "id": 1,
+        "body": "B đã đọc và phản hồi 20261120T175545Z",
+        "author": {
+          "id": 8,
+          "name": "Thành viên B"
+        },
+        "created_at": "2026-11-20T17:55:49.289166+00:00"
+      }
+    ]
+  }
+]

@@ -24,7 +24,7 @@ import time
 import urllib.request
 from pathlib import Path
 
-OFFICE_SHA = "29fb46914f72f74d6434a81a03939d8a02f8813b"  # PR #195 head used for this integration
+OFFICE_SHA = "287ce647aff410af912a85aea695e89ceb2fe868"  # PR #195 head used for this integration
 ROOT = Path(__file__).resolve().parents[3]
 
 

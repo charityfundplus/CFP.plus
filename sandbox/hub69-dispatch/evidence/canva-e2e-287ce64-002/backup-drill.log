@@ -1,0 +1,6 @@
+# backup_drill.sh @ 287ce64 • 2026-11-20T17:55:58Z • PostgreSQL 16.15 (Ubuntu 16.15
+dump=cfp-cfp_canva-20261120T175558Z.dump bytes=16213 sha256=4d781d0a4428c496 ms=95
+restore_ms=85
+tables=24 rows=52
+schemas=cfp_forum_auth cfp_forum_hstdn cfp_forum_sbd cfp_office • nguồn: 15 policies, 14 force_rls • đích: 15 policies, 14 force_rls
+BACKUP_DRILL=PASS

@@ -33,7 +33,7 @@ jobs:
       - name: Check out PR #195 Office backend at the pinned SHA (read only)
         uses: actions/checkout@v4
         with:
-          ref: 29fb46914f72f74d6434a81a03939d8a02f8813b
+          ref: 287ce647aff410af912a85aea695e89ceb2fe868
           path: _office195
           persist-credentials: false
       - name: Install PR #195 backend requirements
