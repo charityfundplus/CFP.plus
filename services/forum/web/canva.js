@@ -8,6 +8,10 @@
 (function () {
   "use strict";
   var DEFAULT_BASE = "https://cfp-forum-office-sandbox-p0.onrender.com";
+  // F4: chỉ nhận backend trong danh sách này qua ?api= / bộ nhớ; địa chỉ khác phải do chính người dùng gõ ở mục Tài khoản.
+  function trustedBase(b) {
+    return b === DEFAULT_BASE || b === window.location.origin || /^http:\/\/(127\.0\.0\.1|localhost):[0-9]{1,5}$/.test(b);
+  }
   var FORUM = "sieu-bo-doi";
   var S = { base: "", token: null, user: null };
 
@@ -40,7 +44,7 @@
   function api(method, path, body) {
     var h = { "Accept": "application/json" };
     if (method !== "GET") { h["X-CFP-Forum"] = "1"; h["Content-Type"] = "application/json"; }
-    if (S.token) h["Authorization"] = "Bearer " + S.token;
+    if (S.token && S.tokenBase === S.base) h["Authorization"] = "Bearer " + S.token;  // token chỉ gửi về nơi cấp
     if (/^\/api\/auth\/(login|register)$/.test(path)) h["X-CFP-Token"] = "1";
     return fetch(S.base + path, { method: method, headers: h, body: body === undefined ? undefined : JSON.stringify(body),
                                   credentials: sameOrigin() ? "same-origin" : "omit", mode: "cors" })
@@ -57,8 +61,8 @@
   // ------------------------------------------------------------- tài khoản
   function setUser(u, token) {
     S.user = u;
-    if (token !== undefined) { S.token = token; store("cfp.token", token); }
-    if (!u) { S.token = null; store("cfp.token", null); }
+    if (token !== undefined) { S.token = token; S.tokenBase = S.base; store("cfp.token", token); store("cfp.token.base", S.base); }
+    if (!u) { S.token = null; S.tokenBase = null; store("cfp.token", null); store("cfp.token.base", null); }
     $("who").textContent = u ? ("Đang đăng nhập: " + u.name + " (#" + u.id + ")") : "Chưa đăng nhập • mở mục Tài khoản";
   }
   function auth(kind) {
@@ -214,15 +218,21 @@
 
   function init() {
     var qs = new URLSearchParams(window.location.search);
-    var cfg = qs.get("api") || store("cfp.base") || window.CFP_CANVA_BASE;
-    S.base = (cfg || (window.location.pathname.indexOf("/canva/") === 0 ? window.location.origin : DEFAULT_BASE)).replace(/\/+$/, "");
-    S.token = store("cfp.token");
+    var cand = [qs.get("api"), store("cfp.base"), window.CFP_CANVA_BASE].map(function (x) { return x ? x.replace(/\/+$/, "") : x; });
+    var cfg = cand.filter(function (x) { return x && trustedBase(x); })[0];
+    S.base = cfg || (window.location.pathname.indexOf("/canva/") === 0 ? window.location.origin : DEFAULT_BASE);
+    S.token = store("cfp.token"); S.tokenBase = store("cfp.token.base");
     $("cfg-base").value = S.base;
     document.querySelectorAll("nav [data-tab]").forEach(function (b) { b.addEventListener("click", function () { show(b.getAttribute("data-tab")); }); });
     $("u-login").addEventListener("click", function () { auth("login"); });
     $("u-register").addEventListener("click", function () { auth("register"); });
     $("u-logout").addEventListener("click", logout);
-    $("cfg-save").addEventListener("click", function () { S.base = $("cfg-base").value.trim().replace(/\/+$/, ""); store("cfp.base", S.base); diag(); });
+    $("cfg-save").addEventListener("click", function () {
+      var b = $("cfg-base").value.trim().replace(/\/+$/, "");
+      if (!/^https:\/\/[^/?#@]+$/.test(b) && !trustedBase(b)) { toast("Địa chỉ phải là https://tên-miền (không đường dẫn).", true); return; }
+      if (b !== S.base) setUser(null);  // đổi máy chủ → bỏ phiên cũ, không gửi token sang nơi khác
+      S.base = b; if (trustedBase(b)) store("cfp.base", b); diag();
+    });
     $("p-send").addEventListener("click", function () {
       var t = $("p-title").value.trim(), b = $("p-body").value.trim();
       if (!t || !b) { toast("Nhập tiêu đề và nội dung.", true); return; }

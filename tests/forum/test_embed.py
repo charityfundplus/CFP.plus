@@ -142,3 +142,89 @@ def test_canva_page_served_and_single_file_is_fresh(app_factory, monkeypatch):
     assert "frame-ancestors https://www.canva.com" in r.headers["content-security-policy"]
     assert "x-frame-options" not in {k.lower() for k in r.headers}
     assert c.get("/api/health").headers["x-frame-options"] == "DENY"  # API vẫn chặn khung
+
+
+# ---------------- hồi quy theo phản biện độc lập ReviewSI (20/11, F1–F10)
+def test_f8_strict_origin_parsing(app_factory):
+    c = app_factory("https://*.canva.site,https://www.canva.com,null,http://127.0.0.1:8123")
+    for o in ["https://.canva.site", "https://evil.com@x.canva.site", "https://x.canva.site?.canva.site",
+              "https://x.canva.site#.canva.site", " null ", "null/", "https://a.canva.site:444", "https://a.canva.site.",
+              "javascript://a.canva.site"]:
+        r = c.options("/api/auth/me", headers={"Origin": o, "Access-Control-Request-Method": "GET"})
+        assert "access-control-allow-origin" not in {k.lower() for k in r.headers}, o
+    r = c.options("/api/auth/me", headers={"Origin": "HTTPS://A.Canva.Site", "Access-Control-Request-Method": "GET"})
+    assert r.headers["access-control-allow-origin"] == "https://a.canva.site"  # phản chiếu bản chuẩn hóa
+    r = c.options("/api/auth/me", headers={"Origin": "http://127.0.0.1:8123", "Access-Control-Request-Method": "GET"})
+    assert r.headers["access-control-allow-origin"] == "http://127.0.0.1:8123"  # khớp chính xác có cổng
+
+
+def test_f2_f9_cors_on_early_errors_and_preflight_headers(app_factory):
+    c = app_factory("https://*.canva.site")
+    r = c.post("/api/forums/sieu-bo-doi/join", headers={"Origin": CANVA})  # thiếu header CSRF → 403 sớm
+    assert r.status_code == 403 and r.headers["access-control-allow-origin"] == CANVA
+    pre = c.options("/api/auth/me", headers={"Origin": CANVA, "Access-Control-Request-Method": "GET"})
+    assert pre.headers["x-content-type-options"] == "nosniff"
+
+
+def test_f3_vary_and_no_store(app_factory):
+    c = app_factory("https://*.canva.site")
+    assert "origin" in c.get("/api/health").headers.get("vary", "").lower()  # cả khi không nhúng
+    a = reg(c).json()
+    r = c.get("/api/auth/me", headers={"Origin": CANVA, "Authorization": f"Bearer {a['token']}"})
+    assert r.headers["cache-control"] == "no-store"
+
+
+def test_f5_embed_session_short_and_cookieless_logout_revokes_both(app_factory):
+    c = app_factory("https://*.canva.site")
+    r = reg(c)
+    assert "set-cookie" not in {k.lower() for k in r.headers}  # phiên nhúng không đặt cookie
+    from sqlalchemy import select
+    from services.forum.app import sessions_t
+    st = c.app.state.stores
+    with st.auth.connect() as conn:
+        exp = conn.execute(select(sessions_t.c.expires_at)).scalars().all()[-1]
+    from datetime import datetime, timezone
+    exp = exp if exp.tzinfo else exp.replace(tzinfo=timezone.utc)
+    assert (exp - datetime.now(timezone.utc)).total_seconds() < 13 * 3600
+    bearer_tok = r.json()["token"]
+    ck = c.post("/api/auth/register", json={"email": "both@example.org", "password": "matkhau-embed", "name": "Ab"},
+                headers=H)
+    assert ck.status_code == 201
+    out = c.post("/api/auth/logout", headers={**H, "Authorization": f"Bearer {bearer_tok}"})  # cookie + bearer
+    assert out.status_code == 200
+    c.cookies.clear()
+    assert c.get("/api/auth/me", headers={"Authorization": f"Bearer {bearer_tok}"}).json()["user"] is None
+
+
+def test_f6_frame_ancestors_injection_rejected(app_factory, monkeypatch):
+    monkeypatch.setenv("CFP_EMBED_FRAME_ANCESTORS", "*; script-src * 'unsafe-inline'")
+    c = app_factory("https://*.canva.site")
+    r = c.get("/canva/")
+    assert "frame-ancestors 'none'" in r.headers["content-security-policy"] and r.headers["x-frame-options"] == "DENY"
+    monkeypatch.setenv("CFP_EMBED_FRAME_ANCESTORS", "https://www.canva.com https://*.canva.site")
+    r = app_factory("https://*.canva.site").get("/canva/")
+    assert "frame-ancestors https://www.canva.com https://*.canva.site;" in r.headers["content-security-policy"]
+
+
+def test_f7_same_host_page_in_iframe_can_get_token(app_factory):
+    c = app_factory("https://*.canva.site")
+    r = c.post("/api/auth/register", json={"email": "same@example.org", "password": "matkhau-embed", "name": "Ab"},
+               headers={**H, "Origin": "http://testserver", "X-CFP-Token": "1"})
+    assert r.status_code == 201 and r.json().get("token")
+
+
+def test_f1_per_account_login_throttle(app_factory, monkeypatch):
+    monkeypatch.setenv("CFP_FORUM_RL_LOGIN_PER_ACCOUNT", "3")
+    c = app_factory("https://*.canva.site")
+    h = {**H, "Origin": CANVA, "X-CFP-Token": "1"}
+    codes = [c.post("/api/auth/login", json={"email": "victim@example.org", "password": f"sai-{i}-xxxx"},
+                    headers={**h, "X-Forwarded-For": f"10.0.0.{i}"}).status_code for i in range(5)]
+    assert codes[:3] == [401, 401, 401] and codes[3:] == [429, 429]
+    assert c.post("/api/auth/login", json={"email": "victim@example.org", "password": "x"},
+                  headers=h).headers["access-control-allow-origin"] == CANVA  # 429 đọc được (Retry-After)
+
+
+def test_f10_validation_error_does_not_echo_password(app_factory):
+    c = app_factory(None)
+    r = c.post("/api/auth/register", json={"email": "x@example.org", "password": "ngan", "name": "Ab"}, headers=H)
+    assert r.status_code == 422 and "ngan" not in r.text
