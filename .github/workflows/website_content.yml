@@ -5,7 +5,8 @@ on:
   pull_request:
     paths:
       - 'content/**'
-      - 'tools/build_pages.py'
+      - 'tools/**'
+      - 'deploy/**'
       - 'tests/website/**'
       - 'Dockerfile'
       - '.dockerignore'
@@ -14,7 +15,8 @@ on:
     branches: [main]
     paths:
       - 'content/**'
-      - 'tools/build_pages.py'
+      - 'tools/**'
+      - 'deploy/**'
       - 'Dockerfile'
       - '.dockerignore'
 
@@ -33,13 +35,15 @@ jobs:
         run: python3 tools/build_pages.py --check
       - name: Unit tests
         run: python3 -m unittest discover -s tests/website -v
-      - name: Build production image and smoke test
+      - name: Build production image
+        run: docker build -t cfp-site:ci .
+      - name: Image must not contain internal files
         run: |
-          docker build -t cfp-site:ci .
+          leaked=$(docker run --rm cfp-site:ci sh -c 'cd /usr/share/nginx/html && find . -mindepth 1 \( -name ".*" -o -name Dockerfile -o -path ./tools -o -path ./tests -o -path ./deploy -o -name "*.py" \) -print')
+          if [ -n "$leaked" ]; then echo "LEAKED:"; echo "$leaked"; exit 1; fi
+          echo "PASS: no dotfiles, Dockerfile, tools, tests, deploy or .py in web root"
+      - name: Smoke and exposure test
+        run: |
           docker run -d --name cfp -p 8080:8080 cfp-site:ci
           for i in $(seq 1 20); do curl -fs http://localhost:8080/ >/dev/null && break; sleep 1; done
-          for p in / /69/ /000/ /6984/ /6911/ /28882/; do
-            code=$(curl -s -o /dev/null -w '%{http_code}' "http://localhost:8080$p"); echo "$code $p"; test "$code" = 200
-          done
-          code=$(curl -s -o /dev/null -w '%{http_code}' http://localhost:8080/.git/config); echo "$code /.git/config"; test "$code" = 404
-          curl -sI http://localhost:8080/HUB69.md | grep -i '^content-type: text/plain; charset=utf-8'
+          tools/smoke_test_site.sh http://localhost:8080

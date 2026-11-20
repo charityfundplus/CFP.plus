@@ -1,0 +1,46 @@
+== Public pages must work
+PASS 200 / (public)
+PASS 200 /69/ (public)
+PASS 200 /69 (public)
+PASS 200 /000/ (public)
+PASS 200 /0123456789/ (public)
+PASS 200 /6/ (public)
+PASS 200 /6911/ (public)
+PASS 200 /6984/ (public)
+PASS 200 /28882/ (public)
+PASS 200 /267/ (public)
+PASS 200 /12345678/ (public)
+PASS 200 /styles.css (public)
+PASS 200 /robots.txt (public)
+PASS 200 /sitemap.xml (public)
+== Internal files must NOT be served
+FAIL 200 /.git/config (internal, expected 404|403|400|301|302)
+FAIL 200 /.git/HEAD (internal, expected 404|403|400|301|302)
+FAIL 200 /.git/index (internal, expected 404|403|400|301|302)
+FAIL 200 /.git/FETCH_HEAD (internal, expected 404|403|400|301|302)
+FAIL 200 /.git/logs/HEAD (internal, expected 404|403|400|301|302)
+PASS 404 /.git/ (internal)
+PASS 404 /.git (internal)
+FAIL 200 /%2egit/config (internal, expected 404|403|400|301|302)
+FAIL 200 /%2Egit/config (internal, expected 404|403|400|301|302)
+FAIL 200 //.git/config (internal, expected 404|403|400|301|302)
+PASS 302 /./.git/config (internal)
+PASS 302 /69/../.git/config (internal)
+PASS 404 /.github/workflows/website_content.yml (internal)
+FAIL 200 /.github/PULL_REQUEST_TEMPLATE.md (internal, expected 404|403|400|301|302)
+PASS 404 /.gitignore (internal)
+PASS 404 /.dockerignore (internal)
+PASS 404 /.env (internal)
+FAIL 200 /Dockerfile (internal, expected 404|403|400|301|302)
+PASS 404 /deploy/nginx.conf (internal)
+PASS 404 /tools/build_pages.py (internal)
+FAIL 200 /tests/__init__.py (internal, expected 404|403|400|301|302)
+FAIL 200 /run_ctttc_v066_tests.py (internal, expected 404|403|400|301|302)
+PASS 404 /patches/ (internal)
+== Headers
+FAIL .md content-type
+FAIL header x-content-type-options: nosniff
+FAIL header referrer-policy:
+PASS no nginx version in Server header
+FAIL /69/../.git/config reachable after redirect
+RESULT: FAIL
