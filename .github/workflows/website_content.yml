@@ -1,0 +1,45 @@
+name: Website Content
+
+# Validation only. This workflow never deploys, merges or writes to the repo.
+on:
+  pull_request:
+    paths:
+      - 'content/**'
+      - 'tools/build_pages.py'
+      - 'tests/website/**'
+      - 'Dockerfile'
+      - '.dockerignore'
+      - '.github/workflows/website_content.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'content/**'
+      - 'tools/build_pages.py'
+      - 'Dockerfile'
+      - '.dockerignore'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate content pages
+        run: python3 tools/build_pages.py --check
+      - name: Unit tests
+        run: python3 -m unittest discover -s tests/website -v
+      - name: Build production image and smoke test
+        run: |
+          docker build -t cfp-site:ci .
+          docker run -d --name cfp -p 8080:8080 cfp-site:ci
+          for i in $(seq 1 20); do curl -fs http://localhost:8080/ >/dev/null && break; sleep 1; done
+          for p in / /69/ /000/ /6984/ /6911/ /28882/; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' "http://localhost:8080$p"); echo "$code $p"; test "$code" = 200
+          done
+          code=$(curl -s -o /dev/null -w '%{http_code}' http://localhost:8080/.git/config); echo "$code /.git/config"; test "$code" = 404
+          curl -sI http://localhost:8080/HUB69.md | grep -i '^content-type: text/plain; charset=utf-8'
