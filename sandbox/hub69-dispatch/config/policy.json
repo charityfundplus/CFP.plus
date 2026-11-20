@@ -1,0 +1,8 @@
+{
+  "_doc": "HUB 69 dispatch policy. Source: #178 issuecomment-6779569678 (max 5 parallel, 1 P0 slot for OpenAI 69118 / ChatGPT 691181).",
+  "max_parallel": 5,
+  "reserved_p0": {"owners": ["69118", "691181"], "slots": 1},
+  "nudge_after_hours": 24,
+  "operator_logins": ["charityfundplus"],
+  "gate": "SANDBOX PRACTICE GO • HOLD ACTIVATION • PRODUCTION NO GO"
+}

@@ -1,0 +1,189 @@
+{
+  "meta": {
+    "now": "2026-11-13T12:00:00+00:00",
+    "source": "file:sandbox/hub69-dispatch/fixtures/pilot-691121-simulated-review.json",
+    "comments": 6,
+    "messages": 7,
+    "input_sha256": "268e56ccc4cba3d842895fa45b3c36c2506c7ac09f9504381fe27aa0a74e5d6a"
+  },
+  "channels": [
+    {
+      "channel": "working_link",
+      "target": "sandbox/hub69-dispatch/fixtures/pilot-691121-simulated-review.json",
+      "read": "FILE",
+      "write": "NONE"
+    },
+    {
+      "channel": "notion",
+      "status": "NOT_CONNECTED",
+      "reason": "no NOTION_TOKEN / HUB69_NOTION_DATA_SOURCE in this runtime"
+    },
+    {
+      "channel": "cmp_267_office_api",
+      "status": "NOT_CONNECTED",
+      "reason": "no HUB69_OFFICE_API + governance session; PR #195 sandbox auth (SMOKE_*) pending Human"
+    }
+  ],
+  "slots": {
+    "max_parallel": 5,
+    "active": 1,
+    "reserved_p0_owners": [
+      "69118",
+      "691181"
+    ],
+    "reserved_p0_in_use": true
+  },
+  "tasks": [
+    {
+      "key": "pilot#1",
+      "title": "Sửa P1 localStorage HUB 69 (PR #203 → #206): không mất dữ liệu sai schema, có test hồi quy",
+      "priority": "P1",
+      "assignee": "691121",
+      "reviewer": "ReviewSI",
+      "opened_by": "CMP 267",
+      "opened_at": "2026-11-13T11:00:00Z",
+      "source_url": null,
+      "acceptance": "test Node + trình duyệt PASS trên SHA cụ thể; dữ liệu gốc khôi phục được",
+      "capability": "",
+      "routed": "named",
+      "state": "VERIFIED",
+      "slot": null,
+      "ack": {
+        "kind": "ACK",
+        "actor": "691121",
+        "at": "2026-11-13T11:05:00Z",
+        "ref": "pilot#3",
+        "url": null,
+        "provenance": "relayed_by_operator"
+      },
+      "results": [
+        {
+          "kind": "RESULT",
+          "actor": "691121",
+          "at": "2026-11-13T11:50:00Z",
+          "ref": "pilot#4",
+          "url": null,
+          "provenance": "relayed_by_operator",
+          "urls": [
+            "https://github.com/charityfundplus/CFP.plus/commit/2150c0c83451a209e7cd62138c4ad937e8140e0f",
+            "https://github.com/charityfundplus/CFP.plus/blob/2150c0c83451a209e7cd62138c4ad937e8140e0f/sandbox/hub69-working-office/test-localstorage.cjs",
+            "https://github.com/charityfundplus/CFP.plus/blob/2150c0c83451a209e7cd62138c4ad937e8140e0f/sandbox/hub69-working-office/evidence/p1-browser-results.json"
+          ],
+          "text": "commit https://github.com/charityfundplus/CFP.plus/commit/2150c0c83451a209e7cd62138c4ad937e8140e0f\nNode 11/11 PASS https://github.com/charityfundplus/CFP.plus/blob/2150c0c83451a209e7cd62138c4ad937e8140e0f/sandbox/hub69-working-office/test-localstorage.cjs\nChromium iPhone 13 7/7 PASS https://github.com/charityfundplus/CFP.plus/blob/2150c0c83451a209e7cd62138c4ad937e8140e0f/sandbox/hub69-working-office/evidence/p1-browser-results.json"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "EVIDENCE",
+          "actor": "691121",
+          "at": "2026-11-13T11:50:00Z",
+          "ref": "pilot#4",
+          "url": null,
+          "provenance": "relayed_by_operator",
+          "urls": [
+            "https://github.com/charityfundplus/CFP.plus/commit/2150c0c83451a209e7cd62138c4ad937e8140e0f",
+            "https://github.com/charityfundplus/CFP.plus/blob/2150c0c83451a209e7cd62138c4ad937e8140e0f/sandbox/hub69-working-office/test-localstorage.cjs",
+            "https://github.com/charityfundplus/CFP.plus/blob/2150c0c83451a209e7cd62138c4ad937e8140e0f/sandbox/hub69-working-office/evidence/p1-browser-results.json"
+          ]
+        }
+      ],
+      "reviews": [
+        {
+          "kind": "REVIEW",
+          "actor": "ReviewSI",
+          "at": "2026-11-13T11:55:00Z",
+          "ref": "pilot#6",
+          "url": null,
+          "provenance": "relayed_by_operator",
+          "verdict": "PASS"
+        }
+      ],
+      "blockers": [],
+      "history": [
+        {
+          "kind": "TASK",
+          "actor": "CMP 267",
+          "at": "2026-11-13T11:00:00Z",
+          "ref": "pilot#1",
+          "url": null,
+          "provenance": "relayed_by_operator"
+        },
+        {
+          "kind": "ACK",
+          "actor": "691121",
+          "at": "2026-11-13T11:05:00Z",
+          "ref": "pilot#3",
+          "url": null,
+          "provenance": "relayed_by_operator"
+        },
+        {
+          "kind": "RESULT",
+          "actor": "691121",
+          "at": "2026-11-13T11:50:00Z",
+          "ref": "pilot#4",
+          "url": null,
+          "provenance": "relayed_by_operator"
+        },
+        {
+          "kind": "EVIDENCE",
+          "actor": "691121",
+          "at": "2026-11-13T11:50:00Z",
+          "ref": "pilot#4",
+          "url": null,
+          "provenance": "relayed_by_operator"
+        },
+        {
+          "kind": "REVIEW",
+          "actor": "ReviewSI",
+          "at": "2026-11-13T11:55:00Z",
+          "ref": "pilot#6",
+          "url": null,
+          "provenance": "relayed_by_operator"
+        }
+      ],
+      "last_activity": "2026-11-13T11:55:00Z"
+    },
+    {
+      "key": "pilot#2",
+      "title": "P0 OpenAI 69118 / ChatGPT 691181: chứng minh Working Link, quyền và luồng nhiệm vụ trên hồ sơ Notion hiện hữu",
+      "priority": "P0",
+      "assignee": "691181",
+      "reviewer": "SecuritySI",
+      "opened_by": "CMP 267",
+      "opened_at": "2026-11-13T11:01:00Z",
+      "source_url": null,
+      "acceptance": "",
+      "capability": "",
+      "routed": "named",
+      "state": "DISPATCHED",
+      "slot": "reserved_p0",
+      "ack": null,
+      "results": [],
+      "evidence": [],
+      "reviews": [],
+      "blockers": [],
+      "history": [
+        {
+          "kind": "TASK",
+          "actor": "CMP 267",
+          "at": "2026-11-13T11:01:00Z",
+          "ref": "pilot#2",
+          "url": null,
+          "provenance": "relayed_by_operator"
+        }
+      ],
+      "last_activity": "2026-11-13T11:01:00Z"
+    }
+  ],
+  "rejections": [
+    {
+      "ref": "pilot#5",
+      "url": null,
+      "kind": "REVIEW",
+      "task": "pilot#1",
+      "actor": "691121",
+      "reason": "self-review rejected (maker ≠ checker)"
+    }
+  ],
+  "warnings": []
+}

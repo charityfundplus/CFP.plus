@@ -1,0 +1,44 @@
+[
+  {
+    "ref": "pilot#1",
+    "created_at": "2026-11-13T11:00:00Z",
+    "author_login": "charityfundplus",
+    "url": null,
+    "body": "**SI AI / Siêu Bộ Đôi:** CMP 267 (điều phối, chuyển tiếp bởi người vận hành)\n**Nhiệm vụ:** Sửa P1 localStorage HUB 69 (PR #203 → #206): không mất dữ liệu sai schema, có test hồi quy\n**Assignee:** 691121\n**Reviewer:** ReviewSI\n**Priority:** P1\n**Tiêu chí nghiệm thu:** test Node + trình duyệt PASS trên SHA cụ thể; dữ liệu gốc khôi phục được\n**Trạng thái:** OPEN"
+  },
+  {
+    "ref": "pilot#2",
+    "created_at": "2026-11-13T11:01:00Z",
+    "author_login": "charityfundplus",
+    "url": null,
+    "body": "**SI AI / Siêu Bộ Đôi:** CMP 267\n**Nhiệm vụ:** P0 OpenAI 69118 / ChatGPT 691181: chứng minh Working Link, quyền và luồng nhiệm vụ trên hồ sơ Notion hiện hữu\n**Assignee:** 691181\n**Reviewer:** SecuritySI\n**Priority:** P0\n**Trạng thái:** OPEN"
+  },
+  {
+    "ref": "pilot#3",
+    "created_at": "2026-11-13T11:05:00Z",
+    "author_login": "charityfundplus",
+    "url": null,
+    "body": "**SI AI / Siêu Bộ Đôi:** Claude Code (Siêu Bộ Đôi Claude 691121)\n**Link riêng / ID:** 691121\n**Task:** pilot#1\n**Trạng thái:** ACK\n**Vướng mắc / Next Action:** phiên Claude Code cloud, không chạy 24/24"
+  },
+  {
+    "ref": "pilot#4",
+    "created_at": "2026-11-13T11:50:00Z",
+    "author_login": "charityfundplus",
+    "url": null,
+    "body": "**SI AI / Siêu Bộ Đôi:** Claude Code\n**Link riêng / ID:** 691121\n**Task:** pilot#1\n**Trạng thái:** OUTPUT READY\n**Kết quả và Evidence URL:**\ncommit https://github.com/charityfundplus/CFP.plus/commit/2150c0c83451a209e7cd62138c4ad937e8140e0f\nNode 11/11 PASS https://github.com/charityfundplus/CFP.plus/blob/2150c0c83451a209e7cd62138c4ad937e8140e0f/sandbox/hub69-working-office/test-localstorage.cjs\nChromium iPhone 13 7/7 PASS https://github.com/charityfundplus/CFP.plus/blob/2150c0c83451a209e7cd62138c4ad937e8140e0f/sandbox/hub69-working-office/evidence/p1-browser-results.json"
+  },
+  {
+    "ref": "pilot#5",
+    "created_at": "2026-11-13T11:52:00Z",
+    "author_login": "charityfundplus",
+    "url": null,
+    "body": "**SI AI / Siêu Bộ Đôi:** Claude Code\n**Link riêng / ID:** 691121\n**Task:** pilot#1\n**Trạng thái:** VERIFIED\n**Verdict:** PASS\n(thử tự review — phải bị từ chối)"
+  },
+  {
+    "ref": "pilot#6",
+    "created_at": "2026-11-13T11:55:00Z",
+    "author_login": "charityfundplus",
+    "url": null,
+    "body": "**SI AI / Siêu Bộ Đôi:** ReviewSI [SIMULATED — không phải verdict thật của ReviewSI]\n**Task:** pilot#1\n**Trạng thái:** REVIEW\n**Verdict:** PASS"
+  }
+]

@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "now": "2026-11-13T12:00:00+00:00",
+    "source": "github:charityfundplus/CFP.plus#201",
+    "comments": 2,
+    "messages": 1,
+    "input_sha256": "dfdf4a4ad47a9ed9c9393f62d7c827ce2d3cc0f502e325ef82b5b09c40972781"
+  },
+  "channels": [
+    {
+      "channel": "github",
+      "target": "charityfundplus/CFP.plus#201",
+      "read": "CONFIGURED",
+      "write": "TOKEN PRESENT"
+    },
+    {
+      "channel": "notion",
+      "status": "NOT_CONNECTED",
+      "reason": "no NOTION_TOKEN / HUB69_NOTION_DATA_SOURCE in this runtime"
+    },
+    {
+      "channel": "cmp_267_office_api",
+      "status": "NOT_CONNECTED",
+      "reason": "no HUB69_OFFICE_API + governance session; PR #195 sandbox auth (SMOKE_*) pending Human"
+    }
+  ],
+  "slots": {
+    "max_parallel": 5,
+    "active": 0,
+    "reserved_p0_owners": [
+      "69118",
+      "691181"
+    ],
+    "reserved_p0_in_use": false
+  },
+  "tasks": [],
+  "rejections": [
+    {
+      "ref": "201#6813472700",
+      "url": "https://github.com/charityfundplus/CFP.plus/issues/201#issuecomment-6813472700",
+      "kind": "ACK",
+      "task": null,
+      "actor": "Perplexity",
+      "reason": "no task reference: add '**Task:** <issue>#<comment id>' of the TASK"
+    }
+  ],
+  "warnings": []
+}

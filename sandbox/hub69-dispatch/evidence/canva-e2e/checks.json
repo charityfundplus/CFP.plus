@@ -1,0 +1,214 @@
+{
+  "run": "20261113T142125Z",
+  "office_src_head": "9614fa1a7e8ae2e7af7d3d77138a3a3b5ef2f139",
+  "client_sha256": "d9dac1b123f34f6a8cbcb088395eac2f2a27542e54bb102dae13043f493f697b",
+  "storage": {
+    "auth_db": "postgresql",
+    "office": {
+      "db": "postgresql",
+      "offices": 0
+    },
+    "storage": "configured"
+  },
+  "checks": [
+    {
+      "phase": 1,
+      "name": "A đăng bài từ Canva",
+      "pass": true,
+      "detail": "Chào Diễn Đàn từ Canva 20261113T142125Z"
+    },
+    {
+      "phase": 1,
+      "name": "Chẩn đoán kết nối trong iframe",
+      "pass": true,
+      "detail": "Trang: http://127.0.0.1:34323 (trong iframe)\nBackend: http://127.0.0.1:42759\nsessionStorage: bị chặn (SecurityError)\nKết nối: OK 13 ms • build ?\nLưu trữ: configured"
+    },
+    {
+      "phase": 1,
+      "name": "B (tài khoản khác) đọc được bài của A",
+      "pass": true,
+      "detail": "Thành viên A"
+    },
+    {
+      "phase": 1,
+      "name": "B phản hồi",
+      "pass": true,
+      "detail": "B đã đọc và phản hồi 20261113T142125Z"
+    },
+    {
+      "phase": 1,
+      "name": "A thấy phản hồi của B",
+      "pass": true
+    },
+    {
+      "phase": 1,
+      "name": "A giao việc qua Diễn Đàn (mẫu HUB 69)",
+      "pass": true,
+      "detail": "Kiểm tra toàn vẹn Registry từ Canva 20261113T142125Z"
+    },
+    {
+      "phase": 1,
+      "name": "Không cuộn ngang (iPhone 13)",
+      "pass": true
+    },
+    {
+      "phase": 1,
+      "name": "Không lỗi JavaScript",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "phase": "autopilot",
+      "name": "Bộ điều phối nhận bài nhiệm vụ từ Diễn Đàn và chuyển reviewer",
+      "pass": true,
+      "detail": [
+        {
+          "task": "sbd#2",
+          "stage": "HANDED_TO_REVIEWER",
+          "changed": true
+        }
+      ]
+    },
+    {
+      "phase": "autopilot",
+      "name": "Lượt 2 không ghi trùng (Office + phản hồi)",
+      "pass": true
+    },
+    {
+      "phase": "restart",
+      "name": "Dữ liệu Diễn Đàn còn nguyên sau khởi động lại",
+      "pass": true,
+      "detail": {
+        "posts": 2,
+        "comments": 2
+      }
+    },
+    {
+      "phase": "restart",
+      "name": "Nhiệm vụ + Evidence trong Văn Phòng còn nguyên",
+      "pass": true,
+      "detail": {
+        "office_tid": 1,
+        "office_status": "IN_REVIEW",
+        "evidence": [
+          {
+            "kind": "test_report",
+            "url": "https://github.com/charityfundplus/CFP.plus/blob/claude/cool-euler-gnwkfm/sandbox/hub69-dispatch/evidence/canva-e2e/results/sbd-2.json",
+            "sha": "9dd722aed67f72edbcb5fe88152e988a04341de14f813e1c5378261529181d6a"
+          }
+        ],
+        "history": [
+          {
+            "from": null,
+            "to": "QUEUED",
+            "actor_id": 6,
+            "note": ""
+          },
+          {
+            "from": "QUEUED",
+            "to": "ACKED",
+            "actor_id": 5,
+            "note": "AUTO ACK • hub69 autopilot • AUTOMATED_TOOL"
+          },
+          {
+            "from": "ACKED",
+            "to": "IN_PROGRESS",
+            "actor_id": 5,
+            "note": "AUTO start"
+          },
+          {
+            "from": "IN_PROGRESS",
+            "to": "IN_REVIEW",
+            "actor_id": 5,
+            "note": "AUTO submit → independent review"
+          }
+        ]
+      }
+    },
+    {
+      "phase": 2,
+      "name": "Sau khởi động lại backend: bài + phản hồi còn",
+      "pass": true
+    },
+    {
+      "phase": 2,
+      "name": "Phản hồi tự động của bộ điều phối hiển thị dưới bài nhiệm vụ",
+      "pass": true,
+      "detail": "ĐÃ XỬ LÝ, CHỜ REVIEW ĐỘC LẬP\nNgười thực thi: Claude (691121) • công cụ tự động (AUTOMATED_TOOL, không phải mô hình AI).\nVăn Phòng: nhiệm vụ #1 • Evidence sha256 `9dd722aed67f72ed…`\nReviewer ReviewSI: mở mục Nhiệm vụ để review.\n\nBộ điều phối HUB 69 • SANDBOX\nHUB69 dispatcher (sandbox) • 14:21:31 13/11/2026"
+    },
+    {
+      "phase": 2,
+      "name": "B không thấy nhiệm vụ ngoài phạm vi (máy chủ lọc)",
+      "pass": true
+    },
+    {
+      "phase": 2,
+      "name": "Reviewer thấy nhiệm vụ ở 'Chờ review' trong Canva",
+      "pass": true,
+      "detail": "Kiểm tra toàn vẹn Registry từ Canva 20261113T142125Z\nChờ review Văn Phòng 691121 • Evidence: 1\nMở"
+    },
+    {
+      "phase": 2,
+      "name": "Nút review hiện đúng cho reviewer được chỉ định",
+      "pass": true
+    },
+    {
+      "phase": 2,
+      "name": "Evidence đã có",
+      "pass": true
+    },
+    {
+      "phase": 2,
+      "name": "Không lỗi JavaScript",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "autopilot": {
+    "tick1": {
+      "handled": [
+        {
+          "task": "sbd#2",
+          "stage": "HANDED_TO_REVIEWER",
+          "changed": true
+        }
+      ],
+      "replies": [
+        {
+          "task": "sbd#2",
+          "kind": "NEED_REVIEW",
+          "comment_id": 2
+        }
+      ],
+      "rejections": []
+    },
+    "tick2": {
+      "handled": [
+        {
+          "task": "sbd#2",
+          "stage": "HANDED_TO_REVIEWER",
+          "changed": false
+        }
+      ],
+      "replies": []
+    },
+    "status": {
+      "heartbeat": {
+        "id": 1,
+        "at": "2026-11-13T14:21:31.218647+00:00",
+        "run": "canva-tick-2",
+        "state": "IDLE",
+        "handled": 1,
+        "errors": 0,
+        "paused": 0
+      },
+      "paused": false,
+      "stages": {
+        "HANDED_TO_REVIEWER": 1
+      },
+      "dead_letter": []
+    }
+  },
+  "passed": 19,
+  "failed": 0
+}

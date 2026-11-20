@@ -1,0 +1,192 @@
+{
+  "_doc": "Actors the dispatcher recognises. 'key' is the Registry numeric ID when verified in registry/ (test_registry_ids checks this); otherwise a role name with id PENDING. 'connection' is what is PROVEN, not what is hoped. github_login is set only for an account that is verifiably that agent; none is today, so every GitHub comment is treated as relayed_by_operator or unverified. capabilities: what the agent may be routed for. working_link: its published HUB 69 Link Mẫu page in this repo (test checks the file exists). executors: capability → AUTOMATED_TOOL the autopilot runs under that agent's Working Link (deterministic code, NOT the LLM itself). office_account: SANDBOX account in the PR #195 Office (ephemeral SQLite), not a real agent login.",
+  "agents": [
+    {
+      "key": "69118",
+      "name": "OpenAI",
+      "registry": "registry/ai-entity-registry.json",
+      "parent": null,
+      "connection": "NOT_CONNECTED",
+      "aliases": [
+        "OpenAI 69118"
+      ],
+      "capabilities": [
+        "content",
+        "notion"
+      ],
+      "working_link": "69118/index.html"
+    },
+    {
+      "key": "691181",
+      "name": "ChatGPT",
+      "registry": "registry/ai-entity-registry.json",
+      "parent": "69118",
+      "connection": "SESSION_ONLY (Notion READ/WRITE PASS self-reported #178 issuecomment-6836178883; not runtime-connected here)",
+      "aliases": [
+        "ChatGPT 691181"
+      ],
+      "capabilities": [
+        "content",
+        "notion",
+        "coordination"
+      ],
+      "working_link": "691181/index.html"
+    },
+    {
+      "key": "691121",
+      "name": "Claude",
+      "registry": "registry/ai-entity-registry.json",
+      "parent": "69112",
+      "connection": "SESSION_ONLY (Claude Code cloud session with GitHub MCP for this repo; no 24/24 runtime)",
+      "aliases": [
+        "Claude Code",
+        "Claude 691121"
+      ],
+      "capabilities": [
+        "code",
+        "test",
+        "registry_check",
+        "working_link_audit"
+      ],
+      "working_link": "691121/index.html",
+      "executors": {
+        "registry_check": "registry_integrity",
+        "working_link_audit": "working_link_audit"
+      },
+      "office_account": "hub69-691121@sandbox.invalid"
+    },
+    {
+      "key": "691141",
+      "name": "Gemini",
+      "registry": "registry/ai-entity-registry.json",
+      "parent": "69114",
+      "connection": "NOT_CONNECTED",
+      "capabilities": [
+        "research",
+        "content"
+      ],
+      "working_link": "691141/index.html"
+    },
+    {
+      "key": "691151",
+      "name": "Meta AI Assistant",
+      "registry": "registry/ai-entity-registry.json",
+      "parent": "69115",
+      "connection": "NOT_CONNECTED",
+      "aliases": [
+        "Meta AI"
+      ],
+      "capabilities": [
+        "content"
+      ],
+      "working_link": "691151/index.html"
+    },
+    {
+      "key": "691161",
+      "name": "Microsoft Copilot",
+      "registry": "registry/ai-entity-registry.json",
+      "parent": "69116",
+      "connection": "NOT_CONNECTED",
+      "aliases": [
+        "Copilot"
+      ],
+      "capabilities": [
+        "content",
+        "office_docs"
+      ],
+      "working_link": "691161/index.html"
+    },
+    {
+      "key": "691191",
+      "name": "Grok",
+      "registry": "registry/ai-entity-registry.json",
+      "parent": "69119",
+      "connection": "NOT_CONNECTED",
+      "aliases": [
+        "GrokSI"
+      ],
+      "capabilities": [
+        "research"
+      ],
+      "working_link": "691191/index.html"
+    },
+    {
+      "key": "Codex 1",
+      "name": "Codex 1",
+      "id": "PENDING",
+      "note": "Codex 691183 exists in registry/691183.md; mapping of the Codex 1/2 roles to it is not verified",
+      "connection": "NOT_CONNECTED",
+      "capabilities": [
+        "code",
+        "test"
+      ],
+      "working_link": null
+    },
+    {
+      "key": "Codex 2",
+      "name": "Codex 2",
+      "id": "PENDING",
+      "note": "see Codex 1",
+      "connection": "NOT_CONNECTED",
+      "capabilities": [
+        "code",
+        "test"
+      ],
+      "working_link": null
+    },
+    {
+      "key": "ReviewSI",
+      "name": "ReviewSI",
+      "id": "PENDING",
+      "connection": "NOT_CONNECTED",
+      "capabilities": [
+        "review"
+      ],
+      "working_link": null,
+      "office_account": "reviewsi@sandbox.invalid"
+    },
+    {
+      "key": "SecuritySI",
+      "name": "SecuritySI",
+      "id": "PENDING",
+      "connection": "NOT_CONNECTED",
+      "capabilities": [
+        "review",
+        "security"
+      ],
+      "working_link": null,
+      "office_account": "securitysi@sandbox.invalid"
+    },
+    {
+      "key": "Muse",
+      "name": "Muse",
+      "id": "PENDING",
+      "connection": "NOT_CONNECTED (limited ACK relayed via chat, #178 issuecomment-6836524345)",
+      "capabilities": [
+        "content"
+      ],
+      "working_link": null
+    },
+    {
+      "key": "Perplexity",
+      "name": "Perplexity",
+      "id": "PENDING",
+      "connection": "NOT_CONNECTED (operator-relayed ACK #201 issuecomment-6813472700)",
+      "capabilities": [
+        "research"
+      ],
+      "working_link": null
+    },
+    {
+      "key": "CMP 267",
+      "name": "CMP 267",
+      "id": "PENDING",
+      "note": "267 is a published page id; not an ai entity in ai-entity-registry.json",
+      "connection": "NOT_CONNECTED",
+      "capabilities": [
+        "coordination"
+      ],
+      "working_link": null
+    }
+  ]
+}

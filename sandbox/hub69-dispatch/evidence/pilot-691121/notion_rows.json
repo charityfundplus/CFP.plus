@@ -1,0 +1,30 @@
+[
+  {
+    "Task": "pilot#1",
+    "Nhiệm vụ": "Sửa P1 localStorage HUB 69 (PR #203 → #206): không mất dữ liệu sai schema, có test hồi quy",
+    "Priority": "P1",
+    "State": "IN_REVIEW",
+    "Assignee": "691121",
+    "Reviewer": "ReviewSI",
+    "Slot": "shared",
+    "Source": null,
+    "Evidence": [
+      "https://github.com/charityfundplus/CFP.plus/commit/2150c0c83451a209e7cd62138c4ad937e8140e0f",
+      "https://github.com/charityfundplus/CFP.plus/blob/2150c0c83451a209e7cd62138c4ad937e8140e0f/sandbox/hub69-working-office/test-localstorage.cjs",
+      "https://github.com/charityfundplus/CFP.plus/blob/2150c0c83451a209e7cd62138c4ad937e8140e0f/sandbox/hub69-working-office/evidence/p1-browser-results.json"
+    ],
+    "ACK provenance": "relayed_by_operator"
+  },
+  {
+    "Task": "pilot#2",
+    "Nhiệm vụ": "P0 OpenAI 69118 / ChatGPT 691181: chứng minh Working Link, quyền và luồng nhiệm vụ trên hồ sơ Notion hiện hữu",
+    "Priority": "P0",
+    "State": "DISPATCHED",
+    "Assignee": "691181",
+    "Reviewer": "SecuritySI",
+    "Slot": "reserved_p0",
+    "Source": null,
+    "Evidence": [],
+    "ACK provenance": null
+  }
+]

@@ -1,0 +1,85 @@
+{
+  "assignee": "691121",
+  "executor": "working_link_audit",
+  "executor_kind": "AUTOMATED_TOOL (deterministic code, not an LLM decision)",
+  "office_tid": 2,
+  "result": {
+    "agents": [
+      {
+        "key": "69118",
+        "page_exists": true,
+        "page_sha256": "3b6b96a19943e8fdd1e151156a15bc32679340769b354aa3004add72ef570eab",
+        "parent_matches": true,
+        "parent_recorded": null,
+        "parent_resolved_by_195": "6911",
+        "registry": true,
+        "working_link": "69118/index.html"
+      },
+      {
+        "key": "691181",
+        "page_exists": true,
+        "page_sha256": "3f710e3f46c87b5499a3984c17e3af07dad290937b7091efab20eef70e285234",
+        "parent_matches": true,
+        "parent_recorded": "69118",
+        "parent_resolved_by_195": "69118",
+        "registry": true,
+        "working_link": "691181/index.html"
+      },
+      {
+        "key": "691121",
+        "page_exists": true,
+        "page_sha256": "e7d3f78d60e98265930d0e4d3864c607e53ab27e8cc43883b483328e63c09837",
+        "parent_matches": true,
+        "parent_recorded": "69112",
+        "parent_resolved_by_195": "69112",
+        "registry": true,
+        "working_link": "691121/index.html"
+      },
+      {
+        "key": "691141",
+        "page_exists": true,
+        "page_sha256": "0a26a51b49043ba9abd03812d3838acbf45934cedb838d46f262a4c527e74ed2",
+        "parent_matches": true,
+        "parent_recorded": "69114",
+        "parent_resolved_by_195": "69114",
+        "registry": true,
+        "working_link": "691141/index.html"
+      },
+      {
+        "key": "691151",
+        "page_exists": true,
+        "page_sha256": "13c3d98478c82f16884238075d090210a5e9a12eecd6147e631bd177dc2f4d3f",
+        "parent_matches": true,
+        "parent_recorded": "69115",
+        "parent_resolved_by_195": "69115",
+        "registry": true,
+        "working_link": "691151/index.html"
+      },
+      {
+        "key": "691161",
+        "page_exists": true,
+        "page_sha256": "dfbeaa7fc20e105b2ccb44258eb342d57b8b3f95bd292d708d3f8093e793b289",
+        "parent_matches": true,
+        "parent_recorded": "69116",
+        "parent_resolved_by_195": "69116",
+        "registry": true,
+        "working_link": "691161/index.html"
+      },
+      {
+        "key": "691191",
+        "page_exists": true,
+        "page_sha256": "39ca526f151f20f896c1048159bd5f1090b73d7a20bc84b3c7e9ba3ce2ad9d36",
+        "parent_matches": true,
+        "parent_recorded": "69119",
+        "parent_resolved_by_195": "69119",
+        "registry": true,
+        "working_link": "691191/index.html"
+      }
+    ],
+    "check": "working_link_audit",
+    "problems": [],
+    "verdict_by_tool": "PASS"
+  },
+  "task": "wl#2",
+  "title": "Đối soát Working Link của các SI AI có ID trong agents.json"
+}

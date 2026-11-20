@@ -1,0 +1,36 @@
+{
+  "engine": "chromium (Playwright) iPhone 13 emulation — NOT real iPhone Safari",
+  "url_served": "local http",
+  "results": [
+    {
+      "name": "malformed rows filtered, valid row rendered",
+      "ok": true
+    },
+    {
+      "name": "original bytes quarantined",
+      "ok": true
+    },
+    {
+      "name": "user told about quarantine",
+      "ok": true
+    },
+    {
+      "name": "new row persists across reload",
+      "ok": true
+    },
+    {
+      "name": "quarantine still recoverable after save",
+      "ok": true
+    },
+    {
+      "name": "no horizontal scroll at 390px",
+      "ok": true,
+      "detail": "390/390"
+    },
+    {
+      "name": "no JS errors",
+      "ok": true,
+      "detail": ""
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "assignee": "691121",
+  "executor": "registry_integrity",
+  "executor_kind": "AUTOMATED_TOOL (deterministic code, not an LLM decision)",
+  "office_tid": 1,
+  "result": {
+    "chain_691121": [
+      "911",
+      "6911",
+      "69112",
+      "691121"
+    ],
+    "check": "registry_integrity",
+    "digest": "60db80b5c60c5ae307fff08242d74e4be05491f517a181a7dc946584b17aee2b",
+    "digest_basis": "order-independent parents (see finding)",
+    "entities": 267,
+    "finding_for_195": {
+      "affected_ids": [
+        "691100",
+        "6911821",
+        "6911822",
+        "6911823",
+        "69840",
+        "698401",
+        "6984010",
+        "69840100",
+        "69840101",
+        "69840102",
+        "69840103",
+        "6984011",
+        "69840110",
+        "6984012",
+        "6984013",
+        "698402",
+        "69841",
+        "69842",
+        "69843",
+        "69844",
+        "69845",
+        "69846",
+        "698461",
+        "69847",
+        "69848",
+        "69849"
+      ],
+      "detail": "services/forum/registry.py: `for md in reg.glob('*.md')` is unsorted, so the inferred parent of these registry_record IDs depends on directory order; worker registry_integrity can report false drift across instances. Fix: sorted(reg.glob('*.md')).",
+      "id": "PR195-REGISTRY-GLOB-ORDER",
+      "severity": "LOW"
+    },
+    "implementation": "services.forum.registry.Registry (PR #195) + worker rules",
+    "orphans": [],
+    "problems": [],
+    "verdict_by_tool": "PASS"
+  },
+  "task": "wl#1",
+  "title": "Kiểm tra toàn vẹn Registry trước khi mở autopilot HUB 69"
+}
