@@ -1,0 +1,12 @@
+# Keep repository internals out of the public web root.
+# Before this file existed, https://cfp.plus/.git/config was publicly readable.
+.git
+.github
+.gitignore
+.dockerignore
+Dockerfile
+**/__pycache__
+**/*.pyc
+tests
+run_ctttc_v066_tests.py
+patches
