@@ -1,0 +1,8 @@
+date_utc=2026-11-20T17:46:58Z
+main_sha=835616308111f6851c0387fa9f5eda60c9ffa624
+image_main=sha256:85fb7a0602cfb0ab51c9720be158d28ac14bee2e6c59cf37c60e9ae506cc58fb
+image_pr236=sha256:d145a78ee17e9e3b9e83769cf8fd4502f6f40f0d249d32aec61b564ebdbbf7d7
+image_security_min=sha256:79545d199e23f34bf38926e97ee6676f288045213808ff200fc6d0923b9f402f
+image_nginx_only_no_dockerignore=sha256:acaf536d2547ac5d40084dfa85ff284bda53ad5a07644328b8c45bbb34b36637
+regression_pages_compared=158 differing_pr236=0 differing_security_min=0
+layer_test_nginx_only: /.git/config=404 /.git/index=404 /%2egit/config=404 //.git/config=404 /.github/PULL_REQUEST_TEMPLATE.md=404 (with .git present in image)
