@@ -1,0 +1,19 @@
+{
+  "base_commit": "de09d854a895c536c5f5b788690e39f86a76c7de",
+  "owner": "Codex 2 performs backend and UI; no external ACK",
+  "backend": "41 PASS, 19 SKIPPED (PostgreSQL unavailable locally)",
+  "browser": "4 Chromium groups PASS, 320/390/768px; real persisted temporary SQLite API",
+  "regression": "Before: unauthorized task-key replay returns receipt; after: 403, exact authorized replay works, changed payload 409",
+  "blocked": [
+    "WebKit download HTTP403 Domain forbidden",
+    "Physical iPhone unavailable",
+    "No verified HTTPS staging or configured Supabase identity in this environment"
+  ],
+  "registry_changes": false,
+  "production_deployment": false,
+  "logs": {
+    "replay-before.log": "a67798776279b1e796a87e62d5a6a3b37d40d855de8ab811ff4ef6ef1c77622d",
+    "pytest.log": "6cdc0a620c6b46619b261ad69f749b897c5030cc937266c9d063eab6a48afcfc",
+    "browser.log": "fd060370df9537344141496216a77449267dfe19e94ca67e6debd050c45d8db1"
+  }
+}

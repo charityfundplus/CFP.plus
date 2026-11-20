@@ -1,0 +1,85 @@
+{
+  "checked_at": "2026-11-08T15:46:51.449133+00:00",
+  "source_base_sha": "16d6bd0457bfbe172830d8e138fbf36b68a4229d",
+  "source_state": "working tree final tested; not yet committed",
+  "url": "http://127.0.0.1:4173/69/",
+  "method": "Independent QA agent via CUA sharedChrome; real browser DOM interactions",
+  "pass_check_groups": 10,
+  "blocked": 1,
+  "not_run": 1,
+  "checks": [
+    {
+      "check": "Homepage visible link HUB69 opens integrated /69/",
+      "result": "PASS"
+    },
+    {
+      "check": "ALLINONE10categories/data-ready1",
+      "result": "PASS",
+      "count": 10
+    },
+    {
+      "check": "Desktop horizontal overflow",
+      "result": "PASS",
+      "innerWidth": 1363,
+      "scrollWidth": 1348
+    },
+    {
+      "check": "Search ID28882",
+      "result": "PASS",
+      "category_count": 3
+    },
+    {
+      "check": "Search ID331, preserve331/332/333 and no invented href",
+      "result": "PASS",
+      "category_count": 1
+    },
+    {
+      "check": "Accent-insensitive search giao duc",
+      "result": "PASS",
+      "category_count": 1
+    },
+    {
+      "check": "Search no-match and clear recovery",
+      "result": "PASS",
+      "no_match_count": 0,
+      "recovered_count": 10
+    },
+    {
+      "check": "Filter active/testing/research/incomplete and reset",
+      "result": "PASS",
+      "counts": {
+        "active": 1,
+        "testing": 4,
+        "research": 4,
+        "incomplete": 1,
+        "all": 10
+      }
+    },
+    {
+      "check": "HUB→Forum anonymous login view→HUB",
+      "result": "PASS"
+    },
+    {
+      "check": "Website root link slash regression after fix",
+      "result": "PASS",
+      "href": "/"
+    },
+    {
+      "check": "Mobile390/Safari/iPhone actual",
+      "result": "BLOCKED",
+      "reason": "ExecChromium launch socketEPERM; CUAAPI has no setViewport; DevTools blocked by organization policy. No bypass. DesktopChrome only."
+    },
+    {
+      "check": "Browser503/retry route mocking",
+      "result": "NOT_RUN",
+      "reason": "CUA documented API does not expose request routing/mocking."
+    }
+  ],
+  "screenshot": "desktop.png",
+  "limitations": [
+    "No new HTTPS deployment",
+    "BaselineRender799e2e0 differs from localworkingtree",
+    "No remote registrations/writes",
+    "No independent external SecuritySI/ReviewSI acceptance"
+  ]
+}

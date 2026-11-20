@@ -1,0 +1,66 @@
+# CFP+ Forum • SANDBOX ONLY • Render Free (HTTPS *.onrender.com, $0, không cần nâng cấp).
+# Kích hoạt: Render Dashboard → New → Blueprint → repo charityfundplus/CFP.plus,
+#   branch claude/gallant-carson-8uogxj, Blueprint path: services/forum/render.yaml
+# Secrets KHÔNG nằm trong repo: 3 URL database nhập tay trong Dashboard (sync: false).
+# Supabase từ Render: dùng Session Pooler (IPv4), user dạng <role>.<project_ref>, ví dụ
+#   postgresql+psycopg://cfp_forum_sbd_rw.gmnsmggqvbwlgluvscfh:<MẬT_KHẨU>@aws-0-us-west-2.pooler.supabase.com:5432/postgres?sslmode=require
+# 3 URL diễn đàn: services/forum/sql/set_passwords_sandbox.sql • URL Văn Phòng: set_password_office_sandbox.sql
+#
+# LỰA CHỌN A — chạy ngay, không cần secrets DB (dữ liệu TẠM, mất khi instance khởi động lại/ngủ):
+#   CFP_SANDBOX_EPHEMERAL=1, KHÔNG đặt 5 biến CFP_*_DB. Mỗi kho 1 tệp SQLite riêng trên đĩa instance;
+#   worker chạy trong tiến trình (CFP_WORKER_INPROCESS=1). /api/health báo "storage": "ephemeral-sqlite…".
+#   Tài khoản governance/reviewer tạo sẵn lúc khởi động: CFP_BOOTSTRAP_GOV_EMAIL, CFP_BOOTSTRAP_REVIEWER_EMAIL,
+#   CFP_BOOTSTRAP_PASSWORD (secret ≥ 12 ký tự, nhập tay trong Dashboard, không ghi vào repo).
+# LỰA CHỌN B — bền vững (Supabase, role tách biệt): bỏ CFP_SANDBOX_EPHEMERAL, đặt 4 URL DB (+ CFP_WORKER_DB sau khi 004 được duyệt).
+services:
+  - type: web
+    name: cfp-forum-sandbox
+    runtime: python
+    plan: free
+    branch: claude/gallant-carson-8uogxj
+    autoDeploy: false
+    buildCommand: pip install -r services/forum/requirements.txt
+    startCommand: uvicorn services.forum.asgi:app --host 0.0.0.0 --port $PORT --workers 1  # IP client do app tự xử lý (CFP_FORUM_TRUSTED_PROXY_HOPS)
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.7"
+      - key: CFP_FORUM_TRUST_PROXY
+        value: "1"
+      - key: CFP_FORUM_TRUSTED_PROXY_HOPS
+        value: "1"
+      - key: CFP_FORUM_COOKIE_SECURE
+        value: "1"
+      - key: CFP_FORUM_ALLOWED_ORIGINS   # URL HTTPS sandbox, ví dụ https://cfp-forum-sandbox.onrender.com
+        sync: false
+      - key: CFP_FORUM_AUTH_DB
+        sync: false
+      - key: CFP_FORUM_DB_SIEU_BO_DOI
+        sync: false
+      - key: CFP_FORUM_DB_SI_AI_HSTDN
+        sync: false
+      - key: CFP_OFFICE_DB          # Văn Phòng SI AI (role office_app, schema cfp_office)
+        sync: false
+      # Worker P0 (tuỳ chọn): CHỈ đặt sau khi 004_worker.sql được duyệt và áp. Để trống → không có worker,
+      # /api/worker/status báo "configured": false. Render Free ngủ khi không có truy cập → không phải 24/24.
+      - key: CFP_WORKER_DB          # role worker_app, schema cfp_worker
+        sync: false
+      - key: CFP_WORKER_INPROCESS
+        value: "1"
+      - key: CFP_SANDBOX_EPHEMERAL    # "1" = Lựa chọn A (tạm). Bỏ trống = Lựa chọn B (cần 4 URL DB)
+        sync: false
+      - key: CFP_BOOTSTRAP_GOV_EMAIL   # chỉ dùng ở Lựa chọn A
+        sync: false
+      - key: CFP_BOOTSTRAP_REVIEWER_EMAIL
+        sync: false
+      - key: CFP_BOOTSTRAP_PASSWORD    # secret ≥ 12 ký tự
+        sync: false
+      # Giao diện Canva (/canva/ và tệp dán Canva Code services/forum/web/canva-code.html): danh sách nguồn được gọi API
+      # bằng token Bearer (không cookie). Ví dụ: "https://*.canva.site,https://*.canva-code.com,null". Trống = tắt.
+      - key: CFP_EMBED_ORIGINS
+        sync: false
+      # Cho phép nhúng trang /canva/ bằng iframe (CSP frame-ancestors). Ví dụ: "https://www.canva.com https://*.canva.site"
+      - key: CFP_EMBED_FRAME_ANCESTORS
+        sync: false
+      - key: CFP_SANDBOX_WEBSITE  # khung website chỉ đọc + thanh lối vào Siêu Bộ Đôi; "0" để tắt
+        value: "1"

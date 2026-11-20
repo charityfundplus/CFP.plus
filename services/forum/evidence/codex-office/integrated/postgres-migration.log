@@ -1,0 +1,14 @@
+NOTICE:  database "cfp_codex_test" does not exist, skipping
+applied schemas_up.sql (run1) as cfp_migrator
+applied schemas_up.sql (run2) as cfp_migrator
+applied 002_office.sql (run1) as cfp_migrator
+applied 002_office.sql (run2) as cfp_migrator
+applied 002_office_down.sql (rollback) as cfp_migrator
+applied 002_office.sql (reapply) as cfp_migrator
+applied schemas_down.sql (rollback-forum) as cfp_migrator
+applied schemas_up.sql (reapply-forum) as cfp_migrator
+applied 002_office.sql (run-after-forum-reapply) as cfp_migrator
+forum_schemas=cfp_forum_auth:cfp_forum_auth_rw,cfp_forum_hstdn:cfp_forum_hstdn_rw,cfp_forum_sbd:cfp_forum_sbd_rw
+office_tables=14
+office_rls_forced=14
+anon_usage=0

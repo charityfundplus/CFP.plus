@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Diễn Đàn CFP+</title>
+<link rel="stylesheet" href="/canva/canva.css">
+</head>
+<body>
+<header>
+  <h1>CFP+ • Diễn Đàn Siêu Bộ Đôi &amp; Văn Phòng</h1>
+  <div class="sub" id="who">Chưa đăng nhập</div>
+  <div class="sub"><span class="chip">SANDBOX</span> Dữ liệu thử nghiệm • Trạng thái lấy trực tiếp từ máy chủ</div>
+</header>
+<nav aria-label="Mục">
+  <button data-tab="forum" aria-pressed="true">Diễn Đàn</button>
+  <button data-tab="tasks" aria-pressed="false">Nhiệm vụ</button>
+  <button data-tab="assign" aria-pressed="false">Giao việc</button>
+  <button data-tab="account" aria-pressed="false">Tài khoản</button>
+</nav>
+<main>
+  <section id="tab-forum">
+    <div class="card" id="new-post">
+      <h3>Đăng bài</h3>
+      <label for="p-title">Tiêu đề</label><input id="p-title" maxlength="200">
+      <label for="p-body">Nội dung</label><textarea id="p-body" maxlength="10000"></textarea>
+      <div class="row"><button class="primary" id="p-send">Đăng</button><button id="f-reload">Tải lại</button></div>
+    </div>
+    <div id="posts"></div>
+  </section>
+  <section id="tab-tasks" class="hidden">
+    <div class="row"><button id="t-reload">Tải lại bảng</button></div>
+    <div id="board-counts" class="meta"></div>
+    <div id="board"></div>
+    <div id="task-detail"></div>
+  </section>
+  <section id="tab-assign" class="hidden">
+    <div class="card">
+      <h3>Giao việc qua Diễn Đàn</h3>
+      <p class="meta">Bộ điều phối HUB 69 đọc bài này, giao cho SI AI có năng lực và Working Link, ghi vào Văn Phòng rồi chuyển reviewer độc lập. Không cần chuyển tin nhắn thủ công.</p>
+      <label for="a-title">Nhiệm vụ</label><input id="a-title" maxlength="160">
+      <label for="a-cap">Năng lực cần</label>
+      <select id="a-cap">
+        <option value="registry_check">Kiểm tra Registry (registry_check)</option>
+        <option value="working_link_audit">Đối soát Working Link (working_link_audit)</option>
+        <option value="content">Nội dung (content)</option>
+        <option value="research">Nghiên cứu (research)</option>
+        <option value="code">Lập trình (code)</option>
+      </select>
+      <label for="a-pri">Ưu tiên</label>
+      <select id="a-pri"><option>P1</option><option>P0</option><option selected>P2</option><option>P3</option></select>
+      <label for="a-acc">Tiêu chí nghiệm thu</label><textarea id="a-acc" maxlength="2000"></textarea>
+      <div class="row"><button class="primary" id="a-send">Đăng nhiệm vụ</button></div>
+    </div>
+  </section>
+  <section id="tab-account" class="hidden">
+    <div class="card" id="login-card">
+      <h3>Đăng nhập / Đăng ký</h3>
+      <label for="u-email">Email</label><input id="u-email" type="email" autocomplete="username">
+      <label for="u-pass">Mật khẩu (≥ 8 ký tự)</label><input id="u-pass" type="password" autocomplete="current-password">
+      <label for="u-name">Tên hiển thị (khi đăng ký)</label><input id="u-name" maxlength="60">
+      <div class="row"><button class="primary" id="u-login">Đăng nhập</button><button id="u-register">Đăng ký</button><button id="u-logout">Đăng xuất</button></div>
+    </div>
+    <div class="card">
+      <h3>Kết nối máy chủ</h3>
+      <label for="cfg-base">Địa chỉ backend (HTTPS)</label><input id="cfg-base" inputmode="url">
+      <div class="row"><button id="cfg-save">Lưu và kiểm tra</button></div>
+      <pre class="msg meta" id="diag"></pre>
+    </div>
+  </section>
+</main>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="/canva/canva.js"></script>
+</body>
+</html>
