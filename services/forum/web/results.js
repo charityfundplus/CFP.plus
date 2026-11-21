@@ -94,7 +94,8 @@
 
   filter.addEventListener('change', render);
   get('/api/office/board').then(data => {
-    office = data.tasks.map(row => ({...row, lane: 'Siêu Bộ Đôi', workspace: true, blocker: row.reason}));
+    office = data.tasks.map(row => ({...row, lane: 'Siêu Bộ Đôi', workspace: true,
+      status: row.bucket === 'BLOCKED' ? 'BLOCKED · ' + row.status : row.status, blocker: row.reason}));
     document.getElementById('office-status').textContent = data.viewer === 'guest' ?
       'Đăng nhập vào Văn Phòng để xem nhiệm vụ theo quyền của bạn.' : 'Văn Phòng · nhiệm vụ theo quyền người xem.';
     render();

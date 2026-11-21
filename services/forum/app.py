@@ -1067,6 +1067,8 @@ def create_app(stores: Stores | None = None) -> FastAPI:
                      ("/_internal/catalog/", "Danh mục Link Mẫu"),
                      ("/_internal/map/", "Bản đồ hệ sinh thái"),
                      ("/_internal/van-phong-sieu-bo-doi/", "Văn Phòng Siêu Bộ Đôi")]
+            if cid == "69" and office_on:
+                links.insert(0, ("/_internal/office/results/", "Kết quả công việc"))
             if cid and office_on and cid in catalog.items:
                 links.insert(0, (f"/_internal/linkmau/{cid}/", f"Link Mẫu {cid}"))
             if cid and office_on and registry.get(cid) is not None:
