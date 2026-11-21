@@ -70,7 +70,8 @@ class FileSource:
 
     def fetch(self) -> list[dict]:
         data = json.loads(self.path.read_text(encoding="utf-8"))
-        return data["comments"] if isinstance(data, dict) else data
+        comments = data["comments"] if isinstance(data, dict) else data
+        return [{**comment, "source_identity": f"file:{self.path.resolve()}"} for comment in comments]
 
     def post_comment(self, body: str) -> dict:
         raise RuntimeError("file source is read-only")

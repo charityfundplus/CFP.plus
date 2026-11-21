@@ -27,7 +27,7 @@ ticks from running at once.
 """
 from __future__ import annotations
 
-import fcntl
+import errno
 import hashlib
 import json
 import os
@@ -36,6 +36,11 @@ import sys
 from contextlib import contextmanager
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+
+if os.name == "nt":
+    import msvcrt
+else:
+    import fcntl
 
 from .engine import Queue
 from .office_client import OfficeClient, OfficeError, RetryPolicy
@@ -82,17 +87,33 @@ class Store:
 
     @contextmanager
     def lock(self):
-        fh = open(self.dir / "autopilot.lock", "w")
+        # Keep one inode and one byte across processes; never truncate a held lock.
+        fh = open(self.dir / "autopilot.lock", "a+b")
         try:
-            fcntl.flock(fh, fcntl.LOCK_EX | fcntl.LOCK_NB)
-        except BlockingIOError:
+            if os.name == "nt":
+                if fh.seek(0, os.SEEK_END) == 0:
+                    fh.write(b"\0")
+                    fh.flush()
+                fh.seek(0)
+                msvcrt.locking(fh.fileno(), msvcrt.LK_NBLCK, 1)
+            else:
+                fcntl.flock(fh, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except OSError as error:
             fh.close()
-            raise Busy("another autopilot tick is running")
+            if error.errno in (errno.EACCES, errno.EAGAIN, errno.EDEADLK):
+                raise Busy("another autopilot tick is running") from error
+            raise
         try:
             yield
         finally:
-            fcntl.flock(fh, fcntl.LOCK_UN)
-            fh.close()
+            try:
+                if os.name == "nt":
+                    fh.seek(0)
+                    msvcrt.locking(fh.fileno(), msvcrt.LK_UNLCK, 1)
+                else:
+                    fcntl.flock(fh, fcntl.LOCK_UN)
+            finally:
+                fh.close()
 
     # ---- kill switch + heartbeat (monitoring)
     def paused(self) -> bool:
@@ -117,6 +138,9 @@ class Store:
     def task(self, key: str) -> dict | None:
         r = self.db.execute("select * from tasks where key=?", (key,)).fetchone()
         return dict(r) if r else None
+
+    def close(self):
+        self.db.close()
 
     def upsert(self, key: str, now: str, **kw):
         if not self.task(key):
@@ -197,6 +221,8 @@ def exec_working_link_audit(task: dict, ctx: dict) -> dict:
     raw = json.loads((REPO_ROOT / "registry" / "ai-entity-registry.json").read_text(encoding="utf-8"))
     rows, problems = [], []
     for a in ctx["agents"].values():
+        if a.get("sandbox_fixture"):
+            continue
         if not a["key"].isdigit():
             continue
         page = REPO_ROOT / (a.get("working_link") or "")
@@ -217,6 +243,35 @@ def exec_working_link_audit(task: dict, ctx: dict) -> dict:
 
 
 EXECUTORS = {"registry_integrity": exec_registry_integrity, "working_link_audit": exec_working_link_audit}
+
+
+def exec_sandbox_learning(task: dict, ctx: dict) -> dict:
+    """Execute a synthetic SQLite backup/restore exercise in a temporary folder."""
+    import tempfile
+    with tempfile.TemporaryDirectory(prefix="hub69-learning-") as directory:
+        source = sqlite3.connect(Path(directory) / "source.db")
+        backup = sqlite3.connect(Path(directory) / "backup.db")
+        restored = sqlite3.connect(Path(directory) / "restored.db")
+        try:
+            source.execute("create table lesson(value text)")
+            source.execute("insert into lesson values ('synthetic-evidence')")
+            source.commit()
+            source.backup(backup)
+            source.execute("delete from lesson")
+            source.commit()
+            backup.backup(restored)
+            rows = restored.execute("select value from lesson").fetchall()
+            passed = rows == [("synthetic-evidence",)]
+            return {"check": "synthetic_backup_restore", "restored_rows": rows,
+                    "verdict_by_tool": "PASS" if passed else "FAIL",
+                    "privilege_change": False, "synthetic": True}
+        finally:
+            source.close()
+            backup.close()
+            restored.close()
+
+
+EXECUTORS["sandbox_learning"] = exec_sandbox_learning
 
 
 # ====================================================================== autopilot
@@ -250,6 +305,9 @@ class Autopilot:
         self.now = ""
 
     # ---------------------------------------------------------------- helpers
+    def close(self):
+        self.store.close()
+
     def _log(self, task, step, outcome, **detail):
         self.store.log(self.run_id, self.now, task, step, outcome, detail)
 
@@ -285,6 +343,9 @@ class Autopilot:
     # ---------------------------------------------------------------- setup (sandbox only)
     def ensure_pair(self, key: str) -> tuple[int, int]:
         """Office + Siêu Bộ Đôi pair for an agent with a Registry ID. Idempotent: 409 → look it up."""
+        error = Queue(self.policy, self.agents).assignment_error(key)
+        if error or not key.isdigit():
+            raise OfficeError(None, error or "Registry numeric ID required", permanent=True)
         acct = self.store.account(key)
         if acct and acct["pair_id"]:
             return acct["user_id"], acct["pair_id"]
@@ -356,7 +417,12 @@ class Autopilot:
                     "description": f"HUB69 task {key} • source {t.get('source_url') or 'working link'} • "
                                    f"routed={t.get('routed')} capability={t.get('capability')}",
                     "acceptance": t.get("acceptance") or "Evidence (sha256) + independent review",
-                    "reviewer_id": rid, "idempotency_key": _task_idem(key), "refs": [f"registry:{t['assignee']}"]}
+                    "reviewer_id": rid, "idempotency_key": _task_idem(
+                        json.dumps([t["assignee"], t.get("work_order_code") or key,
+                                    t.get("source_identity") or t.get("source_url")], ensure_ascii=False)),
+                    "refs": [f"registry:{t['assignee']}"]}
+            body.update(source=t.get("source_url") or t.get("source_identity") or "working_link",
+                        work_order_code=t.get("work_order_code") or key)
             res = disp.post("/api/office/tasks", body)
             tid = res["id"]
             self.store.upsert(key, self.now, office_tid=tid, assignee=t["assignee"], reviewer=t["reviewer"],
@@ -364,6 +430,8 @@ class Autopilot:
             self._log(key, "office_create", "duplicate_reused" if res.get("duplicate") else "created",
                       office_tid=tid, idempotency_key=body["idempotency_key"], by="dispatcher (SANDBOX_ACCOUNT)")
             self._crash("office_create")
+
+        self._mirror_error(key)
 
         for _ in range(8):  # reconcile loop: re-read, do the one missing step, repeat
             status = agent.get(f"/api/office/tasks/{tid}/loop")["status"]
@@ -409,7 +477,10 @@ class Autopilot:
             sha = rec["result_sha"]
             self._log(key, "execute", "reused_result", file=path.name, sha256=sha)
         else:
-            out = fn(t, {"agents": self.agents, "office_src": self.office_src})
+            try:
+                out = fn(t, {"agents": self.agents, "office_src": self.office_src})
+            except Exception as error:
+                raise OfficeError(None, f"executor {exe}: {type(error).__name__}", permanent=True) from error
             doc = {"task": key, "title": t["title"], "assignee": t["assignee"], "executor": exe,
                    "executor_kind": "AUTOMATED_TOOL (deterministic code, not an LLM decision)",
                    "office_tid": tid, "result": out}
@@ -448,6 +519,23 @@ class Autopilot:
         return "HANDED_TO_REVIEWER"
 
     # ---------------------------------------------------------------- tick
+    def _mirror_error(self, key):
+        rec = self.store.task(key) or {}
+        if not rec.get("office_tid"):
+            return
+        errors = [event for event in self.store.logs()
+                  if event["task"] == key and event["outcome"] in ("dead_letter", "retry_scheduled")]
+        for event in errors:
+            marker = f"error:{event['id']}"
+            if self.store.db.execute("select 1 from replies where key=?", (marker,)).fetchone():
+                continue
+            # Persist bounded diagnostics through the existing authorized comment API.
+            self.client("dispatcher").post(f"/api/office/tasks/{rec['office_tid']}/comments",
+                {"body": json.dumps({"kind": "AUTOPILOT_ERROR", "task_key": key,
+                                     "log_id": event["id"], "reason": event["detail"]["error"][:1000]})})
+            self.store.db.execute("insert or ignore into replies(key,task,kind,comment_id,at) values(?,?,?,?,?)",
+                                 (marker, key, "ERROR", 0, self.now))
+
     def tick(self, source, now: datetime, run_id: str) -> dict:
         self.run_id, self.now = run_id, now.isoformat()
         with self.store.lock():
@@ -487,6 +575,7 @@ class Autopilot:
                               working_link=self.agents[t["assignee"]].get("working_link"), slot=t.get("slot"))
                 before = rec.get("stage")
                 try:
+                    self._mirror_error(key)
                     stage = self.process(t)
                     handled.append({"task": key, "stage": stage, "changed": stage != before})
                 except SimulatedCrash:
@@ -500,6 +589,10 @@ class Autopilot:
                                       next_retry=None if dead else nxt)
                     self._log(key, "process", "dead_letter" if dead else "retry_scheduled", error=str(e),
                               attempts=attempts, next_retry=None if dead else nxt)
+                    try:
+                        self._mirror_error(key)
+                    except OfficeError:
+                        pass  # durable local errors are mirrored after connectivity returns
                     handled.append({"task": key, "stage": "DEAD_LETTER" if dead else "RETRY", "error": str(e)})
             replies = self.reply_in_forum(source, snap, comments) if self.forum_reply else []
             errs = sum(1 for h in handled if h["stage"] in ("RETRY", "DEAD_LETTER"))
@@ -565,6 +658,13 @@ class Autopilot:
         return {
             "task_key": key, "office_tid": tid, "office_status": task["status"],
             "assignee": rec["assignee"], "reviewer": rec["reviewer"],
+            "source": next((json.loads(h["note"]).get("source") for h in task["history"]
+                            if h["to_status"] == "QUEUED" and h.get("note")), None),
+            "work_order_code": next((json.loads(h["note"]).get("work_order_code") for h in task["history"]
+                                     if h["to_status"] == "QUEUED" and h.get("note")), key),
+            "result_link": rec.get("evidence_url"),
+            "entity_reference": {"did": rec["assignee"], "entity_type": "SUPER_SOFTWARE",
+                                 "entity_record_id": task["pair_id"]},
             "history": [{"from": h["from_status"], "to": h["to_status"], "actor_id": h["actor_id"], "note": h.get("note")}
                         for h in task["history"]],
             "evidence": [{"kind": e["kind"], "url": e["url"], "sha": e["sha"]} for e in task["evidence"]],

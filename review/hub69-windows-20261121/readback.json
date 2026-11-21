@@ -1,0 +1,1025 @@
+{
+  "platform": "win32",
+  "office_source": "C:\\Users\\ai69\\Documents\\Codex\\2026-11-15\\cfp-ngh-tri-n-khai-h\\work\\hub69-p1-office",
+  "ticks": [
+    {
+      "run": "initial",
+      "now": "2026-11-21T07:28:57.417502+00:00",
+      "comments": 4,
+      "messages": 4,
+      "replies": [],
+      "tasks": 3,
+      "rejections": [
+        {
+          "ref": "sbd#2633-01-dup",
+          "url": null,
+          "kind": "TASK",
+          "task": "sbd#2633-01-dup",
+          "actor": "267",
+          "reason": "duplicate of open task sbd#2633-01"
+        }
+      ],
+      "handled": [
+        {
+          "task": "sbd#2633-01",
+          "stage": "HANDED_TO_REVIEWER",
+          "changed": true
+        },
+        {
+          "task": "sbd#6535-01",
+          "stage": "HANDED_TO_REVIEWER",
+          "changed": true
+        },
+        {
+          "task": "sbd#267-01",
+          "stage": "HANDED_TO_REVIEWER",
+          "changed": true
+        }
+      ],
+      "snapshot": {
+        "slots": {
+          "max_parallel": 5,
+          "active": 3,
+          "reserved_p0_owners": [
+            "69118",
+            "691181"
+          ],
+          "reserved_p0_in_use": false
+        },
+        "tasks": [
+          {
+            "key": "sbd#2633-01",
+            "title": "[2633] Code: kiểm toàn vẹn Registry (dữ liệu giả)",
+            "priority": "P1",
+            "assignee": "2633",
+            "reviewer": "ReviewSI",
+            "opened_by": "267",
+            "opened_at": "2026-11-21T08:00:00Z",
+            "source_url": null,
+            "acceptance": "dữ liệu giả, Evidence có sha256",
+            "capability": "registry_check",
+            "routed": "named",
+            "work_order_code": "sbd#2633-01",
+            "source_identity": "file:C:\\Users\\ai69\\Documents\\Codex\\2026-11-15\\cfp-ngh-tri-n-khai-h\\work\\hub69-p1-dispatch\\sandbox\\hub69-dispatch\\fixtures\\three-sbd.json",
+            "state": "DISPATCHED",
+            "slot": "shared",
+            "ack": null,
+            "results": [],
+            "evidence": [],
+            "reviews": [],
+            "blockers": [],
+            "history": [
+              {
+                "kind": "TASK",
+                "actor": "267",
+                "at": "2026-11-21T08:00:00Z",
+                "ref": "sbd#2633-01",
+                "url": null,
+                "provenance": "unverified_login"
+              }
+            ],
+            "last_activity": "2026-11-21T08:00:00Z"
+          },
+          {
+            "key": "sbd#6535-01",
+            "title": "[6535] Học tập: bài 10 phút backup/restore (dữ liệu giả)",
+            "priority": "P1",
+            "assignee": "6535",
+            "reviewer": "ReviewSI",
+            "opened_by": "267",
+            "opened_at": "2026-11-21T08:01:00Z",
+            "source_url": null,
+            "acceptance": "dữ liệu giả, Evidence có sha256",
+            "capability": "content",
+            "routed": "named",
+            "work_order_code": "sbd#6535-01",
+            "source_identity": "file:C:\\Users\\ai69\\Documents\\Codex\\2026-11-15\\cfp-ngh-tri-n-khai-h\\work\\hub69-p1-dispatch\\sandbox\\hub69-dispatch\\fixtures\\three-sbd.json",
+            "state": "DISPATCHED",
+            "slot": "shared",
+            "ack": null,
+            "results": [],
+            "evidence": [],
+            "reviews": [],
+            "blockers": [],
+            "history": [
+              {
+                "kind": "TASK",
+                "actor": "267",
+                "at": "2026-11-21T08:01:00Z",
+                "ref": "sbd#6535-01",
+                "url": null,
+                "provenance": "unverified_login"
+              }
+            ],
+            "last_activity": "2026-11-21T08:01:00Z"
+          },
+          {
+            "key": "sbd#267-01",
+            "title": "[267] CMP: đối soát Working Link (dữ liệu giả)",
+            "priority": "P1",
+            "assignee": "267",
+            "reviewer": "ReviewSI",
+            "opened_by": "267",
+            "opened_at": "2026-11-21T08:02:00Z",
+            "source_url": null,
+            "acceptance": "dữ liệu giả, Evidence có sha256",
+            "capability": "working_link_audit",
+            "routed": "named",
+            "work_order_code": "sbd#267-01",
+            "source_identity": "file:C:\\Users\\ai69\\Documents\\Codex\\2026-11-15\\cfp-ngh-tri-n-khai-h\\work\\hub69-p1-dispatch\\sandbox\\hub69-dispatch\\fixtures\\three-sbd.json",
+            "state": "DISPATCHED",
+            "slot": "shared",
+            "ack": null,
+            "results": [],
+            "evidence": [],
+            "reviews": [],
+            "blockers": [],
+            "history": [
+              {
+                "kind": "TASK",
+                "actor": "267",
+                "at": "2026-11-21T08:02:00Z",
+                "ref": "sbd#267-01",
+                "url": null,
+                "provenance": "unverified_login"
+              }
+            ],
+            "last_activity": "2026-11-21T08:02:00Z"
+          }
+        ],
+        "rejections": [
+          {
+            "ref": "sbd#2633-01-dup",
+            "url": null,
+            "kind": "TASK",
+            "task": "sbd#2633-01-dup",
+            "actor": "267",
+            "reason": "duplicate of open task sbd#2633-01"
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "run": "replay",
+      "now": "2026-11-21T07:29:57.417502+00:00",
+      "comments": 4,
+      "messages": 4,
+      "replies": [],
+      "tasks": 3,
+      "rejections": [
+        {
+          "ref": "sbd#2633-01-dup",
+          "url": null,
+          "kind": "TASK",
+          "task": "sbd#2633-01-dup",
+          "actor": "267",
+          "reason": "duplicate of open task sbd#2633-01"
+        }
+      ],
+      "handled": [
+        {
+          "task": "sbd#2633-01",
+          "stage": "HANDED_TO_REVIEWER",
+          "changed": false
+        },
+        {
+          "task": "sbd#6535-01",
+          "stage": "HANDED_TO_REVIEWER",
+          "changed": false
+        },
+        {
+          "task": "sbd#267-01",
+          "stage": "HANDED_TO_REVIEWER",
+          "changed": false
+        }
+      ],
+      "snapshot": {
+        "slots": {
+          "max_parallel": 5,
+          "active": 3,
+          "reserved_p0_owners": [
+            "69118",
+            "691181"
+          ],
+          "reserved_p0_in_use": false
+        },
+        "tasks": [
+          {
+            "key": "sbd#2633-01",
+            "title": "[2633] Code: kiểm toàn vẹn Registry (dữ liệu giả)",
+            "priority": "P1",
+            "assignee": "2633",
+            "reviewer": "ReviewSI",
+            "opened_by": "267",
+            "opened_at": "2026-11-21T08:00:00Z",
+            "source_url": null,
+            "acceptance": "dữ liệu giả, Evidence có sha256",
+            "capability": "registry_check",
+            "routed": "named",
+            "work_order_code": "sbd#2633-01",
+            "source_identity": "file:C:\\Users\\ai69\\Documents\\Codex\\2026-11-15\\cfp-ngh-tri-n-khai-h\\work\\hub69-p1-dispatch\\sandbox\\hub69-dispatch\\fixtures\\three-sbd.json",
+            "state": "DISPATCHED",
+            "slot": "shared",
+            "ack": null,
+            "results": [],
+            "evidence": [],
+            "reviews": [],
+            "blockers": [],
+            "history": [
+              {
+                "kind": "TASK",
+                "actor": "267",
+                "at": "2026-11-21T08:00:00Z",
+                "ref": "sbd#2633-01",
+                "url": null,
+                "provenance": "unverified_login"
+              }
+            ],
+            "last_activity": "2026-11-21T08:00:00Z"
+          },
+          {
+            "key": "sbd#6535-01",
+            "title": "[6535] Học tập: bài 10 phút backup/restore (dữ liệu giả)",
+            "priority": "P1",
+            "assignee": "6535",
+            "reviewer": "ReviewSI",
+            "opened_by": "267",
+            "opened_at": "2026-11-21T08:01:00Z",
+            "source_url": null,
+            "acceptance": "dữ liệu giả, Evidence có sha256",
+            "capability": "content",
+            "routed": "named",
+            "work_order_code": "sbd#6535-01",
+            "source_identity": "file:C:\\Users\\ai69\\Documents\\Codex\\2026-11-15\\cfp-ngh-tri-n-khai-h\\work\\hub69-p1-dispatch\\sandbox\\hub69-dispatch\\fixtures\\three-sbd.json",
+            "state": "DISPATCHED",
+            "slot": "shared",
+            "ack": null,
+            "results": [],
+            "evidence": [],
+            "reviews": [],
+            "blockers": [],
+            "history": [
+              {
+                "kind": "TASK",
+                "actor": "267",
+                "at": "2026-11-21T08:01:00Z",
+                "ref": "sbd#6535-01",
+                "url": null,
+                "provenance": "unverified_login"
+              }
+            ],
+            "last_activity": "2026-11-21T08:01:00Z"
+          },
+          {
+            "key": "sbd#267-01",
+            "title": "[267] CMP: đối soát Working Link (dữ liệu giả)",
+            "priority": "P1",
+            "assignee": "267",
+            "reviewer": "ReviewSI",
+            "opened_by": "267",
+            "opened_at": "2026-11-21T08:02:00Z",
+            "source_url": null,
+            "acceptance": "dữ liệu giả, Evidence có sha256",
+            "capability": "working_link_audit",
+            "routed": "named",
+            "work_order_code": "sbd#267-01",
+            "source_identity": "file:C:\\Users\\ai69\\Documents\\Codex\\2026-11-15\\cfp-ngh-tri-n-khai-h\\work\\hub69-p1-dispatch\\sandbox\\hub69-dispatch\\fixtures\\three-sbd.json",
+            "state": "DISPATCHED",
+            "slot": "shared",
+            "ack": null,
+            "results": [],
+            "evidence": [],
+            "reviews": [],
+            "blockers": [],
+            "history": [
+              {
+                "kind": "TASK",
+                "actor": "267",
+                "at": "2026-11-21T08:02:00Z",
+                "ref": "sbd#267-01",
+                "url": null,
+                "provenance": "unverified_login"
+              }
+            ],
+            "last_activity": "2026-11-21T08:02:00Z"
+          }
+        ],
+        "rejections": [
+          {
+            "ref": "sbd#2633-01-dup",
+            "url": null,
+            "kind": "TASK",
+            "task": "sbd#2633-01-dup",
+            "actor": "267",
+            "reason": "duplicate of open task sbd#2633-01"
+          }
+        ],
+        "warnings": []
+      }
+    },
+    {
+      "run": "restart",
+      "now": "2026-11-21T07:30:57.417502+00:00",
+      "comments": 4,
+      "messages": 4,
+      "replies": [],
+      "tasks": 3,
+      "rejections": [
+        {
+          "ref": "sbd#2633-01-dup",
+          "url": null,
+          "kind": "TASK",
+          "task": "sbd#2633-01-dup",
+          "actor": "267",
+          "reason": "duplicate of open task sbd#2633-01"
+        }
+      ],
+      "handled": [
+        {
+          "task": "sbd#2633-01",
+          "stage": "HANDED_TO_REVIEWER",
+          "changed": false
+        },
+        {
+          "task": "sbd#6535-01",
+          "stage": "HANDED_TO_REVIEWER",
+          "changed": false
+        },
+        {
+          "task": "sbd#267-01",
+          "stage": "HANDED_TO_REVIEWER",
+          "changed": false
+        }
+      ],
+      "snapshot": {
+        "slots": {
+          "max_parallel": 5,
+          "active": 3,
+          "reserved_p0_owners": [
+            "69118",
+            "691181"
+          ],
+          "reserved_p0_in_use": false
+        },
+        "tasks": [
+          {
+            "key": "sbd#2633-01",
+            "title": "[2633] Code: kiểm toàn vẹn Registry (dữ liệu giả)",
+            "priority": "P1",
+            "assignee": "2633",
+            "reviewer": "ReviewSI",
+            "opened_by": "267",
+            "opened_at": "2026-11-21T08:00:00Z",
+            "source_url": null,
+            "acceptance": "dữ liệu giả, Evidence có sha256",
+            "capability": "registry_check",
+            "routed": "named",
+            "work_order_code": "sbd#2633-01",
+            "source_identity": "file:C:\\Users\\ai69\\Documents\\Codex\\2026-11-15\\cfp-ngh-tri-n-khai-h\\work\\hub69-p1-dispatch\\sandbox\\hub69-dispatch\\fixtures\\three-sbd.json",
+            "state": "DISPATCHED",
+            "slot": "shared",
+            "ack": null,
+            "results": [],
+            "evidence": [],
+            "reviews": [],
+            "blockers": [],
+            "history": [
+              {
+                "kind": "TASK",
+                "actor": "267",
+                "at": "2026-11-21T08:00:00Z",
+                "ref": "sbd#2633-01",
+                "url": null,
+                "provenance": "unverified_login"
+              }
+            ],
+            "last_activity": "2026-11-21T08:00:00Z"
+          },
+          {
+            "key": "sbd#6535-01",
+            "title": "[6535] Học tập: bài 10 phút backup/restore (dữ liệu giả)",
+            "priority": "P1",
+            "assignee": "6535",
+            "reviewer": "ReviewSI",
+            "opened_by": "267",
+            "opened_at": "2026-11-21T08:01:00Z",
+            "source_url": null,
+            "acceptance": "dữ liệu giả, Evidence có sha256",
+            "capability": "content",
+            "routed": "named",
+            "work_order_code": "sbd#6535-01",
+            "source_identity": "file:C:\\Users\\ai69\\Documents\\Codex\\2026-11-15\\cfp-ngh-tri-n-khai-h\\work\\hub69-p1-dispatch\\sandbox\\hub69-dispatch\\fixtures\\three-sbd.json",
+            "state": "DISPATCHED",
+            "slot": "shared",
+            "ack": null,
+            "results": [],
+            "evidence": [],
+            "reviews": [],
+            "blockers": [],
+            "history": [
+              {
+                "kind": "TASK",
+                "actor": "267",
+                "at": "2026-11-21T08:01:00Z",
+                "ref": "sbd#6535-01",
+                "url": null,
+                "provenance": "unverified_login"
+              }
+            ],
+            "last_activity": "2026-11-21T08:01:00Z"
+          },
+          {
+            "key": "sbd#267-01",
+            "title": "[267] CMP: đối soát Working Link (dữ liệu giả)",
+            "priority": "P1",
+            "assignee": "267",
+            "reviewer": "ReviewSI",
+            "opened_by": "267",
+            "opened_at": "2026-11-21T08:02:00Z",
+            "source_url": null,
+            "acceptance": "dữ liệu giả, Evidence có sha256",
+            "capability": "working_link_audit",
+            "routed": "named",
+            "work_order_code": "sbd#267-01",
+            "source_identity": "file:C:\\Users\\ai69\\Documents\\Codex\\2026-11-15\\cfp-ngh-tri-n-khai-h\\work\\hub69-p1-dispatch\\sandbox\\hub69-dispatch\\fixtures\\three-sbd.json",
+            "state": "DISPATCHED",
+            "slot": "shared",
+            "ack": null,
+            "results": [],
+            "evidence": [],
+            "reviews": [],
+            "blockers": [],
+            "history": [
+              {
+                "kind": "TASK",
+                "actor": "267",
+                "at": "2026-11-21T08:02:00Z",
+                "ref": "sbd#267-01",
+                "url": null,
+                "provenance": "unverified_login"
+              }
+            ],
+            "last_activity": "2026-11-21T08:02:00Z"
+          }
+        ],
+        "rejections": [
+          {
+            "ref": "sbd#2633-01-dup",
+            "url": null,
+            "kind": "TASK",
+            "task": "sbd#2633-01-dup",
+            "actor": "267",
+            "reason": "duplicate of open task sbd#2633-01"
+          }
+        ],
+        "warnings": []
+      }
+    }
+  ],
+  "readbacks": {
+    "sbd#2633-01": {
+      "task_key": "sbd#2633-01",
+      "office_tid": 1,
+      "office_status": "IN_REVIEW",
+      "assignee": "2633",
+      "reviewer": "ReviewSI",
+      "source": "file:C:\\Users\\ai69\\Documents\\Codex\\2026-11-15\\cfp-ngh-tri-n-khai-h\\work\\hub69-p1-dispatch\\sandbox\\hub69-dispatch\\fixtures\\three-sbd.json",
+      "work_order_code": "sbd#2633-01",
+      "result_link": "https://github.com/charityfundplus/CFP.plus/blob/codex/hub69-windows-sandbox-20261121/review/hub69-windows-20261121/results/sbd-2633-01.json",
+      "entity_reference": {
+        "did": "2633",
+        "entity_type": "SUPER_SOFTWARE",
+        "entity_record_id": 1
+      },
+      "history": [
+        {
+          "from": null,
+          "to": "QUEUED",
+          "actor_id": 4,
+          "note": "{\"source\": \"file:C:\\\\Users\\\\ai69\\\\Documents\\\\Codex\\\\2026-11-15\\\\cfp-ngh-tri-n-khai-h\\\\work\\\\hub69-p1-dispatch\\\\sandbox\\\\hub69-dispatch\\\\fixtures\\\\three-sbd.json\", \"work_order_code\": \"sbd#2633-01\"}"
+        },
+        {
+          "from": "QUEUED",
+          "to": "ACKED",
+          "actor_id": 3,
+          "note": "AUTO ACK • hub69 autopilot • AUTOMATED_TOOL"
+        },
+        {
+          "from": "ACKED",
+          "to": "IN_PROGRESS",
+          "actor_id": 3,
+          "note": "AUTO start"
+        },
+        {
+          "from": "IN_PROGRESS",
+          "to": "IN_REVIEW",
+          "actor_id": 3,
+          "note": "AUTO submit → independent review"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "test_report",
+          "url": "https://github.com/charityfundplus/CFP.plus/blob/codex/hub69-windows-sandbox-20261121/review/hub69-windows-20261121/results/sbd-2633-01.json",
+          "sha": "c88d23f26da7dd88dae623aa9f9eb02e17b949f1ec042aa927ba1f339f0694c3"
+        }
+      ],
+      "reviews": [],
+      "reviewer_loop": {
+        "task_id": 1,
+        "status": "IN_REVIEW",
+        "owner_id": 3,
+        "reviewer_id": 2,
+        "stages": [
+          {
+            "key": "hub69",
+            "label": "HUB 69",
+            "done": true,
+            "detail": {
+              "url": "/69/"
+            }
+          },
+          {
+            "key": "cmp267",
+            "label": "CMP 267 • điều phối",
+            "done": true,
+            "detail": {
+              "url": "/267/"
+            }
+          },
+          {
+            "key": "office",
+            "label": "Văn Phòng SI AI",
+            "done": true,
+            "detail": {
+              "canonical_id": "2633",
+              "url": "/_internal/office/2633/"
+            }
+          },
+          {
+            "key": "discussion",
+            "label": "Thảo luận Diễn Đàn",
+            "done": false,
+            "detail": {
+              "posts": []
+            }
+          },
+          {
+            "key": "pair",
+            "label": "Siêu Bộ Đôi (SI AI + Siêu Phần Mềm)",
+            "done": true,
+            "detail": {
+              "pair_id": 1,
+              "software": "HUB69 autopilot executor (2633)"
+            }
+          },
+          {
+            "key": "execution",
+            "label": "Nhận việc (ACK) → thực thi",
+            "done": true,
+            "detail": {
+              "owner_id": 3
+            }
+          },
+          {
+            "key": "evidence",
+            "label": "Evidence",
+            "done": true,
+            "detail": {
+              "count": 1
+            }
+          },
+          {
+            "key": "review",
+            "label": "Review độc lập (SecuritySI/ReviewSI)",
+            "done": false,
+            "detail": {
+              "reviewer_id": 2,
+              "decision": null
+            }
+          },
+          {
+            "key": "acceptance",
+            "label": "Nghiệm thu",
+            "done": false,
+            "detail": {
+              "status": "IN_REVIEW"
+            }
+          },
+          {
+            "key": "closure",
+            "label": "Closure",
+            "done": false
+          },
+          {
+            "key": "lesson",
+            "label": "Tri thức • bài học",
+            "done": false,
+            "detail": {
+              "refs": []
+            }
+          },
+          {
+            "key": "next",
+            "label": "Quay lại Văn Phòng • nhiệm vụ tiếp theo",
+            "done": false,
+            "detail": {
+              "refs": []
+            }
+          }
+        ],
+        "closed_loop": false,
+        "next_stage": "discussion"
+      },
+      "reviewer_board": [
+        {
+          "id": 1,
+          "title": "[2633] Code: kiểm toàn vẹn Registry (dữ liệu giả)",
+          "office_id": "2633",
+          "status": "IN_REVIEW",
+          "bucket": "IN_REVIEW",
+          "reason": null,
+          "evidence": 1,
+          "review": null,
+          "updated_at": "2026-11-21T07:28:59",
+          "url": "/_internal/office/2633/#task:1"
+        }
+      ],
+      "guest_board_counts": {
+        "QUEUED": 0,
+        "RUNNING": 0,
+        "IN_REVIEW": 0,
+        "BLOCKED": 0,
+        "REVIEWED": 0
+      }
+    },
+    "sbd#6535-01": {
+      "task_key": "sbd#6535-01",
+      "office_tid": 2,
+      "office_status": "IN_REVIEW",
+      "assignee": "6535",
+      "reviewer": "ReviewSI",
+      "source": "file:C:\\Users\\ai69\\Documents\\Codex\\2026-11-15\\cfp-ngh-tri-n-khai-h\\work\\hub69-p1-dispatch\\sandbox\\hub69-dispatch\\fixtures\\three-sbd.json",
+      "work_order_code": "sbd#6535-01",
+      "result_link": "https://github.com/charityfundplus/CFP.plus/blob/codex/hub69-windows-sandbox-20261121/review/hub69-windows-20261121/results/sbd-6535-01.json",
+      "entity_reference": {
+        "did": "6535",
+        "entity_type": "SUPER_SOFTWARE",
+        "entity_record_id": 2
+      },
+      "history": [
+        {
+          "from": null,
+          "to": "QUEUED",
+          "actor_id": 4,
+          "note": "{\"source\": \"file:C:\\\\Users\\\\ai69\\\\Documents\\\\Codex\\\\2026-11-15\\\\cfp-ngh-tri-n-khai-h\\\\work\\\\hub69-p1-dispatch\\\\sandbox\\\\hub69-dispatch\\\\fixtures\\\\three-sbd.json\", \"work_order_code\": \"sbd#6535-01\"}"
+        },
+        {
+          "from": "QUEUED",
+          "to": "ACKED",
+          "actor_id": 5,
+          "note": "AUTO ACK • hub69 autopilot • AUTOMATED_TOOL"
+        },
+        {
+          "from": "ACKED",
+          "to": "IN_PROGRESS",
+          "actor_id": 5,
+          "note": "AUTO start"
+        },
+        {
+          "from": "IN_PROGRESS",
+          "to": "IN_REVIEW",
+          "actor_id": 5,
+          "note": "AUTO submit → independent review"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "test_report",
+          "url": "https://github.com/charityfundplus/CFP.plus/blob/codex/hub69-windows-sandbox-20261121/review/hub69-windows-20261121/results/sbd-6535-01.json",
+          "sha": "77bec8c5704e8d13d21100b8552ec0ebb2d90f79badef268d91221a564da5a6e"
+        }
+      ],
+      "reviews": [],
+      "reviewer_loop": {
+        "task_id": 2,
+        "status": "IN_REVIEW",
+        "owner_id": 5,
+        "reviewer_id": 2,
+        "stages": [
+          {
+            "key": "hub69",
+            "label": "HUB 69",
+            "done": true,
+            "detail": {
+              "url": "/69/"
+            }
+          },
+          {
+            "key": "cmp267",
+            "label": "CMP 267 • điều phối",
+            "done": true,
+            "detail": {
+              "url": "/267/"
+            }
+          },
+          {
+            "key": "office",
+            "label": "Văn Phòng SI AI",
+            "done": true,
+            "detail": {
+              "canonical_id": "6535",
+              "url": "/_internal/office/6535/"
+            }
+          },
+          {
+            "key": "discussion",
+            "label": "Thảo luận Diễn Đàn",
+            "done": false,
+            "detail": {
+              "posts": []
+            }
+          },
+          {
+            "key": "pair",
+            "label": "Siêu Bộ Đôi (SI AI + Siêu Phần Mềm)",
+            "done": true,
+            "detail": {
+              "pair_id": 2,
+              "software": "HUB69 autopilot executor (6535)"
+            }
+          },
+          {
+            "key": "execution",
+            "label": "Nhận việc (ACK) → thực thi",
+            "done": true,
+            "detail": {
+              "owner_id": 5
+            }
+          },
+          {
+            "key": "evidence",
+            "label": "Evidence",
+            "done": true,
+            "detail": {
+              "count": 1
+            }
+          },
+          {
+            "key": "review",
+            "label": "Review độc lập (SecuritySI/ReviewSI)",
+            "done": false,
+            "detail": {
+              "reviewer_id": 2,
+              "decision": null
+            }
+          },
+          {
+            "key": "acceptance",
+            "label": "Nghiệm thu",
+            "done": false,
+            "detail": {
+              "status": "IN_REVIEW"
+            }
+          },
+          {
+            "key": "closure",
+            "label": "Closure",
+            "done": false
+          },
+          {
+            "key": "lesson",
+            "label": "Tri thức • bài học",
+            "done": false,
+            "detail": {
+              "refs": []
+            }
+          },
+          {
+            "key": "next",
+            "label": "Quay lại Văn Phòng • nhiệm vụ tiếp theo",
+            "done": false,
+            "detail": {
+              "refs": []
+            }
+          }
+        ],
+        "closed_loop": false,
+        "next_stage": "discussion"
+      },
+      "reviewer_board": [
+        {
+          "id": 2,
+          "title": "[6535] Học tập: bài 10 phút backup/restore (dữ liệu giả)",
+          "office_id": "6535",
+          "status": "IN_REVIEW",
+          "bucket": "IN_REVIEW",
+          "reason": null,
+          "evidence": 1,
+          "review": null,
+          "updated_at": "2026-11-21T07:29:00",
+          "url": "/_internal/office/6535/#task:2"
+        }
+      ],
+      "guest_board_counts": {
+        "QUEUED": 0,
+        "RUNNING": 0,
+        "IN_REVIEW": 0,
+        "BLOCKED": 0,
+        "REVIEWED": 0
+      }
+    },
+    "sbd#267-01": {
+      "task_key": "sbd#267-01",
+      "office_tid": 3,
+      "office_status": "IN_REVIEW",
+      "assignee": "267",
+      "reviewer": "ReviewSI",
+      "source": "file:C:\\Users\\ai69\\Documents\\Codex\\2026-11-15\\cfp-ngh-tri-n-khai-h\\work\\hub69-p1-dispatch\\sandbox\\hub69-dispatch\\fixtures\\three-sbd.json",
+      "work_order_code": "sbd#267-01",
+      "result_link": "https://github.com/charityfundplus/CFP.plus/blob/codex/hub69-windows-sandbox-20261121/review/hub69-windows-20261121/results/sbd-267-01.json",
+      "entity_reference": {
+        "did": "267",
+        "entity_type": "SUPER_SOFTWARE",
+        "entity_record_id": 3
+      },
+      "history": [
+        {
+          "from": null,
+          "to": "QUEUED",
+          "actor_id": 4,
+          "note": "{\"source\": \"file:C:\\\\Users\\\\ai69\\\\Documents\\\\Codex\\\\2026-11-15\\\\cfp-ngh-tri-n-khai-h\\\\work\\\\hub69-p1-dispatch\\\\sandbox\\\\hub69-dispatch\\\\fixtures\\\\three-sbd.json\", \"work_order_code\": \"sbd#267-01\"}"
+        },
+        {
+          "from": "QUEUED",
+          "to": "ACKED",
+          "actor_id": 6,
+          "note": "AUTO ACK • hub69 autopilot • AUTOMATED_TOOL"
+        },
+        {
+          "from": "ACKED",
+          "to": "IN_PROGRESS",
+          "actor_id": 6,
+          "note": "AUTO start"
+        },
+        {
+          "from": "IN_PROGRESS",
+          "to": "IN_REVIEW",
+          "actor_id": 6,
+          "note": "AUTO submit → independent review"
+        }
+      ],
+      "evidence": [
+        {
+          "kind": "test_report",
+          "url": "https://github.com/charityfundplus/CFP.plus/blob/codex/hub69-windows-sandbox-20261121/review/hub69-windows-20261121/results/sbd-267-01.json",
+          "sha": "4780693e49929ac10e884d4b8b8d0e61c76e1d64adb3770d0e6a0cd8443e3a7f"
+        }
+      ],
+      "reviews": [],
+      "reviewer_loop": {
+        "task_id": 3,
+        "status": "IN_REVIEW",
+        "owner_id": 6,
+        "reviewer_id": 2,
+        "stages": [
+          {
+            "key": "hub69",
+            "label": "HUB 69",
+            "done": true,
+            "detail": {
+              "url": "/69/"
+            }
+          },
+          {
+            "key": "cmp267",
+            "label": "CMP 267 • điều phối",
+            "done": true,
+            "detail": {
+              "url": "/267/"
+            }
+          },
+          {
+            "key": "office",
+            "label": "Văn Phòng SI AI",
+            "done": true,
+            "detail": {
+              "canonical_id": "267",
+              "url": "/_internal/office/267/"
+            }
+          },
+          {
+            "key": "discussion",
+            "label": "Thảo luận Diễn Đàn",
+            "done": false,
+            "detail": {
+              "posts": []
+            }
+          },
+          {
+            "key": "pair",
+            "label": "Siêu Bộ Đôi (SI AI + Siêu Phần Mềm)",
+            "done": true,
+            "detail": {
+              "pair_id": 3,
+              "software": "HUB69 autopilot executor (267)"
+            }
+          },
+          {
+            "key": "execution",
+            "label": "Nhận việc (ACK) → thực thi",
+            "done": true,
+            "detail": {
+              "owner_id": 6
+            }
+          },
+          {
+            "key": "evidence",
+            "label": "Evidence",
+            "done": true,
+            "detail": {
+              "count": 1
+            }
+          },
+          {
+            "key": "review",
+            "label": "Review độc lập (SecuritySI/ReviewSI)",
+            "done": false,
+            "detail": {
+              "reviewer_id": 2,
+              "decision": null
+            }
+          },
+          {
+            "key": "acceptance",
+            "label": "Nghiệm thu",
+            "done": false,
+            "detail": {
+              "status": "IN_REVIEW"
+            }
+          },
+          {
+            "key": "closure",
+            "label": "Closure",
+            "done": false
+          },
+          {
+            "key": "lesson",
+            "label": "Tri thức • bài học",
+            "done": false,
+            "detail": {
+              "refs": []
+            }
+          },
+          {
+            "key": "next",
+            "label": "Quay lại Văn Phòng • nhiệm vụ tiếp theo",
+            "done": false,
+            "detail": {
+              "refs": []
+            }
+          }
+        ],
+        "closed_loop": false,
+        "next_stage": "discussion"
+      },
+      "reviewer_board": [
+        {
+          "id": 3,
+          "title": "[267] CMP: đối soát Working Link (dữ liệu giả)",
+          "office_id": "267",
+          "status": "IN_REVIEW",
+          "bucket": "IN_REVIEW",
+          "reason": null,
+          "evidence": 1,
+          "review": null,
+          "updated_at": "2026-11-21T07:29:00",
+          "url": "/_internal/office/267/#task:3"
+        }
+      ],
+      "guest_board_counts": {
+        "QUEUED": 0,
+        "RUNNING": 0,
+        "IN_REVIEW": 0,
+        "BLOCKED": 0,
+        "REVIEWED": 0
+      }
+    }
+  },
+  "race_task_ids": [
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5,
+    5
+  ],
+  "readback_verified": true,
+  "review": "PENDING_REAL_REVIEWER",
+  "executor_kind": "AUTOMATED_TOOL / SYNTHETIC_FIXTURE",
+  "overlay_sha256": "51d2e9675e23483e0eba134168dd3a5f14f571d89cc79eb1df44507c95450072",
+  "second_record_isolated": true
+}

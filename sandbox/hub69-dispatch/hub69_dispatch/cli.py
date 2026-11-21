@@ -23,11 +23,15 @@ from .engine import run
 from .protocol import DISPATCH_MARKER, parse_comment
 
 HERE = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(HERE.parents[1]))
+from cfp_sandbox_overlay import load_overlay
 
 
 def load_config():
     agents = json.loads((HERE / "config" / "agents.json").read_text(encoding="utf-8"))
     policy = json.loads((HERE / "config" / "policy.json").read_text(encoding="utf-8"))
+    registry = json.loads((HERE.parents[1] / "registry/ai-entity-registry.json").read_text(encoding="utf-8"))
+    agents["agents"].extend(load_overlay(registry).values())
     return agents, policy
 
 

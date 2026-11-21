@@ -1,0 +1,19 @@
+{
+  "assignee": "6535",
+  "executor": "sandbox_learning",
+  "executor_kind": "AUTOMATED_TOOL (deterministic code, not an LLM decision)",
+  "office_tid": 2,
+  "result": {
+    "check": "synthetic_backup_restore",
+    "privilege_change": false,
+    "restored_rows": [
+      [
+        "synthetic-evidence"
+      ]
+    ],
+    "synthetic": true,
+    "verdict_by_tool": "PASS"
+  },
+  "task": "sbd#6535-01",
+  "title": "[6535] Học tập: bài 10 phút backup/restore (dữ liệu giả)"
+}

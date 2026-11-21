@@ -84,7 +84,8 @@ class OfficeServer:
                     "CFP_BOOTSTRAP_PASSWORD": pw, "CFP_BOOTSTRAP_GOV_EMAIL": "gov@sandbox.invalid",
                     "CFP_BOOTSTRAP_REVIEWER_EMAIL": "reviewsi@sandbox.invalid", "CFP_FORUM_COOKIE_SECURE": "0",
                     "CFP_FORUM_RL_AUTH_PER_MIN": "1000", "CFP_FORUM_RL_WRITE_PER_MIN": "1000",
-                    "PYTHONPATH": str(src)}
+                    "PYTHONPATH": os.pathsep.join(filter(None, [str(src), os.environ.get("PYTHONPATH")])),
+                    "PYTHONUTF8": "1"}
         for k in [k for k in self.env if k.startswith(("CFP_FORUM_DB_", "CFP_OFFICE_DB", "CFP_WORKER_DB",
                                                         "CFP_FORUM_AUTH_DB"))]:
             self.env.pop(k)
@@ -97,6 +98,7 @@ class OfficeServer:
         self.proc = subprocess.Popen([sys.executable, "-m", "uvicorn", "services.forum.asgi:app", "--host",
                                       "127.0.0.1", "--port", str(self.port)], cwd=self.src, env=self.env,
                                      stdout=fh, stderr=subprocess.STDOUT)
+        fh.close()
         for _ in range(100):
             try:
                 with urllib.request.urlopen(self.base + "/api/health", timeout=1) as r:
@@ -104,7 +106,8 @@ class OfficeServer:
                         return self
             except OSError:
                 time.sleep(0.15)
-        raise RuntimeError("PR #195 server did not start: " + self.log.read_text()[-2000:])
+        self.stop()
+        raise RuntimeError("PR #195 server did not start: " + self.log.read_text(encoding="utf-8")[-2000:])
 
     def stop(self):
         if self.proc:

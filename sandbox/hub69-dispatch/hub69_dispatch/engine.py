@@ -13,6 +13,11 @@ Lifecycle (Luật Thép: TASK OFFERED ≠ ACK, OUTPUT ≠ VERIFIED, no Evidence 
 from __future__ import annotations
 
 import hashlib
+import json
+from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
+from cfp_sandbox_overlay import load_overlay
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 
@@ -35,6 +40,8 @@ class Task:
     acceptance: str = ""
     capability: str = ""
     routed: str = "named"              # "auto" = chosen by capability + Working Link + load
+    work_order_code: str = ""
+    source_identity: str = ""
     state: str = "OFFERED"
     slot: str | None = None            # "shared" | "reserved_p0"
     ack: dict | None = None
@@ -69,6 +76,40 @@ class Queue:
         self.warnings: list[dict] = []
         self.max_parallel = int(policy["max_parallel"])
         self.reserved_owners = set(policy["reserved_p0"]["owners"])
+        root = Path(__file__).resolve().parents[3]
+        self.registry_root = root
+        try:
+            self.registry = json.loads((root / "registry/ai-entity-registry.json").read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            self.registry = {}
+        self.sandbox_overlay = load_overlay(self.registry)
+
+    def assignment_error(self, key: str, capability: str = "") -> str | None:
+        agent = self.agents.get(key)
+        if not agent:
+            return f"assignee {key} not in agents config"
+        if key.isdigit():
+            if key in self.sandbox_overlay:
+                expected = self.sandbox_overlay[key]
+                if agent != expected:
+                    return f"assignee {key} sandbox overlay mismatch"
+                if capability and capability not in agent.get("capabilities", []):
+                    return f"assignee {key} lacks capability '{capability}'"
+                return None
+            record = self.registry.get(key)
+            if (not isinstance(record, dict) or record.get("id") != key
+                    or record.get("name") != agent.get("name")
+                    or record.get("parent_id") != agent.get("parent")):
+                return f"assignee {key} Registry binding mismatch or missing"
+            # Fixed numeric page path, independent of a caller-supplied relative path.
+            if agent.get("working_link") != f"{key}/index.html" or not (
+                    self.registry_root / key / "index.html").is_file():
+                return f"assignee {key} Working Link missing"
+        elif agent.get("id") != "PENDING":
+            return f"assignee {key} role must declare id PENDING"
+        if capability and capability not in agent.get("capabilities", []):
+            return f"assignee {key} lacks capability '{capability}'"
+        return None
 
     # ---------- identity ----------
     def resolve(self, who: str | None) -> str:
@@ -98,7 +139,8 @@ class Queue:
         def reachable(a):  # executors need a Working Link; reviewers need an Office account to receive the review
             return a.get("working_link") or (capability == "review" and a.get("office_account"))
         cands = [k for k, a in self.agents.items()
-                 if capability in a.get("capabilities", []) and reachable(a) and k not in exclude]
+                 if capability in a.get("capabilities", []) and reachable(a) and k not in exclude
+                 and self.assignment_error(k, capability) is None]
         if not cands:
             return None
         return min(cands, key=lambda k: (0 if capability in self.agents[k].get("executors", {}) else 1,
@@ -140,6 +182,9 @@ class Queue:
                 return self._reject(m, f"no agent with capability '{cap}' and a Working Link")
         else:
             assignee = self.resolve(f.get("assignee") or f.get("actor_id") or m.actor)
+            error = self.assignment_error(assignee, cap)
+            if error:
+                return self._reject(m, error)
         rv = (f.get("reviewer") or "").strip()
         reviewer = self.route("review", exclude={assignee}) if rv.lower() == "auto" else self.resolve(rv)
         if reviewer in (None, "", "UNKNOWN"):
@@ -147,13 +192,21 @@ class Queue:
         if reviewer == assignee:
             return self._reject(m, "reviewer must differ from assignee (maker ≠ checker)")
         norm = " ".join(title.lower().split())
+        work_code = f.get("work_order_code") or m.task
+        source_identity = m.source.get("identity") or m.source["channel"]
+        if m.task in self.tasks:
+            return self._reject(m, f"duplicate of open task {m.task}")
         for other in self.tasks.values():
-            if " ".join(other.title.lower().split()) == norm and other.state != "VERIFIED":
+            if (other.assignee, other.work_order_code, other.source_identity) == (
+                    assignee, work_code, source_identity):
                 return self._reject(m, f"duplicate of open task {other.key}")
+            if " ".join(other.title.lower().split()) == norm:
+                self.warnings.append({"task": m.task, "warning": f"title matches {other.key}; distinct task code"})
         t = Task(key=m.task, title=title, priority=_norm_priority(f.get("priority")), assignee=assignee,
                  reviewer=reviewer, opened_by=actor, opened_at=m.source.get("created_at") or "",
                  source_url=m.source.get("url"), acceptance=f.get("acceptance", ""), capability=cap,
-                 routed="auto" if want_auto else "named")
+                 routed="auto" if want_auto else "named", work_order_code=work_code,
+                 source_identity=source_identity)
         t.history.append({"kind": "TASK", "actor": actor, "at": t.opened_at, "ref": m.source["ref"],
                           "url": t.source_url, "provenance": m.provenance})
         t.last_activity = t.opened_at

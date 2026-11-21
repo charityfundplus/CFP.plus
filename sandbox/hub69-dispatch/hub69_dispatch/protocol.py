@@ -64,6 +64,8 @@ LABELS = {
     "acceptance": "acceptance", "tieu chi nghiem thu": "acceptance",
     "office": "office", "working link": "office",
     "nang luc": "capability", "capability": "capability",
+    "work order id": "work_order_code", "work order": "work_order_code",
+    "ma nhiem vu": "work_order_code",
 }
 LABEL_LINE = re.compile(r"^\s*(?:[-*•]\s*)?\*\*([^*]+?):?\*\*:?\s*(.*)$")
 PLAIN_LINE = re.compile(r"^\s*([A-Za-zÀ-ỹđĐ /]+?)\s*:\s*(.*)$")
@@ -124,7 +126,8 @@ def parse_comment(comment: dict, channel: str, operator_logins: set[str], agents
     ref = comment["ref"]
     login = (comment.get("author_login") or "").lower()
     source = {"channel": channel, "ref": ref, "url": comment.get("url"), "author_login": login,
-              "created_at": comment.get("created_at")}
+              "created_at": comment.get("created_at"),
+              "identity": comment.get("source_identity") or channel}
     f = _parse_fields(body)
     compact = COMPACT_RE.search(body)
     kind = None

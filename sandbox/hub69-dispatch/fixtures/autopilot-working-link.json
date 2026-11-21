@@ -3,7 +3,7 @@
   "comments": [
     {
       "ref": "wl#1",
-      "body": "**SI AI / Siêu Bộ Đôi:** CMP 267\n**Nhiệm vụ:** Kiểm tra toàn vẹn Registry trước khi mở autopilot HUB 69\n**Năng lực:** registry_check\n**Assignee:** auto\n**Reviewer:** auto\n**Priority:** P1\n**Tiêu chí nghiệm thu:** chuỗi 691121 = 911→6911→69112→691121, không ID phi số, báo orphan; Evidence có sha256\n**Trạng thái:** OPEN",
+      "body": "**SI AI / Siêu Bộ Đôi:** CMP 267\n**Nhiệm vụ:** Kiểm tra toàn vẹn Registry trước khi mở autopilot HUB 69\n**Năng lực:** registry_check\n**Assignee:** auto\n**Reviewer:** auto\n**Priority:** P1\n**Tiêu chí nghiệm thu:** chuỗi 691121 = 911→6911→69112→691121, không ID phi số, báo orphan; Evidence có sha256\n**Trạng thái:** OPEN\n**Work Order ID:** wl#1",
       "author_login": "working-link-fixture",
       "author_kind": "SANDBOX_FIXTURE",
       "created_at": "2026-11-13T13:00:00Z",
@@ -27,7 +27,7 @@
     },
     {
       "ref": "wl#4",
-      "body": "**SI AI / Siêu Bộ Đôi:** CMP 267\n**Nhiệm vụ:** Kiểm tra toàn vẹn Registry trước khi mở autopilot HUB 69\n**Năng lực:** registry_check\n**Assignee:** auto\n**Reviewer:** auto\n**Priority:** P1\n**Trạng thái:** OPEN",
+      "body": "**SI AI / Siêu Bộ Đôi:** CMP 267\n**Nhiệm vụ:** Kiểm tra toàn vẹn Registry trước khi mở autopilot HUB 69\n**Năng lực:** registry_check\n**Assignee:** auto\n**Reviewer:** auto\n**Priority:** P1\n**Trạng thái:** OPEN\n**Work Order ID:** wl#1",
       "author_login": "working-link-fixture",
       "author_kind": "SANDBOX_FIXTURE",
       "created_at": "2026-11-13T13:03:00Z",

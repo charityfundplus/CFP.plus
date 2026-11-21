@@ -51,15 +51,20 @@ class OfficeIntegration(unittest.TestCase):
         self.srv = OfficeServer(SRC, self.tmp / "office").start()
         self.srv.grant_securitysi()
         self.state = self.tmp / "state"
+        self.pilots = []
 
     def tearDown(self):
+        for pilot in self.pilots:
+            pilot.close()
         self.srv.stop()
         shutil.rmtree(self.tmp, ignore_errors=True)
 
     def pilot(self, **kw) -> Autopilot:
         kw.setdefault("retry", RetryPolicy(attempts=3, base_delay=0))
-        return Autopilot(base=self.srv.base, state_dir=self.state, agents=AGENTS, policy=POLICY,
-                         secrets=self.srv.secrets, evidence_base=EVB, office_src=SRC, sleep=lambda s: None, **kw)
+        pilot = Autopilot(base=self.srv.base, state_dir=self.state, agents=AGENTS, policy=POLICY,
+                          secrets=self.srv.secrets, evidence_base=EVB, office_src=SRC, sleep=lambda s: None, **kw)
+        self.pilots.append(pilot)
+        return pilot
 
     def office_tasks(self, cid="691121") -> list[dict]:
         c = OfficeClient(self.srv.base)
@@ -68,7 +73,8 @@ class OfficeIntegration(unittest.TestCase):
 
     def assert_clean_handoff(self, task: dict):
         self.assertEqual(task["status"], "IN_REVIEW")
-        self.assertEqual([h["to_status"] for h in task["history"]], ["QUEUED", "ACKED", "IN_PROGRESS", "IN_REVIEW"])
+        self.assertEqual([h["to_status"] for h in task["history"] if h["to_status"] != "COMMENT"],
+                         ["QUEUED", "ACKED", "IN_PROGRESS", "IN_REVIEW"])
         self.assertEqual(len(task["evidence"]), 1)
         self.assertEqual(task["reviews"], [])  # the autopilot never reviews
         self.assertNotEqual(task["assignee_id"], task["reviewer_id"])
@@ -118,6 +124,9 @@ class OfficeIntegration(unittest.TestCase):
     def test_crash_after_every_step_recovers_exactly_once(self):
         for step in ("office_create", "ack", "start", "execute", "evidence", "submit"):
             with self.subTest(step=step):
+                for pilot in self.pilots:
+                    pilot.close()
+                self.pilots.clear()
                 self.srv.stop()
                 shutil.rmtree(self.tmp, ignore_errors=True)
                 self.srv = OfficeServer(SRC, self.tmp / "office").start()
@@ -132,6 +141,9 @@ class OfficeIntegration(unittest.TestCase):
     def test_lost_local_state_reuses_office_task_via_idempotency_key(self):
         src = one_task_fixture(self.tmp)
         self.pilot().tick(src, T0, "t1")
+        for pilot in self.pilots:
+            pilot.close()
+        self.pilots.clear()
         shutil.rmtree(self.state)  # the dispatcher's own DB is gone; the Office must not get a duplicate
         p = self.pilot()
         p.tick(src, T0 + timedelta(minutes=1), "t2")

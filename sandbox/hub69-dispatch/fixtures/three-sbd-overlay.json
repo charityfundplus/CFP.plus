@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "synthetic": true,
+  "records": [
+    {
+      "key": "2633",
+      "name": "Code • Sandbox fixture",
+      "parent": null,
+      "sandbox_fixture": true,
+      "source": "https://app.notion.com/p/3c9caac9a55781d3ab50ebfa960f73e8",
+      "source_revision": "claude/sbd-flow-review-20261121@36ba934; fixture references only",
+      "connection": "SYNTHETIC LOCAL EXECUTOR",
+      "working_link": "https://app.notion.com/p/3c9caac9a55781d3ab50ebfa960f73e8",
+      "capabilities": [
+        "registry_check"
+      ],
+      "executors": {
+        "registry_check": "registry_integrity"
+      },
+      "office_account": "hub69-2633@sandbox.invalid"
+    },
+    {
+      "key": "6535",
+      "name": "Học tập • Sandbox fixture",
+      "parent": null,
+      "sandbox_fixture": true,
+      "source": "https://app.notion.com/p/3c9caac9a55781d3ab50ebfa960f73e8",
+      "source_revision": "claude/sbd-flow-review-20261121@36ba934; fixture references only",
+      "connection": "SYNTHETIC LOCAL EXECUTOR",
+      "working_link": "https://app.notion.com/p/3c9caac9a55781d3ab50ebfa960f73e8",
+      "capabilities": [
+        "content"
+      ],
+      "executors": {
+        "content": "sandbox_learning"
+      },
+      "office_account": "hub69-6535@sandbox.invalid"
+    },
+    {
+      "key": "267",
+      "name": "CMP • Sandbox fixture",
+      "parent": null,
+      "sandbox_fixture": true,
+      "source": "https://app.notion.com/p/3c9caac9a55781d3ab50ebfa960f73e8",
+      "source_revision": "claude/sbd-flow-review-20261121@36ba934; fixture references only",
+      "connection": "SYNTHETIC LOCAL EXECUTOR",
+      "working_link": "https://app.notion.com/p/3c9caac9a55781d3ab50ebfa960f73e8",
+      "capabilities": [
+        "working_link_audit"
+      ],
+      "executors": {
+        "working_link_audit": "working_link_audit"
+      },
+      "office_account": "hub69-267@sandbox.invalid"
+    }
+  ]
+}
