@@ -1,0 +1,133 @@
+{
+ "manifest": "drafts/si-office/docs/ROUND1_CURRENT_MANIFEST.json",
+ "manifest_self_checksum_ok": true,
+ "manifest_last_commit": "d4d83ec",
+ "verifies_at_commit": "d4d83ec (88/88)",
+ "pr124_head": "e994ea884fdf7a06ca5efe20674b96a0d51e24f8",
+ "files_total": 88,
+ "drifted": [
+  {
+   "path": "configs/training-basic-v1.json",
+   "manifest_bytes": 22203,
+   "head_bytes": 25204,
+   "changed_after_manifest_by": [
+    "b381648"
+   ]
+  },
+  {
+   "path": "core/core-engine.mjs",
+   "manifest_bytes": 14078,
+   "head_bytes": 19080,
+   "changed_after_manifest_by": [
+    "275c6b1",
+    "b381648",
+    "9d681d3",
+    "8b53169"
+   ]
+  },
+  {
+   "path": "core/learning-training.mjs",
+   "manifest_bytes": 2136,
+   "head_bytes": 2953,
+   "changed_after_manifest_by": [
+    "9d681d3"
+   ]
+  },
+  {
+   "path": "core/security-permission.mjs",
+   "manifest_bytes": 911,
+   "head_bytes": 931,
+   "changed_after_manifest_by": [
+    "9d681d3"
+   ]
+  },
+  {
+   "path": "docs/TRAINING_BASIC_V1.md",
+   "manifest_bytes": 2769,
+   "head_bytes": 5369,
+   "changed_after_manifest_by": [
+    "b381648"
+   ]
+  },
+  {
+   "path": "public/p2-office.js",
+   "manifest_bytes": 9914,
+   "head_bytes": 12133,
+   "changed_after_manifest_by": [
+    "275c6b1",
+    "b381648",
+    "9d681d3",
+    "8b53169"
+   ]
+  },
+  {
+   "path": "public/p2.html",
+   "manifest_bytes": 10001,
+   "head_bytes": 10856,
+   "changed_after_manifest_by": [
+    "62e0e5f",
+    "275c6b1",
+    "8b53169"
+   ]
+  },
+  {
+   "path": "public/style.css",
+   "manifest_bytes": 10345,
+   "head_bytes": 11796,
+   "changed_after_manifest_by": [
+    "275c6b1",
+    "8b53169"
+   ]
+  },
+  {
+   "path": "sandbox/p2-http.mjs",
+   "manifest_bytes": 5523,
+   "head_bytes": 8590,
+   "changed_after_manifest_by": [
+    "51e8a39",
+    "62e0e5f",
+    "275c6b1",
+    "b381648",
+    "9d681d3",
+    "8b53169"
+   ]
+  },
+  {
+   "path": "sandbox/p2-service.mjs",
+   "manifest_bytes": 12017,
+   "head_bytes": 16189,
+   "changed_after_manifest_by": [
+    "1958a3f",
+    "51e8a39",
+    "62e0e5f",
+    "275c6b1",
+    "b381648",
+    "9d681d3"
+   ]
+  },
+  {
+   "path": "sandbox/release-control.mjs",
+   "manifest_bytes": 5185,
+   "head_bytes": 5195,
+   "changed_after_manifest_by": [
+    "42e8bae"
+   ]
+  },
+  {
+   "path": "scripts/p2-release-serve.mjs",
+   "manifest_bytes": 932,
+   "head_bytes": 1825,
+   "changed_after_manifest_by": [
+    "51e8a39"
+   ]
+  },
+  {
+   "path": "scripts/working-preview.mjs",
+   "manifest_bytes": 2242,
+   "head_bytes": 2629,
+   "changed_after_manifest_by": [
+    "b381648"
+   ]
+  }
+ ]
+}

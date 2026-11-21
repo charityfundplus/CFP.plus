@@ -1,0 +1,357 @@
+{
+  "base": "http://127.0.0.1:8195",
+  "run": "20261121150607",
+  "at": "2026-11-21T15:06:56.409481+00:00",
+  "build": null,
+  "storage": "ephemeral-sqlite: dữ liệu mất khi instance khởi động lại",
+  "task_id": 3,
+  "post_id": 2,
+  "passed": 29,
+  "failed": 1,
+  "result": "FAIL",
+  "rate_limited_retries": 1,
+  "mode": "SANDBOX PRACTICE • PRODUCTION NO GO",
+  "checks": [
+    {
+      "group": "platform",
+      "step": "URL dạng https:// (TLS được chứng minh khi /api/health trả lời)",
+      "ok": false,
+      "detail": "AssertionError: URL không phải HTTPS",
+      "ms": 0
+    },
+    {
+      "group": "platform",
+      "step": "/api/health",
+      "ok": true,
+      "detail": {
+        "build": null,
+        "storage": "ephemeral-sqlite: dữ liệu mất khi instance khởi động lại",
+        "auth_db": "sqlite",
+        "office_db": "sqlite",
+        "forums": {
+          "sieu-bo-doi": "sqlite",
+          "si-ai-hstdn": "sqlite"
+        },
+        "registry": {
+          "entities": 267,
+          "read_only": true
+        }
+      },
+      "ms": 6
+    },
+    {
+      "group": "platform",
+      "step": "website sandbox: lối vào Siêu Bộ Đôi / Văn Phòng",
+      "ok": true,
+      "detail": {
+        "/": 200,
+        "/691121/": 200
+      },
+      "ms": 7
+    },
+    {
+      "group": "platform",
+      "step": "chế độ tạm → mọi trang có cảnh báo dữ liệu thử nghiệm",
+      "ok": true,
+      "detail": "4 trang có cảnh báo DỮ LIỆU THỬ NGHIỆM",
+      "ms": 14
+    },
+    {
+      "group": "security",
+      "step": "CSRF header + Origin",
+      "ok": true,
+      "detail": "thiếu header → 403; Origin lạ → 403",
+      "ms": 2
+    },
+    {
+      "group": "security",
+      "step": "khách không ghi được",
+      "ok": true,
+      "detail": "ghi nhiệm vụ / audit / đăng bài khi chưa đăng nhập → 401",
+      "ms": 8
+    },
+    {
+      "group": "forum",
+      "step": "hai Diễn Đàn: trang + API riêng, HSTDN chặn khách",
+      "ok": true,
+      "detail": {
+        "sieu-bo-doi": {
+          "page": 200,
+          "posts_guest": 200,
+          "title": "Diễn Đàn Siêu Bộ Đôi",
+          "public_read": true
+        },
+        "si-ai-hstdn": {
+          "page": 200,
+          "posts_guest": 401,
+          "title": "Diễn Đàn SI AI • HSTDN",
+          "public_read": false
+        }
+      },
+      "ms": 14
+    },
+    {
+      "group": "catalog",
+      "step": "danh mục Link Mẫu: chỉ ID đã xuất bản, parent từ Registry, ID lạ 404",
+      "ok": true,
+      "detail": {
+        "total": 155,
+        "8682": "sha256:9de230d496b06c45",
+        "691121_parent": "69112",
+        "unknown_id": 404
+      },
+      "ms": 14
+    },
+    {
+      "group": "map",
+      "step": "bản đồ 10 phân hệ mở được • CTTTC 366 vị trí, 29/02 chỉ năm nhuận",
+      "ok": true,
+      "detail": {
+        "components": 10,
+        "counts": {
+          "sandbox": 5,
+          "partial": 2,
+          "planned": 3
+        },
+        "sandbox_opened": 7,
+        "20260229": 422
+      },
+      "ms": 35
+    },
+    {
+      "group": "linkmau",
+      "step": "Link Mẫu phổ thông: ID HOLD ghi rõ, khách không thấy nhiệm vụ/Evidence, ID lạ 404",
+      "ok": true,
+      "detail": {
+        "69115": "hold_conflict",
+        "691121": "parent_hold",
+        "khách thấy nhiệm vụ": false,
+        "ID lạ": 404
+      },
+      "ms": 11
+    },
+    {
+      "group": "vpsbd",
+      "step": "Văn Phòng Siêu Bộ Đôi: mọi nút dẫn tới trang có thật (200), trạng thái nút thật",
+      "ok": true,
+      "detail": {
+        "entries": 6,
+        "buttons": 18,
+        "paths_200": 12,
+        "status": [
+          "approval",
+          "login",
+          "not_connected",
+          "open"
+        ]
+      },
+      "ms": 59
+    },
+    {
+      "group": "website",
+      "step": "website sandbox: ô Tìm ID (/69/, /0123456789/) + chỉ mục + ALL IN ONE + CSS 267/2676",
+      "ok": true,
+      "detail": {
+        "search_index": 155,
+        "69115": "HOLD",
+        "all_in_one": true,
+        "267/2676_css": "ok"
+      },
+      "ms": 20
+    },
+    {
+      "group": "auth",
+      "step": "đăng nhập gov/reviewer + đăng ký người thực thi",
+      "ok": true,
+      "detail": {
+        "cookie": {
+          "httponly": true,
+          "samesite=strict": true,
+          "secure": false
+        }
+      },
+      "ms": 139
+    },
+    {
+      "group": "office",
+      "step": "giao nhiệm vụ (ID 691121 có sẵn)",
+      "ok": true,
+      "detail": {
+        "registry_chain": [
+          "911",
+          "6911",
+          "69112",
+          "691121"
+        ],
+        "task": 3
+      },
+      "ms": 36054
+    },
+    {
+      "group": "office",
+      "step": "ACK",
+      "ok": true,
+      "detail": "ACKED",
+      "ms": 8
+    },
+    {
+      "group": "office",
+      "step": "Start",
+      "ok": true,
+      "detail": "IN_PROGRESS",
+      "ms": 7
+    },
+    {
+      "group": "forum",
+      "step": "mở thảo luận ở sieu-bo-doi",
+      "ok": true,
+      "detail": {
+        "forum": "sieu-bo-doi",
+        "post_id": 2
+      },
+      "ms": 15
+    },
+    {
+      "group": "forum",
+      "step": "phản hồi trên diễn đàn (khách đọc được ở Siêu Bộ Đôi)",
+      "ok": true,
+      "detail": {
+        "comments": 1
+      },
+      "ms": 15
+    },
+    {
+      "group": "forum",
+      "step": "liên kết hai chiều + ẩn với khách",
+      "ok": true,
+      "detail": "người tham gia thấy liên kết bài ↔ nhiệm vụ; khách không thấy",
+      "ms": 8
+    },
+    {
+      "group": "forum",
+      "step": "HSTDN: xin tham gia → duyệt → mở thảo luận (trước duyệt 403)",
+      "ok": true,
+      "detail": {
+        "forum": "si-ai-hstdn",
+        "post_id": 2,
+        "trước khi duyệt": 403
+      },
+      "ms": 30
+    },
+    {
+      "group": "forum",
+      "step": "HSTDN: phản hồi + cách ly hai Diễn Đàn",
+      "ok": true,
+      "detail": "phản hồi OK • khách bị chặn • không lọt sang Siêu Bộ Đôi • liên kết nhiệm vụ OK",
+      "ms": 29
+    },
+    {
+      "group": "office",
+      "step": "trao đổi nhiệm vụ",
+      "ok": true,
+      "detail": "201",
+      "ms": 9
+    },
+    {
+      "group": "office",
+      "step": "Evidence",
+      "ok": true,
+      "detail": 2,
+      "ms": 9
+    },
+    {
+      "group": "office",
+      "step": "Submit",
+      "ok": true,
+      "detail": "IN_REVIEW",
+      "ms": 9
+    },
+    {
+      "group": "office",
+      "step": "Independent Review",
+      "ok": true,
+      "detail": "tự duyệt → 403; reviewer độc lập → ACCEPT",
+      "ms": 11
+    },
+    {
+      "group": "office",
+      "step": "Closure (người thực thi tự đóng → 403)",
+      "ok": true,
+      "detail": "CLOSED",
+      "ms": 21
+    },
+    {
+      "group": "office",
+      "step": "vòng khép kín: bài học → nhiệm vụ tiếp theo → 12/12 bước",
+      "ok": true,
+      "detail": {
+        "stages": 12,
+        "lesson": "topic:2",
+        "next_task": 4
+      },
+      "ms": 32
+    },
+    {
+      "group": "office",
+      "step": "audit đầy đủ + khách bị chặn",
+      "ok": true,
+      "detail": {
+        "events": 11,
+        "actions": [
+          "task.create",
+          "task.acked",
+          "task.in_progress",
+          "task.discussion",
+          "task.discussion",
+          "task.comment",
+          "evidence.create",
+          "task.in_review",
+          "task.accepted",
+          "task.closed",
+          "task.lesson"
+        ]
+      },
+      "ms": 9
+    },
+    {
+      "group": "worker",
+      "step": "worker chạy thật (heartbeat mới, không bị dừng)",
+      "ok": true,
+      "detail": {
+        "worker_id": "vm:928",
+        "age_seconds": 4,
+        "ticks": 9,
+        "jobs": {
+          "done": 1
+        },
+        "alerts_24h": 0,
+        "last_done": {
+          "entities": 267,
+          "drift": false,
+          "chain_691121": [
+            "911",
+            "6911",
+            "69112",
+            "691121"
+          ],
+          "problems": []
+        }
+      },
+      "ms": 4
+    },
+    {
+      "group": "worker",
+      "step": "kill switch: dừng giữ qua ≥2 nhịp, số việc không đổi, chạy lại (governance)",
+      "ok": true,
+      "detail": {
+        "held_ticks": 2,
+        "jobs_during_pause": {
+          "done": 1
+        },
+        "after_resume": "running",
+        "kill_switch_events": 2
+      },
+      "ms": 12081
+    }
+  ]
+}

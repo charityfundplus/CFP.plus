@@ -1,0 +1,41 @@
+{
+ "browser": "157.0.8103.78",
+ "pages": [
+  {
+   "name": "office",
+   "url": "http://127.0.0.1:4173/",
+   "status": 200,
+   "title": "CFP+ • Văn Phòng SI AI",
+   "h1": "Một văn phòng.Kết nối toàn cầu.",
+   "consoleErrors": [],
+   "error": null
+  },
+  {
+   "name": "core",
+   "url": "http://127.0.0.1:4173/core",
+   "status": 200,
+   "title": "CFP+ • Bộ Code Lõi • Siêu Bộ Đôi",
+   "h1": "Một Lõi Chuẩn. Nhiều Nhiệm Vụ.",
+   "consoleErrors": [],
+   "error": null
+  },
+  {
+   "name": "office-mobile",
+   "url": "http://127.0.0.1:4173/",
+   "status": 200,
+   "title": "CFP+ • Văn Phòng SI AI",
+   "h1": "Một văn phòng.Kết nối toàn cầu.",
+   "consoleErrors": [],
+   "error": null
+  },
+  {
+   "name": "localhost",
+   "url": "http://localhost:4173/",
+   "status": 200,
+   "title": "CFP+ • Văn Phòng SI AI",
+   "h1": "Một văn phòng.Kết nối toàn cầu.",
+   "consoleErrors": [],
+   "error": null
+  }
+ ]
+}
