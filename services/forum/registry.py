@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 import re
+from cfp_sandbox_overlay import load_overlay
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -63,16 +64,18 @@ class Entity:
     children: list[str] = field(default_factory=list)
     # explicit: Parent khai báo trong JSON nguồn • inferred_prefix: suy từ tiền tố ID của Markdown (CHƯA xác minh)
     parent_source: str | None = None
+    sandbox_fixture: bool = False
 
     def public(self) -> dict:
         return {"id": self.id, "type": self.type, "name": self.name, "parent_id": self.parent_id,
                 "status": self.status, "official_source": self.official_source,
                 "country_id": self.country_id, "link": f"https://cfp.plus/{self.id}/",
-                "registry_source": self.source, "children": list(self.children)}
+                "registry_source": self.source, "children": list(self.children),
+                "sandbox_fixture": self.sandbox_fixture}
 
 
 class Registry:
-    def __init__(self, root: Path = REPO_ROOT):
+    def __init__(self, root: Path = REPO_ROOT, *, ephemeral: bool | None = None):
         self.entities: dict[str, Entity] = {}
         self.conflicts: list[dict] = []
         reg = root / "registry"
@@ -97,6 +100,10 @@ class Registry:
             parent = md.stem[:-1] if md.stem[:-1] in self.entities else None
             self._add(Entity(md.stem, "registry_record", first.lstrip("# ").strip()[:200], parent,
                              source=f"registry/{md.name}", parent_source="inferred_prefix" if parent else None))
+        for key, row in load_overlay(self.entities, ephemeral=ephemeral).items():
+            self._add(Entity(key, "ai", row["name"], None,
+                             status="SYNTHETIC ONLY / AUTHORITY UNVERIFIED",
+                             source=row["source"], sandbox_fixture=True))
         for e in self.entities.values():
             if e.parent_id and e.parent_id in self.entities:
                 self.entities[e.parent_id].children.append(e.id)

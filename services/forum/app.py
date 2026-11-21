@@ -604,7 +604,7 @@ def create_app(stores: Stores | None = None) -> FastAPI:
 
     # ---- health
     from services.forum.registry import Registry
-    registry = Registry()
+    registry = Registry(ephemeral=st.ephemeral)
     from services.forum.catalog import Catalog
     catalog = Catalog(registry)
     app.state.catalog = catalog

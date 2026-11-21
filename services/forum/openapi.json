@@ -671,11 +671,36 @@
       "title": "Reviewer Id",
       "type": "integer"
      },
+     "source": {
+      "anyOf": [
+       {
+        "maxLength": 2000,
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Source"
+     },
      "title": {
       "maxLength": 200,
       "minLength": 3,
       "title": "Title",
       "type": "string"
+     },
+     "work_order_code": {
+      "anyOf": [
+       {
+        "maxLength": 200,
+        "minLength": 1,
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Work Order Code"
      }
     },
     "required": [
@@ -1986,6 +2011,64 @@
      }
     },
     "summary": "Get Enterprise",
+    "tags": [
+     "office"
+    ]
+   }
+  },
+  "/api/office/entities/{cid}/{entity_type}/{record_id}/tasks": {
+   "get": {
+    "operationId": "entity_tasks_api_office_entities__cid___entity_type___record_id__tasks_get",
+    "parameters": [
+     {
+      "in": "path",
+      "name": "cid",
+      "required": true,
+      "schema": {
+       "title": "Cid",
+       "type": "string"
+      }
+     },
+     {
+      "in": "path",
+      "name": "entity_type",
+      "required": true,
+      "schema": {
+       "title": "Entity Type",
+       "type": "string"
+      }
+     },
+     {
+      "in": "path",
+      "name": "record_id",
+      "required": true,
+      "schema": {
+       "title": "Record Id",
+       "type": "integer"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      },
+      "description": "Successful Response"
+     },
+     "422": {
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      },
+      "description": "Validation Error"
+     }
+    },
+    "summary": "Entity Tasks",
     "tags": [
      "office"
     ]

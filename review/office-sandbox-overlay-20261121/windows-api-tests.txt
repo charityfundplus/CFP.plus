@@ -1,0 +1,8 @@
+..............sssssssssssss......................................        [100%]
+============================== warnings summary ===============================
+..\..\..\..\CFP-Sandbox\lenovo-python-deps\fastapi\testclient.py:1
+  C:\Users\ai69\Documents\Codex\CFP-Sandbox\lenovo-python-deps\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+52 passed, 13 skipped, 1 warning in 11.16s

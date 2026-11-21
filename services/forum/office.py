@@ -268,6 +268,8 @@ class TaskIn(BaseModel):
     reviewer_id: int
     idempotency_key: str = Field(min_length=8, max_length=80, pattern=r"^[A-Za-z0-9._:-]+$")
     refs: list[str] = Field(default_factory=list, max_length=20)
+    source: str | None = Field(default=None, max_length=2000)
+    work_order_code: str | None = Field(default=None, min_length=1, max_length=200)
 
 
 class EvidenceIn(BaseModel):
@@ -683,7 +685,8 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
         original = c.execute(select(audit_t.c.data).where(
             audit_t.c.ref == f"task:{prev['id']}", audit_t.c.action == "task.create"
         ).order_by(audit_t.c.id)).scalar()
-        return bool(original) and json.loads(original) == data.model_dump()
+        # Older task.create audits predate optional source/work_order_code fields.
+        return bool(original) and TaskIn.model_validate(json.loads(original)).model_dump() == data.model_dump()
 
     @r.post("/tasks", status_code=201)
     def add_task(data: TaskIn, user=Depends(require_user)):
@@ -720,7 +723,9 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
                 if same_task_request(c, prev, data, user["id"]):
                     return {"id": prev["id"], "status": prev["status"], "duplicate": True}
                 conflict("idempotency_key không dùng được, hãy tạo khoá mới.")
-            c.execute(insert(task_events_t).values(task_id=tid, actor_id=user["id"], from_status=None, to_status="QUEUED"))
+            metadata = {"source": data.source, "work_order_code": data.work_order_code}
+            c.execute(insert(task_events_t).values(task_id=tid, actor_id=user["id"], from_status=None,
+                                                   to_status="QUEUED", note=json.dumps(metadata)))
             link(c, user["id"], f"task:{tid}", f"pair:{p['id']}", "assigned_to")
             for ref in data.refs:
                 link(c, user["id"], f"task:{tid}", ref, "uses")
@@ -1108,6 +1113,26 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
                                                    to_status="COMMENT", note=body))
             audit(c, user["id"], "task.comment", f"task:{tid}", {"status": t["status"], "length": len(body)})
         return {"id": tid, "ok": True}
+
+    @r.get("/entities/{cid}/{entity_type}/{record_id}/tasks")
+    def entity_tasks(cid: str, entity_type: str, record_id: int, user=Depends(require_user)):
+        # super_pairs.id is the existing software Entity Record. SI_AI records
+        # have no independent persisted table here and must never alias a pair.
+        if entity_type != "SUPER_SOFTWARE":
+            raise HTTPException(404, "Không có Entity Record.")
+        with _connect() as c:
+            pair = c.execute(select(pairs_t).where(
+                pairs_t.c.id == record_id, pairs_t.c.canonical_id == cid)).mappings().first()
+            if not pair:
+                raise HTTPException(404, "Không có Entity Record.")
+            p = principal(c, user)
+            if not (is_staff(p) or cid in p["maintains"] or pair["lead_user_id"] == user["id"]):
+                visible = c.execute(select(tasks_t).where(tasks_t.c.pair_id == record_id)).mappings().all()
+                if not any(task_visible(c, p, task, cid) for task in visible):
+                    raise HTTPException(404, "Không có Entity Record.")
+        view = office_view(cid, user)
+        return {"did": cid, "entity_type": entity_type, "entity_record_id": record_id,
+                "tasks": [task for task in view["tasks"] if task["pair_id"] == record_id]}
 
     # ---- liên kết hai chiều + tìm kiếm + lịch sử
     def links_of(ref: str, user: dict | None) -> dict:

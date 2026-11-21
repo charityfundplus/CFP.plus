@@ -59,6 +59,7 @@ Sinh tự động bởi `python -m services.forum.inventory --write` • CI ki�
 | office | GET | `/api/office/datasets/{did}` | công khai (+phiên nếu có) | access=members → người tạo / governance / người xem được nhiệm vụ dùng tài liệu |  | cfp_office |
 | office | POST | `/api/office/enterprises` | đăng nhập |  | header X-CFP-Forum + Origin | cfp_office |
 | office | GET | `/api/office/enterprises/{eid}` | công khai (+phiên nếu có) |  |  | cfp_office |
+| office | GET | `/api/office/entities/{cid}/{entity_type}/{record_id}/tasks` | đăng nhập |  |  | cfp_office |
 | office | GET | `/api/office/forum-links` | công khai (+phiên nếu có) | chỉ nhiệm vụ người xem được phép thấy • diễn đàn người xem đọc được |  | cfp_office (liên kết) + diễn đàn tương ứng (bài, qua đúng quy tắc diễn đàn) |
 | office | GET | `/api/office/linkmau/{cid}` | công khai (+phiên nếu có) | công khai: hồ sơ/Parent/HOLD • nhiệm vụ/Evidence/Review/lịch sử chỉ theo quyền |  | cfp_office |
 | office | GET | `/api/office/links` | công khai (+phiên nếu có) | ẩn liên kết tới nhiệm vụ/tài liệu không được xem |  | cfp_office |
