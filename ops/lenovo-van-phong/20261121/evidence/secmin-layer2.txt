@@ -1,0 +1,7 @@
+Layer-2 test: image WITHOUT .dockerignore, fake .git present in image
+config
+/.git/config 404
+/%2egit/config 404
+//.git/config 404
+/69/ 200
+/ 200

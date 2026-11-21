@@ -1,0 +1,6 @@
+D4 indirect evidence • 2026-11-21T15:26:55Z • read-only
+live /Dockerfile sha256: b569826a7eec3cceea093f93888f6b257b92d490d80f538d370cae4ea9064971
+main  Dockerfile sha256: b569826a7eec3cceea093f93888f6b257b92d490d80f538d370cae4ea9064971
+live Server header: server: Google Frontend
+live /.git/config status: 200 (content not downloaded)
+cloudbuild.yaml in main: 0

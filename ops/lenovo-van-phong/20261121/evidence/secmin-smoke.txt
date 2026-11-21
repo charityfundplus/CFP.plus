@@ -1,0 +1,46 @@
+== Public pages must work
+PASS 200 / (public)
+PASS 200 /69/ (public)
+PASS 200 /69 (public)
+PASS 200 /000/ (public)
+PASS 200 /0123456789/ (public)
+PASS 200 /6/ (public)
+PASS 200 /6911/ (public)
+PASS 200 /6984/ (public)
+PASS 200 /28882/ (public)
+PASS 200 /267/ (public)
+PASS 200 /12345678/ (public)
+PASS 200 /styles.css (public)
+PASS 200 /robots.txt (public)
+PASS 200 /sitemap.xml (public)
+== Internal files must NOT be served
+PASS 404 /.git/config (internal)
+PASS 404 /.git/HEAD (internal)
+PASS 404 /.git/index (internal)
+PASS 404 /.git/FETCH_HEAD (internal)
+PASS 404 /.git/logs/HEAD (internal)
+PASS 404 /.git/ (internal)
+PASS 404 /.git (internal)
+PASS 404 /%2egit/config (internal)
+PASS 404 /%2Egit/config (internal)
+PASS 404 //.git/config (internal)
+PASS 404 /./.git/config (internal)
+PASS 404 /69/../.git/config (internal)
+PASS 404 /.github/workflows/website_content.yml (internal)
+PASS 404 /.github/PULL_REQUEST_TEMPLATE.md (internal)
+PASS 404 /.gitignore (internal)
+PASS 404 /.dockerignore (internal)
+PASS 404 /.env (internal)
+PASS 404 /Dockerfile (internal)
+PASS 404 /deploy/nginx.conf (internal)
+PASS 404 /tools/build_pages.py (internal)
+PASS 404 /tests/__init__.py (internal)
+PASS 404 /run_ctttc_v066_tests.py (internal)
+PASS 404 /patches/ (internal)
+== Headers
+PASS .md is text/plain utf-8
+PASS header x-content-type-options: nosniff
+PASS header referrer-policy:
+PASS no nginx version in Server header
+PASS /69/../.git/config after redirect -> 404
+RESULT: ALL PASS
