@@ -1,0 +1,155 @@
+{
+  "meta": {
+    "now": "2026-11-21T08:10:00+00:00",
+    "source": "file:<scratch>/fx/three-sbd.json",
+    "comments": 4,
+    "messages": 4,
+    "input_sha256": "4bbb4398f45a79fdb41cf21db972b868433bb5054edeaa1e00557a47662f597d"
+  },
+  "channels": [
+    {
+      "channel": "working_link",
+      "target": "<scratch>/fx/three-sbd.json",
+      "read": "FILE",
+      "write": "NONE"
+    },
+    {
+      "channel": "notion",
+      "status": "NOT_CONNECTED",
+      "reason": "no NOTION_TOKEN / HUB69_NOTION_DATA_SOURCE in this runtime"
+    },
+    {
+      "channel": "cmp_267_office_api",
+      "status": "NOT_CONNECTED",
+      "reason": "no HUB69_OFFICE_API + governance session; PR #195 sandbox auth (SMOKE_*) pending Human"
+    }
+  ],
+  "slots": {
+    "max_parallel": 5,
+    "active": 3,
+    "reserved_p0_owners": [
+      "69118",
+      "691181"
+    ],
+    "reserved_p0_in_use": false
+  },
+  "tasks": [
+    {
+      "key": "sbd#2633-01",
+      "title": "[2633] Code: kiểm toàn vẹn Registry (dữ liệu giả)",
+      "priority": "P1",
+      "assignee": "2633",
+      "reviewer": "ReviewSI",
+      "opened_by": "267",
+      "opened_at": "2026-11-21T08:00:00Z",
+      "source_url": null,
+      "acceptance": "dữ liệu giả, Evidence có sha256",
+      "capability": "registry_check",
+      "routed": "named",
+      "state": "DISPATCHED",
+      "slot": "shared",
+      "ack": null,
+      "results": [],
+      "evidence": [],
+      "reviews": [],
+      "blockers": [],
+      "history": [
+        {
+          "kind": "TASK",
+          "actor": "267",
+          "at": "2026-11-21T08:00:00Z",
+          "ref": "sbd#2633-01",
+          "url": null,
+          "provenance": "unverified_login"
+        }
+      ],
+      "last_activity": "2026-11-21T08:00:00Z"
+    },
+    {
+      "key": "sbd#6535-01",
+      "title": "[6535] Học tập: bài 10 phút backup/restore (dữ liệu giả)",
+      "priority": "P1",
+      "assignee": "6535",
+      "reviewer": "ReviewSI",
+      "opened_by": "267",
+      "opened_at": "2026-11-21T08:01:00Z",
+      "source_url": null,
+      "acceptance": "dữ liệu giả, Evidence có sha256",
+      "capability": "content",
+      "routed": "named",
+      "state": "DISPATCHED",
+      "slot": "shared",
+      "ack": null,
+      "results": [],
+      "evidence": [],
+      "reviews": [],
+      "blockers": [],
+      "history": [
+        {
+          "kind": "TASK",
+          "actor": "267",
+          "at": "2026-11-21T08:01:00Z",
+          "ref": "sbd#6535-01",
+          "url": null,
+          "provenance": "unverified_login"
+        }
+      ],
+      "last_activity": "2026-11-21T08:01:00Z"
+    },
+    {
+      "key": "sbd#267-01",
+      "title": "[267] CMP: đối soát Working Link (dữ liệu giả)",
+      "priority": "P1",
+      "assignee": "267",
+      "reviewer": "ReviewSI",
+      "opened_by": "267",
+      "opened_at": "2026-11-21T08:02:00Z",
+      "source_url": null,
+      "acceptance": "dữ liệu giả, Evidence có sha256",
+      "capability": "working_link_audit",
+      "routed": "named",
+      "state": "DISPATCHED",
+      "slot": "shared",
+      "ack": null,
+      "results": [],
+      "evidence": [],
+      "reviews": [],
+      "blockers": [],
+      "history": [
+        {
+          "kind": "TASK",
+          "actor": "267",
+          "at": "2026-11-21T08:02:00Z",
+          "ref": "sbd#267-01",
+          "url": null,
+          "provenance": "unverified_login"
+        }
+      ],
+      "last_activity": "2026-11-21T08:02:00Z"
+    }
+  ],
+  "rejections": [
+    {
+      "ref": "sbd#2633-01-dup",
+      "url": null,
+      "kind": "TASK",
+      "task": "sbd#2633-01-dup",
+      "actor": "267",
+      "reason": "duplicate of open task sbd#2633-01"
+    }
+  ],
+  "warnings": [
+    {
+      "task": "sbd#2633-01",
+      "warning": "2633 not in agents config (ID PENDING?)"
+    },
+    {
+      "task": "sbd#6535-01",
+      "warning": "6535 not in agents config (ID PENDING?)"
+    },
+    {
+      "task": "sbd#267-01",
+      "warning": "267 not in agents config (ID PENDING?)"
+    }
+  ]
+}

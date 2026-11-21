@@ -1,0 +1,210 @@
+{
+ "ticks": [
+  {
+   "run": "tick-1",
+   "now": "2026-11-21T08:10:00+00:00",
+   "comments": 4,
+   "messages": 4,
+   "replies": [],
+   "tasks": 3,
+   "rejections": [
+    {
+     "ref": "sbd#2633-01-dup",
+     "url": null,
+     "kind": "TASK",
+     "task": "sbd#2633-01-dup",
+     "actor": "267",
+     "reason": "duplicate of open task sbd#2633-01"
+    }
+   ],
+   "handled": []
+  },
+  {
+   "run": "tick-2-rerun",
+   "now": "2026-11-21T08:11:00+00:00",
+   "comments": 4,
+   "messages": 4,
+   "replies": [],
+   "tasks": 3,
+   "rejections": [
+    {
+     "ref": "sbd#2633-01-dup",
+     "url": null,
+     "kind": "TASK",
+     "task": "sbd#2633-01-dup",
+     "actor": "267",
+     "reason": "duplicate of open task sbd#2633-01"
+    }
+   ],
+   "handled": []
+  },
+  {
+   "run": "tick-3-after-office-restart",
+   "now": "2026-11-21T08:12:00+00:00",
+   "comments": 4,
+   "messages": 4,
+   "replies": [],
+   "tasks": 3,
+   "rejections": [
+    {
+     "ref": "sbd#2633-01-dup",
+     "url": null,
+     "kind": "TASK",
+     "task": "sbd#2633-01-dup",
+     "actor": "267",
+     "reason": "duplicate of open task sbd#2633-01"
+    }
+   ],
+   "handled": []
+  }
+ ],
+ "tasks": [
+  {
+   "key": "sbd#2633-01",
+   "office_tid": null,
+   "assignee": "2633",
+   "reviewer": "ReviewSI",
+   "capability": "registry_check",
+   "stage": "AWAITING_REAL_AGENT",
+   "attempts": 0,
+   "dead": 0,
+   "result_sha": null,
+   "evidence_url": null
+  },
+  {
+   "key": "sbd#267-01",
+   "office_tid": null,
+   "assignee": "267",
+   "reviewer": "ReviewSI",
+   "capability": "working_link_audit",
+   "stage": "AWAITING_REAL_AGENT",
+   "attempts": 0,
+   "dead": 0,
+   "result_sha": null,
+   "evidence_url": null
+  },
+  {
+   "key": "sbd#6535-01",
+   "office_tid": null,
+   "assignee": "6535",
+   "reviewer": "ReviewSI",
+   "capability": "content",
+   "stage": "AWAITING_REAL_AGENT",
+   "attempts": 0,
+   "dead": 0,
+   "result_sha": null,
+   "evidence_url": null
+  }
+ ],
+ "readback": {},
+ "run_log": [
+  {
+   "id": 1,
+   "at": "2026-11-21T08:10:00+00:00",
+   "run": "tick-1",
+   "task": "sbd#2633-01",
+   "step": "intake",
+   "outcome": "new_message",
+   "detail": {
+    "actor": "267",
+    "author": "SANDBOX_FIXTURE",
+    "channel": "working_link",
+    "kind": "TASK",
+    "ref": "sbd#2633-01"
+   }
+  },
+  {
+   "id": 2,
+   "at": "2026-11-21T08:10:00+00:00",
+   "run": "tick-1",
+   "task": "sbd#6535-01",
+   "step": "intake",
+   "outcome": "new_message",
+   "detail": {
+    "actor": "267",
+    "author": "SANDBOX_FIXTURE",
+    "channel": "working_link",
+    "kind": "TASK",
+    "ref": "sbd#6535-01"
+   }
+  },
+  {
+   "id": 3,
+   "at": "2026-11-21T08:10:00+00:00",
+   "run": "tick-1",
+   "task": "sbd#267-01",
+   "step": "intake",
+   "outcome": "new_message",
+   "detail": {
+    "actor": "267",
+    "author": "SANDBOX_FIXTURE",
+    "channel": "working_link",
+    "kind": "TASK",
+    "ref": "sbd#267-01"
+   }
+  },
+  {
+   "id": 4,
+   "at": "2026-11-21T08:10:00+00:00",
+   "run": "tick-1",
+   "task": "sbd#2633-01-dup",
+   "step": "intake",
+   "outcome": "new_message",
+   "detail": {
+    "actor": "267",
+    "author": "SANDBOX_FIXTURE",
+    "channel": "working_link",
+    "kind": "TASK",
+    "ref": "sbd#2633-01-dup"
+   }
+  },
+  {
+   "id": 5,
+   "at": "2026-11-21T08:10:00+00:00",
+   "run": "tick-1",
+   "task": "sbd#2633-01-dup",
+   "step": "intake",
+   "outcome": "rejected",
+   "detail": {
+    "reason": "duplicate of open task sbd#2633-01",
+    "ref": "sbd#2633-01-dup"
+   }
+  },
+  {
+   "id": 6,
+   "at": "2026-11-21T08:10:00+00:00",
+   "run": "tick-1",
+   "task": "sbd#2633-01",
+   "step": "route",
+   "outcome": "awaiting_real_agent",
+   "detail": {
+    "assignee": "2633",
+    "reason": "no automated executor for this capability; needs the real agent"
+   }
+  },
+  {
+   "id": 7,
+   "at": "2026-11-21T08:10:00+00:00",
+   "run": "tick-1",
+   "task": "sbd#6535-01",
+   "step": "route",
+   "outcome": "awaiting_real_agent",
+   "detail": {
+    "assignee": "6535",
+    "reason": "no automated executor for this capability; needs the real agent"
+   }
+  },
+  {
+   "id": 8,
+   "at": "2026-11-21T08:10:00+00:00",
+   "run": "tick-1",
+   "task": "sbd#267-01",
+   "step": "route",
+   "outcome": "awaiting_real_agent",
+   "detail": {
+    "assignee": "267",
+    "reason": "no automated executor for this capability; needs the real agent"
+   }
+  }
+ ]
+}

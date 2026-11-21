@@ -1,0 +1,79 @@
+Sat Nov 21 07:09:36 UTC 2026
+{
+ "gov_uid": 1,
+ "office_2633": "422 canonical_id không có trong Registry. Không tự cấp ID.",
+ "office_6535": "422 canonical_id không có trong Registry. Không tự cấp ID.",
+ "office_267": "422 canonical_id không có trong Registry. Không tự cấp ID.",
+ "listing_by_did": [
+  {
+   "task": 1,
+   "pair_id": 1,
+   "title": "fake task A"
+  },
+  {
+   "task": 2,
+   "pair_id": 2,
+   "title": "fake task B"
+  }
+ ],
+ "listing_filter_ignored": true,
+ "office_fields": [
+  "canonical_id",
+  "capabilities",
+  "created_at",
+  "display_name",
+  "limits",
+  "platform",
+  "specialties",
+  "verification"
+ ],
+ "task_fields": [
+  "acceptance",
+  "assignee_id",
+  "can_close",
+  "created_at",
+  "created_by",
+  "description",
+  "id",
+  "pair_id",
+  "reviewer_id",
+  "status",
+  "title",
+  "updated_at"
+ ],
+ "race_results": [
+  [
+   "ok",
+   3
+  ],
+  [
+   "ok",
+   3
+  ],
+  [
+   "ok",
+   3
+  ],
+  [
+   "ok",
+   3
+  ],
+  [
+   "ok",
+   3
+  ],
+  [
+   "ok",
+   3
+  ],
+  [
+   "ok",
+   3
+  ],
+  [
+   "ok",
+   3
+  ]
+ ],
+ "race_rows_created": 1
+}
