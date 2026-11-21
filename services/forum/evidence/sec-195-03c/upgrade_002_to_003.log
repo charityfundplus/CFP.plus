@@ -1,0 +1,30 @@
+seeded legacy tasks L1-L4 (pre-003)
+applied 003_office_rls.sql (run1, có dữ liệu dở dang) as cfp_migrator
+applied 003_office_rls.sql (run2, có dữ liệu dở dang) as cfp_migrator
+ n  |  kq  |                          label                           | want  |  got  | sqlstate |                                detail                                 
+----+------+----------------------------------------------------------+-------+-------+----------+-----------------------------------------------------------------------
+  1 | PASS | U0a tasks: L1=1 L2=1 (IN_REVIEW) • L3=0 • L4=0           | ok    | ok    |          | 
+  2 | PASS | U0b reviews cũ: đều vòng 0                               | ok    | ok    |          | 
+  3 | PASS | U1 L1: CHANGES_REQUESTED dùng lại Review trước migration | state | state | 23514    | SEC-195-03b: thiếu Review CHANGES_REQUESTED của vòng 1 (có: không có)
+  4 | PASS | U2 L1: ACCEPTED khi chưa có Review mới                   | state | state | 23514    | SEC-195-03b: thiếu Review ACCEPTED của vòng 1 (có: không có)
+  5 | PASS | U3 L1: người thực thi tự ghi Review                      | rls   | rls   | 42501    | new row violates row-level security policy for table "reviews"
+  6 | PASS | U4 L1: reviewer ghi Review ACCEPT sau migration          | ok    | ok    |          | 
+  7 | PASS | U5 L1: reviewer chuyển ACCEPTED                          | ok    | ok    |          | 
+  8 | PASS | U6 L2: reviewer ghi CHANGES_REQUESTED sau migration      | ok    | ok    |          | 
+  9 | PASS | U7 L2: chuyển CHANGES_REQUESTED                          | ok    | ok    |          | 
+ 10 | PASS | U8 L2: người thực thi làm lại                            | ok    | ok    |          | 
+ 11 | PASS | U9 L2: gửi Review (mở vòng 2)                            | ok    | ok    |          | 
+ 12 | PASS | U10 L2: vòng 2 dùng lại Review vòng 1                    | state | state | 23514    | SEC-195-03b: thiếu Review CHANGES_REQUESTED của vòng 2 (có: không có)
+ 13 | PASS | U11 L2: Review ACCEPT vòng 2                             | ok    | ok    |          | 
+ 14 | PASS | U12 L2: ACCEPTED                                         | ok    | ok    |          | 
+ 15 | PASS | U13 L3: người thực thi làm lại                           | ok    | ok    |          | 
+ 16 | PASS | U14 L3: gửi Review (mở vòng 1)                           | ok    | ok    |          | 
+ 17 | PASS | U15 L3: dùng lại Review trước migration                  | state | state | 23514    | SEC-195-03b: thiếu Review CHANGES_REQUESTED của vòng 1 (có: không có)
+ 18 | PASS | U16 L3: Review ACCEPT vòng 1                             | ok    | ok    |          | 
+ 19 | PASS | U17 L3: ACCEPTED                                         | ok    | ok    |          | 
+ 20 | PASS | U18 L4: người thực thi tự Closure                        | actor | actor | 42501    | SEC-195-03b: Closure chỉ governance hoặc người giao việc
+ 21 | PASS | U19 L4: người giao việc Closure                          | ok    | ok    |          | 
+ 22 | PASS | V1 tasks: L1=1 L2=2 L3=1 L4=0                            | ok    | ok    |          | 
+ 23 | PASS | V2 reviews theo vòng (cũ = 0)                            | ok    | ok    |          | 
+
+SEC195_03B_UPGRADE pass=23 fail=0

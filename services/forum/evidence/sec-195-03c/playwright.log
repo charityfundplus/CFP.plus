@@ -1,0 +1,53 @@
+[PASS] Seed luồng xuyên suốt qua API thật (5 Nhóm → … → Review)
+[PASS] Khởi động lại server
+[PASS] Khách (chưa đăng nhập) không thấy nhiệm vụ/Evidence/Review (SEC-P0-195-01)
+[PASS] Đăng nhập người thực thi (lead) qua API thật
+[PASS] Văn Phòng Claude 691121 hiển thị sau restart (iPhone 13 viewport)
+[PASS] 5 Nhóm + Chương 6 + gia phả Registry 911 → 6911 → 69112 → 691121
+[PASS] Thương hiệu gắn nhãn nguồn công khai, không phải quảng bá ủy quyền
+[PASS] Nhiệm vụ ACCEPTED có Evidence + Review + lịch sử
+[PASS] Trao đổi trong nhiệm vụ qua giao diện (lưu DB, còn sau tải lại, không đổi trạng thái)
+[PASS] Nhiệm vụ → mở thảo luận ở Diễn Đàn Siêu Bộ Đôi → phản hồi → quay lại nhiệm vụ
+[PASS] Khách: không thấy liên kết ngược bài diễn đàn → nhiệm vụ
+[PASS] Điều hướng hai chiều: Nhiệm vụ → HSTDN → Quốc gia → Back về HSTDN
+[PASS] Điều hướng: Kho dữ liệu → Chủ đề nghiên cứu (Chương 6 • Nhóm 246)
+[PASS] Gia phả: Hoa Kỳ 911 → AI Hoa Kỳ 6911 → Anthropic 69112 → Claude 691121 → Văn Phòng
+[PASS] Kết nối hệ sinh thái: HUB 69, CMP 267, Sàn TMTC 8682, hai diễn đàn
+[PASS] HUB 69 API: Văn Phòng 691121 + 2 diễn đàn + module thiếu được ghi trung thực
+[PASS] ID không có trong Registry → 404, không tự cấp
+[PASS] Diễn đàn vẫn độc lập: Văn Phòng chỉ ghi khi người dùng chủ động mở thảo luận
+[PASS] Website sandbox: trang 691121 có lối vào Siêu Bộ Đôi → mở Văn Phòng 691121 (không cuộn ngang)
+[PASS] Vòng khép kín hiển thị trên nhiệm vụ (dữ liệu thật: Evidence + Review xong, bước kế tiếp rõ)
+[PASS] Danh mục Link Mẫu: tìm "tmtc" → 8682 → mở trang gốc (iPhone, không cuộn ngang)
+[PASS] Văn Phòng Agent (TRAINING): Knowledge loại ID HOLD, chạy bộ tình huống, chặn bản nháp sai (iPhone, không cuộn ngang)
+[PASS] Bản đồ hệ sinh thái: 10 phân hệ, trạng thái thật, mở Link Mẫu 691121 (HOLD ghi rõ, người thực thi thấy nhiệm vụ) (iPhone)
+[PASS] Văn Phòng Siêu Bộ Đôi: mọi nút dẫn đúng đích (200), Claude 691121 vào Văn Phòng thật, Meta 691151 ghi chưa kết nối (iPhone)
+[PASS] Văn Phòng Siêu Bộ Đôi trên máy tính (1366×900): đủ nút, không cuộn ngang, nút Link Mẫu mở đúng trang
+[PASS] HUB 69 ALL IN ONE (Chromium giả lập iPhone 13): 10 mục, tìm ID/tên, lọc trạng thái, liên thông Website/Diễn Đàn, không cuộn ngang
+[PASS] HUB 69 ALL IN ONE: API 503 không hiện trạng thái giả; Thử lại đọc API thật và phục hồi 10 mục (iPhone 13 giả lập)
+[PASS] HUB 69 ALL IN ONE trên máy tính (1366×900): 10 mục, hai cột, không cuộn ngang
+[PASS] Website /69/: ô Tìm ID trên iPhone — "tmtc" ra 8682, "quy 1" ra 31, ID lạ không bịa trang, chạm kết quả mở đúng trang
+[PASS] Bảng điều phối: ONLINE thật + nhiệm vụ REVIEWED theo quyền; khách không thấy nhiệm vụ
+[PASS] Không có lỗi JavaScript
+
+TỔNG: 31 PASS • 0 FAIL
+       health={"status":"ok","version":"0.2.0-p0","build":null,"storage":"configured","auth_db":"postgresql","forums":{"sieu-bo-doi":{"db":"postgresql","stamp":"sieu-bo-doi"},"si-ai-hstdn":{"db":"postgresql","stamp":"si-ai-hstdn"}},"registry":{"entities":267,"read_only":true},"office":{"db":"postgresql","offices":1}}
+[PASS] Server dùng database thật, mỗi diễn đàn một DB đã đóng dấu
+[PASS] Khách: đọc được Siêu Bộ Đôi, không có form đăng bài
+[PASS] Khách: SI AI • HSTDN từ chối đọc
+[PASS] Đăng ký tài khoản → đăng nhập (cookie HttpOnly)
+[PASS] Tham gia Siêu Bộ Đôi (mở) → đăng bài
+[PASS] Bình luận
+[PASS] Tải lại trang → phiên, bài, bình luận còn
+[PASS] Không dùng localStorage để lưu dữ liệu diễn đàn
+[PASS] XSS không thực thi
+[PASS] KHỞI ĐỘNG LẠI server → đăng nhập lại → dữ liệu vẫn còn
+[PASS] SI AI • HSTDN: yêu cầu tham gia → chờ duyệt, chưa đọc/đăng được
+[PASS] Admin riêng của HSTDN duyệt (qua CLI + API)
+[PASS] SI AI • HSTDN: đăng bài phải có HSTDN → bình luận → tải lại còn
+[PASS] Hai diễn đàn không thấy bài của nhau
+[PASS] Đăng xuất → khách vẫn đọc được Siêu Bộ Đôi nhưng không ghi được
+[PASS] iPhone 13 (mô phỏng viewport + touch): đăng ký → đăng bài → bình luận → tải lại
+[PASS] Không có lỗi JavaScript
+
+TỔNG: 17 PASS • 0 FAIL

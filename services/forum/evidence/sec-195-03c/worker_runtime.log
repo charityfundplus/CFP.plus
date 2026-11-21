@@ -1,0 +1,6 @@
+OK: pause
+OK: resume
+worker_alive=True ticks=17 jobs={'done': 6} alerts_24h=1 paused_seen=True
+last_done= {"id": 12, "kind": "registry_integrity", "finished_at": "2026-11-19T22:38:50.318156+00:00", "summary": {"entities": 267, "drift": false, "chain_691121": ["911", "6911", "69112", "691121"], "problems": []}}
+WORKER_RUNTIME=PASS
+worker_log_lines=15

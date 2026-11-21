@@ -1,0 +1,54 @@
+# SAU VÁ: 003_office_rls.sql (SEC-195-03c + 03d) • PostgreSQL 16.15 • 2026-11-19T22:36:55Z • 003 sha256=e2b9fc22f44fff6e
+ n  |  kq  |                                  label                                  |   want    |    got    | sqlstate |                                  detail                                  
+----+------+-------------------------------------------------------------------------+-----------+-----------+----------+--------------------------------------------------------------------------
+  1 | PASS | C1 người thực thi gắn tài liệu members của người khác vào nhiệm vụ mình | rls       | rls       | 42501    | new row violates row-level security policy for table "links"
+  2 | PASS | C1 hệ quả: người thực thi vẫn không đọc được tài liệu đó                | zero_rows | zero_rows |          | 
+  3 | PASS | C1b người ngoài cài tài liệu vào nhiệm vụ không thấy                    | rls       | rls       | 42501    | new row violates row-level security policy for table "links"
+  4 | PASS | C1c người ngoài nối tài liệu mình tới nhiệm vụ không thấy               | rls       | rls       | 42501    | new row violates row-level security policy for table "links"
+  5 | PASS | C1d người ngoài tạo link từ Siêu Bộ Đôi không duy trì                   | rls       | rls       | 42501    | new row violates row-level security policy for table "links"
+  6 | PASS | C1e tạo link từ tài liệu của người khác                                 | rls       | rls       | 42501    | new row violates row-level security policy for table "links"
+  7 | PASS | C2a tạo thẳng ACCEPTED, reviewer = người thực thi                       | rls       | rls       | 42501    | new row violates row-level security policy for table "tasks"
+  8 | PASS | C2b tạo thẳng ACCEPTED (reviewer hợp lệ)                                | rls       | rls       | 42501    | new row violates row-level security policy for table "tasks"
+  9 | PASS | C2c tạo QUEUED với reviewer = người thực thi                            | rls       | rls       | 42501    | new row violates row-level security policy for table "tasks"
+ 10 | PASS | C2d Closure khi không có Review ACCEPT                                  | state     | state     | 23514    | SEC-195-03b: Closure cần Review ACCEPT độc lập của vòng 0
+ 11 | PASS | C2e Closure khi reviewer = người thực thi                               | state     | state     | 23514    | SEC-195-03b: Closure cần Review ACCEPT độc lập của vòng 0
+ 12 | PASS | C2f Closure chỉ có Review ACCEPT của vòng cũ                            | state     | state     | 23514    | SEC-195-03b: Closure cần Review ACCEPT độc lập của vòng 2
+ 13 | PASS | G3 giao cho người không phải lead của Siêu Bộ Đôi                       | rls       | rls       | 42501    | new row violates row-level security policy for table "tasks"
+ 14 | PASS | G3b reviewer không có vai trò reviewer/governance                       | rls       | rls       | 42501    | new row violates row-level security policy for table "tasks"
+ 15 | PASS | G5 tự đặt review_round khi tạo                                          | rls       | rls       | 42501    | new row violates row-level security policy for table "tasks"
+ 16 | PASS | G3c người ngoài giao việc                                               | rls       | rls       | 42501    | new row violates row-level security policy for table "tasks"
+ 17 | PASS | G4 lịch sử giả IN_REVIEW → ACCEPTED khi đang IN_PROGRESS                | rls       | rls       | 42501    | new row violates row-level security policy for table "task_events"
+ 18 | PASS | G4b sự kiện chuyển chưa xảy ra                                          | rls       | rls       | 42501    | new row violates row-level security policy for table "task_events"
+ 19 | PASS | G4c reviewer ghi bước của người thực thi                                | rls       | rls       | 42501    | new row violates row-level security policy for table "task_events"
+ 20 | PASS | G4d bình luận với trạng thái sai                                        | rls       | rls       | 42501    | new row violates row-level security policy for table "task_events"
+ 21 | PASS | G4e người ngoài bình luận                                               | rls       | rls       | 42501    | new row violates row-level security policy for table "task_events"
+ 22 | PASS | G4f sự kiện tạo giả khi nhiệm vụ không ở QUEUED                         | rls       | rls       | 42501    | new row violates row-level security policy for table "task_events"
+ 23 | PASS | K1 maintainer tạo nhiệm vụ đúng chuẩn                                   | ok        | ok        |          | 
+ 24 | PASS | K1b sự kiện tạo QUEUED                                                  | ok        | ok        |          | 
+ 25 | PASS | D1 ghi trùng sự kiện tạo QUEUED                                         | state     | state     | 23514    | SEC-195-03d: sự kiện ∅ → QUEUED không khớp bước chuyển chưa ghi nào tron
+ 26 | PASS | K1c link task → pair (assigned_to)                                      | ok        | ok        |          | 
+ 27 | PASS | K1d governance giao việc, reviewer governance                           | ok        | ok        |          | 
+ 28 | PASS | K2 gắn tài liệu của chính mình                                          | ok        | ok        |          | 
+ 29 | PASS | K2b gắn tài liệu công khai                                              | ok        | ok        |          | 
+ 30 | PASS | K2c governance gắn tài liệu members                                     | ok        | ok        |          | 
+ 31 | PASS | K2d maintainer link pair → office                                       | ok        | ok        |          | 
+ 32 | PASS | K3 người thực thi bình luận                                             | ok        | ok        |          | 
+ 33 | PASS | K3b reviewer bình luận                                                  | ok        | ok        |          | 
+ 34 | PASS | K4 ACK                                                                  | ok        | ok        |          | 
+ 35 | PASS | K5 sự kiện QUEUED → ACKED khớp thực tế                                  | ok        | ok        |          | 
+ 36 | PASS | D2 ghi trùng sự kiện QUEUED → ACKED                                     | state     | state     | 23514    | SEC-195-03d: sự kiện QUEUED → ACKED không khớp bước chuyển chưa ghi nào 
+ 37 | PASS | K6a reviewer ghi Review ACCEPT                                          | ok        | ok        |          | 
+ 38 | PASS | K6b reviewer chuyển ACCEPTED                                            | ok        | ok        |          | 
+ 39 | PASS | K6c sự kiện IN_REVIEW → ACCEPTED                                        | ok        | ok        |          | 
+ 40 | PASS | D3 ghi trùng sự kiện nghiệm thu                                         | state     | state     | 23514    | SEC-195-03d: sự kiện IN_REVIEW → ACCEPTED không khớp bước chuyển chưa gh
+ 41 | PASS | K6d người giao việc Closure sau Review ACCEPT                           | ok        | ok        |          | 
+ 42 | PASS | K6e sự kiện ACCEPTED → CLOSED                                           | ok        | ok        |          | 
+ 43 | PASS | D4 ghi trùng sự kiện Closure                                            | state     | state     | 23514    | SEC-195-03d: sự kiện ACCEPTED → CLOSED không khớp bước chuyển chưa ghi n
+ 44 | PASS | D5 office_app tự phát token (gọi hàm trigger)                           | priv      | priv      | 42501    | permission denied for function issue_transition_token
+ 45 | PASS | D6 office_app ghi thẳng bảng token                                      | priv      | priv      | 42501    | permission denied for table task_transition_tokens
+ 46 | PASS | D7 office_app đọc bảng token                                            | priv      | priv      | 42501    | permission denied for table task_transition_tokens
+ 47 | PASS | K3c bình luận lặp vẫn được (COMMENT không dùng token)                   | ok        | ok        |          | 
+ 48 | PASS | K7 reviewer ghi bài học (task → topic)                                  | ok        | ok        |          | 
+ 49 | PASS | K8 người thực thi đọc tài liệu của mình                                 | ok        | ok        |          | 
+
+SEC195_03C pass=49 fail=0 rollback_clean=t

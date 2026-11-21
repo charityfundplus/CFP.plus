@@ -1,0 +1,60 @@
+ n  |  kq  |                                 label                                  |   want    |    got    | sqlstate |                                  detail                                  
+----+------+------------------------------------------------------------------------+-----------+-----------+----------+--------------------------------------------------------------------------
+  1 | PASS | A1 người thực thi tự đặt mình làm reviewer                             | priv      | priv      | 42501    | permission denied for table tasks
+  2 | PASS | A2 người thực thi đổi assignee                                         | priv      | priv      | 42501    | permission denied for table tasks
+  3 | PASS | A3 người thực thi nhảy QUEUED → ACCEPTED                               | state     | state     | 23514    | SEC-195-03b: không cho phép QUEUED → ACCEPTED
+  4 | PASS | A4 người thực thi bỏ bước QUEUED → IN_REVIEW                           | state     | state     | 23514    | SEC-195-03b: không cho phép QUEUED → IN_REVIEW
+  5 | PASS | A5 người thực thi sửa tiêu đề/tiêu chí                                 | priv      | priv      | 42501    | permission denied for table tasks
+  6 | PASS | A6 đổi reviewer + ACCEPTED cùng lúc                                    | priv      | priv      | 42501    | permission denied for table tasks
+  7 | PASS | A7 người ngoài ACK hộ (RLS ẩn hàng)                                    | zero_rows | zero_rows |          | 
+  8 | PASS | A8 không danh tính (RLS ẩn hàng)                                       | zero_rows | zero_rows |          | 
+  9 | PASS | A8b người thực thi tự đặt số vòng duyệt                                | priv      | priv      | 42501    | permission denied for table tasks
+ 10 | PASS | A9 reviewer ACK thay người thực thi                                    | actor     | actor     | 42501    | SEC-195-03b: chỉ người thực thi được QUEUED → ACKED
+ 11 | PASS | A10 người thực thi ACK                                                 | ok        | ok        |          | 
+ 12 | PASS | A11 chỉ chạm updated_at                                                | ok        | ok        |          | 
+ 13 | PASS | A12 người thực thi bắt đầu                                             | ok        | ok        |          | 
+ 14 | PASS | A13 chuyển Review khi chưa có Evidence                                 | state     | state     | 23514    | SEC-195-03b: cần Evidence trước khi chuyển Review
+ 15 | PASS | A14 reviewer nộp Evidence                                              | rls       | rls       | 42501    | new row violates row-level security policy for table "evidence"
+ 16 | PASS | A15 người thực thi nộp Evidence                                        | ok        | ok        |          | 
+ 17 | PASS | A16 reviewer chấm khi chưa IN_REVIEW                                   | rls       | rls       | 42501    | new row violates row-level security policy for table "reviews"
+ 18 | PASS | A17 người thực thi gửi Review                                          | ok        | ok        |          | 
+ 19 | PASS | A18 nộp thêm Evidence khi đang IN_REVIEW                               | rls       | rls       | 42501    | new row violates row-level security policy for table "evidence"
+ 20 | PASS | A19 người thực thi tự nghiệm thu                                       | actor     | actor     | 42501    | SEC-195-03b: chỉ reviewer được chỉ định (khác người thực thi) được nghiệ
+ 21 | PASS | A20 người thực thi tự ghi Review                                       | rls       | rls       | 42501    | new row violates row-level security policy for table "reviews"
+ 22 | PASS | A21 reviewer ACCEPTED khi chưa ghi Review                              | state     | state     | 23514    | SEC-195-03b: thiếu Review ACCEPTED của vòng 1 (có: không có)
+ 23 | PASS | A22 reviewer ghi Review ACCEPT                                         | ok        | ok        |          | 
+ 24 | PASS | A23 reviewer chuyển ACCEPTED                                           | ok        | ok        |          | 
+ 25 | PASS | A24 người thực thi tự Closure                                          | actor     | actor     | 42501    | SEC-195-03b: Closure chỉ governance hoặc người giao việc
+ 26 | PASS | A25 reviewer Closure (không phải người giao việc)                      | actor     | actor     | 42501    | SEC-195-03b: Closure chỉ governance hoặc người giao việc
+ 27 | PASS | A26 người ngoài Closure (RLS ẩn hàng)                                  | zero_rows | zero_rows |          | 
+ 28 | PASS | A27 người giao việc Closure                                            | ok        | ok        |          | 
+ 29 | PASS | A28 mở lại nhiệm vụ đã CLOSED                                          | state     | state     | 23514    | SEC-195-03b: không cho phép CLOSED → IN_PROGRESS
+ 30 | PASS | B1 ACK                                                                 | ok        | ok        |          | 
+ 31 | PASS | B2 bắt đầu                                                             | ok        | ok        |          | 
+ 32 | PASS | B3 Evidence                                                            | ok        | ok        |          | 
+ 33 | PASS | B4 gửi Review (mở vòng 1)                                              | ok        | ok        |          | 
+ 34 | PASS | B5 reviewer yêu cầu sửa (vòng 1)                                       | ok        | ok        |          | 
+ 35 | PASS | B6 ACCEPTED trái với Review CHANGES_REQUESTED                          | state     | state     | 23514    | SEC-195-03b: thiếu Review ACCEPTED của vòng 1 (có: CHANGES_REQUESTED)
+ 36 | PASS | B7 chuyển CHANGES_REQUESTED (vòng 1)                                   | ok        | ok        |          | 
+ 37 | PASS | B8 người thực thi làm lại                                              | ok        | ok        |          | 
+ 38 | PASS | B9 gửi Review lần 2 (mở vòng 2)                                        | ok        | ok        |          | 
+ 39 | PASS | B10 ACCEPTED dựa trên Review cũ (CHANGES_REQUESTED vòng 1)             | state     | state     | 23514    | SEC-195-03b: thiếu Review ACCEPTED của vòng 2 (có: không có)
+ 40 | PASS | R1 vòng 2: CHANGES_REQUESTED dùng lại Review vòng 1                    | state     | state     | 23514    | SEC-195-03b: thiếu Review CHANGES_REQUESTED của vòng 2 (có: không có)
+ 41 | PASS | R2 reviewer ghi CHANGES_REQUESTED cho vòng 2                           | ok        | ok        |          | 
+ 42 | PASS | R3 vòng 2: CHANGES_REQUESTED với quyết định đúng vòng                  | ok        | ok        |          | 
+ 43 | PASS | R4 người thực thi làm lại lần 2                                        | ok        | ok        |          | 
+ 44 | PASS | R5 gửi Review lần 3 (mở vòng 3)                                        | ok        | ok        |          | 
+ 45 | PASS | R6 vòng 3: CHANGES_REQUESTED dùng lại Review vòng 2                    | state     | state     | 23514    | SEC-195-03b: thiếu Review CHANGES_REQUESTED của vòng 3 (có: không có)
+ 46 | PASS | R7 Review tự khai vòng 1 → bị đóng dấu vòng hiện tại (3)               | ok        | ok        |          | 
+ 47 | PASS | R8 reviewer đổi ý: CHANGES_REQUESTED vòng 3 (mới nhất)                 | ok        | ok        |          | 
+ 48 | PASS | R9 ACCEPTED khi quyết định mới nhất của vòng 3 là CHANGES_REQUESTED    | state     | state     | 23514    | SEC-195-03b: thiếu Review ACCEPTED của vòng 3 (có: CHANGES_REQUESTED)
+ 49 | PASS | B11 Review ACCEPT mới (vòng 3)                                         | ok        | ok        |          | 
+ 50 | PASS | B12 ACCEPTED                                                           | ok        | ok        |          | 
+ 51 | PASS | C1 reviewer trùng người thực thi ghi Review                            | rls       | rls       | 42501    | new row violates row-level security policy for table "reviews"
+ 52 | PASS | C2 reviewer trùng người thực thi ACCEPTED                              | actor     | actor     | 42501    | SEC-195-03b: chỉ reviewer được chỉ định (khác người thực thi) được nghiệ
+ 53 | PASS | D1 governance Closure                                                  | ok        | ok        |          | 
+ 54 | PASS | V1 tasks B: review_round = 3                                           | ok        | ok        |          | 
+ 55 | PASS | V2 reviews B theo vòng: 1 CR • 2 CR • 3 ACCEPT(R7) CR ACCEPT           | ok        | ok        |          | 
+ 56 | PASS | E1 role BYPASSRLS sửa reviewer khẩn cấp (đúng 1 hàng, giá trị mới = 4) | ok        | ok        |          | 
+
+SEC195_03B pass=56 fail=0 rollback_clean=t

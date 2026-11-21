@@ -80,8 +80,64 @@ language sql stable security definer set search_path = cfp_office, pg_temp as $$
   select count(*) from tasks where status = 'IN_PROGRESS'
 $$;
 
+-- ---------- SEC-P0-195-03c: hàm kiểm bất biến GHI (phản biện RLS 003 @ a801627: C1, C1b, C2, G3, G4, G5)
+-- Có vai trò reviewer/governance (chỉ đọc office_roles; không phụ thuộc RLS của người gọi).
+create or replace function cfp_office.has_review_role(p_user integer) returns boolean
+language sql stable security definer set search_path = cfp_office, pg_temp as $$
+  select exists (select 1 from office_roles where user_id = p_user and role in ('reviewer', 'governance'))
+$$;
+
+-- Lead của Siêu Bộ Đôi: create_task luôn giao cho lead (office.py create_task).
+create or replace function cfp_office.pair_lead(p_pair integer) returns integer
+language sql stable security definer set search_path = cfp_office, pg_temp as $$
+  select lead_user_id from super_pairs where id = p_pair
+$$;
+
+-- Quyền tạo liên kết TỪ một mục (tương đương can_link_from của app). Khác app ở một điểm có chủ đích:
+-- nguồn task:<id> chỉ cần xem được nhiệm vụ, vì app tự ghi link task → topic (bài học) và task → forum
+-- (thảo luận) cho mọi người tham gia, kể cả reviewer. Loại mục không biết → từ chối (fail-closed).
+create or replace function cfp_office.can_link_from(p_ref varchar) returns boolean
+language sql stable security definer set search_path = cfp_office, pg_temp as $$
+  select cfp_office.actor() is not null and coalesce(cfp_office.is_governance() or case
+    when p_ref ~ '^office:.+$' then cfp_office.is_maintainer(substr(p_ref, 8))
+    when p_ref ~ '^brand:[0-9]{1,9}$' then
+      cfp_office.is_maintainer((select canonical_id from brand_items where id = substr(p_ref, 7)::integer))
+    when p_ref ~ '^pair:[0-9]{1,9}$' then
+      cfp_office.is_maintainer((select canonical_id from super_pairs where id = substr(p_ref, 6)::integer))
+    when p_ref ~ '^enterprise:[0-9]{1,9}$' then
+      (select created_by from enterprises where id = substr(p_ref, 12)::integer) = cfp_office.actor()
+    when p_ref ~ '^topic:[0-9]{1,9}$' then
+      (select created_by from research_topics where id = substr(p_ref, 7)::integer) = cfp_office.actor()
+    when p_ref ~ '^dataset:[0-9]{1,9}$' then
+      (select created_by from datasets where id = substr(p_ref, 9)::integer) = cfp_office.actor()
+    when p_ref ~ '^task:[0-9]{1,9}$' then cfp_office.can_see_task(substr(p_ref, 6)::integer)
+    else false end, false)
+$$;
+
+-- Sự kiện nhiệm vụ phải khớp trạng thái THẬT (đọc sau UPDATE trong cùng giao dịch, như move() ghi):
+--   • COMMENT: from_status = trạng thái hiện tại (office.py comment()).
+--   • tạo: NULL → QUEUED, nhiệm vụ đang QUEUED, người ghi là người giao việc (create_task).
+--   • chuyển: to_status = trạng thái hiện tại, cặp nguồn → đích hợp lệ, đúng người cho bước đó (move()).
+create or replace function cfp_office.task_event_ok(p_task integer, p_from varchar, p_to varchar) returns boolean
+language sql stable security definer set search_path = cfp_office, pg_temp as $$
+  select coalesce((select case
+    when p_to = 'COMMENT' then p_from = t.status
+    when p_from is null then p_to = 'QUEUED' and t.status = 'QUEUED' and cfp_office.actor() = t.created_by
+    when p_to <> t.status then false
+    when (p_from, p_to) in (('QUEUED', 'ACKED'), ('ACKED', 'IN_PROGRESS'), ('CHANGES_REQUESTED', 'IN_PROGRESS'),
+                            ('IN_PROGRESS', 'IN_REVIEW')) then cfp_office.actor() = t.assignee_id
+    when p_from = 'IN_REVIEW' and p_to in ('ACCEPTED', 'CHANGES_REQUESTED') then
+      cfp_office.actor() = t.reviewer_id and t.reviewer_id <> t.assignee_id
+    when p_from = 'ACCEPTED' and p_to = 'CLOSED' then
+      cfp_office.actor() <> t.assignee_id and (cfp_office.actor() = t.created_by or cfp_office.is_governance())
+    else false end
+  from tasks t where t.id = p_task), false)
+$$;
+
 do $$ declare f text; begin
   foreach f in array array['actor()', 'is_governance()', 'is_maintainer(varchar)',
+                           'has_review_role(integer)', 'pair_lead(integer)', 'can_link_from(varchar)',
+                           'task_event_ok(integer,varchar,varchar)',
                            'can_see_task_row(integer,integer,integer,integer)', 'can_see_task(integer)',
                            'can_see_dataset_row(integer,varchar,integer)', 'ref_visible(varchar)',
                            'in_progress_count()'] loop
@@ -139,10 +195,7 @@ create policy rls_insert on cfp_office.datasets for insert to office_app
 -- Nhiệm vụ: chỉ người tham gia / maintainer của đúng Văn Phòng / governance.
 create policy rls_select on cfp_office.tasks for select to office_app
   using (cfp_office.can_see_task_row(pair_id, assignee_id, reviewer_id, created_by));
-create policy rls_insert on cfp_office.tasks for insert to office_app
-  with check (created_by = cfp_office.actor()
-              and (cfp_office.is_governance()
-                   or cfp_office.is_maintainer((select canonical_id from cfp_office.super_pairs where id = pair_id))));
+-- rls_insert của tasks tạo ở cuối tệp (SEC-195-03c), sau khi có cột review_round.
 -- Cập nhật: người thực thi/reviewer theo luồng; Closure (ACCEPTED → CLOSED) chỉ governance hoặc người giao việc.
 create policy rls_update on cfp_office.tasks for update to office_app
   using (cfp_office.actor() in (assignee_id, reviewer_id)
@@ -153,7 +206,8 @@ create policy rls_update on cfp_office.tasks for update to office_app
 
 create policy rls_select on cfp_office.task_events for select to office_app using (cfp_office.can_see_task(task_id));
 create policy rls_insert on cfp_office.task_events for insert to office_app
-  with check (actor_id = cfp_office.actor() and cfp_office.can_see_task(task_id));
+  with check (actor_id = cfp_office.actor() and cfp_office.can_see_task(task_id)
+              and cfp_office.task_event_ok(task_id, from_status, to_status));  -- SEC-195-03c (G4)
 
 create policy rls_select on cfp_office.evidence for select to office_app using (cfp_office.can_see_task(task_id));
 create policy rls_insert on cfp_office.evidence for insert to office_app
@@ -171,8 +225,11 @@ create policy rls_insert on cfp_office.reviews for insert to office_app
 
 create policy rls_select on cfp_office.links for select to office_app
   using (cfp_office.ref_visible(from_ref) and cfp_office.ref_visible(to_ref));
+-- SEC-195-03c (C1, C1b): hai đầu phải xem được + có quyền trên mục nguồn (giống add_link() của app).
 create policy rls_insert on cfp_office.links for insert to office_app
-  with check (created_by = cfp_office.actor());
+  with check (created_by = cfp_office.actor()
+              and cfp_office.ref_visible(from_ref) and cfp_office.ref_visible(to_ref)
+              and cfp_office.can_link_from(from_ref));
 
 create policy rls_select on cfp_office.audit_log for select to office_app
   using (cfp_office.is_governance() or (ref ~ '^task:[0-9]+$' and cfp_office.ref_visible(ref)));
@@ -263,6 +320,14 @@ begin
         if a = old.assignee_id or not (a = old.created_by or cfp_office.is_governance()) then
           raise exception 'SEC-195-03b: Closure chỉ governance hoặc người giao việc' using errcode = '42501';
         end if;
+        -- SEC-195-03c (C2): Closure đòi Independent Review — ACCEPT của reviewer được chỉ định (khác người
+        -- thực thi) trong ĐÚNG vòng hiện tại. Nhiệm vụ ACCEPTED trước 003: Review và nhiệm vụ cùng vòng 0.
+        if old.reviewer_id = old.assignee_id or not exists (
+             select 1 from reviews where task_id = old.id and reviewer_id = old.reviewer_id
+               and decision = 'ACCEPT' and review_round = old.review_round) then
+          raise exception 'SEC-195-03b: Closure cần Review ACCEPT độc lập của vòng %', old.review_round
+            using errcode = '23514';
+        end if;
       else
         raise exception 'SEC-195-03b: không cho phép % → %', old.status, new.status using errcode = '23514';
       end if;
@@ -278,5 +343,103 @@ revoke all on function cfp_office.enforce_task_transition() from public;
 drop trigger if exists enforce_task_transition on cfp_office.tasks;
 create trigger enforce_task_transition before update on cfp_office.tasks
   for each row execute function cfp_office.enforce_task_transition();
+
+-- ---------- SEC-P0-195-03d: task_events chỉ ghi được khi có bước chuyển THẬT, mỗi bước đúng MỘT lần
+-- task_event_ok (policy) kiểm sự kiện khớp trạng thái hiện tại, nhưng không chặn ghi lặp cùng một bước.
+-- Cơ chế nội bộ: mỗi lần tạo nhiệm vụ / đổi trạng thái thật, trigger SECURITY DEFINER phát một token vào
+-- bảng nội bộ (office_app không có quyền nào trên bảng). Mỗi INSERT task_events không phải COMMENT phải tiêu
+-- thụ đúng một token của CÙNG giao dịch, cùng nhiệm vụ, cùng nguồn → đích, cùng người → ghi trùng hoặc ghi
+-- sự kiện không có bước chuyển thật bị từ chối (23514). Không cần sửa app: move() và create_task đã ghi
+-- sự kiện trong cùng giao dịch với bước chuyển. Bình luận (COMMENT) không dùng token.
+-- Token của giao dịch đã kết thúc không bao giờ khớp lại (xid8 không tái dùng) và được dọn khi phát token mới.
+create table if not exists cfp_office.task_transition_tokens (
+  xid xid8 not null default pg_current_xact_id(),
+  task_id integer not null,
+  from_status varchar(24),
+  to_status varchar(24) not null,
+  actor_id integer
+);
+revoke all on cfp_office.task_transition_tokens from public;
+do $$ begin  -- Supabase: chặn anon/authenticated; role không có trên Postgres thường thì bỏ qua
+  if exists (select 1 from pg_roles where rolname = 'anon') then
+    execute 'revoke all on cfp_office.task_transition_tokens from anon'; end if;
+  if exists (select 1 from pg_roles where rolname = 'authenticated') then
+    execute 'revoke all on cfp_office.task_transition_tokens from authenticated'; end if;
+end $$;
+revoke all on cfp_office.task_transition_tokens from office_app;
+alter table cfp_office.task_transition_tokens enable row level security;
+alter table cfp_office.task_transition_tokens force row level security;  -- không policy: chỉ role BYPASSRLS
+
+-- Phát token. Hàm trigger không gọi trực tiếp được → office_app không tự tạo token.
+create or replace function cfp_office.issue_transition_token() returns trigger
+language plpgsql security definer set search_path = cfp_office, pg_temp as $$
+begin
+  delete from task_transition_tokens where xid < pg_snapshot_xmin(pg_current_snapshot());  -- giao dịch đã xong
+  if tg_op = 'INSERT' then
+    insert into task_transition_tokens (task_id, from_status, to_status, actor_id)
+    values (new.id, null, new.status, new.created_by);
+  elsif new.status is distinct from old.status then
+    insert into task_transition_tokens (task_id, from_status, to_status, actor_id)
+    values (new.id, old.status, new.status, cfp_office.actor());
+  end if;
+  return null;
+end $$;
+revoke all on function cfp_office.issue_transition_token() from public;
+drop trigger if exists issue_transition_token_ins on cfp_office.tasks;
+create trigger issue_transition_token_ins after insert on cfp_office.tasks
+  for each row execute function cfp_office.issue_transition_token();
+drop trigger if exists issue_transition_token_upd on cfp_office.tasks;
+create trigger issue_transition_token_upd after update of status on cfp_office.tasks
+  for each row execute function cfp_office.issue_transition_token();
+
+-- Tiêu thụ đúng một token khớp. Gọi trực tiếp chỉ XOÁ được token (không tạo) → không mở thêm quyền ghi.
+create or replace function cfp_office.consume_transition_token(p_task integer, p_from varchar, p_to varchar,
+                                                               p_actor integer) returns boolean
+language plpgsql security definer set search_path = cfp_office, pg_temp as $$
+declare n integer;
+begin
+  delete from task_transition_tokens where ctid = (
+    select ctid from task_transition_tokens
+    where xid = pg_current_xact_id() and task_id = p_task and from_status is not distinct from p_from
+      and to_status = p_to and actor_id is not distinct from p_actor
+    limit 1);
+  get diagnostics n = row_count;
+  return n = 1;
+end $$;
+revoke all on function cfp_office.consume_transition_token(integer, varchar, varchar, integer) from public;
+grant execute on function cfp_office.consume_transition_token(integer, varchar, varchar, integer) to office_app;
+
+-- SECURITY INVOKER (cố ý, như enforce_task_transition): current_user là role gọi thật để miễn cho role BYPASSRLS.
+create or replace function cfp_office.guard_task_event() returns trigger
+language plpgsql security invoker set search_path = cfp_office, pg_temp as $$
+begin
+  if new.to_status <> 'COMMENT'
+     and not (select rolbypassrls from pg_roles where rolname = current_user)
+     and not cfp_office.consume_transition_token(new.task_id, new.from_status, new.to_status, new.actor_id) then
+    raise exception 'SEC-195-03d: sự kiện % → % không khớp bước chuyển chưa ghi nào trong giao dịch này',
+      coalesce(new.from_status, '∅'), new.to_status using errcode = '23514';
+  end if;
+  return null;
+end $$;
+revoke all on function cfp_office.guard_task_event() from public;
+drop trigger if exists guard_task_event on cfp_office.task_events;
+-- AFTER (không phải BEFORE): WITH CHECK của policy chạy trước (lỗi RLS giữ nguyên), token kiểm sau cùng;
+-- raise trong AFTER ROW vẫn huỷ toàn bộ câu lệnh.
+create trigger guard_task_event after insert on cfp_office.task_events
+  for each row execute function cfp_office.guard_task_event();
+
+-- ---------- SEC-P0-195-03c: tasks INSERT đúng bất biến của create_task (C2 nhánh tạo, G3, G5)
+-- QUEUED • giao cho lead của Siêu Bộ Đôi • reviewer khác người thực thi và có vai trò reviewer/governance •
+-- review_round bắt đầu từ 0 (chỉ trigger được tăng).
+drop policy if exists rls_insert on cfp_office.tasks;
+create policy rls_insert on cfp_office.tasks for insert to office_app
+  with check (created_by = cfp_office.actor()
+              and (cfp_office.is_governance()
+                   or cfp_office.is_maintainer((select canonical_id from cfp_office.super_pairs where id = pair_id)))
+              and status = 'QUEUED'
+              and review_round = 0
+              and assignee_id = cfp_office.pair_lead(pair_id)
+              and reviewer_id <> assignee_id
+              and cfp_office.has_review_role(reviewer_id));
 
 commit;
