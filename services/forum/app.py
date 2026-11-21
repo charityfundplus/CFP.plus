@@ -886,6 +886,23 @@ def create_app(stores: Stores | None = None) -> FastAPI:
             return FileResponse(WEB_DIR / "directory.html", media_type="text/html",
                                 headers={"X-Robots-Tag": "noindex, nofollow"})
 
+        from services.forum.github_results import GitHubResults
+
+        github_results = GitHubResults()
+
+        @app.get("/api/hub/69/github-results", include_in_schema=False)
+        def public_github_results():
+            return JSONResponse(github_results.snapshot(), headers={"Cache-Control": "no-store"})
+
+        @app.get("/_internal/office/results.js", include_in_schema=False)
+        def results_js():
+            return FileResponse(WEB_DIR / "results.js", media_type="text/javascript")
+
+        @app.get("/_internal/office/results/", include_in_schema=False)
+        def results_page():
+            return FileResponse(WEB_DIR / "results.html", media_type="text/html",
+                                headers={"X-Robots-Tag": "noindex, nofollow"})
+
         @app.get("/_internal/office/{cid}/")
         def office_page(cid: str):
             if not re.fullmatch(r"[0-9]{1,32}", cid):
@@ -1050,6 +1067,8 @@ def create_app(stores: Stores | None = None) -> FastAPI:
                      ("/_internal/catalog/", "Danh mục Link Mẫu"),
                      ("/_internal/map/", "Bản đồ hệ sinh thái"),
                      ("/_internal/van-phong-sieu-bo-doi/", "Văn Phòng Siêu Bộ Đôi")]
+            if cid == "69" and office_on:
+                links.insert(0, ("/_internal/office/results/", "Kết quả công việc"))
             if cid and office_on and cid in catalog.items:
                 links.insert(0, (f"/_internal/linkmau/{cid}/", f"Link Mẫu {cid}"))
             if cid and office_on and registry.get(cid) is not None:
