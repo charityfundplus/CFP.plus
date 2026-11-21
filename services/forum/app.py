@@ -886,6 +886,23 @@ def create_app(stores: Stores | None = None) -> FastAPI:
             return FileResponse(WEB_DIR / "directory.html", media_type="text/html",
                                 headers={"X-Robots-Tag": "noindex, nofollow"})
 
+        from services.forum.github_results import GitHubResults
+
+        github_results = GitHubResults()
+
+        @app.get("/api/hub/69/github-results", include_in_schema=False)
+        def public_github_results():
+            return JSONResponse(github_results.snapshot(), headers={"Cache-Control": "no-store"})
+
+        @app.get("/_internal/office/results.js", include_in_schema=False)
+        def results_js():
+            return FileResponse(WEB_DIR / "results.js", media_type="text/javascript")
+
+        @app.get("/_internal/office/results/", include_in_schema=False)
+        def results_page():
+            return FileResponse(WEB_DIR / "results.html", media_type="text/html",
+                                headers={"X-Robots-Tag": "noindex, nofollow"})
+
         @app.get("/_internal/office/{cid}/")
         def office_page(cid: str):
             if not re.fullmatch(r"[0-9]{1,32}", cid):

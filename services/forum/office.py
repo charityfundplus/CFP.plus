@@ -1196,24 +1196,28 @@ def build_router(engine: Engine, registry: Registry, current_user, max_wip: int 
                              .order_by(tasks_t.c.id)).mappings().all()
             rows = [t for t in rows if task_visible(c, p, t, t["canonical_id"])]
             tids = [t["id"] for t in rows]
-            ev = dict(c.execute(select(evidence_t.c.task_id, func.count()).where(evidence_t.c.task_id.in_(tids))
-                                .group_by(evidence_t.c.task_id)).all()) if tids else {}
+            evidence_urls = {}
+            if tids:
+                for task_id, url in c.execute(select(evidence_t.c.task_id, evidence_t.c.url)
+                                              .where(evidence_t.c.task_id.in_(tids)).order_by(evidence_t.c.id)):
+                    evidence_urls.setdefault(task_id, []).append(url)
             rv = c.execute(select(reviews_t).where(reviews_t.c.task_id.in_(tids))
                            .order_by(reviews_t.c.id)).mappings().all() if tids else []
         last_review = {x["task_id"]: x for x in rv}
         out = []
         for t in rows:
-            n_ev, lr = ev.get(t["id"], 0), last_review.get(t["id"])
+            urls, lr = evidence_urls.get(t["id"], []), last_review.get(t["id"])
             bucket, reason = BOARD_OF_STATUS[t["status"]], None
             if t["status"] == "CHANGES_REQUESTED":
                 reason = "Reviewer yêu cầu chỉnh sửa"
             if bucket == "REVIEWED":
                 independent = bool(lr and lr["decision"] == "ACCEPT" and lr["reviewer_id"] == t["reviewer_id"]
                                    and lr["reviewer_id"] != t["assignee_id"])
-                if not n_ev or not independent:
-                    bucket, reason = "BLOCKED", ("Thiếu execution evidence" if not n_ev else "Thiếu Review độc lập hợp lệ")
+                if not urls or not independent:
+                    bucket, reason = "BLOCKED", ("Thiếu execution evidence" if not urls else "Thiếu Review độc lập hợp lệ")
             out.append({"id": t["id"], "title": t["title"], "office_id": t["canonical_id"], "status": t["status"],
-                        "bucket": bucket, "reason": reason, "evidence": n_ev,
+                        "bucket": bucket, "reason": reason, "evidence": len(urls), "evidence_urls": urls,
+                        "owner": f"Tài khoản #{t['assignee_id']}",
                         "review": {"decision": lr["decision"], "at": (lr["at"].isoformat() if hasattr(lr["at"], "isoformat") else lr["at"])} if lr else None,
                         "updated_at": _row({"u": t["updated_at"]})["u"],
                         "url": f"/_internal/office/{t['canonical_id']}/#task:{t['id']}"})
