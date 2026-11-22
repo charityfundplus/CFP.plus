@@ -16,6 +16,10 @@
     });
   }
   function section(title) { var s = el('section', '', { 'class': 'section' }); s.appendChild(el('h2', title)); root.appendChild(s); return s; }
+  function searchKey(value) {
+    return value.trim().toLocaleLowerCase('vi').normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd');
+  }
   function render(h, d) {
     root.replaceChildren();
     root.appendChild(el('p', h.status, { 'role': 'status' }));
@@ -25,23 +29,26 @@
     h.chapters.forEach(function (c) { var li = el('li'); li.appendChild(el('a', 'Chương ' + c.id + ' • ' + c.name, { href: 'https://cfp.plus/' + encodeURIComponent(c.id) + '/' })); chapters.appendChild(li); });
     taxonomy.appendChild(chapters);
     var offices = section('Văn Phòng • Link riêng cố định');
+    var linkedOffices = h.offices.filter(function (o) { return /^[0-9]{1,32}$/.test(o.canonical_id); });
     offices.appendChild(el('label', 'Tìm theo tên hoặc ID Registry', { 'for': 'office-search' }));
     var input = el('input', '', { id: 'office-search', type: 'search', autocomplete: 'off', 'aria-controls': 'office-list' });
     offices.appendChild(input);
     var count = el('p', '', { 'role': 'status', 'aria-live': 'polite', 'data-testid': 'directory-count' }); offices.appendChild(count);
     var list = el('ul', '', { id: 'office-list', 'class': 'office-grid' }); offices.appendChild(list);
     function filter() {
-      var q = input.value.trim().toLocaleLowerCase('vi');
-      var found = h.offices.filter(function (o) { return (o.name + ' ' + o.canonical_id).toLocaleLowerCase('vi').includes(q); });
+      var q = searchKey(input.value);
+      var found = linkedOffices.filter(function (o) {
+        return searchKey(o.name).includes(q) || String(o.canonical_id).includes(q);
+      });
       list.replaceChildren();
       found.forEach(function (o) {
         var li = el('li', '', { 'class': 'chapter-card' });
         // Derive only a technical route from an existing API office ID, never accept arbitrary hrefs.
-        if (!/^[0-9]{1,32}$/.test(o.canonical_id)) return;
         li.appendChild(el('a', o.name + ' • ' + o.canonical_id, { href: '/_internal/office/' + o.canonical_id + '/', 'data-testid': 'directory-office' }));
         li.appendChild(el('p', 'Xác minh: ' + o.verification)); list.appendChild(li);
       });
-      count.textContent = found.length ? found.length + ' Văn Phòng' : 'Chưa có Văn Phòng phù hợp.';
+      count.textContent = found.length ? found.length + ' Văn Phòng' : linkedOffices.length
+        ? 'Chưa có Văn Phòng phù hợp.' : 'Chưa có bản ghi Văn Phòng trong danh sách.';
     }
     input.addEventListener('input', filter); filter();
     var countries = section('Danh bạ quốc gia • Registry chỉ đọc');

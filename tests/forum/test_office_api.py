@@ -72,6 +72,28 @@ def test_registry_chain_and_no_invented_ids():
     assert reg.get("691183").type == "registry_record"  # hồ sơ md có sẵn, không suy diễn thêm
 
 
+def test_hub_office_list_requires_a_persisted_office(world):
+    c = TestClient(create_app(world["st"]))
+    entity = ok(c.get("/api/directory/691181"), 200)
+    assert entity["entity"]["name"] == "ChatGPT"
+    assert [entry["id"] for entry in entity["chain"]] == ["911", "6911", "69118", "691181"]
+
+    hub = ok(c.get("/api/hub/69"), 200)
+    offices = {entry["canonical_id"]: entry for entry in hub["offices"]}
+    assert "691181" not in offices
+    assert c.get("/api/office/offices/691181").status_code == 404
+
+    listed = offices[CID]
+    page = c.get(listed["link"])
+    assert page.status_code == 200 and "noindex" in page.headers["x-robots-tag"]
+    public = ok(c.get(f"/api/office/offices/{CID}"), 200)
+    assert public["office"]["display_name"] == listed["name"]
+    assert public["registry_chain"][-1]["id"] == CID
+    assert public["tasks"] == [] and public["maintainers"] is None
+    authorized = ok(world["lead"].get(f"/api/office/offices/{CID}"), 200)
+    assert any(task["id"] == world["out"]["task"] for task in authorized["tasks"])
+
+
 # ---------- integration: luồng xuyên suốt
 
 def test_full_flow_and_reload_after_restart(world, urls):
