@@ -1,0 +1,62 @@
+name: HUB69 Evidence (sandbox)
+on:
+  pull_request:
+    paths:
+      - 'services/forum/**'
+      - 'tests/forum/**'
+      - '.github/workflows/hub69-evidence.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: hub69-evidence-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  evidence:
+    name: ${{ matrix.lane }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        lane: [backend-api, frontend-browser, review-evidence, security-evidence]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Generate evidence manifest
+        shell: bash
+        env:
+          LANE: ${{ matrix.lane }}
+          SHA: ${{ github.sha }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          mkdir -p evidence
+          python3 - <<'PY'
+          import json, os, datetime
+          lane=os.environ["LANE"]
+          # No test is marked PASS unless executed.
+          report={"lane":lane,"sha":os.environ["SHA"],"run_id":os.environ["RUN_ID"],
+                  "utc":datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                  "status":"NOT_RUN","tests":0,"skipped":0,
+                  "blocker":"Actual lane test commands and independent reviewer not yet wired",
+                  "reviewer":None}
+          with open(f"evidence/{lane}.json","w") as f: json.dump(report,f,indent=2)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hub69-${{ matrix.lane }}-${{ github.run_id }}
+          path: evidence/*.json
+          retention-days: 7
+  coordination-summary:
+    if: always()
+    needs: [evidence]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Report coordination status
+        env:
+          RESULT: ${{ needs.evidence.result }}
+        run: |
+          echo "Four evidence lanes completed with matrix result: $RESULT"
+          echo "No independent review or production approval is implied."
