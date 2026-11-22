@@ -1,0 +1,49 @@
+name: Website Content
+
+# Validation only. This workflow never deploys, merges or writes to the repo.
+on:
+  pull_request:
+    paths:
+      - 'content/**'
+      - 'tools/**'
+      - 'deploy/**'
+      - 'tests/website/**'
+      - 'Dockerfile'
+      - '.dockerignore'
+      - '.github/workflows/website_content.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'content/**'
+      - 'tools/**'
+      - 'deploy/**'
+      - 'Dockerfile'
+      - '.dockerignore'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate content pages
+        run: python3 tools/build_pages.py --check
+      - name: Unit tests
+        run: python3 -m unittest discover -s tests/website -v
+      - name: Build production image
+        run: docker build -t cfp-site:ci .
+      - name: Image must not contain internal files
+        run: |
+          leaked=$(docker run --rm cfp-site:ci sh -c 'cd /usr/share/nginx/html && find . -mindepth 1 \( -name ".*" -o -name Dockerfile -o -path ./tools -o -path ./tests -o -path ./deploy -o -name "*.py" \) -print')
+          if [ -n "$leaked" ]; then echo "LEAKED:"; echo "$leaked"; exit 1; fi
+          echo "PASS: no dotfiles, Dockerfile, tools, tests, deploy or .py in web root"
+      - name: Smoke and exposure test
+        run: |
+          docker run -d --name cfp -p 8080:8080 cfp-site:ci
+          for i in $(seq 1 20); do curl -fs http://localhost:8080/ >/dev/null && break; sleep 1; done
+          tools/smoke_test_site.sh http://localhost:8080

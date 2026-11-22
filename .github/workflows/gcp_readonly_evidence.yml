@@ -1,0 +1,62 @@
+name: GCP Read-only Evidence
+
+# READ ONLY. Manual trigger only. Requires the `gcp-readonly` environment
+# (with required reviewers) and the WIF variables described in
+# ops/GCP_IAM_LEAST_PRIVILEGE_VI.md. No keys, no write calls.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+env:
+  PROJECT: abiding-robot-507708-i3
+  REGION: asia-southeast1
+  SERVICE: cfp-plus
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    environment: gcp-readonly
+    steps:
+      - name: Check configuration
+        run: |
+          test -n "${{ vars.GCP_WIF_PROVIDER }}" || { echo "BLOCKED: GCP_WIF_PROVIDER not set (see ops/GCP_IAM_LEAST_PRIVILEGE_VI.md)"; exit 1; }
+          test -n "${{ vars.GCP_READONLY_SA }}" || { echo "BLOCKED: GCP_READONLY_SA not set"; exit 1; }
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ vars.GCP_WIF_PROVIDER }}
+          service_account: ${{ vars.GCP_READONLY_SA }}
+      - uses: google-github-actions/setup-gcloud@v2
+      - name: Collect Cloud Run / Cloud Build metadata (read only)
+        run: |
+          mkdir -p ev && cd ev
+          gcloud run services describe $SERVICE --project $PROJECT --region $REGION \
+            --format='json(metadata.name,status.url,status.traffic,status.latestReadyRevisionName,status.latestCreatedRevisionName,status.conditions,spec.template.spec.containers[0].image)' > service.json
+          gcloud run revisions list --service $SERVICE --project $PROJECT --region $REGION --limit 20 \
+            --format='json(metadata.name,metadata.creationTimestamp,status.conditions,status.imageDigest,metadata.labels)' > revisions.json
+          gcloud run domain-mappings list --project $PROJECT --region $REGION --format=json > domain-mappings.json 2>&1 || true
+          for LOC in global $REGION; do
+            gcloud builds list --project $PROJECT --region $LOC --limit 20 \
+              --format='json(id,status,createTime,finishTime,substitutions.COMMIT_SHA,substitutions.BRANCH_NAME,buildTriggerId,failureInfo,statusDetail)' > builds-$LOC.json 2>&1 || true
+            gcloud builds triggers list --project $PROJECT --region $LOC \
+              --format='json(id,name,github,filename,build.steps[].name,build.steps[].args,disabled)' > triggers-$LOC.json 2>&1 || true
+          done
+      - name: Collect warning/error logs (30 days, no request PII)
+        run: |
+          cd ev
+          gcloud logging read "severity>=WARNING AND ((resource.type=\"cloud_run_revision\" AND resource.labels.service_name=\"$SERVICE\") OR resource.type=\"build\")" \
+            --project $PROJECT --freshness 30d --limit 200 \
+            --format='json(timestamp,severity,resource.type,resource.labels.revision_name,resource.labels.build_id,textPayload,jsonPayload.message,protoPayload.status)' > logs.json || true
+      - name: Live site cross-check
+        run: |
+          cd ev
+          curl -sI https://cfp.plus/ > live-headers.txt
+          echo "main_sha=${GITHUB_SHA}" > source.txt
+          sha256sum *.json *.txt > SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gcp-readonly-evidence-${{ github.run_id }}
+          path: ev/
+          retention-days: 14
