@@ -4,19 +4,18 @@ Run: python -m tests.forum.directory_browser
 Requires playwright Python package and /usr/bin/chromium (override CFP_BROWSER).
 Not an iPhone Safari or PostgreSQL RLS acceptance test.
 """
+from contextlib import ExitStack
 import json
 import os
 from pathlib import Path
-import socket
-import subprocess
-import sys
 import tempfile
+from threading import Thread
 import time
 
-import httpx
 from fastapi.testclient import TestClient
 from playwright.sync_api import sync_playwright
 from sqlalchemy import insert
+import uvicorn
 
 from services.forum.app import Stores, create_app
 from services.forum.office import roles_t
@@ -34,21 +33,22 @@ def main():
         with stores.office.begin() as c:
             c.execute(insert(roles_t), [{'user_id': ids[0], 'role': 'governance'}, {'user_id': ids[2], 'role': 'reviewer'}])
         seeded = run_flow(*clients, ids[1], ids[2], prefix='[Directory sandbox] ')
+        for client in clients:
+            client.close()
         stores.dispose()
-        env = {**os.environ, 'CFP_FORUM_AUTH_DB': urls['auth'], 'CFP_FORUM_DB_SIEU_BO_DOI': urls['sieu-bo-doi'],
-               'CFP_FORUM_DB_SI_AI_HSTDN': urls['si-ai-hstdn'], 'CFP_OFFICE_DB': urls['office']}
-        with socket.socket() as s:
-            s.bind(('127.0.0.1', 0)); port = s.getsockname()[1]
-        base = f'http://127.0.0.1:{port}'
-        with open(Path(tmp) / 'server.log', 'w') as log:
-            proc = subprocess.Popen([sys.executable, '-m', 'uvicorn', 'services.forum.asgi:app', '--host', '127.0.0.1', '--port', str(port)], env=env, stdout=log, stderr=log)
+        server_stores = Stores(urls['auth'], {k: urls[k] for k in ('sieu-bo-doi', 'si-ai-hstdn')}, urls['office'])
+        server = uvicorn.Server(uvicorn.Config(create_app(server_stores), host='127.0.0.1', port=0, log_level='warning'))
+        thread = Thread(target=server.run, daemon=True)
+        thread.start()
+        with ExitStack() as cleanup:
+            cleanup.callback(server_stores.dispose)
             try:
                 for _ in range(100):
-                    try:
-                        if httpx.get(base + '/api/health').status_code == 200: break
-                    except httpx.HTTPError: pass
+                    if server.started: break
                     time.sleep(.1)
                 else: raise RuntimeError('server not ready')
+                port = server.servers[0].sockets[0].getsockname()[1]
+                base = f'http://127.0.0.1:{port}'
                 with sync_playwright() as pw:
                     browser_path = os.environ.get('CFP_BROWSER') or (pw.chromium.executable_path if Path(pw.chromium.executable_path).exists() else '/usr/bin/chromium')
                     browser = pw.chromium.launch(executable_path=browser_path, args=['--no-sandbox'])
@@ -63,6 +63,11 @@ def main():
                         assert page.evaluate('document.documentElement.scrollWidth <= innerWidth')
                         page.get_by_label('Tìm theo tên hoặc ID Registry').fill('missing')
                         assert page.locator('[data-testid="directory-office"]').count() == 0
+                        assert page.get_by_test_id('directory-count').inner_text() == 'Chưa có Văn Phòng phù hợp.'
+                        page.get_by_label('Tìm theo tên hoặc ID Registry').fill('  CLAUDE  ')
+                        assert page.get_by_test_id('directory-office').count() == 1
+                        page.get_by_label('Tìm theo tên hoặc ID Registry').fill('691181')
+                        assert page.get_by_test_id('directory-office').count() == 0
                         page.get_by_label('Tìm theo tên hoặc ID Registry').fill('691121')
                         page.get_by_test_id('directory-office').tap()
                         page.locator('[data-ready="1"]').wait_for()
@@ -130,10 +135,35 @@ def main():
                     page.locator('[data-ready="1"]').wait_for()
                     assert page.get_by_test_id('directory-office').count() == 1
                     checks.append('API503 → visible error → retry real API PASS')
+                    def show_offices(route, offices):
+                        response = route.fetch()
+                        route.fulfill(response=response, json={**response.json(), 'offices': offices})
+
+                    page.route('**/api/hub/69', lambda route: show_offices(route, [
+                        {'canonical_id': '691121', 'name': 'Đối tác kiểm thử', 'verification': 'sandbox'},
+                        {'canonical_id': 'invalid', 'name': 'Đối tác kiểm thử', 'verification': 'sandbox'},
+                    ]))
+                    page.reload()
+                    page.locator('[data-ready="1"]').wait_for()
+                    page.get_by_label('Tìm theo tên hoặc ID Registry').fill('doi tac')
+                    assert page.get_by_test_id('directory-office').count() == 1
+                    assert page.get_by_test_id('directory-count').inner_text() == '1 Văn Phòng'
+                    assert page.get_by_test_id('directory-office').get_attribute('href') == '/_internal/office/691121/'
+                    checks.append('Accent-insensitive search and valid Office count PASS')
+                    page.unroute('**/api/hub/69')
+                    page.route('**/api/hub/69', lambda route: show_offices(route, []))
+                    page.reload()
+                    page.locator('[data-ready="1"]').wait_for()
+                    assert page.get_by_test_id('directory-office').count() == 0
+                    assert page.get_by_test_id('directory-count').inner_text() == 'Chưa có bản ghi Văn Phòng trong danh sách.'
+                    checks.append('Empty Office list → distinct empty state PASS')
                     browser.close()
                     print(json.dumps({'checks': checks, 'engine': 'Chromium; not Safari', 'database': 'temporary SQLite; no external mutations'}, ensure_ascii=False, indent=2))
             finally:
-                proc.terminate(); proc.wait(timeout=10)
+                server.should_exit = True
+                thread.join(timeout=10)
+                if thread.is_alive():
+                    raise RuntimeError('server did not shut down')
 
 
 if __name__ == '__main__':
