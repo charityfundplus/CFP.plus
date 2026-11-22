@@ -2,12 +2,13 @@
 
 python -m services.forum.admin grant-admin <forum_key> <email>
 python -m services.forum.admin grant-office-role <governance|reviewer> <email>
+python -m services.forum.admin issue-recovery-code <email>
 """
 import sys
 
 from sqlalchemy import insert, select, update
 
-from services.forum.app import FORUMS, Stores, members_t, users_t
+from services.forum.app import FORUMS, Stores, issue_recovery_code, members_t, users_t
 
 
 def grant_admin(forum_key: str, email: str) -> None:
@@ -55,5 +56,19 @@ if __name__ == "__main__":
         grant_admin(sys.argv[2], sys.argv[3])
     elif len(sys.argv) == 4 and sys.argv[1] == "grant-office-role":
         grant_office_role(sys.argv[2], sys.argv[3])
+    elif len(sys.argv) == 3 and sys.argv[1] == "issue-recovery-code":
+        if not sys.stdout.isatty():
+            raise SystemExit("Cần terminal tương tác riêng để hiển thị mã khôi phục.")
+        confirmation = input("Đã xác minh chủ tài khoản và có kênh gửi riêng? Nhập YES: ")
+        if confirmation != "YES":
+            raise SystemExit("Chưa cấp mã.")
+        stores = Stores.from_env()
+        try:
+            code = issue_recovery_code(stores, sys.argv[2])
+        finally:
+            stores.dispose()
+        if code is None:
+            raise SystemExit("Không tìm thấy tài khoản hiện hữu.")
+        print(f"Mã dùng một lần, hiệu lực 15 phút: {code}")
     else:
         raise SystemExit(__doc__)
