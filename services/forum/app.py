@@ -121,6 +121,12 @@ sessions_t = Table("sessions", auth_md,
                    Column("user_id", Integer, ForeignKey("users.id"), nullable=False),
                    Column("expires_at", DateTime(timezone=True), nullable=False))
 
+recovery_t = Table("password_recovery", auth_md,
+                   Column("token_hash", String(64), primary_key=True),
+                   Column("user_id", Integer, ForeignKey("users.id"), nullable=False, index=True),
+                   Column("expires_at", DateTime(timezone=True), nullable=False))
+RECOVERY_TTL = timedelta(minutes=15)
+
 forum_md = MetaData()
 meta_t = Table("forum_meta", forum_md,
                Column("forum_key", String(64), primary_key=True))
@@ -363,6 +369,26 @@ class LoginIn(BaseModel):
     password: str = Field(max_length=200)
 
 
+class RecoveryIn(BaseModel):
+    code: str = Field(min_length=43, max_length=43, pattern=r"^[A-Za-z0-9_-]+$")
+    password: str = Field(min_length=8, max_length=200)
+
+
+def issue_recovery_code(stores: Stores, email: str) -> str | None:
+    """Run only from an authorized operator session after confirming account ownership."""
+    code = secrets.token_urlsafe(32)
+    with stores.auth.begin() as c:
+        # Serialize issuance and consumption for this account on both supported databases.
+        uid = c.execute(update(users_t).where(users_t.c.email == email.strip().lower())
+                        .values(name=users_t.c.name).returning(users_t.c.id)).scalar_one_or_none()
+        if uid is None:
+            return None
+        c.execute(recovery_t.delete().where(recovery_t.c.user_id == uid))
+        c.execute(insert(recovery_t).values(token_hash=_tok_hash(code), user_id=uid,
+                                            expires_at=datetime.now(timezone.utc) + RECOVERY_TTL))
+    return code
+
+
 class PostIn(BaseModel):
     title: str = Field(min_length=1, max_length=200)
     body: str = Field(min_length=1, max_length=10000)
@@ -519,7 +545,7 @@ def create_app(stores: Stores | None = None) -> FastAPI:
                     return finish(deny(413, "Yêu cầu quá lớn."))
             except ValueError:
                 return finish(deny(400, "Content-Length không hợp lệ."))
-            bucket = "auth" if path in {"/api/auth/login", "/api/auth/register"} else "write"
+            bucket = "auth" if path in {"/api/auth/login", "/api/auth/register", "/api/auth/recover"} else "write"
             limit, window = limits[bucket]
             wait = limiter.hit((bucket, client_ip(request)), limit, window)
             if wait:
@@ -585,10 +611,16 @@ def create_app(stores: Stores | None = None) -> FastAPI:
         o = request.headers.get("origin")
         return not o or embed_origin(o) is not None or origin_ok(request)
 
-    def start_session(request: Request, resp: Response, user_id: int) -> str:
+    def start_session(request: Request, resp: Response, user_id: int, password_hash: str | None = None) -> str:
         tok = secrets.token_urlsafe(32)
         ttl = embed_ttl if wants_token(request) else SESSION_TTL
         with st.auth.begin() as c:
+            if password_hash is not None:
+                # A concurrent recovery must not leave a session issued from the old password.
+                match = c.execute(update(users_t).where(users_t.c.id == user_id, users_t.c.pw_hash == password_hash)
+                                  .values(name=users_t.c.name).returning(users_t.c.id)).scalar_one_or_none()
+                if match is None:
+                    raise HTTPException(401, "Email hoặc mật khẩu không đúng.")
             c.execute(insert(sessions_t).values(token_hash=_tok_hash(tok), user_id=user_id,
                                                 expires_at=datetime.now(timezone.utc) + ttl))
         if ttl is embed_ttl:
@@ -720,8 +752,32 @@ def create_app(stores: Stores | None = None) -> FastAPI:
         ok = verify_password(data.password, row["pw_hash"] if row else _DUMMY_HASH)
         if not row or not ok:
             raise HTTPException(401, "Email hoặc mật khẩu không đúng.")
-        tok = start_session(request, resp, row["id"])
+        tok = start_session(request, resp, row["id"], row["pw_hash"])
         return with_token(request, {"id": row["id"], "email": row["email"], "name": row["name"]}, tok)
+
+    @app.post("/api/auth/recover")
+    def recover(data: RecoveryIn, resp: Response):
+        digest = _tok_hash(data.code)
+        invalid = "Mã khôi phục không hợp lệ hoặc đã hết hạn."
+        eligible = (recovery_t.c.token_hash == digest,
+                    recovery_t.c.expires_at > datetime.now(timezone.utc))
+        with st.auth.begin() as c:
+            # Acquire the account lock before consuming the code, matching issuance.
+            candidate = select(recovery_t.c.user_id).where(*eligible).scalar_subquery()
+            uid = c.execute(update(users_t).where(users_t.c.id == candidate)
+                            .values(name=users_t.c.name).returning(users_t.c.id)).scalar_one_or_none()
+            if uid is None:
+                raise HTTPException(400, invalid)
+            claimed = c.execute(recovery_t.delete().where(recovery_t.c.token_hash == digest, recovery_t.c.user_id == uid,
+                                                         recovery_t.c.expires_at > datetime.now(timezone.utc))
+                                .returning(recovery_t.c.user_id)).scalar_one_or_none()
+            if claimed is None:
+                raise HTTPException(400, invalid)
+            c.execute(update(users_t).where(users_t.c.id == uid).values(pw_hash=hash_password(data.password)))
+            c.execute(sessions_t.delete().where(sessions_t.c.user_id == uid))
+        resp.delete_cookie(SESSION_COOKIE, path="/")
+        resp.headers["Cache-Control"] = "no-store"
+        return {"ok": True}
 
     @app.post("/api/auth/logout")
     def logout(request: Request, resp: Response):

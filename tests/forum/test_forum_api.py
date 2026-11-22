@@ -16,7 +16,7 @@ from sqlalchemy import create_engine, text
 
 from services.forum import admin
 from tests.forum.pgschema import schema_of, truncate_all
-from services.forum.app import Stores, create_app
+from services.forum.app import Stores, create_app, issue_recovery_code
 
 H = {"X-CFP-Forum": "1"}
 
@@ -41,7 +41,7 @@ def urls(tmp_path_factory):
     for url in env.values():  # bắt đầu sạch — chỉ trên database test
         eng = create_engine(url)
         with eng.begin() as c:
-            for t in ("comments", "posts", "members", "forum_meta", "sessions", "users"):
+            for t in ("comments", "posts", "members", "forum_meta", "password_recovery", "sessions", "users"):
                 c.execute(text(f"DROP TABLE IF EXISTS {t}"))
         eng.dispose()
     return env
@@ -469,3 +469,22 @@ def test_ephemeral_data_inventory_gates_restart(tmp_path, monkeypatch):
                    "safe_to_restart": False}
     assert "nguoi.that" not in t.get("/api/health").text  # chỉ số đếm, không lộ email/nội dung
     st.dispose()
+
+def test_recovery_rotates_password_revokes_sessions_and_consumes_code(urls):
+    c = make_client(urls)
+    email = register(c)
+    stores = c.app.state.stores
+    stale = issue_recovery_code(stores, email)
+    code = issue_recovery_code(stores, email)
+    assert stale and code and stale != code
+    recovery = make_client(urls)
+
+    def reset(value):
+        return recovery.post("/api/auth/recover", json={"code": value, "password": "new-test-password"}, headers=H)
+
+    assert reset(stale).status_code == 400
+    assert reset(code).status_code == 200
+    assert reset(code).status_code == 400
+    assert c.get("/api/auth/me").json()["user"] is None
+    assert c.post("/api/auth/login", json={"email": email, "password": "matkhau-p0"}, headers=H).status_code == 401
+    assert c.post("/api/auth/login", json={"email": email, "password": "new-test-password"}, headers=H).status_code == 200

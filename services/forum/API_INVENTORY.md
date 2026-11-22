@@ -29,6 +29,7 @@ Sinh tự động bởi `python -m services.forum.inventory --write` • CI ki�
 | auth | POST | `/api/auth/login` | công khai |  | header X-CFP-Forum + Origin | auth (cfp_forum_auth) |
 | auth | POST | `/api/auth/logout` | công khai |  | header X-CFP-Forum + Origin | auth (cfp_forum_auth) |
 | auth | GET | `/api/auth/me` | công khai (+phiên nếu có) |  |  | auth (cfp_forum_auth) |
+| auth | POST | `/api/auth/recover` | công khai |  | header X-CFP-Forum + Origin | auth (cfp_forum_auth) |
 | auth | POST | `/api/auth/register` | công khai |  | header X-CFP-Forum + Origin | auth (cfp_forum_auth) |
 | catalog | GET | `/api/catalog` | công khai |  |  | repo: trang <ID>/index.html đã xuất bản (chỉ đọc) + Registry |
 | catalog | GET | `/api/catalog/meta` | công khai |  |  | repo: trang <ID>/index.html đã xuất bản (chỉ đọc) + Registry |

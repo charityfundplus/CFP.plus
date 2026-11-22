@@ -83,6 +83,28 @@
         reg ? { email: email.value, password: pw.value, name: name.value } : { email: email.value, password: pw.value })
         .then(function () { return reload(reg ? 'Đã tạo tài khoản và đăng nhập.' : 'Đăng nhập thành công.'); });
     });
+    var recovery = el('button', { type: 'button', 'class': 'button secondary', text: 'Quên mật khẩu?' });
+    recovery.addEventListener('click', function () {
+      var code = el('input', { required: '', minlength: '43', maxlength: '43', autocomplete: 'off' });
+      var next = el('input', { type: 'password', required: '', minlength: '8', maxlength: '200', autocomplete: 'new-password' });
+      var confirm = el('input', { type: 'password', required: '', minlength: '8', maxlength: '200', autocomplete: 'new-password' });
+      var back = el('button', { type: 'button', 'class': 'button secondary', text: 'Về đăng nhập' });
+      var reset = el('form', { 'class': 'forum-form' }, [
+        el('h2', { text: 'Khôi phục mật khẩu CFP+ Forum' }),
+        el('p', { text: 'Sau khi xác minh chủ tài khoản, quản trị viên cung cấp mã dùng một lần qua kênh riêng. Mã có hiệu lực 15 phút.' }),
+        field('Mã khôi phục', code), field('Mật khẩu mới (≥ 8 ký tự)', next), field('Nhập lại mật khẩu mới', confirm),
+        el('button', { type: 'submit', 'class': 'button primary', text: 'Đặt lại mật khẩu' }), back]);
+      back.addEventListener('click', function () { return reload(); });
+      onSubmit(reset, function () {
+        if (next.value !== confirm.value) throw new Error('Hai mật khẩu chưa khớp.');
+        return api('POST', '/auth/recover', { code: code.value.trim(), password: next.value })
+          .then(function () { return reload('Đã đặt lại mật khẩu. Hãy đăng nhập lại.'); });
+      });
+      flash('');
+      f.replaceWith(reset);
+      code.focus();
+    });
+    f.appendChild(recovery);
     return f;
   }
 
