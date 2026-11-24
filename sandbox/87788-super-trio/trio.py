@@ -547,7 +547,9 @@ def main(argv=None) -> int:
 
     inv, plan, prov, platforms = _load_all()
     if args.cmd == "check":
-        print(json.dumps({k: v for k, v in inv.items() if k != "active"}, ensure_ascii=False, indent=2))
+        out = {k: v for k, v in inv.items() if k != "active"}
+        out["active_count"] = len(inv["active"])
+        print(json.dumps(out, ensure_ascii=False, indent=2))
         return 1 if any(f["severity"] == "HIGH" for f in inv["findings"]) else 0
     if args.cmd == "plan":
         print(json.dumps({"plan_sha256": plan["plan_sha256"], "count": plan["count"],

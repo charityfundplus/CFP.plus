@@ -19,8 +19,9 @@ Văn phòng: https://app.notion.com/p/422caac9a55781f2ad8ce1a834dabc86
    - `python3 trio.py verify` • đọc lại, so hash và danh tính.
    - `python3 trio.py recover` / `rollback RUN_ID` • khôi phục khi lỗi.
    - `python3 trio.py evidence` • ghi `evidence/REPORT.md` và `evidence.json`.
-3. Mọi thay đổi chạy `python3 -m unittest discover -s tests` và `bash tests/mutation.sh`. Không chạy được thì ghi NOT RUN, không đoán kết quả.
-4. Kết quả gửi 87783 để review, báo 8778.
+3. Mọi con số và trạng thái trong câu trả lời phải lấy từ output công cụ chạy trong chính phiên này. Không trả lời từ trí nhớ, từ `evidence/REPORT.md` cũ hay suy đoán; chưa chạy được thì ghi NOT RUN.
+4. Mọi thay đổi chạy `python3 -m unittest discover -s tests` và `bash tests/mutation.sh`. Không chạy được thì ghi NOT RUN, không đoán kết quả.
+5. Kết quả gửi 87783 để review, báo 8778.
 
 ## Giới hạn cứng
 

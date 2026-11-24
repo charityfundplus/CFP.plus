@@ -78,12 +78,12 @@
     {
       "key": "github",
       "mode": "REPO_CONFIG",
-      "session_check": "READ PASS (clone + REST pulls/issues); WRITE = push nhánh claude/87788-super-trio-upgrade, xem Evidence PR"
+      "session_check": "P1: READ+WRITE PASS (PR #253). P2: READ PASS (clone công khai); WRITE BỊ CHẶN trong phiên P2 (add_repo push bị từ chối, token gh không hợp lệ) → commit cục bộ, chờ quyền"
     },
     {
       "key": "claude_code",
       "mode": "REPO_CONFIG",
-      "session_check": "Tệp cấu hình tạo trong PR này; runtime Agent 87788 chưa chạy độc lập"
+      "session_check": "P2 2026-11-24: Agent 87788 chạy độc lập headless (claude -p --agent cfp-87788-super-trio-upgrade). Run 1 (haiku) FAIL: trả lời không gọi công cụ, sai active (104≠103) → đã thêm quy tắc output-công-cụ + active_count. Run 2 (sonnet) PASS: gọi Bash trio.py check, số liệu khớp, 0 sửa tệp. Session 8735f465-2675-4c3a-88bd-6038e78bb11d"
     },
     {
       "key": "chatgpt_codex",
@@ -93,17 +93,17 @@
     {
       "key": "notion",
       "mode": "API_RUNTIME",
-      "session_check": "READ PASS (fetch văn phòng 87788 và DANH MỤC qua Notion MCP)"
+      "session_check": "READ PASS (P1) • P2 2026-11-24: WRITE vào văn phòng 87788 qua Notion MCP (xem evidence/PHASE2.md)"
     },
     {
       "key": "google_drive",
       "mode": "API_RUNTIME",
-      "session_check": "CONNECTOR PRESENT • NOT TESTED"
+      "session_check": "P2 2026-11-24: ACK PASS • READ PASS (search, 0 kết quả 'CFP'/'87788') • WRITE PASS (tạo Doc riêng tư 1XEdXo7gjAnQObg-Bbs9lVtYahIo1r7cYcZsrHjX1E2Y) • READBACK PASS (marker khớp) • quyền: chỉ owner"
     },
     {
       "key": "canva",
       "mode": "API_RUNTIME",
-      "session_check": "CONNECTOR PRESENT • NOT TESTED"
+      "session_check": "P2 2026-11-24: ACK PASS • READ PASS (search-designs 5 thiết kế CFP+, read-design DAHZfNK9sdQ) • WRITE PASS (comment KAHb3DMvZiY) • READBACK PASS (list-comments khớp marker)"
     },
     {
       "key": "gemini",
@@ -146,11 +146,5 @@
   },
   "schema": "cfp87788.evidence.v1",
   "status": "SANDBOX • REVIEW CANDIDATE • HOLD ACTIVATION • PRODUCTION NO-GO",
-  "verify": {
-    "checked": 103,
-    "hash_ok": 103,
-    "identity_ok": 103,
-    "matches_plan": 103,
-    "problems": []
-  }
+  "verify": null
 }

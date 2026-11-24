@@ -42,6 +42,16 @@ class TestInventory(unittest.TestCase):
         self.assertFalse([f for f in inv["findings"] if f["severity"] == "HIGH"])
         self.assertNotIn("2273", [r["id"] for r in inv["active"]])
 
+    def test_check_cli_reports_active_count(self):
+        import contextlib, io
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            rc = trio.main(["check"])
+        out = json.loads(buf.getvalue())
+        self.assertEqual(rc, 0)
+        self.assertEqual(out["active_count"], 103)
+        self.assertNotIn("active", out)
+
     def test_leading_zero_ids_distinct(self):
         ids = [r["id"] for r in fixture_rows()]
         self.assertIn("0", ids)

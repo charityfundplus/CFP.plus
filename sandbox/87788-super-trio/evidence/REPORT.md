@@ -25,18 +25,17 @@
 ## Kế hoạch nâng cấp
 - 103 lớp phủ Siêu Bộ Tam • plan sha256 `0c282e98f2c8344bbf455fd5821e23740a0445914feeea18cef8fb3a85adf1f7`
 - Năng lực 3 trụ cột: tất cả NOT VERIFIED (không khai báo khi chưa có Evidence).
-- Readback sandbox: 103 tệp • hash khớp 103 • danh tính khớp 103 • khớp kế hoạch 103 • vấn đề 0
 
 ## Nền tảng (kiểm tra thực tế trong phiên)
 
 | Nền tảng | Chế độ | Kiểm tra |
 | --- | --- | --- |
-| github | REPO_CONFIG | READ PASS (clone + REST pulls/issues); WRITE = push nhánh claude/87788-super-trio-upgrade, xem Evidence PR |
-| claude_code | REPO_CONFIG | Tệp cấu hình tạo trong PR này; runtime Agent 87788 chưa chạy độc lập |
+| github | REPO_CONFIG | P1: READ+WRITE PASS (PR #253). P2: READ PASS (clone công khai); WRITE BỊ CHẶN trong phiên P2 (add_repo push bị từ chối, token gh không hợp lệ) → commit cục bộ, chờ quyền |
+| claude_code | REPO_CONFIG | P2 2026-11-24: Agent 87788 chạy độc lập headless (claude -p --agent cfp-87788-super-trio-upgrade). Run 1 (haiku) FAIL: trả lời không gọi công cụ, sai active (104≠103) → đã thêm quy tắc output-công-cụ + active_count. Run 2 (sonnet) PASS: gọi Bash trio.py check, số liệu khớp, 0 sửa tệp. Session 8735f465-2675-4c3a-88bd-6038e78bb11d |
 | chatgpt_codex | NATIVE_MANUAL | NOT TESTED • không có kết nối OpenAI trong phiên |
-| notion | API_RUNTIME | READ PASS (fetch văn phòng 87788 và DANH MỤC qua Notion MCP) |
-| google_drive | API_RUNTIME | CONNECTOR PRESENT • NOT TESTED |
-| canva | API_RUNTIME | CONNECTOR PRESENT • NOT TESTED |
+| notion | API_RUNTIME | READ PASS (P1) • P2 2026-11-24: WRITE vào văn phòng 87788 qua Notion MCP (xem evidence/PHASE2.md) |
+| google_drive | API_RUNTIME | P2 2026-11-24: ACK PASS • READ PASS (search, 0 kết quả 'CFP'/'87788') • WRITE PASS (tạo Doc riêng tư 1XEdXo7gjAnQObg-Bbs9lVtYahIo1r7cYcZsrHjX1E2Y) • READBACK PASS (marker khớp) • quyền: chỉ owner |
+| canva | API_RUNTIME | P2 2026-11-24: ACK PASS • READ PASS (search-designs 5 thiết kế CFP+, read-design DAHZfNK9sdQ) • WRITE PASS (comment KAHb3DMvZiY) • READBACK PASS (list-comments khớp marker) |
 | gemini | NATIVE_MANUAL | NOT TESTED • không có kết nối |
 | grok | NATIVE_MANUAL | NOT TESTED • không có kết nối |
 | perplexity | NATIVE_MANUAL | NOT TESTED • không có kết nối |
