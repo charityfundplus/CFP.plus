@@ -1,0 +1,56 @@
+{
+  "url": "https://mcp.cfp.plus/mcp-public/",
+  "platform": "gemini",
+  "results": [
+    {
+      "check": "endpoint_reachable",
+      "result": "FAIL",
+      "detail": "POST https://mcp.cfp.plus/mcp-public/ → 404 {\"status\":\"error\",\"code\":404,\"message\":\"Application not found\",\"request_id\":\"nyUHSTuXQJqqGRZK0-QtfA\"}"
+    },
+    {
+      "check": "unauth_401_www_authenticate",
+      "result": "FAIL",
+      "detail": "404 WWW-Authenticate=''"
+    },
+    {
+      "check": "protected_resource_metadata",
+      "result": "FAIL",
+      "detail": "không có tại ['https://mcp.cfp.plus/.well-known/oauth-protected-resource/mcp-public', 'https://mcp.cfp.plus/.well-known/oauth-protected-resource']"
+    },
+    {
+      "check": "authorization_server_metadata",
+      "result": "FAIL",
+      "detail": "không có cho issuer https://mcp.cfp.plus"
+    },
+    {
+      "check": "pkce_s256",
+      "result": "FAIL",
+      "detail": "None"
+    },
+    {
+      "check": "authorization_and_token_endpoints",
+      "result": "FAIL",
+      "detail": "None • None"
+    },
+    {
+      "check": "dynamic_client_registration",
+      "result": "INFO",
+      "detail": "không công bố (Gemini dùng Client ID/Secret đăng ký sẵn)"
+    },
+    {
+      "check": "streamable_http_initialize",
+      "result": "NOT RUN",
+      "detail": "cần token thật (MCP_TOKEN) sau Token Exchange"
+    },
+    {
+      "check": "token_exchange",
+      "result": "NOT RUN",
+      "detail": "cần đăng nhập người dùng trên nền tảng (Human)"
+    },
+    {
+      "check": "gemini_client_registered",
+      "result": "FAIL",
+      "detail": "CHƯA ĐĂNG KÝ • chờ truy cập máy chủ OAuth (Railway)"
+    }
+  ]
+}
