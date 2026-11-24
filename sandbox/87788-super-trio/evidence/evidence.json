@@ -1,14 +1,14 @@
 {
-  "active_count": 103,
+  "active_count": 104,
   "capability_status": {
     "quantum": {
-      "NOT VERIFIED": 103
+      "NOT VERIFIED": 104
     },
     "si_ai": {
-      "NOT VERIFIED": 103
+      "NOT VERIFIED": 104
     },
     "software": {
-      "NOT VERIFIED": 103
+      "NOT VERIFIED": 104
     }
   },
   "finding_counts": {
@@ -58,7 +58,7 @@
       "3": 15,
       "4": 6,
       "5": 13,
-      "6": 17,
+      "6": 18,
       "7": 8,
       "8": 12,
       "9": 6
@@ -66,14 +66,14 @@
     "per_group": {
       "000": 5,
       "135": 32,
-      "246": 40,
+      "246": 41,
       "789": 26
     },
-    "rows_read": 104,
-    "unique_ids": 104
+    "rows_read": 105,
+    "unique_ids": 105
   },
-  "plan_count": 103,
-  "plan_sha256": "0c282e98f2c8344bbf455fd5821e23740a0445914feeea18cef8fb3a85adf1f7",
+  "plan_count": 104,
+  "plan_sha256": "1bc19540d910651dd1ee7aa13ad2932faaafa2ab0c45c1624d679e0a1701b19e",
   "platforms": [
     {
       "key": "github",
@@ -84,6 +84,11 @@
       "key": "claude_code",
       "mode": "REPO_CONFIG",
       "session_check": "P2 2026-11-24: Agent 87788 chạy độc lập headless (claude -p --agent cfp-87788-super-trio-upgrade). Run 1 (haiku) FAIL: trả lời không gọi công cụ, sai active (104≠103) → đã thêm quy tắc output-công-cụ + active_count. Run 2 (sonnet) PASS: gọi Bash trio.py check, số liệu khớp, 0 sửa tệp. Session 8735f465-2675-4c3a-88bd-6038e78bb11d"
+    },
+    {
+      "key": "claude_project",
+      "mode": "NATIVE_MANUAL",
+      "session_check": "NOT TESTED • gói nhập thủ công cho 6873"
     },
     {
       "key": "chatgpt_codex",
@@ -128,11 +133,12 @@
   ],
   "provenance": {
     "additions": {
-      "rows": 13,
-      "sha256": "89eaac5fc9691728abec0c4c446fc098fb6e4f56b219e1ff8b0ed10d0e8861fa",
+      "rows": 14,
+      "sha256": "fcbadf766e8c31d9364ea3f49814083a4ad4e1d821414f3cb795c3811a40e8b6",
       "source_urls": [
         "https://app.notion.com/p/3f2caac9a55781fd97afe7ecd489c3fc",
-        "https://app.notion.com/p/422caac9a55781f2ad8ce1a834dabc86"
+        "https://app.notion.com/p/422caac9a55781f2ad8ce1a834dabc86",
+        "https://app.notion.com/p/f38caac9a557828a98dc81dc26193587"
       ]
     },
     "index": {
@@ -146,5 +152,11 @@
   },
   "schema": "cfp87788.evidence.v1",
   "status": "SANDBOX • REVIEW CANDIDATE • HOLD ACTIVATION • PRODUCTION NO-GO",
-  "verify": null
+  "verify": {
+    "checked": 104,
+    "hash_ok": 104,
+    "identity_ok": 104,
+    "matches_plan": 104,
+    "problems": []
+  }
 }

@@ -37,7 +37,7 @@ class TestInventory(unittest.TestCase):
         inv = trio.check_inventory(rows, excluded)
         self.assertEqual(prov["index"]["rows"], 91)
         self.assertEqual(prov["index"]["commit"], "77102841601f262a7b91389244896b19e58de821")
-        self.assertEqual(len(inv["active"]), 103)  # 90 + 6 bổ sung + 7 hồ sơ Siêu Bộ Tam
+        self.assertEqual(len(inv["active"]), 104)  # 90 + 6 bổ sung + 7 hồ sơ Siêu Bộ Tam + 6873 Muse
         self.assertEqual(inv["chapters_covered"], [str(d) for d in range(10)])
         self.assertFalse([f for f in inv["findings"] if f["severity"] == "HIGH"])
         self.assertNotIn("2273", [r["id"] for r in inv["active"]])
@@ -49,8 +49,19 @@ class TestInventory(unittest.TestCase):
             rc = trio.main(["check"])
         out = json.loads(buf.getvalue())
         self.assertEqual(rc, 0)
-        self.assertEqual(out["active_count"], 103)
+        self.assertEqual(out["active_count"], 104)
         self.assertNotIn("active", out)
+
+    def test_packs_for_selected_id_and_unknown_id_rejected(self):
+        rows, excluded, _ = trio.load_inventory()
+        inv = trio.check_inventory(rows, excluded)
+        plats = json.loads(trio.PLATFORMS_PATH.read_text("utf-8"))["platforms"]
+        with tempfile.TemporaryDirectory() as d:
+            made = trio.make_packs(inv["active"], plats, Path(d), ("6873",), ("claude_project", "gemini"))
+            self.assertEqual(made, ["packs/6873-claude_project.md", "packs/6873-gemini.md"])
+            self.assertIn("f38caac9a557828a98dc81dc26193587", (Path(d) / made[0]).read_text("utf-8"))
+            with self.assertRaises(trio.GuardError):
+                trio.make_packs(inv["active"], plats, Path(d), ("99999",), ("gemini",))
 
     def test_leading_zero_ids_distinct(self):
         ids = [r["id"] for r in fixture_rows()]
@@ -158,16 +169,16 @@ class TestApplyRollback(unittest.TestCase):
         n = (self.plan["count"] + 9) // 10
         for b in range(n):
             trio.apply_plan(self.plan, self.out, 10, b)
-        self.assertEqual(len(self.files()), 103)
+        self.assertEqual(len(self.files()), 104)
         v = trio.verify(self.out, self.plan)
-        self.assertEqual((v["checked"], v["hash_ok"], v["identity_ok"], v["matches_plan"]), (103, 103, 103, 103))
+        self.assertEqual((v["checked"], v["hash_ok"], v["identity_ok"], v["matches_plan"]), (104, 104, 104, 104))
         self.assertEqual(v["problems"], [])
 
     def test_idempotent(self):
         trio.apply_plan(self.plan, self.out, 200, 0)
         r = trio.apply_plan(self.plan, self.out, 200, 0)
         self.assertEqual(r["written"], [])
-        self.assertEqual(len(r["skipped"]), 103)
+        self.assertEqual(len(r["skipped"]), 104)
 
     def test_crash_recovery(self):
         with self.assertRaises(KeyboardInterrupt):

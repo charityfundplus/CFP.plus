@@ -433,15 +433,18 @@ Chưa có các mục này thì Agent vẫn là NOT VERIFIED.
 """
 
 
-def make_packs(active: list[dict], platforms: list[dict], out: Path) -> list[str]:
+def make_packs(active: list[dict], platforms: list[dict], out: Path,
+               ids: tuple = PACK_TEAMS, pkeys: tuple = PACK_PLATFORMS) -> list[str]:
     out = _safe_out(out)
     by_id = {r["id"]: r for r in active}
     pk = {p["key"]: p for p in platforms}
     made = []
-    for tid in PACK_TEAMS:
+    for tid in ids:
         if tid not in by_id:
             raise GuardError(f"Thiếu hồ sơ {tid} trong kiểm kê")
-        for pkey in PACK_PLATFORMS:
+        for pkey in pkeys:
+            if pkey not in pk:
+                raise GuardError(f"Nền tảng không có trong ma trận: {pkey}")
             path = out / "packs" / f"{tid}-{pkey}.md"
             atomic_write(path, render_pack(by_id[tid], pk[pkey]).encode("utf-8"))
             made.append(str(path.relative_to(out)))
@@ -540,7 +543,9 @@ def main(argv=None) -> int:
     r = sub.add_parser("rollback")
     r.add_argument("run_id")
     sub.add_parser("recover")
-    sub.add_parser("packs")
+    pp = sub.add_parser("packs")
+    pp.add_argument("--ids", default=",".join(PACK_TEAMS), help="ID có sẵn trong kiểm kê, cách nhau bằng dấu phẩy")
+    pp.add_argument("--platforms", default=",".join(PACK_PLATFORMS))
     e = sub.add_parser("evidence")
     e.add_argument("--dir", type=Path, default=HERE / "evidence")
     args = ap.parse_args(argv)
@@ -572,7 +577,8 @@ def main(argv=None) -> int:
         print(json.dumps(recover(_safe_out(args.out))))
         return 0
     if args.cmd == "packs":
-        print("\n".join(make_packs(inv["active"], platforms, args.out)))
+        print("\n".join(make_packs(inv["active"], platforms, args.out,
+                                   tuple(args.ids.split(",")), tuple(args.platforms.split(",")))))
         return 0
     if args.cmd == "evidence":
         ver = verify(args.out, plan) if (args.out / "manifest.json").exists() else None
