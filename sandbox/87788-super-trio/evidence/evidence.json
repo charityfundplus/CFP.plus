@@ -1,0 +1,156 @@
+{
+  "active_count": 103,
+  "capability_status": {
+    "quantum": {
+      "NOT VERIFIED": 103
+    },
+    "si_ai": {
+      "NOT VERIFIED": 103
+    },
+    "software": {
+      "NOT VERIFIED": 103
+    }
+  },
+  "finding_counts": {
+    "EXCLUDED_FROM_ACTIVE": 1,
+    "LINK_MISSING": 2
+  },
+  "findings": [
+    {
+      "code": "LINK_MISSING",
+      "detail": "Chưa định vị Link hồ sơ; không kết luận hồ sơ không tồn tại",
+      "id": "2273",
+      "severity": "LOW",
+      "source": "index:L40"
+    },
+    {
+      "code": "EXCLUDED_FROM_ACTIVE",
+      "detail": "Human loại khỏi mẫu số hoạt động; chỉ giữ dấu vết lịch sử (Notion DANH MỤC, mục 2273 • CARE).",
+      "id": "2273",
+      "severity": "INFO",
+      "source": "index:L40"
+    },
+    {
+      "code": "LINK_MISSING",
+      "detail": "Chưa định vị Link hồ sơ; không kết luận hồ sơ không tồn tại",
+      "id": "2588",
+      "severity": "LOW",
+      "source": "index:L43"
+    }
+  ],
+  "inventory": {
+    "chapters_covered": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "per_chapter": {
+      "0": 5,
+      "1": 4,
+      "2": 17,
+      "3": 15,
+      "4": 6,
+      "5": 13,
+      "6": 17,
+      "7": 8,
+      "8": 12,
+      "9": 6
+    },
+    "per_group": {
+      "000": 5,
+      "135": 32,
+      "246": 40,
+      "789": 26
+    },
+    "rows_read": 104,
+    "unique_ids": 104
+  },
+  "plan_count": 103,
+  "plan_sha256": "0c282e98f2c8344bbf455fd5821e23740a0445914feeea18cef8fb3a85adf1f7",
+  "platforms": [
+    {
+      "key": "github",
+      "mode": "REPO_CONFIG",
+      "session_check": "READ PASS (clone + REST pulls/issues); WRITE = push nhánh claude/87788-super-trio-upgrade, xem Evidence PR"
+    },
+    {
+      "key": "claude_code",
+      "mode": "REPO_CONFIG",
+      "session_check": "Tệp cấu hình tạo trong PR này; runtime Agent 87788 chưa chạy độc lập"
+    },
+    {
+      "key": "chatgpt_codex",
+      "mode": "NATIVE_MANUAL",
+      "session_check": "NOT TESTED • không có kết nối OpenAI trong phiên"
+    },
+    {
+      "key": "notion",
+      "mode": "API_RUNTIME",
+      "session_check": "READ PASS (fetch văn phòng 87788 và DANH MỤC qua Notion MCP)"
+    },
+    {
+      "key": "google_drive",
+      "mode": "API_RUNTIME",
+      "session_check": "CONNECTOR PRESENT • NOT TESTED"
+    },
+    {
+      "key": "canva",
+      "mode": "API_RUNTIME",
+      "session_check": "CONNECTOR PRESENT • NOT TESTED"
+    },
+    {
+      "key": "gemini",
+      "mode": "NATIVE_MANUAL",
+      "session_check": "NOT TESTED • không có kết nối"
+    },
+    {
+      "key": "grok",
+      "mode": "NATIVE_MANUAL",
+      "session_check": "NOT TESTED • không có kết nối"
+    },
+    {
+      "key": "perplexity",
+      "mode": "NATIVE_MANUAL",
+      "session_check": "NOT TESTED • không có kết nối"
+    },
+    {
+      "key": "microsoft",
+      "mode": "NOT_ASSESSED",
+      "session_check": "NOT TESTED • không có kết nối"
+    }
+  ],
+  "provenance": {
+    "additions": {
+      "rows": 13,
+      "sha256": "89eaac5fc9691728abec0c4c446fc098fb6e4f56b219e1ff8b0ed10d0e8861fa",
+      "source_urls": [
+        "https://app.notion.com/p/3f2caac9a55781fd97afe7ecd489c3fc",
+        "https://app.notion.com/p/422caac9a55781f2ad8ce1a834dabc86"
+      ]
+    },
+    "index": {
+      "commit": "77102841601f262a7b91389244896b19e58de821",
+      "path": "sandbox/hub69-working-office/SUPER_PAIRS_INDEX.md",
+      "pr": 206,
+      "repo": "charityfundplus/CFP.plus",
+      "rows": 91,
+      "sha256": "a72317188b8d30e342be203876f5338d37e02b4d0298cbb9ae22fe2990a3cd77"
+    }
+  },
+  "schema": "cfp87788.evidence.v1",
+  "status": "SANDBOX • REVIEW CANDIDATE • HOLD ACTIVATION • PRODUCTION NO-GO",
+  "verify": {
+    "checked": 103,
+    "hash_ok": 103,
+    "identity_ok": 103,
+    "matches_plan": 103,
+    "problems": []
+  }
+}

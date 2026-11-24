@@ -1,0 +1,40 @@
+name: sandbox • 87788 Super Trio
+
+on:
+  pull_request:
+    paths:
+      - "sandbox/87788-super-trio/**"
+      - ".github/workflows/sandbox-87788-super-trio.yml"
+  push:
+    branches: ["claude/87788-super-trio-upgrade"]
+    paths:
+      - "sandbox/87788-super-trio/**"
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: sandbox/87788-super-trio
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Unit tests
+        run: python3 -m unittest discover -s tests -v
+      - name: Mutation tests
+        run: bash tests/mutation.sh
+      - name: Inventory check
+        run: python3 trio.py check > /dev/null
+      - name: Apply all batches + readback
+        run: |
+          python3 trio.py apply --all --batch-size 10
+          python3 trio.py verify
+      - name: Evidence must be reproducible
+        run: |
+          python3 trio.py evidence
+          git diff --exit-code -- evidence/
