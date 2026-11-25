@@ -1,0 +1,700 @@
+From 331d6cc83600cd036bdba02defd7d8556687ec08 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Wed, 25 Nov 2026 16:01:31 +0000
+Subject: [PATCH] P0: least-privilege ChatGPT OAuth scopes and read-only Gemini
+ OAuth lane
+
+- Fix silent scope escalation: authorize() no longer force-adds
+  execute_approved/write_noncanonical. Default scopes are read + propose;
+  elevated scopes are advertised and grantable only when listed in
+  CFP_CHATGPT_OAUTH_ELEVATED_SCOPES. Restores the 2 failing contract tests
+  without changing them.
+- Provider lane configuration (state prefix, subject, consent URL, resource,
+  scopes) so additional lanes reuse ChatGPTOAuthProvider. Empty prefix keeps
+  existing ChatGPT oauth_state rows valid.
+- Gemini lane /mcp-gemini (AI 691141): read scope only, DCR disabled,
+  pre-registered client seeded from CFP_GEMINI_OAUTH_CLIENT_ID/SECRET,
+  exact redirect URI match, dedicated consent admin token, state isolated
+  under the gemini: prefix so tokens are not accepted across lanes.
+- Tests: Gemini contract (9 cases) in an isolated process.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Tau1ZNKJRKPvMHsB5GHyYQ
+---
+ chatgpt_app.py                  | 129 +++++++++++++++++++++--
+ chatgpt_oauth.py                |  43 ++++++--
+ gemini_oauth.py                 | 133 ++++++++++++++++++++++++
+ tests/gemini_lane_cases.py      | 178 ++++++++++++++++++++++++++++++++
+ tests/test_gemini_oauth_lane.py |  29 ++++++
+ 5 files changed, 498 insertions(+), 14 deletions(-)
+ create mode 100644 gemini_oauth.py
+ create mode 100644 tests/gemini_lane_cases.py
+ create mode 100644 tests/test_gemini_oauth_lane.py
+
+diff --git a/chatgpt_app.py b/chatgpt_app.py
+index 532a1a2..e82d9a2 100644
+--- a/chatgpt_app.py
++++ b/chatgpt_app.py
+@@ -1,6 +1,7 @@
+ from collections.abc import AsyncIterator
+ from contextlib import asynccontextmanager
+ import hmac
++import html
+ import os
+ import time
+ 
+@@ -19,9 +20,18 @@ from mcp.types import CallToolResult, TextContent, ToolAnnotations
+ 
+ import entrypoint as gateway
+ import mcp_app as legacy
++from gemini_oauth import (
++    GEMINI_AI_ID,
++    GEMINI_AI_NAME,
++    GEMINI_AUTHORIZATION_SERVER_METADATA,
++    GEMINI_PROTECTED_RESOURCE_METADATA,
++    GeminiOAuthProvider,
++    gemini_auth_settings,
++)
+ from chatgpt_oauth import (
+     CHATGPT_AI_ID,
+     CHATGPT_AI_NAME,
++    OPERATIONAL_SCOPES,
+     AUTHORIZATION_SERVER_METADATA,
+     PROTECTED_RESOURCE_METADATA,
+     PROTECTED_RESOURCE_METADATA_URL,
+@@ -35,7 +45,6 @@ READ_SECURITY = {"securitySchemes": [{"type": "oauth2", "scopes": ["read"]}]}
+ PROPOSE_SECURITY = {
+     "securitySchemes": [{"type": "oauth2", "scopes": ["read", "propose"]}]
+ }
+-OPERATIONAL_SCOPES = ["read", "propose", "execute_approved", "write_noncanonical"]
+ PROVIDER_TEST_KEY = (os.getenv("CFP_PROVIDER_TEST_KEY") or "").strip()
+ CLAUDE_MCP_TOKEN = (os.getenv("CFP_MCP_CLIENT_CLAUDE_TOKEN") or "").strip()
+ CLAUDE_MCP_URL = (os.getenv("CFP_CLAUDE_MCP_URL") or "https://mcp.cfp.plus/mcp-claude").strip()
+@@ -53,10 +62,10 @@ class NormalizeChatGPTMCPRootPath:
+         self.app = app
+ 
+     async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
+-        if scope["type"] == "http" and scope.get("path") == "/mcp-chatgpt":
++        if scope["type"] == "http" and scope.get("path") in {"/mcp-chatgpt", "/mcp-gemini"}:
+             scope = dict(scope)
+-            scope["path"] = "/mcp-chatgpt/"
+-            scope["raw_path"] = b"/mcp-chatgpt/"
++            scope["path"] = scope["path"] + "/"
++            scope["raw_path"] = scope["path"].encode()
+         await self.app(scope, receive, send)
+ 
+ 
+@@ -169,7 +178,7 @@ chatgpt_oauth_provider = ChatGPTOAuthProvider(
+ CHATGPT_MCP_INSTRUCTIONS = (
+     "Authenticated CFP+ lane for ChatGPT. Identity 691181. "
+     "Read tools require read scope. propose_work_order requires propose scope. "
+-    "OAuth may also grant execute_approved and write_noncanonical for explicitly approved future tools. "
++    "Default OAuth scopes are read and propose. execute_approved and write_noncanonical are granted only when Human Governance enables them at deploy time. "
+     "No tool in this lane may auto-approve or Canonical Lock."
+ )
+ chatgpt_mcp = MCPServer(
+@@ -436,6 +445,65 @@ chatgpt_mixed_transport_app = ChatGPTMCPTransportRouter(
+ )
+ 
+ 
++# ---------------------------------------------------------------- Gemini lane
++# OAuth-protected, read-only lane for Gemini custom MCP connectors (AI 691141).
++gemini_oauth_provider = GeminiOAuthProvider(
++    engine=gateway.main.engine,
++    state_table=gateway.main.oauth_state_table,
++)
++gemini_mcp = MCPServer(
++    "CFP+ MCP Gemini Gateway",
++    instructions=(
++        "Authenticated read-only CFP+ lane for Gemini. Identity 691141. "
++        "Only the read scope exists in this lane. No proposal, mutation or Canonical Lock."
++    ),
++    auth=gemini_auth_settings(),
++    auth_server_provider=gemini_oauth_provider,
++)
++
++
++@gemini_mcp.tool(
++    annotations=ToolAnnotations(
++        readOnlyHint=True, destructiveHint=False, idempotentHint=True, openWorldHint=False
++    ),
++)
++def gemini_cfp_status() -> dict:
++    """Return authenticated Gemini identity, granted scopes and gateway status."""
++    token = get_access_token()
++    return {
++        "service": "CFP+ MCP Gemini Gateway",
++        "gateway_version": gateway.main.VERSION,
++        "authenticated_actor": {
++            "ai_id": GEMINI_AI_ID,
++            "name": GEMINI_AI_NAME,
++            "scopes": sorted(token.scopes) if token is not None else [],
++        },
++        "access": "read-only",
++        "policy": "Evidence First • Human Governance",
++    }
++
++
++@gemini_mcp.tool(
++    annotations=ToolAnnotations(
++        readOnlyHint=True, destructiveHint=False, idempotentHint=True, openWorldHint=False
++    ),
++)
++def gemini_resolve_canonical_id(canonical_id: str) -> dict:
++    """Resolve a CFP+ Canonical ID (read-only)."""
++    record = gateway.main.CANONICAL_IDS.get(canonical_id)
++    if record is None:
++        return {"found": False, "id": canonical_id, "status": "NOT_FOUND"}
++    return {"found": True, "id": canonical_id, **record}
++
++
++gemini_transport_app = gemini_mcp.streamable_http_app(
++    streamable_http_path="/",
++    stateless_http=True,
++    json_response=True,
++    transport_security=public_security,
++)
++
++
+ @asynccontextmanager
+ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
+     # Reuse the existing gateway + bearer-authenticated MCP lifespan, then run
+@@ -444,7 +512,9 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
+         async with public_mcp.session_manager.run():
+             async with chatgpt_discovery_mcp.session_manager.run():
+                 async with chatgpt_mcp.session_manager.run():
+-                    yield
++                    async with gemini_mcp.session_manager.run():
++                        gemini_oauth_provider.seed_client_from_env()
++                        yield
+ 
+ 
+ app = FastAPI(
+@@ -681,9 +751,56 @@ async def chatgpt_oauth_consent_submit(request: Request):
+     return RedirectResponse(redirect_uri, status_code=302)
+ 
+ 
++@app.get("/.well-known/oauth-protected-resource/mcp-gemini", include_in_schema=False)
++async def gemini_protected_resource_metadata() -> JSONResponse:
++    return JSONResponse(GEMINI_PROTECTED_RESOURCE_METADATA, headers={"Cache-Control": "public, max-age=300"})
++
++
++@app.get("/.well-known/oauth-authorization-server/mcp-gemini", include_in_schema=False)
++async def gemini_authorization_server_metadata() -> JSONResponse:
++    return JSONResponse(GEMINI_AUTHORIZATION_SERVER_METADATA, headers={"Cache-Control": "public, max-age=300"})
++
++
++@app.get("/oauth/gemini/consent", response_class=HTMLResponse)
++async def gemini_oauth_consent(txn: str) -> HTMLResponse:
++    pending = gemini_oauth_provider.get_pending_authorization(txn)
++    if pending is None or pending.expires_at < time.time():
++        return HTMLResponse("<h2>Yêu cầu ủy quyền không hợp lệ hoặc đã hết hạn.</h2>", status_code=400)
++    safe_txn = html.escape(txn, quote=True)
++    scopes = html.escape(", ".join(pending.scopes))
++    return HTMLResponse(
++        f"""<!doctype html><html lang="vi"><head><meta charset="utf-8"><title>CFP+ MCP • Xác thực Gemini</title></head>
++        <body style="font-family:Arial,sans-serif;max-width:680px;margin:48px auto;padding:0 20px">
++        <h2>CFP+ MCP • Xác thực Gemini</h2>
++        <p>Endpoint này cấp cho Gemini danh tính <strong>{GEMINI_AI_ID}</strong>, chỉ quyền đọc.</p>
++        <p>Quyền OAuth được yêu cầu: <strong>{scopes}</strong>.</p>
++        <form method="post" action="/oauth/gemini/consent">
++        <input type="hidden" name="txn" value="{safe_txn}">
++        <label>Mã xác thực quản trị CFP+ cho Gemini</label><br>
++        <input type="password" name="admin_token" autocomplete="current-password" required style="width:100%;padding:10px;margin:8px 0 16px">
++        <button type="submit" style="padding:10px 18px">Cho phép Gemini kết nối</button>
++        </form></body></html>"""
++    )
++
++
++@app.post("/oauth/gemini/consent")
++async def gemini_oauth_consent_submit(request: Request):
++    form = parse_qs((await request.body()).decode("utf-8", errors="ignore"))
++    txn = (form.get("txn") or [""])[0]
++    if not gemini_oauth_provider.admin_secret_matches((form.get("admin_token") or [""])[0]):
++        return HTMLResponse("<h2>Mã xác thực không đúng.</h2><p>Không cấp quyền cho Gemini.</p>", status_code=403)
++    redirect_uri = gemini_oauth_provider.complete_authorization(txn)
++    if not redirect_uri:
++        return HTMLResponse("<h2>Yêu cầu ủy quyền không hợp lệ hoặc đã hết hạn.</h2>", status_code=400)
++    gateway.main.audit("MCP_GEMINI_OAUTH_APPROVED", GEMINI_AI_ID, {"actor_ai_id": GEMINI_AI_ID, "actor_name": GEMINI_AI_NAME})
++    return RedirectResponse(redirect_uri, status_code=302)
++
++
+ # Public read-only lane remains available for Plus/read-only clients.
+ app.mount("/mcp-public", public_transport_app)
+ # OAuth-protected ChatGPT lane. Scope status is exposed by chatgpt_cfp_status.
+ app.mount("/mcp-chatgpt", chatgpt_mixed_transport_app)
++# OAuth-protected, read-only Gemini lane.
++app.mount("/mcp-gemini", gemini_transport_app)
+ # Existing /mcp bearer-token endpoint and gateway routes remain unchanged.
+ app.mount("/", legacy.app)
+\ No newline at end of file
+diff --git a/chatgpt_oauth.py b/chatgpt_oauth.py
+index 72d138c..58a6d00 100644
+--- a/chatgpt_oauth.py
++++ b/chatgpt_oauth.py
+@@ -32,8 +32,22 @@ PROTECTED_RESOURCE_METADATA_URL = (
+ )
+ CHATGPT_AI_ID = "691181"
+ CHATGPT_AI_NAME = "ChatGPT"
+-OPERATIONAL_SCOPES = ["read", "propose", "execute_approved", "write_noncanonical"]
+-VALID_SCOPES = [*OPERATIONAL_SCOPES, "offline_access"]
++# Least privilege: ChatGPT is granted read + propose by default. Elevated scopes are
++# only advertised and grantable when Human Governance lists them in
++# CFP_CHATGPT_OAUTH_ELEVATED_SCOPES (comma-separated) at deploy time, and only
++# when the client explicitly requests them.
++DEFAULT_SCOPES = ["read", "propose"]
++ELEVATED_SCOPES = ["execute_approved", "write_noncanonical"]
++
++
++def approved_elevated_scopes(env_var: str = "CFP_CHATGPT_OAUTH_ELEVATED_SCOPES") -> list[str]:
++    raw = os.getenv(env_var) or ""
++    wanted = {part.strip() for part in raw.split(",") if part.strip()}
++    return [scope for scope in ELEVATED_SCOPES if scope in wanted]
++
++
++OPERATIONAL_SCOPES = list(DEFAULT_SCOPES)
++VALID_SCOPES = [*DEFAULT_SCOPES, *approved_elevated_scopes(), "offline_access"]
+ 
+ PROTECTED_RESOURCE_METADATA = {
+     "resource": RESOURCE_URL,
+@@ -79,6 +93,15 @@ class ChatGPTOAuthProvider(
+     requires a CFP+ server-side admin passphrase before any code is issued.
+     """
+ 
++    # Lane configuration. Subclasses (e.g. Gemini) override these. The empty
++    # state prefix keeps existing ChatGPT rows in oauth_state valid.
++    state_prefix = ""
++    subject_ai_id = CHATGPT_AI_ID
++    consent_url = CONSENT_URL
++    resource_url = RESOURCE_URL
++    default_scopes: list[str] = DEFAULT_SCOPES
++    valid_scopes: list[str] = VALID_SCOPES
++
+     def __init__(self, *, engine: Engine, state_table: Table) -> None:
+         self.engine = engine
+         self.state_table = state_table
+@@ -96,6 +119,7 @@ class ChatGPTOAuthProvider(
+             sort_keys=True,
+             separators=(",", ":"),
+         )
++        kind = f"{self.state_prefix}{kind}"
+         normalized_expiry = int(expires_at) if expires_at else None
+         with self.engine.begin() as conn:
+             conn.execute(
+@@ -115,6 +139,7 @@ class ChatGPTOAuthProvider(
+             )
+ 
+     def _load_state(self, kind: str, state_key: str, *, consume: bool = False) -> dict | None:
++        kind = f"{self.state_prefix}{kind}"
+         with self.engine.begin() as conn:
+             row = conn.execute(
+                 select(
+@@ -203,8 +228,10 @@ class ChatGPTOAuthProvider(
+                 redirect_uri, error="invalid_request", state=params.state
+             )
+ 
+-        requested = [scope for scope in (params.scopes or VALID_SCOPES) if scope in VALID_SCOPES]
+-        for required_scope in OPERATIONAL_SCOPES:
++        requested = [
++            scope for scope in (params.scopes or self.default_scopes) if scope in self.valid_scopes
++        ]
++        for required_scope in self.default_scopes:
+             if required_scope not in requested:
+                 requested.append(required_scope)
+         txn = secrets.token_urlsafe(24)
+@@ -219,7 +246,7 @@ class ChatGPTOAuthProvider(
+             expires_at=time.time() + 600,
+         )
+         self._put_state("pending", txn, asdict(pending), pending.expires_at)
+-        return f"{CONSENT_URL}?txn={txn}"
++        return f"{self.consent_url}?txn={txn}"
+ 
+     def get_pending_authorization(self, txn: str) -> PendingAuthorization | None:
+         data = self._load_state("pending", txn)
+@@ -278,7 +305,7 @@ class ChatGPTOAuthProvider(
+             scopes=scopes,
+             expires_at=int(time.time()) + 3600,
+             resource=resource,
+-            subject=CHATGPT_AI_ID,
++            subject=self.subject_ai_id,
+         )
+         self._put_state("access", token_value, self._model_data(token), token.expires_at)
+         return token_value, token
+@@ -353,7 +380,7 @@ class ChatGPTOAuthProvider(
+         access_value, _ = self._mint_access_token(
+             client_id=refresh_token.client_id,
+             scopes=granted,
+-            resource=RESOURCE_URL,
++            resource=self.resource_url,
+         )
+         self._delete_state("refresh", refresh_token.token)
+         refresh_value, _ = self._mint_refresh_token(
+@@ -381,6 +408,6 @@ def auth_settings() -> AuthSettings:
+         client_registration_options=ClientRegistrationOptions(
+             enabled=True,
+             valid_scopes=VALID_SCOPES,
+-            default_scopes=VALID_SCOPES,
++            default_scopes=[*DEFAULT_SCOPES, "offline_access"],
+         ),
+     )
+diff --git a/gemini_oauth.py b/gemini_oauth.py
+new file mode 100644
+index 0000000..1fad0ea
+--- /dev/null
++++ b/gemini_oauth.py
+@@ -0,0 +1,133 @@
++"""OAuth 2.1 lane for Gemini custom MCP connectors (CFP+ AI 691141).
++
++Reuses ChatGPTOAuthProvider with a Gemini-specific configuration:
++
++* issuer/resource https://mcp.cfp.plus/mcp-gemini
++* read scope only (least privilege)
++* dynamic client registration disabled: Gemini is configured with a
++  pre-registered Client ID and Client Secret, seeded at start-up from
++  CFP_GEMINI_OAUTH_CLIENT_ID / CFP_GEMINI_OAUTH_CLIENT_SECRET
++* redirect URIs must match CFP_GEMINI_OAUTH_REDIRECT_URIS exactly
++* consent requires CFP_GEMINI_OAUTH_ADMIN_TOKEN (no fallback to shared secrets)
++* OAuth state is stored under the "gemini:" prefix, so Gemini tokens are never
++  accepted by the ChatGPT lane and vice versa
++"""
++
++from __future__ import annotations
++
++import hmac
++import os
++
++from pydantic import AnyHttpUrl
++
++from mcp.server.auth.settings import AuthSettings, ClientRegistrationOptions
++from mcp.shared.auth import OAuthClientInformationFull
++
++from chatgpt_oauth import ChatGPTOAuthProvider
++
++GEMINI_BASE_URL = "https://mcp.cfp.plus/mcp-gemini"
++GEMINI_RESOURCE_URL = GEMINI_BASE_URL
++GEMINI_CONSENT_URL = "https://mcp.cfp.plus/oauth/gemini/consent"
++GEMINI_PROTECTED_RESOURCE_METADATA_URL = (
++    "https://mcp.cfp.plus/.well-known/oauth-protected-resource/mcp-gemini"
++)
++GEMINI_AI_ID = "691141"
++GEMINI_AI_NAME = "Gemini"
++GEMINI_DEFAULT_SCOPES = ["read"]
++GEMINI_VALID_SCOPES = ["read", "offline_access"]
++DEFAULT_GEMINI_REDIRECT_URIS = (
++    "https://oauth-redirect.googleusercontent.com/r/"
++    "user_bound_custom-mcp-db6be1542137b3a9ae65fd92"
++)
++
++GEMINI_PROTECTED_RESOURCE_METADATA = {
++    "resource": GEMINI_RESOURCE_URL,
++    "authorization_servers": [GEMINI_BASE_URL],
++    "scopes_supported": GEMINI_VALID_SCOPES,
++    "bearer_methods_supported": ["header"],
++}
++
++GEMINI_AUTHORIZATION_SERVER_METADATA = {
++    "issuer": GEMINI_BASE_URL,
++    "authorization_endpoint": f"{GEMINI_BASE_URL}/authorize",
++    "token_endpoint": f"{GEMINI_BASE_URL}/token",
++    "scopes_supported": GEMINI_VALID_SCOPES,
++    "response_types_supported": ["code"],
++    "grant_types_supported": ["authorization_code", "refresh_token"],
++    "token_endpoint_auth_methods_supported": [
++        "client_secret_post",
++        "client_secret_basic",
++    ],
++    "code_challenge_methods_supported": ["S256"],
++}
++
++
++def gemini_token_auth_method() -> str:
++    # The MCP SDK enforces exactly one method per client. Gemini's method is not
++    # yet verified; set CFP_GEMINI_OAUTH_TOKEN_AUTH_METHOD=client_secret_basic if
++    # the live token exchange shows Gemini sends HTTP Basic credentials.
++    method = (os.getenv("CFP_GEMINI_OAUTH_TOKEN_AUTH_METHOD") or "client_secret_post").strip()
++    return method if method in {"client_secret_post", "client_secret_basic"} else "client_secret_post"
++
++
++def gemini_redirect_uris() -> list[str]:
++    raw = os.getenv("CFP_GEMINI_OAUTH_REDIRECT_URIS") or DEFAULT_GEMINI_REDIRECT_URIS
++    return [uri.strip() for uri in raw.split(",") if uri.strip()]
++
++
++class GeminiOAuthProvider(ChatGPTOAuthProvider):
++    state_prefix = "gemini:"
++    subject_ai_id = GEMINI_AI_ID
++    consent_url = GEMINI_CONSENT_URL
++    resource_url = GEMINI_RESOURCE_URL
++    default_scopes = GEMINI_DEFAULT_SCOPES
++    valid_scopes = GEMINI_VALID_SCOPES
++
++    @staticmethod
++    def _redirect_allowed(uri: str) -> bool:
++        # Exact string match only; no host or prefix matching.
++        return uri in gemini_redirect_uris()
++
++    def admin_secret(self) -> str:
++        return (os.getenv("CFP_GEMINI_OAUTH_ADMIN_TOKEN") or "").strip()
++
++    def admin_secret_matches(self, supplied: str) -> bool:
++        expected = self.admin_secret()
++        if not expected:
++            return False
++        return hmac.compare_digest(supplied.strip().encode("utf-8"), expected.encode("utf-8"))
++
++    async def register_client(self, client_info: OAuthClientInformationFull) -> None:
++        raise ValueError("Dynamic client registration is disabled for the Gemini lane")
++
++    def seed_client_from_env(self) -> bool:
++        """Store the pre-registered Gemini client. Returns False when not configured."""
++        client_id = (os.getenv("CFP_GEMINI_OAUTH_CLIENT_ID") or "").strip()
++        client_secret = (os.getenv("CFP_GEMINI_OAUTH_CLIENT_SECRET") or "").strip()
++        if not client_id or not client_secret:
++            return False
++        client = OAuthClientInformationFull(
++            client_id=client_id,
++            client_secret=client_secret,
++            client_name="CFP+ Gemini custom MCP connector",
++            redirect_uris=[AnyHttpUrl(uri) for uri in gemini_redirect_uris()],
++            grant_types=["authorization_code", "refresh_token"],
++            response_types=["code"],
++            token_endpoint_auth_method=gemini_token_auth_method(),
++            scope=" ".join(GEMINI_VALID_SCOPES),
++        )
++        self._put_state("client", client_id, self._model_data(client))
++        return True
++
++
++def gemini_auth_settings() -> AuthSettings:
++    return AuthSettings(
++        issuer_url=AnyHttpUrl(GEMINI_BASE_URL),
++        resource_server_url=AnyHttpUrl(GEMINI_RESOURCE_URL),
++        required_scopes=["read"],
++        client_registration_options=ClientRegistrationOptions(
++            enabled=False,
++            valid_scopes=GEMINI_VALID_SCOPES,
++            default_scopes=GEMINI_VALID_SCOPES,
++        ),
++    )
+diff --git a/tests/gemini_lane_cases.py b/tests/gemini_lane_cases.py
+new file mode 100644
+index 0000000..7d9e409
+--- /dev/null
++++ b/tests/gemini_lane_cases.py
+@@ -0,0 +1,178 @@
++import base64
++import hashlib
++import os
++import secrets
++import unittest
++from unittest import mock
++from urllib.parse import parse_qs, urlsplit
++
++from fastapi.testclient import TestClient
++
++import chatgpt_app
++import chatgpt_oauth
++
++REDIRECT = (
++    "https://oauth-redirect.googleusercontent.com/r/"
++    "user_bound_custom-mcp-db6be1542137b3a9ae65fd92"
++)
++CLIENT_ID = "cfp-gemini-test-client"
++CLIENT_SECRET = "test-gemini-secret-" + secrets.token_hex(8)
++ADMIN = "test-gemini-admin-token"
++MCP_HEADERS = {
++    "host": "mcp.cfp.plus",
++    "accept": "application/json, text/event-stream",
++    "content-type": "application/json",
++}
++INIT = {
++    "jsonrpc": "2.0",
++    "id": 1,
++    "method": "initialize",
++    "params": {
++        "protocolVersion": "2025-06-18",
++        "capabilities": {},
++        "clientInfo": {"name": "gemini-contract-test", "version": "1"},
++    },
++}
++
++
++class GeminiOAuthLaneTests(unittest.TestCase):
++    @classmethod
++    def setUpClass(cls) -> None:
++        cls._env = mock.patch.dict(
++            os.environ,
++            {
++                "CFP_GEMINI_OAUTH_CLIENT_ID": CLIENT_ID,
++                "CFP_GEMINI_OAUTH_CLIENT_SECRET": CLIENT_SECRET,
++                "CFP_GEMINI_OAUTH_ADMIN_TOKEN": ADMIN,
++            },
++        )
++        cls._env.start()
++        cls._ctx = TestClient(chatgpt_app.app)
++        cls.client = cls._ctx.__enter__()
++
++    @classmethod
++    def tearDownClass(cls) -> None:
++        cls._ctx.__exit__(None, None, None)
++        cls._env.stop()
++
++    def _token(self, scope: str = "read offline_access", redirect: str = REDIRECT):
++        verifier = secrets.token_urlsafe(48)
++        challenge = base64.urlsafe_b64encode(
++            hashlib.sha256(verifier.encode()).digest()
++        ).rstrip(b"=").decode()
++        auth = self.client.get(
++            "/mcp-gemini/authorize",
++            params={
++                "response_type": "code",
++                "client_id": CLIENT_ID,
++                "redirect_uri": redirect,
++                "scope": scope,
++                "state": "gemini-test",
++                "code_challenge": challenge,
++                "code_challenge_method": "S256",
++                "resource": "https://mcp.cfp.plus/mcp-gemini",
++            },
++            follow_redirects=False,
++        )
++        return auth, verifier
++
++    def _full_flow(self, scope: str = "read offline_access") -> dict:
++        auth, verifier = self._token(scope)
++        self.assertEqual(auth.status_code, 302, auth.text)
++        location = auth.headers["location"]
++        self.assertTrue(location.startswith("https://mcp.cfp.plus/oauth/gemini/consent"))
++        txn = parse_qs(urlsplit(location).query)["txn"][0]
++        bad = self.client.post(
++            "/oauth/gemini/consent",
++            data={"txn": txn, "admin_token": "wrong"},
++            follow_redirects=False,
++        )
++        self.assertEqual(bad.status_code, 403)
++        consent = self.client.post(
++            "/oauth/gemini/consent",
++            data={"txn": txn, "admin_token": ADMIN},
++            follow_redirects=False,
++        )
++        self.assertEqual(consent.status_code, 302)
++        code = parse_qs(urlsplit(consent.headers["location"]).query)["code"][0]
++        token = self.client.post(
++            "/mcp-gemini/token",
++            data={
++                "grant_type": "authorization_code",
++                "code": code,
++                "redirect_uri": REDIRECT,
++                "client_id": CLIENT_ID,
++                "client_secret": CLIENT_SECRET,
++                "code_verifier": verifier,
++                "resource": "https://mcp.cfp.plus/mcp-gemini",
++            },
++        )
++        self.assertEqual(token.status_code, 200, token.text)
++        return token.json()
++
++    def test_discovery_metadata_read_only_and_no_registration(self) -> None:
++        prm = self.client.get("/.well-known/oauth-protected-resource/mcp-gemini")
++        self.assertEqual(prm.status_code, 200)
++        self.assertEqual(prm.json()["resource"], "https://mcp.cfp.plus/mcp-gemini")
++        self.assertEqual(prm.json()["scopes_supported"], ["read", "offline_access"])
++        asm = self.client.get("/.well-known/oauth-authorization-server/mcp-gemini")
++        self.assertEqual(asm.status_code, 200)
++        self.assertEqual(asm.json()["code_challenge_methods_supported"], ["S256"])
++        self.assertNotIn("registration_endpoint", asm.json())
++
++    def test_dynamic_registration_disabled(self) -> None:
++        reg = self.client.post(
++            "/mcp-gemini/register",
++            json={"redirect_uris": [REDIRECT], "client_name": "x"},
++        )
++        self.assertNotEqual(reg.status_code, 201)
++
++    def test_unauthenticated_mcp_returns_401_with_resource_metadata(self) -> None:
++        res = self.client.post("/mcp-gemini", headers=MCP_HEADERS, json=INIT)
++        self.assertEqual(res.status_code, 401)
++        self.assertIn("resource_metadata", res.headers.get("www-authenticate", ""))
++
++    def test_wrong_redirect_uri_is_rejected(self) -> None:
++        auth, _ = self._token(redirect=REDIRECT + "-evil")
++        self.assertNotEqual(auth.status_code // 100, 2)
++        location = auth.headers.get("location", "")
++        self.assertNotIn("oauth/gemini/consent", location)
++
++    def test_pkce_flow_grants_read_only(self) -> None:
++        token = self._full_flow("read offline_access")
++        self.assertEqual(sorted(token["scope"].split()), ["offline_access", "read"])
++        self.assertTrue(token["access_token"].startswith("cfp_access_"))
++
++    def test_requesting_elevated_scope_is_refused_before_consent(self) -> None:
++        auth, _ = self._token(scope="read propose execute_approved")
++        location = auth.headers.get("location", "")
++        self.assertNotIn("oauth/gemini/consent", location)
++        self.assertIn("error=invalid_scope", location)
++
++    def test_gemini_token_works_on_gemini_lane_and_not_on_chatgpt_lane(self) -> None:
++        access = self._full_flow()["access_token"]
++        headers = {**MCP_HEADERS, "authorization": f"Bearer {access}"}
++        ok = self.client.post("/mcp-gemini", headers=headers, json=INIT)
++        self.assertEqual(ok.status_code, 200, ok.text)
++        self.assertIn("protocolVersion", ok.text)
++        cross = self.client.post("/mcp-chatgpt", headers=headers, json=INIT)
++        self.assertEqual(cross.status_code, 401)
++
++
++class ChatGPTLeastPrivilegeTests(unittest.TestCase):
++    def test_elevated_scopes_off_by_default(self) -> None:
++        with mock.patch.dict(os.environ, {}, clear=False):
++            os.environ.pop("CFP_CHATGPT_OAUTH_ELEVATED_SCOPES", None)
++            self.assertEqual(chatgpt_oauth.approved_elevated_scopes(), [])
++        self.assertEqual(chatgpt_oauth.DEFAULT_SCOPES, ["read", "propose"])
++
++    def test_elevated_scopes_only_from_allowlist(self) -> None:
++        with mock.patch.dict(
++            os.environ,
++            {"CFP_CHATGPT_OAUTH_ELEVATED_SCOPES": "execute_approved, canonical_lock"},
++        ):
++            self.assertEqual(chatgpt_oauth.approved_elevated_scopes(), ["execute_approved"])
++
++
++if __name__ == "__main__":
++    unittest.main()
+diff --git a/tests/test_gemini_oauth_lane.py b/tests/test_gemini_oauth_lane.py
+new file mode 100644
+index 0000000..08d4522
+--- /dev/null
++++ b/tests/test_gemini_oauth_lane.py
+@@ -0,0 +1,29 @@
++"""Run the Gemini OAuth lane contract in its own process.
++
++The MCP SDK allows StreamableHTTPSessionManager.run() once per process, and other
++test modules already start the app lifespan. Isolating the Gemini cases keeps both
++suites independent without changing existing tests.
++"""
++
++import subprocess
++import sys
++import unittest
++from pathlib import Path
++
++ROOT = Path(__file__).resolve().parents[1]
++
++
++class GeminiOAuthLaneIsolated(unittest.TestCase):
++    def test_gemini_lane_contract(self) -> None:
++        result = subprocess.run(
++            [sys.executable, "-m", "unittest", "-v", "tests.gemini_lane_cases"],
++            cwd=ROOT,
++            capture_output=True,
++            text=True,
++            timeout=300,
++        )
++        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
++
++
++if __name__ == "__main__":
++    unittest.main()
+-- 
+2.43.0
+
