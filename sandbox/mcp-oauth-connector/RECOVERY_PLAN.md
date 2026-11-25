@@ -42,6 +42,38 @@
 15. Kết nối từ Gemini với tài khoản Founder, gọi một tool chỉ đọc. Evidence: ảnh chụp/ghi log có thời gian, log Gateway khớp `client_id` Gemini, kết quả `probe.py` có `MCP_TOKEN` (token chỉ dùng tạm, không lưu).
 16. Lưu Evidence vào GitHub (Draft PR) và Link Mẫu 87788, báo HUB 69 #178. Giữ HOLD ACTIVATION cho đến khi 87783 review và Founder duyệt.
 
+
+## Rà soát mã `cfp-gateway` @ `f530739` • 2026-11-25 (chỉ đọc)
+
+**Quyền:** đọc PASS (clone + test cục bộ). Ghi `cfp-gateway`: BỊ CHẶN trong phiên → không tạo nhánh hay PR ở repo này.
+
+### Kiến trúc thực tế (từ mã)
+- `Procfile`: `uvicorn claude_runtime:app` → `chatgpt_runtime` → `chatgpt_app` → `entrypoint`/`main` (FastAPI).
+- Endpoint: `/mcp` (bearer theo từng AI, `CFP_MCP_CLIENTS_JSON`) • `/mcp-public` (**không auth, chỉ đọc**: `cfp_status`, `resolve_canonical_id`) • `/mcp-chatgpt` (OAuth 2.1) • `/mcp-claude` (alias bearer) • `/health`, `/api/*`.
+- OAuth ChatGPT (`chatgpt_oauth.py`): issuer `https://mcp.cfp.plus/mcp-chatgpt`, PKCE S256, DCR chỉ cho host `chatgpt.com`/`chat.openai.com`, consent cần mã quản trị (`CFP_CHATGPT_OAUTH_ADMIN_TOKEN` → fallback `CFP_MCP_TOKEN`/`CFP_GATEWAY_API_KEY`), access 1h, refresh 30 ngày.
+- Lưu trữ: `DATABASE_URL` có → **Postgres** (bảng `work_orders`, `reviews`, `audit`, `executors`, `oauth_state`); không có → SQLite `/tmp` (mất khi restart).
+- Metadata `/.well-known/oauth-protected-resource` (gốc) trỏ về lane ChatGPT.
+
+### Phát hiện
+| Mã | Mức | Chi tiết |
+| --- | --- | --- |
+| TEST_SCOPE_DRIFT | HIGH | `pytest`: 18 PASS, **2 FAIL** (`test_chatgpt_auth_contract`). Mã cấp `read propose execute_approved write_noncanonical offline_access`, test kỳ vọng `read propose offline_access`. `main` hiện cấp **rộng hơn** hợp đồng đã kiểm thử. Cần Human Governance quyết định trước khi redeploy commit mới nhất. |
+| DEPLOY_SHA_UNKNOWN | MEDIUM | Không biết SHA Railway đang chạy trước khi hết Trial; `main` @ `f530739` có thể khác. |
+| PG_RETENTION | MEDIUM | Dữ liệu OAuth/audit nằm trên `postgres-volume`; cần sao lưu sớm sau khi khôi phục gói (chính sách giữ volume khi hết Trial: chưa xác minh). |
+| GEMINI_PUBLIC_READY | INFO | `/mcp-public/` không cần OAuth; khi Gateway chạy lại, Gemini có thể thử kết nối chỉ đọc ngay (không cần Client ID). |
+| GEMINI_ADMIN_FALLBACK | LOW | Consent dùng chung fallback `CFP_MCP_TOKEN`; lane Gemini nên có mã quản trị riêng. |
+
+### Khôi phục (cập nhật B5)
+Redeploy **SHA đã chạy trước đó** (Railway → Deployments). Nếu chỉ còn `main`: chạy `pytest` + quyết định TEST_SCOPE_DRIFT trước. Kiểm tra: `GET /health` báo `storage_backend: postgres`, rồi `python3 sandbox/mcp-oauth-connector/probe.py --url https://mcp.cfp.plus/mcp-chatgpt`.
+
+### Gemini OAuth trên nền hiện hữu (đề xuất, chưa viết mã)
+- Module `gemini_oauth.py` **kế thừa `ChatGPTOAuthProvider`**, chỉ đổi cấu hình: issuer `https://mcp.cfp.plus/mcp-gemini`, AI `691141`, scope `read`.
+- **Tắt DCR**; client đăng ký sẵn, nạp lúc khởi động từ biến Railway `CFP_GEMINI_OAUTH_CLIENT_ID` / `CFP_GEMINI_OAUTH_CLIENT_SECRET` (secret riêng, không commit).
+- Redirect: khớp **chính xác** `https://oauth-redirect.googleusercontent.com/r/user_bound_custom-mcp-db6be1542137b3a9ae65fd92`.
+- Consent riêng `/oauth/gemini/consent` với `CFP_GEMINI_OAUTH_ADMIN_TOKEN`; metadata `/.well-known/oauth-*/mcp-gemini`; mount `/mcp-gemini` trước catch-all `/`.
+- Test: discovery, PKCE, redirect sai bị từ chối, token Gemini không dùng được ở `/mcp-chatgpt` và ngược lại, chỉ `read`.
+- Triển khai qua nhánh + Draft PR trên `cfp-gateway` (cần quyền ghi), không đụng `main` khi Auto Deploy bật.
+
 ## Rollback
 
 - Lỗi tại B: redeploy lại SHA trước đó; dữ liệu đã có bản sao lưu ở bước 3.
