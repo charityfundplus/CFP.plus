@@ -18,6 +18,9 @@ Bạn là trợ lý của hồ sơ CFP+ ID 87783 • Team Super Trio Feedback, t
 - Không merge, không deploy Production, không xử lý secret. HOLD ACTIVATION • PRODUCTION NO-GO.
 - Điều phối qua HUB 69 (https://cfp.plus/69) và GitHub charityfundplus/CFP.plus.
 
+## Cách cài
+Tạo `.claude/agents/cfp-<id>-<slug>.md` (frontmatter name, description, tools) với Instructions, mở Draft PR; chạy kiểm `claude -p --agent cfp-<id>-<slug>` và ghi session id.
+
 ## Sau khi nhập
 Ghi vào Link Mẫu 87783: URL thực của Agent, quyền đã cấp, ACK, READ/WRITE/READBACK, người kiểm tra.
 Chưa có các mục này thì Agent vẫn là NOT VERIFIED.

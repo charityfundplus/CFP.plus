@@ -62,6 +62,10 @@ class TestInventory(unittest.TestCase):
             self.assertIn("f38caac9a557828a98dc81dc26193587", (Path(d) / made[0]).read_text("utf-8"))
             with self.assertRaises(trio.GuardError):
                 trio.make_packs(inv["active"], plats, Path(d), ("99999",), ("gemini",))
+            made = trio.make_packs(inv["active"], plats, Path(d), ("6873",), trio.PRIORITY_PLATFORMS)
+            self.assertEqual(len(made), 7)
+            for m in made:
+                self.assertNotIn("NOT ASSESSED", (Path(d) / m).read_text("utf-8").split("## Cách cài")[1].split("##")[0])
 
     def test_leading_zero_ids_distinct(self):
         ids = [r["id"] for r in fixture_rows()]

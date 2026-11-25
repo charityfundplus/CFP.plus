@@ -404,6 +404,19 @@ def verify(out: Path, plan: dict) -> dict:
 
 PACK_TEAMS = ("8778", "87728", "87783", "87788")
 PACK_PLATFORMS = ("chatgpt_codex", "claude_code", "gemini")
+PRIORITY_PLATFORMS = ("chatgpt_codex", "claude_project", "claude_code", "gemini", "notion", "canva", "perplexity")
+
+# Bước cài đặt theo nền tảng. Đều là UNVERIFIED_CLAIM đến khi 87783 đối chiếu tài liệu chính thức.
+INSTALL_STEPS = {
+    "chatgpt_codex": "ChatGPT: Explore GPTs → Create → dán Instructions; Knowledge: tải tài liệu từ Link Mẫu. Codex: đặt Instructions vào `AGENTS.md` của repository qua Draft PR.",
+    "claude_project": "claude.ai → Projects → Create project → Set project instructions: dán Instructions; Project knowledge: thêm tài liệu từ Link Mẫu.",
+    "claude_code": "Tạo `.claude/agents/cfp-<id>-<slug>.md` (frontmatter name, description, tools) với Instructions, mở Draft PR; chạy kiểm `claude -p --agent cfp-<id>-<slug>` và ghi session id.",
+    "gemini": "gemini.google.com → Gems → New Gem → dán Instructions; Knowledge: thêm tệp Google Drive từ kho của hồ sơ.",
+    "notion": "Trên Link Mẫu: Notion Agent / Custom Agent → dán Instructions, quyền tối thiểu (trang của hồ sơ); không đổi tên Agent đang gắn danh tính khác.",
+    "canva": "Canva không chạy Agent: dùng Instructions làm brief cố định; lưu thiết kế vào thư mục mang ID; ghi design_id vào Link Mẫu.",
+    "perplexity": "perplexity.ai → Spaces/Projects → New → dán Instructions vào Custom instructions; thêm Link Mẫu làm nguồn. Không mua credits.",
+}
+
 
 
 def render_pack(rec: dict, platform: dict) -> str:
@@ -426,6 +439,9 @@ Bạn là trợ lý của hồ sơ CFP+ ID {rec['id']} • {rec['name']}, thuộ
 - Mỗi kết quả trả về: TASK • ACK thật • RESULT • SHA/URL Evidence • REVIEWER (87783) • BLOCKER.
 - Không merge, không deploy Production, không xử lý secret. HOLD ACTIVATION • PRODUCTION NO-GO.
 - Điều phối qua HUB 69 (https://cfp.plus/69) và GitHub charityfundplus/CFP.plus.
+
+## Cách cài
+{INSTALL_STEPS.get(platform['key'], 'Chưa có hướng dẫn cài cho nền tảng này (NOT ASSESSED).')}
 
 ## Sau khi nhập
 Ghi vào Link Mẫu {rec['id']}: URL thực của Agent, quyền đã cấp, ACK, READ/WRITE/READBACK, người kiểm tra.
@@ -578,7 +594,8 @@ def main(argv=None) -> int:
         return 0
     if args.cmd == "packs":
         print("\n".join(make_packs(inv["active"], platforms, args.out,
-                                   tuple(args.ids.split(",")), tuple(args.platforms.split(",")))))
+                                   tuple(args.ids.split(",")),
+                                   PRIORITY_PLATFORMS if args.platforms == "priority" else tuple(args.platforms.split(",")))))
         return 0
     if args.cmd == "evidence":
         ver = verify(args.out, plan) if (args.out / "manifest.json").exists() else None
