@@ -9,6 +9,12 @@ from sqz.si6788 import EvalCase, evaluate_response, verify_job
 from sqz.store import Store
 from sqz.worker import Scheduler, Worker
 
+import json as _json
+
+SI_TOKEN = "si-6788-test-token"
+CLIENTS = _json.dumps({"clients": [{"ai_id": "SI_6788", "name": "6788 reviewer", "token": SI_TOKEN,
+                                     "scopes": ["read", "review"], "act_as": ["6788"]}]})
+SI = {"Authorization": f"Bearer {SI_TOKEN}"}
 API = {"Authorization": "Bearer api-test"}
 ADMIN = {"Authorization": "Bearer admin-test"}
 LINK_6788 = "https://app.notion.com/p/422caac9a55781ef8eb7cff6c4752c9e"
@@ -175,6 +181,7 @@ def test_6776_backup_restore_roundtrip_and_tamper_detection():
 def client(monkeypatch):
     monkeypatch.setenv("SQZ_API_TOKEN", "api-test")
     monkeypatch.setenv("SQZ_ADMIN_TOKEN", "admin-test")
+    monkeypatch.setenv("SQZ_CLIENTS_JSON", CLIENTS)
     app = create_app(Store())
     with TestClient(app) as c:
         yield c, app.state.store
@@ -186,7 +193,8 @@ def test_api_trio_flow_6789_compute_6788_verify_6776_ops(client):
                                 "payload": {"n": 4, "edges": [[0, 1, 1], [1, 2, 1], [2, 3, 1], [3, 0, 1]]}},
                  headers=API).json()["job_id"]
     _run_all(store)
-    v = c.post(f"/si/verify/{jid}", headers=API).json()
+    assert c.post(f"/si/verify/{jid}", headers=API).status_code == 403
+    v = c.post(f"/si/verify/{jid}", headers=SI).json()
     assert v["verdict"] == "APPROVED" and v["review_recorded"]
     assert c.get(f"/jobs/{jid}/reviews", headers=API).json()[0]["reviewer_id"] == "6788"
     e = c.post("/si/evaluate", headers=API, json={"response": GOOD, "expected_id": "6788",
@@ -194,8 +202,8 @@ def test_api_trio_flow_6789_compute_6788_verify_6776_ops(client):
     assert e["pass"]
     assert c.post("/evidence/validate", json=VALID).json()["valid"]
     assert c.get("/evidence/schema").json()["title"] == "CFP+ Evidence Report v1"
-    assert c.get("/ops/watchdog", headers=API).json()["status"] in ("OK", "CRITICAL")
-    assert c.get("/ops/backup", headers=API).status_code == 401
+    assert c.get("/ops/watchdog", headers=ADMIN).json()["status"] in ("OK", "CRITICAL")
+    assert c.get("/ops/backup", headers=API).status_code == 403
     snap = c.get("/ops/backup", headers=ADMIN).json()
     assert snap["format"] == "sqz-backup-v1" and len(snap["sha256"]) == 64
 

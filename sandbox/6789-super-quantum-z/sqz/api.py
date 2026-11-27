@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import hmac
 import os
 from contextlib import asynccontextmanager
 from typing import Any
@@ -18,13 +17,17 @@ from .ops6776 import EVIDENCE_SCHEMA, backup, validate_evidence, watchdog
 from .si6788 import EvalCase, evaluate_response, verify_job
 from .worker import Scheduler, Worker
 
+from .auth import AuthError, Principal, authenticate, require_act_as
 from .executor import KINDS
+from .gateway import resolve_id, to_gateway_work_order
 
 
 class JobIn(BaseModel):
     owner_id: str = Field(description="ID Số CFP+ hiện hữu của bên gửi (không cấp mới)")
     kind: str
     payload: dict[str, Any] = Field(default_factory=dict)
+    priority: int = Field(default=0, ge=-100, le=100)
+    idempotency_key: str | None = Field(default=None, min_length=8, max_length=128)
 
 
 class WorkOrderIn(BaseModel):
@@ -35,7 +38,9 @@ class WorkOrderIn(BaseModel):
     target: str = "6789"
     task: str
     payload: dict[str, Any] = Field(default_factory=dict)
+    required_capability: str | None = None
     requested_by: str
+    priority: int = Field(default=0, ge=-100, le=100)
 
 
 class ReviewIn(BaseModel):
@@ -65,15 +70,28 @@ class StopIn(BaseModel):
     reason: str = Field(min_length=3, max_length=500)
 
 
-def _token_dep(env_name: str):
-    def check(authorization: str = Header(default="")) -> str:
-        expected = os.getenv(env_name, "")
-        supplied = authorization.removeprefix("Bearer ").strip()
-        if not expected or not supplied or not hmac.compare_digest(supplied, expected):
-            raise HTTPException(status_code=401, detail="Unauthorized")
-        return env_name
+def needs(scope: str):
+    """Xác thực bearer token → Principal có scope yêu cầu (fail-closed)."""
+
+    def check(authorization: str = Header(default="")) -> Principal:
+        try:
+            p = authenticate(authorization)
+        except (AuthError, ValueError) as exc:
+            raise HTTPException(status_code=401, detail="Unauthorized") from exc
+        if not p.can(scope):
+            raise HTTPException(status_code=403, detail=f"Thiếu scope {scope}")
+        return p
 
     return check
+
+
+def _act(p: Principal, cfp_id: str, scope: str) -> None:
+    try:
+        require_act_as(p, cfp_id, scope)
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    except AuthError as exc:
+        raise HTTPException(status_code=403, detail=str(exc)) from exc
 
 
 def _validate(kind: str, owner_id: str, payload: dict) -> None:
@@ -119,8 +137,8 @@ def create_app(store: Store | None = None, *, run_worker: bool = False,
     app = FastAPI(title="CFP+ 6789 Super Quantum Z Core", version=__version__, lifespan=lifespan)
     app.state.store = store
     app.state.threads = threads
-    api = Depends(_token_dep("SQZ_API_TOKEN"))
-    admin = Depends(_token_dep("SQZ_ADMIN_TOKEN"))
+    reader = Depends(needs("read"))
+    admin = Depends(needs("admin"))
 
     @app.get("/health")
     def health() -> dict:
@@ -140,52 +158,91 @@ def create_app(store: Store | None = None, *, run_worker: bool = False,
     def list_backends() -> list[dict]:
         return backends.list_backends()
 
-    @app.post("/jobs", status_code=202, dependencies=[api])
-    def submit(job: JobIn) -> dict:
+    @app.get("/whoami")
+    def whoami(p: Principal = Depends(needs("read"))) -> dict:
+        return p.public()
+
+    def _submit(job: JobIn, p: Principal) -> dict:
         if store.stopped():
             raise HTTPException(status_code=423, detail="EMERGENCY_STOP đang bật")
+        _act(p, job.owner_id, "submit")
         _validate(job.kind, job.owner_id, job.payload)
-        return {"job_id": store.submit(job.owner_id, job.kind, job.payload, f"api:{job.owner_id}"),
-                "status": "QUEUED"}
+        try:
+            jid = store.submit(job.owner_id, job.kind, job.payload, p.ai_id, priority=job.priority,
+                               idempotency_key=job.idempotency_key)
+        except ValueError as exc:
+            raise HTTPException(status_code=422, detail=str(exc)) from exc
+        return {"job_id": jid, "status": store.get(jid)["status"]}
 
-    @app.get("/jobs/{job_id}", dependencies=[api])
+    @app.post("/jobs", status_code=202)
+    def submit(job: JobIn, p: Principal = Depends(needs("submit"))) -> dict:
+        return _submit(job, p)
+
+    @app.get("/jobs/{job_id}", dependencies=[reader])
     def get_job(job_id: str) -> dict:
         j = store.get(job_id)
         if j is None:
             raise HTTPException(status_code=404, detail="Không tìm thấy Job")
         return j
 
-    @app.post("/cmp/work-orders", status_code=202, dependencies=[api])
-    def cmp_work_order(wo: WorkOrderIn) -> dict:
+    @app.post("/cmp/work-orders", status_code=202)
+    def cmp_work_order(wo: WorkOrderIn, p: Principal = Depends(needs("submit"))) -> dict:
         if wo.target != "6789":
             raise HTTPException(status_code=422, detail="Work Order không dành cho 6789")
-        job = submit(JobIn(owner_id=wo.requested_by, kind=wo.task, payload=wo.payload))
-        store.audit(f"cmp:{wo.requested_by}", "CMP_WORK_ORDER_ACCEPTED",
+        # work_order_id làm khóa idempotency: CMP gửi lại không tạo Job trùng.
+        job = _submit(JobIn(owner_id=wo.requested_by, kind=wo.task, payload=wo.payload,
+                            priority=wo.priority, idempotency_key=f"cmp:{wo.work_order_id}"[:128]), p)
+        store.audit(p.ai_id, "CMP_WORK_ORDER_ACCEPTED",
                     {"work_order_id": wo.work_order_id, "job": job["job_id"]})
         return {"work_order_id": wo.work_order_id, **job, "review": "REVIEW_REQUIRED"}
 
+    @app.get("/cmp/work-orders/{job_id}/gateway-format", dependencies=[reader])
+    def cmp_gateway_format(job_id: str) -> dict:
+        j = store.get(job_id)
+        if j is None:
+            raise HTTPException(status_code=404, detail="Không tìm thấy Job")
+        return to_gateway_work_order(j)
+
+    @app.get("/si/next-reviewer")
+    def next_reviewer(owner_id: str, pool: str, history: str = "") -> dict:
+        """Thay phiên SI AI: reviewer ít lượt nhất, khác chủ trì, khác người vừa review."""
+        from .teams import rotate_reviewer
+
+        try:
+            pick = rotate_reviewer([x for x in pool.split(",") if x], owner_id,
+                                   [x for x in history.split(",") if x])
+        except (InvalidID, ValueError) as exc:
+            raise HTTPException(status_code=422, detail=str(exc)) from exc
+        return {"reviewer_id": pick, "owner_id": owner_id}
+
+    @app.get("/ids/{cfp_id}/resolve")
+    def ids_resolve(cfp_id: str) -> dict:
+        """Tra ID Số Sống qua CFP+ Gateway; không cấp ID, không bịa DID."""
+        try:
+            return resolve_id(cfp_id)
+        except InvalidID as exc:
+            raise HTTPException(status_code=422, detail=str(exc)) from exc
+
     @app.post("/admin/emergency-stop", dependencies=[admin])
-    def emergency_stop(body: StopIn) -> dict:
-        store.set_stop(True, "admin", body.reason)
+    def emergency_stop(body: StopIn, p: Principal = Depends(needs("admin"))) -> dict:
+        store.set_stop(True, p.ai_id, body.reason)
         return {"emergency_stop": True}
 
     @app.post("/admin/resume", dependencies=[admin])
-    def resume(body: StopIn) -> dict:
-        store.set_stop(False, "admin", body.reason)
+    def resume(body: StopIn, p: Principal = Depends(needs("admin"))) -> dict:
+        store.set_stop(False, p.ai_id, body.reason)
         return {"emergency_stop": False}
 
     @app.get("/audit/verify", dependencies=[admin])
     def audit_verify() -> dict:
         return store.verify_audit()
 
-    @app.post("/jobs/{job_id}/review", dependencies=[api])
-    def review(job_id: str, body: ReviewIn) -> dict:
-        """6788 • Siêu Trí Tuệ (hoặc reviewer khác chủ trì) ghi kết luận độc lập."""
+    @app.post("/jobs/{job_id}/review")
+    def review(job_id: str, body: ReviewIn, p: Principal = Depends(needs("review"))) -> dict:
+        """Reviewer phải chứng minh quyền thật: token có scope review và được đại diện reviewer_id."""
+        _act(p, body.reviewer_id, "review")
         try:
-            classify(body.reviewer_id)
-            return store.review(job_id, body.reviewer_id, body.verdict, body.note)
-        except InvalidID as exc:
-            raise HTTPException(status_code=422, detail=str(exc)) from exc
+            return store.review(job_id, body.reviewer_id, body.verdict, body.note, reviewer_principal=p.ai_id)
         except KeyError as exc:
             raise HTTPException(status_code=404, detail="Không tìm thấy Job") from exc
         except PermissionError as exc:
@@ -193,7 +250,7 @@ def create_app(store: Store | None = None, *, run_worker: bool = False,
         except ValueError as exc:
             raise HTTPException(status_code=409, detail=str(exc)) from exc
 
-    @app.get("/jobs/{job_id}/reviews", dependencies=[api])
+    @app.get("/jobs/{job_id}/reviews", dependencies=[reader])
     def job_reviews(job_id: str) -> list[dict]:
         return store.reviews_of(job_id)
 
@@ -207,7 +264,7 @@ def create_app(store: Store | None = None, *, run_worker: bool = False,
         return {**info, "pillars": TRIO, "shared_api": True,
                 "principle": "3 Trong 1 • Một ID • Một Link Mẫu • Chung Kho Tri Thức"}
 
-    @app.get("/evidence", dependencies=[api])
+    @app.get("/evidence", dependencies=[reader])
     def evidence() -> dict:
         """6776 • Siêu Phần Mềm: báo cáo vận hành có thể đối chiếu (Evidence First)."""
         tests = [j for j in store.recent("bell_selftest", 200) if j["status"] == "DONE"]
@@ -224,7 +281,7 @@ def create_app(store: Store | None = None, *, run_worker: bool = False,
                 "nature_note": "Kết quả lượng tử là MÔ PHỎNG; QPU TẮT"}
 
     # ------------------------------------------------------------ 6788 • Siêu Trí Tuệ
-    @app.post("/si/evaluate", dependencies=[api])
+    @app.post("/si/evaluate", dependencies=[reader])
     def si_evaluate(body: EvalIn) -> dict:
         """Chấm câu trả lời của một Agent theo bài nghiệm thu 6788 (danh tính, nguồn, song ngữ, chống phóng đại)."""
         try:
@@ -236,17 +293,22 @@ def create_app(store: Store | None = None, *, run_worker: bool = False,
                                                    "score": r["score"]})
         return r
 
-    @app.post("/si/verify/{job_id}", dependencies=[api])
-    def si_verify(job_id: str) -> dict:
-        """6788 chạy lại độc lập (khác backend/thuật toán) và ghi review nếu chủ trì khác 6788."""
+    @app.post("/si/verify/{job_id}")
+    def si_verify(job_id: str, p: Principal = Depends(needs("review"))) -> dict:
+        """6788 chạy lại độc lập; chỉ danh tính được đại diện 6788 mới ghi được review."""
+        _act(p, "6788", "review")
         job = store.get(job_id)
         if job is None:
             raise HTTPException(status_code=404, detail="Không tìm thấy Job")
         v = verify_job(job)
         recorded = None
         if job["owner_id"] != "6788" and job["status"] in ("DONE", "FAILED"):
-            recorded = store.review(job_id, "6788", v["verdict"],
-                                    f"AUTOMATED • {v['method']} • {v['details']}")
+            try:
+                recorded = store.review(job_id, "6788", v["verdict"],
+                                        f"AUTOMATED • {v['method']} • {v['details']}",
+                                        reviewer_principal=p.ai_id)
+            except PermissionError as exc:
+                raise HTTPException(status_code=403, detail=str(exc)) from exc
         return {**v, "job_id": job_id, "review_recorded": bool(recorded)}
 
     # ------------------------------------------------------------ 6776 • Siêu Phần Mềm
@@ -258,7 +320,7 @@ def create_app(store: Store | None = None, *, run_worker: bool = False,
     def evidence_validate(report: dict) -> dict:
         return validate_evidence(report)
 
-    @app.get("/ops/watchdog", dependencies=[api])
+    @app.get("/ops/watchdog", dependencies=[Depends(needs("operate"))])
     def ops_watchdog() -> dict:
         r = watchdog(store, stale_s=30.0)
         if r["status"] != "OK":
@@ -272,7 +334,7 @@ def create_app(store: Store | None = None, *, run_worker: bool = False,
         store.audit("ops:6776", "BACKUP_EXPORTED", {"sha256": snap["sha256"]})
         return snap
 
-    @app.get("/workers", dependencies=[api])
+    @app.get("/workers", dependencies=[reader])
     def workers() -> list[dict]:
         return store.workers()
 

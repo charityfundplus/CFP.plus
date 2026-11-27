@@ -1,0 +1,26 @@
+# CFP+ • 6789 Super Quantum Z • STAGING blueprint (Render). CHƯA TRIỂN KHAI.
+# Chỉ áp dụng sau khi Human Governance duyệt. Gói free: không phát sinh chi phí nhưng
+# instance ngủ khi rảnh, nên KHÔNG đạt 24/24; dùng để kiểm thử staging.
+services:
+  - type: web
+    name: sqz-6789-staging
+    runtime: docker
+    plan: free
+    rootDir: sandbox/6789-super-quantum-z
+    dockerfilePath: ./Dockerfile
+    branch: claude/87788-super-trio-upgrade
+    autoDeploy: false
+    healthCheckPath: /health/ready
+    envVars:
+      - key: SQZ_CLIENTS_JSON          # danh tính từng AI (token_sha256), đặt tay trên Render
+        sync: false
+      - key: SQZ_ADMIN_TOKEN
+        sync: false
+      - key: SQZ_DATABASE_URL          # PostgreSQL staging; trống → SQLite tạm (mất khi restart)
+        sync: false
+      - key: SQZ_GATEWAY_URL
+        value: https://mcp.cfp.plus
+      - key: SQZ_SELFTEST_INTERVAL_S
+        value: "300"
+      - key: SQZ_QPU_ENABLED
+        value: "0"

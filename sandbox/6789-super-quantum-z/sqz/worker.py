@@ -15,9 +15,10 @@ SELFTEST_OWNER = "6789"
 
 class Worker(threading.Thread):
     def __init__(self, store: Store, name: str | None = None, poll_s: float = 0.5,
-                 lease_s: float = 60.0) -> None:
-        super().__init__(daemon=True, name=name or f"sqz-{socket.gethostname()}")
+                 lease_s: float = 60.0, max_running_per_owner: int | None = None) -> None:
+        super().__init__(daemon=True, name=name or f"sqz-{socket.gethostname()}-{id(self) % 10000}")
         self.store, self.poll_s, self.lease_s = store, poll_s, lease_s
+        self.max_running_per_owner = max_running_per_owner
         self._halt = threading.Event()
         self.processed = 0
 
@@ -31,14 +32,14 @@ class Worker(threading.Thread):
                                     "processed": self.processed, "version": __version__})
         if stopped:
             return False
-        job = self.store.claim(self.name, self.lease_s)
+        job = self.store.claim(self.name, self.lease_s, max_running_per_owner=self.max_running_per_owner)
         if job is None:
             return False
         try:
             result = execute(job["kind"], job["payload"])
-            self.store.finish(job["id"], self.name, result=result)
+            self.store.finish(job["id"], self.name, result=result, fence=job["fence"])
         except Exception as exc:  # ghi lỗi, không làm chết worker
-            self.store.finish(job["id"], self.name, error=f"{type(exc).__name__}: {exc}")
+            self.store.finish(job["id"], self.name, error=f"{type(exc).__name__}: {exc}", fence=job["fence"])
         self.processed += 1
         return True
 

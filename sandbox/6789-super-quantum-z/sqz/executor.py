@@ -11,7 +11,7 @@ from .optimize import assign_tasks, maxcut_ortools, qaoa_maxcut
 BELL_TOLERANCE = 0.05
 
 
-KINDS = {"circuit", "bell_selftest", "maxcut", "assign_tasks", "qaoa_maxcut"}
+KINDS = {"circuit", "bell_selftest", "maxcut", "assign_tasks", "qaoa_maxcut", "form_teams", "route_tasks"}
 
 
 def bell_selftest(backend: str | None = None, shots: int = 2000, seed: int | None = 6789) -> dict:
@@ -45,6 +45,19 @@ def execute(kind: str, payload: dict) -> dict:
     elif kind == "qaoa_maxcut":
         out = qaoa_maxcut(int(payload["n"]), [tuple(e) for e in payload["edges"]],
                           payload.get("backend"), min(int(payload.get("grid", 16)), 32))
+    elif kind == "form_teams":
+        from .teams import form_teams
+
+        ids = [str(i) for i in payload["trio_ids"]]
+        if len(ids) > 2000 or int(payload["n_teams"]) > 500:
+            raise ValueError("Quá giới hạn: ≤2000 Siêu Bộ Tam, ≤500 Team")
+        out = form_teams(ids, int(payload["n_teams"]), int(payload.get("min_size", 33)),
+                         int(payload.get("max_teams_per_trio", 40)),
+                         time_limit_s=min(float(payload.get("time_limit_s", 30)), 120.0))
+    elif kind == "route_tasks":
+        from .teams import route_tasks
+
+        out = route_tasks(payload["tasks"], payload["teams"])
     else:
         raise ValueError(f"Loại Job không hỗ trợ: {kind}")
     out["elapsed_s"] = round(time.perf_counter() - t0, 6)

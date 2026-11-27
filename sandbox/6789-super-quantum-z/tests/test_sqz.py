@@ -218,7 +218,7 @@ def test_api_cmp_work_order(client):
 
 def test_api_emergency_stop_requires_admin_and_blocks_submissions(client):
     c, _ = client
-    assert c.post("/admin/emergency-stop", json={"reason": "drill"}, headers=API).status_code == 401
+    assert c.post("/admin/emergency-stop", json={"reason": "drill"}, headers=API).status_code == 403
     assert c.post("/admin/emergency-stop", json={"reason": "drill"}, headers=ADMIN).status_code == 200
     assert c.post("/jobs", json={"owner_id": "6789", "kind": "bell_selftest"}, headers=API).status_code == 423
     assert c.get("/health/ready").status_code == 503

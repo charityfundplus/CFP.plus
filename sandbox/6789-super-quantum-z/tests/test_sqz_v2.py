@@ -11,6 +11,12 @@ from sqz.optimize import assign_brute, assign_tasks, maxcut_ortools, qaoa_maxcut
 from sqz.store import Store
 from sqz.worker import Worker
 
+import json as _json
+
+SI_TOKEN = "si-6788-test-token"
+CLIENTS = _json.dumps({"clients": [{"ai_id": "SI_6788", "name": "6788 reviewer", "token": SI_TOKEN,
+                                     "scopes": ["read", "review"], "act_as": ["6788"]}]})
+SI = {"Authorization": f"Bearer {SI_TOKEN}"}
 API = {"Authorization": "Bearer api-test"}
 
 
@@ -18,6 +24,7 @@ API = {"Authorization": "Bearer api-test"}
 def client(monkeypatch):
     monkeypatch.setenv("SQZ_API_TOKEN", "api-test")
     monkeypatch.setenv("SQZ_ADMIN_TOKEN", "admin-test")
+    monkeypatch.setenv("SQZ_CLIENTS_JSON", CLIENTS)
     app = create_app(Store())
     with TestClient(app) as c:
         yield c, app.state.store
@@ -107,10 +114,11 @@ def test_independent_review_by_6788(client):
     c, store = client
     jid = c.post("/jobs", json={"owner_id": "6789", "kind": "bell_selftest"}, headers=API).json()["job_id"]
     body = {"reviewer_id": "6788", "verdict": "APPROVED", "note": "Bell 00/11"}
-    assert c.post(f"/jobs/{jid}/review", json=body, headers=API).status_code == 409  # chưa chạy
+    assert c.post(f"/jobs/{jid}/review", json=body, headers=SI).status_code == 409  # chưa chạy
     Worker(store, name="w").step()
-    assert c.post(f"/jobs/{jid}/review", json={**body, "reviewer_id": "6789"}, headers=API).status_code == 403
-    assert c.post(f"/jobs/{jid}/review", json=body, headers=API).status_code == 200
+    assert c.post(f"/jobs/{jid}/review", json=body, headers=API).status_code == 403  # LEGACY không review
+    assert c.post(f"/jobs/{jid}/review", json={**body, "reviewer_id": "6789"}, headers=SI).status_code == 403
+    assert c.post(f"/jobs/{jid}/review", json=body, headers=SI).status_code == 200
     assert c.get(f"/jobs/{jid}/reviews", headers=API).json()[0]["reviewer_id"] == "6788"
 
 

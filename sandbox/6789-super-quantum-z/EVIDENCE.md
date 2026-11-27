@@ -67,3 +67,24 @@ Chạy thật lần 2 (uvicorn + worker + scheduler 5 giây):
 - `/ops/watchdog`: OK, 0 cảnh báo.
 - `/ops/backup`: sqz-backup-v1, 16 Job, 2 review, 35 audit.
 - Diễn tập khôi phục vào Store mới: audit hợp lệ 35/35.
+
+---
+
+# v0.4 • Nền tảng Siêu Bộ Tam dùng chung • 2026-11-27
+
+`pytest` cục bộ: **83 passed, 4 skipped**. Có 4 test PostgreSQL chỉ chạy trong CI: mất kết nối, restart, đa worker, khôi phục.
+
+| Hạng mục | Kết quả |
+| --- | --- |
+| Danh tính thực | Claude Code gửi thay 6788 → 403. 87783 mạo danh 6788 để review → 403. Thiếu scope → 403. 6788 thật → 200. Cùng token tự review → từ chối. Token trùng hoặc ID sai → không khởi động |
+| Fencing | Worker chậm bị thu hồi lease thì không chốt được (fence cũ); không chốt hai lần |
+| Đa worker | 8 luồng × 120 Job: mỗi Job thực thi **đúng 1 lần**, audit hợp lệ |
+| Idempotency | 16 luồng cùng khóa → 1 Job; CMP gửi lại → cùng Job |
+| Đa tiến trình | **Lỗi thật phát hiện được:** 2 instance trên SQLite làm chuỗi audit rẽ nhánh tại seq 23. Đã sửa bằng compare-and-swap + `BEGIN IMMEDIATE`; test 4 tiến trình × 192 bản ghi đạt |
+| Chạy thật 2 instance | 90 request đồng thời → 90×202, 60 Job riêng biệt (30 lần gửi lại không tạo trùng); 130 Job DONE, 0 chốt trùng, audit hợp lệ |
+| Gateway | Tra ID: GATEWAY_VERIFIED / NOT_FOUND / LOCAL_FORMAT_ONLY khi gateway sập (mock HTTP). Trường Work Order khớp `main.py` của cfp-gateway |
+| 1.110 ID nền tảng | 10 Chương + 100 Con + 1.000 Cháu, cùng 104 ID kiểm kê: `/trio/{id}` đều 200; "0", "00", "000" là ba ID khác nhau |
+| 115 Team | Kiểm kê thật 104 Siêu Bộ Tam → 115 Team × 33 (FEASIBLE, 60 giây); mỗi Siêu Bộ Tam tối đa 37 Team (= mức tối thiểu lý thuyết 3795/104); mọi Team đủ 4 Nhóm. `evidence/team_formation.json` |
+| Ưu tiên, chia sẻ, thay phiên | Ưu tiên cao chạy trước; hạn mức theo owner; 9 lượt review chia đều 3/3/3, không ai review hai lượt liền |
+
+Giới hạn: danh sách chính thức 1.115 ID chưa có trong repo; DID chưa được Registry cấp nên luôn ở trạng thái `NOT_ASSIGNED`; staging chưa triển khai.

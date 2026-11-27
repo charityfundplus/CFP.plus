@@ -13,8 +13,9 @@ import time
 import uuid
 from pathlib import Path
 
-from sqlalchemy import (Column, Float, Integer, MetaData, String, Table, Text, create_engine,
-                        event, func, insert, select, text, update)
+from sqlalchemy import (Column, Float, Integer, MetaData, String, Table, Text, UniqueConstraint,
+                        create_engine, event, func, insert, select, text, update)
+from sqlalchemy.exc import IntegrityError, OperationalError
 from sqlalchemy.engine import Engine
 from sqlalchemy.pool import StaticPool
 
@@ -34,6 +35,11 @@ jobs = Table(
     Column("lease_until", Float),
     Column("created_at", Float, nullable=False, index=True),
     Column("updated_at", Float, nullable=False),
+    Column("priority", Integer, nullable=False, default=0),
+    Column("idempotency_key", String(128)),
+    Column("submitted_by", String(64)),
+    Column("fence", Integer, nullable=False, default=0),  # fencing token, tăng mỗi lần nhận
+    UniqueConstraint("owner_id", "idempotency_key", name="uq_sqz_jobs_idem"),
 )
 heartbeats = Table(
     "sqz_heartbeats", metadata,
@@ -84,8 +90,13 @@ def _engine(target: str | Path | None) -> Engine:
 
         @event.listens_for(eng, "connect")
         def _wal(conn, _):  # nhiều tiến trình đọc/ghi an toàn hơn
+            conn.isolation_level = None  # để SQLAlchemy tự phát BEGIN
             conn.execute("PRAGMA journal_mode=WAL")
-            conn.execute("PRAGMA busy_timeout=5000")
+            conn.execute("PRAGMA busy_timeout=10000")
+
+        @event.listens_for(eng, "begin")
+        def _immediate(conn):  # khóa ghi ngay đầu giao dịch: tuần tự hóa giữa các tiến trình
+            conn.exec_driver_sql("BEGIN IMMEDIATE")
 
         return eng
     return create_engine(url, pool_pre_ping=True)
@@ -108,16 +119,27 @@ class Store:
     # ---------------------------------------------------------------- audit
     def audit(self, actor: str, event_: str, data: dict) -> str:
         payload = json.dumps(data, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
-        with self._lock, self.engine.begin() as c:
-            # Khóa dòng audit_head để nhiều tiến trình/instance vẫn nối chuỗi tuần tự (Postgres).
-            prev = c.execute(select(control.c.value).where(control.c.key == "audit_head")
-                             .with_for_update()).scalar_one()
-            at = time.time()
-            d = _digest(prev, at, actor, event_, payload)
-            c.execute(insert(audit_log).values(at=at, actor=actor, event=event_, data=payload,
-                                               prev=prev, digest=d))
-            c.execute(update(control).where(control.c.key == "audit_head").values(value=d, at=at))
-            return d
+        # Compare-and-swap trên audit_head: đúng cho nhiều tiến trình/instance trên cả SQLite
+        # (FOR UPDATE không có tác dụng) lẫn PostgreSQL. Thua cuộc thì đọc lại head và thử lại.
+        with self._lock:
+            for attempt in range(200):
+                try:
+                    with self.engine.begin() as c:
+                        prev = c.execute(select(control.c.value).where(control.c.key == "audit_head")
+                                         .with_for_update()).scalar_one()
+                        at = time.time()
+                        d = _digest(prev, at, actor, event_, payload)
+                        won = c.execute(update(control).where(control.c.key == "audit_head",
+                                                              control.c.value == prev)
+                                        .values(value=d, at=at)).rowcount
+                        if won == 1:
+                            c.execute(insert(audit_log).values(at=at, actor=actor, event=event_,
+                                                               data=payload, prev=prev, digest=d))
+                            return d
+                except OperationalError:  # SQLite bận: thử lại
+                    pass
+                time.sleep(0.001 * (attempt % 10))
+        raise RuntimeError("Không ghi được audit sau 200 lần thử (tranh chấp quá cao)")
 
     def verify_audit(self) -> dict:
         prev, n = GENESIS, 0
@@ -145,16 +167,45 @@ class Store:
             return c.execute(select(control.c.value).where(control.c.key == "emergency_stop")).scalar() == "1"
 
     # ---------------------------------------------------------------- jobs
-    def submit(self, owner_id: str, kind: str, payload: dict, actor: str) -> str:
+    def submit(self, owner_id: str, kind: str, payload: dict, actor: str, *, priority: int = 0,
+               idempotency_key: str | None = None) -> str:
+        """Gửi Job. Cùng (owner_id, idempotency_key) thì trả lại Job cũ, không tạo trùng."""
+        if not -100 <= int(priority) <= 100:
+            raise ValueError("priority phải trong -100..100")
+        if idempotency_key is not None:
+            existing = self.find_idempotent(owner_id, idempotency_key)
+            if existing:
+                return existing
         jid, now = uuid.uuid4().hex, time.time()
-        with self.engine.begin() as c:
-            c.execute(insert(jobs).values(id=jid, owner_id=owner_id, kind=kind, payload=json.dumps(payload),
-                                          status="QUEUED", attempts=0, created_at=now, updated_at=now))
-        self.audit(actor, "JOB_SUBMITTED", {"job": jid, "owner_id": owner_id, "kind": kind})
+        try:
+            with self.engine.begin() as c:
+                c.execute(insert(jobs).values(id=jid, owner_id=owner_id, kind=kind, payload=json.dumps(payload),
+                                              status="QUEUED", attempts=0, created_at=now, updated_at=now,
+                                              priority=int(priority), idempotency_key=idempotency_key,
+                                              submitted_by=actor, fence=0))
+        except IntegrityError:  # hai yêu cầu cùng khóa đến đồng thời
+            existing = self.find_idempotent(owner_id, idempotency_key)
+            if existing:
+                return existing
+            raise
+        self.audit(actor, "JOB_SUBMITTED", {"job": jid, "owner_id": owner_id, "kind": kind,
+                                            "priority": int(priority)})
         return jid
 
-    def claim(self, worker: str, lease_s: float = 60.0, max_attempts: int = 3) -> dict | None:
-        """Nhận nguyên tử một Job: chỉ một worker thắng nhờ UPDATE có điều kiện trạng thái."""
+    def find_idempotent(self, owner_id: str, key: str | None) -> str | None:
+        if key is None:
+            return None
+        with self.engine.connect() as c:
+            return c.execute(select(jobs.c.id).where(jobs.c.owner_id == owner_id,
+                                                     jobs.c.idempotency_key == key)).scalar()
+
+    def claim(self, worker: str, lease_s: float = 60.0, max_attempts: int = 3,
+              max_running_per_owner: int | None = None) -> dict | None:
+        """Nhận nguyên tử một Job: ưu tiên cao trước, cũ trước; chỉ một worker thắng.
+
+        Trả Job kèm `fence` mới: chỉ lượt nhận mang fence này được phép finish.
+        `max_running_per_owner` giới hạn số Job RUNNING của mỗi owner (chia sẻ công bằng).
+        """
         if self.stopped():
             return None
         now = time.time()
@@ -165,29 +216,42 @@ class Store:
                       .values(status="FAILED", error="lease expired too many times", updated_at=now))
             c.execute(update(jobs).where(jobs.c.status == "RUNNING", jobs.c.lease_until < now)
                       .values(status="QUEUED", worker=None, updated_at=now))
+            q = select(jobs.c.id).where(jobs.c.status == "QUEUED")
+            if max_running_per_owner:
+                busy = (select(jobs.c.owner_id).where(jobs.c.status == "RUNNING")
+                        .group_by(jobs.c.owner_id).having(func.count() >= max_running_per_owner))
+                q = q.where(jobs.c.owner_id.not_in(busy))
+            q = q.order_by(jobs.c.priority.desc(), jobs.c.created_at).limit(1)
             for _ in range(5):
-                jid = c.execute(select(jobs.c.id).where(jobs.c.status == "QUEUED")
-                                .order_by(jobs.c.created_at).limit(1)).scalar()
+                jid = c.execute(q).scalar()
                 if jid is None:
                     return None
                 won = c.execute(update(jobs).where(jobs.c.id == jid, jobs.c.status == "QUEUED")
                                 .values(status="RUNNING", worker=worker, lease_until=now + lease_s,
-                                        attempts=jobs.c.attempts + 1, updated_at=now)).rowcount
+                                        attempts=jobs.c.attempts + 1, fence=jobs.c.fence + 1,
+                                        updated_at=now)).rowcount
                 if won == 1:
                     break
             else:
                 return None
         return self.get(jid)
 
-    def finish(self, jid: str, worker: str, result: dict | None = None, error: str | None = None) -> bool:
+    def finish(self, jid: str, worker: str, result: dict | None = None, error: str | None = None,
+               fence: int | None = None) -> bool:
+        """Chốt kết quả. Sai worker, sai fence hoặc Job không còn RUNNING → từ chối (False)."""
+        cond = [jobs.c.id == jid, jobs.c.worker == worker, jobs.c.status == "RUNNING"]
+        if fence is not None:
+            cond.append(jobs.c.fence == fence)
         with self.engine.begin() as c:
-            n = c.execute(update(jobs).where(jobs.c.id == jid, jobs.c.worker == worker,
-                                             jobs.c.status == "RUNNING")
+            n = c.execute(update(jobs).where(*cond)
                           .values(status="FAILED" if error else "DONE",
                                   result=json.dumps(result) if result is not None else None,
                                   error=error, updated_at=time.time(), lease_until=None)).rowcount
         if n:
-            self.audit(worker, "JOB_FAILED" if error else "JOB_DONE", {"job": jid, "error": error})
+            self.audit(worker, "JOB_FAILED" if error else "JOB_DONE", {"job": jid, "error": error,
+                                                                      "fence": fence})
+        else:
+            self.audit(worker, "STALE_FINISH_REJECTED", {"job": jid, "fence": fence})
         return bool(n)
 
     def get(self, jid: str) -> dict | None:
@@ -213,18 +277,22 @@ class Store:
             return {r[0]: r[1] for r in c.execute(select(jobs.c.status, func.count()).group_by(jobs.c.status))}
 
     # ---------------------------------------------------------------- review độc lập
-    def review(self, jid: str, reviewer_id: str, verdict: str, note: str = "") -> dict:
+    def review(self, jid: str, reviewer_id: str, verdict: str, note: str = "",
+               reviewer_principal: str | None = None) -> dict:
         job = self.get(jid)
         if job is None:
             raise KeyError(jid)
         if reviewer_id == job["owner_id"]:
             raise PermissionError("Reviewer phải khác chủ trì (kiểm chứng độc lập)")
+        if reviewer_principal and reviewer_principal == job.get("submitted_by"):
+            raise PermissionError("Cùng một danh tính đã gửi Job thì không được tự review")
         if job["status"] not in ("DONE", "FAILED"):
             raise ValueError("Chỉ review Job đã kết thúc")
         with self.engine.begin() as c:
             c.execute(insert(reviews).values(job_id=jid, reviewer_id=reviewer_id, verdict=verdict,
                                              note=note, at=time.time()))
-        self.audit(f"review:{reviewer_id}", "JOB_REVIEWED", {"job": jid, "verdict": verdict})
+        self.audit(reviewer_principal or f"review:{reviewer_id}", "JOB_REVIEWED",
+                   {"job": jid, "reviewer_id": reviewer_id, "verdict": verdict})
         return {"job_id": jid, "reviewer_id": reviewer_id, "verdict": verdict}
 
     def reviews_of(self, jid: str) -> list[dict]:

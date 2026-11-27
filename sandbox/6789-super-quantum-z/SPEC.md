@@ -70,3 +70,19 @@ Client (AI / Team / CMP) ──► FastAPI (sqz.api) ──► Store (SQLite | P
 - **Schema Evidence chung v1** (bài nghiệm thu 6776): `GET /evidence/schema`, `POST /evidence/validate`, MCP `sqz_validate_evidence`. JSON Schema 2020-12 cộng các luật chéo: reviewer khác chủ trì; VERIFIED phải có reviewer; BLOCKED phải nêu blocker; `nature=QPU` bị từ chối; thời gian theo RFC 3339 có múi giờ.
 - **Watchdog cảnh báo sớm**: `GET /ops/watchdog`. Mức CRITICAL: DB mất kết nối, audit hỏng, không còn worker sống, self-test lỗi. Mức WARNING: đang Emergency Stop, hàng đợi dồn. Khi audit hỏng thì đề nghị bật Emergency Stop, nhưng không tự bật.
 - **Sao lưu và khôi phục**: `GET /ops/backup` (admin) xuất 5 bảng kèm sha256. `restore()` chỉ nạp vào Store rỗng, kiểm sha256 trước khi nạp, xác minh chuỗi audit sau khi nạp, và đồng bộ sequence trên PostgreSQL.
+
+## 10. Nền tảng Siêu Bộ Tam dùng chung • v0.4
+- **Danh tính theo quyền thực tế** (`sqz/auth.py`): `SQZ_CLIENTS_JSON`, tương thích `CFP_MCP_CLIENTS_JSON` của cfp-gateway. Mỗi token có `scopes` và `act_as`; server chỉ lưu `token_sha256`.
+  - Review cần đủ 4 điều kiện: scope `review`, `reviewer_id ∈ act_as`, reviewer khác chủ trì, và không phải chính token đã gửi Job.
+  - Token LEGACY không bao giờ được review.
+- **Thực thi đúng một lần:**
+  - Lease kèm fencing token (`fence` tăng mỗi lần nhận Job); `finish` phải khớp fence.
+  - Idempotency theo `(owner_id, idempotency_key)`; CMP dùng `work_order_id` làm khóa.
+  - Audit dùng compare-and-swap trên `audit_head`, SQLite chạy `BEGIN IMMEDIATE`.
+- **Phân bổ tài nguyên:** `priority` −100..100; giới hạn `max_running_per_owner` để chia sẻ công bằng.
+- **Thay phiên SI AI:** `GET /si/next-reviewer` chọn reviewer ít lượt nhất, khác chủ trì, khác người vừa review.
+- **Team:**
+  - Job `form_teams` (CP-SAT): mỗi Team ≥ `min_size`, mỗi Siêu Bộ Tam ≤ `max_teams_per_trio`, không bỏ sót ai, phủ đủ Nhóm.
+  - Job `route_tasks`: giao theo ưu tiên, năng lực và sức chứa.
+- **Gateway** (`sqz/gateway.py`): `GET /ids/{id}/resolve` gọi `/api/id/{id}` của cfp-gateway; DID chỉ có khi Registry cung cấp; `GET /cmp/work-orders/{job}/gateway-format` trả đúng trường `WorkOrder` của gateway.
+- **Staging:** `deploy/render.staging.yaml`, `deploy/STAGING.md` (chưa triển khai). Hướng dẫn nền tảng khác: `INTEGRATION.md`.

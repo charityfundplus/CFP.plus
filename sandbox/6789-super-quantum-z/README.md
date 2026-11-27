@@ -25,6 +25,7 @@ Siêu Lượng Tử ⚛️ • SI 🤖 AI 🤖 • Siêu Phần Mềm. Mọi k�
 | OR-Tools phân công nhiệm vụ cho Team • QAOA lai trên Cirq | `sqz/optimize.py` | PASS |
 | API dùng chung `/trio/{id}` • review độc lập 6788 • `/evidence` cho 6776 | `sqz/api.py` | PASS |
 | PostgreSQL (`SQZ_DATABASE_URL`) | `sqz/store.py` | CI |
+| v0.4: danh tính thực (`act_as`), fencing, idempotency, ưu tiên, 115 Team, Gateway, staging | `sqz/auth.py`, `sqz/teams.py`, `sqz/gateway.py`, `deploy/` | PASS |
 
 | 6788 • đánh giá Agent (danh tính, nguồn, song ngữ, chống phóng đại) + kiểm chứng độc lập Job | `sqz/si6788.py` | PASS |
 | 6776 • schema Evidence v1, watchdog cảnh báo sớm, sao lưu/khôi phục có kiểm toàn vẹn | `sqz/ops6776.py` | PASS |
@@ -41,7 +42,7 @@ Siêu Lượng Tử ⚛️ • SI 🤖 AI 🤖 • Siêu Phần Mềm. Mọi k�
 6. MCP cho Claude Code / Codex: `python -m sqz.mcp_server` (stdio).
 7. Docker: `docker build -t sqz-6789 . && docker run -p 8000:8000 -e SQZ_API_TOKEN=… -e SQZ_ADMIN_TOKEN=… sqz-6789`.
 
-Biến môi trường: `SQZ_API_TOKEN`, `SQZ_ADMIN_TOKEN` (bắt buộc; thiếu thì API từ chối) • `SQZ_DATABASE_URL` (PostgreSQL, Cloud) hoặc `SQZ_DB_PATH` (SQLite) • `SQZ_WORKER` • `SQZ_SELFTEST_INTERVAL_S` • `SQZ_QPU_ENABLED` (mặc định tắt).
+Biến môi trường: `SQZ_CLIENTS_JSON` (danh tính từng AI, khuyến nghị) hoặc `SQZ_API_TOKEN`/`SQZ_ADMIN_TOKEN` (LEGACY, không review được); thiếu thì API từ chối • `SQZ_GATEWAY_URL` • `SQZ_DATABASE_URL` (PostgreSQL, Cloud) hoặc `SQZ_DB_PATH` (SQLite) • `SQZ_WORKER` • `SQZ_SELFTEST_INTERVAL_S` • `SQZ_QPU_ENABLED` (mặc định tắt).
 
 ## Quy ước
 
