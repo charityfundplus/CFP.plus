@@ -1,0 +1,26 @@
+name: NVIDIA adapter sandbox
+on:
+  push:
+    branches: [codex/hub69-nvidia-readiness]
+permissions:
+  contents: read
+jobs:
+  fixture-and-http:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify commit and run fixture and TCP tests
+        working-directory: research/quantum-vault
+        run: |
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          git rev-parse HEAD
+          python --version
+          sha256sum nvidia_readiness.py test_nvidia_readiness.py
+          python -B -m unittest -v test_nvidia_readiness

@@ -2,9 +2,10 @@
 
 import json
 import os
+import re
 from importlib import import_module
 from urllib.error import HTTPError, URLError
-from urllib.parse import urlsplit
+
 from urllib.request import HTTPRedirectHandler, ProxyHandler, Request, build_opener
 
 
@@ -24,28 +25,37 @@ def sdk_status(module_name, *, load_module=import_module):
     return {"status": "imported", "version": str(getattr(module, "__version__", "unknown"))}
 
 
+# Only deployment operators may configure these origins. Do not pass request
+# input here. Remote DNS names must belong to the approved deployment network.
+_LOOPBACK = {"127.0.0.1", "[::1]", "localhost"}
+_ORIGIN = re.compile(
+    r"(https?)://(\[::1\]|[a-zA-Z0-9.-]+)(?::([1-9][0-9]{0,4}))?/?",
+    re.ASCII,
+)
+_DNS_NAME = re.compile(
+    r"(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+"
+    r"[a-z](?:[a-z0-9-]{0,61}[a-z0-9])?"
+)
+
+
 def service_status(origin, *, opener=None):
-    if not origin:
+    if origin is None or origin == "":
         return {"status": "not_configured"}
-    try:
-        url = urlsplit(origin)
-        port = url.port
-    except ValueError:
+
+    match = _ORIGIN.fullmatch(origin)
+    if match is None:
         return {"status": "invalid_origin"}
-    local = url.hostname in {"localhost", "127.0.0.1", "::1"}
-    if (
-        not url.hostname
-        or url.username is not None
-        or url.password is not None
-        or url.path not in {"", "/"}
-        or url.query
-        or url.fragment
-        or port == 0
-        or (url.scheme != "https" and not (local and url.scheme == "http"))
+    scheme, host, port = match.groups()
+    host = host.lower()
+    if port is not None and int(port) > 65535:
+        return {"status": "invalid_origin"}
+    if host not in _LOOPBACK and (
+        scheme != "https" or len(host) > 253 or _DNS_NAME.fullmatch(host) is None
     ):
         return {"status": "invalid_origin"}
 
-    health_url = url._replace(path="/v1/health/ready").geturl()
+    authority = host if port is None else f"{host}:{port}"
+    health_url = f"{scheme}://{authority}/v1/health/ready"
     opener = opener if opener is not None else build_opener(ProxyHandler({}), NoRedirect())
     try:
         with opener.open(Request(health_url, method="GET"), timeout=3) as response:
@@ -69,4 +79,5 @@ def readiness(env):
 
 if __name__ == "__main__":
     print(json.dumps(readiness(os.environ), sort_keys=True))
+
 
