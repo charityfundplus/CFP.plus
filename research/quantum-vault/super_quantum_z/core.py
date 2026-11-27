@@ -3,11 +3,17 @@
 import hashlib
 import json
 from datetime import datetime, timezone
+from threading import Lock
 from typing import Literal
 
 from pydantic import BaseModel, ConfigDict
 
-Backend = Literal["cirq", "qiskit", "pennylane", "ortools"]
+Backend = Literal["cirq", "qiskit", "pennylane", "ortools", "cudaq"]
+_CUDAQ_LOCK = Lock()
+
+
+class BackendUnavailable(Exception):
+    """An optional sandbox simulator is unavailable."""
 
 
 class Experiment(BaseModel):
@@ -62,6 +68,26 @@ def run(experiment: Experiment) -> dict:
         probabilities = Statevector.from_instruction(circuit).probabilities()
         circuit.h([0, 1])
         x_probabilities = Statevector.from_instruction(circuit).probabilities()
+    elif backend == "cudaq":
+        try:
+            import cudaq
+        except ModuleNotFoundError as error:
+            if error.name != "cudaq":
+                raise
+            raise BackendUnavailable("CUDA-Q CPU simulator is not installed") from error
+        import numpy as np
+
+        # CUDA-Q target selection is process-wide.
+        with _CUDAQ_LOCK:
+            cudaq.set_target("qpp-cpu")
+            kernel = cudaq.make_kernel()
+            qubits = kernel.qalloc(2)
+            kernel.h(qubits[0])
+            kernel.cx(qubits[0], qubits[1])
+            probabilities = abs(np.array(cudaq.get_state(kernel), dtype=complex)) ** 2
+            kernel.h(qubits[0])
+            kernel.h(qubits[1])
+            x_probabilities = abs(np.array(cudaq.get_state(kernel), dtype=complex)) ** 2
     else:
         import pennylane as qml
 
@@ -87,6 +113,8 @@ def run(experiment: Experiment) -> dict:
         "basis": ["00", "01", "10", "11"],
         "probabilities": [round(float(value), 12) for value in probabilities],
     }
+    if backend == "cudaq":
+        result["target"] = "qpp-cpu"
     encoded = json.dumps(result, sort_keys=True, separators=(",", ":")).encode("utf-8")
     digest = hashlib.sha256(encoded).hexdigest()
     return {

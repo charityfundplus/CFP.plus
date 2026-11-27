@@ -22,3 +22,23 @@ jobs:
         run: docker build -t super-quantum-z-test research/quantum-vault
       - name: Verify offline experiments
         run: docker run --rm --network none super-quantum-z-test
+
+  cudaq-cpu:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: research/quantum-vault
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned simulator and test dependencies
+        run: python -m pip install -r sandbox-requirements.txt cudaq==0.17.0
+      - name: Require the CUDA-Q CPU target
+        run: python -c "import cudaq; cudaq.set_target('qpp-cpu'); assert cudaq.get_target().name == 'qpp-cpu'"
+      - name: Verify CPU sandbox experiments
+        run: python -m pytest -p no:cacheprovider -q

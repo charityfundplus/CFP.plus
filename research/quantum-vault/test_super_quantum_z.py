@@ -52,3 +52,23 @@ def test_sandbox_endpoint(monkeypatch):
     response = client.post(path, headers=headers, json=payload)
     assert response.status_code == 200
     assert response.json()["result"]["probabilities"] == [0.5, 0.0, 0.0, 0.5]
+
+
+def test_cudaq_endpoint(monkeypatch):
+    import importlib.util
+
+    monkeypatch.setenv("SUPER_QUANTUM_Z_SANDBOX_TOKEN", "test-token")
+    response = client.post(
+        "/sandbox/experiment",
+        headers={"Authorization": "Bearer test-token"},
+        json={"backend": "cudaq"},
+    )
+    if importlib.util.find_spec("cudaq") is None:
+        assert response.status_code == 503
+        return
+    assert response.status_code == 200
+    report = response.json()
+    assert report["result"]["target"] == "qpp-cpu"
+    assert report["result"]["probabilities"] == [0.5, 0.0, 0.0, 0.5]
+    assert report["result"]["expectation"] == {"XX": 1.0, "ZZ": 1.0}
+    Draft202012Validator(SCHEMA, format_checker=FormatChecker()).validate(report["evidence"])
