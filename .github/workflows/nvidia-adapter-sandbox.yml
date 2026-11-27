@@ -24,3 +24,66 @@ jobs:
           python --version
           sha256sum nvidia_readiness.py test_nvidia_readiness.py
           python -B -m unittest -v test_nvidia_readiness
+  historical-fixtures:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      REVIEWED_HEAD: f0c61d5fa9bcfa62cf8205a25e1d496e24f1abb8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.REVIEWED_HEAD }}
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run the five original fixtures at the reviewed commit
+        working-directory: research/quantum-vault
+        run: |
+          test "$(git rev-parse HEAD)" = "$REVIEWED_HEAD"
+          git rev-parse HEAD
+          uname -smr
+          python --version
+          sha256sum nvidia_readiness.py test_nvidia_readiness.py
+          python -B -m unittest -v test_nvidia_readiness
+
+  cudaq-cpu:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: research/quantum-vault
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify checkout and install the pinned CPU test dependencies
+        run: |
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          git rev-parse HEAD
+          uname -smr
+          python --version
+          sha256sum sandbox-requirements.txt test_super_quantum_z.py super_quantum_z/core.py
+          python -m pip install -r sandbox-requirements.txt cudaq==0.17.0
+      - name: Verify CUDA-Q qpp-cpu and record simulator output
+        run: |
+          python - <<'PY'
+          import json
+          import cudaq
+          from importlib.metadata import version
+          from super_quantum_z.core import Experiment, run
+
+          cudaq.set_target("qpp-cpu")
+          assert cudaq.get_target().name == "qpp-cpu"
+          report = run(Experiment(backend="cudaq"))
+          result = report["result"]
+          print(json.dumps({"cudaq_version": version("cudaq"), "report": report}, sort_keys=True))
+          assert result["target"] == "qpp-cpu"
+          assert result["probabilities"] == [0.5, 0.0, 0.0, 0.5]
+          assert result["expectation"] == {"XX": 1.0, "ZZ": 1.0}
+          PY
+          python -m pytest -p no:cacheprovider -q test_super_quantum_z.py::test_cudaq_endpoint
