@@ -5,7 +5,7 @@ RUN --mount=type=secret,id=pip_ca \
     if [ -r /run/secrets/pip_ca ]; then export PIP_CERT=/run/secrets/pip_ca; fi && \
     python -m pip install --no-cache-dir -r sandbox-requirements.txt
 COPY --chown=65532:65532 super_quantum_z/ ./super_quantum_z/
-COPY --chown=65532:65532 schema.json test_contract.py test_super_quantum_z.py ./
+COPY --chown=65532:65532 schema.json test_contract.py test_super_quantum_z.py test_shared_queue.py ./
 ENV PYTHONDONTWRITEBYTECODE=1 XDG_CACHE_HOME=/tmp MPLCONFIGDIR=/tmp/matplotlib
 USER 65532:65532
 CMD ["python", "-m", "pytest", "-p", "no:cacheprovider", "-q"]

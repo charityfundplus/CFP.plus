@@ -43,6 +43,7 @@ jobs:
       - name: Verify CPU sandbox experiments
         shell: bash
         run: |
+          set -o pipefail
           mkdir -p evidence/ci
           python -m pytest -p no:cacheprovider -q | tee evidence/ci/pytest.txt
           (
@@ -54,3 +55,19 @@ jobs:
           name: super-quantum-z-cpu-evidence
           path: research/quantum-vault/evidence/ci/
           if-no-files-found: error
+
+  mcp-recovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: research/quantum-vault
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r mcp-requirements.txt
+      - run: python -m pytest -p no:cacheprovider -q test_mcp_recovery.py

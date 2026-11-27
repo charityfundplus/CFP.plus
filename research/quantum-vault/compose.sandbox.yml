@@ -1,0 +1,47 @@
+# Candidate profile for a single Linux sandbox host.
+# Requires a private, pre-provisioned state directory and configuration file.
+x-sandbox: &sandbox
+  image: cfp-6789-sandbox:local
+  build: .
+  read_only: true
+  tmpfs:
+    - /tmp:size=64m
+  cap_drop: [ALL]
+  security_opt: [no-new-privileges:true]
+  cpus: 1
+  mem_limit: 1g
+  pids_limit: 64
+  restart: on-failure:5
+  logging:
+    driver: json-file
+    options:
+      max-size: "5m"
+      max-file: "2"
+  environment:
+    OPENBLAS_NUM_THREADS: "1"
+    OMP_NUM_THREADS: "1"
+    MKL_NUM_THREADS: "1"
+  volumes:
+    - ${CFP_SANDBOX_STATE:?Set the persistent sandbox state directory}:/state
+
+services:
+  api:
+    <<: *sandbox
+    environment:
+      SUPER_QUANTUM_Z_QUEUE_CONFIG: /run/sandbox/config.json
+    volumes:
+      - ${CFP_SANDBOX_STATE:?Set the persistent sandbox state directory}:/state
+      - ${CFP_SANDBOX_CONFIG:?Set the private sandbox configuration file}:/run/sandbox/config.json:ro
+    ports:
+      - "127.0.0.1:8000:8000"
+    command: [python, -m, uvicorn, "super_quantum_z.api:app", --host, "0.0.0.0", --limit-concurrency, "16"]
+
+  worker:
+    <<: *sandbox
+    network_mode: none
+    command: [python, -m, super_quantum_z.worker, /state/queue.db, worker]
+    healthcheck:
+      test: [CMD, python, -m, super_quantum_z.worker, /state/queue.db, status]
+      interval: 30s
+      timeout: 5s
+      retries: 3
