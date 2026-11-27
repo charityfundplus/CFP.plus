@@ -1,0 +1,24 @@
+name: Super Quantum Z Sandbox
+
+on:
+  pull_request:
+    branches: [research/quantum-vault-v01]
+    paths:
+      - 'research/quantum-vault/**'
+      - '.github/workflows/super_quantum_z_sandbox.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  sandbox-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Build test image
+        run: docker build -t super-quantum-z-test research/quantum-vault
+      - name: Verify offline experiments
+        run: docker run --rm --network none super-quantum-z-test

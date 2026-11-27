@@ -1,0 +1,120 @@
+{
+  "environment": {
+    "python": "3.12.14",
+    "os": "Linux",
+    "architecture": "x86_64",
+    "libraries": {
+      "cirq": "1.7.0",
+      "qiskit": "2.6.2",
+      "pennylane": "0.45.1",
+      "ortools": "9.15.6755"
+    }
+  },
+  "experiments": [
+    {
+      "result": {
+        "backend": "cirq",
+        "experiment": "bell-state",
+        "method": "exact_simulator_probabilities",
+        "expectation": {
+          "XX": 1.0,
+          "ZZ": 1.0
+        },
+        "basis": [
+          "00",
+          "01",
+          "10",
+          "11"
+        ],
+        "probabilities": [
+          0.5,
+          0.0,
+          0.0,
+          0.5
+        ]
+      },
+      "evidence": {
+        "experiment_ref": "bell-state/cirq",
+        "backend_type": "simulator",
+        "source_uri": "urn:sha256:875fb9af342325cbb562ff8bcbb0ed453b5bd9bc84fb7c2c5325bd37980e26f9",
+        "evidence_sha256": "875fb9af342325cbb562ff8bcbb0ed453b5bd9bc84fb7c2c5325bd37980e26f9",
+        "review_status": "HUMAN_REVIEW",
+        "created_at": "2026-11-27T01:09:58.597837+00:00"
+      }
+    },
+    {
+      "result": {
+        "backend": "qiskit",
+        "experiment": "bell-state",
+        "method": "exact_simulator_probabilities",
+        "expectation": {
+          "XX": 1.0,
+          "ZZ": 1.0
+        },
+        "basis": [
+          "00",
+          "01",
+          "10",
+          "11"
+        ],
+        "probabilities": [
+          0.5,
+          0.0,
+          0.0,
+          0.5
+        ]
+      },
+      "evidence": {
+        "experiment_ref": "bell-state/qiskit",
+        "backend_type": "simulator",
+        "source_uri": "urn:sha256:886eab0ba2c84871f4cf32e89bce833c58a9f059ca289651cff1e449aedafc33",
+        "evidence_sha256": "886eab0ba2c84871f4cf32e89bce833c58a9f059ca289651cff1e449aedafc33",
+        "review_status": "HUMAN_REVIEW",
+        "created_at": "2026-11-27T01:09:58.774003+00:00"
+      }
+    },
+    {
+      "result": {
+        "backend": "pennylane",
+        "experiment": "bell-state",
+        "method": "exact_simulator_probabilities",
+        "expectation": {
+          "XX": 1.0,
+          "ZZ": 1.0
+        },
+        "basis": [
+          "00",
+          "01",
+          "10",
+          "11"
+        ],
+        "probabilities": [
+          0.5,
+          0.0,
+          0.0,
+          0.5
+        ]
+      },
+      "evidence": {
+        "experiment_ref": "bell-state/pennylane",
+        "backend_type": "simulator",
+        "source_uri": "urn:sha256:a2c87abec3ef2a0acef304f7a11f1734e51b4e10115fbf8008d0d68074c88a9b",
+        "evidence_sha256": "a2c87abec3ef2a0acef304f7a11f1734e51b4e10115fbf8008d0d68074c88a9b",
+        "review_status": "HUMAN_REVIEW",
+        "created_at": "2026-11-27T01:09:59.565511+00:00"
+      }
+    },
+    {
+      "result": {
+        "backend": "ortools",
+        "experiment": "bounded-integer-optimization",
+        "execution_type": "classical_optimization",
+        "solution": [
+          7,
+          0
+        ],
+        "objective": 14
+      }
+    }
+  ]
+}
