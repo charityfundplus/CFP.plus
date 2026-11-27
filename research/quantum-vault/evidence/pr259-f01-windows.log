@@ -1,0 +1,10 @@
+test_http_readiness_and_no_redirect (test_nvidia_readiness.ReadinessTest.test_http_readiness_and_no_redirect) ... ok
+test_reject_invalid_origins (test_nvidia_readiness.ReadinessTest.test_reject_invalid_origins) ... ok
+test_sdk_import (test_nvidia_readiness.ReadinessTest.test_sdk_import) ... ok
+test_sdk_missing_dependency (test_nvidia_readiness.ReadinessTest.test_sdk_missing_dependency) ... ok
+test_unconfigured_endpoints (test_nvidia_readiness.ReadinessTest.test_unconfigured_endpoints) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.040s
+
+OK
