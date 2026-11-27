@@ -4,7 +4,8 @@ WORKDIR /app
 COPY requirements.txt requirements-quantum.txt ./
 RUN pip install --no-cache-dir -r requirements.txt -r requirements-quantum.txt
 COPY sqz ./sqz
-RUN useradd -r -u 10001 sqz && mkdir -p /data && chown sqz /data
+RUN useradd -r -m -u 10001 sqz && mkdir -p /data && chown sqz /data
+ENV MPLCONFIGDIR=/tmp/mpl
 USER sqz
 # Cloud: đặt SQZ_DATABASE_URL=postgresql+psycopg://... (ưu tiên hơn SQZ_DB_PATH)
 ENV SQZ_DB_PATH=/data/sqz.db SQZ_WORKER=1 SQZ_SELFTEST_INTERVAL_S=300
