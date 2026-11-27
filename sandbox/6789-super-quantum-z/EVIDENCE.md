@@ -88,3 +88,41 @@ Chạy thật lần 2 (uvicorn + worker + scheduler 5 giây):
 | Ưu tiên, chia sẻ, thay phiên | Ưu tiên cao chạy trước; hạn mức theo owner; 9 lượt review chia đều 3/3/3, không ai review hai lượt liền |
 
 Giới hạn: danh sách chính thức 1.115 ID chưa có trong repo; DID chưa được Registry cấp nên luôn ở trạng thái `NOT_ASSIGNED`; staging chưa triển khai.
+
+---
+
+# v0.5 • P0 khẩn cấp 6776 • Work Order MCP-DDB8FF1A5BD9 • 2026-11-27
+
+**Gateway đo trực tiếp** (`https://mcp.cfp.plus`):
+- `/health` → 0.4.3, lưu trữ postgres, `auto_worker: disabled`.
+- `/api/id/69` → 200 CURRENT; `/api/id/6776`, `1127`, `0229` → 404.
+
+**Nguyên nhân gốc của NOT_FOUND (đã xác minh trong mã):** trong `cfp-gateway/main.py` (dòng 391), `CANONICAL_IDS` là dict viết cứng chỉ có 3 ID (69, 6984, 6911). Resolver không đọc Registry hay Notion nào khác. Lỗi không nằm ở quyền truy cập hay đồng bộ.
+
+**Bản sửa Gateway** (patch `../mcp-oauth-connector/patches/0002-…`, commit cục bộ `668777f`):
+- Nạp thêm `config/core_registry.json`; 3 ID gốc không bị ghi đè; giữ nguyên trạng thái `INVENTORY_REVIEW` (không tự nâng lên Canonical); giữ số 0 đầu; loại khóa không phải chữ số; thêm `/api/registry/status` (sha256, số lượng).
+- Snapshot 104 ID tạo từ kiểm kê 87788 (`scripts/build_core_registry.py`, 0 ID bị loại).
+- Kết quả: 6776, 6789, 87788, 0, 000 → 200 INVENTORY_REVIEW. 1127, 0229 → 404, đúng vì kiểm kê chưa có hồ sơ cho hai ID này, không tự tạo.
+- `pytest` gateway: 25 passed (gồm 4 test mới).
+
+**Validator ID Số Sống** `sqz/idformula.py`: chỉ áp dụng R1–R6 trích từ Mẫu Chung 366. Phần chưa xác minh (Parent, Registry) trả về trạng thái `pending`.
+- Đã kiểm thử:
+  - số 0 đầu: "0", "00", "000" là ba ID khác nhau; số nguyên bị từ chối;
+  - "10" là hai cấp;
+  - phân tầng và Nhóm;
+  - 366 MMDD khớp lịch thật năm nhuận 2024; Daily Record 0229 chỉ năm nhuận, gồm cả các năm 1900, 2000, 2100;
+  - phát hiện DDMM cũ (2711 → 1127);
+  - kiêm nhiệm hợp lệ; bản trùng sau chuẩn hóa; xung đột tên cùng ID; khóa idempotency ổn định.
+- API: `/ids/{id}/validate`, `/ids/validate-batch`, `/ids/mmdd?year=`.
+
+**Chuỗi tự động** `sqz/pipeline.py`:
+- Tiếp nhận → Phân công → Thực thi → Kiểm tra → Bàn giao. Bật bằng `SQZ_AUTO_HANDOVER=1`.
+- Sau khi Job DONE, 6788 kiểm chứng độc lập, tạo báo cáo Evidence theo schema v1 và ghi audit `HANDOVER`. Job lỗi không được tự bàn giao.
+
+`pytest` lõi: **91 passed, 4 skipped** cục bộ (4 test PostgreSQL chạy trong CI).
+
+**Còn chặn:**
+- Push `cfp-gateway` (phiên chỉ có quyền đọc).
+- Gateway production vẫn chạy `f530739`, còn lỗi cấp quyền OAuth rộng hơn mức đã kiểm thử: cần duyệt deploy patch 0001.
+- `auto_worker` đang tắt (bật là kích hoạt vận hành).
+- Snapshot là kiểm kê, chưa phải Core Registry đầy đủ.

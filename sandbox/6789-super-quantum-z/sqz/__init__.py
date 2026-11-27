@@ -3,4 +3,4 @@
 Mô phỏng và tối ưu chạy trên máy cổ điển. Không có QPU thật: mọi kết quả là MÔ PHỎNG.
 """
 
-__version__ = "0.4.0"
+__version__ = "0.5.0"

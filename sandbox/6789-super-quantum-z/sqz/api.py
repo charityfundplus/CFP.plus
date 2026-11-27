@@ -122,7 +122,7 @@ def create_app(store: Store | None = None, *, run_worker: bool = False,
     async def lifespan(_app: FastAPI):
         store.audit("system", "STARTUP", {"version": __version__})
         if run_worker:
-            threads.append(Worker(store))
+            threads.append(Worker(store, auto_handover=os.getenv("SQZ_AUTO_HANDOVER", "0") == "1"))
         if scheduler_interval_s:
             threads.append(Scheduler(store, scheduler_interval_s))
         for t in threads:
@@ -214,6 +214,39 @@ def create_app(store: Store | None = None, *, run_worker: bool = False,
         except (InvalidID, ValueError) as exc:
             raise HTTPException(status_code=422, detail=str(exc)) from exc
         return {"reviewer_id": pick, "owner_id": owner_id}
+
+    @app.get("/ids/{cfp_id}/validate")
+    def ids_validate(cfp_id: str, as_mmdd: bool = False) -> dict:
+        """Validator ID Số Sống (Work Order MCP-DDB8FF1A5BD9): quy tắc đã xác minh R1–R6."""
+        from .idformula import validate
+
+        return validate(cfp_id, as_mmdd=as_mmdd)
+
+    @app.post("/ids/validate-batch")
+    def ids_validate_batch(body: dict) -> dict:
+        from .idformula import check_assignments, validate
+
+        ids = body.get("ids", [])
+        if not isinstance(ids, list) or len(ids) > 20000:
+            raise HTTPException(status_code=422, detail="ids: danh sách ≤ 20000 phần tử")
+        results = [validate(i) for i in ids]
+        out = {"total": len(ids), "valid": sum(r["valid"] for r in results),
+               "invalid": [r for r in results if not r["valid"]],
+               "duplicates": sorted({i for i in ids if isinstance(i, str) and ids.count(i) > 1})}
+        if "assignments" in body:
+            out["assignments"] = check_assignments(body["assignments"])
+        return out
+
+    @app.get("/ids/mmdd")
+    def ids_mmdd(year: int | None = None) -> dict:
+        from .idformula import daily_record_allowed, mmdd_keys
+
+        keys = mmdd_keys()
+        out = {"count": len(keys), "keys": keys, "includes_0229": "0229" in keys}
+        if year is not None:
+            out["daily_records"] = [k for k in keys if daily_record_allowed(k, year)]
+            out["daily_record_count"] = len(out["daily_records"])
+        return out
 
     @app.get("/ids/{cfp_id}/resolve")
     def ids_resolve(cfp_id: str) -> dict:

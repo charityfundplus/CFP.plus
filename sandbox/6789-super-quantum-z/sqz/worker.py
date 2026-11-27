@@ -15,10 +15,12 @@ SELFTEST_OWNER = "6789"
 
 class Worker(threading.Thread):
     def __init__(self, store: Store, name: str | None = None, poll_s: float = 0.5,
-                 lease_s: float = 60.0, max_running_per_owner: int | None = None) -> None:
+                 lease_s: float = 60.0, max_running_per_owner: int | None = None,
+                 auto_handover: bool = False) -> None:
         super().__init__(daemon=True, name=name or f"sqz-{socket.gethostname()}-{id(self) % 10000}")
         self.store, self.poll_s, self.lease_s = store, poll_s, lease_s
         self.max_running_per_owner = max_running_per_owner
+        self.auto_handover = auto_handover
         self._halt = threading.Event()
         self.processed = 0
 
@@ -37,7 +39,10 @@ class Worker(threading.Thread):
             return False
         try:
             result = execute(job["kind"], job["payload"])
-            self.store.finish(job["id"], self.name, result=result, fence=job["fence"])
+            if self.store.finish(job["id"], self.name, result=result, fence=job["fence"]) and self.auto_handover:
+                from .pipeline import auto_check_and_handover
+
+                auto_check_and_handover(self.store, job["id"])
         except Exception as exc:  # ghi lỗi, không làm chết worker
             self.store.finish(job["id"], self.name, error=f"{type(exc).__name__}: {exc}", fence=job["fence"])
         self.processed += 1

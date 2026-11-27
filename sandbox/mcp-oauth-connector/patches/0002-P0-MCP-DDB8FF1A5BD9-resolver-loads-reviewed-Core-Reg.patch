@@ -1,0 +1,1011 @@
+From 668777f5abd91c567eff5090aeeb76e5c2de7197 Mon Sep 17 00:00:00 2001
+From: Claude <noreply@anthropic.com>
+Date: Fri, 27 Nov 2026 23:49:50 +0000
+Subject: [PATCH] P0 MCP-DDB8FF1A5BD9: resolver loads reviewed Core Registry
+ snapshot
+
+Root cause of NOT_FOUND for 6776/1127/0229/366: CANONICAL_IDS was a hard-coded
+3-entry dict. The resolver now merges config/core_registry.json (or
+CFP_CORE_REGISTRY_PATH) under the built-ins: built-ins are never overwritten,
+snapshot status is preserved (INVENTORY_REVIEW, not canonical), IDs are exact
+digit strings with leading zeros kept. Adds /api/registry/status (sha256, counts).
+Snapshot: 104 inventory records generated from CFP.plus 87788 inventory.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_01Tau1ZNKJRKPvMHsB5GHyYQ
+---
+ config/core_registry.json   | 860 ++++++++++++++++++++++++++++++++++++
+ main.py                     |  46 +-
+ tests/test_core_registry.py |  45 ++
+ 3 files changed, 950 insertions(+), 1 deletion(-)
+ create mode 100644 config/core_registry.json
+ create mode 100644 tests/test_core_registry.py
+
+diff --git a/config/core_registry.json b/config/core_registry.json
+new file mode 100644
+index 0000000..d2e00f8
+--- /dev/null
++++ b/config/core_registry.json
+@@ -0,0 +1,860 @@
++{
++ "format": "cfp-core-registry-snapshot-v1",
++ "source": "CFP.plus sandbox/87788-super-trio inventory (PR #206 index + Notion additions)",
++ "provenance": {
++  "index": {
++   "repo": "charityfundplus/CFP.plus",
++   "pr": 206,
++   "commit": "77102841601f262a7b91389244896b19e58de821",
++   "path": "sandbox/hub69-working-office/SUPER_PAIRS_INDEX.md",
++   "sha256": "a72317188b8d30e342be203876f5338d37e02b4d0298cbb9ae22fe2990a3cd77",
++   "rows": 91
++  },
++  "additions": {
++   "sha256": "fcbadf766e8c31d9364ea3f49814083a4ad4e1d821414f3cb795c3811a40e8b6",
++   "rows": 14,
++   "source_urls": [
++    "https://app.notion.com/p/3f2caac9a55781fd97afe7ecd489c3fc",
++    "https://app.notion.com/p/422caac9a55781f2ad8ce1a834dabc86",
++    "https://app.notion.com/p/f38caac9a557828a98dc81dc26193587"
++   ]
++  }
++ },
++ "generated_at": "2026-11-27T23:49:25+00:00",
++ "status_note": "INVENTORY_REVIEW = kiểm kê làm việc, chưa phải Canonical; Human Governance chốt",
++ "records": [
++  {
++   "id": "0",
++   "name": "Nền Tảng",
++   "link": "https://app.notion.com/p/3f3caac9a55781efac11cf4fd0f6fd64",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "0",
++   "group": "000"
++  },
++  {
++   "id": "00",
++   "name": "Nền Tảng Tổng Thể",
++   "link": "https://app.notion.com/p/3f3caac9a557813098b6fbb9f4e10191",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "0",
++   "group": "000"
++  },
++  {
++   "id": "000",
++   "name": "NHÓM NỀN TẢNG",
++   "link": "https://app.notion.com/p/3f3caac9a55781c9b487e916578b2578",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "0",
++   "group": "000"
++  },
++  {
++   "id": "003",
++   "name": "Bộ Tam, Ba Quỹ, Banks, Coins & Token",
++   "link": "https://app.notion.com/p/3f3caac9a55781b48585e56921c88e49",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "0",
++   "group": "000"
++  },
++  {
++   "id": "005",
++   "name": "Bộ Ngũ, Chi Hội, Cộng Đồng",
++   "link": "https://app.notion.com/p/3f3caac9a55781b69413cc87a2d6debe",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "0",
++   "group": "000"
++  },
++  {
++   "id": "1",
++   "name": "Sự Sống",
++   "link": "https://app.notion.com/p/3f3caac9a55781899e5fe815b1d05455",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "1",
++   "group": "135"
++  },
++  {
++   "id": "11",
++   "name": "Sự Sống Với Sự Sống",
++   "link": "https://app.notion.com/p/3f3caac9a557810c93a8d4981ff17515",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "1",
++   "group": "135"
++  },
++  {
++   "id": "111",
++   "name": "Sự Sống Liên Quan đến Trái Đất • Ai",
++   "link": "https://app.notion.com/p/3f3caac9a5578119b3dec8708b3bcb75",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "1",
++   "group": "135"
++  },
++  {
++   "id": "135",
++   "name": "NHÓM QUẢN LÝ 1 • 3 • 5 Siêu Bộ Đôi",
++   "link": "https://app.notion.com/p/3f3caac9a5578199b3b7edfbb2b2ee13",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "1",
++   "group": "135"
++  },
++  {
++   "id": "2",
++   "name": "Con Người",
++   "link": "https://app.notion.com/p/3f3caac9a55781c1b8c3d7ee7b1834a3",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "2",
++   "group": "246"
++  },
++  {
++   "id": "22",
++   "name": "Con Người Với Con Người",
++   "link": "https://app.notion.com/p/3f3caac9a55781d9b4c2f3629cdbe8d3",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "2",
++   "group": "246"
++  },
++  {
++   "id": "222",
++   "name": "Con Người Yêu Thương Phục Vụ Con",
++   "link": "https://app.notion.com/p/3f3caac9a55781aca57bd2f427c2f6be",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "2",
++   "group": "246"
++  },
++  {
++   "id": "2272",
++   "name": "Cấp Cứu Sơ Cứu",
++   "link": "https://app.notion.com/p/3f3caac9a557813b86d0f4ea13d26bee",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "2",
++   "group": "246"
++  },
++  {
++   "id": "237",
++   "name": "CFP+",
++   "link": "https://app.notion.com/p/3f2caac9a55781f1b0fbe94f0777e633",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "2",
++   "group": "246"
++  },
++  {
++   "id": "2374",
++   "name": "CFPI • SI &",
++   "link": "https://app.notion.com/p/3f2caac9a55781799dd7db43b5f70755",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "2",
++   "group": "246"
++  },
++  {
++   "id": "2378",
++   "name": "CFPT",
++   "link": "https://app.notion.com/p/3f2caac9a55781fc8f25ea32651fc32d",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "2",
++   "group": "246"
++  },
++  {
++   "id": "246",
++   "name": "NHÓM QUẢN LÝ CÁC CHƯƠNG CÓ SỐ CHẴN ĐẦU TIÊN",
++   "link": "https://app.notion.com/p/3f3caac9a55781e7b27ce41e9eb7abf5",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "2",
++   "group": "246"
++  },
++  {
++   "id": "2588",
++   "name": "Bách Khoa Toàn Thư",
++   "link": null,
++   "status": "INVENTORY_REVIEW",
++   "chapter": "2",
++   "group": "246"
++  },
++  {
++   "id": "2633",
++   "name": "Code",
++   "link": "https://app.notion.com/p/3f2caac9a55781f39cffee38c917471e",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "2",
++   "group": "246"
++  },
++  {
++   "id": "267",
++   "name": "CMP",
++   "link": "https://app.notion.com/p/3f2caac9a55781289528fc2754412c1f",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "2",
++   "group": "246"
++  },
++  {
++   "id": "2684",
++   "name": "Bảo Mật Tổng Hợp",
++   "link": "https://app.notion.com/p/3f3caac9a5578121a123dd2cd5cbdb42",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "2",
++   "group": "246"
++  },
++  {
++   "id": "276",
++   "name": "CRM",
++   "link": "https://app.notion.com/p/3f2caac9a55781c8a1a8c4c636bce97c",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "2",
++   "group": "246"
++  },
++  {
++   "id": "2838",
++   "name": "An Toàn, Điều Tra & Cảnh Báo Rủi Ro",
++   "link": "https://app.notion.com/p/3f3caac9a5578167b698cfc09afb6366",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "2",
++   "group": "246"
++  },
++  {
++   "id": "2863",
++   "name": "Cứu Trợ Nhân Đạo",
++   "link": "https://app.notion.com/p/3f3caac9a5578109b48dfa87f2c09c2e",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "2",
++   "group": "246"
++  },
++  {
++   "id": "2877",
++   "name": "Bảo Vệ Sự Sống",
++   "link": "https://app.notion.com/p/3f3caac9a557816691eec3f0ac0b75d7",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "2",
++   "group": "246"
++  },
++  {
++   "id": "28882",
++   "name": "Cổng Tri Thức Toàn Cầu • CTTTC",
++   "link": "https://app.notion.com/p/3f3caac9a55781e0bbc5fb3e40ebdeb2",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "2",
++   "group": "246"
++  },
++  {
++   "id": "3",
++   "name": "Ba Quỹ",
++   "link": "https://app.notion.com/p/3f3caac9a557810897c4c7d94f975fe1",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "3",
++   "group": "135"
++  },
++  {
++   "id": "33",
++   "name": "Tài Chính & Ba Quỹ",
++   "link": "https://app.notion.com/p/eb9caac9a557839fa69c81992cec0f6b",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "3",
++   "group": "135"
++  },
++  {
++   "id": "330",
++   "name": "Tổng Quan Các Quỹ Toàn Cầu",
++   "link": "https://app.notion.com/p/b71caac9a5578233aee1818275afbac8",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "3",
++   "group": "135"
++  },
++  {
++   "id": "331",
++   "name": "Quỹ Sự Sống",
++   "link": "https://app.notion.com/p/3f3caac9a5578159930dca0973bb6e58",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "3",
++   "group": "135"
++  },
++  {
++   "id": "332",
++   "name": "Quỹ Con Người",
++   "link": "https://app.notion.com/p/3f3caac9a557818780aefd03605e1cff",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "3",
++   "group": "135"
++  },
++  {
++   "id": "333",
++   "name": "Quỹ Đầu Tư",
++   "link": "https://app.notion.com/p/3f3caac9a5578165b166c7d2bf031907",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "3",
++   "group": "135"
++  },
++  {
++   "id": "3366",
++   "name": "Dịch Đa Ngôn Ngữ",
++   "link": "https://app.notion.com/p/3f3caac9a557812dbec8fd19eb08fd3a",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "3",
++   "group": "135"
++  },
++  {
++   "id": "343",
++   "name": "D🆔",
++   "link": "https://app.notion.com/p/3f2caac9a557813bba56f9be01a48b34",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "3",
++   "group": "135"
++  },
++  {
++   "id": "345",
++   "name": "Faith Hope Love",
++   "link": "https://app.notion.com/p/3f2caac9a55781a1b1e1d0ff69c5f887",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "3",
++   "group": "135"
++  },
++  {
++   "id": "362",
++   "name": "DNA",
++   "link": "https://app.notion.com/p/3f2caac9a55781d08a0fc05d9f5764ff",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "3",
++   "group": "135"
++  },
++  {
++   "id": "365",
++   "name": "365 Ngày Trong Năm",
++   "link": "https://app.notion.com/p/3f2caac9a55781d7bb70c462dcd81669",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "3",
++   "group": "135"
++  },
++  {
++   "id": "3728",
++   "name": "Di Sản Bảo Tồn",
++   "link": "https://app.notion.com/p/3f3caac9a55781279e4ade86c8a5c4d4",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "3",
++   "group": "135"
++  },
++  {
++   "id": "3784",
++   "name": "Dưỡng Sinh Tổng Hợp",
++   "link": "https://app.notion.com/p/3f3caac9a55781ab8bebc3eeecc9da88",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "3",
++   "group": "135"
++  },
++  {
++   "id": "383236",
++   "name": "Đức Tin Đức Cậy Đức Mến",
++   "link": "https://app.notion.com/p/3f2caac9a5578169b6f6d0c4ffaeb10b",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "3",
++   "group": "135"
++  },
++  {
++   "id": "3863",
++   "name": "FUND",
++   "link": "https://app.notion.com/p/3f2caac9a55781e8832af58958da444e",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "3",
++   "group": "135"
++  },
++  {
++   "id": "4",
++   "name": "Tôn Giáo",
++   "link": "https://app.notion.com/p/e23caac9a557832184ff0149d1ebe406",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "4",
++   "group": "246"
++  },
++  {
++   "id": "4347",
++   "name": "Gia Đình & Gia Phả Toàn Cầu",
++   "link": "https://app.notion.com/p/3f3caac9a55781b5b6e3f27774b1cd5b",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "4",
++   "group": "246"
++  },
++  {
++   "id": "4376",
++   "name": "🆔SO",
++   "link": "https://app.notion.com/p/3f2caac9a557819c8fc4cba6c5f7af26",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "4",
++   "group": "246"
++  },
++  {
++   "id": "44",
++   "name": "Hòa Hợp Tôn Giáo",
++   "link": "https://app.notion.com/p/3f3caac9a557817fa7d5e128a5a4fa6e",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "4",
++   "group": "246"
++  },
++  {
++   "id": "444",
++   "name": "Hòa Hợp Doi Thoai Tôn Giáo",
++   "link": "https://app.notion.com/p/3f3caac9a557810a9178f93ab08e9a54",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "4",
++   "group": "246"
++  },
++  {
++   "id": "4742",
++   "name": "Hiến Pháp, Hiến Chương, DNA, Công Thức, Quy Tắc & Luật Thép",
++   "link": "https://app.notion.com/p/3f3caac9a557810195ddd8c1e3e6f8ce",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "4",
++   "group": "246"
++  },
++  {
++   "id": "5",
++   "name": "Cộng Đồng",
++   "link": "https://app.notion.com/p/3f3caac9a55781618112cded9eaa3d7e",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "5",
++   "group": "135"
++  },
++  {
++   "id": "500",
++   "name": "D QUẢN LÝ TẤT CẢ CÁC ID SỐ",
++   "link": "https://app.notion.com/p/3f3caac9a55781deb89ae575fe269865",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "5",
++   "group": "135"
++  },
++  {
++   "id": "5272",
++   "name": "Không Của Riêng Ai KCRA",
++   "link": "https://app.notion.com/p/3f2caac9a5578166bc42d38ac9986e4b",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "5",
++   "group": "135"
++  },
++  {
++   "id": "5284",
++   "name": "Kiểm Chứng Tổng Hợp",
++   "link": "https://app.notion.com/p/3f3caac9a557817e83fbc7c3683398a8",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "5",
++   "group": "135"
++  },
++  {
++   "id": "5458",
++   "name": "Không Gì Không Thể",
++   "link": "https://app.notion.com/p/3f2caac9a557819cb589d31c86093e70",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "5",
++   "group": "135"
++  },
++  {
++   "id": "55",
++   "name": "Cộng Đồng Giao Lưu Toàn Cầu",
++   "link": "https://app.notion.com/p/3f3caac9a55781a29fc7e867d8d7b9eb",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "5",
++   "group": "135"
++  },
++  {
++   "id": "555",
++   "name": "Cộng Đồng Giao Lưu Toàn Cầu",
++   "link": "https://app.notion.com/p/3f3caac9a55781ebae24e6434c70c439",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "5",
++   "group": "135"
++  },
++  {
++   "id": "5678",
++   "name": "Kỹ Năng Sống Thiện",
++   "link": "https://app.notion.com/p/3f2caac9a55781f98430e43c44fadcc8",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "5",
++   "group": "135"
++  },
++  {
++   "id": "5824",
++   "name": "Kiến Trúc",
++   "link": "https://app.notion.com/p/3f2caac9a5578110a800d602feae70aa",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "5",
++   "group": "135"
++  },
++  {
++   "id": "5835",
++   "name": "Kiểm Toán Độc Lập & Minh Bạch",
++   "link": "https://app.notion.com/p/3f3caac9a557819182a4d828ae540b62",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "5",
++   "group": "135"
++  },
++  {
++   "id": "5862",
++   "name": "Lương Thực Ngũ Cốc",
++   "link": "https://app.notion.com/p/3f3caac9a557813ca584d88152d820a9",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "5",
++   "group": "135"
++  },
++  {
++   "id": "5866",
++   "name": "Kế Thừa Mãi Mãi",
++   "link": "https://app.notion.com/p/3f3caac9a557819cade9c99f968419d0",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "5",
++   "group": "135"
++  },
++  {
++   "id": "5878",
++   "name": "Lượng Tử Quantum",
++   "link": "https://app.notion.com/p/41bcaac9a55781f49031f95a0b3660a3",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "5",
++   "group": "135"
++  },
++  {
++   "id": "6",
++   "name": "AI & Công Nghệ",
++   "link": "https://app.notion.com/p/3f3caac9a557813d997cc936db93aafe",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "6",
++   "group": "246"
++  },
++  {
++   "id": "6235",
++   "name": "Only Agree+ For Life",
++   "link": "https://app.notion.com/p/41dcaac9a55781f9ad73c527cf598840",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "6",
++   "group": "246"
++  },
++  {
++   "id": "627",
++   "name": "MCP",
++   "link": "https://app.notion.com/p/3f2caac9a5578119a1acedf6c5a61e76",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "6",
++   "group": "246"
++  },
++  {
++   "id": "6335",
++   "name": "Only Ethic+ For Life",
++   "link": "https://app.notion.com/p/41dcaac9a557811d95b0ea0ca376fc47",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "6",
++   "group": "246"
++  },
++  {
++   "id": "6535",
++   "name": "Only Learn+ For Life",
++   "link": "https://app.notion.com/p/3f2caac9a55781c79220d0d7c52c196a",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "6",
++   "group": "246"
++  },
++  {
++   "id": "66",
++   "name": "AI & Công Nghệ Toàn Cầu",
++   "link": "https://app.notion.com/p/ecdcaac9a55783aa8c8e81b972451095",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "6",
++   "group": "246"
++  },
++  {
++   "id": "666",
++   "name": "AI Bộ Đôi Cháu Cưng",
++   "link": "https://app.notion.com/p/3f3caac9a55781d4ad93c4b12fdfa4cf",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "6",
++   "group": "246"
++  },
++  {
++   "id": "6735",
++   "name": "Only Plus+ For Life",
++   "link": "https://app.notion.com/p/3f2caac9a557811b8dc9fe2301d7ca38",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "6",
++   "group": "246"
++  },
++  {
++   "id": "674",
++   "name": "Super Intelligence  Siêu Trí Tuệ Nhân Tạo",
++   "link": "https://app.notion.com/p/3f2caac9a5578145a529eb3825b5b69e",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "6",
++   "group": "246"
++  },
++  {
++   "id": "6776",
++   "name": "Open Siêu Phần Mềm",
++   "link": "https://app.notion.com/p/422caac9a55781d5894efeac6f83f6f1",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "6",
++   "group": "246"
++  },
++  {
++   "id": "678",
++   "name": "Open Super Quantum",
++   "link": "https://app.notion.com/p/41dcaac9a5578100b978f672ea745aeb",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "6",
++   "group": "246"
++  },
++  {
++   "id": "6788",
++   "name": "Open Siêu Trí Tuệ • SI AI Robot",
++   "link": "https://app.notion.com/p/422caac9a55781ef8eb7cff6c4752c9e",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "6",
++   "group": "246"
++  },
++  {
++   "id": "6789",
++   "name": "Open Super Quantum Z",
++   "link": "https://app.notion.com/p/422caac9a55781c98cb5c45475451edd",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "6",
++   "group": "246"
++  },
++  {
++   "id": "6835",
++   "name": "Only Think+ For Life",
++   "link": "https://app.notion.com/p/41dcaac9a5578148986cc94b04a6b1fa",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "6",
++   "group": "246"
++  },
++  {
++   "id": "6848",
++   "name": "Niềm Tin Hy Vọng",
++   "link": "https://app.notion.com/p/3f2caac9a5578187b577c678c59990ca",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "6",
++   "group": "246"
++  },
++  {
++   "id": "6873",
++   "name": "Muse • Nàng Thơ",
++   "link": "https://app.notion.com/p/f38caac9a557828a98dc81dc26193587",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "6",
++   "group": "246"
++  },
++  {
++   "id": "6935",
++   "name": "Only Work+ For Life",
++   "link": "https://app.notion.com/p/41dcaac9a557817db0f0ee0ed24279e2",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "6",
++   "group": "246"
++  },
++  {
++   "id": "6969",
++   "name": "MWMW",
++   "link": "https://app.notion.com/p/3f2caac9a5578116a400cf47e59188bd",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "6",
++   "group": "246"
++  },
++  {
++   "id": "7",
++   "name": "Doanh Nghiệp",
++   "link": "https://app.notion.com/p/3f3caac9a55781cfae2acf7eb99011ce",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "7",
++   "group": "789"
++  },
++  {
++   "id": "7535",
++   "name": "Quản Lý Dữ Liệu",
++   "link": "https://app.notion.com/p/3f2caac9a557812bb01df2c13e41a6fe",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "7",
++   "group": "789"
++  },
++  {
++   "id": "7584",
++   "name": "Quản Lý Tổng Hợp",
++   "link": "https://app.notion.com/p/3f2caac9a55781bbba8de2304682e4a7",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "7",
++   "group": "789"
++  },
++  {
++   "id": "77",
++   "name": "Doanh Nghiệp Giao Lưu & Phát Triển",
++   "link": "https://app.notion.com/p/3f3caac9a55781b1bbc2c82dca73d53",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "7",
++   "group": "789"
++  },
++  {
++   "id": "777",
++   "name": "DN Bộ Đôi Cháu Cưng",
++   "link": "https://app.notion.com/p/3f3caac9a55781d4b8b6d2c07cc9534e",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "7",
++   "group": "789"
++  },
++  {
++   "id": "7848",
++   "name": "Quản Trị Hệ Thống",
++   "link": "https://app.notion.com/p/3f2caac9a55781e9855eccf40a376b02",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "7",
++   "group": "789"
++  },
++  {
++   "id": "7884",
++   "name": "Quản Trị Tổng Hợp",
++   "link": "https://app.notion.com/p/3f3caac9a557810ea543c4c822bf7713",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "7",
++   "group": "789"
++  },
++  {
++   "id": "789",
++   "name": "NHÓM QUẢN LÝ 7 • 8 • 9 Siêu Bộ Đôi",
++   "link": "https://app.notion.com/p/3f3caac9a55781e48318d483832ee485",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "7",
++   "group": "789"
++  },
++  {
++   "id": "8",
++   "name": "Tổ Chức",
++   "link": "https://app.notion.com/p/3f3caac9a55781b3922af1dc128efed0",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "8",
++   "group": "789"
++  },
++  {
++   "id": "8282",
++   "name": "TCTC",
++   "link": "https://app.notion.com/p/3f2caac9a557812e8302e7d4ec92af4f",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "8",
++   "group": "789"
++  },
++  {
++   "id": "8682",
++   "name": "TMTC",
++   "link": "https://app.notion.com/p/3f2caac9a557818fb4cddfe0e0556b8c",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "8",
++   "group": "789"
++  },
++  {
++   "id": "87728",
++   "name": "Team Support Siêu Bộ Tam • Link Mẫu • Văn Phòng Làm Việc",
++   "link": "https://app.notion.com/p/422caac9a5578150a759d6d6a71fec9e",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "8",
++   "group": "789"
++  },
++  {
++   "id": "8778",
++   "name": "Team Support Super Trio",
++   "link": "https://app.notion.com/p/422caac9a55781f09798e4d3f3355dbf",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "8",
++   "group": "789"
++  },
++  {
++   "id": "87783",
++   "name": "Team Super Trio Feedback",
++   "link": "https://app.notion.com/p/422caac9a557818d89e2dd9d3e5fc5c1",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "8",
++   "group": "789"
++  },
++  {
++   "id": "87788",
++   "name": "Team Super Trio Upgrade",
++   "link": "https://app.notion.com/p/422caac9a55781f2ad8ce1a834dabc86",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "8",
++   "group": "789"
++  },
++  {
++   "id": "88",
++   "name": "Tổ Chức Giao Lưu & Hợp Tác",
++   "link": "https://app.notion.com/p/3f3caac9a55781b5a317f1dab67890aa",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "8",
++   "group": "789"
++  },
++  {
++   "id": "888",
++   "name": "Bộ Đôi Cháu Cưng",
++   "link": "https://app.notion.com/p/3f3caac9a55781babac8d0f0205b2fd6",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "8",
++   "group": "789"
++  },
++  {
++   "id": "8882",
++   "name": "TTTC",
++   "link": "https://app.notion.com/p/3f2caac9a557814eb4a2ecca072e6b2d",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "8",
++   "group": "789"
++  },
++  {
++   "id": "8884",
++   "name": "Tư Vấn Tổng Hợp",
++   "link": "https://app.notion.com/p/3f2caac9a55781088e6fe65aeb5921d6",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "8",
++   "group": "789"
++  },
++  {
++   "id": "8885",
++   "name": "Tư Vấn Tâm Lý",
++   "link": "https://app.notion.com/p/3f2caac9a5578121af61f2e124034f15",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "8",
++   "group": "789"
++  },
++  {
++   "id": "9",
++   "name": "Quốc Gia",
++   "link": "https://app.notion.com/p/f0fcaac9a55782158e52812f70a001f9",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "9",
++   "group": "789"
++  },
++  {
++   "id": "9397",
++   "name": "Xây Dựng Website",
++   "link": "https://app.notion.com/p/3f3caac9a55781f19153ed0dc38aa129",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "9",
++   "group": "789"
++  },
++  {
++   "id": "9584",
++   "name": "Xử Lý Tình Huống",
++   "link": "https://app.notion.com/p/3f2caac9a557814a9590cb0ac6231f7f",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "9",
++   "group": "789"
++  },
++  {
++   "id": "9884",
++   "name": "Y Tế Tổng Hợp",
++   "link": "https://app.notion.com/p/3f3caac9a5578110a1d1d3f076539917",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "9",
++   "group": "789"
++  },
++  {
++   "id": "99",
++   "name": "Quốc Gia Hợp Tác & Tương Trợ",
++   "link": "https://app.notion.com/p/ce5caac9a55783f18c17812b4e77a2e1",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "9",
++   "group": "789"
++  },
++  {
++   "id": "999",
++   "name": "Quốc Gia Hợp Tác Bộ Đôi Cháu Cưng",
++   "link": "https://app.notion.com/p/3f3caac9a557813bbee2fe45017ff9ca",
++   "status": "INVENTORY_REVIEW",
++   "chapter": "9",
++   "group": "789"
++  }
++ ],
++ "rejected": []
++}
+diff --git a/main.py b/main.py
+index 9730e93..6803127 100644
+--- a/main.py
++++ b/main.py
+@@ -388,11 +388,50 @@ app = FastAPI(
+     lifespan=lifespan,
+ )
+ 
+-CANONICAL_IDS: dict[str, dict[str, str]] = {
++BUILTIN_CANONICAL_IDS: dict[str, dict[str, str]] = {
+     "69": {"name": "AI Country Hub", "status": "CURRENT"},
+     "6984": {"name": "Vietnam AI Directory", "status": "REFERENCE MODEL"},
+     "6911": {"name": "United States AI Directory", "status": "IN PROGRESS"},
+ }
++CORE_REGISTRY_PATH = Path(os.getenv("CFP_CORE_REGISTRY_PATH", Path(__file__).parent / "config" / "core_registry.json"))
++REGISTRY_SNAPSHOT: dict[str, Any] = {"loaded": False}
++
++
++def load_core_registry(path: Path = CORE_REGISTRY_PATH, meta: dict[str, Any] | None = None) -> dict[str, dict[str, str]]:
++    """Merge a reviewed registry snapshot under the built-in canonical records.
++
++    Built-in records always win (never overwritten). Snapshot records keep the status
++    given by the snapshot (e.g. INVENTORY_REVIEW) so the resolver never upgrades an
++    inventory entry to CURRENT/canonical by itself. IDs are exact strings; leading
++    zeros are preserved and non-digit keys are rejected.
++    """
++    meta = {} if meta is None else meta
++    merged = {k: dict(v) for k, v in BUILTIN_CANONICAL_IDS.items()}
++    if not path.exists():
++        meta.update({"loaded": False, "path": str(path), "reason": "missing"})
++        return merged
++    raw = path.read_bytes()
++    data = json.loads(raw)
++    added = skipped = 0
++    for rec in data.get("records", []):
++        cid = rec.get("id")
++        if not isinstance(cid, str) or not cid.isdigit() or not cid.isascii():
++            skipped += 1
++            continue
++        if cid in merged:
++            skipped += 1
++            continue
++        merged[cid] = {"name": str(rec.get("name", "")), "status": str(rec.get("status", "INVENTORY_REVIEW")),
++                       **({"link": rec["link"]} if rec.get("link") else {}),
++                       "source": str(data.get("source", "snapshot"))}
++        added += 1
++    meta.update({"loaded": True, "path": str(path), "sha256": hashlib.sha256(raw).hexdigest(),
++                              "added": added, "skipped": skipped, "total": len(merged),
++                              "generated_at": data.get("generated_at")})
++    return merged
++
++
++CANONICAL_IDS: dict[str, dict[str, str]] = load_core_registry(meta=REGISTRY_SNAPSHOT)
+ 
+ 
+ @app.get("/")
+@@ -412,6 +451,11 @@ def health() -> dict[str, str]:
+     }
+ 
+ 
++@app.get("/api/registry/status")
++def registry_status() -> dict[str, Any]:
++    return {"records": len(CANONICAL_IDS), "builtin": len(BUILTIN_CANONICAL_IDS), **REGISTRY_SNAPSHOT}
++
++
+ @app.get("/api/id/{canonical_id}")
+ def get_canonical_id(canonical_id: str) -> dict[str, Any]:
+     record = CANONICAL_IDS.get(canonical_id)
+diff --git a/tests/test_core_registry.py b/tests/test_core_registry.py
+new file mode 100644
+index 0000000..675667f
+--- /dev/null
++++ b/tests/test_core_registry.py
+@@ -0,0 +1,45 @@
++import json
++import unittest
++from pathlib import Path
++from tempfile import TemporaryDirectory
++
++import main
++
++
++class CoreRegistryTests(unittest.TestCase):
++    def _load(self, records, meta=None):
++        with TemporaryDirectory() as d:
++            p = Path(d) / "core_registry.json"
++            p.write_text(json.dumps({"source": "test", "records": records}))
++            return main.load_core_registry(p, meta)
++
++    def test_builtins_never_overwritten_and_status_preserved(self):
++        reg = self._load([{"id": "69", "name": "EVIL", "status": "CURRENT"},
++                          {"id": "6776", "name": "Open Siêu Phần Mềm", "status": "INVENTORY_REVIEW"}])
++        self.assertEqual(reg["69"]["name"], "AI Country Hub")
++        self.assertEqual(reg["6776"]["status"], "INVENTORY_REVIEW")
++
++    def test_leading_zeros_kept_and_bad_keys_rejected(self):
++        meta = {}
++        reg = self._load([{"id": "0", "name": "a"}, {"id": "00", "name": "b"}, {"id": "000", "name": "c"},
++                          {"id": 7, "name": "int"}, {"id": "6a", "name": "x"}, {"id": "١٢", "name": "arabic"}], meta)
++        self.assertEqual({k for k in reg if k.startswith("0")}, {"0", "00", "000"})
++        self.assertNotIn("6a", reg)
++        self.assertNotIn(7, reg)
++        self.assertNotIn("١٢", reg)
++        self.assertEqual(meta["skipped"], 3)
++
++    def test_missing_snapshot_keeps_builtins(self):
++        reg = main.load_core_registry(Path("/nonexistent/core_registry.json"))
++        self.assertEqual(set(reg), set(main.BUILTIN_CANONICAL_IDS))
++
++    def test_shipped_snapshot_resolves_inventory_ids(self):
++        from fastapi.testclient import TestClient
++
++        c = TestClient(main.app)
++        self.assertEqual(c.get("/api/id/69").json()["status"], "CURRENT")
++        r = c.get("/api/id/6776")
++        self.assertEqual(r.status_code, 200)
++        self.assertEqual(r.json()["status"], "INVENTORY_REVIEW")
++        self.assertEqual(c.get("/api/id/1127").status_code, 404)  # không có hồ sơ: không bịa
++        self.assertTrue(c.get("/api/registry/status").json()["loaded"])
+-- 
+2.43.0
+
