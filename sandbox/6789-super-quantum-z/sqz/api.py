@@ -7,7 +7,8 @@ import os
 from contextlib import asynccontextmanager
 from typing import Any
 
-from fastapi import Depends, FastAPI, Header, HTTPException
+from fastapi import Depends, FastAPI, Header, HTTPException, Request
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
 from . import __version__, backends
@@ -19,6 +20,37 @@ from .si6788 import EvalCase, evaluate_response, verify_job
 from .worker import Scheduler, Worker
 
 from .executor import KINDS
+from .validate import validate_payload
+
+MAX_BODY_BYTES = int(os.getenv("SQZ_MAX_BODY_BYTES", "1000000"))
+
+
+def _identity_map() -> dict[str, str]:
+    """SQZ_IDENTITY_TOKENS="6788:tokA,87728:tokB" → {token: id}. Trống = chế độ token chung (chưa xác thực danh tính)."""
+    out: dict[str, str] = {}
+    for part in filter(None, (p.strip() for p in os.getenv("SQZ_IDENTITY_TOKENS", "").split(","))):
+        cfp_id, _, tok = part.partition(":")
+        if cfp_id and tok:
+            out[tok] = cfp_id
+    return out
+
+
+def _caller(authorization: str = Header(default="")) -> str | None:
+    """ID Số gắn với token (nếu bật SQZ_IDENTITY_TOKENS), dùng cho owner/reviewer."""
+    supplied = authorization.removeprefix("Bearer ").strip()
+    for tok, cfp_id in _identity_map().items():
+        if supplied and hmac.compare_digest(supplied, tok):
+            return cfp_id
+    return None
+
+
+def _bind_identity(claimed: str, caller: str | None) -> bool:
+    """Trả True nếu danh tính đã xác thực. Khi bật chế độ danh tính, ID khai báo phải khớp token."""
+    if not _identity_map():
+        return False
+    if caller != claimed:
+        raise HTTPException(status_code=403, detail="ID khai báo không khớp token (chống mạo danh reviewer/owner)")
+    return True
 
 
 class JobIn(BaseModel):
@@ -69,6 +101,8 @@ def _token_dep(env_name: str):
     def check(authorization: str = Header(default="")) -> str:
         expected = os.getenv(env_name, "")
         supplied = authorization.removeprefix("Bearer ").strip()
+        if env_name == "SQZ_API_TOKEN" and supplied and _caller(authorization):
+            return env_name  # token danh tính riêng cũng là API token hợp lệ
         if not expected or not supplied or not hmac.compare_digest(supplied, expected):
             raise HTTPException(status_code=401, detail="Unauthorized")
         return env_name
@@ -89,6 +123,7 @@ def _validate(kind: str, owner_id: str, payload: dict) -> None:
             check_shots(int(payload.get("shots", 1000)))
         if kind in ("circuit", "bell_selftest", "qaoa_maxcut"):
             backends.get(payload.get("backend") or backends.default_backend())
+        validate_payload(kind, payload)
     except PermissionError as exc:
         raise HTTPException(status_code=403, detail=str(exc)) from exc
     except (CircuitError, KeyError, RuntimeError, ValueError, TypeError) as exc:
@@ -118,6 +153,14 @@ def create_app(store: Store | None = None, *, run_worker: bool = False,
 
     app = FastAPI(title="CFP+ 6789 Super Quantum Z Core", version=__version__, lifespan=lifespan)
     app.state.store = store
+
+    @app.middleware("http")
+    async def body_limit(request: Request, call_next):
+        size = request.headers.get("content-length")
+        if size is not None and size.isdigit() and int(size) > MAX_BODY_BYTES:
+            return JSONResponse({"detail": f"Body vượt {MAX_BODY_BYTES} byte"}, status_code=413)
+        return await call_next(request)
+
     app.state.threads = threads
     api = Depends(_token_dep("SQZ_API_TOKEN"))
     admin = Depends(_token_dep("SQZ_ADMIN_TOKEN"))
@@ -141,25 +184,36 @@ def create_app(store: Store | None = None, *, run_worker: bool = False,
         return backends.list_backends()
 
     @app.post("/jobs", status_code=202, dependencies=[api])
-    def submit(job: JobIn) -> dict:
+    def submit(job: JobIn, caller: str | None = Depends(_caller)) -> dict:
         if store.stopped():
             raise HTTPException(status_code=423, detail="EMERGENCY_STOP đang bật")
         _validate(job.kind, job.owner_id, job.payload)
+        verified = _bind_identity(job.owner_id, caller)
         return {"job_id": store.submit(job.owner_id, job.kind, job.payload, f"api:{job.owner_id}"),
-                "status": "QUEUED"}
+                "status": "QUEUED", "identity_verified": verified}
 
     @app.get("/jobs/{job_id}", dependencies=[api])
     def get_job(job_id: str) -> dict:
         j = store.get(job_id)
         if j is None:
             raise HTTPException(status_code=404, detail="Không tìm thấy Job")
+        j["integrity"] = store.verify_job(job_id)
         return j
 
     @app.post("/cmp/work-orders", status_code=202, dependencies=[api])
-    def cmp_work_order(wo: WorkOrderIn) -> dict:
+    def cmp_work_order(wo: WorkOrderIn, caller: str | None = Depends(_caller)) -> dict:
         if wo.target != "6789":
             raise HTTPException(status_code=422, detail="Work Order không dành cho 6789")
-        job = submit(JobIn(owner_id=wo.requested_by, kind=wo.task, payload=wo.payload))
+        existing = store.work_order_job(wo.work_order_id)
+        if existing:  # idempotent: gửi lại cùng Work Order không tạo Job trùng
+            return {"work_order_id": wo.work_order_id, "job_id": existing, "duplicate": True,
+                    "status": store.get(existing)["status"], "review": "REVIEW_REQUIRED"}
+        job = submit(JobIn(owner_id=wo.requested_by, kind=wo.task, payload=wo.payload), caller)
+        bound = store.bind_work_order(wo.work_order_id, job["job_id"])
+        if bound != job["job_id"]:  # thua cuộc đua: Job vừa tạo bị hủy về FAILED, trả Job đã gắn
+            store.cancel(job["job_id"], "duplicate work order")
+            return {"work_order_id": wo.work_order_id, "job_id": bound, "duplicate": True,
+                    "status": store.get(bound)["status"], "review": "REVIEW_REQUIRED"}
         store.audit(f"cmp:{wo.requested_by}", "CMP_WORK_ORDER_ACCEPTED",
                     {"work_order_id": wo.work_order_id, "job": job["job_id"]})
         return {"work_order_id": wo.work_order_id, **job, "review": "REVIEW_REQUIRED"}
@@ -179,11 +233,13 @@ def create_app(store: Store | None = None, *, run_worker: bool = False,
         return store.verify_audit()
 
     @app.post("/jobs/{job_id}/review", dependencies=[api])
-    def review(job_id: str, body: ReviewIn) -> dict:
+    def review(job_id: str, body: ReviewIn, caller: str | None = Depends(_caller)) -> dict:
         """6788 • Siêu Trí Tuệ (hoặc reviewer khác chủ trì) ghi kết luận độc lập."""
         try:
             classify(body.reviewer_id)
-            return store.review(job_id, body.reviewer_id, body.verdict, body.note)
+            verified = _bind_identity(body.reviewer_id, caller)
+            return {**store.review(job_id, body.reviewer_id, body.verdict, body.note),
+                    "identity_verified": verified}
         except InvalidID as exc:
             raise HTTPException(status_code=422, detail=str(exc)) from exc
         except KeyError as exc:
@@ -245,8 +301,11 @@ def create_app(store: Store | None = None, *, run_worker: bool = False,
         v = verify_job(job)
         recorded = None
         if job["owner_id"] != "6788" and job["status"] in ("DONE", "FAILED"):
-            recorded = store.review(job_id, "6788", v["verdict"],
-                                    f"AUTOMATED • {v['method']} • {v['details']}")
+            try:
+                recorded = store.review(job_id, "6788", v["verdict"],
+                                        f"AUTOMATED • {v['method']} • {v['details']}")
+            except ValueError:  # 6788 đã review Job này: mỗi reviewer một lần → không ghi trùng
+                recorded = None
         return {**v, "job_id": job_id, "review_recorded": bool(recorded)}
 
     # ------------------------------------------------------------ 6776 • Siêu Phần Mềm

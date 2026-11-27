@@ -15,6 +15,8 @@ from . import backends
 from .executor import bell_selftest, execute
 from .store import Store
 
+AUDITED = ToolAnnotations(readOnlyHint=False, destructiveHint=False, idempotentHint=False,
+                          openWorldHint=False)
 READ_ONLY = ToolAnnotations(readOnlyHint=True, destructiveHint=False, idempotentHint=True,
                             openWorldHint=False)
 store = Store(os.getenv("SQZ_DATABASE_URL") or os.getenv("SQZ_DB_PATH", ":memory:"))
@@ -33,7 +35,7 @@ def sqz_list_backends() -> list[dict]:
     return backends.list_backends()
 
 
-@mcp.tool(annotations=READ_ONLY)
+@mcp.tool(annotations=AUDITED)
 def sqz_bell_selftest(backend: str = "numpy") -> dict:
     """Chạy bài nghiệm thu Bell (kỳ vọng 00/11 ≈ 50%)."""
     _guard()

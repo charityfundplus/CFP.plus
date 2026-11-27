@@ -72,6 +72,10 @@ def _digest(prev: str, at: float, actor: str, event_: str, data: str) -> str:
     return hashlib.sha256(f"{prev}|{at:.6f}|{actor}|{event_}|{data}".encode()).hexdigest()
 
 
+def _sha(text_: str | None) -> str | None:
+    return hashlib.sha256(text_.encode()).hexdigest() if text_ is not None else None
+
+
 def _engine(target: str | Path | None) -> Engine:
     if target is None or str(target) == ":memory:":
         return create_engine("sqlite://", connect_args={"check_same_thread": False},
@@ -179,15 +183,25 @@ class Store:
                 return None
         return self.get(jid)
 
+    def renew(self, jid: str, worker: str, lease_s: float) -> bool:
+        """Gia hạn lease cho Job đang chạy (chỉ worker đang giữ mới gia hạn được)."""
+        with self.engine.begin() as c:
+            return c.execute(update(jobs).where(jobs.c.id == jid, jobs.c.worker == worker,
+                                                jobs.c.status == "RUNNING")
+                             .values(lease_until=time.time() + lease_s)).rowcount == 1
+
     def finish(self, jid: str, worker: str, result: dict | None = None, error: str | None = None) -> bool:
+        result_json = json.dumps(result, sort_keys=True) if result is not None else None
         with self.engine.begin() as c:
             n = c.execute(update(jobs).where(jobs.c.id == jid, jobs.c.worker == worker,
                                              jobs.c.status == "RUNNING")
                           .values(status="FAILED" if error else "DONE",
-                                  result=json.dumps(result) if result is not None else None,
+                                  result=result_json,
                                   error=error, updated_at=time.time(), lease_until=None)).rowcount
         if n:
-            self.audit(worker, "JOB_FAILED" if error else "JOB_DONE", {"job": jid, "error": error})
+            # Neo kết quả vào chuỗi audit: sửa cột result sau này sẽ bị phát hiện.
+            self.audit(worker, "JOB_FAILED" if error else "JOB_DONE",
+                       {"job": jid, "error": error, "result_sha256": _sha(result_json)})
         return bool(n)
 
     def get(self, jid: str) -> dict | None:
@@ -196,9 +210,47 @@ class Store:
         if r is None:
             return None
         d = dict(r)
+        d["result_sha256"] = _sha(d["result"])
         d["payload"] = json.loads(d["payload"])
         d["result"] = json.loads(d["result"]) if d["result"] else None
         return d
+
+    def verify_job(self, jid: str) -> dict:
+        """So khớp hash kết quả hiện tại với hash đã neo trong audit (JOB_DONE/JOB_FAILED cuối)."""
+        job = self.get(jid)
+        if job is None:
+            raise KeyError(jid)
+        anchored = None
+        with self.engine.connect() as c:
+            for r in c.execute(select(audit_log.c.data).where(audit_log.c.event.in_(("JOB_DONE", "JOB_FAILED")))
+                               .order_by(audit_log.c.seq)):
+                d = json.loads(r.data)
+                if d.get("job") == jid:
+                    anchored = d.get("result_sha256")
+        ok = job["status"] not in ("DONE", "FAILED") or anchored == job["result_sha256"]
+        return {"job_id": jid, "ok": ok, "anchored_sha256": anchored, "current_sha256": job["result_sha256"]}
+
+    def cancel(self, jid: str, reason: str) -> bool:
+        with self.engine.begin() as c:
+            n = c.execute(update(jobs).where(jobs.c.id == jid, jobs.c.status == "QUEUED")
+                          .values(status="FAILED", error=reason, updated_at=time.time())).rowcount
+        if n:
+            self.audit("system", "JOB_CANCELLED", {"job": jid, "reason": reason})
+        return bool(n)
+
+    def work_order_job(self, wo_id: str) -> str | None:
+        with self.engine.connect() as c:
+            return c.execute(select(control.c.value).where(control.c.key == f"wo:{wo_id}")).scalar()
+
+    def bind_work_order(self, wo_id: str, jid: str) -> str:
+        """Ghi ánh xạ Work Order → Job một lần (idempotent). Trả về Job đã gắn trước đó nếu có."""
+        from sqlalchemy.exc import IntegrityError
+        try:
+            with self.engine.begin() as c:
+                c.execute(insert(control).values(key=f"wo:{wo_id}", value=jid, at=time.time()))
+            return jid
+        except IntegrityError:
+            return self.work_order_job(wo_id) or jid
 
     def recent(self, kind: str | None = None, limit: int = 50) -> list[dict]:
         q = select(jobs.c.id).order_by(jobs.c.created_at.desc()).limit(limit)
@@ -221,6 +273,8 @@ class Store:
             raise PermissionError("Reviewer phải khác chủ trì (kiểm chứng độc lập)")
         if job["status"] not in ("DONE", "FAILED"):
             raise ValueError("Chỉ review Job đã kết thúc")
+        if any(r["reviewer_id"] == reviewer_id for r in self.reviews_of(jid)):
+            raise ValueError("Reviewer này đã review Job (mỗi reviewer một lần)")
         with self.engine.begin() as c:
             c.execute(insert(reviews).values(job_id=jid, reviewer_id=reviewer_id, verdict=verdict,
                                              note=note, at=time.time()))

@@ -34,11 +34,26 @@ class Worker(threading.Thread):
         job = self.store.claim(self.name, self.lease_s)
         if job is None:
             return False
+        done = threading.Event()
+
+        def keepalive() -> None:
+            # Job dài (OR-Tools ≤ 60 s, QAOA lớn) không được làm worker "chết" hay mất lease.
+            every = max(min(self.lease_s / 3, 10.0), 0.05)
+            while not done.wait(every):
+                self.store.renew(job["id"], self.name, self.lease_s)
+                self.store.beat(self.name, {"state": "BUSY", "job": job["id"],
+                                            "processed": self.processed, "version": __version__})
+
+        ka = threading.Thread(target=keepalive, daemon=True)
+        ka.start()
         try:
             result = execute(job["kind"], job["payload"])
             self.store.finish(job["id"], self.name, result=result)
         except Exception as exc:  # ghi lỗi, không làm chết worker
             self.store.finish(job["id"], self.name, error=f"{type(exc).__name__}: {exc}")
+        finally:
+            done.set()
+            ka.join()
         self.processed += 1
         return True
 
