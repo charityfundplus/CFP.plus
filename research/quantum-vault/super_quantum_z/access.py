@@ -19,12 +19,20 @@ class Policy(BaseModel):
     model_config = ConfigDict(extra="forbid", strict=True)
     token: Annotated[str, StringConstraints(min_length=32, max_length=256)]
     backends: set[Backend]
+    work_orders: set[WorkOrderID] | None = None
+
+
+class HandoffGrant(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    recipient: RecordID
+    reviewer: RecordID
 
 
 class Configuration(BaseModel):
     model_config = ConfigDict(extra="forbid")
     database: Path
     principals: dict[RecordID, Policy]
+    evidence_grants: dict[RecordID, dict[WorkOrderID, HandoffGrant]] = {}
 
     @field_validator("principals")
     @classmethod
@@ -64,6 +72,8 @@ def submit(config, owner, authorization, order):
     policy = authorize(config, owner, authorization)
     if order.experiment.backend not in policy.backends:
         raise AccessDenied("Backend is disabled for this ID")
+    if policy.work_orders is not None and order.work_order_id not in policy.work_orders:
+        raise AccessDenied("Work order is outside this ID's scope")
     return {"job": Queue(config.database).submit(owner, order.work_order_id, order.experiment)}
 
 

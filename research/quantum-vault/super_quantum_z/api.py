@@ -6,7 +6,8 @@ from threading import BoundedSemaphore
 
 from fastapi import FastAPI, Header, HTTPException
 
-from . import access
+from . import access, evidence_bus
+from .evidence_bus import Receipt, Review
 from .access import JobID, RecordID, WorkOrder
 from .core import BackendUnavailable, Experiment
 from .isolation import ExperimentFailed, ExperimentTimedOut, execute_isolated
@@ -61,3 +62,35 @@ def read_evidence(owner: RecordID, job: JobID, authorization: str = Header(defau
     if record is None:
         raise HTTPException(status_code=404, detail="Evidence not found")
     return record
+
+
+def evidence_action(owner, authorization, job, action, receipt=None):
+    try:
+        packet = evidence_bus.process(access.configuration(), owner, authorization, job, action, receipt)
+    except access.AccessDenied as error:
+        raise HTTPException(status_code=403, detail=str(error)) from error
+    except QueueConflict as error:
+        raise HTTPException(status_code=409, detail=str(error)) from error
+    if packet is None:
+        raise HTTPException(status_code=404, detail="Evidence handoff not found")
+    return packet
+
+
+@app.post("/sandbox/cmp/{owner}/handoffs/{job}")
+def publish_handoff(owner: RecordID, job: JobID, authorization: str = Header(default="")):
+    return evidence_action(owner, authorization, job, "publish")
+
+
+@app.get("/sandbox/cmp/{owner}/handoffs/{job}")
+def read_handoff(owner: RecordID, job: JobID, authorization: str = Header(default="")):
+    return evidence_action(owner, authorization, job, "read")
+
+
+@app.post("/sandbox/cmp/{owner}/handoffs/{job}/ack")
+def acknowledge_handoff(owner: RecordID, job: JobID, receipt: Receipt, authorization: str = Header(default="")):
+    return evidence_action(owner, authorization, job, "ack", receipt)
+
+
+@app.post("/sandbox/cmp/{owner}/handoffs/{job}/review")
+def review_handoff(owner: RecordID, job: JobID, review: Review, authorization: str = Header(default="")):
+    return evidence_action(owner, authorization, job, "review", review)
