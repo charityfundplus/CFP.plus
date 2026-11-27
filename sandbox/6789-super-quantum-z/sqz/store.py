@@ -1,118 +1,198 @@
-"""Hàng đợi Job, Heartbeat, Audit nối chuỗi băm và Emergency Stop trên SQLite.
+"""Hàng đợi Job, Heartbeat, Audit nối chuỗi băm và Emergency Stop.
 
-SQLite dùng cho sandbox; khi nâng cấp dùng cùng schema trên PostgreSQL.
+Chạy trên SQLite (sandbox, mặc định) hoặc PostgreSQL (Cloud) qua SQLAlchemy Core:
+`Store("sqlite:///path.db")`, `Store("postgresql+psycopg://...")`, hoặc đường dẫn tệp.
 """
 
 from __future__ import annotations
 
 import hashlib
 import json
-import sqlite3
 import threading
 import time
 import uuid
 from pathlib import Path
 
+from sqlalchemy import (Column, Float, Integer, MetaData, String, Table, Text, create_engine,
+                        event, func, insert, select, text, update)
+from sqlalchemy.engine import Engine
+from sqlalchemy.pool import StaticPool
+
 GENESIS = "0" * 64
-SCHEMA = """
-CREATE TABLE IF NOT EXISTS jobs (
-  id TEXT PRIMARY KEY, owner_id TEXT NOT NULL, kind TEXT NOT NULL, payload TEXT NOT NULL,
-  status TEXT NOT NULL, result TEXT, error TEXT, attempts INTEGER NOT NULL DEFAULT 0,
-  worker TEXT, lease_until REAL, created_at REAL NOT NULL, updated_at REAL NOT NULL);
-CREATE INDEX IF NOT EXISTS jobs_status ON jobs(status, created_at);
-CREATE TABLE IF NOT EXISTS heartbeats (worker TEXT PRIMARY KEY, seen_at REAL NOT NULL, info TEXT);
-CREATE TABLE IF NOT EXISTS audit (
-  seq INTEGER PRIMARY KEY AUTOINCREMENT, at REAL NOT NULL, actor TEXT NOT NULL,
-  event TEXT NOT NULL, data TEXT NOT NULL, prev TEXT NOT NULL, digest TEXT NOT NULL);
-CREATE TABLE IF NOT EXISTS control (key TEXT PRIMARY KEY, value TEXT NOT NULL, at REAL NOT NULL);
-"""
+metadata = MetaData()
+jobs = Table(
+    "sqz_jobs", metadata,
+    Column("id", String(32), primary_key=True),
+    Column("owner_id", String(12), nullable=False),
+    Column("kind", String(32), nullable=False),
+    Column("payload", Text, nullable=False),
+    Column("status", String(16), nullable=False, index=True),
+    Column("result", Text),
+    Column("error", Text),
+    Column("attempts", Integer, nullable=False, default=0),
+    Column("worker", String(128)),
+    Column("lease_until", Float),
+    Column("created_at", Float, nullable=False, index=True),
+    Column("updated_at", Float, nullable=False),
+)
+heartbeats = Table(
+    "sqz_heartbeats", metadata,
+    Column("worker", String(128), primary_key=True),
+    Column("seen_at", Float, nullable=False),
+    Column("info", Text),
+)
+audit_log = Table(
+    "sqz_audit", metadata,
+    Column("seq", Integer, primary_key=True, autoincrement=True),
+    Column("at", Float, nullable=False),
+    Column("actor", String(128), nullable=False),
+    Column("event", String(64), nullable=False),
+    Column("data", Text, nullable=False),
+    Column("prev", String(64), nullable=False),
+    Column("digest", String(64), nullable=False),
+)
+reviews = Table(
+    "sqz_reviews", metadata,
+    Column("id", Integer, primary_key=True, autoincrement=True),
+    Column("job_id", String(32), nullable=False, index=True),
+    Column("reviewer_id", String(12), nullable=False),
+    Column("verdict", String(16), nullable=False),
+    Column("note", Text),
+    Column("at", Float, nullable=False),
+)
+control = Table(
+    "sqz_control", metadata,
+    Column("key", String(64), primary_key=True),
+    Column("value", Text, nullable=False),
+    Column("at", Float, nullable=False),
+)
 
 
-def _digest(prev: str, at: float, actor: str, event: str, data: str) -> str:
-    return hashlib.sha256(f"{prev}|{at:.6f}|{actor}|{event}|{data}".encode()).hexdigest()
+def _digest(prev: str, at: float, actor: str, event_: str, data: str) -> str:
+    return hashlib.sha256(f"{prev}|{at:.6f}|{actor}|{event_}|{data}".encode()).hexdigest()
+
+
+def _engine(target: str | Path | None) -> Engine:
+    if target is None or str(target) == ":memory:":
+        return create_engine("sqlite://", connect_args={"check_same_thread": False},
+                             poolclass=StaticPool)
+    url = str(target)
+    if "://" not in url:
+        url = f"sqlite:///{url}"
+    if url.startswith("sqlite"):
+        eng = create_engine(url, connect_args={"check_same_thread": False})
+
+        @event.listens_for(eng, "connect")
+        def _wal(conn, _):  # nhiều tiến trình đọc/ghi an toàn hơn
+            conn.execute("PRAGMA journal_mode=WAL")
+            conn.execute("PRAGMA busy_timeout=5000")
+
+        return eng
+    return create_engine(url, pool_pre_ping=True)
 
 
 class Store:
-    def __init__(self, path: str | Path = ":memory:") -> None:
+    def __init__(self, target: str | Path | None = None) -> None:
+        self.engine = _engine(target)
+        self.backend = self.engine.dialect.name
         self._lock = threading.RLock()
-        self.db = sqlite3.connect(str(path), check_same_thread=False, isolation_level=None)
-        self.db.row_factory = sqlite3.Row
-        if str(path) != ":memory:":
-            self.db.execute("PRAGMA journal_mode=WAL")
-        self.db.executescript(SCHEMA)
+        metadata.create_all(self.engine)
+        with self.engine.begin() as c:
+            if c.execute(select(control.c.key).where(control.c.key == "audit_head")).first() is None:
+                c.execute(insert(control).values(key="audit_head", value=GENESIS, at=time.time()))
+
+    def ping(self) -> bool:
+        with self.engine.connect() as c:
+            return c.execute(text("SELECT 1")).scalar() == 1
 
     # ---------------------------------------------------------------- audit
-    def audit(self, actor: str, event: str, data: dict) -> str:
+    def audit(self, actor: str, event_: str, data: dict) -> str:
         payload = json.dumps(data, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
-        with self._lock:
-            row = self.db.execute("SELECT digest FROM audit ORDER BY seq DESC LIMIT 1").fetchone()
-            prev = row["digest"] if row else GENESIS
+        with self._lock, self.engine.begin() as c:
+            # Khóa dòng audit_head để nhiều tiến trình/instance vẫn nối chuỗi tuần tự (Postgres).
+            prev = c.execute(select(control.c.value).where(control.c.key == "audit_head")
+                             .with_for_update()).scalar_one()
             at = time.time()
-            d = _digest(prev, at, actor, event, payload)
-            self.db.execute("INSERT INTO audit(at,actor,event,data,prev,digest) VALUES(?,?,?,?,?,?)",
-                            (at, actor, event, payload, prev, d))
+            d = _digest(prev, at, actor, event_, payload)
+            c.execute(insert(audit_log).values(at=at, actor=actor, event=event_, data=payload,
+                                               prev=prev, digest=d))
+            c.execute(update(control).where(control.c.key == "audit_head").values(value=d, at=at))
             return d
 
     def verify_audit(self) -> dict:
         prev, n = GENESIS, 0
-        for r in self.db.execute("SELECT * FROM audit ORDER BY seq"):
-            if r["prev"] != prev or _digest(prev, r["at"], r["actor"], r["event"], r["data"]) != r["digest"]:
-                return {"ok": False, "broken_at_seq": r["seq"], "checked": n}
-            prev, n = r["digest"], n + 1
+        with self.engine.connect() as c:
+            for r in c.execute(select(audit_log).order_by(audit_log.c.seq)):
+                if r.prev != prev or _digest(prev, r.at, r.actor, r.event, r.data) != r.digest:
+                    return {"ok": False, "broken_at_seq": r.seq, "checked": n}
+                prev, n = r.digest, n + 1
+            head = c.execute(select(control.c.value).where(control.c.key == "audit_head")).scalar_one()
+        if head != prev:
+            return {"ok": False, "broken_at_seq": None, "checked": n, "reason": "audit_head mismatch (dòng cuối bị xóa?)"}
         return {"ok": True, "checked": n, "head": prev}
 
     # ---------------------------------------------------------------- control
     def set_stop(self, stopped: bool, actor: str, reason: str = "") -> None:
-        with self._lock:
-            self.db.execute("INSERT INTO control(key,value,at) VALUES('emergency_stop',?,?) "
-                            "ON CONFLICT(key) DO UPDATE SET value=excluded.value, at=excluded.at",
-                            ("1" if stopped else "0", time.time()))
+        val = "1" if stopped else "0"
+        with self._lock, self.engine.begin() as c:
+            if c.execute(update(control).where(control.c.key == "emergency_stop")
+                         .values(value=val, at=time.time())).rowcount == 0:
+                c.execute(insert(control).values(key="emergency_stop", value=val, at=time.time()))
         self.audit(actor, "EMERGENCY_STOP" if stopped else "RESUME", {"reason": reason})
 
     def stopped(self) -> bool:
-        r = self.db.execute("SELECT value FROM control WHERE key='emergency_stop'").fetchone()
-        return bool(r and r["value"] == "1")
+        with self.engine.connect() as c:
+            return c.execute(select(control.c.value).where(control.c.key == "emergency_stop")).scalar() == "1"
 
     # ---------------------------------------------------------------- jobs
     def submit(self, owner_id: str, kind: str, payload: dict, actor: str) -> str:
-        jid = uuid.uuid4().hex
-        now = time.time()
-        with self._lock:
-            self.db.execute("INSERT INTO jobs(id,owner_id,kind,payload,status,created_at,updated_at) "
-                            "VALUES(?,?,?,?, 'QUEUED', ?, ?)",
-                            (jid, owner_id, kind, json.dumps(payload), now, now))
+        jid, now = uuid.uuid4().hex, time.time()
+        with self.engine.begin() as c:
+            c.execute(insert(jobs).values(id=jid, owner_id=owner_id, kind=kind, payload=json.dumps(payload),
+                                          status="QUEUED", attempts=0, created_at=now, updated_at=now))
         self.audit(actor, "JOB_SUBMITTED", {"job": jid, "owner_id": owner_id, "kind": kind})
         return jid
 
-    def claim(self, worker: str, lease_s: float = 60.0) -> dict | None:
-        """Nhận nguyên tử một Job: chỉ một worker thắng nhờ UPDATE có điều kiện."""
+    def claim(self, worker: str, lease_s: float = 60.0, max_attempts: int = 3) -> dict | None:
+        """Nhận nguyên tử một Job: chỉ một worker thắng nhờ UPDATE có điều kiện trạng thái."""
         if self.stopped():
             return None
         now = time.time()
-        with self._lock:
-            # Trả Job quá hạn lease về hàng đợi (tự phục hồi khi worker chết).
-            self.db.execute("UPDATE jobs SET status='QUEUED', worker=NULL, updated_at=? "
-                            "WHERE status='RUNNING' AND lease_until < ?", (now, now))
-            r = self.db.execute("SELECT id FROM jobs WHERE status='QUEUED' ORDER BY created_at LIMIT 1").fetchone()
-            if r is None:
+        with self._lock, self.engine.begin() as c:
+            # Tự phục hồi: Job quá hạn lease quay lại hàng đợi, quá số lần thử thì FAILED.
+            c.execute(update(jobs).where(jobs.c.status == "RUNNING", jobs.c.lease_until < now,
+                                         jobs.c.attempts >= max_attempts)
+                      .values(status="FAILED", error="lease expired too many times", updated_at=now))
+            c.execute(update(jobs).where(jobs.c.status == "RUNNING", jobs.c.lease_until < now)
+                      .values(status="QUEUED", worker=None, updated_at=now))
+            for _ in range(5):
+                jid = c.execute(select(jobs.c.id).where(jobs.c.status == "QUEUED")
+                                .order_by(jobs.c.created_at).limit(1)).scalar()
+                if jid is None:
+                    return None
+                won = c.execute(update(jobs).where(jobs.c.id == jid, jobs.c.status == "QUEUED")
+                                .values(status="RUNNING", worker=worker, lease_until=now + lease_s,
+                                        attempts=jobs.c.attempts + 1, updated_at=now)).rowcount
+                if won == 1:
+                    break
+            else:
                 return None
-            cur = self.db.execute("UPDATE jobs SET status='RUNNING', worker=?, lease_until=?, "
-                                  "attempts=attempts+1, updated_at=? WHERE id=? AND status='QUEUED'",
-                                  (worker, now + lease_s, now, r["id"]))
-            if cur.rowcount != 1:
-                return None
-            return self.get(r["id"])
+        return self.get(jid)
 
-    def finish(self, jid: str, worker: str, result: dict | None = None, error: str | None = None) -> None:
-        with self._lock:
-            self.db.execute("UPDATE jobs SET status=?, result=?, error=?, updated_at=?, lease_until=NULL "
-                            "WHERE id=? AND worker=?",
-                            ("FAILED" if error else "DONE", json.dumps(result) if result else None,
-                             error, time.time(), jid, worker))
-        self.audit(worker, "JOB_FAILED" if error else "JOB_DONE", {"job": jid, "error": error})
+    def finish(self, jid: str, worker: str, result: dict | None = None, error: str | None = None) -> bool:
+        with self.engine.begin() as c:
+            n = c.execute(update(jobs).where(jobs.c.id == jid, jobs.c.worker == worker,
+                                             jobs.c.status == "RUNNING")
+                          .values(status="FAILED" if error else "DONE",
+                                  result=json.dumps(result) if result is not None else None,
+                                  error=error, updated_at=time.time(), lease_until=None)).rowcount
+        if n:
+            self.audit(worker, "JOB_FAILED" if error else "JOB_DONE", {"job": jid, "error": error})
+        return bool(n)
 
     def get(self, jid: str) -> dict | None:
-        r = self.db.execute("SELECT * FROM jobs WHERE id=?", (jid,)).fetchone()
+        with self.engine.connect() as c:
+            r = c.execute(select(jobs).where(jobs.c.id == jid)).mappings().first()
         if r is None:
             return None
         d = dict(r)
@@ -120,19 +200,49 @@ class Store:
         d["result"] = json.loads(d["result"]) if d["result"] else None
         return d
 
+    def recent(self, kind: str | None = None, limit: int = 50) -> list[dict]:
+        q = select(jobs.c.id).order_by(jobs.c.created_at.desc()).limit(limit)
+        if kind:
+            q = q.where(jobs.c.kind == kind)
+        with self.engine.connect() as c:
+            ids = [r[0] for r in c.execute(q)]
+        return [self.get(i) for i in ids]
+
     def counts(self) -> dict:
-        return {r["status"]: r["n"] for r in
-                self.db.execute("SELECT status, COUNT(*) n FROM jobs GROUP BY status")}
+        with self.engine.connect() as c:
+            return {r[0]: r[1] for r in c.execute(select(jobs.c.status, func.count()).group_by(jobs.c.status))}
+
+    # ---------------------------------------------------------------- review độc lập
+    def review(self, jid: str, reviewer_id: str, verdict: str, note: str = "") -> dict:
+        job = self.get(jid)
+        if job is None:
+            raise KeyError(jid)
+        if reviewer_id == job["owner_id"]:
+            raise PermissionError("Reviewer phải khác chủ trì (kiểm chứng độc lập)")
+        if job["status"] not in ("DONE", "FAILED"):
+            raise ValueError("Chỉ review Job đã kết thúc")
+        with self.engine.begin() as c:
+            c.execute(insert(reviews).values(job_id=jid, reviewer_id=reviewer_id, verdict=verdict,
+                                             note=note, at=time.time()))
+        self.audit(f"review:{reviewer_id}", "JOB_REVIEWED", {"job": jid, "verdict": verdict})
+        return {"job_id": jid, "reviewer_id": reviewer_id, "verdict": verdict}
+
+    def reviews_of(self, jid: str) -> list[dict]:
+        with self.engine.connect() as c:
+            return [dict(r) for r in c.execute(select(reviews).where(reviews.c.job_id == jid)
+                                               .order_by(reviews.c.id)).mappings()]
 
     # ---------------------------------------------------------------- heartbeat
     def beat(self, worker: str, info: dict) -> None:
-        with self._lock:
-            self.db.execute("INSERT INTO heartbeats(worker,seen_at,info) VALUES(?,?,?) "
-                            "ON CONFLICT(worker) DO UPDATE SET seen_at=excluded.seen_at, info=excluded.info",
-                            (worker, time.time(), json.dumps(info)))
+        now, payload = time.time(), json.dumps(info)
+        with self._lock, self.engine.begin() as c:
+            if c.execute(update(heartbeats).where(heartbeats.c.worker == worker)
+                         .values(seen_at=now, info=payload)).rowcount == 0:
+                c.execute(insert(heartbeats).values(worker=worker, seen_at=now, info=payload))
 
     def workers(self, stale_after_s: float = 30.0) -> list[dict]:
         now = time.time()
-        return [{"worker": r["worker"], "age_s": round(now - r["seen_at"], 3),
-                 "alive": now - r["seen_at"] <= stale_after_s, **json.loads(r["info"] or "{}")}
-                for r in self.db.execute("SELECT * FROM heartbeats")]
+        with self.engine.connect() as c:
+            rows = list(c.execute(select(heartbeats)))
+        return [{"worker": r.worker, "age_s": round(now - r.seen_at, 3),
+                 "alive": now - r.seen_at <= stale_after_s, **json.loads(r.info or "{}")} for r in rows]

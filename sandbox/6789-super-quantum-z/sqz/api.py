@@ -16,7 +16,7 @@ from .ids import InvalidID, classify
 from .store import Store
 from .worker import Scheduler, Worker
 
-KINDS = {"circuit", "bell_selftest", "maxcut"}
+from .executor import KINDS
 
 
 class JobIn(BaseModel):
@@ -34,6 +34,22 @@ class WorkOrderIn(BaseModel):
     task: str
     payload: dict[str, Any] = Field(default_factory=dict)
     requested_by: str
+
+
+class ReviewIn(BaseModel):
+    reviewer_id: str
+    verdict: str = Field(pattern="^(APPROVED|REJECTED|NEEDS_CHANGES)$")
+    note: str = Field(default="", max_length=2000)
+
+
+TRIO = {
+    "6789": {"pillar": "Siêu Lượng Tử ⚛️ Super Quantum", "role": "compute",
+             "link": "https://app.notion.com/p/422caac9a55781c98cb5c45475451edd"},
+    "6788": {"pillar": "Siêu Trí Tuệ SI 🤖 AI 🤖", "role": "review",
+             "link": "https://app.notion.com/p/422caac9a55781ef8eb7cff6c4752c9e"},
+    "6776": {"pillar": "Siêu Phần Mềm • Super Software", "role": "operate",
+             "link": "https://app.notion.com/p/422caac9a55781d5894efeac6f83f6f1"},
+}
 
 
 class StopIn(BaseModel):
@@ -62,15 +78,17 @@ def _validate(kind: str, owner_id: str, payload: dict) -> None:
         if kind == "circuit":
             Circuit.from_dict(payload["circuit"])
             check_shots(int(payload.get("shots", 1000)))
-        if kind in ("circuit", "bell_selftest"):
-            backends.get(payload.get("backend", "numpy"))
+        if kind in ("circuit", "bell_selftest", "qaoa_maxcut"):
+            backends.get(payload.get("backend") or backends.default_backend())
+    except PermissionError as exc:
+        raise HTTPException(status_code=403, detail=str(exc)) from exc
     except (CircuitError, KeyError, RuntimeError, ValueError, TypeError) as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
 
 
 def create_app(store: Store | None = None, *, run_worker: bool = False,
                scheduler_interval_s: float | None = None) -> FastAPI:
-    store = store or Store(os.getenv("SQZ_DB_PATH", ":memory:"))
+    store = store or Store(os.getenv("SQZ_DATABASE_URL") or os.getenv("SQZ_DB_PATH", ":memory:"))
     threads: list = []
 
     @asynccontextmanager
@@ -101,10 +119,10 @@ def create_app(store: Store | None = None, *, run_worker: bool = False,
 
     @app.get("/health/ready")
     def ready() -> dict:
-        store.db.execute("SELECT 1").fetchone()
+        store.ping()
         alive = [w for w in store.workers() if w["alive"]]
         state = "STOPPED" if store.stopped() else ("READY" if alive or not run_worker else "DEGRADED")
-        body = {"state": state, "db": "ok", "workers_alive": len(alive), "jobs": store.counts()}
+        body = {"state": state, "db": store.backend, "workers_alive": len(alive), "jobs": store.counts()}
         if state != "READY":
             raise HTTPException(status_code=503, detail=body)
         return body
@@ -150,6 +168,51 @@ def create_app(store: Store | None = None, *, run_worker: bool = False,
     @app.get("/audit/verify", dependencies=[admin])
     def audit_verify() -> dict:
         return store.verify_audit()
+
+    @app.post("/jobs/{job_id}/review", dependencies=[api])
+    def review(job_id: str, body: ReviewIn) -> dict:
+        """6788 • Siêu Trí Tuệ (hoặc reviewer khác chủ trì) ghi kết luận độc lập."""
+        try:
+            classify(body.reviewer_id)
+            return store.review(job_id, body.reviewer_id, body.verdict, body.note)
+        except InvalidID as exc:
+            raise HTTPException(status_code=422, detail=str(exc)) from exc
+        except KeyError as exc:
+            raise HTTPException(status_code=404, detail="Không tìm thấy Job") from exc
+        except PermissionError as exc:
+            raise HTTPException(status_code=403, detail=str(exc)) from exc
+        except ValueError as exc:
+            raise HTTPException(status_code=409, detail=str(exc)) from exc
+
+    @app.get("/jobs/{job_id}/reviews", dependencies=[api])
+    def job_reviews(job_id: str) -> list[dict]:
+        return store.reviews_of(job_id)
+
+    @app.get("/trio/{cfp_id}")
+    def trio(cfp_id: str) -> dict:
+        """Hồ sơ dùng chung cho mọi ID Siêu Bộ Tam: một API, không cài riêng từng ID."""
+        try:
+            info = classify(cfp_id)
+        except InvalidID as exc:
+            raise HTTPException(status_code=422, detail=str(exc)) from exc
+        return {**info, "pillars": TRIO, "shared_api": True,
+                "principle": "3 Trong 1 • Một ID • Một Link Mẫu • Chung Kho Tri Thức"}
+
+    @app.get("/evidence", dependencies=[api])
+    def evidence() -> dict:
+        """6776 • Siêu Phần Mềm: báo cáo vận hành có thể đối chiếu (Evidence First)."""
+        tests = [j for j in store.recent("bell_selftest", 200) if j["status"] == "DONE"]
+        per: dict[str, dict] = {}
+        for j in tests:
+            r = j["result"]
+            d = per.setdefault(r["backend"], {"runs": 0, "pass": 0, "last_at": 0})
+            d["runs"] += 1
+            d["pass"] += int(r["pass"])
+            d["last_at"] = max(d["last_at"], j["updated_at"])
+        return {"version": __version__, "storage": store.backend, "emergency_stop": store.stopped(),
+                "jobs": store.counts(), "workers": store.workers(), "bell_selftests": per,
+                "backends": backends.list_backends(), "audit": store.verify_audit(),
+                "nature_note": "Kết quả lượng tử là MÔ PHỎNG; QPU TẮT"}
 
     @app.get("/workers", dependencies=[api])
     def workers() -> list[dict]:

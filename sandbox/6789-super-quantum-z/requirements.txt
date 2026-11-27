@@ -4,3 +4,5 @@ fastapi>=0.115
 uvicorn>=0.30
 ortools>=9.10
 mcp>=2.0,<3.0
+sqlalchemy>=2.0
+psycopg[binary]>=3.1

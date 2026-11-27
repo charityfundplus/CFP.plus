@@ -84,7 +84,7 @@ def test_bell_selftest_every_backend(name):
     r = bell_selftest(name)
     assert r["pass"], r
     assert set(r["counts"]) <= {"00", "11"}
-    assert r["nature"] == "SIMULATION"
+    assert r["nature"] == "QUANTUM_SIMULATION"
 
 
 def test_unavailable_backend_reports_clearly():
@@ -109,9 +109,25 @@ def test_audit_chain_detects_tampering():
     for i in range(5):
         s.audit("t", "E", {"i": i})
     assert s.verify_audit() == {"ok": True, "checked": 5, "head": s.verify_audit()["head"]}
-    s.db.execute("UPDATE audit SET data='{\"i\":99}' WHERE seq=3")
+    from sqlalchemy import delete, update
+    from sqz.store import audit_log
+
+    with s.engine.begin() as c:
+        c.execute(update(audit_log).where(audit_log.c.seq == 3).values(data='{"i":99}'))
     v = s.verify_audit()
     assert not v["ok"] and v["broken_at_seq"] == 3
+
+
+def test_audit_detects_deleted_tail():
+    from sqlalchemy import delete
+    from sqz.store import audit_log
+
+    s = Store()
+    for i in range(3):
+        s.audit("t", "E", {"i": i})
+    with s.engine.begin() as c:
+        c.execute(delete(audit_log).where(audit_log.c.seq == 3))
+    assert s.verify_audit()["ok"] is False
 
 
 def test_claim_is_exclusive_and_expired_lease_requeues():

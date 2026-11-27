@@ -23,3 +23,23 @@ Môi trường: Python 3.13.18, Linux x86_64, 4 CPU, **không GPU**. Thư viện
 - cuQuantum GPU: NOT AVAILABLE (không GPU).
 - Docker image: không build được cục bộ (không có Docker daemon) → CI job `docker`.
 - Chưa triển khai thường trực; 24/24 chỉ xác nhận khi có log vận hành thật sau khi được duyệt.
+
+---
+
+# v0.2 • Evidence • 2026-11-27
+
+`pytest`: **38 passed, 1 skipped** cục bộ (test PostgreSQL chạy trong CI có service Postgres 16).
+
+Mới trong v0.2:
+- **Adapter mở:** `register()` + entry point; plugin thử nghiệm chạy Bell PASS; tên trùng bị từ chối.
+- **Lane QPU** (IBM, Google): mặc định `available=false`; API trả **403** khi chọn QPU; `run()` luôn từ chối.
+- **Phân loại:** MaxCut và phân công nhiệm vụ là `CLASSICAL`; Bell là `QUANTUM_SIMULATION`; QAOA là `HYBRID_SIMULATION`.
+- **Cirq mặc định.**
+- **Store SQLAlchemy:** SQLite/PostgreSQL; audit phát hiện cả sửa dòng lẫn xóa dòng cuối; lease quá 3 lần → FAILED.
+
+Chạy thật lần 2 (uvicorn + worker + scheduler 5 giây):
+- `assign_tasks` (owner 87728): `CLASSICAL`, `OPTIMAL`, chi phí 8, khớp vét cạn.
+- `qaoa_maxcut` 5 đỉnh trên Cirq: `HYBRID_SIMULATION`, tỉ lệ xấp xỉ kỳ vọng 0.817; mẫu tốt nhất đạt cut 5 = tối ưu OR-Tools.
+- 6788 review độc lập: APPROVED (reviewer ≠ chủ trì).
+- `/trio/87788` → Nhóm 789, `SIEU_BO_TAM_5_SO`, 3 trụ cột.
+- `/evidence`: 27 Job DONE; Bell self-test 5/5 PASS trên cả 5 backend; audit hợp lệ 56 bản ghi; `/health/ready` READY.

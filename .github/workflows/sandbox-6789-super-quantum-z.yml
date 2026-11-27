@@ -19,9 +19,20 @@ concurrency:
 
 jobs:
   core:
-    name: core (numpy + OR-Tools + FastAPI + MCP)
+    name: core (numpy + OR-Tools + FastAPI + MCP + PostgreSQL)
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: sqz-ci
+          POSTGRES_DB: sqz
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres" --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      SQZ_TEST_DATABASE_URL: postgresql+psycopg://postgres:sqz-ci@localhost:5432/sqz
     defaults:
       run:
         working-directory: sandbox/6789-super-quantum-z

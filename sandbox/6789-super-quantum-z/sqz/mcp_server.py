@@ -1,6 +1,6 @@
 """MCP server (stdio) cho Claude Code, Codex và các client MCP cục bộ.
 
-Chỉ công cụ mô phỏng có giới hạn; tôn trọng Emergency Stop trong SQZ_DB_PATH.
+Chỉ công cụ mô phỏng có giới hạn; tôn trọng Emergency Stop trong SQZ_DATABASE_URL hoặc SQZ_DB_PATH.
 Chạy: python -m sqz.mcp_server
 """
 
@@ -17,7 +17,7 @@ from .store import Store
 
 READ_ONLY = ToolAnnotations(readOnlyHint=True, destructiveHint=False, idempotentHint=True,
                             openWorldHint=False)
-store = Store(os.getenv("SQZ_DB_PATH", ":memory:"))
+store = Store(os.getenv("SQZ_DATABASE_URL") or os.getenv("SQZ_DB_PATH", ":memory:"))
 mcp = MCPServer("CFP+ 6789 Super Quantum Z",
                 instructions="Mô phỏng lượng tử và tối ưu cổ điển trong sandbox. Không có QPU thật.")
 
@@ -54,6 +54,20 @@ def sqz_maxcut(n: int, edges: list[list[float]], time_limit_s: float = 10.0) -> 
     """Giải MaxCut bằng OR-Tools CP-SAT. edges: [[u, v, w], ...]."""
     _guard()
     return execute("maxcut", {"n": n, "edges": edges, "time_limit_s": min(time_limit_s, 60.0)})
+
+
+@mcp.tool(annotations=READ_ONLY)
+def sqz_assign_tasks(costs: list[list[float | None]], capacity: list[int]) -> dict:
+    """Phân công nhiệm vụ cho Team chi phí nhỏ nhất (OR-Tools, CLASSICAL). costs[t][k], None = không làm được."""
+    _guard()
+    return execute("assign_tasks", {"costs": costs, "capacity": capacity})
+
+
+@mcp.tool(annotations=READ_ONLY)
+def sqz_qaoa_maxcut(n: int, edges: list[list[float]], backend: str | None = None, grid: int = 16) -> dict:
+    """QAOA p=1 (HYBRID_SIMULATION, ưu tiên Cirq) kèm tỉ lệ xấp xỉ so với tối ưu OR-Tools."""
+    _guard()
+    return execute("qaoa_maxcut", {"n": n, "edges": edges, "backend": backend, "grid": grid})
 
 
 if __name__ == "__main__":

@@ -1,7 +1,13 @@
-"""Backend adapters. Quy ước chung: bitstring và chỉ số statevector đặt q0 ở bit trái nhất.
+"""Kiến trúc Adapter mở. Quy ước chung: bitstring và statevector đặt q0 ở bit trái nhất.
 
-Mỗi adapter báo `available()` theo thư viện thực sự import được. Không adapter nào
-là QPU thật; `kind` luôn ghi rõ SIMULATOR.
+Phân loại tính toán (trường `nature` của mọi kết quả):
+  CLASSICAL           • thuật toán cổ điển (OR-Tools, vét cạn)
+  QUANTUM_SIMULATION  • mô phỏng mạch lượng tử trên CPU/GPU cổ điển
+  HYBRID_SIMULATION   • vòng lặp lai: tối ưu cổ điển + mạch lượng tử MÔ PHỎNG
+  QPU                 • phần cứng lượng tử thật (mặc định TẮT, cần Human Governance)
+
+Thêm nền tảng mới: kế thừa `Backend` rồi gọi `register()`, hoặc khai báo entry point
+nhóm `sqz.backends` trong gói riêng. Không cần sửa lõi.
 """
 
 from __future__ import annotations
@@ -46,6 +52,7 @@ class Backend:
     name = "base"
     library = ""
     kind = "SIMULATOR"
+    nature = "QUANTUM_SIMULATION"
 
     def available(self) -> bool:
         return importlib.util.find_spec(self.library) is not None if self.library else True
@@ -60,7 +67,7 @@ class Backend:
 
     def info(self) -> dict:
         return {"name": self.name, "library": self.library or "numpy (nội tại)",
-                "kind": self.kind, "available": self.available()}
+                "kind": self.kind, "nature": self.nature, "available": self.available()}
 
 
 class NumpyBackend(Backend):
@@ -222,9 +229,76 @@ class CudaQBackend(Backend):
         return {bits: int(res.count(bits)) for bits in res}
 
 
-REGISTRY: dict[str, Backend] = {b.name: b for b in
-                                (NumpyBackend(), CirqBackend(), QiskitBackend(),
-                                 PennyLaneBackend(), CudaQBackend())}
+class QPUBackend(Backend):
+    """Lane phần cứng lượng tử thật. TẮT mặc định; không bao giờ tự gửi job.
+
+    Chỉ được xem là sẵn sàng khi đủ ba điều kiện: thư viện nhà cung cấp đã cài,
+    `SQZ_QPU_ENABLED=1` do Human Governance đặt, và có credential của nhà cung cấp.
+    Ngay cả khi đó, lõi vẫn từ chối chạy: việc nộp lên QPU (có chi phí) phải đi qua
+    adapter riêng được review. Mục đích: đánh dấu rõ ranh giới mô phỏng ↔ phần cứng.
+    """
+
+    kind = "QPU"
+    nature = "QPU"
+    credential_env = ""
+
+    def available(self) -> bool:
+        import os
+
+        return (super().available() and os.getenv("SQZ_QPU_ENABLED") == "1"
+                and bool(os.getenv(self.credential_env)))
+
+    def statevector(self, circuit: Circuit) -> np.ndarray:
+        raise PermissionError("QPU không trả statevector")
+
+    def run(self, circuit: Circuit, shots: int = 1000, seed: int | None = None) -> dict[str, int]:
+        raise PermissionError("HUMAN_GOVERNANCE_REQUIRED: lõi không gửi job lên QPU thật")
+
+
+class IBMQuantumQPU(QPUBackend):
+    name = "ibm-quantum-qpu"
+    library = "qiskit_ibm_runtime"
+    credential_env = "QISKIT_IBM_TOKEN"
+
+
+class GoogleQuantumQPU(QPUBackend):
+    name = "google-quantum-qpu"
+    library = "cirq_google"
+    credential_env = "GOOGLE_APPLICATION_CREDENTIALS"
+
+
+REGISTRY: dict[str, Backend] = {}
+
+
+def register(backend: Backend) -> Backend:
+    if not backend.name or backend.name in REGISTRY:
+        raise ValueError(f"Tên backend trống hoặc trùng: {backend.name!r}")
+    REGISTRY[backend.name] = backend
+    return backend
+
+
+for _b in (NumpyBackend(), CirqBackend(), QiskitBackend(), PennyLaneBackend(), CudaQBackend(),
+           IBMQuantumQPU(), GoogleQuantumQPU()):
+    register(_b)
+
+
+def _load_entry_points() -> None:
+    from importlib.metadata import entry_points
+
+    for ep in entry_points(group="sqz.backends"):
+        try:
+            obj = ep.load()
+            register(obj() if isinstance(obj, type) else obj)
+        except Exception:  # plugin lỗi không làm hỏng lõi
+            continue
+
+
+_load_entry_points()
+
+
+def default_backend() -> str:
+    """Ưu tiên Google Cirq; không có thì dùng bộ mô phỏng nội tại."""
+    return "cirq" if REGISTRY["cirq"].available() else "numpy"
 
 
 def get(name: str) -> Backend:
@@ -232,6 +306,8 @@ def get(name: str) -> Backend:
         raise KeyError(f"Backend không tồn tại: {name}")
     b = REGISTRY[name]
     if not b.available():
+        if b.kind == "QPU":
+            raise PermissionError(f"{name}: QPU TẮT (cần SQZ_QPU_ENABLED, credential và Human Governance)")
         raise RuntimeError(f"Backend {name} chưa cài thư viện {b.library}")
     return b
 

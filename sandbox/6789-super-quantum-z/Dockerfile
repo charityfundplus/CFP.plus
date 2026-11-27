@@ -6,6 +6,7 @@ RUN pip install --no-cache-dir -r requirements.txt -r requirements-quantum.txt
 COPY sqz ./sqz
 RUN useradd -r -u 10001 sqz && mkdir -p /data && chown sqz /data
 USER sqz
+# Cloud: đặt SQZ_DATABASE_URL=postgresql+psycopg://... (ưu tiên hơn SQZ_DB_PATH)
 ENV SQZ_DB_PATH=/data/sqz.db SQZ_WORKER=1 SQZ_SELFTEST_INTERVAL_S=300
 EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
