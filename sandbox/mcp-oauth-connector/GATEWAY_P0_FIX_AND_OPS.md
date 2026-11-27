@@ -5,8 +5,8 @@ Nguồn: `charityfundplus/cfp-gateway` @ `f530739` (chỉ đọc). Không redepl
 
 ## 1. Commit Railway ổn định gần nhất
 
-- `main` @ `f530739` (2026-09-19, "Add controlled Claude MCP end-to-end test") là commit mới nhất trên `main`. Auto Deploy bật nên đây **nhiều khả năng** là commit Railway chạy cuối cùng.
-- **CHƯA XÁC MINH:** GitHub Deployments API và lịch sử sâu hơn trả lỗi 502/503 (dịch vụ cấp quyền GitHub của phiên tạm lỗi). Cần Founder xem Railway → `cfp-gateway` → Deployments để chốt SHA và trạng thái build.
+- `main` @ `f530739` (2026-09-19, "Add controlled Claude MCP end-to-end test") là commit mới nhất trên `main` và là commit Railway deploy thành công cuối cùng.
+- **ĐÃ XÁC MINH (commit status Railway):** `f530739` deploy SUCCESS 2026-09-20T03:37Z ở **2 project**: `splendid-liberation` và `intelligent-comfort`. Project thứ hai chưa được nêu trong báo cáo trước: cần Founder kiểm tra trạng thái, chi phí và domain của nó.
 - Hệ quả: nếu `f530739` đang chạy, Production đã cấp scope rộng (mục 2) từ khi deploy.
 
 ## 2. Sửa 2 FAIL • nguyên tắc quyền tối thiểu
