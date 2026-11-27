@@ -41,4 +41,16 @@ jobs:
       - name: Require the CUDA-Q CPU target
         run: python -c "import cudaq; cudaq.set_target('qpp-cpu'); assert cudaq.get_target().name == 'qpp-cpu'"
       - name: Verify CPU sandbox experiments
-        run: python -m pytest -p no:cacheprovider -q
+        shell: bash
+        run: |
+          mkdir -p evidence/ci
+          python -m pytest -p no:cacheprovider -q | tee evidence/ci/pytest.txt
+          (
+            cd evidence/ci
+            sha256sum pytest.txt | tee SHA256SUMS >> "$GITHUB_STEP_SUMMARY"
+          )
+      - uses: actions/upload-artifact@v4
+        with:
+          name: super-quantum-z-cpu-evidence
+          path: research/quantum-vault/evidence/ci/
+          if-no-files-found: error

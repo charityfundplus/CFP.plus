@@ -1,13 +1,19 @@
 import hashlib
 import json
+import multiprocessing
+import os
+import time
 from pathlib import Path
 
 import pytest
 from fastapi.testclient import TestClient
 from jsonschema import Draft202012Validator, FormatChecker
 
+from super_quantum_z import api
 from super_quantum_z.api import app
 from super_quantum_z.core import Experiment, run
+
+from super_quantum_z.isolation import ExperimentFailed, ExperimentTimedOut, _await_result
 
 SCHEMA = json.loads(Path(__file__).with_name("schema.json").read_text(encoding="utf-8"))
 client = TestClient(app)
@@ -72,3 +78,41 @@ def test_cudaq_endpoint(monkeypatch):
     assert report["result"]["probabilities"] == [0.5, 0.0, 0.0, 0.5]
     assert report["result"]["expectation"] == {"XX": 1.0, "ZZ": 1.0}
     Draft202012Validator(SCHEMA, format_checker=FormatChecker()).validate(report["evidence"])
+
+
+def _blocked_child(request, reply):
+    time.sleep(60)
+
+
+def _crashed_child(request, reply):
+    os._exit(1)
+
+
+def test_timeout_reaps_child():
+    before = {child.pid for child in multiprocessing.active_children()}
+    started = time.monotonic()
+    with pytest.raises(ExperimentTimedOut):
+        _await_result(_blocked_child, Experiment(backend="cirq"), 0.5)
+    assert time.monotonic() - started < 5
+    assert {child.pid for child in multiprocessing.active_children()} <= before
+
+
+def test_child_exit_without_result():
+    with pytest.raises(ExperimentFailed):
+        _await_result(_crashed_child, Experiment(backend="cirq"), 10)
+
+
+def test_timeout_http_response_and_worker_slot_recovery(monkeypatch):
+    def timeout(request):
+        raise ExperimentTimedOut()
+
+    monkeypatch.setenv("SUPER_QUANTUM_Z_SANDBOX_TOKEN", "test-token")
+    headers = {"Authorization": "Bearer test-token"}
+    with monkeypatch.context() as patch:
+        patch.setattr(api, "execute_isolated", timeout)
+        for _ in range(3):
+            response = client.post("/sandbox/experiment", headers=headers, json={"backend": "ortools"})
+            assert response.status_code == 504
+    response = client.post("/sandbox/experiment", headers=headers, json={"backend": "ortools"})
+    assert response.status_code == 200
+    assert response.json()["result"]["objective"] == 14
