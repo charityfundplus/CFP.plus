@@ -70,5 +70,22 @@ def sqz_qaoa_maxcut(n: int, edges: list[list[float]], backend: str | None = None
     return execute("qaoa_maxcut", {"n": n, "edges": edges, "backend": backend, "grid": grid})
 
 
+@mcp.tool(annotations=READ_ONLY)
+def sqz_evaluate_agent(response: str, expected_id: str, allowed_sources: list[str],
+                       require_bilingual: bool = True) -> dict:
+    """6788: chấm câu trả lời Agent (danh tính, nguồn hợp lệ, song ngữ, chống phóng đại)."""
+    from .si6788 import EvalCase, evaluate_response
+
+    return evaluate_response(response, EvalCase(expected_id, allowed_sources, require_bilingual))
+
+
+@mcp.tool(annotations=READ_ONLY)
+def sqz_validate_evidence(report: dict) -> dict:
+    """6776: kiểm báo cáo Evidence theo schema chung CFP+ v1."""
+    from .ops6776 import validate_evidence
+
+    return validate_evidence(report)
+
+
 if __name__ == "__main__":
     mcp.run()

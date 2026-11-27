@@ -26,6 +26,9 @@ Siêu Lượng Tử ⚛️ • SI 🤖 AI 🤖 • Siêu Phần Mềm. Mọi k�
 | API dùng chung `/trio/{id}` • review độc lập 6788 • `/evidence` cho 6776 | `sqz/api.py` | PASS |
 | PostgreSQL (`SQZ_DATABASE_URL`) | `sqz/store.py` | CI |
 
+| 6788 • đánh giá Agent (danh tính, nguồn, song ngữ, chống phóng đại) + kiểm chứng độc lập Job | `sqz/si6788.py` | PASS |
+| 6776 • schema Evidence v1, watchdog cảnh báo sớm, sao lưu/khôi phục có kiểm toàn vẹn | `sqz/ops6776.py` | PASS |
+
 Đặc tả đầy đủ: `SPEC.md`.
 
 ## Cài đặt và chạy

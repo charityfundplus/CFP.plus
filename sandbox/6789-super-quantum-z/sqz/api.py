@@ -14,6 +14,8 @@ from . import __version__, backends
 from .circuit import Circuit, CircuitError, check_shots
 from .ids import InvalidID, classify
 from .store import Store
+from .ops6776 import EVIDENCE_SCHEMA, backup, validate_evidence, watchdog
+from .si6788 import EvalCase, evaluate_response, verify_job
 from .worker import Scheduler, Worker
 
 from .executor import KINDS
@@ -50,6 +52,13 @@ TRIO = {
     "6776": {"pillar": "Siêu Phần Mềm • Super Software", "role": "operate",
              "link": "https://app.notion.com/p/422caac9a55781d5894efeac6f83f6f1"},
 }
+
+
+class EvalIn(BaseModel):
+    response: str = Field(max_length=20000)
+    expected_id: str
+    allowed_sources: list[str] = Field(min_length=1, max_length=20)
+    require_bilingual: bool = True
 
 
 class StopIn(BaseModel):
@@ -213,6 +222,55 @@ def create_app(store: Store | None = None, *, run_worker: bool = False,
                 "jobs": store.counts(), "workers": store.workers(), "bell_selftests": per,
                 "backends": backends.list_backends(), "audit": store.verify_audit(),
                 "nature_note": "Kết quả lượng tử là MÔ PHỎNG; QPU TẮT"}
+
+    # ------------------------------------------------------------ 6788 • Siêu Trí Tuệ
+    @app.post("/si/evaluate", dependencies=[api])
+    def si_evaluate(body: EvalIn) -> dict:
+        """Chấm câu trả lời của một Agent theo bài nghiệm thu 6788 (danh tính, nguồn, song ngữ, chống phóng đại)."""
+        try:
+            r = evaluate_response(body.response, EvalCase(body.expected_id, body.allowed_sources,
+                                                          body.require_bilingual))
+        except InvalidID as exc:
+            raise HTTPException(status_code=422, detail=str(exc)) from exc
+        store.audit("si:6788", "AGENT_EVALUATED", {"expected_id": body.expected_id, "pass": r["pass"],
+                                                   "score": r["score"]})
+        return r
+
+    @app.post("/si/verify/{job_id}", dependencies=[api])
+    def si_verify(job_id: str) -> dict:
+        """6788 chạy lại độc lập (khác backend/thuật toán) và ghi review nếu chủ trì khác 6788."""
+        job = store.get(job_id)
+        if job is None:
+            raise HTTPException(status_code=404, detail="Không tìm thấy Job")
+        v = verify_job(job)
+        recorded = None
+        if job["owner_id"] != "6788" and job["status"] in ("DONE", "FAILED"):
+            recorded = store.review(job_id, "6788", v["verdict"],
+                                    f"AUTOMATED • {v['method']} • {v['details']}")
+        return {**v, "job_id": job_id, "review_recorded": bool(recorded)}
+
+    # ------------------------------------------------------------ 6776 • Siêu Phần Mềm
+    @app.get("/evidence/schema")
+    def evidence_schema() -> dict:
+        return EVIDENCE_SCHEMA
+
+    @app.post("/evidence/validate")
+    def evidence_validate(report: dict) -> dict:
+        return validate_evidence(report)
+
+    @app.get("/ops/watchdog", dependencies=[api])
+    def ops_watchdog() -> dict:
+        r = watchdog(store, stale_s=30.0)
+        if r["status"] != "OK":
+            store.audit("ops:6776", "WATCHDOG_ALERT", {"status": r["status"],
+                                                       "codes": [a["code"] for a in r["alerts"]]})
+        return r
+
+    @app.get("/ops/backup", dependencies=[admin])
+    def ops_backup() -> dict:
+        snap = backup(store)
+        store.audit("ops:6776", "BACKUP_EXPORTED", {"sha256": snap["sha256"]})
+        return snap
 
     @app.get("/workers", dependencies=[api])
     def workers() -> list[dict]:

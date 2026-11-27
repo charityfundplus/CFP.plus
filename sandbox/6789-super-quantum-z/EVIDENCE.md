@@ -43,3 +43,27 @@ Chạy thật lần 2 (uvicorn + worker + scheduler 5 giây):
 - 6788 review độc lập: APPROVED (reviewer ≠ chủ trì).
 - `/trio/87788` → Nhóm 789, `SIEU_BO_TAM_5_SO`, 3 trụ cột.
 - `/evidence`: 27 Job DONE; Bell self-test 5/5 PASS trên cả 5 backend; audit hợp lệ 56 bản ghi; `/health/ready` READY.
+
+---
+
+# v0.3 • 6788 Siêu Trí Tuệ + 6776 Siêu Phần Mềm • 2026-11-27
+
+`pytest`: **66 passed, 2 skipped** cục bộ. Hai test bị skip là test PostgreSQL, chạy trong CI.
+
+**6788** (bài nghiệm thu: danh tính, trích nguồn, song ngữ)
+- Câu trả lời mẫu đúng đạt cả 5 điểm kiểm.
+- 6 câu trả lời lỗi, mỗi câu bị bắt đúng ở điểm kiểm tương ứng: sai ID, nguồn ngoài danh sách, thiếu nguồn hợp lệ, chỉ một ngôn ngữ, "đã chạy trên QPU, đạt lợi thế lượng tử", "I am a superintelligence".
+- Kiểm chứng độc lập đủ 5 loại Job: APPROVED. Kết quả bị sửa (cut sai; Bell ra 01/10) → REJECTED.
+
+**6776** (bài nghiệm thu: schema Evidence, dữ liệu hợp lệ và không hợp lệ)
+- 1 báo cáo hợp lệ được chấp nhận; 13 báo cáo không hợp lệ đều bị từ chối, lỗi chỉ đúng trường.
+- Watchdog: OK → bật Emergency Stop thì WARNING → sửa audit thì CRITICAL kèm đề nghị dừng; không có worker thì CRITICAL.
+- Sao lưu → khôi phục: chuỗi audit giữ nguyên head và tiếp tục ghi được; Store đích có dữ liệu thì từ chối ghi đè; bản sao lưu bị sửa thì sha256 báo lỗi.
+
+**Chạy thật** (uvicorn + worker + scheduler 5 giây)
+- `assign_tasks` (87728) → `/si/verify`: APPROVED (vét cạn 8 = 8), review 6788 đã ghi.
+- Bell self-test → `/si/verify`: APPROVED, TVD 0.004 ≤ 0.06.
+- Bell self-test 3/3 PASS trên mỗi backend trong 5 backend.
+- `/ops/watchdog`: OK, 0 cảnh báo.
+- `/ops/backup`: sqz-backup-v1, 16 Job, 2 review, 35 audit.
+- Diễn tập khôi phục vào Store mới: audit hợp lệ 35/35.
