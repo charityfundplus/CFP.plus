@@ -176,6 +176,35 @@ def test_6776_backup_restore_roundtrip_and_tamper_detection():
         restore(Store(), bad)
 
 
+def test_6776_restore_rolls_back_audit_inconsistency_and_allows_retry(tmp_path):
+    from sqlalchemy import delete
+    from sqz.store import audit_log
+
+    src = Store()
+    jid = src.submit("0229", "bell_selftest", {"backend": "numpy"}, "t",
+                     idempotency_key="restore-retry")
+    good = backup(src)
+    with src.engine.begin() as connection:
+        connection.execute(delete(audit_log))
+    inconsistent = backup(src)
+
+    path = tmp_path / "destination.db"
+    dst = Store(path)
+    original_audit = dst.verify_audit()
+    with pytest.raises(ValueError, match="audit"):
+        restore(dst, inconsistent)
+    dst.engine.dispose()
+
+    dst = Store(path)
+    assert dst.verify_audit() == original_audit
+    assert dst.counts() == {}
+    assert restore(dst, good)["audit"]["ok"]
+    assert dst.get(jid)["owner_id"] == "0229"
+    assert dst.submit("0229", "bell_selftest", {"backend": "numpy"}, "t",
+                      idempotency_key="restore-retry") == jid
+    assert dst.counts() == {"QUEUED": 1}
+
+
 # ------------------------------------------------------------ API tích hợp
 @pytest.fixture()
 def client(monkeypatch):

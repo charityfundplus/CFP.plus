@@ -224,6 +224,20 @@ def test_gateway_resolve_found_notfound_down():
     assert resolve_id("6789", None)["verification"] == "LOCAL_FORMAT_ONLY"
 
 
+def test_gateway_resolver_preserves_exact_id_and_fails_closed_on_invalid_reply():
+    origin = "https://gw.test"
+    with _mock(lambda req: httpx.Response(200, json={"id": req.url.path.rsplit("/", 1)[-1]})) as client:
+        assert resolve_id("0229", origin, client)["verification"] == "GATEWAY_VERIFIED"
+
+    for response in (httpx.Response(200, text="not JSON"), httpx.Response(200, json=[]),
+                     httpx.Response(200, json={"id": "229", "did": "did:example:229"}),
+                     httpx.Response(200, json={"id": "0229", "did": 123})):
+        with _mock(lambda req: response) as client:
+            result = resolve_id("0229", origin, client)
+        assert result["id"] == "0229" and result["verification"] == "LOCAL_FORMAT_ONLY"
+        assert result["did"] is None and result["registry"] is None
+
+
 def test_gateway_work_order_has_exact_gateway_fields():
     s = Store()
     jid = s.submit("6789", "bell_selftest", {}, "t")

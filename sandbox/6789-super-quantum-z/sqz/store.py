@@ -141,17 +141,23 @@ class Store:
                 time.sleep(0.001 * (attempt % 10))
         raise RuntimeError("Không ghi được audit sau 200 lần thử (tranh chấp quá cao)")
 
-    def verify_audit(self) -> dict:
+    @staticmethod
+    def _verify_audit(connection) -> dict:
         prev, n = GENESIS, 0
-        with self.engine.connect() as c:
-            for r in c.execute(select(audit_log).order_by(audit_log.c.seq)):
-                if r.prev != prev or _digest(prev, r.at, r.actor, r.event, r.data) != r.digest:
-                    return {"ok": False, "broken_at_seq": r.seq, "checked": n}
-                prev, n = r.digest, n + 1
-            head = c.execute(select(control.c.value).where(control.c.key == "audit_head")).scalar_one()
+        for r in connection.execute(select(audit_log).order_by(audit_log.c.seq)):
+            if r.prev != prev or _digest(prev, r.at, r.actor, r.event, r.data) != r.digest:
+                return {"ok": False, "broken_at_seq": r.seq, "checked": n}
+            prev, n = r.digest, n + 1
+        head = connection.execute(
+            select(control.c.value).where(control.c.key == "audit_head")
+        ).scalar_one_or_none()
         if head != prev:
             return {"ok": False, "broken_at_seq": None, "checked": n, "reason": "audit_head mismatch (dòng cuối bị xóa?)"}
         return {"ok": True, "checked": n, "head": prev}
+
+    def verify_audit(self) -> dict:
+        with self.engine.connect() as connection:
+            return self._verify_audit(connection)
 
     # ---------------------------------------------------------------- control
     def set_stop(self, stopped: bool, actor: str, reason: str = "") -> None:

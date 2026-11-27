@@ -37,8 +37,15 @@ def resolve_id(cfp_id: str, base_url: str | None = None, client: httpx.Client | 
         return {**out, "verification": "GATEWAY_NOT_FOUND"}
     if r.status_code != 200:
         return {**out, "verification": "LOCAL_FORMAT_ONLY", "reason": f"Gateway HTTP {r.status_code}"}
-    rec = r.json()
+    try:
+        rec = r.json()
+    except ValueError:
+        return {**out, "verification": "LOCAL_FORMAT_ONLY", "reason": "Gateway trả JSON không hợp lệ"}
+    if not isinstance(rec, dict) or rec.get("id") != cfp_id:
+        return {**out, "verification": "LOCAL_FORMAT_ONLY", "reason": "Gateway trả ID không khớp"}
     did = rec.get("did")
+    if did is not None and not isinstance(did, str):
+        return {**out, "verification": "LOCAL_FORMAT_ONLY", "reason": "Gateway trả DID sai kiểu"}
     return {**out, "registry": rec, "verification": "GATEWAY_VERIFIED",
             "did": did, "did_status": "ASSIGNED" if did else "NOT_ASSIGNED"}
 

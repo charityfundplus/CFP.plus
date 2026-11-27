@@ -143,10 +143,13 @@ def restore(store: Store, snapshot: dict) -> dict:
             rows = snapshot["tables"].get(t.name, [])
             if rows:
                 c.execute(insert(t), rows)
+        verification = store._verify_audit(c)
+        if not verification["ok"]:
+            raise ValueError("Chuỗi audit không hợp lệ: hủy khôi phục")
         if store.backend == "postgresql":  # đồng bộ sequence sau khi chèn khóa tường minh
             for t, col in ((audit_log, "seq"), (reviews, "id")):
                 if c.execute(select(func.count()).select_from(t)).scalar():
                     c.execute(text(f"SELECT setval(pg_get_serial_sequence('{t.name}', '{col}'), "
                                    f"(SELECT max({col}) FROM {t.name}))"))
-    v = store.verify_audit()
-    return {"restored": {t.name: len(snapshot["tables"].get(t.name, [])) for t in TABLES}, "audit": v}
+    return {"restored": {t.name: len(snapshot["tables"].get(t.name, [])) for t in TABLES},
+            "audit": verification}
