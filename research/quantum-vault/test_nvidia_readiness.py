@@ -52,12 +52,26 @@ class ReadinessTest(unittest.TestCase):
 
     def test_http_readiness_and_no_redirect(self):
         origin = "https://fixture.invalid"
-        for code, expected in ((200, "ready"), (503, "not_ready"), (302, "not_ready")):
+        for code in (200, 302, 401, 403, 404, 503):
             with self.subTest(code=code):
                 transport = FixtureTransport(code)
-                result = service_status(origin, opener=build_opener(transport, NoRedirect()))
+                result = service_status(
+                    origin, approved_origin="https://FIXTURE.invalid:443/",
+                    opener=build_opener(transport, NoRedirect()),
+                )
+                expected = "ready" if code == 200 else "not_ready"
                 self.assertEqual(result, {"status": expected, "http_status": code})
                 self.assertEqual(transport.requests, [("GET", origin + "/v1/health/ready")])
+
+    def test_remote_origin_requires_exact_approval(self):
+        for approved in (None, "https://other.invalid", "https://fixture.invalid:8443",
+                         "https://fixture.invalid/not-an-origin"):
+            with self.subTest(approved=approved):
+                self.assertEqual(
+                    service_status("https://fixture.invalid", approved_origin=approved,
+                                   opener=object()),
+                    {"status": "origin_not_approved"},
+                )
 
     def test_origin_boundary_rejects_ambiguous_and_non_origin_urls(self):
         origins = (
@@ -103,7 +117,7 @@ class SocketReadinessTest(unittest.TestCase):
             worker = Thread(target=server.serve_forever, daemon=True)
             worker.start()
             try:
-                origin = f"http://127.0.0.1:{server.server_port}"
+                origin = f"http://localhost:{server.server_port}"
                 for status in (200, 503, 302):
                     server.response_status = status
                     with self.subTest(status=status):
