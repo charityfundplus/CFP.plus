@@ -1,0 +1,6 @@
+# Adapter tùy chọn: thiếu thư viện nào thì backend đó báo available=false
+cirq-core>=1.4
+qiskit>=2.0
+qiskit-aer>=0.15
+pennylane>=0.40
+cudaq>=0.12
