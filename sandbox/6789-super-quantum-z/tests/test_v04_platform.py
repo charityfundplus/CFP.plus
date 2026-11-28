@@ -126,6 +126,64 @@ def test_idempotency_same_key_returns_same_job(client):
     assert x == y
 
 
+def test_cmp_handoff_survives_sandbox_restart(tmp_path, monkeypatch):
+    monkeypatch.setenv("SQZ_CLIENTS_JSON", json.dumps(CLIENTS))
+    monkeypatch.delenv("SQZ_API_TOKEN", raising=False)
+    database = tmp_path / "cmp-handoff.db"
+    order = {
+        "work_order_id": "MCP-DDB8FF1A5BD9",
+        "requested_by": "6789",
+        "task": "bell_selftest",
+        "payload": {"backend": "numpy"},
+    }
+
+    store = Store(database)
+    with TestClient(create_app(store)) as client:
+        accepted = client.post("/cmp/work-orders", headers=H["claude"], json=order)
+        assert accepted.status_code == 202
+        receipt = accepted.json()
+        assert receipt["work_order_id"] == order["work_order_id"]
+        assert receipt["review"] == "REVIEW_REQUIRED"
+        job_id = receipt["job_id"]
+        assert store.counts() == {"QUEUED": 1}
+
+        drain(store, name="handoff-worker")
+        review = client.post(
+            f"/jobs/{job_id}/review", headers=H["87783"],
+            json={"reviewer_id": "87783", "verdict": "APPROVED"},
+        )
+        assert review.status_code == 200
+        handoff = client.get(f"/cmp/work-orders/{job_id}/gateway-format", headers=H["6776"])
+        assert handoff.status_code == 200
+        artifact = handoff.json()
+        assert set(artifact) == set(GATEWAY_WORK_ORDER_FIELDS)
+        assert artifact["payload"]["job_id"] == job_id
+        assert artifact["payload"]["status"] == "DONE"
+        assert artifact["payload"]["result"]["pass"] is True
+        evidence = client.get("/evidence", headers=H["6776"]).json()
+        assert evidence["audit"]["ok"]
+        assert evidence["jobs"] == {"DONE": 1}
+        assert any(worker["worker"] == "handoff-worker" and worker["alive"]
+                   for worker in evidence["workers"])
+    store.engine.dispose()
+
+    reopened = Store(database)
+    with TestClient(create_app(reopened)) as client:
+        retry = client.post("/cmp/work-orders", headers=H["claude"], json=order)
+        assert retry.status_code == 202
+        assert retry.json()["job_id"] == job_id
+        assert reopened.counts() == {"DONE": 1}
+        assert client.get(
+            f"/cmp/work-orders/{job_id}/gateway-format", headers=H["6776"],
+        ).json() == artifact
+        reviews = client.get(f"/jobs/{job_id}/reviews", headers=H["6776"]).json()
+        assert [(item["reviewer_id"], item["verdict"]) for item in reviews] == [
+            ("87783", "APPROVED"),
+        ]
+        assert client.get("/evidence", headers=H["6776"]).json()["audit"]["ok"]
+    reopened.engine.dispose()
+
+
 def test_concurrent_idempotent_submit_creates_one_job(tmp_path):
     s = Store(tmp_path / "idem.db")
     ids = []
