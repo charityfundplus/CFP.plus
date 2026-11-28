@@ -1,0 +1,118 @@
+{
+  "schema": "cfp87788.additions.v1",
+  "note": "Bản ghi làm việc bổ sung ngoài bảng 91 vị trí. Chép nguyên ID và Link từ Notion DANH MỤC Siêu Bộ Tam (đọc qua Notion MCP 2026-11-24, page_last_edited 2026-11-24T15:39:16Z) và văn phòng 87788 (page_last_edited 2026-11-24T19:24:36Z). Không cấp ID mới. Mọi bản ghi giữ REVIEW; Parent/DID/Canonical chưa đối chiếu Registry.",
+  "source_urls": [
+    "https://app.notion.com/p/3f2caac9a55781fd97afe7ecd489c3fc",
+    "https://app.notion.com/p/422caac9a55781f2ad8ce1a834dabc86",
+    "https://app.notion.com/p/f38caac9a557828a98dc81dc26193587"
+  ],
+  "excluded_from_active": [
+    {
+      "id": "2273",
+      "reason": "Human loại khỏi mẫu số hoạt động; chỉ giữ dấu vết lịch sử (Notion DANH MỤC, mục 2273 • CARE)."
+    }
+  ],
+  "records": [
+    {
+      "id": "678",
+      "name": "Open Super Quantum",
+      "link": "https://app.notion.com/p/41dcaac9a5578100b978f672ea745aeb",
+      "kind": "WORKING_RECORD",
+      "source": "notion:danh-muc"
+    },
+    {
+      "id": "5878",
+      "name": "Lượng Tử Quantum",
+      "link": "https://app.notion.com/p/41bcaac9a55781f49031f95a0b3660a3",
+      "kind": "WORKING_RECORD",
+      "source": "notion:danh-muc"
+    },
+    {
+      "id": "6235",
+      "name": "Only Agree+ For Life",
+      "link": "https://app.notion.com/p/41dcaac9a55781f9ad73c527cf598840",
+      "kind": "WORKING_RECORD",
+      "source": "notion:danh-muc"
+    },
+    {
+      "id": "6335",
+      "name": "Only Ethic+ For Life",
+      "link": "https://app.notion.com/p/41dcaac9a557811d95b0ea0ca376fc47",
+      "kind": "WORKING_RECORD",
+      "source": "notion:danh-muc"
+    },
+    {
+      "id": "6835",
+      "name": "Only Think+ For Life",
+      "link": "https://app.notion.com/p/41dcaac9a5578148986cc94b04a6b1fa",
+      "kind": "WORKING_RECORD",
+      "source": "notion:danh-muc"
+    },
+    {
+      "id": "6935",
+      "name": "Only Work+ For Life",
+      "link": "https://app.notion.com/p/41dcaac9a557817db0f0ee0ed24279e2",
+      "kind": "WORKING_RECORD",
+      "source": "notion:danh-muc"
+    },
+    {
+      "id": "6789",
+      "name": "Open Super Quantum Z",
+      "link": "https://app.notion.com/p/422caac9a55781c98cb5c45475451edd",
+      "kind": "TRIO_LEAD",
+      "trio_role": "quantum",
+      "source": "notion:danh-muc"
+    },
+    {
+      "id": "6788",
+      "name": "Open Siêu Trí Tuệ • SI AI Robot",
+      "link": "https://app.notion.com/p/422caac9a55781ef8eb7cff6c4752c9e",
+      "kind": "TRIO_LEAD",
+      "trio_role": "si_ai",
+      "source": "notion:danh-muc"
+    },
+    {
+      "id": "6776",
+      "name": "Open Siêu Phần Mềm",
+      "link": "https://app.notion.com/p/422caac9a55781d5894efeac6f83f6f1",
+      "kind": "TRIO_LEAD",
+      "trio_role": "software",
+      "source": "notion:danh-muc"
+    },
+    {
+      "id": "8778",
+      "name": "Team Support Super Trio",
+      "link": "https://app.notion.com/p/422caac9a55781f09798e4d3f3355dbf",
+      "kind": "TRIO_TEAM",
+      "source": "notion:87788"
+    },
+    {
+      "id": "87728",
+      "name": "Team Support Siêu Bộ Tam • Link Mẫu • Văn Phòng Làm Việc",
+      "link": "https://app.notion.com/p/422caac9a5578150a759d6d6a71fec9e",
+      "kind": "TRIO_TEAM",
+      "source": "notion:87788"
+    },
+    {
+      "id": "87783",
+      "name": "Team Super Trio Feedback",
+      "link": "https://app.notion.com/p/422caac9a557818d89e2dd9d3e5fc5c1",
+      "kind": "TRIO_TEAM",
+      "source": "notion:87788"
+    },
+    {
+      "id": "87788",
+      "name": "Team Super Trio Upgrade",
+      "link": "https://app.notion.com/p/422caac9a55781f2ad8ce1a834dabc86",
+      "kind": "TRIO_TEAM",
+      "source": "notion:87788"
+    },
+    {
+      "id": "6873",
+      "name": "Muse • Nàng Thơ",
+      "link": "https://app.notion.com/p/f38caac9a557828a98dc81dc26193587",
+      "kind": "WORKING_RECORD",
+      "source": "notion:6873 (Chuẩn Link Mẫu 24/11/2026; Founder đề nghị phối hợp 24/11/2026)"
+    }
+  ]
+}

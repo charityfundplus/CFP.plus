@@ -1,0 +1,46 @@
+# 87788 • Siêu Bộ Tam • Evidence kiểm kê và nâng cấp (sandbox)
+
+**Trạng thái:** SANDBOX • REVIEW CANDIDATE • HOLD ACTIVATION • PRODUCTION NO-GO
+
+## Nguồn
+- Bảng 91 vị trí: `charityfundplus/CFP.plus` PR #206 @ `77102841601f262a7b91389244896b19e58de821` • `sandbox/hub69-working-office/SUPER_PAIRS_INDEX.md` • sha256 `a72317188b8d30e342be203876f5338d37e02b4d0298cbb9ae22fe2990a3cd77` • 91 dòng
+- Bổ sung từ Notion: 14 bản ghi • sha256 `fcbadf766e8c31d9364ea3f49814083a4ad4e1d821414f3cb795c3811a40e8b6`
+
+## Kiểm kê
+- Dòng đọc: 105 • ID không trùng: 105 • hoạt động (sau loại trừ): 104
+- Chương có bản ghi: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 (đủ 0–9: CÓ)
+- Theo Chương: 0: 5 • 1: 4 • 2: 17 • 3: 15 • 4: 6 • 5: 13 • 6: 18 • 7: 8 • 8: 12 • 9: 6
+- Theo Nhóm: 000: 5 • 135: 32 • 246: 41 • 789: 26
+
+Đây là số đếm từ hai nguồn trên, không phải tổng Registry. TỔNG HIỆN TẠI CHƯA XÁC MINH.
+
+## Phát hiện
+
+| Mã | Mức | ID | Nguồn | Chi tiết |
+| --- | --- | --- | --- | --- |
+| LINK_MISSING | LOW | `2273` | index:L40 | Chưa định vị Link hồ sơ; không kết luận hồ sơ không tồn tại |
+| EXCLUDED_FROM_ACTIVE | INFO | `2273` | index:L40 | Human loại khỏi mẫu số hoạt động; chỉ giữ dấu vết lịch sử (Notion DANH MỤC, mục 2273 • CARE). |
+| LINK_MISSING | LOW | `2588` | index:L43 | Chưa định vị Link hồ sơ; không kết luận hồ sơ không tồn tại |
+
+## Kế hoạch nâng cấp
+- 104 lớp phủ Siêu Bộ Tam • plan sha256 `1bc19540d910651dd1ee7aa13ad2932faaafa2ab0c45c1624d679e0a1701b19e`
+- Năng lực 3 trụ cột: tất cả NOT VERIFIED (không khai báo khi chưa có Evidence).
+- Readback sandbox: 104 tệp • hash khớp 104 • danh tính khớp 104 • khớp kế hoạch 104 • vấn đề 0
+
+## Nền tảng (kiểm tra thực tế trong phiên)
+
+| Nền tảng | Chế độ | Kiểm tra |
+| --- | --- | --- |
+| github | REPO_CONFIG | P1: READ+WRITE PASS (PR #253). P2: READ PASS (clone công khai); WRITE BỊ CHẶN trong phiên P2 (add_repo push bị từ chối, token gh không hợp lệ) → commit cục bộ, chờ quyền |
+| claude_code | REPO_CONFIG | P2 2026-11-24: Agent 87788 chạy độc lập headless (claude -p --agent cfp-87788-super-trio-upgrade). Run 1 (haiku) FAIL: trả lời không gọi công cụ, sai active (104≠103) → đã thêm quy tắc output-công-cụ + active_count. Run 2 (sonnet) PASS: gọi Bash trio.py check, số liệu khớp, 0 sửa tệp. Session 8735f465-2675-4c3a-88bd-6038e78bb11d |
+| claude_project | NATIVE_MANUAL | NOT TESTED • gói nhập thủ công cho 6873 |
+| chatgpt_codex | NATIVE_MANUAL | NOT TESTED • không có kết nối OpenAI trong phiên |
+| notion | API_RUNTIME | READ PASS (P1) • P2 2026-11-24: WRITE vào văn phòng 87788 qua Notion MCP (xem evidence/PHASE2.md) |
+| google_drive | API_RUNTIME | P2 2026-11-24: ACK PASS • READ PASS (search, 0 kết quả 'CFP'/'87788') • WRITE PASS (tạo Doc riêng tư 1XEdXo7gjAnQObg-Bbs9lVtYahIo1r7cYcZsrHjX1E2Y) • READBACK PASS (marker khớp) • quyền: chỉ owner |
+| canva | API_RUNTIME | P2 2026-11-24: ACK PASS • READ PASS (search-designs 5 thiết kế CFP+, read-design DAHZfNK9sdQ) • WRITE PASS (comment KAHb3DMvZiY) • READBACK PASS (list-comments khớp marker) |
+| gemini | NATIVE_MANUAL | NOT TESTED • không có kết nối |
+| grok | NATIVE_MANUAL | NOT TESTED • không có kết nối |
+| perplexity | NATIVE_MANUAL | NOT TESTED • không có kết nối |
+| microsoft | NOT_ASSESSED | NOT TESTED • không có kết nối |
+
+Không merge • không deploy • không đổi ID/Parent/DID/Registry/Canonical. Chờ 87783 review và Human Governance.

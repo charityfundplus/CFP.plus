@@ -1,0 +1,82 @@
+name: sandbox • 6789 Super Quantum Z
+
+on:
+  pull_request:
+    paths:
+      - "sandbox/6789-super-quantum-z/**"
+      - ".github/workflows/sandbox-6789-super-quantum-z.yml"
+  push:
+    branches: ["claude/87788-super-trio-upgrade"]
+    paths:
+      - "sandbox/6789-super-quantum-z/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sqz-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  core:
+    name: core (numpy + OR-Tools + FastAPI + MCP + PostgreSQL)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: sqz-ci
+          POSTGRES_DB: sqz
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres" --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      SQZ_TEST_DATABASE_URL: postgresql+psycopg://postgres:sqz-ci@localhost:5432/sqz
+    defaults:
+      run:
+        working-directory: sandbox/6789-super-quantum-z
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: runtime-only import (bắt thiếu dependency của image)
+        run: |
+          pip install -r requirements.txt
+          python -c "import sqz.api, sqz.mcp_server, sqz.ops6776, sqz.si6788, sqz.teams, sqz.gateway"
+      - run: pip install -r requirements-dev.txt
+      - run: python -m pytest -q -p no:cacheprovider
+
+  quantum:
+    name: full (Cirq, Qiskit, PennyLane, CUDA-Q CPU)
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: sandbox/6789-super-quantum-z
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt -r requirements-quantum.txt -r requirements-dev.txt
+      - run: python -c "from sqz.backends import list_backends; import json; print(json.dumps(list_backends(), indent=2))"
+      - run: python -m pytest -q -p no:cacheprovider
+
+  docker:
+    name: docker build + healthcheck
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t sqz-6789:ci sandbox/6789-super-quantum-z
+      - run: |
+          docker run -d --name sqz -p 8000:8000 -e SQZ_API_TOKEN=ci-api -e SQZ_ADMIN_TOKEN=ci-admin -e SQZ_SELFTEST_INTERVAL_S=5 sqz-6789:ci
+          ok=0; for i in $(seq 1 30); do curl -fsS http://127.0.0.1:8000/health/ready && ok=1 && break; sleep 2; done
+          if [ "$ok" != 1 ]; then docker logs sqz; exit 1; fi
+          sleep 8
+          curl -fsS -H "Authorization: Bearer ci-api" http://127.0.0.1:8000/workers
+          curl -fsS -H "Authorization: Bearer ci-admin" http://127.0.0.1:8000/audit/verify
+          docker logs sqz | tail -20
+          docker rm -f sqz

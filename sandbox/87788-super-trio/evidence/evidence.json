@@ -1,0 +1,162 @@
+{
+  "active_count": 104,
+  "capability_status": {
+    "quantum": {
+      "NOT VERIFIED": 104
+    },
+    "si_ai": {
+      "NOT VERIFIED": 104
+    },
+    "software": {
+      "NOT VERIFIED": 104
+    }
+  },
+  "finding_counts": {
+    "EXCLUDED_FROM_ACTIVE": 1,
+    "LINK_MISSING": 2
+  },
+  "findings": [
+    {
+      "code": "LINK_MISSING",
+      "detail": "Chưa định vị Link hồ sơ; không kết luận hồ sơ không tồn tại",
+      "id": "2273",
+      "severity": "LOW",
+      "source": "index:L40"
+    },
+    {
+      "code": "EXCLUDED_FROM_ACTIVE",
+      "detail": "Human loại khỏi mẫu số hoạt động; chỉ giữ dấu vết lịch sử (Notion DANH MỤC, mục 2273 • CARE).",
+      "id": "2273",
+      "severity": "INFO",
+      "source": "index:L40"
+    },
+    {
+      "code": "LINK_MISSING",
+      "detail": "Chưa định vị Link hồ sơ; không kết luận hồ sơ không tồn tại",
+      "id": "2588",
+      "severity": "LOW",
+      "source": "index:L43"
+    }
+  ],
+  "inventory": {
+    "chapters_covered": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    ],
+    "per_chapter": {
+      "0": 5,
+      "1": 4,
+      "2": 17,
+      "3": 15,
+      "4": 6,
+      "5": 13,
+      "6": 18,
+      "7": 8,
+      "8": 12,
+      "9": 6
+    },
+    "per_group": {
+      "000": 5,
+      "135": 32,
+      "246": 41,
+      "789": 26
+    },
+    "rows_read": 105,
+    "unique_ids": 105
+  },
+  "plan_count": 104,
+  "plan_sha256": "1bc19540d910651dd1ee7aa13ad2932faaafa2ab0c45c1624d679e0a1701b19e",
+  "platforms": [
+    {
+      "key": "github",
+      "mode": "REPO_CONFIG",
+      "session_check": "P1: READ+WRITE PASS (PR #253). P2: READ PASS (clone công khai); WRITE BỊ CHẶN trong phiên P2 (add_repo push bị từ chối, token gh không hợp lệ) → commit cục bộ, chờ quyền"
+    },
+    {
+      "key": "claude_code",
+      "mode": "REPO_CONFIG",
+      "session_check": "P2 2026-11-24: Agent 87788 chạy độc lập headless (claude -p --agent cfp-87788-super-trio-upgrade). Run 1 (haiku) FAIL: trả lời không gọi công cụ, sai active (104≠103) → đã thêm quy tắc output-công-cụ + active_count. Run 2 (sonnet) PASS: gọi Bash trio.py check, số liệu khớp, 0 sửa tệp. Session 8735f465-2675-4c3a-88bd-6038e78bb11d"
+    },
+    {
+      "key": "claude_project",
+      "mode": "NATIVE_MANUAL",
+      "session_check": "NOT TESTED • gói nhập thủ công cho 6873"
+    },
+    {
+      "key": "chatgpt_codex",
+      "mode": "NATIVE_MANUAL",
+      "session_check": "NOT TESTED • không có kết nối OpenAI trong phiên"
+    },
+    {
+      "key": "notion",
+      "mode": "API_RUNTIME",
+      "session_check": "READ PASS (P1) • P2 2026-11-24: WRITE vào văn phòng 87788 qua Notion MCP (xem evidence/PHASE2.md)"
+    },
+    {
+      "key": "google_drive",
+      "mode": "API_RUNTIME",
+      "session_check": "P2 2026-11-24: ACK PASS • READ PASS (search, 0 kết quả 'CFP'/'87788') • WRITE PASS (tạo Doc riêng tư 1XEdXo7gjAnQObg-Bbs9lVtYahIo1r7cYcZsrHjX1E2Y) • READBACK PASS (marker khớp) • quyền: chỉ owner"
+    },
+    {
+      "key": "canva",
+      "mode": "API_RUNTIME",
+      "session_check": "P2 2026-11-24: ACK PASS • READ PASS (search-designs 5 thiết kế CFP+, read-design DAHZfNK9sdQ) • WRITE PASS (comment KAHb3DMvZiY) • READBACK PASS (list-comments khớp marker)"
+    },
+    {
+      "key": "gemini",
+      "mode": "NATIVE_MANUAL",
+      "session_check": "NOT TESTED • không có kết nối"
+    },
+    {
+      "key": "grok",
+      "mode": "NATIVE_MANUAL",
+      "session_check": "NOT TESTED • không có kết nối"
+    },
+    {
+      "key": "perplexity",
+      "mode": "NATIVE_MANUAL",
+      "session_check": "NOT TESTED • không có kết nối"
+    },
+    {
+      "key": "microsoft",
+      "mode": "NOT_ASSESSED",
+      "session_check": "NOT TESTED • không có kết nối"
+    }
+  ],
+  "provenance": {
+    "additions": {
+      "rows": 14,
+      "sha256": "fcbadf766e8c31d9364ea3f49814083a4ad4e1d821414f3cb795c3811a40e8b6",
+      "source_urls": [
+        "https://app.notion.com/p/3f2caac9a55781fd97afe7ecd489c3fc",
+        "https://app.notion.com/p/422caac9a55781f2ad8ce1a834dabc86",
+        "https://app.notion.com/p/f38caac9a557828a98dc81dc26193587"
+      ]
+    },
+    "index": {
+      "commit": "77102841601f262a7b91389244896b19e58de821",
+      "path": "sandbox/hub69-working-office/SUPER_PAIRS_INDEX.md",
+      "pr": 206,
+      "repo": "charityfundplus/CFP.plus",
+      "rows": 91,
+      "sha256": "a72317188b8d30e342be203876f5338d37e02b4d0298cbb9ae22fe2990a3cd77"
+    }
+  },
+  "schema": "cfp87788.evidence.v1",
+  "status": "SANDBOX • REVIEW CANDIDATE • HOLD ACTIVATION • PRODUCTION NO-GO",
+  "verify": {
+    "checked": 104,
+    "hash_ok": 104,
+    "identity_ok": 104,
+    "matches_plan": 104,
+    "problems": []
+  }
+}

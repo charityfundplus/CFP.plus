@@ -1,0 +1,111 @@
+{
+  "schema": "cfp87788.platforms.v1",
+  "note": "Ma trận năng lực provisioning. Cột 'official_surface' là hiểu biết hiện tại của 87788, CHƯA được 87783 đối chiếu với tài liệu chính thức nên mang trạng thái UNVERIFIED_CLAIM. Cột 'session_check' chỉ ghi điều đã thực sự chạy được trong phiên 2026-11-24. Không có secret trong tệp này.",
+  "modes": {
+    "REPO_CONFIG": "Cấu hình nằm trong repository (commit tệp). Provision = Pull Request, cần review và merge bởi Human Governance.",
+    "API_RUNTIME": "Có API chạy agent theo yêu cầu (gọi model + instructions). Không tạo sản phẩm native như GPT/Gem/Project.",
+    "NATIVE_MANUAL": "Sản phẩm native (GPT, Gem, Project, Space...) không có API tạo chính thức được biết; dùng gói cấu hình nhập thủ công.",
+    "NOT_ASSESSED": "Chưa đánh giá."
+  },
+  "platforms": [
+    {
+      "key": "github",
+      "name": "GitHub",
+      "order": 1,
+      "mode": "REPO_CONFIG",
+      "official_surface": "REST API (repos, pulls, issues, actions); Copilot custom agents qua .github/agents/*.agent.md (mẫu đã có ở PR #206)",
+      "claim_status": "UNVERIFIED_CLAIM",
+      "session_check": "P1: READ+WRITE PASS (PR #253). P2: READ PASS (clone công khai); WRITE BỊ CHẶN trong phiên P2 (add_repo push bị từ chối, token gh không hợp lệ) → commit cục bộ, chờ quyền"
+    },
+    {
+      "key": "claude_code",
+      "name": "Claude Code",
+      "order": 2,
+      "mode": "REPO_CONFIG",
+      "official_surface": "CLAUDE.md, .claude/agents/*.md, .claude/skills/*/SKILL.md trong repository",
+      "claim_status": "UNVERIFIED_CLAIM",
+      "session_check": "P2 2026-11-24: Agent 87788 chạy độc lập headless (claude -p --agent cfp-87788-super-trio-upgrade). Run 1 (haiku) FAIL: trả lời không gọi công cụ, sai active (104≠103) → đã thêm quy tắc output-công-cụ + active_count. Run 2 (sonnet) PASS: gọi Bash trio.py check, số liệu khớp, 0 sửa tệp. Session 8735f465-2675-4c3a-88bd-6038e78bb11d"
+    },
+    {
+      "key": "claude_project",
+      "name": "Claude • Project",
+      "order": 3,
+      "mode": "NATIVE_MANUAL",
+      "official_surface": "Claude Projects (instructions + project knowledge) tạo trong ứng dụng claude.ai; không dùng API tạo Project trong phiên này",
+      "claim_status": "UNVERIFIED_CLAIM",
+      "session_check": "NOT TESTED • gói nhập thủ công cho 6873"
+    },
+    {
+      "key": "chatgpt_codex",
+      "name": "ChatGPT • Codex",
+      "order": 4,
+      "mode": "NATIVE_MANUAL",
+      "official_surface": "Codex đọc AGENTS.md trong repo (REPO_CONFIG); Custom GPT không có API tạo chính thức được biết (NATIVE_MANUAL); Responses API cho API_RUNTIME",
+      "claim_status": "UNVERIFIED_CLAIM",
+      "session_check": "NOT TESTED • không có kết nối OpenAI trong phiên"
+    },
+    {
+      "key": "notion",
+      "name": "Notion",
+      "order": 5,
+      "mode": "API_RUNTIME",
+      "official_surface": "Notion API/MCP cho page/block/comment; Notion Custom Agent: cách tạo qua API chưa xác minh",
+      "claim_status": "UNVERIFIED_CLAIM",
+      "session_check": "READ PASS (P1) • P2 2026-11-24: WRITE vào văn phòng 87788 qua Notion MCP (xem evidence/PHASE2.md)"
+    },
+    {
+      "key": "google_drive",
+      "name": "Google Drive",
+      "order": 6,
+      "mode": "API_RUNTIME",
+      "official_surface": "Drive API / connector",
+      "claim_status": "UNVERIFIED_CLAIM",
+      "session_check": "P2 2026-11-24: ACK PASS • READ PASS (search, 0 kết quả 'CFP'/'87788') • WRITE PASS (tạo Doc riêng tư 1XEdXo7gjAnQObg-Bbs9lVtYahIo1r7cYcZsrHjX1E2Y) • READBACK PASS (marker khớp) • quyền: chỉ owner"
+    },
+    {
+      "key": "canva",
+      "name": "Canva",
+      "order": 7,
+      "mode": "API_RUNTIME",
+      "official_surface": "Canva Connect API / connector (thiết kế, không phải agent runtime)",
+      "claim_status": "UNVERIFIED_CLAIM",
+      "session_check": "P2 2026-11-24: ACK PASS • READ PASS (search-designs 5 thiết kế CFP+, read-design DAHZfNK9sdQ) • WRITE PASS (comment KAHb3DMvZiY) • READBACK PASS (list-comments khớp marker)"
+    },
+    {
+      "key": "gemini",
+      "name": "Gemini",
+      "order": 8,
+      "mode": "NATIVE_MANUAL",
+      "official_surface": "Gemini API cho API_RUNTIME; Gem không có API tạo chính thức được biết",
+      "claim_status": "UNVERIFIED_CLAIM",
+      "session_check": "NOT TESTED • không có kết nối"
+    },
+    {
+      "key": "grok",
+      "name": "Grok",
+      "order": 9,
+      "mode": "NATIVE_MANUAL",
+      "official_surface": "xAI API cho API_RUNTIME",
+      "claim_status": "UNVERIFIED_CLAIM",
+      "session_check": "NOT TESTED • không có kết nối"
+    },
+    {
+      "key": "perplexity",
+      "name": "Perplexity",
+      "order": 10,
+      "mode": "NATIVE_MANUAL",
+      "official_surface": "Sonar API cho API_RUNTIME; Space nhập thủ công",
+      "claim_status": "UNVERIFIED_CLAIM",
+      "session_check": "NOT TESTED • không có kết nối"
+    },
+    {
+      "key": "microsoft",
+      "name": "Microsoft",
+      "order": 11,
+      "mode": "NOT_ASSESSED",
+      "official_surface": "Copilot Studio / Microsoft Graph: chưa đánh giá",
+      "claim_status": "UNVERIFIED_CLAIM",
+      "session_check": "NOT TESTED • không có kết nối"
+    }
+  ]
+}

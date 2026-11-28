@@ -1,0 +1,27 @@
+{
+  "schema": "cfp.mcp_oauth.platforms.v1",
+  "note": "Cấu hình công khai cho từng nền tảng kết nối MCP qua OAuth. KHÔNG chứa Client Secret. Mỗi nền tảng một OAuth Client riêng, một secret riêng, lưu ở secret manager của máy chủ MCP (Railway), không bao giờ vào repo hay issue.",
+  "mcp_server_url": "https://mcp.cfp.plus/mcp-public/",
+  "default_scopes": ["mcp:read"],
+  "platforms": [
+    {
+      "key": "gemini",
+      "client_id": null,
+      "client_id_status": "CHƯA ĐĂNG KÝ • chờ truy cập máy chủ OAuth (Railway)",
+      "redirect_uris": ["https://oauth-redirect.googleusercontent.com/r/user_bound_custom-mcp-db6be1542137b3a9ae65fd92"],
+      "token_endpoint_auth_method": "client_secret_post",
+      "pkce": "S256",
+      "scopes": ["mcp:read"],
+      "status": "BLOCKED"
+    },
+    {
+      "key": "chatgpt",
+      "client_id": null,
+      "client_id_status": "Hệ OAuth đã xây cho ChatGPT: chưa định vị mã nguồn/cấu hình trong các kho kết nối được",
+      "redirect_uris": [],
+      "pkce": "S256",
+      "scopes": ["mcp:read"],
+      "status": "NOT VERIFIED"
+    }
+  ]
+}
