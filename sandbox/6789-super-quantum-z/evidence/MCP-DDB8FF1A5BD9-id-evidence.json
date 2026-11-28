@@ -1,0 +1,65 @@
+{
+  "workOrder": "MCP-DDB8FF1A5BD9",
+  "executor": "Codex",
+  "date": "2026-11-27",
+  "methods": [
+    "Use exact JSON record keys as strings",
+    "Compare day-role keys against all formatted MMDD keys in Gregorian leap year 2000",
+    "Check Chương length one; Con length two and a Chương prefix; Cháu length three and a Con prefix"
+  ],
+  "snapshot": "28eeb0319306cdc02f9da59fccd6f9c18db1b409",
+  "gitBlob": "981517619291798e711f0cefde7faad7646e6104",
+  "total": 1558,
+  "counts": {
+    "Chương": 10,
+    "Con": 100,
+    "Cháu": 1000,
+    "Ngày": 366
+  },
+  "groups": [
+    "135",
+    "246",
+    "789",
+    "000",
+    "V & D"
+  ],
+  "missingDays": [],
+  "unexpectedDays": [],
+  "nonAsciiIds": 0,
+  "invalidChapterShape": 0,
+  "invalidHierarchyShape": 0,
+  "key0229": {
+    "roles": [
+      "Ngày"
+    ],
+    "chapter": "0",
+    "group": "000",
+    "additional_groups": [],
+    "sources": [],
+    "status": "unbound"
+  },
+  "key229": [
+    "Cháu"
+  ],
+  "key10": [
+    "Con"
+  ],
+  "overlaps": [
+    [
+      "5",
+      [
+        "Chương",
+        "V"
+      ],
+      "review_overlap"
+    ],
+    [
+      "500",
+      [
+        "Cháu",
+        "D"
+      ],
+      "review_overlap"
+    ]
+  ]
+}
